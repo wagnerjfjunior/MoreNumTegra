@@ -1,110 +1,118 @@
 # Handoff Atual — MoreNumTegra
 
-- Status do documento: `atual`
+- Status: `atual`
 - Atualizado em: `2026-08-23`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra`
-- Referência canônica: `main`
-- Âncora inicial pré-onboarding: `3f45ac60352f917f32c6b9d52eecae414313cb68`
-- Escopo deste handoff: continuidade operacional inicial e adoção mínima do SFJM
+- Referência: `main` — resolver live antes de agir
+- Onboarding SFJM integrado em: `2819cc158d8775137c992fa2fd147e1c3806e38e`
+- Baseline funcional: `docs/baseline/FUNCTIONAL_BASELINE_V1.md` quando presente em `main`
 
 ## 1. Objetivo operacional
 
-Permitir que uma nova conversa, ferramenta ou agente retome o MoreNumTegra a partir do GitHub, sem depender de contexto conversacional anterior e sem inventar requisitos que ainda não estejam versionados.
+Permitir retomada do MoreNumTegra a partir do GitHub com um contrato funcional inicial explícito, distinguindo requisitos confirmados, comportamento apenas relatado pelo usuário e decisões técnicas ainda pendentes.
 
 ## 2. Estado confirmado
 
-1. O repositório `wagnerjfjunior/MoreNumTegra` existe e usa `main` como branch padrão.
-2. A âncora inicial verificada antes do onboarding SFJM foi `3f45ac60352f917f32c6b9d52eecae414313cb68`.
-3. Nessa âncora havia somente `README.md`.
-4. O `README.md` registra `MoreNumTegra` e a descrição curta `More em um Tegra`.
-5. Requisitos funcionais, arquitetura, stack, deploy e critérios de aceite ainda não estavam presentes na fonte canônica inicial.
-6. Quando este handoff estiver presente em `main`, o kit mínimo SFJM deve ser tratado como integrado; não é necessária PR adicional apenas para registrar o próprio merge do onboarding.
+1. `main` é a autoridade integrada do projeto.
+2. O onboarding SFJM está integrado desde `2819cc158d8775137c992fa2fd147e1c3806e38e`.
+3. `FUNCTIONAL_BASELINE_V1.md`, quando integrada em `main`, é a autoridade funcional inicial.
+4. A baseline registra Tegra `#EBB92E`, logo transparente indicado pelo proprietário, postura mobile-first, filtros, estágios, CTAs, formulário e requisitos de mídia/performance.
+5. Defeitos de vídeo, seletores/botões mobile e baixa saliência de badges são `USER_REPORTED` até reprodução técnica.
+6. O proprietário reportou tráfego `>90% mobile`; o valor não é tratado como analytics independentemente medido.
+7. Arquitetura, stack, deploy, integrações e metas técnicas numéricas continuam não decididos.
 
 ## 3. Decisões vigentes
 
-| Decisão | Estado | Autoridade/fonte | Impacto |
+| Decisão | Estado | Autoridade | Impacto |
 |---|---|---|---|
-| GitHub é a fonte canônica de continuidade | vigente quando este conjunto estiver em `main` | `bootstrap/BOOTSTRAP_CANONICO.md` | Conversas e resumos não substituem estado versionado |
-| `main` representa estado integrado; branch/PR representa proposta | vigente | regra de canonicalidade | Evita tratar trabalho não integrado como concluído |
-| Estado ausente não será inferido | vigente | protocolo SFJM | Lacunas permanecem explícitas até evidência verificável |
-| Baseline funcional deve ser canonicalizada antes de implementação | autorizada como próxima ação documental | `docs/NEXT_SAFE_ACTION.md` | Implementação continua bloqueada até decisão material posterior |
+| GitHub `main` é fonte canônica | vigente | bootstrap SFJM | contexto conversacional não substitui estado integrado |
+| Baseline funcional precede solução técnica | vigente | `FUNCTIONAL_BASELINE_V1.md` | evita stack por inferência |
+| Mobile é contexto primário de aceite funcional | vigente | baseline funcional | desktop não compensa mobile quebrado |
+| Tegra yellow = `#EBB92E` | vigente | baseline funcional | identidade visual inicial |
+| Lead form é requisito de superfície, não autorização de processamento | vigente | baseline funcional + bloqueios | integração/dados continuam bloqueados |
+| Próxima fase é baseline técnica, mas ainda requer autorização explícita | vigente | `docs/NEXT_SAFE_ACTION.md` | nenhuma implementação autorizada |
 
 ## 4. Entregas concluídas
 
-| Entrega | Evidência | Revisão |
+| Entrega | Evidência |
+|---|---|
+| Repositório e identidade inicial | `README.md` |
+| Continuidade mínima SFJM | documentos SFJM em `main` |
+| Baseline funcional V1 | `docs/baseline/FUNCTIONAL_BASELINE_V1.md` quando integrada |
+
+Não criar PR de reconciliação apenas para registrar o merge desta baseline; sua presença em `main` resolve o lifecycle.
+
+## 5. Próxima frente
+
+| Item | Estado | Condição |
 |---|---|---|
-| Criação do repositório | `wagnerjfjunior/MoreNumTegra` | âncora inicial `3f45ac60352f917f32c6b9d52eecae414313cb68` |
-| Identificação inicial do projeto | `README.md` | âncora inicial |
-| Kit mínimo SFJM | presença destes arquivos em `main` | resolver `main` live |
+| Baseline técnica/arquitetural | bloqueada | autorização explícita após resolver a baseline funcional live |
+| Implementação/importação de código | bloqueada | decisão técnica suficiente + autorização material específica |
 
-A publicação do próprio onboarding é autocontida: se estes arquivos estiverem em `main`, o onboarding está integrado. Não criar reconciliação documental apenas para registrar esse lifecycle.
+## 6. Lacunas
 
-## 5. Trabalho em andamento / próxima frente
-
-| Item | Estado observável | Responsável | Condição de conclusão |
-|---|---|---|---|
-| Baseline funcional do produto | autorizada como próxima ação documental, condicionada ao gate live | responsável pelo projeto | baseline validada e integrada em `main` sem implementação |
-| Arquitetura/stack | não iniciada no canônico | responsável pelo projeto | decisão posterior baseada em baseline suficiente e autorização específica |
-
-## 6. Lacunas, limitações e evidências indisponíveis
-
-- Não existe baseline funcional integrada em `main` até que a próxima ação seja concluída.
-- Não existe stack ou arquitetura declarada no estado inicial.
-- Não existe evidência canônica de domínio, Vercel, ambiente ou deploy.
-- Não existe baseline canônica de SEO, analytics, acessibilidade ou performance.
-- Não existe matriz canônica de integrações, dados, privacidade ou segurança.
-
-Essas lacunas podem ser reduzidas pela baseline funcional autorizada, mas nenhuma deve ser preenchida por inferência.
+- framework/runtime e arquitetura;
+- snapshot de implementação no repositório;
+- CMS/inventário/backend;
+- contrato real de formulário/CRM;
+- target de WhatsApp verificado;
+- analytics/pixels/tags;
+- política de privacidade/consentimento aplicável ao lead;
+- domínio/hosting/deploy;
+- metas numéricas de Core Web Vitals;
+- target formal de acessibilidade;
+- SEO técnico;
+- testes e release.
 
 ## 7. Riscos ativos
 
-| Risco | Evidência | Impacto | Controle vigente |
-|---|---|---|---|
-| Implementar a partir de contexto não versionado | repositório inicial quase vazio | alto | baseline canônica antes de mudança material |
-| Confundir proposta em branch com estado integrado | modelo Git/GitHub | médio | resolver `main` live |
-| Acoplar deploy ou integrações antes de decisão explícita | ausência de registros canônicos | alto | manter externos bloqueados |
-| Criar loop de reconciliação do próprio lifecycle documental | natureza do onboarding | médio | presença em `main` resolve integração; não duplicar estado de PR em Markdown |
+| Risco | Impacto | Controle |
+|---|---|---|
+| tratar defeito relatado como reproduzido | médio | manter `USER_REPORTED` até código/teste |
+| implementar antes de decidir arquitetura | alto | próxima ação documental bloqueada por autorização |
+| conectar formulário sem contrato de dados | alto | integração real bloqueada |
+| degradar mobile apesar de desktop funcional | alto | mobile-first na baseline |
+| duplicar lifecycle transitório em Markdown | médio | resolver PR/SHA live e registrar apenas significado material |
 
 ## 8. Próxima ação segura
 
-- Registro autoritativo: `docs/NEXT_SAFE_ACTION.md`
-- Resumo derivado e não autoritativo: consolidar e versionar uma baseline funcional inicial exclusivamente documental para o MoreNumTegra.
+- Autoridade: `docs/NEXT_SAFE_ACTION.md`
+- Resumo: definir e versionar uma baseline técnica/arquitetural inicial em PR documental, **somente após autorização explícita**.
 
-A ação está autorizada somente nos limites e condições do registro autoritativo.
+## 9. Ações bloqueadas
 
-## 9. Ações bloqueadas ou sujeitas a autorização
+Consulte `docs/BLOCKED_ACTIONS.md`. Em especial permanecem bloqueados:
 
-- implementação material de produto;
-- escolha definitiva de stack/arquitetura sem baseline suficiente e decisão explícita;
+- código/implementação;
+- correção dos defeitos relatados;
+- Vercel/hosting/domínio/DNS;
+- formulário real/CRM/WhatsApp config;
+- analytics/pixels;
 - deploy/publicação;
-- alteração de domínio/DNS;
-- integrações externas;
-- campanhas/anúncios;
-- uso de credenciais ou dados sensíveis.
+- campanhas;
+- credenciais/dados pessoais.
 
-Consulte `docs/BLOCKED_ACTIONS.md` para o registro completo. O merge da baseline documental possui autorização condicional específica em `docs/NEXT_SAFE_ACTION.md` e não amplia os demais poderes.
-
-## 10. Arquivos para continuidade
-
-Leia nesta ordem:
+## 10. Ordem de leitura
 
 1. `bootstrap/BOOTSTRAP_CANONICO.md`
 2. `handoffs/CURRENT.md`
-3. `docs/PROJECT_STATUS.md`
-4. `docs/NEXT_SAFE_ACTION.md`
-5. `docs/BLOCKED_ACTIONS.md`
-6. `README.md`
+3. `docs/baseline/FUNCTIONAL_BASELINE_V1.md`
+4. `docs/PROJECT_STATUS.md`
+5. `docs/NEXT_SAFE_ACTION.md`
+6. `docs/BLOCKED_ACTIONS.md`
+7. `README.md`
 
-## 11. Registro de divergências
+## 11. Regra de divergência
 
-Se este handoff divergir do estado live de `main`, prevalece `main` para fatos versionados e lifecycle. Registre a divergência e interrompa qualquer ação afetada até reconciliação material.
-
-Não trate o simples avanço de SHA ou o merge do próprio onboarding como divergência material quando o significado operacional permanecer igual.
+- lifecycle GitHub: resolver live;
+- produto/requisitos: baseline funcional integrada prevalece;
+- próxima ação: `docs/NEXT_SAFE_ACTION.md` prevalece;
+- se houver conflito material, usar a interpretação mais restritiva até reconciliação.
 
 ## 12. Critério de atualização
 
-Atualize este handoff quando houver mudança material em objetivo, decisão, bloqueio, risco, autorização, evidência relevante ou próxima ação semântica. Não atualize apenas porque o SHA avançou, uma PR mudou de lifecycle ou uma conversa mudou.
+Atualizar por mudança material de requisito, decisão, risco, autorização, bloqueio ou próxima ação. Não atualizar apenas por novo SHA, merge de documentação autocontida ou troca de conversa.
 
 ## 13. Prompt curto de retomada
 
-> Resolva `wagnerjfjunior/MoreNumTegra` `main` live. Leia `bootstrap/BOOTSTRAP_CANONICO.md` e a ordem mínima indicada. Apresente até 8 fatos confirmados, declare lacunas e identifique a única próxima ação segura em `docs/NEXT_SAFE_ACTION.md`. Não infira estado ausente e não execute ações bloqueadas sem autorização explícita.
+> Resolva `wagnerjfjunior/MoreNumTegra` `main` live. Leia bootstrap, handoff e `docs/baseline/FUNCTIONAL_BASELINE_V1.md`. Separe fatos canônicos de comportamento `USER_REPORTED`, declare lacunas e consulte `docs/NEXT_SAFE_ACTION.md` antes de qualquer ação. Não implemente sem autorização material explícita.
