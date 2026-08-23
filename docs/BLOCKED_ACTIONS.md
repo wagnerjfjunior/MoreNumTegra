@@ -3,80 +3,87 @@
 - Atualizado em: `2026-08-23`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
 - Baseline funcional: `docs/baseline/FUNCTIONAL_BASELINE_V1.md`
+- Baseline técnica: `docs/baseline/TECHNICAL_BASELINE_V1.md` quando integrada
 - Regra: ausência nesta lista não constitui autorização.
 
-## 1. Bloqueios ativos
+## 1. Estado de liberação
 
-| Ação bloqueada | Motivo | Condição de liberação | Autoridade | Evidência exigida |
-|---|---|---|---|---|
-| Baseline técnica/arquitetural | próxima fase ainda não autorizada | autorização explícita + baseline funcional integrada | responsável pelo projeto | autorização registrada + `main` live |
-| Implementação/importação de produto | autorização atual é somente documental e solução técnica não está decidida | baseline técnica suficiente + autorização material específica | responsável pelo projeto | decisão técnica + escopo de implementação autorizado |
-| Escolha definitiva de stack/runtime | solução técnica ainda não canonicalizada | autorização para baseline técnica + decisão versionada | responsável pelo projeto/revisor técnico quando aplicável | PR/decisão técnica integrada |
-| Correção dos defeitos mobile/mídia relatados | não há implementação versionada nem autoridade de execução | código/snapshot identificado + implementação autorizada | responsável pelo projeto | fonte técnica + escopo aprovado |
-| Formulário real/CRM/lead routing | envolve dados pessoais e integração externa | contrato de dados, privacidade, destino e autorização definidos | responsável pelo projeto | decisão + data contract + autorização |
-| WhatsApp destination/configuração | destino e ownership não verificados canonicamente | target verificado + autorização | responsável pelo projeto | evidência do target |
-| Analytics/pixels/tags | cria telemetria e potencial fluxo de dados | requisitos e autorização definidos | responsável pelo projeto | decisão versionada |
-| Deploy/publicação | efeito externo não autorizado | ambiente/target + critérios + autorização explícita | responsável pelo projeto | autorização + evidência de target |
-| Vercel/hosting/domínio/DNS | target ainda não canônico | decisão explícita sobre ambiente e propriedade | responsável pelo projeto | conta/projeto/configuração verificados |
-| Campanhas/anúncios/comunicação externa | custo/reputação/terceiros | campanha e orçamento autorizados | responsável pelo projeto | autorização explícita |
-| Uso de credenciais/segredos/dados pessoais | risco de segurança e privacidade | necessidade comprovada + canal seguro + autorização | responsável pelo projeto | registro apropriado sem expor segredo |
+Após `TECHNICAL_BASELINE_V1` estar integrada em `main`, **implementação V1 em branch dedicada está autorizada** conforme `docs/NEXT_SAFE_ACTION.md`.
 
-## 2. Ações que sempre exigem autorização explícita
+Vercel Preview também pode ser criado dentro do escopo da implementação após build/test gate.
 
-Salvo regra mais restritiva:
+## 2. Bloqueios ativos
 
-- alteração material de `main`;
-- merge quando não houver autorização específica/condicional registrada;
-- implementação ou importação de código;
-- publicação, preview público, deploy ou release;
-- domínio, DNS ou hosting;
-- integração externa;
-- processamento de leads/dados pessoais;
-- analytics, pixels ou tags;
-- campanha ou compromisso financeiro;
-- ação destrutiva/irreversível;
-- expansão material de escopo;
-- declaração de produção/go-live.
+| Ação bloqueada | Motivo | Condição de liberação | Autoridade/evidência |
+|---|---|---|---|
+| Vercel Production | Preview ainda precisa demonstrar qualidade | Preview validado + autorização específica | responsável + receipt do Preview |
+| Custom domain / DNS | efeito público e SEO permanente | decisão de Production + domínio/ownership verificados + autorização | responsável |
+| Git production branch `release/production` | só é necessária no release real | Production autorizada | responsável |
+| Formulário real / CRM / lead routing | envolve PII e integração externa | data/privacy contract + target + autorização | decisão versionada |
+| WhatsApp destination/config final | destino não está verificado canonicamente | target/ownership verificados | evidência do target |
+| Analytics / pixels / tags | telemetria/dados | escopo/privacy/target autorizados | decisão versionada |
+| CMS/database | não necessário no V1 técnico | necessidade material demonstrada + nova decisão | baseline revision/ADR |
+| Campanhas/anúncios | custo/reputação | campanha/orçamento autorizados | autorização explícita |
+| Uso de segredo/dado pessoal não previsto | risco de segurança/privacidade | necessidade + canal seguro + autorização | registro adequado |
+| Expansão para novas rotas/produto material | fora da baseline V1 | requisito canonicalizado + escopo aprovado | baseline/decisão |
 
-## 3. Limites de interpretação
+## 3. Ações permitidas na implementação autorizada
 
-- baseline funcional aprovada não autoriza baseline técnica automaticamente;
-- baseline técnica aprovada não autoriza implementação;
-- “preparar” não autoriza “executar”;
-- “revisar” não autoriza “aprovar” ou “alterar”;
-- “criar PR” não autoriza merge salvo condição explícita previamente concedida;
-- “testar” não autoriza produção ou dados reais;
-- capacidade da ferramenta não equivale a autoridade;
-- sequência lógica não substitui autorização.
+Depois do gate live da baseline técnica:
 
-## 4. Evidências ainda ausentes que afetam execução
+- criar `feat/initial-product-implementation`;
+- scaffold e código do V1;
+- assets aprovados;
+- catálogo local tipado;
+- filtros/badges/CTAs;
+- formulário Preview sem transmissão real de PII;
+- testes e build;
+- SEO estrutural;
+- performance/accessibility work;
+- Vercel Preview não-production quando o branch estiver buildável.
 
-| Evidência ausente | Ação afetada | Tratamento |
+## 4. Regras de interpretação
+
+- `Preview autorizado` != `Production autorizada`.
+- `Production autorizada` != `domínio/DNS autorizado`.
+- `form UI autorizado` != `lead processing autorizado`.
+- `CTA autorizado` != `destino inferido`.
+- `baseline técnica aprovada` autoriza somente a implementação explicitamente registrada em `NEXT_SAFE_ACTION`.
+- `main` integrado não é automaticamente a branch Production do Vercel.
+- capability/tool access não equivale a autorização.
+
+## 5. Gates por evidência
+
+| Evidência | Ação | Tratamento |
 |---|---|---|
-| implementação/snapshot versionado | reprodução e correção dos defeitos relatados | localizar/importar somente após autorização |
-| baseline técnica/stack | desenvolvimento | não escolher por inferência |
-| contrato de formulário/dados | lead capture | bloquear processamento real |
-| target de WhatsApp/CRM | conversão | verificar antes de integrar |
-| target de deploy | publicação | não criar por suposição |
-| metas numéricas de performance | aceite técnico | definir na baseline técnica |
-| política SEO técnica/indexação | produção SEO | definir antes de go-live |
+| technical baseline ausente de `main` | implementação | parar |
+| Next.js safe patch não resolvido | scaffold freeze/merge | parar e resolver versão live |
+| build falha | Preview | não deployar |
+| Preview sem `noindex` | aceite de Preview | corrigir antes de aceitar |
+| target real de formulário ausente | lead submission | manter mock/local |
+| target WhatsApp não verificado | link final | não inventar destino |
+| Preview não validado | Production | bloquear |
+| domínio/ownership ausentes | DNS | bloquear |
 
-## 5. Exceções autorizadas
+## 6. Produção e domínio
 
-A PR da **baseline funcional V1** possui autorização condicional de merge somente se o pré-merge passar sem blocker material.
+Production e custom domain são gates intencionalmente separados.
 
-Essa exceção termina com a integração desta baseline e não concede autoridade para a próxima fase.
+Sequência autorizável futura:
 
-## 6. Procedimento para desbloqueio
+```text
+IMPLEMENTATION
+-> BUILD/TEST
+-> PREVIEW
+-> PREVIEW_VALIDATION
+-> PRODUCTION_GATE
+-> PRODUCTION
+-> DOMAIN_GATE
+-> DOMAIN/DNS
+```
 
-1. resolver `main` live;
-2. confirmar a condição objetiva;
-3. obter autorização específica quando exigida;
-4. atualizar a próxima ação segura se o significado material mudar;
-5. executar somente o escopo liberado;
-6. preservar evidência;
-7. não iniciar automaticamente a etapa seguinte.
+Nenhuma seta autoriza automaticamente a seguinte.
 
 ## 7. Procedimento diante de dúvida
 
-Quando o enquadramento não estiver claro, tratar como bloqueado e obter a menor decisão necessária.
+Quando o enquadramento não estiver claro, usar a interpretação mais restritiva e obter a menor decisão necessária.
