@@ -1,112 +1,116 @@
 # Próxima Ação Segura — MoreNumTegra
 
-> Registro autoritativo da única próxima ação segura após a integração da baseline funcional V1.
+> Registro autoritativo da única próxima ação segura após a integração da baseline técnica V1.
 
 - Definida em: `2026-08-23`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
 - Baseline funcional: `docs/baseline/FUNCTIONAL_BASELINE_V1.md`
+- Baseline técnica: `docs/baseline/TECHNICAL_BASELINE_V1.md` quando presente em `main`
 - Responsável: responsável pelo projeto
-- Estado: `bloqueada até autorização explícita`
+- Estado: `AUTORIZADA_CONDICIONALMENTE_APOS_GATE_LIVE`
 
 ## 1. Ação
 
-Definir e versionar uma **baseline técnica/arquitetural inicial** do MoreNumTegra em PR exclusivamente documental, usando a baseline funcional integrada como entrada e sem implementar, publicar ou configurar o produto.
+Criar a branch `feat/initial-product-implementation` a partir do `main` que contenha `TECHNICAL_BASELINE_V1` e implementar o MoreNumTegra V1 dentro dos contratos funcional e técnico canônicos.
 
-## 2. Resultado verificável
+## 2. Autorização vigente
 
-Uma proposta técnica documental que, quando autorizada, defina ou deixe explicitamente pendentes:
+O responsável pelo projeto autorizou em `2026-08-23`:
 
-- arquitetura alvo inicial;
-- stack/runtime;
-- estratégia de conteúdo/inventário;
-- tratamento de mídia e imagens;
-- estratégia mobile/performance e metas mensuráveis;
-- SEO técnico;
-- acessibilidade;
-- contrato de formulário/dados/privacidade;
-- integrações externas;
-- estratégia de testes;
-- ambientes, hosting e deploy;
-- rollback e critérios técnicos de aceite.
+- definir/canonicalizar a baseline técnica;
+- após validação e merge dessa baseline, liberar a implementação em branch dedicada;
+- manter Production e domínio/DNS separados até validação do Preview.
 
-A proposta deve distinguir decisão, alternativa, hipótese e lacuna.
+Esta autorização inclui implementação de aplicação, estilos, componentes, dados locais versionados, testes e preparação/deploy de **Vercel Preview** quando o branch estiver buildável.
 
-## 3. Justificativa
+Esta autorização **não** inclui:
 
-A baseline funcional define o que o produto precisa fazer, mas deliberadamente não escolhe como fazê-lo. Separar requisitos de solução reduz decisões prematuras de stack e impede que implementação seja iniciada apenas por conveniência técnica.
+- Vercel Production;
+- custom domain ou DNS;
+- transmissão real de leads/PII;
+- CRM/form endpoint real;
+- analytics/pixels/tags;
+- campanhas;
+- credenciais/segredos não previamente autorizados;
+- expansão material além das baselines.
 
-## 4. Gate live obrigatório
+## 3. Gate live obrigatório
 
-Antes de iniciar esta ação, se ela for autorizada:
+Antes de criar ou trabalhar na branch de implementação:
 
 1. resolver `main` live;
-2. confirmar que `docs/baseline/FUNCTIONAL_BASELINE_V1.md` está integrada;
-3. confirmar que o conteúdo funcional não foi supersedido;
-4. confirmar a autorização explícita para a baseline técnica;
-5. parar se qualquer condição falhar.
+2. confirmar que `docs/baseline/FUNCTIONAL_BASELINE_V1.md` está presente;
+3. confirmar que `docs/baseline/TECHNICAL_BASELINE_V1.md` está presente;
+4. confirmar que nenhuma das baselines foi supersedida;
+5. confirmar que Production/domain continuam fora do escopo;
+6. criar `feat/initial-product-implementation` do SHA exato validado.
 
-Não persista o lifecycle da futura PR como checkbox autoritativo; resolva-o live.
+Se qualquer condição falhar, parar antes de implementação.
 
-## 5. Escopo permitido quando autorizado
+## 4. Escopo permitido
 
-- leitura não destrutiva do repositório e fontes técnicas autorizadas;
-- análise de alternativas;
-- documentação técnica em branch dedicada;
-- atualização coerente do estado SFJM na mesma PR, se houver mudança material;
-- abertura de PR documental para revisão.
+- scaffold da aplicação conforme baseline técnica;
+- Next.js/TypeScript e runtime aprovados;
+- componentes/UI responsivos;
+- catálogo local tipado;
+- filtros de localização/zoneamento e estágio;
+- badges de estágio;
+- identidade Tegra canônica;
+- CTAs de conversão sem inventar destinos não verificados;
+- formulário de Preview sem transmissão real de PII;
+- mídia resiliente;
+- SEO técnico de Preview/estrutura;
+- acessibilidade;
+- testes;
+- configuração necessária para build;
+- Vercel Preview após build local/repository gate.
 
-## 6. Limites explícitos
+## 5. Gate de dependências
 
-Não inclui:
+Antes de congelar o scaffold:
 
-- importar ou escrever código de aplicação;
-- corrigir os defeitos funcionais relatados;
-- criar Vercel/hosting/domain/DNS;
-- criar banco, backend, CMS ou CRM;
-- conectar formulário real;
-- configurar WhatsApp, analytics, pixels ou tags;
-- usar segredos ou dados pessoais;
-- deploy, preview público ou produção;
-- merge sem autorização específica aplicável.
+- resolver a versão Next.js 16.x suportada e corrigida live;
+- não piná-la se houver patch crítico pendente conhecido;
+- usar Node.js 24 LTS;
+- commit do lockfile obrigatório;
+- registrar versões no PR de implementação.
 
-## 7. Autorização
+## 6. Vercel Preview
 
-- Autorização necessária: `sim`
-- Autoridade: responsável pelo projeto
-- Registro da autorização: `pendente após a baseline funcional`
-- Escopo: baseline técnica/arquitetural documental somente
-- Validade: não se propaga para implementação
+Preview está autorizado dentro desta ação somente quando:
 
-## 8. Plano mínimo quando liberada
+- build passa;
+- não há segredos/PII reais;
+- deploy é explicitamente não-production;
+- SHA da implementação é registrado;
+- URL Preview permanece sem domínio customizado;
+- `X-Robots-Tag: noindex` é verificado.
 
-1. Resolver `main` e a baseline funcional live.
-2. Inventariar lacunas técnicas e restrições funcionais.
-3. Separar requisitos de decisões de solução.
-4. Propor arquitetura/stack com justificativa e alternativas relevantes.
-5. Definir metas técnicas mensuráveis onde houver base suficiente.
-6. Atualizar SFJM na mesma PR se a decisão material mudar o estado.
-7. Abrir PR documental e parar no gate aplicável.
+Preview não equivale a aprovação de Production.
 
-## 9. Verificação de conclusão
+## 7. Resultado verificável
 
-- PR exclusivamente documental;
-- baseline funcional preservada ou alterações justificadas separadamente;
-- nenhuma implementação ou configuração externa;
-- decisões técnicas rastreáveis;
-- lacunas mantidas explícitas;
-- próximo estado SFJM definido sem duplicar lifecycle transitório.
+Uma PR de implementação com:
 
-## 10. Condições de parada
+- aplicação buildável;
+- requisitos Must da baseline funcional implementados ou explicitamente bloqueados por evidência ausente;
+- testes/gates técnicos executados;
+- defeitos `USER_REPORTED` reclassificados com reprodução real onde houver implementação correspondente;
+- Preview Vercel validado quando criado;
+- nenhum efeito em Production/domain/DNS.
 
-Pare se:
+## 8. Condições de parada
 
-- a baseline funcional não estiver integrada ou tiver sido supersedida;
-- faltar autorização explícita;
-- for necessário escrever/importar código para concluir a análise;
-- uma decisão depender de credencial, dado ou acesso não autorizado;
-- surgir necessidade de deploy ou integração externa;
-- houver conflito material entre requisitos e solução proposta.
+Parar se:
 
-## 11. Próximo estado
+- for necessário escolher solução materialmente diferente da baseline técnica;
+- surgir necessidade de dados/segredos não autorizados;
+- CTA/form exigir destino real ainda não verificado;
+- Vercel tentar criar/promover Production;
+- houver necessidade de domínio/DNS;
+- dependência crítica não puder ser usada com versão segura;
+- o escopo crescer além do V1 canônico.
 
-Após eventual integração de uma baseline técnica, a implementação deverá continuar bloqueada até autorização material específica. Não interpretar aprovação documental como autorização de execução.
+## 9. Próximo estado
+
+Depois de um Preview validado, apresentar separadamente o gate de Production. Somente após autorização de Production poderá haver promoção/produção. Custom domain/DNS permanece um gate distinto, mesmo após Production.
