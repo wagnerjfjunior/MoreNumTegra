@@ -4,99 +4,101 @@
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra`
 - Referência: `main` — resolver SHA live antes de agir
 - Onboarding SFJM: integrado em `2819cc158d8775137c992fa2fd147e1c3806e38e`
-- Fase atual: `baseline funcional V1 / definição técnica pendente`
-- Saúde geral: `amarelo` — requisitos funcionais iniciais estão canonicalizados quando a baseline estiver em `main`, mas solução técnica, código e deploy ainda não estão decididos/autorizados
+- Baseline funcional V1: integrada em `862e734dac9c60eceae8c311e30304d14efd687a`
+- Baseline técnica V1: `docs/baseline/TECHNICAL_BASELINE_V1.md` quando presente em `main`
+- Fase atual após integração desta baseline: `implementação V1 autorizada em branch dedicada`
+- Saúde geral: `verde/amarelo` — contratos funcional/técnico suficientes para construir; Production, domínio e integrações de dados continuam deliberadamente separados
 
 ## 1. Resultado pretendido
 
-Evoluir o MoreNumTegra como experiência Tegra de descoberta e conversão imobiliária com forte prioridade mobile, preservando requisitos funcionais em GitHub antes de decisões técnicas e evitando drift entre conversas e implementação.
+Entregar um MoreNumTegra V1 mobile-first, rápido e SEO-ready, com experiência Tegra de descoberta/conversão, usando arquitetura estática-first e Preview Vercel como gate antes de qualquer produção.
 
-A autoridade funcional inicial é `docs/baseline/FUNCTIONAL_BASELINE_V1.md` quando integrada em `main`.
+## 2. Decisões técnicas V1
 
-## 2. Estado por frente
+| Área | Decisão |
+|---|---|
+| Framework | Next.js 16.x App Router, versão segura resolvida live no scaffold |
+| Linguagem | TypeScript strict |
+| Runtime | Node.js 24 LTS |
+| Renderização | static-first / server-rendered; Client Components só para interatividade |
+| Dados V1 | catálogo local tipado e versionado |
+| Backend/DB/CMS | nenhum em V1 |
+| Filtros | client-side sobre dataset já renderizado |
+| Mídia | imagens otimizadas; vídeo não crítico e resiliente |
+| Formulário | UI/validação em Preview; sem PII real até contrato separado |
+| Performance | LCP <=2.5s, INP <=200ms, CLS <=0.1 no p75 como metas de campo |
+| Acessibilidade | WCAG 2.2 AA target |
+| Hosting | Vercel Preview-first |
+| Production | gate separado após Preview validado |
+| Domínio/DNS | gate separado após decisão de Production |
 
-| Frente | Estado | Evidência | Próximo marco | Bloqueio |
-|---|---|---|---|---|
-| Repositório | concluída | GitHub `main` | preservar fonte integrada | nenhum |
-| Continuidade SFJM | operacional | onboarding em `2819cc1...` | validar sempre por leitura live | nenhum blocker de lifecycle |
-| Baseline funcional | `V1` quando presente em `main` | `docs/baseline/FUNCTIONAL_BASELINE_V1.md` | manter requisitos rastreáveis | não usar branch como estado integrado |
-| Mobile/UX funcional | requisitos definidos; defeitos atuais apenas relatados | baseline funcional | reproduzir tecnicamente após código autorizado | implementação ausente/não autorizada |
-| Marca Tegra | requisitos iniciais definidos | `#EBB92E` + logo indicado na baseline | implementar futuramente | código não autorizado |
-| Arquitetura/stack | não definida | lacuna explícita | baseline técnica documental | exige nova autorização |
-| Implementação | não iniciada/autorizada | bloqueios SFJM | escopo técnico futuro | bloqueada |
-| Formulário/CRM/dados | superfície funcional requerida; integração não definida | baseline funcional | data/privacy contract | bloqueada |
-| Deploy/hosting | não estabelecido | ausência de target canônico | decidir após fase técnica | bloqueada |
-| SEO/performance | intenção/requisitos gerais registrados; metas técnicas pendentes | baseline funcional | metas/estratégia técnica | baseline técnica pendente |
+A autoridade detalhada é `docs/baseline/TECHNICAL_BASELINE_V1.md`.
 
-## 3. Marcos
+## 3. Estado por frente
 
-| Marco | Situação | Condição | Evidência |
+| Frente | Estado após baseline técnica integrada | Próximo marco | Bloqueio |
 |---|---|---|---|
-| Repositório criado | atingido | repositório acessível | GitHub |
-| SFJM onboarding | atingido | merge validado | `2819cc158d8775137c992fa2fd147e1c3806e38e` |
-| Baseline funcional V1 | atingida quando arquivo estiver em `main` | PR funcional validada/mergeada | `docs/baseline/FUNCTIONAL_BASELINE_V1.md` |
-| Baseline técnica/arquitetural | não iniciada | autorização explícita futura | `docs/NEXT_SAFE_ACTION.md` |
-| Implementação autorizada | não atingido | autorização material após decisão técnica | registro futuro |
-| Deploy autorizado | não atingido | target + critérios + autorização | registro futuro |
+| SFJM | operacional | reconstrução live por bootstrap | nenhum blocker de lifecycle |
+| Baseline funcional | canônica | preservar requisitos | nenhum |
+| Baseline técnica | canônica quando presente em `main` | implementação V1 | merge desta PR precisa passar gate |
+| Implementação | autorizada condicionalmente | branch `feat/initial-product-implementation` | baseline técnica deve estar em `main` |
+| Mobile/UX | pronto para implementação/teste | reproduzir relatos e corrigir | código ainda ausente |
+| SEO técnico | estratégia definida | implementar metadata/sitemap/robots/noindex Preview | domínio production ainda não decidido |
+| Performance | targets definidos | medir no Preview | field data só após tráfego real |
+| Form/lead | UI permitida | implementar mock/safe Preview | transmissão real bloqueada |
+| Vercel Preview | autorizado após build gate | Preview validado | nenhum projeto Vercel existe ainda |
+| Vercel Production | não autorizado | gate após Preview | bloqueado |
+| Domínio/DNS | não autorizado | gate após Production decision | bloqueado |
 
-Não abrir PR apenas para atualizar o texto `atingida quando arquivo estiver em main`; após o merge, a presença do arquivo resolve o estado live.
+## 4. Vercel live state observado
 
-## 4. Requisitos funcionais já decididos
+- Team: `team_WIH0gs3BUjcZdk59oPViSjEm`.
+- Plano: `Hobby`.
+- Projetos existentes observados: `0`.
 
-Resumo não autoritativo; a baseline funcional prevalece:
+Portanto, não existe configuração legada a preservar e o primeiro deployment deve ser Preview.
 
-- Tegra yellow `#EBB92E`;
-- logo Tegra transparente indicado pelo proprietário;
-- favicon preservado com amarelo alinhado;
-- mobile como contexto primário de aceite;
-- filtros de zoneamento/localização e estágio devem funcionar em mobile;
-- cards exibem estágios com badges mais salientes;
-- preservar CTAs flutuantes `WhatsApp` e `Receber condições` salvo decisão posterior;
-- formulário ao final da página, sem integração real até contrato de dados autorizado;
-- mídia/vídeo não pode permanecer visivelmente quebrado;
-- LCP/loading performance é prioridade, metas numéricas ainda pendentes.
+## 5. Marcos
 
-## 5. Decisões necessárias
+| Marco | Situação | Evidência/condição |
+|---|---|---|
+| Repositório criado | atingido | GitHub |
+| SFJM onboarding | atingido | `2819cc1...` |
+| Baseline funcional V1 | atingido | `862e734...` |
+| Baseline técnica V1 | candidata nesta PR | presença em `main` após gate/merge |
+| Branch de implementação | autorizada pós-merge | criar do SHA live após baseline técnica |
+| Preview Vercel | autorizado condicionalmente | build/test gate no branch de implementação |
+| Production | não atingido | Preview validado + autorização separada |
+| Domínio/DNS | não atingido | autorização específica posterior |
 
-| Decisão | Por que é necessária | Autoridade | Condição |
-|---|---|---|---|
-| autorizar baseline técnica | próxima etapa sem executar produto | responsável pelo projeto | após baseline funcional live |
-| arquitetura e stack | define solução | responsável + revisão técnica quando aplicável | baseline técnica |
-| origem dos dados de empreendimentos | define conteúdo/runtime | responsável | baseline técnica |
-| contrato de lead/form/CRM | envolve dados pessoais | responsável | antes de integração real |
-| hosting/Vercel/domínio | efeito externo | responsável | antes de publicação |
-| metas Core Web Vitals | aceite mensurável | decisão técnica | antes de produção |
-| SEO técnico/indexação | descoberta orgânica | decisão técnica/SEO | antes de produção |
-| analytics/pixels | medição e dados | responsável | antes de instrumentação |
+## 6. Riscos ativos
 
-## 6. Riscos
-
-| Risco | Probabilidade | Impacto | Mitigação |
-|---|---|---|---|
-| tratar relatos de defeito como teste concluído | média | médio | reclassificar somente após reprodução técnica |
-| escolha prematura de stack | média | alto | baseline técnica separada |
-| regressão mobile | alta se não houver gate | alto | mobile-first + metas técnicas futuras |
-| formulário sem governança de dados | média | alto | integração bloqueada |
-| deploy prematuro | baixa/média | alto | target e autorização separados |
-| loop de documentação/lifecycle | média | médio | resolver GitHub live e atualizar apenas significado material |
+| Risco | Impacto | Controle |
+|---|---|---|
+| pin de Next.js com patch crítico pendente | alto | resolver versão segura live no scaffold |
+| transformar página em SPA pesada | alto para mobile | server/static-first + client islands |
+| mídia degradar LCP | alto | hero/image strategy; vídeo não crítico |
+| formulário capturar PII prematuramente | alto | Preview mock/local only |
+| merge em `main` virar Production por automação futura | alto | Vercel Preview-first; Production gate/branch separados |
+| indexação de Preview | médio/SEO | verificar `X-Robots-Tag: noindex` |
+| escopo crescer para CMS/backend sem necessidade | médio/alto | dataset local V1; adapter boundary |
 
 ## 7. Próxima ação segura
 
-- Autoridade: `docs/NEXT_SAFE_ACTION.md`
-- Resumo: definir e versionar uma baseline técnica/arquitetural inicial em PR documental, **bloqueada até autorização explícita**.
+- Autoridade: `docs/NEXT_SAFE_ACTION.md`.
+- Resumo: depois que `TECHNICAL_BASELINE_V1` estiver em `main`, criar `feat/initial-product-implementation` e implementar o V1; Preview permitido após build gate; Production/domain continuam separados.
 
-## 8. Fora do escopo/autoridade atual
+## 8. Fora do escopo atual
 
-- código ou importação de implementação;
-- correção dos defeitos relatados;
-- escolha de stack por inferência;
-- Vercel/hosting/domínio/DNS;
-- formulário real/CRM/WhatsApp config;
+- Production Vercel;
+- custom domain/DNS;
+- CRM/form endpoint real;
+- transmissão de PII;
 - analytics/pixels/tags;
-- deploy/preview público/produção;
 - campanhas;
-- uso de credenciais/dados pessoais.
+- CMS/database sem nova decisão;
+- expansão para rotas/produto não canonicalizados.
 
 ## 9. Critério de atualização
 
-Atualizar somente quando houver mudança material em requisito, baseline, decisão, bloqueio, risco, autorização ou próxima ação. Não usar SHA/lifecycle/conversa como gatilho isolado.
+Atualizar por mudança material de requisito, arquitetura, autorização, risco, blocker ou próxima ação. Não criar PR apenas para registrar que uma PR anterior mergeou ou que um SHA mudou.
