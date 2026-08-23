@@ -2,74 +2,81 @@
 
 - Atualizado em: `2026-08-23`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
+- Baseline funcional: `docs/baseline/FUNCTIONAL_BASELINE_V1.md`
 - Regra: ausência nesta lista não constitui autorização.
 
 ## 1. Bloqueios ativos
 
 | Ação bloqueada | Motivo | Condição de liberação | Autoridade | Evidência exigida |
 |---|---|---|---|---|
-| Implementação material do produto | baseline funcional ainda precisa ser integrada e implementation scope não está autorizado | baseline suficiente integrada + escopo material autorizado | responsável pelo projeto | documentação integrada + autorização material específica |
-| Escolha definitiva de stack/arquitetura | requisitos funcionais ainda não estão canônicos | baseline relevante integrada + decisão técnica explícita | responsável pelo projeto/revisor técnico quando aplicável | decisão versionada |
-| Deploy/publicação | efeito externo não autorizado | ambiente e escopo definidos + autorização explícita | responsável pelo projeto | registro de autorização + evidência de target |
-| Vercel/hosting/domínio/DNS | inexistência de autoridade canônica para target | decisão explícita sobre ambiente e propriedade | responsável pelo projeto | configuração/conta/target verificados |
-| Integrações externas, formulários, CRM, analytics ou pixels | podem criar fluxo de dados e efeito externo | requisitos, privacidade e autorização definidos | responsável pelo projeto | decisão + escopo + evidência técnica |
-| Campanhas, anúncios ou comunicação externa | custo/reputação/terceiros | campanha e orçamento autorizados | responsável pelo projeto | autorização explícita |
-| Uso de credenciais, segredos ou dados pessoais | risco de segurança e privacidade | necessidade comprovada + canal seguro + autorização | responsável pelo projeto | registro apropriado sem expor segredo |
+| Baseline técnica/arquitetural | próxima fase ainda não autorizada | autorização explícita + baseline funcional integrada | responsável pelo projeto | autorização registrada + `main` live |
+| Implementação/importação de produto | autorização atual é somente documental e solução técnica não está decidida | baseline técnica suficiente + autorização material específica | responsável pelo projeto | decisão técnica + escopo de implementação autorizado |
+| Escolha definitiva de stack/runtime | solução técnica ainda não canonicalizada | autorização para baseline técnica + decisão versionada | responsável pelo projeto/revisor técnico quando aplicável | PR/decisão técnica integrada |
+| Correção dos defeitos mobile/mídia relatados | não há implementação versionada nem autoridade de execução | código/snapshot identificado + implementação autorizada | responsável pelo projeto | fonte técnica + escopo aprovado |
+| Formulário real/CRM/lead routing | envolve dados pessoais e integração externa | contrato de dados, privacidade, destino e autorização definidos | responsável pelo projeto | decisão + data contract + autorização |
+| WhatsApp destination/configuração | destino e ownership não verificados canonicamente | target verificado + autorização | responsável pelo projeto | evidência do target |
+| Analytics/pixels/tags | cria telemetria e potencial fluxo de dados | requisitos e autorização definidos | responsável pelo projeto | decisão versionada |
+| Deploy/publicação | efeito externo não autorizado | ambiente/target + critérios + autorização explícita | responsável pelo projeto | autorização + evidência de target |
+| Vercel/hosting/domínio/DNS | target ainda não canônico | decisão explícita sobre ambiente e propriedade | responsável pelo projeto | conta/projeto/configuração verificados |
+| Campanhas/anúncios/comunicação externa | custo/reputação/terceiros | campanha e orçamento autorizados | responsável pelo projeto | autorização explícita |
+| Uso de credenciais/segredos/dados pessoais | risco de segurança e privacidade | necessidade comprovada + canal seguro + autorização | responsável pelo projeto | registro apropriado sem expor segredo |
 
 ## 2. Ações que sempre exigem autorização explícita
 
-Salvo regra mais restritiva do projeto:
+Salvo regra mais restritiva:
 
-- modificar material integrado em `main` quando houver efeito material;
-- fazer merge, publicar, deploy ou release, salvo autorização condicional já registrada para uma PR específica;
-- alterar domínio, DNS ou hosting;
-- criar ou modificar integração externa;
-- enviar mensagens, documentos ou dados a terceiros;
-- criar compromisso financeiro ou consumir recursos relevantes;
-- executar ação destrutiva, irreversível ou de difícil reversão;
-- acessar, transferir ou divulgar dados sensíveis;
-- ampliar o escopo materialmente;
-- declarar conclusão, aprovação, produção ou go-live em nome de uma autoridade.
-
-A autorização condicional vigente para a baseline funcional está registrada em `docs/NEXT_SAFE_ACTION.md` e não se propaga além daquele escopo.
+- alteração material de `main`;
+- merge quando não houver autorização específica/condicional registrada;
+- implementação ou importação de código;
+- publicação, preview público, deploy ou release;
+- domínio, DNS ou hosting;
+- integração externa;
+- processamento de leads/dados pessoais;
+- analytics, pixels ou tags;
+- campanha ou compromisso financeiro;
+- ação destrutiva/irreversível;
+- expansão material de escopo;
+- declaração de produção/go-live.
 
 ## 3. Limites de interpretação
 
-- “Preparar” não autoriza “executar”.
-- “Revisar” não autoriza “aprovar” ou “alterar”.
-- “Criar branch/PR” não autoriza “fazer merge”, exceto quando existir autorização condicional explícita e suas condições forem comprovadas.
-- “Testar” não autoriza usar produção ou dados reais.
-- “Criar preview” é publicação externa e requer enquadramento/autorização quando aplicável.
-- Uma etapa concluída não autoriza automaticamente a etapa seguinte.
-- Capacidade de ferramenta não equivale a autoridade.
-- Silêncio, expectativa ou sequência lógica não substituem autorização.
+- baseline funcional aprovada não autoriza baseline técnica automaticamente;
+- baseline técnica aprovada não autoriza implementação;
+- “preparar” não autoriza “executar”;
+- “revisar” não autoriza “aprovar” ou “alterar”;
+- “criar PR” não autoriza merge salvo condição explícita previamente concedida;
+- “testar” não autoriza produção ou dados reais;
+- capacidade da ferramenta não equivale a autoridade;
+- sequência lógica não substitui autorização.
 
-## 4. Bloqueios por evidência ausente
+## 4. Evidências ainda ausentes que afetam execução
 
-| Evidência ausente | Ação afetada | Fonte esperada | Tratamento |
-|---|---|---|---|
-| Baseline funcional integrada | implementação/arquitetura | documentação canônica do projeto | canonicalizar primeiro |
-| Stack/arquitetura decidida | implementação técnica | decisão versionada | não inferir tecnologia |
-| Target de deploy | Vercel/hosting/publicação | conta/projeto/configuração confirmados | não criar por suposição |
-| Requisitos de dados/privacidade | formulários/CRM/analytics | baseline/decisão específica | bloquear fluxo de dados |
-| Autorização material de implementação | código/produto | decisão explícita do responsável | parar antes de implementar |
+| Evidência ausente | Ação afetada | Tratamento |
+|---|---|---|
+| implementação/snapshot versionado | reprodução e correção dos defeitos relatados | localizar/importar somente após autorização |
+| baseline técnica/stack | desenvolvimento | não escolher por inferência |
+| contrato de formulário/dados | lead capture | bloquear processamento real |
+| target de WhatsApp/CRM | conversão | verificar antes de integrar |
+| target de deploy | publicação | não criar por suposição |
+| metas numéricas de performance | aceite técnico | definir na baseline técnica |
+| política SEO técnica/indexação | produção SEO | definir antes de go-live |
 
 ## 5. Exceções autorizadas
 
-Existe uma autorização condicional limitada à **baseline funcional documental**: criar a PR e efetuar seu merge somente após pré-merge validado sem blocker material, conforme `docs/NEXT_SAFE_ACTION.md`.
+A PR da **baseline funcional V1** possui autorização condicional de merge somente se o pré-merge passar sem blocker material.
 
-Não há exceção para implementação, publicação, deploy ou integrações.
+Essa exceção termina com a integração desta baseline e não concede autoridade para a próxima fase.
 
 ## 6. Procedimento para desbloqueio
 
-1. confirmar a condição objetiva de liberação;
-2. resolver a fonte canônica live;
-3. obter e registrar a autorização quando exigida;
+1. resolver `main` live;
+2. confirmar a condição objetiva;
+3. obter autorização específica quando exigida;
 4. atualizar a próxima ação segura se o significado material mudar;
 5. executar somente o escopo liberado;
-6. preservar evidência do resultado;
+6. preservar evidência;
 7. não iniciar automaticamente a etapa seguinte.
 
 ## 7. Procedimento diante de dúvida
 
-Quando o enquadramento não estiver claro, trate a ação como bloqueada, declare a dúvida e solicite a menor decisão necessária.
+Quando o enquadramento não estiver claro, tratar como bloqueado e obter a menor decisão necessária.
