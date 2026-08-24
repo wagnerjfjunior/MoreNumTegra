@@ -7,11 +7,11 @@
 - Projeto: `MoreNumTegra`
 - Repositório canônico: `wagnerjfjunior/MoreNumTegra`
 - Branch canônica: `main`
-- Baseline funcional vigente após integração desta revisão: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
-- Baseline funcional supersedida: `docs/baseline/FUNCTIONAL_BASELINE_V1.md`
-- Baseline técnica vigente após integração desta revisão: `docs/baseline/TECHNICAL_BASELINE_V2.md`
-- Baseline técnica supersedida: `docs/baseline/TECHNICAL_BASELINE_V1.md`
-- Data de referência: `2026-08-23`
+- Baseline funcional vigente: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
+- Baseline técnica vigente após integração desta revisão: `docs/baseline/TECHNICAL_BASELINE_V2_1.md`
+- Baseline técnica anterior: `docs/baseline/TECHNICAL_BASELINE_V2.md`
+- ADR de composição Green: `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`
+- Data de referência: `2026-08-24`
 
 ## 2. Regra de canonicalidade
 
@@ -21,8 +21,8 @@ Em caso de divergência:
 
 1. lifecycle GitHub, HEAD/base/checks/mergeability são resolvidos live;
 2. requisitos funcionais vêm da baseline funcional vigente integrada;
-3. arquitetura/stack vêm da baseline técnica vigente integrada;
-4. `docs/NEXT_SAFE_ACTION.md` define a única próxima ação e seu escopo autorizado;
+3. arquitetura/stack/topologia Green vêm da baseline técnica vigente e ADRs integrados;
+4. `docs/NEXT_SAFE_ACTION.md` define a única próxima ação segura;
 5. branches/PRs são propostas até merge;
 6. informação ausente não é preenchida por inferência;
 7. conflito material usa a interpretação mais restritiva até reconciliação.
@@ -31,29 +31,72 @@ Em caso de divergência:
 
 1. `handoffs/CURRENT.md`
 2. `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
-3. `docs/baseline/TECHNICAL_BASELINE_V2.md`
-4. `docs/PROJECT_STATUS.md`
-5. `docs/NEXT_SAFE_ACTION.md`
-6. `docs/BLOCKED_ACTIONS.md`
-7. `README.md`
+3. `docs/baseline/TECHNICAL_BASELINE_V2_1.md`
+4. `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`
+5. `docs/PROJECT_STATUS.md`
+6. `docs/NEXT_SAFE_ACTION.md`
+7. `docs/BLOCKED_ACTIONS.md`
+8. baselines anteriores apenas para histórico quando necessário.
 
-Se as baselines V2 ainda não estiverem em `main`, as baselines V1 continuam canônicas e a implementação portátil HTML/CSS/JS deve parar até a revisão ser integrada.
-
-## 4. Arquitetura V1 vigente após V2
+## 4. Arquitetura V1
 
 - HTML5 semântico;
 - CSS mobile-first;
 - JavaScript vanilla;
 - sem framework/bundler/backend obrigatório no V1;
-- artefatos principais em `src-greenn/`;
-- mesmos HTML/CSS/JS validados no GitHub/Vercel e usados na Greenn com mínima adaptação;
-- catálogo local/versionado;
-- Vercel = Preview/homologação;
-- Greenn = produção V1;
-- formulário Greenn Form 46 = captação V1 conforme contrato verificado;
-- FECH.AI/n8n/Make/Ads permanecem fora do escopo até autorização específica.
+- GitHub = fonte canônica;
+- Vercel = laboratório/Preview;
+- Green Sales = produção V1 via builder;
+- mobile-first, SEO-first e performance-first.
 
-## 5. Performance / SEO / mobile
+A unidade de publicação Green não é um único HTML. A composição confirmada pelo proprietário é:
+
+```text
+HTML 01 inicial
+-> Form 46 nativo Green Sales
+-> HTML 02 pós-form/CTA
+-> HTML 03 footer
++ CSS global
++ JavaScript global
+```
+
+Estrutura alvo:
+
+```text
+src-greenn/
+  blocks/
+    01-html-inicial.html
+    02-html-pos-form.html
+    03-footer.html
+  moretegra.css
+  moretegra.js
+  preview/
+    index.html
+```
+
+Cada bloco HTML deve ser autocontido. Não abrir uma tag em um módulo esperando fechá-la em outro.
+
+## 5. Formulário Green V1
+
+Produção usa o bloco de formulário nativo da Green Sales associado ao contrato conhecido:
+
+- tenant_id = `313`
+- form_id = `46`
+- title = `MoreEmUmTegra`
+- campos: `nome`, `email`, `telefone`
+
+Não substituir o lifecycle nativo do formulário por `fetch` customizado na produção enquanto o bloco nativo resolver a captação.
+
+O HTML 01 deve expor uma âncora estável, por exemplo `#formulario`, imediatamente antes do bloco nativo para que CTAs posteriores retornem ao formulário sem depender de classes/IDs internos da Green.
+
+Preview Vercel usa somente mock não transmissor do formulário. Nunca transmitir PII real no laboratório.
+
+## 6. Identidade / mobile / performance
+
+- amarelo Tegra: `#EBB92E`;
+- logo amarelo transparente: `https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp`;
+- logo cinza: `https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Cinza.webp`;
+- não substituir por `T` genérico.
 
 Mobile é o primeiro caminho de aceite. O relato `>90% mobile` permanece USER_REPORTED até analytics comprovar.
 
@@ -63,63 +106,52 @@ Targets:
 - INP <= 200 ms;
 - CLS <= 0,1.
 
-SEO deve ser estrutural: metadata, HTML semântico, H1 único, headings coerentes, conteúdo textual indexável, alt, robots, canonical quando o domínio estiver aprovado, Open Graph/Twitter e JSON-LD somente para fatos verificados.
+## 7. Vídeo
 
-## 6. Formulário Greenn V1
+O comportamento alvo é vídeo dentro da própria página; não redirecionar o visitante ao YouTube para assistir.
 
-Contrato verificado pelo embed:
+Preferência:
 
-- tenant_id = `313`
-- form_id = `46`
-- title = `MoreEmUmTegra`
-- campos: `nome`, `email`, `telefone`
-- endpoint: `POST https://back.gdigital.com.br/form/register`
+1. MP4/WebM autorizado em GDigital/S3 com `<video muted autoplay loop playsinline>` e fallback;
+2. se só houver YouTube, iframe `youtube-nocookie.com` in-page com autoplay mudo, loop e `playsinline`.
 
-Implementar validação, máscara/entrada mobile, estado `Enviando...`, proteção contra duplo clique, sucesso, erro e falha de rede. Nunca expor tokens/segredos.
+Vídeo é não crítico: falha do player não pode bloquear catálogo, filtros, CTAs ou formulário.
 
-## 7. Identidade Tegra
+## 8. Catálogo
 
-- amarelo: `#EBB92E`
-- logo amarelo transparente: `https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp`
-- logo cinza: `https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Cinza.webp`
+O pacote Green anterior fornecido pelo proprietário contém 19 cards e duas variantes de hero (vídeo e Château Jardin). É insumo de migração, não verdade automática de inventário.
 
-Não substituir o logo por um `T` genérico.
+A nova implementação deve recuperar o portfólio validado; não permanecer limitada ao ELO Duo do primeiro protótipo. Antes de publicar cada campo, validar nome, localização, estágio, metragens, mídia e URL quando exibidos.
 
-## 8. Autorização vigente após V2 integrada
+Não inventar preço, disponibilidade, metragem, endereço ou condição comercial.
 
-Permitido:
+## 9. Fluxo
 
-- branch `feat/initial-product-implementation` a partir do SHA exato live;
-- implementação V1 portátil;
-- testes/build/checks;
-- Vercel Preview não-production;
-- uso do formulário Greenn verificado com dados de teste não sensíveis;
-- preparação de release rastreável.
+```text
+GitHub
+-> branch/PR de implementação
+-> Vercel Preview simulando a ordem do builder
+-> testes mobile/funcionais/SEO/performance
+-> aprovação
+-> release SHA
+-> montagem controlada na Green Sales
+```
 
-Gate separado:
+Não usar Vercel Production como produção V1.
 
-- publicação/alteração efetiva da página Greenn após Preview validado;
-- custom domain/DNS;
-- WhatsApp final não verificado;
-- analytics/pixels/tags;
-- CMS/database;
-- FECH.AI/n8n/Make/Ads;
-- expansão material.
+## 10. Integração SES / SFJM
 
-## 9. Integração SES / SFJM
-
-O Specialist Engineering System (SES) é uma camada externa de engenharia e roteamento de especialistas reutilizáveis. Ele não substitui a fonte de verdade, a continuidade nem a autoridade do MoreNumTegra.
+O Specialist Engineering System (SES) é camada externa. Não substitui a autoridade do projeto.
 
 Para trabalho mediado pelo SES:
 
-1. o projeto deve ser resolvido no `projects/REGISTRY.md` do SES por um identificador explícito;
-2. o Project Adapter registrado no SES deve apontar de volta para este bootstrap e para os entrypoints canônicos do MoreNumTegra;
-3. nenhum arquétipo SES é adotado automaticamente por registro, certificação, nome parecido ou similaridade de domínio;
-4. uma role somente é adotada quando existir mapeamento explícito `ROLE -> ARCHETYPE_ID` com `ADOPTION_STATUS: ADOPTED` no Project Adapter aplicável;
-5. role ausente, desconhecida ou não adotada deve falhar como `SPECIALIST_ROLE_NOT_ADOPTED`, sem roteamento semântico, fuzzy ou fallback implícito;
-6. este bootstrap não declara registry, skill ou override de especialista project-local adicional. Até que um seja explicitamente versionado e apontado por este bootstrap, não invente regra local ausente;
-7. se regras/overrides project-local forem introduzidos no futuro, eles permanecem autoridade do MoreNumTegra e devem ser resolvidos antes do trabalho substantivo correspondente;
-8. resolução de role, roteabilidade, execução e autorização de mutação são estados distintos e não podem ser colapsados.
+1. resolver o projeto em `projects/REGISTRY.md` por identificador explícito;
+2. o Project Adapter deve apontar para este bootstrap/entrypoints;
+3. nenhum arquétipo é adotado automaticamente;
+4. role só é adotada por mapeamento explícito `ROLE -> ARCHETYPE_ID` com `ADOPTION_STATUS: ADOPTED`;
+5. role ausente/desconhecida/não adotada falha como `SPECIALIST_ROLE_NOT_ADOPTED`, sem fuzzy/fallback implícito;
+6. não inventar registry/skill/override project-local ausente;
+7. resolução de role, roteabilidade, execução e autorização são estados distintos.
 
 Preservar:
 
@@ -131,14 +163,20 @@ PROJECT_CONTEXT_READY != AUTHORIZED_TO_MUTATE
 TOOL_CAPABILITY != AUTHORIZATION
 ```
 
-A integração SES não altera a autorização de implementação, Preview, publicação Greenn, domínio/DNS, dados ou integrações definida neste projeto.
+## 11. Gates separados
 
-## 10. Próxima ação segura
+Exigem decisão/gate próprio:
+
+- publicação efetiva na Green antes de Preview validado;
+- domínio/DNS;
+- analytics/pixels/tags;
+- CMS/database/backend próprio;
+- FECH.AI/n8n/Make/Ads;
+- expansão material de produto;
+- segredo/token no cliente.
+
+## 12. Próxima ação segura
 
 Autoridade: `docs/NEXT_SAFE_ACTION.md`.
 
-Após V2 integrada: resolver `main` live, alinhar/recriar a branch `feat/initial-product-implementation` somente se não houver commits únicos, implementar `src-greenn/moretegra.html`, `.css`, `.js`, validar e parar antes da publicação Greenn.
-
-## 11. Regra anti-loop
-
-Não abrir PR apenas para registrar lifecycle transitório. Registrar somente mudança material de requisito, arquitetura, risco, autorização, blocker ou próxima ação.
+Após integração da V2.1/ADR, sincronizar `feat/initial-product-implementation` com `main`, migrar a PR #6 para a composição modular Green, recuperar/validar o portfólio e criar novo Preview antes de qualquer publicação Green.
