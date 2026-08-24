@@ -1,71 +1,93 @@
 # Handoff Atual — MoreNumTegra
 
 - Status: `atual`
-- Atualizado em: `2026-08-23`
+- Atualizado em: `2026-08-24`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra`
 - Referência: `main` — resolver live antes de agir
-- Baseline funcional vigente após integração da revisão: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
-- Baseline técnica vigente após integração da revisão: `docs/baseline/TECHNICAL_BASELINE_V2.md`
+- Baseline funcional vigente: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
+- Baseline técnica vigente após integração desta revisão: `docs/baseline/TECHNICAL_BASELINE_V2_1.md`
+- ADR aplicável: `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`
 
-## 1. Mudança material em curso
+## 1. Estado atual
 
-As baselines V1 foram supersedidas por decisões posteriores do responsável: a V1 deve ser portátil entre GitHub/Vercel Preview e Greenn, usando HTML5 semântico, CSS e JavaScript vanilla, e deve usar o contrato verificado do Greenn Form 46.
+A arquitetura V1 portátil continua HTML/CSS/JavaScript vanilla. A decisão nova do proprietário clarifica a topologia real da Green Sales: a produção é montada em módulos do builder, com formulário nativo entre blocos HTML.
 
-Enquanto as baselines V2 não estiverem integradas em `main`, a implementação portátil permanece bloqueada pela regra de conflito material.
+A PR #6 contém o primeiro protótipo Vercel e permanece Draft. Esse protótipo comprovou a direção visual escura/contraste branco, mas não é ainda o artefato final da Green porque usa um HTML monolítico e formulário customizado de laboratório.
 
-## 2. Arquitetura alvo V2
+## 2. Composição alvo Green
 
-- `src-greenn/moretegra.html`
-- `src-greenn/moretegra.css`
-- `src-greenn/moretegra.js`
-- sem framework/bundler/backend obrigatório no V1;
-- catálogo local/versionado;
-- filtros mobile por localização/zoneamento e estágio;
-- identidade Tegra `#EBB92E` e logos oficiais;
-- SEO estrutural;
-- Vercel Preview como homologação;
-- Greenn como produção V1;
-- Form 46 da Greenn como lead capture V1 conforme contrato verificado.
+```text
+HTML 01 inicial
+-> bloco nativo Form 46
+-> HTML 02 pós-form / CTA para o formulário
+-> HTML 03 footer
++ CSS global
++ JavaScript global
+```
 
-## 3. Fluxo operacional
+Estrutura alvo no repositório:
+
+```text
+src-greenn/
+  blocks/
+    01-html-inicial.html
+    02-html-pos-form.html
+    03-footer.html
+  moretegra.css
+  moretegra.js
+  preview/
+    index.html
+```
+
+O Preview Vercel monta os snippets exatos e usa somente um mock visual não transmissor do Form 46.
+
+## 3. Vídeo
+
+O clique que abre YouTube fora da página não atende ao alvo.
+
+Comportamento aceito:
+
+- vídeo rodando in-page;
+- autoplay mudo quando permitido;
+- loop;
+- `playsinline` no mobile;
+- poster/fallback;
+- player não crítico para LCP e para os fluxos principais.
+
+Se houver arquivo MP4/WebM autorizado em GDigital/S3, preferir `<video>`. Caso contrário, usar embed `youtube-nocookie.com` in-page.
+
+## 4. Portfólio
+
+O ZIP enviado pelo proprietário contém 19 cards e duas variantes de hero: campanha More em um Tegra e Château Jardin.
+
+Esse material deve ser usado como inventário de migração para evitar regressão do catálogo, mas cada dado visível deve ser validado antes de produção. O primeiro protótipo com somente ELO Duo não representa o escopo final.
+
+## 5. Fluxo operacional
 
 ```text
 GitHub main
 -> feat/initial-product-implementation
+-> composição modular Green-compatible
 -> Vercel Preview
--> testes/validação
--> release rastreável
--> Greenn V1
+-> testes/validação mobile
+-> release SHA
+-> montagem controlada na Green Sales
 ```
 
-## 4. Estado da branch de implementação antiga
+## 6. Limites
 
-Na resolução live de 2026-08-23, `feat/initial-product-implementation` estava 2 commits atrás de `main` e 0 commits à frente, sem PR aberto e sem evidência de implementação única a preservar.
+Continuam fora do escopo sem gate específico:
 
-Não reutilizar/avançar essa branch antes das V2 estarem canônicas em `main`.
-
-## 5. Limites
-
-Permitido após V2 integrada:
-
-- implementação portátil;
-- catálogo/filtros/badges/CTAs;
-- formulário Greenn verificado;
-- testes;
-- SEO/performance/accessibility;
-- Vercel Preview.
-
-Separado/bloqueado até gate específico:
-
-- publicação efetiva na Greenn antes do Preview validado;
+- Vercel Production como produção V1;
 - domínio/DNS;
-- WhatsApp final não verificado;
 - analytics/pixels/tags;
 - FECH.AI/n8n/Make/Ads;
-- CMS/database/backend sem necessidade demonstrada.
+- CMS/database/backend próprio;
+- segredo/token client-side;
+- dados comerciais ou inventário não verificados.
 
-## 6. Próxima ação segura
+## 7. Próxima ação segura
 
 Autoridade: `docs/NEXT_SAFE_ACTION.md`.
 
-Depois da integração das baselines V2, resolver `main` live e então alinhar/recriar `feat/initial-product-implementation` do SHA exato antes de escrever código.
+Após a V2.1/ADR entrar em `main`, sincronizar a branch da PR #6 e reestruturar a implementação em blocos Green + Preview compositor, preservando a direção visual escura e recuperando o portfólio validado.

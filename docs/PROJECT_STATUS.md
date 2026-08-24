@@ -1,72 +1,64 @@
 # Status do Projeto — MoreNumTegra
 
-- Data de referência: `2026-08-23`
+- Data de referência: `2026-08-24`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra`
 - Referência: `main` — resolver SHA live antes de agir
-- Baselines atuais em `main`: `FUNCTIONAL_BASELINE_V1` + `TECHNICAL_BASELINE_V1`
-- Baselines candidatas que supersedem V1: `docs/baseline/FUNCTIONAL_BASELINE_V2.md` + `docs/baseline/TECHNICAL_BASELINE_V2.md`
-- Fase: `reconciliação funcional/arquitetural antes da implementação`
-- Saúde geral: `amarelo` — requisitos e arquitetura alvo estão claros, mas a implementação portátil só pode iniciar depois das V2 estarem integradas
+- Baseline funcional vigente: `FUNCTIONAL_BASELINE_V2`
+- Baseline técnica vigente: `TECHNICAL_BASELINE_V2`; candidata que a refina: `TECHNICAL_BASELINE_V2_1`
+- ADR candidato: `ADR-001-GREENN-BUILDER-MODULE-COMPOSITION`
+- Fase: `implementação/homologação com ajuste de topologia Green`
+- Saúde geral: `amarelo` — arquitetura central está estável, Preview inicial existe, mas a composição modular Green ainda precisa ser incorporada à PR #6
 
 ## 1. Resultado pretendido
 
-Entregar um MoreNumTegra V1 mobile-first, rápido e SEO-first, com descoberta de empreendimentos, filtros, CTAs e captura de leads, usando os mesmos artefatos HTML/CSS/JS no Preview e na Greenn.
+Entregar um MoreNumTegra V1 mobile-first, rápido e SEO-first, com catálogo de empreendimentos, filtros, CTAs, vídeo in-page e captura de leads pelo formulário nativo da Green Sales.
 
-## 2. Decisão V2
-
-| Área | Decisão |
-|---|---|
-| Framework | nenhum obrigatório no V1 |
-| Markup | HTML5 semântico |
-| Styling | CSS mobile-first |
-| Interatividade | JavaScript vanilla |
-| Artefatos principais | `src-greenn/moretegra.html`, `.css`, `.js` |
-| Dados V1 | catálogo local/versionado separado da apresentação quando útil |
-| Backend/DB/CMS | nenhum em V1 sem necessidade comprovada |
-| Filtros | client-side |
-| Formulário | Greenn Form 46 / tenant 313 conforme contrato verificado |
-| Performance | LCP <=2.5s, INP <=200ms, CLS <=0.1 |
-| Acessibilidade | WCAG 2.2 AA target |
-| Homologação | Vercel Preview |
-| Produção V1 | Greenn após Preview validado e release rastreável |
-
-## 3. Estado por frente
+## 2. Estado por frente
 
 | Frente | Estado | Próximo marco | Bloqueio |
 |---|---|---|---|
-| SFJM | operacional | reconstrução live por bootstrap | nenhum |
-| Baselines V1 | canônicas, porém supersedendas | integrar V2 | conflito com decisões vigentes |
-| Functional V2 | candidata | revisão/merge | ainda não está em main |
-| Technical V2 | candidata | revisão/merge | ainda não está em main |
-| Implementação | parada corretamente | alinhar branch após V2 | V2 não integrada |
-| Mobile/UX | requisitos definidos | implementar/testar | implementação ausente |
-| SEO | requisitos definidos | implementar | implementação ausente |
-| Form/lead | contrato Greenn conhecido | implementar/testar | validar comportamento real no Preview/Greenn |
-| Vercel Preview | permitido após branch funcional | homologação | resolver Vercel live antes do deploy |
-| Greenn production | gate posterior ao Preview | publicação controlada | Preview ainda não validado |
-| Domínio/DNS | separado | decisão posterior | não autorizado nesta fase |
+| SFJM | operacional | continuar reconstrução live por bootstrap | nenhum |
+| Functional V2 | canônica | preservar | nenhum |
+| Technical V2 | canônica | integrar refinamento V2.1 | topologia builder ainda não registrada em main |
+| Green builder | requisito owner-confirmed | integrar ADR/V2.1 | documentação candidata |
+| Implementação PR #6 | Draft, protótipo funcional | modularizar | depende da V2.1 em main |
+| Vercel Preview | primeiro protótipo acessível | substituir por Preview modular | protótipo atual monolítico |
+| Mobile/UX | direção visual inicial aprovada para evolução | testar versão completa | portfólio ainda incompleto |
+| Catálogo | migração de 19 cards disponível no ZIP | verificar/migrar | dados precisam validação |
+| Vídeo | estratégia anterior rejeitada | in-page autoplay mudo/loop/playsinline | mídia final/origem a validar |
+| Form/lead | Form 46 conhecido | usar bloco nativo Green | Preview usa mock não transmissor |
+| Green production | gate posterior | publicar release modular validada | Preview final ainda não validado |
 
-## 4. Branch de implementação observada
+## 3. Decisões confirmadas
 
-`feat/initial-product-implementation` existe, mas na checagem live estava 2 commits atrás de `main` e 0 commits à frente. Não há PR aberto.
+- HTML5 + CSS + JavaScript vanilla;
+- GitHub é fonte canônica;
+- Vercel é laboratório;
+- Green Sales é produção V1;
+- Green Sales monta a página por módulos;
+- produção usa o bloco nativo Form 46;
+- layout Green alvo: HTML 01 -> Form -> HTML 02 -> Footer;
+- CSS e JavaScript são inseridos globalmente no builder;
+- vídeo deve tocar dentro da página, não abrir YouTube externamente;
+- a direção hero escura + headline branca do primeiro Preview pode ser mantida/evoluída;
+- o catálogo final deve recuperar os imóveis existentes no material anterior, sujeito a validação factual.
 
-Ela não deve receber código antes das V2 integrarem `main`. Depois do merge, deve ser fast-forwarded/recriada do SHA exato somente após reconfirmar que segue sem commits únicos.
-
-## 5. Riscos ativos
+## 4. Riscos ativos
 
 | Risco | Controle |
 |---|---|
-| implementar Next.js apesar da nova decisão | V2 supersede explicitamente V1 antes de código |
-| duplicar versão Vercel e Greenn | um único conjunto `src-greenn` como fonte portátil |
-| regressão mobile | mobile-first + testes por toque |
-| mídia degradar LCP | lazy loading/fallback/vídeo não crítico |
-| inventar dados de empreendimentos | somente dados verificados |
-| formulário vazar segredo | somente contrato público verificado; parar se segredo for necessário |
-| publicação Greenn prematura | Preview + release gate antes de produção |
-| perder rastreabilidade | SHA/release identificado para cada publicação |
+| Vercel divergir da Green | Preview compositor usa os snippets exatos da Green |
+| formulário customizado divergir do builder | produção usa Form 46 nativo |
+| CTA não localizar form | âncora própria `#formulario` antes do bloco nativo |
+| módulos quebrarem HTML | cada bloco é autocontido |
+| vídeo prejudicar LCP | muted autoplay + poster/fallback + carregamento controlado |
+| YouTube tirar usuário da página | embed in-page; sem click-out como fluxo principal |
+| perder imóveis existentes | ZIP de 19 cards usado como input de migração |
+| publicar dado incorreto | validar campos antes de produção |
+| regressão mobile | teste por toque e metas CWV |
 
-## 6. Próxima ação segura
+## 5. Próxima ação segura
 
 Autoridade: `docs/NEXT_SAFE_ACTION.md`.
 
-A próxima ação é integrar as baselines V2. Somente depois disso a implementação V1 portátil pode começar em `feat/initial-product-implementation` alinhada ao SHA live de `main`.
+Integrar V2.1/ADR; em seguida sincronizar a PR #6 com `main`, substituir o HTML monolítico pela composição modular Green-compatible, recuperar o catálogo validado e gerar novo Preview.
