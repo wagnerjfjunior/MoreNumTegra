@@ -7,7 +7,8 @@
 - Projeto: `MoreNumTegra`
 - Repositório canônico: `wagnerjfjunior/MoreNumTegra`
 - Branch canônica: `main`
-- Baseline funcional V1: `docs/baseline/FUNCTIONAL_BASELINE_V1.md`
+- Baseline funcional vigente após integração desta revisão: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
+- Baseline funcional supersedida: `docs/baseline/FUNCTIONAL_BASELINE_V1.md`
 - Baseline técnica vigente após integração desta revisão: `docs/baseline/TECHNICAL_BASELINE_V2.md`
 - Baseline técnica supersedida: `docs/baseline/TECHNICAL_BASELINE_V1.md`
 - Data de referência: `2026-08-23`
@@ -19,7 +20,7 @@ A fonte canônica do estado integrado do MoreNumTegra é `main`.
 Em caso de divergência:
 
 1. lifecycle GitHub, HEAD/base/checks/mergeability são resolvidos live;
-2. requisitos funcionais vêm da baseline funcional integrada;
+2. requisitos funcionais vêm da baseline funcional vigente integrada;
 3. arquitetura/stack vêm da baseline técnica vigente integrada;
 4. `docs/NEXT_SAFE_ACTION.md` define a única próxima ação e seu escopo autorizado;
 5. branches/PRs são propostas até merge;
@@ -29,14 +30,14 @@ Em caso de divergência:
 ## 3. Ordem mínima de leitura
 
 1. `handoffs/CURRENT.md`
-2. `docs/baseline/FUNCTIONAL_BASELINE_V1.md`
+2. `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 3. `docs/baseline/TECHNICAL_BASELINE_V2.md`
 4. `docs/PROJECT_STATUS.md`
 5. `docs/NEXT_SAFE_ACTION.md`
 6. `docs/BLOCKED_ACTIONS.md`
 7. `README.md`
 
-Se `TECHNICAL_BASELINE_V2.md` ainda não estiver em `main`, a arquitetura Next.js da V1 antiga continua canônica e a implementação portátil HTML/CSS/JS deve parar até a revisão ser integrada.
+Se as baselines V2 ainda não estiverem em `main`, as baselines V1 continuam canônicas e a implementação portátil HTML/CSS/JS deve parar até a revisão ser integrada.
 
 ## 4. Arquitetura V1 vigente após V2
 
