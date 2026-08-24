@@ -87,13 +87,39 @@ Não presuma que esse snapshot permanece atual: resolver Vercel live antes de cr
 - segredos/dados pessoais fora do contrato autorizado;
 - expansão material de produto.
 
-## 7. Próxima ação segura
+## 7. Integração SES e resolução de especialistas
+
+O Specialist Engineering System (SES) é uma camada externa de engenharia e roteamento de especialistas reutilizáveis. Ele não substitui a fonte de verdade, a continuidade nem a autoridade do MoreNumTegra.
+
+Para trabalho mediado pelo SES:
+
+1. o projeto deve ser resolvido no `projects/REGISTRY.md` do SES por um identificador explícito;
+2. o Project Adapter registrado no SES deve apontar de volta para este bootstrap e para os entrypoints canônicos do MoreNumTegra;
+3. nenhum arquétipo SES é adotado automaticamente por registro, certificação ou similaridade de domínio;
+4. uma role somente é adotada quando existir mapeamento explícito `ROLE -> ARCHETYPE_ID` com `ADOPTION_STATUS: ADOPTED` no Project Adapter aplicável;
+5. role ausente ou não adotada deve falhar como `SPECIALIST_ROLE_NOT_ADOPTED`, sem roteamento semântico/fuzzy;
+6. este bootstrap não declara registry, skill ou override de especialista project-local adicional. Até que um seja explicitamente versionado e apontado por este bootstrap, não invente regra local ausente;
+7. se regras/overrides project-local forem introduzidos no futuro, eles permanecem autoridade do MoreNumTegra e devem ser resolvidos antes do trabalho substantivo correspondente.
+
+Preservar:
+
+```text
+REGISTERED != ADOPTED
+ADOPTED != PROJECT_CONTEXT_READY
+ROUTABLE != EXECUTED
+PROJECT_CONTEXT_READY != AUTHORIZED_TO_MUTATE
+TOOL_CAPABILITY != AUTHORIZATION
+```
+
+A integração SES não altera a autorização de implementação, Preview, Production, domínio/DNS ou dados definida neste projeto.
+
+## 8. Próxima ação segura
 
 Registro autoritativo: `docs/NEXT_SAFE_ACTION.md`.
 
 Resumo derivado: quando a baseline técnica estiver integrada e live, criar `feat/initial-product-implementation` do SHA exato e implementar o V1; validar Preview e parar antes de Production.
 
-## 8. Instrução de retomada
+## 9. Instrução de retomada
 
 Antes de agir:
 
@@ -105,7 +131,7 @@ Antes de agir:
 6. antes de Preview, resolver Vercel live e passar build/test gate;
 7. não usar `--prod`, não alterar domínio/DNS e não transmitir PII real sem gate separado.
 
-## 9. Regra anti-loop
+## 10. Regra anti-loop
 
 Não abrir PR apenas para registrar:
 
@@ -116,6 +142,6 @@ Não abrir PR apenas para registrar:
 
 Registrar somente mudança material de requisito, arquitetura, risco, autorização, blocker ou próxima ação.
 
-## 10. Critério de atualização
+## 11. Critério de atualização
 
-Atualizar este bootstrap somente se mudar canonicalidade, ordem mínima, baseline vigente, autorização, bloqueio relevante ou próxima ação semântica.
+Atualizar este bootstrap somente se mudar canonicalidade, ordem mínima, baseline vigente, autorização, bloqueio relevante, resolução de especialistas ou próxima ação semântica.
