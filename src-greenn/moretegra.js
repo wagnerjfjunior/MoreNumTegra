@@ -33,6 +33,23 @@
   const normalize = (value) => String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
   const escapeHtml = (value) => String(value || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
 
+  function resolveMediaUrl(value) {
+    if (!value) return "";
+    try {
+      const candidate = new URL(value, window.location.href);
+      if (candidate.hostname === "www.tegraincorporadora.com.br" && candidate.pathname === "/_next/image") {
+        const direct = candidate.searchParams.get("url");
+        if (direct) {
+          const media = new URL(direct);
+          if (media.protocol === "https:" && media.hostname === "stracctegra.blob.core.windows.net") return media.href;
+        }
+      }
+      return candidate.href;
+    } catch {
+      return value;
+    }
+  }
+
   function visibleTarget(selector) {
     const nodes = [...document.querySelectorAll(selector)];
     return nodes.find((node) => node.getClientRects().length > 0) || nodes[0] || null;
@@ -50,11 +67,12 @@
     const official = project.official
       ? `<a class="mt-official" href="${escapeHtml(project.official)}" target="_blank" rel="noreferrer">Site oficial</a>`
       : "";
+    const image = resolveMediaUrl(project.image);
 
     return `
       <article class="mt-project-card" data-status="${escapeHtml(project.statusKey)}" data-zone="${escapeHtml(project.zone)}">
         <a class="mt-project-image" href="#formulario" data-interest="${escapeHtml(project.name)}" aria-label="Consultar disponibilidade de ${escapeHtml(project.name)}">
-          <img src="${escapeHtml(project.image)}" alt="${escapeHtml(project.alt || project.name)}" width="828" height="743" loading="lazy" decoding="async">
+          ${image ? `<img data-project-image src="${escapeHtml(image)}" alt="${escapeHtml(project.alt || project.name)}" width="828" height="743" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : ""}
           <span class="mt-status ${statusClass[project.statusKey] || ""}">${escapeHtml(project.status)}</span>
           ${project.feature ? `<span class="mt-feature">${escapeHtml(project.feature)}</span>` : ""}
         </a>
@@ -156,6 +174,19 @@
       if (label) label.textContent = filtered.length === 1 ? "empreendimento encontrado" : "empreendimentos encontrados";
       if (empty) empty.hidden = filtered.length !== 0;
       if (clear) clear.hidden = state.status === "todos" && state.zone === "todas" && !state.query;
+
+      grid.querySelectorAll("[data-project-image]").forEach((image) => {
+        const hideBrokenImage = () => {
+          const media = image.closest(".mt-project-image");
+          image.remove();
+          if (media) {
+            media.dataset.mediaState = "unavailable";
+            media.title = "Imagem temporariamente indisponível";
+          }
+        };
+        image.addEventListener("error", hideBrokenImage, {once:true});
+        if (image.complete && image.naturalWidth === 0) hideBrokenImage();
+      });
 
       root.querySelectorAll("[data-interest]").forEach((link) => {
         link.addEventListener("click", (event) => {
