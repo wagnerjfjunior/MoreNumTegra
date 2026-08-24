@@ -84,9 +84,6 @@
   }
 
   function cardMarkup(project) {
-    const official = project.official
-      ? `<a class="mt-official" href="${escapeHtml(project.official)}" target="_blank" rel="noreferrer">Site oficial</a>`
-      : "";
     const actionLabel = project.priceState === "soldout" ? "Ver alternativas" : "Negociar condições";
 
     return `
@@ -101,9 +98,8 @@
           <h3>${escapeHtml(project.name)}</h3>
           <span class="mt-project-info">${escapeHtml(project.info)}</span>
           ${priceMarkup(project)}
-          <div class="mt-project-actions">
+          <div class="mt-project-actions" style="grid-template-columns:1fr">
             <a class="mt-interest" href="#formulario" data-interest="${escapeHtml(project.name)}">${actionLabel}</a>
-            ${official}
           </div>
         </div>
       </article>`;
