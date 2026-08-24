@@ -2,107 +2,102 @@
 
 > Registro autoritativo da única próxima ação segura.
 
-- Definida em: `2026-08-23`
+- Definida em: `2026-08-24`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
-- Baseline funcional candidata: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
-- Baseline técnica candidata: `docs/baseline/TECHNICAL_BASELINE_V2.md`
-- Estado: `BASELINES_V2_MUST_MERGE_BEFORE_IMPLEMENTATION`
+- Functional baseline: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
+- Technical candidate: `docs/baseline/TECHNICAL_BASELINE_V2_1.md`
+- ADR candidate: `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`
+- Estado: `GREENN_BUILDER_TOPOLOGY_MUST_MERGE_BEFORE_IMPLEMENTATION_RESHAPE`
 
 ## 1. Ação imediata
 
-Revisar e integrar as baselines V2, que supersedem as V1 e canonicalizam:
+Revisar e integrar a V2.1/ADR que canonicalizam a topologia real da Green Sales:
 
-- implementação portátil HTML/CSS/JavaScript para GitHub/Vercel Preview/Greenn;
-- Greenn Form 46 como captação V1 conforme contrato verificado;
-- SEO estrutural e mobile-first como requisitos V1 explícitos.
+```text
+HTML 01
+-> Form 46 nativo
+-> HTML 02 pós-form/CTA
+-> HTML 03 footer
++ CSS global
++ JavaScript global
+```
 
-Nenhum código V1 portátil deve ser escrito enquanto as V2 não estiverem integradas em `main`.
+A PR #6 não deve ser mergeada enquanto ainda representar a estrutura monolítica anterior.
 
-## 2. Gate live após merge das V2
+## 2. Gate após merge da V2.1/ADR
 
-Antes de criar ou trabalhar na implementação:
+Antes de alterar a implementação:
 
 1. resolver `main` live;
-2. confirmar `FUNCTIONAL_BASELINE_V2.md` presente e não supersedida;
-3. confirmar `TECHNICAL_BASELINE_V2.md` presente e não supersedida;
-4. confirmar V1 explicitamente supersedida;
-5. confirmar que publicação Greenn e domínio/DNS continuam gates separados;
-6. comparar `feat/initial-product-implementation` com `main`;
-7. se a branch continuar sem commits únicos, fast-forward/recriar a partir do SHA exato de `main`;
-8. implementar somente então.
+2. confirmar `TECHNICAL_BASELINE_V2_1.md` e ADR-001 integrados;
+3. sincronizar `feat/initial-product-implementation` com o SHA exato de `main` sem perder commits únicos;
+4. confirmar que a PR #6 continua Draft;
+5. manter Green production bloqueada.
 
-Se qualquer condição falhar, parar.
+## 3. Implementação autorizada depois do gate
 
-## 3. Escopo autorizado de implementação após o gate
+Reestruturar a PR #6 para:
 
-- `src-greenn/moretegra.html`;
-- `src-greenn/moretegra.css`;
-- `src-greenn/moretegra.js`;
-- identidade Tegra canônica;
-- catálogo local/versionado;
-- filtros mobile de localização/zoneamento e estágio;
-- badges de estágio;
-- WhatsApp e `Receber condições` sem inventar destino não verificado;
-- mídia resiliente;
-- SEO estrutural;
-- acessibilidade;
-- testes;
-- formulário Greenn tenant 313 / form 46 conforme contrato verificado;
-- Vercel Preview não-production após gate técnico;
-- preparação de release rastreável para Greenn.
+```text
+src-greenn/
+  blocks/
+    01-html-inicial.html
+    02-html-pos-form.html
+    03-footer.html
+  moretegra.css
+  moretegra.js
+  preview/
+    index.html
+```
 
-## 4. Formulário V1 autorizado
+Requisitos:
 
-Contrato conhecido:
+- blocos HTML autocontidos;
+- âncora `#formulario` imediatamente antes do Form 46 nativo;
+- nenhuma submissão customizada em produção;
+- Preview com mock visual do formulário e zero transmissão;
+- hero escuro/white headline pode ser preservado;
+- vídeo in-page, autoplay mudo quando permitido, loop, playsinline e fallback;
+- recuperar o portfólio anterior, validando os campos antes de publicação;
+- filtros mobile por estágio e zona/localização;
+- badges;
+- WhatsApp e `Receber condições`;
+- SEO semântico;
+- performance e acessibilidade.
 
-- tenant_id: `313`
-- form_id: `46`
-- title: `MoreEmUmTegra`
-- fields: `nome`, `email`, `telefone`
-- endpoint: `POST https://back.gdigital.com.br/form/register`
+## 4. Preview gate
 
-Pode ser implementado na V1 desde que:
+Novo Vercel Preview somente quando:
 
-- não haja segredo/token exposto;
-- validação e estados de UI sejam implementados;
-- duplo clique seja prevenido;
-- testes usem dados não sensíveis;
-- qualquer divergência do contrato observada live interrompa a integração até reconciliação.
+- os snippets Green estiverem criados;
+- o Preview os compuser na ordem real do builder;
+- o mock do formulário não enviar dados;
+- vídeo ficar dentro da página;
+- catálogo renderizar e filtros funcionarem;
+- não houver erro primário de runtime/console;
+- Preview estiver `noindex, nofollow`;
+- deploy for explicitamente `preview`, nunca production.
 
-## 5. Preview gate
+## 5. Green production gate
 
-Vercel Preview somente quando:
+Só depois do novo Preview ser validado pelo proprietário:
 
-- os artefatos estáticos estiverem funcionais;
-- não houver erros primários de runtime/console;
-- filtros mobile funcionarem;
-- formulário estiver validado com dados de teste não sensíveis;
-- SEO/robots de Preview estiverem corretos;
-- Vercel live tiver sido resolvido;
-- deploy for explicitamente não-production.
+- congelar SHA/release;
+- identificar os 3 blocos HTML, CSS e JavaScript exatos;
+- confirmar Form 46 no builder;
+- confirmar CTA -> `#formulario`;
+- revalidar mobile;
+- preservar versão anterior para rollback quando possível;
+- publicar de forma controlada.
 
-## 6. Greenn production gate
-
-Depois de Preview validado, apresentar/executar separadamente o gate de publicação Greenn.
-
-Antes de publicar:
-
-- identificar SHA/release exato;
-- confirmar restrições do editor Greenn live;
-- confirmar que o Form 46 continua compatível;
-- confirmar rollback/versão anterior quando possível;
-- não alterar domínio/DNS sem autorização específica.
-
-## 7. Condições de parada
+## 6. Condições de parada
 
 Parar se:
 
-- qualquer V2 ainda não estiver em `main`;
-- surgir necessidade de framework/backend incompatível com a baseline;
-- o formulário exigir segredo no cliente;
-- inventário necessário não estiver verificado;
-- WhatsApp exigir destino não confirmado;
-- Vercel tentar promover Production;
-- publicação Greenn ocorrer antes de Preview validado;
-- houver necessidade de domínio/DNS;
-- o escopo crescer para FECH.AI/n8n/Make/Ads/CMS/database/analytics sem nova decisão.
+- V2.1/ADR ainda não estiverem em `main`;
+- a sincronização da PR #6 ameaçar commits únicos;
+- o formulário nativo exigir comportamento desconhecido para os CTAs;
+- qualquer projeto exigir dado não verificado para ser exibido;
+- o vídeo exigir segredo/token ou solução incompatível com Green;
+- Vercel tentar Production;
+- surgir necessidade de domínio/DNS, analytics, FECH.AI, n8n, Make, Ads, CMS/database ou backend sem nova decisão.
