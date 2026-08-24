@@ -43,11 +43,36 @@
         <p class="mt-eyebrow">COMECE PELO SEU MOMENTO</p>
         <h2 id="mt-moments-title">Uma busca mais simples.</h2>
       </div>
-      <div class="mt-moment-grid" style="grid-template-columns:repeat(auto-fit,minmax(210px,1fr))">
+      <div class="mt-moment-grid" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr))">
         <a href="#oportunidades" data-set-status="entregue"><span>01</span><strong>Quero mudar agora</strong><small>Prontos para morar</small></a>
         <a href="#oportunidades" data-set-status="construcao"><span>02</span><strong>Quero planejar</strong><small>Em construção</small></a>
         <a href="#oportunidades" data-set-status="lancamento"><span>03</span><strong>Quero chegar primeiro</strong><small>Lançamentos</small></a>
         <a href="#oportunidades" data-focus-price><span>04</span><strong>Quero começar pelo valor</strong><small>Veja o ticket antes de negociar</small></a>
+        <a href="#negociacao"><span>05</span><strong>Quero negociar melhor</strong><small>Já conheço os valores</small></a>
+      </div>
+    </section>
+
+    <section class="mt-negotiation" id="negociacao" aria-labelledby="mt-negotiation-title">
+      <div class="mt-negotiation-layout">
+        <div class="mt-negotiation-copy">
+          <p class="mt-eyebrow">NEGOCIAÇÃO IMOBILIÁRIA</p>
+          <h2 id="mt-negotiation-title">Imóvel não é commodity. A melhor condição depende da sua negociação.</h2>
+          <p>Os valores exibidos nesta página são referências <strong>“a partir de”</strong>, calculadas com base em unidades específicas disponíveis no momento da atualização.</p>
+          <p>O valor final pode variar conforme a unidade escolhida, disponibilidade, andar, vista, posição no empreendimento, tabela vigente e, principalmente, de acordo com a composição do fluxo de pagamento.</p>
+          <p>Agende uma visita com um de nossos corretores especialistas e receba informações atualizadas sobre unidades, condições e disponibilidade. Assim, podemos avaliar o seu perfil de pagamento e buscar, junto à Tegra, a melhor condição possível para a sua negociação.</p>
+          <p class="mt-negotiation-emphasis">Não escolha apenas pelo preço anunciado. Negocie o cenário completo.</p>
+          <div class="mt-negotiation-actions">
+            <a class="mt-button mt-button-primary" href="#formulario">Quero negociar meu cenário</a>
+            <a class="mt-button mt-button-ghost" href="https://wa.me/5511960779328?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20visita%20e%20entender%20as%20melhores%20condi%C3%A7%C3%B5es%20para%20um%20im%C3%B3vel%20Tegra." target="_blank" rel="noreferrer">Agendar visita</a>
+          </div>
+        </div>
+
+        <div class="mt-negotiation-factors" aria-label="Fatores que influenciam a negociação">
+          <article><span>01</span><div><h3>Unidade e disponibilidade</h3><p>Unidades diferentes podem ter valores e condições distintas dentro do mesmo empreendimento.</p></div></article>
+          <article><span>02</span><div><h3>Andar, vista e posição</h3><p>Altura, orientação, incidência de sol e características da unidade podem alterar valor e experiência de uso.</p></div></article>
+          <article><span>03</span><div><h3>Entrada e fluxo</h3><p>A composição entre entrada, parcelas e forma de pagamento pode mudar de forma relevante o cenário final.</p></div></article>
+          <article><span>04</span><div><h3>Visita orientada</h3><p>Conhecer o projeto com um especialista ajuda a comparar as variáveis antes de tomar uma decisão apenas pelo preço.</p></div></article>
+        </div>
       </div>
     </section>
 
@@ -69,6 +94,7 @@
         </div>
 
         <div class="mt-status-buttons mt-zone-quick" role="group" aria-label="Atalhos por zona" style="display:flex;flex-wrap:wrap;gap:8px">
+          <button type="button" data-quick-zone="todas" aria-pressed="true">Todas</button>
           <button type="button" data-quick-zone="Zona Sul" aria-pressed="false">Zona Sul</button>
           <button type="button" data-quick-zone="Zona Oeste" aria-pressed="false">Zona Oeste</button>
           <button type="button" data-quick-zone="Zona Leste" aria-pressed="false">Zona Leste</button>
@@ -116,11 +142,6 @@
         <span><strong data-result-count>19</strong> <span data-result-label>empreendimentos encontrados</span></span>
         <button type="button" data-clear-filters hidden>Limpar filtros</button>
       </div>
-
-      <aside style="margin:4px 0 22px;padding:16px 18px;border:1px solid #d9d5ca;border-radius:16px;background:#fffdf8;line-height:1.5" aria-label="Informação sobre valores e negociação">
-        <strong style="display:block;margin-bottom:4px;font-size:13px">NEGOCIE AS CONDIÇÕES.</strong>
-        <p style="margin:0;color:#6d6b63;font-size:11px">Os valores exibidos são referências <strong>“a partir de”</strong> com base nas unidades informadas para este teste. O valor final depende da unidade disponível, tabela vigente, entrada, fluxo e forma de pagamento. Uma proposta personalizada pode produzir condições diferentes; fale com o corretor e negocie o melhor cenário para o seu pagamento.</p>
-      </aside>
 
       <div class="mt-project-grid" data-project-grid></div>
       <div class="mt-empty" data-empty-state hidden>
