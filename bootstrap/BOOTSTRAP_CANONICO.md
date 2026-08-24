@@ -7,22 +7,20 @@
 - Projeto: `MoreNumTegra`
 - Repositório canônico: `wagnerjfjunior/MoreNumTegra`
 - Branch canônica: `main`
-- Âncora inicial pré-SFJM: `3f45ac60352f917f32c6b9d52eecae414313cb68`
-- Onboarding SFJM integrado em: `2819cc158d8775137c992fa2fd147e1c3806e38e`
-- Baseline funcional V1 integrada em: `862e734dac9c60eceae8c311e30304d14efd687a`
-- Baseline técnica V1: `docs/baseline/TECHNICAL_BASELINE_V1.md` quando presente em `main`
+- Baseline funcional V1: `docs/baseline/FUNCTIONAL_BASELINE_V1.md`
+- Baseline técnica vigente após integração desta revisão: `docs/baseline/TECHNICAL_BASELINE_V2.md`
+- Baseline técnica supersedida: `docs/baseline/TECHNICAL_BASELINE_V1.md`
 - Data de referência: `2026-08-23`
-- Autoridade pelo estado do projeto: proprietário/responsável pelo projeto
 
 ## 2. Regra de canonicalidade
 
-A fonte canônica do MoreNumTegra é o conteúdo versionado e integrado em `main`.
+A fonte canônica do estado integrado do MoreNumTegra é `main`.
 
 Em caso de divergência:
 
-1. lifecycle GitHub, HEAD/base/checks/mergeability devem ser resolvidos live;
+1. lifecycle GitHub, HEAD/base/checks/mergeability são resolvidos live;
 2. requisitos funcionais vêm da baseline funcional integrada;
-3. arquitetura/stack vêm da baseline técnica integrada;
+3. arquitetura/stack vêm da baseline técnica vigente integrada;
 4. `docs/NEXT_SAFE_ACTION.md` define a única próxima ação e seu escopo autorizado;
 5. branches/PRs são propostas até merge;
 6. informação ausente não é preenchida por inferência;
@@ -32,76 +30,84 @@ Em caso de divergência:
 
 1. `handoffs/CURRENT.md`
 2. `docs/baseline/FUNCTIONAL_BASELINE_V1.md`
-3. `docs/baseline/TECHNICAL_BASELINE_V1.md`
+3. `docs/baseline/TECHNICAL_BASELINE_V2.md`
 4. `docs/PROJECT_STATUS.md`
 5. `docs/NEXT_SAFE_ACTION.md`
 6. `docs/BLOCKED_ACTIONS.md`
 7. `README.md`
 
-Se a baseline técnica ainda não estiver presente em `main`, resolva a PR live e não trate a implementação como liberada.
+Se `TECHNICAL_BASELINE_V2.md` ainda não estiver em `main`, a arquitetura Next.js da V1 antiga continua canônica e a implementação portátil HTML/CSS/JS deve parar até a revisão ser integrada.
 
-## 4. Estado material esperado após integração da baseline técnica
+## 4. Arquitetura V1 vigente após V2
 
-- requisitos funcionais V1 estão canônicos;
-- arquitetura técnica V1 está canônica;
-- stack alvo: Next.js 16.x App Router + TypeScript strict + Node 24 LTS;
-- renderização é static-first/server-first;
-- catálogo V1 é local, tipado e versionado;
-- DB/CMS não são necessários no V1;
-- mobile é o primeiro caminho de aceite;
-- targets de campo: LCP <=2.5s, INP <=200ms, CLS <=0.1;
-- WCAG 2.2 AA é o target de acessibilidade;
-- Vercel opera Preview-first;
-- implementação V1 em branch dedicada está autorizada após gate live;
-- Production e domínio/DNS continuam gates separados.
+- HTML5 semântico;
+- CSS mobile-first;
+- JavaScript vanilla;
+- sem framework/bundler/backend obrigatório no V1;
+- artefatos principais em `src-greenn/`;
+- mesmos HTML/CSS/JS validados no GitHub/Vercel e usados na Greenn com mínima adaptação;
+- catálogo local/versionado;
+- Vercel = Preview/homologação;
+- Greenn = produção V1;
+- formulário Greenn Form 46 = captação V1 conforme contrato verificado;
+- FECH.AI/n8n/Make/Ads permanecem fora do escopo até autorização específica.
 
-## 5. Estado Vercel observado na baseline técnica
+## 5. Performance / SEO / mobile
 
-- team conectado: `team_WIH0gs3BUjcZdk59oPViSjEm`;
-- plano observado: `Hobby`;
-- projetos observados: nenhum.
+Mobile é o primeiro caminho de aceite. O relato `>90% mobile` permanece USER_REPORTED até analytics comprovar.
 
-Não presuma que esse snapshot permanece atual: resolver Vercel live antes de criar Preview.
+Targets:
 
-## 6. Autorização vigente
+- LCP <= 2,5 s;
+- INP <= 200 ms;
+- CLS <= 0,1.
 
-### Permitido após baseline técnica integrada
+SEO deve ser estrutural: metadata, HTML semântico, H1 único, headings coerentes, conteúdo textual indexável, alt, robots, canonical quando o domínio estiver aprovado, Open Graph/Twitter e JSON-LD somente para fatos verificados.
 
-- leitura/inspeção;
-- branch `feat/initial-product-implementation`;
-- implementação V1 segundo as baselines;
-- testes/build;
-- formulário seguro de Preview sem PII real;
-- Vercel Preview após gate técnico.
+## 6. Formulário Greenn V1
 
-### Exige autorização separada
+Contrato verificado pelo embed:
 
-- Vercel Production;
-- production branch/release operation;
+- tenant_id = `313`
+- form_id = `46`
+- title = `MoreEmUmTegra`
+- campos: `nome`, `email`, `telefone`
+- endpoint: `POST https://back.gdigital.com.br/form/register`
+
+Implementar validação, máscara/entrada mobile, estado `Enviando...`, proteção contra duplo clique, sucesso, erro e falha de rede. Nunca expor tokens/segredos.
+
+## 7. Identidade Tegra
+
+- amarelo: `#EBB92E`
+- logo amarelo transparente: `https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp`
+- logo cinza: `https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Cinza.webp`
+
+Não substituir o logo por um `T` genérico.
+
+## 8. Autorização vigente após V2 integrada
+
+Permitido:
+
+- branch `feat/initial-product-implementation` a partir do SHA exato live;
+- implementação V1 portátil;
+- testes/build/checks;
+- Vercel Preview não-production;
+- uso do formulário Greenn verificado com dados de teste não sensíveis;
+- preparação de release rastreável.
+
+Gate separado:
+
+- publicação/alteração efetiva da página Greenn após Preview validado;
 - custom domain/DNS;
-- lead real/CRM;
-- WhatsApp destination final não verificado;
+- WhatsApp final não verificado;
 - analytics/pixels/tags;
-- CMS/database além do V1;
-- campanhas;
-- segredos/dados pessoais fora do contrato autorizado;
-- expansão material de produto.
+- CMS/database;
+- FECH.AI/n8n/Make/Ads;
+- expansão material.
 
-## 7. Integração SES e resolução de especialistas
+## 9. Integração SES / SFJM
 
-O Specialist Engineering System (SES) é uma camada externa de engenharia e roteamento de especialistas reutilizáveis. Ele não substitui a fonte de verdade, a continuidade nem a autoridade do MoreNumTegra.
-
-Para trabalho mediado pelo SES:
-
-1. o projeto deve ser resolvido no `projects/REGISTRY.md` do SES por um identificador explícito;
-2. o Project Adapter registrado no SES deve apontar de volta para este bootstrap e para os entrypoints canônicos do MoreNumTegra;
-3. nenhum arquétipo SES é adotado automaticamente por registro, certificação ou similaridade de domínio;
-4. uma role somente é adotada quando existir mapeamento explícito `ROLE -> ARCHETYPE_ID` com `ADOPTION_STATUS: ADOPTED` no Project Adapter aplicável;
-5. role ausente ou não adotada deve falhar como `SPECIALIST_ROLE_NOT_ADOPTED`, sem roteamento semântico/fuzzy;
-6. este bootstrap não declara registry, skill ou override de especialista project-local adicional. Até que um seja explicitamente versionado e apontado por este bootstrap, não invente regra local ausente;
-7. se regras/overrides project-local forem introduzidos no futuro, eles permanecem autoridade do MoreNumTegra e devem ser resolvidos antes do trabalho substantivo correspondente.
-
-Preservar:
+SES não substitui a autoridade do projeto. Preservar:
 
 ```text
 REGISTERED != ADOPTED
@@ -111,37 +117,12 @@ PROJECT_CONTEXT_READY != AUTHORIZED_TO_MUTATE
 TOOL_CAPABILITY != AUTHORIZATION
 ```
 
-A integração SES não altera a autorização de implementação, Preview, Production, domínio/DNS ou dados definida neste projeto.
+## 10. Próxima ação segura
 
-## 8. Próxima ação segura
+Autoridade: `docs/NEXT_SAFE_ACTION.md`.
 
-Registro autoritativo: `docs/NEXT_SAFE_ACTION.md`.
+Após V2 integrada: resolver `main` live, alinhar/recriar a branch `feat/initial-product-implementation` somente se não houver commits únicos, implementar `src-greenn/moretegra.html`, `.css`, `.js`, validar e parar antes da publicação Greenn.
 
-Resumo derivado: quando a baseline técnica estiver integrada e live, criar `feat/initial-product-implementation` do SHA exato e implementar o V1; validar Preview e parar antes de Production.
+## 11. Regra anti-loop
 
-## 9. Instrução de retomada
-
-Antes de agir:
-
-1. resolver `main` live;
-2. confirmar as duas baselines integradas;
-3. ler handoff/status/NEXT/BLOCKED;
-4. verificar se a ação pretendida cabe na autorização;
-5. se implementação ainda não tiver branch, criar do SHA exato de `main`;
-6. antes de Preview, resolver Vercel live e passar build/test gate;
-7. não usar `--prod`, não alterar domínio/DNS e não transmitir PII real sem gate separado.
-
-## 10. Regra anti-loop
-
-Não abrir PR apenas para registrar:
-
-- que a PR anterior mergeou;
-- que `main` avançou;
-- que uma branch mudou de Draft/Ready;
-- que um Preview ganhou uma nova URL.
-
-Registrar somente mudança material de requisito, arquitetura, risco, autorização, blocker ou próxima ação.
-
-## 11. Critério de atualização
-
-Atualizar este bootstrap somente se mudar canonicalidade, ordem mínima, baseline vigente, autorização, bloqueio relevante, resolução de especialistas ou próxima ação semântica.
+Não abrir PR apenas para registrar lifecycle transitório. Registrar somente mudança material de requisito, arquitetura, risco, autorização, blocker ou próxima ação.
