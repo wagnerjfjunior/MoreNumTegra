@@ -4,24 +4,28 @@
 
 - Definida em: `2026-08-23`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
-- Baseline funcional: `docs/baseline/FUNCTIONAL_BASELINE_V1.md`
-- Baseline técnica candidata vigente: `docs/baseline/TECHNICAL_BASELINE_V2.md`
-- Estado: `BASELINE_V2_MUST_MERGE_BEFORE_IMPLEMENTATION`
+- Baseline funcional candidata: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
+- Baseline técnica candidata: `docs/baseline/TECHNICAL_BASELINE_V2.md`
+- Estado: `BASELINES_V2_MUST_MERGE_BEFORE_IMPLEMENTATION`
 
 ## 1. Ação imediata
 
-Revisar e integrar `TECHNICAL_BASELINE_V2.md`, que supersede a arquitetura Next.js da V1 e canonicaliza a implementação portátil HTML/CSS/JavaScript para GitHub/Vercel Preview/Greenn.
+Revisar e integrar as baselines V2, que supersedem as V1 e canonicalizam:
 
-Nenhum código V1 portátil deve ser escrito enquanto a V2 não estiver integrada em `main`.
+- implementação portátil HTML/CSS/JavaScript para GitHub/Vercel Preview/Greenn;
+- Greenn Form 46 como captação V1 conforme contrato verificado;
+- SEO estrutural e mobile-first como requisitos V1 explícitos.
 
-## 2. Gate live após merge da V2
+Nenhum código V1 portátil deve ser escrito enquanto as V2 não estiverem integradas em `main`.
+
+## 2. Gate live após merge das V2
 
 Antes de criar ou trabalhar na implementação:
 
 1. resolver `main` live;
-2. confirmar `FUNCTIONAL_BASELINE_V1.md` presente;
+2. confirmar `FUNCTIONAL_BASELINE_V2.md` presente e não supersedida;
 3. confirmar `TECHNICAL_BASELINE_V2.md` presente e não supersedida;
-4. confirmar que `TECHNICAL_BASELINE_V1.md` está explicitamente supersedida;
+4. confirmar V1 explicitamente supersedida;
 5. confirmar que publicação Greenn e domínio/DNS continuam gates separados;
 6. comparar `feat/initial-product-implementation` com `main`;
 7. se a branch continuar sem commits únicos, fast-forward/recriar a partir do SHA exato de `main`;
@@ -93,7 +97,7 @@ Antes de publicar:
 
 Parar se:
 
-- V2 ainda não estiver em `main`;
+- qualquer V2 ainda não estiver em `main`;
 - surgir necessidade de framework/backend incompatível com a baseline;
 - o formulário exigir segredo no cliente;
 - inventário necessário não estiver verificado;
