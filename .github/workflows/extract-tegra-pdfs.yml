@@ -28,9 +28,12 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p extracted/text extracted/meta extracted/pages
+          mkdir -p extracted/text extracted/meta extracted/pages extracted/source/Tabela extracted/source/Espelho
           : > extracted/MANIFEST.tsv
           printf 'source\tpages\tsize_bytes\tsha256\n' >> extracted/MANIFEST.tsv
+
+          cp Tegra/Agosto/Tabela/*.pdf extracted/source/Tabela/
+          cp Tegra/Agosto/Espelho/*.pdf extracted/source/Espelho/
 
           while IFS= read -r -d '' f; do
             rel="${f#Tegra/Agosto/}"
