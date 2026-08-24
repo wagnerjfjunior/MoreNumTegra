@@ -1,9 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
-    { "source": "/", "destination": "/src-greenn/moretegra.html" },
-    { "source": "/moretegra.css", "destination": "/src-greenn/moretegra.css" },
-    { "source": "/moretegra.js", "destination": "/src-greenn/moretegra.js" }
+    { "source": "/", "destination": "/src-greenn/preview/index.html" }
   ],
   "headers": [
     {
@@ -11,7 +9,8 @@
       "headers": [
         { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
         { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
       ]
     }
   ]
