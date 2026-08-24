@@ -5,99 +5,86 @@
 - Definida em: `2026-08-24`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
 - Functional baseline: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
-- Technical candidate: `docs/baseline/TECHNICAL_BASELINE_V2_1.md`
-- ADR candidate: `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`
-- Estado: `GREENN_BUILDER_TOPOLOGY_MUST_MERGE_BEFORE_IMPLEMENTATION_RESHAPE`
+- Technical baseline após integração desta revisão: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
+- Parent baseline: `docs/baseline/TECHNICAL_BASELINE_V2_1.md`
+- ADR: `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`
+- Estado: `VERCEL_PRODUCTION_HOMOLOGATION_MUST_MATCH_APPROVED_MAIN`
 
 ## 1. Ação imediata
 
-Revisar e integrar a V2.1/ADR que canonicalizam a topologia real da Green Sales:
+Resolver `main` live e alinhar a **Vercel Production de homologação pública** ao estado aprovado integrado em `main`.
 
-```text
-HTML 01
--> Form 46 nativo
--> HTML 02 pós-form/CTA
--> HTML 03 footer
-+ CSS global
-+ JavaScript global
-```
+URL estável alvo:
 
-A PR #6 não deve ser mergeada enquanto ainda representar a estrutura monolítica anterior.
+`https://morenumtegra.vercel.app/`
 
-## 2. Gate após merge da V2.1/ADR
+Se existir Preview já validado correspondente ao estado aprovado, preferir promover esse deployment para Vercel Production em vez de reconstruir artefato materialmente diferente.
 
-Antes de alterar a implementação:
+## 2. Gate de promoção Vercel
+
+Antes da promoção/redeploy:
 
 1. resolver `main` live;
-2. confirmar `TECHNICAL_BASELINE_V2_1.md` e ADR-001 integrados;
-3. sincronizar `feat/initial-product-implementation` com o SHA exato de `main` sem perder commits únicos;
-4. confirmar que a PR #6 continua Draft;
-5. manter Green production bloqueada.
+2. confirmar o SHA aprovado;
+3. confirmar que a implementação modular está em `main`;
+4. confirmar que o deployment alvo corresponde ao conteúdo aprovado;
+5. publicar/promover somente para Vercel Production;
+6. manter `noindex, nofollow`;
+7. não publicar na Green como consequência automática.
 
-## 3. Implementação autorizada depois do gate
+## 3. Gate após Vercel Production
 
-Reestruturar a PR #6 para:
+Após `https://morenumtegra.vercel.app/` refletir o `main` aprovado, testar publicamente:
 
-```text
-src-greenn/
-  blocks/
-    01-html-inicial.html
-    02-html-pos-form.html
-    03-footer.html
-  moretegra.css
-  moretegra.js
-  preview/
-    index.html
-```
+- desktop e mobile;
+- imagens dos 19 cards;
+- vídeo in-page/autoplay mudo/loop/playsinline;
+- filtros por estágio;
+- badges/filtros Zona Sul, Zona Oeste e Zona Leste;
+- busca por nome/bairro;
+- filtro por ticket;
+- reset/combinação de filtros;
+- preços `A partir de`, `Sob consulta` e `Esgotado`;
+- CTA `Negociar condições` / `Receber condições`;
+- rolagem para `#formulario`;
+- mock do formulário sem transmissão;
+- ausência de erro primário de runtime/console;
+- responsividade e touch targets;
+- LCP/INP/CLS quando possível.
 
-Requisitos:
+## 4. Dados comerciais
 
-- blocos HTML autocontidos;
-- âncora `#formulario` imediatamente antes do Form 46 nativo;
-- nenhuma submissão customizada em produção;
-- Preview com mock visual do formulário e zero transmissão;
-- hero escuro/white headline pode ser preservado;
-- vídeo in-page, autoplay mudo quando permitido, loop, playsinline e fallback;
-- recuperar o portfólio anterior, validando os campos antes de publicação;
-- filtros mobile por estágio e zona/localização;
-- badges;
-- WhatsApp e `Receber condições`;
-- SEO semântico;
-- performance e acessibilidade.
+Antes da Green comercial, revalidar os fatos visíveis usando as tabelas/espelhos atuais e informação aprovada:
 
-## 4. Preview gate
+- preço de referência;
+- unidade/metragem usada para referência;
+- valor/m² quando exibido;
+- disponibilidade/esgotado;
+- estágio;
+- imagem/URL oficial;
+- demais diferenciais visíveis.
 
-Novo Vercel Preview somente quando:
-
-- os snippets Green estiverem criados;
-- o Preview os compuser na ordem real do builder;
-- o mock do formulário não enviar dados;
-- vídeo ficar dentro da página;
-- catálogo renderizar e filtros funcionarem;
-- não houver erro primário de runtime/console;
-- Preview estiver `noindex, nofollow`;
-- deploy for explicitamente `preview`, nunca production.
+Ambiguidade deve resultar em `Sob consulta` ou omissão, não inferência.
 
 ## 5. Green production gate
 
-Só depois do novo Preview ser validado pelo proprietário:
+Somente depois da homologação pública aprovada:
 
-- congelar SHA/release;
-- identificar os 3 blocos HTML, CSS e JavaScript exatos;
-- confirmar Form 46 no builder;
-- confirmar CTA -> `#formulario`;
-- revalidar mobile;
-- preservar versão anterior para rollback quando possível;
-- publicar de forma controlada.
+1. congelar SHA/release;
+2. identificar os 3 blocos HTML exatos;
+3. identificar CSS e JavaScript exatos;
+4. montar/validar o Form 46 nativo no builder;
+5. confirmar CTA -> `#formulario`;
+6. revalidar mobile já dentro da Green;
+7. preservar versão anterior/export para rollback quando possível;
+8. publicar de forma controlada.
 
 ## 6. Condições de parada
 
 Parar se:
 
-- V2.1/ADR ainda não estiverem em `main`;
-- a sincronização da PR #6 ameaçar commits únicos;
-- o formulário nativo exigir comportamento desconhecido para os CTAs;
-- qualquer projeto exigir dado não verificado para ser exibido;
-- o vídeo exigir segredo/token ou solução incompatível com Green;
-- Vercel tentar Production;
-- surgir necessidade de domínio/DNS, analytics, FECH.AI, n8n, Make, Ads, CMS/database ou backend sem nova decisão.
+- Vercel Production não puder ser ligada ao estado aprovado de `main`;
+- o deployment alvo contiver conteúdo diferente do aprovado;
+- surgir dado comercial que exija inferência;
+- Form 46 exigir comportamento desconhecido;
+- houver necessidade de custom domain/DNS, analytics, FECH.AI, n8n, Make, Ads, CMS/database ou backend sem nova decisão.
