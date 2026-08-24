@@ -108,7 +108,20 @@ Gate separado:
 
 ## 9. Integração SES / SFJM
 
-SES não substitui a autoridade do projeto. Preservar:
+O Specialist Engineering System (SES) é uma camada externa de engenharia e roteamento de especialistas reutilizáveis. Ele não substitui a fonte de verdade, a continuidade nem a autoridade do MoreNumTegra.
+
+Para trabalho mediado pelo SES:
+
+1. o projeto deve ser resolvido no `projects/REGISTRY.md` do SES por um identificador explícito;
+2. o Project Adapter registrado no SES deve apontar de volta para este bootstrap e para os entrypoints canônicos do MoreNumTegra;
+3. nenhum arquétipo SES é adotado automaticamente por registro, certificação, nome parecido ou similaridade de domínio;
+4. uma role somente é adotada quando existir mapeamento explícito `ROLE -> ARCHETYPE_ID` com `ADOPTION_STATUS: ADOPTED` no Project Adapter aplicável;
+5. role ausente, desconhecida ou não adotada deve falhar como `SPECIALIST_ROLE_NOT_ADOPTED`, sem roteamento semântico, fuzzy ou fallback implícito;
+6. este bootstrap não declara registry, skill ou override de especialista project-local adicional. Até que um seja explicitamente versionado e apontado por este bootstrap, não invente regra local ausente;
+7. se regras/overrides project-local forem introduzidos no futuro, eles permanecem autoridade do MoreNumTegra e devem ser resolvidos antes do trabalho substantivo correspondente;
+8. resolução de role, roteabilidade, execução e autorização de mutação são estados distintos e não podem ser colapsados.
+
+Preservar:
 
 ```text
 REGISTERED != ADOPTED
@@ -117,6 +130,8 @@ ROUTABLE != EXECUTED
 PROJECT_CONTEXT_READY != AUTHORIZED_TO_MUTATE
 TOOL_CAPABILITY != AUTHORIZATION
 ```
+
+A integração SES não altera a autorização de implementação, Preview, publicação Greenn, domínio/DNS, dados ou integrações definida neste projeto.
 
 ## 10. Próxima ação segura
 
