@@ -2,88 +2,86 @@
 
 - Atualizado em: `2026-08-23`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
-- Baseline funcional: `docs/baseline/FUNCTIONAL_BASELINE_V1.md`
-- Baseline técnica: `docs/baseline/TECHNICAL_BASELINE_V1.md` quando integrada
+- Baseline funcional vigente após revisão: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
+- Baseline técnica vigente após revisão: `docs/baseline/TECHNICAL_BASELINE_V2.md`
 - Regra: ausência nesta lista não constitui autorização.
 
-## 1. Estado de liberação
+## 1. Estado atual
 
-Após `TECHNICAL_BASELINE_V1` estar integrada em `main`, **implementação V1 em branch dedicada está autorizada** conforme `docs/NEXT_SAFE_ACTION.md`.
+Enquanto as baselines V2 não estiverem integradas em `main`, a implementação portátil HTML/CSS/JS está bloqueada por conflito material com as baselines V1.
 
-Vercel Preview também pode ser criado dentro do escopo da implementação após build/test gate.
+Depois das V2 integradas e do gate live em `docs/NEXT_SAFE_ACTION.md`, a implementação V1 em branch dedicada é autorizada.
 
 ## 2. Bloqueios ativos
 
-| Ação bloqueada | Motivo | Condição de liberação | Autoridade/evidência |
-|---|---|---|---|
-| Vercel Production | Preview ainda precisa demonstrar qualidade | Preview validado + autorização específica | responsável + receipt do Preview |
-| Custom domain / DNS | efeito público e SEO permanente | decisão de Production + domínio/ownership verificados + autorização | responsável |
-| Git production branch `release/production` | só é necessária no release real | Production autorizada | responsável |
-| Formulário real / CRM / lead routing | envolve PII e integração externa | data/privacy contract + target + autorização | decisão versionada |
-| WhatsApp destination/config final | destino não está verificado canonicamente | target/ownership verificados | evidência do target |
-| Analytics / pixels / tags | telemetria/dados | escopo/privacy/target autorizados | decisão versionada |
-| CMS/database | não necessário no V1 técnico | necessidade material demonstrada + nova decisão | baseline revision/ADR |
-| Campanhas/anúncios | custo/reputação | campanha/orçamento autorizados | autorização explícita |
-| Uso de segredo/dado pessoal não previsto | risco de segurança/privacidade | necessidade + canal seguro + autorização | registro adequado |
-| Expansão para novas rotas/produto material | fora da baseline V1 | requisito canonicalizado + escopo aprovado | baseline/decisão |
+| Ação bloqueada | Motivo | Condição de liberação |
+|---|---|---|
+| escrever implementação portátil antes das V2 em main | baselines canônicas ainda são V1 | merge das V2 + gate live |
+| publicar na Greenn antes de Preview validado | produção V1 precisa de homologação/rastreabilidade | Preview validado + SHA/release congelado + gate Greenn |
+| Vercel Production como produção V1 | arquitetura V2 define Vercel como Preview/homologação | nova decisão material, se algum dia necessária |
+| custom domain / DNS | efeito público/SEO | autorização específica + ownership/host verificados |
+| WhatsApp destination final | destino não verificado canonicamente | target/ownership verificados |
+| analytics / pixels / tags | telemetria/dados | escopo/privacy/target autorizados |
+| CMS/database/backend próprio | não necessário no V1 portátil | necessidade material + nova decisão |
+| FECH.AI / n8n / Make / Ads integration | evolução futura fora do V1 | autorização específica |
+| campanhas/anúncios | custo/reputação | campanha/orçamento autorizados |
+| segredo/token no HTML/JS | risco de segurança | arquitetura server-side/serviço seguro aprovada |
+| dados comerciais/inventário inventados | precisão/reputação | fonte autorizada |
+| expansão material do produto | fora da baseline | requisito canonicalizado |
 
-## 3. Ações permitidas na implementação autorizada
+## 3. Ações permitidas após V2 + gate live
 
-Depois do gate live da baseline técnica:
-
-- criar `feat/initial-product-implementation`;
-- scaffold e código do V1;
-- assets aprovados;
-- catálogo local tipado;
-- filtros/badges/CTAs;
-- formulário Preview sem transmissão real de PII;
-- testes e build;
-- SEO estrutural;
-- performance/accessibility work;
-- Vercel Preview não-production quando o branch estiver buildável.
+- alinhar/recriar `feat/initial-product-implementation` do SHA exato, desde que sem commits únicos;
+- implementar `src-greenn/moretegra.html`, `.css`, `.js`;
+- identidade Tegra;
+- catálogo local/versionado;
+- filtros mobile;
+- badges;
+- CTAs sem destino inventado;
+- formulário Greenn Form 46 conforme contrato verificado;
+- testes/performance/accessibility/SEO;
+- Vercel Preview não-production;
+- preparar release rastreável para publicação Greenn posterior.
 
 ## 4. Regras de interpretação
 
-- `Preview autorizado` != `Production autorizada`.
-- `Production autorizada` != `domínio/DNS autorizado`.
-- `form UI autorizado` != `lead processing autorizado`.
+- `Preview autorizado` != `Greenn publication autorizada`.
+- `Greenn publication autorizada` != `domínio/DNS autorizado`.
+- `form contract conhecido` != `segredo permitido no cliente`.
 - `CTA autorizado` != `destino inferido`.
-- `baseline técnica aprovada` autoriza somente a implementação explicitamente registrada em `NEXT_SAFE_ACTION`.
-- `main` integrado não é automaticamente a branch Production do Vercel.
-- capability/tool access não equivale a autorização.
+- `tool capability` != `authorization`.
+- `main integrado` é fonte canônica; branch/PR é proposta até merge.
 
 ## 5. Gates por evidência
 
 | Evidência | Ação | Tratamento |
 |---|---|---|
-| technical baseline ausente de `main` | implementação | parar |
-| Next.js safe patch não resolvido | scaffold freeze/merge | parar e resolver versão live |
-| build falha | Preview | não deployar |
-| Preview sem `noindex` | aceite de Preview | corrigir antes de aceitar |
-| target real de formulário ausente | lead submission | manter mock/local |
-| target WhatsApp não verificado | link final | não inventar destino |
-| Preview não validado | Production | bloquear |
-| domínio/ownership ausentes | DNS | bloquear |
+| V2 ausente de main | implementação portátil | parar |
+| branch de implementação com commits únicos | realinhamento/recriação | preservar e reconciliar antes de alterar |
+| filtros mobile falham | Preview acceptance | corrigir |
+| erro runtime/console primário | Preview acceptance | corrigir |
+| Preview indexável | Preview acceptance | corrigir |
+| contrato Form 46 diverge do verificado | lead submission | parar e revalidar |
+| formulário exige segredo público | lead submission | bloquear arquitetura atual |
+| WhatsApp não verificado | link final | não inventar |
+| Preview não validado | Greenn publication | bloquear |
+| domínio/ownership ausente | DNS | bloquear |
 
-## 6. Produção e domínio
-
-Production e custom domain são gates intencionalmente separados.
-
-Sequência autorizável futura:
+## 6. Sequência V1
 
 ```text
-IMPLEMENTATION
--> BUILD/TEST
--> PREVIEW
+BASELINES_V2
+-> IMPLEMENTATION
+-> TESTS
+-> VERCEL_PREVIEW
 -> PREVIEW_VALIDATION
--> PRODUCTION_GATE
--> PRODUCTION
--> DOMAIN_GATE
--> DOMAIN/DNS
+-> RELEASE_SHA
+-> GREENN_GATE
+-> GREENN_V1
 ```
 
-Nenhuma seta autoriza automaticamente a seguinte.
+Domínio/DNS e integrações futuras permanecem fluxos separados.
 
 ## 7. Procedimento diante de dúvida
 
-Quando o enquadramento não estiver claro, usar a interpretação mais restritiva e obter a menor decisão necessária.
+Usar a interpretação mais restritiva e obter/versionar a menor decisão necessária antes de mutação material.
