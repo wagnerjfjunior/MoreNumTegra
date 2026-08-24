@@ -1,0 +1,92 @@
+name: Apply August Site Prices
+on:
+  push:
+    branches:
+      - data/site-prices-august-2026
+    paths:
+      - .github/workflows/apply-site-prices.yml
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: data/site-prices-august-2026
+      - name: Apply catalog price references
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          js_path=Path('src-greenn/moretegra.js')
+          html_path=Path('src-greenn/blocks/01-html-inicial.html')
+          js=js_path.read_text(encoding='utf-8')
+
+          updates={
+          'Château Jardin': (None,'consult','Sem tabela comercial da Coordenação neste lote · valor sob consulta.'),
+          'Nova Vivere': (922747,'priced','Menor referência da Tabela Coordenação ago/2026 · 73,24 m² · disponibilidade e condição sob confirmação.'),
+          'Caminhos da Lapa Elo Duo': (472397.53,'priced','Menor referência da Tabela Coordenação ago/2026 · AP0506 · 47,24 m² · disponibilidade sob confirmação.'),
+          'Garden Design': (731577,'priced','Menor referência da Tabela Coordenação ago/2026 · 61,07 m² · disponibilidade e condição sob confirmação.'),
+          'Ampère Brooklin': (5743517,'priced','Menor referência residencial da Tabela Coordenação ago/2026 · 262 m² · disponibilidade sob confirmação.'),
+          'Mozae Higienópolis': (949506,'priced','Menor referência da Tabela Coordenação ago/2026 · AP0412 · 44,85 m² · disponibilidade sob confirmação.'),
+          'Universo Tatuapé Órbita': (363516,'priced','Menor referência da Tabela Coordenação ago/2026 · AP1314 · 38,5 m² · disponibilidade sob confirmação.'),
+          'Ária Higienópolis': (447807,'priced','Menor referência da Tabela Coordenação ago/2026 · sala SC0319 · 29,1 m² · disponibilidade sob confirmação.'),
+          'Bem Moema': (1604897.45,'priced','Menor referência residencial da Tabela Coordenação ago/2026 · AP0175 · 80,15 m² · disponibilidade sob confirmação.'),
+          'Bem Moema Studios & Offices': (513215.83,'priced','Menor referência da Tabela Coordenação ago/2026 · SU1205 · 27,96 m² · disponibilidade sob confirmação.'),
+          'Soma Perdizes': (331701.17,'priced','Menor referência da Tabela Coordenação ago/2026 · SC0307 · 25,5 m² · disponibilidade sob confirmação.'),
+          'Zahle Jardins': (636700,'priced','Menor referência comercial da Tabela Coordenação ago/2026 · 43,5 m² · disponibilidade sob confirmação.'),
+          'Bueno Brandão 257': (33030000,'priced','Menor referência residencial da Tabela Coordenação ago/2026 · 500 m² · disponibilidade sob confirmação.'),
+          'CAPIITOLO by Piero Lissoni': (4904379,'priced','Menor referência da Tabela Coordenação ago/2026 · 210,08 m² · disponibilidade sob confirmação.'),
+          'DSG Itaim': (456569,'priced','Menor referência da Tabela Coordenação ago/2026 · Office unidade 201 · 27 m² · disponibilidade sob confirmação.'),
+          'Ledge Brooklin': (622873.85,'priced','Menor referência da tabela Safari ago/2026 · Studio S-0022 · 36,40 m² · marcado como disponível na fonte.'),
+          'TEG Sacomã': (None,'consult','Sem tabela comercial da Coordenação neste lote · valor sob consulta.'),
+          'Tièl Vila Nova Conceição': (755500,'priced','Menor referência da Tabela Coordenação ago/2026 · studio de 18,80 m² · disponibilidade sob confirmação.'),
+          'YPY Alto do Ipiranga': (724666,'priced','Menor referência da Tabela Coordenação ago/2026 · AP0207 · 65,73 m² · disponibilidade sob confirmação.'),
+          }
+
+          js=js.replace(
+          '  // MIGRATION_INPUT_PENDING_REVALIDATION:\n  // catálogo migrado do pacote Green e preços iniciais fornecidos pelo proprietário em 2026-08-24.\n  // A PR permanece Draft. Antes da Green, estoque, unidade, estágio, metragem e preço devem ser revalidados.\n',
+          '  // COMMERCIAL_REFERENCE_2026_08_24:\n  // preços “A partir de” usam a menor referência de ticket nas tabelas comerciais de agosto/2026 fornecidas pela Coordenação.\n  // disponibilidade, condições e negociação permanecem sujeitas à confirmação antes da Green comercial.\n'
+          )
+
+          for name,(price,state,note) in updates.items():
+              pat=re.compile(r'(\\{name:"'+re.escape(name)+r'".*?official:"[^"]+",)price:(?:null|[0-9.]+),priceState:"[^"]+",priceNote:"[^"]*"(\\})')
+              m=pat.search(js)
+              if not m:
+                  raise SystemExit(f'object not found: {name}')
+              pv='null' if price is None else str(price)
+              repl=m.group(1)+f'price:{pv},priceState:"{state}",priceNote:"{note}"'+m.group(2)
+              js=js[:m.start()]+repl+js[m.end():]
+
+          js=js.replace('info:"1 ou 2 suítes · 46m² e 73m² · 1 vaga"','info:"1 ou 2 suítes · 45m² a 73m² · 1 vaga"')
+          names=re.findall(r'name:"([^"]+)"',js)
+          if len(names)!=19 or set(names)!=set(updates):
+              raise SystemExit(f'catalog mismatch: {len(names)}')
+          if js.count('priceState:"priced"') != 17 or js.count('priceState:"consult"') != 2:
+              raise SystemExit('unexpected pricing state counts')
+          js_path.write_text(js,encoding='utf-8')
+
+          html=html_path.read_text(encoding='utf-8')
+          old='Os valores exibidos nesta página são referências <strong>“a partir de”</strong>, calculadas com base em unidades específicas disponíveis no momento da atualização.'
+          new='Os valores exibidos nesta página são referências <strong>“a partir de”</strong>, calculadas pelo menor ticket identificado nas tabelas comerciais de agosto de 2026 fornecidas pela Coordenação. A disponibilidade da unidade e a condição comercial devem ser confirmadas no atendimento.'
+          if old not in html: raise SystemExit('commercial disclaimer not found')
+          html=html.replace(old,new)
+          old='Não. São referências “a partir de” baseadas nas unidades informadas. O valor final depende da unidade disponível, tabela vigente, entrada, fluxo, forma de pagamento e negociação.'
+          new='Não. São referências “a partir de” baseadas no menor ticket identificado nas tabelas comerciais de agosto de 2026 fornecidas pela Coordenação. O valor final depende da disponibilidade, unidade escolhida, tabela vigente, entrada, fluxo, forma de pagamento e negociação.'
+          if old not in html: raise SystemExit('faq disclaimer not found')
+          html=html.replace(old,new)
+          html_path.write_text(html,encoding='utf-8')
+          PY
+          node --check src-greenn/moretegra.js
+          grep -q 'Menor referência da Tabela Coordenação ago/2026' src-greenn/moretegra.js
+          grep -q 'menor ticket identificado nas tabelas comerciais' src-greenn/blocks/01-html-inicial.html
+      - name: Commit validated site update and remove temporary workflows
+        run: |
+          git config user.name "Wagner Fernandes"
+          git config user.email "wagnerjfjunior@gmail.com"
+          git rm -f .github/workflows/apply-site-prices.yml .github/workflows/inspect-site-catalog.yml
+          git add src-greenn/moretegra.js src-greenn/blocks/01-html-inicial.html
+          git commit -m "data: atualizar menores tickets Tegra agosto"
+          git push origin HEAD:data/site-prices-august-2026
