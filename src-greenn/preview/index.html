@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="googlebot" content="noindex,nofollow">
+  <title>More em um Tegra — Preview Green Builder</title>
+  <meta name="description" content="Laboratório de composição da página More em um Tegra para Green Sales.">
+  <meta name="theme-color" content="#171813">
+  <link rel="preconnect" href="https://s3-gdigital.s3.amazonaws.com" crossorigin>
+  <link rel="preconnect" href="https://www.youtube-nocookie.com">
+  <link rel="stylesheet" href="/src-greenn/moretegra.css">
+  <style>html,body{margin:0;padding:0;background:#f4f1e9}#mt-preview-error{display:none;padding:24px;font:600 14px system-ui;color:#8b1e16;background:#fff0ee}</style>
+</head>
+<body>
+  <div id="mt-preview-error" role="alert"></div>
+  <div id="mt-block-01"></div>
+
+  <section class="moretegra-preview-form" aria-labelledby="mt-preview-form-title">
+    <div class="mt-preview-card">
+      <p class="mt-eyebrow">FORM 46 · SIMULAÇÃO VERCEL</p>
+      <h2 id="mt-preview-form-title">Formulário nativo Green Sales</h2>
+      <p>Este bloco existe somente no laboratório para reproduzir a posição do Form 46. Nenhum dado é transmitido.</p>
+      <form id="mt-preview-form" novalidate>
+        <div class="mt-preview-grid">
+          <label>Nome<input name="nome" type="text" autocomplete="name" placeholder="Seu nome"></label>
+          <label>E-mail<input name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com"></label>
+          <label>Telefone<input name="telefone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(11) 99999-9999"></label>
+          <button type="submit">Quero receber as oportunidades</button>
+        </div>
+        <p class="mt-preview-message" id="mt-preview-message" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <div id="mt-block-02"></div>
+  <div id="mt-block-03"></div>
+
+  <script>
+    (() => {
+      const blocks = [
+        ["mt-block-01", "/src-greenn/blocks/01-html-inicial.html"],
+        ["mt-block-02", "/src-greenn/blocks/02-html-pos-form.html"],
+        ["mt-block-03", "/src-greenn/blocks/03-footer.html"]
+      ];
+      const error = document.getElementById("mt-preview-error");
+
+      async function load() {
+        try {
+          const responses = await Promise.all(blocks.map(([, url]) => fetch(url, {cache:"no-store"})));
+          responses.forEach((response) => { if (!response.ok) throw new Error(`Falha ${response.status} ao carregar ${response.url}`); });
+          const html = await Promise.all(responses.map((response) => response.text()));
+          blocks.forEach(([id], index) => { document.getElementById(id).innerHTML = html[index]; });
+          const script = document.createElement("script");
+          script.src = "/src-greenn/moretegra.js";
+          script.defer = true;
+          document.body.appendChild(script);
+        } catch (cause) {
+          error.style.display = "block";
+          error.textContent = `Preview não pôde montar os blocos: ${cause.message}`;
+        }
+      }
+
+      document.getElementById("mt-preview-form").addEventListener("submit", (event) => {
+        event.preventDefault();
+        document.getElementById("mt-preview-message").textContent = "Laboratório validado: nenhum dado foi enviado. Na Green, este trecho é substituído pelo Form 46 nativo.";
+      });
+
+      load();
+    })();
+  </script>
+</body>
+</html>
