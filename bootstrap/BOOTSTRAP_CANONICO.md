@@ -8,8 +8,8 @@
 - Repositório canônico: `wagnerjfjunior/MoreNumTegra`
 - Branch canônica: `main`
 - Baseline funcional vigente: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
-- Baseline técnica vigente após integração desta revisão: `docs/baseline/TECHNICAL_BASELINE_V2_1.md`
-- Baseline técnica anterior: `docs/baseline/TECHNICAL_BASELINE_V2.md`
+- Baseline técnica vigente após integração desta revisão: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
+- Baseline técnica anterior: `docs/baseline/TECHNICAL_BASELINE_V2_1.md`
 - ADR de composição Green: `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`
 - Data de referência: `2026-08-24`
 
@@ -21,7 +21,7 @@ Em caso de divergência:
 
 1. lifecycle GitHub, HEAD/base/checks/mergeability são resolvidos live;
 2. requisitos funcionais vêm da baseline funcional vigente integrada;
-3. arquitetura/stack/topologia Green vêm da baseline técnica vigente e ADRs integrados;
+3. arquitetura/stack/topologia Green e fluxo Vercel vêm da baseline técnica vigente e ADRs integrados;
 4. `docs/NEXT_SAFE_ACTION.md` define a única próxima ação segura;
 5. branches/PRs são propostas até merge;
 6. informação ausente não é preenchida por inferência;
@@ -31,12 +31,12 @@ Em caso de divergência:
 
 1. `handoffs/CURRENT.md`
 2. `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
-3. `docs/baseline/TECHNICAL_BASELINE_V2_1.md`
-4. `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`
-5. `docs/PROJECT_STATUS.md`
-6. `docs/NEXT_SAFE_ACTION.md`
-7. `docs/BLOCKED_ACTIONS.md`
-8. baselines anteriores apenas para histórico quando necessário.
+3. `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
+4. `docs/baseline/TECHNICAL_BASELINE_V2_1.md` para decisões não supersedidas
+5. `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`
+6. `docs/PROJECT_STATUS.md`
+7. `docs/NEXT_SAFE_ACTION.md`
+8. `docs/BLOCKED_ACTIONS.md`
 
 ## 4. Arquitetura V1
 
@@ -44,12 +44,25 @@ Em caso de divergência:
 - CSS mobile-first;
 - JavaScript vanilla;
 - sem framework/bundler/backend obrigatório no V1;
-- GitHub = fonte canônica;
-- Vercel = laboratório/Preview;
-- Green Sales = produção V1 via builder;
+- GitHub `main` = fonte canônica;
+- Vercel Preview = teste intermediário;
+- Vercel Production = homologação pública estável;
+- Green Sales = produção comercial V1 via builder;
 - mobile-first, SEO-first e performance-first.
 
-A unidade de publicação Green não é um único HTML. A composição confirmada pelo proprietário é:
+Canonical public homologation URL:
+
+`https://morenumtegra.vercel.app/`
+
+Preservar:
+
+```text
+VERCEL_PREVIEW != VERCEL_PRODUCTION_HOMOLOGATION
+VERCEL_PRODUCTION_HOMOLOGATION != GREEN_COMMERCIAL_PRODUCTION
+MAIN_MERGED != GREEN_PUBLISHED
+```
+
+A unidade de publicação Green é:
 
 ```text
 HTML 01 inicial
@@ -60,7 +73,7 @@ HTML 01 inicial
 + JavaScript global
 ```
 
-Estrutura alvo:
+Estrutura canônica:
 
 ```text
 src-greenn/
@@ -74,22 +87,18 @@ src-greenn/
     index.html
 ```
 
-Cada bloco HTML deve ser autocontido. Não abrir uma tag em um módulo esperando fechá-la em outro.
-
 ## 5. Formulário Green V1
 
-Produção usa o bloco de formulário nativo da Green Sales associado ao contrato conhecido:
+Produção comercial usa o bloco de formulário nativo da Green Sales associado ao contrato conhecido:
 
 - tenant_id = `313`
 - form_id = `46`
 - title = `MoreEmUmTegra`
 - campos: `nome`, `email`, `telefone`
 
-Não substituir o lifecycle nativo do formulário por `fetch` customizado na produção enquanto o bloco nativo resolver a captação.
+Não substituir o lifecycle nativo por `fetch` customizado enquanto o bloco nativo resolver a captação.
 
-O HTML 01 deve expor uma âncora estável, por exemplo `#formulario`, imediatamente antes do bloco nativo para que CTAs posteriores retornem ao formulário sem depender de classes/IDs internos da Green.
-
-Preview Vercel usa somente mock não transmissor do formulário. Nunca transmitir PII real no laboratório.
+O HTML 01 expõe `#formulario` imediatamente antes do bloco nativo. Vercel usa somente mock não transmissor do formulário; nunca transmitir PII real no laboratório/homologação.
 
 ## 6. Identidade / mobile / performance
 
@@ -108,36 +117,39 @@ Targets:
 
 ## 7. Vídeo
 
-O comportamento alvo é vídeo dentro da própria página; não redirecionar o visitante ao YouTube para assistir.
+O vídeo deve permanecer dentro da página.
 
 Preferência:
 
 1. MP4/WebM autorizado em GDigital/S3 com `<video muted autoplay loop playsinline>` e fallback;
 2. se só houver YouTube, iframe `youtube-nocookie.com` in-page com autoplay mudo, loop e `playsinline`.
 
-Vídeo é não crítico: falha do player não pode bloquear catálogo, filtros, CTAs ou formulário.
+Falha do player não pode bloquear catálogo, filtros, CTAs ou formulário.
 
-## 8. Catálogo
+## 8. Catálogo e preços
 
-O pacote Green anterior fornecido pelo proprietário contém 19 cards e duas variantes de hero (vídeo e Château Jardin). É insumo de migração, não verdade automática de inventário.
+O catálogo integrado contém 19 empreendimentos migrados. Dados comerciais, preço, disponibilidade, metragem, estágio e condições devem ser revalidados antes da Green comercial.
 
-A nova implementação deve recuperar o portfólio validado; não permanecer limitada ao ELO Duo do primeiro protótipo. Antes de publicar cada campo, validar nome, localização, estágio, metragens, mídia e URL quando exibidos.
+Valores exibidos como `A partir de` são referências; o cenário final depende de unidade, tabela, entrada, fluxo, forma de pagamento e negociação.
 
 Não inventar preço, disponibilidade, metragem, endereço ou condição comercial.
 
-## 9. Fluxo
+## 9. Fluxo operacional
 
 ```text
-GitHub
--> branch/PR de implementação
--> Vercel Preview simulando a ordem do builder
--> testes mobile/funcionais/SEO/performance
--> aprovação
--> release SHA
+feature/change
+-> Vercel Preview
+-> validação do proprietário
+-> merge GitHub main
+-> Vercel Production em https://morenumtegra.vercel.app/
+-> testes públicos/mobile/funcionais
+-> freeze SHA/release
 -> montagem controlada na Green Sales
 ```
 
-Não usar Vercel Production como produção V1.
+Depois de uma alteração aprovada e integrada em `main`, manter uma versão antiga em Vercel Production constitui drift de homologação e deve ser corrigido antes do teste público final.
+
+Vercel Production deve permanecer `noindex, nofollow` salvo decisão SEO específica.
 
 ## 10. Integração SES / SFJM
 
@@ -167,8 +179,8 @@ TOOL_CAPABILITY != AUTHORIZATION
 
 Exigem decisão/gate próprio:
 
-- publicação efetiva na Green antes de Preview validado;
-- domínio/DNS;
+- publicação efetiva na Green antes da homologação pública validada;
+- domínio/DNS customizado;
 - analytics/pixels/tags;
 - CMS/database/backend próprio;
 - FECH.AI/n8n/Make/Ads;
@@ -178,5 +190,3 @@ Exigem decisão/gate próprio:
 ## 12. Próxima ação segura
 
 Autoridade: `docs/NEXT_SAFE_ACTION.md`.
-
-Após integração da V2.1/ADR, sincronizar `feat/initial-product-implementation` com `main`, migrar a PR #6 para a composição modular Green, recuperar/validar o portfólio e criar novo Preview antes de qualquer publicação Green.
