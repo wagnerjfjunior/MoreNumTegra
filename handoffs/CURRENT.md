@@ -5,27 +5,15 @@
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra`
 - Referência: `main` — resolver live antes de agir
 - Baseline funcional vigente: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
-- Baseline técnica vigente após integração desta revisão: `docs/baseline/TECHNICAL_BASELINE_V2_1.md`
+- Baseline técnica vigente após integração desta revisão: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
+- Baseline técnica anterior: `docs/baseline/TECHNICAL_BASELINE_V2_1.md`
 - ADR aplicável: `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`
 
 ## 1. Estado atual
 
-A arquitetura V1 portátil continua HTML/CSS/JavaScript vanilla. A decisão nova do proprietário clarifica a topologia real da Green Sales: a produção é montada em módulos do builder, com formulário nativo entre blocos HTML.
+A PR #6 foi mergeada em `main`. A implementação canônica já usa HTML/CSS/JavaScript vanilla e composição modular compatível com o builder Green Sales.
 
-A PR #6 contém o primeiro protótipo Vercel e permanece Draft. Esse protótipo comprovou a direção visual escura/contraste branco, mas não é ainda o artefato final da Green porque usa um HTML monolítico e formulário customizado de laboratório.
-
-## 2. Composição alvo Green
-
-```text
-HTML 01 inicial
--> bloco nativo Form 46
--> HTML 02 pós-form / CTA para o formulário
--> HTML 03 footer
-+ CSS global
-+ JavaScript global
-```
-
-Estrutura alvo no repositório:
+Arquivos integrados:
 
 ```text
 src-greenn/
@@ -39,55 +27,81 @@ src-greenn/
     index.html
 ```
 
-O Preview Vercel monta os snippets exatos e usa somente um mock visual não transmissor do Form 46.
+O catálogo integrado contém 19 empreendimentos, filtros por estágio/zona/ticket, badges, preços de referência, vídeo in-page, CTAs e mock Vercel não transmissor do Form 46.
 
-## 3. Vídeo
-
-O clique que abre YouTube fora da página não atende ao alvo.
-
-Comportamento aceito:
-
-- vídeo rodando in-page;
-- autoplay mudo quando permitido;
-- loop;
-- `playsinline` no mobile;
-- poster/fallback;
-- player não crítico para LCP e para os fluxos principais.
-
-Se houver arquivo MP4/WebM autorizado em GDigital/S3, preferir `<video>`. Caso contrário, usar embed `youtube-nocookie.com` in-page.
-
-## 4. Portfólio
-
-O ZIP enviado pelo proprietário contém 19 cards e duas variantes de hero: campanha More em um Tegra e Château Jardin.
-
-Esse material deve ser usado como inventário de migração para evitar regressão do catálogo, mas cada dado visível deve ser validado antes de produção. O primeiro protótipo com somente ELO Duo não representa o escopo final.
-
-## 5. Fluxo operacional
+## 2. Composição Green comercial
 
 ```text
-GitHub main
--> feat/initial-product-implementation
--> composição modular Green-compatible
--> Vercel Preview
--> testes/validação mobile
--> release SHA
--> montagem controlada na Green Sales
+HTML 01 inicial
+-> bloco nativo Form 46
+-> HTML 02 pós-form
+-> HTML 03 footer
++ CSS global
++ JavaScript global
 ```
 
-## 6. Limites
+Produção Green usa o Form 46 nativo. O JavaScript não deve interceptar o submit nativo.
+
+## 3. Vercel
+
+O projeto usa dois ambientes operacionais:
+
+- **Vercel Preview**: validação intermediária de branch/change;
+- **Vercel Production**: homologação pública estável após aprovação e merge em `main`.
+
+URL pública de homologação:
+
+`https://morenumtegra.vercel.app/`
+
+Vercel Production não é a produção comercial V1. Green Sales continua sendo a produção comercial.
+
+Fluxo:
+
+```text
+change
+-> Preview
+-> aprovação
+-> merge main
+-> Vercel Production homologação pública
+-> testes abertos/mobile
+-> release SHA
+-> Green Sales
+```
+
+## 4. Situação de homologação
+
+A última implementação aprovada foi mergeada em `main`, porém o Vercel Production pode permanecer apontando para um deployment antigo até promoção/redeploy explícito. Quando isso ocorrer, classificar como `HOMOLOGATION_DRIFT`.
+
+A próxima ação é alinhar `https://morenumtegra.vercel.app/` ao estado aprovado de `main`, depois executar os testes públicos finais.
+
+## 5. Dados comerciais
+
+Os preços atuais são referências de teste provenientes da tabela fornecida pelo proprietário. Casos sem ticket seguro permanecem `Sob consulta`; itens explicitamente esgotados permanecem `Esgotado`.
+
+Antes da Green comercial, revalidar todos os fatos visíveis relevantes, especialmente preço, disponibilidade, metragem, estágio e condições.
+
+## 6. Vídeo / mídia
+
+- vídeo in-page;
+- autoplay mudo quando permitido;
+- loop;
+- `playsinline`;
+- poster/fallback;
+- mídia não crítica;
+- imagens de cards usam origem real quando possível e fallback resiliente.
+
+## 7. Limites
 
 Continuam fora do escopo sem gate específico:
 
-- Vercel Production como produção V1;
-- domínio/DNS;
+- publicação Green antes da homologação pública final;
+- custom domain/DNS;
 - analytics/pixels/tags;
 - FECH.AI/n8n/Make/Ads;
 - CMS/database/backend próprio;
 - segredo/token client-side;
-- dados comerciais ou inventário não verificados.
+- dados comerciais não verificados.
 
-## 7. Próxima ação segura
+## 8. Próxima ação segura
 
 Autoridade: `docs/NEXT_SAFE_ACTION.md`.
-
-Após a V2.1/ADR entrar em `main`, sincronizar a branch da PR #6 e reestruturar a implementação em blocos Green + Preview compositor, preservando a direção visual escura e recuperando o portfólio validado.
