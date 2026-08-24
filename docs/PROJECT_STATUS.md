@@ -3,17 +3,16 @@
 - Data de referência: `2026-08-23`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra`
 - Referência: `main` — resolver SHA live antes de agir
-- Baseline funcional: `docs/baseline/FUNCTIONAL_BASELINE_V1.md`
-- Baseline técnica atual em `main`: `docs/baseline/TECHNICAL_BASELINE_V1.md`
-- Baseline técnica candidata que supersede V1: `docs/baseline/TECHNICAL_BASELINE_V2.md`
-- Fase: `reconciliação arquitetural antes da implementação`
-- Saúde geral: `amarelo` — requisitos do produto estão claros, mas a implementação portátil só pode iniciar depois da V2 estar integrada
+- Baselines atuais em `main`: `FUNCTIONAL_BASELINE_V1` + `TECHNICAL_BASELINE_V1`
+- Baselines candidatas que supersedem V1: `docs/baseline/FUNCTIONAL_BASELINE_V2.md` + `docs/baseline/TECHNICAL_BASELINE_V2.md`
+- Fase: `reconciliação funcional/arquitetural antes da implementação`
+- Saúde geral: `amarelo` — requisitos e arquitetura alvo estão claros, mas a implementação portátil só pode iniciar depois das V2 estarem integradas
 
 ## 1. Resultado pretendido
 
 Entregar um MoreNumTegra V1 mobile-first, rápido e SEO-first, com descoberta de empreendimentos, filtros, CTAs e captura de leads, usando os mesmos artefatos HTML/CSS/JS no Preview e na Greenn.
 
-## 2. Decisão arquitetural V2
+## 2. Decisão V2
 
 | Área | Decisão |
 |---|---|
@@ -36,14 +35,14 @@ Entregar um MoreNumTegra V1 mobile-first, rápido e SEO-first, com descoberta de
 | Frente | Estado | Próximo marco | Bloqueio |
 |---|---|---|---|
 | SFJM | operacional | reconstrução live por bootstrap | nenhum |
-| Baseline funcional | canônica | preservar | nenhum |
-| Baseline técnica V1 | canônica, porém supersedenda | integrar V2 | conflito com decisão vigente |
-| Baseline técnica V2 | candidata | revisão/merge | ainda não está em main |
+| Baselines V1 | canônicas, porém supersedendas | integrar V2 | conflito com decisões vigentes |
+| Functional V2 | candidata | revisão/merge | ainda não está em main |
+| Technical V2 | candidata | revisão/merge | ainda não está em main |
 | Implementação | parada corretamente | alinhar branch após V2 | V2 não integrada |
 | Mobile/UX | requisitos definidos | implementar/testar | implementação ausente |
 | SEO | requisitos definidos | implementar | implementação ausente |
 | Form/lead | contrato Greenn conhecido | implementar/testar | validar comportamento real no Preview/Greenn |
-| Vercel Preview | permitido após branch buildável | homologação | resolver Vercel live antes do deploy |
+| Vercel Preview | permitido após branch funcional | homologação | resolver Vercel live antes do deploy |
 | Greenn production | gate posterior ao Preview | publicação controlada | Preview ainda não validado |
 | Domínio/DNS | separado | decisão posterior | não autorizado nesta fase |
 
@@ -51,7 +50,7 @@ Entregar um MoreNumTegra V1 mobile-first, rápido e SEO-first, com descoberta de
 
 `feat/initial-product-implementation` existe, mas na checagem live estava 2 commits atrás de `main` e 0 commits à frente. Não há PR aberto.
 
-Ela não deve receber código antes da V2 integrar `main`. Depois do merge, deve ser fast-forwarded/recriada do SHA exato somente após reconfirmar que segue sem commits únicos.
+Ela não deve receber código antes das V2 integrarem `main`. Depois do merge, deve ser fast-forwarded/recriada do SHA exato somente após reconfirmar que segue sem commits únicos.
 
 ## 5. Riscos ativos
 
@@ -70,4 +69,4 @@ Ela não deve receber código antes da V2 integrar `main`. Depois do merge, deve
 
 Autoridade: `docs/NEXT_SAFE_ACTION.md`.
 
-A próxima ação é integrar a baseline V2. Somente depois disso a implementação V1 portátil pode começar em `feat/initial-product-implementation` alinhada ao SHA live de `main`.
+A próxima ação é integrar as baselines V2. Somente depois disso a implementação V1 portátil pode começar em `feat/initial-product-implementation` alinhada ao SHA live de `main`.
