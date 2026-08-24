@@ -3,7 +3,7 @@
 - Status: `CANDIDATE_IN_PR` until integrated in `main`; `CANONICAL_V2` when present in resolved `main`
 - Date: `2026-08-23`
 - Repository: `wagnerjfjunior/MoreNumTegra`
-- Functional input: `docs/baseline/FUNCTIONAL_BASELINE_V1.md`
+- Functional input: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 - Supersedes: `docs/baseline/TECHNICAL_BASELINE_V1.md`
 - Baseline class: architecture, portability, performance, SEO, Greenn form integration, testing and release strategy
 - Production/domain authority: not granted by this document beyond the explicitly approved Greenn V1 publication flow; DNS/custom-domain changes remain separate.
