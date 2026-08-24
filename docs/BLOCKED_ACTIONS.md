@@ -2,21 +2,21 @@
 
 - Atualizado em: `2026-08-23`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
-- Baseline funcional: `docs/baseline/FUNCTIONAL_BASELINE_V1.md`
+- Baseline funcional vigente após revisão: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 - Baseline técnica vigente após revisão: `docs/baseline/TECHNICAL_BASELINE_V2.md`
 - Regra: ausência nesta lista não constitui autorização.
 
 ## 1. Estado atual
 
-Enquanto `TECHNICAL_BASELINE_V2.md` não estiver integrada em `main`, a implementação portátil HTML/CSS/JS está bloqueada por conflito material com TECHNICAL_BASELINE_V1.
+Enquanto as baselines V2 não estiverem integradas em `main`, a implementação portátil HTML/CSS/JS está bloqueada por conflito material com as baselines V1.
 
-Depois da V2 integrada e do gate live em `docs/NEXT_SAFE_ACTION.md`, a implementação V1 em branch dedicada é autorizada.
+Depois das V2 integradas e do gate live em `docs/NEXT_SAFE_ACTION.md`, a implementação V1 em branch dedicada é autorizada.
 
 ## 2. Bloqueios ativos
 
 | Ação bloqueada | Motivo | Condição de liberação |
 |---|---|---|
-| escrever implementação portátil antes da V2 em main | baseline canônica ainda é Next.js V1 | merge da V2 + gate live |
+| escrever implementação portátil antes das V2 em main | baselines canônicas ainda são V1 | merge das V2 + gate live |
 | publicar na Greenn antes de Preview validado | produção V1 precisa de homologação/rastreabilidade | Preview validado + SHA/release congelado + gate Greenn |
 | Vercel Production como produção V1 | arquitetura V2 define Vercel como Preview/homologação | nova decisão material, se algum dia necessária |
 | custom domain / DNS | efeito público/SEO | autorização específica + ownership/host verificados |
@@ -70,7 +70,7 @@ Depois da V2 integrada e do gate live em `docs/NEXT_SAFE_ACTION.md`, a implement
 ## 6. Sequência V1
 
 ```text
-BASELINE_V2
+BASELINES_V2
 -> IMPLEMENTATION
 -> TESTS
 -> VERCEL_PREVIEW
