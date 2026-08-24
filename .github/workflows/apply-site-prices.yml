@@ -52,7 +52,7 @@ jobs:
           )
 
           for name,(price,state,note) in updates.items():
-              pat=re.compile(r'(\\{name:"'+re.escape(name)+r'".*?official:"[^"]+",)price:(?:null|[0-9.]+),priceState:"[^"]+",priceNote:"[^"]*"(\\})')
+              pat=re.compile(r'(\{name:"'+re.escape(name)+r'".*?official:"[^"]+",)price:(?:null|[0-9.]+),priceState:"[^"]+",priceNote:"[^"]*"(\})')
               m=pat.search(js)
               if not m:
                   raise SystemExit(f'object not found: {name}')
