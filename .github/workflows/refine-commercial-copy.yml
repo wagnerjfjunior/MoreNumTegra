@@ -1,0 +1,95 @@
+name: Refine Commercial Copy
+on:
+  push:
+    branches:
+      - preview/vercel-prices-august-2026
+    paths:
+      - .github/workflows/refine-commercial-copy.yml
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: preview/vercel-prices-august-2026
+      - name: Refine customer-facing commercial language
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          js_path = Path('src-greenn/moretegra.js')
+          html_path = Path('src-greenn/blocks/01-html-inicial.html')
+          js = js_path.read_text(encoding='utf-8')
+          html = html_path.read_text(encoding='utf-8')
+
+          notes = {
+            'Château Jardin': 'Unidade 501 · 185 m² · R$ 19.947/m² · Valor a partir de R$ 3.690.361. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.',
+            'Nova Vivere': 'Unidade 701 · 72,82 m² · R$ 11.708/m² · Valor a partir de R$ 852.586,08. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.',
+            'Caminhos da Lapa Elo Duo': 'Unidade AP0109 · 67 m² · R$ 10.730/m² · Valor a partir de R$ 718.910. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.',
+            'Garden Design': 'Unidade 0112 · R$ 11.020/m² · Valor a partir de R$ 673.050. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.',
+            'Ampère Brooklin': 'Unidade 0121 · 262,35 m² · R$ 18.181/m² · Valor a partir de R$ 4.770.000. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.',
+            'Mozae Higienópolis': 'Unidade AP0301 · 46 m² · R$ 15.685/m² · Valor a partir de R$ 721.510. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.',
+            'Universo Tatuapé Órbita': 'Unidade AP0609 · 69 m² · R$ 8.865/m² · Valor a partir de R$ 611.685. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.',
+            'Ária Higienópolis': 'Studio 1510 · 30 m² · R$ 16.700/m² · Valor a partir de R$ 501.000. Também há referência para a unidade AP1214 · 54 m² · R$ 17.856/m². Consulte a Tegra Vendas para confirmar disponibilidade e condições vigentes.',
+            'Bem Moema': 'Unidade AP0202 · 80 m² · R$ 22.640/m² · Valor a partir de R$ 1.811.200. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.',
+            'Bem Moema Studios & Offices': 'Studio 1702 · 28 m² · R$ 18.200/m² · Valor a partir de R$ 509.600. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.',
+            'Soma Perdizes': 'Unidade 0602 · 45 m² · R$ 14.000/m² · Valor a partir de R$ 630.000. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.',
+            'Zahle Jardins': 'Valor sob consulta. Consulte a Tegra Vendas para confirmar unidades disponíveis e condições vigentes.',
+            'Bueno Brandão 257': 'Unidade 31 · 500 m² · R$ 43.500/m² · Valor a partir de R$ 21.750.000. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.',
+            'CAPIITOLO by Piero Lissoni': 'Unidade 24 · 210 m² · R$ 17.369/m² · Valor a partir de R$ 3.647.490. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.',
+            'DSG Itaim': 'Unidade 201 · 27 m² · Valor sob consulta. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.',
+            'Ledge Brooklin': 'Studio 0052 · R$ 16.666/m² · Valor a partir de R$ 600.000. Também há referência para a unidade 1223 · R$ 17.116/m² · R$ 1.199.000. Consulte a Tegra Vendas para confirmar disponibilidade e condições vigentes.',
+            'TEG Sacomã': 'Unidade 0011 · 65 m² · R$ 6.000/m² · Valor a partir de R$ 390.000. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.',
+            'Tièl Vila Nova Conceição': 'Unidade 914 · 21 m² · R$ 28.500/m² · Valor a partir de R$ 598.500. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.',
+            'YPY Alto do Ipiranga': 'Unidade AP0207 · 66 m² · R$ 11.025/m² · Valor a partir de R$ 727.650. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.',
+          }
+
+          for name, note in notes.items():
+              pat = re.compile(r'(\{name:"' + re.escape(name) + r'".*?priceState:"[^"]+",priceNote:")[^"]*("\})')
+              js, n = pat.subn(lambda m: m.group(1) + note + m.group(2), js, count=1)
+              if n != 1:
+                  raise SystemExit(f'priceNote not found exactly once: {name}')
+
+          js = js.replace('headline = `A partir de ${BRL.format(project.price)}`;\n      label = "Ticket de referência";', 'headline = BRL.format(project.price);\n      label = "A partir de";')
+          if 'Ticket de referência' in js:
+              raise SystemExit('public Ticket de referência remained in JS')
+          if 'priceNote:"Diretoria:' in js:
+              raise SystemExit('Diretoria remained in price notes')
+
+          html_replacements = {
+            '<small>Veja o ticket antes de negociar</small>': '<small>Veja os valores antes de negociar</small>',
+            'Os valores exibidos nesta página são referências comerciais <strong>autorizadas pela Diretoria</strong>, vinculadas às unidades indicadas na atualização de 25 de agosto de 2026. Quando um card reúne mais de uma referência autorizada, o “a partir de” considera o menor ticket entre essas referências. Disponibilidade e condição final devem ser confirmadas no atendimento.': 'Os valores exibidos nesta página são referências comerciais <strong>“a partir de”</strong>, vinculadas às unidades indicadas na atualização de 25 de agosto de 2026. Quando um empreendimento reúne mais de uma referência, o valor inicial considera a menor referência apresentada. Confirme a disponibilidade da unidade e as condições vigentes com a Tegra Vendas.',
+            'Use os filtros para comparar localização, momento e ticket. Estoque, unidade e condições devem ser confirmados no atendimento.': 'Use os filtros para comparar localização, momento e faixa de valor. Estoque, unidade e condições devem ser confirmados no atendimento.',
+            'Use o ticket como referência inicial e monte a proposta conforme entrada, parcelas e forma de pagamento.': 'Use o valor “a partir de” como referência inicial e monte a proposta conforme entrada, parcelas e forma de pagamento.',
+            'Não. São referências autorizadas pela Diretoria para as unidades indicadas. O valor final depende da disponibilidade, unidade escolhida, tabela vigente, entrada, fluxo, forma de pagamento e negociação.': 'Não. São valores “a partir de” vinculados às unidades indicadas. Confirme disponibilidade e condições vigentes com a Tegra Vendas. O valor final pode variar conforme unidade escolhida, tabela, entrada, fluxo, forma de pagamento e negociação.',
+            'Encontrou um ticket que faz sentido? Agora negocie.': 'Encontrou um valor que faz sentido? Agora negocie.'
+          }
+          for old, new in html_replacements.items():
+              if old not in html:
+                  raise SystemExit(f'HTML text not found: {old[:55]}')
+              html = html.replace(old, new)
+
+          # Customer-facing copy should not expose internal commercial governance terms.
+          customer_section = html
+          for forbidden in ('Diretoria', 'ticket'):
+              if forbidden.lower() in customer_section.lower():
+                  raise SystemExit(f'forbidden public term remained: {forbidden}')
+
+          js_path.write_text(js, encoding='utf-8')
+          html_path.write_text(html, encoding='utf-8')
+          PY
+          node --check src-greenn/moretegra.js
+          grep -q 'label = "A partir de"' src-greenn/moretegra.js
+          grep -q 'Unidade 0112 · R$ 11.020/m² · Valor a partir de R$ 673.050' src-greenn/moretegra.js
+          ! grep -qi 'ticket\|Diretoria' src-greenn/blocks/01-html-inicial.html
+      - name: Commit refined Preview and remove temporary workflow
+        run: |
+          git config user.name "Wagner Fernandes"
+          git config user.email "wagnerjfjunior@gmail.com"
+          git rm -f .github/workflows/refine-commercial-copy.yml
+          git add src-greenn/moretegra.js src-greenn/blocks/01-html-inicial.html
+          git commit -m "copy: refinar valores a partir de no catálogo"
+          git push origin HEAD:preview/vercel-prices-august-2026
