@@ -60,6 +60,7 @@ jobs:
               raise SystemExit('Diretoria remained in price notes')
 
           html_replacements = {
+            'Compare empreendimentos por região, estágio e ticket de referência. Depois, negocie condições alinhadas à sua entrada, fluxo e forma de pagamento.': 'Compare empreendimentos por região, estágio e faixa de valor. Depois, negocie condições alinhadas à sua entrada, fluxo e forma de pagamento.',
             '<small>Veja o ticket antes de negociar</small>': '<small>Veja os valores antes de negociar</small>',
             'Os valores exibidos nesta página são referências comerciais <strong>autorizadas pela Diretoria</strong>, vinculadas às unidades indicadas na atualização de 25 de agosto de 2026. Quando um card reúne mais de uma referência autorizada, o “a partir de” considera o menor ticket entre essas referências. Disponibilidade e condição final devem ser confirmadas no atendimento.': 'Os valores exibidos nesta página são referências comerciais <strong>“a partir de”</strong>, vinculadas às unidades indicadas na atualização de 25 de agosto de 2026. Quando um empreendimento reúne mais de uma referência, o valor inicial considera a menor referência apresentada. Confirme a disponibilidade da unidade e as condições vigentes com a Tegra Vendas.',
             'Use os filtros para comparar localização, momento e ticket. Estoque, unidade e condições devem ser confirmados no atendimento.': 'Use os filtros para comparar localização, momento e faixa de valor. Estoque, unidade e condições devem ser confirmados no atendimento.',
@@ -72,10 +73,8 @@ jobs:
                   raise SystemExit(f'HTML text not found: {old[:55]}')
               html = html.replace(old, new)
 
-          # Customer-facing copy should not expose internal commercial governance terms.
-          customer_section = html
           for forbidden in ('Diretoria', 'ticket'):
-              if forbidden.lower() in customer_section.lower():
+              if forbidden.lower() in html.lower():
                   raise SystemExit(f'forbidden public term remained: {forbidden}')
 
           js_path.write_text(js, encoding='utf-8')
