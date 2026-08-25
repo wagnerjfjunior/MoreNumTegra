@@ -1,0 +1,99 @@
+name: Apply Directorate Authorized Values
+on:
+  push:
+    branches:
+      - preview/vercel-prices-august-2026
+    paths:
+      - .github/workflows/apply-directorate-authorized-values.yml
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: preview/vercel-prices-august-2026
+      - name: Apply authorized commercial references
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          js_path = Path('src-greenn/moretegra.js')
+          html_path = Path('src-greenn/blocks/01-html-inicial.html')
+          js = js_path.read_text(encoding='utf-8')
+
+          updates = {
+            'Château Jardin': (3690361, 'priced', 'Diretoria: U501 · 185 m² · R$ 19.947/m² · total autorizado R$ 3.690.361.'),
+            'Nova Vivere': (852586.08, 'priced', 'Diretoria: U-701 · 72,82 m² · R$ 11.708/m² · total autorizado R$ 852.586,08.'),
+            'Caminhos da Lapa Elo Duo': (718910, 'priced', 'Diretoria: AP0109 · 67 m² · R$ 10.730/m² · ticket de referência R$ 718.910.'),
+            'Garden Design': (673050, 'priced', 'Diretoria: U-0112 · R$ 11.020/m² · total autorizado R$ 673.050.'),
+            'Ampère Brooklin': (4770000, 'priced', 'Diretoria: U-0121 · 262,35 m² · R$ 18.181/m² · total autorizado R$ 4.770.000.'),
+            'Mozae Higienópolis': (721510, 'priced', 'Diretoria: U-AP0301 · 46 m² · R$ 15.685/m² · ticket de referência R$ 721.510.'),
+            'Universo Tatuapé Órbita': (611685, 'priced', 'Diretoria: AP0609 · 69 m² · R$ 8.865/m² · ticket de referência R$ 611.685.'),
+            'Ária Higienópolis': (501000, 'priced', 'Diretoria: Studio U-1510 · 30 m² · R$ 16.700/m² · R$ 501.000; AP1214 · 54 m² · R$ 17.856/m² · ticket de referência R$ 964.224.'),
+            'Bem Moema': (1811200, 'priced', 'Diretoria: AP0202 · 80 m² · R$ 22.640/m² · ticket de referência R$ 1.811.200.'),
+            'Bem Moema Studios & Offices': (509600, 'priced', 'Diretoria: SU1702 · 28 m² · R$ 18.200/m² · ticket de referência R$ 509.600.'),
+            'Soma Perdizes': (630000, 'priced', 'Diretoria: U-0602 · 45 m² · R$ 14.000/m² · total autorizado R$ 630.000.'),
+            'Zahle Jardins': (None, 'consult', 'Diretoria: Sob consulta.'),
+            'Bueno Brandão 257': (21750000, 'priced', 'Diretoria: unidade 31 · 500 m² · R$ 43.500/m² · ticket de referência R$ 21.750.000.'),
+            'CAPIITOLO by Piero Lissoni': (3647490, 'priced', 'Diretoria: unidade 24 · 210 m² · R$ 17.369/m² · ticket de referência R$ 3.647.490.'),
+            'DSG Itaim': (None, 'consult', 'Diretoria: U-201 · 27 m² · Sob consulta.'),
+            'Ledge Brooklin': (600000, 'priced', 'Diretoria: Studio S-0052 · R$ 16.666/m² · R$ 600.000; U-1223 · R$ 17.116/m² · R$ 1.199.000.'),
+            'TEG Sacomã': (390000, 'priced', 'Diretoria: U-0011 · 65 m² · R$ 6.000/m² · total autorizado R$ 390.000.'),
+            'Tièl Vila Nova Conceição': (598500, 'priced', 'Diretoria: unidade 914 · 21 m² · R$ 28.500/m² · ticket de referência R$ 598.500.'),
+            'YPY Alto do Ipiranga': (727650, 'priced', 'Diretoria: AP0207 · 66 m² · R$ 11.025/m² · ticket de referência R$ 727.650.')
+          }
+
+          js = re.sub(
+            r'  // COMMERCIAL_REFERENCE_2026_08_24:\n  // preços .*?\n  // disponibilidade, condições e negociação permanecem sujeitas à confirmação antes da Green comercial\.\n',
+            '  // DIRECTORATE_AUTHORIZED_REFERENCE_2026_08_25:\n  // valores publicados usam exclusivamente a coluna “Sua referência / USAR VALOR” autorizada pela Diretoria.\n  // valores da Coordenação AGO/26 são comparação interna e não são usados na publicação.\n',
+            js,
+            count=1
+          )
+
+          for name, (price, state, note) in updates.items():
+              pat = re.compile(r'(\{name:"' + re.escape(name) + r'".*?official:"[^"]+",)price:(?:null|[0-9.]+),priceState:"[^"]+",priceNote:"[^"]*"(\})')
+              m = pat.search(js)
+              if not m:
+                  raise SystemExit(f'object not found: {name}')
+              pv = 'null' if price is None else str(price)
+              replacement = m.group(1) + f'price:{pv},priceState:"{state}",priceNote:"{note}"' + m.group(2)
+              js = js[:m.start()] + replacement + js[m.end():]
+
+          names = re.findall(r'name:"([^"]+)"', js)
+          if len(names) != 19 or set(names) != set(updates):
+              raise SystemExit(f'catalog mismatch: {len(names)}')
+          if js.count('priceState:"priced"') != 17 or js.count('priceState:"consult"') != 2:
+              raise SystemExit('unexpected pricing state counts')
+          for forbidden in ['Menor referência da Tabela Coordenação', 'Menor referência da tabela Safari']:
+              if forbidden in js:
+                  raise SystemExit(f'forbidden old source remains: {forbidden}')
+          js_path.write_text(js, encoding='utf-8')
+
+          html = html_path.read_text(encoding='utf-8')
+          old = 'Os valores exibidos nesta página são referências <strong>“a partir de”</strong>, calculadas pelo menor ticket identificado nas tabelas comerciais de agosto de 2026 fornecidas pela Coordenação. A disponibilidade da unidade e a condição comercial devem ser confirmadas no atendimento.'
+          new = 'Os valores exibidos nesta página são referências comerciais <strong>autorizadas pela Diretoria</strong>, vinculadas às unidades indicadas na atualização de 25 de agosto de 2026. Quando um card reúne mais de uma referência autorizada, o “a partir de” considera o menor ticket entre essas referências. Disponibilidade e condição final devem ser confirmadas no atendimento.'
+          if old not in html:
+              raise SystemExit('commercial disclaimer not found')
+          html = html.replace(old, new)
+          old = 'Não. São referências “a partir de” baseadas no menor ticket identificado nas tabelas comerciais de agosto de 2026 fornecidas pela Coordenação. O valor final depende da disponibilidade, unidade escolhida, tabela vigente, entrada, fluxo, forma de pagamento e negociação.'
+          new = 'Não. São referências autorizadas pela Diretoria para as unidades indicadas. O valor final depende da disponibilidade, unidade escolhida, tabela vigente, entrada, fluxo, forma de pagamento e negociação.'
+          if old not in html:
+              raise SystemExit('faq disclaimer not found')
+          html = html.replace(old, new)
+          html_path.write_text(html, encoding='utf-8')
+          PY
+          node --check src-greenn/moretegra.js
+          git diff --check
+          grep -q 'DIRECTORATE_AUTHORIZED_REFERENCE_2026_08_25' src-greenn/moretegra.js
+          grep -q 'autorizadas pela Diretoria' src-greenn/blocks/01-html-inicial.html
+      - name: Commit corrected preview and remove temporary workflow
+        run: |
+          git config user.name "Wagner Fernandes"
+          git config user.email "wagnerjfjunior@gmail.com"
+          git rm -f .github/workflows/apply-directorate-authorized-values.yml
+          git add src-greenn/moretegra.js src-greenn/blocks/01-html-inicial.html
+          git commit -m "data: aplicar valores autorizados pela diretoria"
+          git push origin HEAD:preview/vercel-prices-august-2026
