@@ -176,7 +176,7 @@
     if (!project) return "";
 
     if (project.name === "Caminhos da Lapa Elo Duo") {
-      return "Ótima escolha. O Elo Duo está pronto para morar na Lapa, com últimas unidades, plantas de 47 m², 55 m² e 67 m², lazer completo e mobilidade ligada à estação de trem.";
+      return "O Elo Duo está pronto para morar na Lapa, com últimas unidades, plantas de 47 m², 55 m² e 67 m², lazer completo e mobilidade ligada à estação de trem.";
     }
 
     return `${project.status} em ${project.location}. ${project.info}.`;
@@ -205,24 +205,59 @@
       return;
     }
 
+    const galleryAlt = (item) => {
+      const alt = String(item?.alt || "").trim();
+      if (alt.startsWith("Imagem oficial adicional do ")) return "";
+      return alt || project.name;
+    };
+
     const figure = (item, main = false) => `
       <figure style="margin:0;overflow:hidden;border-radius:16px;background:#d7d2c8;${main ? "grid-row:1 / 3" : ""}">
-        <img src="${escapeHtml(item.url)}" alt="${escapeHtml(item.alt || project.name)}" width="960" height="720" ${main ? "" : "loading=\"lazy\""} decoding="async" style="width:100%;height:100%;display:block;object-fit:cover">
+        <img src="${escapeHtml(item.url)}" alt="${escapeHtml(galleryAlt(item))}" width="960" height="720" ${main ? "" : "loading=\"lazy\""} decoding="async" style="width:100%;height:100%;display:block;object-fit:cover">
       </figure>`;
 
     mount.hidden = false;
     mount.innerHTML = `
-      <div style="display:grid;grid-template-columns:minmax(0,2fr) minmax(96px,1fr);grid-template-rows:1fr 1fr;gap:8px;aspect-ratio:4/3">
+      <div data-interest-gallery-grid style="display:grid;grid-template-columns:minmax(0,2fr) minmax(96px,1fr);grid-template-rows:1fr 1fr;gap:8px;aspect-ratio:4/3">
         ${figure(images[0], true)}
         ${figure(images[1])}
         ${figure(images[2] || images[1])}
       </div>
-      <small style="display:block;margin-top:7px;color:#77736b;font-size:10.5px;line-height:1.35">Imagens oficiais do empreendimento; perspectivas ilustradas quando aplicável.</small>`;
+      <small style="display:block;margin-top:7px;color:#77736b;font-size:12.5px;line-height:1.45">Imagens oficiais do empreendimento; perspectivas ilustradas quando aplicável.</small>`;
+
+    const rebalanceGallery = () => {
+      const grid = mount.querySelector("[data-interest-gallery-grid]");
+      if (!grid) return;
+      const visible = [...grid.querySelectorAll("figure")].filter((figureNode) => figureNode.style.display !== "none");
+
+      visible.forEach((figureNode) => {
+        figureNode.style.gridRow = "auto";
+      });
+
+      if (visible.length >= 3) return;
+
+      if (visible.length === 2) {
+        grid.style.gridTemplateColumns = "1fr 1fr";
+        grid.style.gridTemplateRows = "1fr";
+        grid.style.aspectRatio = "16 / 7";
+        return;
+      }
+
+      if (visible.length === 1) {
+        grid.style.gridTemplateColumns = "1fr";
+        grid.style.gridTemplateRows = "1fr";
+        grid.style.aspectRatio = "4 / 3";
+        return;
+      }
+
+      mount.hidden = true;
+    };
 
     mount.querySelectorAll("img").forEach((img) => {
       img.addEventListener("error", () => {
         const holder = img.closest("figure");
         if (holder) holder.style.display = "none";
+        rebalanceGallery();
       }, {once:true});
     });
   }
@@ -244,7 +279,7 @@
     context.innerHTML = `
       <span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:850;color:#8a6a10">Ótima escolha</span>
       <strong data-interest-name style="font-size:clamp(1.55rem,6vw,2.35rem);line-height:1.02;letter-spacing:-.035em"></strong>
-      <div data-interest-gallery hidden aria-label="Galeria do empreendimento"></div>
+      <div data-interest-gallery hidden role="group" aria-label="Galeria do empreendimento"></div>
       <p data-interest-pitch style="margin:0;max-width:780px;color:#5f5c54;font-size:14px;line-height:1.6"></p>
       <div data-interest-price hidden style="display:grid;gap:3px;padding:14px 16px;border-radius:16px;background:#171813;color:#fff">
         <span style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:850;color:#EBB92E">Referência por m²</span>
