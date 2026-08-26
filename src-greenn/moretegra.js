@@ -188,11 +188,27 @@
   }
 
   function interestGalleryImages(project) {
-    if (!project) return [];
-    const primary = {url:mediaUrl(project.image),alt:project.alt || project.name};
-    const extras = INTEREST_GALLERIES[project.name] || [];
-    return [primary, ...extras].filter((item) => item?.url).slice(0, 3);
-  }
+  if (!project) return [];
+  const extras = INTEREST_GALLERIES[project.name] || [];
+  const seen = new Set();
+
+  return extras.reduce((images, item) => {
+    if (!item?.url || images.length >= 3) return images;
+
+    const resolvedUrl = String(mediaUrl(item.url) || "").trim();
+    if (!resolvedUrl) return images;
+
+    let normalizedUrl = resolvedUrl;
+    try {
+      normalizedUrl = new URL(resolvedUrl).href;
+    } catch (_) {}
+
+    if (seen.has(normalizedUrl)) return images;
+    seen.add(normalizedUrl);
+    images.push({...item, url:resolvedUrl});
+    return images;
+  }, []);
+}
 
   function renderInterestGallery(context, project) {
     const mount = context?.querySelector("[data-interest-gallery]");
@@ -216,14 +232,15 @@
         <img src="${escapeHtml(item.url)}" alt="${escapeHtml(galleryAlt(item))}" width="960" height="720" ${main ? "" : "loading=\"lazy\""} decoding="async" style="width:100%;height:100%;display:block;object-fit:cover">
       </figure>`;
 
-    mount.hidden = false;
-    mount.innerHTML = `
-      <div data-interest-gallery-grid style="display:grid;grid-template-columns:minmax(0,2fr) minmax(96px,1fr);grid-template-rows:1fr 1fr;gap:8px;aspect-ratio:4/3">
-        ${figure(images[0], true)}
-        ${figure(images[1])}
-        ${figure(images[2] || images[1])}
-      </div>
-      <small style="display:block;margin-top:7px;color:#77736b;font-size:12.5px;line-height:1.45">Imagens oficiais do empreendimento; perspectivas ilustradas quando aplicável.</small>`;
+    const useBento = images.length >= 3;
+  mount.hidden = false;
+  mount.innerHTML = `
+    <div data-interest-gallery-grid style="${useBento ? "display:grid;grid-template-columns:minmax(0,2fr) minmax(96px,1fr);grid-template-rows:1fr 1fr;gap:8px;aspect-ratio:4/3" : "display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr;gap:8px;aspect-ratio:16/7"}">
+      ${figure(images[0], useBento)}
+      ${figure(images[1])}
+      ${useBento ? figure(images[2]) : ""}
+    </div>
+    <small style="display:block;margin-top:7px;color:#77736b;font-size:12.5px;line-height:1.45">Imagens oficiais do empreendimento; perspectivas ilustradas quando aplicável.</small>`;
 
     const rebalanceGallery = () => {
       const grid = mount.querySelector("[data-interest-gallery-grid]");
