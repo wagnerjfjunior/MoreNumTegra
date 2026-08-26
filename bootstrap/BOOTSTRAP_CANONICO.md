@@ -54,25 +54,6 @@ Canonical public homologation URL:
 
 `https://morenumtegra.vercel.app/`
 
-Decisão de Search vigente no SES:
-
-```text
-SEARCH_EXECUTION_MODE: CROSS_PROJECT_SERVICE
-SERVICE_PROVIDER_PROJECT_ID: blogs-sites-portais-seo
-CURRENT_PROVIDER_ROLES:
-- seo_strategy
-- technical_seo
-- content_semantic_seo
-- seo_analytics_growth
-- paid_search_sem
-
-FUTURE_SERVICE_INTENT_ONLY:
-- local_seo
-- authority_digital_pr
-```
-
-Para estado atual de adoção, resolver SES `projects/SPECIALIST_ADOPTION_MATRIX_CURRENT.md` -> versão corrente e `projects/morenumtegra/PROJECT_ADAPTER.md`. A matriz é snapshot de governança; o Project Adapter é o detalhe SES-side; este repositório continua dono da verdade e autoridade do MoreNumTegra.
-
 Preservar:
 
 ```text
@@ -173,6 +154,25 @@ Vercel Production deve permanecer `noindex, nofollow` salvo decisão SEO especí
 ## 10. Integração SES / SFJM
 
 O Specialist Engineering System (SES) é camada externa. Não substitui a autoridade do projeto.
+
+Decisão de Search vigente no SES:
+
+```text
+SEARCH_EXECUTION_MODE: CROSS_PROJECT_SERVICE
+SERVICE_PROVIDER_PROJECT_ID: blogs-sites-portais-seo
+CURRENT_PROVIDER_ROLES:
+- seo_strategy
+- technical_seo
+- content_semantic_seo
+- seo_analytics_growth
+- paid_search_sem
+
+FUTURE_SERVICE_INTENT_ONLY:
+- local_seo
+- authority_digital_pr
+```
+
+Para estado atual de adoção, resolver SES `projects/SPECIALIST_ADOPTION_MATRIX_CURRENT.md` -> versão corrente e `projects/morenumtegra/PROJECT_ADAPTER.md`. A matriz é snapshot de governança; o Project Adapter é o detalhe SES-side; este repositório continua dono da verdade e autoridade do MoreNumTegra.
 
 Para trabalho mediado pelo SES:
 
