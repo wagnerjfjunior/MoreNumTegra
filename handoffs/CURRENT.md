@@ -103,7 +103,30 @@ Os valores visíveis permanecem referências de publicação aprovadas no projet
 
 Antes da Green comercial, revalidar os fatos visíveis relevantes, especialmente preço, disponibilidade, metragem, estágio e condições.
 
-## 7. Limites
+## 7. Integração SES / Search
+
+O MoreNumTegra mantém autoridade integral sobre produto, código, Vercel/Green, implementação, deploy, orçamento, publicação de campanha e aceitação de risco.
+
+Para Search, o modelo SES vigente usa `blogs-sites-portais-seo` como Search Center of Expertise / provider:
+
+```text
+seo_strategy
+technical_seo
+content_semantic_seo
+seo_analytics_growth
+paid_search_sem
+```
+
+A modalidade é `ADOPTED_VIA_CROSS_PROJECT_SERVICE`. Local SEO e Authority & Digital PR são somente `FUTURE_SERVICE_INTENT` enquanto não houver certificação + ativação explícita posterior.
+
+Retomada material de Search deve resolver SES live, `projects/SPECIALIST_ADOPTION_MATRIX_CURRENT.md`, o Project Adapter MoreNumTegra e o Project Adapter do provider. O provider pode diagnosticar, pesquisar, recomendar, medir e otimizar; qualquer mutação no MoreNumTegra exige autoridade própria deste projeto.
+
+```text
+PROVIDER_SPECIALIST_WORK != MORENUMTEGRA_MUTATION
+CROSS_PROJECT_SERVICE != PROJECT_OWNERSHIP_TRANSFER
+```
+
+## 8. Limites
 
 Continuam fora do escopo sem gate específico:
 
@@ -115,6 +138,6 @@ Continuam fora do escopo sem gate específico:
 - segredo/token client-side;
 - dados comerciais não revalidados para a publicação Green.
 
-## 8. Próxima ação segura
+## 9. Próxima ação segura
 
 Autoridade: `docs/NEXT_SAFE_ACTION.md`.
