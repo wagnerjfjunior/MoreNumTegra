@@ -141,6 +141,10 @@
       scrollToSelector("#oportunidades");
     });
 
+    context.querySelector("[data-continue-form]")?.addEventListener("click", (event) => {
+      if (scrollToSelector("#formulario")) event.preventDefault();
+    });
+
     return context;
   }
 
@@ -444,10 +448,10 @@
 
     root.querySelectorAll("a[href^='#']").forEach((link) =>
       link.addEventListener("click", (event) => {
-        if (link.hasAttribute("data-focus-price") || link.hasAttribute("data-interest")) return;
+        if (link.hasAttribute("data-focus-price") || link.hasAttribute("data-interest") || link.hasAttribute("data-continue-form")) return;
         const selector = link.getAttribute("href");
         if (!selector || selector === "#") return;
-        if (selector === "#formulario" && !link.hasAttribute("data-continue-form")) {
+        if (selector === "#formulario") {
           setInterestContext(root, "");
         }
         if (scrollToSelector(selector)) event.preventDefault();
