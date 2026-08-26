@@ -12,6 +12,9 @@
   // DIRECTORATE_AUTHORIZED_REFERENCE_2026_08_25:
   // valores publicados usam exclusivamente a coluna “Sua referência / USAR VALOR” autorizada pela Diretoria.
   // valores da Coordenação AGO/26 são comparação interna e não são usados na publicação.
+  // ELO_INTEREST_COPY_2026_08_26:
+  // fatos adicionais do Elo Duo (Entregue, Últimas unidades, mobilidade ligada à estação e lazer completo)
+  // conferidos na página oficial Tegra em 2026-08-26. Revalidar antes da publicação Green.
   const PROJECTS = Object.freeze([
     {name:"Château Jardin",location:"Cidade Jardim · Zona Sul",zone:"Zona Sul",status:"Lançamento",statusKey:"lancamento",info:"3 ou 4 suítes · 185m² a 355m² · 3 ou 4 vagas",feature:"Novo eixo Cidade Jardim",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F364%2FImagemPrincipal%2FTegra-Incorporadora-Fachada-Empreendimento-Chateau-Jardin-Apartamentos-Cidade-Jardim-Sao-Paulo-SP-714x640-1774666511357.jpg&w=828",alt:"Château Jardin, empreendimento Tegra em Cidade Jardim, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/cidade-jardim/chateaujardin",price:3690361,priceState:"priced",priceNote:"Unidade 501 · 185 m² · R$ 19.947/m² · Valor a partir de R$ 3.690.361. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."},
     {name:"Nova Vivere",location:"Lapa · Zona Oeste",zone:"Zona Oeste",status:"Lançamento",statusKey:"lancamento",info:"2 ou 3 suítes · 72m² e 105m² · 1 ou 2 vagas",feature:"Caminhos da Lapa",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F363%2FImagemPrincipal%2FTegra-Incorporadora-Area-de-Lazer-Piscina-Empreendimento-Nova-Vivere-Caminhos-da-Lapa-Apartamentos-Sao-Paulo-SP-714x640-1770300546843.png&w=828",alt:"Nova Vivere, empreendimento Tegra em Lapa, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/lapa/novavivere",price:852586.08,priceState:"priced",priceNote:"Unidade 701 · 72,82 m² · R$ 11.708/m² · Valor a partir de R$ 852.586,08. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."},
@@ -34,15 +37,30 @@
     {name:"YPY Alto do Ipiranga",location:"Alto do Ipiranga · Zona Sul",zone:"Zona Sul",status:"Em construção",statusKey:"construcao",info:"2 ou 3 dorms. · 65m² e 80m² · 1 vaga",feature:"Mobilidade e lazer",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F346%2FImagemPrincipal%2Ff473a9c8-e222-46f5-887e-c06efa82aaff-1715887075276.jpg&w=828",alt:"YPY Alto do Ipiranga, empreendimento Tegra em Alto do Ipiranga, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/alto-do-ipiranga/ypyaltodoipiranga",price:727650,priceState:"priced",priceNote:"Unidade AP0207 · 66 m² · R$ 11.025/m² · Valor a partir de R$ 727.650. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."}
   ]);
 
-  const statusClass = Object.freeze({lancamento:"mt-status-lancamento",construcao:"mt-status-construcao",entregue:"mt-status-entregue"});
-  const normalize = (value) => String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
-  const escapeHtml = (value) => String(value || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/\"/g,"&quot;").replace(/'/g,"&#039;");
+  const statusClass = Object.freeze({
+    lancamento: "mt-status-lancamento",
+    construcao: "mt-status-construcao",
+    entregue: "mt-status-entregue"
+  });
+
+  const normalize = (value) =>
+    String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+
+  const escapeHtml = (value) =>
+    String(value || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
 
   function mediaUrl(value) {
     if (!value) return "";
     try {
       const parsed = new URL(value);
-      if (parsed.pathname === "/_next/image" && parsed.searchParams.get("url")) return parsed.searchParams.get("url");
+      if (parsed.pathname === "/_next/image" && parsed.searchParams.get("url")) {
+        return parsed.searchParams.get("url");
+      }
     } catch (_) {}
     return value;
   }
@@ -52,12 +70,39 @@
     return nodes.find((node) => node.getClientRects().length > 0) || nodes[0] || null;
   }
 
-  function scrollToSelector(selector) {
-    const target = visibleTarget(selector);
+  function scrollToElement(target) {
     if (!target) return false;
     const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches === true;
-    target.scrollIntoView({behavior: reduced ? "auto" : "smooth", block:"start"});
+    target.scrollIntoView({behavior: reduced ? "auto" : "smooth", block: "start"});
     return true;
+  }
+
+  function scrollToSelector(selector) {
+    return scrollToElement(visibleTarget(selector));
+  }
+
+  function projectByName(name) {
+    return PROJECTS.find((project) => project.name === name) || null;
+  }
+
+  function pricePerSqm(project) {
+    const match = String(project?.priceNote || "").match(/R\$\s*[\d.]+(?:,\d+)?\/m²/);
+    return match ? match[0] : "";
+  }
+
+  function interestPitch(project) {
+    if (!project) return "";
+
+    if (project.name === "Caminhos da Lapa Elo Duo") {
+      return "Ótima escolha. O Elo Duo está pronto para morar na Lapa, com últimas unidades, plantas de 47 m², 55 m² e 67 m², lazer completo e mobilidade ligada à estação de trem.";
+    }
+
+    return `${project.status} em ${project.location}. ${project.info}.`;
+  }
+
+  function interestMarketNote(project) {
+    if (project?.name !== "Caminhos da Lapa Elo Duo") return "";
+    return "Entre as referências atuais deste catálogo para a Lapa, esta é a menor referência por m².";
   }
 
   function ensureInterestContext(root) {
@@ -71,36 +116,69 @@
     context.dataset.interestContext = "";
     context.hidden = true;
     context.setAttribute("aria-live", "polite");
-    context.style.cssText = "margin:0 max(20px,5vw) 24px;padding:18px 20px;border:1px solid #d9d5ca;border-radius:18px;background:#fff;color:#171813;box-shadow:0 12px 30px rgba(20,20,16,.08);display:grid;gap:7px";
+    context.style.cssText =
+      "margin:0 max(20px,5vw) 28px;padding:22px;border:1px solid #d9d5ca;border-radius:22px;background:linear-gradient(135deg,#fff,#f7f2e5);color:#171813;box-shadow:0 16px 36px rgba(20,20,16,.10);display:grid;gap:12px";
+
     context.innerHTML = `
-      <span style="font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:850;color:#8a6a10">Seu interesse</span>
-      <strong data-interest-name style="font-size:clamp(1.2rem,4.8vw,1.7rem);line-height:1.15"></strong>
-      <p style="margin:0;color:#6d6b63;font-size:13px;line-height:1.5">Você está solicitando condições para este empreendimento.</p>
-      <a href="#oportunidades" data-change-interest style="width:max-content;min-height:44px;display:inline-flex;align-items:center;font-size:12px;font-weight:800;text-decoration:underline;text-underline-offset:3px">Alterar empreendimento</a>`;
-    anchor.insertAdjacentElement("afterend", context);
+      <span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:850;color:#8a6a10">Ótima escolha</span>
+      <strong data-interest-name style="font-size:clamp(1.55rem,6vw,2.35rem);line-height:1.02;letter-spacing:-.035em"></strong>
+      <p data-interest-pitch style="margin:0;max-width:780px;color:#5f5c54;font-size:14px;line-height:1.6"></p>
+      <div data-interest-price hidden style="display:grid;gap:3px;padding:14px 16px;border-radius:16px;background:#171813;color:#fff">
+        <span style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:850;color:#EBB92E">Referência por m²</span>
+        <strong data-interest-sqm style="font-size:1.45rem;line-height:1.1"></strong>
+        <small data-interest-market-note hidden style="font-size:12px;line-height:1.45;color:rgba(255,255,255,.72)"></small>
+      </div>
+      <a class="mt-button mt-button-primary" href="#formulario" data-continue-form style="width:100%;min-height:54px;font-size:14px">Quero receber as condições deste Tegra</a>
+      <small style="color:#706d65;font-size:12px;line-height:1.45">Disponibilidade e condições vigentes serão confirmadas no atendimento.</small>
+      <a href="#oportunidades" data-change-interest style="width:max-content;min-height:44px;display:inline-flex;align-items:center;font-size:12px;font-weight:800;text-decoration:underline;text-underline-offset:3px">Escolher outro empreendimento</a>`;
+
+    anchor.insertAdjacentElement("beforebegin", context);
+
     context.querySelector("[data-change-interest]")?.addEventListener("click", (event) => {
       event.preventDefault();
       document.documentElement.removeAttribute("data-moretegra-interest");
       context.hidden = true;
       scrollToSelector("#oportunidades");
     });
+
     return context;
   }
 
   function setInterestContext(root, interest) {
     const context = ensureInterestContext(root);
-    if (!context) return;
+    if (!context) return null;
+
     const name = String(interest || "").trim();
     const nameNode = context.querySelector("[data-interest-name]");
+    const pitchNode = context.querySelector("[data-interest-pitch]");
+    const priceBox = context.querySelector("[data-interest-price]");
+    const sqmNode = context.querySelector("[data-interest-sqm]");
+    const marketNode = context.querySelector("[data-interest-market-note]");
+
     if (!name) {
       context.hidden = true;
       if (nameNode) nameNode.textContent = "";
+      if (pitchNode) pitchNode.textContent = "";
       document.documentElement.removeAttribute("data-moretegra-interest");
-      return;
+      return context;
     }
+
+    const project = projectByName(name);
     if (nameNode) nameNode.textContent = name;
+    if (pitchNode) pitchNode.textContent = project ? interestPitch(project) : "Você está solicitando condições para este empreendimento.";
+
+    const sqm = pricePerSqm(project);
+    const marketNote = interestMarketNote(project);
+    if (priceBox) priceBox.hidden = !sqm;
+    if (sqmNode) sqmNode.textContent = sqm;
+    if (marketNode) {
+      marketNode.textContent = marketNote;
+      marketNode.hidden = !marketNote;
+    }
+
     context.hidden = false;
     document.documentElement.dataset.moretegraInterest = name;
+    return context;
   }
 
   function priceMarkup(project) {
@@ -156,7 +234,7 @@
         img.alt = "";
         img.style.display = "none";
         img.closest(".mt-project-image")?.setAttribute("data-image-unavailable", "true");
-      }, {once:true});
+      }, {once: true});
     });
   }
 
@@ -206,10 +284,13 @@
       frame.setAttribute("role", "button");
       frame.setAttribute("tabindex", "0");
       const play = () => mount(true);
-      frame.addEventListener("click", play, {once:true});
+      frame.addEventListener("click", play, {once: true});
       frame.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") { event.preventDefault(); play(); }
-      }, {once:true});
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          play();
+        }
+      }, {once: true});
       return;
     }
 
@@ -219,7 +300,7 @@
           observer.disconnect();
           window.setTimeout(() => mount(true), 350);
         }
-      }, {rootMargin:"160px"});
+      }, {rootMargin: "160px"});
       observer.observe(frame);
     } else {
       window.setTimeout(() => mount(true), 500);
@@ -244,7 +325,7 @@
     const quickZones = [...root.querySelectorAll("[data-quick-zone]")];
     const zoneField = zone?.closest("label") || null;
     const mobileZoneQuery = window.matchMedia?.("(max-width: 759px)") || null;
-    const state = {status:"todos", zone:"todas", price:"todos", query:""};
+    const state = {status: "todos", zone: "todas", price: "todos", query: ""};
 
     const syncZoneControls = () => {
       if (!zoneField) return;
@@ -281,17 +362,18 @@
 
       root.querySelectorAll("[data-interest]").forEach((link) => {
         link.addEventListener("click", (event) => {
-          const interest = link.dataset.interest || "";
-          setInterestContext(root, interest);
-          if (!scrollToSelector("#formulario")) return;
           event.preventDefault();
+          const context = setInterestContext(root, link.dataset.interest || "");
+          if (!scrollToElement(context)) scrollToSelector("#formulario");
         });
       });
     };
 
     const setStatus = (value) => {
       state.status = value || "todos";
-      statusButtons.forEach((button) => button.classList.toggle("is-active", button.dataset.filterStatus === state.status));
+      statusButtons.forEach((button) => {
+        button.classList.toggle("is-active", button.dataset.filterStatus === state.status);
+      });
       if (mobileStatus) mobileStatus.value = state.status;
       render();
     };
@@ -315,36 +397,68 @@
       setStatus("todos");
     };
 
-    statusButtons.forEach((button) => button.addEventListener("click", () => setStatus(button.dataset.filterStatus)));
-    quickZones.forEach((button) => button.addEventListener("click", () => setZone(button.dataset.quickZone)));
+    statusButtons.forEach((button) =>
+      button.addEventListener("click", () => setStatus(button.dataset.filterStatus))
+    );
+    quickZones.forEach((button) =>
+      button.addEventListener("click", () => setZone(button.dataset.quickZone))
+    );
     mobileStatus?.addEventListener("change", (event) => setStatus(event.target.value));
-    zone?.addEventListener("change", (event) => { state.zone = event.target.value; updateQuickZones(); render(); });
-    price?.addEventListener("change", (event) => { state.price = event.target.value; render(); });
-    search?.addEventListener("input", (event) => { state.query = event.target.value; render(); });
+    zone?.addEventListener("change", (event) => {
+      state.zone = event.target.value;
+      updateQuickZones();
+      render();
+    });
+    price?.addEventListener("change", (event) => {
+      state.price = event.target.value;
+      render();
+    });
+    search?.addEventListener("input", (event) => {
+      state.query = event.target.value;
+      render();
+    });
     clear?.addEventListener("click", reset);
     emptyClear?.addEventListener("click", reset);
 
     if (mobileZoneQuery) {
-      if (typeof mobileZoneQuery.addEventListener === "function") mobileZoneQuery.addEventListener("change", syncZoneControls);
-      else if (typeof mobileZoneQuery.addListener === "function") mobileZoneQuery.addListener(syncZoneControls);
+      if (typeof mobileZoneQuery.addEventListener === "function") {
+        mobileZoneQuery.addEventListener("change", syncZoneControls);
+      } else if (typeof mobileZoneQuery.addListener === "function") {
+        mobileZoneQuery.addListener(syncZoneControls);
+      }
     }
     syncZoneControls();
 
-    root.querySelectorAll("[data-set-status]").forEach((link) => link.addEventListener("click", () => setStatus(link.dataset.setStatus)));
-    root.querySelectorAll("[data-focus-price]").forEach((link) => link.addEventListener("click", (event) => {
-      event.preventDefault();
-      if (scrollToSelector("#oportunidades")) window.setTimeout(() => price?.focus({preventScroll:true}), 450);
-    }));
-    root.querySelectorAll("a[href^='#']").forEach((link) => link.addEventListener("click", (event) => {
-      if (link.hasAttribute("data-focus-price") || link.hasAttribute("data-interest")) return;
-      const selector = link.getAttribute("href");
-      if (!selector || selector === "#") return;
-      if (selector === "#formulario") setInterestContext(root, "");
-      if (scrollToSelector(selector)) event.preventDefault();
-    }));
+    root.querySelectorAll("[data-set-status]").forEach((link) =>
+      link.addEventListener("click", () => setStatus(link.dataset.setStatus))
+    );
+
+    root.querySelectorAll("[data-focus-price]").forEach((link) =>
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        if (scrollToSelector("#oportunidades")) {
+          window.setTimeout(() => price?.focus({preventScroll: true}), 450);
+        }
+      })
+    );
+
+    root.querySelectorAll("a[href^='#']").forEach((link) =>
+      link.addEventListener("click", (event) => {
+        if (link.hasAttribute("data-focus-price") || link.hasAttribute("data-interest")) return;
+        const selector = link.getAttribute("href");
+        if (!selector || selector === "#") return;
+        if (selector === "#formulario" && !link.hasAttribute("data-continue-form")) {
+          setInterestContext(root, "");
+        }
+        if (scrollToSelector(selector)) event.preventDefault();
+      })
+    );
 
     root.querySelectorAll("[data-hero-video]").forEach(initVideo);
-    root.querySelectorAll("[data-total-projects]").forEach((node) => { node.textContent = String(PROJECTS.length); });
+    root.querySelectorAll("[data-total-projects]").forEach((node) => {
+      node.textContent = String(PROJECTS.length);
+    });
+
     updateQuickZones();
     render();
   }
@@ -353,9 +467,12 @@
     document.querySelectorAll(ROOT_SELECTOR).forEach(initRoot);
   }
 
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initAll, {once:true});
-  else initAll();
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initAll, {once: true});
+  } else {
+    initAll();
+  }
 
   const observer = new MutationObserver(() => initAll());
-  observer.observe(document.documentElement, {childList:true, subtree:true});
+  observer.observe(document.documentElement, {childList: true, subtree: true});
 })();
