@@ -1,17 +1,18 @@
 # Handoff Atual — MoreNumTegra
 
 - Status: `atual`
-- Atualizado em: `2026-08-24`
+- Atualizado em: `2026-08-26`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra`
 - Referência: `main` — resolver live antes de agir
+- SHA observado no fechamento desta etapa: `8a237e298dee1391babb9bbbbf88fd4d9c2e40dd`
 - Baseline funcional vigente: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
-- Baseline técnica vigente após integração desta revisão: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
+- Baseline técnica vigente: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
 - Baseline técnica anterior: `docs/baseline/TECHNICAL_BASELINE_V2_1.md`
 - ADR aplicável: `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`
 
 ## 1. Estado atual
 
-A PR #6 foi mergeada em `main`. A implementação canônica já usa HTML/CSS/JavaScript vanilla e composição modular compatível com o builder Green Sales.
+A implementação canônica permanece em HTML/CSS/JavaScript vanilla e composição modular compatível com o builder Green Sales.
 
 Arquivos integrados:
 
@@ -28,6 +29,18 @@ src-greenn/
 ```
 
 O catálogo integrado contém 19 empreendimentos, filtros por estágio/zona/ticket, badges, preços de referência, vídeo in-page, CTAs e mock Vercel não transmissor do Form 46.
+
+A jornada UX foi refinada em 2026-08-26 e integrada em `main`, incluindo:
+
+- contexto visível de empreendimento selecionado;
+- galeria pós-intenção;
+- card mantendo uma única imagem de capa;
+- galeria usando apenas mídias adicionais distintas, sem repetir a capa do card;
+- deduplicação de URLs de mídia;
+- layout com 2 imagens quando existirem 2 mídias distintas e bento apenas quando existirem 3;
+- melhorias de acessibilidade, fallback e legibilidade comercial.
+
+A PR #21 foi mergeada por squash e resultou no SHA `8a237e298dee1391babb9bbbbf88fd4d9c2e40dd` em `main` no fechamento desta etapa.
 
 ## 2. Composição Green comercial
 
@@ -70,25 +83,25 @@ change
 
 ## 4. Situação de homologação
 
-A última implementação aprovada foi mergeada em `main`, porém o Vercel Production pode permanecer apontando para um deployment antigo até promoção/redeploy explícito. Quando isso ocorrer, classificar como `HOMOLOGATION_DRIFT`.
+O drift anterior entre `main` e Vercel Production foi corrigido durante esta etapa.
 
-A próxima ação é alinhar `https://morenumtegra.vercel.app/` ao estado aprovado de `main`, depois executar os testes públicos finais.
+Para o SHA `8a237e298dee1391babb9bbbbf88fd4d9c2e40dd`, a integração Vercel registrou status `success` com descrição `Deployment has completed`, e a URL pública `https://morenumtegra.vercel.app/` respondeu durante a verificação desta sessão.
 
-## 5. Dados comerciais
+Ainda não classificar a homologação pública como finalizada sem completar o gate público previsto em `docs/NEXT_SAFE_ACTION.md`, incluindo mobile/desktop, fluxos principais, runtime/console e CWV quando possível.
 
-Os preços atuais são referências de teste provenientes da tabela fornecida pelo proprietário. Casos sem ticket seguro permanecem `Sob consulta`; itens explicitamente esgotados permanecem `Esgotado`.
+## 5. Mídia e tracking
 
-Antes da Green comercial, revalidar todos os fatos visíveis relevantes, especialmente preço, disponibilidade, metragem, estágio e condições.
+- as imagens atuais permanecem referenciadas por origens oficiais/remotas já usadas pelo projeto; nenhuma migração de mídia para repositório próprio foi executada nesta etapa;
+- GitHub continua sendo fonte do código, não repositório de mídia pesada;
+- uma futura migração das mídias escolhidas para CDN/storage sob controle próprio pode ser avaliada separadamente;
+- GA4, GTM e Meta Pixel não foram ativados nesta etapa;
+- qualquer tracking futuro deve usar contas/containers próprios e gate específico de analytics/privacy.
 
-## 6. Vídeo / mídia
+## 6. Dados comerciais
 
-- vídeo in-page;
-- autoplay mudo quando permitido;
-- loop;
-- `playsinline`;
-- poster/fallback;
-- mídia não crítica;
-- imagens de cards usam origem real quando possível e fallback resiliente.
+Os valores visíveis permanecem referências de publicação aprovadas no projeto, com casos sem referência segura mantidos como `Sob consulta` quando aplicável.
+
+Antes da Green comercial, revalidar os fatos visíveis relevantes, especialmente preço, disponibilidade, metragem, estágio e condições.
 
 ## 7. Limites
 
@@ -100,7 +113,7 @@ Continuam fora do escopo sem gate específico:
 - FECH.AI/n8n/Make/Ads;
 - CMS/database/backend próprio;
 - segredo/token client-side;
-- dados comerciais não verificados.
+- dados comerciais não revalidados para a publicação Green.
 
 ## 8. Próxima ação segura
 
