@@ -19,7 +19,7 @@ Entregar um MoreNumTegra V1 mobile-first, rápido e SEO-first, com catálogo Teg
 
 | Frente | Estado | Próximo marco | Bloqueio |
 |---|---|---|---|
-| SFJM | operacional | preservar reconstrução live por bootstrap | nenhum |
+| SFJM | operacional; cross-project Search discovery registrado | preservar reconstrução live por bootstrap + SES adapters | nenhum conhecido |
 | Functional V2 | canônica | preservar | nenhum |
 | Technical V2.2 | canônica | preservar | nenhum |
 | Implementação frontend | integrada em `main` | validar publicamente | nenhum de código conhecido |
@@ -58,6 +58,20 @@ Entregar um MoreNumTegra V1 mobile-first, rápido e SEO-first, com catálogo Teg
 - imagens pesadas não devem ser migradas para GitHub por padrão;
 - GA4/GTM/Meta Pixel exigem gate próprio e não foram ativados neste fechamento.
 
+## 4. Integração Search via SES
+
+Decisão vigente:
+
+```text
+MoreNumTegra = consumer / product authority
+blogs-sites-portais-seo = Search Center of Expertise / service provider
+ADOPTION_MODE = ADOPTED_VIA_CROSS_PROJECT_SERVICE
+```
+
+Roles atuais via provider: `seo_strategy`, `technical_seo`, `content_semantic_seo`, `seo_analytics_growth` e `paid_search_sem`.
+
+Local SEO e Authority & Digital PR permanecem future intent, não adoção ativa. O SES central registra a decisão; este projeto continua dono de sua verdade, implementação e autorizações.
+
 ## 4. Evidência desta etapa
 
 - PR #21 mergeada em `main`;
@@ -68,7 +82,7 @@ Entregar um MoreNumTegra V1 mobile-first, rápido e SEO-first, com catálogo Teg
 - nenhum custom domain/DNS foi alterado;
 - nenhum GA4/GTM/Meta Pixel foi ativado.
 
-## 5. Riscos ativos
+## 6. Riscos ativos
 
 | Risco | Controle |
 |---|---|
@@ -82,7 +96,7 @@ Entregar um MoreNumTegra V1 mobile-first, rápido e SEO-first, com catálogo Teg
 | publicar preço/dado incorreto | revalidar tabelas/espelhos antes da Green |
 | tracking coletar dados sem governança | gate próprio de analytics/privacy antes de habilitar tags |
 
-## 6. Próxima ação segura
+## 7. Próxima ação segura
 
 Autoridade: `docs/NEXT_SAFE_ACTION.md`.
 
