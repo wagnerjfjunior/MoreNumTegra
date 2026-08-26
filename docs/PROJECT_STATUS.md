@@ -72,7 +72,7 @@ Roles atuais via provider: `seo_strategy`, `technical_seo`, `content_semantic_se
 
 Local SEO e Authority & Digital PR permanecem future intent, não adoção ativa. O SES central registra a decisão; este projeto continua dono de sua verdade, implementação e autorizações.
 
-## 4. Evidência desta etapa
+## 5. Evidência desta etapa
 
 - PR #21 mergeada em `main`;
 - `main` observado em `8a237e298dee1391babb9bbbbf88fd4d9c2e40dd`;
