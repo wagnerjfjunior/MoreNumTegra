@@ -1,0 +1,101 @@
+name: Apply gallery curation
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  curate:
+    if: github.head_ref == 'ux/gallery-curation-2026-08-26'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: Apply exact gallery patch
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path('src-greenn/moretegra.js')
+          text = path.read_text(encoding='utf-8')
+
+          old_images = '''  function interestGalleryImages(project) {
+            if (!project) return [];
+            const primary = {url:mediaUrl(project.image),alt:project.alt || project.name};
+            const extras = INTEREST_GALLERIES[project.name] || [];
+            return [primary, ...extras].filter((item) => item?.url).slice(0, 3);
+          }'''
+
+          new_images = '''  function interestGalleryImages(project) {
+            if (!project) return [];
+            const extras = INTEREST_GALLERIES[project.name] || [];
+            const seen = new Set();
+
+            return extras.reduce((images, item) => {
+              if (!item?.url || images.length >= 3) return images;
+
+              const resolvedUrl = String(mediaUrl(item.url) || "").trim();
+              if (!resolvedUrl) return images;
+
+              let normalizedUrl = resolvedUrl;
+              try {
+                normalizedUrl = new URL(resolvedUrl).href;
+              } catch (_) {}
+
+              if (seen.has(normalizedUrl)) return images;
+              seen.add(normalizedUrl);
+              images.push({...item, url:resolvedUrl});
+              return images;
+            }, []);
+          }'''
+
+          old_markup = '''    mount.hidden = false;
+            mount.innerHTML = `
+              <div data-interest-gallery-grid style="display:grid;grid-template-columns:minmax(0,2fr) minmax(96px,1fr);grid-template-rows:1fr 1fr;gap:8px;aspect-ratio:4/3">
+                ${figure(images[0], true)}
+                ${figure(images[1])}
+                ${figure(images[2] || images[1])}
+              </div>
+              <small style="display:block;margin-top:7px;color:#77736b;font-size:12.5px;line-height:1.45">Imagens oficiais do empreendimento; perspectivas ilustradas quando aplicável.</small>`;'''
+
+          new_markup = '''    const useBento = images.length >= 3;
+            mount.hidden = false;
+            mount.innerHTML = `
+              <div data-interest-gallery-grid style="${useBento ? "display:grid;grid-template-columns:minmax(0,2fr) minmax(96px,1fr);grid-template-rows:1fr 1fr;gap:8px;aspect-ratio:4/3" : "display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr;gap:8px;aspect-ratio:16/7"}">
+                ${figure(images[0], useBento)}
+                ${figure(images[1])}
+                ${useBento ? figure(images[2]) : ""}
+              </div>
+              <small style="display:block;margin-top:7px;color:#77736b;font-size:12.5px;line-height:1.45">Imagens oficiais do empreendimento; perspectivas ilustradas quando aplicável.</small>`;'''
+
+          if old_images not in text:
+              raise SystemExit('interestGalleryImages expected block not found')
+          if old_markup not in text:
+              raise SystemExit('gallery markup expected block not found')
+
+          text = text.replace(old_images, new_images, 1)
+          text = text.replace(old_markup, new_markup, 1)
+          path.write_text(text, encoding='utf-8')
+          PY
+
+          node --check src-greenn/moretegra.js
+          git diff --check
+
+      - name: Commit clean material diff
+        shell: bash
+        run: |
+          rm -f docs/GALLERY_CURATION_REQUEST.md
+          rm -f .github/workflows/gallery-curation.yml
+          git config user.name "Wagner Fernandes"
+          git config user.email "wagnerjfjunior@gmail.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "ux: evitar repetição de imagens na galeria"
+          git push origin HEAD:${{ github.head_ref }}
