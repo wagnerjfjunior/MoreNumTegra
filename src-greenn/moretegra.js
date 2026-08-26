@@ -60,6 +60,49 @@
     return true;
   }
 
+  function ensureInterestContext(root) {
+    let context = root.querySelector("[data-interest-context]");
+    if (context) return context;
+
+    const anchor = root.querySelector("[data-form-anchor]");
+    if (!anchor) return null;
+
+    context = document.createElement("aside");
+    context.dataset.interestContext = "";
+    context.hidden = true;
+    context.setAttribute("aria-live", "polite");
+    context.style.cssText = "margin:0 max(20px,5vw) 24px;padding:18px 20px;border:1px solid #d9d5ca;border-radius:18px;background:#fff;color:#171813;box-shadow:0 12px 30px rgba(20,20,16,.08);display:grid;gap:7px";
+    context.innerHTML = `
+      <span style="font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:850;color:#8a6a10">Seu interesse</span>
+      <strong data-interest-name style="font-size:clamp(1.2rem,4.8vw,1.7rem);line-height:1.15"></strong>
+      <p style="margin:0;color:#6d6b63;font-size:13px;line-height:1.5">Você está solicitando condições para este empreendimento.</p>
+      <a href="#oportunidades" data-change-interest style="width:max-content;min-height:44px;display:inline-flex;align-items:center;font-size:12px;font-weight:800;text-decoration:underline;text-underline-offset:3px">Alterar empreendimento</a>`;
+    anchor.insertAdjacentElement("afterend", context);
+    context.querySelector("[data-change-interest]")?.addEventListener("click", (event) => {
+      event.preventDefault();
+      document.documentElement.removeAttribute("data-moretegra-interest");
+      context.hidden = true;
+      scrollToSelector("#oportunidades");
+    });
+    return context;
+  }
+
+  function setInterestContext(root, interest) {
+    const context = ensureInterestContext(root);
+    if (!context) return;
+    const name = String(interest || "").trim();
+    const nameNode = context.querySelector("[data-interest-name]");
+    if (!name) {
+      context.hidden = true;
+      if (nameNode) nameNode.textContent = "";
+      document.documentElement.removeAttribute("data-moretegra-interest");
+      return;
+    }
+    if (nameNode) nameNode.textContent = name;
+    context.hidden = false;
+    document.documentElement.dataset.moretegraInterest = name;
+  }
+
   function priceMarkup(project) {
     let headline = "Sob consulta";
     let label = "Valor";
@@ -76,10 +119,10 @@
     }
 
     return `
-      <div class="mt-price-block" style="margin-top:14px;padding-top:14px;border-top:1px solid #e3ded3;display:grid;gap:4px">
-        <span style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:850;color:#8a6a10">${label}</span>
-        <strong style="font-size:1.16rem;line-height:1.15;color:${accent}">${escapeHtml(headline)}</strong>
-        <small style="display:block;font-size:8.5px;line-height:1.35;color:#8b887f">${escapeHtml(project.priceNote || "")}</small>
+      <div class="mt-price-block" style="margin-top:14px;padding-top:14px;border-top:1px solid #e3ded3;display:grid;gap:6px">
+        <span style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:850;color:#8a6a10">${label}</span>
+        <strong style="font-size:1.3rem;line-height:1.15;color:${accent}">${escapeHtml(headline)}</strong>
+        <small style="display:block;font-size:13px;line-height:1.5;color:#625f57">${escapeHtml(project.priceNote || "")}</small>
       </div>`;
   }
 
@@ -88,11 +131,11 @@
 
     return `
       <article class="mt-project-card" data-status="${escapeHtml(project.statusKey)}" data-zone="${escapeHtml(project.zone)}">
-        <a class="mt-project-image" href="#formulario" data-interest="${escapeHtml(project.name)}" aria-label="${actionLabel} para ${escapeHtml(project.name)}">
+        <div class="mt-project-image">
           <img data-project-image src="${escapeHtml(mediaUrl(project.image))}" alt="${escapeHtml(project.alt || project.name)}" width="828" height="743" loading="lazy" decoding="async">
           <span class="mt-status ${statusClass[project.statusKey] || ""}">${escapeHtml(project.status)}</span>
           ${project.feature ? `<span class="mt-feature">${escapeHtml(project.feature)}</span>` : ""}
-        </a>
+        </div>
         <div class="mt-project-body">
           <p class="mt-project-location">${escapeHtml(project.location)}</p>
           <h3>${escapeHtml(project.name)}</h3>
@@ -199,7 +242,15 @@
     const mobileStatus = root.querySelector("[data-status-mobile]");
     const statusButtons = [...root.querySelectorAll("[data-filter-status]")];
     const quickZones = [...root.querySelectorAll("[data-quick-zone]")];
+    const zoneField = zone?.closest("label") || null;
+    const mobileZoneQuery = window.matchMedia?.("(max-width: 759px)") || null;
     const state = {status:"todos", zone:"todas", price:"todos", query:""};
+
+    const syncZoneControls = () => {
+      if (!zoneField) return;
+      if (mobileZoneQuery?.matches) zoneField.style.display = "none";
+      else zoneField.style.removeProperty("display");
+    };
 
     const updateQuickZones = () => {
       quickZones.forEach((button) => {
@@ -230,9 +281,10 @@
 
       root.querySelectorAll("[data-interest]").forEach((link) => {
         link.addEventListener("click", (event) => {
+          const interest = link.dataset.interest || "";
+          setInterestContext(root, interest);
           if (!scrollToSelector("#formulario")) return;
           event.preventDefault();
-          document.documentElement.dataset.moretegraInterest = link.dataset.interest || "";
         });
       });
     };
@@ -272,15 +324,22 @@
     clear?.addEventListener("click", reset);
     emptyClear?.addEventListener("click", reset);
 
+    if (mobileZoneQuery) {
+      if (typeof mobileZoneQuery.addEventListener === "function") mobileZoneQuery.addEventListener("change", syncZoneControls);
+      else if (typeof mobileZoneQuery.addListener === "function") mobileZoneQuery.addListener(syncZoneControls);
+    }
+    syncZoneControls();
+
     root.querySelectorAll("[data-set-status]").forEach((link) => link.addEventListener("click", () => setStatus(link.dataset.setStatus)));
     root.querySelectorAll("[data-focus-price]").forEach((link) => link.addEventListener("click", (event) => {
       event.preventDefault();
       if (scrollToSelector("#oportunidades")) window.setTimeout(() => price?.focus({preventScroll:true}), 450);
     }));
     root.querySelectorAll("a[href^='#']").forEach((link) => link.addEventListener("click", (event) => {
-      if (link.hasAttribute("data-focus-price")) return;
+      if (link.hasAttribute("data-focus-price") || link.hasAttribute("data-interest")) return;
       const selector = link.getAttribute("href");
       if (!selector || selector === "#") return;
+      if (selector === "#formulario") setInterestContext(root, "");
       if (scrollToSelector(selector)) event.preventDefault();
     }));
 
