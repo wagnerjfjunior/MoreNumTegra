@@ -28,7 +28,7 @@ src-greenn/
     index.html
 ```
 
-O catálogo integrado contém 19 empreendimentos, filtros por estágio/zona/ticket, badges, preços de referência, vídeo in-page, CTAs e mock Vercel não transmissor do Form 46.
+O catálogo integrado contém 21 empreendimentos, filtros por estágio/zona/ticket, badges, preços de referência, vídeo in-page, CTAs e mock Vercel não transmissor do Form 46.
 
 A jornada UX foi refinada em 2026-08-26 e integrada em `main`, incluindo:
 
