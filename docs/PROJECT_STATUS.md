@@ -28,7 +28,7 @@ Entregar um MoreNumTegra V1 mobile-first, rápido e SEO-first, com catálogo Teg
 | Vercel Preview | candidato aprovado pelo proprietário e integrado | preservar como evidência | nenhum |
 | Vercel Production | deployment do `main` atual concluído com status `success` | homologação pública final | validação aberta completa pendente |
 | Mobile/UX | direção visual integrada | testar 360/390 e desktop na URL pública | evidência final pendente |
-| Catálogo | 19 cards integrados | revalidar fatos antes da Green | dados comerciais exigem conferência final |
+| Catálogo | 21 cards integrados | revalidar fatos antes da Green | dados comerciais exigem conferência final |
 | Preços | referências aprovadas no projeto | revalidar antes da Green | casos `Sob consulta` permanecem quando aplicável |
 | Vídeo | in-page | testar mobile/performance | mídia final pode evoluir |
 | Form/lead | Form 46 conhecido | validar aparência no builder | Vercel usa mock não transmissor |
@@ -50,7 +50,7 @@ Entregar um MoreNumTegra V1 mobile-first, rápido e SEO-first, com catálogo Teg
 - CSS e JavaScript são globais no builder;
 - vídeo toca dentro da página;
 - hero escuro + headline branca + amarelo Tegra é direção aceita;
-- catálogo integrado tem 19 imóveis, sujeito à revalidação factual/comercial;
+- catálogo integrado tem 21 imóveis, sujeito à revalidação factual/comercial;
 - valores são referências `A partir de`, não promessa de preço final;
 - negociação, fluxo, entrada e forma de pagamento podem alterar o cenário final;
 - card mantém 1 imagem de capa e a galeria pós-intenção não repete essa capa;

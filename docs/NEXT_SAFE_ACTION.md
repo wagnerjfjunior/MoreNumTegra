@@ -27,7 +27,7 @@ A integração Vercel registrou `success` / `Deployment has completed` para esse
 Antes de congelar release ou avançar para Green Sales, validar na URL estável:
 
 - desktop e mobile, com prioridade para 360px e 390px;
-- imagens dos 19 cards;
+- imagens dos 21 cards;
 - jornada `Negociar condições`;
 - bloco `Seu interesse`;
 - galeria pós-intenção sem repetição da imagem de capa;
