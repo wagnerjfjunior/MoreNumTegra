@@ -65,12 +65,13 @@ Decisão vigente:
 ```text
 MoreNumTegra = consumer / product authority
 blogs-sites-portais-seo = Search Center of Expertise / service provider
-ADOPTION_MODE = ADOPTED_VIA_CROSS_PROJECT_SERVICE
+ADOPTION_STATUS = ADOPTED
+EXECUTION_MODE = PROJECT_LOCAL_CROSS_PROJECT_SERVICE
 ```
 
 Roles atuais via provider: `seo_strategy`, `technical_seo`, `content_semantic_seo`, `seo_analytics_growth` e `paid_search_sem`.
 
-Local SEO e Authority & Digital PR permanecem future intent, não adoção ativa. O SES central registra a decisão; este projeto continua dono de sua verdade, implementação e autorizações.
+Local SEO e Authority & Digital PR permanecem future intent, não adoção ativa. O modo cross-project é metadata de execução local e não cria um novo status universal de adoção. O SES central registra a decisão; este projeto continua dono de sua verdade, implementação e autorizações.
 
 ## 5. Evidência desta etapa
 
