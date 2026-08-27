@@ -158,7 +158,8 @@ O Specialist Engineering System (SES) é camada externa. Não substitui a autori
 Decisão de Search vigente no SES:
 
 ```text
-SEARCH_EXECUTION_MODE: CROSS_PROJECT_SERVICE
+ADOPTION_STATUS: ADOPTED
+SEARCH_EXECUTION_MODE: PROJECT_LOCAL_CROSS_PROJECT_SERVICE
 SERVICE_PROVIDER_PROJECT_ID: blogs-sites-portais-seo
 CURRENT_PROVIDER_ROLES:
 - seo_strategy
@@ -179,8 +180,8 @@ Para trabalho mediado pelo SES:
 1. resolver o projeto em `projects/REGISTRY.md` por identificador explícito;
 2. o Project Adapter deve apontar para este bootstrap/entrypoints;
 3. nenhum arquétipo é adotado automaticamente;
-4. role só é adotada por mapeamento explícito `ROLE -> ARCHETYPE_ID` no Project Adapter SES, usando `ADOPTION_STATUS: ADOPTED` ou, quando explicitamente registrado, `ADOPTION_STATUS: ADOPTED_VIA_CROSS_PROJECT_SERVICE`;
-5. para `ADOPTED_VIA_CROSS_PROJECT_SERVICE`, resolver também `SERVICE_PROVIDER_PROJECT_ID`, o Project Adapter do provider e o contexto live de ambos os projetos antes da execução;
+4. role só é adotada por mapeamento explícito `ROLE -> ARCHETYPE_ID` no Project Adapter SES, usando `ADOPTION_STATUS: ADOPTED` ou, quando explicitamente registrado, `ADOPTION_STATUS: ADOPTED`;
+5. para uma role `ADOPTED` com `EXECUTION_MODE: PROJECT_LOCAL_CROSS_PROJECT_SERVICE`, resolver também `SERVICE_PROVIDER_PROJECT_ID`, o Project Adapter do provider e o contexto live de ambos os projetos antes da execução;
 6. role ausente/desconhecida/não adotada falha como `SPECIALIST_ROLE_NOT_ADOPTED`, sem fuzzy/fallback implícito;
 7. não inventar registry/skill/override project-local ausente;
 8. resolução de role, adoção, provider, roteabilidade, execução e autorização são estados distintos.
