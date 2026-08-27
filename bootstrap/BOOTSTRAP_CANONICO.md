@@ -155,15 +155,36 @@ Vercel Production deve permanecer `noindex, nofollow` salvo decisão SEO especí
 
 O Specialist Engineering System (SES) é camada externa. Não substitui a autoridade do projeto.
 
+Decisão de Search vigente no SES:
+
+```text
+ADOPTION_STATUS: ADOPTED
+SEARCH_EXECUTION_MODE: PROJECT_LOCAL_CROSS_PROJECT_SERVICE
+SERVICE_PROVIDER_PROJECT_ID: blogs-sites-portais-seo
+CURRENT_PROVIDER_ROLES:
+- seo_strategy
+- technical_seo
+- content_semantic_seo
+- seo_analytics_growth
+- paid_search_sem
+
+FUTURE_SERVICE_INTENT_ONLY:
+- local_seo
+- authority_digital_pr
+```
+
+Para estado atual de adoção, resolver SES `projects/SPECIALIST_ADOPTION_MATRIX_CURRENT.md` -> versão corrente e `projects/morenumtegra/PROJECT_ADAPTER.md`. A matriz é snapshot de governança; o Project Adapter é o detalhe SES-side; este repositório continua dono da verdade e autoridade do MoreNumTegra.
+
 Para trabalho mediado pelo SES:
 
 1. resolver o projeto em `projects/REGISTRY.md` por identificador explícito;
 2. o Project Adapter deve apontar para este bootstrap/entrypoints;
 3. nenhum arquétipo é adotado automaticamente;
-4. role só é adotada por mapeamento explícito `ROLE -> ARCHETYPE_ID` com `ADOPTION_STATUS: ADOPTED`;
-5. role ausente/desconhecida/não adotada falha como `SPECIALIST_ROLE_NOT_ADOPTED`, sem fuzzy/fallback implícito;
-6. não inventar registry/skill/override project-local ausente;
-7. resolução de role, roteabilidade, execução e autorização são estados distintos.
+4. role só é adotada por mapeamento explícito `ROLE -> ARCHETYPE_ID` no Project Adapter SES com `ADOPTION_STATUS: ADOPTED`; provider/delegação, quando existir, é metadata project-local separada;
+5. para uma role `ADOPTED` com `EXECUTION_MODE: PROJECT_LOCAL_CROSS_PROJECT_SERVICE`, resolver também `SERVICE_PROVIDER_PROJECT_ID`, o Project Adapter do provider e o contexto live de ambos os projetos antes da execução;
+6. role ausente/desconhecida/não adotada falha como `SPECIALIST_ROLE_NOT_ADOPTED`, sem fuzzy/fallback implícito;
+7. não inventar registry/skill/override project-local ausente;
+8. resolução de role, adoção, provider, roteabilidade, execução e autorização são estados distintos.
 
 Preservar:
 
@@ -173,6 +194,10 @@ ADOPTED != PROJECT_CONTEXT_READY
 ROUTABLE != EXECUTED
 PROJECT_CONTEXT_READY != AUTHORIZED_TO_MUTATE
 TOOL_CAPABILITY != AUTHORIZATION
+CROSS_PROJECT_SERVICE != PROJECT_OWNERSHIP_TRANSFER
+SEARCH_RECOMMENDATION != IMPLEMENTATION_AUTHORIZATION
+BUDGET_RECOMMENDATION != SPEND_AUTHORIZATION
+CAMPAIGN_DESIGNED != CAMPAIGN_PUBLISHED
 ```
 
 ## 11. Gates separados
