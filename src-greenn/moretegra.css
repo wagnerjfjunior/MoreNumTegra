@@ -83,6 +83,13 @@
 .mt-status,.mt-feature{position:absolute;z-index:2;top:14px;border-radius:999px;padding:8px 11px;color:#fff;font-size:10px;font-weight:850;box-shadow:0 6px 18px rgba(0,0,0,.18)}
 .mt-status{left:14px}.mt-feature{right:14px;max-width:55%;background:rgba(16,17,14,.78);text-align:right}
 .mt-status-lancamento{background:var(--mt-launch)}.mt-status-construcao{background:var(--mt-build)}.mt-status-entregue{background:var(--mt-ready)}
+.mt-promo-ribbon{position:absolute;z-index:3;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-between;gap:10px;background:#EBB92E;color:#171813;padding:10px 14px;font-size:11px;font-weight:850;letter-spacing:.02em;box-shadow:0 -8px 22px rgba(0,0,0,.18)}
+.mt-promo-ribbon b{font-size:10px;letter-spacing:.13em}.mt-promo-ribbon span{text-align:right}
+.mt-price-promo{margin-top:14px;padding:14px 16px;border-radius:16px;background:#171813;color:#fff;display:grid;gap:5px}
+.mt-price-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:850;color:#EBB92E}
+.mt-price-old{font-size:13px;color:rgba(255,255,255,.68);text-decoration:line-through;text-decoration-thickness:1.5px}
+.mt-price-current{font-size:1.35rem;line-height:1.15;color:#fff}
+.mt-price-urgency{font-size:12px;line-height:1.45;color:rgba(255,255,255,.76)}
 .mt-project-body{padding:20px}.mt-project-location{margin:0 0 7px;color:var(--mt-muted);font-size:12px;font-weight:700}.mt-project-body h3{margin:0 0 10px;font-size:1.45rem;letter-spacing:-.03em}.mt-project-info{display:block;min-height:44px;color:var(--mt-muted);line-height:1.5}
 .mt-project-actions{display:grid;grid-template-columns:1fr;gap:9px;margin-top:18px}.mt-project-actions a{min-height:46px;border-radius:999px;padding:11px 14px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:12px;font-weight:800}.mt-project-actions .mt-interest{background:var(--mt-yellow)}.mt-project-actions .mt-official{border:1px solid var(--mt-line)}
 .mt-empty{padding:34px;border:1px dashed #bfb8aa;border-radius:20px;text-align:center;background:rgba(255,255,255,.5)}.mt-empty strong{display:block;font-size:18px}.mt-empty p{color:var(--mt-muted)}
