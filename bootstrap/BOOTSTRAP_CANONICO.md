@@ -180,7 +180,7 @@ Para trabalho mediado pelo SES:
 1. resolver o projeto em `projects/REGISTRY.md` por identificador explícito;
 2. o Project Adapter deve apontar para este bootstrap/entrypoints;
 3. nenhum arquétipo é adotado automaticamente;
-4. role só é adotada por mapeamento explícito `ROLE -> ARCHETYPE_ID` no Project Adapter SES, usando `ADOPTION_STATUS: ADOPTED` ou, quando explicitamente registrado, `ADOPTION_STATUS: ADOPTED`;
+4. role só é adotada por mapeamento explícito `ROLE -> ARCHETYPE_ID` no Project Adapter SES com `ADOPTION_STATUS: ADOPTED`; provider/delegação, quando existir, é metadata project-local separada;
 5. para uma role `ADOPTED` com `EXECUTION_MODE: PROJECT_LOCAL_CROSS_PROJECT_SERVICE`, resolver também `SERVICE_PROVIDER_PROJECT_ID`, o Project Adapter do provider e o contexto live de ambos os projetos antes da execução;
 6. role ausente/desconhecida/não adotada falha como `SPECIALIST_ROLE_NOT_ADOPTED`, sem fuzzy/fallback implícito;
 7. não inventar registry/skill/override project-local ausente;
