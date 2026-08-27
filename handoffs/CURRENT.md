@@ -117,7 +117,7 @@ seo_analytics_growth
 paid_search_sem
 ```
 
-A modalidade é `ADOPTED_VIA_CROSS_PROJECT_SERVICE`. Local SEO e Authority & Digital PR são somente `FUTURE_SERVICE_INTENT` enquanto não houver certificação + ativação explícita posterior.
+A capability permanece `ADOPTED`; a execução Search usa `EXECUTION_MODE: PROJECT_LOCAL_CROSS_PROJECT_SERVICE`. Local SEO e Authority & Digital PR são somente `FUTURE_SERVICE_INTENT` enquanto não houver certificação + ativação explícita posterior.
 
 Retomada material de Search deve resolver SES live, `projects/SPECIALIST_ADOPTION_MATRIX_CURRENT.md`, o Project Adapter MoreNumTegra e o Project Adapter do provider. O provider pode diagnosticar, pesquisar, recomendar, medir e otimizar; qualquer mutação no MoreNumTegra exige autoridade própria deste projeto.
 
