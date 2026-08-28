@@ -2,115 +2,90 @@
 
 > Registro autoritativo da única próxima ação segura.
 
-- Definida em: `2026-08-26`
+- Definida em: `2026-08-28`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
 - Functional baseline: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 - Technical baseline: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
-- Parent baseline: `docs/baseline/TECHNICAL_BASELINE_V2_1.md`
 - ADR: `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`
-- Estado: `PUBLIC_HOMOLOGATION_VALIDATION_BEFORE_RELEASE_FREEZE`
+- Estado: `GREEN_V1_OPERATIONAL_MAINTENANCE`
 
 ## 1. Ação imediata
 
-Resolver `main` live e validar publicamente a implementação atual em:
+Manter a produção Green estável e concluir somente a pendência operacional do domínio alternativo:
 
-`https://morenumtegra.vercel.app/`
+`www.moretegra.com.br`
 
-No fechamento de 2026-08-26, o SHA observado em `main` era:
+No fechamento de 2026-08-28, a Green já mostrava o CNAME configurado e informava janela para validação de certificado.
 
-`8a237e298dee1391babb9bbbbf88fd4d9c2e40dd`
+Quando o status virar `Domínio OK`:
 
-A integração Vercel registrou `success` / `Deployment has completed` para esse SHA. Esse fato prova conclusão do deployment, mas não substitui a validação pública funcional/mobile/performance.
+1. abrir `https://www.moretegra.com.br`;
+2. confirmar certificado válido;
+3. confirmar redirecionamento/canonicalidade desejada para o domínio principal;
+4. não alterar DNS adicional sem necessidade comprovada.
 
-## 2. Gate público obrigatório
+## 2. Estado funcional já aprovado
 
-Antes de congelar release ou avançar para Green Sales, validar na URL estável:
+Não repetir como gate bloqueante os itens já comprovados em produção:
 
-- desktop e mobile, com prioridade para 360px e 390px;
-- imagens dos 21 cards;
-- jornada `Negociar condições`;
-- bloco `Seu interesse`;
-- galeria pós-intenção sem repetição da imagem de capa;
-- galeria com 2 imagens quando existirem apenas 2 mídias adicionais distintas;
-- bento somente quando existirem 3 mídias distintas;
-- fallback quando mídia falhar;
-- vídeo in-page/autoplay mudo/loop/playsinline;
-- filtros por estágio;
-- badges/filtros Zona Sul, Zona Oeste e Zona Leste;
-- busca por nome/bairro;
-- filtro por ticket;
-- reset/combinação de filtros;
-- preços `A partir de`, `Sob consulta` e demais estados visíveis;
-- CTA `Negociar condições` / `Receber condições`;
-- rolagem para `#formulario`;
-- mock do formulário sem transmissão;
-- ausência de erro primário de runtime/console;
-- responsividade e touch targets;
-- LCP/INP/CLS quando possível.
+- domínio raiz HTTPS;
+- HTTP -> HTTPS;
+- favicon;
+- catálogo;
+- filtros desktop/mobile;
+- busca por bairro;
+- ELO e ODE promocionais;
+- WhatsApp;
+- Form 46 submit real;
+- persistência/origem/vendedor na Green;
+- CTAs flutuantes atravessando módulos até o footer.
 
-## 3. Condição para freeze
+## 3. Mudanças futuras
 
-Somente após o gate público ser aprovado:
+Toda mudança material deve retornar ao fluxo canônico:
 
-1. resolver `main` live novamente;
-2. confirmar que a Vercel Production corresponde ao mesmo estado aprovado;
-3. congelar o SHA/release;
-4. registrar os payloads Green exatos derivados desse SHA;
-5. iniciar o gate controlado de montagem/publicação Green.
+```text
+GitHub branch/PR
+-> Vercel Preview
+-> validação
+-> merge main
+-> Vercel Production
+-> Green Sales
+-> smoke production
+```
 
-Não congelar automaticamente o SHA observado em 2026-08-26 se `main` tiver avançado ou se a homologação pública encontrar regressão.
+Não fazer remendo somente no builder Green.
 
-## 4. Dados comerciais antes da Green
+## 4. Dados comerciais
 
-Antes da publicação Green comercial, revalidar os fatos visíveis usando as tabelas/espelhos atuais e informação aprovada:
+Preço, unidade, promoção e disponibilidade são fatos mutáveis.
 
-- preço de referência;
-- unidade/metragem usada para referência;
-- valor/m² quando exibido;
-- disponibilidade/esgotado;
-- estágio;
-- imagem/URL oficial;
-- demais diferenciais visíveis.
+Ao alterar qualquer dado comercial:
 
-Ambiguidade deve resultar em `Sob consulta` ou omissão, não inferência.
+- preservar fonte/evidência;
+- identificar unidade;
+- registrar DE/POR quando aplicável;
+- confirmar disponibilidade;
+- não inferir informação ausente.
 
-## 5. Mídia
+## 5. Search / SEO / SEM
 
-As imagens atuais permanecem em origens remotas oficiais/externas já utilizadas pelo projeto.
+A retomada de SEO/SEM deve ocorrer via `blogs-sites-portais-seo` como Search Center of Expertise, preservando MoreNumTegra como Product Authority.
 
-Não migrar mídia pesada para GitHub por padrão. Uma eventual migração das mídias finais para CDN/storage sob controle próprio deve ser tratada como mudança separada, preservando origem/autorização e rastreabilidade.
+Implementação no MoreNumTegra só ocorre após handoff/recomendação e autorização correspondente.
 
-## 6. Analytics / tracking
+## 6. Analytics
 
-GA4, GTM, Meta Pixel e outras tags permanecem fora do estado atual.
+GA4, GTM, Meta Pixel, Speed Insights adicional e outras tags continuam sob gate específico.
 
-Antes de habilitar tracking:
+Não habilitar por conveniência ou PR automática de plataforma.
 
-1. definir contas/propriedades/containers próprios;
-2. definir eventos e conversões;
-3. revisar dados coletados e consent/privacy quando aplicável;
-4. não enviar PII bruta por parâmetros de analytics;
-5. validar em ambiente controlado antes de publicar.
+## 7. Condições de parada
 
-## 7. Green production gate
+Parar se uma mudança:
 
-Somente depois da homologação pública aprovada e do freeze:
-
-1. identificar os 3 blocos HTML exatos;
-2. identificar CSS e JavaScript exatos;
-3. montar/validar o Form 46 nativo no builder;
-4. confirmar CTA -> `#formulario`;
-5. revalidar mobile já dentro da Green;
-6. preservar versão anterior/export para rollback quando possível;
-7. publicar de forma controlada.
-
-## 8. Condições de parada
-
-Parar se:
-
-- Vercel Production não puder ser ligada ao estado aprovado de `main`;
-- surgir regressão funcional/mobile material na URL pública;
-- o deployment alvo contiver conteúdo diferente do aprovado;
-- surgir dado comercial que exija inferência;
-- Form 46 exigir comportamento desconhecido;
-- houver necessidade de custom domain/DNS, analytics, FECH.AI, n8n, Make, Ads, CMS/database ou backend sem nova decisão.
+- divergir entre GitHub, Vercel e Green;
+- exigir dado comercial não comprovado;
+- alterar Form 46 de forma não conhecida;
+- introduzir analytics/pixels sem gate;
+- exigir backend/CMS/FECH.AI/n8n/Make sem autorização específica.
