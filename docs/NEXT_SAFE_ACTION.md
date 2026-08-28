@@ -7,7 +7,7 @@
 - Functional baseline: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 - Technical baseline: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
 - ADR: `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`
-- Estado: `P0A_CANONICAL_METADATA_IMPLEMENTATION`
+- Estado: `P0A_GREEN_METADATA_JS_CORRECTION`
 
 ## 1. Contexto resolvido
 
@@ -25,19 +25,26 @@ Contrato de implementação:
 
 ## 2. Única próxima ação segura
 
-Para a revisão P0-A aberta a partir do `main` atual:
+Executar a correção do P0-A no artefato que realmente é copiado para a Green:
 
-1. resolver a Draft PR e o head exato live;
-2. aguardar/inspecionar o Vercel Preview do head exato;
-3. validar no Preview:
+`src-greenn/moretegra.js`
+
+Fluxo obrigatório:
+
+1. Draft PR a partir de `main@698a9be2fa385e0e10534ab88aceda0de49eb11c`;
+2. Vercel Preview do head exato;
+3. validar que o Preview inicia com metadata de laboratório e, após carregar `moretegra.js`, apresenta:
+   - title `Apartamentos Tegra em São Paulo | More em um Tegra`;
+   - meta description P0-A;
    - `noindex,nofollow` preservado;
-   - title exato;
-   - meta description exata;
-   - canonical para `https://moretegra.com.br/`;
-   - ausência de tracking/schema fora de escopo;
-4. parar após a validação e exigir o próximo gate aplicável.
+   - nenhum tracking/schema/canonical novo introduzido pelo JS;
+4. após gate Ready separado, merge separado;
+5. validar Vercel Production pública no novo `main`;
+6. somente então o owner copia manualmente para a Green o `src-greenn/moretegra.js` aprovado;
+7. owner publica/valida Green e devolve o resultado;
+8. executar smoke READ_ONLY da produção quando a superfície de leitura permitir.
 
-Não aplicar a Green antes de merge e do gate de produção correspondente.
+Não copiar novamente HTML 01, HTML 02, Footer ou CSS quando o diff aprovado não os alterar.
 
 ## 3. Estado funcional já aprovado
 
@@ -71,9 +78,9 @@ Meta description:
 
 `Compare empreendimentos Tegra em São Paulo por região, estágio e faixa de valor. Veja lançamentos, imóveis em construção e prontos para morar e fale com a Tegra Vendas.`
 
-A documentação Green comprova controle nativo de Título e Descrição para Buscadores.
+O processo operacional da propriedade usa os artefatos `src-greenn/`; não depende de MCP ou automação Green. Title e meta description deste P0-A serão aplicados pelo JavaScript versionado que o owner copia manualmente para a Green.
 
-Canonical e redirect 301/308 na Green permanecem `CAPABILITY_NOT_PROVEN`.
+Canonical e redirect 301/308 permanecem fora desta correção.
 
 ## 5. Condições de parada
 
@@ -84,7 +91,7 @@ Parar se:
 - canonical apontar para Vercel ou hostname divergente;
 - surgir mutação de catálogo/Form 46;
 - a solução exigir DNS;
-- canonical depender de body tag ou JS client-side não aprovado;
+- surgir canonical novo no JavaScript desta correção;
 - surgir analytics, Search Console, JSON-LD ou SEM;
 - for necessária publicação Green antes de merge;
 - houver divergência material entre provider recommendation e consumer implementation.
