@@ -2,7 +2,7 @@
 
 ## Status
 
-`IMPLEMENTATION_CANDIDATE / CONSUMER_AUTHORIZED / GREEN_NOT_MUTATED`
+`IMPLEMENTATION_CORRECTION_CANDIDATE / CONSUMER_AUTHORIZED / GREEN_NOT_MUTATED`
 
 ## 1. Provenance
 
@@ -89,11 +89,41 @@ Nesta rodada não foi obtida prova oficial suficiente de controle nativo para:
 
 Ausência de prova não equivale a ausência de capacidade.
 
+## 4.1. Processo operacional Green confirmado pelo owner
+
+Em 2026-08-28 o owner confirmou o processo real de publicação desta propriedade:
+
+```text
+GitHub branch
+-> Vercel Preview
+-> validação
+-> Ready
+-> merge main
+-> Vercel Production pública
+-> owner copia manualmente os artefatos src-greenn para a Green
+-> owner valida a Green
+-> smoke / retorno
+```
+
+Não existe MCP, automação ou publicação Green executada por este projeto.
+
+Na página MoreNumTegra, o processo operacional não expõe edição separada e confiável de `<head>` versus `<body>` para os artefatos copiados. A unidade controlada permanece:
+
+- HTML 01;
+- HTML 02;
+- Footer;
+- CSS;
+- JavaScript.
+
+Para o P0-A, Title e meta description passam a ser responsabilidade de `src-greenn/moretegra.js`, que os aplica em `document.head` no runtime. O Preview Vercel deve exercitar exatamente esse JS.
+
+Canonical via JavaScript não faz parte desta correção e continua sujeito a gate técnico próprio.
+
 ## 5. Regra de implementação
 
 Não inserir canonical dentro dos módulos de body `src-greenn/blocks/*`.
 
-Não usar JavaScript client-side para fabricar canonical como solução P0 sem evidência específica de necessidade e comportamento de renderização.
+Title e meta description podem ser gerenciados pelo JavaScript versionado porque esse é o artefato efetivamente transferido para a Green. Não usar JavaScript client-side para canonical nesta correção; canonical permanece em gate técnico próprio.
 
 `BODY_MODULE != HEAD_CONTROL`
 
@@ -103,12 +133,13 @@ Se a Green comprovar um campo/API/MCP específico de head/canonical, usar esse m
 
 ## 6. Alteração versionável desta revisão
 
-A homologação Vercel passa a reproduzir a identidade Search comercial aprovada:
+A homologação Vercel passa a exercitar o mesmo `src-greenn/moretegra.js` destinado à Green:
 
-- title final;
-- meta description final;
-- canonical apontando para a origem comercial;
-- `noindex,nofollow` preservado.
+- o shell começa com metadata de laboratório;
+- `moretegra.js` aplica title final;
+- `moretegra.js` aplica meta description final;
+- o canonical do shell Vercel continua apontando para a origem comercial apenas como proteção da homologação;
+- `noindex,nofollow` permanece preservado.
 
 Isso não transforma Vercel em produção comercial e não prova canonical na Green.
 
@@ -131,7 +162,7 @@ Draft PR
 -> production smoke
 ```
 
-Na Green, os controles atualmente comprovados e elegíveis no P0-A são Title e Descrição para Buscadores. Canonical/301/308 permanecem bloqueados até capability proof.
+Na Green, o delta operacional deste P0-A é somente `src-greenn/moretegra.js`, copiado manualmente pelo owner após Vercel Production validada. Esse JS aplica Title e meta description. Canonical/301/308 permanecem fora desta correção.
 
 ## 8. Explicitamente fora de escopo
 
