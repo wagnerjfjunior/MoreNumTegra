@@ -6,7 +6,7 @@
 - Release funcional observado: `2d1f9d656761433102f95e4c80bfdebf47f3607e`
 - Fase: `GREEN_COMMERCIAL_V1_FUNCTIONALLY_HOMOLOGATED`
 - Saúde geral: `verde`
-- Search readiness: `READY_FOR_PROVIDER_HANDOFF`
+- Search readiness: `P0A_CONSUMER_ADJUDICATED`
 
 ## 1. Resultado atingido
 
@@ -27,9 +27,9 @@ Homologação Vercel:
 | GitHub main | canônico | preservar rastreabilidade | nenhum |
 | Vercel Production | alinhada ao release funcional observado | preservar como homologação | nenhum |
 | Green Sales | publicada e funcionalmente homologada | manutenção controlada | nenhum funcional conhecido |
-| Domínio raiz | HTTPS PASS | preservar | nenhum |
+| Domínio raiz | HTTPS PASS | canonical comercial P0-A | mecanismo Green de canonical não comprovado |
 | HTTP -> HTTPS | PASS | preservar | nenhum |
-| www | Domínio OK + HTTPS + redirect page-level para raiz | Search definir canonicalização final | nenhum funcional; 301/308 não comprovado |
+| www | Domínio OK + HTTPS + redirect page-level para raiz | preferir 301/308 quando capability existir | 301/308 não comprovado |
 | Favicon | PASS | preservar | nenhum |
 | Catálogo | 21 empreendimentos | manutenção factual | revalidar dados quando alterados |
 | Filtros | PASS desktop/mobile | preservar | nenhum |
@@ -40,7 +40,10 @@ Homologação Vercel:
 | Form 46 | PASS com submit real e persistência | preservar contrato nativo | nenhum |
 | Floating CTAs | PASS após PR #27 | preservar montagem no body | nenhum |
 | Analytics | não habilitado | gate próprio | sem autorização |
-| Search/SEO/SEM | provider cross-project definido; site pronto para handoff | auditoria live + recomendação provider | implementação depende de autorização |
+| Search provider | recomendação integrada no provider main | executar P0-A no lifecycle consumer | provider não possui mutation authority |
+| P0-A metadata | title/description definidos; controles Green documentados | Draft PR + Preview | Green somente após lifecycle |
+| P0-A canonical | target non-www definido | provar mecanismo Green | capability não comprovada |
+| SEM | somente estratégia futura | P2 | tracking/conversion/budget gates |
 
 ## 3. Evidência de homologação Green
 
@@ -74,24 +77,27 @@ SHA funcional observado:
 
 Vercel reportou `success` para esse SHA.
 
-## 5. Search readiness observado
+## 5. Search — estado atual
 
-A auditoria preliminar do HTML/HAR live identificou como itens de Search ainda não implementados/fechados:
+O handoff consumer foi consumido pelo Search Center of Expertise e a recomendação está integrada em:
 
-- canonical explícito para `https://moretegra.com.br/`;
-- JSON-LD estruturado e factual;
-- title/meta description finais;
-- Open Graph completo;
-- Twitter metadata quando aplicável;
-- estratégia final para `www`, considerando que o redirect atual é HTTP 200 + navegação page-level;
-- robots/indexação de produção;
-- sitemap;
-- Search Console;
-- arquitetura/cluster de páginas, bairros e empreendimentos;
-- Technical SEO e conteúdo semântico;
-- analytics de Search apenas após gate correspondente.
+`wagnerjfjunior/Blogs-sites-portais-seo@c20c15ce6f591071b3ec5236291d7ed6e92934bf`
 
-Esses itens pertencem ao provider `blogs-sites-portais-seo` para estratégia/recomendação. MoreNumTegra permanece Product Authority e executor das mudanças aprovadas.
+Prioridade aceita:
+
+```text
+P0 canonicalidade / hostname / metadata / robots / sitemap / Search Console
+-> P1 JSON-LD / OG-Twitter / rendering / CWV / IA / internal linking / measurement
+-> P2 SEM
+```
+
+A execução corrente é somente o subconjunto `P0-A canonicalidade comercial + metadata`.
+
+Title e meta description finais estão definidos no contrato P0-A.
+
+A documentação oficial Green comprova controles para Título e Descrição para Buscadores. Não foi obtida prova suficiente de controle nativo de canonical ou redirect HTTP 301/308; portanto esses itens permanecem como capability gap, sem workaround client-side improvisado.
+
+Vercel homologation deve permanecer `noindex,nofollow` e pode apontar canonical para a origem comercial.
 
 ## 6. Riscos ativos
 
@@ -100,7 +106,8 @@ Esses itens pertencem ao provider `blogs-sites-portais-seo` para estratégia/rec
 | disponibilidade/preço mudar após publicação | evidência comercial + confirmação no atendimento |
 | Green sobrescrever CSS/estrutura em edição futura | sempre derivar mudanças do GitHub e homologar no Vercel |
 | regressão dos CTAs por módulos Green | manter dock em `document.body` via JS global |
-| www servir HTTP 200 antes de redirecionar | canonical consistente + recomendação Search; 301/308 se houver mecanismo comprovado |
+| www servir HTTP 200 antes de redirecionar | canonical consistente quando capability comprovada; preferir 301/308 |
+| canonical ser fabricado por body/JS sem garantia | fail closed; exigir mecanismo de head comprovado |
 | tracking sem governança | manter bloqueado até gate específico |
 
 ## 7. Governança operacional

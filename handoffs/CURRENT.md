@@ -56,7 +56,7 @@ Validações executadas em 2026-08-28:
 - Form 46 realiza submit real;
 - lead persiste na Green com origem `More Tegra / MoreEmUmTegra`;
 - vendedor configurado é atribuído pela Green;
-- CTAs flutuantes foram corrigidos na PR #27 e atravessam Form 46, HTML 02 e footer sem clipping;
+- CTAs flutuantes atravessam Form 46, HTML 02 e footer sem clipping;
 - validação mobile confirmou filtros e CTAs operáveis.
 
 ## 3. Release funcional
@@ -75,9 +75,9 @@ Os payloads Green devem continuar derivados dos arquivos canônicos em `src-gree
 
 - `moretegra.com.br`: produção principal, HTTPS OK;
 - `www.moretegra.com.br`: `Domínio OK`, HTTPS válido e página dedicada de redirecionamento para a raiz;
-- domínio principal comercial atual: `https://moretegra.com.br/`; canonical final deve ser confirmado pelo provider Search.
+- canonical target aprovado pelo Search provider: `https://moretegra.com.br/`.
 
-A solução atual do `www` é page-level: HTTP 200 seguido de navegação para a raiz. Ela é funcional para o usuário, mas deve ser tratada pelo provider Search como canonicalização inferior a um redirect HTTP 301/308.
+A solução atual do `www` é page-level: HTTP 200 seguido de navegação para a raiz. O target continua sendo redirect HTTP 301/308 quando a Green comprovar mecanismo adequado.
 
 Não alterar DNS adicional sem necessidade comprovada e gate próprio.
 
@@ -95,7 +95,7 @@ O JavaScript do projeto não intercepta o submit nativo.
 
 GA4, GTM, Meta Pixel e outras tags continuam sem autorização de implementação neste projeto.
 
-Search/SEO/SEM continua sob o modelo cross-project vigente:
+Modelo vigente:
 
 ```text
 MoreNumTegra = consumer / Product Authority
@@ -104,11 +104,25 @@ blogs-sites-portais-seo = Search Center of Expertise / provider
 
 Roles atuais: `seo_strategy`, `technical_seo`, `content_semantic_seo`, `seo_analytics_growth`, `paid_search_sem`.
 
-A produção Green está funcionalmente pronta para retomada formal de Search. O pacote de passagem project-local está em:
+Handoff de entrada:
 
 `handoffs/SEARCH_PROVIDER_HANDOFF_2026-08-28.md`
 
-Implementação no MoreNumTegra continua dependente de recomendação/handoff aprovado e autorização correspondente.
+Provider result integrado:
+
+`wagnerjfjunior/Blogs-sites-portais-seo@c20c15ce6f591071b3ec5236291d7ed6e92934bf`
+
+`docs/assets/morenumtegra-search-provider-recommendation-2026-08-28.md`
+
+O Product Authority autorizou em 2026-08-28 somente o P0-A de canonicalidade comercial e metadata.
+
+Contrato consumer:
+
+`docs/search/P0A_CANONICAL_METADATA_CONTRACT_2026-08-28.md`
+
+A documentação oficial Green comprova Título e Descrição para Buscadores como controles nativos. Canonical e redirect HTTP 301/308 permanecem sem capability proof suficiente nesta rodada.
+
+Nenhuma mutação Green deve preceder branch/PR, Preview, validação, merge e gate de produção.
 
 ## 7. Próxima ação segura
 

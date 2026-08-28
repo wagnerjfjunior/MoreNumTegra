@@ -7,111 +7,84 @@
 - Functional baseline: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 - Technical baseline: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
 - ADR: `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`
-- Estado: `SEARCH_PROVIDER_HANDOFF_READY`
+- Estado: `P0A_CANONICAL_METADATA_IMPLEMENTATION`
 
-## 1. Ação imediata
+## 1. Contexto resolvido
 
-Entregar o estado live do MoreNumTegra ao provider Search vigente:
+O handoff Search foi concluído pelo consumer e a recomendação do provider está integrada em:
 
-`wagnerjfjunior/Blogs-sites-portais-seo`
+`wagnerjfjunior/Blogs-sites-portais-seo@c20c15ce6f591071b3ec5236291d7ed6e92934bf`
 
-Modelo de autoridade:
+MoreNumTegra continua Product Authority.
 
-```text
-MoreNumTegra = consumer / Product Authority
-blogs-sites-portais-seo = Search Center of Expertise / provider
-```
+O escopo P0-A autorizado é limitado a canonicalidade comercial e metadata, sem DNS, analytics, Search Console, JSON-LD, SEM, Ready, merge ou publicação fora de gate.
 
-O pacote project-local de entrada está em:
+Contrato de implementação:
 
-`handoffs/SEARCH_PROVIDER_HANDOFF_2026-08-28.md`
+`docs/search/P0A_CANONICAL_METADATA_CONTRACT_2026-08-28.md`
 
-O provider deve executar auditoria/recomendação Search sobre a produção live e devolver handoff explícito antes de qualquer implementação material no MoreNumTegra.
+## 2. Única próxima ação segura
 
-## 2. Estado funcional já aprovado
+Para a revisão P0-A aberta a partir do `main` atual:
 
-Não repetir como gate bloqueante os itens já comprovados em produção:
+1. resolver a Draft PR e o head exato live;
+2. aguardar/inspecionar o Vercel Preview do head exato;
+3. validar no Preview:
+   - `noindex,nofollow` preservado;
+   - title exato;
+   - meta description exata;
+   - canonical para `https://moretegra.com.br/`;
+   - ausência de tracking/schema fora de escopo;
+4. parar após a validação e exigir o próximo gate aplicável.
+
+Não aplicar a Green antes de merge e do gate de produção correspondente.
+
+## 3. Estado funcional já aprovado
+
+Não repetir como blocker:
 
 - domínio raiz HTTPS;
 - HTTP -> HTTPS;
-- `www` com Domínio OK e HTTPS válido;
-- navegação `www -> raiz` funcional por redirect page-level;
+- `www` com HTTPS;
+- navegação page-level `www -> raiz`;
 - favicon;
 - catálogo;
 - filtros desktop/mobile;
-- busca por bairro;
-- ELO e ODE promocionais;
+- busca;
 - WhatsApp;
-- Form 46 submit real;
-- persistência/origem/vendedor na Green;
-- CTAs flutuantes atravessando módulos até o footer.
+- Form 46;
+- CTAs flutuantes.
 
-## 3. Escopo mínimo do handoff Search
+O redirect `www` não é 301/308 comprovado.
 
-O provider deve avaliar e recomendar, sem transferir autoridade do produto:
+## 4. P0-A
 
-- canonical de produção;
-- tratamento final de `www`, incluindo limitação do redirect atual HTTP 200 + page-level;
-- title e meta description;
-- Open Graph;
-- Twitter metadata quando aplicável;
-- robots/indexabilidade;
-- sitemap;
-- Search Console;
-- JSON-LD válido e estritamente factual;
-- `WebSite`, `WebPage`, `ItemList` e `FAQPage` somente quando suportados pelo conteúdo real/visível;
-- arquitetura de páginas/empreendimentos/bairros;
-- Technical SEO;
-- conteúdo semântico;
-- links internos;
-- estratégia de autoridade/backlinks;
-- mensuração Search;
-- SEM somente como recomendação até autorização separada de campanha/spend.
+Target comercial:
 
-## 4. Implementação posterior
+`https://moretegra.com.br/`
 
-Após recomendação/handoff aprovado:
+Title:
 
-```text
-Search recommendation
--> decisão/autoridade MoreNumTegra
--> GitHub branch/PR
--> Vercel Preview
--> validação
--> merge main
--> Vercel Production
--> Green Sales
--> smoke production
-```
+`Apartamentos Tegra em São Paulo | More em um Tegra`
 
-Nenhum provider pode publicar diretamente na Green ou alterar o MoreNumTegra sem autorização específica.
+Meta description:
 
-## 5. Dados comerciais
+`Compare empreendimentos Tegra em São Paulo por região, estágio e faixa de valor. Veja lançamentos, imóveis em construção e prontos para morar e fale com a Tegra Vendas.`
 
-Preço, unidade, promoção e disponibilidade são fatos mutáveis.
+A documentação Green comprova controle nativo de Título e Descrição para Buscadores.
 
-Ao alterar qualquer dado comercial:
+Canonical e redirect 301/308 na Green permanecem `CAPABILITY_NOT_PROVEN`.
 
-- preservar fonte/evidência;
-- identificar unidade;
-- registrar DE/POR quando aplicável;
-- confirmar disponibilidade;
-- não inferir informação ausente.
+## 5. Condições de parada
 
-## 6. Analytics
+Parar se:
 
-GA4, GTM, Meta Pixel, Speed Insights adicional e outras tags continuam sob gate específico.
-
-Search Console e mensuração orgânica devem ser recomendados pelo provider; qualquer implementação de tags continua separada da recomendação.
-
-## 7. Condições de parada
-
-Parar se uma mudança:
-
-- divergir entre GitHub, Vercel e Green;
-- exigir dado comercial não comprovado;
-- alterar Form 46 de forma não conhecida;
-- introduzir analytics/pixels sem gate;
-- exigir backend/CMS/FECH.AI/n8n/Make sem autorização específica;
-- tratar recomendação Search como autorização automática de implementação;
-- alterar DNS sem necessidade comprovada e gate próprio.
+- Vercel Preview não corresponder ao head exato;
+- `noindex` for removido da homologação;
+- canonical apontar para Vercel ou hostname divergente;
+- surgir mutação de catálogo/Form 46;
+- a solução exigir DNS;
+- canonical depender de body tag ou JS client-side não aprovado;
+- surgir analytics, Search Console, JSON-LD ou SEM;
+- for necessária publicação Green antes de merge;
+- houver divergência material entre provider recommendation e consumer implementation.
