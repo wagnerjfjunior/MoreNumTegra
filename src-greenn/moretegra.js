@@ -3,6 +3,22 @@
 
   const ROOT_SELECTOR = "[data-moretegra]";
   const initializedRoots = new WeakSet();
+  const SEARCH_METADATA = Object.freeze({
+    title: "Apartamentos Tegra em São Paulo | More em um Tegra",
+    description: "Compare empreendimentos Tegra em São Paulo por região, estágio e faixa de valor. Veja lançamentos, imóveis em construção e prontos para morar e fale com a Tegra Vendas."
+  });
+
+  function applySearchMetadata() {
+    document.title = SEARCH_METADATA.title;
+
+    let description = document.head?.querySelector('meta[name="description"]');
+    if (!description && document.head) {
+      description = document.createElement("meta");
+      description.setAttribute("name", "description");
+      document.head.appendChild(description);
+    }
+    description?.setAttribute("content", SEARCH_METADATA.description);
+  }
   const BRL = new Intl.NumberFormat("pt-BR", {
     style: "currency",
     currency: "BRL",
@@ -700,6 +716,7 @@
   }
 
   function boot() {
+    applySearchMetadata();
     initAll();
     mountFloatingActions();
   }
