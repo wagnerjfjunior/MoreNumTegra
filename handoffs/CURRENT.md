@@ -75,7 +75,7 @@ Os payloads Green devem continuar derivados dos arquivos canônicos em `src-gree
 
 - `moretegra.com.br`: produção principal, HTTPS OK;
 - `www.moretegra.com.br`: `Domínio OK`, HTTPS válido e página dedicada de redirecionamento para a raiz;
-- canonical público pretendido para Search: `https://moretegra.com.br/`.
+- domínio principal comercial atual: `https://moretegra.com.br/`; canonical final deve ser confirmado pelo provider Search.
 
 A solução atual do `www` é page-level: HTTP 200 seguido de navegação para a raiz. Ela é funcional para o usuário, mas deve ser tratada pelo provider Search como canonicalização inferior a um redirect HTTP 301/308.
 
