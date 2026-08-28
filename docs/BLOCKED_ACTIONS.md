@@ -19,8 +19,13 @@
 | indexar Vercel Production como origem comercial | Green é produção comercial | decisão Search específica |
 | novos ajustes DNS/domínio | efeito público | necessidade + autorização específica |
 | tratar redirect page-level do `www` como 301/308 comprovado | HAR observado mostrou HTTP 200 antes da navegação | evidência HTTP real de 301/308 |
-| implementar canonical/JSON-LD/meta Search sem handoff aprovado | Search pertence ao provider definido | recomendação/handoff + autorização MoreNumTegra |
+| aplicar metadata Green antes do lifecycle GitHub/Vercel | produziria drift entre fonte e produção | PR validada, merge e gate Green |
+| inserir canonical em módulo HTML de body | canonical precisa de mecanismo de head confiável | capability Green de head/canonical comprovada |
+| fabricar canonical via JavaScript client-side sem decisão técnica | pode depender de rendering e divergir do HTML inicial | evidência específica + aprovação Technical SEO |
+| declarar canonical Green implementado só porque Vercel possui canonical | ambientes têm funções distintas | prova no HTML/head da produção Green |
+| JSON-LD/OG/Twitter nesta revisão P0-A | fora do escopo autorizado | gate P1 |
 | analytics/pixels/tags/Speed Insights adicional | telemetria/dados | gate específico |
+| Search Console | propriedade/verificação externa | gate específico |
 | CMS/database/backend próprio | não necessário no V1 | necessidade material + nova decisão |
 | FECH.AI/n8n/Make/Ads | fora do escopo atual | autorização específica |
 | segredo/token no HTML/JS | risco de segurança | arquitetura segura aprovada |
@@ -31,14 +36,14 @@
 
 A produção comercial Green V1 está publicada e funcionalmente homologada.
 
-Permitido:
+Permitido após lifecycle/gate aplicável:
 
 - manutenção dos mesmos artefatos derivados de `main`;
 - correções homologadas no Vercel e mergeadas;
-- atualização controlada dos módulos Green;
+- atualização controlada dos módulos/configurações Green;
 - smoke test após publicação.
 
-Não interpretar isso como autorização para tracking, backend, Ads, mudanças DNS adicionais ou implementação automática de recomendações Search.
+A autorização P0-A atual não elimina os gates de Ready, merge ou produção.
 
 ## 3. Search provider — permitido
 
@@ -49,7 +54,9 @@ O provider `blogs-sites-portais-seo` pode:
 - devolver handoff versionado para MoreNumTegra;
 - priorizar ações de SEO/SEM.
 
-Não pode, por esse vínculo:
+O provider result P0 está integrado no provider `main`.
+
+O provider não pode, por esse vínculo:
 
 - transferir a autoridade do produto;
 - publicar na Green;
@@ -65,6 +72,7 @@ Não pode, por esse vínculo:
 - `dado presente em tabela` != `dado automaticamente atual`.
 - `tool capability` != `authorization`.
 - `www Domínio OK` != `redirect HTTP 301/308 comprovado`.
+- `Vercel canonical` != `Green canonical implementado`.
 - `Search recommendation` != `implementation authorization`.
 - `Form 46 funcionando` != `form customizado necessário`.
 
@@ -82,4 +90,4 @@ SEARCH HANDOFF/RECOMMENDATION
 -> PRODUCTION SMOKE
 ```
 
-Os dois hostnames públicos estão operacionais em HTTPS. O domínio principal comercial atual é `https://moretegra.com.br/`; o canonical final deve ser confirmado pelo provider Search. O `www` hoje usa redirect page-level e requer tratamento de canonicalidade pelo provider.
+O domínio principal comercial é `https://moretegra.com.br/`. O `www` hoje usa redirect page-level. O target canonical non-www está adjudicado; a implementação Green de canonical/301/308 continua dependente de capability proof.
