@@ -18,6 +18,8 @@
 | promover Vercel diferente do `main` aprovado | drift de homologação | alinhar ao SHA aprovado |
 | indexar Vercel Production como origem comercial | Green é produção comercial | decisão Search específica |
 | novos ajustes DNS/domínio | efeito público | necessidade + autorização específica |
+| tratar redirect page-level do `www` como 301/308 comprovado | HAR observado mostrou HTTP 200 antes da navegação | evidência HTTP real de 301/308 |
+| implementar canonical/JSON-LD/meta Search sem handoff aprovado | Search pertence ao provider definido | recomendação/handoff + autorização MoreNumTegra |
 | analytics/pixels/tags/Speed Insights adicional | telemetria/dados | gate específico |
 | CMS/database/backend próprio | não necessário no V1 | necessidade material + nova decisão |
 | FECH.AI/n8n/Make/Ads | fora do escopo atual | autorização específica |
@@ -36,21 +38,42 @@ Permitido:
 - atualização controlada dos módulos Green;
 - smoke test após publicação.
 
-Não interpretar isso como autorização para tracking, backend, Ads ou mudanças DNS adicionais.
+Não interpretar isso como autorização para tracking, backend, Ads, mudanças DNS adicionais ou implementação automática de recomendações Search.
 
-## 3. Regras de interpretação
+## 3. Search provider — permitido
+
+O provider `blogs-sites-portais-seo` pode:
+
+- auditar o live;
+- recomendar canonical, JSON-LD, metadata, arquitetura, conteúdo e Search tooling;
+- devolver handoff versionado para MoreNumTegra;
+- priorizar ações de SEO/SEM.
+
+Não pode, por esse vínculo:
+
+- transferir a autoridade do produto;
+- publicar na Green;
+- alterar DNS;
+- habilitar tracking;
+- criar campanha/spend;
+- mutar o MoreNumTegra sem autorização específica.
+
+## 4. Regras de interpretação
 
 - `main mergeada` != `Green atualizada`.
 - `Green atualizada` != `smoke aprovado`.
 - `dado presente em tabela` != `dado automaticamente atual`.
 - `tool capability` != `authorization`.
-- `www CNAME criado` != `certificado www validado`.
+- `www Domínio OK` != `redirect HTTP 301/308 comprovado`.
+- `Search recommendation` != `implementation authorization`.
 - `Form 46 funcionando` != `form customizado necessário`.
 
-## 4. Sequência operacional vigente
+## 5. Sequência operacional vigente
 
 ```text
-CHANGE/BRANCH
+SEARCH HANDOFF/RECOMMENDATION
+-> MORENUMTEGRA DECISION
+-> CHANGE/BRANCH
 -> VERCEL PREVIEW
 -> OWNER VALIDATION
 -> MERGE MAIN
@@ -59,4 +82,4 @@ CHANGE/BRANCH
 -> PRODUCTION SMOKE
 ```
 
-O domínio raiz `moretegra.com.br` está operacional em HTTPS. O `www` permanece dependente apenas da conclusão de certificado pela Green no momento deste registro.
+Os dois hostnames públicos estão operacionais em HTTPS. O domínio principal comercial atual é `https://moretegra.com.br/`; o canonical final deve ser confirmado pelo provider Search. O `www` hoje usa redirect page-level e requer tratamento de canonicalidade pelo provider.
