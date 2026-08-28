@@ -54,6 +54,24 @@ The first HTML block must expose a stable form anchor (for example `#formulario`
 
 Do not leave an unclosed HTML container in one builder module expecting another module to close it. Each HTML block must be structurally self-contained because the builder may normalize module markup independently.
 
+## Metadata / head operational constraint
+
+Owner-confirmed operational flow for MoreNumTegra:
+
+- there is no MCP or automated Green publication path in this project;
+- changes are validated in GitHub branch + Vercel Preview;
+- after merge, the same state is validated on Vercel Production;
+- the owner manually copies the approved Green artifacts into the builder;
+- the owner validates/publishes in Green and reports the result.
+
+For this page, do not assume a separately managed editable `<head>` is available to the artifact workflow. Search metadata that must travel with the release may be applied by the page-level JavaScript when technically approved.
+
+For P0-A:
+
+- Title: managed by `src-greenn/moretegra.js`;
+- meta description: managed by `src-greenn/moretegra.js`;
+- canonical: not introduced by this correction; separate Technical SEO gate.
+
 ## Form contract
 
 Production uses the native Green Sales Form 46 associated with the page. Known contract remains:
