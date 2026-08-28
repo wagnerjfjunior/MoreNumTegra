@@ -42,6 +42,9 @@ Validações executadas em 2026-08-28:
 
 - domínio raiz HTTPS válido;
 - `http://moretegra.com.br` redireciona para HTTPS;
+- `www.moretegra.com.br` está com `Domínio OK` na Green e certificado HTTPS válido;
+- `www.moretegra.com.br` está associado a página dedicada de redirecionamento para `https://moretegra.com.br`;
+- HAR observado em 2026-08-28 confirma que o `www` responde HTTP 200 e depois navega para a raiz; não há evidência de redirect HTTP 301/308;
 - favicon publicado e visível;
 - catálogo renderiza 21 empreendimentos;
 - filtros por estágio, zona e ticket funcionam;
@@ -53,7 +56,7 @@ Validações executadas em 2026-08-28:
 - Form 46 realiza submit real;
 - lead persiste na Green com origem `More Tegra / MoreEmUmTegra`;
 - vendedor configurado é atribuído pela Green;
-- CTAs flutuantes foram corrigidos na PR #27 e agora atravessam Form 46, HTML 02 e footer sem clipping;
+- CTAs flutuantes foram corrigidos na PR #27 e atravessam Form 46, HTML 02 e footer sem clipping;
 - validação mobile confirmou filtros e CTAs operáveis.
 
 ## 3. Release funcional
@@ -71,9 +74,12 @@ Os payloads Green devem continuar derivados dos arquivos canônicos em `src-gree
 ## 4. Domínio
 
 - `moretegra.com.br`: produção principal, HTTPS OK;
-- `www.moretegra.com.br`: CNAME configurado na Green e aguardando validação do certificado no momento deste fechamento.
+- `www.moretegra.com.br`: `Domínio OK`, HTTPS válido e página dedicada de redirecionamento para a raiz;
+- canonical público pretendido para Search: `https://moretegra.com.br/`.
 
-O `www` não bloqueia o domínio raiz já operacional. Quando a Green marcar `Domínio OK`, validar `https://www.moretegra.com.br`.
+A solução atual do `www` é page-level: HTTP 200 seguido de navegação para a raiz. Ela é funcional para o usuário, mas deve ser tratada pelo provider Search como canonicalização inferior a um redirect HTTP 301/308.
+
+Não alterar DNS adicional sem necessidade comprovada e gate próprio.
 
 ## 5. Formulário
 
@@ -97,6 +103,12 @@ blogs-sites-portais-seo = Search Center of Expertise / provider
 ```
 
 Roles atuais: `seo_strategy`, `technical_seo`, `content_semantic_seo`, `seo_analytics_growth`, `paid_search_sem`.
+
+A produção Green está funcionalmente pronta para retomada formal de Search. O pacote de passagem project-local está em:
+
+`handoffs/SEARCH_PROVIDER_HANDOFF_2026-08-28.md`
+
+Implementação no MoreNumTegra continua dependente de recomendação/handoff aprovado e autorização correspondente.
 
 ## 7. Próxima ação segura
 
