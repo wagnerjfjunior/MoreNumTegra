@@ -7,22 +7,26 @@
 - Functional baseline: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 - Technical baseline: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
 - ADR: `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`
-- Estado: `GREEN_V1_OPERATIONAL_MAINTENANCE`
+- Estado: `SEARCH_PROVIDER_HANDOFF_READY`
 
 ## 1. Ação imediata
 
-Manter a produção Green estável e concluir somente a pendência operacional do domínio alternativo:
+Entregar o estado live do MoreNumTegra ao provider Search vigente:
 
-`www.moretegra.com.br`
+`wagnerjfjunior/Blogs-sites-portais-seo`
 
-No fechamento de 2026-08-28, a Green já mostrava o CNAME configurado e informava janela para validação de certificado.
+Modelo de autoridade:
 
-Quando o status virar `Domínio OK`:
+```text
+MoreNumTegra = consumer / Product Authority
+blogs-sites-portais-seo = Search Center of Expertise / provider
+```
 
-1. abrir `https://www.moretegra.com.br`;
-2. confirmar certificado válido;
-3. confirmar redirecionamento/canonicalidade desejada para o domínio principal;
-4. não alterar DNS adicional sem necessidade comprovada.
+O pacote project-local de entrada está em:
+
+`handoffs/SEARCH_PROVIDER_HANDOFF_2026-08-28.md`
+
+O provider deve executar auditoria/recomendação Search sobre a produção live e devolver handoff explícito antes de qualquer implementação material no MoreNumTegra.
 
 ## 2. Estado funcional já aprovado
 
@@ -30,6 +34,8 @@ Não repetir como gate bloqueante os itens já comprovados em produção:
 
 - domínio raiz HTTPS;
 - HTTP -> HTTPS;
+- `www` com Domínio OK e HTTPS válido;
+- navegação `www -> raiz` funcional por redirect page-level;
 - favicon;
 - catálogo;
 - filtros desktop/mobile;
@@ -40,12 +46,36 @@ Não repetir como gate bloqueante os itens já comprovados em produção:
 - persistência/origem/vendedor na Green;
 - CTAs flutuantes atravessando módulos até o footer.
 
-## 3. Mudanças futuras
+## 3. Escopo mínimo do handoff Search
 
-Toda mudança material deve retornar ao fluxo canônico:
+O provider deve avaliar e recomendar, sem transferir autoridade do produto:
+
+- canonical de produção;
+- tratamento final de `www`, incluindo limitação do redirect atual HTTP 200 + page-level;
+- title e meta description;
+- Open Graph;
+- Twitter metadata quando aplicável;
+- robots/indexabilidade;
+- sitemap;
+- Search Console;
+- JSON-LD válido e estritamente factual;
+- `WebSite`, `WebPage`, `ItemList` e `FAQPage` somente quando suportados pelo conteúdo real/visível;
+- arquitetura de páginas/empreendimentos/bairros;
+- Technical SEO;
+- conteúdo semântico;
+- links internos;
+- estratégia de autoridade/backlinks;
+- mensuração Search;
+- SEM somente como recomendação até autorização separada de campanha/spend.
+
+## 4. Implementação posterior
+
+Após recomendação/handoff aprovado:
 
 ```text
-GitHub branch/PR
+Search recommendation
+-> decisão/autoridade MoreNumTegra
+-> GitHub branch/PR
 -> Vercel Preview
 -> validação
 -> merge main
@@ -54,9 +84,9 @@ GitHub branch/PR
 -> smoke production
 ```
 
-Não fazer remendo somente no builder Green.
+Nenhum provider pode publicar diretamente na Green ou alterar o MoreNumTegra sem autorização específica.
 
-## 4. Dados comerciais
+## 5. Dados comerciais
 
 Preço, unidade, promoção e disponibilidade são fatos mutáveis.
 
@@ -68,17 +98,11 @@ Ao alterar qualquer dado comercial:
 - confirmar disponibilidade;
 - não inferir informação ausente.
 
-## 5. Search / SEO / SEM
-
-A retomada de SEO/SEM deve ocorrer via `blogs-sites-portais-seo` como Search Center of Expertise, preservando MoreNumTegra como Product Authority.
-
-Implementação no MoreNumTegra só ocorre após handoff/recomendação e autorização correspondente.
-
 ## 6. Analytics
 
 GA4, GTM, Meta Pixel, Speed Insights adicional e outras tags continuam sob gate específico.
 
-Não habilitar por conveniência ou PR automática de plataforma.
+Search Console e mensuração orgânica devem ser recomendados pelo provider; qualquer implementação de tags continua separada da recomendação.
 
 ## 7. Condições de parada
 
@@ -88,4 +112,6 @@ Parar se uma mudança:
 - exigir dado comercial não comprovado;
 - alterar Form 46 de forma não conhecida;
 - introduzir analytics/pixels sem gate;
-- exigir backend/CMS/FECH.AI/n8n/Make sem autorização específica.
+- exigir backend/CMS/FECH.AI/n8n/Make sem autorização específica;
+- tratar recomendação Search como autorização automática de implementação;
+- alterar DNS sem necessidade comprovada e gate próprio.
