@@ -1,143 +1,103 @@
 # Handoff Atual — MoreNumTegra
 
 - Status: `atual`
-- Atualizado em: `2026-08-26`
+- Atualizado em: `2026-08-28`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra`
 - Referência: `main` — resolver live antes de agir
-- SHA observado no fechamento desta etapa: `8a237e298dee1391babb9bbbbf88fd4d9c2e40dd`
+- Release funcional observado antes deste fechamento documental: `2d1f9d656761433102f95e4c80bfdebf47f3607e`
 - Baseline funcional vigente: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 - Baseline técnica vigente: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
-- Baseline técnica anterior: `docs/baseline/TECHNICAL_BASELINE_V2_1.md`
 - ADR aplicável: `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`
 
 ## 1. Estado atual
 
-A implementação canônica permanece em HTML/CSS/JavaScript vanilla e composição modular compatível com o builder Green Sales.
+MoreNumTegra V1 está publicado comercialmente na Green Sales em:
 
-Arquivos integrados:
+`https://moretegra.com.br`
+
+Arquitetura preservada:
 
 ```text
-src-greenn/
-  blocks/
-    01-html-inicial.html
-    02-html-pos-form.html
-    03-footer.html
-  moretegra.css
-  moretegra.js
-  preview/
-    index.html
+GitHub main = fonte canônica
+Vercel Production = homologação pública
+Green Sales = produção comercial V1
 ```
 
-O catálogo integrado contém 21 empreendimentos, filtros por estágio/zona/ticket, badges, preços de referência, vídeo in-page, CTAs e mock Vercel não transmissor do Form 46.
-
-A jornada UX foi refinada em 2026-08-26 e integrada em `main`, incluindo:
-
-- contexto visível de empreendimento selecionado;
-- galeria pós-intenção;
-- card mantendo uma única imagem de capa;
-- galeria usando apenas mídias adicionais distintas, sem repetir a capa do card;
-- deduplicação de URLs de mídia;
-- layout com 2 imagens quando existirem 2 mídias distintas e bento apenas quando existirem 3;
-- melhorias de acessibilidade, fallback e legibilidade comercial.
-
-A PR #21 foi mergeada por squash e resultou no SHA `8a237e298dee1391babb9bbbbf88fd4d9c2e40dd` em `main` no fechamento desta etapa.
-
-## 2. Composição Green comercial
+A composição Green em produção usa:
 
 ```text
-HTML 01 inicial
--> bloco nativo Form 46
--> HTML 02 pós-form
--> HTML 03 footer
+HTML 01
+-> Form 46 nativo
+-> HTML 02
+-> Footer
 + CSS global
 + JavaScript global
 ```
 
-Produção Green usa o Form 46 nativo. O JavaScript não deve interceptar o submit nativo.
+O catálogo contém 21 empreendimentos. A implementação permanece HTML/CSS/JavaScript vanilla.
 
-## 3. Vercel
+## 2. Evidência funcional observada em produção Green
 
-O projeto usa dois ambientes operacionais:
+Validações executadas em 2026-08-28:
 
-- **Vercel Preview**: validação intermediária de branch/change;
-- **Vercel Production**: homologação pública estável após aprovação e merge em `main`.
+- domínio raiz HTTPS válido;
+- `http://moretegra.com.br` redireciona para HTTPS;
+- favicon publicado e visível;
+- catálogo renderiza 21 empreendimentos;
+- filtros por estágio, zona e ticket funcionam;
+- combinações de filtros e estado vazio funcionam;
+- busca por nome/bairro funciona no mobile;
+- promoção ELO AP2408 exibida com DE/POR;
+- promoção ODE Unidade 22 / 2º andar exibida com DE/POR;
+- WhatsApp abre número e mensagem configurados;
+- Form 46 realiza submit real;
+- lead persiste na Green com origem `More Tegra / MoreEmUmTegra`;
+- vendedor configurado é atribuído pela Green;
+- CTAs flutuantes foram corrigidos na PR #27 e agora atravessam Form 46, HTML 02 e footer sem clipping;
+- validação mobile confirmou filtros e CTAs operáveis.
 
-URL pública de homologação:
+## 3. Release funcional
 
-`https://morenumtegra.vercel.app/`
+A correção estrutural final dos CTAs flutuantes foi integrada pela PR #27.
 
-Vercel Production não é a produção comercial V1. Green Sales continua sendo a produção comercial.
+Release funcional observado:
 
-Fluxo:
+`2d1f9d656761433102f95e4c80bfdebf47f3607e`
 
-```text
-change
--> Preview
--> aprovação
--> merge main
--> Vercel Production homologação pública
--> testes abertos/mobile
--> release SHA
--> Green Sales
-```
+A integração Vercel reportou `success` para esse SHA.
 
-## 4. Situação de homologação
+Os payloads Green devem continuar derivados dos arquivos canônicos em `src-greenn/`.
 
-O drift anterior entre `main` e Vercel Production foi corrigido durante esta etapa.
+## 4. Domínio
 
-Para o SHA `8a237e298dee1391babb9bbbbf88fd4d9c2e40dd`, a integração Vercel registrou status `success` com descrição `Deployment has completed`, e a URL pública `https://morenumtegra.vercel.app/` respondeu durante a verificação desta sessão.
+- `moretegra.com.br`: produção principal, HTTPS OK;
+- `www.moretegra.com.br`: CNAME configurado na Green e aguardando validação do certificado no momento deste fechamento.
 
-Ainda não classificar a homologação pública como finalizada sem completar o gate público previsto em `docs/NEXT_SAFE_ACTION.md`, incluindo mobile/desktop, fluxos principais, runtime/console e CWV quando possível.
+O `www` não bloqueia o domínio raiz já operacional. Quando a Green marcar `Domínio OK`, validar `https://www.moretegra.com.br`.
 
-## 5. Mídia e tracking
+## 5. Formulário
 
-- as imagens atuais permanecem referenciadas por origens oficiais/remotas já usadas pelo projeto; nenhuma migração de mídia para repositório próprio foi executada nesta etapa;
-- GitHub continua sendo fonte do código, não repositório de mídia pesada;
-- uma futura migração das mídias escolhidas para CDN/storage sob controle próprio pode ser avaliada separadamente;
-- GA4, GTM e Meta Pixel não foram ativados nesta etapa;
-- qualquer tracking futuro deve usar contas/containers próprios e gate específico de analytics/privacy.
+Produção usa o Form 46 nativo:
 
-## 6. Dados comerciais
+- tenant_id: `313`
+- form_id: `46`
+- title: `MoreEmUmTegra`
 
-Os valores visíveis permanecem referências de publicação aprovadas no projeto, com casos sem referência segura mantidos como `Sob consulta` quando aplicável.
+O JavaScript do projeto não intercepta o submit nativo.
 
-Antes da Green comercial, revalidar os fatos visíveis relevantes, especialmente preço, disponibilidade, metragem, estágio e condições.
+## 6. Analytics / Search
 
-## 7. Integração SES / Search
+GA4, GTM, Meta Pixel e outras tags continuam sem autorização de implementação neste projeto.
 
-O MoreNumTegra mantém autoridade integral sobre produto, código, Vercel/Green, implementação, deploy, orçamento, publicação de campanha e aceitação de risco.
-
-Para Search, o modelo SES vigente usa `blogs-sites-portais-seo` como Search Center of Expertise / provider:
-
-```text
-seo_strategy
-technical_seo
-content_semantic_seo
-seo_analytics_growth
-paid_search_sem
-```
-
-A capability permanece `ADOPTED`; a execução Search usa `EXECUTION_MODE: PROJECT_LOCAL_CROSS_PROJECT_SERVICE`. Local SEO e Authority & Digital PR são somente `FUTURE_SERVICE_INTENT` enquanto não houver certificação + ativação explícita posterior.
-
-Retomada material de Search deve resolver SES live, `projects/SPECIALIST_ADOPTION_MATRIX_CURRENT.md`, o Project Adapter MoreNumTegra e o Project Adapter do provider. O provider pode diagnosticar, pesquisar, recomendar, medir e otimizar; qualquer mutação no MoreNumTegra exige autoridade própria deste projeto.
+Search/SEO/SEM continua sob o modelo cross-project vigente:
 
 ```text
-PROVIDER_SPECIALIST_WORK != MORENUMTEGRA_MUTATION
-CROSS_PROJECT_SERVICE != PROJECT_OWNERSHIP_TRANSFER
+MoreNumTegra = consumer / Product Authority
+blogs-sites-portais-seo = Search Center of Expertise / provider
 ```
 
-## 8. Limites
+Roles atuais: `seo_strategy`, `technical_seo`, `content_semantic_seo`, `seo_analytics_growth`, `paid_search_sem`.
 
-Continuam fora do escopo sem gate específico:
-
-- publicação Green antes da homologação pública final;
-- custom domain/DNS;
-- analytics/pixels/tags;
-- FECH.AI/n8n/Make/Ads;
-- CMS/database/backend próprio;
-- segredo/token client-side;
-- dados comerciais não revalidados para a publicação Green.
-
-## 9. Próxima ação segura
+## 7. Próxima ação segura
 
 Autoridade: `docs/NEXT_SAFE_ACTION.md`.

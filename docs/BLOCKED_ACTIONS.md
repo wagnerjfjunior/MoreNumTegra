@@ -1,10 +1,9 @@
 # Ações Bloqueadas — MoreNumTegra
 
-- Atualizado em: `2026-08-24`
+- Atualizado em: `2026-08-28`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
 - Functional baseline: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
-- Technical baseline após integração desta revisão: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
-- Parent baseline: `docs/baseline/TECHNICAL_BASELINE_V2_1.md`
+- Technical baseline: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
 - ADR: `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`
 - Regra: ausência nesta lista não constitui autorização.
 
@@ -12,62 +11,52 @@
 
 | Ação bloqueada | Motivo | Condição de liberação |
 |---|---|---|
-| publicar na Green antes da homologação pública estável | release precisa ser testada abertamente | Vercel Production homologada + dados revalidados + release SHA |
-| usar formulário customizado `fetch` como produção Green | Green oferece Form 46 nativo | usar bloco nativo e JS somente para UX verificada |
-| depender de seletor global `form` | risco de colisão com builder | seletores próprios/verificados ou nenhuma interceptação |
-| abrir YouTube como fluxo principal do vídeo | remove usuário da página | player in-page com fallback |
-| promover deployment Vercel diferente do estado aprovado | risco de drift | deployment/release correspondente ao `main` aprovado |
-| permitir indexação orgânica da homologação Vercel | não é origem comercial canônica | decisão SEO específica |
-| custom domain/DNS | efeito público/SEO | autorização específica |
-| analytics/pixels/tags | telemetria/dados | autorização específica |
+| correção manual somente na Green sem atualizar GitHub | cria drift da fonte canônica | alterar via branch/PR e homologar |
+| usar formulário customizado `fetch` como produção | Form 46 nativo já está validado | necessidade comprovada + nova decisão |
+| interceptar submit do Form 46 | risco de quebrar lifecycle Green | preservar submit nativo |
+| usar seletor global `form` para mutação/interceptação | risco de colisão com builder | seletor específico verificado |
+| promover Vercel diferente do `main` aprovado | drift de homologação | alinhar ao SHA aprovado |
+| indexar Vercel Production como origem comercial | Green é produção comercial | decisão Search específica |
+| novos ajustes DNS/domínio | efeito público | necessidade + autorização específica |
+| analytics/pixels/tags/Speed Insights adicional | telemetria/dados | gate específico |
 | CMS/database/backend próprio | não necessário no V1 | necessidade material + nova decisão |
-| FECH.AI/n8n/Make/Ads | fora do escopo V1 atual | autorização específica |
+| FECH.AI/n8n/Make/Ads | fora do escopo atual | autorização específica |
 | segredo/token no HTML/JS | risco de segurança | arquitetura segura aprovada |
-| dados comerciais/inventário não verificados na Green | precisão/reputação | fonte atual/aprovada |
-| copiar conteúdo/design do Capri | referência é apenas estratégica/comportamental | criar solução original |
+| publicar dado comercial não verificado | precisão/reputação | fonte atual/aprovada |
+| copiar conteúdo/design de referência externa | referência não transfere autoria | solução original |
 
-## 2. Vercel Production — permitido
+## 2. Green Sales — permitido
 
-Vercel Production está **autorizada como homologação pública**, não como produção comercial V1.
+A produção comercial Green V1 está publicada e funcionalmente homologada.
 
-URL estável:
+Permitido:
 
-`https://morenumtegra.vercel.app/`
+- manutenção dos mesmos artefatos derivados de `main`;
+- correções homologadas no Vercel e mergeadas;
+- atualização controlada dos módulos Green;
+- smoke test após publicação.
 
-Permitido após aprovação/merge do estado correspondente em `main`:
-
-- promover Preview validado para Production;
-- fazer redeploy da `main` aprovada em Production quando necessário;
-- testar publicamente em desktop/mobile;
-- usar essa URL como referência de homologação aberta.
-
-Não interpretar essa autorização como permissão automática para Green Sales, custom domain/DNS ou indexação.
+Não interpretar isso como autorização para tracking, backend, Ads ou mudanças DNS adicionais.
 
 ## 3. Regras de interpretação
 
-- `Preview Ready` != `Preview aprovado`.
-- `Preview aprovado` != `Vercel Production atualizada`.
-- `Vercel Production homologada` != `Green publicada`.
-- `main mergeada` != `Green publicada`.
-- `Form 46 conhecido` != `form customizado necessário`.
-- `YouTube disponível` != `click-out aceitável`.
-- `dado presente em tabela/ZIP` != `dado automaticamente atual`.
+- `main mergeada` != `Green atualizada`.
+- `Green atualizada` != `smoke aprovado`.
+- `dado presente em tabela` != `dado automaticamente atual`.
 - `tool capability` != `authorization`.
-- `main` integrada é fonte canônica; branch/PR é proposta até merge.
+- `www CNAME criado` != `certificado www validado`.
+- `Form 46 funcionando` != `form customizado necessário`.
 
-## 4. Sequência V1 atual
+## 4. Sequência operacional vigente
 
 ```text
 CHANGE/BRANCH
 -> VERCEL PREVIEW
 -> OWNER VALIDATION
 -> MERGE MAIN
--> VERCEL PRODUCTION HOMOLOGATION
--> PUBLIC MOBILE/FUNCTION/SEO/PERF VALIDATION
--> COMMERCIAL DATA REVALIDATION
--> RELEASE SHA
--> GREEN BUILDER PUBLICATION GATE
--> GREEN COMMERCIAL V1
+-> VERCEL PRODUCTION
+-> GREEN SALES
+-> PRODUCTION SMOKE
 ```
 
-Domínio/DNS e integrações futuras permanecem fluxos separados.
+O domínio raiz `moretegra.com.br` está operacional em HTTPS. O `www` permanece dependente apenas da conclusão de certificado pela Green no momento deste registro.
