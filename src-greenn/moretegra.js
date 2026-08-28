@@ -678,12 +678,41 @@
     document.querySelectorAll(ROOT_SELECTOR).forEach(initRoot);
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initAll, {once: true});
-  } else {
-    initAll();
+  function mountFloatingActions() {
+    if (!document.querySelector(ROOT_SELECTOR)) return;
+    if (document.getElementById("mt-floating-dock")) return;
+
+    const dock = document.createElement("div");
+    dock.id = "mt-floating-dock";
+    dock.setAttribute("aria-label", "Ações rápidas");
+    dock.innerHTML = `
+      <a class="mt-floating mt-floating-whatsapp"
+         href="https://wa.me/5511960779328?text=Ol%C3%A1%2C%20quero%20conhecer%20as%20oportunidades%20Tegra%20em%20S%C3%A3o%20Paulo."
+         target="_blank"
+         rel="noreferrer"
+         aria-label="Conversar pelo WhatsApp">WhatsApp</a>
+      <a class="mt-floating mt-floating-lead"
+         href="#formulario"
+         aria-label="Receber condições">Receber condições</a>
+    `;
+
+    document.body.appendChild(dock);
   }
 
-  const observer = new MutationObserver(() => initAll());
+  function boot() {
+    initAll();
+    mountFloatingActions();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot, {once: true});
+  } else {
+    boot();
+  }
+
+  const observer = new MutationObserver(() => {
+    initAll();
+    mountFloatingActions();
+  });
   observer.observe(document.documentElement, {childList: true, subtree: true});
 })();
