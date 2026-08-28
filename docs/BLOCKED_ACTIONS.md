@@ -82,4 +82,4 @@ SEARCH HANDOFF/RECOMMENDATION
 -> PRODUCTION SMOKE
 ```
 
-Os dois hostnames públicos estão operacionais em HTTPS. O domínio principal pretendido para Search é `https://moretegra.com.br/`; o `www` hoje usa redirect page-level e requer tratamento de canonicalidade pelo provider.
+Os dois hostnames públicos estão operacionais em HTTPS. O domínio principal comercial atual é `https://moretegra.com.br/`; o canonical final deve ser confirmado pelo provider Search. O `www` hoje usa redirect page-level e requer tratamento de canonicalidade pelo provider.
