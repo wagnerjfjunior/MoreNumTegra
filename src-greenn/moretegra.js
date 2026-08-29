@@ -5,20 +5,78 @@
   const initializedRoots = new WeakSet();
   const SEARCH_METADATA = Object.freeze({
     title: "Apartamentos Tegra em São Paulo | More em um Tegra",
-    description: "Compare empreendimentos Tegra em São Paulo por região, estágio e faixa de valor. Veja lançamentos, imóveis em construção e prontos para morar e fale com a Tegra Vendas."
+    description: "Compare empreendimentos Tegra em São Paulo por região, estágio e faixa de valor. Veja lançamentos, prontos para morar e opções no premiado Caminhos da Lapa.",
+    canonical: "https://moretegra.com.br/",
+    locale: "pt_BR"
   });
 
+  function upsertMeta(selector, attributes) {
+    if (!document.head) return null;
+    let node = document.head.querySelector(selector);
+    if (!node) {
+      node = document.createElement("meta");
+      document.head.appendChild(node);
+    }
+    Object.entries(attributes).forEach(([key, value]) => node.setAttribute(key, value));
+    return node;
+  }
+
   function applySearchMetadata() {
+    if (!document.head) return;
+
     document.title = SEARCH_METADATA.title;
 
-    let description = document.head?.querySelector('meta[name="description"]');
-    if (!description && document.head) {
-      description = document.createElement("meta");
-      description.setAttribute("name", "description");
-      document.head.appendChild(description);
+    upsertMeta('meta[name="description"]', {name:"description", content:SEARCH_METADATA.description});
+    upsertMeta('meta[property="og:type"]', {property:"og:type", content:"website"});
+    upsertMeta('meta[property="og:url"]', {property:"og:url", content:SEARCH_METADATA.canonical});
+    upsertMeta('meta[property="og:title"]', {property:"og:title", content:SEARCH_METADATA.title});
+    upsertMeta('meta[property="og:description"]', {property:"og:description", content:SEARCH_METADATA.description});
+    upsertMeta('meta[property="og:locale"]', {property:"og:locale", content:SEARCH_METADATA.locale});
+    upsertMeta('meta[property="og:site_name"]', {property:"og:site_name", content:"More em um Tegra"});
+    upsertMeta('meta[name="twitter:card"]', {name:"twitter:card", content:"summary"});
+    upsertMeta('meta[name="twitter:title"]', {name:"twitter:title", content:SEARCH_METADATA.title});
+    upsertMeta('meta[name="twitter:description"]', {name:"twitter:description", content:SEARCH_METADATA.description});
+
+    let canonical = document.head.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
     }
-    description?.setAttribute("content", SEARCH_METADATA.description);
+    canonical.setAttribute("href", SEARCH_METADATA.canonical);
+
+    const schema = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": SEARCH_METADATA.canonical + "#website",
+          "url": SEARCH_METADATA.canonical,
+          "name": "More em um Tegra",
+          "inLanguage": "pt-BR"
+        },
+        {
+          "@type": "WebPage",
+          "@id": SEARCH_METADATA.canonical + "#webpage",
+          "url": SEARCH_METADATA.canonical,
+          "name": SEARCH_METADATA.title,
+          "description": SEARCH_METADATA.description,
+          "isPartOf": {"@id": SEARCH_METADATA.canonical + "#website"},
+          "inLanguage": "pt-BR"
+        }
+      ]
+    };
+
+    let schemaNode = document.head.querySelector("#mt-search-schema");
+    if (!schemaNode) {
+      schemaNode = document.createElement("script");
+      schemaNode.id = "mt-search-schema";
+      schemaNode.type = "application/ld+json";
+      document.head.appendChild(schemaNode);
+    }
+    schemaNode.textContent = JSON.stringify(schema);
   }
+
   const BRL = new Intl.NumberFormat("pt-BR", {
     style: "currency",
     currency: "BRL",
@@ -31,17 +89,24 @@
   // ELO_INTEREST_COPY_2026_08_26:
   // fatos adicionais do Elo Duo (Entregue, Últimas unidades, mobilidade ligada à estação e lazer completo)
   // conferidos na página oficial Tegra em 2026-08-26. Revalidar antes da publicação Green.
+  const CAMINHOS_AWARD = Object.freeze({
+    short: "MASTER 2026",
+    tagline: "Caminhos da Lapa · um bairro inteiro de opções",
+    label: "Prêmio Master Imobiliário 2026 · Caminhos da Lapa — um bairro inteiro de opções · vencedor em Qualificação Urbana"
+  });
+
   const PROJECTS = Object.freeze([
+    {name:"Nova Vivere | 72 m²",location:"Lapa · Zona Oeste",zone:"Zona Oeste",status:"Lançamento",statusKey:"lancamento",info:"72,82 m² · 2 ou 3 suítes · 1 ou 2 vagas",feature:"72 m² · entrada Nova Vivere",award:CAMINHOS_AWARD,image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F363%2FImagemPrincipal%2FTegra-Incorporadora-Area-de-Lazer-Piscina-Empreendimento-Nova-Vivere-Caminhos-da-Lapa-Apartamentos-Sao-Paulo-SP-714x640-1770300546843.png&w=828",alt:"Nova Vivere de 72 m², empreendimento Tegra no Caminhos da Lapa, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/lapa/novavivere",price:852586.08,priceState:"priced",priceLabel:"A partir de",priceNote:"Unidade 701 · 72,82 m² · R$ 11.708/m² · Valor a partir de R$ 852.586,08. Consulte a Tegra Vendas para confirmar disponibilidade e condições vigentes."},
     {name:"Château Jardin",location:"Cidade Jardim · Zona Sul",zone:"Zona Sul",status:"Lançamento",statusKey:"lancamento",info:"3 ou 4 suítes · 185m² a 355m² · 3 ou 4 vagas",feature:"Novo eixo Cidade Jardim",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F364%2FImagemPrincipal%2FTegra-Incorporadora-Fachada-Empreendimento-Chateau-Jardin-Apartamentos-Cidade-Jardim-Sao-Paulo-SP-714x640-1774666511357.jpg&w=828",alt:"Château Jardin, empreendimento Tegra em Cidade Jardim, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/cidade-jardim/chateaujardin",price:3690361,priceState:"priced",priceNote:"Unidade 501 · 185 m² · R$ 19.947/m² · Valor a partir de R$ 3.690.361. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."},
-    {name:"Nova Vivere",location:"Lapa · Zona Oeste",zone:"Zona Oeste",status:"Lançamento",statusKey:"lancamento",info:"2 ou 3 suítes · 72m² e 105m² · 1 ou 2 vagas",feature:"Caminhos da Lapa",award:{short:"PROJETO PREMIADO",label:"Parte do masterplan Caminhos da Lapa · vencedor do Prêmio Master Imobiliário 2026 · Qualificação Urbana"},image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F363%2FImagemPrincipal%2FTegra-Incorporadora-Area-de-Lazer-Piscina-Empreendimento-Nova-Vivere-Caminhos-da-Lapa-Apartamentos-Sao-Paulo-SP-714x640-1770300546843.png&w=828",alt:"Nova Vivere, empreendimento Tegra em Lapa, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/lapa/novavivere",price:852586.08,priceState:"priced",priceNote:"Unidade 701 · 72,82 m² · R$ 11.708/m² · Valor a partir de R$ 852.586,08. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."},
-    {name:"Caminhos da Lapa Elo Duo",award:{short:"PROJETO PREMIADO",label:"Parte do masterplan Caminhos da Lapa · vencedor do Prêmio Master Imobiliário 2026 · Qualificação Urbana"},location:"Lapa · Zona Oeste",zone:"Zona Oeste",status:"Pronto para morar",statusKey:"entregue",info:"2 ou 3 dorms. · 47m², 55m² e 67m² · até 1 vaga",feature:"Visite o decorado",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F317%2FImagemPrincipal%2F8d3d8839-e0b7-4f21-9d0e-99c363c8f6bc.jpg&w=828",alt:"Caminhos da Lapa Elo Duo, empreendimento Tegra em Lapa, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/lapa/caminhos-da-lapa-elo-duo",price:663000,priceState:"priced",priceLabel:"Valor promocional",priceNote:"Pronto para morar · Unidade AP2408 · 67,42 m² · 1 vaga · De R$ 714.712,34 por R$ 663.000. Condição sujeita à disponibilidade.",promo:{unit:"AP2408",oldPrice:714712.34,price:663000,urgency:"Unidade específica · condição sujeita à disponibilidade",evidence:["Tegra/Agosto/Promocionais/ELO Itamar 663.000 Unidade 2408.png","Tegra/Agosto/Tabela_Coordenação/ELO Duo - Caminhos da Lapa_Agosto_26.pdf"]}},
-    {name:"Garden Design",award:{short:"PROJETO PREMIADO",label:"Parte do masterplan Caminhos da Lapa · vencedor do Prêmio Master Imobiliário 2026 · Qualificação Urbana"},location:"Lapa · Zona Oeste",zone:"Zona Oeste",status:"Em construção",statusKey:"construcao",info:"2 ou 3 dorms. com suíte · 61m² a 78m² · 1 vaga",feature:"Private Park Residence",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F361%2FImagemPrincipal%2FTegra-Incorporadora-Area-de-Lazer-Piscina-Empreendimento-Garden-Design-Private-Park-Residence-Apartamentos-Lapa-Sao-Paulo-SP-714x640-1758223113158.jpg&w=828",alt:"Garden Design, empreendimento Tegra em Lapa, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/lapa/gardendesignprivateparkresidence",price:673050,priceState:"priced",priceNote:"Unidade 0112 · R$ 11.020/m² · Valor a partir de R$ 673.050. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."},
+    {name:"Caminhos da Lapa Elo Duo",award:CAMINHOS_AWARD,location:"Lapa · Zona Oeste",zone:"Zona Oeste",status:"Pronto para morar",statusKey:"entregue",info:"2 ou 3 dorms. · 47m², 55m² e 67m² · até 1 vaga",feature:"Visite o decorado",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F317%2FImagemPrincipal%2F8d3d8839-e0b7-4f21-9d0e-99c363c8f6bc.jpg&w=828",alt:"Caminhos da Lapa Elo Duo, empreendimento Tegra em Lapa, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/lapa/caminhos-da-lapa-elo-duo",price:663000,priceState:"priced",priceLabel:"Valor promocional",priceNote:"Pronto para morar · Unidade AP2408 · 67,42 m² · 1 vaga · De R$ 714.712,34 por R$ 663.000. Condição sujeita à disponibilidade.",promo:{unit:"AP2408",oldPrice:714712.34,price:663000,urgency:"Unidade específica · condição sujeita à disponibilidade",evidence:["Tegra/Agosto/Promocionais/ELO Itamar 663.000 Unidade 2408.png","Tegra/Agosto/Tabela_Coordenação/ELO Duo - Caminhos da Lapa_Agosto_26.pdf"]}},
+    {name:"Garden Design",award:CAMINHOS_AWARD,location:"Lapa · Zona Oeste",zone:"Zona Oeste",status:"Em construção",statusKey:"construcao",info:"2 ou 3 dorms. com suíte · 61m² a 78m² · 1 vaga",feature:"Private Park Residence",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F361%2FImagemPrincipal%2FTegra-Incorporadora-Area-de-Lazer-Piscina-Empreendimento-Garden-Design-Private-Park-Residence-Apartamentos-Lapa-Sao-Paulo-SP-714x640-1758223113158.jpg&w=828",alt:"Garden Design, empreendimento Tegra em Lapa, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/lapa/gardendesignprivateparkresidence",price:673050,priceState:"priced",priceNote:"Unidade 0112 · R$ 11.020/m² · Valor a partir de R$ 673.050. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."},
     {name:"Ampère Brooklin",location:"Brooklin · Zona Sul",zone:"Zona Sul",status:"Em construção",statusKey:"construcao",info:"4 suítes · 262m² privativos · 4 vagas",feature:"Alto padrão no Brooklin",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F351%2FImagemPrincipal%2FTegra-Incorporadora-Detalhe-da-Fachada-Empreendimento-Ampere-Brooklin-Apartamentos-Brooklin-Sao-Paulo-SP-714x640-1718890023834.jpg&w=828",alt:"Ampère Brooklin, empreendimento Tegra em Brooklin, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/brooklin/amperebrooklin",price:4770000,priceState:"priced",priceNote:"Unidade 0121 · 262,35 m² · R$ 18.181/m² · Valor a partir de R$ 4.770.000. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."},
     {name:"Mozae Higienópolis",location:"Higienópolis · Zona Oeste",zone:"Zona Oeste",status:"Em construção",statusKey:"construcao",info:"1 ou 2 suítes · 45m² a 73m² · 1 vaga",feature:"Torre única",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F355%2FImagemPrincipal%2FTegra-Incorporadora-Banner-Principal-Fachada-Portico-Apartamento-Mozae-Higienopolis-Sao-Paulo-SP-714x640-1731539898944.jpg&w=828",alt:"Mozae Higienópolis, empreendimento Tegra em Higienópolis, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/higienopolis/mozaehigienopolis",price:721510,priceState:"priced",priceNote:"Unidade AP0301 · 46 m² · R$ 15.685/m² · Valor a partir de R$ 721.510. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."},
     {name:"Universo Tatuapé Órbita",location:"Tatuapé · Zona Leste",zone:"Zona Leste",status:"Pronto para morar",statusKey:"entregue",info:"38m² a 69m² · 1 a 3 dorms. · salas comerciais",feature:"Últimas unidades",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F339%2FImagemPrincipal%2Fe56e585c-b5a8-44b5-95a6-c6227d8d18ea.jpg&w=828",alt:"Universo Tatuapé Órbita, empreendimento Tegra em Tatuapé, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/leste/tatuape/universoorbita",price:611685,priceState:"priced",priceNote:"Unidade AP0609 · 69 m² · R$ 8.865/m² · Valor a partir de R$ 611.685. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."},
     {name:"Ária Higienópolis",location:"Higienópolis · Zona Oeste",zone:"Zona Oeste",status:"Pronto para morar",statusKey:"entregue",info:"Studios de 30m² · aptos. de 53m² · salas comerciais",feature:"Rooftop em Higienópolis",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F312%2FImagemPrincipal%2FTegra-Incorporadora-Detalhe-da-Fachada-Apartamento-Studio-Salas-Comerciais-Aria-Higienopolis-Sao-Paulo-SP-1715881825537.jpg&w=828",alt:"Ária Higienópolis, empreendimento Tegra em Higienópolis, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/higienopolis/aria-higienopolis",price:501000,priceState:"priced",priceNote:"Studio 1510 · 30 m² · R$ 16.700/m² · Valor a partir de R$ 501.000. Também há referência para a unidade AP1214 · 54 m² · R$ 17.856/m². Consulte a Tegra Vendas para confirmar disponibilidade e condições vigentes."},
     {name:"Bem Moema",location:"Moema · Zona Sul",zone:"Zona Sul",status:"Pronto para morar",statusKey:"entregue",info:"2 a 4 dorms. · 80m², 123m² e 148m² · 1 ou 2 vagas",feature:"Alto padrão em Moema",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F336%2FImagemPrincipal%2FTegra-Incorporadora-Detalhe-da-Fachada-Apartamento-Bem-Moema-Sao-Paulo-SP-714x640-1715883122503.jpg&w=828",alt:"Bem Moema, empreendimento Tegra em Moema, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/moema/bemmoema",price:1811200,priceState:"priced",priceNote:"Unidade AP0202 · 80 m² · R$ 22.640/m² · Valor a partir de R$ 1.811.200. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."},
     {name:"Bem Moema Studios & Offices",location:"Moema · Zona Sul",zone:"Zona Sul",status:"Pronto para morar",statusKey:"entregue",info:"Studios de 26m² a 29m² · aptos. de 36m² · offices",feature:"Morar ou investir",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F343%2FImagemPrincipal%2FTegra-Incorporadora-Perspectiva-Ilustrada-Piscina-Lazer-Apartamentos-Studios-Salas-Comerciais-Bem-Moema-Studios-Offices-Sao-Paulo-SP714x640-1715882591212.jpg&w=828",alt:"Bem Moema Studios & Offices, empreendimento Tegra em Moema, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/moema/bemmoemastudios",price:509600,priceState:"priced",priceNote:"Studio 1702 · 28 m² · R$ 18.200/m² · Valor a partir de R$ 509.600. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."},
+    {name:"Nova Vivere | 105 m²",location:"Lapa · Zona Oeste",zone:"Zona Oeste",status:"Lançamento",statusKey:"lancamento",info:"105 m² · 3 quartos · 2 vagas",feature:"Condição à vista",award:CAMINHOS_AWARD,cashOffer:true,cta:"Quero esta condição",interest:"Nova Vivere 105 m² · unidade 708 · condição à vista",evidence:["Tegra/Agosto/Anuncios/Anúncios.md","Tegra/Agosto/Anuncios/Anuncio NovaVivere Olx valor a vista-29-08-26.png"],image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F363%2FImagemPrincipal%2FTegra-Incorporadora-Area-de-Lazer-Piscina-Empreendimento-Nova-Vivere-Caminhos-da-Lapa-Apartamentos-Sao-Paulo-SP-714x640-1770300546843.png&w=828",alt:"Nova Vivere de 105 m², empreendimento Tegra no Caminhos da Lapa, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/lapa/novavivere",price:1129900,priceState:"priced",priceLabel:"Condição à vista",priceNote:"*Unidade 708 · 105 m². Valor para pagamento à vista, confirmado em 29/08/2026. Sujeito à disponibilidade e alteração. Consulte condições vigentes."},
     {name:"Soma Perdizes",location:"Perdizes · Zona Oeste",zone:"Zona Oeste",status:"Pronto para morar",statusKey:"entregue",info:"Studios de 25m² · aptos. de 41m² e 45m² · comerciais",feature:"Uso misto em Perdizes",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F314%2FImagemPrincipal%2FTegra-Incorporadora-Perspectiva-Ilustrada-Voo-Diurno-Fachada-Apartamentos-Studios-Salas-Comerciais-Soma-Perdizes-Sao-Paulo-SP-714x640-1715885527011.jpg&w=828",alt:"Soma Perdizes, empreendimento Tegra em Perdizes, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/perdizes/somaperdizes",price:630000,priceState:"priced",priceNote:"Unidade 0602 · 45 m² · R$ 14.000/m² · Valor a partir de R$ 630.000. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."},
     {name:"Zahle Jardins",location:"Jardins · Zona Oeste",zone:"Zona Oeste",status:"Pronto para morar",statusKey:"entregue",info:"Studios de 28m² · aptos. de 44m² · salas de 43m² a 53m²",feature:"Próximo à Paulista",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F276%2FImagemPrincipal%2Ftrega_zahle-76-tratada-714x640-1715886658470.jpg&w=828",alt:"Zahle Jardins, empreendimento Tegra em Jardins, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/jardins/zahlejardins",price:null,priceState:"consult",priceNote:"Valor sob consulta. Consulte a Tegra Vendas para confirmar unidades disponíveis e condições vigentes."},
     {name:"Bueno Brandão 257",location:"Vila Nova Conceição · Zona Sul",zone:"Zona Sul",status:"Pronto para morar",statusKey:"entregue",info:"500m² privativos · 5 suítes · 5 vagas",feature:"Residência singular",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F337%2FImagemPrincipal%2F8e85cddc-003b-4b7a-bfd2-2e38275cb1b8.jpg&w=828",alt:"Bueno Brandão 257, empreendimento Tegra em Vila Nova Conceição, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/vila-nova-conceicao/bb257",price:21750000,priceState:"priced",priceNote:"Unidade 31 · 500 m² · R$ 43.500/m² · Valor a partir de R$ 21.750.000. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."},
@@ -52,7 +117,7 @@
     {name:"Tièl Vila Nova Conceição",location:"Vila Nova Conceição · Zona Sul",zone:"Zona Sul",status:"Pronto para morar",statusKey:"entregue",info:"Boutique apartments · piscina no rooftop · fitness",feature:"Próximo ao Ibirapuera",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F352%2FImagemPrincipal%2FTegra-Incorporadora-Detalhe-da-Fachada-Studios-Vila-Nova-Conceicao-Sao-Paulo-SP-714x640-1718129172867.jpg&w=828",alt:"Tièl Vila Nova Conceição, empreendimento Tegra em Vila Nova Conceição, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/vila-nova-conceicao/tielvilanovaconceicao",price:598500,priceState:"priced",priceNote:"Unidade 914 · 21 m² · R$ 28.500/m² · Valor a partir de R$ 598.500. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."},
     {name:"YPY Alto do Ipiranga",location:"Alto do Ipiranga · Zona Sul",zone:"Zona Sul",status:"Em construção",statusKey:"construcao",info:"2 ou 3 dorms. · 65m² e 80m² · 1 vaga",feature:"Mobilidade e lazer",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F346%2FImagemPrincipal%2Ff473a9c8-e222-46f5-887e-c06efa82aaff-1715887075276.jpg&w=828",alt:"YPY Alto do Ipiranga, empreendimento Tegra em Alto do Ipiranga, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/alto-do-ipiranga/ypyaltodoipiranga",price:727650,priceState:"priced",priceNote:"Unidade AP0207 · 66 m² · R$ 11.025/m² · Valor a partir de R$ 727.650. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."},
     {name:"ODE Perdizes",location:"Perdizes · Zona Oeste",zone:"Zona Oeste",status:"Pronto para morar",statusKey:"entregue",info:"4 dorms. · 2 suítes ou 3 suítes · 156m² · 2 vagas",feature:"Última unidade",image:"https://s3-gdigital.s3.amazonaws.com/gdigital/313/ODE%20Perspectiva%20ilustrada%20da%20fachada.webp",alt:"ODE Perdizes, empreendimento Tegra pronto para morar em Perdizes, São Paulo",price:2090000,priceState:"priced",priceLabel:"Valor promocional",priceNote:"Pronto para morar · Unidade 22 · 2º andar · única unidade disponível · De R$ 2.200.000 por R$ 2.090.000. Condição sujeita à disponibilidade.",promo:{unit:"Unidade 22 · 2º andar",oldPrice:2200000,price:2090000,urgency:"Última unidade · condição sujeita à disponibilidade",evidence:["Tegra/Agosto/Promocionais/Promocional ODE 2.090.000.jpeg"]}},
-    {name:"Reserva Caminhos da Lapa",award:{short:"PROJETO PREMIADO",label:"Parte do masterplan Caminhos da Lapa · vencedor do Prêmio Master Imobiliário 2026 · Qualificação Urbana"},location:"Lapa · Zona Oeste",zone:"Zona Oeste",status:"Pronto para morar",statusKey:"entregue",info:"3 a 4 dorms. · 1 a 3 suítes · 91m², 127m² e 157m² · 2 a 3 vagas",feature:"Pronto para morar",image:"https://s3-gdigital.s3.amazonaws.com/gdigital/313/OJvCwqOQER0mcGGVjBoPxE8xALtGs2KXW1MhcviW.webp",alt:"Reserva Caminhos da Lapa, empreendimento Tegra pronto para morar na Lapa, São Paulo",price:null,priceState:"consult",priceNote:"Pronto para morar. Plantas de 91 m², 127 m² e 157 m², com lazer completo e beach tennis. Consulte a Tegra Vendas para confirmar unidades disponíveis e condições vigentes."}
+    {name:"Reserva Caminhos da Lapa",award:CAMINHOS_AWARD,location:"Lapa · Zona Oeste",zone:"Zona Oeste",status:"Pronto para morar",statusKey:"entregue",info:"3 a 4 dorms. · 1 a 3 suítes · 91m², 127m² e 157m² · 2 a 3 vagas",feature:"Pronto para morar",image:"https://s3-gdigital.s3.amazonaws.com/gdigital/313/OJvCwqOQER0mcGGVjBoPxE8xALtGs2KXW1MhcviW.webp",alt:"Reserva Caminhos da Lapa, empreendimento Tegra pronto para morar na Lapa, São Paulo",price:null,priceState:"consult",priceNote:"Pronto para morar. Plantas de 91 m², 127 m² e 157 m², com lazer completo e beach tennis. Consulte a Tegra Vendas para confirmar unidades disponíveis e condições vigentes."}
   ]);
 
   // INTEREST_GALLERY_SOURCE_2026_08_26:
@@ -412,6 +477,15 @@
       accent = "#171813";
     }
 
+    if (project.cashOffer && Number.isFinite(project.price)) {
+      return `
+        <div class="mt-price-block mt-price-cash">
+          <span class="mt-price-label">${escapeHtml(project.priceLabel || "Condição à vista")}</span>
+          <strong class="mt-price-current">${escapeHtml(BRL.format(project.price))} <em>à vista*</em></strong>
+          <small class="mt-price-urgency">${escapeHtml(project.priceNote || "")}</small>
+        </div>`;
+    }
+
     if (project.promo && Number.isFinite(project.promo.oldPrice) && Number.isFinite(project.promo.price)) {
       return `
         <div class="mt-price-block mt-price-promo">
@@ -424,20 +498,22 @@
 
     return `
       <div class="mt-price-block" style="margin-top:14px;padding-top:14px;border-top:1px solid #e3ded3;display:grid;gap:6px">
-        <span style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:850;color:#8a6a10">${label}</span>
+        <span style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:850;color:#8a6a10">${escapeHtml(label)}</span>
         <strong style="font-size:1.3rem;line-height:1.15;color:${accent}">${escapeHtml(headline)}</strong>
         <small style="display:block;font-size:13px;line-height:1.5;color:#625f57">${escapeHtml(project.priceNote || "")}</small>
       </div>`;
   }
 
   function cardMarkup(project) {
-    const actionLabel = project.priceState === "soldout" ? "Ver alternativas" : "Negociar condições";
+    const actionLabel = project.cta || (project.priceState === "soldout" ? "Ver alternativas" : "Negociar condições");
+    const interestValue = project.interest || project.name;
 
     return `
       <article class="mt-project-card" data-status="${escapeHtml(project.statusKey)}" data-zone="${escapeHtml(project.zone)}" data-award="${project.award ? "true" : "false"}">
         <div class="mt-project-image">
           <img data-project-image src="${escapeHtml(mediaUrl(project.image))}" alt="${escapeHtml(project.alt || project.name)}" width="828" height="743" loading="lazy" decoding="async">
           ${project.award ? `<span class="mt-award-corner" title="${escapeHtml(project.award.label)}" aria-label="${escapeHtml(project.award.label)}"><span>${escapeHtml(project.award.short)}</span></span>` : ""}
+          ${project.award && project.award.tagline ? `<span class="mt-award-tagline">${escapeHtml(project.award.tagline)}</span>` : ""}
           <span class="mt-status ${statusClass[project.statusKey] || ""}">${escapeHtml(project.status)}</span>
           ${project.feature ? `<span class="mt-feature">${escapeHtml(project.feature)}</span>` : ""}
           ${project.promo ? `<span class="mt-promo-ribbon"><b>OPORTUNIDADE</b><span>${escapeHtml(project.promo.unit || "")}</span></span>` : ""}
@@ -448,7 +524,7 @@
           <span class="mt-project-info">${escapeHtml(project.info)}</span>
           ${priceMarkup(project)}
           <div class="mt-project-actions" style="grid-template-columns:1fr">
-            <a class="mt-interest" href="#formulario" data-interest="${escapeHtml(project.name)}">${actionLabel}</a>
+            <a class="mt-interest" href="#formulario" data-interest="${escapeHtml(interestValue)}">${escapeHtml(actionLabel)}</a>
           </div>
         </div>
       </article>`;
