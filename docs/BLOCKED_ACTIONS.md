@@ -1,6 +1,6 @@
 # Ações Bloqueadas — MoreNumTegra
 
-- Atualizado em: `2026-08-28`
+- Atualizado em: `2026-08-29`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
 - Functional baseline: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 - Technical baseline: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
@@ -21,9 +21,9 @@
 | tratar redirect page-level do `www` como 301/308 comprovado | HAR observado mostrou HTTP 200 antes da navegação | evidência HTTP real de 301/308 |
 | aplicar metadata Green antes do lifecycle GitHub/Vercel | produziria drift entre fonte e produção | PR validada, merge e gate Green |
 | inserir canonical em módulo HTML de body | canonical precisa de mecanismo de head confiável | capability Green de head/canonical comprovada |
-| fabricar canonical via JavaScript client-side sem decisão técnica | pode depender de rendering e divergir do HTML inicial | evidência específica + aprovação Technical SEO |
+| canonical via JavaScript fora do contrato 2026-08-29 | client-side canonical exige decisão técnica delimitada | somente o target `https://moretegra.com.br/` está aprovado no contrato vigente |
 | declarar canonical Green implementado só porque Vercel possui canonical | ambientes têm funções distintas | prova no HTML/head da produção Green |
-| JSON-LD/OG/Twitter nesta revisão P0-A | fora do escopo autorizado | gate P1 |
+| JSON-LD/OG/Twitter fora do contrato 2026-08-29 | expansão Search não autorizada genericamente | somente OG/Twitter e `WebSite + WebPage` descritos no contrato vigente estão liberados |
 | analytics/pixels/tags/Speed Insights adicional | telemetria/dados | gate específico |
 | Search Console | propriedade/verificação externa | gate específico |
 | CMS/database/backend próprio | não necessário no V1 | necessidade material + nova decisão |
@@ -43,7 +43,7 @@ Permitido após lifecycle/gate aplicável:
 - atualização controlada dos módulos/configurações Green;
 - smoke test após publicação.
 
-A autorização P0-A atual não elimina os gates de Ready, merge ou produção.
+A autorização do pacote Search + Conversion de 2026-08-29 não elimina os gates de Ready, merge ou produção.
 
 ## 3. Search provider — permitido
 
@@ -90,4 +90,4 @@ SEARCH HANDOFF/RECOMMENDATION
 -> PRODUCTION SMOKE
 ```
 
-O domínio principal comercial é `https://moretegra.com.br/`. O `www` hoje usa redirect page-level. O target canonical non-www está adjudicado; a implementação Green de canonical/301/308 continua dependente de capability proof.
+O domínio principal comercial é `https://moretegra.com.br/`. O `www` hoje usa redirect page-level. O target canonical non-www está adjudicado. O pacote 2026-08-29 autoriza o transporte client-side do canonical no JavaScript aprovado, com risco residual; redirect HTTP 301/308 continua dependente de capability proof.
