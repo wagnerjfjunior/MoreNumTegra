@@ -121,7 +121,7 @@
 .mt-award-card>small{color:var(--mt-muted);line-height:1.45}
 .mt-award-card-highlight{background:#171813;color:#fff;border-color:#171813}
 .mt-award-card-highlight>span{color:#EBB92E}.mt-award-card-highlight>small{color:rgba(255,255,255,.72)}
-.mt-award-seal{position:absolute;z-index:4;top:14px;right:14px;width:132px;padding:9px 11px 10px;border-radius:12px;background:#EBB92E;color:#171813;display:grid;gap:2px;text-align:left;box-shadow:0 8px 20px rgba(0,0,0,.20);pointer-events:none}
+.mt-award-seal{position:absolute;z-index:4;top:14px;right:14px;width:132px;padding:9px 11px 10px;border-radius:12px;background:#EBB92E;color:#171813;display:grid;gap:2px;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,.20);pointer-events:none}
 .mt-award-seal>b{font-size:9px;line-height:1.05;font-weight:950;letter-spacing:.075em;text-transform:uppercase}
 .mt-award-seal>small{font-size:8px;line-height:1.05;font-weight:900;letter-spacing:.055em;text-transform:uppercase}
 .mt-project-card[data-award="true"] .mt-feature{top:68px;right:14px;max-width:54%}
