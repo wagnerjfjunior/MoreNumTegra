@@ -509,7 +509,7 @@
     const interestValue = project.interest || project.name;
 
     return `
-      <article class="mt-project-card" data-status="${escapeHtml(project.statusKey)}" data-zone="${escapeHtml(project.zone)}" data-award="${project.award ? "true" : "false"}">
+      <article class="mt-project-card" data-status="${escapeHtml(project.statusKey)}" data-zone="${escapeHtml(project.zone)}" data-award="${project.award ? "true" : "false"}" data-promo="${project.promo ? "true" : "false"}" data-cash-offer="${project.cashOffer ? "true" : "false"}">
         <div class="mt-project-image">
           <img data-project-image src="${escapeHtml(mediaUrl(project.image))}" alt="${escapeHtml(project.alt || project.name)}" width="828" height="743" loading="lazy" decoding="async">
           ${project.award ? `<span class="mt-award-corner" title="${escapeHtml(project.award.label)}" aria-label="${escapeHtml(project.award.label)}"><span>${escapeHtml(project.award.short)}</span></span>` : ""}
