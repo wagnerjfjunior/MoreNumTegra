@@ -118,7 +118,7 @@ client-side canonical remains weaker operationally than a proven static/head imp
 
 ## 6. Open Graph / Twitter
 
-Authorized:
+Authorized only as a runtime enhancement:
 
 - `og:type=website`;
 - `og:url`;
@@ -129,6 +129,16 @@ Authorized:
 - `twitter:card`;
 - `twitter:title`;
 - `twitter:description`.
+
+Current transport is JavaScript-only.
+
+Classification:
+
+`RUNTIME_ONLY_BEST_EFFORT / NOT_SOCIAL_CRAWLER_RELIABLE`
+
+These tags may exist in the rendered browser DOM, but the package must not claim reliable Facebook, WhatsApp, X/Twitter or other social-link previews because those crawlers may not execute page JavaScript.
+
+Reliable social preview requires a proven native/static `<head>` capability or equivalent server-rendered transport in Green and is outside the current implementation.
 
 No social image is introduced in this package without a durable approved image.
 
@@ -184,7 +194,10 @@ The provider result remains a provider-side lifecycle object until integrated th
 - Nova Vivere 72 m² first card;
 - Nova Vivere 105 m² middle card;
 - 105 m² card shows R$ 1,129,900 cash condition with nearby disclaimer;
+- selecting the 105 m² card preserves the cash price and disclaimer beside the native form;
+- both Nova Vivere cards preserve the existing Nova Vivere gallery;
 - canonical target = `https://moretegra.com.br/`;
+- OG/Twitter may be validated only as runtime DOM metadata; social-crawler preview is not an acceptance guarantee;
 - Vercel noindex remains present in Preview architecture;
 - documentation audit passes;
 - lifecycle governance passes;

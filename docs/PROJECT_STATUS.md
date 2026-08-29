@@ -41,7 +41,7 @@ Homologação Vercel:
 | Floating CTAs | PASS após PR #27 | preservar montagem no body | nenhum |
 | Analytics | não habilitado | gate próprio | sem autorização |
 | Search provider | P0 integrado no provider main + pacote 2026-08-29 em provider PR #10 | revalidar exact-head/lifecycle | provider não possui Product Authority |
-| Search metadata package | title/description + canonical JS + OG/Twitter + WebSite/WebPage JSON-LD aprovados no contrato 2026-08-29 | gates exact-head da PR corrente | Green somente após merge + gate próprio |
+| Search metadata package | title/description + canonical JS + WebSite/WebPage JSON-LD; OG/Twitter somente runtime best-effort | gates exact-head da PR corrente | social crawlers podem não executar JS; Green somente após merge + gate próprio |
 | canonical | target non-www definido; JS aprovado neste pacote com risco residual | rendered-head smoke após Green | static/head capability continua não comprovada |
 | SEM | somente estratégia futura | P2 | tracking/conversion/budget gates |
 
@@ -93,7 +93,7 @@ P0 canonicalidade / hostname / metadata / robots / sitemap / Search Console
 
 A execução corrente é o pacote delimitado `Search + Conversion 2026-08-29`, definido em `docs/search/SEARCH_CONVERSION_PACKAGE_CONTRACT_2026-08-29.md`.
 
-Title/meta description, canonical JS, OG/Twitter e JSON-LD conservador estão definidos no contrato 2026-08-29.
+Title/meta description, canonical JS e JSON-LD conservador estão definidos no contrato 2026-08-29. OG/Twitter permanecem somente como enhancement de runtime e não constituem prova de preview confiável para crawlers sociais.
 
 A capability estática/nativa Green para canonical continua não comprovada. Para este pacote específico, o Product Authority aprovou o transporte client-side do canonical no JavaScript, respaldado por decisão Technical SEO do provider candidate e com risco residual explícito. Redirect HTTP 301/308 continua não comprovado.
 
@@ -108,6 +108,7 @@ Vercel homologation deve permanecer `noindex,nofollow` e pode apontar canonical 
 | regressão dos CTAs por módulos Green | manter dock em `document.body` via JS global |
 | www servir HTTP 200 antes de redirecionar | canonical consistente quando capability comprovada; preferir 301/308 |
 | canonical client-side depender de rendering | manter target único/non-www, evitar conflito no HTML inicial e executar rendered-head smoke após Green |
+| OG/Twitter client-side não serem lidos por crawlers sociais | classificar como runtime-only best-effort; não prometer social preview até capability de head/static ser comprovada |
 | tracking sem governança | manter bloqueado até gate específico |
 
 ## 7. Governança operacional

@@ -19,7 +19,7 @@ O Product Authority aprovou em 2026-08-29 o pacote delimitado de:
 - card Nova Vivere 105 m² / unidade 708 / R$ 1.129.900 à vista;
 - title/meta description;
 - canonical comercial via JavaScript;
-- Open Graph/Twitter;
+- Open Graph/Twitter somente como runtime best-effort, sem garantia para crawlers sociais;
 - JSON-LD conservador `WebSite + WebPage`.
 
 A aprovação não implica merge nem Green.
@@ -61,7 +61,7 @@ Antes de Ready, confirmar no head exato:
 - canonical = `https://moretegra.com.br/`;
 - nenhum canonical para hostname Vercel;
 - title/meta description conforme contrato;
-- OG/Twitter conforme contrato;
+- OG/Twitter somente como metadata de runtime conforme contrato; não exigir nem afirmar social-preview crawler;
 - JSON-LD apenas `WebSite + WebPage`;
 - sem tracking, Search Console ou SEM;
 - sem interceptação do Form 46;
@@ -70,6 +70,8 @@ Antes de Ready, confirmar no head exato:
 - Nova Vivere 72 m² no início da grade;
 - Nova Vivere 105 m² no meio da grade;
 - card 105 m² usa `R$ 1.129.900 à vista*` + disclaimer próximo;
+- seleção do card 105 m² preserva preço/condição/disclaimer junto ao formulário;
+- ambos os cards Nova Vivere reutilizam a galeria canônica `Nova Vivere`;
 - evidência da unidade 708 versionada.
 
 ## 4. Green

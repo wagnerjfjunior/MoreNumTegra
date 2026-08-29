@@ -267,6 +267,10 @@
   function interestPitch(project) {
     if (!project) return "";
 
+    if (project.cashOffer && Number.isFinite(project.price)) {
+      return `${project.info}. Unidade 708 com condição à vista de ${BRL.format(project.price)}.`;
+    }
+
     if (project.name === "Caminhos da Lapa Elo Duo") {
       return "Pronto para morar na Lapa. Oportunidade na unidade AP2408, com 67,42 m² e 1 vaga: de R$ 714.712,34 por R$ 663.000. Condição sujeita à disponibilidade.";
     }
@@ -289,7 +293,8 @@
 
   function interestGalleryImages(project) {
   if (!project) return [];
-  const extras = INTEREST_GALLERIES[project.name] || [];
+  const galleryKey = project.projectName || project.name;
+  const extras = INTEREST_GALLERIES[galleryKey] || [];
   const seen = new Set();
 
   return extras.reduce((images, item) => {
@@ -399,7 +404,7 @@
       <div data-interest-gallery hidden role="group" aria-label="Galeria do empreendimento"></div>
       <p data-interest-pitch style="margin:0;max-width:780px;color:#5f5c54;font-size:14px;line-height:1.6"></p>
       <div data-interest-price hidden style="display:grid;gap:3px;padding:14px 16px;border-radius:16px;background:#171813;color:#fff">
-        <span style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:850;color:#EBB92E">Referência por m²</span>
+        <span data-interest-price-label style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:850;color:#EBB92E">Referência por m²</span>
         <strong data-interest-sqm style="font-size:1.45rem;line-height:1.1"></strong>
         <small data-interest-market-note hidden style="font-size:12px;line-height:1.45;color:rgba(255,255,255,.72)"></small>
       </div>
@@ -431,6 +436,7 @@
     const nameNode = context.querySelector("[data-interest-name]");
     const pitchNode = context.querySelector("[data-interest-pitch]");
     const priceBox = context.querySelector("[data-interest-price]");
+    const priceLabelNode = context.querySelector("[data-interest-price-label]");
     const sqmNode = context.querySelector("[data-interest-sqm]");
     const marketNode = context.querySelector("[data-interest-market-note]");
 
@@ -449,9 +455,12 @@
     if (pitchNode) pitchNode.textContent = project ? interestPitch(project) : "Você está solicitando condições para este empreendimento.";
 
     const sqm = pricePerSqm(project);
-    const marketNote = interestMarketNote(project);
-    if (priceBox) priceBox.hidden = !sqm;
-    if (sqmNode) sqmNode.textContent = sqm;
+    const cashOffer = project?.cashOffer === true && Number.isFinite(project?.price);
+    const priceReference = cashOffer ? `${BRL.format(project.price)} à vista*` : sqm;
+    const marketNote = cashOffer ? String(project.priceNote || "") : interestMarketNote(project);
+    if (priceBox) priceBox.hidden = !priceReference;
+    if (priceLabelNode) priceLabelNode.textContent = cashOffer ? "Condição à vista" : "Referência por m²";
+    if (sqmNode) sqmNode.textContent = priceReference;
     if (marketNode) {
       marketNode.textContent = marketNote;
       marketNode.hidden = !marketNote;

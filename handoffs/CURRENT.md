@@ -118,7 +118,7 @@ O Product Authority aprovou em 2026-08-29 o pacote delimitado Search + Conversio
 
 `docs/search/SEARCH_CONVERSION_PACKAGE_CONTRACT_2026-08-29.md`
 
-O pacote inclui prêmio, dois cards Nova Vivere, unidade 708 / 105 m² / R$ 1.129.900 à vista, title/meta description, canonical via JS, OG/Twitter e JSON-LD `WebSite + WebPage`.
+O pacote inclui prêmio, dois cards Nova Vivere, unidade 708 / 105 m² / R$ 1.129.900 à vista, title/meta description, canonical via JS e JSON-LD `WebSite + WebPage`. OG/Twitter permanecem autorizados apenas como runtime best-effort e não comprovam preview para crawlers sociais.
 
 Contrato anterior:
 
@@ -149,7 +149,8 @@ Decisões aprovadas:
 - unidade 708: R$ 1.129.900 à vista, evidence-bound;
 - sem outbound SECOVI-SP;
 - metadata estável permanece focada em apartamentos Tegra em São Paulo;
-- canonical comercial via JS, OG/Twitter e `WebSite + WebPage` JSON-LD aprovados.
+- canonical comercial via JS e `WebSite + WebPage` JSON-LD aprovados;
+- OG/Twitter: runtime-only best-effort; social preview confiável depende de capability nativa/static de `<head>` ainda não comprovada.
 
 Search provider candidate:
 
