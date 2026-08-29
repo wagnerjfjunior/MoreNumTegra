@@ -521,8 +521,7 @@
       <article class="mt-project-card" data-status="${escapeHtml(project.statusKey)}" data-zone="${escapeHtml(project.zone)}" data-award="${project.award ? "true" : "false"}" data-promo="${project.promo ? "true" : "false"}" data-cash-offer="${project.cashOffer ? "true" : "false"}">
         <div class="mt-project-image">
           <img data-project-image src="${escapeHtml(mediaUrl(project.image))}" alt="${escapeHtml(project.alt || project.name)}" width="828" height="743" loading="lazy" decoding="async">
-          ${project.award ? `<span class="mt-award-corner" title="${escapeHtml(project.award.label)}" aria-label="${escapeHtml(project.award.label)}"><span>${escapeHtml(project.award.short)}</span></span>` : ""}
-          ${project.award && project.award.tagline ? `<span class="mt-award-tagline">${escapeHtml(project.award.tagline)}</span>` : ""}
+          ${project.award ? `<span class="mt-award-seal" title="${escapeHtml(project.award.label)}" aria-label="${escapeHtml(project.award.label)}"><b>PRÊMIO MASTER</b><small>IMOBILIÁRIO 2026</small></span>` : ""}
           <span class="mt-status ${statusClass[project.statusKey] || ""}">${escapeHtml(project.status)}</span>
           ${project.feature ? `<span class="mt-feature">${escapeHtml(project.feature)}</span>` : ""}
           ${project.promo ? `<span class="mt-promo-ribbon"><b>OPORTUNIDADE</b><span>${escapeHtml(project.promo.unit || "")}</span></span>` : ""}
@@ -531,6 +530,7 @@
           <p class="mt-project-location">${escapeHtml(project.location)}</p>
           <h3>${escapeHtml(project.name)}</h3>
           <span class="mt-project-info">${escapeHtml(project.info)}</span>
+          ${project.award && project.award.tagline ? `<div class="mt-award-context" title="${escapeHtml(project.award.label)}">${escapeHtml(project.award.tagline)}</div>` : ""}
           ${priceMarkup(project)}
           <div class="mt-project-actions" style="grid-template-columns:1fr">
             <a class="mt-interest" href="#formulario" data-interest="${escapeHtml(interestValue)}">${escapeHtml(actionLabel)}</a>
