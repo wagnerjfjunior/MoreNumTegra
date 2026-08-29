@@ -131,6 +131,7 @@
 .mt-price-cash{margin-top:14px;padding:16px;border-radius:16px;background:#171813;color:#fff;display:grid;gap:6px}
 .mt-price-cash .mt-price-current{font-size:1.65rem;line-height:1.08}
 .mt-price-cash .mt-price-current em{font-style:normal;font-size:.65em;color:#EBB92E;white-space:nowrap}
+.mt-price-cash .mt-price-current em.mt-price-suffix-compact{font-size:.52em}
 .mt-price-cash .mt-price-urgency{font-size:11px;line-height:1.45;color:rgba(255,255,255,.78)}
 
 
