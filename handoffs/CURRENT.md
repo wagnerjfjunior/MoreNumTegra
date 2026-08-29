@@ -1,7 +1,7 @@
 # Handoff Atual — MoreNumTegra
 
 - Status: `atual`
-- Atualizado em: `2026-08-28`
+- Atualizado em: `2026-08-29`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra`
 - Referência: `main` — resolver live antes de agir
 - Release funcional observado antes deste fechamento documental: `2d1f9d656761433102f95e4c80bfdebf47f3607e`
@@ -114,16 +114,45 @@ Provider result integrado:
 
 `docs/assets/morenumtegra-search-provider-recommendation-2026-08-28.md`
 
-O Product Authority autorizou em 2026-08-28 somente o P0-A de canonicalidade comercial e metadata.
+O Product Authority aprovou em 2026-08-29 o pacote delimitado Search + Conversion documentado em:
 
-Contrato consumer:
+`docs/search/SEARCH_CONVERSION_PACKAGE_CONTRACT_2026-08-29.md`
+
+O pacote inclui prêmio, dois cards Nova Vivere, unidade 708 / 105 m² / R$ 1.129.900 à vista, title/meta description, canonical via JS, OG/Twitter e JSON-LD `WebSite + WebPage`.
+
+Contrato anterior:
 
 `docs/search/P0A_CANONICAL_METADATA_CONTRACT_2026-08-28.md`
 
-A documentação oficial Green comprova Título e Descrição para Buscadores como controles nativos. Canonical e redirect HTTP 301/308 permanecem sem capability proof suficiente nesta rodada.
+Contrato corrente para o pacote 2026-08-29:
+
+`docs/search/SEARCH_CONVERSION_PACKAGE_CONTRACT_2026-08-29.md`
+
+A capability estática Green para canonical continua não comprovada. O pacote 2026-08-29 autoriza explicitamente canonical via JavaScript para `https://moretegra.com.br/`, com risco residual. Redirect HTTP 301/308 permanece sem capability proof.
 
 Nenhuma mutação Green deve preceder branch/PR, Preview, validação, merge e gate de produção.
 
 ## 7. Próxima ação segura
 
 Autoridade: `docs/NEXT_SAFE_ACTION.md`.
+
+
+## 8. Pacote Search + Conversion 2026-08-29
+
+Decisões aprovadas:
+
+- headline: `Dois prêmios em 2026. Um deles está no seu próximo endereço.`;
+- badge completo: `PRÊMIO MASTER IMOBILIÁRIO 2026`;
+- segunda camada: `Caminhos da Lapa · um bairro inteiro de opções`;
+- Nova Vivere 72 m² permanece como primeiro card;
+- Nova Vivere 105 m² entra no meio da mesma home;
+- unidade 708: R$ 1.129.900 à vista, evidence-bound;
+- sem outbound SECOVI-SP;
+- metadata estável permanece focada em apartamentos Tegra em São Paulo;
+- canonical comercial via JS, OG/Twitter e `WebSite + WebPage` JSON-LD aprovados.
+
+Search provider candidate:
+
+`wagnerjfjunior/Blogs-sites-portais-seo PR #10`
+
+Ready e merge permanecem gates separados.
