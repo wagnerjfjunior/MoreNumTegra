@@ -2,96 +2,110 @@
 
 > Registro autoritativo da única próxima ação segura.
 
-- Definida em: `2026-08-28`
+- Definida em: `2026-08-29`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
 - Functional baseline: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 - Technical baseline: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
 - ADR: `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`
-- Estado: `P0A_GREEN_METADATA_JS_CORRECTION`
+- Active contract: `docs/search/SEARCH_CONVERSION_PACKAGE_CONTRACT_2026-08-29.md`
+- Estado: `SEARCH_CONVERSION_AWARD_METADATA_PACKAGE`
 
-## 1. Contexto resolvido
+## 1. Contexto
 
-O handoff Search foi concluído pelo consumer e a recomendação do provider está integrada em:
+O Product Authority aprovou em 2026-08-29 o pacote delimitado de:
 
-`wagnerjfjunior/Blogs-sites-portais-seo@c20c15ce6f591071b3ec5236291d7ed6e92934bf`
+- copy e badge do Prêmio Master Imobiliário 2026;
+- dois cards Nova Vivere na mesma home;
+- card Nova Vivere 105 m² / unidade 708 / R$ 1.129.900 à vista;
+- title/meta description;
+- canonical comercial via JavaScript;
+- Open Graph/Twitter;
+- JSON-LD conservador `WebSite + WebPage`.
+
+A aprovação não implica merge nem Green.
+
+Search provider candidate:
+
+`wagnerjfjunior/Blogs-sites-portais-seo PR #10`
 
 MoreNumTegra continua Product Authority.
 
-O escopo P0-A autorizado é limitado a canonicalidade comercial e metadata, sem DNS, analytics, Search Console, JSON-LD, SEM, Ready, merge ou publicação fora de gate.
+## 2. Máquina de próxima ação
 
-Contrato de implementação:
+Resolver live PR, head, base, Vercel, documentação, reviews, threads e autorizações. Executar somente a primeira condição aplicável:
 
-`docs/search/P0A_CANONICAL_METADATA_CONTRACT_2026-08-28.md`
+1. se head/base divergirem ou houver finding material -> parar e reconciliar;
+2. se Vercel do head exato não estiver `success` -> aguardar/revalidar;
+3. se não houver documentation audit atual para o head -> executar READ_ONLY;
+4. se documentation audit = `BLOCK` ou `INCONCLUSIVE` -> parar;
+5. se não houver lifecycle governance atual para head+base -> executar READ_ONLY;
+6. se lifecycle governance = `BLOCK` ou `INCONCLUSIVE` -> parar;
+7. se PR estiver Draft e não houver autorização Ready exata -> solicitar autorização;
+8. se PR estiver Draft e houver autorização Ready exata -> marcar Ready somente;
+9. depois de Ready, revalidar reviews/threads/checks;
+10. merge exige autorização nova, separada e posterior ao Ready;
+11. após merge, verificar novo `main` e Vercel Production;
+12. Green continua gate separado e manual.
 
-## 2. Única próxima ação segura
+`READY != MERGE`
 
-Executar a correção do P0-A no artefato que realmente é copiado para a Green:
+`MERGE != GREEN`
 
-`src-greenn/moretegra.js`
+## 3. Acceptance do pacote
 
-Fluxo obrigatório:
+Antes de Ready, confirmar no head exato:
 
-1. Draft PR a partir de `main@698a9be2fa385e0e10534ab88aceda0de49eb11c`;
-2. Vercel Preview do head exato;
-3. validar que o Preview inicia com metadata de laboratório e, após carregar `moretegra.js`, apresenta:
-   - title `Apartamentos Tegra em São Paulo | More em um Tegra`;
-   - meta description P0-A;
-   - `noindex,nofollow` preservado;
-   - nenhum tracking/schema/canonical novo introduzido pelo JS;
-4. após gate Ready separado, merge separado;
-5. validar Vercel Production pública no novo `main`;
-6. somente então o owner copia manualmente para a Green o `src-greenn/moretegra.js` aprovado;
-7. owner publica/valida Green e devolve o resultado;
-8. executar smoke READ_ONLY da produção quando a superfície de leitura permitir.
+- Vercel Preview = `success`;
+- JavaScript sintaticamente válido;
+- Vercel continua `noindex,nofollow`;
+- canonical = `https://moretegra.com.br/`;
+- nenhum canonical para hostname Vercel;
+- title/meta description conforme contrato;
+- OG/Twitter conforme contrato;
+- JSON-LD apenas `WebSite + WebPage`;
+- sem tracking, Search Console ou SEM;
+- sem interceptação do Form 46;
+- sem outbound CTA para SECOVI-SP;
+- nome oficial `PRÊMIO MASTER IMOBILIÁRIO 2026` visível;
+- Nova Vivere 72 m² no início da grade;
+- Nova Vivere 105 m² no meio da grade;
+- card 105 m² usa `R$ 1.129.900 à vista*` + disclaimer próximo;
+- evidência da unidade 708 versionada.
 
-Não copiar novamente HTML 01, HTML 02, Footer ou CSS quando o diff aprovado não os alterar.
+## 4. Green
 
-## 3. Estado funcional já aprovado
+Green só pode ocorrer após:
 
-Não repetir como blocker:
+1. merge autorizado separadamente;
+2. Vercel Production alinhada ao novo `main`;
+3. reconfirmação de disponibilidade/preço da unidade 708;
+4. owner copiar manualmente os artefatos aprovados;
+5. publicação e smoke production.
 
-- domínio raiz HTTPS;
-- HTTP -> HTTPS;
-- `www` com HTTPS;
-- navegação page-level `www -> raiz`;
-- favicon;
-- catálogo;
-- filtros desktop/mobile;
-- busca;
-- WhatsApp;
-- Form 46;
-- CTAs flutuantes.
+## 5. Bloqueios preservados
 
-O redirect `www` não é 301/308 comprovado.
+Continuam fora do pacote:
 
-## 4. P0-A
+- DNS;
+- Search Console;
+- GA4/GTM/Meta Pixel;
+- SEM/spend;
+- schema de award/review/rating;
+- Product schema com preço volátil na home;
+- mudanças de Form 46;
+- publicação Green antes de merge;
+- qualquer expansão não descrita no contrato.
 
-Target comercial:
+## 6. Condições de parada
 
-`https://moretegra.com.br/`
+Parar diante de:
 
-Title:
-
-`Apartamentos Tegra em São Paulo | More em um Tegra`
-
-Meta description:
-
-`Compare empreendimentos Tegra em São Paulo por região, estágio e faixa de valor. Veja lançamentos, imóveis em construção e prontos para morar e fale com a Tegra Vendas.`
-
-O processo operacional da propriedade usa os artefatos `src-greenn/`; não depende de MCP ou automação Green. Title e meta description deste P0-A serão aplicados pelo JavaScript versionado que o owner copia manualmente para a Green.
-
-Canonical e redirect 301/308 permanecem fora desta correção.
-
-## 5. Condições de parada
-
-Parar se:
-
-- Vercel Preview não corresponder ao head exato;
-- `noindex` for removido da homologação;
-- canonical apontar para Vercel ou hostname divergente;
-- surgir mutação de catálogo/Form 46;
-- a solução exigir DNS;
-- surgir canonical novo no JavaScript desta correção;
-- surgir analytics, Search Console, JSON-LD ou SEM;
-- for necessária publicação Green antes de merge;
-- houver divergência material entre provider recommendation e consumer implementation.
+- drift de head/base;
+- Vercel diferente de `success`;
+- remoção do noindex da homologação;
+- canonical conflitante;
+- dado comercial sem evidência;
+- finding material;
+- review/thread material;
+- ausência de autorização aplicável;
+- tentativa de reutilizar autorização de Ready como merge.
