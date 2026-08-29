@@ -129,7 +129,7 @@ Falha do player não pode bloquear catálogo, filtros, CTAs ou formulário.
 
 ## 8. Catálogo e preços
 
-O catálogo integrado contém 19 empreendimentos migrados. Dados comerciais, preço, disponibilidade, metragem, estágio e condições devem ser revalidados antes da Green comercial.
+O catálogo integrado contém 21 empreendimentos únicos; a home pode exibir mais de um card/oferta do mesmo empreendimento quando houver tese comercial documentada. Dados comerciais, preço, disponibilidade, metragem, estágio e condições devem ser revalidados antes da Green comercial.
 
 Valores exibidos como `A partir de` são referências; o cenário final depende de unidade, tabela, entrada, fluxo, forma de pagamento e negociação.
 
