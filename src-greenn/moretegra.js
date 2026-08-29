@@ -90,7 +90,7 @@
   // fatos adicionais do Elo Duo (Entregue, Últimas unidades, mobilidade ligada à estação e lazer completo)
   // conferidos na página oficial Tegra em 2026-08-26. Revalidar antes da publicação Green.
   const CAMINHOS_AWARD = Object.freeze({
-    short: "MASTER 2026",
+    short: "PRÊMIO MASTER IMOBILIÁRIO 2026",
     tagline: "Caminhos da Lapa · um bairro inteiro de opções",
     label: "Prêmio Master Imobiliário 2026 · Caminhos da Lapa — um bairro inteiro de opções · vencedor em Qualificação Urbana"
   });
