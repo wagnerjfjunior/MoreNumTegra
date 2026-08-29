@@ -27,7 +27,7 @@ Homologação Vercel:
 | GitHub main | canônico | preservar rastreabilidade | nenhum |
 | Vercel Production | alinhada ao release funcional observado | preservar como homologação | nenhum |
 | Green Sales | publicada e funcionalmente homologada | manutenção controlada | nenhum funcional conhecido |
-| Domínio raiz | HTTPS PASS | canonical comercial P0-A | mecanismo Green de canonical não comprovado |
+| Domínio raiz | HTTPS PASS | canonical comercial target + transporte JS aprovado no pacote 2026-08-29 | static/head capability Green não comprovada |
 | HTTP -> HTTPS | PASS | preservar | nenhum |
 | www | Domínio OK + HTTPS + redirect page-level para raiz | preferir 301/308 quando capability existir | 301/308 não comprovado |
 | Favicon | PASS | preservar | nenhum |
@@ -107,7 +107,7 @@ Vercel homologation deve permanecer `noindex,nofollow` e pode apontar canonical 
 | Green sobrescrever CSS/estrutura em edição futura | sempre derivar mudanças do GitHub e homologar no Vercel |
 | regressão dos CTAs por módulos Green | manter dock em `document.body` via JS global |
 | www servir HTTP 200 antes de redirecionar | canonical consistente quando capability comprovada; preferir 301/308 |
-| canonical ser fabricado por body/JS sem garantia | fail closed; exigir mecanismo de head comprovado |
+| canonical client-side depender de rendering | manter target único/non-www, evitar conflito no HTML inicial e executar rendered-head smoke após Green |
 | tracking sem governança | manter bloqueado até gate específico |
 
 ## 7. Governança operacional
