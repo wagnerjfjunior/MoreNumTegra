@@ -11,7 +11,7 @@
 - Baseline técnica vigente após integração desta revisão: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
 - Baseline técnica anterior: `docs/baseline/TECHNICAL_BASELINE_V2_1.md`
 - ADR de composição Green: `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`
-- Data de referência: `2026-08-24`
+- Data de referência: `2026-08-29`
 
 ## 2. Regra de canonicalidade
 
@@ -34,9 +34,10 @@ Em caso de divergência:
 3. `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
 4. `docs/baseline/TECHNICAL_BASELINE_V2_1.md` para decisões não supersedidas
 5. `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`
-6. `docs/PROJECT_STATUS.md`
-7. `docs/NEXT_SAFE_ACTION.md`
-8. `docs/BLOCKED_ACTIONS.md`
+6. quando Search/conversion 2026-08-29 for material: `docs/search/SEARCH_CONVERSION_PACKAGE_CONTRACT_2026-08-29.md`
+7. `docs/PROJECT_STATUS.md`
+8. `docs/NEXT_SAFE_ACTION.md`
+9. `docs/BLOCKED_ACTIONS.md`
 
 ## 4. Arquitetura V1
 
@@ -215,3 +216,28 @@ Exigem decisão/gate próprio:
 ## 12. Próxima ação segura
 
 Autoridade: `docs/NEXT_SAFE_ACTION.md`.
+
+
+## 13. Search + Conversion package 2026-08-29
+
+Contrato aprovado pelo Product Authority:
+
+`docs/search/SEARCH_CONVERSION_PACKAGE_CONTRACT_2026-08-29.md`
+
+Esse contrato cria uma exceção delimitada ao P0-A anterior para:
+
+- award copy;
+- dois cards Nova Vivere na mesma home;
+- unidade 708 / 105 m² / R$ 1.129.900 à vista;
+- title/meta description;
+- canonical comercial via JavaScript;
+- OG/Twitter;
+- JSON-LD `WebSite + WebPage`.
+
+Não autoriza merge, Green, DNS, Search Console, analytics, SEM ou schema adicional.
+
+`PACKAGE_APPROVED != READY`
+
+`READY != MERGE`
+
+`MERGE != GREEN`
