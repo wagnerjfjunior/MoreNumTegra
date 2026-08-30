@@ -5,61 +5,60 @@
 - Definida em: `2026-08-30`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
 - Release atual: `18cfab98e01be29c86d78d08f2f5035a8da70444`
-- Estado: `NEXT_CYCLE_SEARCH_MEASUREMENT_PREPARATION`
+- Estado: `MEASUREMENT_FOUNDATION_PREPARATION`
 
 ## 1. Estado de entrada
 
-A release Search + Conversion está integrada, publicada na Green e encerrada pela OT #34.
+Search + Conversion permanece em produção comercial na Green.
 
-Nenhuma ação de tracking, Search Console, DNS, Google Ads ou spend está autorizada por esse fechamento.
+P0-B Search/indexabilidade foi concluído com:
+
+`PASS_WITH_RESIDUAL_RISK`
+
+A home `https://moretegra.com.br/` está indexada no Google. O Search Console mostrou Googlebot Smartphone, crawl permitido, busca com êxito, indexação permitida, HTTP 200, HTTPS PASS e canonical selecionada igual à canonical declarada.
+
+Evidência:
+
+`docs/evidence/search/P0_B_SEARCH_INDEXABILITY_EVIDENCE_2026-08-30.md`
 
 ## 2. Primeira transição aplicável
 
-Antes de iniciar P0-B ou Measurement Foundation:
+Preparar **Measurement Foundation** sem publicar tracking.
 
-1. resolver live a provider PR #10 em `wagnerjfjunior/Blogs-sites-portais-seo`;
-2. se a PR #10 possuir lifecycle pendente/material finding, concluir ou bloquear conforme a máquina canônica do provider;
-3. não usar provider candidate como se estivesse integrado enquanto a PR #10 permanecer Draft/Open.
+Escopo READ_ONLY / DESIGN:
 
-Após provider lifecycle concluído ou explicitamente adjudicado, iniciar **P0-B Search/indexabilidade** como próximo pacote consumer.
+1. inventariar qualquer tracking já presente no live;
+2. definir arquitetura de transporte sem duplicidade;
+3. fixar event taxonomy;
+4. definir consent model e proof obligations LGPD;
+5. definir QA para denied/granted;
+6. definir ownership de GTM, GA4 e Meta Pixel/Dataset exclusivos do MoreNumTegra;
+7. definir conversão primária e critérios para Google Ads futuro.
 
-## 3. P0-B Search/indexabilidade
+Nenhuma criação/publicação externa é autorizada apenas por esta transição.
 
-Escopo candidato:
-- validar title/meta nativos no head inicial Green;
-- validar canonical;
-- comprovar ausência de noindex na Green;
-- descobrir/implementar robots se capability existir;
-- descobrir/implementar sitemap se capability existir;
-- configurar Search Console sob gate próprio;
-- manter Vercel noindex;
-- investigar `www` 301/308.
+## 3. Arquitetura candidata
 
-Não inventar capability da Green.
+```text
+GREEN NATIVO
+├── Meta Pixel próprio do MoreNumTegra
+│   └── CAPI somente se deduplicação/capability forem comprovadas
+└── GTM próprio do MoreNumTegra
 
-## 4. Measurement Foundation
+GTM
+├── GA4 próprio
+├── eventos adicionais
+└── Google Ads futuramente
+```
 
-Somente depois de gate próprio.
+Evitar:
 
-Ativos exclusivos:
-- GTM MoreNumTegra;
-- GA4 MoreNumTegra;
-- Meta Pixel/Dataset MoreNumTegra.
+- Meta via Green + GTM simultaneamente sem desenho explícito;
+- GA4 via Green + GTM simultaneamente;
+- reutilização de IDs de outros projetos;
+- publicação antes de validar consentimento.
 
-Arquitetura candidata:
-- Meta via Green nativo;
-- GTM via Green nativo;
-- GA4 via GTM;
-- Google Ads futuramente via GTM.
-
-Antes de publicar:
-- validar consentimento LGPD;
-- definir event taxonomy;
-- impedir duplicidade;
-- testar denied/granted;
-- validar `generate_lead`.
-
-## 5. Event taxonomy candidata
+## 4. Event taxonomy candidata
 
 - `page_view`
 - `view_project`
@@ -68,36 +67,55 @@ Antes de publicar:
 - `generate_lead`
 - `view_promotion`
 
-## 6. Gates separados
+Conversão primária candidata:
 
-Exigem autorização específica:
-- tracking/analytics;
-- Meta Pixel/CAPI;
-- GTM;
-- GA4;
-- Search Console;
-- DNS;
+`generate_lead`
+
+## 5. Gates separados
+
+Exigem autorização específica antes de mutação externa:
+
+- criar/publicar GTM;
+- criar/publicar GA4;
+- Meta Pixel/Dataset/CAPI;
+- alterar configuração Green de Pixel;
+- consentimento técnico;
 - Google Ads;
 - campanha/spend;
-- produção Green adicional;
-- alteração de contrato Search.
+- DNS;
+- novas mutações Search Console;
+- produção Green adicional.
+
+## 6. Search residual risk
+
+Manter em backlog, sem reiniciar P0-B:
+
+- canonical client-side;
+- ausência de sitemap;
+- `www` sem 301/308 comprovado;
+- warning `web-share`.
+
+Esses riscos não bloquearam crawling/indexação observados no Search Console.
 
 ## 7. Condições de parada
 
 Parar diante de:
-- provider PR #10 com BLOCK/INCONCLUSIVE/material finding;
-- capability Green não comprovada;
-- risco de duplicidade de tags;
+
+- tracking pré-existente não reconciliado;
+- risco de duplicidade;
 - consentimento técnico não comprovado;
-- ausência de autorização aplicável;
+- capability Green não comprovada;
+- necessidade de segredo/token no cliente;
+- ausência de autorização para mutação externa;
 - dado externo não verificado.
 
 ## 8. Resultado esperado do próximo ciclo
 
 ```text
-PROVIDER LIFECYCLE RESOLVED
--> P0-B SEARCH INDEXABILITY
--> MEASUREMENT FOUNDATION
+P0-B SEARCH INDEXABILITY PASS_WITH_RESIDUAL_RISK
+-> MEASUREMENT FOUNDATION DESIGN
+-> EXPLICIT TRACKING AUTHORIZATION
+-> MEASUREMENT IMPLEMENTATION
 -> MEASUREMENT QA
 -> SEARCH CONSOLE MONITORING
 -> GOOGLE ADS CONVERSION SETUP

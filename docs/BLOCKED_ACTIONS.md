@@ -1,6 +1,6 @@
 # Ações Bloqueadas — MoreNumTegra
 
-- Atualizado em: `2026-08-29`
+- Atualizado em: `2026-08-30`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
 - Functional baseline: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 - Technical baseline: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
@@ -25,7 +25,7 @@
 | declarar canonical Green implementado só porque Vercel possui canonical | ambientes têm funções distintas | prova no HTML/head da produção Green |
 | JSON-LD/OG/Twitter fora do contrato 2026-08-29 | expansão Search não autorizada genericamente | somente OG/Twitter e `WebSite + WebPage` descritos no contrato vigente estão liberados |
 | analytics/pixels/tags/Speed Insights adicional | telemetria/dados | gate específico |
-| Search Console | propriedade/verificação externa | gate específico |
+| novas mutações Search Console (remoções, submissões, configuração adicional) | estado externo já possui propriedade/indexação comprovadas | gate específico para nova ação |
 | CMS/database/backend próprio | não necessário no V1 | necessidade material + nova decisão |
 | FECH.AI/n8n/Make/Ads | fora do escopo atual | autorização específica |
 | segredo/token no HTML/JS | risco de segurança | arquitetura segura aprovada |

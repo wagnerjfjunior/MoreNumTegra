@@ -65,11 +65,12 @@ Configuração observada:
 - favicon configurado;
 - thumbnail de compartilhamento configurada.
 
-Ainda não foi comprovado, pela UI observada:
-- canonical nativo;
-- controle nativo de robots;
-- sitemap;
-- Search Console.
+A UI observada não expôs capability nativa para:
+- canonical;
+- controle de robots;
+- sitemap.
+
+O comportamento live de canonical, robots, sitemap e Search Console foi resolvido separadamente no gate P0-B registrado na seção 7.
 
 ### Pixel / measurement
 A área `Aplicativos > Pixel` da Green mostrou suporte nativo a registros dos tipos:
@@ -132,27 +133,55 @@ Antes de publicar tracking, definir e validar:
 Conversão primária candidata:
 `generate_lead`.
 
-## 7. Search / indexabilidade pendente
+## 7. Search / indexabilidade — P0-B concluído em 2026-08-30
 
-P0-B pendente:
+Verdict:
 
-1. validar title/description no head inicial da Green;
-2. validar canonical renderizado;
-3. comprovar produção sem `noindex`;
-4. descobrir capability real de `robots.txt`;
-5. descobrir capability real de `sitemap.xml`;
-6. configurar Search Console em gate próprio;
-7. submeter sitemap quando existir;
-8. solicitar/acompanhar indexação da home;
-9. manter Vercel `noindex,nofollow`;
-10. tratar `www` 301/308 quando a Green comprovar capability.
+`PASS_WITH_RESIDUAL_RISK`
+
+Evidência consolidada em:
+
+`docs/evidence/search/P0_B_SEARCH_INDEXABILITY_EVIDENCE_2026-08-30.md`
+
+Confirmado no live:
+
+- title inicial Green: PASS;
+- meta description inicial Green: PASS;
+- produção comercial sem `noindex`: PASS;
+- canonical estático no HTML inicial: ABSENT;
+- canonical runtime: PASS para `https://moretegra.com.br/`;
+- Google Search Console aceitou a mesma URL como canonical selecionada;
+- `robots.txt`: presente, root permitida, `Disallow: /user`;
+- `sitemap.xml`: não disponível; Search Console não detectou sitemap de referência;
+- `www`: redirect funcional por página Green temporizada, sem prova de HTTP 301/308;
+- Vercel homologation: `noindex,nofollow` e canonical para a produção;
+- Search Console: propriedade Domain acessível;
+- URL `https://moretegra.com.br/`: indexada;
+- Googlebot Smartphone: crawl permitido, fetch com êxito, indexação permitida;
+- resposta HTTP observada pelo Search Console: `200 OK`;
+- HTTPS: PASS.
+
+Riscos residuais não bloqueantes:
+
+1. canonical é client-side, não SSR/static;
+2. sitemap ausente;
+3. `www` não possui 301/308 comprovado;
+4. warning `Unrecognized feature: 'web-share'` observado no teste renderizado.
+
+Não solicitar nova indexação sem mudança material: a home já está indexada e foi rastreada em 2026-08-30.
 
 ## 8. Provider Search
 
 Provider:
 `wagnerjfjunior/Blogs-sites-portais-seo`
 
-PR #10 continua lifecycle separado e deve ser resolvida live antes de assumir integração do pacote provider candidate.
+PR #10 foi mergeada em 2026-08-30.
+
+Merge commit provider:
+
+`d0f6e4c9879a48bdac00bea1cf40056e04bf736c`
+
+O provider result P0 está integrado no provider `main`.
 
 Não transferir Product Authority ao provider.
 
@@ -168,21 +197,22 @@ A configuração dessas plataformas é manual pelo owner, com apoio de arquitetu
 ## 10. Próxima ordem operacional
 
 ```text
-1. resolver lifecycle da provider PR #10
-2. P0-B Search / indexabilidade
-3. Measurement Foundation
+1. Measurement Foundation
+   - arquitetura e inventário
    - GTM próprio
    - GA4 próprio
    - Meta Pixel/Dataset próprio
    - consentimento
    - event taxonomy
    - QA
-4. Search Console + monitoring
-5. Google Ads conversion setup
-6. SEM somente após measurement PASS
-7. P1 SEO architecture/content
-8. Authority / Digital PR
+2. Search Console monitoring
+3. Google Ads conversion setup
+4. SEM somente após measurement PASS
+5. P1 SEO architecture/content
+6. Authority / Digital PR
 ```
+
+Criação/publicação de tracking, containers, propriedades analytics, pixels, Google Ads ou spend continua exigindo gate específico.
 
 Autoridade: `docs/NEXT_SAFE_ACTION.md`.
 
