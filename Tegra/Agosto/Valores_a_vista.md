@@ -11,4 +11,4 @@ Valor de Tabela R$ 3.942.628 --> Valor à vista 3.647.000 --> 13,4% Card-2
 
 Nova Vivere - unidade 708 - Valor Agosto/26
 
-Valor de Tabela R$ 1.468.100 --> Valor à vista 1.129.900 --> 23,1%
+Valor de Tabela R$ 1.468.100 --> Valor à vista 1.129.900 --> 24,6%
