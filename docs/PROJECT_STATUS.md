@@ -4,7 +4,7 @@
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra`
 - Referência: `main` — resolver SHA live antes de agir
 - Release atual publicada: `18cfab98e01be29c86d78d08f2f5035a8da70444`
-- Fase: `GREEN_COMMERCIAL_V1_SEARCH_CONVERSION_RELEASED`
+- Fase: `GREEN_COMMERCIAL_V1_SEARCH_INDEXED`
 - Saúde geral: `verde`
 - OT #34: `CLOSED / COMPLETED`
 
@@ -26,28 +26,32 @@
 
 ## 3. Search
 
-Configurado:
-- title;
-- meta description;
-- canonical JS;
-- JSON-LD WebSite/WebPage;
-- favicon;
-- thumbnail de compartilhamento;
-- Vercel noindex.
+P0-B: `PASS_WITH_RESIDUAL_RISK`.
 
-Green nativo observado:
-- título;
-- favicon;
-- thumbnail;
-- descrição para buscadores.
+Confirmado:
+- title inicial Green: PASS;
+- meta description inicial Green: PASS;
+- canonical JS: PASS;
+- canonical selecionada pelo Google: `https://moretegra.com.br/`;
+- JSON-LD WebSite/WebPage runtime: PASS;
+- produção Green sem `noindex`: PASS;
+- `robots.txt`: PASS para a root; `/user` bloqueado;
+- Search Console Domain property: acessível;
+- home `https://moretegra.com.br/`: indexada;
+- Googlebot Smartphone: crawl permitido, fetch com êxito e indexação permitida;
+- HTTP `200 OK` observado no Search Console;
+- HTTPS: PASS;
+- Vercel homologation: `noindex,nofollow` e canonical para produção.
 
-Pendente:
-- comprovação de canonical nativo;
-- robots.txt;
-- sitemap.xml;
-- Search Console;
-- indexabilidade live independente;
-- `www` 301/308 real.
+Riscos residuais:
+- canonical não estático no HTML inicial;
+- `sitemap.xml` não disponível;
+- nenhum sitemap de referência detectado no Search Console;
+- `www` usa redirect page-level temporizado, sem 301/308 comprovado;
+- warning não bloqueante `Unrecognized feature: 'web-share'`.
+
+Evidência:
+`docs/evidence/search/P0_B_SEARCH_INDEXABILITY_EVIDENCE_2026-08-30.md`.
 
 ## 4. Measurement
 
@@ -68,14 +72,13 @@ LGPD modal:
 
 ## 5. Próximos marcos
 
-1. provider PR #10 lifecycle;
-2. P0-B Search/indexabilidade;
-3. Measurement Foundation;
-4. Search Console/monitoring;
-5. Google Ads conversion setup;
-6. SEM após tracking PASS;
-7. P1 SEO architecture/content;
-8. Authority/Digital PR.
+1. Measurement Foundation;
+2. Measurement QA;
+3. Search Console monitoring;
+4. Google Ads conversion setup;
+5. SEM após tracking PASS;
+6. P1 SEO architecture/content;
+7. Authority/Digital PR.
 
 ## 6. Bloqueios
 
