@@ -65,11 +65,12 @@ Configuração observada:
 - favicon configurado;
 - thumbnail de compartilhamento configurada.
 
-Ainda não foi comprovado, pela UI observada:
-- canonical nativo;
-- controle nativo de robots;
-- sitemap;
-- Search Console.
+A UI observada não expôs capability nativa para:
+- canonical;
+- controle de robots;
+- sitemap.
+
+O comportamento live de canonical, robots, sitemap e Search Console foi resolvido separadamente no gate P0-B registrado na seção 7.
 
 ### Pixel / measurement
 A área `Aplicativos > Pixel` da Green mostrou suporte nativo a registros dos tipos:
