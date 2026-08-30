@@ -1,29 +1,27 @@
 # Handoff Atual — MoreNumTegra
 
 - Status: `atual`
-- Atualizado em: `2026-08-29`
+- Atualizado em: `2026-08-30`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra`
-- Referência: `main` — resolver live antes de agir
-- Release funcional observado antes deste fechamento documental: `2d1f9d656761433102f95e4c80bfdebf47f3607e`
+- Referência: `main` — resolver SHA live antes de agir
+- Release integrada e publicada: `18cfab98e01be29c86d78d08f2f5035a8da70444`
+- Produção comercial: `https://moretegra.com.br/`
+- Homologação Vercel: `https://morenumtegra.vercel.app/`
+- OT de release: `#34 CLOSED / COMPLETED`
 - Baseline funcional vigente: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 - Baseline técnica vigente: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
 - ADR aplicável: `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`
 
-## 1. Estado atual
+## 1. Estado confirmado
 
-MoreNumTegra V1 está publicado comercialmente na Green Sales em:
+MoreNumTegra V1 está em produção comercial na Green Sales.
 
-`https://moretegra.com.br`
+Release atual:
+`18cfab98e01be29c86d78d08f2f5035a8da70444`
 
-Arquitetura preservada:
+PR #33 foi mergeada e a OT #34 foi encerrada após confirmação do owner de que o smoke em produção passou.
 
-```text
-GitHub main = fonte canônica
-Vercel Production = homologação pública
-Green Sales = produção comercial V1
-```
-
-A composição Green em produção usa:
+A composição Green permanece:
 
 ```text
 HTML 01
@@ -34,127 +32,166 @@ HTML 01
 + JavaScript global
 ```
 
-O catálogo contém 21 empreendimentos. A implementação permanece HTML/CSS/JavaScript vanilla.
+O catálogo possui 21 empreendimentos únicos e 23 oportunidades/cards na release atual.
 
-## 2. Evidência funcional observada em produção Green
+## 2. Release Search + Conversion concluída
 
-Validações executadas em 2026-08-28:
+A release atual inclui:
 
-- domínio raiz HTTPS válido;
-- `http://moretegra.com.br` redireciona para HTTPS;
-- `www.moretegra.com.br` está com `Domínio OK` na Green e certificado HTTPS válido;
-- `www.moretegra.com.br` está associado a página dedicada de redirecionamento para `https://moretegra.com.br`;
-- HAR observado em 2026-08-28 confirma que o `www` responde HTTP 200 e depois navega para a raiz; não há evidência de redirect HTTP 301/308;
-- favicon publicado e visível;
-- catálogo renderiza 21 empreendimentos;
-- filtros por estágio, zona e ticket funcionam;
-- combinações de filtros e estado vazio funcionam;
-- busca por nome/bairro funciona no mobile;
-- promoção ELO AP2408 exibida com DE/POR;
-- promoção ODE Unidade 22 / 2º andar exibida com DE/POR;
-- WhatsApp abre número e mensagem configurados;
-- Form 46 realiza submit real;
-- lead persiste na Green com origem `More Tegra / MoreEmUmTegra`;
-- vendedor configurado é atribuído pela Green;
-- CTAs flutuantes atravessam Form 46, HTML 02 e footer sem clipping;
-- validação mobile confirmou filtros e CTAs operáveis.
+- badge horizontal legível do Prêmio Master Imobiliário 2026;
+- assinatura `Caminhos da Lapa · um bairro inteiro de opções` no corpo dos cards premiados;
+- Nova Vivere 105 m² / unidade 708 / R$ 1.129.900 à vista;
+- segundo card CAPIITOLO by Piero Lissoni / unidade 24 / R$ 3.160.000 à vista;
+- title/meta description;
+- canonical comercial via JavaScript para `https://moretegra.com.br/`;
+- JSON-LD conservador `WebSite + WebPage`;
+- OG/Twitter apenas como runtime best-effort.
 
-## 3. Release funcional
+Produção Green foi confirmada funcional pelo owner.
 
-A correção estrutural final dos CTAs flutuantes foi integrada pela PR #27.
+## 3. Green — capabilities observadas em 2026-08-30
 
-Release funcional observado:
+Evidência visual fornecida pelo owner no editor Green Sales confirma capability nativa para:
 
-`2d1f9d656761433102f95e4c80bfdebf47f3607e`
+### SEO
+- título da página;
+- favicon;
+- thumbnail de compartilhamento;
+- descrição para buscadores.
 
-A integração Vercel reportou `success` para esse SHA.
+Configuração observada:
+- título: `Apartamentos Tegra em São Paulo | More em um Tegra`;
+- descrição: `Compare empreendimentos Tegra em São Paulo por região, estágio e faixa de valor. Veja lançamentos, prontos para morar e opções no premiado Caminhos da Lapa.`;
+- favicon configurado;
+- thumbnail de compartilhamento configurada.
 
-Os payloads Green devem continuar derivados dos arquivos canônicos em `src-greenn/`.
+Ainda não foi comprovado, pela UI observada:
+- canonical nativo;
+- controle nativo de robots;
+- sitemap;
+- Search Console.
 
-## 4. Domínio
+### Pixel / measurement
+A área `Aplicativos > Pixel` da Green mostrou suporte nativo a registros dos tipos:
+- Meta/Facebook Pixel;
+- Google Tag Manager (`GTM-...`);
+- Google Analytics (`G-...`).
 
-- `moretegra.com.br`: produção principal, HTTPS OK;
-- `www.moretegra.com.br`: `Domínio OK`, HTTPS válido e página dedicada de redirecionamento para a raiz;
-- canonical target aprovado pelo Search provider: `https://moretegra.com.br/`.
+A UI também expõe estados/capabilities:
+- `Visualização`;
+- `Conversão`;
+- `Envios Web`;
+- `API de conversão`.
 
-A solução atual do `www` é page-level: HTTP 200 seguido de navegação para a raiz. O target continua sendo redirect HTTP 301/308 quando a Green comprovar mecanismo adequado.
+Não reutilizar integrações existentes de outros projetos (Jordana, Sereno, Bosque etc.).
 
-Não alterar DNS adicional sem necessidade comprovada e gate próprio.
+## 4. LGPD
 
-## 5. Formulário
+O modal de coleta de cookies da Green está ativo, segundo evidência visual do owner.
 
-Produção usa o Form 46 nativo:
+Isso comprova a presença do modal, mas NÃO comprova ainda que GA4/Meta/GTM respeitam tecnicamente consentimento negado/concedido.
 
-- tenant_id: `313`
-- form_id: `46`
-- title: `MoreEmUmTegra`
+Preservar:
 
-O JavaScript do projeto não intercepta o submit nativo.
+`LGPD_MODAL_ACTIVE != CONSENT_ENFORCEMENT_PROVEN`
 
-## 6. Analytics / Search
+## 5. Arquitetura de measurement proposta
 
-GA4, GTM, Meta Pixel e outras tags continuam sem autorização de implementação neste projeto.
+Nenhum tracking novo está autorizado apenas por este handoff.
 
-Modelo vigente:
+Arquitetura candidata:
 
 ```text
-MoreNumTegra = consumer / Product Authority
-blogs-sites-portais-seo = Search Center of Expertise / provider
+GREEN NATIVO
+├── Meta Pixel próprio do MoreNumTegra
+│   └── CAPI somente se configuração/deduplicação forem comprovadas
+└── GTM próprio do MoreNumTegra
+
+GTM
+├── GA4 próprio
+├── Google Ads futuramente
+└── eventos adicionais
 ```
 
-Roles atuais: `seo_strategy`, `technical_seo`, `content_semantic_seo`, `seo_analytics_growth`, `paid_search_sem`.
+Evitar:
+- Meta simultaneamente via Green e GTM sem desenho explícito;
+- GA4 simultaneamente via Green e GTM sem desenho explícito;
+- reutilização de IDs de outros projetos.
 
-Handoff de entrada:
+## 6. Event taxonomy candidata
 
-`handoffs/SEARCH_PROVIDER_HANDOFF_2026-08-28.md`
+Antes de publicar tracking, definir e validar:
 
-Provider result integrado:
+- `page_view`;
+- `view_project`;
+- `select_offer`;
+- `click_whatsapp`;
+- `generate_lead`;
+- `view_promotion`.
 
-`wagnerjfjunior/Blogs-sites-portais-seo@c20c15ce6f591071b3ec5236291d7ed6e92934bf`
+Conversão primária candidata:
+`generate_lead`.
 
-`docs/assets/morenumtegra-search-provider-recommendation-2026-08-28.md`
+## 7. Search / indexabilidade pendente
 
-O Product Authority aprovou em 2026-08-29 o pacote delimitado Search + Conversion documentado em:
+P0-B pendente:
 
-`docs/search/SEARCH_CONVERSION_PACKAGE_CONTRACT_2026-08-29.md`
+1. validar title/description no head inicial da Green;
+2. validar canonical renderizado;
+3. comprovar produção sem `noindex`;
+4. descobrir capability real de `robots.txt`;
+5. descobrir capability real de `sitemap.xml`;
+6. configurar Search Console em gate próprio;
+7. submeter sitemap quando existir;
+8. solicitar/acompanhar indexação da home;
+9. manter Vercel `noindex,nofollow`;
+10. tratar `www` 301/308 quando a Green comprovar capability.
 
-O pacote inclui prêmio, dois cards Nova Vivere, unidade 708 / 105 m² / R$ 1.129.900 à vista, title/meta description, canonical via JS e JSON-LD `WebSite + WebPage`. OG/Twitter permanecem autorizados apenas como runtime best-effort e não comprovam preview para crawlers sociais.
+## 8. Provider Search
 
-Contrato anterior:
+Provider:
+`wagnerjfjunior/Blogs-sites-portais-seo`
 
-`docs/search/P0A_CANONICAL_METADATA_CONTRACT_2026-08-28.md`
+PR #10 continua lifecycle separado e deve ser resolvida live antes de assumir integração do pacote provider candidate.
 
-Contrato corrente para o pacote 2026-08-29:
+Não transferir Product Authority ao provider.
 
-`docs/search/SEARCH_CONVERSION_PACKAGE_CONTRACT_2026-08-29.md`
+## 9. Integrações do GPT
 
-A capability estática Green para canonical continua não comprovada. O pacote 2026-08-29 autoriza explicitamente canonical via JavaScript para `https://moretegra.com.br/`, com risco residual. Redirect HTTP 301/308 permanece sem capability proof.
+O ambiente GPT atual NÃO possui integração direta conectada para operar:
+- Meta Ads / Meta Pixel;
+- Google Ads;
+- Google Tag Manager.
 
-Nenhuma mutação Green deve preceder branch/PR, Preview, validação, merge e gate de produção.
+A configuração dessas plataformas é manual pelo owner, com apoio de arquitetura, revisão, documentação e QA pelo projeto.
 
-## 7. Próxima ação segura
+## 10. Próxima ordem operacional
+
+```text
+1. resolver lifecycle da provider PR #10
+2. P0-B Search / indexabilidade
+3. Measurement Foundation
+   - GTM próprio
+   - GA4 próprio
+   - Meta Pixel/Dataset próprio
+   - consentimento
+   - event taxonomy
+   - QA
+4. Search Console + monitoring
+5. Google Ads conversion setup
+6. SEM somente após measurement PASS
+7. P1 SEO architecture/content
+8. Authority / Digital PR
+```
 
 Autoridade: `docs/NEXT_SAFE_ACTION.md`.
 
+## 11. Regras preservadas
 
-## 8. Pacote Search + Conversion 2026-08-29
-
-Decisões aprovadas:
-
-- headline: `Dois prêmios em 2026. Um deles está no seu próximo endereço.`;
-- badge completo: `PRÊMIO MASTER IMOBILIÁRIO 2026`;
-- segunda camada: `Caminhos da Lapa · um bairro inteiro de opções`;
-- Nova Vivere 72 m² permanece como primeiro card;
-- Nova Vivere 105 m² entra no meio da mesma home;
-- unidade 708: R$ 1.129.900 à vista, evidence-bound;
-- CAPIITOLO unidade 24: segundo card com R$ 3.160.000 à vista, evidence-bound em `Tegra/Agosto/Valores_a_vista.md`;
-- sem outbound SECOVI-SP;
-- metadata estável permanece focada em apartamentos Tegra em São Paulo;
-- canonical comercial via JS e `WebSite + WebPage` JSON-LD aprovados;
-- OG/Twitter: runtime-only best-effort; social preview confiável depende de capability nativa/static de `<head>` ainda não comprovada.
-
-Search provider candidate:
-
-`wagnerjfjunior/Blogs-sites-portais-seo PR #10`
-
-Ready e merge permanecem gates separados.
+- GitHub `main` = fonte canônica;
+- Vercel = homologação pública, `noindex,nofollow`;
+- Green = produção comercial;
+- Form 46 nativo não deve ser interceptado;
+- tracking, Search Console, DNS, campanha/spend exigem gates próprios;
+- não criar arquivos Green paralelos fora de `src-greenn`;
+- toda mudança canônica por branch + PR.
