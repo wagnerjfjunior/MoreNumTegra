@@ -81,6 +81,26 @@ The 24.6% discount is unit-bound. It is not a global Nova Vivere or portfolio ru
 
 Before Green, unit 708 availability and the R$ 1,129,900 cash condition must be reconfirmed.
 
+### CAPIITOLO by Piero Lissoni — second cash card
+
+The existing CAPIITOLO card remains unchanged.
+
+A second conversion card is authorized for the same homepage:
+
+- project: `CAPIITOLO by Piero Lissoni`;
+- unit: `24`;
+- area: `210 m²`;
+- table value: `R$ 3,942,628`;
+- cash value: `R$ 3,160,000`;
+- price label: `A partir de`;
+- cash suffix: `à vista*`, visually smaller than the main value;
+- CTA: `Quero esta condição`;
+- source: `Tegra/Agosto/Valores_a_vista.md`.
+
+No percentage discount is displayed in the commercial card because the absolute values are sufficient and the percentages recorded in the source require separate arithmetic reconciliation.
+
+This second card uses `projectName: CAPIITOLO by Piero Lissoni`, so it increases opportunity count but not the unique-project count.
+
 ## 4. Stable homepage metadata
 
 Title:
@@ -196,6 +216,8 @@ The provider result remains a provider-side lifecycle object until integrated th
 - 105 m² card shows R$ 1,129,900 cash condition with nearby disclaimer;
 - selecting the 105 m² card preserves the cash price and disclaimer beside the native form;
 - both Nova Vivere cards preserve the existing Nova Vivere gallery;
+- second CAPIITOLO card shows `A partir de` + `R$ 3,160,000` + compact `à vista*`, unit 24, with nearby disclaimer;
+- unique-project count remains unchanged when the second CAPIITOLO opportunity is added;
 - canonical target = `https://moretegra.com.br/`;
 - OG/Twitter may be validated only as runtime DOM metadata; social-crawler preview is not an acceptance guarantee;
 - Vercel noindex remains present in Preview architecture;

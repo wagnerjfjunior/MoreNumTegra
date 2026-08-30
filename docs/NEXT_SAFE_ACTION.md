@@ -17,6 +17,7 @@ O Product Authority aprovou em 2026-08-29 o pacote delimitado de:
 - copy e badge do Prêmio Master Imobiliário 2026;
 - dois cards Nova Vivere na mesma home;
 - card Nova Vivere 105 m² / unidade 708 / R$ 1.129.900 à vista;
+- segundo card CAPIITOLO / unidade 24 / R$ 3.160.000 à vista;
 - title/meta description;
 - canonical comercial via JavaScript;
 - Open Graph/Twitter somente como runtime best-effort, sem garantia para crawlers sociais;
@@ -72,7 +73,9 @@ Antes de Ready, confirmar no head exato:
 - card 105 m² usa `R$ 1.129.900 à vista*` + disclaimer próximo;
 - seleção do card 105 m² preserva preço/condição/disclaimer junto ao formulário;
 - ambos os cards Nova Vivere reutilizam a galeria canônica `Nova Vivere`;
-- evidência da unidade 708 versionada.
+- segundo card CAPIITOLO usa `A partir de` + `R$ 3.160.000` + `à vista*` compacto, com unidade 24 e disclaimer;
+- o contador de empreendimentos únicos não aumenta por causa do segundo CAPIITOLO;
+- evidências comerciais estão versionadas em `Tegra/Agosto/Valores_a_vista.md`.
 
 ## 4. Green
 

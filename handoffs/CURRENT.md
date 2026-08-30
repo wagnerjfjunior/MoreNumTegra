@@ -147,6 +147,7 @@ Decisões aprovadas:
 - Nova Vivere 72 m² permanece como primeiro card;
 - Nova Vivere 105 m² entra no meio da mesma home;
 - unidade 708: R$ 1.129.900 à vista, evidence-bound;
+- CAPIITOLO unidade 24: segundo card com R$ 3.160.000 à vista, evidence-bound em `Tegra/Agosto/Valores_a_vista.md`;
 - sem outbound SECOVI-SP;
 - metadata estável permanece focada em apartamentos Tegra em São Paulo;
 - canonical comercial via JS e `WebSite + WebPage` JSON-LD aprovados;

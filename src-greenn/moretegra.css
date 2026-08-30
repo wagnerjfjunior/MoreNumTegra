@@ -121,16 +121,17 @@
 .mt-award-card>small{color:var(--mt-muted);line-height:1.45}
 .mt-award-card-highlight{background:#171813;color:#fff;border-color:#171813}
 .mt-award-card-highlight>span{color:#EBB92E}.mt-award-card-highlight>small{color:rgba(255,255,255,.72)}
-.mt-award-corner{position:absolute;z-index:4;top:0;right:0;width:148px;height:148px;background:#EBB92E;clip-path:polygon(100% 0,0 0,100% 100%);pointer-events:none;filter:drop-shadow(-6px 8px 12px rgba(0,0,0,.20))}
-.mt-award-corner>span{position:absolute;top:22px;right:6px;width:112px;text-align:center;color:#171813;font-size:7.5px;line-height:1.02;font-weight:950;letter-spacing:.028em;transform:rotate(45deg);transform-origin:center;text-transform:uppercase}
-.mt-project-card[data-award="true"] .mt-feature{top:92px;right:14px;max-width:46%}
-.mt-award-tagline{position:absolute;z-index:4;left:12px;right:12px;bottom:12px;display:block;padding:8px 10px;border-radius:999px;background:rgba(23,24,19,.9);color:#fff;font-size:10px;font-weight:850;line-height:1.2;text-align:center;letter-spacing:.01em;box-shadow:0 8px 18px rgba(0,0,0,.18)}
-.mt-project-card[data-promo="true"] .mt-award-tagline{bottom:48px}
+.mt-award-seal{position:absolute;z-index:4;top:14px;right:14px;width:132px;padding:9px 11px 10px;border-radius:12px;background:#EBB92E;color:#171813;display:grid;gap:2px;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,.20);pointer-events:none}
+.mt-award-seal>b{font-size:9px;line-height:1.05;font-weight:950;letter-spacing:.075em;text-transform:uppercase}
+.mt-award-seal>small{font-size:8px;line-height:1.05;font-weight:900;letter-spacing:.055em;text-transform:uppercase}
+.mt-project-card[data-award="true"] .mt-feature{top:68px;right:14px;max-width:54%}
+.mt-award-context{margin-top:14px;padding:10px 12px 11px;border-left:3px solid #EBB92E;border-radius:0 12px 12px 0;background:#f7f2e5;color:#3d392f;font-size:11px;font-weight:800;line-height:1.4}
 .mt-project-card[data-cash-offer="true"]{border:2px solid #EBB92E;box-shadow:0 18px 48px rgba(23,24,19,.13)}
 .mt-project-card[data-cash-offer="true"] .mt-project-body h3{font-size:1.55rem}
 .mt-price-cash{margin-top:14px;padding:16px;border-radius:16px;background:#171813;color:#fff;display:grid;gap:6px}
 .mt-price-cash .mt-price-current{font-size:1.65rem;line-height:1.08}
 .mt-price-cash .mt-price-current em{font-style:normal;font-size:.65em;color:#EBB92E;white-space:nowrap}
+.mt-price-cash .mt-price-current em.mt-price-suffix-compact{font-size:.52em}
 .mt-price-cash .mt-price-urgency{font-size:11px;line-height:1.45;color:rgba(255,255,255,.78)}
 
 
