@@ -204,6 +204,22 @@ BUDGET_RECOMMENDATION != SPEND_AUTHORIZATION
 CAMPAIGN_DESIGNED != CAMPAIGN_PUBLISHED
 ```
 
+## 10.1 Boundary — consumer consultation vs SES release lifecycle
+
+MoreNumTegra must not replace its own next-safe-action chain with SES candidate certification work merely because a newer/noncurrent specialist runtime candidate exists.
+
+```text
+ADOPTED ROLE + ACTIVE ARCHETYPE + CURRENT SES LEDGER YES
+→ CONSULTATION ELIGIBLE
+
+NONCURRENT SES CANDIDATE EXISTS
+!= MORENUMTEGRA BLOCKED
+
+CONSUMER_RECERTIFICATION_DETOUR_FORBIDDEN = YES
+```
+
+An exact runtime fingerprint becomes a blocker only when explicitly required by the MoreNumTegra task or authority.
+
 ## 11. Gates separados
 
 Exigem decisão/gate próprio:
