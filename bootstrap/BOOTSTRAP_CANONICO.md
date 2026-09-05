@@ -176,7 +176,7 @@ FUTURE_SERVICE_INTENT_ONLY:
 
 Para estado atual de adoção, resolver SES `projects/SPECIALIST_ADOPTION_MATRIX_CURRENT.md` -> versão corrente e `projects/morenumtegra/PROJECT_ADAPTER.md`. A matriz é snapshot de governança; o Project Adapter é o detalhe SES-side; este repositório continua dono da verdade e autoridade do MoreNumTegra.
 
-Para trabalho mediado pelo SES:
+Para trabalho mediado pelo SES, resolver também `core/protocols/MANUAL_SPECIALIST_HANDOFF_CONTRACT.md` no SES live quando houver consulta manual/copy-paste:
 
 1. resolver o projeto em `projects/REGISTRY.md` por identificador explícito;
 2. o Project Adapter deve apontar para este bootstrap/entrypoints;
@@ -185,7 +185,8 @@ Para trabalho mediado pelo SES:
 5. para uma role `ADOPTED` com `EXECUTION_MODE: PROJECT_LOCAL_CROSS_PROJECT_SERVICE`, resolver também `SERVICE_PROVIDER_PROJECT_ID`, o Project Adapter do provider e o contexto live de ambos os projetos antes da execução;
 6. role ausente/desconhecida/não adotada falha como `SPECIALIST_ROLE_NOT_ADOPTED`, sem fuzzy/fallback implícito;
 7. não inventar registry/skill/override project-local ausente;
-8. resolução de role, adoção, provider, roteabilidade, execução e autorização são estados distintos.
+8. resolução de role, adoção, provider, roteabilidade, execução e autorização são estados distintos;
+9. para qualquer specialist SES selecionado em handoff manual, `SPECIALIST_TARGET_NAME = ARCHETYPE_REGISTRY.CANONICAL_NAME`; labels legacy/project-local não podem substituir a identidade operacional do destino.
 
 Preservar:
 
@@ -195,6 +196,8 @@ ADOPTED != PROJECT_CONTEXT_READY
 ROUTABLE != EXECUTED
 PROJECT_CONTEXT_READY != AUTHORIZED_TO_MUTATE
 TOOL_CAPABILITY != AUTHORIZATION
+SPECIALIST_TARGET_NAME = ARCHETYPE_REGISTRY.CANONICAL_NAME
+LEGACY_ALIAS != SPECIALIST_TARGET_NAME
 CROSS_PROJECT_SERVICE != PROJECT_OWNERSHIP_TRANSFER
 SEARCH_RECOMMENDATION != IMPLEMENTATION_AUTHORIZATION
 BUDGET_RECOMMENDATION != SPEND_AUTHORIZATION
