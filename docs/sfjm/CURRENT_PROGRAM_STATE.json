@@ -4,38 +4,39 @@
   "program_id": "MNT-RESF",
   "state_observed_at": "2026-09-10",
   "decision_anchor": {
-    "type": "FIELD_EVIDENCE_RECONCILIATION",
-    "scope": "MNT-M2-01 / MNT-M2-07 / MNT-M2-08 and partial MNT-M2-09",
-    "base_main_before_reconciliation": "34ddd9684608a0fe1e02edc5071fd6e40b5f2121",
-    "t0_evidence": "docs/measurement/MNT_M2_01_TRACKING_RUNTIME_INVENTORY_2026-09-10.md",
-    "t1_evidence": "docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md",
-    "meaning": "Preserve MNT-M2-01 pre-GTM inventory as T0 historical evidence and adjudicate the later published GTM Consent Mode evidence without inflating it into full Measurement completion."
+    "type": "TASK_COMPLETE_CANDIDATE",
+    "scope": "MNT-M2-02 transport architecture and duplicate-event prevention",
+    "authorization": "Product Authority explicitly authorized MNT-M2-02 start on 2026-09-10",
+    "canonical_main_at_start": "f0e89bfc159e7638347997b46290c919f2e5efc7",
+    "evidence": "docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md",
+    "meaning": "MNT-M2-02 design exit criteria are satisfied in this candidate; canonical acceptance depends on PR lifecycle. No runtime Measurement mutation is performed by this task."
   },
   "program_state": "ACTIVE",
   "current_execution": {
     "active_phase_id": "MNT-M2",
     "active_task_id": null,
-    "immediate_execution_authority": "NONE_PENDING_NEXT_TASK_LIFECYCLE",
-    "reason": "MNT-M2 has accepted evidence-bearing tasks after this reconciliation, but MNT-M2-02 and later unresolved tasks require their own execution/lifecycle authority."
+    "immediate_execution_authority": "NONE_FOR_MNT_M2_03",
+    "reason": "MNT-M2-02 design is complete at candidate level. MNT-M2-03 event taxonomy is the next candidate and is not authorized by MNT-M2-02 completion."
   },
   "next": {
     "phase_id": "MNT-M2",
     "phase_label": "Measurement Foundation & Consent",
     "phase_state": "ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION",
-    "task_id": "MNT-M2-02",
-    "task_label": "Define transport architecture and duplicate-event prevention",
+    "task_id": "MNT-M2-03",
+    "task_label": "Define canonical event taxonomy",
     "task_state": "PLANNED_NOT_AUTHORIZED",
-    "safe_action": "Complete this documentation reconciliation lifecycle. After canonical acceptance, MNT-M2-02 is the next task candidate; do not mutate GTM/GA4/Meta/Green/Ads merely from this reconciliation.",
-    "mutation_boundary": "No additional GTM, GA4, Meta Pixel/Dataset/CAPI, Green Pixel, Google Ads, DNS, Search Console, Vercel Production or Green production mutation is authorized by this documentation reconciliation."
+    "safe_action": "Complete the MNT-M2-02 documentation PR lifecycle. After canonical acceptance, obtain explicit Product Authority authorization before starting MNT-M2-03. Do not implement GA4/Ads/Meta events from MNT-M2-02 alone.",
+    "mutation_boundary": "No additional GTM, GA4, Meta Pixel/Dataset/CAPI, Green Pixel, Google Ads, DNS, Search Console, Vercel Production or Green production mutation is authorized by MNT-M2-02 design."
   },
   "progress": {
     "forecast_total_hours": 1240,
-    "accepted_scope_equivalent_hours": 296,
-    "remaining_forecast_hours": 944,
-    "accepted_percent": 23.8709677419,
-    "display_percent": 23.87,
-    "basis": "MNT-M0 160h + MNT-M1 96h + MNT-M2-01 8h + MNT-M2-07 16h + MNT-M2-08 16h accepted scope-equivalent divided by 1240h total forecast",
+    "accepted_scope_equivalent_hours": 312,
+    "remaining_forecast_hours": 928,
+    "accepted_percent": 25.1612903226,
+    "display_percent": 25.16,
+    "basis": "POST_MERGE_INTENDED: MNT-M0 160h + MNT-M1 96h + MNT-M2-01 8h + MNT-M2-02 16h + MNT-M2-07 16h + MNT-M2-08 16h accepted scope-equivalent divided by 1240h total forecast",
     "semantics": "PLANNING_FORECAST_NOT_ACTUAL_TIMESHEET",
+    "acceptance_boundary": "These values become canonical only if the MNT-M2-02 candidate is merged into main.",
     "partial_work_rule": "MNT-M2-09 partial implementation contributes 0 accepted hours until the task exit criteria are fully accepted."
   },
   "milestone_state_overrides": {
@@ -50,8 +51,8 @@
   },
   "task_state_overrides": {
     "MNT-M2-01": "COMPLETE",
-    "MNT-M2-02": "PLANNED_NOT_AUTHORIZED",
-    "MNT-M2-03": "PLANNED",
+    "MNT-M2-02": "COMPLETE_CANDIDATE",
+    "MNT-M2-03": "PLANNED_NOT_AUTHORIZED",
     "MNT-M2-04": "PLANNED",
     "MNT-M2-05": "PARTIAL_EVIDENCE",
     "MNT-M2-06": "PLANNED",
@@ -61,17 +62,12 @@
     "MNT-M2-10": "PLANNED"
   },
   "accepted_m1_task_ids": [
-    "MNT-M1-01",
-    "MNT-M1-02",
-    "MNT-M1-03",
-    "MNT-M1-04",
-    "MNT-M1-05",
-    "MNT-M1-06",
-    "MNT-M1-07",
-    "MNT-M1-08"
+    "MNT-M1-01", "MNT-M1-02", "MNT-M1-03", "MNT-M1-04",
+    "MNT-M1-05", "MNT-M1-06", "MNT-M1-07", "MNT-M1-08"
   ],
-  "accepted_m2_task_ids": [
+  "accepted_m2_task_ids_post_merge_intended": [
     "MNT-M2-01",
+    "MNT-M2-02",
     "MNT-M2-07",
     "MNT-M2-08"
   ],
@@ -79,30 +75,59 @@
     "mnt_m2_01_t0_inventory": {
       "ref": "docs/measurement/MNT_M2_01_TRACKING_RUNTIME_INVENTORY_2026-09-10.md",
       "state": "ACCEPTED_HISTORICAL_T0",
-      "har_sha256": "c59f3a3c0c075412595bfda2dd1155a48fa0d0689f5f27264010076348bb7446",
-      "classification": "PRE_GTM_RUNTIME_CAPTURE",
-      "key_findings": [
-        "Green/GDigital platform-injected POST /page/view observed",
-        "GTM/GA4/Meta Pixel/Clarity/Hotjar/DoubleClick not observed in the captured T0 session",
-        "YouTube embedded-player telemetry observed",
-        "www to non-www navigation produced two Green page-view writes with distinct page IDs; carry as duplicate-measurement risk into MNT-M2-02"
-      ]
+      "har_sha256": "c59f3a3c0c075412595bfda2dd1155a48fa0d0689f5f27264010076348bb7446"
     },
     "gtm_consent_t1": {
       "ref": "docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md",
       "state": "PUBLISHED_AND_VALIDATED",
       "container_id": "GTM-PGCR4R47",
-      "published_version": 4,
-      "screenshot_sha256": "e97ec394fc572bbecba72d64a569ef02cbcf60496ef5cd05453b2225970ab204",
-      "key_findings": [
-        "default ad_storage/analytics_storage/ad_user_data/ad_personalization denied",
-        "Green Continuar updates all four to granted",
-        "Green Cancelar keeps/updates all four to denied",
-        "granted and denied states persist after reload",
-        "published GTM Version 4 observed and validation performed in GTM Preview / Tag Assistant"
+      "published_version": 4
+    },
+    "mnt_m2_02_transport_dedup": {
+      "ref": "docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md",
+      "state": "COMPLETE_CANDIDATE / PENDING_PR_LIFECYCLE",
+      "key_decisions": [
+        "GTM-PGCR4R47 is the sole project-owned browser dispatcher",
+        "project business Measurement is eligible only on moretegra.com.br, not www.moretegra.com.br",
+        "Green /page/view remains platform telemetry and is not forwarded as a project business event",
+        "exactly one project page-view path may exist per canonical document load",
+        "semantic events use one dataLayer origin and reserved mnt_event_id for cross-destination dedup",
+        "only verified Green Form 46 success may become a lead conversion",
+        "YouTube operational telemetry is not a project business conversion"
       ]
     }
   },
+  "issues": [
+    {
+      "id": "MNT-ISSUE-MEASUREMENT-INCOMPLETE",
+      "class": "REQUIRED_CURRENT",
+      "scope": "MNT-M2",
+      "state": "OPEN",
+      "label": "Transport architecture is defined, but taxonomy, conversion definitions, ownership, full implementation and end-to-end Measurement QA remain incomplete"
+    },
+    {
+      "id": "MNT-RESIDUAL-MEASUREMENT-DUPLICATION",
+      "class": "IMPLEMENTATION_CONTROL_PENDING",
+      "scope": "MNT-M2-02 / MNT-M2-09 / MNT-M2-10",
+      "state": "ARCHITECTURE_DEFINED / IMPLEMENTATION_NOT_YET_PROVEN",
+      "label": "T0 Green double page-view risk is bounded by canonical-host and single-dispatcher design, but runtime enforcement remains to be implemented and QA-proven",
+      "resolution_condition": "Implement the MNT-M2-02 controls in authorized Measurement configuration and prove them in MNT-M2-10"
+    },
+    {
+      "id": "MNT-ISSUE-CONSENT-THIRD-PARTY-BOUNDARY",
+      "class": "RESIDUAL",
+      "scope": "RESF-CONSENT / MNT-M2",
+      "state": "OPEN / NON_BLOCKING_FOR_GTM_CONSENT_STATE",
+      "label": "GTM consent-state handling is proven; site-wide third-party telemetry gating is not fully proven"
+    },
+    {
+      "id": "MNT-GATE-M2-NEXT",
+      "class": "FUTURE_GATE",
+      "scope": "MNT-M2-03",
+      "state": "NOT_AUTHORIZED_BY_MNT_M2_02",
+      "label": "MNT-M2-03 canonical event taxonomy requires an explicit next-task gate"
+    }
+  ],
   "state_precedence": {
     "hierarchy_and_planning_hours": "docs/sfjm/PROGRAM_TASK_GRAPH.json",
     "current_lifecycle_state_and_progress": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
