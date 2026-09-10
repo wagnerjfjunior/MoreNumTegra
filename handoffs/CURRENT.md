@@ -1,16 +1,16 @@
 # Handoff Atual — MoreNumTegra
 
-- Status quando esta revisão estiver em `main`: `MNT-M2-05 COMPLETE / WAITING MNT-M2-06 AUTHORIZATION`
+- Status quando esta revisão estiver em `main`: `MNT-M2-06 COMPLETE / WAITING MNT-M2-09 AUTHORIZATION`
 - Atualizado em: `2026-09-10`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra`
 - Referência: `main` — resolver SHA live antes de agir
-- MNT-M2-05 start main: `d7090a4df966c5ad39b06e52fdcbb99e97ca158a`
+- MNT-M2-06 start main: `19570db1ee2853946e45451c0ff5afaceb894002`
 - Release comercial publicada: `18cfab98e01be29c86d78d08f2f5035a8da70444`
 - Produção comercial: `https://moretegra.com.br/`
 - Homologação Vercel: `https://morenumtegra.vercel.app/`
 - Programa: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
 - Fase atual: `MNT-M2 / ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION`
-- Próxima task: `MNT-M2-06 / PLANNED_NOT_AUTHORIZED`
+- Próxima task: `MNT-M2-09 / PARTIAL_IMPLEMENTED / EXECUTION_NOT_AUTHORIZED`
 - Baseline funcional: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 - Baseline técnica: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
 - Vercel mode: `MANUAL_GATE_DRIVEN`
@@ -45,7 +45,8 @@ Evidence chain:
 - `docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md`;
 - `docs/measurement/MNT_M2_03_CANONICAL_EVENT_TAXONOMY_V1_2026-09-10.md`;
 - `docs/measurement/MNT_M2_04_PRIMARY_SECONDARY_CONVERSIONS_V1_2026-09-10.md`;
-- `docs/measurement/MNT_M2_05_GTM_GA4_OWNERSHIP_CONTRACT_V1_2026-09-10.md`.
+- `docs/measurement/MNT_M2_05_GTM_GA4_OWNERSHIP_CONTRACT_V1_2026-09-10.md`;
+- `docs/measurement/MNT_M2_06_META_PIXEL_DATASET_OWNERSHIP_CONTRACT_V1_2026-09-10.md`.
 
 Accepted foundations:
 
@@ -99,9 +100,7 @@ property/offer price != conversion value
 monetary conversion value = NOT_DEFINED
 ```
 
-## 4. MNT-M2-05 — Google Measurement ownership
-
-Canonical governance target:
+## 4. Google Measurement ownership
 
 ```text
 GTM container = GTM-PGCR4R47
@@ -123,11 +122,34 @@ GA4 Measurement ID = NOT_PROVEN
 GTM Google account ID/user roster = NOT_RECORDED
 ```
 
+## 5. Meta Measurement ownership
+
+Canonical governance target:
+
+```text
+Meta Measurement governance owner = MoreNumTegra / Product Authority
+Meta Dataset = one dedicated MoreNumTegra Dataset
+Meta browser source = one project browser source relationship if implemented
+Browser dispatcher = GTM-PGCR4R47
+www = no project production Measurement
+Vercel = no project production Measurement
+CAPI = optional future capability / not authorized by M2-06
+```
+
+Unproven and deliberately not invented:
+
+```text
+Meta Dataset ID = NOT_PROVEN
+Meta Pixel/browser-source ID = NOT_PROVEN
+Pixel/Dataset relationship = NOT_PROVEN
+Meta Business Portfolio ID = NOT_PROVEN / NOT_REQUIRED_IN_REPOSITORY
+```
+
 `NOT_PROVEN != DOES_NOT_EXIST`.
 
-MNT-M2-05 performed no Google-side or runtime mutation. Before later GA4 implementation, the project must prove/adopt an existing dedicated property/stream or create resources only after the applicable explicit mutation gate.
+MNT-M2-06 performed no Meta-side or runtime mutation. Any existing suitable dedicated asset must be discovered/adopted before a duplicate is created. Website Measurement is distinct from any Lead Ads/CRM integration.
 
-## 5. Programa / SFJM consumer
+## 6. Programa / SFJM consumer
 
 State when this revision is canonical:
 
@@ -140,10 +162,10 @@ MNT-M2  ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
   M2-03 COMPLETE
   M2-04 COMPLETE
   M2-05 COMPLETE
-  M2-06 PLANNED_NOT_AUTHORIZED / NEXT
+  M2-06 COMPLETE
   M2-07 COMPLETE
   M2-08 COMPLETE
-  M2-09 PARTIAL_IMPLEMENTED
+  M2-09 PARTIAL_IMPLEMENTED / NEXT / EXECUTION_NOT_AUTHORIZED
   M2-10 PLANNED
 MNT-M3..M7 PLANNED
 ```
@@ -152,27 +174,30 @@ Planning progress:
 
 ```text
 forecast total = 1240h
-accepted = 344h
-remaining = 896h
-progress = 27.74%
+accepted = 352h
+remaining = 888h
+progress = 28.39%
 ```
 
 `PROGRAM_TASK_GRAPH` owns hierarchy/planning hours; `CURRENT_PROGRAM_STATE` owns lifecycle/progress; `NEXT_SAFE_ACTION` owns execution authority.
 
-## 6. Próxima task
+## 7. Próxima task
 
-`MNT-M2-06 — Define ownership for Meta Pixel/Dataset`
+`MNT-M2-09 — Implement authorized tracking configuration`
 
-MNT-M2-06 remains `PLANNED_NOT_AUTHORIZED`. It requires a separate explicit Product Authority start gate.
+MNT-M2-09 remains `PARTIAL_IMPLEMENTED` because the accepted GTM Consent Mode work already exists, but further implementation is not authorized by sequence alone. A separate Product Authority gate is required.
 
-## 7. Residuals preservados
+The safe start for M2-09 is read-only resolution of existing GA4/Meta assets and a bounded implementation plan before any new publish/create/configure mutation.
+
+## 8. Residuals preservados
 
 Measurement:
 
-- exact GA4 property ID / stream ID / Measurement ID = `NOT_PROVEN`, pending later implementation evidence;
+- exact GA4 property ID / stream ID / Measurement ID = `NOT_PROVEN`;
+- exact Meta Dataset/Pixel identifiers and relationship = `NOT_PROVEN`;
 - stable native Green Form 46 success signal for primary `mnt_lead_success` = `NOT_YET_PROVEN`;
 - runtime canonical-host/dedup enforcement = pending MNT-M2-09;
-- Meta ownership = open under MNT-M2-06;
+- Meta consent gating = must be implemented/proven before Meta production collection;
 - end-to-end Measurement QA = open.
 
 Search:
@@ -182,10 +207,10 @@ Search:
 - `www` without proven HTTP 301/308 semantics;
 - historical `web-share` warning.
 
-## 8. SFJM Workspace boundary
+## 9. SFJM Workspace boundary
 
 Workspace is read-only derived representation. After this revision is merged, it must resolve the resulting exact MoreNumTegra `main` SHA before refreshing its snapshot.
 
-## 9. External gates preserved
+## 10. External gates preserved
 
-No further GTM publication, GA4 creation/configuration, Meta/CAPI, Green Pixel, Google Ads/campaign/spend, DNS, Search Console mutation, Vercel Production, Green publication, FECH.AI/n8n/Make or secrets are authorized by MNT-M2-05 completion.
+No further GTM publication, GA4 creation/configuration, Meta Dataset/Pixel/CAPI creation/deployment, Green Pixel, Google Ads/campaign/spend, DNS, Search Console mutation, Vercel Production, Green publication, FECH.AI/n8n/Make or secrets are authorized by MNT-M2-06 completion.
