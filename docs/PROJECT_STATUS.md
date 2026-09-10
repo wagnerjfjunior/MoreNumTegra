@@ -3,12 +3,12 @@
 - Data de referência: `2026-09-10`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra`
 - Referência: `main` — resolver SHA live antes de agir
-- MNT-M2-03 start main: `df7ed839c6872644560775cbb5cfe1e0d5c76b5c`
+- MNT-M2-04 start main: `8c68ea8406a88cb84f873f364c0305a3eba5f7ab`
 - Release comercial publicada: `18cfab98e01be29c86d78d08f2f5035a8da70444`
 - Produto V1: `GREEN_COMMERCIAL_V1_SEARCH_INDEXED / OPERATIONAL`
 - Programa: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
 - Fase atual quando esta revisão estiver em main: `MNT-M2 — ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION`
-- Próxima task: `MNT-M2-04 — PLANNED_NOT_AUTHORIZED`
+- Próxima task: `MNT-M2-05 — PARTIAL_EVIDENCE / EXECUTION_NOT_AUTHORIZED`
 - Saúde operacional do V1: `verde`
 
 ## 1. Produção atual
@@ -27,6 +27,7 @@ LIVE V1 OPERATIONAL != MNT-RESF PROGRAM COMPLETE
 PROGRAM PROGRESS != V1 PRODUCT READINESS
 DESIGN COMPLETE != RUNTIME IMPLEMENTED
 EVENT DEFINED != CONVERSION
+CONVERSION CLASSIFIED != DESTINATION CONFIGURED
 PARTIAL IMPLEMENTATION != TASK COMPLETE
 ```
 
@@ -49,8 +50,8 @@ MNT-M2  ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
   MNT-M2-01  COMPLETE
   MNT-M2-02  COMPLETE
   MNT-M2-03  COMPLETE
-  MNT-M2-04  PLANNED_NOT_AUTHORIZED / NEXT
-  MNT-M2-05  PARTIAL_EVIDENCE
+  MNT-M2-04  COMPLETE
+  MNT-M2-05  PARTIAL_EVIDENCE / NEXT / EXECUTION_NOT_AUTHORIZED
   MNT-M2-06  PLANNED
   MNT-M2-07  COMPLETE
   MNT-M2-08  COMPLETE
@@ -63,9 +64,9 @@ Planning forecast:
 
 ```text
 forecast total                = 1240h
-accepted scope-equivalent     = 328h
-remaining forecast            = 912h
-program progress              = 26.45%
+accepted scope-equivalent     = 336h
+remaining forecast            = 904h
+program progress              = 27.10%
 ```
 
 Accepted M2 scope-equivalent:
@@ -73,10 +74,11 @@ Accepted M2 scope-equivalent:
 - `MNT-M2-01 = 8h`;
 - `MNT-M2-02 = 16h`;
 - `MNT-M2-03 = 16h`;
+- `MNT-M2-04 = 8h`;
 - `MNT-M2-07 = 16h`;
 - `MNT-M2-08 = 16h`.
 
-`MNT-M2-09` remains partial and contributes `0h accepted`.
+`MNT-M2-05` partial evidence and `MNT-M2-09` partial implementation contribute `0h accepted` until accepted complete.
 
 ## 3. Accepted Measurement foundation
 
@@ -85,7 +87,6 @@ Accepted M2 scope-equivalent:
 Evidence: `docs/measurement/MNT_M2_01_TRACKING_RUNTIME_INVENTORY_2026-09-10.md`.
 
 ```text
-HAR SHA-256 = c59f3a3c0c075412595bfda2dd1155a48fa0d0689f5f27264010076348bb7446
 Green /page/view = OBSERVED / PLATFORM_INJECTED
 GTM/GA4/Meta = NOT_OBSERVED_AT_T0
 www -> non-www Green double page-view = historical risk input
@@ -110,8 +111,6 @@ Persistence after reload = PROVEN
 
 Evidence: `docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md`.
 
-Accepted design:
-
 ```text
 PROJECT_BROWSER_DISPATCHER = GTM-PGCR4R47
 PROJECT_MEASUREMENT_CANONICAL_HOST = moretegra.com.br
@@ -120,19 +119,13 @@ GREEN_/page/view = PLATFORM_TELEMETRY / NOT_PROJECT_BUSINESS_EVENT
 PROJECT_PAGE_VIEW = EXACTLY_ONE_PATH_PER_CANONICAL_DOCUMENT_LOAD
 SEMANTIC_EVENT_ORIGIN = ONE dataLayer EVENT
 mnt_event_id = PROJECT_CORRELATION_IDENTITY / VENDOR DEDUP DESTINATION-SPECIFIC
-CTA_CLICK / SUBMIT_ATTEMPT != LEAD
-ONLY_VERIFIED_FORM46_SUCCESS_MAY_BECOME_LEAD
 ```
 
-Runtime enforcement remains MNT-M2-09; end-to-end proof remains MNT-M2-10.
+### MNT-M2-03 — canonical event taxonomy
 
-## 4. MNT-M2-03 — canonical event taxonomy
+Evidence: `docs/measurement/MNT_M2_03_CANONICAL_EVENT_TAXONOMY_V1_2026-09-10.md`.
 
-Evidence/design:
-
-`docs/measurement/MNT_M2_03_CANONICAL_EVENT_TAXONOMY_V1_2026-09-10.md`.
-
-Canonical source-event vocabulary v1:
+Canonical source events:
 
 ```text
 mnt_page_view
@@ -145,58 +138,75 @@ mnt_form_submit_attempt
 mnt_lead_success
 ```
 
-Key semantics:
+Visitor PII and raw free-form catalogue search text remain excluded from Measurement.
+
+## 4. MNT-M2-04 — conversion classification
+
+Evidence/design:
+
+`docs/measurement/MNT_M2_04_PRIMARY_SECONDARY_CONVERSIONS_V1_2026-09-10.md`.
+
+Project-level classification:
 
 ```text
-source event names are vendor-neutral
-one semantic event occurrence -> one mnt_event_id
-raw catalogue search text is forbidden from Measurement
-visitor name/email/telephone/form values are forbidden from event parameters
-project_name = project.projectName || project.name when project context exists
-offer_name = project.name
-CTA/WhatsApp/form intent != lead
-mnt_lead_success requires verified native Green Form 46 success
+PRIMARY
+  mnt_lead_success
+
+SECONDARY
+  mnt_intent:request_conditions
+  mnt_intent:request_project_conditions
+  mnt_intent:negotiate_scenario
+  mnt_intent:schedule_visit
+  mnt_intent:whatsapp_contact
+
+NONE
+  mnt_page_view
+  mnt_section_click
+  mnt_catalog_filter
+  mnt_catalog_search
+  mnt_intent:project_interest
+  mnt_form_start
+  mnt_form_submit_attempt
 ```
 
-`mnt_lead_success` is defined but must not be implemented until a stable, non-invasive Green success signal is proven.
+Hard boundaries:
 
-MNT-M2-03 does not decide primary/secondary conversion classification or destination mappings.
+```text
+PRIMARY = verified Green Form 46 success only
+stable Green success signal = NOT_YET_PROVEN
+property/offer price != conversion value
+monetary conversion value = NOT_DEFINED
+project PRIMARY/SECONDARY != automatic Google Ads or GA4 administrative setting
+```
+
+MNT-M2-04 is classification only. It activates no destination.
 
 ## 5. Measurement remaining work
 
 ```text
 TRANSPORT / DEDUP ARCHITECTURE = COMPLETE
 CANONICAL EVENT TAXONOMY = COMPLETE
-PRIMARY / SECONDARY CONVERSIONS = OPEN / MNT-M2-04
-GTM / GA4 OWNERSHIP = PARTIAL / MNT-M2-05
+PRIMARY / SECONDARY CONVERSIONS = COMPLETE
+GTM / GA4 OWNERSHIP = PARTIAL_EVIDENCE / MNT-M2-05 NEXT
 META OWNERSHIP = OPEN / MNT-M2-06
 TRACKING IMPLEMENTATION = PARTIAL / MNT-M2-09
 END-TO-END MEASUREMENT QA = OPEN / MNT-M2-10
 ```
 
-No additional GTM, GA4, Google Ads or Meta implementation is authorized by MNT-M2-03 completion.
+No additional GTM, GA4, Google Ads or Meta implementation is authorized by MNT-M2-04 completion.
 
 ## 6. Search / GSC
 
 P0-B remains `PASS_WITH_RESIDUAL_RISK`.
 
-Residuals:
+Residuals remain:
 
 - canonical client-side;
 - sitemap unavailable;
 - `www` without proven HTTP 301/308 semantics;
 - historical `web-share` warning.
 
-GSC T0 remains:
-
-```text
-clicks = 0
-impressions = 17
-CTR = 0%
-average position = 26.1
-```
-
-Classification: `EARLY_DISCOVERY / INSUFFICIENT_VOLUME_FOR_TREND_OR_CAUSALITY_CLAIMS`.
+GSC T0 remains insufficient for trend/causality claims.
 
 ## 7. SFJM Workspace boundary
 
@@ -213,4 +223,4 @@ After this revision is merged, Workspace must resolve the resulting exact MoreNu
 
 ## 8. External gates
 
-MNT-M2-04 and later tasks retain their own Product Authority gates. Further GTM changes, GA4, Meta/CAPI, Green Pixel, Google Ads/spend, DNS, Search Console mutation, Vercel Production and Green publication remain separately gated.
+MNT-M2-05 and later tasks retain their own Product Authority gates. Further GTM changes, GA4, Meta/CAPI, Green Pixel, Google Ads/spend, DNS, Search Console mutation, Vercel Production and Green publication remain separately gated.
