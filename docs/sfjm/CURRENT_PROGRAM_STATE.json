@@ -4,19 +4,20 @@
   "program_id": "MNT-RESF",
   "state_observed_at": "2026-09-10",
   "decision_anchor": {
-    "type": "TASK_COMPLETE_CANDIDATE",
+    "type": "PR_LIFECYCLE_ACCEPTANCE_TARGET",
+    "pr": 45,
     "scope": "MNT-M2-02 transport architecture and duplicate-event prevention",
     "authorization": "Product Authority explicitly authorized MNT-M2-02 start on 2026-09-10",
     "canonical_main_at_start": "f0e89bfc159e7638347997b46290c919f2e5efc7",
     "evidence": "docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md",
-    "meaning": "MNT-M2-02 design exit criteria are satisfied in this candidate; canonical acceptance depends on PR lifecycle. No runtime Measurement mutation is performed by this task."
+    "meaning": "When this revision is integrated into canonical main through PR #45 lifecycle acceptance, MNT-M2-02 is COMPLETE. The task is design-only and performs no runtime Measurement mutation."
   },
   "program_state": "ACTIVE",
   "current_execution": {
     "active_phase_id": "MNT-M2",
     "active_task_id": null,
     "immediate_execution_authority": "NONE_FOR_MNT_M2_03",
-    "reason": "MNT-M2-02 design is complete at candidate level. MNT-M2-03 event taxonomy is the next candidate and is not authorized by MNT-M2-02 completion."
+    "reason": "MNT-M2-02 is accepted complete when this revision is in canonical main. MNT-M2-03 event taxonomy remains a separate Product Authority gate."
   },
   "next": {
     "phase_id": "MNT-M2",
@@ -25,7 +26,7 @@
     "task_id": "MNT-M2-03",
     "task_label": "Define canonical event taxonomy",
     "task_state": "PLANNED_NOT_AUTHORIZED",
-    "safe_action": "Complete the MNT-M2-02 documentation PR lifecycle. After canonical acceptance, obtain explicit Product Authority authorization before starting MNT-M2-03. Do not implement GA4/Ads/Meta events from MNT-M2-02 alone.",
+    "safe_action": "Obtain explicit Product Authority authorization before starting MNT-M2-03 canonical event taxonomy. Do not implement GA4/Ads/Meta events from MNT-M2-02 alone.",
     "mutation_boundary": "No additional GTM, GA4, Meta Pixel/Dataset/CAPI, Green Pixel, Google Ads, DNS, Search Console, Vercel Production or Green production mutation is authorized by MNT-M2-02 design."
   },
   "progress": {
@@ -34,9 +35,9 @@
     "remaining_forecast_hours": 928,
     "accepted_percent": 25.1612903226,
     "display_percent": 25.16,
-    "basis": "POST_MERGE_INTENDED: MNT-M0 160h + MNT-M1 96h + MNT-M2-01 8h + MNT-M2-02 16h + MNT-M2-07 16h + MNT-M2-08 16h accepted scope-equivalent divided by 1240h total forecast",
+    "basis": "MNT-M0 160h + MNT-M1 96h + MNT-M2-01 8h + MNT-M2-02 16h + MNT-M2-07 16h + MNT-M2-08 16h accepted scope-equivalent divided by 1240h total forecast",
     "semantics": "PLANNING_FORECAST_NOT_ACTUAL_TIMESHEET",
-    "acceptance_boundary": "These values become canonical only if the MNT-M2-02 candidate is merged into main.",
+    "effective_when": "THIS_REVISION_IS_IN_CANONICAL_MAIN",
     "partial_work_rule": "MNT-M2-09 partial implementation contributes 0 accepted hours until the task exit criteria are fully accepted."
   },
   "milestone_state_overrides": {
@@ -51,7 +52,7 @@
   },
   "task_state_overrides": {
     "MNT-M2-01": "COMPLETE",
-    "MNT-M2-02": "COMPLETE_CANDIDATE",
+    "MNT-M2-02": "COMPLETE",
     "MNT-M2-03": "PLANNED_NOT_AUTHORIZED",
     "MNT-M2-04": "PLANNED",
     "MNT-M2-05": "PARTIAL_EVIDENCE",
@@ -72,14 +73,6 @@
     "MNT-M1-08"
   ],
   "accepted_m2_task_ids": [
-    "MNT-M2-01",
-    "MNT-M2-07",
-    "MNT-M2-08"
-  ],
-  "candidate_m2_task_ids_pending_pr_lifecycle": [
-    "MNT-M2-02"
-  ],
-  "accepted_m2_task_ids_post_merge_intended": [
     "MNT-M2-01",
     "MNT-M2-02",
     "MNT-M2-07",
@@ -114,7 +107,7 @@
     },
     "mnt_m2_02_transport_dedup": {
       "ref": "docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md",
-      "state": "COMPLETE_CANDIDATE / PENDING_PR_LIFECYCLE",
+      "state": "ACCEPTED_DESIGN_WHEN_IN_CANONICAL_MAIN",
       "key_decisions": [
         "GTM-PGCR4R47 is the sole project-owned browser dispatcher",
         "project business Measurement is eligible only on moretegra.com.br, not www.moretegra.com.br",
@@ -132,14 +125,14 @@
       "class": "REQUIRED_CURRENT",
       "scope": "MNT-M2",
       "state": "OPEN",
-      "label": "Transport architecture is defined, but taxonomy, conversion definitions, ownership, full implementation and end-to-end Measurement QA remain incomplete"
+      "label": "Transport architecture is accepted, but taxonomy, conversion definitions, ownership, full implementation and end-to-end Measurement QA remain incomplete"
     },
     {
       "id": "MNT-RESIDUAL-MEASUREMENT-DUPLICATION",
       "class": "IMPLEMENTATION_CONTROL_PENDING",
-      "scope": "MNT-M2-02 / MNT-M2-09 / MNT-M2-10",
-      "state": "ARCHITECTURE_DEFINED / IMPLEMENTATION_NOT_YET_PROVEN",
-      "label": "T0 Green double page-view risk is bounded by canonical-host and single-dispatcher design, but runtime enforcement remains to be implemented and QA-proven",
+      "scope": "MNT-M2-09 / MNT-M2-10",
+      "state": "ARCHITECTURE_ACCEPTED / IMPLEMENTATION_NOT_YET_PROVEN",
+      "label": "T0 Green double page-view risk is bounded by canonical-host and single-dispatcher architecture, but runtime enforcement remains to be implemented and QA-proven",
       "resolution_condition": "Implement the MNT-M2-02 controls in authorized Measurement configuration and prove them in MNT-M2-10"
     },
     {
@@ -153,8 +146,8 @@
       "id": "MNT-GATE-M2-NEXT",
       "class": "FUTURE_GATE",
       "scope": "MNT-M2-03",
-      "state": "NOT_AUTHORIZED_BY_MNT_M2_02",
-      "label": "MNT-M2-03 canonical event taxonomy requires an explicit next-task gate"
+      "state": "NOT_AUTHORIZED",
+      "label": "MNT-M2-03 canonical event taxonomy requires explicit Product Authority authorization"
     }
   ],
   "state_precedence": {
