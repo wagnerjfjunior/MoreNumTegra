@@ -4,26 +4,29 @@
   "program_id": "MNT-RESF",
   "state_observed_at": "2026-09-10",
   "decision_anchor": {
-    "type": "MERGED_PR",
-    "pr": 39,
-    "merge_commit": "dba0de3bfefc7aec90c5a88588c54eae4317c61f",
-    "meaning": "MNT-M1 adoption/reconciliation/WBS lifecycle completed on canonical main"
+    "type": "PRODUCT_AUTHORITY_AUTHORIZATION",
+    "authorized_at": "2026-09-10",
+    "scope": "Start the next planned MoreNumTegra task effectively, bounded to MNT-M2-01 in READ_ONLY / DESIGN mode",
+    "base_main": "347b62298d30ba3567a76d3f48a815e9f0f5b26c",
+    "meaning": "MNT-M2 may start only through MNT-M2-01 inventory work; no tracking/runtime/external mutation is authorized"
   },
   "program_state": "ACTIVE",
   "current_execution": {
-    "active_phase_id": null,
-    "active_task_id": null,
-    "immediate_execution_authority": "NONE_FOR_MNT_M2",
-    "reason": "MNT-M1 is complete; MNT-M2 remains planned and has not been authorized to start by the MNT-M1 lifecycle authorization."
+    "active_phase_id": "MNT-M2",
+    "active_phase_state": "ACTIVE_READ_ONLY_DESIGN",
+    "active_task_id": "MNT-M2-01",
+    "active_task_state": "ACTIVE_PARTIAL_EVIDENCE",
+    "immediate_execution_authority": "READ_ONLY_DESIGN_ONLY",
+    "reason": "Product Authority explicitly authorized proceeding to the next planned MoreNumTegra task. MNT-M2-01 is an inventory task and does not authorize implementation of tracking or any external mutation."
   },
   "next": {
     "phase_id": "MNT-M2",
     "phase_label": "Measurement Foundation & Consent",
-    "phase_state": "PLANNED_NOT_AUTHORIZED",
+    "phase_state": "ACTIVE_READ_ONLY_DESIGN",
     "task_id": "MNT-M2-01",
     "task_label": "Inventory tracking already present in live runtime",
-    "safe_action": "Obtain explicit Product Authority authorization before starting bounded MNT-M2 READ_ONLY / DESIGN work.",
-    "mutation_boundary": "No tracking, GTM, GA4, Meta, Green, DNS, Search Console, Ads, spend or production mutation is authorized by MNT-M1 closure."
+    "safe_action": "Complete a read-only commercial runtime Network/DOM capture to classify Green/platform-injected measurement separately from project-owned source. Do not install, modify or publish tracking.",
+    "mutation_boundary": "No GTM, GA4, Meta Pixel/Dataset/CAPI, Green Pixel, consent-runtime, Google Ads, DNS, Search Console, Vercel Production or Green production mutation is authorized by this task."
   },
   "progress": {
     "forecast_total_hours": 1240,
@@ -31,18 +34,21 @@
     "remaining_forecast_hours": 984,
     "accepted_percent": 20.6452,
     "display_percent": 20.65,
-    "basis": "MNT-M0 160h + MNT-M1 96h COMPLETE divided by 1240h total forecast",
+    "basis": "MNT-M0 160h + MNT-M1 96h COMPLETE divided by 1240h total forecast; MNT-M2-01 is active and not yet accepted",
     "semantics": "PLANNING_FORECAST_NOT_ACTUAL_TIMESHEET"
   },
   "milestone_state_overrides": {
     "MNT-M0": "COMPLETE",
     "MNT-M1": "COMPLETE",
-    "MNT-M2": "PLANNED_NOT_AUTHORIZED",
+    "MNT-M2": "ACTIVE_READ_ONLY_DESIGN",
     "MNT-M3": "PLANNED",
     "MNT-M4": "PLANNED",
     "MNT-M5": "PLANNED",
     "MNT-M6": "PLANNED",
     "MNT-M7": "PLANNED"
+  },
+  "task_state_overrides": {
+    "MNT-M2-01": "ACTIVE_PARTIAL_EVIDENCE"
   },
   "accepted_m1_task_ids": [
     "MNT-M1-01",
@@ -54,6 +60,11 @@
     "MNT-M1-07",
     "MNT-M1-08"
   ],
+  "current_evidence": {
+    "mnt_m2_01_inventory": "docs/measurement/MNT_M2_01_TRACKING_RUNTIME_INVENTORY_2026-09-10.md",
+    "state": "ACTIVE / PARTIAL_EVIDENCE",
+    "remaining_evidence": "READ_ONLY commercial runtime Network/DOM capture"
+  },
   "state_precedence": {
     "hierarchy_and_planning_hours": "docs/sfjm/PROGRAM_TASK_GRAPH.json",
     "current_lifecycle_state_and_progress": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
