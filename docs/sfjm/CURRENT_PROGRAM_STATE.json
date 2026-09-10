@@ -5,36 +5,36 @@
   "state_observed_at": "2026-09-10",
   "decision_anchor": {
     "type": "PR_LIFECYCLE_ACCEPTANCE_TARGET",
-    "scope": "MNT-M2-05 GTM/GA4 ownership and target topology",
-    "authorization": "Product Authority explicitly authorized MNT-M2-05 start on 2026-09-10",
-    "canonical_main_at_start": "d7090a4df966c5ad39b06e52fdcbb99e97ca158a",
-    "evidence": "docs/measurement/MNT_M2_05_GTM_GA4_OWNERSHIP_CONTRACT_V1_2026-09-10.md",
-    "meaning": "When this revision is integrated into canonical main through its PR lifecycle, MNT-M2-05 is COMPLETE. The task defines governance ownership and target topology only; it performs no Google-side/runtime mutation."
+    "scope": "MNT-M2-06 Meta Pixel/Dataset ownership and target topology",
+    "authorization": "Product Authority explicitly authorized MNT-M2-06 start on 2026-09-10",
+    "canonical_main_at_start": "19570db1ee2853946e45451c0ff5afaceb894002",
+    "evidence": "docs/measurement/MNT_M2_06_META_PIXEL_DATASET_OWNERSHIP_CONTRACT_V1_2026-09-10.md",
+    "meaning": "When this revision is integrated into canonical main through its PR lifecycle, MNT-M2-06 is COMPLETE. The task defines Meta Measurement governance ownership and target topology only; it performs no Meta-side/runtime mutation."
   },
   "program_state": "ACTIVE",
   "current_execution": {
     "active_phase_id": "MNT-M2",
     "active_task_id": null,
-    "immediate_execution_authority": "NONE_FOR_MNT_M2_06",
-    "reason": "MNT-M2-05 is accepted complete when this revision is in canonical main. MNT-M2-06 Meta Pixel/Dataset ownership remains a separate Product Authority gate."
+    "immediate_execution_authority": "NONE_FOR_MNT_M2_09",
+    "reason": "MNT-M2-06 is accepted complete when this revision is in canonical main. MNT-M2-09 remains partially implemented from the accepted GTM Consent baseline, but further tracking implementation requires a separate Product Authority execution gate."
   },
   "next": {
     "phase_id": "MNT-M2",
     "phase_label": "Measurement Foundation & Consent",
     "phase_state": "ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION",
-    "task_id": "MNT-M2-06",
-    "task_label": "Define ownership for Meta Pixel/Dataset",
-    "task_state": "PLANNED_NOT_AUTHORIZED",
-    "safe_action": "Obtain explicit Product Authority authorization before starting MNT-M2-06 Meta Pixel/Dataset ownership work. Do not infer Meta ownership or implementation from Google-side ownership decisions.",
-    "mutation_boundary": "No GTM publication, GA4 property/stream creation, Google tag/event implementation, Meta Pixel/Dataset/CAPI, Green Pixel, Google Ads, DNS, Search Console, Vercel Production or Green production mutation is authorized by MNT-M2-05 design."
+    "task_id": "MNT-M2-09",
+    "task_label": "Implement authorized tracking configuration",
+    "task_state": "PARTIAL_IMPLEMENTED / EXECUTION_NOT_AUTHORIZED",
+    "safe_action": "Obtain explicit Product Authority authorization before continuing MNT-M2-09. Start with read-only resolution/adoption of any existing dedicated GA4 and Meta assets and a bounded implementation plan; do not infer permission to publish GTM, create/configure GA4 or Meta assets, enable CAPI, or change production without the applicable explicit mutation scope.",
+    "mutation_boundary": "No further GTM publication, GA4 property/stream creation or event implementation, Meta Dataset/Pixel/CAPI creation or deployment, Green Pixel, Google Ads, DNS, Search Console, Vercel Production or Green production mutation is authorized by MNT-M2-06 design."
   },
   "progress": {
     "forecast_total_hours": 1240,
-    "accepted_scope_equivalent_hours": 344,
-    "remaining_forecast_hours": 896,
-    "accepted_percent": 27.7419354839,
-    "display_percent": 27.74,
-    "basis": "MNT-M0 160h + MNT-M1 96h + MNT-M2-01 8h + MNT-M2-02 16h + MNT-M2-03 16h + MNT-M2-04 8h + MNT-M2-05 8h + MNT-M2-07 16h + MNT-M2-08 16h accepted scope-equivalent divided by 1240h total forecast",
+    "accepted_scope_equivalent_hours": 352,
+    "remaining_forecast_hours": 888,
+    "accepted_percent": 28.3870967742,
+    "display_percent": 28.39,
+    "basis": "MNT-M0 160h + MNT-M1 96h + MNT-M2-01 8h + MNT-M2-02 16h + MNT-M2-03 16h + MNT-M2-04 8h + MNT-M2-05 8h + MNT-M2-06 8h + MNT-M2-07 16h + MNT-M2-08 16h accepted scope-equivalent divided by 1240h total forecast",
     "semantics": "PLANNING_FORECAST_NOT_ACTUAL_TIMESHEET",
     "effective_when": "THIS_REVISION_IS_IN_CANONICAL_MAIN",
     "partial_work_rule": "MNT-M2-09 partial implementation contributes 0 accepted hours until its task exit criteria are fully accepted."
@@ -55,7 +55,7 @@
     "MNT-M2-03": "COMPLETE",
     "MNT-M2-04": "COMPLETE",
     "MNT-M2-05": "COMPLETE",
-    "MNT-M2-06": "PLANNED_NOT_AUTHORIZED",
+    "MNT-M2-06": "COMPLETE",
     "MNT-M2-07": "COMPLETE",
     "MNT-M2-08": "COMPLETE",
     "MNT-M2-09": "PARTIAL_IMPLEMENTED",
@@ -77,6 +77,7 @@
     "MNT-M2-03",
     "MNT-M2-04",
     "MNT-M2-05",
+    "MNT-M2-06",
     "MNT-M2-07",
     "MNT-M2-08"
   ],
@@ -146,7 +147,7 @@
     },
     "mnt_m2_05_gtm_ga4_ownership": {
       "ref": "docs/measurement/MNT_M2_05_GTM_GA4_OWNERSHIP_CONTRACT_V1_2026-09-10.md",
-      "state": "ACCEPTED_DESIGN_WHEN_IN_CANONICAL_MAIN",
+      "state": "ACCEPTED_DESIGN",
       "gtm_container_id": "GTM-PGCR4R47",
       "gtm_governance_owner": "MoreNumTegra / Product Authority",
       "ga4_governance_owner": "MoreNumTegra / Product Authority",
@@ -156,6 +157,18 @@
       "ga4_stream_id": "NOT_PROVEN",
       "ga4_measurement_id": "NOT_PROVEN",
       "runtime_mutation": "NONE"
+    },
+    "mnt_m2_06_meta_ownership": {
+      "ref": "docs/measurement/MNT_M2_06_META_PIXEL_DATASET_OWNERSHIP_CONTRACT_V1_2026-09-10.md",
+      "state": "ACCEPTED_DESIGN_WHEN_IN_CANONICAL_MAIN",
+      "meta_governance_owner": "MoreNumTegra / Product Authority",
+      "meta_dataset_scope": "DEDICATED_MORENUMTEGRA_DATASET",
+      "meta_dataset_id": "NOT_PROVEN",
+      "meta_pixel_id": "NOT_PROVEN",
+      "meta_pixel_dataset_relationship": "NOT_PROVEN",
+      "meta_capi_status": "OPTIONAL_FUTURE / NOT_AUTHORIZED_BY_M2_06",
+      "browser_dispatcher": "GTM-PGCR4R47",
+      "runtime_mutation": "NONE"
     }
   },
   "issues": [
@@ -164,7 +177,7 @@
       "class": "REQUIRED_CURRENT",
       "scope": "MNT-M2",
       "state": "OPEN",
-      "label": "Transport, canonical event taxonomy, conversion roles and Google ownership topology are accepted, but Meta ownership, full implementation and end-to-end Measurement QA remain incomplete"
+      "label": "Transport, canonical event taxonomy, conversion roles and Google/Meta ownership topology are accepted, but full tracking implementation and end-to-end Measurement QA remain incomplete"
     },
     {
       "id": "MNT-ISSUE-GA4-RUNTIME-IDENTIFIERS",
@@ -173,6 +186,14 @@
       "state": "OPEN / NON_BLOCKING_FOR_M2_05_DESIGN",
       "label": "Dedicated MoreNumTegra GA4 property/stream topology is defined, but exact property ID, stream ID and Measurement ID are not yet canonically proven",
       "resolution_condition": "Before GA4 implementation, prove an existing dedicated property/stream or create them only under the applicable explicit mutation gate, then record exact identifiers"
+    },
+    {
+      "id": "MNT-ISSUE-META-RUNTIME-IDENTIFIERS",
+      "class": "IMPLEMENTATION_EVIDENCE_PENDING",
+      "scope": "MNT-M2-09",
+      "state": "OPEN / NON_BLOCKING_FOR_M2_06_DESIGN",
+      "label": "Dedicated MoreNumTegra Meta Dataset/browser-source topology is defined, but exact Dataset ID, Pixel/browser-source ID and their observed relationship are not yet canonically proven",
+      "resolution_condition": "Before Meta implementation, prove/adopt existing dedicated assets or create them only under the applicable explicit mutation gate, then record exact non-secret identifiers and relationship"
     },
     {
       "id": "MNT-RESIDUAL-MEASUREMENT-DUPLICATION",
@@ -195,15 +216,15 @@
       "class": "RESIDUAL",
       "scope": "RESF-CONSENT / MNT-M2",
       "state": "OPEN / NON_BLOCKING_FOR_GTM_CONSENT_STATE",
-      "label": "GTM consent-state handling is proven; site-wide third-party telemetry gating is not fully proven"
+      "label": "GTM consent-state handling is proven; site-wide third-party telemetry gating, including any future Meta destination behavior, is not fully proven"
     },
     {
       "id": "MNT-GATE-M2-NEXT",
       "class": "FUTURE_GATE",
-      "scope": "MNT-M2-06",
+      "scope": "MNT-M2-09",
       "state": "NOT_AUTHORIZED",
-      "label": "MNT-M2-06 Meta Pixel/Dataset ownership work requires explicit Product Authority authorization",
-      "resolution_condition": "Product Authority explicitly authorizes MNT-M2-06"
+      "label": "Further MNT-M2-09 tracking implementation work requires explicit Product Authority authorization",
+      "resolution_condition": "Product Authority explicitly authorizes bounded MNT-M2-09 continuation/implementation scope"
     }
   ],
   "state_precedence": {

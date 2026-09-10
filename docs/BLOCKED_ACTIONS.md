@@ -25,16 +25,22 @@
 | canonical via JavaScript fora do contrato 2026-08-29 | client-side canonical exige decisão técnica delimitada | somente o target aprovado no contrato vigente |
 | declarar canonical Green implementado só porque Vercel possui canonical | ambientes têm funções distintas | prova no HTML/head da produção Green |
 | JSON-LD/OG/Twitter fora do contrato 2026-08-29 | expansão Search não autorizada genericamente | somente escopo aprovado no contrato vigente |
-| publicar nova versão GTM ou alterar Version 4 Consent sem gate | MNT-M2-05 define governance, não runtime mutation | autorização MNT-M2-09 ou gate explícito equivalente + QA |
-| adicionar segundo container GTM para a mesma superfície MoreNumTegra | viola single-dispatcher MNT-M2-02/M2-05 | nova decisão arquitetural explícita que superseda o contrato |
+| publicar nova versão GTM ou alterar Version 4 Consent sem gate | M2-05/M2-06 definem governance, não runtime mutation | autorização MNT-M2-09 ou gate explícito equivalente + QA |
+| adicionar segundo container GTM para a mesma superfície MoreNumTegra | viola single-dispatcher MNT-M2-02/M2-05/M2-06 | nova decisão arquitetural explícita que superseda o contrato |
 | criar/configurar GA4 property, web stream, Google tag ou eventos GA4 | ownership/topology estão definidos, mas runtime/admin implementation não está autorizada | MNT-M2-09 ou gate explícito aplicável, com IDs observados |
 | inventar GA4 property ID, stream ID ou Measurement ID | nenhum identificador GA4 está provado em evidência canônica | observar/provar o recurso real antes de registrar/usar |
 | criar nova property GA4 só porque o ID não está no GitHub | `NOT_PROVEN` não significa `DOES_NOT_EXIST`; pode haver recurso existente | verificar/adotar existente ou obter autorização explícita para criação |
 | marcar eventos como GA4 key events/conversions | project conversion role não é configuração administrativa de destino | gate de implementação/configuração aplicável + semântica M2-04 preservada |
 | vincular GA4 a Google Ads ou outro produto | atribuição/Ads linking não pertence ao M2-05 | gate MNT-M6 ou autorização específica |
+| criar/configurar Meta Dataset/Pixel/browser source | MNT-M2-06 define governance/topology, mas IDs e runtime permanecem não provados | MNT-M2-09 ou gate explícito aplicável, após resolver assets existentes |
+| inventar Meta Dataset ID, Pixel ID, Business Portfolio ID ou relação Pixel/Dataset | identificadores/relacionamento Meta não estão provados em evidência canônica | observar/provar no ambiente Meta antes de registrar/usar |
+| criar novo Dataset/Pixel apenas porque IDs não constam no GitHub | `NOT_PROVEN` não significa `DOES_NOT_EXIST`; risco de duplicar assets | verificar/adotar asset dedicado existente ou obter autorização explícita para criação |
+| adicionar `fbq()` direto fora do GTM como caminho project-owned | viola o single browser dispatcher e pode duplicar eventos | decisão arquitetural explícita que superseda M2-02/M2-06 |
+| configurar Meta Standard Events/Custom Events/Custom Conversions por inferência | M2-06 não define vendor event mapping nem otimização | MNT-M2-09/MNT-M6 conforme escopo + mapeamento explícito preservando M2-03/M2-04 |
+| habilitar Meta CAPI, partner/server gateway ou dual browser/server transport | exige arquitetura server-side, consent, identidade de evento e dedup específicos | decisão/gate explícito + contrato de dedup + QA |
+| inferir website Pixel/Dataset ownership de Facebook Page, Lead Ads, Green CRM ou ad account | superfícies distintas não provam ownership de Measurement do site | evidência específica do asset Meta dedicado |
 | instalar/configurar Google Ads conversion tags | classificação de negócio existe, mas atribuição/Ads implementation permanece futura | gate MNT-M6 aplicável + autorização específica |
 | copiar mecanicamente `PRIMARY`/`SECONDARY` do projeto para Google Ads | semântica de otimização/counting/attribution ainda não foi decidida em MNT-M6 | contrato MNT-M6 + autorização específica |
-| instalar/configurar Meta Pixel/Dataset/CAPI | Meta ownership ainda não foi definido | MNT-M2-06 + gate de implementação aplicável |
 | configurar Green Pixel/integração adicional | pode duplicar telemetria ou alterar consent boundary | arquitetura aceita + gate de implementação específico |
 | tratar Green `/page/view` como equivalente a evento/conversão MoreNumTegra | Green é telemetria de plataforma, não origem semântica do projeto | proibido salvo decisão arquitetural superseding explícita |
 | tratar telemetry YouTube como conversão MoreNumTegra | third-party media telemetry não é evento de negócio | proibido pela taxonomy v1 |
@@ -44,7 +50,7 @@
 | implementar `mnt_lead_success` sem sinal Green de sucesso comprovado | risco de falso positivo de conversão | provar sinal estável, não invasivo e deduplicável |
 | tratar `mnt_form_submit_attempt`, `mnt_form_start` ou `mnt_intent:project_interest` como conversão | MNT-M2-04 os classifica como `NONE` | revisão explícita do contrato de conversão, se houver nova evidência |
 | usar preço de imóvel/oferta como conversion value | preço de imóvel não é receita/valor de lead | modelo de valor de lead governado posteriormente |
-| habilitar user-provided data / enhanced conversions / hashed PII por inferência | MNT-M2-05 não autoriza advertising-user-data features | arquitetura/privacy + gate específico |
+| habilitar user-provided data / enhanced conversions / advanced matching / hashed PII por inferência | M2-05/M2-06 não autorizam advertising-user-data features | arquitetura/privacy + gate específico |
 | novas mutações Search Console | estado externo já possui propriedade/indexação comprovadas | gate específico |
 | CMS/database/backend próprio | não necessário no V1 | necessidade material + nova decisão |
 | FECH.AI/n8n/Make/Ads campaign/spend | fora do escopo autorizado atual | autorização específica |
@@ -119,15 +125,30 @@ GA4 property ID / stream ID / Measurement ID = NOT_PROVEN
 M2-05 runtime/admin mutation = NONE
 ```
 
+### Meta Pixel / Dataset ownership v1
+
+Evidence: `docs/measurement/MNT_M2_06_META_PIXEL_DATASET_OWNERSHIP_CONTRACT_V1_2026-09-10.md`.
+
+```text
+Meta Measurement governance owner = MoreNumTegra / Product Authority
+Meta Dataset target = one dedicated MoreNumTegra Dataset
+Meta browser source target = one project browser source relationship if implemented
+Browser dispatcher = GTM-PGCR4R47
+Meta Dataset ID / Pixel ID / relationship = NOT_PROVEN
+CAPI = optional future / not authorized by M2-06
+M2-06 runtime/admin mutation = NONE
+```
+
 Preservar:
 
 ```text
-OWNERSHIP DEFINED != GOOGLE ACCOUNT USER ROSTER PROVEN
+OWNERSHIP DEFINED != ACCOUNT USER ROSTER PROVEN
 TARGET TOPOLOGY != RESOURCE CREATED
 NOT_PROVEN != DOES_NOT_EXIST
 ACCEPTED CONVERSION ROLE != DESTINATION CONFIGURED
-PRIMARY CONVERSION != PRIMARY ADS ACTION
+PRIMARY CONVERSION != PRIMARY ADS/META OPTIMIZATION ACTION
 SECONDARY CONVERSION != VERIFIED LEAD
+SOURCE EVENT IDENTITY != META DEDUP CONFIGURATION
 CONSENT STATE QA != FULL MEASUREMENT E2E QA
 ```
 
@@ -151,12 +172,14 @@ O provider `blogs-sites-portais-seo` pode auditar/recomendar e devolver handoff 
 - `main mergeada` != `Green atualizada`.
 - `Green atualizada` != `smoke aprovado`.
 - `tool capability` != `authorization`.
-- `GTM Version 4 published` != `GA4 implemented`.
+- `GTM Version 4 published` != `GA4/Meta implemented`.
 - `GTM governance owner defined` != `Google account credential holder proven`.
 - `GA4 topology defined` != `GA4 property/stream exists`.
+- `Meta topology defined` != `Meta Dataset/Pixel exists`.
+- `Facebook Page / Lead Ads / Green integration` != `website Pixel/Dataset ownership proven`.
 - `event defined` != `conversion`.
 - `conversion classified` != `destination configured`.
-- `project PRIMARY/SECONDARY` != `Google Ads primary/secondary action setting`.
+- `project PRIMARY/SECONDARY` != `Google Ads or Meta optimization setting`.
 - `MNT-M2-09 partial` != `MNT-M2-09 complete`.
 - `www Domínio OK` != `redirect HTTP 301/308 comprovado`.
 - `Search recommendation` != `implementation authorization`.

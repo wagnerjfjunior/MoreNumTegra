@@ -104,7 +104,7 @@ Query rows are partial. Volume is insufficient for trend, causality or improveme
 
 Current lifecycle authority is `docs/sfjm/CURRENT_PROGRAM_STATE.json`.
 
-When the MNT-M2-05 revision is integrated into canonical `main`, the supported state is:
+When the MNT-M2-06 revision is integrated into canonical `main`, the supported state is:
 
 ```text
 MNT-M2-01 = COMPLETE
@@ -112,10 +112,11 @@ MNT-M2-02 = COMPLETE
 MNT-M2-03 = COMPLETE
 MNT-M2-04 = COMPLETE
 MNT-M2-05 = COMPLETE
+MNT-M2-06 = COMPLETE
 MNT-M2-07 = COMPLETE
 MNT-M2-08 = COMPLETE
-MNT-M2-09 = PARTIAL_IMPLEMENTED
-MNT-M2-06 = PLANNED_NOT_AUTHORIZED / NEXT
+MNT-M2-09 = PARTIAL_IMPLEMENTED / NEXT / EXECUTION_NOT_AUTHORIZED
+MNT-M2-10 = PLANNED
 ```
 
 Evidence chain:
@@ -125,21 +126,23 @@ Evidence chain:
 - `docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md` — accepted transport/dedup architecture;
 - `docs/measurement/MNT_M2_03_CANONICAL_EVENT_TAXONOMY_V1_2026-09-10.md` — canonical event taxonomy v1;
 - `docs/measurement/MNT_M2_04_PRIMARY_SECONDARY_CONVERSIONS_V1_2026-09-10.md` — project-level primary/secondary conversion classification v1;
-- `docs/measurement/MNT_M2_05_GTM_GA4_OWNERSHIP_CONTRACT_V1_2026-09-10.md` — Google Measurement ownership and target topology.
+- `docs/measurement/MNT_M2_05_GTM_GA4_OWNERSHIP_CONTRACT_V1_2026-09-10.md` — Google Measurement ownership and target topology;
+- `docs/measurement/MNT_M2_06_META_PIXEL_DATASET_OWNERSHIP_CONTRACT_V1_2026-09-10.md` — Meta Measurement ownership and target topology.
 
 Current Measurement interpretation:
 
-| Area | Current state when MNT-M2-05 is canonical | Remaining obligation |
+| Area | Current state when MNT-M2-06 is canonical | Remaining obligation |
 |---|---|---|
-| GTM/Consent | PUBLISHED / VALIDATED | preserve Version 4 baseline; later destination behavior still needs QA |
+| GTM/Consent | PUBLISHED / VALIDATED | preserve Version 4 baseline; destination behavior still needs later QA |
 | Transport/dedup | ACCEPTED DESIGN | implement under MNT-M2-09; prove under MNT-M2-10 |
 | Event taxonomy | ACCEPTED DESIGN | implement only after later gates |
 | Conversion roles | ACCEPTED DESIGN | preserve primary/secondary/non-conversion semantics in destination mappings |
 | GTM ownership | ACCEPTED GOVERNANCE DESIGN | canonical container `GTM-PGCR4R47`; account/user roster not stored/proven |
 | GA4 ownership/topology | ACCEPTED GOVERNANCE DESIGN | dedicated property + one production stream target; exact IDs remain NOT_PROVEN |
-| Meta ownership | OPEN / NEXT | MNT-M2-06 after explicit authorization |
+| Meta ownership/topology | ACCEPTED GOVERNANCE DESIGN | dedicated Dataset + one browser source target if implemented; exact IDs/relationship remain NOT_PROVEN |
+| Meta CAPI | OPTIONAL FUTURE / NOT AUTHORIZED BY M2-06 | separate architecture, consent and dedup gate if later adopted |
 | Lead success signal | NOT_YET_PROVEN | stable non-invasive Green Form 46 success signal before primary conversion implementation |
-| Full tracking implementation | PARTIAL | MNT-M2-09 |
+| Full tracking implementation | PARTIAL | MNT-M2-09 after explicit continuation authorization |
 | End-to-end Measurement QA | OPEN | MNT-M2-10 |
 
 Google ownership contract:
@@ -155,13 +158,27 @@ GA4 property ID / stream ID / Measurement ID = NOT_PROVEN
 MNT-M2-05 runtime/admin mutation = NONE
 ```
 
+Meta ownership contract:
+
+```text
+Meta Measurement governance owner = MoreNumTegra / Product Authority
+Meta Dataset scope = one dedicated MoreNumTegra Dataset
+Meta browser source target = one project browser source relationship if implemented
+Browser dispatcher = GTM-PGCR4R47
+www + Vercel = outside project production Measurement
+Meta Dataset ID / Pixel ID / relationship = NOT_PROVEN
+CAPI = optional future / not authorized by M2-06
+MNT-M2-06 runtime/admin mutation = NONE
+```
+
 Interpretation rules:
 
 ```text
-GOVERNANCE OWNERSHIP != GOOGLE ACCOUNT CREDENTIAL HOLDER PROVEN
+GOVERNANCE OWNERSHIP != ACCOUNT CREDENTIAL HOLDER PROVEN
 NOT_PROVEN != DOES_NOT_EXIST
 TARGET TOPOLOGY != RESOURCE CREATED
-GTM PRESENT != GA4 PRESENT
+FACEBOOK PAGE / LEAD ADS / CRM INTEGRATION != WEBSITE PIXEL/DATASET OWNERSHIP
+SOURCE EVENT IDENTITY != META DEDUP CONFIGURATION
 ```
 
 Canonical conversion-role contract remains:
@@ -207,13 +224,13 @@ YouTube telemetry != project conversion
 - current-state overlay: `docs/sfjm/CURRENT_PROGRAM_STATE.json`;
 - read model: `docs/sfjm/PROJECT_READ_MODEL.json`.
 
-Planning progress when MNT-M2-05 is integrated:
+Planning progress when MNT-M2-06 is integrated:
 
 ```text
 forecast total = 1240h
-accepted scope-equivalent = 344h
-remaining forecast = 896h
-progress = 27.74%
+accepted scope-equivalent = 352h
+remaining forecast = 888h
+progress = 28.39%
 ```
 
 Hours are planning/scope-equivalent, not an actual timesheet.
@@ -221,20 +238,22 @@ Hours are planning/scope-equivalent, not an actual timesheet.
 ## 8. Current gaps and residuals
 
 1. Exact GA4 property ID, stream ID and Measurement ID remain `NOT_PROVEN`; this is an implementation-evidence gap, not permission to invent or automatically create resources.
-2. Meta ownership remains open under MNT-M2-06.
-3. Google ownership/topology are defined, but no GA4 destination is thereby created/configured.
-4. `mnt_lead_success` is the sole primary conversion and requires a stable, non-invasive Green Form 46 success signal before implementation.
-5. Transport/dedup runtime controls remain to be implemented under MNT-M2-09 and proven under MNT-M2-10.
-6. No monetary lead conversion value is defined; property/offer prices are not conversion value.
-7. GTM Consent Mode state handling is proven, while site-wide third-party telemetry gating remains a separate residual.
-8. Search technical residuals remain: canonical client-side, sitemap absent, `www` 301/308 not proven.
-9. GSC T0 volume remains too low for trend inference.
-10. Deferred RESF modules do not govern implementation until explicitly adopted.
+2. Exact Meta Dataset/Pixel/browser-source identifiers and their relationship remain `NOT_PROVEN`; this is also an implementation-evidence gap, not permission to create duplicates.
+3. Google and Meta governance/topology are defined, but no GA4/Meta destination is thereby created/configured.
+4. Meta CAPI remains optional/future and requires a separate architecture, consent boundary, identity/dedup contract and mutation gate if adopted.
+5. Any Facebook Page, Lead Ads or Green CRM integration remains distinct from website Pixel/Dataset ownership unless separately evidenced.
+6. `mnt_lead_success` is the sole primary conversion and requires a stable, non-invasive Green Form 46 success signal before implementation.
+7. Transport/dedup runtime controls remain to be implemented under MNT-M2-09 and proven under MNT-M2-10.
+8. No monetary lead conversion value is defined; property/offer prices are not conversion value.
+9. GTM Consent Mode state handling is proven, while site-wide third-party/destination telemetry gating remains a separate residual.
+10. Search technical residuals remain: canonical client-side, sitemap absent, `www` 301/308 not proven.
+11. GSC T0 volume remains too low for trend inference.
+12. Deferred RESF modules do not govern implementation until explicitly adopted.
 
 ## 9. Authorization boundary
 
-MNT-M2-05 completion does not authorize MNT-M2-06 or any runtime/Google-admin Measurement mutation.
+MNT-M2-06 completion does not authorize further MNT-M2-09 implementation or any runtime/admin Measurement mutation.
 
-Further GTM publication, GA4 property/stream creation or event configuration, Meta Pixel/Dataset/CAPI, Green Pixel/integration changes, Google Ads, DNS, Search Console mutation, Vercel Production, Green publication, campaign/spend and external automation remain separately gated.
+Further GTM publication, GA4 property/stream creation or event configuration, Meta Dataset/Pixel/CAPI creation/deployment, Green Pixel/integration changes, Google Ads, DNS, Search Console mutation, Vercel Production, Green publication, campaign/spend and external automation remain separately gated unless an explicit authorized scope says otherwise.
 
-`MNT-M2-05 COMPLETE != MNT-M2-06 AUTHORIZED != MNT-M2-09 IMPLEMENTED != MNT-M2-10 VALIDATED`.
+`MNT-M2-06 COMPLETE != MNT-M2-09 AUTHORIZED != MNT-M2-09 COMPLETE != MNT-M2-10 VALIDATED`.
