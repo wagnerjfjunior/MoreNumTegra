@@ -64,7 +64,7 @@ remaining forecast            = 976h
 program progress              = 21.29%
 ```
 
-As 8h de MNT-M2-01 só passam a ser aceitas canonicamente após integração da PR #41 em `main`.
+A `main` canônica permanece no progresso anterior até o merge da PR #41. As 8h de MNT-M2-01 passam a ser aceitas apenas após integração em `main`.
 
 ## 5. Gates externos preservados
 
