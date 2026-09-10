@@ -1,0 +1,64 @@
+{
+  "schema_version": "sfjm.project-current-state.v1",
+  "project_id": "morenumtegra",
+  "program_id": "MNT-RESF",
+  "state_observed_at": "2026-09-10",
+  "decision_anchor": {
+    "type": "MERGED_PR",
+    "pr": 39,
+    "merge_commit": "dba0de3bfefc7aec90c5a88588c54eae4317c61f",
+    "meaning": "MNT-M1 adoption/reconciliation/WBS lifecycle completed on canonical main"
+  },
+  "program_state": "ACTIVE",
+  "current_execution": {
+    "active_phase_id": null,
+    "active_task_id": null,
+    "immediate_execution_authority": "NONE_FOR_MNT_M2",
+    "reason": "MNT-M1 is complete; MNT-M2 remains planned and has not been authorized to start by the MNT-M1 lifecycle authorization."
+  },
+  "next": {
+    "phase_id": "MNT-M2",
+    "phase_label": "Measurement Foundation & Consent",
+    "phase_state": "PLANNED_NOT_AUTHORIZED",
+    "task_id": "MNT-M2-01",
+    "task_label": "Inventory tracking already present in live runtime",
+    "safe_action": "Obtain explicit Product Authority authorization before starting bounded MNT-M2 READ_ONLY / DESIGN work.",
+    "mutation_boundary": "No tracking, GTM, GA4, Meta, Green, DNS, Search Console, Ads, spend or production mutation is authorized by MNT-M1 closure."
+  },
+  "progress": {
+    "forecast_total_hours": 1240,
+    "accepted_scope_equivalent_hours": 256,
+    "remaining_forecast_hours": 984,
+    "accepted_percent": 20.6452,
+    "display_percent": 20.65,
+    "basis": "MNT-M0 160h + MNT-M1 96h COMPLETE divided by 1240h total forecast",
+    "semantics": "PLANNING_FORECAST_NOT_ACTUAL_TIMESHEET"
+  },
+  "milestone_state_overrides": {
+    "MNT-M0": "COMPLETE",
+    "MNT-M1": "COMPLETE",
+    "MNT-M2": "PLANNED_NOT_AUTHORIZED",
+    "MNT-M3": "PLANNED",
+    "MNT-M4": "PLANNED",
+    "MNT-M5": "PLANNED",
+    "MNT-M6": "PLANNED",
+    "MNT-M7": "PLANNED"
+  },
+  "accepted_m1_task_ids": [
+    "MNT-M1-01",
+    "MNT-M1-02",
+    "MNT-M1-03",
+    "MNT-M1-04",
+    "MNT-M1-05",
+    "MNT-M1-06",
+    "MNT-M1-07",
+    "MNT-M1-08"
+  ],
+  "state_precedence": {
+    "hierarchy_and_planning_hours": "docs/sfjm/PROGRAM_TASK_GRAPH.json",
+    "current_lifecycle_state_and_progress": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
+    "continuity": "handoffs/CURRENT.md",
+    "next_safe_action": "docs/NEXT_SAFE_ACTION.md",
+    "conflict_rule": "CURRENT_PROGRAM_STATE supersedes lifecycle-state fields captured in the structural task-graph baseline after a later canonical lifecycle event; hierarchy/task IDs/planning hours remain project-owned and must not be invented by consumers."
+  }
+}

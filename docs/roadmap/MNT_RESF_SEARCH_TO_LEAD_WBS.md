@@ -1,6 +1,6 @@
 # MNT-RESF — MoreNumTegra Search-to-Lead 2026 — WBS
 
-Status: `CANDIDATE_IN_PR` until merged into `main`  
+Status: `CANONICAL_MAIN` when this revision is merged  
 Project authority: MoreNumTegra / Product Authority  
 Canonical repository: `wagnerjfjunior/MoreNumTegra`  
 Program ID: `MNT-RESF`  
@@ -14,24 +14,27 @@ This WBS publishes the complete MoreNumTegra Search-to-Lead program so SFJM Work
 
 The MoreNumTegra repository remains authoritative. SFJM Workspace is a derived visualization/continuity consumer only.
 
+For current lifecycle/progress after the structural baseline, read `docs/sfjm/CURRENT_PROGRAM_STATE.json`.
+
 ## 2. Effort semantics
 
-The initial program forecast is a planning model, not a timesheet and not proof of elapsed engineering time.
+The program forecast is a planning model, not a timesheet and not proof of elapsed engineering time.
 
 - future work uses `CONSUMER_PLANNING_ESTIMATE_V1`;
 - completed M0 uses `RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE` because historical actual hours were not captured canonically;
+- completed M1 uses its accepted planning estimate as scope-equivalent after lifecycle closure;
 - parent hours are the sum of immediate child task hours;
 - parent/child hours must never be double-counted;
 - later project-published canonical task hours supersede earlier planning estimates;
 - Workspace may display these values but must not silently rewrite them.
 
-Initial planning forecast:
+Current planning forecast:
 
 | Phase | Name | State | Hours |
 |---|---|---:|---:|
 | MNT-M0 | V1 Foundation & Commercial Production | COMPLETE | 160 |
-| MNT-M1 | RESF Adoption & Existing-State Reconciliation | ACTIVE | 96 |
-| MNT-M2 | Measurement Foundation & Consent | PLANNED | 144 |
+| MNT-M1 | RESF Adoption & Existing-State Reconciliation | COMPLETE | 96 |
+| MNT-M2 | Measurement Foundation & Consent | PLANNED_NOT_AUTHORIZED | 144 |
 | MNT-M3 | Intelligence, Product Truth & Search Contract | PLANNED | 144 |
 | MNT-M4 | IA, Content, Schema, GEO/AEO & Linking | PLANNED | 208 |
 | MNT-M5 | UX, Performance, Conversion, Lead & CRM | PLANNED | 168 |
@@ -39,11 +42,11 @@ Initial planning forecast:
 | MNT-M7 | QA, Release, Observability & Learning Loop | PLANNED | 192 |
 | **TOTAL** |  |  | **1240** |
 
-Accepted/completed scope-equivalent effort at this baseline: `160h`  
-Remaining forecast: `1080h`  
-Pre-reconciliation program progress: `12.90%`
+Accepted/completed scope-equivalent effort: `256h`  
+Remaining forecast: `984h`  
+Program progress: `20.65%`
 
-`12.90%` is program progress against the expanded MNT-RESF scope. It does not mean the live V1 is only 12.90% complete. The commercial V1 is already operational; M1 will reconcile pre-existing implementation against later RESF contracts and can increase accepted program coverage without rebuilding validated work.
+`20.65%` is progress against the expanded MNT-RESF program. It does not mean the live V1 is only 20.65% complete. The commercial V1 is already operational.
 
 ## 3. WBS
 
@@ -63,32 +66,24 @@ Historical accepted scope. Hours are retrospective scope-equivalent estimates, n
 | MNT-M0-08 | Controlled Green release and production smoke | 16 | COMPLETE |
 | MNT-M0-09 | Initial Search Console/indexation evidence | 8 | COMPLETE |
 
-### MNT-M1 — RESF Adoption & Existing-State Reconciliation — 96h — ACTIVE
+### MNT-M1 — RESF Adoption & Existing-State Reconciliation — 96h — COMPLETE
 
-Current program phase. This phase is documentation/governance/reconciliation only unless a later task receives its own mutation authorization.
+Completed as documentation/governance/reconciliation. Closure anchor: PR `#39`, merge `dba0de3bfefc7aec90c5a88588c54eae4317c61f`.
 
 | ID | Activity | Hours | State |
 |---|---|---:|---|
-| MNT-M1-01 | Resolve and pin RESF v1 immutable provider revision | 8 | ACTIVE |
-| MNT-M1-02 | Create RESF consumer adoption manifest | 8 | ACTIVE |
-| MNT-M1-03 | Classify adopted, deferred and rejected RESF modules | 8 | ACTIVE |
-| MNT-M1-04 | Reconcile existing MoreNumTegra implementation/evidence against RESF contracts | 24 | ACTIVE |
-| MNT-M1-05 | Register GSC T0 baseline observed 2026-09-10 | 8 | ACTIVE |
-| MNT-M1-06 | Register gaps, overrides and residual risks | 8 | ACTIVE |
-| MNT-M1-07 | Publish consumer-readable WBS/task graph and continuity entrypoints | 16 | ACTIVE |
-| MNT-M1-08 | Schema/consistency review, independent documentation audit and PR lifecycle | 16 | ACTIVE |
+| MNT-M1-01 | Resolve and pin RESF v1 immutable provider revision | 8 | COMPLETE |
+| MNT-M1-02 | Create RESF consumer adoption manifest | 8 | COMPLETE |
+| MNT-M1-03 | Classify adopted, deferred and rejected RESF modules | 8 | COMPLETE |
+| MNT-M1-04 | Reconcile existing MoreNumTegra implementation/evidence against RESF contracts | 24 | COMPLETE |
+| MNT-M1-05 | Register GSC T0 baseline observed 2026-09-10 | 8 | COMPLETE |
+| MNT-M1-06 | Register gaps, overrides and residual risks | 8 | COMPLETE |
+| MNT-M1-07 | Publish consumer-readable WBS/task graph and continuity entrypoints | 16 | COMPLETE |
+| MNT-M1-08 | Schema/consistency review, documentation audit and PR lifecycle | 16 | COMPLETE |
 
-Exit criteria:
+### MNT-M2 — Measurement Foundation & Consent — 144h — PLANNED_NOT_AUTHORIZED
 
-- adoption manifest schema-valid;
-- immutable provider SHA pinned;
-- whole-program WBS and task graph published;
-- GSC T0 evidence registered with limitations;
-- existing-state reconciliation does not claim unproven deployment/validation;
-- P0/P1 documentation findings adjudicated;
-- Product Authority lifecycle decisions completed separately.
-
-### MNT-M2 — Measurement Foundation & Consent — 144h — PLANNED
+The phase is next in sequence but has not been authorized to start by MNT-M1 closure.
 
 | ID | Activity | Hours | State |
 |---|---|---:|---|
@@ -185,16 +180,16 @@ Performance targets retained: LCP <= 2.5s, INP <= 200ms, CLS <= 0.1.
 
 ```text
 MNT-M0 COMPLETE
-→ MNT-M1 ACTIVE
-→ MNT-M2 PLANNED
-→ MNT-M3 PLANNED
-→ MNT-M4 PLANNED
-→ MNT-M5 PLANNED
-→ MNT-M6 PLANNED
-→ MNT-M7 PLANNED
+-> MNT-M1 COMPLETE
+-> MNT-M2 PLANNED_NOT_AUTHORIZED / NEXT
+-> MNT-M3 PLANNED
+-> MNT-M4 PLANNED
+-> MNT-M5 PLANNED
+-> MNT-M6 PLANNED
+-> MNT-M7 PLANNED
 ```
 
-Current operational work remains bounded to MNT-M1 documentation/adoption/reconciliation. Runtime mutation is not implied by this WBS.
+No phase after MNT-M1 is active automatically. The next safe action is the Product Authority decision on bounded MNT-M2 READ_ONLY / DESIGN start.
 
 ## 5. SFJM Workspace presentation contract
 
@@ -205,16 +200,16 @@ The consumer should render:
 - recursive child decomposition only when present;
 - hours and progress without parent/child double counting;
 - exact effort provenance;
-- current phase/current task/next safe action separately from the full tree;
+- current/next state separately from the full tree;
 - `PLANNED_NOT_AUTHORIZED` distinctly from executable work;
 - canonical repository, observed SHA and observation timestamp.
 
 Workspace must not create, rename, flatten or infer missing project tasks.
 
-## 6. Reconciliation rule
+## 6. Current-state precedence
 
-M1 may recognize pre-existing V1 work as satisfying future RESF obligations only where evidence is sufficient. Such recognition must preserve the distinction:
+For current lifecycle/progress use `docs/sfjm/CURRENT_PROGRAM_STATE.json`. The structural task graph remains authoritative for hierarchy/task IDs/planning hours. A later current-state overlay can supersede lifecycle-state fields captured by an older graph snapshot without permitting consumer invention.
 
-`DOCUMENTED != IMPLEMENTED != DEPLOYED != VALIDATED`
+Preserve:
 
-No historical evidence is upgraded merely because a corresponding WBS task exists.
+`DOCUMENTED != IMPLEMENTED != DEPLOYED != VALIDATED`.

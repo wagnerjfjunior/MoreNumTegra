@@ -12,7 +12,7 @@
   "model_creation": {
     "created_at": "2026-09-10",
     "source_main_at_design": "4ad77e78ccfca32c9b7d32028042da2d328678bb",
-    "candidate_branch": "docs/resf-v1-adoption-program-wbs",
+    "adoption_merge_anchor": "dba0de3bfefc7aec90c5a88588c54eae4317c61f",
     "current_consumer_observed_sha": "RESOLVE_LIVE",
     "current_consumer_observed_at": "RESOLVE_AT_CONSUMPTION",
     "staleness_rule": "IF_CONSUMER_OBSERVED_SHA_NE_LIVE_MAIN_THEN_STALE"
@@ -26,26 +26,30 @@
     "id": "MNT-RESF",
     "name": "MoreNumTegra Search-to-Lead 2026",
     "state": "ACTIVE",
-    "current_phase_id": "MNT-M1",
+    "current_active_phase_id": null,
+    "next_phase_id": "MNT-M2",
+    "next_phase_state": "PLANNED_NOT_AUTHORIZED",
     "task_graph": "docs/sfjm/PROGRAM_TASK_GRAPH.json",
+    "current_state_overlay": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
     "human_wbs": "docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md",
     "forecast_total_hours": 1240,
-    "accepted_scope_equivalent_hours": 160,
-    "remaining_forecast_hours": 1080,
-    "accepted_percent": 12.90,
+    "accepted_scope_equivalent_hours": 256,
+    "remaining_forecast_hours": 984,
+    "accepted_percent": 20.65,
     "effort_semantics": "PLANNING_FORECAST_NOT_ACTUAL_TIMESHEET"
   },
   "current": {
     "product_state": "GREEN_COMMERCIAL_V1_SEARCH_INDEXED / OPERATIONAL",
-    "program_state": "MNT-M1_RESF_ADOPTION_RECONCILIATION / ACTIVE",
-    "current_task_id": "MNT-M1-08",
-    "next_safe_action": "Complete schema/consistency validation, obtain the required independent exact-head documentation audit, adjudicate any P0/P1 findings, and then proceed only through separately authorized PR lifecycle gates; no runtime mutation.",
+    "program_state": "MNT-M1_COMPLETE / MNT-M2_PLANNED_NOT_AUTHORIZED",
+    "current_task_id": null,
+    "next_task_id": "MNT-M2-01",
+    "next_safe_action": "Obtain explicit Product Authority authorization before starting bounded MNT-M2 READ_ONLY / DESIGN work; no runtime or external mutation is authorized by MNT-M1 closure.",
     "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md"
   },
   "phase_summary": [
     {"id":"MNT-M0","label":"V1 Foundation & Commercial Production","state":"COMPLETE","hours":160,"accepted_hours":160},
-    {"id":"MNT-M1","label":"RESF Adoption & Existing-State Reconciliation","state":"ACTIVE","hours":96,"accepted_hours":0},
-    {"id":"MNT-M2","label":"Measurement Foundation & Consent","state":"PLANNED","hours":144,"accepted_hours":0},
+    {"id":"MNT-M1","label":"RESF Adoption & Existing-State Reconciliation","state":"COMPLETE","hours":96,"accepted_hours":96,"completion_anchor":"PR #39 / dba0de3bfefc7aec90c5a88588c54eae4317c61f"},
+    {"id":"MNT-M2","label":"Measurement Foundation & Consent","state":"PLANNED","operational_state":"PLANNED_NOT_AUTHORIZED","hours":144,"accepted_hours":0},
     {"id":"MNT-M3","label":"Intelligence, Product Truth & Search Contract","state":"PLANNED","hours":144,"accepted_hours":0},
     {"id":"MNT-M4","label":"IA, Content, Schema, GEO/AEO & Linking","state":"PLANNED","hours":208,"accepted_hours":0},
     {"id":"MNT-M5","label":"UX, Performance, Conversion, Lead & CRM","state":"PLANNED","hours":168,"accepted_hours":0},
@@ -61,7 +65,7 @@
       "blocking_for_current_task": false,
       "label": "MoreNumTegra-specific Measurement stack is not configured/proven",
       "source": "docs/PROJECT_STATUS.md",
-      "resolution_condition": "Complete Measurement Foundation design, explicit implementation authority and Measurement QA"
+      "resolution_condition": "Authorize and complete Measurement Foundation design, then separately authorize implementation and Measurement QA"
     },
     {
       "id": "MNT-ISSUE-CONSENT-ENFORCEMENT",
@@ -104,10 +108,20 @@
       "resolution_condition": "Obtain HTTP-level evidence or authorized DNS/platform remediation"
     },
     {
+      "id": "MNT-GATE-M2-START",
+      "class": "FUTURE_GATE",
+      "scope": "MNT-M2",
+      "state": "NOT_AUTHORIZED",
+      "blocking_for_current_task": false,
+      "label": "MNT-M2 READ_ONLY / DESIGN start requires explicit Product Authority authorization",
+      "source": "docs/NEXT_SAFE_ACTION.md",
+      "resolution_condition": "Product Authority explicitly authorizes bounded MNT-M2 design start"
+    },
+    {
       "id": "MNT-GATE-EXTERNAL-MUTATIONS",
       "class": "FUTURE_GATE",
       "scope": "TRACKING/ADS/DNS/DEPLOY",
-      "state": "NOT_AUTHORIZED_BY_MNT-M1",
+      "state": "NOT_AUTHORIZED_BY_MNT_M1_CLOSURE",
       "blocking_for_current_task": false,
       "label": "Tracking, Ads, DNS and production mutations require separate Product Authority gates",
       "source": "docs/BLOCKED_ACTIONS.md",
@@ -115,18 +129,9 @@
     }
   ],
   "evidence": [
-    {
-      "id": "MNT-EVIDENCE-P0-B",
-      "class": "SEARCH_INDEXABILITY",
-      "state": "PASS_WITH_RESIDUAL_RISK",
-      "ref": "docs/evidence/search/P0_B_SEARCH_INDEXABILITY_EVIDENCE_2026-08-30.md"
-    },
-    {
-      "id": "MNT-EVIDENCE-GSC-T0-2026-09-10",
-      "class": "SEARCH_PERFORMANCE_T0",
-      "state": "EARLY_DISCOVERY / INSUFFICIENT_VOLUME_FOR_TREND_OR_CAUSALITY_CLAIMS",
-      "ref": "docs/evidence/search/GSC_BASELINE_2026-09-10.md"
-    }
+    {"id":"MNT-EVIDENCE-P0-B","class":"SEARCH_INDEXABILITY","state":"PASS_WITH_RESIDUAL_RISK","ref":"docs/evidence/search/P0_B_SEARCH_INDEXABILITY_EVIDENCE_2026-08-30.md"},
+    {"id":"MNT-EVIDENCE-GSC-T0-2026-09-10","class":"SEARCH_PERFORMANCE_T0","state":"EARLY_DISCOVERY / INSUFFICIENT_VOLUME_FOR_TREND_OR_CAUSALITY_CLAIMS","ref":"docs/evidence/search/GSC_BASELINE_2026-09-10.md"},
+    {"id":"MNT-EVIDENCE-M1-CLOSURE","class":"PROGRAM_LIFECYCLE","state":"COMPLETE","ref":"PR #39 / dba0de3bfefc7aec90c5a88588c54eae4317c61f"}
   ],
   "resf": {
     "adoption_manifest": "docs/frameworks/resf/ADOPTION.yaml",
@@ -139,8 +144,14 @@
     "bootstrap": "bootstrap/BOOTSTRAP_CANONICO.md",
     "handoff": "handoffs/CURRENT.md",
     "status": "docs/PROJECT_STATUS.md",
+    "current_program_state": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
     "next_safe_action": "docs/NEXT_SAFE_ACTION.md",
     "blocked_actions": "docs/BLOCKED_ACTIONS.md"
+  },
+  "state_precedence": {
+    "current_lifecycle_state_and_progress": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
+    "hierarchy_and_planning_hours": "docs/sfjm/PROGRAM_TASK_GRAPH.json",
+    "rule": "Later canonical current-state evidence supersedes lifecycle-state fields captured in the structural graph baseline without allowing consumers to invent hierarchy or hours."
   },
   "consumer_policy": {
     "read_only_representation": true,
