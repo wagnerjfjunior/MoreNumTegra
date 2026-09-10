@@ -8,10 +8,15 @@
 - Repositório canônico: `wagnerjfjunior/MoreNumTegra`
 - Branch canônica: `main`
 - Baseline funcional vigente: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
-- Baseline técnica vigente após integração desta revisão: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
+- Baseline técnica vigente: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
 - Baseline técnica anterior: `docs/baseline/TECHNICAL_BASELINE_V2_1.md`
 - ADR de composição Green: `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`
-- Data de referência: `2026-08-29`
+- Programa Search-to-Lead: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
+- WBS do programa: `docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md`
+- Read model para consumidores SFJM: `docs/sfjm/PROJECT_READ_MODEL.json`
+- Task graph machine-readable: `docs/sfjm/PROGRAM_TASK_GRAPH.json`
+- Manifesto de adoção RESF: `docs/frameworks/resf/ADOPTION.yaml`
+- Data de referência desta expansão de bootstrap: `2026-09-10`
 
 ## 2. Regra de canonicalidade
 
@@ -23,9 +28,10 @@ Em caso de divergência:
 2. requisitos funcionais vêm da baseline funcional vigente integrada;
 3. arquitetura/stack/topologia Green e fluxo Vercel vêm da baseline técnica vigente e ADRs integrados;
 4. `docs/NEXT_SAFE_ACTION.md` define a única próxima ação segura;
-5. branches/PRs são propostas até merge;
-6. informação ausente não é preenchida por inferência;
-7. conflito material usa a interpretação mais restritiva até reconciliação.
+5. WBS/task graph publicados pelo MoreNumTegra definem a hierarquia do programa, mas não substituem a autoridade de `NEXT_SAFE_ACTION` nem transformam trabalho futuro em autorização;
+6. branches/PRs são propostas até merge;
+7. informação ausente não é preenchida por inferência;
+8. conflito material usa a interpretação mais restritiva até reconciliação.
 
 ## 3. Ordem mínima de leitura
 
@@ -38,6 +44,30 @@ Em caso de divergência:
 7. `docs/PROJECT_STATUS.md`
 8. `docs/NEXT_SAFE_ACTION.md`
 9. `docs/BLOCKED_ACTIONS.md`
+10. quando o programa MNT-RESF, roadmap ou visibilidade do projeto for material: `docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md`
+11. quando RESF for material: `docs/frameworks/resf/ADOPTION.yaml` e `docs/frameworks/resf/ADOPTION_BASELINE.md`
+12. quando SFJM Workspace/read-only consumer for material: `docs/sfjm/README.md` e `docs/sfjm/PROJECT_READ_MODEL.json`
+13. quando detalhe de fases/tasks/subtasks/horas for material: `docs/sfjm/PROGRAM_TASK_GRAPH.json` e `docs/sfjm/PROGRAM_TASK_GRAPH.md`
+14. evidências específicas referenciadas pelos contratos acima, conforme a tarefa.
+
+### 3.1 Regra de consumo do programa
+
+O programa e os artefatos SFJM deste repositório existem para publicar, de forma consumível, a verdade governada do MoreNumTegra.
+
+Preservar:
+
+```text
+MORENUMTEGRA MAIN = PROJECT TRUTH
+PROJECT_READ_MODEL = CONSUMER ENTRYPOINT / DERIVED CONTRACT
+PROGRAM_TASK_GRAPH = PROJECT-PUBLISHED PROGRAM STRUCTURE
+SFJM WORKSPACE = READ-ONLY DERIVED REPRESENTATION
+
+WBS PLANNED != AUTHORIZED
+PROGRAM PROGRESS != V1 PRODUCT READINESS
+WORKSPACE REPRESENTATION != PROJECT AUTHORITY
+```
+
+Um consumidor deve resolver `main` live, registrar SHA/data de observação e marcar seu snapshot como stale quando houver drift de SHA. O consumidor não pode inventar tasks, horas, estado, autorização, evidência ou Product Authority.
 
 ## 4. Arquitetura V1
 
@@ -156,6 +186,10 @@ Vercel Production deve permanecer `noindex, nofollow` salvo decisão SEO especí
 
 O Specialist Engineering System (SES) é camada externa. Não substitui a autoridade do projeto.
 
+### 10.1 SES Project Adapter
+
+O `PROJECT_ADAPTER.md` do SES serve para registro, resolução de identidade, precedência de fontes, adoção/roteamento de especialistas e regras de handoff. Ele **não** é o feed de WBS/horas/progresso do SFJM Workspace.
+
 Decisão de Search vigente no SES:
 
 ```text
@@ -182,7 +216,7 @@ Para trabalho mediado pelo SES, resolver também `core/protocols/MANUAL_SPECIALI
 2. o Project Adapter deve apontar para este bootstrap/entrypoints;
 3. nenhum arquétipo é adotado automaticamente;
 4. role só é adotada por mapeamento explícito `ROLE -> ARCHETYPE_ID` no Project Adapter SES com `ADOPTION_STATUS: ADOPTED`; provider/delegação, quando existir, é metadata project-local separada;
-5. para uma role `ADOPTED` com `EXECUTION_MODE: PROJECT_LOCAL_CROSS_PROJECT_SERVICE`, resolver também `SERVICE_PROVIDER_PROJECT_ID`, o Project Adapter do provider e o contexto live de ambos os projetos antes da execução;
+5. para uma role `ADOPTED` com `EXECUTION_MODE = PROJECT_LOCAL_CROSS_PROJECT_SERVICE`, resolver também `SERVICE_PROVIDER_PROJECT_ID`, o Project Adapter do provider e o contexto live de ambos os projetos antes da execução;
 6. role ausente/desconhecida/não adotada falha como `SPECIALIST_ROLE_NOT_ADOPTED`, sem fuzzy/fallback implícito;
 7. não inventar registry/skill/override project-local ausente;
 8. resolução de role, adoção, provider, roteabilidade, execução e autorização são estados distintos;
@@ -204,7 +238,21 @@ BUDGET_RECOMMENDATION != SPEND_AUTHORIZATION
 CAMPAIGN_DESIGNED != CAMPAIGN_PUBLISHED
 ```
 
-## 10.1 Boundary — consumer consultation vs SES release lifecycle
+### 10.2 SFJM Workspace read-only consumption
+
+Para dashboard/WBS/horas/progresso do SFJM Workspace, o entrypoint é project-owned:
+
+```text
+docs/sfjm/PROJECT_READ_MODEL.json
+        -> docs/sfjm/PROGRAM_TASK_GRAPH.json
+        -> docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md
+```
+
+O Workspace deve resolver o `main` MoreNumTegra live e registrar `observed SHA + observed_at`. Qualquer snapshot cujo SHA observado divergir do live deve ser tratado como stale para claims atuais.
+
+O Workspace pode render objetivo, fases, tasks, subtasks recursivas, horas, effort class, progresso, backlog, current work, next safe action, issues e evidências. Não pode criar/renomear tasks, inventar horas/estado/autorização, alterar Product Authority nem transformar forecast em timesheet.
+
+### 10.3 Boundary — consumer consultation vs SES release lifecycle
 
 MoreNumTegra must not replace its own next-safe-action chain with SES candidate certification work merely because a newer/noncurrent specialist runtime candidate exists.
 
@@ -220,7 +268,26 @@ CONSUMER_RECERTIFICATION_DETOUR_FORBIDDEN = YES
 
 An exact runtime fingerprint becomes a blocker only when explicitly required by the MoreNumTegra task or authority.
 
-## 11. Gates separados
+## 11. RESF v1 — adoção do consumer
+
+O MoreNumTegra adota o RESF explicitamente por manifesto project-owned. Resolver:
+
+- `docs/frameworks/resf/ADOPTION.yaml`;
+- `docs/frameworks/resf/ADOPTION_BASELINE.md`;
+- provider e `provider_ref` imutável registrados no manifesto.
+
+Adoção RESF é seletiva/version-bound e não transfere autoridade do consumer.
+
+Preservar:
+
+```text
+RESF ADOPTED != MODULE IMPLEMENTED
+RESF RECONCILED != RUNTIME MUTATION AUTHORIZED
+DEFERRED MODULE != REJECTED MODULE
+PROVIDER GUIDANCE != CONSUMER PRODUCT AUTHORITY
+```
+
+## 12. Gates separados
 
 Exigem decisão/gate próprio:
 
@@ -232,12 +299,11 @@ Exigem decisão/gate próprio:
 - expansão material de produto;
 - segredo/token no cliente.
 
-## 12. Próxima ação segura
+## 13. Próxima ação segura
 
 Autoridade: `docs/NEXT_SAFE_ACTION.md`.
 
-
-## 13. Search + Conversion package 2026-08-29
+## 14. Search + Conversion package 2026-08-29
 
 Contrato aprovado pelo Product Authority:
 
