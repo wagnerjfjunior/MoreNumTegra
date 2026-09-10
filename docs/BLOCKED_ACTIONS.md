@@ -25,12 +25,16 @@
 | canonical via JavaScript fora do contrato 2026-08-29 | client-side canonical exige decisão técnica delimitada | somente o target aprovado no contrato vigente |
 | declarar canonical Green implementado só porque Vercel possui canonical | ambientes têm funções distintas | prova no HTML/head da produção Green |
 | JSON-LD/OG/Twitter fora do contrato 2026-08-29 | expansão Search não autorizada genericamente | somente escopo aprovado no contrato vigente |
-| alterações adicionais de GTM além da baseline Consent Mode aceita | novas mudanças podem alterar Measurement/Consent | task/gate correspondente + QA |
-| criar/configurar GA4, data stream, Google tag ou eventos GA4 | transporte, taxonomy e conversion roles estão definidos, mas ownership e implementation gates ainda não estão fechados | concluir/autorizar MNT-M2-05 e MNT-M2-09 aplicáveis |
-| marcar eventos como GA4 key events/conversions | project conversion role não é configuração administrativa de destino | ownership/configuration gate aplicável + implementação autorizada |
+| publicar nova versão GTM ou alterar Version 4 Consent sem gate | MNT-M2-05 define governance, não runtime mutation | autorização MNT-M2-09 ou gate explícito equivalente + QA |
+| adicionar segundo container GTM para a mesma superfície MoreNumTegra | viola single-dispatcher MNT-M2-02/M2-05 | nova decisão arquitetural explícita que superseda o contrato |
+| criar/configurar GA4 property, web stream, Google tag ou eventos GA4 | ownership/topology estão definidos, mas runtime/admin implementation não está autorizada | MNT-M2-09 ou gate explícito aplicável, com IDs observados |
+| inventar GA4 property ID, stream ID ou Measurement ID | nenhum identificador GA4 está provado em evidência canônica | observar/provar o recurso real antes de registrar/usar |
+| criar nova property GA4 só porque o ID não está no GitHub | `NOT_PROVEN` não significa `DOES_NOT_EXIST`; pode haver recurso existente | verificar/adotar existente ou obter autorização explícita para criação |
+| marcar eventos como GA4 key events/conversions | project conversion role não é configuração administrativa de destino | gate de implementação/configuração aplicável + semântica M2-04 preservada |
+| vincular GA4 a Google Ads ou outro produto | atribuição/Ads linking não pertence ao M2-05 | gate MNT-M6 ou autorização específica |
 | instalar/configurar Google Ads conversion tags | classificação de negócio existe, mas atribuição/Ads implementation permanece futura | gate MNT-M6 aplicável + autorização específica |
 | copiar mecanicamente `PRIMARY`/`SECONDARY` do projeto para Google Ads | semântica de otimização/counting/attribution ainda não foi decidida em MNT-M6 | contrato MNT-M6 + autorização específica |
-| instalar/configurar Meta Pixel/Dataset/CAPI | ownership/arquitetura Meta não concluídos | gate específico após MNT-M2-06/desenho |
+| instalar/configurar Meta Pixel/Dataset/CAPI | Meta ownership ainda não foi definido | MNT-M2-06 + gate de implementação aplicável |
 | configurar Green Pixel/integração adicional | pode duplicar telemetria ou alterar consent boundary | arquitetura aceita + gate de implementação específico |
 | tratar Green `/page/view` como equivalente a evento/conversão MoreNumTegra | Green é telemetria de plataforma, não origem semântica do projeto | proibido salvo decisão arquitetural superseding explícita |
 | tratar telemetry YouTube como conversão MoreNumTegra | third-party media telemetry não é evento de negócio | proibido pela taxonomy v1 |
@@ -40,6 +44,7 @@
 | implementar `mnt_lead_success` sem sinal Green de sucesso comprovado | risco de falso positivo de conversão | provar sinal estável, não invasivo e deduplicável |
 | tratar `mnt_form_submit_attempt`, `mnt_form_start` ou `mnt_intent:project_interest` como conversão | MNT-M2-04 os classifica como `NONE` | revisão explícita do contrato de conversão, se houver nova evidência |
 | usar preço de imóvel/oferta como conversion value | preço de imóvel não é receita/valor de lead | modelo de valor de lead governado posteriormente |
+| habilitar user-provided data / enhanced conversions / hashed PII por inferência | MNT-M2-05 não autoriza advertising-user-data features | arquitetura/privacy + gate específico |
 | novas mutações Search Console | estado externo já possui propriedade/indexação comprovadas | gate específico |
 | CMS/database/backend próprio | não necessário no V1 | necessidade material + nova decisão |
 | FECH.AI/n8n/Make/Ads campaign/spend | fora do escopo autorizado atual | autorização específica |
@@ -100,13 +105,29 @@ NONE = page/section/filter/search/project_interest/form_start/form_submit_attemp
 LEAD_CONVERSION_VALUE = NOT_DEFINED
 ```
 
+### GTM / GA4 ownership v1
+
+Evidence: `docs/measurement/MNT_M2_05_GTM_GA4_OWNERSHIP_CONTRACT_V1_2026-09-10.md`.
+
+```text
+GTM governance owner = MoreNumTegra / Product Authority
+GTM canonical container = GTM-PGCR4R47
+GA4 governance owner = MoreNumTegra / Product Authority
+GA4 property target = one dedicated MoreNumTegra property
+GA4 production stream target = one web stream for moretegra.com.br
+GA4 property ID / stream ID / Measurement ID = NOT_PROVEN
+M2-05 runtime/admin mutation = NONE
+```
+
 Preservar:
 
 ```text
+OWNERSHIP DEFINED != GOOGLE ACCOUNT USER ROSTER PROVEN
+TARGET TOPOLOGY != RESOURCE CREATED
+NOT_PROVEN != DOES_NOT_EXIST
 ACCEPTED CONVERSION ROLE != DESTINATION CONFIGURED
 PRIMARY CONVERSION != PRIMARY ADS ACTION
 SECONDARY CONVERSION != VERIFIED LEAD
-ACCEPTED TAXONOMY != EVENTS IMPLEMENTED
 CONSENT STATE QA != FULL MEASUREMENT E2E QA
 ```
 
@@ -131,11 +152,11 @@ O provider `blogs-sites-portais-seo` pode auditar/recomendar e devolver handoff 
 - `Green atualizada` != `smoke aprovado`.
 - `tool capability` != `authorization`.
 - `GTM Version 4 published` != `GA4 implemented`.
-- `Consent Mode validated` != `full Measurement complete`.
+- `GTM governance owner defined` != `Google account credential holder proven`.
+- `GA4 topology defined` != `GA4 property/stream exists`.
 - `event defined` != `conversion`.
 - `conversion classified` != `destination configured`.
 - `project PRIMARY/SECONDARY` != `Google Ads primary/secondary action setting`.
-- `MNT-M2-05 partial evidence` != `MNT-M2-05 complete or authorized`.
 - `MNT-M2-09 partial` != `MNT-M2-09 complete`.
 - `www Domínio OK` != `redirect HTTP 301/308 comprovado`.
 - `Search recommendation` != `implementation authorization`.

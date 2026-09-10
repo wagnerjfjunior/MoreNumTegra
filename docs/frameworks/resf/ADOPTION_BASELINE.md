@@ -104,17 +104,18 @@ Query rows are partial. Volume is insufficient for trend, causality or improveme
 
 Current lifecycle authority is `docs/sfjm/CURRENT_PROGRAM_STATE.json`.
 
-When the MNT-M2-04 revision is integrated into canonical `main`, the supported state is:
+When the MNT-M2-05 revision is integrated into canonical `main`, the supported state is:
 
 ```text
 MNT-M2-01 = COMPLETE
 MNT-M2-02 = COMPLETE
 MNT-M2-03 = COMPLETE
 MNT-M2-04 = COMPLETE
+MNT-M2-05 = COMPLETE
 MNT-M2-07 = COMPLETE
 MNT-M2-08 = COMPLETE
 MNT-M2-09 = PARTIAL_IMPLEMENTED
-MNT-M2-05 = PARTIAL_EVIDENCE / NEXT / EXECUTION_NOT_AUTHORIZED
+MNT-M2-06 = PLANNED_NOT_AUTHORIZED / NEXT
 ```
 
 Evidence chain:
@@ -123,23 +124,47 @@ Evidence chain:
 - `docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md` — GTM `GTM-PGCR4R47`, Version 4, Consent Mode published and validated;
 - `docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md` — accepted transport/dedup architecture;
 - `docs/measurement/MNT_M2_03_CANONICAL_EVENT_TAXONOMY_V1_2026-09-10.md` — canonical event taxonomy v1;
-- `docs/measurement/MNT_M2_04_PRIMARY_SECONDARY_CONVERSIONS_V1_2026-09-10.md` — project-level primary/secondary conversion classification v1.
+- `docs/measurement/MNT_M2_04_PRIMARY_SECONDARY_CONVERSIONS_V1_2026-09-10.md` — project-level primary/secondary conversion classification v1;
+- `docs/measurement/MNT_M2_05_GTM_GA4_OWNERSHIP_CONTRACT_V1_2026-09-10.md` — Google Measurement ownership and target topology.
 
 Current Measurement interpretation:
 
-| Area | Current state when MNT-M2-04 is canonical | Remaining obligation |
+| Area | Current state when MNT-M2-05 is canonical | Remaining obligation |
 |---|---|---|
-| GTM/Consent | PUBLISHED / VALIDATED | preserve baseline; destination behavior still needs later QA |
+| GTM/Consent | PUBLISHED / VALIDATED | preserve Version 4 baseline; later destination behavior still needs QA |
 | Transport/dedup | ACCEPTED DESIGN | implement under MNT-M2-09; prove under MNT-M2-10 |
 | Event taxonomy | ACCEPTED DESIGN | implement only after later gates |
 | Conversion roles | ACCEPTED DESIGN | preserve primary/secondary/non-conversion semantics in destination mappings |
-| GTM/GA4 ownership | PARTIAL_EVIDENCE / NEXT | MNT-M2-05 completion work after explicit authorization |
-| Meta ownership | OPEN | MNT-M2-06 |
+| GTM ownership | ACCEPTED GOVERNANCE DESIGN | canonical container `GTM-PGCR4R47`; account/user roster not stored/proven |
+| GA4 ownership/topology | ACCEPTED GOVERNANCE DESIGN | dedicated property + one production stream target; exact IDs remain NOT_PROVEN |
+| Meta ownership | OPEN / NEXT | MNT-M2-06 after explicit authorization |
 | Lead success signal | NOT_YET_PROVEN | stable non-invasive Green Form 46 success signal before primary conversion implementation |
 | Full tracking implementation | PARTIAL | MNT-M2-09 |
 | End-to-end Measurement QA | OPEN | MNT-M2-10 |
 
-Canonical conversion-role contract:
+Google ownership contract:
+
+```text
+GTM governance owner = MoreNumTegra / Product Authority
+GTM canonical container = GTM-PGCR4R47
+GA4 governance owner = MoreNumTegra / Product Authority
+GA4 property scope = one dedicated MoreNumTegra property
+GA4 production web stream target = one stream for moretegra.com.br
+www + Vercel = outside project production Measurement
+GA4 property ID / stream ID / Measurement ID = NOT_PROVEN
+MNT-M2-05 runtime/admin mutation = NONE
+```
+
+Interpretation rules:
+
+```text
+GOVERNANCE OWNERSHIP != GOOGLE ACCOUNT CREDENTIAL HOLDER PROVEN
+NOT_PROVEN != DOES_NOT_EXIST
+TARGET TOPOLOGY != RESOURCE CREATED
+GTM PRESENT != GA4 PRESENT
+```
+
+Canonical conversion-role contract remains:
 
 ```text
 PRIMARY
@@ -162,7 +187,7 @@ NONE
   mnt_form_submit_attempt
 ```
 
-Key controls:
+Key controls remain:
 
 ```text
 only verified Form 46 success may become primary conversion
@@ -175,8 +200,6 @@ Green /page/view != project business event
 YouTube telemetry != project conversion
 ```
 
-Project-level conversion roles do not automatically configure GA4 key events, Google Ads action optimization roles or Meta event mappings.
-
 ## 7. Program relationship — current overlay
 
 - human WBS: `docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md`;
@@ -184,22 +207,22 @@ Project-level conversion roles do not automatically configure GA4 key events, Go
 - current-state overlay: `docs/sfjm/CURRENT_PROGRAM_STATE.json`;
 - read model: `docs/sfjm/PROJECT_READ_MODEL.json`.
 
-Planning progress when MNT-M2-04 is integrated:
+Planning progress when MNT-M2-05 is integrated:
 
 ```text
 forecast total = 1240h
-accepted scope-equivalent = 336h
-remaining forecast = 904h
-progress = 27.10%
+accepted scope-equivalent = 344h
+remaining forecast = 896h
+progress = 27.74%
 ```
 
 Hours are planning/scope-equivalent, not an actual timesheet.
 
 ## 8. Current gaps and residuals
 
-1. GA4 ownership/property/configuration remains incomplete under MNT-M2-05 despite existing GTM evidence.
+1. Exact GA4 property ID, stream ID and Measurement ID remain `NOT_PROVEN`; this is an implementation-evidence gap, not permission to invent or automatically create resources.
 2. Meta ownership remains open under MNT-M2-06.
-3. Conversion roles are defined but no destination is thereby configured.
+3. Google ownership/topology are defined, but no GA4 destination is thereby created/configured.
 4. `mnt_lead_success` is the sole primary conversion and requires a stable, non-invasive Green Form 46 success signal before implementation.
 5. Transport/dedup runtime controls remain to be implemented under MNT-M2-09 and proven under MNT-M2-10.
 6. No monetary lead conversion value is defined; property/offer prices are not conversion value.
@@ -210,8 +233,8 @@ Hours are planning/scope-equivalent, not an actual timesheet.
 
 ## 9. Authorization boundary
 
-MNT-M2-04 completion does not authorize MNT-M2-05 completion work or any runtime Measurement mutation.
+MNT-M2-05 completion does not authorize MNT-M2-06 or any runtime/Google-admin Measurement mutation.
 
-Further GTM configuration, GA4, Meta Pixel/Dataset/CAPI, Green Pixel/integration changes, Google Ads, DNS, Search Console mutation, Vercel Production, Green publication, campaign/spend and external automation remain separately gated.
+Further GTM publication, GA4 property/stream creation or event configuration, Meta Pixel/Dataset/CAPI, Green Pixel/integration changes, Google Ads, DNS, Search Console mutation, Vercel Production, Green publication, campaign/spend and external automation remain separately gated.
 
-`MNT-M2-04 COMPLETE != MNT-M2-05 AUTHORIZED != MNT-M2-09 IMPLEMENTED != MNT-M2-10 VALIDATED`.
+`MNT-M2-05 COMPLETE != MNT-M2-06 AUTHORIZED != MNT-M2-09 IMPLEMENTED != MNT-M2-10 VALIDATED`.
