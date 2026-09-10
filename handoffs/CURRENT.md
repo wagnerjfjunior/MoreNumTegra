@@ -9,8 +9,9 @@
 - Homologação Vercel: `https://morenumtegra.vercel.app/`
 - Programa: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
 - Última fase concluída: `MNT-M1 / COMPLETE`
-- Fase atual autorizada: `MNT-M2 / ACTIVE_READ_ONLY_DESIGN`
-- Tarefa atual: `MNT-M2-01 / ACTIVE_PARTIAL_EVIDENCE`
+- Fase atual: `MNT-M2 / ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION`
+- Última task executada: `MNT-M2-01 / COMPLETE_CANDIDATE / PENDING_PR_LIFECYCLE`
+- Próxima task candidata: `MNT-M2-02 / PLANNED_NOT_AUTHORIZED`
 - Base live no início da tarefa: `347b62298d30ba3567a76d3f48a815e9f0f5b26c`
 - Baseline funcional: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 - Baseline técnica: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
@@ -35,8 +36,9 @@ Preservado:
 - Vercel como homologação pública e Green como produção comercial;
 - Search/indexability P0-B = `PASS_WITH_RESIDUAL_RISK`;
 - GSC T0 registrado;
-- Measurement MoreNumTegra ainda não configurado/provado;
-- LGPD modal ativo, enforcement técnico não provado.
+- Measurement project-owned ainda não configurado;
+- Green/GDigital possui telemetria própria de page view observada;
+- LGPD modal ativo, enforcement técnico não adjudicado nesta task.
 
 ## 2. Programa canônico / Workspace
 
@@ -48,13 +50,14 @@ Entrypoints publicados pelo projeto:
 - `docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md` — WBS humana;
 - `docs/sfjm/PROGRAM_TASK_GRAPH.md` — contrato de consumo.
 
-Estado atual da execução bounded:
+Estado candidato após execução de MNT-M2-01:
 
 ```text
 MNT-M0  COMPLETE
 MNT-M1  COMPLETE
-MNT-M2  ACTIVE_READ_ONLY_DESIGN
-  MNT-M2-01  ACTIVE_PARTIAL_EVIDENCE
+MNT-M2  ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
+  MNT-M2-01  COMPLETE_CANDIDATE / PENDING_PR_LIFECYCLE
+  MNT-M2-02  PLANNED_NOT_AUTHORIZED
 MNT-M3  PLANNED
 MNT-M4  PLANNED
 MNT-M5  PLANNED
@@ -62,55 +65,53 @@ MNT-M6  PLANNED
 MNT-M7  PLANNED
 ```
 
-Planejamento enquanto MNT-M2-01 não estiver aceita:
+Progresso pretendido após merge da PR #41:
 
 ```text
 forecast total = 1240h
-accepted scope-equivalent = 256h
-remaining forecast = 984h
-program progress = 20.65%
+accepted scope-equivalent = 264h
+remaining forecast = 976h
+program progress = 21.29%
 ```
 
 Horas são planning/scope-equivalent, não timesheet real.
 
 ## 3. MNT-M2-01 — Tracking Runtime Inventory
 
-Evidência atual:
+Evidência:
 `docs/measurement/MNT_M2_01_TRACKING_RUNTIME_INVENTORY_2026-09-10.md`.
 
-Levantamento já concluído no lado project-owned:
+HAR fornecido pelo Product Authority:
+
+`SHA-256 c59f3a3c0c075412595bfda2dd1155a48fa0d0689f5f27264010076348bb7446`.
+
+Conclusões suportadas:
 
 ```text
-GTM bootstrap = NOT_OBSERVED
-GA4 / gtag / dataLayer = NOT_OBSERVED
-Meta fbq / connect.facebook.net = NOT_OBSERVED
-sendBeacon measurement = NOT_OBSERVED
-Vercel preview project-owned measurement = NOT_OBSERVED
-Green native Form 46 lead capture = PRESENT
-Search Console = PRESENT AS SEARCH OBSERVABILITY
+PROJECT_OWNED GTM = NOT_OBSERVED
+PROJECT_OWNED GA4/gtag/dataLayer = NOT_OBSERVED
+PROJECT_OWNED Meta Pixel/fbq = NOT_OBSERVED
+GREEN/GDIGITAL POST /page/view = OBSERVED / PLATFORM_INJECTED
+YOUTUBE EMBED TELEMETRY = OBSERVED / THIRD_PARTY_MEDIA
+GTM RUNTIME = NOT_OBSERVED IN CAPTURED SESSION
+GA4 RUNTIME = NOT_OBSERVED IN CAPTURED SESSION
+META PIXEL RUNTIME = NOT_OBSERVED IN CAPTURED SESSION
+CLARITY/HOTJAR/DOUBLECLICK = NOT_OBSERVED IN CAPTURED SESSION
 ```
 
-Não comprovado ainda:
+A captura também mostrou duas gravações Green `/page/view` na sequência `www` -> non-www, com `page_id=293` e `page_id=292`. Isso é carry-forward obrigatório como `DUPLICATE_MEASUREMENT_RISK` para MNT-M2-02, sem tratar automaticamente como defeito confirmado.
 
-```text
-Green-builder/platform-injected tracking
-consent enforcement denied/granted
-```
-
-A ausência de código no GitHub não pode ser convertida em ausência no runtime Green.
+O player `youtube-nocookie.com` emitiu telemetria de playback/QoE/watchtime/log_event. Isso é `THIRD_PARTY_MEDIA`, não GA4/Ads.
 
 ## 4. Próxima ação segura
 
-Completar MNT-M2-01 com `READ_ONLY COMMERCIAL RUNTIME NETWORK/DOM CAPTURE`:
+Concluir o lifecycle da PR #41 que registra MNT-M2-01.
 
-1. abrir `https://moretegra.com.br/` sem alterar configuração;
-2. inspecionar scripts/requests de measurement;
-3. não enviar Form 46/PII para esta etapa;
-4. distinguir `PROJECT_OWNED` de `PLATFORM_INJECTED`;
-5. registrar GTM/GA4/Meta/Ads/Green measurement como observado ou `NOT_PROVEN`;
-6. fechar MNT-M2-01 somente após a evidência suficiente.
+Depois de aceitação canônica, a próxima task candidata é:
 
-MNT-M2-02 ainda não deve ser tratado como ativo.
+`MNT-M2-02 — Define transport architecture and duplicate-event prevention`.
+
+Ela continua `PLANNED_NOT_AUTHORIZED` até autorização explícita da Product Authority.
 
 ## 5. RESF v1
 
@@ -129,6 +130,6 @@ SFJM Workspace pode consumir/renderizar, mas não pode criar ou alterar esses fa
 
 ## 7. Gates externos preservados
 
-A autorização da tarefa atual não autoriza GTM/GA4/Meta/CAPI, Green Pixel, consent runtime, Google Ads/campaign/spend, DNS, Search Console mutation, Vercel Production, Green publication, FECH.AI/n8n/Make ou segredo no cliente.
+MNT-M2-01 concluída não autoriza GTM/GA4/Meta/CAPI, Green Pixel, consent runtime, Google Ads/campaign/spend, DNS, Search Console mutation, Vercel Production, Green publication, FECH.AI/n8n/Make ou segredo no cliente.
 
-`READ_ONLY INVENTORY != IMPLEMENTATION AUTHORITY`.
+`MNT-M2-01 COMPLETE != MNT-M2-02 AUTHORIZED`.
