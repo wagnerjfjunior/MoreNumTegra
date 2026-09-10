@@ -105,6 +105,9 @@ Later implementation and MNT-M2-10 QA must also prove:
 - no duplicate direct `gtag()`/GA4 path outside `GTM-PGCR4R47`;
 - no visitor PII or raw catalogue search text in Measurement parameters;
 - no primary lead event without verified Green Form 46 success;
+- only the five allowlisted explicit contact/request `mnt_intent` types may carry project-level secondary conversion semantics;
+- `project_interest`, form start and submit attempt remain non-conversions;
+- no property/offer price becomes conversion value;
 - existing Consent Mode behavior remains valid.
 
 ## 5. Mutation boundary
@@ -147,7 +150,11 @@ Stop if any action attempts to:
 - publish/change GTM without a separate mutation gate;
 - treat Product Authority governance ownership as proof of every Google account credential holder;
 - infer Meta ownership from GTM/GA4 ownership;
+- treat project conversion roles as already configured vendor conversions;
+- classify CTA, form start or submit attempt as verified lead;
 - implement `mnt_lead_success` without a proven Green success signal;
+- use property/listing price as lead conversion value;
+- treat conversion classification as proof that runtime events exist;
 - infer MNT-M2-06 authorization from task sequence.
 
 `MNT-M2-05 COMPLETE != MNT-M2-06 AUTHORIZED != MNT-M2-09 IMPLEMENTED != MNT-M2-10 VALIDATED`.
