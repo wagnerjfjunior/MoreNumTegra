@@ -39,7 +39,7 @@
     "product_state": "GREEN_COMMERCIAL_V1_SEARCH_INDEXED / OPERATIONAL",
     "program_state": "MNT-M1_RESF_ADOPTION_RECONCILIATION / ACTIVE",
     "current_task_id": "MNT-M1-08",
-    "next_safe_action": "Complete schema/consistency validation, fresh exact-head documentation review and the separately authorized PR lifecycle for the bounded RESF adoption/reconciliation/WBS package; no runtime mutation.",
+    "next_safe_action": "Complete schema/consistency validation, obtain the required independent exact-head documentation audit, adjudicate any P0/P1 findings, and then proceed only through separately authorized PR lifecycle gates; no runtime mutation.",
     "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md"
   },
   "phase_summary": [
