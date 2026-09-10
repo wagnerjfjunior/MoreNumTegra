@@ -62,8 +62,22 @@
     "MNT-M2-10": "PLANNED"
   },
   "accepted_m1_task_ids": [
-    "MNT-M1-01", "MNT-M1-02", "MNT-M1-03", "MNT-M1-04",
-    "MNT-M1-05", "MNT-M1-06", "MNT-M1-07", "MNT-M1-08"
+    "MNT-M1-01",
+    "MNT-M1-02",
+    "MNT-M1-03",
+    "MNT-M1-04",
+    "MNT-M1-05",
+    "MNT-M1-06",
+    "MNT-M1-07",
+    "MNT-M1-08"
+  ],
+  "accepted_m2_task_ids": [
+    "MNT-M2-01",
+    "MNT-M2-07",
+    "MNT-M2-08"
+  ],
+  "candidate_m2_task_ids_pending_pr_lifecycle": [
+    "MNT-M2-02"
   ],
   "accepted_m2_task_ids_post_merge_intended": [
     "MNT-M2-01",
@@ -75,13 +89,28 @@
     "mnt_m2_01_t0_inventory": {
       "ref": "docs/measurement/MNT_M2_01_TRACKING_RUNTIME_INVENTORY_2026-09-10.md",
       "state": "ACCEPTED_HISTORICAL_T0",
-      "har_sha256": "c59f3a3c0c075412595bfda2dd1155a48fa0d0689f5f27264010076348bb7446"
+      "har_sha256": "c59f3a3c0c075412595bfda2dd1155a48fa0d0689f5f27264010076348bb7446",
+      "classification": "PRE_GTM_RUNTIME_CAPTURE",
+      "key_findings": [
+        "Green/GDigital platform-injected POST /page/view observed",
+        "GTM/GA4/Meta Pixel/Clarity/Hotjar/DoubleClick not observed in the captured T0 session",
+        "YouTube embedded-player telemetry observed",
+        "www to non-www navigation produced two Green page-view writes with distinct page IDs; carried into MNT-M2-02 as duplicate-measurement risk"
+      ]
     },
     "gtm_consent_t1": {
       "ref": "docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md",
       "state": "PUBLISHED_AND_VALIDATED",
       "container_id": "GTM-PGCR4R47",
-      "published_version": 4
+      "published_version": 4,
+      "screenshot_sha256": "e97ec394fc572bbecba72d64a569ef02cbcf60496ef5cd05453b2225970ab204",
+      "key_findings": [
+        "default ad_storage/analytics_storage/ad_user_data/ad_personalization denied",
+        "Green Continuar updates all four to granted",
+        "Green Cancelar keeps/updates all four to denied",
+        "granted and denied states persist after reload",
+        "published GTM Version 4 observed and validation performed in GTM Preview / Tag Assistant"
+      ]
     },
     "mnt_m2_02_transport_dedup": {
       "ref": "docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md",
@@ -91,7 +120,7 @@
         "project business Measurement is eligible only on moretegra.com.br, not www.moretegra.com.br",
         "Green /page/view remains platform telemetry and is not forwarded as a project business event",
         "exactly one project page-view path may exist per canonical document load",
-        "semantic events use one dataLayer origin and reserved mnt_event_id for cross-destination dedup",
+        "semantic events use one dataLayer origin and reserved mnt_event_id as project correlation identity; vendor-native dedup semantics remain destination-specific",
         "only verified Green Form 46 success may become a lead conversion",
         "YouTube operational telemetry is not a project business conversion"
       ]
