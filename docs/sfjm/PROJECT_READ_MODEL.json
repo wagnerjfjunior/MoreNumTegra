@@ -1,0 +1,158 @@
+{
+  "schema_version": "sfjm.project-read-model.v1",
+  "project": {
+    "project_id": "morenumtegra",
+    "name": "MoreNumTegra",
+    "repository": "wagnerjfjunior/MoreNumTegra",
+    "canonical_branch": "main",
+    "canonical_resolution_rule": "RESOLVE_LIVE_MAIN_BEFORE_CURRENT_CLAIMS",
+    "product_authority": "Wagner",
+    "runtime_authority": "CONSUMER"
+  },
+  "model_creation": {
+    "created_at": "2026-09-10",
+    "source_main_at_design": "4ad77e78ccfca32c9b7d32028042da2d328678bb",
+    "candidate_branch": "docs/resf-v1-adoption-program-wbs",
+    "current_consumer_observed_sha": "RESOLVE_LIVE",
+    "current_consumer_observed_at": "RESOLVE_AT_CONSUMPTION",
+    "staleness_rule": "IF_CONSUMER_OBSERVED_SHA_NE_LIVE_MAIN_THEN_STALE"
+  },
+  "objective": {
+    "id": "MNT-OBJ-01",
+    "text": "Operate and evolve a mobile-first Tegra real-estate discovery and Search-to-Lead experience with verified product truth, organic discoverability, conversion, measurement and controlled paid-media readiness.",
+    "source": "docs/baseline/FUNCTIONAL_BASELINE_V2.md"
+  },
+  "program": {
+    "id": "MNT-RESF",
+    "name": "MoreNumTegra Search-to-Lead 2026",
+    "state": "ACTIVE",
+    "current_phase_id": "MNT-M1",
+    "task_graph": "docs/sfjm/PROGRAM_TASK_GRAPH.json",
+    "human_wbs": "docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md",
+    "forecast_total_hours": 1240,
+    "accepted_scope_equivalent_hours": 160,
+    "remaining_forecast_hours": 1080,
+    "accepted_percent": 12.90,
+    "effort_semantics": "PLANNING_FORECAST_NOT_ACTUAL_TIMESHEET"
+  },
+  "current": {
+    "product_state": "GREEN_COMMERCIAL_V1_SEARCH_INDEXED / OPERATIONAL",
+    "program_state": "MNT-M1_RESF_ADOPTION_RECONCILIATION / ACTIVE",
+    "current_task_id": "MNT-M1-07",
+    "next_safe_action": "Complete bounded RESF adoption/reconciliation/WBS documentation validation and PR lifecycle; no runtime mutation.",
+    "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md"
+  },
+  "phase_summary": [
+    {"id":"MNT-M0","label":"V1 Foundation & Commercial Production","state":"COMPLETE","hours":160,"accepted_hours":160},
+    {"id":"MNT-M1","label":"RESF Adoption & Existing-State Reconciliation","state":"ACTIVE","hours":96,"accepted_hours":0},
+    {"id":"MNT-M2","label":"Measurement Foundation & Consent","state":"PLANNED","hours":144,"accepted_hours":0},
+    {"id":"MNT-M3","label":"Intelligence, Product Truth & Search Contract","state":"PLANNED","hours":144,"accepted_hours":0},
+    {"id":"MNT-M4","label":"IA, Content, Schema, GEO/AEO & Linking","state":"PLANNED","hours":208,"accepted_hours":0},
+    {"id":"MNT-M5","label":"UX, Performance, Conversion, Lead & CRM","state":"PLANNED","hours":168,"accepted_hours":0},
+    {"id":"MNT-M6","label":"Attribution & Paid Media Readiness","state":"PLANNED","hours":128,"accepted_hours":0},
+    {"id":"MNT-M7","label":"QA, Release, Observability & Learning Loop","state":"PLANNED","hours":192,"accepted_hours":0}
+  ],
+  "issues": [
+    {
+      "id": "MNT-ISSUE-MEASUREMENT-NOT-PROVEN",
+      "class": "REQUIRED_CURRENT",
+      "scope": "MNT-M2",
+      "state": "OPEN",
+      "blocking_for_current_task": false,
+      "label": "MoreNumTegra-specific Measurement stack is not configured/proven",
+      "source": "docs/PROJECT_STATUS.md",
+      "resolution_condition": "Complete Measurement Foundation design, explicit implementation authority and Measurement QA"
+    },
+    {
+      "id": "MNT-ISSUE-CONSENT-ENFORCEMENT",
+      "class": "REQUIRED_CURRENT",
+      "scope": "RESF-CONSENT / MNT-M2",
+      "state": "OPEN / NOT_PROVEN",
+      "blocking_for_current_task": false,
+      "label": "LGPD modal is observed but denied/granted enforcement is not proven",
+      "source": "docs/PROJECT_STATUS.md",
+      "resolution_condition": "Define and execute consent proof obligations under authorized Measurement work"
+    },
+    {
+      "id": "MNT-RESIDUAL-CANONICAL",
+      "class": "RESIDUAL",
+      "scope": "SEARCH",
+      "state": "OPEN / NON_BLOCKING_FOR_CURRENT_V1",
+      "blocking_for_current_task": false,
+      "label": "Commercial canonical is client-side rather than static/SSR",
+      "source": "docs/evidence/search/P0_B_SEARCH_INDEXABILITY_EVIDENCE_2026-08-30.md",
+      "resolution_condition": "Revisit if Green/head capability or architecture changes"
+    },
+    {
+      "id": "MNT-RESIDUAL-SITEMAP",
+      "class": "RESIDUAL",
+      "scope": "SEARCH",
+      "state": "OPEN / NON_BLOCKING_FOR_CURRENT_V1",
+      "blocking_for_current_task": false,
+      "label": "sitemap.xml is not available",
+      "source": "docs/evidence/search/P0_B_SEARCH_INDEXABILITY_EVIDENCE_2026-08-30.md",
+      "resolution_condition": "Resolve platform capability or later architecture decision"
+    },
+    {
+      "id": "MNT-RESIDUAL-WWW-REDIRECT",
+      "class": "RESIDUAL",
+      "scope": "SEARCH/DNS",
+      "state": "OPEN / HTTP_301_308_NOT_PROVEN",
+      "blocking_for_current_task": false,
+      "label": "www redirect works at page level but HTTP 301/308 semantics remain unproven",
+      "source": "docs/evidence/search/P0_B_SEARCH_INDEXABILITY_EVIDENCE_2026-08-30.md",
+      "resolution_condition": "Obtain HTTP-level evidence or authorized DNS/platform remediation"
+    },
+    {
+      "id": "MNT-GATE-EXTERNAL-MUTATIONS",
+      "class": "FUTURE_GATE",
+      "scope": "TRACKING/ADS/DNS/DEPLOY",
+      "state": "NOT_AUTHORIZED_BY_MNT-M1",
+      "blocking_for_current_task": false,
+      "label": "Tracking, Ads, DNS and production mutations require separate Product Authority gates",
+      "source": "docs/BLOCKED_ACTIONS.md",
+      "resolution_condition": "Obtain explicit scope-specific authorization after prerequisite design/evidence"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "MNT-EVIDENCE-P0-B",
+      "class": "SEARCH_INDEXABILITY",
+      "state": "PASS_WITH_RESIDUAL_RISK",
+      "ref": "docs/evidence/search/P0_B_SEARCH_INDEXABILITY_EVIDENCE_2026-08-30.md"
+    },
+    {
+      "id": "MNT-EVIDENCE-GSC-T0-2026-09-10",
+      "class": "SEARCH_PERFORMANCE_T0",
+      "state": "EARLY_DISCOVERY / INSUFFICIENT_VOLUME_FOR_TREND_OR_CAUSALITY_CLAIMS",
+      "ref": "docs/evidence/search/GSC_BASELINE_2026-09-10.md"
+    }
+  ],
+  "resf": {
+    "adoption_manifest": "docs/frameworks/resf/ADOPTION.yaml",
+    "reconciliation_baseline": "docs/frameworks/resf/ADOPTION_BASELINE.md",
+    "provider": "wagnerjfjunior/Blogs-sites-portais-seo",
+    "provider_ref": "7a61aa036d677015ee4540ca8c5dc9a41f0165d4",
+    "adoption_mode": "SELECTIVE"
+  },
+  "source_entrypoints": {
+    "bootstrap": "bootstrap/BOOTSTRAP_CANONICO.md",
+    "handoff": "handoffs/CURRENT.md",
+    "status": "docs/PROJECT_STATUS.md",
+    "next_safe_action": "docs/NEXT_SAFE_ACTION.md",
+    "blocked_actions": "docs/BLOCKED_ACTIONS.md"
+  },
+  "consumer_policy": {
+    "read_only_representation": true,
+    "may_create_tasks": false,
+    "may_invent_hours": false,
+    "may_invent_state": false,
+    "may_infer_authorization": false,
+    "must_show_provenance": true,
+    "must_record_live_observed_sha": true,
+    "must_record_observed_at": true,
+    "must_mark_stale_on_sha_drift": true,
+    "must_preserve_recursive_hierarchy": true,
+    "must_avoid_parent_child_double_count": true
+  }
+}
