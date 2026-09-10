@@ -3,112 +3,117 @@
 > Registro autoritativo da única próxima ação segura.
 
 - Definida em: `2026-09-10`
-- Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
+- Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main` após lifecycle aplicável
 - Release comercial atual: `18cfab98e01be29c86d78d08f2f5035a8da70444`
 - Programa: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
-- Estado: `MNT-M1_COMPLETE / MNT-M2_PLANNED_NOT_AUTHORIZED`
-- MNT-M1 closure anchor: PR `#39` / merge `dba0de3bfefc7aec90c5a88588c54eae4317c61f`
+- Estado candidato: `MNT-M2_ACTIVE_READ_ONLY_DESIGN / MNT-M2-01_ACTIVE_PARTIAL_EVIDENCE`
+- Base canônica observada no início: `347b62298d30ba3567a76d3f48a815e9f0f5b26c`
 
 ## 1. Estado de entrada
 
 O V1 continua operacional em produção comercial Green e Search/indexability P0-B permanece `PASS_WITH_RESIDUAL_RISK`.
 
-MNT-M1 foi concluído: adoção RESF v1 seletiva, reconciliação inicial, GSC T0, WBS completa e contratos machine-readable foram publicados e mergeados na PR #39.
+MNT-M1 está concluído. A Product Authority autorizou explicitamente seguir para a próxima task planejada do MoreNumTegra. A autorização é interpretada de forma bounded como início de `MNT-M2-01 — Inventory tracking already present in live runtime` em `READ_ONLY / DESIGN`.
+
+Isso **não** autoriza implementação de tracking.
 
 Current-state overlay:
 `docs/sfjm/CURRENT_PROGRAM_STATE.json`.
 
-Estrutura do programa:
-- `docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md`;
-- `docs/sfjm/PROGRAM_TASK_GRAPH.json`;
-- `docs/sfjm/PROJECT_READ_MODEL.json`.
+Inventário em execução:
+`docs/measurement/MNT_M2_01_TRACKING_RUNTIME_INVENTORY_2026-09-10.md`.
 
 ## 2. Única próxima ação segura
 
-A próxima ação é uma **decisão explícita da Product Authority sobre o início bounded de MNT-M2 — Measurement Foundation & Consent em modo READ_ONLY / DESIGN**.
+Completar **MNT-M2-01** com uma captura `READ_ONLY` do runtime comercial:
 
-Até essa autorização existir:
+1. inspecionar DOM/scripts carregados em `https://moretegra.com.br/`;
+2. inspecionar Network sem enviar formulário/PII;
+3. classificar chamadas/bootstrap de GTM, GA4, Meta, Google Ads e scripts de measurement da plataforma Green, se existirem;
+4. separar `PROJECT_OWNED` de `PLATFORM_INJECTED`;
+5. registrar unknowns como `NOT_PROVEN`;
+6. não instalar, alterar, publicar ou disparar configuração de tracking.
+
+Estado atual da task:
 
 ```text
-MNT-M2 = PLANNED_NOT_AUTHORIZED
-CURRENT_ACTIVE_PHASE = NONE
-CURRENT_ACTIVE_TASK = NONE
-NEXT_TASK_CANDIDATE = MNT-M2-01
+MNT-M2 = ACTIVE_READ_ONLY_DESIGN
+MNT-M2-01 = ACTIVE_PARTIAL_EVIDENCE
+CURRENT_ACTIVE_PHASE = MNT-M2
+CURRENT_ACTIVE_TASK = MNT-M2-01
+NEXT_WITHIN_TASK_ACTION = READ_ONLY_RUNTIME_NETWORK_DOM_CAPTURE
 ```
 
-O primeiro pacote de MNT-M2, quando autorizado, poderá cobrir somente desenho/levantamento read-only:
+## 3. Evidência já obtida em MNT-M2-01
 
-1. inventário do tracking já presente no runtime;
-2. arquitetura de transporte e prevenção de duplicidade;
-3. event taxonomy;
-4. primary/secondary conversions;
-5. ownership de GTM/GA4/Meta;
-6. consent model/LGPD;
-7. contrato de QA denied/granted.
+O levantamento project-owned já encontrou:
 
-## 3. Progresso programático após MNT-M1
+```text
+PROJECT_OWNED GTM bootstrap = NOT_OBSERVED
+PROJECT_OWNED GA4/gtag/dataLayer = NOT_OBSERVED
+PROJECT_OWNED Meta fbq/connect.facebook.net = NOT_OBSERVED
+PROJECT_OWNED sendBeacon measurement = NOT_OBSERVED
+Vercel preview project-owned tracking = NOT_OBSERVED
+Green Form 46 lead capture = PRESENT
+Search Console = PRESENT AS SEARCH OBSERVABILITY
+Green/platform-injected tracking = NOT_PROVEN
+Consent enforcement = NOT_PROVEN
+```
+
+`NOT_OBSERVED_IN_PROJECT_SOURCE != ABSENT_FROM_LIVE_RUNTIME`.
+
+## 4. Progresso programático
+
+Enquanto MNT-M2-01 estiver ativa e não aceita:
 
 ```text
 forecast total                = 1240h
-MNT-M0 accepted               = 160h
-MNT-M1 accepted               = 96h
 accepted scope-equivalent     = 256h
 remaining forecast            = 984h
 program progress              = 20.65%
 ```
 
-Essas horas são planejamento/scope-equivalent, não timesheet real.
+As 8h planejadas de MNT-M2-01 não entram como concluídas antes do exit criteria da task.
 
-## 4. Gates externos preservados
+## 5. Gates externos preservados
 
-MNT-M1 encerrado **não** autoriza:
+A autorização de MNT-M2-01 **não** autoriza:
 
-- GTM;
-- GA4;
-- Meta Pixel/Dataset/CAPI;
-- configuração Green de Pixel;
-- consentimento runtime;
-- Google Ads;
-- campanha/spend;
-- DNS;
-- mutação Search Console;
-- Vercel Production;
-- Green commercial production;
+- criar/publicar container GTM;
+- criar/configurar GA4;
+- instalar Meta Pixel/Dataset/CAPI;
+- configurar Pixel/integrações na Green;
+- mudar consentimento runtime;
+- configurar Google Ads/conversões/campanhas/spend;
+- alterar DNS;
+- mutar Search Console;
+- publicar Vercel Production;
+- publicar Green commercial production;
 - FECH.AI/n8n/Make.
 
 Cada mutação continua exigindo autorização específica depois do desenho/evidência aplicável.
 
-## 5. Search residual risk preservado
+## 6. Condições de saída de MNT-M2-01
 
-Sem reiniciar P0-B:
+MNT-M2-01 só pode ser encerrada quando:
 
-- canonical client-side;
-- ausência de sitemap;
-- `www` sem HTTP 301/308 comprovado;
-- warning `web-share` histórico.
+- inventário project-owned estiver registrado;
+- runtime comercial estiver inspecionado read-only;
+- scripts/requests de measurement estiverem classificados por provenance;
+- unknowns permanecerem explícitos;
+- nenhuma mutação tiver sido realizada.
 
-## 6. Condições de parada
+Depois disso, o próximo candidato será `MNT-M2-02 — Define transport architecture and duplicate-event prevention`, ainda sujeito ao lifecycle/autoridade aplicável.
+
+## 7. Condições de parada
 
 Parar diante de:
 
-- tentativa de iniciar MNT-M2 sem autorização explícita;
-- estado/hora inventado por consumer;
+- necessidade de instalar/alterar qualquer tag para concluir o inventário;
+- necessidade de enviar PII/formulário para obter evidência;
+- tentativa de inferir ausência no runtime a partir de ausência no GitHub;
 - divergência material entre current-state overlay, read model, handoff e status;
 - mutação externa implícita;
-- dado externo não verificado;
-- tentativa de tratar planejamento como implementação, deploy ou validação.
+- dado externo não verificado.
 
-## 7. Sequência do programa
-
-```text
-MNT-M0 COMPLETE
--> MNT-M1 COMPLETE
--> MNT-M2 PLANNED_NOT_AUTHORIZED / NEXT
--> MNT-M3 PLANNED
--> MNT-M4 PLANNED
--> MNT-M5 PLANNED
--> MNT-M6 PLANNED
--> MNT-M7 PLANNED
-```
-
-`NEXT != AUTHORIZED_TO_EXECUTE`.
+`READ_ONLY INVENTORY != TRACKING IMPLEMENTATION`.
