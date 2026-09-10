@@ -5,8 +5,10 @@
 - Referência: `main` — resolver SHA live antes de agir
 - Release comercial publicada: `18cfab98e01be29c86d78d08f2f5035a8da70444`
 - Produto V1: `GREEN_COMMERCIAL_V1_SEARCH_INDEXED / OPERATIONAL`
-- Programa atual: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
-- Fase do programa: `MNT-M1 — RESF Adoption & Existing-State Reconciliation / ACTIVE`
+- Programa: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
+- Última fase concluída: `MNT-M1 — RESF Adoption & Existing-State Reconciliation / COMPLETE`
+- Próxima fase: `MNT-M2 — Measurement Foundation & Consent / PLANNED_NOT_AUTHORIZED`
+- MNT-M1 closure anchor: PR `#39` / merge `dba0de3bfefc7aec90c5a88588c54eae4317c61f`
 - Saúde operacional do V1: `verde`
 
 ## 1. Produção atual
@@ -26,21 +28,20 @@ MNT-RESF PROGRAM PROGRESS != V1 PRODUCT READINESS
 
 ## 2. Programa MNT-RESF
 
-Fonte humana:
-`docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md`
+Fontes:
 
-Contrato machine-readable para SFJM Workspace/read-only consumers:
-`docs/sfjm/PROGRAM_TASK_GRAPH.json`
+- WBS humana: `docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md`;
+- task graph estrutural: `docs/sfjm/PROGRAM_TASK_GRAPH.json`;
+- current-state overlay: `docs/sfjm/CURRENT_PROGRAM_STATE.json`;
+- read model para consumers: `docs/sfjm/PROJECT_READ_MODEL.json`;
+- contrato de consumo: `docs/sfjm/PROGRAM_TASK_GRAPH.md`.
 
-Contrato de consumo:
-`docs/sfjm/PROGRAM_TASK_GRAPH.md`
-
-Fases:
+Estado vigente:
 
 ```text
 MNT-M0  V1 Foundation & Commercial Production                    COMPLETE
-MNT-M1  RESF Adoption & Existing-State Reconciliation             ACTIVE
-MNT-M2  Measurement Foundation & Consent                          PLANNED
+MNT-M1  RESF Adoption & Existing-State Reconciliation             COMPLETE
+MNT-M2  Measurement Foundation & Consent                          PLANNED_NOT_AUTHORIZED
 MNT-M3  Intelligence, Product Truth & Search Contract              PLANNED
 MNT-M4  IA, Content, Schema, GEO/AEO & Linking                    PLANNED
 MNT-M5  UX, Performance, Conversion, Lead & CRM                    PLANNED
@@ -48,137 +49,95 @@ MNT-M6  Attribution & Paid Media Readiness                         PLANNED
 MNT-M7  QA, Release, Observability & Learning Loop                 PLANNED
 ```
 
-Initial planning forecast:
+Planning forecast após fechamento de MNT-M1:
 
 ```text
 forecast total                = 1240h
-accepted scope-equivalent     = 160h
-remaining forecast            = 1080h
-pre-reconciliation progress   = 12.90%
+accepted scope-equivalent     = 256h
+remaining forecast            = 984h
+program progress              = 20.65%
 ```
 
-Effort warning: these are project planning estimates. M0 hours are retrospective scope-equivalent estimates, not actual historical timesheets. Future hours are planning forecasts. Later project-published canonical task hours supersede estimates.
+M0 representa estimativa retrospectiva de escopo equivalente. M1 usa o forecast de planejamento aceito como scope-equivalent após conclusão do lifecycle. Nenhum desses números é timesheet real.
 
-## 3. RESF v1 adoption
+## 3. MNT-M1 — encerrado
 
-Consumer manifest:
-`docs/frameworks/resf/ADOPTION.yaml`
+PR #39 publicou e consolidou:
 
-Existing-state reconciliation:
-`docs/frameworks/resf/ADOPTION_BASELINE.md`
+- adoção seletiva do RESF v1 pinada no provider imutável `7a61aa036d677015ee4540ca8c5dc9a41f0165d4`;
+- existing-state reconciliation;
+- WBS M0–M7;
+- task graph/read model para SFJM Workspace;
+- GSC T0 de 2026-09-10;
+- regras de provenance, staleness e não invenção pelo consumer.
 
-Provider pinned at adoption:
-`wagnerjfjunior/Blogs-sites-portais-seo@7a61aa036d677015ee4540ca8c5dc9a41f0165d4`
+MNT-M1 não alterou runtime, tracking, DNS, Search Console, Ads ou produção comercial.
 
-Adoption mode:
-`SELECTIVE`
+## 4. RESF v1 adoption
 
-Wave 1 adopted modules:
+Manifest:
+`docs/frameworks/resf/ADOPTION.yaml`.
 
-- `RESF-INTELLIGENCE`;
-- `RESF-PRODUCT-TRUTH`;
-- `RESF-IA`;
-- `RESF-UX`;
-- `RESF-CONVERSION`;
-- `RESF-TRACKING`;
-- `RESF-LEAD`;
-- `RESF-CRM`;
-- `RESF-CONSENT`.
+Baseline:
+`docs/frameworks/resf/ADOPTION_BASELINE.md`.
 
-Other RESF v1 modules remain deferred, not rejected, until later explicit adoption/reconciliation.
+Provider pin:
+`wagnerjfjunior/Blogs-sites-portais-seo@7a61aa036d677015ee4540ca8c5dc9a41f0165d4`.
 
-## 4. Search / indexability
+Mode: `SELECTIVE`.
 
-P0-B remains:
-`PASS_WITH_RESIDUAL_RISK`.
+Wave 1:
+`RESF-INTELLIGENCE`, `RESF-PRODUCT-TRUTH`, `RESF-IA`, `RESF-UX`, `RESF-CONVERSION`, `RESF-TRACKING`, `RESF-LEAD`, `RESF-CRM`, `RESF-CONSENT`.
 
-Previously confirmed in project evidence:
+Módulos restantes continuam deferred, não rejeitados.
 
-- title/meta description present;
-- canonical JS to `https://moretegra.com.br/`;
-- Google selected the same canonical;
-- home indexed;
-- Googlebot Smartphone crawl/index allowed;
-- observed HTTP `200 OK` and HTTPS PASS;
-- Vercel homologation remains `noindex,nofollow` and canonical to production.
+## 5. Search / GSC
 
-Residuals remain:
+P0-B permanece `PASS_WITH_RESIDUAL_RISK`.
 
-- canonical is client-side rather than static/SSR;
-- sitemap unavailable;
-- `www` lacks proven HTTP 301/308 semantics;
-- non-blocking `web-share` warning previously observed.
+Residuals:
 
-Evidence:
-`docs/evidence/search/P0_B_SEARCH_INDEXABILITY_EVIDENCE_2026-08-30.md`
+- canonical client-side;
+- sitemap indisponível;
+- `www` sem 301/308 HTTP comprovado;
+- warning `web-share` histórico.
 
-### GSC T0 — 2026-09-10
+GSC T0 em `docs/evidence/search/GSC_BASELINE_2026-09-10.md`:
 
-User-supplied Search Console screenshot was textualized at:
-`docs/evidence/search/GSC_BASELINE_2026-09-10.md`
+```text
+clicks = 0
+impressions = 17
+CTR = 0%
+average position = 26.1
+```
 
-Visible aggregate metrics:
+Classificação: `EARLY_DISCOVERY / INSUFFICIENT_VOLUME_FOR_TREND_OR_CAUSALITY_CLAIMS`.
 
-- clicks: `0`;
-- impressions: `17`;
-- CTR: `0%`;
-- average position: `26.1`.
-
-Classification:
-`EARLY_DISCOVERY / INSUFFICIENT_VOLUME_FOR_TREND_OR_CAUSALITY_CLAIMS`.
-
-## 5. Measurement / consent
-
-Current consumer state remains:
+## 6. Measurement / consent
 
 ```text
 MEASUREMENT = NOT_CONFIGURED_OR_NOT_PROVEN_FOR_MORENUMTEGRA
 LGPD MODAL = ACTIVE
 CONSENT ENFORCEMENT = NOT_PROVEN
+MNT-M2 START = NOT_AUTHORIZED
 ```
 
-The RESF program does not activate tracking by adoption alone.
-
-External mutation gates remain separate for:
-
-- GTM;
-- GA4;
-- Meta Pixel/Dataset/CAPI;
-- Green Pixel configuration;
-- consent runtime behavior;
-- Google Ads;
-- campaign/spend;
-- DNS;
-- Search Console mutation;
-- Green/Vercel publication.
-
-## 6. Current program action
-
-Current bounded work:
-
-`MNT-M1 — RESF Adoption & Existing-State Reconciliation`.
-
-This phase publishes the adoption manifest, reconciliation baseline, GSC T0, full program WBS and machine-readable task graph. It does not authorize runtime mutation.
-
-Authoritative next-safe-action record:
-`docs/NEXT_SAFE_ACTION.md`.
+A próxima decisão segura é autorizar ou não o início bounded de MNT-M2 em `READ_ONLY / DESIGN`. Isso não equivale a autorizar implementação de tracking.
 
 ## 7. SFJM Workspace boundary
 
-MoreNumTegra is authoritative for program/task truth.
+MoreNumTegra publica a verdade do projeto. SFJM Workspace apenas consome/renderiza.
 
-SFJM Workspace may consume:
+O consumer deve resolver `main` live, registrar SHA/data observados e combinar:
 
-- identity/objective;
-- phases/milestones;
-- tasks and recursive subtasks;
-- hours and effort class;
-- accepted/remaining effort and percentage;
-- current phase/task;
-- next safe action;
-- blockers/risks;
-- evidence/provenance.
+1. `PROJECT_READ_MODEL.json` para visão resumida;
+2. `CURRENT_PROGRAM_STATE.json` para estado/progresso vigente;
+3. `PROGRAM_TASK_GRAPH.json` para hierarquia e planning hours.
 
-It may not invent or overwrite those fields.
+Current-state overlay posterior prevalece sobre estados de lifecycle capturados em um task-graph estrutural anterior; isso não autoriza o Workspace a inventar tarefas, horas, estados ou autorizações.
 
-A Workspace snapshot whose observed MoreNumTegra `main` SHA differs from live `main` is stale and must not be presented as current.
+## 8. Gates externos
+
+Continuam separados e sem autorização implícita: GTM, GA4, Meta/CAPI, Green Pixel, consent runtime, Google Ads/spend, DNS, Search Console mutation, Vercel Production, Green publication, FECH.AI/n8n/Make e qualquer arquitetura com segredo.
+
+Autoridade para continuidade: `docs/NEXT_SAFE_ACTION.md`.
