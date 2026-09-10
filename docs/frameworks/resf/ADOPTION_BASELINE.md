@@ -23,9 +23,11 @@ RESF_ADOPTED != RESF_MODULE_IMPLEMENTED
 RESF_RECONCILED != RUNTIME_MUTATION_AUTHORIZED
 ```
 
-## 2. Consumer state at adoption
+## 2. Historical adoption-time state — T0
 
-Confirmed project state:
+This section preserves the state observed at RESF adoption and must not be read as the current Measurement state after later MNT-M2 work.
+
+Confirmed at adoption time:
 
 - commercial V1 operational in Green Sales at `https://moretegra.com.br/`;
 - GitHub `main` is canonical project source;
@@ -34,13 +36,23 @@ Confirmed project state:
 - catalogue, filters, CTAs, WhatsApp and mobile core journeys are documented as functioning in the accepted V1 release;
 - Search/indexability P0-B = `PASS_WITH_RESIDUAL_RISK`;
 - home indexed according to project-recorded Search Console evidence;
-- Measurement for MoreNumTegra not configured/proven;
-- LGPD modal presence observed but consent enforcement not proven;
-- GTM, GA4, Meta, Google Ads, DNS and other external mutations remain separately gated.
+- Measurement for MoreNumTegra was not configured/proven at this adoption-time T0;
+- LGPD modal presence was observed but consent enforcement was not proven at this adoption-time T0;
+- GTM, GA4, Meta, Google Ads, DNS and other external mutations were separately gated.
+
+Historical-state rule:
+
+```text
+ADOPTION_T0_MEASUREMENT_NOT_PROVEN = HISTORICAL FACT
+ADOPTION_T0_CONSENT_NOT_PROVEN = HISTORICAL FACT
+ADOPTION_T0 != CURRENT MNT-M2 STATE
+```
+
+Later current-state evidence is recorded under `docs/measurement/`, `docs/sfjm/CURRENT_PROGRAM_STATE.json`, `docs/PROJECT_STATUS.md` and `handoffs/CURRENT.md`.
 
 ## 3. Selective adoption — Wave 1
 
-| Module | Initial consumer classification |
+| Module | Initial consumer classification at adoption |
 |---|---|
 | RESF-INTELLIGENCE | ADOPTED / RECONCILIATION_REQUIRED |
 | RESF-PRODUCT-TRUTH | ADOPTED / PREEXISTING_CONTROLS |
@@ -56,9 +68,11 @@ Deferred, not rejected:
 
 `RESF-SEARCH-CONTRACT`, `RESF-SEO`, `RESF-CONTENT`, `RESF-SCHEMA`, `RESF-GEO-AEO`, `RESF-LINKING`, `RESF-PERFORMANCE`, `RESF-ATTRIBUTION`, `RESF-PAID`, `RESF-QA`, `RESF-OBSERVABILITY`.
 
-## 4. Existing-state reconciliation map
+These classifications describe the adoption baseline. Later task completions do not rewrite the historical initial classification; current state is overlaid below.
 
-| Area | Existing consumer evidence/state | RESF interpretation at T0 | Next obligation |
+## 4. Historical adoption reconciliation map
+
+| Area | Existing consumer evidence/state at adoption | RESF interpretation at T0 | Initial next obligation |
 |---|---|---|---|
 | Product facts | Canonical baselines and governed Tegra materials | PREEXISTING_CONTROLS | explicit fact/claim registry in MNT-M3 |
 | Mobile UX | Mobile-first baseline, filters/CTAs documented functional | PREEXISTING_IMPLEMENTATION | revalidate under MNT-M5/MNT-M7 |
@@ -66,8 +80,8 @@ Deferred, not rejected:
 | Lead capture | Green native Form 46 operational | PREEXISTING_RUNTIME | define valid-lead semantics/E2E proof |
 | CRM handoff | Green V1 destination | PREEXISTING_RUNTIME | formalize handoff/success contract |
 | Search/indexability | P0-B PASS_WITH_RESIDUAL_RISK | PARTIALLY_VALIDATED_PREEXISTING | later SEO/Search reconciliation |
-| Tracking | MoreNumTegra measurement not configured/proven | DESIGN_REQUIRED | MNT-M2 after authorization |
-| Consent | Green modal observed | DEPLOYED_UI / ENFORCEMENT_NOT_PROVEN | denied/granted proof obligations |
+| Tracking | MoreNumTegra measurement not configured/proven at T0 | DESIGN_REQUIRED | MNT-M2 after authorization |
+| Consent | Green modal observed at T0 | DEPLOYED_UI / ENFORCEMENT_NOT_PROVEN | denied/granted proof obligations |
 | Attribution | No accepted closed-loop model | DEFERRED | MNT-M6 after prerequisites |
 | Paid media | No current execution authority | DEFERRED / NOT_AUTHORIZED | MNT-M6 after measurement/spend gates |
 | Observability | GSC evidence available, low volume | EVIDENCE_AVAILABLE / MODULE_DEFERRED | preserve T0; adopt later |
@@ -86,25 +100,102 @@ average position = 26.1
 
 Query rows are partial. Volume is insufficient for trend, causality or improvement claims.
 
-## 6. Program relationship
+## 6. Current delta after accepted MNT-M2 work
+
+Current lifecycle authority is `docs/sfjm/CURRENT_PROGRAM_STATE.json`.
+
+When the MNT-M2-03 revision is integrated into canonical `main`, the supported state is:
+
+```text
+MNT-M2-01 = COMPLETE
+MNT-M2-02 = COMPLETE
+MNT-M2-03 = COMPLETE
+MNT-M2-07 = COMPLETE
+MNT-M2-08 = COMPLETE
+MNT-M2-09 = PARTIAL_IMPLEMENTED
+MNT-M2-04 = PLANNED_NOT_AUTHORIZED / NEXT
+```
+
+Evidence chain:
+
+- `docs/measurement/MNT_M2_01_TRACKING_RUNTIME_INVENTORY_2026-09-10.md` — historical pre-GTM T0 inventory;
+- `docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md` — GTM `GTM-PGCR4R47`, Version 4, Consent Mode published and validated;
+- `docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md` — accepted transport/dedup architecture;
+- `docs/measurement/MNT_M2_03_CANONICAL_EVENT_TAXONOMY_V1_2026-09-10.md` — canonical event taxonomy v1.
+
+Current Measurement interpretation:
+
+| Area | Current state when MNT-M2-03 is canonical | Remaining obligation |
+|---|---|---|
+| GTM/Consent | PUBLISHED / VALIDATED | preserve baseline; destination behavior still needs later QA |
+| Transport/dedup | ACCEPTED DESIGN | implement under MNT-M2-09; prove under MNT-M2-10 |
+| Event taxonomy | ACCEPTED DESIGN | map/implement only after later gates |
+| Conversions | OPEN | MNT-M2-04 primary/secondary classification |
+| GTM/GA4 ownership | PARTIAL_EVIDENCE | MNT-M2-05 |
+| Meta ownership | OPEN | MNT-M2-06 |
+| Lead success signal | NOT_YET_PROVEN | stable non-invasive Green Form 46 success signal before `mnt_lead_success` implementation |
+| Full tracking implementation | PARTIAL | MNT-M2-09 |
+| End-to-end Measurement QA | OPEN | MNT-M2-10 |
+
+Canonical event source vocabulary v1:
+
+```text
+mnt_page_view
+mnt_section_click
+mnt_catalog_filter
+mnt_catalog_search
+mnt_intent
+mnt_form_start
+mnt_form_submit_attempt
+mnt_lead_success
+```
+
+Key controls:
+
+```text
+raw catalogue search text != Measurement parameter
+visitor name/email/phone/form values != Measurement parameter
+CTA / WhatsApp / submit attempt != lead
+only verified Form 46 success may become mnt_lead_success
+Green /page/view != project business event
+YouTube telemetry != project conversion
+```
+
+## 7. Program relationship — current overlay
 
 - human WBS: `docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md`;
 - structural task graph: `docs/sfjm/PROGRAM_TASK_GRAPH.json`;
 - current-state overlay: `docs/sfjm/CURRENT_PROGRAM_STATE.json`;
 - read model: `docs/sfjm/PROJECT_READ_MODEL.json`.
 
-MNT-M1 adoption/reconciliation is `COMPLETE` after PR #39. Current program progress is `256h / 1240h = 20.65%` scope-equivalent. MNT-M2 is next but remains `PLANNED_NOT_AUTHORIZED`.
+Planning progress when MNT-M2-03 is integrated:
 
-## 7. Known gaps and residuals
+```text
+forecast total = 1240h
+accepted scope-equivalent = 328h
+remaining forecast = 912h
+progress = 26.45%
+```
 
-1. No MoreNumTegra-specific measurement stack is accepted as configured.
-2. Consent enforcement remains unproven.
-3. Search technical residuals remain: canonical client-side, sitemap absent, `www` 301/308 not proven.
-4. GSC T0 volume remains too low for trend inference.
-5. Historical M0 hours are retrospective scope-equivalent estimates, not actual time records.
-6. Future effort is forecast and must be rebaselined when stronger task-level evidence exists.
-7. Deferred RESF modules do not govern implementation until explicitly adopted.
+Hours are planning/scope-equivalent, not an actual timesheet.
 
-## 8. Authorization boundary
+## 8. Current gaps and residuals
 
-RESF adoption completion does not authorize MNT-M2 start or runtime mutation. MNT-M2 bounded READ_ONLY/DESIGN requires explicit Product Authority authorization. Tracking publication, Vercel/Green publication, DNS, Search Console mutation, Ads, budget/spend and external campaigns remain separately gated.
+1. Primary/secondary conversion classification remains open under MNT-M2-04.
+2. GA4 ownership/property/configuration remains incomplete; Meta ownership remains open.
+3. Canonical event taxonomy is defined but runtime event instrumentation is not thereby implemented.
+4. `mnt_lead_success` requires a stable, non-invasive Green Form 46 success signal before implementation.
+5. Transport/dedup runtime controls remain to be implemented under MNT-M2-09 and proven under MNT-M2-10.
+6. GTM Consent Mode state handling is proven, while site-wide third-party telemetry gating remains a separate residual.
+7. Search technical residuals remain: canonical client-side, sitemap absent, `www` 301/308 not proven.
+8. GSC T0 volume remains too low for trend inference.
+9. Historical M0 hours are retrospective scope-equivalent estimates, not actual time records.
+10. Deferred RESF modules do not govern implementation until explicitly adopted.
+
+## 9. Authorization boundary
+
+MNT-M2-03 completion does not authorize MNT-M2-04 or any runtime Measurement mutation.
+
+Further GTM configuration, GA4, Meta Pixel/Dataset/CAPI, Green Pixel/integration changes, Google Ads, DNS, Search Console mutation, Vercel Production, Green publication, campaign/spend and external automation remain separately gated.
+
+`MNT-M2-03 COMPLETE != MNT-M2-04 AUTHORIZED != MNT-M2-09 IMPLEMENTED != MNT-M2-10 VALIDATED`.
