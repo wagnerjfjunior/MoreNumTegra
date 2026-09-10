@@ -21,8 +21,8 @@ Preserve:
 INVENTORY != IMPLEMENTATION
 SOURCE ABSENCE != RUNTIME ABSENCE
 FORM SUBMISSION != ANALYTICS EVENT
-SEARCH CONSOLE PROPERTY != CLIENT-SIDE ANALYTICS
-OBSERVED SCRIPT != CONSENT-COMPLIANT EXECUTION
+SEARCH CONSOLE PROPERTY != CLIENT-SIDE_ANALYTICS
+OBSERVED SCRIPT != CONSENT_COMPLIANT_EXECUTION
 THIRD_PARTY_MEDIA_TELEMETRY != GA4_OR_AD_PIXEL
 ```
 
@@ -42,8 +42,6 @@ src-greenn/blocks/01-html-inicial.html
 Vercel homologation composes the same project-owned blocks through `src-greenn/preview/index.html`. `vercel.json` only rewrites `/` to that preview compositor and applies response headers.
 
 ## 3. Static/project-owned source inventory
-
-### 3.1 JavaScript / HTML / Vercel
 
 Direct inspection plus repository code-search found no project-owned bootstrap for:
 
