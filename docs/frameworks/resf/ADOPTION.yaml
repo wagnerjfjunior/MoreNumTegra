@@ -1,0 +1,56 @@
+framework:
+  id: RESF
+  version: 1
+  lifecycle_at_adoption: CANDIDATE
+  provider: wagnerjfjunior/Blogs-sites-portais-seo
+  provider_ref: 7a61aa036d677015ee4540ca8c5dc9a41f0165d4
+consumer:
+  project_id: morenumtegra
+  repository: wagnerjfjunior/MoreNumTegra
+  adoption_authority: Wagner
+  adoption_date: '2026-09-10'
+applicability:
+  domain: real_estate
+  project_type: real_estate_discovery_conversion_portal
+  status: APPLICABLE
+adoption:
+  mode: SELECTIVE
+  modules:
+    - RESF-INTELLIGENCE
+    - RESF-PRODUCT-TRUTH
+    - RESF-IA
+    - RESF-UX
+    - RESF-CONVERSION
+    - RESF-TRACKING
+    - RESF-LEAD
+    - RESF-CRM
+    - RESF-CONSENT
+overrides:
+  - id: MNT-RESF-OVR-001
+    scope: RESF-LEAD/RESF-CRM
+    decision: Preserve Green Sales native Form 46 as the V1 lead capture and CRM handoff mechanism; do not replace or intercept its native submit lifecycle without a separate product decision.
+  - id: MNT-RESF-OVR-002
+    scope: RESF-UX/RESF-CONVERSION
+    decision: Preserve the current MoreNumTegra mobile-first HTML/CSS/vanilla-JS architecture and the Green modular composition unless a separate consumer architecture decision supersedes it.
+deferred_modules:
+  - RESF-SEARCH-CONTRACT
+  - RESF-SEO
+  - RESF-CONTENT
+  - RESF-SCHEMA
+  - RESF-GEO-AEO
+  - RESF-LINKING
+  - RESF-PERFORMANCE
+  - RESF-ATTRIBUTION
+  - RESF-PAID
+  - RESF-QA
+  - RESF-OBSERVABILITY
+rejected_modules: []
+consumer_facts_source: 'MoreNumTegra canonical main: bootstrap/BOOTSTRAP_CANONICO.md; docs/baseline/FUNCTIONAL_BASELINE_V2.md; docs/baseline/TECHNICAL_BASELINE_V2_2.md; handoffs/CURRENT.md; docs/PROJECT_STATUS.md; docs/NEXT_SAFE_ACTION.md; docs/BLOCKED_ACTIONS.md; current governed evidence under docs/evidence/'
+runtime_authority: CONSUMER
+known_gaps:
+  - Measurement foundation is not yet implemented for MoreNumTegra.
+  - LGPD modal presence is observed but consent enforcement is not proven.
+  - GTM, GA4 and Meta ownership/configuration for MoreNumTegra remain unimplemented or unproven.
+  - Search technical residuals remain for static canonical capability, sitemap availability and www HTTP redirect semantics.
+  - GSC evidence volume at the 2026-09-10 T0 baseline is insufficient for statistically meaningful trend claims.
+  - Deferred RESF modules require explicit later adoption/reconciliation before they govern implementation work.
