@@ -3,12 +3,11 @@
 - Data de referência: `2026-09-10`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra`
 - Referência: `main` — resolver SHA live antes de agir
+- Reconciliation base main: `34ddd9684608a0fe1e02edc5071fd6e40b5f2121`
 - Release comercial publicada: `18cfab98e01be29c86d78d08f2f5035a8da70444`
 - Produto V1: `GREEN_COMMERCIAL_V1_SEARCH_INDEXED / OPERATIONAL`
 - Programa: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
-- Última fase concluída: `MNT-M1 — RESF Adoption & Existing-State Reconciliation / COMPLETE`
-- Próxima fase: `MNT-M2 — Measurement Foundation & Consent / PLANNED_NOT_AUTHORIZED`
-- MNT-M1 closure anchor: PR `#39` / merge `dba0de3bfefc7aec90c5a88588c54eae4317c61f`
+- Fase atual após integração desta reconciliação: `MNT-M2 — Measurement Foundation & Consent / ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION`
 - Saúde operacional do V1: `verde`
 
 ## 1. Produção atual
@@ -18,12 +17,15 @@
 - release Green registrada: `18cfab98e01be29c86d78d08f2f5035a8da70444`
 - smoke Green: `PASS` por confirmação do owner
 - Form 46, filtros, CTA, WhatsApp e mobile: documentados como funcionais na release aceita
+- Vercel deployment mode: `MANUAL_GATE_DRIVEN` conforme ADR-002
 
 Preservar:
 
 ```text
 LIVE V1 OPERATIONAL != MNT-RESF PROGRAM COMPLETE
 MNT-RESF PROGRAM PROGRESS != V1 PRODUCT READINESS
+FIELD EVIDENCE != FULL PHASE COMPLETE
+PARTIAL IMPLEMENTATION != TASK COMPLETE
 ```
 
 ## 2. Programa MNT-RESF
@@ -36,73 +38,139 @@ Fontes:
 - read model para consumers: `docs/sfjm/PROJECT_READ_MODEL.json`;
 - contrato de consumo: `docs/sfjm/PROGRAM_TASK_GRAPH.md`.
 
-Estado vigente:
+Estado reconciliado quando esta revisão for integrada:
 
 ```text
-MNT-M0  V1 Foundation & Commercial Production                    COMPLETE
-MNT-M1  RESF Adoption & Existing-State Reconciliation             COMPLETE
-MNT-M2  Measurement Foundation & Consent                          PLANNED_NOT_AUTHORIZED
-MNT-M3  Intelligence, Product Truth & Search Contract              PLANNED
-MNT-M4  IA, Content, Schema, GEO/AEO & Linking                    PLANNED
-MNT-M5  UX, Performance, Conversion, Lead & CRM                    PLANNED
-MNT-M6  Attribution & Paid Media Readiness                         PLANNED
-MNT-M7  QA, Release, Observability & Learning Loop                 PLANNED
+MNT-M0  COMPLETE
+MNT-M1  COMPLETE
+MNT-M2  ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
+  MNT-M2-01  COMPLETE
+  MNT-M2-02  PLANNED_NOT_AUTHORIZED
+  MNT-M2-03  PLANNED
+  MNT-M2-04  PLANNED
+  MNT-M2-05  PARTIAL_EVIDENCE
+  MNT-M2-06  PLANNED
+  MNT-M2-07  COMPLETE
+  MNT-M2-08  COMPLETE
+  MNT-M2-09  PARTIAL_IMPLEMENTED
+  MNT-M2-10  PLANNED
+MNT-M3..MNT-M7  PLANNED
 ```
 
-Planning forecast após fechamento de MNT-M1:
+Planning forecast:
 
 ```text
 forecast total                = 1240h
-accepted scope-equivalent     = 256h
-remaining forecast            = 984h
-program progress              = 20.65%
+accepted scope-equivalent     = 296h
+remaining forecast            = 944h
+program progress              = 23.87%
 ```
 
-M0 representa estimativa retrospectiva de escopo equivalente. M1 usa o forecast de planejamento aceito como scope-equivalent após conclusão do lifecycle. Nenhum desses números é timesheet real.
+Accepted M2 scope-equivalent in this reconciliation is limited to:
 
-## 3. MNT-M1 — encerrado
+- `MNT-M2-01 = 8h`;
+- `MNT-M2-07 = 16h`;
+- `MNT-M2-08 = 16h`.
 
-PR #39 publicou e consolidou:
+`MNT-M2-09` remains partial and contributes `0h accepted` until its full exit criteria are accepted.
 
-- adoção seletiva do RESF v1 pinada no provider imutável `7a61aa036d677015ee4540ca8c5dc9a41f0165d4`;
-- existing-state reconciliation;
-- WBS M0–M7;
-- task graph/read model para SFJM Workspace;
-- GSC T0 de 2026-09-10;
-- regras de provenance, staleness e não invenção pelo consumer.
+Horas são planning/scope-equivalent, não timesheet real.
 
-MNT-M1 não alterou runtime, tracking, DNS, Search Console, Ads ou produção comercial.
+## 3. MNT-M2-01 — T0 histórico preservado
 
-## 4. RESF v1 adoption
+Evidence:
+`docs/measurement/MNT_M2_01_TRACKING_RUNTIME_INVENTORY_2026-09-10.md`.
 
-Manifest:
-`docs/frameworks/resf/ADOPTION.yaml`.
+The pre-GTM runtime capture remains valid historical evidence:
 
-Baseline:
-`docs/frameworks/resf/ADOPTION_BASELINE.md`.
+```text
+HAR SHA-256 = c59f3a3c0c075412595bfda2dd1155a48fa0d0689f5f27264010076348bb7446
+Green /page/view = OBSERVED / PLATFORM_INJECTED
+GTM/GA4/Meta = NOT_OBSERVED_AT_T0
+YouTube telemetry = OBSERVED / THIRD_PARTY_MEDIA
+www -> non-www Green double page-view risk = OPEN INPUT FOR MNT-M2-02
+```
 
-Provider pin:
-`wagnerjfjunior/Blogs-sites-portais-seo@7a61aa036d677015ee4540ca8c5dc9a41f0165d4`.
+The T0 statement `GTM NOT_OBSERVED` is no longer current runtime truth. It is bounded to the historical capture before the later GTM publication.
 
-Mode: `SELECTIVE`.
+## 4. GTM / Consent T1 — published and validated
 
-Wave 1:
-`RESF-INTELLIGENCE`, `RESF-PRODUCT-TRUTH`, `RESF-IA`, `RESF-UX`, `RESF-CONVERSION`, `RESF-TRACKING`, `RESF-LEAD`, `RESF-CRM`, `RESF-CONSENT`.
+Evidence:
+`docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md`.
 
-Módulos restantes continuam deferred, não rejeitados.
+Current supported claims:
 
-## 5. Search / GSC
+```text
+GTM_CONTAINER = GTM-PGCR4R47
+PUBLISHED_GTM_VERSION = 4
+GTM_CONSENT_MODE_STATE_HANDLING = IMPLEMENTED / PUBLISHED / VALIDATED
+```
 
-P0-B permanece `PASS_WITH_RESIDUAL_RISK`.
+Validated behavior:
+
+```text
+DEFAULT:
+ad_storage = denied
+analytics_storage = denied
+ad_user_data = denied
+ad_personalization = denied
+
+GREEN "Continuar":
+all four -> granted
+
+GREEN "Cancelar":
+all four -> denied
+
+Persistence after reload:
+granted = PROVEN
+denied = PROVEN
+```
+
+Therefore:
+
+```text
+MNT-M2-07 = COMPLETE
+MNT-M2-08 = COMPLETE
+MNT-M2-09 = PARTIAL_IMPLEMENTED
+```
+
+This does not prove GA4, Google Ads, Meta Pixel/CAPI, canonical event taxonomy, conversion definitions or end-to-end Measurement QA.
+
+## 5. Measurement remaining work
+
+The obsolete state:
+
+`MEASUREMENT = NOT_CONFIGURED_OR_NOT_PROVEN_FOR_MORENUMTEGRA`
+
+must not be used after this reconciliation.
+
+The correct state is:
+
+```text
+GTM / CONSENT FOUNDATION = IMPLEMENTED / PUBLISHED / VALIDATED
+FULL MEASUREMENT STACK = INCOMPLETE
+GA4 = NOT_YET_PROVEN
+GOOGLE ADS CONVERSIONS = NOT_YET_PROVEN
+META PIXEL / DATASET / CAPI = NOT_YET_PROVEN
+EVENT TAXONOMY = OPEN
+PRIMARY / SECONDARY CONVERSIONS = OPEN
+END-TO-END MEASUREMENT QA = OPEN
+```
+
+The next unresolved task in sequence is `MNT-M2-02 — Define transport architecture and duplicate-event prevention`.
+
+## 6. Search / GSC
+
+P0-B remains `PASS_WITH_RESIDUAL_RISK`.
 
 Residuals:
 
 - canonical client-side;
-- sitemap indisponível;
-- `www` sem 301/308 HTTP comprovado;
-- warning `web-share` histórico.
+- sitemap unavailable;
+- `www` without proven HTTP 301/308 semantics;
+- historical `web-share` warning.
 
-GSC T0 em `docs/evidence/search/GSC_BASELINE_2026-09-10.md`:
+GSC T0 remains:
 
 ```text
 clicks = 0
@@ -111,33 +179,23 @@ CTR = 0%
 average position = 26.1
 ```
 
-Classificação: `EARLY_DISCOVERY / INSUFFICIENT_VOLUME_FOR_TREND_OR_CAUSALITY_CLAIMS`.
-
-## 6. Measurement / consent
-
-```text
-MEASUREMENT = NOT_CONFIGURED_OR_NOT_PROVEN_FOR_MORENUMTEGRA
-LGPD MODAL = ACTIVE
-CONSENT ENFORCEMENT = NOT_PROVEN
-MNT-M2 START = NOT_AUTHORIZED
-```
-
-A próxima decisão segura é autorizar ou não o início bounded de MNT-M2 em `READ_ONLY / DESIGN`. Isso não equivale a autorizar implementação de tracking.
+Classification: `EARLY_DISCOVERY / INSUFFICIENT_VOLUME_FOR_TREND_OR_CAUSALITY_CLAIMS`.
 
 ## 7. SFJM Workspace boundary
 
-MoreNumTegra publica a verdade do projeto. SFJM Workspace apenas consome/renderiza.
+MoreNumTegra publishes project truth. SFJM Workspace only consumes/renders it.
 
-O consumer deve resolver `main` live, registrar SHA/data observados e combinar:
+Workspace refresh remains blocked until this reconciliation is canonical in MoreNumTegra `main` and a new exact `main` SHA is resolved.
 
-1. `PROJECT_READ_MODEL.json` para visão resumida;
-2. `CURRENT_PROGRAM_STATE.json` para estado/progresso vigente;
-3. `PROGRAM_TASK_GRAPH.json` para hierarquia e planning hours.
+Consumer precedence remains:
 
-Current-state overlay posterior prevalece sobre estados de lifecycle capturados em um task-graph estrutural anterior; isso não autoriza o Workspace a inventar tarefas, horas, estados ou autorizações.
+1. `PROJECT_READ_MODEL.json` — entrypoint/summary;
+2. `CURRENT_PROGRAM_STATE.json` — current lifecycle/progress;
+3. `PROGRAM_TASK_GRAPH.json` — hierarchy/planning hours;
+4. `NEXT_SAFE_ACTION.md` — execution authority.
 
-## 8. Gates externos
+## 8. External gates
 
-Continuam separados e sem autorização implícita: GTM, GA4, Meta/CAPI, Green Pixel, consent runtime, Google Ads/spend, DNS, Search Console mutation, Vercel Production, Green publication, FECH.AI/n8n/Make e qualquer arquitetura com segredo.
+Additional GTM changes, GA4, Meta/CAPI, Green Pixel, Google Ads/spend, DNS, Search Console mutation, Vercel Production and Green publication remain separate gated mutations.
 
-Autoridade para continuidade: `docs/NEXT_SAFE_ACTION.md`.
+Authority for continuity: `docs/NEXT_SAFE_ACTION.md`.
