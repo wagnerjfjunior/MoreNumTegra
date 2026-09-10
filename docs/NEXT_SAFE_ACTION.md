@@ -2,122 +2,127 @@
 
 > Registro autoritativo da única próxima ação segura.
 
-- Definida em: `2026-08-30`
+- Definida em: `2026-09-10`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
-- Release atual: `18cfab98e01be29c86d78d08f2f5035a8da70444`
-- Estado: `MEASUREMENT_FOUNDATION_PREPARATION`
+- Release comercial atual: `18cfab98e01be29c86d78d08f2f5035a8da70444`
+- Programa: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
+- Estado: `MNT-M1_RESF_ADOPTION_RECONCILIATION`
 
 ## 1. Estado de entrada
 
-Search + Conversion permanece em produção comercial na Green.
+O V1 continua operacional em produção comercial Green e Search/indexability P0-B permanece `PASS_WITH_RESIDUAL_RISK`.
 
-P0-B Search/indexabilidade foi concluído com:
+O programa completo está definido em:
 
-`PASS_WITH_RESIDUAL_RISK`
+- `docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md`;
+- `docs/sfjm/PROGRAM_TASK_GRAPH.json`;
+- `docs/sfjm/PROGRAM_TASK_GRAPH.md`.
 
-A home `https://moretegra.com.br/` está indexada no Google. O Search Console mostrou Googlebot Smartphone, crawl permitido, busca com êxito, indexação permitida, HTTP 200, HTTPS PASS e canonical selecionada igual à canonical declarada.
+A adoção RESF está definida em:
 
-Evidência:
+- `docs/frameworks/resf/ADOPTION.yaml`;
+- `docs/frameworks/resf/ADOPTION_BASELINE.md`.
 
-`docs/evidence/search/P0_B_SEARCH_INDEXABILITY_EVIDENCE_2026-08-30.md`
+GSC T0:
+`docs/evidence/search/GSC_BASELINE_2026-09-10.md`.
 
-## 2. Primeira transição aplicável
+## 2. Única próxima ação segura
 
-Preparar **Measurement Foundation** sem publicar tracking.
+Concluir **MNT-M1 — RESF Adoption & Existing-State Reconciliation** como mudança documental/governança bounded.
 
-Escopo READ_ONLY / DESIGN:
+Escopo atual:
 
-1. inventariar qualquer tracking já presente no live;
-2. definir arquitetura de transporte sem duplicidade;
-3. fixar event taxonomy;
-4. definir consent model e proof obligations LGPD;
-5. definir QA para denied/granted;
-6. definir ownership de GTM, GA4 e Meta Pixel/Dataset exclusivos do MoreNumTegra;
-7. definir conversão primária e critérios para Google Ads futuro.
+1. validar consistência WBS <-> machine-readable task graph;
+2. validar somatórios de horas e cálculo de progresso;
+3. validar `ADOPTION.yaml` contra o schema canônico do RESF v1;
+4. validar que o provider está pinado em SHA imutável;
+5. validar que estados históricos não foram promovidos além da evidência;
+6. validar GSC T0 e suas limitações;
+7. executar revisão documental independente do exact head da PR;
+8. adjudicar P0/P1 documentais;
+9. somente depois seguir os gates separados de Ready e merge exigidos pela governança.
 
-Nenhuma criação/publicação externa é autorizada apenas por esta transição.
+Nenhum runtime deve ser modificado por MNT-M1.
 
-## 3. Arquitetura candidata
+## 3. Condição de saída MNT-M1
 
-```text
-GREEN NATIVO
-├── Meta Pixel próprio do MoreNumTegra
-│   └── CAPI somente se deduplicação/capability forem comprovadas
-└── GTM próprio do MoreNumTegra
+MNT-M1 pode ser encerrado quando:
 
-GTM
-├── GA4 próprio
-├── eventos adicionais
-└── Google Ads futuramente
-```
+- manifesto de adoção estiver schema-valid;
+- WBS e task graph forem semanticamente equivalentes;
+- total = `1240h`;
+- accepted scope-equivalent = `160h`;
+- remaining forecast = `1080h`;
+- pre-reconciliation progress = `12.90%`;
+- provenance e effort class estiverem explícitos;
+- nenhum P0/P1 documental permanecer aberto;
+- lifecycle da PR tiver sido concluído sob autorizações apropriadas.
 
-Evitar:
+## 4. Próxima fase após MNT-M1
 
-- Meta via Green + GTM simultaneamente sem desenho explícito;
-- GA4 via Green + GTM simultaneamente;
-- reutilização de IDs de outros projetos;
-- publicação antes de validar consentimento.
+Somente após o fechamento canônico de MNT-M1, a próxima fase planejada é:
 
-## 4. Event taxonomy candidata
+`MNT-M2 — Measurement Foundation & Consent`.
 
-- `page_view`
-- `view_project`
-- `select_offer`
-- `click_whatsapp`
-- `generate_lead`
-- `view_promotion`
+A primeira parte de MNT-M2 permanece `READ_ONLY / DESIGN`:
 
-Conversão primária candidata:
+- inventário de tracking live;
+- arquitetura de transporte sem duplicidade;
+- event taxonomy;
+- primary/secondary conversions;
+- ownership de GTM/GA4/Meta;
+- consent model/LGPD;
+- QA denied/granted.
 
-`generate_lead`
+`MNT-M2 PLANNED != TRACKING IMPLEMENTATION AUTHORIZED`.
 
-## 5. Gates separados
+## 5. Gates externos preservados
 
-Exigem autorização específica antes de mutação externa:
+Exigem autorização específica antes de mutação:
 
-- criar/publicar GTM;
-- criar/publicar GA4;
+- GTM;
+- GA4;
 - Meta Pixel/Dataset/CAPI;
-- alterar configuração Green de Pixel;
-- consentimento técnico;
+- configuração Green de Pixel;
+- consentimento runtime;
 - Google Ads;
 - campanha/spend;
 - DNS;
-- novas mutações Search Console;
-- produção Green adicional.
+- Search Console mutation;
+- Vercel Production;
+- Green commercial production.
 
-## 6. Search residual risk
+## 6. Search residual risk preservado
 
-Manter em backlog, sem reiniciar P0-B:
+Sem reiniciar P0-B:
 
 - canonical client-side;
 - ausência de sitemap;
-- `www` sem 301/308 comprovado;
-- warning `web-share`.
-
-Esses riscos não bloquearam crawling/indexação observados no Search Console.
+- `www` sem HTTP 301/308 comprovado;
+- warning `web-share` histórico.
 
 ## 7. Condições de parada
 
 Parar diante de:
 
-- tracking pré-existente não reconciliado;
-- risco de duplicidade;
-- consentimento técnico não comprovado;
-- capability Green não comprovada;
-- necessidade de segredo/token no cliente;
-- ausência de autorização para mutação externa;
+- divergência entre WBS e task graph;
+- manifesto RESF inválido;
+- provider ref mutável;
+- horas sem provenance/semântica;
+- status não sustentado por evidência;
+- nova mutação de runtime implícita;
+- necessidade de autorização não concedida;
 - dado externo não verificado.
 
-## 8. Resultado esperado do próximo ciclo
+## 8. Sequência do programa
 
 ```text
-P0-B SEARCH INDEXABILITY PASS_WITH_RESIDUAL_RISK
--> MEASUREMENT FOUNDATION DESIGN
--> EXPLICIT TRACKING AUTHORIZATION
--> MEASUREMENT IMPLEMENTATION
--> MEASUREMENT QA
--> SEARCH CONSOLE MONITORING
--> GOOGLE ADS CONVERSION SETUP
--> SEM
+MNT-M0 COMPLETE
+-> MNT-M1 ACTIVE / CURRENT
+-> MNT-M2 Measurement Foundation & Consent
+-> MNT-M3 Intelligence / Product Truth / Search Contract
+-> MNT-M4 IA / Content / Schema / GEO-AEO / Linking
+-> MNT-M5 UX / Performance / Conversion / Lead / CRM
+-> MNT-M6 Attribution / Paid Media Readiness
+-> MNT-M7 QA / Release / Observability / Learning Loop
 ```
