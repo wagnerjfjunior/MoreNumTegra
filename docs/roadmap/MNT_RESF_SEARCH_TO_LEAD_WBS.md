@@ -34,17 +34,17 @@ Current planning forecast when this revision is integrated:
 |---|---|---|---:|---:|
 | MNT-M0 | V1 Foundation & Commercial Production | COMPLETE | 160 | 160 |
 | MNT-M1 | RESF Adoption & Existing-State Reconciliation | COMPLETE | 96 | 96 |
-| MNT-M2 | Measurement Foundation & Consent | ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION | 144 | 80 |
+| MNT-M2 | Measurement Foundation & Consent | ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION | 144 | 88 |
 | MNT-M3 | Intelligence, Product Truth & Search Contract | PLANNED | 144 | 0 |
 | MNT-M4 | IA, Content, Schema, GEO/AEO & Linking | PLANNED | 208 | 0 |
 | MNT-M5 | UX, Performance, Conversion, Lead & CRM | PLANNED | 168 | 0 |
 | MNT-M6 | Attribution & Paid Media Readiness | PLANNED | 128 | 0 |
 | MNT-M7 | QA, Release, Observability & Learning Loop | PLANNED | 192 | 0 |
-| **TOTAL** |  |  | **1240** | **336** |
+| **TOTAL** |  |  | **1240** | **344** |
 
-Accepted/completed scope-equivalent effort: `336h`  
-Remaining forecast: `904h`  
-Program progress: `27.10%`
+Accepted/completed scope-equivalent effort: `344h`  
+Remaining forecast: `896h`  
+Program progress: `27.74%`
 
 Program progress is not V1 product readiness. Commercial V1 remains operational.
 
@@ -87,14 +87,14 @@ Closure anchor: PR `#39`, merge `dba0de3bfefc7aec90c5a88588c54eae4317c61f`.
 | MNT-M2-02 | Define transport architecture and duplicate-event prevention | 16 | COMPLETE |
 | MNT-M2-03 | Define canonical event taxonomy | 16 | COMPLETE |
 | MNT-M2-04 | Define primary and secondary conversions | 8 | COMPLETE |
-| MNT-M2-05 | Define ownership for MoreNumTegra GTM and GA4 | 8 | PARTIAL_EVIDENCE / NEXT / EXECUTION_NOT_AUTHORIZED |
-| MNT-M2-06 | Define ownership for Meta Pixel/Dataset | 8 | PLANNED |
+| MNT-M2-05 | Define ownership for MoreNumTegra GTM and GA4 | 8 | COMPLETE |
+| MNT-M2-06 | Define ownership for Meta Pixel/Dataset | 8 | PLANNED_NOT_AUTHORIZED / NEXT |
 | MNT-M2-07 | Define consent model and LGPD gating | 16 | COMPLETE |
 | MNT-M2-08 | Define denied/granted consent QA contract | 16 | COMPLETE |
 | MNT-M2-09 | Implement authorized tracking configuration | 24 | PARTIAL_IMPLEMENTED |
 | MNT-M2-10 | Execute end-to-end Measurement QA | 24 | PLANNED |
 
-Accepted M2 scope-equivalent: `80h` from M2-01 + M2-02 + M2-03 + M2-04 + M2-07 + M2-08.
+Accepted M2 scope-equivalent: `88h` from M2-01 + M2-02 + M2-03 + M2-04 + M2-05 + M2-07 + M2-08.
 
 Evidence chain:
 
@@ -102,9 +102,22 @@ Evidence chain:
 - `docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md` — GTM/Consent T1 published + validated;
 - `docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md` — accepted transport/dedup design;
 - `docs/measurement/MNT_M2_03_CANONICAL_EVENT_TAXONOMY_V1_2026-09-10.md` — canonical source-event vocabulary and semantics;
-- `docs/measurement/MNT_M2_04_PRIMARY_SECONDARY_CONVERSIONS_V1_2026-09-10.md` — project conversion-role classification.
+- `docs/measurement/MNT_M2_04_PRIMARY_SECONDARY_CONVERSIONS_V1_2026-09-10.md` — project conversion-role classification;
+- `docs/measurement/MNT_M2_05_GTM_GA4_OWNERSHIP_CONTRACT_V1_2026-09-10.md` — Google Measurement ownership/topology.
 
-Conversion contract v1:
+Current Google Measurement ownership contract:
+
+```text
+GTM container = GTM-PGCR4R47
+GTM governance owner = MoreNumTegra / Product Authority
+GA4 governance owner = MoreNumTegra / Product Authority
+GA4 property target = one dedicated MoreNumTegra property
+GA4 production stream target = one web stream for moretegra.com.br
+GA4 exact property/stream/Measurement IDs = NOT_PROVEN
+M2-05 runtime/admin mutation = NONE
+```
+
+Conversion contract v1 remains:
 
 ```text
 PRIMARY
@@ -130,14 +143,13 @@ NONE
 Preserve:
 
 ```text
+NOT_PROVEN != DOES_NOT_EXIST
+OWNERSHIP DEFINED != RESOURCE CREATED
 ONLY VERIFIED FORM 46 SUCCESS MAY BECOME PRIMARY CONVERSION
-SECONDARY != VERIFIED LEAD
-PROPERTY/OFFER PRICE != CONVERSION VALUE
-MONETARY LEAD CONVERSION VALUE = NOT_DEFINED
 PROJECT CONVERSION ROLE != DESTINATION CONFIGURATION
 ```
 
-Runtime enforcement is not claimed complete by MNT-M2-04. GTM/GA4 ownership completion belongs to MNT-M2-05; Meta ownership to MNT-M2-06; implementation remains MNT-M2-09 and proof remains MNT-M2-10.
+Runtime enforcement remains MNT-M2-09 and proof remains MNT-M2-10. Meta ownership belongs to MNT-M2-06.
 
 ### MNT-M3 — Intelligence, Product Truth & Search Contract — 144h — PLANNED
 
@@ -223,7 +235,8 @@ MNT-M0 COMPLETE
      M2-02 COMPLETE
      M2-03 COMPLETE
      M2-04 COMPLETE
-     M2-05 PARTIAL_EVIDENCE / NEXT / EXECUTION_NOT_AUTHORIZED
+     M2-05 COMPLETE
+     M2-06 NEXT / PLANNED_NOT_AUTHORIZED
      M2-07 COMPLETE
      M2-08 COMPLETE
      M2-09 PARTIAL
