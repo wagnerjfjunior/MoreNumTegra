@@ -67,9 +67,12 @@ Every implemented project semantic event MUST carry the following project envelo
 | `mnt_event_id` | YES | one project correlation identity per semantic occurrence, per MNT-M2-02 |
 | `mnt_event_version` | YES | integer `1` for this taxonomy |
 | `page_identity` | YES | `moretegra_home` for the current V1 home |
+| `product_identity` | YES | fixed consumer/product identity `moretegra_portfolio` for the current V1 product surface |
 | `route` | YES | `/` for the current V1 home |
 | `funnel_stage` | YES | allowlisted stage defined below |
 | `placement` | WHEN_APPLICABLE | stable component/placement enum, never free-form UI text |
+
+`product_identity` satisfies the RESF C11 product-identity requirement at the product-surface level. It is deliberately distinct from a specific real-estate development identity.
 
 Project-context fields are added only when the event is associated with a specific development/offer:
 
@@ -78,7 +81,7 @@ Project-context fields are added only when the event is associated with a specif
 | `project_name` | WHEN_PROJECT_CONTEXT_EXISTS | canonical development identity from `project.projectName || project.name` |
 | `offer_name` | WHEN_PROJECT_CONTEXT_EXISTS | exact offer/card identity from `project.name` |
 
-Do not invent a slug or synthetic product ID merely for Measurement. A future governed product registry may add a stable identifier; until then, the canonical project and offer names already present in the project data model are the identity source.
+Do not invent a slug or synthetic development ID merely for Measurement. A future governed product registry may add a stable development identifier; until then, the canonical project and offer names already present in the project data model are the identity source.
 
 ## 4. Funnel-stage enum
 
@@ -450,21 +453,22 @@ This mapping is descriptive. No JavaScript/GTM mutation is made by MNT-M2-03.
 MNT-M2-09/MNT-M2-10 must prove at minimum:
 
 1. each semantic user occurrence emits no more than one canonical source event of that semantic type;
-2. internal programmatic control synchronization does not create duplicate filter events;
-3. `mnt_catalog_search` is not emitted on every keystroke and carries no raw query text;
-4. project/offer identity matches the governed data model when present;
-5. WhatsApp/form intents are not counted as leads;
-6. `mnt_form_start` fires at most once per document/form instance;
-7. `mnt_form_submit_attempt` requires a real observable submit initiation;
-8. `mnt_lead_success` requires a proven Green success signal and occurs once per accepted lead occurrence;
-9. no visitor PII is exposed in dataLayer event parameters;
-10. canonical-host and Consent Mode controls from MNT-M2-02 remain intact.
+2. every event carries `page_identity`, `product_identity`, `route`, `funnel_stage`, taxonomy version and one `mnt_event_id`;
+3. internal programmatic control synchronization does not create duplicate filter events;
+4. `mnt_catalog_search` is not emitted on every keystroke and carries no raw query text;
+5. project/offer identity matches the governed data model when present;
+6. WhatsApp/form intents are not counted as leads;
+7. `mnt_form_start` fires at most once per document/form instance;
+8. `mnt_form_submit_attempt` requires a real observable submit initiation;
+9. `mnt_lead_success` requires a proven Green success signal and occurs once per accepted lead occurrence;
+10. no visitor PII is exposed in dataLayer event parameters;
+11. canonical-host and Consent Mode controls from MNT-M2-02 remain intact.
 
 ## 13. Relationship to RESF C11
 
 The pinned RESF tracking-contract template requires page identity, product identity, route, funnel stage, events, lead-validity rule, event-id policy, destinations, attribution and consent dependencies.
 
-MNT-M2-03 satisfies the event-taxonomy portion and carries forward the MNT-M2-02 event-identity/transport rules. It intentionally does not claim the entire C11 tracking contract complete because:
+MNT-M2-03 explicitly provides page identity, product identity, route, funnel stage and canonical event semantics, and carries forward the MNT-M2-02 event-identity/transport rules. It intentionally does not claim the entire C11 tracking contract complete because:
 
 - primary/secondary conversion roles are MNT-M2-04;
 - GA4/Meta destination ownership is MNT-M2-05/MNT-M2-06;
@@ -481,6 +485,7 @@ MNT-M2-03 design exit criteria are satisfied because this document defines:
 
 - canonical event names;
 - stable semantic definitions;
+- page and product identity;
 - funnel-stage vocabulary;
 - common event envelope;
 - controlled parameter enums;
