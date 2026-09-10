@@ -104,16 +104,17 @@ Query rows are partial. Volume is insufficient for trend, causality or improveme
 
 Current lifecycle authority is `docs/sfjm/CURRENT_PROGRAM_STATE.json`.
 
-When the MNT-M2-03 revision is integrated into canonical `main`, the supported state is:
+When the MNT-M2-04 revision is integrated into canonical `main`, the supported state is:
 
 ```text
 MNT-M2-01 = COMPLETE
 MNT-M2-02 = COMPLETE
 MNT-M2-03 = COMPLETE
+MNT-M2-04 = COMPLETE
 MNT-M2-07 = COMPLETE
 MNT-M2-08 = COMPLETE
 MNT-M2-09 = PARTIAL_IMPLEMENTED
-MNT-M2-04 = PLANNED_NOT_AUTHORIZED / NEXT
+MNT-M2-05 = PARTIAL_EVIDENCE / NEXT / EXECUTION_NOT_AUTHORIZED
 ```
 
 Evidence chain:
@@ -121,45 +122,60 @@ Evidence chain:
 - `docs/measurement/MNT_M2_01_TRACKING_RUNTIME_INVENTORY_2026-09-10.md` — historical pre-GTM T0 inventory;
 - `docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md` — GTM `GTM-PGCR4R47`, Version 4, Consent Mode published and validated;
 - `docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md` — accepted transport/dedup architecture;
-- `docs/measurement/MNT_M2_03_CANONICAL_EVENT_TAXONOMY_V1_2026-09-10.md` — canonical event taxonomy v1.
+- `docs/measurement/MNT_M2_03_CANONICAL_EVENT_TAXONOMY_V1_2026-09-10.md` — canonical event taxonomy v1;
+- `docs/measurement/MNT_M2_04_PRIMARY_SECONDARY_CONVERSIONS_V1_2026-09-10.md` — project-level primary/secondary conversion classification v1.
 
 Current Measurement interpretation:
 
-| Area | Current state when MNT-M2-03 is canonical | Remaining obligation |
+| Area | Current state when MNT-M2-04 is canonical | Remaining obligation |
 |---|---|---|
 | GTM/Consent | PUBLISHED / VALIDATED | preserve baseline; destination behavior still needs later QA |
 | Transport/dedup | ACCEPTED DESIGN | implement under MNT-M2-09; prove under MNT-M2-10 |
-| Event taxonomy | ACCEPTED DESIGN | map/implement only after later gates |
-| Conversions | OPEN | MNT-M2-04 primary/secondary classification |
-| GTM/GA4 ownership | PARTIAL_EVIDENCE | MNT-M2-05 |
+| Event taxonomy | ACCEPTED DESIGN | implement only after later gates |
+| Conversion roles | ACCEPTED DESIGN | preserve primary/secondary/non-conversion semantics in destination mappings |
+| GTM/GA4 ownership | PARTIAL_EVIDENCE / NEXT | MNT-M2-05 completion work after explicit authorization |
 | Meta ownership | OPEN | MNT-M2-06 |
-| Lead success signal | NOT_YET_PROVEN | stable non-invasive Green Form 46 success signal before `mnt_lead_success` implementation |
+| Lead success signal | NOT_YET_PROVEN | stable non-invasive Green Form 46 success signal before primary conversion implementation |
 | Full tracking implementation | PARTIAL | MNT-M2-09 |
 | End-to-end Measurement QA | OPEN | MNT-M2-10 |
 
-Canonical event source vocabulary v1:
+Canonical conversion-role contract:
 
 ```text
-mnt_page_view
-mnt_section_click
-mnt_catalog_filter
-mnt_catalog_search
-mnt_intent
-mnt_form_start
-mnt_form_submit_attempt
-mnt_lead_success
+PRIMARY
+  mnt_lead_success
+
+SECONDARY
+  mnt_intent:request_conditions
+  mnt_intent:request_project_conditions
+  mnt_intent:negotiate_scenario
+  mnt_intent:schedule_visit
+  mnt_intent:whatsapp_contact
+
+NONE
+  mnt_page_view
+  mnt_section_click
+  mnt_catalog_filter
+  mnt_catalog_search
+  mnt_intent:project_interest
+  mnt_form_start
+  mnt_form_submit_attempt
 ```
 
 Key controls:
 
 ```text
+only verified Form 46 success may become primary conversion
+secondary conversion != verified lead
 raw catalogue search text != Measurement parameter
 visitor name/email/phone/form values != Measurement parameter
-CTA / WhatsApp / submit attempt != lead
-only verified Form 46 success may become mnt_lead_success
+property/offer price != conversion value
+monetary lead conversion value = NOT_DEFINED
 Green /page/view != project business event
 YouTube telemetry != project conversion
 ```
+
+Project-level conversion roles do not automatically configure GA4 key events, Google Ads action optimization roles or Meta event mappings.
 
 ## 7. Program relationship — current overlay
 
@@ -168,34 +184,34 @@ YouTube telemetry != project conversion
 - current-state overlay: `docs/sfjm/CURRENT_PROGRAM_STATE.json`;
 - read model: `docs/sfjm/PROJECT_READ_MODEL.json`.
 
-Planning progress when MNT-M2-03 is integrated:
+Planning progress when MNT-M2-04 is integrated:
 
 ```text
 forecast total = 1240h
-accepted scope-equivalent = 328h
-remaining forecast = 912h
-progress = 26.45%
+accepted scope-equivalent = 336h
+remaining forecast = 904h
+progress = 27.10%
 ```
 
 Hours are planning/scope-equivalent, not an actual timesheet.
 
 ## 8. Current gaps and residuals
 
-1. Primary/secondary conversion classification remains open under MNT-M2-04.
-2. GA4 ownership/property/configuration remains incomplete; Meta ownership remains open.
-3. Canonical event taxonomy is defined but runtime event instrumentation is not thereby implemented.
-4. `mnt_lead_success` requires a stable, non-invasive Green Form 46 success signal before implementation.
+1. GA4 ownership/property/configuration remains incomplete under MNT-M2-05 despite existing GTM evidence.
+2. Meta ownership remains open under MNT-M2-06.
+3. Conversion roles are defined but no destination is thereby configured.
+4. `mnt_lead_success` is the sole primary conversion and requires a stable, non-invasive Green Form 46 success signal before implementation.
 5. Transport/dedup runtime controls remain to be implemented under MNT-M2-09 and proven under MNT-M2-10.
-6. GTM Consent Mode state handling is proven, while site-wide third-party telemetry gating remains a separate residual.
-7. Search technical residuals remain: canonical client-side, sitemap absent, `www` 301/308 not proven.
-8. GSC T0 volume remains too low for trend inference.
-9. Historical M0 hours are retrospective scope-equivalent estimates, not actual time records.
+6. No monetary lead conversion value is defined; property/offer prices are not conversion value.
+7. GTM Consent Mode state handling is proven, while site-wide third-party telemetry gating remains a separate residual.
+8. Search technical residuals remain: canonical client-side, sitemap absent, `www` 301/308 not proven.
+9. GSC T0 volume remains too low for trend inference.
 10. Deferred RESF modules do not govern implementation until explicitly adopted.
 
 ## 9. Authorization boundary
 
-MNT-M2-03 completion does not authorize MNT-M2-04 or any runtime Measurement mutation.
+MNT-M2-04 completion does not authorize MNT-M2-05 completion work or any runtime Measurement mutation.
 
 Further GTM configuration, GA4, Meta Pixel/Dataset/CAPI, Green Pixel/integration changes, Google Ads, DNS, Search Console mutation, Vercel Production, Green publication, campaign/spend and external automation remain separately gated.
 
-`MNT-M2-03 COMPLETE != MNT-M2-04 AUTHORIZED != MNT-M2-09 IMPLEMENTED != MNT-M2-10 VALIDATED`.
+`MNT-M2-04 COMPLETE != MNT-M2-05 AUTHORIZED != MNT-M2-09 IMPLEMENTED != MNT-M2-10 VALIDATED`.

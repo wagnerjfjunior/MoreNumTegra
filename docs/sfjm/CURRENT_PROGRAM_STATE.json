@@ -5,39 +5,39 @@
   "state_observed_at": "2026-09-10",
   "decision_anchor": {
     "type": "PR_LIFECYCLE_ACCEPTANCE_TARGET",
-    "scope": "MNT-M2-03 canonical event taxonomy",
-    "authorization": "Product Authority explicitly authorized MNT-M2-03 start on 2026-09-10",
-    "canonical_main_at_start": "df7ed839c6872644560775cbb5cfe1e0d5c76b5c",
-    "evidence": "docs/measurement/MNT_M2_03_CANONICAL_EVENT_TAXONOMY_V1_2026-09-10.md",
-    "meaning": "When this revision is integrated into canonical main through its PR lifecycle, MNT-M2-03 is COMPLETE. The task is design-only and performs no runtime Measurement mutation."
+    "scope": "MNT-M2-04 primary and secondary conversion classification",
+    "authorization": "Product Authority explicitly authorized MNT-M2-04 start on 2026-09-10",
+    "canonical_main_at_start": "8c68ea8406a88cb84f873f364c0305a3eba5f7ab",
+    "evidence": "docs/measurement/MNT_M2_04_PRIMARY_SECONDARY_CONVERSIONS_V1_2026-09-10.md",
+    "meaning": "When this revision is integrated into canonical main through its PR lifecycle, MNT-M2-04 is COMPLETE. The task is design-only and performs no runtime Measurement mutation."
   },
   "program_state": "ACTIVE",
   "current_execution": {
     "active_phase_id": "MNT-M2",
     "active_task_id": null,
-    "immediate_execution_authority": "NONE_FOR_MNT_M2_04",
-    "reason": "MNT-M2-03 is accepted complete when this revision is in canonical main. MNT-M2-04 primary/secondary conversion definition remains a separate Product Authority gate."
+    "immediate_execution_authority": "NONE_FOR_MNT_M2_05",
+    "reason": "MNT-M2-04 is accepted complete when this revision is in canonical main. MNT-M2-05 GTM/GA4 ownership completion work remains a separate Product Authority gate despite existing partial GTM evidence."
   },
   "next": {
     "phase_id": "MNT-M2",
     "phase_label": "Measurement Foundation & Consent",
     "phase_state": "ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION",
-    "task_id": "MNT-M2-04",
-    "task_label": "Define primary and secondary conversions",
-    "task_state": "PLANNED_NOT_AUTHORIZED",
-    "safe_action": "Obtain explicit Product Authority authorization before starting MNT-M2-04. Do not classify or implement GA4/Ads/Meta conversions merely because the event taxonomy is defined.",
-    "mutation_boundary": "No additional GTM, GA4, Meta Pixel/Dataset/CAPI, Green Pixel, Google Ads, DNS, Search Console, Vercel Production or Green production mutation is authorized by MNT-M2-03 design."
+    "task_id": "MNT-M2-05",
+    "task_label": "Define ownership for MoreNumTegra GTM and GA4",
+    "task_state": "PARTIAL_EVIDENCE / EXECUTION_NOT_AUTHORIZED",
+    "safe_action": "Obtain explicit Product Authority authorization before completing MNT-M2-05 GTM/GA4 ownership and property/configuration decisions. Existing GTM container evidence does not authorize GA4 creation or further GTM mutation.",
+    "mutation_boundary": "No additional GTM, GA4, Meta Pixel/Dataset/CAPI, Green Pixel, Google Ads, DNS, Search Console, Vercel Production or Green production mutation is authorized by MNT-M2-04 design."
   },
   "progress": {
     "forecast_total_hours": 1240,
-    "accepted_scope_equivalent_hours": 328,
-    "remaining_forecast_hours": 912,
-    "accepted_percent": 26.4516129032,
-    "display_percent": 26.45,
-    "basis": "MNT-M0 160h + MNT-M1 96h + MNT-M2-01 8h + MNT-M2-02 16h + MNT-M2-03 16h + MNT-M2-07 16h + MNT-M2-08 16h accepted scope-equivalent divided by 1240h total forecast",
+    "accepted_scope_equivalent_hours": 336,
+    "remaining_forecast_hours": 904,
+    "accepted_percent": 27.0967741935,
+    "display_percent": 27.10,
+    "basis": "MNT-M0 160h + MNT-M1 96h + MNT-M2-01 8h + MNT-M2-02 16h + MNT-M2-03 16h + MNT-M2-04 8h + MNT-M2-07 16h + MNT-M2-08 16h accepted scope-equivalent divided by 1240h total forecast",
     "semantics": "PLANNING_FORECAST_NOT_ACTUAL_TIMESHEET",
     "effective_when": "THIS_REVISION_IS_IN_CANONICAL_MAIN",
-    "partial_work_rule": "MNT-M2-09 partial implementation contributes 0 accepted hours until the task exit criteria are fully accepted."
+    "partial_work_rule": "MNT-M2-05 partial evidence and MNT-M2-09 partial implementation contribute 0 accepted hours until their task exit criteria are fully accepted."
   },
   "milestone_state_overrides": {
     "MNT-M0": "COMPLETE",
@@ -53,7 +53,7 @@
     "MNT-M2-01": "COMPLETE",
     "MNT-M2-02": "COMPLETE",
     "MNT-M2-03": "COMPLETE",
-    "MNT-M2-04": "PLANNED_NOT_AUTHORIZED",
+    "MNT-M2-04": "COMPLETE",
     "MNT-M2-05": "PARTIAL_EVIDENCE",
     "MNT-M2-06": "PLANNED",
     "MNT-M2-07": "COMPLETE",
@@ -75,6 +75,7 @@
     "MNT-M2-01",
     "MNT-M2-02",
     "MNT-M2-03",
+    "MNT-M2-04",
     "MNT-M2-07",
     "MNT-M2-08"
   ],
@@ -105,7 +106,7 @@
     },
     "mnt_m2_03_event_taxonomy": {
       "ref": "docs/measurement/MNT_M2_03_CANONICAL_EVENT_TAXONOMY_V1_2026-09-10.md",
-      "state": "ACCEPTED_DESIGN_WHEN_IN_CANONICAL_MAIN",
+      "state": "ACCEPTED_DESIGN",
       "schema_version": 1,
       "canonical_events": [
         "mnt_page_view",
@@ -119,6 +120,28 @@
       ],
       "lead_validity": "ONLY_VERIFIED_GREEN_FORM46_SUCCESS",
       "pii_policy": "NO_VISITOR_PII_OR_RAW_FREE_FORM_SEARCH_TEXT_IN_EVENT_PARAMETERS"
+    },
+    "mnt_m2_04_conversion_classification": {
+      "ref": "docs/measurement/MNT_M2_04_PRIMARY_SECONDARY_CONVERSIONS_V1_2026-09-10.md",
+      "state": "ACCEPTED_DESIGN_WHEN_IN_CANONICAL_MAIN",
+      "primary": ["mnt_lead_success"],
+      "secondary_intent_types": [
+        "request_conditions",
+        "request_project_conditions",
+        "negotiate_scenario",
+        "schedule_visit",
+        "whatsapp_contact"
+      ],
+      "explicit_non_conversions": [
+        "mnt_page_view",
+        "mnt_section_click",
+        "mnt_catalog_filter",
+        "mnt_catalog_search",
+        "mnt_intent:project_interest",
+        "mnt_form_start",
+        "mnt_form_submit_attempt"
+      ],
+      "conversion_value_policy": "NO_MONETARY_VALUE_DEFINED"
     }
   },
   "issues": [
@@ -127,7 +150,7 @@
       "class": "REQUIRED_CURRENT",
       "scope": "MNT-M2",
       "state": "OPEN",
-      "label": "Transport and canonical event taxonomy are accepted, but conversion classification, destination ownership, full implementation and end-to-end Measurement QA remain incomplete"
+      "label": "Transport, canonical event taxonomy and conversion roles are accepted, but destination ownership, full implementation and end-to-end Measurement QA remain incomplete"
     },
     {
       "id": "MNT-RESIDUAL-MEASUREMENT-DUPLICATION",
@@ -139,10 +162,10 @@
     },
     {
       "id": "MNT-ISSUE-LEAD-SUCCESS-SIGNAL",
-      "class": "REQUIRED_BEFORE_LEAD_EVENT_IMPLEMENTATION",
+      "class": "REQUIRED_BEFORE_PRIMARY_CONVERSION_IMPLEMENTATION",
       "scope": "MNT-M2-09 / MNT-M5",
       "state": "OPEN",
-      "label": "mnt_lead_success is defined semantically, but a stable non-invasive Green Form 46 success signal is not yet canonically proven",
+      "label": "mnt_lead_success is the sole primary conversion, but a stable non-invasive Green Form 46 success signal is not yet canonically proven",
       "resolution_condition": "Prove a stable Green success signal without intercepting or duplicating the native Form 46 lifecycle before implementing mnt_lead_success"
     },
     {
@@ -155,9 +178,9 @@
     {
       "id": "MNT-GATE-M2-NEXT",
       "class": "FUTURE_GATE",
-      "scope": "MNT-M2-04",
+      "scope": "MNT-M2-05",
       "state": "NOT_AUTHORIZED",
-      "label": "MNT-M2-04 primary/secondary conversion definition requires explicit Product Authority authorization"
+      "label": "MNT-M2-05 GTM/GA4 ownership completion work requires explicit Product Authority authorization despite existing partial GTM evidence"
     }
   ],
   "state_precedence": {
