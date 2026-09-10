@@ -6,79 +6,62 @@
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
 - Release comercial atual: `18cfab98e01be29c86d78d08f2f5035a8da70444`
 - Programa: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
-- Estado: `MNT-M1_RESF_ADOPTION_RECONCILIATION`
+- Estado: `MNT-M1_COMPLETE / MNT-M2_PLANNED_NOT_AUTHORIZED`
+- MNT-M1 closure anchor: PR `#39` / merge `dba0de3bfefc7aec90c5a88588c54eae4317c61f`
 
 ## 1. Estado de entrada
 
 O V1 continua operacional em produção comercial Green e Search/indexability P0-B permanece `PASS_WITH_RESIDUAL_RISK`.
 
-O programa completo está definido em:
+MNT-M1 foi concluído: adoção RESF v1 seletiva, reconciliação inicial, GSC T0, WBS completa e contratos machine-readable foram publicados e mergeados na PR #39.
 
+Current-state overlay:
+`docs/sfjm/CURRENT_PROGRAM_STATE.json`.
+
+Estrutura do programa:
 - `docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md`;
 - `docs/sfjm/PROGRAM_TASK_GRAPH.json`;
-- `docs/sfjm/PROGRAM_TASK_GRAPH.md`.
-
-A adoção RESF está definida em:
-
-- `docs/frameworks/resf/ADOPTION.yaml`;
-- `docs/frameworks/resf/ADOPTION_BASELINE.md`.
-
-GSC T0:
-`docs/evidence/search/GSC_BASELINE_2026-09-10.md`.
+- `docs/sfjm/PROJECT_READ_MODEL.json`.
 
 ## 2. Única próxima ação segura
 
-Concluir **MNT-M1 — RESF Adoption & Existing-State Reconciliation** como mudança documental/governança bounded.
+A próxima ação é uma **decisão explícita da Product Authority sobre o início bounded de MNT-M2 — Measurement Foundation & Consent em modo READ_ONLY / DESIGN**.
 
-Escopo atual:
+Até essa autorização existir:
 
-1. validar consistência WBS <-> machine-readable task graph;
-2. validar somatórios de horas e cálculo de progresso;
-3. validar `ADOPTION.yaml` contra o schema canônico do RESF v1;
-4. validar que o provider está pinado em SHA imutável;
-5. validar que estados históricos não foram promovidos além da evidência;
-6. validar GSC T0 e suas limitações;
-7. executar revisão documental independente do exact head da PR;
-8. adjudicar P0/P1 documentais;
-9. somente depois seguir os gates separados de Ready e merge exigidos pela governança.
+```text
+MNT-M2 = PLANNED_NOT_AUTHORIZED
+CURRENT_ACTIVE_PHASE = NONE
+CURRENT_ACTIVE_TASK = NONE
+NEXT_TASK_CANDIDATE = MNT-M2-01
+```
 
-Nenhum runtime deve ser modificado por MNT-M1.
+O primeiro pacote de MNT-M2, quando autorizado, poderá cobrir somente desenho/levantamento read-only:
 
-## 3. Condição de saída MNT-M1
+1. inventário do tracking já presente no runtime;
+2. arquitetura de transporte e prevenção de duplicidade;
+3. event taxonomy;
+4. primary/secondary conversions;
+5. ownership de GTM/GA4/Meta;
+6. consent model/LGPD;
+7. contrato de QA denied/granted.
 
-MNT-M1 pode ser encerrado quando:
+## 3. Progresso programático após MNT-M1
 
-- manifesto de adoção estiver schema-valid;
-- WBS e task graph forem semanticamente equivalentes;
-- total = `1240h`;
-- accepted scope-equivalent = `160h`;
-- remaining forecast = `1080h`;
-- pre-reconciliation progress = `12.90%`;
-- provenance e effort class estiverem explícitos;
-- nenhum P0/P1 documental permanecer aberto;
-- lifecycle da PR tiver sido concluído sob autorizações apropriadas.
+```text
+forecast total                = 1240h
+MNT-M0 accepted               = 160h
+MNT-M1 accepted               = 96h
+accepted scope-equivalent     = 256h
+remaining forecast            = 984h
+program progress              = 20.65%
+```
 
-## 4. Próxima fase após MNT-M1
+Essas horas são planejamento/scope-equivalent, não timesheet real.
 
-Somente após o fechamento canônico de MNT-M1, a próxima fase planejada é:
+## 4. Gates externos preservados
 
-`MNT-M2 — Measurement Foundation & Consent`.
-
-A primeira parte de MNT-M2 permanece `READ_ONLY / DESIGN`:
-
-- inventário de tracking live;
-- arquitetura de transporte sem duplicidade;
-- event taxonomy;
-- primary/secondary conversions;
-- ownership de GTM/GA4/Meta;
-- consent model/LGPD;
-- QA denied/granted.
-
-`MNT-M2 PLANNED != TRACKING IMPLEMENTATION AUTHORIZED`.
-
-## 5. Gates externos preservados
-
-Exigem autorização específica antes de mutação:
+MNT-M1 encerrado **não** autoriza:
 
 - GTM;
 - GA4;
@@ -88,11 +71,14 @@ Exigem autorização específica antes de mutação:
 - Google Ads;
 - campanha/spend;
 - DNS;
-- Search Console mutation;
+- mutação Search Console;
 - Vercel Production;
-- Green commercial production.
+- Green commercial production;
+- FECH.AI/n8n/Make.
 
-## 6. Search residual risk preservado
+Cada mutação continua exigindo autorização específica depois do desenho/evidência aplicável.
+
+## 5. Search residual risk preservado
 
 Sem reiniciar P0-B:
 
@@ -101,28 +87,28 @@ Sem reiniciar P0-B:
 - `www` sem HTTP 301/308 comprovado;
 - warning `web-share` histórico.
 
-## 7. Condições de parada
+## 6. Condições de parada
 
 Parar diante de:
 
-- divergência entre WBS e task graph;
-- manifesto RESF inválido;
-- provider ref mutável;
-- horas sem provenance/semântica;
-- status não sustentado por evidência;
-- nova mutação de runtime implícita;
-- necessidade de autorização não concedida;
-- dado externo não verificado.
+- tentativa de iniciar MNT-M2 sem autorização explícita;
+- estado/hora inventado por consumer;
+- divergência material entre current-state overlay, read model, handoff e status;
+- mutação externa implícita;
+- dado externo não verificado;
+- tentativa de tratar planejamento como implementação, deploy ou validação.
 
-## 8. Sequência do programa
+## 7. Sequência do programa
 
 ```text
 MNT-M0 COMPLETE
--> MNT-M1 ACTIVE / CURRENT
--> MNT-M2 Measurement Foundation & Consent
--> MNT-M3 Intelligence / Product Truth / Search Contract
--> MNT-M4 IA / Content / Schema / GEO-AEO / Linking
--> MNT-M5 UX / Performance / Conversion / Lead / CRM
--> MNT-M6 Attribution / Paid Media Readiness
--> MNT-M7 QA / Release / Observability / Learning Loop
+-> MNT-M1 COMPLETE
+-> MNT-M2 PLANNED_NOT_AUTHORIZED / NEXT
+-> MNT-M3 PLANNED
+-> MNT-M4 PLANNED
+-> MNT-M5 PLANNED
+-> MNT-M6 PLANNED
+-> MNT-M7 PLANNED
 ```
+
+`NEXT != AUTHORIZED_TO_EXECUTE`.
