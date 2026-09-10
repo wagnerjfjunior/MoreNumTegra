@@ -14,6 +14,7 @@
     "source_main_at_design": "4ad77e78ccfca32c9b7d32028042da2d328678bb",
     "adoption_merge_anchor": "dba0de3bfefc7aec90c5a88588c54eae4317c61f",
     "m2_02_start_main": "f0e89bfc159e7638347997b46290c919f2e5efc7",
+    "m2_02_acceptance_pr": 45,
     "current_consumer_observed_sha": "RESOLVE_LIVE",
     "current_consumer_observed_at": "RESOLVE_AT_CONSUMPTION",
     "staleness_rule": "IF_CONSUMER_OBSERVED_SHA_NE_LIVE_MAIN_THEN_STALE"
@@ -34,23 +35,24 @@
     "current_state_overlay": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
     "human_wbs": "docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md",
     "forecast_total_hours": 1240,
-    "accepted_scope_equivalent_hours_post_merge_intended": 312,
-    "remaining_forecast_hours_post_merge_intended": 928,
-    "accepted_percent_post_merge_intended": 25.16,
-    "effort_semantics": "PLANNING_FORECAST_NOT_ACTUAL_TIMESHEET"
+    "accepted_scope_equivalent_hours": 312,
+    "remaining_forecast_hours": 928,
+    "accepted_percent": 25.16,
+    "effort_semantics": "PLANNING_FORECAST_NOT_ACTUAL_TIMESHEET",
+    "effective_when": "THIS_REVISION_IS_IN_CANONICAL_MAIN"
   },
   "current": {
     "product_state": "GREEN_COMMERCIAL_V1_SEARCH_INDEXED / OPERATIONAL",
-    "program_state": "MNT-M2_ACTIVE / M2-02_COMPLETE_CANDIDATE",
+    "program_state": "MNT-M2_ACTIVE / M2-02_COMPLETE / WAITING_M2-03_AUTHORIZATION",
     "current_task_id": null,
     "next_task_id": "MNT-M2-03",
-    "next_safe_action": "Complete MNT-M2-02 PR lifecycle. After canonical acceptance, MNT-M2-03 canonical event taxonomy is the next candidate and requires explicit Product Authority authorization.",
+    "next_safe_action": "Obtain explicit Product Authority authorization before starting MNT-M2-03 canonical event taxonomy; no additional Measurement implementation is authorized by MNT-M2-02 completion.",
     "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md"
   },
   "phase_summary": [
     {"id":"MNT-M0","label":"V1 Foundation & Commercial Production","state":"COMPLETE","hours":160,"accepted_hours":160},
     {"id":"MNT-M1","label":"RESF Adoption & Existing-State Reconciliation","state":"COMPLETE","hours":96,"accepted_hours":96,"completion_anchor":"PR #39 / dba0de3bfefc7aec90c5a88588c54eae4317c61f"},
-    {"id":"MNT-M2","label":"Measurement Foundation & Consent","state":"ACTIVE","operational_state":"ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION","hours":144,"accepted_hours_post_merge_intended":56},
+    {"id":"MNT-M2","label":"Measurement Foundation & Consent","state":"ACTIVE","operational_state":"ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION","hours":144,"accepted_hours":56},
     {"id":"MNT-M3","label":"Intelligence, Product Truth & Search Contract","state":"PLANNED","hours":144,"accepted_hours":0},
     {"id":"MNT-M4","label":"IA, Content, Schema, GEO/AEO & Linking","state":"PLANNED","hours":208,"accepted_hours":0},
     {"id":"MNT-M5","label":"UX, Performance, Conversion, Lead & CRM","state":"PLANNED","hours":168,"accepted_hours":0},
@@ -59,7 +61,7 @@
   ],
   "task_state_summary": [
     {"id":"MNT-M2-01","state":"COMPLETE","accepted_hours":8,"evidence":"docs/measurement/MNT_M2_01_TRACKING_RUNTIME_INVENTORY_2026-09-10.md"},
-    {"id":"MNT-M2-02","state":"COMPLETE_CANDIDATE","accepted_hours_post_merge_intended":16,"evidence":"docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md"},
+    {"id":"MNT-M2-02","state":"COMPLETE","accepted_hours":16,"evidence":"docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md"},
     {"id":"MNT-M2-03","state":"PLANNED_NOT_AUTHORIZED","accepted_hours":0},
     {"id":"MNT-M2-04","state":"PLANNED","accepted_hours":0},
     {"id":"MNT-M2-05","state":"PARTIAL_EVIDENCE","accepted_hours":0},
@@ -76,7 +78,7 @@
       "scope": "MNT-M2",
       "state": "OPEN",
       "blocking_for_current_task": false,
-      "label": "Transport/dedup architecture is defined, but taxonomy, conversion definitions, ownership/implementation and end-to-end Measurement QA remain incomplete",
+      "label": "Transport/dedup architecture is accepted, but taxonomy, conversion definitions, ownership/implementation and end-to-end Measurement QA remain incomplete",
       "source": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
       "resolution_condition": "Complete MNT-M2-03/04/05/06/09/10 as applicable"
     },
@@ -93,10 +95,10 @@
     {
       "id": "MNT-RESIDUAL-MEASUREMENT-DUPLICATION",
       "class": "IMPLEMENTATION_CONTROL_PENDING",
-      "scope": "MNT-M2-02 / MNT-M2-09 / MNT-M2-10",
-      "state": "ARCHITECTURE_DEFINED / IMPLEMENTATION_NOT_YET_PROVEN",
+      "scope": "MNT-M2-09 / MNT-M2-10",
+      "state": "ARCHITECTURE_ACCEPTED / IMPLEMENTATION_NOT_YET_PROVEN",
       "blocking_for_current_task": false,
-      "label": "Canonical-host/single-dispatcher controls are designed against the T0 www/non-www duplicate risk; runtime enforcement is not yet proven",
+      "label": "Canonical-host/single-dispatcher controls are accepted against the T0 www/non-www duplicate risk; runtime enforcement is not yet proven",
       "source": "docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md",
       "resolution_condition": "Implement controls under MNT-M2-09 and prove them under MNT-M2-10"
     },
@@ -134,11 +136,11 @@
       "id": "MNT-GATE-M2-NEXT",
       "class": "FUTURE_GATE",
       "scope": "MNT-M2-03",
-      "state": "NOT_AUTHORIZED_BY_MNT_M2_02",
+      "state": "NOT_AUTHORIZED",
       "blocking_for_current_task": false,
-      "label": "MNT-M2-03 canonical event taxonomy requires explicit Product Authority authorization after MNT-M2-02 lifecycle acceptance",
+      "label": "MNT-M2-03 canonical event taxonomy requires explicit Product Authority authorization",
       "source": "docs/NEXT_SAFE_ACTION.md",
-      "resolution_condition": "Complete MNT-M2-02 lifecycle and obtain explicit MNT-M2-03 authority"
+      "resolution_condition": "Product Authority explicitly authorizes MNT-M2-03"
     },
     {
       "id": "MNT-GATE-EXTERNAL-MUTATIONS",
@@ -157,7 +159,7 @@
     {"id":"MNT-EVIDENCE-M1-CLOSURE","class":"PROGRAM_LIFECYCLE","state":"COMPLETE","ref":"PR #39 / dba0de3bfefc7aec90c5a88588c54eae4317c61f"},
     {"id":"MNT-EVIDENCE-M2-01-T0","class":"MEASUREMENT_RUNTIME_T0","state":"ACCEPTED_HISTORICAL_PRE_GTM","ref":"docs/measurement/MNT_M2_01_TRACKING_RUNTIME_INVENTORY_2026-09-10.md"},
     {"id":"MNT-EVIDENCE-GTM-CONSENT-T1","class":"GTM_CONSENT_RUNTIME_T1","state":"PUBLISHED_AND_VALIDATED","ref":"docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md"},
-    {"id":"MNT-EVIDENCE-M2-02","class":"MEASUREMENT_TRANSPORT_ARCHITECTURE","state":"COMPLETE_CANDIDATE","ref":"docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md"}
+    {"id":"MNT-EVIDENCE-M2-02","class":"MEASUREMENT_TRANSPORT_ARCHITECTURE","state":"ACCEPTED_DESIGN","ref":"docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md"}
   ],
   "resf": {
     "adoption_manifest": "docs/frameworks/resf/ADOPTION.yaml",
