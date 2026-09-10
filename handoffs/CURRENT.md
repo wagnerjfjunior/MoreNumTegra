@@ -1,17 +1,17 @@
 # Handoff Atual — MoreNumTegra
 
-- Status: `candidate MNT-M2-02 / pending PR lifecycle`
+- Status quando esta revisão estiver em `main`: `MNT-M2-02 COMPLETE / WAITING MNT-M2-03 AUTHORIZATION`
 - Atualizado em: `2026-09-10`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra`
 - Referência: `main` — resolver SHA live antes de agir
-- Main resolved at MNT-M2-02 start: `f0e89bfc159e7638347997b46290c919f2e5efc7`
+- MNT-M2-02 start main: `f0e89bfc159e7638347997b46290c919f2e5efc7`
+- Acceptance lifecycle: PR `#45`
 - Release comercial publicada: `18cfab98e01be29c86d78d08f2f5035a8da70444`
 - Produção comercial: `https://moretegra.com.br/`
 - Homologação Vercel: `https://morenumtegra.vercel.app/`
 - Programa: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
-- Fase atual: `MNT-M2 / ACTIVE`
-- Candidate atual: `MNT-M2-02 / COMPLETE_CANDIDATE`
-- Próxima task após aceite: `MNT-M2-03 / PLANNED_NOT_AUTHORIZED`
+- Fase atual: `MNT-M2 / ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION`
+- Próxima task: `MNT-M2-03 / PLANNED_NOT_AUTHORIZED`
 - Baseline funcional: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 - Baseline técnica: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
 - Vercel mode: `MANUAL_GATE_DRIVEN`
@@ -67,18 +67,16 @@ Cancelar = denied / denied / denied / denied
 Persistence after reload = PROVEN
 ```
 
-Canonical adjudication before MNT-M2-02:
+Canonical state:
 
 ```text
 MNT-M2-01 = COMPLETE
 MNT-M2-07 = COMPLETE
 MNT-M2-08 = COMPLETE
 MNT-M2-09 = PARTIAL_IMPLEMENTED
-accepted = 296h / 1240h
-progress = 23.87%
 ```
 
-## 3. MNT-M2-02 — transport/dedup candidate
+## 3. MNT-M2-02 — transport/dedup accepted design
 
 Product Authority explicitly authorized MNT-M2-02 start on `2026-09-10`.
 
@@ -95,25 +93,20 @@ www.moretegra.com.br = no project-owned business/page Measurement
 Green /page/view = platform telemetry / never forwarded as MoreNumTegra business event
 one project page-view path per canonical document load
 one semantic dataLayer origin per event occurrence
-mnt_event_id = reserved cross-destination dedup identity
+mnt_event_id = project correlation identity; vendor-native dedup remains destination-specific
 CTA_CLICK / SUBMIT_ATTEMPT != LEAD
 verified Green Form 46 success required for lead conversion
 YouTube operational telemetry != project conversion
 ```
 
-The historical Green double `/page/view` remains platform behavior. MNT-M2-02 controls future project-owned Measurement instead of claiming to alter Green telemetry.
+The historical Green double `/page/view` remains platform behavior. MNT-M2-02 controls future project-owned Measurement instead of claiming to alter Green telemetry or DNS redirect semantics.
 
-Runtime enforcement remains pending MNT-M2-09 and end-to-end proof remains MNT-M2-10.
+Runtime enforcement remains pending MNT-M2-09; end-to-end proof remains MNT-M2-10.
 
-Candidate lifecycle:
-
-```text
-MNT-M2-02 = COMPLETE_CANDIDATE / PENDING_PR_LIFECYCLE
-```
-
-If accepted:
+When this revision is canonical:
 
 ```text
+MNT-M2-02 = COMPLETE
 accepted = 312h / 1240h
 remaining = 928h
 progress = 25.16%
@@ -129,15 +122,15 @@ Entrypoints project-owned:
 - `docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md`;
 - `docs/NEXT_SAFE_ACTION.md`.
 
-Candidate state:
+State:
 
 ```text
 MNT-M0  COMPLETE
 MNT-M1  COMPLETE
-MNT-M2  ACTIVE
+MNT-M2  ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
   M2-01 COMPLETE
-  M2-02 COMPLETE_CANDIDATE
-  M2-03 PLANNED_NOT_AUTHORIZED / NEXT AFTER ACCEPTANCE
+  M2-02 COMPLETE
+  M2-03 PLANNED_NOT_AUTHORIZED / NEXT
   M2-07 COMPLETE
   M2-08 COMPLETE
   M2-09 PARTIAL_IMPLEMENTED
@@ -148,11 +141,9 @@ MNT-M3..M7 PLANNED
 
 ## 5. Próxima task
 
-After MNT-M2-02 canonical acceptance only:
-
 `MNT-M2-03 — Define canonical event taxonomy`
 
-MNT-M2-03 is not authorized by the MNT-M2-02 start/completion authority.
+MNT-M2-03 remains `PLANNED_NOT_AUTHORIZED`. It requires an explicit Product Authority start gate.
 
 ## 6. Search residuals preserved
 
@@ -167,8 +158,8 @@ These Search/DNS residuals are not silently solved by the Measurement canonical-
 
 ## 7. SFJM Workspace boundary
 
-Workspace is read-only derived representation. It must refresh only from a newly resolved exact MoreNumTegra `main` after this candidate lifecycle is canonical.
+Workspace is read-only derived representation. After PR #45 is merged, it must resolve the resulting exact MoreNumTegra `main` before refreshing its snapshot.
 
 ## 8. External gates preserved
 
-No further GTM, GA4, Meta/CAPI, Green Pixel, Google Ads/campaign/spend, DNS, Search Console mutation, Vercel Production, Green publication, FECH.AI/n8n/Make or secrets are authorized by this design task.
+No further GTM, GA4, Meta/CAPI, Green Pixel, Google Ads/campaign/spend, DNS, Search Console mutation, Vercel Production, Green publication, FECH.AI/n8n/Make or secrets are authorized by MNT-M2-02 completion.
