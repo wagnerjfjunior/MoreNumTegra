@@ -3,13 +3,12 @@
 - Data de referência: `2026-09-10`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra`
 - Referência: `main` — resolver SHA live antes de agir
-- MNT-M2-02 start main: `f0e89bfc159e7638347997b46290c919f2e5efc7`
-- Acceptance lifecycle: PR `#45`
+- MNT-M2-03 start main: `df7ed839c6872644560775cbb5cfe1e0d5c76b5c`
 - Release comercial publicada: `18cfab98e01be29c86d78d08f2f5035a8da70444`
 - Produto V1: `GREEN_COMMERCIAL_V1_SEARCH_INDEXED / OPERATIONAL`
 - Programa: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
 - Fase atual quando esta revisão estiver em main: `MNT-M2 — ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION`
-- Próxima task: `MNT-M2-03 — PLANNED_NOT_AUTHORIZED`
+- Próxima task: `MNT-M2-04 — PLANNED_NOT_AUTHORIZED`
 - Saúde operacional do V1: `verde`
 
 ## 1. Produção atual
@@ -27,6 +26,7 @@ Preservar:
 LIVE V1 OPERATIONAL != MNT-RESF PROGRAM COMPLETE
 PROGRAM PROGRESS != V1 PRODUCT READINESS
 DESIGN COMPLETE != RUNTIME IMPLEMENTED
+EVENT DEFINED != CONVERSION
 PARTIAL IMPLEMENTATION != TASK COMPLETE
 ```
 
@@ -48,8 +48,8 @@ MNT-M1  COMPLETE
 MNT-M2  ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
   MNT-M2-01  COMPLETE
   MNT-M2-02  COMPLETE
-  MNT-M2-03  PLANNED_NOT_AUTHORIZED / NEXT
-  MNT-M2-04  PLANNED
+  MNT-M2-03  COMPLETE
+  MNT-M2-04  PLANNED_NOT_AUTHORIZED / NEXT
   MNT-M2-05  PARTIAL_EVIDENCE
   MNT-M2-06  PLANNED
   MNT-M2-07  COMPLETE
@@ -63,90 +63,110 @@ Planning forecast:
 
 ```text
 forecast total                = 1240h
-accepted scope-equivalent     = 312h
-remaining forecast            = 928h
-program progress              = 25.16%
+accepted scope-equivalent     = 328h
+remaining forecast            = 912h
+program progress              = 26.45%
 ```
 
 Accepted M2 scope-equivalent:
 
 - `MNT-M2-01 = 8h`;
 - `MNT-M2-02 = 16h`;
+- `MNT-M2-03 = 16h`;
 - `MNT-M2-07 = 16h`;
 - `MNT-M2-08 = 16h`.
 
 `MNT-M2-09` remains partial and contributes `0h accepted`.
 
-## 3. MNT-M2-01 — T0 histórico preservado
+## 3. Accepted Measurement foundation
 
-Evidence:
-`docs/measurement/MNT_M2_01_TRACKING_RUNTIME_INVENTORY_2026-09-10.md`.
+### MNT-M2-01 — T0 historical inventory
+
+Evidence: `docs/measurement/MNT_M2_01_TRACKING_RUNTIME_INVENTORY_2026-09-10.md`.
 
 ```text
 HAR SHA-256 = c59f3a3c0c075412595bfda2dd1155a48fa0d0689f5f27264010076348bb7446
 Green /page/view = OBSERVED / PLATFORM_INJECTED
 GTM/GA4/Meta = NOT_OBSERVED_AT_T0
-YouTube telemetry = OBSERVED / THIRD_PARTY_MEDIA
-www -> non-www Green double page-view risk = historical input
+www -> non-www Green double page-view = historical risk input
 ```
 
 The T0 `GTM NOT_OBSERVED` statement remains bounded to that pre-GTM capture.
 
-## 4. GTM / Consent T1 — published and validated
+### MNT-M2-07 / MNT-M2-08 — GTM Consent T1
 
-Evidence:
-`docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md`.
+Evidence: `docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md`.
 
 ```text
 GTM_CONTAINER = GTM-PGCR4R47
 PUBLISHED_GTM_VERSION = 4
-GTM_CONSENT_MODE_STATE_HANDLING = IMPLEMENTED / PUBLISHED / VALIDATED
 DEFAULT = denied all four
 GREEN Continuar = granted all four
 GREEN Cancelar = denied all four
 Persistence after reload = PROVEN
 ```
 
-Canonical accepted state:
+### MNT-M2-02 — transport/dedup architecture
 
-```text
-MNT-M2-07 = COMPLETE
-MNT-M2-08 = COMPLETE
-MNT-M2-09 = PARTIAL_IMPLEMENTED
-```
+Evidence: `docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md`.
 
-## 5. MNT-M2-02 — accepted transport/dedup architecture
-
-Product Authority explicitly authorized MNT-M2-02 start on 2026-09-10. Acceptance lifecycle is PR #45.
-
-Evidence/design:
-
-`docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md`.
-
-Architecture:
+Accepted design:
 
 ```text
 PROJECT_BROWSER_DISPATCHER = GTM-PGCR4R47
 PROJECT_MEASUREMENT_CANONICAL_HOST = moretegra.com.br
 WWW_ALIAS_PROJECT_BUSINESS_MEASUREMENT = BLOCK
 GREEN_/page/view = PLATFORM_TELEMETRY / NOT_PROJECT_BUSINESS_EVENT
-PROJECT_PAGE_VIEW_OWNER = GTM / EXACTLY_ONE_PATH
+PROJECT_PAGE_VIEW = EXACTLY_ONE_PATH_PER_CANONICAL_DOCUMENT_LOAD
 SEMANTIC_EVENT_ORIGIN = ONE dataLayer EVENT
-mnt_event_id = PROJECT_CORRELATION_IDENTITY; VENDOR DEDUP IS DESTINATION-SPECIFIC
+mnt_event_id = PROJECT_CORRELATION_IDENTITY / VENDOR DEDUP DESTINATION-SPECIFIC
 CTA_CLICK / SUBMIT_ATTEMPT != LEAD
 ONLY_VERIFIED_FORM46_SUCCESS_MAY_BECOME_LEAD
-YOUTUBE_TELEMETRY != PROJECT_CONVERSION
 ```
 
-MNT-M2-02 does not modify Green telemetry or DNS. It defines the project-owned controls that future Measurement implementation must enforce.
+Runtime enforcement remains MNT-M2-09; end-to-end proof remains MNT-M2-10.
 
-Runtime enforcement remains pending MNT-M2-09 and proof remains MNT-M2-10.
+## 4. MNT-M2-03 — canonical event taxonomy
 
-## 6. Measurement remaining work
+Evidence/design:
+
+`docs/measurement/MNT_M2_03_CANONICAL_EVENT_TAXONOMY_V1_2026-09-10.md`.
+
+Canonical source-event vocabulary v1:
+
+```text
+mnt_page_view
+mnt_section_click
+mnt_catalog_filter
+mnt_catalog_search
+mnt_intent
+mnt_form_start
+mnt_form_submit_attempt
+mnt_lead_success
+```
+
+Key semantics:
+
+```text
+source event names are vendor-neutral
+one semantic event occurrence -> one mnt_event_id
+raw catalogue search text is forbidden from Measurement
+visitor name/email/telephone/form values are forbidden from event parameters
+project_name = project.projectName || project.name when project context exists
+offer_name = project.name
+CTA/WhatsApp/form intent != lead
+mnt_lead_success requires verified native Green Form 46 success
+```
+
+`mnt_lead_success` is defined but must not be implemented until a stable, non-invasive Green success signal is proven.
+
+MNT-M2-03 does not decide primary/secondary conversion classification or destination mappings.
+
+## 5. Measurement remaining work
 
 ```text
 TRANSPORT / DEDUP ARCHITECTURE = COMPLETE
-EVENT TAXONOMY = OPEN / MNT-M2-03
+CANONICAL EVENT TAXONOMY = COMPLETE
 PRIMARY / SECONDARY CONVERSIONS = OPEN / MNT-M2-04
 GTM / GA4 OWNERSHIP = PARTIAL / MNT-M2-05
 META OWNERSHIP = OPEN / MNT-M2-06
@@ -154,9 +174,9 @@ TRACKING IMPLEMENTATION = PARTIAL / MNT-M2-09
 END-TO-END MEASUREMENT QA = OPEN / MNT-M2-10
 ```
 
-No GA4, Google Ads or Meta implementation is authorized by MNT-M2-02 completion.
+No additional GTM, GA4, Google Ads or Meta implementation is authorized by MNT-M2-03 completion.
 
-## 7. Search / GSC
+## 6. Search / GSC
 
 P0-B remains `PASS_WITH_RESIDUAL_RISK`.
 
@@ -178,7 +198,7 @@ average position = 26.1
 
 Classification: `EARLY_DISCOVERY / INSUFFICIENT_VOLUME_FOR_TREND_OR_CAUSALITY_CLAIMS`.
 
-## 8. SFJM Workspace boundary
+## 7. SFJM Workspace boundary
 
 MoreNumTegra publishes project truth. Workspace consumes/renders it.
 
@@ -189,8 +209,8 @@ Consumer precedence:
 3. `PROGRAM_TASK_GRAPH.json` — hierarchy/planning hours;
 4. `NEXT_SAFE_ACTION.md` — execution authority.
 
-After PR #45 merge, Workspace must resolve the resulting exact MoreNumTegra main SHA before refreshing its snapshot.
+After this revision is merged, Workspace must resolve the resulting exact MoreNumTegra main SHA before refreshing its snapshot.
 
-## 9. External gates
+## 8. External gates
 
-Further GTM changes, GA4, Meta/CAPI, Green Pixel, Google Ads/spend, DNS, Search Console mutation, Vercel Production and Green publication remain separately gated.
+MNT-M2-04 and later tasks retain their own Product Authority gates. Further GTM changes, GA4, Meta/CAPI, Green Pixel, Google Ads/spend, DNS, Search Console mutation, Vercel Production and Green publication remain separately gated.
