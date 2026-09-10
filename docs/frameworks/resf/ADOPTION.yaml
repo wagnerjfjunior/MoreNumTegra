@@ -45,12 +45,14 @@ deferred_modules:
   - RESF-QA
   - RESF-OBSERVABILITY
 rejected_modules: []
-consumer_facts_source: 'MoreNumTegra canonical main: bootstrap/BOOTSTRAP_CANONICO.md; docs/baseline/FUNCTIONAL_BASELINE_V2.md; docs/baseline/TECHNICAL_BASELINE_V2_2.md; handoffs/CURRENT.md; docs/PROJECT_STATUS.md; docs/NEXT_SAFE_ACTION.md; docs/BLOCKED_ACTIONS.md; current governed evidence under docs/evidence/'
+consumer_facts_source: 'MoreNumTegra canonical main: bootstrap/BOOTSTRAP_CANONICO.md; docs/baseline/FUNCTIONAL_BASELINE_V2.md; docs/baseline/TECHNICAL_BASELINE_V2_2.md; handoffs/CURRENT.md; docs/PROJECT_STATUS.md; docs/NEXT_SAFE_ACTION.md; docs/BLOCKED_ACTIONS.md; current governed evidence under docs/evidence/ and docs/measurement/'
 runtime_authority: CONSUMER
 known_gaps:
-  - Measurement foundation is not yet implemented for MoreNumTegra.
-  - LGPD modal presence is observed but consent enforcement is not proven.
-  - GTM, GA4 and Meta ownership/configuration for MoreNumTegra remain unimplemented or unproven.
+  - Measurement foundation is partial rather than absent: GTM/Consent is published and validated, transport/dedup architecture is accepted, and canonical event taxonomy is accepted when the MNT-M2-03 revision is integrated; conversion classification, destination ownership, full implementation and end-to-end QA remain incomplete.
+  - GTM Consent Mode state handling is proven for default denied, Green Continuar granted, Green Cancelar denied and persistence; site-wide third-party telemetry gating remains not fully proven.
+  - GTM container GTM-PGCR4R47 is present; GA4 ownership/property/configuration is not yet complete and Meta Pixel/Dataset ownership remains unproven/open.
+  - Primary and secondary conversion classification remains open under MNT-M2-04.
+  - mnt_lead_success is defined semantically but a stable non-invasive Green Form 46 success signal is not yet canonically proven; runtime event implementation remains MNT-M2-09 and end-to-end Measurement QA remains MNT-M2-10.
   - Search technical residuals remain for static canonical capability, sitemap availability and www HTTP redirect semantics.
   - GSC evidence volume at the 2026-09-10 T0 baseline is insufficient for statistically meaningful trend claims.
   - Deferred RESF modules require explicit later adoption/reconciliation before they govern implementation work.
