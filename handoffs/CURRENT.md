@@ -1,17 +1,16 @@
 # Handoff Atual — MoreNumTegra
 
-- Status quando esta revisão estiver em `main`: `MNT-M2-02 COMPLETE / WAITING MNT-M2-03 AUTHORIZATION`
+- Status quando esta revisão estiver em `main`: `MNT-M2-03 COMPLETE / WAITING MNT-M2-04 AUTHORIZATION`
 - Atualizado em: `2026-09-10`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra`
 - Referência: `main` — resolver SHA live antes de agir
-- MNT-M2-02 start main: `f0e89bfc159e7638347997b46290c919f2e5efc7`
-- Acceptance lifecycle: PR `#45`
+- MNT-M2-03 start main: `df7ed839c6872644560775cbb5cfe1e0d5c76b5c`
 - Release comercial publicada: `18cfab98e01be29c86d78d08f2f5035a8da70444`
 - Produção comercial: `https://moretegra.com.br/`
 - Homologação Vercel: `https://morenumtegra.vercel.app/`
 - Programa: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
 - Fase atual: `MNT-M2 / ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION`
-- Próxima task: `MNT-M2-03 / PLANNED_NOT_AUTHORIZED`
+- Próxima task: `MNT-M2-04 / PLANNED_NOT_AUTHORIZED`
 - Baseline funcional: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 - Baseline técnica: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
 - Vercel mode: `MANUAL_GATE_DRIVEN`
@@ -40,89 +39,65 @@ Preservado:
 
 ## 2. Measurement / Consent aceito
 
-### T0 histórico — MNT-M2-01
+Evidence chain:
 
-`docs/measurement/MNT_M2_01_TRACKING_RUNTIME_INVENTORY_2026-09-10.md`
+- `docs/measurement/MNT_M2_01_TRACKING_RUNTIME_INVENTORY_2026-09-10.md` — T0 pre-GTM inventory;
+- `docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md` — GTM Consent Version 4 published/validated;
+- `docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md` — transport/dedup architecture;
+- `docs/measurement/MNT_M2_03_CANONICAL_EVENT_TAXONOMY_V1_2026-09-10.md` — canonical event taxonomy v1.
 
-```text
-HAR = c59f3a3c0c075412595bfda2dd1155a48fa0d0689f5f27264010076348bb7446
-Green /page/view = OBSERVED / PLATFORM_INJECTED
-GTM/GA4/Meta = NOT_OBSERVED_AT_T0
-www -> non-www generated two Green page-view writes with distinct page IDs
-```
-
-Esse `GTM NOT_OBSERVED` permanece prova histórica pre-GTM e não é verdade atual.
-
-### T1 — GTM Consent
-
-`docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md`
+Accepted foundations when this revision is in main:
 
 ```text
-GTM container = GTM-PGCR4R47
-Published version = 4
-Consent Mode = IMPLEMENTED / PUBLISHED / VALIDATED
-DEFAULT = denied / denied / denied / denied
-Continuar = granted / granted / granted / granted
-Cancelar = denied / denied / denied / denied
-Persistence after reload = PROVEN
-```
+GTM = GTM-PGCR4R47
+Consent Mode Version 4 = PUBLISHED / VALIDATED
+DEFAULT = denied all four
+Continuar = granted all four
+Cancelar = denied all four
+Persistence = PROVEN
 
-Canonical state:
-
-```text
-MNT-M2-01 = COMPLETE
-MNT-M2-07 = COMPLETE
-MNT-M2-08 = COMPLETE
-MNT-M2-09 = PARTIAL_IMPLEMENTED
-```
-
-## 3. MNT-M2-02 — transport/dedup accepted design
-
-Product Authority explicitly authorized MNT-M2-02 start on `2026-09-10`.
-
-Evidence/design:
-
-`docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md`
-
-Core architecture:
-
-```text
-GTM-PGCR4R47 = sole project-owned browser dispatcher
-moretegra.com.br = only eligible project Measurement production hostname
-www.moretegra.com.br = no project-owned business/page Measurement
-Green /page/view = platform telemetry / never forwarded as MoreNumTegra business event
+PROJECT_MEASUREMENT_HOST = moretegra.com.br
+www project business Measurement = BLOCK
+Green /page/view = platform telemetry
 one project page-view path per canonical document load
-one semantic dataLayer origin per event occurrence
-mnt_event_id = project correlation identity; vendor-native dedup remains destination-specific
-CTA_CLICK / SUBMIT_ATTEMPT != LEAD
-verified Green Form 46 success required for lead conversion
-YouTube operational telemetry != project conversion
+one semantic dataLayer event per occurrence
+mnt_event_id = project correlation identity
 ```
 
-The historical Green double `/page/view` remains platform behavior. MNT-M2-02 controls future project-owned Measurement instead of claiming to alter Green telemetry or DNS redirect semantics.
+## 3. MNT-M2-03 — event taxonomy accepted design
 
-Runtime enforcement remains pending MNT-M2-09; end-to-end proof remains MNT-M2-10.
-
-When this revision is canonical:
+Canonical source events v1:
 
 ```text
-MNT-M2-02 = COMPLETE
-accepted = 312h / 1240h
-remaining = 928h
-progress = 25.16%
+mnt_page_view
+mnt_section_click
+mnt_catalog_filter
+mnt_catalog_search
+mnt_intent
+mnt_form_start
+mnt_form_submit_attempt
+mnt_lead_success
 ```
+
+Core rules:
+
+```text
+lower_snake_case + mnt_ prefix
+vendor-neutral source semantics
+raw catalogue search text = FORBIDDEN IN MEASUREMENT
+visitor name/email/phone/form values = FORBIDDEN IN EVENT PARAMETERS
+programmatic filter synchronization != user event
+CTA/WhatsApp/form submit attempt != lead
+only verified Form 46 success may emit mnt_lead_success
+```
+
+`mnt_lead_success` is defined semantically, but runtime implementation remains blocked until a stable non-invasive Green success signal is proven.
+
+Primary/secondary conversion role is deliberately not assigned here; that is MNT-M2-04.
 
 ## 4. Programa / SFJM consumer
 
-Entrypoints project-owned:
-
-- `docs/sfjm/PROJECT_READ_MODEL.json`;
-- `docs/sfjm/CURRENT_PROGRAM_STATE.json`;
-- `docs/sfjm/PROGRAM_TASK_GRAPH.json`;
-- `docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md`;
-- `docs/NEXT_SAFE_ACTION.md`.
-
-State:
+State when this revision is canonical:
 
 ```text
 MNT-M0  COMPLETE
@@ -130,36 +105,55 @@ MNT-M1  COMPLETE
 MNT-M2  ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
   M2-01 COMPLETE
   M2-02 COMPLETE
-  M2-03 PLANNED_NOT_AUTHORIZED / NEXT
+  M2-03 COMPLETE
+  M2-04 PLANNED_NOT_AUTHORIZED / NEXT
+  M2-05 PARTIAL_EVIDENCE
+  M2-06 PLANNED
   M2-07 COMPLETE
   M2-08 COMPLETE
   M2-09 PARTIAL_IMPLEMENTED
+  M2-10 PLANNED
 MNT-M3..M7 PLANNED
+```
+
+Planning progress:
+
+```text
+forecast total = 1240h
+accepted = 328h
+remaining = 912h
+progress = 26.45%
 ```
 
 `PROGRAM_TASK_GRAPH` owns hierarchy/planning hours; `CURRENT_PROGRAM_STATE` owns lifecycle/progress; `NEXT_SAFE_ACTION` owns execution authority.
 
 ## 5. Próxima task
 
-`MNT-M2-03 — Define canonical event taxonomy`
+`MNT-M2-04 — Define primary and secondary conversions`
 
-MNT-M2-03 remains `PLANNED_NOT_AUTHORIZED`. It requires an explicit Product Authority start gate.
+MNT-M2-04 remains `PLANNED_NOT_AUTHORIZED`. It requires a separate explicit Product Authority start gate.
 
-## 6. Search residuals preserved
+## 6. Residuals preserved
 
-Unchanged:
+Measurement:
+
+- stable native Green Form 46 success signal for `mnt_lead_success` = `NOT_YET_PROVEN`;
+- runtime canonical-host/dedup enforcement = pending MNT-M2-09;
+- GA4 ownership/property/config = not yet completed;
+- Meta ownership = open;
+- end-to-end Measurement QA = open.
+
+Search:
 
 - canonical client-side;
 - sitemap unavailable;
 - `www` without proven HTTP 301/308 semantics;
 - historical `web-share` warning.
 
-These Search/DNS residuals are not silently solved by the Measurement canonical-host gate.
-
 ## 7. SFJM Workspace boundary
 
-Workspace is read-only derived representation. After PR #45 is merged, it must resolve the resulting exact MoreNumTegra `main` before refreshing its snapshot.
+Workspace is read-only derived representation. After this revision is merged, it must resolve the resulting exact MoreNumTegra `main` SHA before refreshing its snapshot.
 
 ## 8. External gates preserved
 
-No further GTM, GA4, Meta/CAPI, Green Pixel, Google Ads/campaign/spend, DNS, Search Console mutation, Vercel Production, Green publication, FECH.AI/n8n/Make or secrets are authorized by MNT-M2-02 completion.
+No further GTM, GA4, Meta/CAPI, Green Pixel, Google Ads/campaign/spend, DNS, Search Console mutation, Vercel Production, Green publication, FECH.AI/n8n/Make or secrets are authorized by MNT-M2-03 completion.
