@@ -25,35 +25,26 @@ The program forecast is a planning model, not a timesheet.
 - parent hours equal the sum of immediate child task hours;
 - parent/child hours must never be double-counted;
 - partial implementation contributes no accepted task hours until the task is accepted complete;
-- candidate task hours are not canonical accepted hours until merge;
 - `CURRENT_PROGRAM_STATE.json` owns current lifecycle/progress;
 - `PROGRAM_TASK_GRAPH.json` owns hierarchy/planning hours.
 
-Current accepted planning state before MNT-M2-02 lifecycle acceptance:
+Current planning forecast when this revision is integrated:
 
 | Phase | Name | State | Hours | Accepted |
 |---|---|---|---:|---:|
 | MNT-M0 | V1 Foundation & Commercial Production | COMPLETE | 160 | 160 |
 | MNT-M1 | RESF Adoption & Existing-State Reconciliation | COMPLETE | 96 | 96 |
-| MNT-M2 | Measurement Foundation & Consent | ACTIVE | 144 | 40 |
+| MNT-M2 | Measurement Foundation & Consent | ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION | 144 | 56 |
 | MNT-M3 | Intelligence, Product Truth & Search Contract | PLANNED | 144 | 0 |
 | MNT-M4 | IA, Content, Schema, GEO/AEO & Linking | PLANNED | 208 | 0 |
 | MNT-M5 | UX, Performance, Conversion, Lead & CRM | PLANNED | 168 | 0 |
 | MNT-M6 | Attribution & Paid Media Readiness | PLANNED | 128 | 0 |
 | MNT-M7 | QA, Release, Observability & Learning Loop | PLANNED | 192 | 0 |
-| **TOTAL** |  |  | **1240** | **296** |
+| **TOTAL** |  |  | **1240** | **312** |
 
-Canonical accepted/completed scope-equivalent effort: `296h`  
-Canonical remaining forecast: `944h`  
-Canonical program progress: `23.87%`
-
-If MNT-M2-02 is accepted and merged:
-
-```text
-accepted = 312h
-remaining = 928h
-progress = 25.16%
-```
+Accepted/completed scope-equivalent effort: `312h`  
+Remaining forecast: `928h`  
+Program progress: `25.16%`
 
 Program progress is not V1 product readiness. Commercial V1 remains operational.
 
@@ -88,15 +79,13 @@ Closure anchor: PR `#39`, merge `dba0de3bfefc7aec90c5a88588c54eae4317c61f`.
 | MNT-M1-07 | Publish consumer-readable WBS/task graph and continuity entrypoints | 16 | COMPLETE |
 | MNT-M1-08 | Schema/consistency review, documentation audit and PR lifecycle | 16 | COMPLETE |
 
-### MNT-M2 — Measurement Foundation & Consent — 144h — ACTIVE
-
-M2 has accepted work and one current complete candidate. Current lifecycle/progress must be read from `docs/sfjm/CURRENT_PROGRAM_STATE.json`.
+### MNT-M2 — Measurement Foundation & Consent — 144h — ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
 
 | ID | Activity | Hours | State |
 |---|---|---:|---|
 | MNT-M2-01 | Inventory tracking already present in live runtime | 8 | COMPLETE |
-| MNT-M2-02 | Define transport architecture and duplicate-event prevention | 16 | COMPLETE_CANDIDATE / PENDING_PR_LIFECYCLE |
-| MNT-M2-03 | Define canonical event taxonomy | 16 | PLANNED_NOT_AUTHORIZED / NEXT_AFTER_M2_02_ACCEPTANCE |
+| MNT-M2-02 | Define transport architecture and duplicate-event prevention | 16 | COMPLETE |
+| MNT-M2-03 | Define canonical event taxonomy | 16 | PLANNED_NOT_AUTHORIZED / NEXT |
 | MNT-M2-04 | Define primary and secondary conversions | 8 | PLANNED |
 | MNT-M2-05 | Define ownership for MoreNumTegra GTM and GA4 | 8 | PARTIAL_EVIDENCE |
 | MNT-M2-06 | Define ownership for Meta Pixel/Dataset | 8 | PLANNED |
@@ -105,13 +94,13 @@ M2 has accepted work and one current complete candidate. Current lifecycle/progr
 | MNT-M2-09 | Implement authorized tracking configuration | 24 | PARTIAL_IMPLEMENTED |
 | MNT-M2-10 | Execute end-to-end Measurement QA | 24 | PLANNED |
 
-Accepted M2 scope-equivalent remains `40h` until MNT-M2-02 merges. Post-merge intended accepted M2 scope-equivalent is `56h`.
+Accepted M2 scope-equivalent: `56h` from M2-01 + M2-02 + M2-07 + M2-08.
 
 Evidence chain:
 
 - `docs/measurement/MNT_M2_01_TRACKING_RUNTIME_INVENTORY_2026-09-10.md` — T0 pre-GTM inventory;
 - `docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md` — GTM/Consent T1 published + validated;
-- `docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md` — transport/dedup candidate architecture.
+- `docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md` — accepted transport/dedup design.
 
 MNT-M2-02 establishes:
 
@@ -122,12 +111,12 @@ www.moretegra.com.br = no project-owned business/page Measurement
 Green /page/view = platform telemetry, not business event origin
 one project page-view path per canonical document load
 one semantic dataLayer event per occurrence
-mnt_event_id = reserved cross-destination dedup identity
+mnt_event_id = project correlation identity; destination-specific dedup remains vendor-native
 verified Form 46 success required before lead conversion
 YouTube operational telemetry != project conversion
 ```
 
-Runtime enforcement is not claimed complete by this design. It belongs to authorized MNT-M2-09 implementation and MNT-M2-10 QA.
+Runtime enforcement is not claimed complete by MNT-M2-02. It belongs to authorized MNT-M2-09 implementation and MNT-M2-10 QA.
 
 ### MNT-M3 — Intelligence, Product Truth & Search Contract — 144h — PLANNED
 
@@ -210,8 +199,8 @@ MNT-M0 COMPLETE
 -> MNT-M1 COMPLETE
 -> MNT-M2 ACTIVE
      M2-01 COMPLETE
-     M2-02 COMPLETE_CANDIDATE / PENDING_PR_LIFECYCLE
-     M2-03 NEXT_AFTER_ACCEPTANCE / PLANNED_NOT_AUTHORIZED
+     M2-02 COMPLETE
+     M2-03 NEXT / PLANNED_NOT_AUTHORIZED
      M2-07 COMPLETE
      M2-08 COMPLETE
      M2-09 PARTIAL
@@ -234,7 +223,7 @@ The consumer should render:
 - hours/progress without parent-child double counting;
 - exact effort provenance;
 - current/next state separately from full tree;
-- partial/candidate implementation distinctly from COMPLETE;
+- partial implementation distinctly from COMPLETE;
 - canonical repository, observed SHA and observation timestamp.
 
 Workspace must not create, rename, flatten or infer missing project tasks.
