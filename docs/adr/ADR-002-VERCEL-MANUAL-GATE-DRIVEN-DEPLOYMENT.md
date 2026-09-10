@@ -1,11 +1,12 @@
 # ADR-002 — Vercel Manual Gate-Driven Deployment
 
-- Status: `CANDIDATE_IN_PR`; becomes `ACCEPTED` only after merge to `main`
+- Status: `ACCEPTED / OPERATIONALLY_VALIDATED`
 - Date: `2026-09-10`
 - Project: `MoreNumTegra`
 - Repository: `wagnerjfjunior/MoreNumTegra`
 - Decision authority: Product Authority authorization in project conversation on 2026-09-10
 - Canonical base at decision: `347b62298d30ba3567a76d3f48a815e9f0f5b26c`
+- Acceptance anchor: PR `#42` / merge `308470e786a10970b23763cf56f81c3bb92bbe5f`
 
 ## Context
 
@@ -37,15 +38,34 @@ The existing rewrite and response headers remain unchanged.
 
 ## Manual trigger
 
-A Vercel Deploy Hook for branch `main` has been created by the Product Authority in the Vercel project UI. Its URL is intentionally NOT stored in GitHub because possession of the hook URL permits triggering deployments.
+A Vercel Deploy Hook for branch `main` was created by the Product Authority in the Vercel project UI. Its URL is intentionally NOT stored in GitHub because possession of the hook URL permits triggering deployments.
 
 The hook is a deployment trigger, not a source of project truth. GitHub `main` remains canonical.
 
-Until a controlled test is completed, preserve:
+The Product Authority executed the retained hook manually on 2026-09-10. GitHub then exposed Vercel status `success` for canonical SHA `347b62298d30ba3567a76d3f48a815e9f0f5b26c`, supporting:
 
 ```text
-HOOK_CREATED_USER_REPORTED != HOOK_EXECUTION_VALIDATED
+MANUAL_HOOK_EXECUTION = VALIDATED
+HOOK_SECRET = NOT_STORED_IN_GITHUB
 ```
+
+## Automatic-deployment validation
+
+Validation evidence observed during the change lifecycle:
+
+1. commits on the candidate branch after `git.deploymentEnabled = false` produced no Vercel check-runs/statuses automatically;
+2. after PR #42 merged, merge SHA `308470e786a10970b23763cf56f81c3bb92bbe5f` likewise showed no Vercel commit status or pull-request workflow run attributable to an automatic Git deployment;
+3. subsequent repository-only reconciliation commits also did not create Vercel status entries.
+
+Therefore the supportable project state is:
+
+```text
+AUTO_GIT_DEPLOYMENT = DISABLED / VALIDATED_BY_OBSERVATION
+MANUAL_DEPLOY_HOOK = VALIDATED
+VERCEL_DEPLOYMENT_MODE = MANUAL_GATE_DRIVEN
+```
+
+This evidence is operational, not a guarantee against future Vercel platform behavior changes. Revalidate if the Vercel integration, project configuration or `vercel.json` policy changes.
 
 ## Operational flow
 
@@ -90,11 +110,12 @@ MAIN_MERGED != GREEN_PUBLISHED
 
 The V2.2 sequence remains valid, with Preview/Production deployments initiated manually at the appropriate gate rather than automatically on every Git event.
 
-## Validation criteria
+## Revalidation criteria
 
-The decision is operationally validated only when both are observed:
+Revalidate this ADR if any of the following changes materially:
 
-1. a subsequent Git commit/push does not create an automatic Vercel deployment;
-2. the retained Deploy Hook can still create the intended manual deployment when explicitly triggered.
-
-If either condition fails, do not claim `MANUAL_GATE_DRIVEN_VALIDATED`; investigate before relying on the policy.
+- `vercel.json` Git deployment policy;
+- Vercel Git integration settings;
+- repository/project linkage;
+- Deploy Hook rotation/recreation;
+- Vercel plan or platform behavior affecting deployment triggers.
