@@ -1,16 +1,17 @@
 # Handoff Atual — MoreNumTegra
 
-- Status: `atual após integração desta reconciliação`
+- Status quando esta revisão estiver em `main`: `MNT-M2-02 COMPLETE / WAITING MNT-M2-03 AUTHORIZATION`
 - Atualizado em: `2026-09-10`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra`
 - Referência: `main` — resolver SHA live antes de agir
-- Reconciliation base main: `34ddd9684608a0fe1e02edc5071fd6e40b5f2121`
+- MNT-M2-02 start main: `f0e89bfc159e7638347997b46290c919f2e5efc7`
+- Acceptance lifecycle: PR `#45`
 - Release comercial publicada: `18cfab98e01be29c86d78d08f2f5035a8da70444`
 - Produção comercial: `https://moretegra.com.br/`
 - Homologação Vercel: `https://morenumtegra.vercel.app/`
 - Programa: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
 - Fase atual: `MNT-M2 / ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION`
-- Próxima task candidata: `MNT-M2-02 / PLANNED_NOT_AUTHORIZED`
+- Próxima task: `MNT-M2-03 / PLANNED_NOT_AUTHORIZED`
 - Baseline funcional: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 - Baseline técnica: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
 - Vercel mode: `MANUAL_GATE_DRIVEN`
@@ -37,9 +38,7 @@ Preservado:
 - home indexada segundo evidência registrada;
 - Vercel auto Git deployment desabilitado e fluxo manual gate-driven validado.
 
-## 2. Measurement / Consent — estado reconciliado
-
-O snapshot anterior que dizia `Measurement not configured/proven` e `Consent enforcement not proven` ficou stale após execução em campo em 2026-09-10.
+## 2. Measurement / Consent aceito
 
 ### T0 histórico — MNT-M2-01
 
@@ -54,7 +53,7 @@ www -> non-www generated two Green page-view writes with distinct page IDs
 
 Esse `GTM NOT_OBSERVED` permanece prova histórica pre-GTM e não é verdade atual.
 
-### T1 atual — GTM Consent
+### T1 — GTM Consent
 
 `docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md`
 
@@ -62,18 +61,13 @@ Esse `GTM NOT_OBSERVED` permanece prova histórica pre-GTM e não é verdade atu
 GTM container = GTM-PGCR4R47
 Published version = 4
 Consent Mode = IMPLEMENTED / PUBLISHED / VALIDATED
-```
-
-Validado em GTM Preview / Tag Assistant:
-
-```text
 DEFAULT = denied / denied / denied / denied
 Continuar = granted / granted / granted / granted
 Cancelar = denied / denied / denied / denied
-Persistence after reload = PROVEN for granted and denied
+Persistence after reload = PROVEN
 ```
 
-Adjudicação após integração desta reconciliação:
+Canonical state:
 
 ```text
 MNT-M2-01 = COMPLETE
@@ -82,9 +76,43 @@ MNT-M2-08 = COMPLETE
 MNT-M2-09 = PARTIAL_IMPLEMENTED
 ```
 
-Não inferir GA4/Ads/Meta/full Measurement a partir dessa evidência.
+## 3. MNT-M2-02 — transport/dedup accepted design
 
-## 3. Programa canônico / SFJM consumer
+Product Authority explicitly authorized MNT-M2-02 start on `2026-09-10`.
+
+Evidence/design:
+
+`docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md`
+
+Core architecture:
+
+```text
+GTM-PGCR4R47 = sole project-owned browser dispatcher
+moretegra.com.br = only eligible project Measurement production hostname
+www.moretegra.com.br = no project-owned business/page Measurement
+Green /page/view = platform telemetry / never forwarded as MoreNumTegra business event
+one project page-view path per canonical document load
+one semantic dataLayer origin per event occurrence
+mnt_event_id = project correlation identity; vendor-native dedup remains destination-specific
+CTA_CLICK / SUBMIT_ATTEMPT != LEAD
+verified Green Form 46 success required for lead conversion
+YouTube operational telemetry != project conversion
+```
+
+The historical Green double `/page/view` remains platform behavior. MNT-M2-02 controls future project-owned Measurement instead of claiming to alter Green telemetry or DNS redirect semantics.
+
+Runtime enforcement remains pending MNT-M2-09; end-to-end proof remains MNT-M2-10.
+
+When this revision is canonical:
+
+```text
+MNT-M2-02 = COMPLETE
+accepted = 312h / 1240h
+remaining = 928h
+progress = 25.16%
+```
+
+## 4. Programa / SFJM consumer
 
 Entrypoints project-owned:
 
@@ -94,70 +122,44 @@ Entrypoints project-owned:
 - `docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md`;
 - `docs/NEXT_SAFE_ACTION.md`.
 
-Estado reconciliado:
+State:
 
 ```text
 MNT-M0  COMPLETE
 MNT-M1  COMPLETE
 MNT-M2  ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
-MNT-M3  PLANNED
-MNT-M4  PLANNED
-MNT-M5  PLANNED
-MNT-M6  PLANNED
-MNT-M7  PLANNED
+  M2-01 COMPLETE
+  M2-02 COMPLETE
+  M2-03 PLANNED_NOT_AUTHORIZED / NEXT
+  M2-07 COMPLETE
+  M2-08 COMPLETE
+  M2-09 PARTIAL_IMPLEMENTED
+MNT-M3..M7 PLANNED
 ```
 
-Planning progress após integração:
+`PROGRAM_TASK_GRAPH` owns hierarchy/planning hours; `CURRENT_PROGRAM_STATE` owns lifecycle/progress; `NEXT_SAFE_ACTION` owns execution authority.
 
-```text
-forecast total = 1240h
-accepted scope-equivalent = 296h
-remaining = 944h
-progress = 23.87%
-```
+## 5. Próxima task
 
-Accepted M2 hours are only M2-01 (8h), M2-07 (16h), M2-08 (16h). Partial M2-09 contributes no accepted hours.
+`MNT-M2-03 — Define canonical event taxonomy`
 
-## 4. Próxima task
+MNT-M2-03 remains `PLANNED_NOT_AUTHORIZED`. It requires an explicit Product Authority start gate.
 
-`MNT-M2-02 — Define transport architecture and duplicate-event prevention` é a próxima task candidata.
+## 6. Search residuals preserved
 
-Input obrigatório preservado:
+Unchanged:
 
-- Green already emits platform-injected `/page/view`;
-- T0 observed two writes across `www -> non-www` with distinct Green page IDs;
-- project-owned future measurement must avoid duplicate business/page events;
-- YouTube operational telemetry must not be classified as business conversion.
+- canonical client-side;
+- sitemap unavailable;
+- `www` without proven HTTP 301/308 semantics;
+- historical `web-share` warning.
 
-A reconciliação documental não autoriza nova mutação GTM/GA4/Meta/Green/Ads.
+These Search/DNS residuals are not silently solved by the Measurement canonical-host gate.
 
-## 5. SFJM Workspace consumption boundary
+## 7. SFJM Workspace boundary
 
-MoreNumTegra é autoridade para objetivo, WBS, tarefas, estados, horas publicadas, autorização, evidência e próxima ação.
+Workspace is read-only derived representation. After PR #45 is merged, it must resolve the resulting exact MoreNumTegra `main` before refreshing its snapshot.
 
-O Workspace PR #39 continua stale enquanto consumir o snapshot MoreNumTegra `347b62298d30ba3567a76d3f48a815e9f0f5b26c`.
+## 8. External gates preserved
 
-Required order:
-
-```text
-reconcile MoreNumTegra
--> complete MoreNumTegra PR lifecycle
--> resolve new exact MoreNumTegra main SHA
--> refresh Workspace PR #39 from that exact SHA
--> validate WBS/progress/issues/provenance
--> independent exact-head review
--> lifecycle gates
-```
-
-Workspace must consume, not invent:
-
-```text
-PROGRAM_TASK_GRAPH = hierarchy/planning hours
-CURRENT_PROGRAM_STATE = lifecycle/progress
-NEXT_SAFE_ACTION = execution authority
-MoreNumTegra main = project truth
-```
-
-## 6. Gates externos preservados
-
-Additional GTM/GA4/Meta/CAPI, Green Pixel, Google Ads/campaign/spend, DNS, Search Console mutation, Vercel Production, Green publication, FECH.AI/n8n/Make or secrets remain separate gates.
+No further GTM, GA4, Meta/CAPI, Green Pixel, Google Ads/campaign/spend, DNS, Search Console mutation, Vercel Production, Green publication, FECH.AI/n8n/Make or secrets are authorized by MNT-M2-02 completion.
