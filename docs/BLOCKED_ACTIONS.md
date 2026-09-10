@@ -25,13 +25,17 @@
 | canonical via JavaScript fora do contrato 2026-08-29 | client-side canonical exige decisão técnica delimitada | somente o target aprovado no contrato vigente |
 | declarar canonical Green implementado só porque Vercel possui canonical | ambientes têm funções distintas | prova no HTML/head da produção Green |
 | JSON-LD/OG/Twitter fora do contrato 2026-08-29 | expansão Search não autorizada genericamente | somente escopo aprovado no contrato vigente |
-| alterações adicionais de GTM além da baseline Consent Mode aceita | GTM/Consent já possui baseline publicada; novas mudanças podem alterar measurement/consent | task/gate correspondente + QA |
-| criar/configurar GA4 ou eventos GA4 | taxonomy/conversions/transport ainda não estão fechados | concluir/autorizar tarefas MNT-M2 aplicáveis |
-| instalar/configurar Google Ads conversion tags | conversões/atribuição ainda não estão fechadas | gate MNT-M2/MNT-M6 aplicável |
-| instalar/configurar Meta Pixel/Dataset/CAPI | ownership/arquitetura Meta não concluídos | gate específico após desenho |
-| configurar Green Pixel/integração adicional | pode duplicar telemetria ou alterar consent boundary | arquitetura de transporte/dedup + gate específico |
-| tratar Green `/page/view` como equivalente a GA4/business conversion | semântica e dedup não definidos | MNT-M2-02/03/04 |
-| tratar telemetry YouTube como conversão MoreNumTegra | third-party media telemetry não é evento de negócio | taxonomy explícita |
+| alterações adicionais de GTM além da baseline Consent Mode aceita | novas mudanças podem alterar Measurement/Consent | task/gate correspondente + QA |
+| criar/configurar GA4 ou eventos GA4 | transporte e taxonomy estão definidos, mas conversões/ownership/implementation gates ainda não estão fechados | concluir/autorizar MNT-M2-04/05/09 aplicáveis |
+| instalar/configurar Google Ads conversion tags | conversões/atribuição ainda não estão fechadas | gate MNT-M2-04/MNT-M6 aplicável |
+| instalar/configurar Meta Pixel/Dataset/CAPI | ownership/arquitetura Meta não concluídos | gate específico após MNT-M2-06/desenho |
+| configurar Green Pixel/integração adicional | pode duplicar telemetria ou alterar consent boundary | arquitetura aceita + gate de implementação específico |
+| tratar Green `/page/view` como equivalente a evento/conversão MoreNumTegra | Green é telemetria de plataforma, não origem semântica do projeto | proibido salvo decisão arquitetural superseding explícita |
+| tratar telemetry YouTube como conversão MoreNumTegra | third-party media telemetry não é evento de negócio | proibido pela taxonomy v1 |
+| enviar texto bruto da busca do catálogo para Measurement | campo é free-form e pode conter dado pessoal inesperado | não enviar; taxonomy v1 usa somente estado/result_count |
+| enviar nome/email/telefone/valores digitados do Form 46 como parâmetro de evento | PII do visitante não pertence ao contrato de Measurement v1 | nova arquitetura explícita de privacy/security se algum dia necessária |
+| emitir `mnt_lead_success` por CTA, WhatsApp, foco ou submit attempt | esses sinais não provam criação de lead | somente sucesso estável e verificável do Form 46 |
+| implementar `mnt_lead_success` sem sinal Green de sucesso comprovado | risco de falso positivo de conversão | provar sinal estável, não invasivo e deduplicável |
 | novas mutações Search Console | estado externo já possui propriedade/indexação comprovadas | gate específico |
 | CMS/database/backend próprio | não necessário no V1 | necessidade material + nova decisão |
 | FECH.AI/n8n/Make/Ads campaign/spend | fora do escopo autorizado atual | autorização específica |
@@ -39,14 +43,11 @@
 | publicar dado comercial não verificado | precisão/reputação | fonte atual/aprovada |
 | copiar conteúdo/design de referência externa | referência não transfere autoria | solução original |
 
-## 2. GTM / Consent baseline aceita pela reconciliação
+## 2. Baselines Measurement aceitas
 
-Esta lista não deve ser interpretada como se GTM/Consent continuassem inexistentes.
+### GTM / Consent
 
-Evidence:
-`docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md`.
-
-Baseline observada:
+Evidence: `docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md`.
 
 ```text
 GTM = GTM-PGCR4R47
@@ -57,10 +58,38 @@ Green Cancelar = denied all four
 Persistence after reload = validated for granted and denied
 ```
 
+### Transport / dedup
+
+Evidence: `docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md`.
+
+```text
+moretegra.com.br = only project Measurement production host
+www.moretegra.com.br = no project business/page Measurement
+GTM-PGCR4R47 = sole project-owned browser dispatcher
+Green /page/view = platform telemetry
+one project page-view path per canonical document load
+```
+
+### Canonical event taxonomy v1
+
+Evidence: `docs/measurement/MNT_M2_03_CANONICAL_EVENT_TAXONOMY_V1_2026-09-10.md`.
+
+```text
+mnt_page_view
+mnt_section_click
+mnt_catalog_filter
+mnt_catalog_search
+mnt_intent
+mnt_form_start
+mnt_form_submit_attempt
+mnt_lead_success
+```
+
 Preservar:
 
 ```text
-ACCEPTED GTM CONSENT BASELINE != AUTHORIZATION FOR FURTHER TRACKING MUTATION
+ACCEPTED TAXONOMY != CONVERSIONS CLASSIFIED
+ACCEPTED TAXONOMY != EVENTS IMPLEMENTED
 CONSENT STATE QA != FULL MEASUREMENT E2E QA
 ```
 
@@ -86,6 +115,7 @@ O provider `blogs-sites-portais-seo` pode auditar/recomendar e devolver handoff 
 - `tool capability` != `authorization`.
 - `GTM Version 4 published` != `GA4 implemented`.
 - `Consent Mode validated` != `full Measurement complete`.
+- `event defined` != `conversion`.
 - `MNT-M2-09 partial` != `MNT-M2-09 complete`.
 - `www Domínio OK` != `redirect HTTP 301/308 comprovado`.
 - `Search recommendation` != `implementation authorization`.

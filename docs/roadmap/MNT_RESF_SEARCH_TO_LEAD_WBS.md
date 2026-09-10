@@ -34,17 +34,17 @@ Current planning forecast when this revision is integrated:
 |---|---|---|---:|---:|
 | MNT-M0 | V1 Foundation & Commercial Production | COMPLETE | 160 | 160 |
 | MNT-M1 | RESF Adoption & Existing-State Reconciliation | COMPLETE | 96 | 96 |
-| MNT-M2 | Measurement Foundation & Consent | ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION | 144 | 56 |
+| MNT-M2 | Measurement Foundation & Consent | ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION | 144 | 72 |
 | MNT-M3 | Intelligence, Product Truth & Search Contract | PLANNED | 144 | 0 |
 | MNT-M4 | IA, Content, Schema, GEO/AEO & Linking | PLANNED | 208 | 0 |
 | MNT-M5 | UX, Performance, Conversion, Lead & CRM | PLANNED | 168 | 0 |
 | MNT-M6 | Attribution & Paid Media Readiness | PLANNED | 128 | 0 |
 | MNT-M7 | QA, Release, Observability & Learning Loop | PLANNED | 192 | 0 |
-| **TOTAL** |  |  | **1240** | **312** |
+| **TOTAL** |  |  | **1240** | **328** |
 
-Accepted/completed scope-equivalent effort: `312h`  
-Remaining forecast: `928h`  
-Program progress: `25.16%`
+Accepted/completed scope-equivalent effort: `328h`  
+Remaining forecast: `912h`  
+Program progress: `26.45%`
 
 Program progress is not V1 product readiness. Commercial V1 remains operational.
 
@@ -85,8 +85,8 @@ Closure anchor: PR `#39`, merge `dba0de3bfefc7aec90c5a88588c54eae4317c61f`.
 |---|---|---:|---|
 | MNT-M2-01 | Inventory tracking already present in live runtime | 8 | COMPLETE |
 | MNT-M2-02 | Define transport architecture and duplicate-event prevention | 16 | COMPLETE |
-| MNT-M2-03 | Define canonical event taxonomy | 16 | PLANNED_NOT_AUTHORIZED / NEXT |
-| MNT-M2-04 | Define primary and secondary conversions | 8 | PLANNED |
+| MNT-M2-03 | Define canonical event taxonomy | 16 | COMPLETE |
+| MNT-M2-04 | Define primary and secondary conversions | 8 | PLANNED_NOT_AUTHORIZED / NEXT |
 | MNT-M2-05 | Define ownership for MoreNumTegra GTM and GA4 | 8 | PARTIAL_EVIDENCE |
 | MNT-M2-06 | Define ownership for Meta Pixel/Dataset | 8 | PLANNED |
 | MNT-M2-07 | Define consent model and LGPD gating | 16 | COMPLETE |
@@ -94,29 +94,39 @@ Closure anchor: PR `#39`, merge `dba0de3bfefc7aec90c5a88588c54eae4317c61f`.
 | MNT-M2-09 | Implement authorized tracking configuration | 24 | PARTIAL_IMPLEMENTED |
 | MNT-M2-10 | Execute end-to-end Measurement QA | 24 | PLANNED |
 
-Accepted M2 scope-equivalent: `56h` from M2-01 + M2-02 + M2-07 + M2-08.
+Accepted M2 scope-equivalent: `72h` from M2-01 + M2-02 + M2-03 + M2-07 + M2-08.
 
 Evidence chain:
 
 - `docs/measurement/MNT_M2_01_TRACKING_RUNTIME_INVENTORY_2026-09-10.md` — T0 pre-GTM inventory;
 - `docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md` — GTM/Consent T1 published + validated;
-- `docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md` — accepted transport/dedup design.
+- `docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md` — accepted transport/dedup design;
+- `docs/measurement/MNT_M2_03_CANONICAL_EVENT_TAXONOMY_V1_2026-09-10.md` — canonical source-event vocabulary and semantics.
 
-MNT-M2-02 establishes:
+Canonical event taxonomy v1:
 
 ```text
-GTM-PGCR4R47 = sole project-owned browser dispatcher
-moretegra.com.br = only project Measurement production hostname
-www.moretegra.com.br = no project-owned business/page Measurement
-Green /page/view = platform telemetry, not business event origin
-one project page-view path per canonical document load
-one semantic dataLayer event per occurrence
-mnt_event_id = project correlation identity; destination-specific dedup remains vendor-native
-verified Form 46 success required before lead conversion
-YouTube operational telemetry != project conversion
+mnt_page_view
+mnt_section_click
+mnt_catalog_filter
+mnt_catalog_search
+mnt_intent
+mnt_form_start
+mnt_form_submit_attempt
+mnt_lead_success
 ```
 
-Runtime enforcement is not claimed complete by MNT-M2-02. It belongs to authorized MNT-M2-09 implementation and MNT-M2-10 QA.
+Preserve:
+
+```text
+EVENT DEFINED != CONVERSION
+RAW CATALOG SEARCH TEXT != MEASUREMENT PARAMETER
+FORM VISITOR PII != MEASUREMENT PARAMETER
+CTA / WHATSAPP / SUBMIT ATTEMPT != LEAD
+ONLY VERIFIED FORM 46 SUCCESS MAY BECOME mnt_lead_success
+```
+
+Runtime enforcement is not claimed complete by MNT-M2-03. Conversion roles belong to MNT-M2-04; implementation remains MNT-M2-09 and proof remains MNT-M2-10.
 
 ### MNT-M3 — Intelligence, Product Truth & Search Contract — 144h — PLANNED
 
@@ -200,7 +210,9 @@ MNT-M0 COMPLETE
 -> MNT-M2 ACTIVE
      M2-01 COMPLETE
      M2-02 COMPLETE
-     M2-03 NEXT / PLANNED_NOT_AUTHORIZED
+     M2-03 COMPLETE
+     M2-04 NEXT / PLANNED_NOT_AUTHORIZED
+     M2-05 PARTIAL_EVIDENCE
      M2-07 COMPLETE
      M2-08 COMPLETE
      M2-09 PARTIAL
