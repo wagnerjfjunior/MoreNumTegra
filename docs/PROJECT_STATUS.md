@@ -7,8 +7,9 @@
 - Produto V1: `GREEN_COMMERCIAL_V1_SEARCH_INDEXED / OPERATIONAL`
 - Programa: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
 - Última fase concluída: `MNT-M1 — RESF Adoption & Existing-State Reconciliation / COMPLETE`
-- Próxima fase: `MNT-M2 — Measurement Foundation & Consent / PLANNED_NOT_AUTHORIZED`
-- MNT-M1 closure anchor: PR `#39` / merge `dba0de3bfefc7aec90c5a88588c54eae4317c61f`
+- Fase atual autorizada: `MNT-M2 — Measurement Foundation & Consent / ACTIVE_READ_ONLY_DESIGN`
+- Tarefa atual: `MNT-M2-01 — Inventory tracking already present in live runtime / ACTIVE_PARTIAL_EVIDENCE`
+- Base canônica no início de MNT-M2-01: `347b62298d30ba3567a76d3f48a815e9f0f5b26c`
 - Saúde operacional do V1: `verde`
 
 ## 1. Produção atual
@@ -24,6 +25,7 @@ Preservar:
 ```text
 LIVE V1 OPERATIONAL != MNT-RESF PROGRAM COMPLETE
 MNT-RESF PROGRAM PROGRESS != V1 PRODUCT READINESS
+READ_ONLY INVENTORY != TRACKING IMPLEMENTATION
 ```
 
 ## 2. Programa MNT-RESF
@@ -36,12 +38,13 @@ Fontes:
 - read model para consumers: `docs/sfjm/PROJECT_READ_MODEL.json`;
 - contrato de consumo: `docs/sfjm/PROGRAM_TASK_GRAPH.md`.
 
-Estado vigente:
+Estado candidato após autorização de início de MNT-M2-01:
 
 ```text
 MNT-M0  V1 Foundation & Commercial Production                    COMPLETE
 MNT-M1  RESF Adoption & Existing-State Reconciliation             COMPLETE
-MNT-M2  Measurement Foundation & Consent                          PLANNED_NOT_AUTHORIZED
+MNT-M2  Measurement Foundation & Consent                          ACTIVE_READ_ONLY_DESIGN
+  MNT-M2-01 Inventory tracking already present in live runtime    ACTIVE_PARTIAL_EVIDENCE
 MNT-M3  Intelligence, Product Truth & Search Contract              PLANNED
 MNT-M4  IA, Content, Schema, GEO/AEO & Linking                    PLANNED
 MNT-M5  UX, Performance, Conversion, Lead & CRM                    PLANNED
@@ -49,7 +52,7 @@ MNT-M6  Attribution & Paid Media Readiness                         PLANNED
 MNT-M7  QA, Release, Observability & Learning Loop                 PLANNED
 ```
 
-Planning forecast após fechamento de MNT-M1:
+Planejamento enquanto MNT-M2-01 não estiver aceita:
 
 ```text
 forecast total                = 1240h
@@ -58,20 +61,30 @@ remaining forecast            = 984h
 program progress              = 20.65%
 ```
 
-M0 representa estimativa retrospectiva de escopo equivalente. M1 usa o forecast de planejamento aceito como scope-equivalent após conclusão do lifecycle. Nenhum desses números é timesheet real.
+Horas são planning/scope-equivalent, não timesheet real. As 8h planejadas de MNT-M2-01 só entram como aceitas após seus exit criteria.
 
-## 3. MNT-M1 — encerrado
+## 3. MNT-M2-01 — execução bounded
 
-PR #39 publicou e consolidou:
+Evidência:
+`docs/measurement/MNT_M2_01_TRACKING_RUNTIME_INVENTORY_2026-09-10.md`.
 
-- adoção seletiva do RESF v1 pinada no provider imutável `7a61aa036d677015ee4540ca8c5dc9a41f0165d4`;
-- existing-state reconciliation;
-- WBS M0–M7;
-- task graph/read model para SFJM Workspace;
-- GSC T0 de 2026-09-10;
-- regras de provenance, staleness e não invenção pelo consumer.
+Levantamento project-owned já suporta:
 
-MNT-M1 não alterou runtime, tracking, DNS, Search Console, Ads ou produção comercial.
+```text
+PROJECT_OWNED GTM bootstrap = NOT_OBSERVED
+PROJECT_OWNED GA4/gtag/dataLayer = NOT_OBSERVED
+PROJECT_OWNED Meta fbq/connect.facebook.net = NOT_OBSERVED
+PROJECT_OWNED sendBeacon measurement = NOT_OBSERVED
+VERCEL PREVIEW PROJECT-OWNED TRACKING = NOT_OBSERVED
+GREEN FORM 46 LEAD CAPTURE = PRESENT
+SEARCH CONSOLE = PRESENT AS SEARCH OBSERVABILITY
+GREEN/PLATFORM-INJECTED TRACKING = NOT_PROVEN
+CONSENT ENFORCEMENT = NOT_PROVEN
+```
+
+A ausência de markers nos artefatos project-owned não prova ausência na página comercial montada pelo builder Green.
+
+Para fechar MNT-M2-01 falta captura `READ_ONLY` de DOM/Network do runtime comercial, sem envio de PII e sem mutação.
 
 ## 4. RESF v1 adoption
 
@@ -88,8 +101,6 @@ Mode: `SELECTIVE`.
 
 Wave 1:
 `RESF-INTELLIGENCE`, `RESF-PRODUCT-TRUTH`, `RESF-IA`, `RESF-UX`, `RESF-CONVERSION`, `RESF-TRACKING`, `RESF-LEAD`, `RESF-CRM`, `RESF-CONSENT`.
-
-Módulos restantes continuam deferred, não rejeitados.
 
 ## 5. Search / GSC
 
@@ -116,13 +127,15 @@ Classificação: `EARLY_DISCOVERY / INSUFFICIENT_VOLUME_FOR_TREND_OR_CAUSALITY_C
 ## 6. Measurement / consent
 
 ```text
+MNT-M2 = ACTIVE_READ_ONLY_DESIGN
+MNT-M2-01 = ACTIVE_PARTIAL_EVIDENCE
 MEASUREMENT = NOT_CONFIGURED_OR_NOT_PROVEN_FOR_MORENUMTEGRA
 LGPD MODAL = ACTIVE
 CONSENT ENFORCEMENT = NOT_PROVEN
-MNT-M2 START = NOT_AUTHORIZED
+TRACKING IMPLEMENTATION AUTHORITY = NONE
 ```
 
-A próxima decisão segura é autorizar ou não o início bounded de MNT-M2 em `READ_ONLY / DESIGN`. Isso não equivale a autorizar implementação de tracking.
+A autorização atual permite somente levantamento/design bounded. GTM, GA4, Meta, Green Pixel, consent runtime, Ads e outras mutações continuam separados.
 
 ## 7. SFJM Workspace boundary
 
@@ -136,8 +149,12 @@ O consumer deve resolver `main` live, registrar SHA/data observados e combinar:
 
 Current-state overlay posterior prevalece sobre estados de lifecycle capturados em um task-graph estrutural anterior; isso não autoriza o Workspace a inventar tarefas, horas, estados ou autorizações.
 
-## 8. Gates externos
+## 8. Próxima ação segura
+
+Completar MNT-M2-01 através de inspeção read-only de DOM/Network do runtime comercial e registrar a provenance dos scripts/requests de measurement.
+
+Autoridade: `docs/NEXT_SAFE_ACTION.md`.
+
+## 9. Gates externos
 
 Continuam separados e sem autorização implícita: GTM, GA4, Meta/CAPI, Green Pixel, consent runtime, Google Ads/spend, DNS, Search Console mutation, Vercel Production, Green publication, FECH.AI/n8n/Make e qualquer arquitetura com segredo.
-
-Autoridade para continuidade: `docs/NEXT_SAFE_ACTION.md`.
