@@ -74,7 +74,7 @@ remaining forecast = 976h
 program progress = 21.29%
 ```
 
-Horas são planning/scope-equivalent, não timesheet real.
+A `main` permanece nos valores anteriores até o merge da PR #41. Horas são planning/scope-equivalent, não timesheet real.
 
 ## 3. MNT-M2-01 — Tracking Runtime Inventory
 
