@@ -5,11 +5,11 @@
 - Task: `MNT-M2-01 — Inventory tracking already present in live runtime`
 - Mode: `STRICT READ_ONLY / DESIGN / INVENTORY_ONLY`
 - Started: `2026-09-10`
+- Completed evidence capture: `2026-09-10`
 - Canonical base observed at start: `347b62298d30ba3567a76d3f48a815e9f0f5b26c`
 - Commercial production: `https://moretegra.com.br/`
-- Vercel homologation: `https://morenumtegra.vercel.app/`
 - Runtime mutation: `NONE`
-- Status: `ACTIVE / PARTIAL_EVIDENCE`
+- Status: `COMPLETE_CANDIDATE / PENDING_PR_LIFECYCLE`
 
 ## 1. Scope
 
@@ -23,6 +23,7 @@ SOURCE ABSENCE != RUNTIME ABSENCE
 FORM SUBMISSION != ANALYTICS EVENT
 SEARCH CONSOLE PROPERTY != CLIENT-SIDE ANALYTICS
 OBSERVED SCRIPT != CONSENT-COMPLIANT EXECUTION
+THIRD_PARTY_MEDIA_TELEMETRY != GA4_OR_AD_PIXEL
 ```
 
 ## 2. Canonical project-owned surfaces inspected
@@ -42,107 +43,179 @@ Vercel homologation composes the same project-owned blocks through `src-greenn/p
 
 ## 3. Static/project-owned source inventory
 
-### 3.1 `src-greenn/moretegra.js`
+### 3.1 JavaScript / HTML / Vercel
 
-Observed responsibilities include catalogue/UI behavior and Search metadata/canonical/JSON-LD management. No project-owned Google Tag Manager, GA4 `gtag`, `dataLayer`, Meta `fbq`, `connect.facebook.net`, `sendBeacon`, or equivalent measurement bootstrap was found by repository code-search against canonical `main`.
+Direct inspection plus repository code-search found no project-owned bootstrap for:
 
-Classification:
-
-`PROJECT_OWNED_TRACKING_BOOTSTRAP = NOT_FOUND_IN_CANONICAL_SOURCE`
-
-This is not proof that the Green platform does not inject scripts outside the project-owned payload.
-
-### 3.2 HTML blocks
-
-`01-html-inicial.html`, `02-html-pos-form.html` and `03-footer.html` contain content, navigation, catalogue/CTA surfaces and presentation markup. No project-owned analytics/pixel bootstrap is present in the inspected blocks.
+- Google Tag Manager / `googletagmanager`;
+- `dataLayer`;
+- GA4 / `gtag`;
+- Meta Pixel / `fbq` / `connect.facebook.net`;
+- `sendBeacon` measurement bootstrap;
+- Vercel Analytics / Speed Insights declaration.
 
 Classification:
-
-`PROJECT_OWNED_HTML_TRACKING = NOT_OBSERVED`
-
-### 3.3 Vercel preview compositor
-
-`src-greenn/preview/index.html` loads the three project-owned HTML blocks and `moretegra.js`. Its local mock Form 46 explicitly prevents submission and sends no PII. No GTM/GA4/Meta measurement bootstrap is present in the compositor.
-
-Classification:
-
-`VERCEL_PREVIEW_PROJECT_OWNED_TRACKING = NOT_OBSERVED`
-
-### 3.4 Vercel configuration
-
-`vercel.json` contains rewrite and security/indexing headers only. No Vercel Analytics/Speed Insights or measurement integration is declared in the project-owned configuration.
-
-Classification:
-
-`VERCEL_CONFIG_MEASUREMENT = NOT_OBSERVED`
-
-## 4. Known external/runtime surfaces
-
-| Surface | Current evidence | Inventory state |
-|---|---|---|
-| Green native Form 46 | Commercial V1 lead submission/persistence previously validated | `LEAD_CAPTURE_PRESENT / ANALYTICS_EVENT_NOT_PROVEN` |
-| Google Search Console | Property/indexation and GSC T0 are documented | `SEARCH_PERFORMANCE_SOURCE_PRESENT / NOT_CLIENT_ANALYTICS` |
-| LGPD modal | Documented as active | `UI_PRESENT / ENFORCEMENT_NOT_PROVEN` |
-| Green builder/platform injected scripts | Not represented in project-owned GitHub payload | `NOT_PROVEN` |
-| GTM container | No project-owned container ID or bootstrap found | `NOT_CONFIGURED_OR_NOT_PROVEN` |
-| GA4 property/tag | No project-owned Measurement ID/bootstrap found | `NOT_CONFIGURED_OR_NOT_PROVEN` |
-| Meta Pixel/Dataset | No project-owned pixel bootstrap found | `NOT_CONFIGURED_OR_NOT_PROVEN` |
-| Meta CAPI | No backend/intermediate integration exists in V1 project architecture | `NOT_IMPLEMENTED_OR_NOT_PROVEN` |
-| Google Ads conversion tag | No project-owned conversion bootstrap found | `NOT_CONFIGURED_OR_NOT_PROVEN` |
-| Vercel Analytics / Speed Insights | No declaration found in canonical project configuration | `NOT_OBSERVED_IN_PROJECT_SOURCE` |
-
-## 5. Repository code-search probes
-
-Read-only searches against canonical `main` returned zero code matches for the following measurement bootstrap markers:
-
-- `googletagmanager`
-- `dataLayer`
-- `gtag`
-- `fbq`
-- `connect.facebook.net`
-- `sendBeacon`
-
-These probes support the narrow claim that the canonical project-owned repository does not currently contain those markers. GitHub code-search reported `incomplete_results=true` in some responses; therefore this evidence is supporting, not sufficient by itself. Direct inspection of the V1 composition files above is the stronger project-source evidence.
-
-## 6. Current conclusion
-
-The strongest supportable state is:
 
 ```text
-PROJECT_OWNED MEASUREMENT BOOTSTRAP = NOT OBSERVED
-GREEN FORM 46 LEAD CAPTURE = PRESENT
-SEARCH CONSOLE = PRESENT AS SEARCH OBSERVABILITY
-GTM = NOT_CONFIGURED_OR_NOT_PROVEN
-GA4 = NOT_CONFIGURED_OR_NOT_PROVEN
-META PIXEL/DATASET = NOT_CONFIGURED_OR_NOT_PROVEN
-CONSENT ENFORCEMENT = NOT_PROVEN
-GREEN PLATFORM-INJECTED TRACKING = NOT_PROVEN
+PROJECT_OWNED_GTM = NOT_OBSERVED
+PROJECT_OWNED_GA4 = NOT_OBSERVED
+PROJECT_OWNED_META_PIXEL = NOT_OBSERVED
+PROJECT_OWNED_ADS_CONVERSION_TAG = NOT_OBSERVED
+VERCEL_PROJECT_OWNED_MEASUREMENT = NOT_OBSERVED
 ```
 
-Do not convert `NOT OBSERVED IN PROJECT SOURCE` into `ABSENT FROM LIVE COMMERCIAL RUNTIME`.
+GitHub code-search reported `incomplete_results=true` in some responses, so direct inspection of the canonical V1 composition remains the stronger project-source evidence.
 
-## 7. Evidence gap required to close MNT-M2-01
+## 4. Commercial runtime evidence — DevTools + HAR
 
-MNT-M2-01 remains `ACTIVE` until the runtime-only layer is inspected read-only. Required closure evidence is one of:
+The Product Authority supplied a Chrome DevTools capture and HAR from an anonymous-browser session against the commercial runtime on `2026-09-10`.
 
-1. browser DevTools/Network + rendered DOM inspection of `https://moretegra.com.br/`, recording third-party measurement requests/scripts and relevant consent state; or
-2. a HAR/network export from the commercial page with no PII, sufficient to classify GTM/GA4/Meta/Ads/Green platform measurement calls; and, where useful,
-3. equivalent read-only inspection of the stable Vercel homologation to separate project-owned behavior from Green-builder/platform injection.
+Raw HAR facts:
 
-No click on a conversion CTA or form submission is required merely to inventory bootstrap scripts. If a later test needs submission/event proof, it belongs to the appropriate consent/measurement QA task and requires its own boundary.
+```text
+HAR entries = 89
+HAR SHA-256 = c59f3a3c0c075412595bfda2dd1155a48fa0d0689f5f27264010076348bb7446
+observed pages:
+- https://www.moretegra.com.br/
+- https://moretegra.com.br/
+```
 
-## 8. Exit criteria
+The raw HAR is not committed to the repository because it contains transient third-party request parameters/client metadata. This document stores the bounded, redacted evidence required for MNT-M2-01 plus the SHA-256 fingerprint of the supplied capture.
 
-MNT-M2-01 may become `COMPLETE` only when:
+### 4.1 Standard advertising/analytics tags
 
-- project-owned source inventory is recorded;
-- commercial runtime measurement/bootstrap inventory is recorded;
-- platform-injected versus project-owned provenance is distinguished;
-- unknowns remain explicitly `NOT_PROVEN` rather than inferred;
-- no runtime mutation was made.
+DevTools console in the observed commercial session returned:
 
-## 9. Next within-task safe action
+```text
+window.dataLayer = undefined
+typeof window.gtag = "undefined"
+typeof window.fbq = "undefined"
+```
 
-`READ_ONLY COMMERCIAL RUNTIME NETWORK/DOM CAPTURE`.
+The HAR contains no requests to the standard endpoints/hosts searched for GTM, GA4, Meta Pixel, Clarity, Hotjar or DoubleClick.
 
-Until that evidence exists, do not advance to MNT-M2-02 as though MNT-M2-01 were closed.
+Classification for this observed session:
+
+```text
+GTM = NOT_OBSERVED
+GA4 / GTAG = NOT_OBSERVED
+META PIXEL / FBQ = NOT_OBSERVED
+CLARITY = NOT_OBSERVED
+HOTJAR = NOT_OBSERVED
+DOUBLECLICK = NOT_OBSERVED
+```
+
+This is evidence of non-observation in the captured session, not a claim that the Green platform can never inject such tooling under other configuration/state.
+
+### 4.2 Green/GDigital page-view telemetry
+
+The HAR proves Green/GDigital runtime telemetry that is not present in the project-owned GitHub payload.
+
+Observed request A:
+
+```text
+POST https://back.gdigital.com.br/page/view
+origin/referer = https://www.moretegra.com.br/
+payload = {"type":"view","page_id":293,"tenant_id":313}
+response = HTTP 200
+body = {"message":"View inserida com sucesso!"}
+initiator = Green/GDigital Nuxt runtime (_nuxt/ff454f8.js mounted flow)
+```
+
+Observed request B:
+
+```text
+POST https://back.gdigital.com.br/page/view
+origin/referer = https://moretegra.com.br/
+payload = {"type":"view","page_id":292,"tenant_id":313}
+response = HTTP 200
+body = {"message":"View inserida com sucesso!"}
+initiator = Green/GDigital Nuxt runtime (_nuxt/ff454f8.js mounted flow)
+```
+
+Classification:
+
+```text
+GREEN_GDIGITAL_PAGE_VIEW_TELEMETRY = OBSERVED / PLATFORM_INJECTED
+GREEN_FORM_46_CONFIG_FETCH = OBSERVED
+PROJECT_OWNED_SOURCE_FOR_PAGE_VIEW = NOT_OBSERVED
+```
+
+The same captured navigation sequence loaded `www.moretegra.com.br` and then `moretegra.com.br`, producing two distinct Green page-view writes with different Green page IDs. This is not adjudicated here as a defect because Green may model them as separate pages, but it creates a concrete `DUPLICATE_MEASUREMENT_RISK` that must be addressed in `MNT-M2-02 — transport architecture and duplicate-event prevention`.
+
+### 4.3 YouTube embedded-player telemetry
+
+The page uses `youtube-nocookie.com`, but the HAR shows that the embedded player still sends operational/usage telemetry after the player loads, including:
+
+- `www.youtube-nocookie.com/api/stats/qoe`;
+- `www.youtube-nocookie.com/api/stats/playback`;
+- `www.youtube-nocookie.com/api/stats/watchtime`;
+- `www.youtube-nocookie.com/api/stats/atr`;
+- `www.youtube-nocookie.com/ptracking`;
+- `www.youtube-nocookie.com/youtubei/v1/log_event`;
+- related Google/YouTube player requests.
+
+Observed requests include playback/device/browser/video context. No GA4/Google Ads tag is thereby proven.
+
+Classification:
+
+```text
+YOUTUBE_EMBED_MEDIA_TELEMETRY = OBSERVED / THIRD_PARTY_MEDIA
+YOUTUBE_TELEMETRY = NOT_EQUIVALENT_TO_GA4_OR_GOOGLE_ADS_PIXEL
+```
+
+In the supplied screenshot the LGPD notice was still visible while YouTube telemetry had already occurred. Therefore the bounded technical claim is:
+
+`CONSENT_MODAL_DID_NOT_BLOCK_OBSERVED_YOUTUBE_NETWORK_TELEMETRY_IN_THIS_SESSION`.
+
+This task does not make a legal-compliance conclusion. Consent policy/gating design belongs to MNT-M2-07/MNT-M2-08.
+
+## 5. Inventory matrix
+
+| Surface | Runtime state | Provenance |
+|---|---|---|
+| Green native Form 46 | `PRESENT` | Green platform |
+| Green `/page/view` | `OBSERVED` | `PLATFORM_INJECTED` |
+| GTM | `NOT_OBSERVED` | no project/runtime evidence in captured session |
+| GA4 / gtag | `NOT_OBSERVED` | no project/runtime evidence in captured session |
+| Meta Pixel / fbq | `NOT_OBSERVED` | no project/runtime evidence in captured session |
+| Google Ads conversion tag | `NOT_OBSERVED` | no project/runtime evidence in captured session |
+| Clarity / Hotjar / DoubleClick | `NOT_OBSERVED` | no runtime evidence in captured session |
+| YouTube player telemetry | `OBSERVED` | `THIRD_PARTY_MEDIA` |
+| Search Console | `PRESENT AS SEARCH OBSERVABILITY` | external Search tooling, not client analytics |
+| LGPD modal | `PRESENT` | Green/runtime UI |
+| Consent enforcement | `NOT_PROVEN` | requires later consent tasks |
+
+## 6. Exit criteria adjudication
+
+MNT-M2-01 exit criteria are satisfied at the evidence level:
+
+- project-owned source inventory recorded: `YES`;
+- commercial runtime inspected read-only: `YES`;
+- platform-injected versus project-owned provenance distinguished: `YES`;
+- unknowns preserved rather than inferred: `YES`;
+- runtime mutation performed: `NO`;
+- Form 46/PII submission required: `NO`.
+
+Task evidence state:
+
+`MNT-M2-01 = COMPLETE_CANDIDATE / PENDING_PR_LIFECYCLE`.
+
+The 8h planning/scope-equivalent effort becomes accepted only if this evidence/state is integrated into canonical `main` through the applicable PR lifecycle.
+
+## 7. Carry-forward findings
+
+The following findings are intentionally carried forward rather than solved here:
+
+1. `MNT-M2-02`: define transport/dedup architecture accounting for Green `/page/view`, the www→non-www double-write risk, future project-owned events and third-party media telemetry;
+2. `MNT-M2-07`: define consent model/LGPD gating, including third-party video behavior;
+3. `MNT-M2-08`: define denied/granted QA proof obligations;
+4. later implementation tasks must not accidentally double-count Green page views or YouTube telemetry as business conversions.
+
+## 8. Next safe action after canonical acceptance
+
+After this PR is accepted and merged, the next task candidate is:
+
+`MNT-M2-02 — Define transport architecture and duplicate-event prevention`.
+
+It is **not active or authorized by MNT-M2-01 completion**. No GTM/GA4/Meta/Green/Ads/consent-runtime mutation is authorized by this evidence.
