@@ -7,8 +7,9 @@
 - Produto V1: `GREEN_COMMERCIAL_V1_SEARCH_INDEXED / OPERATIONAL`
 - Programa: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
 - Última fase concluída: `MNT-M1 — RESF Adoption & Existing-State Reconciliation / COMPLETE`
-- Fase atual autorizada: `MNT-M2 — Measurement Foundation & Consent / ACTIVE_READ_ONLY_DESIGN`
-- Tarefa atual: `MNT-M2-01 — Inventory tracking already present in live runtime / ACTIVE_PARTIAL_EVIDENCE`
+- Fase atual: `MNT-M2 — Measurement Foundation & Consent / ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION`
+- Última task executada: `MNT-M2-01 — Inventory tracking already present in live runtime / COMPLETE_CANDIDATE`
+- Próxima task candidata: `MNT-M2-02 — Define transport architecture and duplicate-event prevention / PLANNED_NOT_AUTHORIZED`
 - Base canônica no início de MNT-M2-01: `347b62298d30ba3567a76d3f48a815e9f0f5b26c`
 - Saúde operacional do V1: `verde`
 
@@ -26,6 +27,7 @@ Preservar:
 LIVE V1 OPERATIONAL != MNT-RESF PROGRAM COMPLETE
 MNT-RESF PROGRAM PROGRESS != V1 PRODUCT READINESS
 READ_ONLY INVENTORY != TRACKING IMPLEMENTATION
+TASK COMPLETE CANDIDATE != CANONICAL ACCEPTED UNTIL PR MERGE
 ```
 
 ## 2. Programa MNT-RESF
@@ -38,13 +40,14 @@ Fontes:
 - read model para consumers: `docs/sfjm/PROJECT_READ_MODEL.json`;
 - contrato de consumo: `docs/sfjm/PROGRAM_TASK_GRAPH.md`.
 
-Estado candidato após autorização de início de MNT-M2-01:
+Estado candidato após conclusão da evidência MNT-M2-01:
 
 ```text
 MNT-M0  V1 Foundation & Commercial Production                    COMPLETE
 MNT-M1  RESF Adoption & Existing-State Reconciliation             COMPLETE
-MNT-M2  Measurement Foundation & Consent                          ACTIVE_READ_ONLY_DESIGN
-  MNT-M2-01 Inventory tracking already present in live runtime    ACTIVE_PARTIAL_EVIDENCE
+MNT-M2  Measurement Foundation & Consent                          ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
+  MNT-M2-01 Inventory tracking already present in live runtime    COMPLETE_CANDIDATE / PENDING_PR_LIFECYCLE
+  MNT-M2-02 Transport architecture and duplicate prevention       PLANNED_NOT_AUTHORIZED
 MNT-M3  Intelligence, Product Truth & Search Contract              PLANNED
 MNT-M4  IA, Content, Schema, GEO/AEO & Linking                    PLANNED
 MNT-M5  UX, Performance, Conversion, Lead & CRM                    PLANNED
@@ -52,39 +55,45 @@ MNT-M6  Attribution & Paid Media Readiness                         PLANNED
 MNT-M7  QA, Release, Observability & Learning Loop                 PLANNED
 ```
 
-Planejamento enquanto MNT-M2-01 não estiver aceita:
+Estado de progresso pretendido após merge da PR #41:
 
 ```text
 forecast total                = 1240h
-accepted scope-equivalent     = 256h
-remaining forecast            = 984h
-program progress              = 20.65%
+accepted scope-equivalent     = 264h
+remaining forecast            = 976h
+program progress              = 21.29%
 ```
 
-Horas são planning/scope-equivalent, não timesheet real. As 8h planejadas de MNT-M2-01 só entram como aceitas após seus exit criteria.
+Horas são planning/scope-equivalent, não timesheet real. As 8h de MNT-M2-01 tornam-se canônicas apenas com integração da PR #41 em `main`.
 
-## 3. MNT-M2-01 — execução bounded
+## 3. MNT-M2-01 — evidência concluída
 
 Evidência:
 `docs/measurement/MNT_M2_01_TRACKING_RUNTIME_INVENTORY_2026-09-10.md`.
 
-Levantamento project-owned já suporta:
+A inspeção project-owned + DevTools/HAR do runtime comercial suporta:
 
 ```text
 PROJECT_OWNED GTM bootstrap = NOT_OBSERVED
 PROJECT_OWNED GA4/gtag/dataLayer = NOT_OBSERVED
 PROJECT_OWNED Meta fbq/connect.facebook.net = NOT_OBSERVED
-PROJECT_OWNED sendBeacon measurement = NOT_OBSERVED
 VERCEL PREVIEW PROJECT-OWNED TRACKING = NOT_OBSERVED
 GREEN FORM 46 LEAD CAPTURE = PRESENT
-SEARCH CONSOLE = PRESENT AS SEARCH OBSERVABILITY
-GREEN/PLATFORM-INJECTED TRACKING = NOT_PROVEN
+GREEN/GDIGITAL POST /page/view = OBSERVED / PLATFORM_INJECTED
+YOUTUBE EMBED TELEMETRY = OBSERVED / THIRD_PARTY_MEDIA
+GTM RUNTIME = NOT_OBSERVED IN CAPTURED SESSION
+GA4 RUNTIME = NOT_OBSERVED IN CAPTURED SESSION
+META PIXEL RUNTIME = NOT_OBSERVED IN CAPTURED SESSION
+CLARITY/HOTJAR/DOUBLECLICK = NOT_OBSERVED IN CAPTURED SESSION
 CONSENT ENFORCEMENT = NOT_PROVEN
 ```
 
-A ausência de markers nos artefatos project-owned não prova ausência na página comercial montada pelo builder Green.
+HAR fingerprint:
+`c59f3a3c0c075412595bfda2dd1155a48fa0d0689f5f27264010076348bb7446`.
 
-Para fechar MNT-M2-01 falta captura `READ_ONLY` de DOM/Network do runtime comercial, sem envio de PII e sem mutação.
+A navegação observada carregou `www.moretegra.com.br` e depois `moretegra.com.br`, e cada página gerou um `POST https://back.gdigital.com.br/page/view` com page IDs Green distintos (`293` e `292`). Isso é registrado como `DUPLICATE_MEASUREMENT_RISK` para MNT-M2-02, sem adjudicar ainda se é defeito da plataforma.
+
+O embed `youtube-nocookie.com` também produziu telemetria de playback/QoE/watchtime/log_event. Isso não prova GA4 ou Google Ads, mas deve entrar no desenho futuro de consentimento.
 
 ## 4. RESF v1 adoption
 
@@ -127,15 +136,16 @@ Classificação: `EARLY_DISCOVERY / INSUFFICIENT_VOLUME_FOR_TREND_OR_CAUSALITY_C
 ## 6. Measurement / consent
 
 ```text
-MNT-M2 = ACTIVE_READ_ONLY_DESIGN
-MNT-M2-01 = ACTIVE_PARTIAL_EVIDENCE
-MEASUREMENT = NOT_CONFIGURED_OR_NOT_PROVEN_FOR_MORENUMTEGRA
+MNT-M2 = ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
+MNT-M2-01 = COMPLETE_CANDIDATE / PENDING_PR_LIFECYCLE
+MNT-M2-02 = PLANNED_NOT_AUTHORIZED
+MORENUMTEGRA PROJECT-OWNED MEASUREMENT = NOT_CONFIGURED
+GREEN/GDIGITAL PAGE-VIEW TELEMETRY = OBSERVED
+YOUTUBE MEDIA TELEMETRY = OBSERVED
 LGPD MODAL = ACTIVE
 CONSENT ENFORCEMENT = NOT_PROVEN
 TRACKING IMPLEMENTATION AUTHORITY = NONE
 ```
-
-A autorização atual permite somente levantamento/design bounded. GTM, GA4, Meta, Green Pixel, consent runtime, Ads e outras mutações continuam separados.
 
 ## 7. SFJM Workspace boundary
 
@@ -151,7 +161,7 @@ Current-state overlay posterior prevalece sobre estados de lifecycle capturados 
 
 ## 8. Próxima ação segura
 
-Completar MNT-M2-01 através de inspeção read-only de DOM/Network do runtime comercial e registrar a provenance dos scripts/requests de measurement.
+Completar o lifecycle da PR #41 que registra MNT-M2-01. Após aceitação canônica, o próximo candidato é `MNT-M2-02 — Define transport architecture and duplicate-event prevention`, ainda `PLANNED_NOT_AUTHORIZED` até decisão explícita da Product Authority.
 
 Autoridade: `docs/NEXT_SAFE_ACTION.md`.
 
