@@ -144,7 +144,7 @@ Application code must not independently send the same semantic event to multiple
 
 This preserves one source event with multiple controlled destination adapters instead of multiple event origins.
 
-## 5. Event identity / cross-destination dedup contract
+## 5. Event identity / cross-destination correlation contract
 
 Any event that may later feed more than one conversion destination must carry a project-generated event identifier created once for that semantic occurrence.
 
@@ -156,13 +156,17 @@ Required semantics:
 
 ```text
 ONE SEMANTIC OCCURRENCE -> ONE mnt_event_id
-SAME OCCURRENCE ACROSS BROWSER/SERVER DESTINATIONS -> REUSE SAME mnt_event_id
+SAME OCCURRENCE ACROSS AUTHORIZED DESTINATION COPIES -> REUSE SAME mnt_event_id WHEN THE DESTINATION SUPPORTS SUCH CORRELATION/DEDUP
 NEW USER OCCURRENCE -> NEW mnt_event_id
 ```
 
-This is especially important if a future Meta browser Pixel + CAPI path is authorized, because browser/server copies of the same event must share an identity for deduplication.
+`mnt_event_id` is the project correlation identity. It does **not** imply that every vendor automatically deduplicates on that field. Destination-specific dedup semantics remain destination-specific.
 
-MNT-M2-02 defines the identity contract only. It does not authorize Meta/CAPI or a backend.
+This is especially important if a future Meta browser Pixel + CAPI path is authorized, because browser/server copies of the same Meta event can use the same event identity for Meta-native deduplication.
+
+For GA4, this field must not be treated as a magic general-event dedup mechanism; GA4 page-view duplication is prevented by the single page-view ownership/path and canonical-host controls defined above, while destination-specific conversion dedup keys such as `transaction_id` apply only where semantically relevant.
+
+MNT-M2-02 defines the project event identity/correlation contract only. It does not authorize Meta/CAPI, a backend or any vendor-specific server implementation.
 
 ## 6. Lead / Form 46 boundary
 
@@ -216,9 +220,9 @@ Whether later Google tags operate in a basic or advanced consent transport postu
 | `www -> non-www` counts two project page views | project Measurement tags only eligible on `moretegra.com.br` | GTM transport |
 | automatic + manual GA4 page view | exactly one page-view owner/path; never both | MNT-M2-09 |
 | direct vendor SDK + GTM sends same event | GTM is sole project-owned browser dispatcher | architecture |
-| same UI handler emits twice | one dataLayer emission per semantic occurrence + `mnt_event_id` | application instrumentation |
+| same UI handler emits twice | one dataLayer emission per semantic occurrence + project correlation identity | application instrumentation |
 | click counted as lead before CRM acceptance | only verified Form 46 success can become lead | taxonomy/conversion implementation |
-| Pixel + CAPI duplicate | reuse same `mnt_event_id` across copies if/when authorized | future Meta architecture |
+| Pixel + CAPI duplicate | reuse the same event identity across Meta browser/server copies if/when authorized | future Meta architecture |
 | Green `/page/view` forwarded as business event | explicit platform/project telemetry separation | architecture |
 | YouTube network telemetry counted as business event | explicit third-party media boundary | architecture |
 
@@ -261,7 +265,7 @@ MNT-M2-02 design exit criteria are satisfied at candidate level when this docume
 - one-page-view ownership rule;
 - vendor-dispatch ownership;
 - semantic source-event transport;
-- cross-destination event identity contract;
+- cross-destination correlation identity contract;
 - Form 46 lead boundary;
 - third-party media boundary;
 - duplicate-prevention controls;
