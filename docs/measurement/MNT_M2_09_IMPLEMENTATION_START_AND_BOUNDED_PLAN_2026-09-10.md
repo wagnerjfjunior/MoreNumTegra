@@ -5,28 +5,19 @@
 - Task: `MNT-M2-09 — Implement authorized tracking configuration`
 - Product Authority authorization: explicit `Autorizo iniciar MNT-M2-09.` on `2026-09-10`
 - Canonical `main` resolved before execution: `98f92ea3e80770a0e735ee9b105a29b18a706255`
-- Mode for this execution: `READ_ONLY ASSET RESOLUTION + BOUNDED IMPLEMENTATION PLANNING / NO UNBOUNDED EXTERNAL RUNTIME OR ADMIN MUTATION`
+- Initial execution mode: `READ_ONLY ASSET RESOLUTION + BOUNDED IMPLEMENTATION PLANNING`
+- Later bounded source authorization: deterministic `mnt_*` source instrumentation + GA4 workspace preparation for `G-57M2XR0CY2`, with no GTM publish and no form/lead events
 - Task state: `ACTIVE / PARTIAL_IMPLEMENTED`
 
 ## 1. Purpose
 
-Start MNT-M2-09 without converting the start authorization into an unlimited mutation authorization.
-
-The task sequence is deliberately bounded to:
-
-1. resolve the live canonical project state;
-2. inspect the current project-owned source and accepted Measurement contracts;
-3. resolve existing dedicated GA4 and Meta assets read-only when possible;
-4. where Product Authority explicitly creates a required asset, record the exact observed non-secret identifiers;
-5. define the exact implementation delta required for project source and GTM destinations;
-6. stop before any additional external publish/create/configure action that requires its own explicit mutation scope.
+Execute MNT-M2-09 in bounded slices without converting task-start or later source/workspace authorization into unlimited external mutation authority.
 
 Preserve:
 
 ```text
 M2-09 START AUTHORIZED != UNLIMITED EXTERNAL MUTATION AUTHORIZED
 ASSET NOT PROVEN != ASSET DOES NOT EXIST
-DESIGN/PLAN != IMPLEMENTED RUNTIME
 BRANCH CHANGE != PRODUCTION
 GTM WORKSPACE CHANGE != PUBLISHED GTM VERSION
 DATA LAYER EVENT != DESTINATION DELIVERY
@@ -35,7 +26,7 @@ EVENT DELIVERY != CONVERSION VALIDITY
 
 ## 2. Accepted dependencies
 
-MNT-M2-09 implementation is constrained by the already accepted contracts:
+MNT-M2-09 is constrained by:
 
 - `docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md`;
 - `docs/measurement/MNT_M2_03_CANONICAL_EVENT_TAXONOMY_V1_2026-09-10.md`;
@@ -44,7 +35,7 @@ MNT-M2-09 implementation is constrained by the already accepted contracts:
 - `docs/measurement/MNT_M2_06_META_PIXEL_DATASET_OWNERSHIP_CONTRACT_V1_2026-09-10.md`;
 - `docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md`.
 
-Binding runtime rules include:
+Binding runtime rules:
 
 ```text
 PROJECT_BROWSER_DISPATCHER = GTM-PGCR4R47
@@ -57,40 +48,26 @@ visitor PII/raw catalogue search text -> FORBIDDEN IN ORDINARY MEASUREMENT
 only verified Green Form 46 success -> mnt_lead_success
 ```
 
-## 3. Asset-resolution state
+## 3. Resolved GA4 destination
 
-### 3.1 GA4
-
-Initial Windsor.ai read-only resolution did not find a dedicated MoreNumTegra GA4 property in the connected scope. Product Authority then confirmed that no MoreNumTegra GA4 configuration existed and created the dedicated property + production web stream in Google Analytics.
-
-Evidence is recorded in:
-
-`docs/measurement/MNT_M2_09_GA4_ASSET_CREATION_EVIDENCE_2026-09-11.md`
-
-Current proven GA4 identifiers:
+The Product Authority created and evidenced a dedicated GA4 destination:
 
 ```text
-GA4_PROPERTY_NAME = MoreNumTegra
-GA4_PROPERTY_ID = 553742649
-GA4_STREAM_NAME = MoreNumTegra
-GA4_STREAM_ID = 15759638334
-GA4_MEASUREMENT_ID = G-57M2XR0CY2
-GA4_PRODUCTION_HOST = moretegra.com.br
-ENHANCED_MEASUREMENT = OFF
+Property: MoreNumTegra
+Property ID: 553742649
+Production web stream ID: 15759638334
+Measurement ID: G-57M2XR0CY2
+Production host: https://moretegra.com.br
+Enhanced Measurement: OFF
 ```
 
-Current GA4 runtime state:
+Windsor.ai subsequently exposed `553742649 | MoreNumTegra` in the connected GA4 scope.
 
-```text
-GA4_ASSET_TOPOLOGY = PROVEN
-GA4_RUNTIME_COLLECTION = NOT_YET_IMPLEMENTED / NOT_YET_PROVEN
-GA4_KEY_EVENT_CONFIGURATION = NOT_AUTHORIZED / NOT_IMPLEMENTED
-GOOGLE_ADS_LINK = NOT_AUTHORIZED / NOT_IMPLEMENTED
-```
+No existing unrelated GA4 property is repurposed.
 
-### 3.2 Meta
+## 4. Meta destination state
 
-Meta asset resolution remains incomplete:
+Still unresolved:
 
 ```text
 META_DATASET_ID = NOT_PROVEN
@@ -98,31 +75,17 @@ META_PIXEL_OR_BROWSER_SOURCE_ID = NOT_PROVEN
 META_PIXEL_DATASET_RELATIONSHIP = NOT_PROVEN
 ```
 
-Windsor.ai Meta Ads scope is insufficient to prove Events Manager Dataset/Pixel administration. A provider-native read-only Events Manager inspection remains required before Meta implementation.
+The connected Windsor Meta Ads surface does not provide sufficient Events Manager admin inventory to prove those resources.
 
-## 4. Bounded project-source implementation plan
+Meta implementation is not part of the current bounded source/GA4 workspace slice.
 
-The project-owned source delta should implement the canonical source layer without coupling browser code to GA4 or Meta IDs.
+## 5. Bounded source instrumentation implemented on the Draft branch
 
-### 4.1 Source emitter
+The branch now contains a deterministic source instrumentation staging module:
 
-`src-greenn/moretegra.js` should expose one internal project emitter that:
+`src-greenn/moretegra.measurement.js`
 
-- runs only when the exact canonical production host is eligible;
-- does not emit project Measurement on `www.moretegra.com.br`;
-- does not emit production Measurement on `morenumtegra.vercel.app`;
-- pushes canonical events to `window.dataLayer` only;
-- creates one `mnt_event_id` per semantic occurrence;
-- sets `mnt_event_version = 1`;
-- always includes `page_identity = moretegra_home`, `product_identity = moretegra_portfolio`, `route = /`, and `funnel_stage`;
-- sends only allowlisted controlled parameters;
-- never sends visitor name, email, phone, Form 46 values, free-form message text or raw catalogue search text.
-
-No project-owned direct `gtag()` or `fbq()` bootstrap is allowed.
-
-### 4.2 Source events implementable from current deterministic UI signals
-
-The following source events have deterministic attachment points in the current project source and may be implemented under the next bounded source-code mutation gate:
+Implemented source events:
 
 ```text
 mnt_page_view
@@ -132,17 +95,24 @@ mnt_catalog_search
 mnt_intent
 ```
 
-Required safeguards:
+The source emitter:
 
-- `mnt_page_view`: exactly once per eligible canonical document load;
-- `mnt_section_click`: mutually exclusive with more-specific filter/intent semantics;
-- `mnt_catalog_filter`: user-effective change only; programmatic control synchronization must not emit;
-- `mnt_catalog_search`: debounced/committed event, never one event per keystroke, never raw query text;
-- `mnt_intent`: exact allowlisted `intent_type`, `contact_channel` and `placement` mapping from M2-03.
+- runs only on exact host `moretegra.com.br`;
+- pushes canonical events to `window.dataLayer` only;
+- creates one `mnt_event_id` per semantic occurrence;
+- sets `mnt_event_version = 1`;
+- includes `page_identity = moretegra_home`, `product_identity = moretegra_portfolio`, `route = /` and canonical funnel stage;
+- sends only allowlisted controlled parameters;
+- never sends visitor name, email, phone, Form 46 values, free-form message text or raw catalogue search text;
+- contains no direct `gtag()` or `fbq()` path.
 
-### 4.3 Form events remain evidence-gated
+`mnt_catalog_search` is debounced/committed and sends only search state plus result count, never the query text.
 
-The following events must not be manufactured from weaker DOM assumptions:
+Filter instrumentation suppresses initial/default state, no-op setter calls and programmatic desktop/mobile synchronization.
+
+## 6. Form events remain evidence-gated
+
+Not implemented:
 
 ```text
 mnt_form_start
@@ -150,56 +120,33 @@ mnt_form_submit_attempt
 mnt_lead_success
 ```
 
-`mnt_form_start` and `mnt_form_submit_attempt` require a stable, non-invasive identification of the native Green Form 46 lifecycle.
+A stable, non-invasive identification of the native Green Form 46 lifecycle remains required for form events, and a verified successful native registration signal remains mandatory for `mnt_lead_success`.
 
-`mnt_lead_success` additionally requires a stable verified-success signal proving that native Green registration actually succeeded.
+No submit interception, duplicate POST, custom fetch replacement or generic form mutation is authorized.
 
-Until those signals are proven:
+## 7. GTM / GA4 bounded workspace design
 
-```text
-FORM START IMPLEMENTATION = HOLD
-FORM SUBMIT ATTEMPT IMPLEMENTATION = HOLD
-LEAD SUCCESS IMPLEMENTATION = BLOCKED
-```
+The exact non-published workspace build is specified in:
 
-No submit interception, duplicate POST, custom fetch replacement or global-form mutation is allowed.
+`docs/measurement/MNT_M2_09_GTM_GA4_WORKSPACE_BUILD_SHEET_2026-09-11.md`
 
-## 5. GTM / GA4 implementation plan
-
-GTM remains the sole project-owned browser dispatcher.
-
-The now-proven GA4 destination is:
+It requires:
 
 ```text
-source canonical mnt_* event
--> GTM-PGCR4R47
--> canonical-host + consent/eligibility controls
--> G-57M2XR0CY2
+Google tag destination = G-57M2XR0CY2
+send_page_view = false
+canonical host = moretegra.com.br
+source mnt_page_view -> exactly one GA4 page_view destination event
+other supported mnt_* -> explicit GA4 event mappings
+no form/lead tags
+no Ads tags
+no Meta tags
+no publication
 ```
 
-The implementation must:
+The current chat has no authenticated Google Tag Manager write connector. Therefore the GTM workspace itself is not claimed as mutated by ChatGPT; the exact build specification is prepared and must be evidenced after provider-side application.
 
-1. preserve the published Version 4 Consent baseline;
-2. consume only canonical project `mnt_*` source events;
-3. enforce canonical-host eligibility;
-4. prevent a second page-view path;
-5. preserve one source occurrence -> one destination dispatch;
-6. prevent direct duplicate GA4 bootstrap outside GTM;
-7. preserve PII and raw-search exclusions;
-8. keep `mnt_lead_success` disabled until the Green success signal is proven;
-9. avoid automatic + manual page-view duplication.
-
-No GA4 Key Event, Google Ads link, Ads conversion action, enhanced-conversion/user-provided-data feature or monetary lead value is authorized by the current scope.
-
-## 6. Meta destination plan
-
-Meta remains evidence-gated until exact Dataset/Pixel/browser-source identifiers and relationship are observed.
-
-No direct `fbq()` path is allowed outside the governed GTM dispatcher.
-
-CAPI remains outside this implementation slice. If browser + server transport is proposed later, its event identity, consent and Meta-native deduplication contract must be defined and proven separately.
-
-## 7. Consent implementation boundary
+## 8. Consent boundary
 
 Accepted state handling remains:
 
@@ -212,43 +159,54 @@ persistence = proven
 
 M2-09 must not create a second consent state machine.
 
-The current acceptance proves state handling, not complete destination-network behavior. GA4/Meta destination firing rules must be explicitly validated in M2-10.
+The Google destination's denied/granted network behavior must be inspected in GTM Preview before a future publish gate. This plan does not silently choose or redefine a Basic-vs-Advanced Consent Mode policy.
 
-## 8. QA obligations before MNT-M2-09 can be COMPLETE
+## 9. ADR-001 single-JavaScript residual
 
-MNT-M2-09 may not be accepted complete merely because a branch or GTM workspace exists.
+ADR-001 defines one page-level JavaScript production payload:
 
-At minimum, later evidence must prove:
+`src-greenn/moretegra.js`
 
-- exact adopted GA4 IDs — now proven;
-- exact adopted Meta IDs/relationship if Meta browser collection is implemented;
-- canonical `mnt_*` source events implemented for all supportable signals;
-- one canonical project page-view path;
+The temporary `src-greenn/moretegra.measurement.js` is branch-only staging for review and must not become a second permanent Green production payload.
+
+Before PR #50 can be Ready/merged:
+
+1. fold the reviewed measurement IIFE into `src-greenn/moretegra.js`;
+2. remove the temporary staging module;
+3. restore Preview consumption to the single canonical JS payload;
+4. re-run exact-head review.
+
+## 10. QA obligations before MNT-M2-09 can be COMPLETE
+
+MNT-M2-09 may not be accepted merely because branch code or a GTM workspace exists.
+
+Later evidence must prove at minimum:
+
+- exact GA4 IDs and destination mapping;
+- canonical supported `mnt_*` source events in the final single Green JS payload;
+- exactly one canonical project page-view path;
 - no `www` project business Measurement;
-- no duplicate `gtag()`/GA4 path;
-- no duplicate direct `fbq()`/Meta path;
-- no raw search text or visitor PII in event parameters;
-- consent behavior for every configured destination;
+- no duplicate direct `gtag()`/GA4 path;
+- no raw search text or visitor PII;
+- consent behavior for the configured GA4 destination;
 - no false `mnt_lead_success`;
-- exact GTM version/workspace change evidence;
-- destination mapping inventory;
-- source/destination dedup safeguards.
+- exact GTM workspace/version evidence;
+- no accidental Ads/Meta implementation;
+- source/destination duplicate safeguards.
 
-End-to-end behavioral acceptance remains MNT-M2-10.
+Full behavioral end-to-end acceptance remains MNT-M2-10.
 
-## 9. Current next-safe action
-
-GA4 asset discovery/creation is now resolved.
-
-Next material implementation gate:
+## 11. Current state / next safe action
 
 ```text
-1. authorize bounded source-code instrumentation for deterministic mnt_* events;
-2. authorize bounded GTM GA4 destination configuration to G-57M2XR0CY2;
-3. do not implement form/lead events until Green lifecycle/success signals are proven;
-4. do not implement Meta destination until Meta Events Manager assets are proven;
-5. validate branch/workspace before any GTM production publication;
-6. publish only under an explicit GTM publication gate.
+MNT-M2-09 = ACTIVE / PARTIAL_IMPLEMENTED
+GA4 ASSET = PROVEN
+SOURCE DETERMINISTIC SLICE = IMPLEMENTED ON DRAFT BRANCH
+GTM GA4 BUILD SPECIFICATION = PREPARED
+GTM WORKSPACE MUTATION = NOT_YET_EVIDENCED
+GTM PUBLICATION = NOT AUTHORIZED
+FORM/LEAD EVENTS = NOT IMPLEMENTED
+ADR-001 SINGLE-JS CONSOLIDATION = REQUIRED BEFORE READY/MERGE
 ```
 
-MNT-M2-09 remains `ACTIVE / PARTIAL_IMPLEMENTED`; it receives `0h accepted` until the task exit criteria are fully satisfied and accepted.
+MNT-M2-09 receives `0h accepted` until its full exit criteria are satisfied and accepted.
