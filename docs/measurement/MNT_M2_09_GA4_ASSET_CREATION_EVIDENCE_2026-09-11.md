@@ -1,83 +1,71 @@
 # MNT-M2-09 — GA4 Asset Creation Evidence — 2026-09-11
 
 - Project: `MoreNumTegra`
-- Program: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
 - Task: `MNT-M2-09 — Implement authorized tracking configuration`
-- Evidence source: Product Authority screenshots from Google Analytics Admin / Web Stream details
-- Branch: `feat/mnt-m2-09-tracking-implementation`
-- External mutation recorded: GA4 property + production web stream created by Product Authority
-- GTM publication: `NONE`
-- Runtime tracking publication: `NONE`
+- Evidence source: provider-native Google Analytics screenshots supplied by Product Authority
+- Canonical main at task start: `98f92ea3e80770a0e735ee9b105a29b18a706255`
 
-## 1. Property
-
-Observed in Google Analytics Admin:
+## Proven dedicated GA4 destination
 
 ```text
-GA4_PROPERTY_NAME = MoreNumTegra
-GA4_PROPERTY_ID = 553742649
-REPORTING_TIMEZONE = Brazil / (GMT-03:00) Horário São Paulo
-DISPLAY_CURRENCY = BRL / Real brasileiro (R$)
-INDUSTRY = Serviços imobiliários
+Property name: MoreNumTegra
+Property ID: 553742649
+Web stream URL: https://moretegra.com.br
+Stream ID: 15759638334
+Measurement ID: G-57M2XR0CY2
+Reporting timezone: São Paulo / GMT-03:00
+Currency: BRL
+Industry: Serviços imobiliários
+Enhanced Measurement: OFF
 ```
 
-## 2. Production web stream
+The property and web stream were created specifically for the MoreNumTegra production host after the Product Authority confirmed that no dedicated MoreNumTegra GA4 property existed.
 
-Observed in Web Stream details:
+The stream creation screen showed GA4 collection as not active, which is expected before the project Google tag / destination configuration is published.
+
+## Post-creation connector corroboration
+
+Windsor.ai subsequently exposed the connected GA4 property entry:
 
 ```text
-WEB_STREAM_NAME = MoreNumTegra
-WEB_STREAM_URL = https://moretegra.com.br
+553742649 | MoreNumTegra
+```
+
+A data read returned no event rows while collection remained inactive. This corroborates connector visibility of the new property but is not runtime-delivery proof.
+
+## Binding implementation consequence
+
+The GA4 target for MNT-M2-09 is now proven and must not be substituted with an unrelated pre-existing property:
+
+```text
+GA4_PROPERTY_ID = 553742649
 GA4_STREAM_ID = 15759638334
 GA4_MEASUREMENT_ID = G-57M2XR0CY2
 ```
 
-## 3. Enhanced Measurement state
-
-Observed immediately after stream creation:
+The accepted transport architecture remains:
 
 ```text
-ENHANCED_MEASUREMENT = OFF
+project source -> canonical mnt_* dataLayer event -> GTM-PGCR4R47 -> G-57M2XR0CY2
 ```
 
-The stream UI showed no data received yet. This is expected because no Google tag / GTM GA4 destination was published by this evidence step.
+Direct `gtag()` project transport remains forbidden.
 
-## 4. Canonical classification update
+Because Enhanced Measurement is OFF and the project owns page-view semantics, the GTM Google tag must use `send_page_view=false`; `mnt_page_view` is mapped explicitly to the sole project-owned GA4 `page_view` path.
 
-The earlier M2-09 read-only state can now be refined for GA4:
+## Explicit non-claims
 
-```text
-GA4_PROPERTY_EXISTS = PROVEN
-GA4_PROPERTY_ID = 553742649
-GA4_STREAM_EXISTS = PROVEN
-GA4_STREAM_ID = 15759638334
-GA4_MEASUREMENT_ID = G-57M2XR0CY2
-GA4_PRODUCTION_HOST = moretegra.com.br
-GA4_DEDICATED_TO_MORENUMTEGRA = PROVEN BY PROPERTY/STREAM CREATION CONTEXT
-GA4_RUNTIME_COLLECTION = NOT_YET_IMPLEMENTED / NOT_YET_PROVEN
-```
+This evidence does not prove:
 
-Preserve:
+- GA4 collection has started;
+- GTM provider-side GA4 workspace changes exist;
+- a new GTM version has been published;
+- destination consent/network behavior has been validated;
+- form/lead lifecycle signals exist;
+- Meta Measurement exists;
+- Ads conversion configuration exists;
+- MNT-M2-09 or MNT-M2-10 is complete.
 
-```text
-PROPERTY CREATED != TAG PUBLISHED
-STREAM CREATED != DATA COLLECTION ACTIVE
-MEASUREMENT ID KNOWN != RUNTIME CONFIGURED
-GA4 ASSET CREATION != GA4 KEY EVENT CONFIGURATION
-GA4 ASSET CREATION != GOOGLE ADS LINK OR CONVERSION ACTION
-```
+Current task classification remains:
 
-## 5. Next implementation gate
-
-The next material mutation is no longer GA4 asset creation. It is the bounded implementation of the GA4 destination through the already accepted project dispatcher:
-
-```text
-canonical mnt_* source events
--> GTM-PGCR4R47
--> canonical-host + consent controls
--> G-57M2XR0CY2
-```
-
-Before publishing any new GTM version, Product Authority must explicitly authorize the exact GTM/source-code mutation scope. No direct `gtag()` path is authorized.
-
-Meta Dataset/Pixel/browser-source identifiers remain separately unresolved.
+`MNT-M2-09 = ACTIVE / PARTIAL_IMPLEMENTED`.
