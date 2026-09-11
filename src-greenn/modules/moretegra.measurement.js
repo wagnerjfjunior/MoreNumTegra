@@ -1,4 +1,4 @@
-// MNT-M2-09 measurement instrumentation v3.
+// MNT-M2-09 measurement instrumentation v4.
 // Source module for the single Green release artifact. No direct vendor dispatch.
 (() => {
   "use strict";
@@ -11,9 +11,10 @@
   const ROUTE = "/";
   const SEARCH_DEBOUNCE_MS = 600;
   const PAGE_VIEW_MARKER = Symbol.for("morenumtegra.measurement.page_view.v1");
-  const BIND_MARKER = Symbol.for("morenumtegra.measurement.delegated.v3");
+  const BIND_MARKER = Symbol.for("morenumtegra.measurement.delegated.v4");
   const SEARCH_STATE = new WeakMap();
   const SEARCH_LOCATION_INDEX = new Map();
+  const NOT_APPLICABLE = "not_applicable";
 
   const ALLOWED_EVENT_PARAMETERS = Object.freeze({
     mnt_page_view: new Set(["placement"]),
@@ -21,6 +22,12 @@
     mnt_catalog_filter: new Set(["filter_dimension", "filter_value", "result_count", "placement"]),
     mnt_catalog_search: new Set(["search_state", "search_location", "result_count", "placement"]),
     mnt_intent: new Set(["intent_type", "contact_channel", "placement", "project_name", "offer_name"])
+  });
+
+  const EVENT_PARAMETER_DEFAULTS = Object.freeze({
+    mnt_section_click: Object.freeze({faq_item: NOT_APPLICABLE}),
+    mnt_catalog_search: Object.freeze({search_location: NOT_APPLICABLE}),
+    mnt_intent: Object.freeze({project_name: NOT_APPLICABLE, offer_name: NOT_APPLICABLE})
   });
 
   const STATUS_VALUE = Object.freeze({
@@ -110,9 +117,15 @@
     const allowlist = ALLOWED_EVENT_PARAMETERS[eventName];
     if (!allowlist) return {};
 
-    return Object.entries(parameters || {}).reduce((result, [key, value]) => {
+    const defaults = EVENT_PARAMETER_DEFAULTS[eventName] || {};
+    const source = {...defaults};
+    Object.entries(parameters || {}).forEach(([key, value]) => {
+      if (value === undefined || value === null || value === "") return;
+      source[key] = value;
+    });
+
+    return Object.entries(source).reduce((result, [key, value]) => {
       if (!allowlist.has(key)) return result;
-      if (value === undefined || value === null || value === "") return result;
       result[key] = value;
       return result;
     }, {});
