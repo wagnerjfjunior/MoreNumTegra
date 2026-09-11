@@ -74,12 +74,36 @@ for (const token of requiredMeasurementEvents) {
   if (!measurementModule.includes(token)) fail(`required measurement event missing: ${token}`);
 }
 
+const requiredMeasurementSemantics = [
+  '// MNT-M2-09 measurement instrumentation v3.',
+  'mnt_section_click: new Set(["section_target", "faq_item", "placement"])',
+  'mnt_catalog_search: new Set(["search_state", "search_location", "result_count", "placement"])',
+  'const FAQ_ITEM_BY_QUESTION = Object.freeze({',
+  '"os valores mostrados sao finais": "valores_finais"',
+  '"como comparar os empreendimentos": "comparar_empreendimentos"',
+  '"como negociar uma condicao melhor": "negociar_condicao"',
+  '"este e o site institucional da tegra": "site_institucional"',
+  'function refreshSearchLocationIndex(root)',
+  'function classifySearchLocation(rawValue)',
+  'section_target: "faq"',
+  'faq_item: item',
+  'search_location: next ? classifySearchLocation(next) : undefined',
+  'function scheduleAfterInteraction(callback)',
+  'window.setTimeout(callback, 0)'
+];
+for (const token of requiredMeasurementSemantics) {
+  if (!measurementModule.includes(token)) fail(`required measurement semantic marker missing: ${token}`);
+}
+
 const forbidden = [
   "mnt_form_start",
   "mnt_form_submit_attempt",
   "mnt_lead_success",
   "gtag(",
-  "fbq("
+  "fbq(",
+  "search_term",
+  "search_query",
+  "raw_search"
 ];
 for (const token of forbidden) {
   if (measurementModule.includes(token)) fail(`forbidden measurement token present: ${token}`);
@@ -102,4 +126,4 @@ try {
   fail(`JavaScript syntax error: ${error.message}`);
 }
 
-console.log(`PASS verify-moretegra-release: UI baseline ${uiBaseRef} preserved; measurement module exact; syntax valid.`);
+console.log(`PASS verify-moretegra-release: UI baseline ${uiBaseRef} preserved; measurement module exact; v3 semantic guards present; syntax valid.`);
