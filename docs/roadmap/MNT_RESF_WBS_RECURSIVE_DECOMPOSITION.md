@@ -7,7 +7,7 @@
 - Tasks recursively decomposed: **43**
 - Tasks intentionally atomic: **31**
 - Planning subtasks added: **194**
-- Percentages are planning weights, not timesheet completion.
+- Percentages in this document are structural planning weights, not lifecycle completion. Current accepted/completion percentages come from `docs/sfjm/CURRENT_PROGRAM_STATE.json`.
 - Current lifecycle/progress remains owned by `docs/sfjm/CURRENT_PROGRAM_STATE.json`.
 - Structural hierarchy/hours are consumed from `docs/sfjm/PROGRAM_TASK_GRAPH.json`.
 
@@ -18,7 +18,6 @@
 - `program_weight_percent = node_hours / 1240`;
 - `phase_weight_percent = node_hours / phase_hours`;
 - `parent_weight_percent = child_hours / parent_hours`;
-- `accepted_percent = accepted_hours / node_hours`;
 - planning/decomposition does not imply authorization.
 
 ## MNT-M0 — V1 Foundation & Commercial Production — 160h — 12.90% do programa

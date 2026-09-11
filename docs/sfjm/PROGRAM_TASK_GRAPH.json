@@ -80,7 +80,6 @@
           "effort_class": "RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE",
           "phase_weight_percent": 10.0,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 100.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -92,7 +91,6 @@
           "effort_class": "RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE",
           "phase_weight_percent": 10.0,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 100.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -104,7 +102,6 @@
           "effort_class": "RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE",
           "phase_weight_percent": 15.0,
           "program_weight_percent": 1.9355,
-          "accepted_percent": 100.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -116,7 +113,6 @@
           "effort_class": "RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE",
           "phase_weight_percent": 10.0,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 100.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -128,7 +124,6 @@
           "effort_class": "RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE",
           "phase_weight_percent": 15.0,
           "program_weight_percent": 1.9355,
-          "accepted_percent": 100.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -140,7 +135,6 @@
           "effort_class": "RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE",
           "phase_weight_percent": 10.0,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 100.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -152,7 +146,6 @@
           "effort_class": "RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE",
           "phase_weight_percent": 15.0,
           "program_weight_percent": 1.9355,
-          "accepted_percent": 100.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -164,7 +157,6 @@
           "effort_class": "RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE",
           "phase_weight_percent": 10.0,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 100.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -176,12 +168,10 @@
           "effort_class": "RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE",
           "phase_weight_percent": 5.0,
           "program_weight_percent": 0.6452,
-          "accepted_percent": 100.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         }
       ],
-      "program_weight_percent": 12.9032,
-      "accepted_percent": 100.0
+      "program_weight_percent": 12.9032
     },
     {
       "id": "MNT-M1",
@@ -202,7 +192,6 @@
           "authorization": "DOCUMENTATION_ONLY_AUTHORIZED",
           "phase_weight_percent": 8.3333,
           "program_weight_percent": 0.6452,
-          "accepted_percent": 0.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -215,7 +204,6 @@
           "authorization": "DOCUMENTATION_ONLY_AUTHORIZED",
           "phase_weight_percent": 8.3333,
           "program_weight_percent": 0.6452,
-          "accepted_percent": 0.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -228,7 +216,6 @@
           "authorization": "DOCUMENTATION_ONLY_AUTHORIZED",
           "phase_weight_percent": 8.3333,
           "program_weight_percent": 0.6452,
-          "accepted_percent": 0.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -241,7 +228,6 @@
           "authorization": "DOCUMENTATION_ONLY_AUTHORIZED",
           "phase_weight_percent": 25.0,
           "program_weight_percent": 1.9355,
-          "accepted_percent": 0.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -254,7 +240,6 @@
           "authorization": "DOCUMENTATION_ONLY_AUTHORIZED",
           "phase_weight_percent": 8.3333,
           "program_weight_percent": 0.6452,
-          "accepted_percent": 0.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -267,7 +252,6 @@
           "authorization": "DOCUMENTATION_ONLY_AUTHORIZED",
           "phase_weight_percent": 8.3333,
           "program_weight_percent": 0.6452,
-          "accepted_percent": 0.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -280,7 +264,6 @@
           "authorization": "DOCUMENTATION_ONLY_AUTHORIZED",
           "phase_weight_percent": 16.6667,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -293,12 +276,10 @@
           "authorization": "SEPARATE_LIFECYCLE_GATES_APPLY",
           "phase_weight_percent": 16.6667,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         }
       ],
-      "program_weight_percent": 7.7419,
-      "accepted_percent": 0.0
+      "program_weight_percent": 7.7419
     },
     {
       "id": "MNT-M2",
@@ -317,7 +298,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 5.5556,
           "program_weight_percent": 0.6452,
-          "accepted_percent": 0.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -329,7 +309,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 11.1111,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -341,7 +320,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 11.1111,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -353,7 +331,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 5.5556,
           "program_weight_percent": 0.6452,
-          "accepted_percent": 0.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -365,7 +342,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 5.5556,
           "program_weight_percent": 0.6452,
-          "accepted_percent": 0.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -377,7 +353,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 5.5556,
           "program_weight_percent": 0.6452,
-          "accepted_percent": 0.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -389,7 +364,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 11.1111,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -401,7 +375,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 11.1111,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -414,7 +387,6 @@
           "authorization": "NOT_AUTHORIZED",
           "phase_weight_percent": 16.6667,
           "program_weight_percent": 1.9355,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -427,7 +399,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 4.1667,
               "program_weight_percent": 0.4839,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -440,7 +411,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 4.1667,
               "program_weight_percent": 0.4839,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -453,7 +423,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -466,7 +435,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -479,7 +447,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -493,7 +460,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 16.6667,
           "program_weight_percent": 1.9355,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -506,7 +472,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -519,7 +484,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -532,7 +496,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -545,7 +508,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -558,7 +520,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -571,14 +532,12 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
         }
       ],
-      "program_weight_percent": 11.6129,
-      "accepted_percent": 0.0
+      "program_weight_percent": 11.6129
     },
     {
       "id": "MNT-M3",
@@ -597,7 +556,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 16.6667,
           "program_weight_percent": 1.9355,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -610,7 +568,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 4.1667,
               "program_weight_percent": 0.4839,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -623,7 +580,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 4.1667,
               "program_weight_percent": 0.4839,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -636,7 +592,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -649,7 +604,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -662,7 +616,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -676,7 +629,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 11.1111,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -689,7 +641,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -702,7 +653,6 @@
               "parent_weight_percent": 37.5,
               "phase_weight_percent": 4.1667,
               "program_weight_percent": 0.4839,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -715,7 +665,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -728,7 +677,6 @@
               "parent_weight_percent": 12.5,
               "phase_weight_percent": 1.3889,
               "program_weight_percent": 0.1613,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -742,7 +690,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 11.1111,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -755,7 +702,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -768,7 +714,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -781,7 +726,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -794,7 +738,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -808,7 +751,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 16.6667,
           "program_weight_percent": 1.9355,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -821,7 +763,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -834,7 +775,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -847,7 +787,6 @@
               "parent_weight_percent": 33.3333,
               "phase_weight_percent": 5.5556,
               "program_weight_percent": 0.6452,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -860,7 +799,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -873,7 +811,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -887,7 +824,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 16.6667,
           "program_weight_percent": 1.9355,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -900,7 +836,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 4.1667,
               "program_weight_percent": 0.4839,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -913,7 +848,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 4.1667,
               "program_weight_percent": 0.4839,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -926,7 +860,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -939,7 +872,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -952,7 +884,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -966,7 +897,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 16.6667,
           "program_weight_percent": 1.9355,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -979,7 +909,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -992,7 +921,6 @@
               "parent_weight_percent": 33.3333,
               "phase_weight_percent": 5.5556,
               "program_weight_percent": 0.6452,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1005,7 +933,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1018,7 +945,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1031,7 +957,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -1045,7 +970,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 11.1111,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -1058,7 +982,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1071,7 +994,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1084,7 +1006,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1097,14 +1018,12 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.7778,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
         }
       ],
-      "program_weight_percent": 11.6129,
-      "accepted_percent": 0.0
+      "program_weight_percent": 11.6129
     },
     {
       "id": "MNT-M4",
@@ -1123,7 +1042,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 11.5385,
           "program_weight_percent": 1.9355,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -1136,7 +1054,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1149,7 +1066,6 @@
               "parent_weight_percent": 33.3333,
               "phase_weight_percent": 3.8462,
               "program_weight_percent": 0.6452,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1162,7 +1078,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1175,7 +1090,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1188,7 +1102,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -1202,7 +1115,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 11.5385,
           "program_weight_percent": 1.9355,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -1215,7 +1127,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.8846,
               "program_weight_percent": 0.4839,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1228,7 +1139,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.8846,
               "program_weight_percent": 0.4839,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1241,7 +1151,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1254,7 +1163,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1267,7 +1175,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -1281,7 +1188,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 11.5385,
           "program_weight_percent": 1.9355,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -1294,7 +1200,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1307,7 +1212,6 @@
               "parent_weight_percent": 33.3333,
               "phase_weight_percent": 3.8462,
               "program_weight_percent": 0.6452,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1320,7 +1224,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1333,7 +1236,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1346,7 +1248,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -1360,7 +1261,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 11.5385,
           "program_weight_percent": 1.9355,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -1373,7 +1273,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1386,7 +1285,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.8846,
               "program_weight_percent": 0.4839,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1399,7 +1297,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.8846,
               "program_weight_percent": 0.4839,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1412,7 +1309,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1425,7 +1321,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -1440,7 +1335,6 @@
           "authorization": "NOT_AUTHORIZED",
           "phase_weight_percent": 7.6923,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -1453,7 +1347,6 @@
               "parent_weight_percent": 37.5,
               "phase_weight_percent": 2.8846,
               "program_weight_percent": 0.4839,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1466,7 +1359,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1479,7 +1371,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1492,7 +1383,6 @@
               "parent_weight_percent": 12.5,
               "phase_weight_percent": 0.9615,
               "program_weight_percent": 0.1613,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -1506,7 +1396,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 11.5385,
           "program_weight_percent": 1.9355,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -1519,7 +1408,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.8846,
               "program_weight_percent": 0.4839,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1532,7 +1420,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.8846,
               "program_weight_percent": 0.4839,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1545,7 +1432,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1558,7 +1444,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1571,7 +1456,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -1585,7 +1469,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 7.6923,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -1598,7 +1481,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1611,7 +1493,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1624,7 +1505,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1637,7 +1517,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -1652,7 +1531,6 @@
           "authorization": "NOT_AUTHORIZED",
           "phase_weight_percent": 15.3846,
           "program_weight_percent": 2.5806,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -1665,7 +1543,6 @@
               "parent_weight_percent": 12.5,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1678,7 +1555,6 @@
               "parent_weight_percent": 37.5,
               "phase_weight_percent": 5.7692,
               "program_weight_percent": 0.9677,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1691,7 +1567,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 3.8462,
               "program_weight_percent": 0.6452,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1704,7 +1579,6 @@
               "parent_weight_percent": 12.5,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1717,7 +1591,6 @@
               "parent_weight_percent": 12.5,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -1732,7 +1605,6 @@
           "authorization": "NOT_AUTHORIZED",
           "phase_weight_percent": 11.5385,
           "program_weight_percent": 1.9355,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -1745,7 +1617,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1758,7 +1629,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.8846,
               "program_weight_percent": 0.4839,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1771,7 +1641,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.8846,
               "program_weight_percent": 0.4839,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1784,7 +1653,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1797,14 +1665,12 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 1.9231,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
         }
       ],
-      "program_weight_percent": 16.7742,
-      "accepted_percent": 0.0
+      "program_weight_percent": 16.7742
     },
     {
       "id": "MNT-M5",
@@ -1823,7 +1689,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 9.5238,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -1836,7 +1701,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1849,7 +1713,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1862,7 +1725,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1875,7 +1737,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -1889,7 +1750,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 9.5238,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -1902,7 +1762,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1915,7 +1774,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1928,7 +1786,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1941,7 +1798,6 @@
               "parent_weight_percent": 12.5,
               "phase_weight_percent": 1.1905,
               "program_weight_percent": 0.1613,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1954,7 +1810,6 @@
               "parent_weight_percent": 12.5,
               "phase_weight_percent": 1.1905,
               "program_weight_percent": 0.1613,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -1968,7 +1823,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 9.5238,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -1981,7 +1835,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -1994,7 +1847,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2007,7 +1859,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2020,7 +1871,6 @@
               "parent_weight_percent": 12.5,
               "phase_weight_percent": 1.1905,
               "program_weight_percent": 0.1613,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2033,7 +1883,6 @@
               "parent_weight_percent": 12.5,
               "phase_weight_percent": 1.1905,
               "program_weight_percent": 0.1613,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -2047,7 +1896,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 9.5238,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -2060,7 +1908,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2073,7 +1920,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2086,7 +1932,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2099,7 +1944,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -2113,7 +1957,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 9.5238,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -2126,7 +1969,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2139,7 +1981,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2152,7 +1993,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2165,7 +2005,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -2179,7 +2018,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 9.5238,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -2192,7 +2030,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2205,7 +2042,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2218,7 +2054,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2231,7 +2066,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -2245,7 +2079,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 9.5238,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -2258,7 +2091,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2271,7 +2103,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2284,7 +2115,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2297,7 +2127,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -2311,7 +2140,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 9.5238,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -2324,7 +2152,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2337,7 +2164,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2350,7 +2176,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2363,7 +2188,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -2377,7 +2201,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 9.5238,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -2390,7 +2213,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2403,7 +2225,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2416,7 +2237,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2429,7 +2249,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -2444,7 +2263,6 @@
           "authorization": "NOT_AUTHORIZED",
           "phase_weight_percent": 14.2857,
           "program_weight_percent": 1.9355,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -2457,7 +2275,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2470,7 +2287,6 @@
               "parent_weight_percent": 50.0,
               "phase_weight_percent": 7.1429,
               "program_weight_percent": 0.9677,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2483,7 +2299,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2496,14 +2311,12 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.381,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
         }
       ],
-      "program_weight_percent": 13.5484,
-      "accepted_percent": 0.0
+      "program_weight_percent": 13.5484
     },
     {
       "id": "MNT-M6",
@@ -2522,7 +2335,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 12.5,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -2535,7 +2347,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 3.125,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2548,7 +2359,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 3.125,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2561,7 +2371,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 3.125,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2574,7 +2383,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 3.125,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -2588,7 +2396,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 6.25,
           "program_weight_percent": 0.6452,
-          "accepted_percent": 0.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -2600,7 +2407,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 12.5,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -2613,7 +2419,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 3.125,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2626,7 +2431,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 3.125,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2639,7 +2443,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 3.125,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2652,7 +2455,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 3.125,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -2666,7 +2468,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 18.75,
           "program_weight_percent": 1.9355,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -2679,7 +2480,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 4.6875,
               "program_weight_percent": 0.4839,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2692,7 +2492,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 4.6875,
               "program_weight_percent": 0.4839,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2705,7 +2504,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 3.125,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2718,7 +2516,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 3.125,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2731,7 +2528,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 3.125,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -2745,7 +2541,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 12.5,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -2758,7 +2553,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 3.125,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2771,7 +2565,6 @@
               "parent_weight_percent": 37.5,
               "phase_weight_percent": 4.6875,
               "program_weight_percent": 0.4839,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2784,7 +2577,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 3.125,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2797,7 +2589,6 @@
               "parent_weight_percent": 12.5,
               "phase_weight_percent": 1.5625,
               "program_weight_percent": 0.1613,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -2812,7 +2603,6 @@
           "authorization": "NOT_AUTHORIZED",
           "phase_weight_percent": 6.25,
           "program_weight_percent": 0.6452,
-          "accepted_percent": 0.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -2825,7 +2615,6 @@
           "authorization": "NOT_AUTHORIZED",
           "phase_weight_percent": 18.75,
           "program_weight_percent": 1.9355,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -2838,7 +2627,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 3.125,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2851,7 +2639,6 @@
               "parent_weight_percent": 33.3333,
               "phase_weight_percent": 6.25,
               "program_weight_percent": 0.6452,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2864,7 +2651,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 3.125,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2877,7 +2663,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 3.125,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2890,7 +2675,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 3.125,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -2904,7 +2688,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 12.5,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -2917,7 +2700,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 3.125,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2930,7 +2712,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 3.125,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2943,7 +2724,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 3.125,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -2956,14 +2736,12 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 3.125,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
         }
       ],
-      "program_weight_percent": 10.3226,
-      "accepted_percent": 0.0
+      "program_weight_percent": 10.3226
     },
     {
       "id": "MNT-M7",
@@ -2982,7 +2760,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 8.3333,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -2995,7 +2772,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3008,7 +2784,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3021,7 +2796,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3034,7 +2808,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -3048,7 +2821,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 8.3333,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -3061,7 +2833,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3074,7 +2845,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3087,7 +2857,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3100,7 +2869,6 @@
               "parent_weight_percent": 12.5,
               "phase_weight_percent": 1.0417,
               "program_weight_percent": 0.1613,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3113,7 +2881,6 @@
               "parent_weight_percent": 12.5,
               "phase_weight_percent": 1.0417,
               "program_weight_percent": 0.1613,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -3127,7 +2894,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 8.3333,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -3140,7 +2906,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3153,7 +2918,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3166,7 +2930,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3179,7 +2942,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -3193,7 +2955,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 8.3333,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -3206,7 +2967,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3219,7 +2979,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3232,7 +2991,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3245,7 +3003,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -3259,7 +3016,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 8.3333,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -3272,7 +3028,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3285,7 +3040,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3298,7 +3052,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3311,7 +3064,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -3325,7 +3077,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 4.1667,
           "program_weight_percent": 0.6452,
-          "accepted_percent": 0.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -3338,7 +3089,6 @@
           "authorization": "NOT_AUTHORIZED",
           "phase_weight_percent": 4.1667,
           "program_weight_percent": 0.6452,
-          "accepted_percent": 0.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -3351,7 +3101,6 @@
           "authorization": "NOT_AUTHORIZED",
           "phase_weight_percent": 4.1667,
           "program_weight_percent": 0.6452,
-          "accepted_percent": 0.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -3363,7 +3112,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 4.1667,
           "program_weight_percent": 0.6452,
-          "accepted_percent": 0.0,
           "decomposition": "ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED"
         },
         {
@@ -3375,7 +3123,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 12.5,
           "program_weight_percent": 1.9355,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -3388,7 +3135,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3401,7 +3147,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3414,7 +3159,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3427,7 +3171,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3440,7 +3183,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3453,7 +3195,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -3467,7 +3208,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 12.5,
           "program_weight_percent": 1.9355,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -3480,7 +3220,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3493,7 +3232,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 3.125,
               "program_weight_percent": 0.4839,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3506,7 +3244,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 3.125,
               "program_weight_percent": 0.4839,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3519,7 +3256,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3532,7 +3268,6 @@
               "parent_weight_percent": 16.6667,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -3546,7 +3281,6 @@
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "phase_weight_percent": 8.3333,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -3559,7 +3293,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3572,7 +3305,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3585,7 +3317,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3598,7 +3329,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
@@ -3613,7 +3343,6 @@
           "authorization": "NOT_AUTHORIZED",
           "phase_weight_percent": 8.3333,
           "program_weight_percent": 1.2903,
-          "accepted_percent": 0.0,
           "decomposition": "DECOMPOSED",
           "children": [
             {
@@ -3626,7 +3355,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3639,7 +3367,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3652,7 +3379,6 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             },
             {
@@ -3665,14 +3391,12 @@
               "parent_weight_percent": 25.0,
               "phase_weight_percent": 2.0833,
               "program_weight_percent": 0.3226,
-              "accepted_percent": 0.0,
               "planning_semantics": "DECOMPOSITION_DOES_NOT_AUTHORIZE_EXECUTION"
             }
           ]
         }
       ],
-      "program_weight_percent": 15.4839,
-      "accepted_percent": 0.0
+      "program_weight_percent": 15.4839
     }
   ],
   "consumer_rules": {
@@ -3698,7 +3422,7 @@
     "recursive_children_field": "children",
     "atomic_rule": "Do not create children when additional decomposition would not improve execution visibility or would retrospectively invent accepted historical detail.",
     "rollup_rule": "Parent hours equal sum of immediate children when decomposed; never double-count parent plus descendants.",
-    "percent_rule": "program_weight_percent is hours/1240; phase_weight_percent is node hours/phase hours; parent_weight_percent is child hours/parent hours; accepted_percent is accepted_hours/node_hours.",
+    "percent_rule": "program_weight_percent is hours/1240; phase_weight_percent is node hours/phase hours; parent_weight_percent is child hours/parent hours. Lifecycle completion/accepted percentages must come from CURRENT_PROGRAM_STATE.json, not the structural graph.",
     "authorization_rule": "PLANNED WBS != AUTHORIZED EXECUTION. Child planning nodes inherit project governance and require the applicable Product Authority gate."
   }
 }
