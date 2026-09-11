@@ -7,6 +7,7 @@
 - Canonical `main` resolved before execution: `98f92ea3e80770a0e735ee9b105a29b18a706255`
 - Initial execution mode: `READ_ONLY ASSET RESOLUTION + BOUNDED IMPLEMENTATION PLANNING`
 - Later bounded source authorization: deterministic `mnt_*` source instrumentation + GA4 workspace preparation for `G-57M2XR0CY2`, with no GTM publish and no form/lead events
+- Later consolidation authorization: fold the reviewed source instrumentation into canonical `src-greenn/moretegra.js`, remove temporary staging, restore single-JS Preview composition, execute exact-head review; no Green/GTM publication
 - Task state: `ACTIVE / PARTIAL_IMPLEMENTED`
 
 ## 1. Purpose
@@ -79,11 +80,11 @@ The connected Windsor Meta Ads surface does not provide sufficient Events Manage
 
 Meta implementation is not part of the current bounded source/GA4 workspace slice.
 
-## 5. Bounded source instrumentation implemented on the Draft branch
+## 5. Deterministic source instrumentation
 
-The branch now contains a deterministic source instrumentation staging module:
+The authorized source instrumentation now resides in the single canonical Green page-level JavaScript artifact:
 
-`src-greenn/moretegra.measurement.js`
+`src-greenn/moretegra.js`
 
 Implemented source events:
 
@@ -106,9 +107,23 @@ The source emitter:
 - never sends visitor name, email, phone, Form 46 values, free-form message text or raw catalogue search text;
 - contains no direct `gtag()` or `fbq()` path.
 
-`mnt_catalog_search` is debounced/committed and sends only search state plus result count, never the query text.
+`mnt_catalog_search` uses a 600 ms committed/debounced state transition and sends only:
+
+```text
+search_state = active | cleared
+result_count
+placement = catalog_search
+```
+
+It does not send the typed query.
 
 Filter instrumentation suppresses initial/default state, no-op setter calls and programmatic desktop/mobile synchronization.
+
+The earlier temporary staging artifact `src-greenn/moretegra.measurement.js` was removed after consolidation. `src-greenn/preview/index.html` again consumes only the canonical `moretegra.js` payload.
+
+Consolidation evidence is recorded in:
+
+`docs/measurement/MNT_M2_09_SOURCE_CONSOLIDATION_AND_SYNTHETIC_ROUTING_T8_2026-09-11.md`.
 
 ## 6. Form events remain evidence-gated
 
@@ -124,7 +139,7 @@ A stable, non-invasive identification of the native Green Form 46 lifecycle rema
 
 No submit interception, duplicate POST, custom fetch replacement or generic form mutation is authorized.
 
-## 7. GTM / GA4 bounded workspace design
+## 7. GTM / GA4 bounded workspace design and current proof
 
 The exact non-published workspace build is specified in:
 
@@ -144,9 +159,11 @@ no Meta tags
 no publication
 ```
 
-The current chat has no authenticated Google Tag Manager write connector. Therefore the GTM workspace itself is not claimed as mutated by ChatGPT; the exact build specification is prepared and must be evidenced after provider-side application.
+Provider-side GTM workspace preparation has subsequently been evidenced by Product Authority screenshots and GTM Preview / Tag Assistant tests. Synthetic routing proof currently supports one intended firing per tested source occurrence for the authorized five-event slice, with no cross-fire observed in the selected occurrences.
 
-## 8. Consent boundary
+The current ChatGPT toolset still has no authenticated Google Tag Manager write connector; no claim is made that ChatGPT itself mutated or published the GTM workspace.
+
+## 8. Consent boundary and proof
 
 Accepted state handling remains:
 
@@ -157,40 +174,43 @@ Green Cancelar = denied all four
 persistence = proven
 ```
 
-M2-09 must not create a second consent state machine.
+M2-09 does not create a second consent state machine.
 
-The Google destination's denied/granted network behavior must be inspected in GTM Preview before a future publish gate. This plan does not silently choose or redefine a Basic-vs-Advanced Consent Mode policy.
+The prepared GA4 destination has now been tested in GTM Preview for granted and denied paths. Clean-session denied evidence supports cookieless GA4 collection with no `_ga` / `_ga_*` cookie observed before or after the controlled denied test. This is a bounded test result, not a claim about every future browser/session.
 
-## 9. ADR-001 single-JavaScript residual
+## 9. ADR-001 single-JavaScript reconciliation
 
 ADR-001 defines one page-level JavaScript production payload:
 
 `src-greenn/moretegra.js`
 
-The temporary `src-greenn/moretegra.measurement.js` is branch-only staging for review and must not become a second permanent Green production payload.
+The temporary staging file has been folded into the canonical JS and removed. Preview again loads only `src-greenn/moretegra.js`.
 
-Before PR #50 can be Ready/merged:
+Current classification:
 
-1. fold the reviewed measurement IIFE into `src-greenn/moretegra.js`;
-2. remove the temporary staging module;
-3. restore Preview consumption to the single canonical JS payload;
-4. re-run exact-head review.
+```text
+ADR_001_SINGLE_JS_CONSOLIDATION = COMPLETE_ON_DRAFT_BRANCH
+TEMPORARY_MEASUREMENT_FILE = REMOVED
+PREVIEW_SINGLE_JS_COMPOSITION = RESTORED
+```
+
+This removes the former temporary-file consolidation blocker. It does not authorize Green publication or GTM publication.
 
 ## 10. QA obligations before MNT-M2-09 can be COMPLETE
 
 MNT-M2-09 may not be accepted merely because branch code or a GTM workspace exists.
 
-Later evidence must prove at minimum:
+Still required at minimum:
 
-- exact GA4 IDs and destination mapping;
-- canonical supported `mnt_*` source events in the final single Green JS payload;
-- exactly one canonical project page-view path;
+- real-source runtime proof from the final consolidated Green JS artifact after an explicitly authorized Green update;
+- exact canonical supported `mnt_*` source events from real page interactions;
+- exactly one canonical project page-view path in real runtime;
 - no `www` project business Measurement;
 - no duplicate direct `gtag()`/GA4 path;
 - no raw search text or visitor PII;
-- consent behavior for the configured GA4 destination;
 - no false `mnt_lead_success`;
-- exact GTM workspace/version evidence;
+- separately authorized GTM Submit/Publish before any new production GTM version exists;
+- exact published GTM version evidence after any future publication;
 - no accidental Ads/Meta implementation;
 - source/destination duplicate safeguards.
 
@@ -201,12 +221,14 @@ Full behavioral end-to-end acceptance remains MNT-M2-10.
 ```text
 MNT-M2-09 = ACTIVE / PARTIAL_IMPLEMENTED
 GA4 ASSET = PROVEN
-SOURCE DETERMINISTIC SLICE = IMPLEMENTED ON DRAFT BRANCH
-GTM GA4 BUILD SPECIFICATION = PREPARED
-GTM WORKSPACE MUTATION = NOT_YET_EVIDENCED
-GTM PUBLICATION = NOT AUTHORIZED
+SOURCE DETERMINISTIC SLICE = CONSOLIDATED INTO CANONICAL moretegra.js ON DRAFT BRANCH
+SYNTHETIC GTM/GA4 ROUTING = PASS FOR AUTHORIZED FIVE-EVENT SLICE
+CONSENT GRANTED/DENIED BOUNDED QA = PROVEN FOR TESTED SESSIONS
+GTM WORKSPACE PREPARATION = EVIDENCED / UNPUBLISHED
+GTM PUBLICATION = NOT AUTHORIZED / NOT PERFORMED
+GREEN PUBLICATION OF CONSOLIDATED JS = NOT AUTHORIZED / NOT PERFORMED
 FORM/LEAD EVENTS = NOT IMPLEMENTED
-ADR-001 SINGLE-JS CONSOLIDATION = REQUIRED BEFORE READY/MERGE
+REAL-SOURCE GREEN RUNTIME PROOF = OPEN
 ```
 
 MNT-M2-09 receives `0h accepted` until its full exit criteria are satisfied and accepted.
