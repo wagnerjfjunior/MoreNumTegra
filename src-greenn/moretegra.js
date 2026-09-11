@@ -823,7 +823,7 @@
   observer.observe(document.documentElement, {childList: true, subtree: true});
 })();
 
-// MNT-M2-09 measurement instrumentation v2.
+// MNT-M2-09 measurement instrumentation v3.
 // Source module for the single Green release artifact. No direct vendor dispatch.
 (() => {
   "use strict";
@@ -836,14 +836,15 @@
   const ROUTE = "/";
   const SEARCH_DEBOUNCE_MS = 600;
   const PAGE_VIEW_MARKER = Symbol.for("morenumtegra.measurement.page_view.v1");
-  const BIND_MARKER = Symbol.for("morenumtegra.measurement.delegated.v2");
+  const BIND_MARKER = Symbol.for("morenumtegra.measurement.delegated.v3");
   const SEARCH_STATE = new WeakMap();
+  const SEARCH_LOCATION_INDEX = new Map();
 
   const ALLOWED_EVENT_PARAMETERS = Object.freeze({
     mnt_page_view: new Set(["placement"]),
-    mnt_section_click: new Set(["section_target", "placement"]),
+    mnt_section_click: new Set(["section_target", "faq_item", "placement"]),
     mnt_catalog_filter: new Set(["filter_dimension", "filter_value", "result_count", "placement"]),
-    mnt_catalog_search: new Set(["search_state", "result_count", "placement"]),
+    mnt_catalog_search: new Set(["search_state", "search_location", "result_count", "placement"]),
     mnt_intent: new Set(["intent_type", "contact_channel", "placement", "project_name", "offer_name"])
   });
 
@@ -876,6 +877,13 @@
     "CAPIITOLO by Piero Lissoni | à vista": "CAPIITOLO by Piero Lissoni"
   });
 
+  const FAQ_ITEM_BY_QUESTION = Object.freeze({
+    "os valores mostrados sao finais": "valores_finais",
+    "como comparar os empreendimentos": "comparar_empreendimentos",
+    "como negociar uma condicao melhor": "negociar_condicao",
+    "este e o site institucional da tegra": "site_institucional"
+  });
+
   function isEligibleHost() {
     return window.location.hostname === CANONICAL_HOST;
   }
@@ -895,6 +903,17 @@
       .replace(/[\u0300-\u036f]/g, "")
       .toLowerCase()
       .trim();
+  }
+
+  function normalizeControlledText(value) {
+    return normalizeSearchState(value)
+      .replace(/[^a-z0-9]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function slugControlledText(value) {
+    return normalizeControlledText(value).replace(/\s+/g, "_");
   }
 
   function eventId() {
@@ -977,6 +996,51 @@
     return currentStatus(root) !== "todos" || zone !== "todas" || price !== "todos" || Boolean(query);
   }
 
+  function registerSearchLocation(label) {
+    const normalized = normalizeControlledText(label);
+    const slug = slugControlledText(label);
+    if (!normalized || !slug || normalized === "todas") return;
+    if (!SEARCH_LOCATION_INDEX.has(normalized)) SEARCH_LOCATION_INDEX.set(normalized, slug);
+  }
+
+  function refreshSearchLocationIndex(root) {
+    root?.querySelectorAll(".mt-project-location").forEach((node) => {
+      const parts = String(node.textContent || "")
+        .split("·")
+        .map((part) => part.trim())
+        .filter(Boolean);
+      if (parts[0]) registerSearchLocation(parts[0]);
+      if (parts[1]) registerSearchLocation(parts[1]);
+    });
+  }
+
+  function containsControlledPhrase(haystack, needle) {
+    if (!haystack || !needle) return false;
+    return ` ${haystack} `.includes(` ${needle} `);
+  }
+
+  function classifySearchLocation(rawValue) {
+    const query = normalizeControlledText(rawValue);
+    if (!query) return "";
+
+    const exact = SEARCH_LOCATION_INDEX.get(query);
+    if (exact) return exact;
+
+    const candidates = new Set();
+    for (const [known, slug] of SEARCH_LOCATION_INDEX.entries()) {
+      if (containsControlledPhrase(query, known) || containsControlledPhrase(known, query)) {
+        candidates.add(slug);
+      }
+    }
+
+    return candidates.size === 1 ? [...candidates][0] : "other";
+  }
+
+  function faqItem(summary) {
+    const question = normalizeControlledText(summary?.textContent || "");
+    return FAQ_ITEM_BY_QUESTION[question] || "other";
+  }
+
   function emitPageViewOnce() {
     if (!isEligibleHost() || !projectRoot() || window[PAGE_VIEW_MARKER]) return false;
     window[PAGE_VIEW_MARKER] = true;
@@ -998,12 +1062,8 @@
     return "";
   }
 
-  function scheduleAfterUi(callback) {
-    if (typeof window.queueMicrotask === "function") {
-      window.queueMicrotask(callback);
-      return;
-    }
-    Promise.resolve().then(callback);
+  function scheduleAfterInteraction(callback) {
+    window.setTimeout(callback, 0);
   }
 
   function emitFilter(root, dimension, sourceValue, placement) {
@@ -1035,6 +1095,8 @@
     const root = target.closest(ROOT_SELECTOR);
     if (!root) return;
 
+    refreshSearchLocationIndex(root);
+
     let state = SEARCH_STATE.get(target);
     if (!state) {
       state = {lastCommitted: normalizeSearchState(target.defaultValue || ""), timer: 0};
@@ -1049,6 +1111,7 @@
       state.lastCommitted = next;
       emit("mnt_catalog_search", "consideration", {
         search_state: next ? "active" : "cleared",
+        search_location: next ? classifySearchLocation(next) : undefined,
         result_count: resultCount(root),
         placement: "catalog_search"
       });
@@ -1063,19 +1126,19 @@
 
     if (target.matches("[data-status-mobile]")) {
       const next = target.value || "todos";
-      scheduleAfterUi(() => emitFilter(root, "status", next, "status_mobile"));
+      scheduleAfterInteraction(() => emitFilter(root, "status", next, "status_mobile"));
       return;
     }
 
     if (target.matches("[data-zone-filter]")) {
       const next = target.value || "todas";
-      scheduleAfterUi(() => emitFilter(root, "zone", next, "zone_select"));
+      scheduleAfterInteraction(() => emitFilter(root, "zone", next, "zone_select"));
       return;
     }
 
     if (target.matches("[data-price-filter]")) {
       const next = target.value || "todos";
-      scheduleAfterUi(() => emitFilter(root, "price", next, "price_select"));
+      scheduleAfterInteraction(() => emitFilter(root, "price", next, "price_select"));
     }
   }
 
@@ -1086,50 +1149,70 @@
     const floating = element.closest("#mt-floating-dock a");
     if (floating) {
       if (floating.matches(".mt-floating-lead")) {
-        emit("mnt_intent", "intent", {
+        const context = selectedProjectContext();
+        scheduleAfterInteraction(() => emit("mnt_intent", "intent", {
           intent_type: "request_conditions",
           contact_channel: "form",
           placement: "floating",
-          ...selectedProjectContext()
-        });
+          ...context
+        }));
         return;
       }
 
       if (floating.matches(".mt-floating-whatsapp")) {
-        emit("mnt_intent", "intent", {
+        const context = selectedProjectContext();
+        scheduleAfterInteraction(() => emit("mnt_intent", "intent", {
           intent_type: "whatsapp_contact",
           contact_channel: "whatsapp",
           placement: "floating",
-          ...selectedProjectContext()
-        });
+          ...context
+        }));
       }
       return;
     }
 
     const root = element.closest(ROOT_SELECTOR);
     if (!root) return;
+
+    const faqSummary = element.closest(".mt-faq summary");
+    if (faqSummary && root.contains(faqSummary)) {
+      const details = faqSummary.closest("details");
+      const wasOpen = details?.open === true;
+      const item = faqItem(faqSummary);
+      if (!wasOpen) {
+        scheduleAfterInteraction(() => emit("mnt_section_click", "consideration", {
+          section_target: "faq",
+          faq_item: item,
+          placement: "faq"
+        }));
+      }
+      return;
+    }
+
     const target = element.closest("a,button");
     if (!target || !root.contains(target)) return;
 
     const cardInterest = target.closest("[data-interest]");
     if (cardInterest) {
-      emit("mnt_intent", "intent", {
+      const context = projectContext(cardInterest.dataset.interest);
+      scheduleAfterInteraction(() => emit("mnt_intent", "intent", {
         intent_type: "project_interest",
         contact_channel: "form",
         placement: "catalog_card",
-        ...projectContext(cardInterest.dataset.interest)
-      });
+        ...context
+      }));
       return;
     }
 
     const continueForm = target.closest("[data-continue-form]");
     if (continueForm) {
-      emit("mnt_intent", "intent", {
+      const context = selectedProjectContext();
+      scheduleAfterInteraction(() => emit("mnt_intent", "intent", {
         intent_type: "request_project_conditions",
         contact_channel: "form",
         placement: "interest_context",
-        ...selectedProjectContext()
-      });
+        ...context
+      }));
       return;
     }
 
@@ -1137,7 +1220,7 @@
     if (statusButton) {
       const next = statusButton.dataset.filterStatus || "todos";
       if (statusButton.classList.contains("is-active")) return;
-      scheduleAfterUi(() => emitFilter(root, "status", next, "status_buttons"));
+      scheduleAfterInteraction(() => emitFilter(root, "status", next, "status_buttons"));
       return;
     }
 
@@ -1145,7 +1228,7 @@
     if (quickZone) {
       const next = quickZone.dataset.quickZone || "todas";
       if (quickZone.classList.contains("is-active")) return;
-      scheduleAfterUi(() => emitFilter(root, "zone", next, "zone_quick"));
+      scheduleAfterInteraction(() => emitFilter(root, "zone", next, "zone_quick"));
       return;
     }
 
@@ -1153,7 +1236,7 @@
     if (momentStatus) {
       const next = momentStatus.dataset.setStatus || "todos";
       if (next === currentStatus(root)) return;
-      scheduleAfterUi(() => emitFilter(root, "status", next, "moment_selector"));
+      scheduleAfterInteraction(() => emitFilter(root, "status", next, "moment_selector"));
       return;
     }
 
@@ -1161,32 +1244,31 @@
     if (clear) {
       if (!hasEffectiveFilters(root)) return;
       cancelPendingSearch(root, "");
-      scheduleAfterUi(() => {
-        emit("mnt_catalog_filter", "consideration", {
-          filter_dimension: "reset",
-          filter_value: "all",
-          result_count: resultCount(root),
-          placement: clear.matches("[data-empty-clear]") ? "empty_state_reset" : "clear_filters"
-        });
-      });
+      const placement = clear.matches("[data-empty-clear]") ? "empty_state_reset" : "clear_filters";
+      scheduleAfterInteraction(() => emit("mnt_catalog_filter", "consideration", {
+        filter_dimension: "reset",
+        filter_value: "all",
+        result_count: resultCount(root),
+        placement
+      }));
       return;
     }
 
     const focusPrice = target.closest("[data-focus-price]");
     if (focusPrice) {
-      emit("mnt_section_click", "consideration", {
+      scheduleAfterInteraction(() => emit("mnt_section_click", "consideration", {
         section_target: "opportunities",
         placement: "moment_selector"
-      });
+      }));
       return;
     }
 
     const changeInterest = target.closest("[data-change-interest]");
     if (changeInterest) {
-      emit("mnt_section_click", "consideration", {
+      scheduleAfterInteraction(() => emit("mnt_section_click", "consideration", {
         section_target: "opportunities",
         placement: "content"
-      });
+      }));
       return;
     }
 
@@ -1194,37 +1276,50 @@
     if (href.startsWith("#")) {
       if (href === "#formulario") {
         if (target.closest(".mt-header")) {
-          emit("mnt_intent", "intent", {intent_type:"request_conditions", contact_channel:"form", placement:"header_nav"});
+          scheduleAfterInteraction(() => emit("mnt_intent", "intent", {
+            intent_type: "request_conditions",
+            contact_channel: "form",
+            placement: "header_nav"
+          }));
           return;
         }
 
         if (target.closest(".mt-hero")) {
-          emit("mnt_intent", "intent", {intent_type:"request_conditions", contact_channel:"form", placement:"hero"});
+          scheduleAfterInteraction(() => emit("mnt_intent", "intent", {
+            intent_type: "request_conditions",
+            contact_channel: "form",
+            placement: "hero"
+          }));
           return;
         }
 
         if (target.closest(".mt-negotiation")) {
-          emit("mnt_intent", "intent", {intent_type:"negotiate_scenario", contact_channel:"form", placement:"negotiation"});
+          scheduleAfterInteraction(() => emit("mnt_intent", "intent", {
+            intent_type: "negotiate_scenario",
+            contact_channel: "form",
+            placement: "negotiation"
+          }));
           return;
         }
       }
 
       const sectionTarget = sectionTargetFromHref(href);
       if (sectionTarget) {
-        emit("mnt_section_click", "consideration", {
+        const placement = sectionPlacement(target);
+        scheduleAfterInteraction(() => emit("mnt_section_click", "consideration", {
           section_target: sectionTarget,
-          placement: sectionPlacement(target)
-        });
+          placement
+        }));
       }
       return;
     }
 
     if (target.matches('a[href^="https://wa.me/"]') && target.closest(".mt-negotiation")) {
-      emit("mnt_intent", "intent", {
+      scheduleAfterInteraction(() => emit("mnt_intent", "intent", {
         intent_type: "schedule_visit",
         contact_channel: "whatsapp",
         placement: "negotiation"
-      });
+      }));
     }
   }
 
@@ -1236,11 +1331,19 @@
     document.addEventListener("input", handleSearchInput, true);
   }
 
-  function waitForRootAndEmitPageView() {
-    if (emitPageViewOnce()) return;
+  function primeRuntime() {
+    const root = projectRoot();
+    if (!root) return false;
+    refreshSearchLocationIndex(root);
+    emitPageViewOnce();
+    return true;
+  }
+
+  function waitForRootAndPrimeRuntime() {
+    if (primeRuntime()) return;
 
     const observer = new MutationObserver(() => {
-      if (!emitPageViewOnce()) return;
+      if (!primeRuntime()) return;
       observer.disconnect();
     });
 
@@ -1253,9 +1356,9 @@
     bindDelegatedMeasurement();
 
     if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", waitForRootAndEmitPageView, {once: true});
+      document.addEventListener("DOMContentLoaded", waitForRootAndPrimeRuntime, {once: true});
     } else {
-      waitForRootAndEmitPageView();
+      waitForRootAndPrimeRuntime();
     }
   }
 
