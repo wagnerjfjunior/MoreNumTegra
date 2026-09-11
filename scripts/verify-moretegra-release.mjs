@@ -75,7 +75,15 @@ for (const token of requiredMeasurementEvents) {
 }
 
 const requiredMeasurementSemantics = [
-  '// MNT-M2-09 measurement instrumentation v3.',
+  '// MNT-M2-09 measurement instrumentation v4.',
+  'const NOT_APPLICABLE = "not_applicable";',
+  'const EVENT_PARAMETER_DEFAULTS = Object.freeze({',
+  'mnt_section_click: Object.freeze({faq_item: NOT_APPLICABLE})',
+  'mnt_catalog_search: Object.freeze({search_location: NOT_APPLICABLE})',
+  'mnt_intent: Object.freeze({project_name: NOT_APPLICABLE, offer_name: NOT_APPLICABLE})',
+  'const defaults = EVENT_PARAMETER_DEFAULTS[eventName] || {};',
+  'const source = {...defaults};',
+  'if (value === undefined || value === null || value === "") return;',
   'mnt_section_click: new Set(["section_target", "faq_item", "placement"])',
   'mnt_catalog_search: new Set(["search_state", "search_location", "result_count", "placement"])',
   'const FAQ_ITEM_BY_QUESTION = Object.freeze({',
@@ -89,7 +97,8 @@ const requiredMeasurementSemantics = [
   'faq_item: item',
   'search_location: next ? classifySearchLocation(next) : undefined',
   'function scheduleAfterInteraction(callback)',
-  'window.setTimeout(callback, 0)'
+  'window.setTimeout(callback, 0)',
+  'Symbol.for("morenumtegra.measurement.delegated.v4")'
 ];
 for (const token of requiredMeasurementSemantics) {
   if (!measurementModule.includes(token)) fail(`required measurement semantic marker missing: ${token}`);
@@ -126,4 +135,4 @@ try {
   fail(`JavaScript syntax error: ${error.message}`);
 }
 
-console.log(`PASS verify-moretegra-release: UI baseline ${uiBaseRef} preserved; measurement module exact; v3 semantic guards present; syntax valid.`);
+console.log(`PASS verify-moretegra-release: UI baseline ${uiBaseRef} preserved; measurement module exact; v4 parameter-hygiene guards present; syntax valid.`);
