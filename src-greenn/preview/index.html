@@ -64,6 +64,7 @@
           const html = await Promise.all(responses.map((response) => response.text()));
           blocks.forEach(([id], index) => { document.getElementById(id).innerHTML = html[index]; });
           await appendScript("/src-greenn/moretegra.js");
+          // Branch-only M2-09 staging module. Exact-host guard makes this a no-op on Vercel.
           await appendScript("/src-greenn/moretegra.measurement.js");
         } catch (cause) {
           error.style.display = "block";
