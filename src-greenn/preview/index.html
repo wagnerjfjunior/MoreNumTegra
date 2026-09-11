@@ -47,16 +47,24 @@
       ];
       const error = document.getElementById("mt-preview-error");
 
+      function appendScript(src) {
+        return new Promise((resolve, reject) => {
+          const script = document.createElement("script");
+          script.src = src;
+          script.onload = resolve;
+          script.onerror = () => reject(new Error(`Falha ao carregar ${src}`));
+          document.body.appendChild(script);
+        });
+      }
+
       async function load() {
         try {
           const responses = await Promise.all(blocks.map(([, url]) => fetch(url, {cache:"no-store"})));
           responses.forEach((response) => { if (!response.ok) throw new Error(`Falha ${response.status} ao carregar ${response.url}`); });
           const html = await Promise.all(responses.map((response) => response.text()));
           blocks.forEach(([id], index) => { document.getElementById(id).innerHTML = html[index]; });
-          const script = document.createElement("script");
-          script.src = "/src-greenn/moretegra.js";
-          script.defer = true;
-          document.body.appendChild(script);
+          await appendScript("/src-greenn/moretegra.js");
+          await appendScript("/src-greenn/moretegra.measurement.js");
         } catch (cause) {
           error.style.display = "block";
           error.textContent = `Preview não pôde montar os blocos: ${cause.message}`;
