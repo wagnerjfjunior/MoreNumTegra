@@ -51,6 +51,29 @@ referer = https://moretegra.com.br/
 
 The project parameters were present in the network payload, including `mnt_event_id`, `mnt_event_version`, `route`, `funnel_stage`, `placement`, `page_identity`, and `product_identity`.
 
+## First-party cookie inspection
+
+Product Authority supplied a DevTools `Application -> Cookies -> https://moretegra.com.br` screenshot while the denied-state test flow was active.
+
+Screenshot SHA-256:
+
+`fbf3f039e9fe6737d615c13f8eb8e5475487ac1b7dd73a09745964a02862e729`
+
+Observed cookie name:
+
+```text
+_ga_57M2XR0CY2
+```
+
+Important evidentiary limitation: the screenshot proves that a GA4 first-party cookie was present in the browser cookie jar at the time of inspection. It does **not** prove when that cookie was created. Because the same browser had previously executed a granted-consent test, this cookie may have been created during the earlier granted session and persisted into the later denied test.
+
+Therefore this screenshot cannot yet support either of these stronger claims:
+
+```text
+COOKIE_CREATED_WHILE_DENIED = NOT_PROVEN
+COOKIE_NOT_CREATED_WHILE_DENIED = NOT_PROVEN
+```
+
 ## Adjudication
 
 Supported by the combined Tag Assistant screenshots + HAR:
@@ -68,20 +91,26 @@ NETWORK_RESPONSE_SET_COOKIE_FROM_GOOGLE_ANALYTICS = NONE_OBSERVED
 
 This behavior is consistent with Advanced Consent Mode cookieless measurement pings.
 
-However this HAR does **not** by itself prove that first-party `_ga` / `_ga_*` cookies are absent from the `moretegra.com.br` browser cookie jar, because those browser cookies are not established by a Google Analytics response `Set-Cookie` header and may be script-managed first-party cookies.
+However the browser cookie jar contains `_ga_57M2XR0CY2` during inspection. Because the test browser previously had a granted-consent state, cookie provenance is unresolved.
 
 Therefore:
 
 ```text
 DENIED_STATE_GA4_NETWORK_PING = PASS
 ADVANCED_CONSENT_MODE_NETWORK_BEHAVIOR = CONSISTENT / STRONGLY_SUPPORTED
-FIRST_PARTY_GA_COOKIE_ABSENCE = STILL_REQUIRES APPLICATION/COOKIES INSPECTION
+FIRST_PARTY_GA_COOKIE_PRESENT_AT_INSPECTION = PROVEN
+FIRST_PARTY_GA_COOKIE_PROVEN_CREATED_WHILE_DENIED = NO
+FIRST_PARTY_GA_COOKIE_PROVEN_ABSENT_WHILE_DENIED = NO
+COOKIE_PROVENANCE = OPEN / REQUIRES CLEAN-SESSION RETEST
 GTM_PUBLISH = NOT_AUTHORIZED / NOT_PERFORMED
 ```
 
 ## Next evidence required
 
-1. Inspect `Application -> Cookies -> https://moretegra.com.br` while current consent remains denied.
-2. Prove whether `_ga` or `_ga_*` exists in that denied session.
-3. Continue bounded synthetic tests for `mnt_section_click`, `mnt_catalog_filter`, `mnt_catalog_search`, and `mnt_intent`, each proving one intended GA4 firing and no cross-fire.
-4. Consolidate branch-only source instrumentation into canonical `src-greenn/moretegra.js` before any Green publication gate.
+1. Start a clean browser context with no `moretegra.com.br` first-party cookies (incognito or delete site cookies before load).
+2. Confirm the consent banner appears and the GTM default is denied before any acceptance.
+3. Choose `Cancelar` and prove all four consent states remain `DENIED`.
+4. Inspect `Application -> Cookies -> https://moretegra.com.br` **before** and **after** a synthetic `mnt_page_view` push.
+5. If `_ga` / `_ga_*` remains absent, denied-state cookie suppression is proven. If `_ga` / `_ga_*` is newly created, the consent implementation requires correction before publish.
+6. Continue bounded synthetic tests for `mnt_section_click`, `mnt_catalog_filter`, `mnt_catalog_search`, and `mnt_intent`, each proving one intended GA4 firing and no cross-fire.
+7. Consolidate branch-only source instrumentation into canonical `src-greenn/moretegra.js` before any Green publication gate.
