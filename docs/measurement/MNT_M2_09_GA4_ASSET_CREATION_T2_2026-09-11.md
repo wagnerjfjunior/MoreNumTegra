@@ -1,79 +1,114 @@
 # MNT-M2-09 — GA4 Asset Creation T2 — 2026-09-11
 
 - Project: `MoreNumTegra`
-- Program: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
 - Task: `MNT-M2-09 — Implement authorized tracking configuration`
-- Evidence source: Product Authority-provided Google Analytics Admin screenshots
-- Canonical main resolved before documentation: `98f92ea3e80770a0e735ee9b105a29b18a706255`
-- Branch: `feat/mnt-m2-09-tracking-implementation`
-- Runtime deployment: `NONE`
-- GTM publication: `NONE`
+- Evidence class: `T2 / PRODUCT-AUTHORITY GA4 DESTINATION CREATION`
+- Canonical main at task start: `98f92ea3e80770a0e735ee9b105a29b18a706255`
+- Working branch: `feat/mnt-m2-09-tracking-implementation`
 
-## 1. Observed GA4 asset state
+## 1. Created destination
 
-The Product Authority created a dedicated Google Analytics 4 web stream for the MoreNumTegra production host.
-
-Observed in Google Analytics Admin:
+Provider-native screenshots supplied by Product Authority prove:
 
 ```text
-STREAM_NAME = MoreNumTegra
-STREAM_URL = https://moretegra.com.br
-STREAM_ID = 15759638334
-MEASUREMENT_ID = G-57M2XR0CY2
+Property name: MoreNumTegra
+Property ID: 553742649
+Web stream URL: https://moretegra.com.br
+Stream ID: 15759638334
+Measurement ID: G-57M2XR0CY2
+Reporting timezone: São Paulo / GMT-03:00
+Currency: BRL
+Industry: Serviços imobiliários
+Enhanced Measurement: OFF
 ```
 
-The Google Analytics UI simultaneously reported that data collection was not active on the site at capture time. This is consistent with the project boundary that no direct `gtag.js` installation or new GTM destination publication had yet been executed.
+The stream UI showed collection not active at creation time, consistent with no Google tag/GA4 destination having been published yet.
 
-## 2. Enhanced Measurement observation
+## 2. Windsor.ai post-creation observation
 
-The supplied stream-details screenshot shows the Enhanced Measurement master control in the disabled/off state.
-
-Classification:
+After creation, the connected `googleanalytics4` Windsor scope exposed:
 
 ```text
-ENHANCED_MEASUREMENT_MASTER_CONTROL = OBSERVED_OFF
-AUTOMATIC_ENHANCED_MEASUREMENT_EVENTS = NOT_AUTHORIZED_AS_PROJECT_SOURCE_LAYER
+553742649 | MoreNumTegra
 ```
 
-A page-view capability remains part of GA4/Google-tag behavior generally, but no project page-view implementation is claimed from this screenshot. The project contract still requires exactly one canonical project page-view path through the governed source/GTM architecture.
+A data read against the new property returned no rows while collection remained inactive. This is consistent with the current implementation state and is not treated as failure.
 
-## 3. Property ID remains unresolved
+## 3. GTM / Green relationship
 
-The supplied screenshots do not display the GA4 Property ID.
+Separate provider/runtime evidence supplied by Product Authority proves:
 
-Therefore:
+- Green Sales has `GTM-PGCR4R47` registered for MORETEGRA;
+- runtime inspection on `moretegra.com.br` observed one distinct `GTM-PGCR4R47` container with normal GTM lifecycle events;
+- the GTM workspace Tags view contained only the three accepted Consent Mode tags before GA4 workspace preparation;
+- no prior Google tag / GA4 event tag was visible;
+- Workspace Changes was `0` at that observation point.
+
+Therefore the bounded architecture remains:
 
 ```text
-GA4_PROPERTY_ID = STILL_NOT_PROVEN
+project source -> canonical mnt_* dataLayer event -> GTM-PGCR4R47 -> G-57M2XR0CY2
+```
+
+Do not add the GA4 Measurement ID directly to Green Sales and do not introduce a second GTM container.
+
+## 4. Page-view contract
+
+Enhanced Measurement is OFF at the GA4 stream.
+
+The GTM Google tag must also use:
+
+```text
+send_page_view = false
+```
+
+The canonical source `mnt_page_view` is the sole project-owned page-view occurrence and is mapped explicitly to the GA4 `page_view` destination event.
+
+## 5. Current implementation state
+
+Branch implementation now includes the bounded deterministic source instrumentation for:
+
+```text
+mnt_page_view
+mnt_section_click
+mnt_catalog_filter
+mnt_catalog_search
+mnt_intent
+```
+
+No form/lead event is implemented.
+
+The exact non-published GTM build specification is recorded in:
+
+`docs/measurement/MNT_M2_09_GTM_GA4_WORKSPACE_BUILD_SHEET_2026-09-11.md`
+
+The current ChatGPT toolset has no authenticated GTM write connector, so no claim is made that the GTM workspace was mutated by ChatGPT.
+
+## 6. Explicit non-claims
+
+This T2 evidence does not prove:
+
+- GA4 event collection is active;
+- GTM GA4 tags have been created provider-side;
+- GTM has been published beyond accepted Version 4;
+- denied/granted GA4 network behavior;
+- form lifecycle signals;
+- verified native Green Form 46 success;
+- Meta Dataset/Pixel/CAPI;
+- Ads conversion configuration;
+- end-to-end Measurement acceptance.
+
+## 7. Current classification
+
+```text
+GA4_PROPERTY_ID = PROVEN / 553742649
 GA4_STREAM_ID = PROVEN / 15759638334
 GA4_MEASUREMENT_ID = PROVEN / G-57M2XR0CY2
-GA4_STREAM_HOST = PROVEN / moretegra.com.br
+GA4_ENHANCED_MEASUREMENT = OFF / PROVEN
+SOURCE DETERMINISTIC SLICE = IMPLEMENTED ON DRAFT BRANCH
+GTM_GA4_WORKSPACE_SPEC = PREPARED
+GTM_GA4_PROVIDER_WORKSPACE_MUTATION = NOT_YET_EVIDENCED
+GTM_PUBLISH = NOT_AUTHORIZED / NOT_PERFORMED
 ```
 
-The Property ID must be captured from Google Analytics Admin (Property details/settings) or a read-only connector view before M2-09 can claim complete GA4 asset resolution.
-
-## 4. Explicit non-actions
-
-No evidence in this T2 package supports any claim that the following were performed:
-
-- Google tag installation on the site;
-- direct `gtag()` bootstrap;
-- GTM Version 5 or later publication;
-- GA4 event mapping;
-- GA4 key-event configuration;
-- Google Ads linking;
-- enhanced conversions/user-provided-data features;
-- Meta configuration;
-- Green mutation;
-- Vercel or Green production publication.
-
-## 5. Next safe GA4 step
-
-```text
-1. capture exact GA4 Property ID;
-2. connect/select the new MoreNumTegra property in Windsor.ai (read-only) if desired for live verification;
-3. record the complete adopted GA4 tuple: Property ID + Stream ID + Measurement ID;
-4. only then proceed to the separately gated GTM/GA4 implementation slice.
-```
-
-Do not use `Veja as instruções da tag` to install a parallel Google tag in the site source. `GTM-PGCR4R47` remains the sole project-owned browser dispatcher by accepted M2 architecture.
+MNT-M2-09 remains `ACTIVE / PARTIAL_IMPLEMENTED`.
