@@ -113,3 +113,22 @@ A stale snapshot may remain visible as historical context only when explicitly l
 ## 8. Mutation boundary
 
 Reading/rendering these artifacts does not authorize changes to Green, Vercel, DNS, Search Console, GTM, GA4, Meta, Ads/spend, consent runtime or any external system.
+
+## 9. Recursive WBS decomposition
+
+The structural graph may contain recursive `children` arrays below a task when additional granularity materially improves execution visibility. Tasks that do not benefit from further decomposition are explicitly marked `ATOMIC_NO_FURTHER_DECOMPOSITION_PLANNED`.
+
+Consumer rendering rule:
+
+```text
+phase
+  -> task
+     -> child
+        -> child ... when present
+```
+
+The dashboard should keep phase/task rows compact by default and expand descendants recursively on demand. Hours must roll up from immediate children without parent/descendant double counting. Planning weights are published at phase/task/subtask level for program, phase and parent contexts.
+
+`RECURSIVE WBS DETAIL != EXECUTION AUTHORIZATION`.
+
+Human-readable detailed decomposition: `docs/roadmap/MNT_RESF_WBS_RECURSIVE_DECOMPOSITION.md`.
