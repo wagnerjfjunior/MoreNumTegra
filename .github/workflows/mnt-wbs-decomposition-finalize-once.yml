@@ -1,0 +1,66 @@
+name: MNT recursive WBS decomposition finalize once
+
+on:
+  push:
+    branches:
+      - docs/full-wbs-recursive-decomposition
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: docs/full-wbs-recursive-decomposition
+          fetch-depth: 0
+
+      - name: Reuse bounded generator
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          src = Path('.github/workflows/mnt-wbs-decomposition-once.yml').read_text(encoding='utf-8').splitlines()
+          start = next(i for i,l in enumerate(src) if "python3 - <<'PY'" in l) + 1
+          end = next(i for i in range(start, len(src)) if src[i].strip() == 'PY')
+          code=[]
+          for line in src[start:end]:
+              code.append(line[10:] if line.startswith('          ') else line)
+          Path('/tmp/mnt_wbs_generate.py').write_text('\n'.join(code) + '\n', encoding='utf-8')
+          PY
+          python3 /tmp/mnt_wbs_generate.py
+
+      - name: Validate and commit documentation-only result
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          g=json.loads(Path('docs/sfjm/PROGRAM_TASK_GRAPH.json').read_text())
+          assert sum(int(p['hours']) for p in g['milestones']) == 1240
+          tasks=0; subs=0
+          for p in g['milestones']:
+              for t in p['tasks']:
+                  tasks += 1
+                  if t.get('children'):
+                      assert sum(int(c['hours']) for c in t['children']) == int(t['hours']), t['id']
+                      subs += len(t['children'])
+          assert tasks == 74
+          assert subs == 194
+          assert g['decomposition_contract']['decomposed_task_count'] == 43
+          assert g['decomposition_contract']['atomic_task_count'] == 31
+          assert Path('docs/roadmap/MNT_RESF_WBS_RECURSIVE_DECOMPOSITION.md').exists()
+          print('PASS recursive WBS: 1240h / 74 tasks / 194 subtasks / 43 decomposed / 31 atomic')
+          PY
+          git status --short
+          bad="$(git status --short | awk '{print $2}' | grep -v -E '^(docs/roadmap/MNT_RESF_WBS_RECURSIVE_DECOMPOSITION.md|docs/sfjm/PROGRAM_TASK_GRAPH.json|docs/sfjm/PROGRAM_TASK_GRAPH.md)$' || true)"
+          test -z "$bad"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/roadmap/MNT_RESF_WBS_RECURSIVE_DECOMPOSITION.md docs/sfjm/PROGRAM_TASK_GRAPH.json docs/sfjm/PROGRAM_TASK_GRAPH.md
+          git commit -m "docs: add recursive WBS decomposition and weights"
+          git push origin HEAD:docs/full-wbs-recursive-decomposition
