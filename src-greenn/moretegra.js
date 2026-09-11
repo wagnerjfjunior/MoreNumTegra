@@ -112,7 +112,7 @@
     {name:"Bueno Brandão 257",location:"Vila Nova Conceição · Zona Sul",zone:"Zona Sul",status:"Pronto para morar",statusKey:"entregue",info:"500m² privativos · 5 suítes · 5 vagas",feature:"Residência singular",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F337%2FImagemPrincipal%2F8e85cddc-003b-4b7a-bfd2-2e38275cb1b8.jpg&w=828",alt:"Bueno Brandão 257, empreendimento Tegra em Vila Nova Conceição, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/vila-nova-conceicao/bb257",price:21750000,priceState:"priced",priceNote:"Unidade 31 · 500 m² · R$ 43.500/m² · Valor a partir de R$ 21.750.000. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."},
     {name:"CAPIITOLO by Piero Lissoni",location:"Chácara Klabin · Zona Sul",zone:"Zona Sul",status:"Em construção",statusKey:"construcao",info:"4 suítes · 210m² privativos · 3 vagas",feature:"Design por Piero Lissoni",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F349%2FImagemPrincipal%2FTegra-Incorporadora-Detalhe-Fachada-CAPITOLO-by-Piero-Lissoni-Apartamentos-210-Metros-Chacara-Klabin-Sao-Paulo-SP-714x640-1736369712708.jpg&w=828",alt:"CAPIITOLO by Piero Lissoni, empreendimento Tegra em Chácara Klabin, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/chacara-klabin/chacaraklabin",price:3647490,priceState:"priced",priceNote:"Unidade 24 · 210 m² · R$ 17.369/m² · Valor a partir de R$ 3.647.490. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."},
     {name:"DSG Itaim",location:"Itaim Bibi · Zona Sul",zone:"Zona Sul",status:"Pronto para morar",statusKey:"entregue",info:"Studios de 27m² e 29m² · aptos. de 44m² · comerciais",feature:"Design no Itaim",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F284%2FImagemPrincipal%2F4f52d494-85b1-4f39-b114-c30ff9c8d985.jpg&w=828",alt:"DSG Itaim, empreendimento Tegra em Itaim Bibi, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/itaim-bibi/dsgitaim",price:null,priceState:"consult",priceNote:"Unidade 201 · 27 m² · Valor sob consulta. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."},
-    {name:"Ledge Brooklin",location:"Brooklin · Zona Sul",zone:"Zona Sul",status:"Em construção",statusKey:"construcao",info:"Studios de 30m² a 40m² · aptos. de 70m² a 122m²",feature:"Tegra + Exto",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F341%2FImagemPrincipal%2F6b04808c-fa4f-4bc9-bd24-e6052be1dda7.jpg&w=828",alt:"Ledge Brooklin, empreendimento Tegra em Brooklin, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/brooklin/ledgebrooklin",price:600000,priceState:"priced",priceNote:"Studio 0052 · R$ 16.666/m² · Valor a partir de R$ 600.000. Também há referência para a unidade 1223 · R$ 17.116/m² · R$ 1.199.000. Consulte a Tegra Vendas para confirmar disponibilidade e condições vigentes."},
+    {name:"Ledge Brooklin",location:"Brooklin · Zona Sul",zone:"Zona Sul",status:"Em construção",statusKey:"construcao",info:"Studios de 30m² a 40m² · aptos. de 70m² a 122m²",feature:"Tegra + Exto",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F341%2FImagemPrincipal%2F6b04808c-fa4f-4404-ae15-afaefba5010f.jpg&w=828",alt:"Ledge Brooklin, empreendimento Tegra em Brooklin, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/brooklin/ledgebrooklin",price:600000,priceState:"priced",priceNote:"Studio 0052 · R$ 16.666/m² · Valor a partir de R$ 600.000. Também há referência para a unidade 1223 · R$ 17.116/m² · R$ 1.199.000. Consulte a Tegra Vendas para confirmar disponibilidade e condições vigentes."},
     {name:"TEG Sacomã",location:"Sacomã · Zona Sul",zone:"Zona Sul",status:"Pronto para morar",statusKey:"entregue",info:"1 a 3 dorms. · 45m² a 66m² · 1 ou 2 vagas",feature:"Pronto na Zona Sul",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F281%2FImagemPrincipal%2FTegra-Incorporadora-Detalhe-da-Fachada-Area-Externa-Empreendimento-TEG-Sacoma-Apartamentos-Pronto-para-Morar-Zona-Sul-Sao-Paulo-SP-714x640-1716214964198.jpg&w=828",alt:"TEG Sacomã, empreendimento Tegra em Sacomã, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/sacoma/teg-sacoma",price:390000,priceState:"priced",priceNote:"Unidade 0011 · 65 m² · R$ 6.000/m² · Valor a partir de R$ 390.000. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."},
     {name:"CAPIITOLO by Piero Lissoni | à vista",projectName:"CAPIITOLO by Piero Lissoni",location:"Chácara Klabin · Zona Sul",zone:"Zona Sul",status:"Em construção",statusKey:"construcao",info:"4 suítes · 210m² privativos · 3 vagas",feature:"Condição à vista",cashOffer:true,cashUnit:"24",cashSuffixSmall:true,cta:"Quero esta condição",evidence:["Tegra/Agosto/Valores_a_vista.md"],image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F349%2FImagemPrincipal%2FTegra-Incorporadora-Detalhe-Fachada-CAPITOLO-by-Piero-Lissoni-Apartamentos-210-Metros-Chacara-Klabin-Sao-Paulo-SP-714x640-1736369712708.jpg&w=828",alt:"CAPIITOLO by Piero Lissoni, empreendimento Tegra em Chácara Klabin, São Paulo, condição à vista",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/chacara-klabin/chacaraklabin",price:3160000,priceState:"priced",priceLabel:"A partir de",priceNote:"*Unidade 24 · 210 m². Valor para pagamento à vista, referência Agosto/26. Valor de tabela R$ 3.942.628. Sujeito à disponibilidade e alteração. Consulte condições vigentes."},
     {name:"Tièl Vila Nova Conceição",location:"Vila Nova Conceição · Zona Sul",zone:"Zona Sul",status:"Pronto para morar",statusKey:"entregue",info:"Boutique apartments · piscina no rooftop · fitness",feature:"Próximo ao Ibirapuera",image:"https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F352%2FImagemPrincipal%2FTegra-Incorporadora-Detalhe-da-Fachada-Studios-Vila-Nova-Conceicao-Sao-Paulo-SP-714x640-1718129172867.jpg&w=828",alt:"Tièl Vila Nova Conceição, empreendimento Tegra em Vila Nova Conceição, São Paulo",official:"https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/vila-nova-conceicao/tielvilanovaconceicao",price:598500,priceState:"priced",priceNote:"Unidade 914 · 21 m² · R$ 28.500/m² · Valor a partir de R$ 598.500. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."},
@@ -823,8 +823,8 @@
   observer.observe(document.documentElement, {childList: true, subtree: true});
 })();
 
-// MNT-M2-09 measurement instrumentation v1.
-// Consolidated into the single Green page-level JavaScript payload required by ADR-001.
+// MNT-M2-09 measurement instrumentation v2.
+// Single delegated runtime: resilient to Green DOM replacement without per-root rebinding.
 (() => {
   "use strict";
 
@@ -836,6 +836,8 @@
   const ROUTE = "/";
   const SEARCH_DEBOUNCE_MS = 600;
   const PAGE_VIEW_MARKER = Symbol.for("morenumtegra.measurement.page_view.v1");
+  const BIND_MARKER = Symbol.for("morenumtegra.measurement.delegated.v2");
+  const SEARCH_STATE = new WeakMap();
 
   const ALLOWED_EVENT_PARAMETERS = Object.freeze({
     mnt_page_view: new Set(["placement"]),
@@ -880,6 +882,11 @@
 
   function projectRoot() {
     return document.querySelector(ROOT_SELECTOR);
+  }
+
+  function asElement(target) {
+    if (target instanceof Element) return target;
+    return target?.parentElement || null;
   }
 
   function normalizeSearchState(value) {
@@ -954,10 +961,26 @@
     return Number.isFinite(value) ? value : 0;
   }
 
+  function currentStatus(root) {
+    return (
+      root?.querySelector("[data-filter-status].is-active")?.dataset.filterStatus ||
+      root?.querySelector("[data-status-mobile]")?.value ||
+      "todos"
+    );
+  }
+
+  function hasEffectiveFilters(root) {
+    if (!root) return false;
+    const zone = root.querySelector("[data-zone-filter]")?.value || "todas";
+    const price = root.querySelector("[data-price-filter]")?.value || "todos";
+    const query = normalizeSearchState(root.querySelector("[data-project-search]")?.value || "");
+    return currentStatus(root) !== "todos" || zone !== "todas" || price !== "todos" || Boolean(query);
+  }
+
   function emitPageViewOnce() {
-    if (!isEligibleHost() || !projectRoot() || window[PAGE_VIEW_MARKER]) return;
+    if (!isEligibleHost() || !projectRoot() || window[PAGE_VIEW_MARKER]) return false;
     window[PAGE_VIEW_MARKER] = true;
-    emit("mnt_page_view", "discovery", {placement: "document"});
+    return emit("mnt_page_view", "discovery", {placement: "document"});
   }
 
   function sectionPlacement(link) {
@@ -975,246 +998,97 @@
     return "";
   }
 
-  function initialFilterState(root) {
-    const statusButton = root.querySelector("[data-filter-status].is-active");
-    const statusMobile = root.querySelector("[data-status-mobile]");
-    const zone = root.querySelector("[data-zone-filter]");
-    const price = root.querySelector("[data-price-filter]");
-    const search = root.querySelector("[data-project-search]");
-
-    return {
-      status: statusButton?.dataset.filterStatus || statusMobile?.value || "todos",
-      zone: zone?.value || "todas",
-      price: price?.value || "todos",
-      query: normalizeSearchState(search?.value || "")
-    };
+  function scheduleAfterUi(callback) {
+    if (typeof window.queueMicrotask === "function") {
+      window.queueMicrotask(callback);
+      return;
+    }
+    Promise.resolve().then(callback);
   }
 
-  function attachMeasurement(root) {
-    if (!root || root.dataset.mntMeasurementBound === "true") return;
-    root.dataset.mntMeasurementBound = "true";
+  function emitFilter(root, dimension, sourceValue, placement) {
+    const map = dimension === "status" ? STATUS_VALUE : dimension === "zone" ? ZONE_VALUE : PRICE_VALUE;
+    const canonicalValue = map[sourceValue];
+    if (!canonicalValue) return;
 
-    const state = initialFilterState(root);
-    let lastCommittedSearch = state.query;
-    let searchTimer = 0;
+    emit("mnt_catalog_filter", "consideration", {
+      filter_dimension: dimension,
+      filter_value: canonicalValue,
+      result_count: resultCount(root),
+      placement
+    });
+  }
 
-    const emitFilter = (dimension, sourceValue, placement) => {
-      const map = dimension === "status" ? STATUS_VALUE : dimension === "zone" ? ZONE_VALUE : PRICE_VALUE;
-      const canonicalValue = map[sourceValue];
-      if (!canonicalValue) return;
+  function cancelPendingSearch(root, committedValue = "") {
+    const search = root?.querySelector("[data-project-search]");
+    if (!search) return;
+    const state = SEARCH_STATE.get(search);
+    if (!state) return;
+    if (state.timer) window.clearTimeout(state.timer);
+    state.timer = 0;
+    state.lastCommitted = committedValue;
+  }
 
-      emit("mnt_catalog_filter", "consideration", {
-        filter_dimension: dimension,
-        filter_value: canonicalValue,
-        result_count: resultCount(root),
-        placement
-      });
-    };
+  function handleSearchInput(event) {
+    const target = asElement(event.target);
+    if (!target?.matches("[data-project-search]")) return;
+    const root = target.closest(ROOT_SELECTOR);
+    if (!root) return;
 
-    const commitSearch = () => {
-      searchTimer = 0;
-      const next = state.query;
-      if (next === lastCommittedSearch) return;
-      lastCommittedSearch = next;
+    let state = SEARCH_STATE.get(target);
+    if (!state) {
+      state = {
+        lastCommitted: normalizeSearchState(target.defaultValue || ""),
+        timer: 0
+      };
+      SEARCH_STATE.set(target, state);
+    }
+
+    const next = normalizeSearchState(target.value);
+    if (state.timer) window.clearTimeout(state.timer);
+    state.timer = window.setTimeout(() => {
+      state.timer = 0;
+      if (next === state.lastCommitted) return;
+      state.lastCommitted = next;
       emit("mnt_catalog_search", "consideration", {
         search_state: next ? "active" : "cleared",
         result_count: resultCount(root),
         placement: "catalog_search"
       });
-    };
-
-    root.addEventListener("input", (event) => {
-      const search = event.target.closest?.("[data-project-search]");
-      if (!search) return;
-      state.query = normalizeSearchState(search.value);
-      if (searchTimer) window.clearTimeout(searchTimer);
-      searchTimer = window.setTimeout(commitSearch, SEARCH_DEBOUNCE_MS);
-    });
-
-    root.addEventListener("change", (event) => {
-      const target = event.target;
-
-      if (target.matches?.("[data-status-mobile]")) {
-        const next = target.value || "todos";
-        if (next === state.status) return;
-        state.status = next;
-        emitFilter("status", next, "status_mobile");
-        return;
-      }
-
-      if (target.matches?.("[data-zone-filter]")) {
-        const next = target.value || "todas";
-        if (next === state.zone) return;
-        state.zone = next;
-        emitFilter("zone", next, "zone_select");
-        return;
-      }
-
-      if (target.matches?.("[data-price-filter]")) {
-        const next = target.value || "todos";
-        if (next === state.price) return;
-        state.price = next;
-        emitFilter("price", next, "price_select");
-      }
-    });
-
-    root.addEventListener("click", (event) => {
-      const target = event.target.closest?.("a,button");
-      if (!target || !root.contains(target)) return;
-
-      const cardInterest = target.closest("[data-interest]");
-      if (cardInterest) {
-        emit("mnt_intent", "intent", {
-          intent_type: "project_interest",
-          contact_channel: "form",
-          placement: "catalog_card",
-          ...projectContext(cardInterest.dataset.interest)
-        });
-        return;
-      }
-
-      const continueForm = target.closest("[data-continue-form]");
-      if (continueForm) {
-        emit("mnt_intent", "intent", {
-          intent_type: "request_project_conditions",
-          contact_channel: "form",
-          placement: "interest_context",
-          ...selectedProjectContext()
-        });
-        return;
-      }
-
-      const statusButton = target.closest("[data-filter-status]");
-      if (statusButton) {
-        const next = statusButton.dataset.filterStatus || "todos";
-        if (next === state.status) return;
-        state.status = next;
-        emitFilter("status", next, "status_buttons");
-        return;
-      }
-
-      const quickZone = target.closest("[data-quick-zone]");
-      if (quickZone) {
-        const next = quickZone.dataset.quickZone || "todas";
-        if (next === state.zone) return;
-        state.zone = next;
-        emitFilter("zone", next, "zone_quick");
-        return;
-      }
-
-      const momentStatus = target.closest("[data-set-status]");
-      if (momentStatus) {
-        const next = momentStatus.dataset.setStatus || "todos";
-        if (next === state.status) return;
-        state.status = next;
-        emitFilter("status", next, "moment_selector");
-        return;
-      }
-
-      const clear = target.closest("[data-clear-filters],[data-empty-clear]");
-      if (clear) {
-        const hadEffectiveFilter =
-          state.status !== "todos" || state.zone !== "todas" || state.price !== "todos" || Boolean(state.query);
-        if (!hadEffectiveFilter) return;
-
-        if (searchTimer) {
-          window.clearTimeout(searchTimer);
-          searchTimer = 0;
-        }
-        state.status = "todos";
-        state.zone = "todas";
-        state.price = "todos";
-        state.query = "";
-        lastCommittedSearch = "";
-
-        emit("mnt_catalog_filter", "consideration", {
-          filter_dimension: "reset",
-          filter_value: "all",
-          result_count: resultCount(root),
-          placement: clear.matches("[data-empty-clear]") ? "empty_state_reset" : "clear_filters"
-        });
-        return;
-      }
-
-      const focusPrice = target.closest("[data-focus-price]");
-      if (focusPrice) {
-        emit("mnt_section_click", "consideration", {
-          section_target: "opportunities",
-          placement: "moment_selector"
-        });
-        return;
-      }
-
-      const changeInterest = target.closest("[data-change-interest]");
-      if (changeInterest) {
-        emit("mnt_section_click", "consideration", {
-          section_target: "opportunities",
-          placement: "content"
-        });
-        return;
-      }
-
-      const href = target.getAttribute?.("href") || "";
-      if (href.startsWith("#")) {
-        if (href === "#formulario") {
-          if (target.closest(".mt-header")) {
-            emit("mnt_intent", "intent", {
-              intent_type: "request_conditions",
-              contact_channel: "form",
-              placement: "header_nav"
-            });
-            return;
-          }
-
-          if (target.closest(".mt-hero")) {
-            emit("mnt_intent", "intent", {
-              intent_type: "request_conditions",
-              contact_channel: "form",
-              placement: "hero"
-            });
-            return;
-          }
-
-          if (target.closest(".mt-negotiation")) {
-            emit("mnt_intent", "intent", {
-              intent_type: "negotiate_scenario",
-              contact_channel: "form",
-              placement: "negotiation"
-            });
-            return;
-          }
-        }
-
-        const sectionTarget = sectionTargetFromHref(href);
-        if (sectionTarget) {
-          emit("mnt_section_click", "consideration", {
-            section_target: sectionTarget,
-            placement: sectionPlacement(target)
-          });
-        }
-        return;
-      }
-
-      const whatsapp = target.matches?.('a[href^="https://wa.me/"]') ? target : null;
-      if (whatsapp && whatsapp.closest(".mt-negotiation")) {
-        emit("mnt_intent", "intent", {
-          intent_type: "schedule_visit",
-          contact_channel: "whatsapp",
-          placement: "negotiation"
-        });
-      }
-    });
+    }, SEARCH_DEBOUNCE_MS);
   }
 
-  function attachFloatingActions() {
-    if (document.documentElement.dataset.mntFloatingMeasurementBound === "true") return;
-    document.documentElement.dataset.mntFloatingMeasurementBound = "true";
+  function handleFilterChange(event) {
+    const target = asElement(event.target);
+    if (!target) return;
+    const root = target.closest(ROOT_SELECTOR);
+    if (!root) return;
 
-    document.addEventListener("click", (event) => {
-      const target = event.target.closest?.("#mt-floating-dock a");
-      if (!target) return;
+    if (target.matches("[data-status-mobile]")) {
+      const next = target.value || "todos";
+      scheduleAfterUi(() => emitFilter(root, "status", next, "status_mobile"));
+      return;
+    }
 
-      if (target.matches(".mt-floating-lead")) {
+    if (target.matches("[data-zone-filter]")) {
+      const next = target.value || "todas";
+      scheduleAfterUi(() => emitFilter(root, "zone", next, "zone_select"));
+      return;
+    }
+
+    if (target.matches("[data-price-filter]")) {
+      const next = target.value || "todos";
+      scheduleAfterUi(() => emitFilter(root, "price", next, "price_select"));
+    }
+  }
+
+  function handleClick(event) {
+    const element = asElement(event.target);
+    if (!element) return;
+
+    const floating = element.closest("#mt-floating-dock a");
+    if (floating) {
+      if (floating.matches(".mt-floating-lead")) {
         emit("mnt_intent", "intent", {
           intent_type: "request_conditions",
           contact_channel: "form",
@@ -1224,7 +1098,7 @@
         return;
       }
 
-      if (target.matches(".mt-floating-whatsapp")) {
+      if (floating.matches(".mt-floating-whatsapp")) {
         emit("mnt_intent", "intent", {
           intent_type: "whatsapp_contact",
           contact_channel: "whatsapp",
@@ -1232,34 +1106,172 @@
           ...selectedProjectContext()
         });
       }
-    });
+      return;
+    }
+
+    const root = element.closest(ROOT_SELECTOR);
+    if (!root) return;
+    const target = element.closest("a,button");
+    if (!target || !root.contains(target)) return;
+
+    const cardInterest = target.closest("[data-interest]");
+    if (cardInterest) {
+      emit("mnt_intent", "intent", {
+        intent_type: "project_interest",
+        contact_channel: "form",
+        placement: "catalog_card",
+        ...projectContext(cardInterest.dataset.interest)
+      });
+      return;
+    }
+
+    const continueForm = target.closest("[data-continue-form]");
+    if (continueForm) {
+      emit("mnt_intent", "intent", {
+        intent_type: "request_project_conditions",
+        contact_channel: "form",
+        placement: "interest_context",
+        ...selectedProjectContext()
+      });
+      return;
+    }
+
+    const statusButton = target.closest("[data-filter-status]");
+    if (statusButton) {
+      const next = statusButton.dataset.filterStatus || "todos";
+      if (statusButton.classList.contains("is-active")) return;
+      scheduleAfterUi(() => emitFilter(root, "status", next, "status_buttons"));
+      return;
+    }
+
+    const quickZone = target.closest("[data-quick-zone]");
+    if (quickZone) {
+      const next = quickZone.dataset.quickZone || "todas";
+      if (quickZone.classList.contains("is-active")) return;
+      scheduleAfterUi(() => emitFilter(root, "zone", next, "zone_quick"));
+      return;
+    }
+
+    const momentStatus = target.closest("[data-set-status]");
+    if (momentStatus) {
+      const next = momentStatus.dataset.setStatus || "todos";
+      if (next === currentStatus(root)) return;
+      scheduleAfterUi(() => emitFilter(root, "status", next, "moment_selector"));
+      return;
+    }
+
+    const clear = target.closest("[data-clear-filters],[data-empty-clear]");
+    if (clear) {
+      if (!hasEffectiveFilters(root)) return;
+      cancelPendingSearch(root, "");
+      scheduleAfterUi(() => {
+        emit("mnt_catalog_filter", "consideration", {
+          filter_dimension: "reset",
+          filter_value: "all",
+          result_count: resultCount(root),
+          placement: clear.matches("[data-empty-clear]") ? "empty_state_reset" : "clear_filters"
+        });
+      });
+      return;
+    }
+
+    const focusPrice = target.closest("[data-focus-price]");
+    if (focusPrice) {
+      emit("mnt_section_click", "consideration", {
+        section_target: "opportunities",
+        placement: "moment_selector"
+      });
+      return;
+    }
+
+    const changeInterest = target.closest("[data-change-interest]");
+    if (changeInterest) {
+      emit("mnt_section_click", "consideration", {
+        section_target: "opportunities",
+        placement: "content"
+      });
+      return;
+    }
+
+    const href = target.getAttribute("href") || "";
+    if (href.startsWith("#")) {
+      if (href === "#formulario") {
+        if (target.closest(".mt-header")) {
+          emit("mnt_intent", "intent", {
+            intent_type: "request_conditions",
+            contact_channel: "form",
+            placement: "header_nav"
+          });
+          return;
+        }
+
+        if (target.closest(".mt-hero")) {
+          emit("mnt_intent", "intent", {
+            intent_type: "request_conditions",
+            contact_channel: "form",
+            placement: "hero"
+          });
+          return;
+        }
+
+        if (target.closest(".mt-negotiation")) {
+          emit("mnt_intent", "intent", {
+            intent_type: "negotiate_scenario",
+            contact_channel: "form",
+            placement: "negotiation"
+          });
+          return;
+        }
+      }
+
+      const sectionTarget = sectionTargetFromHref(href);
+      if (sectionTarget) {
+        emit("mnt_section_click", "consideration", {
+          section_target: sectionTarget,
+          placement: sectionPlacement(target)
+        });
+      }
+      return;
+    }
+
+    if (target.matches('a[href^="https://wa.me/"]') && target.closest(".mt-negotiation")) {
+      emit("mnt_intent", "intent", {
+        intent_type: "schedule_visit",
+        contact_channel: "whatsapp",
+        placement: "negotiation"
+      });
+    }
   }
 
-  function boot() {
-    if (!isEligibleHost()) return;
-    const root = projectRoot();
-    if (!root) return;
-    attachMeasurement(root);
-    attachFloatingActions();
-    emitPageViewOnce();
+  function bindDelegatedMeasurement() {
+    if (window[BIND_MARKER]) return;
+    window[BIND_MARKER] = true;
+
+    document.addEventListener("click", handleClick, true);
+    document.addEventListener("change", handleFilterChange, true);
+    document.addEventListener("input", handleSearchInput, true);
+  }
+
+  function waitForRootAndEmitPageView() {
+    if (emitPageViewOnce()) return;
+
+    const observer = new MutationObserver(() => {
+      if (!emitPageViewOnce()) return;
+      observer.disconnect();
+    });
+
+    observer.observe(document.documentElement, {childList: true, subtree: true});
+    window.setTimeout(() => observer.disconnect(), 10000);
   }
 
   function start() {
     if (!isEligibleHost()) return;
+    bindDelegatedMeasurement();
 
     if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", boot, {once: true});
+      document.addEventListener("DOMContentLoaded", waitForRootAndEmitPageView, {once: true});
     } else {
-      boot();
-    }
-
-    if (!projectRoot()) {
-      const observer = new MutationObserver(() => {
-        if (!projectRoot()) return;
-        observer.disconnect();
-        boot();
-      });
-      observer.observe(document.documentElement, {childList: true, subtree: true});
+      waitForRootAndEmitPageView();
     }
   }
 
