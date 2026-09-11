@@ -1,0 +1,61 @@
+name: MNT WBS sanitize lifecycle boundary once
+
+on:
+  push:
+    branches:
+      - docs/full-wbs-recursive-decomposition
+
+permissions:
+  contents: write
+
+jobs:
+  sanitize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: docs/full-wbs-recursive-decomposition
+          fetch-depth: 0
+      - name: Remove lifecycle-derived percentages from structural graph
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('docs/sfjm/PROGRAM_TASK_GRAPH.json')
+          g=json.loads(p.read_text(encoding='utf-8'))
+          for phase in g['milestones']:
+              phase.pop('accepted_percent', None)
+              for task in phase.get('tasks', []):
+                  task.pop('accepted_percent', None)
+                  for child in task.get('children', []):
+                      child.pop('accepted_percent', None)
+          g['decomposition_contract']['percent_rule'] = 'program_weight_percent is hours/1240; phase_weight_percent is node hours/phase hours; parent_weight_percent is child hours/parent hours. Lifecycle completion/accepted percentages must come from CURRENT_PROGRAM_STATE.json, not the structural graph.'
+          p.write_text(json.dumps(g, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+
+          md=Path('docs/roadmap/MNT_RESF_WBS_RECURSIVE_DECOMPOSITION.md')
+          s=md.read_text(encoding='utf-8')
+          s=s.replace('- `accepted_percent = accepted_hours / node_hours`;\n','')
+          s=s.replace('- Percentages are planning weights, not timesheet completion.\n','- Percentages in this document are structural planning weights, not lifecycle completion. Current accepted/completion percentages come from `docs/sfjm/CURRENT_PROGRAM_STATE.json`.\n')
+          md.write_text(s, encoding='utf-8')
+          PY
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          g=json.loads(Path('docs/sfjm/PROGRAM_TASK_GRAPH.json').read_text())
+          assert sum(p['hours'] for p in g['milestones']) == 1240
+          assert all('accepted_percent' not in p for p in g['milestones'])
+          for p in g['milestones']:
+              for t in p['tasks']:
+                  assert 'accepted_percent' not in t
+                  if t.get('children'):
+                      assert sum(c['hours'] for c in t['children']) == t['hours']
+                      assert all('accepted_percent' not in c for c in t['children'])
+          print('PASS structural/lifecycle boundary preserved')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/sfjm/PROGRAM_TASK_GRAPH.json docs/roadmap/MNT_RESF_WBS_RECURSIVE_DECOMPOSITION.md
+          git commit -m "docs: keep WBS percentages structural only"
+          git push origin HEAD:docs/full-wbs-recursive-decomposition
