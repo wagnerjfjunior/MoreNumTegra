@@ -121,6 +121,97 @@
     {name:"Reserva Caminhos da Lapa",award:CAMINHOS_AWARD,location:"Lapa · Zona Oeste",zone:"Zona Oeste",status:"Pronto para morar",statusKey:"entregue",info:"3 a 4 dorms. · 1 a 3 suítes · 91m², 127m² e 157m² · 2 a 3 vagas",feature:"Pronto para morar",image:"https://s3-gdigital.s3.amazonaws.com/gdigital/313/OJvCwqOQER0mcGGVjBoPxE8xALtGs2KXW1MhcviW.webp",alt:"Reserva Caminhos da Lapa, empreendimento Tegra pronto para morar na Lapa, São Paulo",price:null,priceState:"consult",priceNote:"Pronto para morar. Plantas de 91 m², 127 m² e 157 m², com lazer completo e beach tennis. Consulte a Tegra Vendas para confirmar unidades disponíveis e condições vigentes."}
   ]);
 
+  // INTEREST_GALLERY_SOURCE_2026_08_26:
+  // mídias adicionais obtidas das galerias oficiais Tegra; Bueno Brandão usa o microsite oficial.
+  // nenhuma mídia adicional é carregada no catálogo inicial: a galeria só é montada após intenção explícita.
+  const INTEREST_GALLERIES = Object.freeze({
+    "Château Jardin": [
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/364/Imagem/Tegra-Incorporadora-Detalhe-Superior-Fachada-Empreendimento-Chateau-Jardin-Apartamentos-Cidade-Jardim-Sao-Paulo-SP-1400x1400-1774666761101.jpg",alt:"Detalhe da fachada do Château Jardin"},
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/364/Imagem/Tegra-Incorporadora-Fachada-Portaria-Entrada-Empreendimento-Chateau-Jardin-Apartamentos-Cidade-Jardim-Sao-Paulo-SP-1400x1400-1774666761147.jpg",alt:"Portaria do Château Jardin"}
+    ],
+    "Nova Vivere": [
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/363/Imagem/Tegra-Incorporadora-Area-de-Lazer-Piscina-Empreendimento-Nova-Vivere-Caminhos-da-Lapa-Apartamentos-Sao-Paulo-SP-1400x1400-1770321852196.png",alt:"Piscina do Nova Vivere"},
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/363/Imagem/Tegra-Incorporadora-Living-Terraco-Decorado-105-Metros-Empreendimento-Nova-Vivere-Caminhos-da-Lapa-Apartamentos-Sao-Paulo-SP-1400x1400-1770322321236.png",alt:"Living e terraço decorado do Nova Vivere"}
+    ],
+    "Caminhos da Lapa Elo Duo": [
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/Imagem/09d7acf8-6317-4c6a-a4e0-589dd0db757a.jpg",alt:"Perspectiva da Rua Jardim do Caminhos da Lapa Elo Duo"},
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/Imagem/86b37d37-1be5-4d74-9acf-b2df71520437.jpg",alt:"Piscina do Caminhos da Lapa Elo Duo"}
+    ],
+    "Garden Design": [
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/361/Imagem/Tegra-Incorporadora-Area-de-Lazer-Piscina-Empreendimento-Garden-Design-Private-Park-Residence-Apartamentos-Lapa-Sao-Paulo-SP-1400x1400-1758224843793.jpg",alt:"Piscina do Garden Design"},
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/361/Imagem/Tegra-Incorporadora-Area-de-Lazer-Espaco-Gourmet-Empreendimento-Garden-Design-Private-Park-Residence-Apartamentos-Lapa-Sao-Paulo-SP-1400x1400-1758225901080.jpg",alt:"Espaço gourmet do Garden Design"}
+    ],
+    "Ampère Brooklin": [
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/351/Imagem/Tegra-Incorporadora-Area-de-Lazer-Voo-da-Piscina-Empreendimento-Ampere-Brooklin-Apartamentos-Brooklin-Sao-Paulo-SP-1600x900-1722456940854.jpg",alt:"Voo da piscina do Ampère Brooklin"},
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/351/Imagem/Tegra-Incorporadora-Living-Decorado-262-Metros-Empreendimento-Ampere-Brooklin-Apartamentos-Brooklin-Sao-Paulo-SP-1600x900-1722457089023.jpg",alt:"Living decorado do Ampère Brooklin"}
+    ],
+    "Mozae Higienópolis": [
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/355/Imagem/Tegra-Incorporadora-Perspectiva-Ilustrada-Area-de-Lazer-Lounge-Churrasqueira-Rooftop-Apartamento-Mozae-Higienopolis-Sao-Paulo-SP-1400x1400-1731541249373.jpg",alt:"Lounge churrasqueira Skyline do Mozae Higienópolis"},
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/355/Imagem/Tegra-Incorporadora-Perspectiva-Ilustrada-Living-Decorado-73-Metros-2-Suites-Apartamento-Mozae-Higienopolis-Sao-Paulo-SP-1400x1400-1731542177358.jpg",alt:"Living decorado do Mozae Higienópolis"}
+    ],
+    "Universo Tatuapé Órbita": [
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/339/Imagem/Tegra-Incorporadora-Perspectiva-Ilustrada-Area-Externa-Lazer-Apartamentos-Salas-Comerciais-Universo-Tatuape-Orbita-Sao-Paulo-SP%20001-1715474684588.jpg",alt:"Imagem oficial adicional do Universo Tatuapé Órbita"},
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/339/Imagem/Tegra-Incorporadora-Perspectiva-Ilustrada-Area-Externa-Lazer-Apartamentos-Salas-Comerciais-Universo-Tatuape-Orbita-Sao-Paulo-SP%20005-1715474686420.jpg",alt:"Piscina do Universo Tatuapé Órbita"}
+    ],
+    "Ária Higienópolis": [
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/312/Imagem/309b34e4-72f0-48d0-a8f8-1f8e94a90cbb.jpg",alt:"Imagem oficial adicional do Ária Higienópolis"},
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/312/Imagem/71beba8c-baff-43aa-a782-9bbff8ad82e9.JPG",alt:"Imagem oficial adicional do Ária Higienópolis"}
+    ],
+    "Bem Moema": [
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/336/Imagem/Tegra-Incorporadora-Perspectiva-Ilustrada-Area-Externa-Lazer-Apartamentos-Bem-Moema-Sao-Paulo-SP%20001-1715460274740.jpg",alt:"Imagem oficial adicional do Bem Moema"},
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/336/Imagem/Tegra-Incorporadora-Perspectiva-Ilustrada-Area-Externa-Lazer-Apartamentos-Bem-Moema-Sao-Paulo-SP%20002-1715460274667.jpg",alt:"Imagem oficial adicional do Bem Moema"}
+    ],
+    "Bem Moema Studios & Offices": [
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/343/Imagem/Tegra-Incorporadora-Perspectiva-Ilustrada-Area-Externa-Lazer-Apartamentos-Studios-Salas-Comerciais-Bem-Moema-Studios-Offices-Sao-Paulo-SP%20001-1715469405767.jpg",alt:"Imagem oficial adicional do Bem Moema Studios & Offices"},
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/343/Imagem/Tegra-Incorporadora-Perspectiva-Ilustrada-Area-Externa-Lazer-Apartamentos-Studios-Salas-Comerciais-Bem-Moema-Studios-Offices-Sao-Paulo-SP%20002-1715469405591.jpg",alt:"Imagem oficial adicional do Bem Moema Studios & Offices"}
+    ],
+    "Soma Perdizes": [
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/314/Imagem/acb2a934-5af7-4d81-b91f-1cb1092784de.jpg",alt:"Imagem oficial adicional do Soma Perdizes"},
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/314/Imagem/7cb1dd5d-20f6-4550-bea1-2dbaece0eaa1.jpg",alt:"Imagem oficial adicional do Soma Perdizes"}
+    ],
+    "Zahle Jardins": [
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/276/Imagem/Tegra-Incorporadora-Area-de-Lazer-Empreendimento-Zahle-Jardins-Apartamentos-Studios-Salas-Comerciais-Jardins-Sao-Paulo-SP%20001-1713925484397.jpg",alt:"Detalhe do voo da fachada do Zahle Jardins"},
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/276/Imagem/Tegra-Incorporadora-Area-de-Lazer-Empreendimento-Zahle-Jardins-Apartamentos-Studios-Salas-Comerciais-Jardins-Sao-Paulo-SP%20013-1713925656238.jpg",alt:"Piscina do Zahle Jardins"}
+    ],
+    "Bueno Brandão 257": [
+      {url:"https://buenobrandao257.com.br/images/perspectivas/optimized/BUEN_07_RESID_EXT_Detalhe%20Fachada%202_EF-opt-1920.WEBP",alt:"Detalhe da fachada do Bueno Brandão 257"},
+      {url:"https://buenobrandao257.com.br/images/perspectivas/optimized/BUEN_44_RESID_APT_Living%20Decorado%20500_EF_v1-opt-1920.WEBP",alt:"Living decorado do Bueno Brandão 257"}
+    ],
+    "CAPIITOLO by Piero Lissoni": [
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/349/Imagem/Tegra-Incorporadora-Voo-do-Lazer-Residencial-CAPITOLO-by-Piero-Lissoni-Apartamentos-210-Metros-Chacara-Klabin-Sao-Paulo-SP-1400x1400-1736373382338.jpg",alt:"Voo do lazer do CAPIITOLO by Piero Lissoni"},
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/349/Imagem/Tegra-Incorporadora-Area-de-Lazer-Piscina-CAPITOLO-by-Piero-Lissoni-Apartamentos-210-Metros-Chacara-Klabin-Sao-Paulo-SP-1400x1400-1736372923082.jpg",alt:"Piscina do CAPIITOLO by Piero Lissoni"}
+    ],
+    "DSG Itaim": [
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/284/Imagem/328c58a5-896c-4d29-b8d5-ea020aca7d3b.jpg",alt:"Imagem oficial adicional do DSG Itaim"},
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/284/Imagem/4015a167-5092-456d-b79c-196db7064929.jpg",alt:"Imagem oficial adicional do DSG Itaim"}
+    ],
+    "Ledge Brooklin": [
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/341/Imagem/b271cff9-e44c-4404-ae15-afaefba5010f.jpg",alt:"Imagem oficial adicional do Ledge Brooklin"},
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/341/Imagem/f98ad012-04c6-4cc1-880c-4db129510f17.jpg",alt:"Imagem oficial adicional do Ledge Brooklin"}
+    ],
+    "TEG Sacomã": [
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/281/Imagem/af4721e1-59b3-4624-9f32-518be125784c.jpg",alt:"Imagem oficial adicional do TEG Sacomã"},
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/281/Imagem/f6eacd2c-55e2-4b06-b74e-60260439fd90.jpg",alt:"Imagem oficial adicional do TEG Sacomã"}
+    ],
+    "Tièl Vila Nova Conceição": [
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/352/Imagem/Tegra-Incorporadora-Area-de-Lazer-Voo-Rooftop-Boutique-Apartments-Studios-Alto-Padrao-Tiel-Vila-Nova-Conceicao-Sao-Paulo-SP-1727979958129.jpg",alt:"Voo do rooftop do Tièl Vila Nova Conceição"},
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/352/Imagem/Tegra-Incorporadora-Area-de-Lazer-Bar-Rooftop-Boutique-Apartments-Studios-Alto-Padrao-Tiel-Vila-Nova-Conceicao-Sao-Paulo-SP-1727979957124.jpg",alt:"Bar do rooftop do Tièl Vila Nova Conceição"}
+    ],
+    "YPY Alto do Ipiranga": [
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/346/Imagem/af0d89c4-1517-4d5b-ade4-4c00390d9c41.jpg",alt:"Imagem oficial adicional do YPY Alto do Ipiranga"},
+      {url:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/346/Imagem/65379649-08c4-4f0c-b2b3-1218caa1aee5.jpg",alt:"Imagem oficial adicional do YPY Alto do Ipiranga"}
+    ],
+    "ODE Perdizes": [
+      {url:"https://s3-gdigital.s3.amazonaws.com/gdigital/313/ODE%20Perspectiva%20ilustrada%20da%20piscina%20descoberta.webp",alt:"Perspectiva ilustrada da piscina descoberta do ODE Perdizes"},
+      {url:"https://s3-gdigital.s3.amazonaws.com/gdigital/313/ODE%20Planta%20156m.webp",alt:"Planta de 156 m² do ODE Perdizes"}
+    ],
+    "Reserva Caminhos da Lapa": [
+      {url:"https://s3-gdigital.s3.amazonaws.com/gdigital/313/lfcTpsFD8BEKGOeBUbijShUuG8t50XTHaFb9wdYl.webp",alt:"Varanda gourmet de 127 m² do Reserva Caminhos da Lapa"},
+      {url:"https://s3-gdigital.s3.amazonaws.com/gdigital/313/0uRWUOmaHTJT2dYkP0wP7cFIRccLcPHTFanbRcPe.webp",alt:"Beach tennis do Reserva Caminhos da Lapa"},
+      {url:"https://s3-gdigital.s3.amazonaws.com/gdigital/313/SlZUVFigKYYQKCIe0HFiQUgSdcv9QmTqvBHG5OPN.webp",alt:"Imagem interna do Reserva Caminhos da Lapa"}
+    ]
+  });
+
   const statusClass = Object.freeze({
     lancamento: "mt-status-lancamento",
     construcao: "mt-status-construcao",
@@ -732,8 +823,8 @@
   observer.observe(document.documentElement, {childList: true, subtree: true});
 })();
 
-// MNT-M2-09 measurement instrumentation v2.
-// Single delegated runtime: resilient to Green DOM replacement without per-root rebinding.
+// MNT-M2-09 measurement instrumentation v1.
+// Consolidated into the single Green page-level JavaScript payload required by ADR-001.
 (() => {
   "use strict";
 
@@ -745,8 +836,6 @@
   const ROUTE = "/";
   const SEARCH_DEBOUNCE_MS = 600;
   const PAGE_VIEW_MARKER = Symbol.for("morenumtegra.measurement.page_view.v1");
-  const BIND_MARKER = Symbol.for("morenumtegra.measurement.delegated.v2");
-  const SEARCH_STATE = new WeakMap();
 
   const ALLOWED_EVENT_PARAMETERS = Object.freeze({
     mnt_page_view: new Set(["placement"]),
@@ -791,11 +880,6 @@
 
   function projectRoot() {
     return document.querySelector(ROOT_SELECTOR);
-  }
-
-  function asElement(target) {
-    if (target instanceof Element) return target;
-    return target?.parentElement || null;
   }
 
   function normalizeSearchState(value) {
@@ -870,26 +954,10 @@
     return Number.isFinite(value) ? value : 0;
   }
 
-  function currentStatus(root) {
-    return (
-      root?.querySelector("[data-filter-status].is-active")?.dataset.filterStatus ||
-      root?.querySelector("[data-status-mobile]")?.value ||
-      "todos"
-    );
-  }
-
-  function hasEffectiveFilters(root) {
-    if (!root) return false;
-    const zone = root.querySelector("[data-zone-filter]")?.value || "todas";
-    const price = root.querySelector("[data-price-filter]")?.value || "todos";
-    const query = normalizeSearchState(root.querySelector("[data-project-search]")?.value || "");
-    return currentStatus(root) !== "todos" || zone !== "todas" || price !== "todos" || Boolean(query);
-  }
-
   function emitPageViewOnce() {
-    if (!isEligibleHost() || !projectRoot() || window[PAGE_VIEW_MARKER]) return false;
+    if (!isEligibleHost() || !projectRoot() || window[PAGE_VIEW_MARKER]) return;
     window[PAGE_VIEW_MARKER] = true;
-    return emit("mnt_page_view", "discovery", {placement: "document"});
+    emit("mnt_page_view", "discovery", {placement: "document"});
   }
 
   function sectionPlacement(link) {
@@ -907,97 +975,246 @@
     return "";
   }
 
-  function scheduleAfterUi(callback) {
-    if (typeof window.queueMicrotask === "function") {
-      window.queueMicrotask(callback);
-      return;
-    }
-    Promise.resolve().then(callback);
+  function initialFilterState(root) {
+    const statusButton = root.querySelector("[data-filter-status].is-active");
+    const statusMobile = root.querySelector("[data-status-mobile]");
+    const zone = root.querySelector("[data-zone-filter]");
+    const price = root.querySelector("[data-price-filter]");
+    const search = root.querySelector("[data-project-search]");
+
+    return {
+      status: statusButton?.dataset.filterStatus || statusMobile?.value || "todos",
+      zone: zone?.value || "todas",
+      price: price?.value || "todos",
+      query: normalizeSearchState(search?.value || "")
+    };
   }
 
-  function emitFilter(root, dimension, sourceValue, placement) {
-    const map = dimension === "status" ? STATUS_VALUE : dimension === "zone" ? ZONE_VALUE : PRICE_VALUE;
-    const canonicalValue = map[sourceValue];
-    if (!canonicalValue) return;
+  function attachMeasurement(root) {
+    if (!root || root.dataset.mntMeasurementBound === "true") return;
+    root.dataset.mntMeasurementBound = "true";
 
-    emit("mnt_catalog_filter", "consideration", {
-      filter_dimension: dimension,
-      filter_value: canonicalValue,
-      result_count: resultCount(root),
-      placement
-    });
-  }
+    const state = initialFilterState(root);
+    let lastCommittedSearch = state.query;
+    let searchTimer = 0;
 
-  function cancelPendingSearch(root, committedValue = "") {
-    const search = root?.querySelector("[data-project-search]");
-    if (!search) return;
-    const state = SEARCH_STATE.get(search);
-    if (!state) return;
-    if (state.timer) window.clearTimeout(state.timer);
-    state.timer = 0;
-    state.lastCommitted = committedValue;
-  }
+    const emitFilter = (dimension, sourceValue, placement) => {
+      const map = dimension === "status" ? STATUS_VALUE : dimension === "zone" ? ZONE_VALUE : PRICE_VALUE;
+      const canonicalValue = map[sourceValue];
+      if (!canonicalValue) return;
 
-  function handleSearchInput(event) {
-    const target = asElement(event.target);
-    if (!target?.matches("[data-project-search]")) return;
-    const root = target.closest(ROOT_SELECTOR);
-    if (!root) return;
+      emit("mnt_catalog_filter", "consideration", {
+        filter_dimension: dimension,
+        filter_value: canonicalValue,
+        result_count: resultCount(root),
+        placement
+      });
+    };
 
-    let state = SEARCH_STATE.get(target);
-    if (!state) {
-      state = {
-        lastCommitted: normalizeSearchState(target.defaultValue || ""),
-        timer: 0
-      };
-      SEARCH_STATE.set(target, state);
-    }
-
-    const next = normalizeSearchState(target.value);
-    if (state.timer) window.clearTimeout(state.timer);
-    state.timer = window.setTimeout(() => {
-      state.timer = 0;
-      if (next === state.lastCommitted) return;
-      state.lastCommitted = next;
+    const commitSearch = () => {
+      searchTimer = 0;
+      const next = state.query;
+      if (next === lastCommittedSearch) return;
+      lastCommittedSearch = next;
       emit("mnt_catalog_search", "consideration", {
         search_state: next ? "active" : "cleared",
         result_count: resultCount(root),
         placement: "catalog_search"
       });
-    }, SEARCH_DEBOUNCE_MS);
+    };
+
+    root.addEventListener("input", (event) => {
+      const search = event.target.closest?.("[data-project-search]");
+      if (!search) return;
+      state.query = normalizeSearchState(search.value);
+      if (searchTimer) window.clearTimeout(searchTimer);
+      searchTimer = window.setTimeout(commitSearch, SEARCH_DEBOUNCE_MS);
+    });
+
+    root.addEventListener("change", (event) => {
+      const target = event.target;
+
+      if (target.matches?.("[data-status-mobile]")) {
+        const next = target.value || "todos";
+        if (next === state.status) return;
+        state.status = next;
+        emitFilter("status", next, "status_mobile");
+        return;
+      }
+
+      if (target.matches?.("[data-zone-filter]")) {
+        const next = target.value || "todas";
+        if (next === state.zone) return;
+        state.zone = next;
+        emitFilter("zone", next, "zone_select");
+        return;
+      }
+
+      if (target.matches?.("[data-price-filter]")) {
+        const next = target.value || "todos";
+        if (next === state.price) return;
+        state.price = next;
+        emitFilter("price", next, "price_select");
+      }
+    });
+
+    root.addEventListener("click", (event) => {
+      const target = event.target.closest?.("a,button");
+      if (!target || !root.contains(target)) return;
+
+      const cardInterest = target.closest("[data-interest]");
+      if (cardInterest) {
+        emit("mnt_intent", "intent", {
+          intent_type: "project_interest",
+          contact_channel: "form",
+          placement: "catalog_card",
+          ...projectContext(cardInterest.dataset.interest)
+        });
+        return;
+      }
+
+      const continueForm = target.closest("[data-continue-form]");
+      if (continueForm) {
+        emit("mnt_intent", "intent", {
+          intent_type: "request_project_conditions",
+          contact_channel: "form",
+          placement: "interest_context",
+          ...selectedProjectContext()
+        });
+        return;
+      }
+
+      const statusButton = target.closest("[data-filter-status]");
+      if (statusButton) {
+        const next = statusButton.dataset.filterStatus || "todos";
+        if (next === state.status) return;
+        state.status = next;
+        emitFilter("status", next, "status_buttons");
+        return;
+      }
+
+      const quickZone = target.closest("[data-quick-zone]");
+      if (quickZone) {
+        const next = quickZone.dataset.quickZone || "todas";
+        if (next === state.zone) return;
+        state.zone = next;
+        emitFilter("zone", next, "zone_quick");
+        return;
+      }
+
+      const momentStatus = target.closest("[data-set-status]");
+      if (momentStatus) {
+        const next = momentStatus.dataset.setStatus || "todos";
+        if (next === state.status) return;
+        state.status = next;
+        emitFilter("status", next, "moment_selector");
+        return;
+      }
+
+      const clear = target.closest("[data-clear-filters],[data-empty-clear]");
+      if (clear) {
+        const hadEffectiveFilter =
+          state.status !== "todos" || state.zone !== "todas" || state.price !== "todos" || Boolean(state.query);
+        if (!hadEffectiveFilter) return;
+
+        if (searchTimer) {
+          window.clearTimeout(searchTimer);
+          searchTimer = 0;
+        }
+        state.status = "todos";
+        state.zone = "todas";
+        state.price = "todos";
+        state.query = "";
+        lastCommittedSearch = "";
+
+        emit("mnt_catalog_filter", "consideration", {
+          filter_dimension: "reset",
+          filter_value: "all",
+          result_count: resultCount(root),
+          placement: clear.matches("[data-empty-clear]") ? "empty_state_reset" : "clear_filters"
+        });
+        return;
+      }
+
+      const focusPrice = target.closest("[data-focus-price]");
+      if (focusPrice) {
+        emit("mnt_section_click", "consideration", {
+          section_target: "opportunities",
+          placement: "moment_selector"
+        });
+        return;
+      }
+
+      const changeInterest = target.closest("[data-change-interest]");
+      if (changeInterest) {
+        emit("mnt_section_click", "consideration", {
+          section_target: "opportunities",
+          placement: "content"
+        });
+        return;
+      }
+
+      const href = target.getAttribute?.("href") || "";
+      if (href.startsWith("#")) {
+        if (href === "#formulario") {
+          if (target.closest(".mt-header")) {
+            emit("mnt_intent", "intent", {
+              intent_type: "request_conditions",
+              contact_channel: "form",
+              placement: "header_nav"
+            });
+            return;
+          }
+
+          if (target.closest(".mt-hero")) {
+            emit("mnt_intent", "intent", {
+              intent_type: "request_conditions",
+              contact_channel: "form",
+              placement: "hero"
+            });
+            return;
+          }
+
+          if (target.closest(".mt-negotiation")) {
+            emit("mnt_intent", "intent", {
+              intent_type: "negotiate_scenario",
+              contact_channel: "form",
+              placement: "negotiation"
+            });
+            return;
+          }
+        }
+
+        const sectionTarget = sectionTargetFromHref(href);
+        if (sectionTarget) {
+          emit("mnt_section_click", "consideration", {
+            section_target: sectionTarget,
+            placement: sectionPlacement(target)
+          });
+        }
+        return;
+      }
+
+      const whatsapp = target.matches?.('a[href^="https://wa.me/"]') ? target : null;
+      if (whatsapp && whatsapp.closest(".mt-negotiation")) {
+        emit("mnt_intent", "intent", {
+          intent_type: "schedule_visit",
+          contact_channel: "whatsapp",
+          placement: "negotiation"
+        });
+      }
+    });
   }
 
-  function handleFilterChange(event) {
-    const target = asElement(event.target);
-    if (!target) return;
-    const root = target.closest(ROOT_SELECTOR);
-    if (!root) return;
+  function attachFloatingActions() {
+    if (document.documentElement.dataset.mntFloatingMeasurementBound === "true") return;
+    document.documentElement.dataset.mntFloatingMeasurementBound = "true";
 
-    if (target.matches("[data-status-mobile]")) {
-      const next = target.value || "todos";
-      scheduleAfterUi(() => emitFilter(root, "status", next, "status_mobile"));
-      return;
-    }
+    document.addEventListener("click", (event) => {
+      const target = event.target.closest?.("#mt-floating-dock a");
+      if (!target) return;
 
-    if (target.matches("[data-zone-filter]")) {
-      const next = target.value || "todas";
-      scheduleAfterUi(() => emitFilter(root, "zone", next, "zone_select"));
-      return;
-    }
-
-    if (target.matches("[data-price-filter]")) {
-      const next = target.value || "todos";
-      scheduleAfterUi(() => emitFilter(root, "price", next, "price_select"));
-    }
-  }
-
-  function handleClick(event) {
-    const element = asElement(event.target);
-    if (!element) return;
-
-    const floating = element.closest("#mt-floating-dock a");
-    if (floating) {
-      if (floating.matches(".mt-floating-lead")) {
+      if (target.matches(".mt-floating-lead")) {
         emit("mnt_intent", "intent", {
           intent_type: "request_conditions",
           contact_channel: "form",
@@ -1007,7 +1224,7 @@
         return;
       }
 
-      if (floating.matches(".mt-floating-whatsapp")) {
+      if (target.matches(".mt-floating-whatsapp")) {
         emit("mnt_intent", "intent", {
           intent_type: "whatsapp_contact",
           contact_channel: "whatsapp",
@@ -1015,172 +1232,34 @@
           ...selectedProjectContext()
         });
       }
-      return;
-    }
-
-    const root = element.closest(ROOT_SELECTOR);
-    if (!root) return;
-    const target = element.closest("a,button");
-    if (!target || !root.contains(target)) return;
-
-    const cardInterest = target.closest("[data-interest]");
-    if (cardInterest) {
-      emit("mnt_intent", "intent", {
-        intent_type: "project_interest",
-        contact_channel: "form",
-        placement: "catalog_card",
-        ...projectContext(cardInterest.dataset.interest)
-      });
-      return;
-    }
-
-    const continueForm = target.closest("[data-continue-form]");
-    if (continueForm) {
-      emit("mnt_intent", "intent", {
-        intent_type: "request_project_conditions",
-        contact_channel: "form",
-        placement: "interest_context",
-        ...selectedProjectContext()
-      });
-      return;
-    }
-
-    const statusButton = target.closest("[data-filter-status]");
-    if (statusButton) {
-      const next = statusButton.dataset.filterStatus || "todos";
-      if (statusButton.classList.contains("is-active")) return;
-      scheduleAfterUi(() => emitFilter(root, "status", next, "status_buttons"));
-      return;
-    }
-
-    const quickZone = target.closest("[data-quick-zone]");
-    if (quickZone) {
-      const next = quickZone.dataset.quickZone || "todas";
-      if (quickZone.classList.contains("is-active")) return;
-      scheduleAfterUi(() => emitFilter(root, "zone", next, "zone_quick"));
-      return;
-    }
-
-    const momentStatus = target.closest("[data-set-status]");
-    if (momentStatus) {
-      const next = momentStatus.dataset.setStatus || "todos";
-      if (next === currentStatus(root)) return;
-      scheduleAfterUi(() => emitFilter(root, "status", next, "moment_selector"));
-      return;
-    }
-
-    const clear = target.closest("[data-clear-filters],[data-empty-clear]");
-    if (clear) {
-      if (!hasEffectiveFilters(root)) return;
-      cancelPendingSearch(root, "");
-      scheduleAfterUi(() => {
-        emit("mnt_catalog_filter", "consideration", {
-          filter_dimension: "reset",
-          filter_value: "all",
-          result_count: resultCount(root),
-          placement: clear.matches("[data-empty-clear]") ? "empty_state_reset" : "clear_filters"
-        });
-      });
-      return;
-    }
-
-    const focusPrice = target.closest("[data-focus-price]");
-    if (focusPrice) {
-      emit("mnt_section_click", "consideration", {
-        section_target: "opportunities",
-        placement: "moment_selector"
-      });
-      return;
-    }
-
-    const changeInterest = target.closest("[data-change-interest]");
-    if (changeInterest) {
-      emit("mnt_section_click", "consideration", {
-        section_target: "opportunities",
-        placement: "content"
-      });
-      return;
-    }
-
-    const href = target.getAttribute("href") || "";
-    if (href.startsWith("#")) {
-      if (href === "#formulario") {
-        if (target.closest(".mt-header")) {
-          emit("mnt_intent", "intent", {
-            intent_type: "request_conditions",
-            contact_channel: "form",
-            placement: "header_nav"
-          });
-          return;
-        }
-
-        if (target.closest(".mt-hero")) {
-          emit("mnt_intent", "intent", {
-            intent_type: "request_conditions",
-            contact_channel: "form",
-            placement: "hero"
-          });
-          return;
-        }
-
-        if (target.closest(".mt-negotiation")) {
-          emit("mnt_intent", "intent", {
-            intent_type: "negotiate_scenario",
-            contact_channel: "form",
-            placement: "negotiation"
-          });
-          return;
-        }
-      }
-
-      const sectionTarget = sectionTargetFromHref(href);
-      if (sectionTarget) {
-        emit("mnt_section_click", "consideration", {
-          section_target: sectionTarget,
-          placement: sectionPlacement(target)
-        });
-      }
-      return;
-    }
-
-    if (target.matches('a[href^="https://wa.me/"]') && target.closest(".mt-negotiation")) {
-      emit("mnt_intent", "intent", {
-        intent_type: "schedule_visit",
-        contact_channel: "whatsapp",
-        placement: "negotiation"
-      });
-    }
-  }
-
-  function bindDelegatedMeasurement() {
-    if (window[BIND_MARKER]) return;
-    window[BIND_MARKER] = true;
-
-    document.addEventListener("click", handleClick, true);
-    document.addEventListener("change", handleFilterChange, true);
-    document.addEventListener("input", handleSearchInput, true);
-  }
-
-  function waitForRootAndEmitPageView() {
-    if (emitPageViewOnce()) return;
-
-    const observer = new MutationObserver(() => {
-      if (!emitPageViewOnce()) return;
-      observer.disconnect();
     });
+  }
 
-    observer.observe(document.documentElement, {childList: true, subtree: true});
-    window.setTimeout(() => observer.disconnect(), 10000);
+  function boot() {
+    if (!isEligibleHost()) return;
+    const root = projectRoot();
+    if (!root) return;
+    attachMeasurement(root);
+    attachFloatingActions();
+    emitPageViewOnce();
   }
 
   function start() {
     if (!isEligibleHost()) return;
-    bindDelegatedMeasurement();
 
     if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", waitForRootAndEmitPageView, {once: true});
+      document.addEventListener("DOMContentLoaded", boot, {once: true});
     } else {
-      waitForRootAndEmitPageView();
+      boot();
+    }
+
+    if (!projectRoot()) {
+      const observer = new MutationObserver(() => {
+        if (!projectRoot()) return;
+        observer.disconnect();
+        boot();
+      });
+      observer.observe(document.documentElement, {childList: true, subtree: true});
     }
   }
 
