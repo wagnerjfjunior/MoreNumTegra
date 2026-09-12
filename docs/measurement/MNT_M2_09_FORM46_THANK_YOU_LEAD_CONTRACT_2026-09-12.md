@@ -93,7 +93,7 @@ Project-owned source event remains:
 mnt_lead_success
 ```
 
-The source carries the normal MoreNumTegra semantic envelope and reuses the armed logical lead identity:
+The source carries the MoreNumTegra semantic envelope and only the RESF/Capri-derived opaque lead proof parameter:
 
 ```text
 mnt_event_id = armed event_id
@@ -105,9 +105,9 @@ funnel_stage = lead
 lead_token = opaque journey token
 ```
 
-Controlled Form 46 context may remain in the source payload for project semantics, but ordinary visitor PII is forbidden.
+`form_provider`, `form_id`, `form_name`, `lead_method` and `placement` remain appropriate for Form 46 start/submit-attempt semantics but are not part of the final lead destination parameter contract adopted here.
 
-GA4 destination mapping should follow the RESF/Capri lead convention rather than using the project source event name as the vendor event name:
+GA4 destination mapping follows the recovered RESF/Capri lead convention rather than using the project source event name as the vendor event name:
 
 ```text
 source event: mnt_lead_success
