@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="googlebot" content="noindex,nofollow">
+  <title>Obrigado | More em um Tegra — Preview</title>
+  <meta name="description" content="Preview técnico da página de obrigado do MoreNumTegra.">
+  <meta name="theme-color" content="#171813">
+  <link rel="stylesheet" href="/src-greenn/thank-you/obrigado.css">
+</head>
+<body style="margin:0">
+  <div id="mt-thanks-preview"></div>
+  <script>
+    (async () => {
+      const target = document.getElementById("mt-thanks-preview");
+      try {
+        const response = await fetch("/src-greenn/thank-you/obrigado.html", {cache: "no-store"});
+        if (!response.ok) throw new Error(`Falha ${response.status}`);
+        target.innerHTML = await response.text();
+        const script = document.createElement("script");
+        script.src = "/src-greenn/thank-you/obrigado.js";
+        script.defer = true;
+        document.body.appendChild(script);
+      } catch (cause) {
+        target.textContent = `Preview indisponível: ${cause.message}`;
+      }
+    })();
+  </script>
+</body>
+</html>

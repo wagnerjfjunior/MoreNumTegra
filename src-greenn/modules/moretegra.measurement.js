@@ -1,4 +1,4 @@
-// MNT-M2-09 measurement instrumentation v6.
+// MNT-M2-09 measurement instrumentation v5.
 // Source module for the single Green release artifact. No direct vendor dispatch.
 (() => {
   "use strict";
@@ -11,8 +11,7 @@
   const ROUTE = "/";
   const SEARCH_DEBOUNCE_MS = 600;
   const PAGE_VIEW_MARKER = Symbol.for("morenumtegra.measurement.page_view.v1");
-  const LEAD_SUCCESS_MARKER = Symbol.for("morenumtegra.measurement.lead_success.v1");
-  const BIND_MARKER = Symbol.for("morenumtegra.measurement.delegated.v6");
+  const BIND_MARKER = Symbol.for("morenumtegra.measurement.delegated.v5");
   const SEARCH_STATE = new WeakMap();
   const SEARCH_LOCATION_INDEX = new Map();
   const FORM_STARTED = new WeakSet();
@@ -21,10 +20,6 @@
   const FORM_ID = 46;
   const FORM_NAME = "MoreEmUmTegra";
   const FORM_PLACEMENT = "form_46";
-  const LEAD_METHOD = "green_form_46";
-  const FORM_SUBMIT_SESSION_KEY = "mnt.form46.submit_attempt.v1";
-  const FORM_SUBMIT_MAX_AGE_MS = 15 * 60 * 1000;
-  const GREEN_SUCCESS_PAGE_ID = "292";
   const GREEN_FORM_SELECTOR = "form#form.form-content";
   const GREEN_FORM_SUBMIT_SELECTOR = 'button.g-recaptcha.button_hover[data-action="submit"]';
   const GREEN_FORM_FIELD_NAMES = Object.freeze(["nome", "email", "telefone"]);
@@ -36,8 +31,7 @@
     mnt_catalog_search: new Set(["search_state", "search_location", "result_count", "placement"]),
     mnt_intent: new Set(["intent_type", "contact_channel", "placement", "project_name", "offer_name"]),
     mnt_form_start: new Set(["form_provider", "form_id", "form_name", "placement", "project_name", "offer_name"]),
-    mnt_form_submit_attempt: new Set(["form_provider", "form_id", "form_name", "placement"]),
-    mnt_lead_success: new Set(["form_provider", "form_id", "form_name", "lead_method", "placement"])
+    mnt_form_submit_attempt: new Set(["form_provider", "form_id", "form_name", "placement"])
   });
 
   const EVENT_PARAMETER_DEFAULTS = Object.freeze({
@@ -313,47 +307,6 @@
     return isGreenForm46(form) ? form : null;
   }
 
-  function rememberFormSubmitAttempt() {
-    try {
-      window.sessionStorage.setItem(FORM_SUBMIT_SESSION_KEY, String(Date.now()));
-      return true;
-    } catch {
-      return false;
-    }
-  }
-
-  function consumeRecentFormSubmitAttempt() {
-    let raw = "";
-    try {
-      raw = window.sessionStorage.getItem(FORM_SUBMIT_SESSION_KEY) || "";
-      if (raw) window.sessionStorage.removeItem(FORM_SUBMIT_SESSION_KEY);
-    } catch {
-      return false;
-    }
-
-    const timestamp = Number(raw);
-    if (!Number.isFinite(timestamp) || timestamp <= 0) return false;
-    const age = Date.now() - timestamp;
-    return age >= 0 && age <= FORM_SUBMIT_MAX_AGE_MS;
-  }
-
-  function hasVerifiedGreenSuccessRedirect() {
-    const params = new URLSearchParams(window.location.search);
-    const leadReference = params.get("l_") || "";
-    return params.get("p_id") === GREEN_SUCCESS_PAGE_ID && /^\d+$/.test(leadReference);
-  }
-
-  function emitLeadSuccessIfVerified() {
-    if (window[LEAD_SUCCESS_MARKER] || !hasVerifiedGreenSuccessRedirect()) return false;
-    if (!consumeRecentFormSubmitAttempt()) return false;
-
-    window[LEAD_SUCCESS_MARKER] = true;
-    return emit("mnt_lead_success", "lead", {
-      ...FORM_PARAMETERS,
-      lead_method: LEAD_METHOD
-    });
-  }
-
   function emitFormStartOnce(form) {
     if (FORM_STARTED.has(form)) return false;
     FORM_STARTED.add(form);
@@ -376,7 +329,6 @@
     const form = event.target instanceof HTMLFormElement ? event.target : null;
     if (!isGreenForm46(form)) return;
     emitFormStartOnce(form);
-    rememberFormSubmitAttempt();
     emit("mnt_form_submit_attempt", "intent", FORM_PARAMETERS);
   }
 
@@ -629,7 +581,6 @@
     if (!root) return false;
     refreshSearchLocationIndex(root);
     emitPageViewOnce();
-    emitLeadSuccessIfVerified();
     return true;
   }
 

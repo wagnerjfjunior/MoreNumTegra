@@ -1,0 +1,205 @@
+.mt-thanks {
+  --mt-yellow: #EBB92E;
+  --mt-ink: #171813;
+  --mt-paper: #f4f1e9;
+  --mt-white: #ffffff;
+  --mt-muted: #696b63;
+  --mt-line: rgba(23, 24, 19, 0.12);
+  min-height: 100svh;
+  margin: 0;
+  padding: 0;
+  color: var(--mt-ink);
+  background:
+    radial-gradient(circle at 90% 5%, rgba(235, 185, 46, 0.22), transparent 30rem),
+    var(--mt-paper);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.mt-thanks *,
+.mt-thanks *::before,
+.mt-thanks *::after {
+  box-sizing: border-box;
+}
+
+.mt-thanks-shell {
+  width: min(100%, 1120px);
+  min-height: 100svh;
+  margin: 0 auto;
+  padding: 22px 18px 28px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 28px;
+}
+
+.mt-thanks-brand {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--mt-ink);
+  text-decoration: none;
+}
+
+.mt-thanks-brand img {
+  width: 72px;
+  height: 41px;
+  object-fit: contain;
+  background: var(--mt-ink);
+  border-radius: 8px;
+  padding: 3px 6px;
+}
+
+.mt-thanks-brand span {
+  display: grid;
+  gap: 2px;
+}
+
+.mt-thanks-brand strong {
+  font-size: 0.82rem;
+  line-height: 1;
+  letter-spacing: 0.08em;
+}
+
+.mt-thanks-brand small {
+  color: var(--mt-muted);
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+}
+
+.mt-thanks-card {
+  align-self: center;
+  width: min(100%, 720px);
+  margin: 0 auto;
+  padding: clamp(28px, 7vw, 64px);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--mt-line);
+  border-radius: 28px;
+  box-shadow: 0 28px 80px rgba(23, 24, 19, 0.10);
+  text-align: center;
+}
+
+.mt-thanks-eyebrow {
+  margin: 0 0 16px;
+  color: #7a5b00;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.mt-thanks-check {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--mt-yellow);
+  color: var(--mt-ink);
+  font-size: 1.7rem;
+  font-weight: 900;
+  box-shadow: 0 10px 30px rgba(235, 185, 46, 0.30);
+}
+
+.mt-thanks-card h1 {
+  margin: 0;
+  font-size: clamp(2rem, 8vw, 4.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.mt-thanks-lead {
+  max-width: 590px;
+  margin: 24px auto 0;
+  color: #4c4e48;
+  font-size: clamp(1rem, 2.8vw, 1.18rem);
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+.mt-thanks-actions {
+  margin-top: 30px;
+  display: grid;
+  gap: 10px;
+}
+
+.mt-thanks-button {
+  min-height: 52px;
+  padding: 14px 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.93rem;
+  font-weight: 850;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.mt-thanks-button:focus-visible {
+  outline: 3px solid rgba(235, 185, 46, 0.48);
+  outline-offset: 3px;
+}
+
+.mt-thanks-button-primary {
+  background: var(--mt-yellow);
+  color: var(--mt-ink);
+  box-shadow: 0 10px 24px rgba(235, 185, 46, 0.24);
+}
+
+.mt-thanks-button-secondary {
+  border-color: var(--mt-line);
+  background: var(--mt-white);
+  color: var(--mt-ink);
+}
+
+.mt-thanks-note {
+  margin: 22px 0 0;
+  color: var(--mt-muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.mt-thanks-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  color: var(--mt-muted);
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mt-thanks-button:hover {
+    transform: translateY(-1px);
+  }
+
+  .mt-thanks-button-primary:hover {
+    box-shadow: 0 14px 34px rgba(235, 185, 46, 0.32);
+  }
+
+  .mt-thanks-button-secondary:hover {
+    background: #faf9f5;
+  }
+}
+
+@media (min-width: 700px) {
+  .mt-thanks-shell {
+    padding: 32px 34px 34px;
+  }
+
+  .mt-thanks-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mt-thanks-button {
+    transition: none;
+  }
+}
