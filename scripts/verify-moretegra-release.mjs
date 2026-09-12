@@ -7,7 +7,7 @@ const repoRoot = process.cwd();
 const releaseRel = "src-greenn/moretegra.js";
 const releasePath = path.join(repoRoot, releaseRel);
 const measurementPath = path.join(repoRoot, "src-greenn", "modules", "moretegra.measurement.js");
-const leadJourneyPath = path.join(repoRoot, "src-greenn", "modules", "moretegra.lead-journey.js");
+const leadGuardPath = path.join(repoRoot, "src-greenn", "modules", "moretegra.lead-journey.js");
 const uiBaseRef = process.env.MNT_UI_BASE_REF || "0ab0de22e2d69bff4b127c2db7f24a1744ea5187";
 const marker = /^\/\/ MNT-M2-09 measurement instrumentation v\d+\./m;
 
@@ -27,8 +27,8 @@ function splitArtifact(source) {
 
 const release = fs.readFileSync(releasePath, "utf8");
 const measurementModule = fs.readFileSync(measurementPath, "utf8").trim();
-const leadJourneyModule = fs.readFileSync(leadJourneyPath, "utf8").trim();
-const expectedTail = `${measurementModule}\n\n${leadJourneyModule}`;
+const leadGuardModule = fs.readFileSync(leadGuardPath, "utf8").trim();
+const expectedTail = `${measurementModule}\n\n${leadGuardModule}`;
 const current = splitArtifact(release);
 
 let baseline;
@@ -49,7 +49,7 @@ if (current.ui !== baselineParts.ui) {
 }
 
 if (current.tail !== expectedTail) {
-  fail("release tail differs from measurement + Form 46 lead-journey source modules");
+  fail("release tail differs from measurement + timestamp-only Form 46 lead guard modules");
 }
 
 const requiredUiMarkers = [
@@ -97,18 +97,14 @@ for (const token of requiredMeasurementSemantics) {
   if (!measurementModule.includes(token)) fail(`required measurement semantic marker missing: ${token}`);
 }
 
-const requiredLeadJourneySemantics = [
-  '// MNT-M2-09 Form 46 lead journey arm v1.',
-  'const JOURNEY_KEY = "mnt.lead.journey.v1";',
-  'const SENT_KEY = "mnt.lead.sent.v1";',
-  'event_id: eventId()',
-  'lead_token: eventId()',
-  'submitted_at: Date.now()',
-  'window.sessionStorage.setItem(JOURNEY_KEY, JSON.stringify(state))',
-  'document.addEventListener("submit", armLeadJourney, true)'
+const requiredLeadGuardSemantics = [
+  '// MNT-M2-09 Form 46 lead guard v2.',
+  'const LEAD_PENDING_KEY = "mnt.lead.pending.v1";',
+  'window.sessionStorage.setItem(LEAD_PENDING_KEY, String(Date.now()))',
+  'document.addEventListener("submit", armLeadPending, true)'
 ];
-for (const token of requiredLeadJourneySemantics) {
-  if (!leadJourneyModule.includes(token)) fail(`required lead-journey marker missing: ${token}`);
+for (const token of requiredLeadGuardSemantics) {
+  if (!leadGuardModule.includes(token)) fail(`required lead-guard marker missing: ${token}`);
 }
 
 const forbiddenMeasurement = [
@@ -123,25 +119,27 @@ for (const token of forbiddenMeasurement) {
   if (measurementModule.includes(token)) fail(`forbidden measurement token present: ${token}`);
 }
 
-const forbiddenLeadJourney = [
-  "gtag(",
-  "fbq(",
+const forbiddenLeadGuard = [
+  "event_id",
+  "lead_token",
+  "eventId(",
+  "JSON.stringify",
+  "SENT_KEY",
   ".value",
   "FormData(",
-  "nome:",
-  "email:",
-  "telefone:"
+  "gtag(",
+  "fbq("
 ];
-for (const token of forbiddenLeadJourney) {
-  if (leadJourneyModule.includes(token)) fail(`lead-journey module may be reading/storing visitor data: ${token}`);
+for (const token of forbiddenLeadGuard) {
+  if (leadGuardModule.includes(token)) fail(`forbidden lead-guard token present: ${token}`);
 }
 
 try {
   new Function(release);
   new Function(measurementModule);
-  new Function(leadJourneyModule);
+  new Function(leadGuardModule);
 } catch (error) {
   fail(`JavaScript syntax error: ${error.message}`);
 }
 
-console.log(`PASS verify-moretegra-release: UI baseline ${uiBaseRef} preserved; measurement + Form 46 lead-journey modules exact; syntax valid.`);
+console.log(`PASS verify-moretegra-release: UI baseline ${uiBaseRef} preserved; measurement + timestamp-only Form 46 lead guard exact; syntax valid.`);
