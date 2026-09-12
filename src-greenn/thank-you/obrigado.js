@@ -93,6 +93,7 @@
     if (!state) return false;
     if (!validOpaqueValue(state.event_id) || !validOpaqueValue(state.lead_token)) return false;
     if (!isFreshJourney(state) || isAlreadySent(state.event_id)) return false;
+    if (!consumeJourney(state)) return false;
 
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
@@ -111,7 +112,6 @@
       lead_token: state.lead_token
     });
 
-    if (!consumeJourney(state)) return false;
     markVerifiedUi(root);
     return true;
   }
