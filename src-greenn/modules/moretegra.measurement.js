@@ -14,14 +14,15 @@
   const BIND_MARKER = Symbol.for("morenumtegra.measurement.delegated.v5");
   const SEARCH_STATE = new WeakMap();
   const SEARCH_LOCATION_INDEX = new Map();
-  const FORM_STATE = new WeakMap();
+  const FORM_STARTED = new WeakSet();
   const NOT_APPLICABLE = "not_applicable";
   const FORM_PROVIDER = "green";
-  const FORM_ID = "46";
+  const FORM_ID = 46;
   const FORM_NAME = "MoreEmUmTegra";
   const FORM_PLACEMENT = "form_46";
-  const FORM_LEAD_METHOD = "green_form_46";
-  const FORM_SUCCESS_TEXT = "Lead cadastrado com sucesso";
+  const GREEN_FORM_SELECTOR = "form#form.form-content";
+  const GREEN_FORM_SUBMIT_SELECTOR = 'button.g-recaptcha.button_hover[data-action="submit"]';
+  const GREEN_FORM_FIELD_NAMES = Object.freeze(["nome", "email", "telefone"]);
 
   const ALLOWED_EVENT_PARAMETERS = Object.freeze({
     mnt_page_view: new Set(["placement"]),
@@ -30,16 +31,14 @@
     mnt_catalog_search: new Set(["search_state", "search_location", "result_count", "placement"]),
     mnt_intent: new Set(["intent_type", "contact_channel", "placement", "project_name", "offer_name"]),
     mnt_form_start: new Set(["form_provider", "form_id", "form_name", "placement", "project_name", "offer_name"]),
-    mnt_form_submit_attempt: new Set(["form_provider", "form_id", "form_name", "placement"]),
-    mnt_lead_success: new Set(["form_provider", "form_id", "form_name", "lead_method", "placement", "project_name", "offer_name"])
+    mnt_form_submit_attempt: new Set(["form_provider", "form_id", "form_name", "placement"])
   });
 
   const EVENT_PARAMETER_DEFAULTS = Object.freeze({
     mnt_section_click: Object.freeze({faq_item: NOT_APPLICABLE}),
     mnt_catalog_search: Object.freeze({search_location: NOT_APPLICABLE}),
     mnt_intent: Object.freeze({project_name: NOT_APPLICABLE, offer_name: NOT_APPLICABLE}),
-    mnt_form_start: Object.freeze({project_name: NOT_APPLICABLE, offer_name: NOT_APPLICABLE}),
-    mnt_lead_success: Object.freeze({project_name: NOT_APPLICABLE, offer_name: NOT_APPLICABLE})
+    mnt_form_start: Object.freeze({project_name: NOT_APPLICABLE, offer_name: NOT_APPLICABLE})
   });
 
   const FORM_PARAMETERS = Object.freeze({
@@ -298,100 +297,38 @@
 
   function isGreenForm46(form) {
     if (!(form instanceof HTMLFormElement)) return false;
-    const formId = form.querySelector('input#form_id[type="hidden"]');
-    const tenantId = form.querySelector('input#tenant_id[type="hidden"]');
-    return formId?.value === FORM_ID && tenantId?.value === "313";
+    if (!form.matches(GREEN_FORM_SELECTOR)) return false;
+    if (!form.querySelector(GREEN_FORM_SUBMIT_SELECTOR)) return false;
+    return GREEN_FORM_FIELD_NAMES.every((name) => Boolean(form.querySelector(`[name="${name}"]`)));
   }
 
   function greenForm46FromElement(element) {
-    const form = element?.closest?.("form");
+    const form = element?.closest?.(GREEN_FORM_SELECTOR);
     return isGreenForm46(form) ? form : null;
   }
 
-  function formState(form) {
-    let state = FORM_STATE.get(form);
-    if (!state) {
-      state = {
-        started: false,
-        awaitingOutcome: false,
-        pendingContext: {},
-        observer: null
-      };
-      FORM_STATE.set(form, state);
-    }
-    return state;
-  }
-
-  function formSuccessLog(form) {
-    return form.querySelector('[data-log="infoLog"]');
-  }
-
-  function resolveFormOutcome(form, state, mutations) {
-    if (!state.awaitingOutcome) return;
-    const textChanged = mutations.some((mutation) =>
-      mutation.type === "childList" || mutation.type === "characterData"
-    );
-    if (!textChanged) return;
-
-    const infoLog = formSuccessLog(form);
-    if (!infoLog || infoLog.style.display === "none") return;
-    const message = String(infoLog.textContent || "").trim();
-    if (!message) return;
-
-    if (message === FORM_SUCCESS_TEXT) {
-      emit("mnt_lead_success", "lead", {
-        ...FORM_PARAMETERS,
-        lead_method: FORM_LEAD_METHOD,
-        ...state.pendingContext
-      });
-    }
-
-    state.awaitingOutcome = false;
-    state.pendingContext = {};
-  }
-
-  function observeFormSuccess(form) {
-    const state = formState(form);
-    if (state.observer) return state;
-    const infoLog = formSuccessLog(form);
-    if (!infoLog) return state;
-
-    state.observer = new MutationObserver((mutations) => resolveFormOutcome(form, state, mutations));
-    state.observer.observe(infoLog, {
-      attributes: true,
-      attributeFilter: ["style"],
-      childList: true,
-      characterData: true,
-      subtree: true
-    });
-    return state;
-  }
-
-  function handleFormInteraction(event) {
-    const target = asElement(event.target);
-    if (!target?.matches('input:not([type="hidden"]),textarea,select')) return;
-    const form = greenForm46FromElement(target);
-    if (!form) return;
-
-    const state = observeFormSuccess(form);
-    if (state.started) return;
-    state.started = true;
-    emit("mnt_form_start", "intent", {
+  function emitFormStartOnce(form) {
+    if (FORM_STARTED.has(form)) return false;
+    FORM_STARTED.add(form);
+    return emit("mnt_form_start", "intent", {
       ...FORM_PARAMETERS,
       ...selectedProjectContext()
     });
   }
 
-  function handleFormSubmitAttempt(event) {
-    const element = asElement(event.target);
-    const button = element?.closest?.('button[data-action="submit"]');
-    if (!button) return;
-    const form = greenForm46FromElement(button);
+  function handleFormInteraction(event) {
+    if (event.isTrusted === false) return;
+    const target = asElement(event.target);
+    if (!target?.matches('input:not([type="hidden"]),textarea,select')) return;
+    const form = greenForm46FromElement(target);
     if (!form) return;
+    emitFormStartOnce(form);
+  }
 
-    const state = observeFormSuccess(form);
-    state.awaitingOutcome = true;
-    state.pendingContext = selectedProjectContext();
+  function handleFormSubmitAttempt(event) {
+    const form = event.target instanceof HTMLFormElement ? event.target : null;
+    if (!isGreenForm46(form)) return;
+    emitFormStartOnce(form);
     emit("mnt_form_submit_attempt", "intent", FORM_PARAMETERS);
   }
 
@@ -632,10 +569,10 @@
   function bindDelegatedMeasurement() {
     if (window[BIND_MARKER]) return;
     window[BIND_MARKER] = true;
-    document.addEventListener("click", handleFormSubmitAttempt, true);
+    document.addEventListener("focusin", handleFormInteraction, true);
+    document.addEventListener("submit", handleFormSubmitAttempt, true);
     document.addEventListener("click", handleClick, true);
     document.addEventListener("change", handleFilterChange, true);
-    document.addEventListener("input", handleFormInteraction, true);
     document.addEventListener("input", handleSearchInput, true);
   }
 
