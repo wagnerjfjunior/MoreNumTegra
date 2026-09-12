@@ -1,4 +1,4 @@
-// MNT-M2-09 Form 46 lead guard v2.
+// MNT-M2-09 Form 46 lead guard v3.
 // Stores only a short-lived submit timestamp. Never reads or stores visitor PII.
 (() => {
   "use strict";
@@ -21,8 +21,13 @@
     if (window.location.hostname !== CANONICAL_HOST) return;
     if (!document.querySelector(ROOT_SELECTOR)) return;
 
-    const form = event.target instanceof HTMLFormElement ? event.target : null;
+    const target = event.target instanceof Element ? event.target : null;
+    const button = target?.closest(GREEN_FORM_SUBMIT_SELECTOR);
+    if (!button) return;
+
+    const form = button.closest(GREEN_FORM_SELECTOR);
     if (!isGreenForm46(form)) return;
+    if (!form.checkValidity()) return;
 
     try {
       window.sessionStorage.setItem(LEAD_PENDING_KEY, String(Date.now()));
@@ -31,5 +36,5 @@
     }
   }
 
-  document.addEventListener("submit", armLeadPending, true);
+  document.addEventListener("click", armLeadPending, true);
 })();
