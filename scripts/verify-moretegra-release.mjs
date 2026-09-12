@@ -98,10 +98,12 @@ for (const token of requiredMeasurementSemantics) {
 }
 
 const requiredLeadGuardSemantics = [
-  '// MNT-M2-09 Form 46 lead guard v2.',
+  '// MNT-M2-09 Form 46 lead guard v3.',
   'const LEAD_PENDING_KEY = "mnt.lead.pending.v1";',
+  'const button = target?.closest(GREEN_FORM_SUBMIT_SELECTOR);',
+  'if (!form.checkValidity()) return;',
   'window.sessionStorage.setItem(LEAD_PENDING_KEY, String(Date.now()))',
-  'document.addEventListener("submit", armLeadPending, true)'
+  'document.addEventListener("click", armLeadPending, true)'
 ];
 for (const token of requiredLeadGuardSemantics) {
   if (!leadGuardModule.includes(token)) fail(`required lead-guard marker missing: ${token}`);
