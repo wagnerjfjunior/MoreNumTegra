@@ -823,7 +823,7 @@
   observer.observe(document.documentElement, {childList: true, subtree: true});
 })();
 
-// MNT-M2-09 measurement instrumentation v5.
+// MNT-M2-09 measurement instrumentation v6.
 // Source module for the single Green release artifact. No direct vendor dispatch.
 (() => {
   "use strict";
@@ -836,7 +836,7 @@
   const ROUTE = "/";
   const SEARCH_DEBOUNCE_MS = 600;
   const PAGE_VIEW_MARKER = Symbol.for("morenumtegra.measurement.page_view.v1");
-  const BIND_MARKER = Symbol.for("morenumtegra.measurement.delegated.v5");
+  const BIND_MARKER = Symbol.for("morenumtegra.measurement.delegated.v6");
   const SEARCH_STATE = new WeakMap();
   const SEARCH_LOCATION_INDEX = new Map();
   const FORM_STARTED = new WeakSet();
@@ -1150,11 +1150,11 @@
     emitFormStartOnce(form);
   }
 
-  function handleFormSubmitAttempt(event) {
-    const form = event.target instanceof HTMLFormElement ? event.target : null;
-    if (!isGreenForm46(form)) return;
+  function handleFormSubmitAttempt(button) {
+    const form = button?.closest?.(GREEN_FORM_SELECTOR);
+    if (!isGreenForm46(form)) return false;
     emitFormStartOnce(form);
-    emit("mnt_form_submit_attempt", "intent", FORM_PARAMETERS);
+    return emit("mnt_form_submit_attempt", "intent", FORM_PARAMETERS);
   }
 
   function handleSearchInput(event) {
@@ -1213,6 +1213,12 @@
   function handleClick(event) {
     const element = asElement(event.target);
     if (!element) return;
+
+    const formSubmitButton = element.closest(GREEN_FORM_SUBMIT_SELECTOR);
+    if (formSubmitButton) {
+      handleFormSubmitAttempt(formSubmitButton);
+      return;
+    }
 
     const floating = element.closest("#mt-floating-dock a");
     if (floating) {
@@ -1395,7 +1401,6 @@
     if (window[BIND_MARKER]) return;
     window[BIND_MARKER] = true;
     document.addEventListener("focusin", handleFormInteraction, true);
-    document.addEventListener("submit", handleFormSubmitAttempt, true);
     document.addEventListener("click", handleClick, true);
     document.addEventListener("change", handleFilterChange, true);
     document.addEventListener("input", handleSearchInput, true);
@@ -1435,7 +1440,7 @@
   start();
 })();
 
-// MNT-M2-09 Form 46 lead guard v3.
+// MNT-M2-09 Form 46 lead guard v4.
 // Stores only a short-lived submit timestamp. Never reads or stores visitor PII.
 (() => {
   "use strict";
@@ -1464,7 +1469,8 @@
 
     const form = button.closest(GREEN_FORM_SELECTOR);
     if (!isGreenForm46(form)) return;
-    if (!form.checkValidity()) return;
+    // The successful Green redirect to /obrigado is the authoritative second factor.
+    // Do not depend on native HTML submit/validity semantics from the reCAPTCHA-driven Green flow.
 
     try {
       window.sessionStorage.setItem(LEAD_PENDING_KEY, String(Date.now()));

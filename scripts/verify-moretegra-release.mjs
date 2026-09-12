@@ -79,7 +79,7 @@ for (const token of requiredMeasurementEvents) {
 }
 
 const requiredMeasurementSemantics = [
-  '// MNT-M2-09 measurement instrumentation v5.',
+  '// MNT-M2-09 measurement instrumentation v6.',
   'const NOT_APPLICABLE = "not_applicable";',
   'const EVENT_PARAMETER_DEFAULTS = Object.freeze({',
   'mnt_section_click: Object.freeze({faq_item: NOT_APPLICABLE})',
@@ -88,20 +88,20 @@ const requiredMeasurementSemantics = [
   'mnt_form_start: Object.freeze({project_name: NOT_APPLICABLE, offer_name: NOT_APPLICABLE})',
   'function isGreenForm46(form)',
   'function emitFormStartOnce(form)',
-  'function handleFormSubmitAttempt(event)',
+  'function handleFormSubmitAttempt(button)',
   'document.addEventListener("focusin", handleFormInteraction, true)',
-  'document.addEventListener("submit", handleFormSubmitAttempt, true)',
-  'Symbol.for("morenumtegra.measurement.delegated.v5")'
+  'const formSubmitButton = element.closest(GREEN_FORM_SUBMIT_SELECTOR);',
+  'Symbol.for("morenumtegra.measurement.delegated.v6")'
 ];
 for (const token of requiredMeasurementSemantics) {
   if (!measurementModule.includes(token)) fail(`required measurement semantic marker missing: ${token}`);
 }
 
 const requiredLeadGuardSemantics = [
-  '// MNT-M2-09 Form 46 lead guard v3.',
+  '// MNT-M2-09 Form 46 lead guard v4.',
   'const LEAD_PENDING_KEY = "mnt.lead.pending.v1";',
   'const button = target?.closest(GREEN_FORM_SUBMIT_SELECTOR);',
-  'if (!form.checkValidity()) return;',
+  'const form = button.closest(GREEN_FORM_SELECTOR);',
   'window.sessionStorage.setItem(LEAD_PENDING_KEY, String(Date.now()))',
   'document.addEventListener("click", armLeadPending, true)'
 ];
@@ -110,6 +110,7 @@ for (const token of requiredLeadGuardSemantics) {
 }
 
 const forbiddenMeasurement = [
+  'document.addEventListener("submit", handleFormSubmitAttempt',
   "mnt_lead_success",
   "gtag(",
   "fbq(",
@@ -122,6 +123,7 @@ for (const token of forbiddenMeasurement) {
 }
 
 const forbiddenLeadGuard = [
+  "checkValidity()",
   "event_id",
   "lead_token",
   "eventId(",

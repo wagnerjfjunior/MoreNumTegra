@@ -1,4 +1,4 @@
-// MNT-M2-09 measurement instrumentation v5.
+// MNT-M2-09 measurement instrumentation v6.
 // Source module for the single Green release artifact. No direct vendor dispatch.
 (() => {
   "use strict";
@@ -11,7 +11,7 @@
   const ROUTE = "/";
   const SEARCH_DEBOUNCE_MS = 600;
   const PAGE_VIEW_MARKER = Symbol.for("morenumtegra.measurement.page_view.v1");
-  const BIND_MARKER = Symbol.for("morenumtegra.measurement.delegated.v5");
+  const BIND_MARKER = Symbol.for("morenumtegra.measurement.delegated.v6");
   const SEARCH_STATE = new WeakMap();
   const SEARCH_LOCATION_INDEX = new Map();
   const FORM_STARTED = new WeakSet();
@@ -325,11 +325,11 @@
     emitFormStartOnce(form);
   }
 
-  function handleFormSubmitAttempt(event) {
-    const form = event.target instanceof HTMLFormElement ? event.target : null;
-    if (!isGreenForm46(form)) return;
+  function handleFormSubmitAttempt(button) {
+    const form = button?.closest?.(GREEN_FORM_SELECTOR);
+    if (!isGreenForm46(form)) return false;
     emitFormStartOnce(form);
-    emit("mnt_form_submit_attempt", "intent", FORM_PARAMETERS);
+    return emit("mnt_form_submit_attempt", "intent", FORM_PARAMETERS);
   }
 
   function handleSearchInput(event) {
@@ -388,6 +388,12 @@
   function handleClick(event) {
     const element = asElement(event.target);
     if (!element) return;
+
+    const formSubmitButton = element.closest(GREEN_FORM_SUBMIT_SELECTOR);
+    if (formSubmitButton) {
+      handleFormSubmitAttempt(formSubmitButton);
+      return;
+    }
 
     const floating = element.closest("#mt-floating-dock a");
     if (floating) {
@@ -570,7 +576,6 @@
     if (window[BIND_MARKER]) return;
     window[BIND_MARKER] = true;
     document.addEventListener("focusin", handleFormInteraction, true);
-    document.addEventListener("submit", handleFormSubmitAttempt, true);
     document.addEventListener("click", handleClick, true);
     document.addEventListener("change", handleFilterChange, true);
     document.addEventListener("input", handleSearchInput, true);

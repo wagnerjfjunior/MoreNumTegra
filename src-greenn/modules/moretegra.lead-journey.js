@@ -1,4 +1,4 @@
-// MNT-M2-09 Form 46 lead guard v3.
+// MNT-M2-09 Form 46 lead guard v4.
 // Stores only a short-lived submit timestamp. Never reads or stores visitor PII.
 (() => {
   "use strict";
@@ -27,7 +27,8 @@
 
     const form = button.closest(GREEN_FORM_SELECTOR);
     if (!isGreenForm46(form)) return;
-    if (!form.checkValidity()) return;
+    // The successful Green redirect to /obrigado is the authoritative second factor.
+    // Do not depend on native HTML submit/validity semantics from the reCAPTCHA-driven Green flow.
 
     try {
       window.sessionStorage.setItem(LEAD_PENDING_KEY, String(Date.now()));
