@@ -823,7 +823,7 @@
   observer.observe(document.documentElement, {childList: true, subtree: true});
 })();
 
-// MNT-M2-09 measurement instrumentation v4.
+// MNT-M2-09 measurement instrumentation v5.
 // Source module for the single Green release artifact. No direct vendor dispatch.
 (() => {
   "use strict";
@@ -836,23 +836,41 @@
   const ROUTE = "/";
   const SEARCH_DEBOUNCE_MS = 600;
   const PAGE_VIEW_MARKER = Symbol.for("morenumtegra.measurement.page_view.v1");
-  const BIND_MARKER = Symbol.for("morenumtegra.measurement.delegated.v4");
+  const BIND_MARKER = Symbol.for("morenumtegra.measurement.delegated.v5");
   const SEARCH_STATE = new WeakMap();
   const SEARCH_LOCATION_INDEX = new Map();
+  const FORM_STARTED = new WeakSet();
   const NOT_APPLICABLE = "not_applicable";
+  const FORM_PROVIDER = "green";
+  const FORM_ID = 46;
+  const FORM_NAME = "MoreEmUmTegra";
+  const FORM_PLACEMENT = "form_46";
+  const GREEN_FORM_SELECTOR = "form#form.form-content";
+  const GREEN_FORM_SUBMIT_SELECTOR = 'button.g-recaptcha.button_hover[data-action="submit"]';
+  const GREEN_FORM_FIELD_NAMES = Object.freeze(["nome", "email", "telefone"]);
 
   const ALLOWED_EVENT_PARAMETERS = Object.freeze({
     mnt_page_view: new Set(["placement"]),
     mnt_section_click: new Set(["section_target", "faq_item", "placement"]),
     mnt_catalog_filter: new Set(["filter_dimension", "filter_value", "result_count", "placement"]),
     mnt_catalog_search: new Set(["search_state", "search_location", "result_count", "placement"]),
-    mnt_intent: new Set(["intent_type", "contact_channel", "placement", "project_name", "offer_name"])
+    mnt_intent: new Set(["intent_type", "contact_channel", "placement", "project_name", "offer_name"]),
+    mnt_form_start: new Set(["form_provider", "form_id", "form_name", "placement", "project_name", "offer_name"]),
+    mnt_form_submit_attempt: new Set(["form_provider", "form_id", "form_name", "placement"])
   });
 
   const EVENT_PARAMETER_DEFAULTS = Object.freeze({
     mnt_section_click: Object.freeze({faq_item: NOT_APPLICABLE}),
     mnt_catalog_search: Object.freeze({search_location: NOT_APPLICABLE}),
-    mnt_intent: Object.freeze({project_name: NOT_APPLICABLE, offer_name: NOT_APPLICABLE})
+    mnt_intent: Object.freeze({project_name: NOT_APPLICABLE, offer_name: NOT_APPLICABLE}),
+    mnt_form_start: Object.freeze({project_name: NOT_APPLICABLE, offer_name: NOT_APPLICABLE})
+  });
+
+  const FORM_PARAMETERS = Object.freeze({
+    form_provider: FORM_PROVIDER,
+    form_id: FORM_ID,
+    form_name: FORM_NAME,
+    placement: FORM_PLACEMENT
   });
 
   const STATUS_VALUE = Object.freeze({
@@ -1102,6 +1120,43 @@
     state.lastCommitted = committedValue;
   }
 
+  function isGreenForm46(form) {
+    if (!(form instanceof HTMLFormElement)) return false;
+    if (!form.matches(GREEN_FORM_SELECTOR)) return false;
+    if (!form.querySelector(GREEN_FORM_SUBMIT_SELECTOR)) return false;
+    return GREEN_FORM_FIELD_NAMES.every((name) => Boolean(form.querySelector(`[name="${name}"]`)));
+  }
+
+  function greenForm46FromElement(element) {
+    const form = element?.closest?.(GREEN_FORM_SELECTOR);
+    return isGreenForm46(form) ? form : null;
+  }
+
+  function emitFormStartOnce(form) {
+    if (FORM_STARTED.has(form)) return false;
+    FORM_STARTED.add(form);
+    return emit("mnt_form_start", "intent", {
+      ...FORM_PARAMETERS,
+      ...selectedProjectContext()
+    });
+  }
+
+  function handleFormInteraction(event) {
+    if (event.isTrusted === false) return;
+    const target = asElement(event.target);
+    if (!target?.matches('input:not([type="hidden"]),textarea,select')) return;
+    const form = greenForm46FromElement(target);
+    if (!form) return;
+    emitFormStartOnce(form);
+  }
+
+  function handleFormSubmitAttempt(event) {
+    const form = event.target instanceof HTMLFormElement ? event.target : null;
+    if (!isGreenForm46(form)) return;
+    emitFormStartOnce(form);
+    emit("mnt_form_submit_attempt", "intent", FORM_PARAMETERS);
+  }
+
   function handleSearchInput(event) {
     const target = asElement(event.target);
     if (!target?.matches("[data-project-search]")) return;
@@ -1339,6 +1394,8 @@
   function bindDelegatedMeasurement() {
     if (window[BIND_MARKER]) return;
     window[BIND_MARKER] = true;
+    document.addEventListener("focusin", handleFormInteraction, true);
+    document.addEventListener("submit", handleFormSubmitAttempt, true);
     document.addEventListener("click", handleClick, true);
     document.addEventListener("change", handleFilterChange, true);
     document.addEventListener("input", handleSearchInput, true);
@@ -1376,4 +1433,45 @@
   }
 
   start();
+})();
+
+// MNT-M2-09 Form 46 lead guard v3.
+// Stores only a short-lived submit timestamp. Never reads or stores visitor PII.
+(() => {
+  "use strict";
+
+  const CANONICAL_HOST = "moretegra.com.br";
+  const ROOT_SELECTOR = "[data-moretegra]";
+  const GREEN_FORM_SELECTOR = "form#form.form-content";
+  const GREEN_FORM_SUBMIT_SELECTOR = 'button.g-recaptcha.button_hover[data-action="submit"]';
+  const GREEN_FORM_FIELD_NAMES = Object.freeze(["nome", "email", "telefone"]);
+  const LEAD_PENDING_KEY = "mnt.lead.pending.v1";
+
+  function isGreenForm46(form) {
+    if (!(form instanceof HTMLFormElement)) return false;
+    if (!form.matches(GREEN_FORM_SELECTOR)) return false;
+    if (!form.querySelector(GREEN_FORM_SUBMIT_SELECTOR)) return false;
+    return GREEN_FORM_FIELD_NAMES.every((name) => Boolean(form.querySelector(`[name="${name}"]`)));
+  }
+
+  function armLeadPending(event) {
+    if (window.location.hostname !== CANONICAL_HOST) return;
+    if (!document.querySelector(ROOT_SELECTOR)) return;
+
+    const target = event.target instanceof Element ? event.target : null;
+    const button = target?.closest(GREEN_FORM_SUBMIT_SELECTOR);
+    if (!button) return;
+
+    const form = button.closest(GREEN_FORM_SELECTOR);
+    if (!isGreenForm46(form)) return;
+    if (!form.checkValidity()) return;
+
+    try {
+      window.sessionStorage.setItem(LEAD_PENDING_KEY, String(Date.now()));
+    } catch {
+      // A storage failure causes a false negative rather than a manufactured lead.
+    }
+  }
+
+  document.addEventListener("click", armLeadPending, true);
 })();
