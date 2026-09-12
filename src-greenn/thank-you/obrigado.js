@@ -1,5 +1,5 @@
-// MoreNumTegra thank-you page lifecycle v2.
-// A direct thank-you visit never creates a lead. The only browser guard is a fresh Form 46 submit timestamp.
+// MoreNumTegra thank-you page lifecycle v3.
+// A verified lead requires both a fresh Form 46 submit-attempt marker and the observed Green success redirect signature.
 (() => {
   "use strict";
 
@@ -9,6 +9,9 @@
   const LEAD_PENDING_KEY = "mnt.lead.pending.v1";
   const LEAD_MAX_AGE_MS = 10 * 60 * 1000;
   const EVENT_VERSION = 1;
+  const GREEN_SOURCE_PAGE_ID = "292";
+  const GREEN_LEAD_PARAM = "l_";
+  const GREEN_PAGE_PARAM = "p_id";
 
   function normalizedPath() {
     const path = window.location.pathname.replace(/\/+$/, "");
@@ -48,6 +51,14 @@
     document.querySelectorAll('link[rel="canonical"]').forEach((node) => node.remove());
   }
 
+  function hasGreenSuccessRedirectSignature() {
+    const params = new URLSearchParams(window.location.search || "");
+    const leadRef = String(params.get(GREEN_LEAD_PARAM) || "").trim();
+    const sourcePage = String(params.get(GREEN_PAGE_PARAM) || "").trim();
+    if (sourcePage !== GREEN_SOURCE_PAGE_ID) return false;
+    return /^[1-9]\d*$/.test(leadRef);
+  }
+
   function consumeFreshPendingLead() {
     try {
       const raw = window.sessionStorage.getItem(LEAD_PENDING_KEY) || "";
@@ -55,12 +66,9 @@
       if (!Number.isFinite(submittedAt) || submittedAt <= 0) return false;
 
       const age = Date.now() - submittedAt;
-      if (age < 0 || age > LEAD_MAX_AGE_MS) {
-        window.sessionStorage.removeItem(LEAD_PENDING_KEY);
-        return false;
-      }
-
       window.sessionStorage.removeItem(LEAD_PENDING_KEY);
+      if (age < 0 || age > LEAD_MAX_AGE_MS) return false;
+
       return window.sessionStorage.getItem(LEAD_PENDING_KEY) === null;
     } catch {
       return false;
@@ -80,7 +88,10 @@
   function emitVerifiedLead(root) {
     if (window.location.hostname !== CANONICAL_HOST) return false;
     if (normalizedPath() !== THANK_YOU_ROUTE) return false;
-    if (!consumeFreshPendingLead()) return false;
+
+    const hasSuccessSignature = hasGreenSuccessRedirectSignature();
+    const hasFreshPending = consumeFreshPendingLead();
+    if (!hasSuccessSignature || !hasFreshPending) return false;
 
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
