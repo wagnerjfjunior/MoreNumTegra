@@ -40,6 +40,12 @@ For the current MNT-M2-09 Form 46 increment:
 
 `mnt_event_id` remains part of the canonical MNT semantic-event envelope required by MNT-M2-03. It is generated only when an event is emitted and is **not** persisted as lead state. No `lead_token` is used by this V1 implementation.
 
+The vendor mapping target for the verified lead remains separate from the source taxonomy:
+
+```text
+mnt_lead_success -> GA4 generate_lead
+```
+
 Current measurement-only UI baseline ref used by the guard:
 
 `0ab0de22e2d69bff4b127c2db7f24a1744ea5187`
