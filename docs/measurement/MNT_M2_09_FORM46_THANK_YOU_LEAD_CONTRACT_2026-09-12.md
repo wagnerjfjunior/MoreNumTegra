@@ -73,7 +73,7 @@ submitted_at age <= 10 minutes
 same event_id has not already been sent
 ```
 
-After the valid lead source event is pushed, the armed journey is consumed and the event_id is marked sent for the current session.
+Before the valid lead source event is pushed, the armed journey is atomically consumed as far as browser storage permits: the event_id is marked sent for the current session and the pending journey is removed. This favors duplicate prevention over manufacturing a second lead on refresh/back.
 
 Therefore:
 
