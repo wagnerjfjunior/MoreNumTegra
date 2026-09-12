@@ -1,6 +1,6 @@
 # MNT-M2-10 — End-to-End Measurement QA — 2026-09-12
 
-Status: `ACTIVE / REMEDIATION_LIVE_VALIDATION_PENDING`. This document does not claim completion until every mandatory scenario is adjudicated from evidence.
+Status: `ACTIVE / REMEDIATION_LIVE_VALIDATION_IN_PROGRESS`. This document does not claim completion until every mandatory scenario is adjudicated from evidence.
 
 ## 1. Authorization and canonical anchor
 
@@ -131,6 +131,36 @@ wasSetLate = false
 
 The home -> `/obrigado` flow also shows granted consent available on the subsequent thank-you page load, supporting granted-state persistence for that tested path. Current Version 7 denied-choice persistence still requires dedicated evidence.
 
+### 3.3 Live validation after page-294 v3 publication
+
+Product Authority published the PR #54 candidate `src-greenn/thank-you/obrigado.js` to Green page 294 and executed a fresh native Form 46 journey.
+
+User-supplied Tag Assistant export:
+
+```text
+file = tag_assistant_moretegra_com_br_2026_09_12 (13).json
+SHA-256 = 1d75514764724159d367206c8be35ef8ffe111eac6cf1d1b73c019743a04dea9
+size = 1,367,461 bytes
+```
+
+Observed successful Green redirect:
+
+```text
+https://moretegra.com.br/obrigado?l_=222&p_id=292
+```
+
+The export proves the remediated positive path still works:
+
+```text
+mnt_lead_success = observed on /obrigado?l_=222&p_id=292
+GA4 - Event - generate_lead - mnt_lead_success = execute_succeeded
+destination = G-57M2XR0CY2
+```
+
+The `generate_lead` payload remains sanitized and contains the governed Measurement fields only; `l_` and `p_id` are not copied into the project event parameters.
+
+This revalidates the genuine-success positive path after lifecycle v3. The negative/manual and refresh paths remain separately gated until directly observed.
+
 ## 4. QA finding and authorized remediation
 
 MNT-M2-10 discovered a lead-validity defect in the accepted thank-you guard: a fresh submit-button timestamp plus manual `/obrigado` navigation could manufacture the primary conversion without verified Green success.
@@ -175,7 +205,7 @@ The exact candidate logic passed syntax/runtime simulation for:
 - wrong route/host -> no lead;
 - refresh without a new pending marker -> no duplicate lead.
 
-This deterministic test supports the remediation design but does not replace Green live validation.
+The genuine-success live path has now also been revalidated after page-294 v3 publication. Negative-path live evidence remains pending.
 
 ## 5. QA contract and current adjudication
 
@@ -190,16 +220,16 @@ This deterministic test supports the remediation design but does not replace Gre
 | QA-07 | Form 46 first interaction | `mnt_form_start` at most once per document/form instance | PASS — source guard + Version 7 occurrence count = 1 |
 | QA-08 | Form 46 submit initiation | exactly one `mnt_form_submit_attempt`; remains non-conversion | PASS — Version 7 occurrence/tag count = 1; no conversion semantics |
 | QA-09 | submit attempt without verified success | no `mnt_lead_success` / no `generate_lead` | ORIGINAL_BASELINE_FAILING_PATH FOUND; REMEDIATION_STATIC/UNIT PASS; LIVE_NEGATIVE_PATH_PENDING |
-| QA-10 | verified Form 46 success | exactly one `mnt_lead_success` and one GA4 `generate_lead` | BASELINE PASS — Version 7 + GA4 DebugView; MUST_REVALIDATE_AFTER_PAGE294_V3 |
+| QA-10 | verified Form 46 success | exactly one `mnt_lead_success` and one GA4 `generate_lead` | PASS — revalidated live after page-294 v3; redirect `?l_=222&p_id=292`; GA4 generate_lead executed successfully |
 | QA-11 | direct `/obrigado` | no manufactured `mnt_lead_success` / `generate_lead` | REMEDIATION_STATIC/UNIT PASS; LIVE_NEGATIVE_PATH_PENDING |
 | QA-12 | refresh/back on `/obrigado` after accepted lead | no duplicate lead conversion without a new valid Form 46 submission | REMEDIATION_UNIT PASS; LIVE_REFRESH/BACK_PENDING |
 | QA-13 | stale pending lead state (>10 min) | no manufactured lead | REMEDIATION_UNIT PASS; LIVE_OR_CONTROLLED_RUNTIME_OPTIONAL_CONFIRMATION_PENDING |
-| QA-14 | privacy — Form 46 | no visitor name/email/phone/raw field values in project MNT/GA4 payloads | PASS for accepted Version 7 project payload; remediation adds no PII |
+| QA-14 | privacy — Form 46 | no visitor name/email/phone/raw field values in project MNT/GA4 payloads | PASS — accepted Version 7 payload + v3 positive-path revalidation; remediation adds no PII |
 | QA-15 | privacy — catalogue search | no raw free-form search text in project MNT/GA4 payloads | STATIC_PASS / CURRENT_V7_RUNTIME_REVALIDATION_PENDING |
 | QA-16 | source/destination architecture | no direct project `gtag()` / second GA4 path outside `GTM-PGCR4R47` | STATIC_PASS + tested explicit page-view path; broader runtime duplicate proof pending QA-02/03 |
 | QA-17 | Meta boundary | no direct project `fbq()` / second Meta project-owned path while Meta remains unimplemented | STATIC_PASS; runtime Meta remains not implemented by accepted scope |
 | QA-18 | Green platform telemetry | Green `/page/view` and `gtm.formSubmit` are not forwarded as project business events | PASS for `gtm.formSubmit`; `/page/view` separation supported statically / broader network proof pending if required |
-| QA-19 | conversion semantics | form start/submit attempt remain non-conversions; only verified lead maps to `generate_lead` | PASS — Version 7 mapping; remediation tightens lead validity without GTM change |
+| QA-19 | conversion semantics | form start/submit attempt remain non-conversions; only verified lead maps to `generate_lead` | PASS — Version 7 mapping; page-294 v3 tightens lead validity without GTM change |
 | QA-20 | conversion value | no property/listing price or inferred monetary value attached to `generate_lead` | PASS — no value/currency; ecommerce disabled |
 | QA-21 | consent default | all four governed consent types start denied before affirmative choice | PASS — Version 7 export |
 | QA-22 | consent granted | Continue/accept updates all four to granted; timing not late | PASS — Version 7 export, `wasSetLate=false` |
@@ -209,17 +239,16 @@ This deterministic test supports the remediation design but does not replace Gre
 
 ## 6. Remaining live evidence required before closure
 
-After the authorized page-294 correction is published for validation, the remaining targeted evidence includes:
+The positive Form 46 path after page-294 v3 is now proven. Remaining targeted evidence includes:
 
 1. direct `/obrigado` with no valid submission -> zero `mnt_lead_success` / zero `generate_lead`;
-2. one genuine successful Form 46 registration -> exactly one `mnt_lead_success` + one `generate_lead` under v3;
-3. refresh/back on the successful thank-you URL -> no second lead;
-4. submit attempt without verified success followed by direct `/obrigado` -> no lead;
-5. `www.moretegra.com.br` alias behavior;
-6. canonical reload page-view uniqueness;
-7. repeated intentional event identity / no UI-sync duplicates;
-8. current Version 7 catalogue search cardinality/privacy;
-9. current Version 7 denied consent path and denied persistence.
+2. refresh/back on the successful thank-you URL -> no second lead;
+3. submit attempt without verified success followed by direct `/obrigado` -> no lead;
+4. `www.moretegra.com.br` alias behavior;
+5. canonical reload page-view uniqueness;
+6. repeated intentional event identity / no UI-sync duplicates;
+7. current Version 7 catalogue search cardinality/privacy;
+8. current Version 7 denied consent path and denied persistence.
 
 Stale-pending behavior is already deterministic-unit covered and may be additionally observed live/controlled if practical without delaying closure unnecessarily.
 
@@ -251,4 +280,4 @@ MNT-M2-10 may be accepted complete only when:
 
 Until then:
 
-`MNT-M2-10 = ACTIVE / REMEDIATION_LIVE_VALIDATION_PENDING / NOT_COMPLETE`.
+`MNT-M2-10 = ACTIVE / REMEDIATION_LIVE_VALIDATION_IN_PROGRESS / NOT_COMPLETE`.
