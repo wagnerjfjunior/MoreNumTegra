@@ -1,74 +1,72 @@
 # Handoff Atual — MoreNumTegra
 
-- Status quando esta revisão estiver em `main`: `MNT-M2-06 COMPLETE / WAITING MNT-M2-09 AUTHORIZATION`
-- Atualizado em: `2026-09-10`
-- Fonte canônica: `wagnerjfjunior/MoreNumTegra`
-- Referência: `main` — resolver SHA live antes de agir
-- MNT-M2-06 start main: `19570db1ee2853946e45451c0ff5afaceb894002`
-- Release comercial publicada: `18cfab98e01be29c86d78d08f2f5035a8da70444`
+> Handoff SFJM de continuidade cognitiva para retomar o projeto em nova conversa sem regressão. Este arquivo está no working branch de `MNT-M2-09`; `main` continua canônico até merge.
+
+## 0. Identidade e live state resolvido
+
+- Projeto: `MoreNumTegra`
+- Repositório: `wagnerjfjunior/MoreNumTegra`
+- Branch canônica: `main`
+- `main` observado em `2026-09-12`: `98f92ea3e80770a0e735ee9b105a29b18a706255`
+- Working PR: `#50 — feat: start MNT-M2-09 tracking implementation`
+- Working branch: `feat/mnt-m2-09-tracking-implementation`
+- PR #50 antes deste handoff: `OPEN / DRAFT / NOT_MERGED / MERGEABLE`
+- PR #50 previous exact head: `0874ee5ae2f31c4a2a5dc285695f9eb67e7282f3`
 - Produção comercial: `https://moretegra.com.br/`
 - Homologação Vercel: `https://morenumtegra.vercel.app/`
-- Programa: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
-- Fase atual: `MNT-M2 / ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION`
-- Próxima task: `MNT-M2-09 / PARTIAL_IMPLEMENTED / EXECUTION_NOT_AUTHORIZED`
-- Baseline funcional: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
-- Baseline técnica: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
-- Vercel mode: `MANUAL_GATE_DRIVEN`
 
-## 1. Estado operacional
-
-MoreNumTegra V1 permanece operacional na Green Sales.
+Preservar:
 
 ```text
-HTML 01
--> Form 46 nativo
--> HTML 02
--> Footer
-+ CSS global
-+ JavaScript global
+MORENUMTEGRA MAIN = PROJECT TRUTH
+PR BRANCH = ACTIVE WORKING STATE / PROPOSAL UNTIL MERGE
+GREEN COMMERCIAL PRODUCTION != MAIN
+MAIN MERGED != GREEN PUBLISHED
+WBS PLANNED != AUTHORIZED
+PROGRAM PROGRESS != V1 PRODUCT READINESS
 ```
 
-Preservado:
+## 1. Prioridade operacional vigente
 
-- Form 46 como captação V1;
-- catálogo/jornadas principais documentados como funcionais;
-- Vercel como homologação pública e Green como produção comercial;
-- Search/indexability P0-B = `PASS_WITH_RESIDUAL_RISK`;
-- Vercel auto Git deployment desabilitado e fluxo manual gate-driven validado.
-
-## 2. Measurement / Consent aceito
-
-Evidence chain:
-
-- `docs/measurement/MNT_M2_01_TRACKING_RUNTIME_INVENTORY_2026-09-10.md`;
-- `docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md`;
-- `docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md`;
-- `docs/measurement/MNT_M2_03_CANONICAL_EVENT_TAXONOMY_V1_2026-09-10.md`;
-- `docs/measurement/MNT_M2_04_PRIMARY_SECONDARY_CONVERSIONS_V1_2026-09-10.md`;
-- `docs/measurement/MNT_M2_05_GTM_GA4_OWNERSHIP_CONTRACT_V1_2026-09-10.md`;
-- `docs/measurement/MNT_M2_06_META_PIXEL_DATASET_OWNERSHIP_CONTRACT_V1_2026-09-10.md`.
-
-Accepted foundations:
+Product-first.
 
 ```text
-GTM = GTM-PGCR4R47
-Consent Mode Version 4 = PUBLISHED / VALIDATED
-DEFAULT = denied all four
-Continuar = granted all four
-Cancelar = denied all four
-Persistence = PROVEN
-
-PROJECT_MEASUREMENT_HOST = moretegra.com.br
-www project business Measurement = BLOCK
-Green /page/view = platform telemetry
-one project page-view path per canonical document load
-one semantic dataLayer event per occurrence
-mnt_event_id = project correlation identity
+produto primeiro
+→ evidência mínima suficiente
+→ documentação somente do que precisa ficar rastreável
+→ próximo incremento de produto
 ```
 
-## 3. Event taxonomy + conversion roles
+Não abrir nova frente documental/auditoria/WBS enquanto existir incremento de produto claramente executável, salvo exigência de segurança, autorização ou preservação de estado.
 
-Canonical source events v1:
+A PR #51 de decomposição WBS deve permanecer congelada/Draft até o Product Authority voltar explicitamente a essa frente.
+
+## 2. MNT-M2-09 — estado real de trabalho
+
+MNT-M2-09 está em implementação pela PR #50.
+
+GA4 já provado/adotado:
+
+```text
+property = MoreNumTegra
+property_id = 553742649
+stream_id = 15759638334
+measurement_id = G-57M2XR0CY2
+production_host = moretegra.com.br
+Enhanced Measurement = OFF
+```
+
+GTM:
+
+```text
+container = GTM-PGCR4R47
+published version = 5 — MNT M2-09 - Measurement v3 - 2026-09-11
+send_page_view = false
+source mnt_page_view -> explicit GA4 page_view
+workspace after publication = 0 pending changes
+```
+
+Source implementation currently covers:
 
 ```text
 mnt_page_view
@@ -76,141 +74,221 @@ mnt_section_click
 mnt_catalog_filter
 mnt_catalog_search
 mnt_intent
+```
+
+Not yet implemented:
+
+```text
 mnt_form_start
 mnt_form_submit_attempt
 mnt_lead_success
 ```
 
-Project conversion roles v1:
+## 3. Green production — v4 runtime updated and validated
+
+On `2026-09-12`, Product Authority manually updated the Green page-level JavaScript with the current PR `src-greenn/moretegra.js` v4 candidate.
+
+Runtime hygiene checks supplied by Product Authority in Tag Assistant / GA4 evidence:
+
+### Search/reset
+
+Observed behavior after clear/reset:
 
 ```text
-PRIMARY = mnt_lead_success only
-SECONDARY = request_conditions / request_project_conditions / negotiate_scenario / schedule_visit / whatsapp_contact
-NONE = page/section/filter/search/project_interest/form_start/form_submit_attempt
+Clear filters -> mnt_catalog_filter
+filter_dimension = reset
+filter_value = all
+result_count = full catalogue count
 ```
 
-Core rules:
+The previous planned assertion requiring `mnt_catalog_search(search_state=cleared)` was corrected because the actual implementation intentionally emits reset as `mnt_catalog_filter`, not a second search event.
+
+Status: `PASS FOR IMPLEMENTED BEHAVIOR`.
+
+### FAQ hygiene
+
+Observed sequence:
 
 ```text
-visitor name/email/phone/form values = FORBIDDEN IN EVENT PARAMETERS
-raw catalogue search text = FORBIDDEN IN MEASUREMENT
-CTA/WhatsApp/form submit attempt != verified lead
-only verified Form 46 success may emit mnt_lead_success
-property/offer price != conversion value
-monetary conversion value = NOT_DEFINED
+FAQ click
+-> mnt_section_click
+faq_item = site_institucional
+section_target = faq
+placement = faq
+
+then ordinary navigation
+-> mnt_section_click
+section_target = opportunities
+placement = hero
+faq_item = not_applicable
 ```
 
-## 4. Google Measurement ownership
+Status: `PASS`.
+
+### Project-context hygiene
+
+Observed sequence:
 
 ```text
-GTM container = GTM-PGCR4R47
-GTM governance owner = MoreNumTegra / Product Authority
-GTM accepted published baseline = Version 4 Consent
-GA4 governance owner = MoreNumTegra / Product Authority
-GA4 property = one dedicated MoreNumTegra property
-GA4 production stream = one web stream for moretegra.com.br
-www = no project production Measurement
-Vercel = no project production Measurement
+project-specific intent
+project_name = Nova Vivere
+offer_name = Nova Vivere | 72 m²
+intent_type = project_interest
+
+then global hero CTA "Receber condições"
+-> mnt_intent
+intent_type = request_conditions
+placement = hero
+project_name = not_applicable
+offer_name = not_applicable
 ```
 
-Unproven and deliberately not invented:
+Status: `PASS`.
+
+Conclusion:
 
 ```text
-GA4 property ID = NOT_PROVEN
-GA4 stream ID = NOT_PROVEN
-GA4 Measurement ID = NOT_PROVEN
-GTM Google account ID/user roster = NOT_RECORDED
+V4 PARAMETER HYGIENE = VALIDATED IN GREEN PRODUCTION
+SEARCH/RESET = PASS FOR IMPLEMENTED BEHAVIOR
+FAQ HYGIENE = PASS
+PROJECT CONTEXT HYGIENE = PASS
 ```
 
-## 5. Meta Measurement ownership
+Important evidence boundary: the detailed runtime HAR/Tag Assistant exports were supplied in the ChatGPT conversation on 2026-09-12 and are not yet repository-archived by this handoff.
 
-Canonical governance target:
+## 4. Next product step — Form 46 measurement
+
+The next practical increment is the native Green Form 46 tracking lifecycle.
+
+Canonical form contract:
 
 ```text
-Meta Measurement governance owner = MoreNumTegra / Product Authority
-Meta Dataset = one dedicated MoreNumTegra Dataset
-Meta browser source = one project browser source relationship if implemented
-Browser dispatcher = GTM-PGCR4R47
-www = no project production Measurement
-Vercel = no project production Measurement
-CAPI = optional future capability / not authorized by M2-06
+tenant_id = 313
+form_id = 46
+title = MoreEmUmTegra
+fields = nome, email, telefone
+native Green submit lifecycle must be preserved
 ```
 
-Unproven and deliberately not invented:
+Target source events:
 
 ```text
-Meta Dataset ID = NOT_PROVEN
-Meta Pixel/browser-source ID = NOT_PROVEN
-Pixel/Dataset relationship = NOT_PROVEN
-Meta Business Portfolio ID = NOT_PROVEN / NOT_REQUIRED_IN_REPOSITORY
+mnt_form_start
+mnt_form_submit_attempt
+mnt_lead_success
 ```
 
-`NOT_PROVEN != DOES_NOT_EXIST`.
-
-MNT-M2-06 performed no Meta-side or runtime mutation. Any existing suitable dedicated asset must be discovered/adopted before a duplicate is created. Website Measurement is distinct from any Lead Ads/CRM integration.
-
-## 6. Programa / SFJM consumer
-
-State when this revision is canonical:
+Hard rules:
 
 ```text
-MNT-M0  COMPLETE
-MNT-M1  COMPLETE
-MNT-M2  ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
-  M2-01 COMPLETE
-  M2-02 COMPLETE
-  M2-03 COMPLETE
-  M2-04 COMPLETE
-  M2-05 COMPLETE
-  M2-06 COMPLETE
-  M2-07 COMPLETE
-  M2-08 COMPLETE
-  M2-09 PARTIAL_IMPLEMENTED / NEXT / EXECUTION_NOT_AUTHORIZED
-  M2-10 PLANNED
-MNT-M3..M7 PLANNED
+mnt_form_start != conversion
+mnt_form_submit_attempt != conversion
+mnt_lead_success = PRIMARY only
+CTA / form open / validation / submit attempt / request-sent != lead
+only verified native Green success may emit mnt_lead_success
+visitor PII must never be sent in analytics payloads
+no direct gtag()
+no generic document.querySelector("form") interception
+no replacement of native Green submit with custom fetch unless a proven need and new authorization exists
 ```
 
-Planning progress:
+Before implementing `mnt_lead_success`, inspect/prove the actual native Green Form 46 success signal/response. Do not invent response shape, HTTP semantics or DOM success marker.
+
+## 5. Tracking V1 closure sequence
+
+Current intended product sequence:
 
 ```text
-forecast total = 1240h
-accepted = 352h
-remaining = 888h
-progress = 28.39%
+v4 hygiene validated
+→ inspect/prove Form 46 native lifecycle
+→ implement mnt_form_start
+→ implement mnt_form_submit_attempt
+→ implement mnt_lead_success only from verified Green success
+→ configure corresponding GTM/GA4 delivery under the accepted transport contract
+→ run lean MNT-M2-10 end-to-end QA
+→ close Tracking V1
+→ enter M3 SEO/Search
+→ then M4 GEO/AEO/content/schema/linking
 ```
 
-`PROGRAM_TASK_GRAPH` owns hierarchy/planning hours; `CURRENT_PROGRAM_STATE` owns lifecycle/progress; `NEXT_SAFE_ACTION` owns execution authority.
+MNT-M2-10 must prove the useful chain, not create documentation for its own sake:
 
-## 7. Próxima task
+```text
+browser
+→ dataLayer
+→ GTM
+→ consent
+→ GA4
+→ expected event/parameters
+→ no unintended duplication
+→ verified lead success only when Green actually created the lead
+```
 
-`MNT-M2-09 — Implement authorized tracking configuration`
+## 6. Form implementation guardrails from canonical main
 
-MNT-M2-09 remains `PARTIAL_IMPLEMENTED` because the accepted GTM Consent Mode work already exists, but further implementation is not authorized by sequence alone. A separate Product Authority gate is required.
+Main currently still contains older documentation that says MNT-M2-09 is not authorized. That text is historically stale versus the explicit Product Authority authorizations and live PR #50 work. Do not regress to that state in a new conversation.
 
-The safe start for M2-09 is read-only resolution of existing GA4/Meta assets and a bounded implementation plan before any new publish/create/configure mutation.
+However, `main` remains the canonical integrated branch until PR #50 merges. Therefore the next conversation must resolve live state instead of blindly trusting stale main lifecycle prose.
 
-## 8. Residuals preservados
+Key architectural blockers still apply:
 
-Measurement:
+- do not intercept native submit in a way that risks Form 46;
+- do not use global `form` selector;
+- do not emit `mnt_lead_success` without a stable proven native Green success signal;
+- do not send name/email/phone/form values to Measurement;
+- do not add a second GTM, direct `gtag()` or direct `fbq()`;
+- no Meta/Ads/CAPI work in this scope;
+- no FECH.AI/n8n/Make work in this project without separate authorization.
 
-- exact GA4 property ID / stream ID / Measurement ID = `NOT_PROVEN`;
-- exact Meta Dataset/Pixel identifiers and relationship = `NOT_PROVEN`;
-- stable native Green Form 46 success signal for primary `mnt_lead_success` = `NOT_YET_PROVEN`;
-- runtime canonical-host/dedup enforcement = pending MNT-M2-09;
-- Meta consent gating = must be implemented/proven before Meta production collection;
-- end-to-end Measurement QA = open.
+## 7. PR #50 status and acceptance boundary
 
-Search:
+PR #50 must stay Draft until the Product Authority authorizes its final lifecycle transition.
 
-- canonical client-side;
-- sitemap unavailable;
-- `www` without proven HTTP 301/308 semantics;
-- historical `web-share` warning.
+The v4 runtime hygiene gate itself is now effectively satisfied by Product Authority-supplied production tests.
 
-## 9. SFJM Workspace boundary
+Do not silently:
 
-Workspace is read-only derived representation. After this revision is merged, it must resolve the resulting exact MoreNumTegra `main` SHA before refreshing its snapshot.
+- mark PR #50 Ready;
+- merge PR #50;
+- mutate `main`;
+- publish another GTM version;
+- configure GA4 Key Events;
+- change Green beyond explicitly authorized scope;
+- promote Vercel;
+- reopen PR #51/WBS work.
 
-## 10. External gates preserved
+The next conversation should focus on the Form 46 product increment unless Product Authority changes priority.
 
-No further GTM publication, GA4 creation/configuration, Meta Dataset/Pixel/CAPI creation/deployment, Green Pixel, Google Ads/campaign/spend, DNS, Search Console mutation, Vercel Production, Green publication, FECH.AI/n8n/Make or secrets are authorized by MNT-M2-06 completion.
+## 8. New-conversation bootstrap instructions
+
+At the start of the next conversation:
+
+1. resolve live `main` SHA;
+2. resolve live PR #50 exact head/state;
+3. read:
+   - `bootstrap/BOOTSTRAP_CANONICO.md`;
+   - this `handoffs/CURRENT.md` from the live PR #50 branch if not yet merged;
+   - `docs/PROJECT_STATUS.md`;
+   - `docs/NEXT_SAFE_ACTION.md`;
+   - `docs/BLOCKED_ACTIONS.md`;
+   - applicable Measurement contracts;
+4. reconcile stale main lifecycle text against the explicit Product Authority authorizations and current PR #50 live state;
+5. do not ask the user to repeat already proven v4 hygiene tests;
+6. continue at Form 46 native-lifecycle inspection/measurement design and implementation only after the user authorizes that concrete mutation step.
+
+## 9. Continuity checkpoint
+
+```text
+CURRENT PRODUCT STATE:
+- site operational on Green
+- v4 JS manually deployed to Green by Product Authority
+- v4 parameter hygiene validated in production
+- GTM Version 5 published
+- GA4 G-57M2XR0CY2 receiving events
+- M2-09 PR #50 still Draft / not merged
+- Form 46 measurement events not implemented
+- MNT-M2-10 end-to-end QA still open
+
+NEXT PRODUCT OBJECTIVE:
+Prove and instrument real Form 46 lifecycle without false-positive lead conversion.
+```
