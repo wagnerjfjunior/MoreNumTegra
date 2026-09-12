@@ -104,11 +104,6 @@
       product_identity: "moretegra_portfolio",
       route: THANK_YOU_ROUTE,
       funnel_stage: "lead",
-      form_provider: "green",
-      form_id: 46,
-      form_name: "MoreEmUmTegra",
-      lead_method: "green_form_46",
-      placement: "form_46",
       lead_token: state.lead_token
     });
 
