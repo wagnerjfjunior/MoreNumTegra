@@ -1,19 +1,33 @@
-// MoreNumTegra thank-you page lifecycle v1.
-// RESF-aligned lead gate: thank-you route alone never creates a lead.
+// MoreNumTegra thank-you page lifecycle v2.
+// A direct thank-you visit never creates a lead. The only browser guard is a fresh Form 46 submit timestamp.
 (() => {
   "use strict";
 
   const CANONICAL_HOST = "moretegra.com.br";
   const THANK_YOU_ROUTE = "/obrigado";
   const ROOT_SELECTOR = "[data-moretegra-thank-you]";
-  const JOURNEY_KEY = "mnt.lead.journey.v1";
-  const SENT_KEY = "mnt.lead.sent.v1";
+  const LEAD_PENDING_KEY = "mnt.lead.pending.v1";
   const LEAD_MAX_AGE_MS = 10 * 60 * 1000;
   const EVENT_VERSION = 1;
 
   function normalizedPath() {
     const path = window.location.pathname.replace(/\/+$/, "");
     return path || "/";
+  }
+
+  function eventId() {
+    if (window.crypto?.randomUUID) return window.crypto.randomUUID();
+
+    if (window.crypto?.getRandomValues) {
+      const bytes = new Uint8Array(16);
+      window.crypto.getRandomValues(bytes);
+      bytes[6] = (bytes[6] & 0x0f) | 0x40;
+      bytes[8] = (bytes[8] & 0x3f) | 0x80;
+      const hex = [...bytes].map((value) => value.toString(16).padStart(2, "0"));
+      return `${hex.slice(0, 4).join("")}-${hex.slice(4, 6).join("")}-${hex.slice(6, 8).join("")}-${hex.slice(8, 10).join("")}-${hex.slice(10).join("")}`;
+    }
+
+    return `mnt-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`;
   }
 
   function ensureMeta(name, content) {
@@ -34,42 +48,20 @@
     document.querySelectorAll('link[rel="canonical"]').forEach((node) => node.remove());
   }
 
-  function readJourney() {
+  function consumeFreshPendingLead() {
     try {
-      const raw = window.sessionStorage.getItem(JOURNEY_KEY);
-      if (!raw) return null;
-      const state = JSON.parse(raw);
-      if (!state || typeof state !== "object") return null;
-      return state;
-    } catch {
-      return null;
-    }
-  }
+      const raw = window.sessionStorage.getItem(LEAD_PENDING_KEY) || "";
+      const submittedAt = Number(raw);
+      if (!Number.isFinite(submittedAt) || submittedAt <= 0) return false;
 
-  function validOpaqueValue(value) {
-    return typeof value === "string" && value.length >= 12 && value.length <= 128 && /^[A-Za-z0-9-]+$/.test(value);
-  }
+      const age = Date.now() - submittedAt;
+      if (age < 0 || age > LEAD_MAX_AGE_MS) {
+        window.sessionStorage.removeItem(LEAD_PENDING_KEY);
+        return false;
+      }
 
-  function isFreshJourney(state) {
-    const submittedAt = Number(state?.submitted_at);
-    if (!Number.isFinite(submittedAt) || submittedAt <= 0) return false;
-    const age = Date.now() - submittedAt;
-    return age >= 0 && age <= LEAD_MAX_AGE_MS;
-  }
-
-  function isAlreadySent(eventId) {
-    try {
-      return window.sessionStorage.getItem(SENT_KEY) === eventId;
-    } catch {
-      return true;
-    }
-  }
-
-  function consumeJourney(state) {
-    try {
-      window.sessionStorage.setItem(SENT_KEY, state.event_id);
-      window.sessionStorage.removeItem(JOURNEY_KEY);
-      return true;
+      window.sessionStorage.removeItem(LEAD_PENDING_KEY);
+      return window.sessionStorage.getItem(LEAD_PENDING_KEY) === null;
     } catch {
       return false;
     }
@@ -88,23 +80,22 @@
   function emitVerifiedLead(root) {
     if (window.location.hostname !== CANONICAL_HOST) return false;
     if (normalizedPath() !== THANK_YOU_ROUTE) return false;
-
-    const state = readJourney();
-    if (!state) return false;
-    if (!validOpaqueValue(state.event_id) || !validOpaqueValue(state.lead_token)) return false;
-    if (!isFreshJourney(state) || isAlreadySent(state.event_id)) return false;
-    if (!consumeJourney(state)) return false;
+    if (!consumeFreshPendingLead()) return false;
 
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       event: "mnt_lead_success",
-      mnt_event_id: state.event_id,
+      mnt_event_id: eventId(),
       mnt_event_version: EVENT_VERSION,
       page_identity: "moretegra_thank_you",
       product_identity: "moretegra_portfolio",
       route: THANK_YOU_ROUTE,
       funnel_stage: "lead",
-      lead_token: state.lead_token
+      form_provider: "green",
+      form_id: 46,
+      form_name: "MoreEmUmTegra",
+      lead_method: "green_form_46",
+      placement: "form_46"
     });
 
     markVerifiedUi(root);
