@@ -22,9 +22,10 @@ The program forecast is a planning model, not a timesheet.
 - future work uses `CONSUMER_PLANNING_ESTIMATE_V1`;
 - completed M0 uses `RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE`;
 - completed M1 uses its accepted planning estimate as scope-equivalent;
+- accepted M2 tasks use their project-published planning hours as scope-equivalent;
 - parent hours equal the sum of immediate child task hours;
 - parent/child hours must never be double-counted;
-- partial implementation contributes no accepted task hours until the task is accepted complete;
+- partial/planned implementation contributes no accepted task hours until accepted complete;
 - `CURRENT_PROGRAM_STATE.json` owns current lifecycle/progress;
 - `PROGRAM_TASK_GRAPH.json` owns hierarchy/planning hours.
 
@@ -34,17 +35,17 @@ Current planning forecast when this revision is integrated:
 |---|---|---|---:|---:|
 | MNT-M0 | V1 Foundation & Commercial Production | COMPLETE | 160 | 160 |
 | MNT-M1 | RESF Adoption & Existing-State Reconciliation | COMPLETE | 96 | 96 |
-| MNT-M2 | Measurement Foundation & Consent | ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION | 144 | 96 |
+| MNT-M2 | Measurement Foundation & Consent | ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION | 144 | 120 |
 | MNT-M3 | Intelligence, Product Truth & Search Contract | PLANNED | 144 | 0 |
 | MNT-M4 | IA, Content, Schema, GEO/AEO & Linking | PLANNED | 208 | 0 |
 | MNT-M5 | UX, Performance, Conversion, Lead & CRM | PLANNED | 168 | 0 |
 | MNT-M6 | Attribution & Paid Media Readiness | PLANNED | 128 | 0 |
 | MNT-M7 | QA, Release, Observability & Learning Loop | PLANNED | 192 | 0 |
-| **TOTAL** |  |  | **1240** | **352** |
+| **TOTAL** |  |  | **1240** | **376** |
 
-Accepted/completed scope-equivalent effort: `352h`  
-Remaining forecast: `888h`  
-Program progress: `28.39%`
+Accepted/completed scope-equivalent effort: `376h`  
+Remaining forecast: `864h`  
+Program progress: `30.32%`
 
 Program progress is not V1 product readiness. Commercial V1 remains operational.
 
@@ -91,34 +92,45 @@ Closure anchor: PR `#39`, merge `dba0de3bfefc7aec90c5a88588c54eae4317c61f`.
 | MNT-M2-06 | Define ownership for Meta Pixel/Dataset | 8 | COMPLETE |
 | MNT-M2-07 | Define consent model and LGPD gating | 16 | COMPLETE |
 | MNT-M2-08 | Define denied/granted consent QA contract | 16 | COMPLETE |
-| MNT-M2-09 | Implement authorized tracking configuration | 24 | PARTIAL_IMPLEMENTED / NEXT / EXECUTION_NOT_AUTHORIZED |
-| MNT-M2-10 | Execute end-to-end Measurement QA | 24 | PLANNED |
+| MNT-M2-09 | Implement authorized tracking configuration | 24 | COMPLETE |
+| MNT-M2-10 | Execute end-to-end Measurement QA | 24 | PLANNED / NEXT / EXECUTION_NOT_AUTHORIZED |
 
-Accepted M2 scope-equivalent: `96h` from M2-01 + M2-02 + M2-03 + M2-04 + M2-05 + M2-06 + M2-07 + M2-08.
+Accepted M2 scope-equivalent: `120h` from M2-01 through M2-09.
+
+M2-09 closure anchors:
+
+```text
+implementation PR #50 merge = 6eaacaca9af2c22243d45f20a24e04577ac58ce2
+runtime fix PR #52 merge = 70f2b77e93225b65a1972c12875c58bd7198be1d
+runtime evidence = docs/measurement/MNT_M2_09_TRACKING_IMPLEMENTATION_EVIDENCE_2026-09-12.md
+```
 
 Evidence chain:
 
 - `docs/measurement/MNT_M2_01_TRACKING_RUNTIME_INVENTORY_2026-09-10.md` — T0 pre-GTM inventory;
-- `docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md` — GTM/Consent T1 published + validated;
+- `docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md` — GTM/Consent historical T1 baseline;
 - `docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md` — accepted transport/dedup design;
 - `docs/measurement/MNT_M2_03_CANONICAL_EVENT_TAXONOMY_V1_2026-09-10.md` — canonical source-event vocabulary and semantics;
 - `docs/measurement/MNT_M2_04_PRIMARY_SECONDARY_CONVERSIONS_V1_2026-09-10.md` — project conversion-role classification;
-- `docs/measurement/MNT_M2_05_GTM_GA4_OWNERSHIP_CONTRACT_V1_2026-09-10.md` — Google Measurement ownership/topology;
-- `docs/measurement/MNT_M2_06_META_PIXEL_DATASET_OWNERSHIP_CONTRACT_V1_2026-09-10.md` — Meta Measurement ownership/topology.
+- `docs/measurement/MNT_M2_05_GTM_GA4_OWNERSHIP_CONTRACT_V1_2026-09-10.md` — Google Measurement ownership/topology design;
+- `docs/measurement/MNT_M2_06_META_PIXEL_DATASET_OWNERSHIP_CONTRACT_V1_2026-09-10.md` — Meta Measurement ownership/topology design;
+- `docs/measurement/MNT_M2_09_TRACKING_IMPLEMENTATION_EVIDENCE_2026-09-12.md` — accepted Green/GTM/GA4 runtime implementation.
 
-Current Google Measurement ownership contract:
+Current Google Measurement runtime:
 
 ```text
 GTM container = GTM-PGCR4R47
-GTM governance owner = MoreNumTegra / Product Authority
-GA4 governance owner = MoreNumTegra / Product Authority
-GA4 property target = one dedicated MoreNumTegra property
-GA4 production stream target = one web stream for moretegra.com.br
-GA4 exact property/stream/Measurement IDs = NOT_PROVEN
-M2-05 runtime/admin mutation = NONE
+GTM current accepted publication = Version 7
+GA4 property = MoreNumTegra
+GA4 property_id = 553742649
+GA4 stream_id = 15759638334
+GA4 measurement_id = G-57M2XR0CY2
+source primary = mnt_lead_success
+GA4 mapping = generate_lead
+GA4 generate_lead = Key event / Evento principal
 ```
 
-Current Meta Measurement ownership contract:
+Current Meta Measurement boundary:
 
 ```text
 Meta Measurement governance owner = MoreNumTegra / Product Authority
@@ -126,8 +138,8 @@ Meta Dataset target = one dedicated MoreNumTegra Dataset
 Meta browser source target = one project browser source relationship if implemented
 Browser dispatcher = GTM-PGCR4R47
 Meta Dataset/Pixel IDs and relationship = NOT_PROVEN
-CAPI = optional future / not authorized by M2-06
-M2-06 runtime/admin mutation = NONE
+Meta runtime = NOT_IMPLEMENTED_BY_M2_09
+CAPI = NOT_IMPLEMENTED / NOT_AUTHORIZED
 ```
 
 Conversion contract v1 remains:
@@ -153,18 +165,18 @@ NONE
   mnt_form_submit_attempt
 ```
 
+M2-09 implementation proof does not replace M2-10 end-to-end QA.
+
 Preserve:
 
 ```text
-NOT_PROVEN != DOES_NOT_EXIST
-OWNERSHIP DEFINED != RESOURCE CREATED
-FACEBOOK PAGE / LEAD ADS / CRM INTEGRATION != WEBSITE PIXEL/DATASET OWNERSHIP
-SOURCE EVENT IDENTITY != META DEDUP CONFIGURATION
-ONLY VERIFIED FORM 46 SUCCESS MAY BECOME PRIMARY CONVERSION
-PROJECT CONVERSION ROLE != DESTINATION CONFIGURATION
+MNT-M2-09 COMPLETE != MNT-M2-10 VALIDATED
+PROJECT PRIMARY != GOOGLE ADS OPTIMIZATION ACTION
+GREEN gtm.formSubmit != MORENUMTEGRA BUSINESS EVENT
+FORM START/SUBMIT ATTEMPT != LEAD
+PROPERTY PRICE != LEAD VALUE
+META NOT_PROVEN != META DOES_NOT_EXIST
 ```
-
-Runtime implementation remains MNT-M2-09 and proof remains MNT-M2-10.
 
 ### MNT-M3 — Intelligence, Product Truth & Search Contract — 144h — PLANNED
 
@@ -254,8 +266,8 @@ MNT-M0 COMPLETE
      M2-06 COMPLETE
      M2-07 COMPLETE
      M2-08 COMPLETE
-     M2-09 PARTIAL / NEXT / EXECUTION_NOT_AUTHORIZED
-     M2-10 PLANNED
+     M2-09 COMPLETE
+     M2-10 PLANNED / NEXT / EXECUTION_NOT_AUTHORIZED
 -> MNT-M3 PLANNED
 -> MNT-M4 PLANNED
 -> MNT-M5 PLANNED
@@ -275,7 +287,7 @@ The consumer should render:
 - hours/progress without parent-child double counting;
 - exact effort provenance;
 - current/next state separately from full tree;
-- partial implementation distinctly from COMPLETE;
+- planned/not-authorized distinctly from COMPLETE;
 - canonical repository, observed SHA and observation timestamp.
 
 Workspace must not create, rename, flatten or infer missing project tasks.

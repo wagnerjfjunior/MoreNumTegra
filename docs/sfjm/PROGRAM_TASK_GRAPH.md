@@ -42,7 +42,7 @@ A current-state consumer must:
 
 `PROGRAM_TASK_GRAPH.json` is the project-owned structural planning graph: phases, task IDs, labels, planning hours and authorization annotations captured at publication.
 
-`CURRENT_PROGRAM_STATE.json` is the project-owned lifecycle/progress overlay. It exists so a later canonical lifecycle event can update current state without forcing consumers to infer status from an older structural snapshot.
+`CURRENT_PROGRAM_STATE.json` is the project-owned lifecycle/progress overlay. It exists so later canonical lifecycle events can update current state without requiring consumers to infer status from an older structural snapshot.
 
 Precedence:
 
@@ -57,9 +57,30 @@ HIERARCHY / TASK IDs / PLANNING HOURS
 = PROGRAM_TASK_GRAPH.json
 ```
 
-A later current-state overlay may supersede lifecycle-state fields captured by an earlier graph snapshot. It may not silently rename, create or delete structural tasks or change planning hours without a corresponding project-owned structural update.
+A later current-state overlay may supersede lifecycle-state/progress fields captured by an earlier graph snapshot. It may not silently rename, create or delete structural tasks or change planning hours without a corresponding project-owned structural update.
 
-## 4. Effort semantics
+## 4. Current progress reference
+
+As of the 2026-09-12 MNT-M2-09 closure reconciliation:
+
+```text
+forecast total = 1240h
+accepted scope-equivalent = 376h
+remaining forecast = 864h
+program progress = 30.32%
+```
+
+Current M2 state:
+
+```text
+MNT-M2 accepted = 120h / 144h
+MNT-M2-01..09 = COMPLETE
+MNT-M2-10 = PLANNED / NEXT / EXECUTION_NOT_AUTHORIZED
+```
+
+The structural JSON may contain historical lifecycle/progress values from its planning publication; current consumers must overlay `CURRENT_PROGRAM_STATE.json` and `PROJECT_READ_MODEL.json` rather than treating those historical graph fields as live state.
+
+## 5. Effort semantics
 
 Initial values are planning estimates, not actual timesheets.
 
@@ -71,16 +92,7 @@ Initial values are planning estimates, not actual timesheets.
 - accepted progress uses only project-published accepted/complete scope-equivalent hours;
 - Workspace-specific estimates, if any, must remain separately labeled and cannot overwrite project values.
 
-After MNT-M1 closure:
-
-```text
-forecast total = 1240h
-accepted scope-equivalent = 256h
-remaining forecast = 984h
-program progress = 20.65%
-```
-
-## 5. State and authorization are separate
+## 6. State and authorization are separate
 
 ```text
 state = PLANNED
@@ -88,28 +100,29 @@ state = PLANNED
 != executable work
 ```
 
-After PR #39:
+Current execution authority:
 
 ```text
-MNT-M1 = COMPLETE
-MNT-M2 = PLANNED_NOT_AUTHORIZED / NEXT
-CURRENT_ACTIVE_PHASE = NONE
+CURRENT_ACTIVE_PHASE = MNT-M2
+CURRENT_ACTIVE_TASK = NONE
+NEXT_TASK = MNT-M2-10
+MNT-M2-10 = NOT_YET_AUTHORIZED
 ```
 
 The dashboard must visually distinguish execution state from authorization state.
 
-## 6. Presentation contract
+## 7. Presentation contract
 
 Top level remains MNT-M0 through MNT-M7. The dashboard must show immediate child tasks only when a phase is expanded. Deeper canonical decomposition remains collapsed by default and expands recursively on demand.
 
 The current/next-safe-action card is a separate concise view and must not dump the whole task tree.
 
-## 7. Staleness
+## 8. Staleness
 
 A Workspace snapshot is stale when its observed MoreNumTegra `main` SHA differs from current live `main` or when the project publishes a later current-state overlay/read model that the snapshot has not consumed.
 
 A stale snapshot may remain visible as historical context only when explicitly labeled stale.
 
-## 8. Mutation boundary
+## 9. Mutation boundary
 
 Reading/rendering these artifacts does not authorize changes to Green, Vercel, DNS, Search Console, GTM, GA4, Meta, Ads/spend, consent runtime or any external system.

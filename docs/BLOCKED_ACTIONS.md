@@ -1,191 +1,158 @@
 # Ações Bloqueadas — MoreNumTegra
 
-- Atualizado em: `2026-09-10`
+- Atualizado em: `2026-09-12`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
 - Functional baseline: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 - Technical baseline: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
 - ADRs: `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`, `docs/adr/ADR-002-VERCEL-MANUAL-GATE-DRIVEN-DEPLOYMENT.md`
+- Runtime Measurement evidence: `docs/measurement/MNT_M2_09_TRACKING_IMPLEMENTATION_EVIDENCE_2026-09-12.md`
 - Regra: ausência nesta lista não constitui autorização.
 
-## 1. Bloqueios ativos
+## 1. Baseline runtime aceita após MNT-M2-09
+
+```text
+MNT-M2-09 = COMPLETE / ACCEPTED
+GTM = GTM-PGCR4R47
+GTM accepted published version = 7
+GA4 property_id = 553742649
+GA4 stream_id = 15759638334
+GA4 measurement_id = G-57M2XR0CY2
+primary source event = mnt_lead_success
+GA4 primary mapping = generate_lead
+generate_lead = GA4 Key event / Evento principal
+MNT-M2-10 = PLANNED / NOT_YET_AUTHORIZED
+```
+
+Historical M2-05/M2-06 documents that say GA4 identifiers were `NOT_PROVEN` remain correct for their design-time observation. M2-09 runtime evidence supersedes that uncertainty for the accepted GA4 assets without rewriting history.
+
+Meta Dataset/Pixel identifiers remain `NOT_PROVEN`; Meta runtime/CAPI were not implemented by M2-09.
+
+## 2. Bloqueios ativos — código / Green / Vercel
 
 | Ação bloqueada | Motivo | Condição de liberação |
 |---|---|---|
-| correção manual somente na Green sem atualizar GitHub | cria drift da fonte canônica | alterar via branch/PR e homologar |
-| usar formulário customizado `fetch` como produção | Form 46 nativo já está validado | necessidade comprovada + nova decisão |
-| interceptar submit do Form 46 | risco de quebrar lifecycle Green | preservar submit nativo |
-| usar seletor global `form` para mutação/interceptação | risco de colisão com builder | seletor específico verificado |
+| correção manual somente na Green sem atualizar GitHub | cria drift da fonte canônica | alterar via branch/PR e manter artefato consolidado sincronizado |
+| usar formulário customizado `fetch` como produção | Form 46 nativo está validado | necessidade comprovada + nova decisão arquitetural |
+| interceptar/bloquear submit nativo do Form 46 | risco de quebrar lifecycle Green | preservar lifecycle nativo |
+| usar seletor global `form` para mutação/interceptação | risco de colisão com builder | usar seletor específico verificado |
+| colar módulos JS separados na página 292 | Green possui um único slot JS e a unidade de release é consolidada | usar `src-greenn/moretegra.js` completo |
 | restaurar deploy automático Vercel por commit | ADR-002 adotou `MANUAL_GATE_DRIVEN` | nova decisão explícita + revalidação |
+| declarar Vercel atualizado sem deploy/evidência manual | homologação pode estar em drift | executar o processo manual e verificar o estado resultante |
 | promover Vercel diferente do `main` aprovado | drift de homologação | alinhar ao SHA aprovado |
 | indexar Vercel Production como origem comercial | Green é produção comercial | decisão Search específica |
-| novos ajustes DNS/domínio | efeito público | necessidade + autorização específica |
-| tratar redirect page-level do `www` como 301/308 comprovado | HAR observado mostrou HTTP 200 antes da navegação | evidência HTTP real de 301/308 |
-| aplicar metadata Green antes do lifecycle GitHub/Vercel | produziria drift entre fonte e produção | PR validada, merge e gate Green |
-| inserir canonical em módulo HTML de body | canonical precisa de mecanismo de head confiável | capability Green de head/canonical comprovada |
-| canonical via JavaScript fora do contrato 2026-08-29 | client-side canonical exige decisão técnica delimitada | somente o target aprovado no contrato vigente |
-| declarar canonical Green implementado só porque Vercel possui canonical | ambientes têm funções distintas | prova no HTML/head da produção Green |
-| JSON-LD/OG/Twitter fora do contrato 2026-08-29 | expansão Search não autorizada genericamente | somente escopo aprovado no contrato vigente |
-| publicar nova versão GTM ou alterar Version 4 Consent sem gate | M2-05/M2-06 definem governance, não runtime mutation | autorização MNT-M2-09 ou gate explícito equivalente + QA |
-| adicionar segundo container GTM para a mesma superfície MoreNumTegra | viola single-dispatcher MNT-M2-02/M2-05/M2-06 | nova decisão arquitetural explícita que superseda o contrato |
-| criar/configurar GA4 property, web stream, Google tag ou eventos GA4 | ownership/topology estão definidos, mas runtime/admin implementation não está autorizada | MNT-M2-09 ou gate explícito aplicável, com IDs observados |
-| inventar GA4 property ID, stream ID ou Measurement ID | nenhum identificador GA4 está provado em evidência canônica | observar/provar o recurso real antes de registrar/usar |
-| criar nova property GA4 só porque o ID não está no GitHub | `NOT_PROVEN` não significa `DOES_NOT_EXIST`; pode haver recurso existente | verificar/adotar existente ou obter autorização explícita para criação |
-| marcar eventos como GA4 key events/conversions | project conversion role não é configuração administrativa de destino | gate de implementação/configuração aplicável + semântica M2-04 preservada |
-| vincular GA4 a Google Ads ou outro produto | atribuição/Ads linking não pertence ao M2-05 | gate MNT-M6 ou autorização específica |
-| criar/configurar Meta Dataset/Pixel/browser source | MNT-M2-06 define governance/topology, mas IDs e runtime permanecem não provados | MNT-M2-09 ou gate explícito aplicável, após resolver assets existentes |
-| inventar Meta Dataset ID, Pixel ID, Business Portfolio ID ou relação Pixel/Dataset | identificadores/relacionamento Meta não estão provados em evidência canônica | observar/provar no ambiente Meta antes de registrar/usar |
-| criar novo Dataset/Pixel apenas porque IDs não constam no GitHub | `NOT_PROVEN` não significa `DOES_NOT_EXIST`; risco de duplicar assets | verificar/adotar asset dedicado existente ou obter autorização explícita para criação |
-| adicionar `fbq()` direto fora do GTM como caminho project-owned | viola o single browser dispatcher e pode duplicar eventos | decisão arquitetural explícita que superseda M2-02/M2-06 |
-| configurar Meta Standard Events/Custom Events/Custom Conversions por inferência | M2-06 não define vendor event mapping nem otimização | MNT-M2-09/MNT-M6 conforme escopo + mapeamento explícito preservando M2-03/M2-04 |
-| habilitar Meta CAPI, partner/server gateway ou dual browser/server transport | exige arquitetura server-side, consent, identidade de evento e dedup específicos | decisão/gate explícito + contrato de dedup + QA |
-| inferir website Pixel/Dataset ownership de Facebook Page, Lead Ads, Green CRM ou ad account | superfícies distintas não provam ownership de Measurement do site | evidência específica do asset Meta dedicado |
-| instalar/configurar Google Ads conversion tags | classificação de negócio existe, mas atribuição/Ads implementation permanece futura | gate MNT-M6 aplicável + autorização específica |
-| copiar mecanicamente `PRIMARY`/`SECONDARY` do projeto para Google Ads | semântica de otimização/counting/attribution ainda não foi decidida em MNT-M6 | contrato MNT-M6 + autorização específica |
-| configurar Green Pixel/integração adicional | pode duplicar telemetria ou alterar consent boundary | arquitetura aceita + gate de implementação específico |
-| tratar Green `/page/view` como equivalente a evento/conversão MoreNumTegra | Green é telemetria de plataforma, não origem semântica do projeto | proibido salvo decisão arquitetural superseding explícita |
-| tratar telemetry YouTube como conversão MoreNumTegra | third-party media telemetry não é evento de negócio | proibido pela taxonomy v1 |
-| enviar texto bruto da busca do catálogo para Measurement | campo é free-form e pode conter dado pessoal inesperado | não enviar; taxonomy v1 usa somente estado/result_count |
-| enviar nome/email/telefone/valores digitados do Form 46 como parâmetro de evento | PII do visitante não pertence ao contrato de Measurement v1 | nova arquitetura explícita de privacy/security se algum dia necessária |
-| emitir `mnt_lead_success` por CTA, WhatsApp, foco ou submit attempt | esses sinais não provam criação de lead | somente sucesso estável e verificável do Form 46 |
-| implementar `mnt_lead_success` sem sinal Green de sucesso comprovado | risco de falso positivo de conversão | provar sinal estável, não invasivo e deduplicável |
-| tratar `mnt_form_submit_attempt`, `mnt_form_start` ou `mnt_intent:project_interest` como conversão | MNT-M2-04 os classifica como `NONE` | revisão explícita do contrato de conversão, se houver nova evidência |
-| usar preço de imóvel/oferta como conversion value | preço de imóvel não é receita/valor de lead | modelo de valor de lead governado posteriormente |
-| habilitar user-provided data / enhanced conversions / advanced matching / hashed PII por inferência | M2-05/M2-06 não autorizam advertising-user-data features | arquitetura/privacy + gate específico |
-| novas mutações Search Console | estado externo já possui propriedade/indexação comprovadas | gate específico |
-| CMS/database/backend próprio | não necessário no V1 | necessidade material + nova decisão |
-| FECH.AI/n8n/Make/Ads campaign/spend | fora do escopo autorizado atual | autorização específica |
 | segredo/token no HTML/JS | risco de segurança | arquitetura segura aprovada |
-| publicar dado comercial não verificado | precisão/reputação | fonte atual/aprovada |
-| copiar conteúdo/design de referência externa | referência não transfere autoria | solução original |
 
-## 2. Baselines Measurement aceitas
+## 3. Bloqueios ativos — Measurement / GA4 / consent
 
-### GTM / Consent
+| Ação bloqueada | Motivo | Condição de liberação |
+|---|---|---|
+| publicar nova versão GTM ou alterar configuração aceita sem novo gate | M2-09 está fechado; novas mutações não são implícitas | autorização corretiva/evolutiva explícita + QA |
+| adicionar segundo container GTM para a mesma superfície | viola single-dispatcher | decisão arquitetural superseding explícita |
+| adicionar `gtag()` direto project-owned fora do GTM | pode duplicar dispatch | decisão arquitetural superseding explícita |
+| criar property/stream GA4 duplicados | assets aceitos já estão provados | necessidade comprovada + autorização específica |
+| substituir IDs GA4 por inferência | IDs aceitos são observados e canônicos | nova evidência/governança explícita |
+| encaminhar Green `gtm.formSubmit` como evento de negócio GA4 | pode carregar PII e não é source event canônico | proibido salvo nova arquitetura privacy/taxonomy explícita |
+| criar `form_submit` redundante como conversão | duplicaria semântica de `mnt_form_submit_attempt`/`generate_lead` | revisão explícita da taxonomy/conversion contract |
+| marcar `mnt_form_start` ou `mnt_form_submit_attempt` como conversão | M2-04 os classifica como `NONE` | revisão explícita do contrato |
+| emitir `mnt_lead_success` por CTA/foco/submit attempt | não prova criação de lead | somente sucesso verificável do Form 46 |
+| usar preço de imóvel/oferta como conversion value | preço de imóvel não é valor de lead | modelo governado de lead value futuro |
+| definir valor monetário default para `generate_lead` por inferência | nenhuma monetização do lead foi aprovada | modelo de valor aprovado |
+| enviar nome/email/telefone/valores digitados em Measurement | visitor PII fora do contrato v1 | nova arquitetura privacy/security explícita |
+| enviar texto bruto da busca do catálogo | campo livre pode conter dado pessoal inesperado | manter somente estado/classificação/result_count |
+| habilitar user-provided data / enhanced conversions / advanced matching / hashed PII | advertising-user-data features não foram autorizadas | arquitetura privacy + gate específico |
+| inferir MNT-M2-10 autorização por sequência | task planejada não é autorização | Product Authority autoriza explicitamente |
+
+## 4. Bloqueios ativos — Meta / Ads
+
+| Ação bloqueada | Motivo | Condição de liberação |
+|---|---|---|
+| inventar Meta Dataset ID, Pixel ID, Business ID ou relacionamento | assets não estão provados | observar/provar antes de registrar/usar |
+| criar Dataset/Pixel só porque IDs não constam no GitHub | `NOT_PROVEN != DOES_NOT_EXIST` | resolver asset existente ou obter autorização de criação |
+| adicionar `fbq()` direto project-owned | viola single browser dispatcher | decisão arquitetural superseding explícita |
+| configurar Meta Standard Events/Custom Conversions por inferência | vendor mapping/optimization não está definido | gate específico M2/M6 + contrato explícito |
+| habilitar Meta CAPI/partner gateway/server transport | exige consent, identidade e dedup específicos | arquitetura + autorização + QA |
+| inferir website Pixel/Dataset ownership de Facebook Page/Lead Ads/Green CRM/ad account | superfícies distintas | evidência específica do asset |
+| instalar/configurar Google Ads conversion tags | Ads attribution pertence a fase/gate futuro | autorização MNT-M6 aplicável |
+| vincular GA4 a Google Ads/outro produto | não pertence ao M2-09 | gate específico |
+| campaign/spend | fora do escopo atual | autorização específica |
+
+## 5. Bloqueios ativos — Search / DNS / conteúdo
+
+- novos ajustes DNS/domínio sem gate;
+- tratar redirect page-level do `www` como HTTP 301/308 comprovado sem evidência HTTP;
+- declarar canonical Green implementado só porque Vercel possui canonical;
+- inserir canonical/body ou expandir JSON-LD/OG/Twitter fora dos contratos aprovados;
+- novas mutações Search Console sem gate;
+- publicar dado comercial não verificado;
+- copiar conteúdo/design de referência externa;
+- keyword stuffing ou schema sem conteúdo visível/factual correspondente.
+
+## 6. Baselines Measurement aceitas
+
+### Consent histórico
 
 Evidence: `docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md`.
 
 ```text
 GTM = GTM-PGCR4R47
-Published version = 4
-Default = denied for ad_storage / analytics_storage / ad_user_data / ad_personalization
+historical T1 published version = 4
+default = denied all four
 Green Continuar = granted all four
 Green Cancelar = denied all four
-Persistence after reload = validated for granted and denied
+persistence after reload = validated
 ```
+
+Version 7 preserves the accepted Consent Mode contract while adding the Form 46 funnel/GA4 mapping.
 
 ### Transport / dedup
 
 Evidence: `docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md`.
 
 ```text
-moretegra.com.br = only project Measurement production host
-www.moretegra.com.br = no project business/page Measurement
+moretegra.com.br = project Measurement production host
+www.moretegra.com.br = no project business/page Measurement target
 GTM-PGCR4R47 = sole project-owned browser dispatcher
-Green /page/view = platform telemetry
-one project page-view path per canonical document load
+Green /page/view and gtm.formSubmit = platform telemetry
+one project page-view path per canonical document load = contract
 ```
 
-### Canonical event taxonomy v1
+Full end-to-end proof of these controls remains MNT-M2-10.
 
-Evidence: `docs/measurement/MNT_M2_03_CANONICAL_EVENT_TAXONOMY_V1_2026-09-10.md`.
-
-```text
-mnt_page_view
-mnt_section_click
-mnt_catalog_filter
-mnt_catalog_search
-mnt_intent
-mnt_form_start
-mnt_form_submit_attempt
-mnt_lead_success
-```
-
-### Conversion classification v1
-
-Evidence: `docs/measurement/MNT_M2_04_PRIMARY_SECONDARY_CONVERSIONS_V1_2026-09-10.md`.
+### Canonical event taxonomy / conversions
 
 ```text
-PRIMARY = mnt_lead_success
-SECONDARY = request_conditions / request_project_conditions / negotiate_scenario / schedule_visit / whatsapp_contact
+PRIMARY source = mnt_lead_success
+GA4 primary destination = generate_lead
+SECONDARY project intents = request_conditions / request_project_conditions / negotiate_scenario / schedule_visit / whatsapp_contact
 NONE = page/section/filter/search/project_interest/form_start/form_submit_attempt
 LEAD_CONVERSION_VALUE = NOT_DEFINED
 ```
 
-### GTM / GA4 ownership v1
+## 7. Green Sales — permitido
 
-Evidence: `docs/measurement/MNT_M2_05_GTM_GA4_OWNERSHIP_CONTRACT_V1_2026-09-10.md`.
-
-```text
-GTM governance owner = MoreNumTegra / Product Authority
-GTM canonical container = GTM-PGCR4R47
-GA4 governance owner = MoreNumTegra / Product Authority
-GA4 property target = one dedicated MoreNumTegra property
-GA4 production stream target = one web stream for moretegra.com.br
-GA4 property ID / stream ID / Measurement ID = NOT_PROVEN
-M2-05 runtime/admin mutation = NONE
-```
-
-### Meta Pixel / Dataset ownership v1
-
-Evidence: `docs/measurement/MNT_M2_06_META_PIXEL_DATASET_OWNERSHIP_CONTRACT_V1_2026-09-10.md`.
-
-```text
-Meta Measurement governance owner = MoreNumTegra / Product Authority
-Meta Dataset target = one dedicated MoreNumTegra Dataset
-Meta browser source target = one project browser source relationship if implemented
-Browser dispatcher = GTM-PGCR4R47
-Meta Dataset ID / Pixel ID / relationship = NOT_PROVEN
-CAPI = optional future / not authorized by M2-06
-M2-06 runtime/admin mutation = NONE
-```
-
-Preservar:
-
-```text
-OWNERSHIP DEFINED != ACCOUNT USER ROSTER PROVEN
-TARGET TOPOLOGY != RESOURCE CREATED
-NOT_PROVEN != DOES_NOT_EXIST
-ACCEPTED CONVERSION ROLE != DESTINATION CONFIGURED
-PRIMARY CONVERSION != PRIMARY ADS/META OPTIMIZATION ACTION
-SECONDARY CONVERSION != VERIFIED LEAD
-SOURCE EVENT IDENTITY != META DEDUP CONFIGURATION
-CONSENT STATE QA != FULL MEASUREMENT E2E QA
-```
-
-## 3. Green Sales — permitido
-
-A produção comercial Green V1 está publicada e funcionalmente homologada.
+A produção comercial Green V1 está operacional.
 
 Permitido após lifecycle/gate aplicável:
 
 - manutenção dos mesmos artefatos derivados de `main`;
-- correções homologadas no Vercel e mergeadas;
-- atualização controlada dos módulos/configurações Green;
+- atualização controlada de `src-greenn/moretegra.js` como unidade única da página 292;
+- atualização controlada do artefato próprio da página 294;
 - smoke test após publicação.
 
-## 4. Search provider — permitido
+## 8. Regras de interpretação
 
-O provider `blogs-sites-portais-seo` pode auditar/recomendar e devolver handoff versionado. Não pode, por esse vínculo, transferir autoridade do produto, publicar Green, alterar DNS, habilitar tracking adicional, criar campaign/spend ou mutar MoreNumTegra sem autorização específica.
-
-## 5. Regras de interpretação
-
-- `main mergeada` != `Green atualizada`.
-- `Green atualizada` != `smoke aprovado`.
+- `main mergeada` != `Vercel atualizado`.
+- `Green atualizada` != `MNT-M2-10 validado`.
 - `tool capability` != `authorization`.
-- `GTM Version 4 published` != `GA4/Meta implemented`.
-- `GTM governance owner defined` != `Google account credential holder proven`.
-- `GA4 topology defined` != `GA4 property/stream exists`.
-- `Meta topology defined` != `Meta Dataset/Pixel exists`.
-- `Facebook Page / Lead Ads / Green integration` != `website Pixel/Dataset ownership proven`.
-- `event defined` != `conversion`.
-- `conversion classified` != `destination configured`.
-- `project PRIMARY/SECONDARY` != `Google Ads or Meta optimization setting`.
-- `MNT-M2-09 partial` != `MNT-M2-09 complete`.
-- `www Domínio OK` != `redirect HTTP 301/308 comprovado`.
-- `Search recommendation` != `implementation authorization`.
+- `GTM Version 7 published` != `future GTM mutations authorized`.
+- `GA4 generate_lead Key event` != `Google Ads conversion configured`.
+- `MNT-M2-09 COMPLETE` != `MNT-M2 COMPLETE`.
+- `MNT-M2-09 COMPLETE` != `MNT-M2-10 AUTHORIZED`.
+- `Meta ownership topology defined` != `Meta runtime implemented`.
+- `www Domínio OK` != `HTTP 301/308 comprovado`.
 - `planned WBS` != `authorized execution`.
 
-## 6. Sequência operacional vigente
+## 9. Sequência operacional vigente
 
 ```text
 PROJECT DESIGN / EVIDENCE
@@ -196,7 +163,7 @@ PROJECT DESIGN / EVIDENCE
 -> MERGE MAIN
 -> MANUAL VERCEL PRODUCTION WHEN NEEDED
 -> GREEN SALES WHEN NEEDED
--> PRODUCTION SMOKE
+-> PRODUCTION SMOKE / MEASUREMENT EVIDENCE
 ```
 
-O domínio principal comercial é `https://moretegra.com.br/`. O `www` segue com redirect page-level e o risco de semântica HTTP permanece separado.
+O domínio principal comercial é `https://moretegra.com.br/`.
