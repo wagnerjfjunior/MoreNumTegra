@@ -1,6 +1,6 @@
 # MNT-M2-10 — End-to-End Measurement QA — 2026-09-12
 
-Status: `ACTIVE / EVIDENCE_COLLECTION` while this branch/PR is under execution. This document does not claim completion until every mandatory scenario is adjudicated from evidence.
+Status: `ACTIVE / EVIDENCE_COLLECTION`. This document does not claim completion until every mandatory scenario is adjudicated from evidence.
 
 ## 1. Authorization and canonical anchor
 
@@ -9,6 +9,7 @@ Status: `ACTIVE / EVIDENCE_COLLECTION` while this branch/PR is under execution. 
 - Task: `MNT-M2-10 — Execute end-to-end Measurement QA`
 - Product Authority authorization: explicit start authorization in project conversation on `2026-09-12`
 - Canonical `main` resolved before execution: `ba2a70c793e6879d28192fda4730f950ec6cc68d`
+- Execution branch: `qa/mnt-m2-10-e2e-measurement`
 - Execution mode: `QA / READ-ONLY OBSERVATION / EVIDENCE`
 - Mutation boundary: no GTM/GA4/Meta/Ads/DNS/Search Console/Green structural/Vercel automatic mutation is authorized merely to make a QA check pass.
 
@@ -40,39 +41,146 @@ page 292 JS = src-greenn/moretegra.js
 page 294 JS = src-greenn/thank-you/obrigado.js
 ```
 
-## 3. QA contract
+## 3. Evidence already inspected in this QA
 
-MNT-M2-10 must prove or explicitly leave `NOT_PROVEN` each mandatory control below.
+### 3.1 Current canonical source inspection
 
-| ID | Scenario / control | Expected result | State |
+Resolved source blobs from `main`:
+
+```text
+src-greenn/modules/moretegra.measurement.js = 4b451b0c4e05fb37009ca50ebd608d99707c0f78
+src-greenn/modules/moretegra.lead-journey.js = 6b525f48393c70c4250df42429e73c646cf3ba61
+src-greenn/thank-you/obrigado.js = bf5864429e43465058823a19b100a35bc4754f75
+src-greenn/moretegra.js = aa0f2b51a222be92061d0c40dc322a46ad74ac97
+```
+
+Static controls observed:
+
+- project source events are gated by `window.location.hostname === "moretegra.com.br"`;
+- `mnt_page_view` uses a per-document `Symbol.for(...)` marker and emits only once from the project source path;
+- catalogue free-form search uses a 600 ms debounce and emits only controlled `search_state`, controlled `search_location`, `result_count` and `placement`, not raw typed text;
+- Form 46 start uses a `WeakSet` to fire at most once per form instance;
+- Form 46 submit attempt is bound to the verified Green submit button and does not intercept the native submit;
+- lead pending state stores only `Date.now()` in session storage;
+- `/obrigado` requires canonical host + exact route + fresh pending timestamp <=10 minutes;
+- pending state is removed before `mnt_lead_success` emission, making refresh/back without a new valid pending state non-converting;
+- stale pending state is removed and does not emit lead;
+- repository search found no direct project `gtag(` or `fbq(` call;
+- the consolidated page-292 artifact contains Measurement v6 + Form 46 lead guard v4.
+
+Static inspection is not silently promoted into runtime PASS where a live browser outcome is still required.
+
+### 3.2 Accepted Version 7 Tag Assistant export reused as current-runtime evidence
+
+Evidence file already supplied during MNT-M2-09 and re-inspected for MNT-M2-10:
+
+```text
+file = tag_assistant_moretegra_com_br_2026_09_12 (12).json
+SHA-256 = 7f5625dd8b3d80129c9935d5749793d67c038a51762bd246506fe7f3afec8deb
+size = 1,605,135 bytes
+```
+
+Observed in that Version 7 successful Form 46 journey:
+
+```text
+GTM source-event occurrences:
+mnt_page_view = 1
+mnt_intent = 1
+mnt_form_start = 1
+mnt_form_submit_attempt = 1
+mnt_lead_success = 1
+
+tag firings:
+GA4 page_view from mnt_page_view = 1
+GA4 mnt_intent = 1
+GA4 mnt_form_start = 1
+GA4 mnt_form_submit_attempt = 1
+GA4 generate_lead from mnt_lead_success = 1
+```
+
+The Google Tag configuration in the export has `send_page_view = false`; the project page-view is therefore the explicit `mnt_page_view -> GA4 page_view` path rather than automatic + manual coexistence for the tested load.
+
+The Green `gtm.formSubmit` event is present in the export but no project GA4 tag executes on that event. Visitor form fields therefore remain platform telemetry and are not forwarded by the project mapping.
+
+The `generate_lead` tag executed successfully and its configured event parameters are limited to governed non-PII fields:
+
+```text
+mnt_event_id
+mnt_event_version
+page_identity
+product_identity
+route
+funnel_stage
+placement
+form_provider
+form_id
+form_name
+lead_method
+```
+
+No `value`, `currency`, visitor name, visitor email or visitor phone parameter is configured for `generate_lead`; ecommerce sending is disabled.
+
+Consent evidence in the same Version 7 export shows:
+
+```text
+default: ad_storage = denied
+         analytics_storage = denied
+         ad_user_data = denied
+         ad_personalization = denied
+
+accepted update: all four = granted
+wasSetLate = false
+```
+
+The home -> `/obrigado` flow also shows granted consent available on the subsequent thank-you page load, supporting granted-state persistence for that tested path. Current Version 7 denied-choice persistence still requires dedicated evidence.
+
+## 4. QA contract and current adjudication
+
+| ID | Scenario / control | Expected result | Current state |
 |---|---|---|---|
-| QA-01 | direct canonical home load | exactly one project-owned page-view path per document load | PENDING |
-| QA-02 | `www.moretegra.com.br` alias path | zero project business/page Measurement on `www`; at most one canonical page view after arrival on non-www | PENDING |
-| QA-03 | canonical reload | one new project page view for the new document load, never automatic + manual duplicate | PENDING |
-| QA-04 | one semantic UI action | one canonical source event and one new `mnt_event_id` | PENDING |
-| QA-05 | repeated intentional UI action | a new semantic occurrence with a new `mnt_event_id`; no synchronization duplicate | PENDING |
-| QA-06 | catalogue free-form search | debounced/committed event only; no event per keystroke; no raw query text | PENDING |
-| QA-07 | Form 46 first interaction | `mnt_form_start` at most once per document/form instance | PENDING |
-| QA-08 | Form 46 submit initiation | exactly one `mnt_form_submit_attempt`; remains non-conversion | PENDING |
-| QA-09 | submit attempt without verified success | no `mnt_lead_success` / no `generate_lead` | PENDING |
-| QA-10 | verified Form 46 success | exactly one `mnt_lead_success` and one GA4 `generate_lead` | PARTIALLY_PROVEN_BY_M2_09 / REVALIDATE |
-| QA-11 | direct `/obrigado` | no manufactured `mnt_lead_success` / `generate_lead` | PENDING |
-| QA-12 | refresh/back on `/obrigado` after accepted lead | no duplicate lead conversion without a new valid Form 46 submission | PENDING |
-| QA-13 | stale pending lead state (>10 min) | no manufactured lead | PENDING |
-| QA-14 | privacy — Form 46 | no visitor name/email/phone/raw field values in project MNT/GA4 payloads | PARTIALLY_PROVEN_BY_M2_09 / REVALIDATE |
-| QA-15 | privacy — catalogue search | no raw free-form search text in project MNT/GA4 payloads | PENDING |
-| QA-16 | source/destination architecture | no direct project `gtag()` / second GA4 path outside `GTM-PGCR4R47` | PENDING |
-| QA-17 | Meta boundary | no direct project `fbq()` / second Meta project-owned path while Meta remains unimplemented | PENDING |
-| QA-18 | Green platform telemetry | Green `/page/view` and `gtm.formSubmit` are not forwarded as project business events | PENDING |
-| QA-19 | conversion semantics | `mnt_form_start` and `mnt_form_submit_attempt` remain non-conversions; only verified lead maps to `generate_lead` | PARTIALLY_PROVEN_BY_M2_09 / REVALIDATE |
-| QA-20 | conversion value | no property/listing price or inferred monetary value attached to `generate_lead` | PARTIALLY_PROVEN_BY_M2_09 / REVALIDATE |
-| QA-21 | consent default | all four governed consent types start denied before affirmative choice | PENDING_CURRENT_V7 |
-| QA-22 | consent granted | Continue/accept updates all four governed consent types to granted; timing not late | PENDING_CURRENT_V7 |
-| QA-23 | consent denied | Cancel/deny leaves all four governed consent types denied | PENDING_CURRENT_V7 |
-| QA-24 | consent persistence | granted and denied decisions persist after reload as contracted | PENDING_CURRENT_V7 |
-| QA-25 | taxonomy envelope | implemented semantic events preserve taxonomy v1 names, required envelope and controlled parameter enums | PENDING |
+| QA-01 | direct canonical home load | exactly one project-owned page-view path per document load | PASS — Version 7 tested load: 1 `mnt_page_view`, 1 GA4 `page_view`, `send_page_view=false` |
+| QA-02 | `www.moretegra.com.br` alias path | zero project business/page Measurement on `www`; at most one canonical page view after arrival on non-www | STATIC_CONTROL_PASS / LIVE_ALIAS_EVIDENCE_PENDING |
+| QA-03 | canonical reload | one new project page view for the new document load, never automatic + manual duplicate | PENDING_LIVE |
+| QA-04 | one semantic UI action | one canonical source event and one new `mnt_event_id` | PARTIAL_PASS — tested `mnt_intent` occurrence unique; broader sampling pending |
+| QA-05 | repeated intentional UI action | new semantic occurrence with new `mnt_event_id`; no synchronization duplicate | PENDING_LIVE |
+| QA-06 | catalogue free-form search | debounced/committed event only; no event per keystroke; no raw query text | STATIC_PASS / CURRENT_V7_RUNTIME_REVALIDATION_PENDING |
+| QA-07 | Form 46 first interaction | `mnt_form_start` at most once per document/form instance | PASS — source guard + Version 7 occurrence count = 1 |
+| QA-08 | Form 46 submit initiation | exactly one `mnt_form_submit_attempt`; remains non-conversion | PASS — Version 7 occurrence/tag count = 1; no conversion semantics |
+| QA-09 | submit attempt without verified success | no `mnt_lead_success` / no `generate_lead` | PENDING_LIVE_NEGATIVE_PATH |
+| QA-10 | verified Form 46 success | exactly one `mnt_lead_success` and one GA4 `generate_lead` | PASS — Version 7 + GA4 DebugView accepted evidence |
+| QA-11 | direct `/obrigado` | no manufactured `mnt_lead_success` / `generate_lead` | STATIC_PASS / LIVE_NEGATIVE_PATH_PENDING |
+| QA-12 | refresh/back on `/obrigado` after accepted lead | no duplicate lead conversion without a new valid Form 46 submission | STATIC_PASS / LIVE_NEGATIVE_PATH_PENDING |
+| QA-13 | stale pending lead state (>10 min) | no manufactured lead | STATIC_PASS / LIVE_OR_CONTROLLED_RUNTIME_PENDING |
+| QA-14 | privacy — Form 46 | no visitor name/email/phone/raw field values in project MNT/GA4 payloads | PASS for accepted Version 7 project payload; raw Green platform telemetry remains separate |
+| QA-15 | privacy — catalogue search | no raw free-form search text in project MNT/GA4 payloads | STATIC_PASS / CURRENT_V7_RUNTIME_REVALIDATION_PENDING |
+| QA-16 | source/destination architecture | no direct project `gtag()` / second GA4 path outside `GTM-PGCR4R47` | STATIC_PASS + tested explicit page-view path; broader runtime duplicate proof pending QA-02/03 |
+| QA-17 | Meta boundary | no direct project `fbq()` / second Meta project-owned path while Meta remains unimplemented | STATIC_PASS; runtime Meta remains not implemented by accepted scope |
+| QA-18 | Green platform telemetry | Green `/page/view` and `gtm.formSubmit` are not forwarded as project business events | PASS for `gtm.formSubmit`; `/page/view` separation supported statically / broader network proof pending if required |
+| QA-19 | conversion semantics | form start/submit attempt remain non-conversions; only verified lead maps to `generate_lead` | PASS — Version 7 mapping and GA4 result |
+| QA-20 | conversion value | no property/listing price or inferred monetary value attached to `generate_lead` | PASS — no value/currency; ecommerce disabled |
+| QA-21 | consent default | all four governed consent types start denied before affirmative choice | PASS — Version 7 export |
+| QA-22 | consent granted | Continue/accept updates all four to granted; timing not late | PASS — Version 7 export, `wasSetLate=false` |
+| QA-23 | consent denied | Cancel/deny leaves all four governed consent types denied | PENDING_CURRENT_V7_NEGATIVE_PATH |
+| QA-24 | consent persistence | granted and denied decisions persist after reload | PARTIAL_PASS — granted persistence observed across tested flow; denied persistence pending current Version 7 evidence |
+| QA-25 | taxonomy envelope | semantic events preserve taxonomy v1 names, required envelope and controlled parameters | STATIC_PASS + sampled Version 7 runtime PASS; full scenario coverage pending |
 
-## 4. Pass/fail rules
+## 5. Remaining live evidence required before closure
+
+The current evidence materially reduces the remaining QA to targeted negative/repetition paths rather than another full implementation pass. At minimum, fresh/current evidence is still needed for:
+
+1. `www.moretegra.com.br` alias behavior;
+2. canonical reload page-view uniqueness;
+3. repeated intentional event identity / no UI-sync duplicates;
+4. current Version 7 catalogue search cardinality/privacy;
+5. submit attempt without verified success;
+6. direct `/obrigado`;
+7. refresh/back after a valid lead;
+8. stale pending behavior if a controlled test is practical;
+9. current Version 7 denied consent path and denied persistence.
+
+No GTM/GA4 mutation should be performed to obtain these observations.
+
+## 6. Pass/fail rules
 
 - `PASS` requires direct evidence for the scenario in the current accepted runtime or an explicitly reusable accepted evidence package whose scope still matches Version 7.
 - `FAIL` records the observed contract violation; QA does not silently mutate production to force a pass.
@@ -80,19 +188,13 @@ MNT-M2-10 must prove or explicitly leave `NOT_PROVEN` each mandatory control bel
 - Historical evidence remains historical; it cannot be silently promoted to current Version 7 proof if the relevant runtime changed.
 - Platform telemetry may be observed but must remain separated from project-owned Measurement semantics.
 
-## 5. Evidence sources
+## 7. Evidence handling
 
-Expected evidence classes include:
-
-- Tag Assistant / GTM Preview exports;
-- GA4 DebugView / recent-event confirmation where destination proof is required;
-- current GitHub source inspection at the accepted canonical SHA;
-- direct non-invasive HTTP/browser observations for canonical-host/alias behavior where the tool can prove them;
-- user-supplied screenshots/exports when the Google UI or browser session is required.
+Expected evidence classes include Tag Assistant/GTM Preview exports, GA4 DebugView confirmation where destination proof is material, current GitHub source inspection and user-supplied screenshots/exports when a browser/Google UI session is required.
 
 No visitor PII should be persisted into repository evidence. If a raw platform export contains visitor form values, repository documentation records only sanitized findings/hashes, not the raw PII payload.
 
-## 6. Exit criteria
+## 8. Exit criteria
 
 MNT-M2-10 may be accepted complete only when:
 
