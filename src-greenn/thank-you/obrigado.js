@@ -1,5 +1,6 @@
-// MoreNumTegra thank-you page lifecycle v2.
-// A direct thank-you visit never creates a lead. The only browser guard is a fresh Form 46 submit timestamp.
+// MoreNumTegra thank-you page lifecycle v4.
+// V1 client-side lead gate: fresh Form 46 pending marker + exact accepted Green redirect shape.
+// This is a bounded heuristic, not cryptographic/server-side proof of Green success.
 (() => {
   "use strict";
 
@@ -9,6 +10,9 @@
   const LEAD_PENDING_KEY = "mnt.lead.pending.v1";
   const LEAD_MAX_AGE_MS = 10 * 60 * 1000;
   const EVENT_VERSION = 1;
+  const GREEN_SOURCE_PAGE_ID = "292";
+  const GREEN_LEAD_PARAM = "l_";
+  const GREEN_PAGE_PARAM = "p_id";
 
   function normalizedPath() {
     const path = window.location.pathname.replace(/\/+$/, "");
@@ -48,6 +52,20 @@
     document.querySelectorAll('link[rel="canonical"]').forEach((node) => node.remove());
   }
 
+  function hasAcceptedGreenRedirectShape() {
+    const params = new URLSearchParams(window.location.search || "");
+    const leadRefs = params.getAll(GREEN_LEAD_PARAM);
+    const sourcePages = params.getAll(GREEN_PAGE_PARAM);
+
+    if (leadRefs.length !== 1 || sourcePages.length !== 1) return false;
+
+    const leadRef = String(leadRefs[0] || "").trim();
+    const sourcePage = String(sourcePages[0] || "").trim();
+
+    if (sourcePage !== GREEN_SOURCE_PAGE_ID) return false;
+    return /^[1-9]\d*$/.test(leadRef);
+  }
+
   function consumeFreshPendingLead() {
     try {
       const raw = window.sessionStorage.getItem(LEAD_PENDING_KEY) || "";
@@ -55,20 +73,17 @@
       if (!Number.isFinite(submittedAt) || submittedAt <= 0) return false;
 
       const age = Date.now() - submittedAt;
-      if (age < 0 || age > LEAD_MAX_AGE_MS) {
-        window.sessionStorage.removeItem(LEAD_PENDING_KEY);
-        return false;
-      }
-
       window.sessionStorage.removeItem(LEAD_PENDING_KEY);
+      if (age < 0 || age > LEAD_MAX_AGE_MS) return false;
+
       return window.sessionStorage.getItem(LEAD_PENDING_KEY) === null;
     } catch {
       return false;
     }
   }
 
-  function markVerifiedUi(root) {
-    root.dataset.leadState = "verified";
+  function markAcceptedLeadUi(root) {
+    root.dataset.leadState = "accepted";
     const eyebrow = root.querySelector("[data-thanks-eyebrow]");
     const message = root.querySelector("[data-thanks-message]");
     if (eyebrow) eyebrow.textContent = "SOLICITAÇÃO RECEBIDA";
@@ -77,10 +92,13 @@
     }
   }
 
-  function emitVerifiedLead(root) {
+  function emitAcceptedLead(root) {
     if (window.location.hostname !== CANONICAL_HOST) return false;
     if (normalizedPath() !== THANK_YOU_ROUTE) return false;
-    if (!consumeFreshPendingLead()) return false;
+
+    const hasAcceptedRedirect = hasAcceptedGreenRedirectShape();
+    const hasFreshPending = consumeFreshPendingLead();
+    if (!hasAcceptedRedirect || !hasFreshPending) return false;
 
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
@@ -98,7 +116,7 @@
       placement: "form_46"
     });
 
-    markVerifiedUi(root);
+    markAcceptedLeadUi(root);
     return true;
   }
 
@@ -106,7 +124,7 @@
     applyPageMetadata();
     const root = document.querySelector(ROOT_SELECTOR);
     if (!root) return;
-    emitVerifiedLead(root);
+    emitAcceptedLead(root);
   }
 
   if (document.readyState === "loading") {
