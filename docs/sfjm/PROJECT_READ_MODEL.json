@@ -84,18 +84,36 @@
     "secondary_intent_types": ["request_conditions","request_project_conditions","negotiate_scenario","schedule_visit","whatsapp_contact"],
     "non_conversion": ["mnt_page_view","mnt_section_click","mnt_catalog_filter","mnt_catalog_search","mnt_intent:project_interest","mnt_form_start","mnt_form_submit_attempt"],
     "primary_runtime_status": "IMPLEMENTED_AND_E2E_QA_ACCEPTED_WITH_V1_RESIDUAL",
-    "monetary_value": "NOT_DEFINED"
+    "monetary_value": "NOT_DEFINED",
+    "lead_validity_residual": "CLIENT_SIDE_PENDING_PLUS_COMPLETE_REDIRECT_SHAPE_CAN_BE_MANUALLY_SATISFIED"
   },
   "google_measurement_ownership": {
     "design_source": "docs/measurement/MNT_M2_05_GTM_GA4_OWNERSHIP_CONTRACT_V1_2026-09-10.md",
     "runtime_source": "docs/measurement/MNT_M2_10_LIVE_QA_UPDATE_2026-09-13.md",
     "gtm_container_id": "GTM-PGCR4R47",
+    "gtm_governance_owner": "MoreNumTegra / Product Authority",
     "gtm_current_accepted_version": 7,
+    "ga4_governance_owner": "MoreNumTegra / Product Authority",
+    "ga4_property_scope": "DEDICATED_MORENUMTEGRA_PROPERTY",
+    "ga4_production_web_stream_target": "moretegra.com.br",
     "ga4_property_id": "553742649",
     "ga4_stream_id": "15759638334",
     "ga4_measurement_id": "G-57M2XR0CY2",
     "enhanced_measurement": false,
     "runtime_status": "IMPLEMENTED_AND_E2E_QA_ACCEPTED_WITH_V1_RESIDUAL"
+  },
+  "meta_measurement_ownership": {
+    "source": "docs/measurement/MNT_M2_06_META_PIXEL_DATASET_OWNERSHIP_CONTRACT_V1_2026-09-10.md",
+    "meta_governance_owner": "MoreNumTegra / Product Authority",
+    "dataset_scope": "DEDICATED_MORENUMTEGRA_DATASET",
+    "dataset_count_target": 1,
+    "browser_source_count_target": 1,
+    "meta_dataset_id": "NOT_PROVEN",
+    "meta_pixel_id": "NOT_PROVEN",
+    "pixel_dataset_relationship": "NOT_PROVEN",
+    "browser_dispatcher": "GTM-PGCR4R47",
+    "capi_status": "NOT_IMPLEMENTED / NOT_AUTHORIZED",
+    "runtime_status": "NOT_IMPLEMENTED_BY_MNT_M2"
   },
   "search_research": {
     "current_task": "MNT-M3-01",
@@ -109,19 +127,90 @@
     "implementation_authorized": false
   },
   "issues": [
-    {"id":"MNT-GATE-M3-01-ACCEPTANCE","class":"CURRENT_GATE","scope":"MNT-M3-01","state":"PENDING_PRODUCT_AUTHORITY_ACCEPTANCE","blocking_for_current_task":true,"label":"MNT-M3-01 is complete as a research candidate; acceptance/Ready/merge is pending.","source":"docs/NEXT_SAFE_ACTION.md"},
-    {"id":"MNT-RESIDUAL-M3-01-GSC-SPARSE","class":"RESEARCH_LIMITATION","scope":"MNT-M3-01 / MNT-M3-02","state":"OPEN / NON_BLOCKING","blocking_for_current_task":false,"label":"Search Console evidence is sparse and cannot support trend or causality claims.","source":"docs/search/MNT_M3_01_MARKET_SEARCH_DEMAND_RESEARCH_2026-09-13.md"},
-    {"id":"MNT-RESIDUAL-M3-01-PLANNER-SCOPE","class":"RESEARCH_LIMITATION","scope":"MNT-M3-01 / MNT-M3-03","state":"OPEN / NON_BLOCKING","blocking_for_current_task":false,"label":"Planner data is Brazil/Portuguese; project-name entity ambiguity and SERP intent still require M3-03.","source":"docs/search/MNT_M3_01_MARKET_SEARCH_DEMAND_RESEARCH_2026-09-13.md"},
-    {"id":"MNT-RESIDUAL-LEAD-GUARD-CLIENT-SIDE","class":"ACCEPTED_V1_RESIDUAL","scope":"MNT-M2-10 / FUTURE_LEAD_VALIDITY_HARDENING","state":"OPEN / ACCEPTED_NON_BLOCKING","blocking_for_current_task":false,"label":"The thank-you lead gate is a bounded client-side heuristic, not provider/server authentication."},
-    {"id":"MNT-ISSUE-META-RUNTIME-IDENTIFIERS","class":"FUTURE_IMPLEMENTATION_EVIDENCE","scope":"META / LATER_GATE","state":"OPEN / NON_BLOCKING","blocking_for_current_task":false,"label":"Meta Dataset/Pixel identifiers and relationship remain unproven; Meta runtime is not implemented."},
-    {"id":"MNT-RESIDUAL-VERCEL-HOMOLOGATION-DRIFT","class":"OPERATIONAL_RESIDUAL","scope":"VERCEL","state":"OPEN / MANUAL_DEPLOY_PENDING","blocking_for_current_task":false,"label":"Vercel Production homologation has not yet been proven aligned to latest canonical main."},
-    {"id":"MNT-RESIDUAL-CANONICAL","class":"RESIDUAL","scope":"SEARCH","state":"OPEN / NON_BLOCKING_FOR_CURRENT_V1","blocking_for_current_task":false,"label":"Commercial canonical is client-side rather than static/SSR."},
-    {"id":"MNT-RESIDUAL-SITEMAP","class":"RESIDUAL","scope":"SEARCH","state":"OPEN / NON_BLOCKING_FOR_CURRENT_V1","blocking_for_current_task":false,"label":"sitemap.xml is not available."},
-    {"id":"MNT-RESIDUAL-WWW-REDIRECT","class":"RESIDUAL","scope":"SEARCH/DNS","state":"OPEN / HTTP_301_308_NOT_PROVEN","blocking_for_current_task":false,"label":"www resolves to canonical at page level, but HTTP 301/308 semantics remain unproven."}
+    {
+      "id":"MNT-GATE-M3-01-ACCEPTANCE",
+      "class":"CURRENT_GATE",
+      "scope":"MNT-M3-01",
+      "state":"PENDING_PRODUCT_AUTHORITY_ACCEPTANCE",
+      "blocking_for_current_task":true,
+      "label":"MNT-M3-01 is complete as a research candidate; acceptance/Ready/merge is pending.",
+      "source":"docs/NEXT_SAFE_ACTION.md"
+    },
+    {
+      "id":"MNT-RESIDUAL-M3-01-GSC-SPARSE",
+      "class":"RESEARCH_LIMITATION",
+      "scope":"MNT-M3-01 / MNT-M3-02",
+      "state":"OPEN / NON_BLOCKING",
+      "blocking_for_current_task":false,
+      "label":"Search Console evidence is sparse and cannot support trend or causality claims.",
+      "source":"docs/search/MNT_M3_01_MARKET_SEARCH_DEMAND_RESEARCH_2026-09-13.md"
+    },
+    {
+      "id":"MNT-RESIDUAL-M3-01-PLANNER-SCOPE",
+      "class":"RESEARCH_LIMITATION",
+      "scope":"MNT-M3-01 / MNT-M3-03",
+      "state":"OPEN / NON_BLOCKING",
+      "blocking_for_current_task":false,
+      "label":"Planner data is Brazil/Portuguese; project-name entity ambiguity and SERP intent still require M3-03.",
+      "source":"docs/search/MNT_M3_01_MARKET_SEARCH_DEMAND_RESEARCH_2026-09-13.md"
+    },
+    {
+      "id":"MNT-RESIDUAL-LEAD-GUARD-CLIENT-SIDE",
+      "class":"ACCEPTED_V1_RESIDUAL",
+      "scope":"MNT-M2-10 / FUTURE_LEAD_VALIDITY_HARDENING",
+      "state":"OPEN / ACCEPTED_NON_BLOCKING",
+      "blocking_for_current_task":false,
+      "label":"The thank-you lead gate is a bounded client-side heuristic, not provider/server authentication.",
+      "source":"docs/measurement/MNT_M2_10_LIVE_QA_UPDATE_2026-09-13.md"
+    },
+    {
+      "id":"MNT-ISSUE-META-RUNTIME-IDENTIFIERS",
+      "class":"FUTURE_IMPLEMENTATION_EVIDENCE",
+      "scope":"META / LATER_GATE",
+      "state":"OPEN / NON_BLOCKING",
+      "blocking_for_current_task":false,
+      "label":"Meta Dataset/Pixel identifiers and relationship remain unproven; Meta runtime is not implemented.",
+      "source":"docs/measurement/MNT_M2_06_META_PIXEL_DATASET_OWNERSHIP_CONTRACT_V1_2026-09-10.md"
+    },
+    {
+      "id":"MNT-RESIDUAL-VERCEL-HOMOLOGATION-DRIFT",
+      "class":"OPERATIONAL_RESIDUAL",
+      "scope":"VERCEL",
+      "state":"OPEN / MANUAL_DEPLOY_PENDING",
+      "blocking_for_current_task":false,
+      "label":"Vercel Production homologation has not yet been proven aligned to latest canonical main.",
+      "source":"docs/sfjm/CURRENT_PROGRAM_STATE.json"
+    },
+    {
+      "id":"MNT-RESIDUAL-CANONICAL",
+      "class":"RESIDUAL",
+      "scope":"SEARCH",
+      "state":"OPEN / NON_BLOCKING_FOR_CURRENT_V1",
+      "blocking_for_current_task":false,
+      "label":"Commercial canonical is client-side rather than static/SSR."
+    },
+    {
+      "id":"MNT-RESIDUAL-SITEMAP",
+      "class":"RESIDUAL",
+      "scope":"SEARCH",
+      "state":"OPEN / NON_BLOCKING_FOR_CURRENT_V1",
+      "blocking_for_current_task":false,
+      "label":"sitemap.xml is not available."
+    },
+    {
+      "id":"MNT-RESIDUAL-WWW-REDIRECT",
+      "class":"RESIDUAL",
+      "scope":"SEARCH/DNS",
+      "state":"OPEN / HTTP_301_308_NOT_PROVEN",
+      "blocking_for_current_task":false,
+      "label":"www resolves to canonical at page level, but HTTP 301/308 semantics remain unproven."
+    }
   ],
   "evidence": [
     {"id":"MNT-EVIDENCE-P0-B","class":"SEARCH_INDEXABILITY","state":"PASS_WITH_RESIDUAL_RISK","ref":"docs/evidence/search/P0_B_SEARCH_INDEXABILITY_EVIDENCE_2026-08-30.md"},
     {"id":"MNT-EVIDENCE-GSC-T0-2026-09-10","class":"SEARCH_PERFORMANCE_T0","state":"EARLY_DISCOVERY / INSUFFICIENT_VOLUME_FOR_TREND_OR_CAUSALITY_CLAIMS","ref":"docs/evidence/search/GSC_BASELINE_2026-09-10.md"},
+    {"id":"MNT-EVIDENCE-M2-CONSENT-T1","class":"MEASUREMENT_CONSENT","state":"ACCEPTED","ref":"docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md"},
+    {"id":"MNT-EVIDENCE-M2-09","class":"TRACKING_IMPLEMENTATION","state":"ACCEPTED_COMPLETE","ref":"docs/measurement/MNT_M2_09_TRACKING_IMPLEMENTATION_EVIDENCE_2026-09-12.md"},
     {"id":"MNT-EVIDENCE-M2-10","class":"MEASUREMENT_E2E_QA","state":"ACCEPTED_COMPLETE_WITH_V1_RESIDUAL","ref":"docs/measurement/MNT_M2_10_LIVE_QA_UPDATE_2026-09-13.md"},
     {"id":"MNT-EVIDENCE-M3-01","class":"MARKET_SEARCH_DEMAND_RESEARCH","state":"COMPLETE_CANDIDATE / PENDING_ACCEPTANCE","ref":"docs/search/MNT_M3_01_MARKET_SEARCH_DEMAND_RESEARCH_2026-09-13.md"}
   ],
