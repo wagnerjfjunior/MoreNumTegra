@@ -2,48 +2,48 @@
   "schema_version": "sfjm.project-current-state.v1",
   "project_id": "morenumtegra",
   "program_id": "MNT-RESF",
-  "state_observed_at": "2026-09-12",
+  "state_observed_at": "2026-09-13",
   "decision_anchor": {
     "type": "PR_LIFECYCLE_ACCEPTANCE_TARGET",
-    "scope": "MNT-M2-09 authorized tracking implementation",
-    "authorization": "Product Authority authorized bounded MNT-M2-09 execution, GTM Version 7 publication, GA4 Key event configuration, PR #52 merge and final administrative/documentation closure on 2026-09-12",
-    "canonical_implementation_anchor": "PR #50 / 6eaacaca9af2c22243d45f20a24e04577ac58ce2",
-    "runtime_fix_anchor": "PR #52 / 70f2b77e93225b65a1972c12875c58bd7198be1d",
-    "evidence": "docs/measurement/MNT_M2_09_TRACKING_IMPLEMENTATION_EVIDENCE_2026-09-12.md",
-    "meaning": "MNT-M2-09 is accepted complete. MNT-M2-10 remains a distinct end-to-end QA task requiring a separate Product Authority execution gate."
+    "scope": "MNT-M2-10 end-to-end Measurement QA and bounded lead-guard remediation",
+    "authorization": "Product Authority authorized MNT-M2-10 execution, bounded remediation, accepted the documented V1 client-side lead-validity residual, and authorized Ready + merge of PR #54 on 2026-09-13.",
+    "canonical_merge_anchor": "PR #54 / 5d2db073a4b345ae4e0067b675cab1cfb4a068ed",
+    "evidence": "docs/measurement/MNT_M2_10_LIVE_QA_UPDATE_2026-09-13.md",
+    "reconciliation": "docs/measurement/MNT_M2_10_POST_MERGE_RECONCILIATION_2026-09-13.md",
+    "meaning": "MNT-M2-10 is accepted complete with one explicit V1 client-side residual. MNT-M2 is complete. MNT-M3-01 is the next planned task and requires a separate Product Authority execution gate."
   },
   "program_state": "ACTIVE",
   "current_execution": {
-    "active_phase_id": "MNT-M2",
+    "active_phase_id": null,
     "active_task_id": null,
-    "immediate_execution_authority": "NONE_FOR_MNT_M2_10",
-    "reason": "MNT-M2-09 is accepted complete from live Green + GTM/GA4 evidence. MNT-M2-10 is next but is not authorized by task sequence or by MNT-M2-09 closure."
+    "immediate_execution_authority": "NONE_FOR_MNT_M3_01",
+    "reason": "MNT-M2 is complete after PR #54. Task sequence does not authorize MNT-M3-01."
   },
   "next": {
-    "phase_id": "MNT-M2",
-    "phase_label": "Measurement Foundation & Consent",
-    "phase_state": "ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION",
-    "task_id": "MNT-M2-10",
-    "task_label": "Execute end-to-end Measurement QA",
+    "phase_id": "MNT-M3",
+    "phase_label": "Intelligence, Product Truth & Search Contract",
+    "phase_state": "PLANNED",
+    "task_id": "MNT-M3-01",
+    "task_label": "Market and Search demand research",
     "task_state": "PLANNED / EXECUTION_NOT_AUTHORIZED",
-    "safe_action": "Obtain explicit Product Authority authorization before starting MNT-M2-10. QA must observe and prove the accepted runtime without inventing PASS or using unapproved platform changes to force a result.",
-    "mutation_boundary": "MNT-M2-10 authorization, if granted, is a bounded QA/evidence gate and does not automatically authorize further GTM/GA4 mutation, Meta implementation, Ads linking, DNS/Search Console change, Green structural change or automatic Vercel deployment."
+    "safe_action": "Obtain explicit Product Authority authorization before starting MNT-M3-01. Research must remain evidence-first and must not mutate Search Console, Ads, GTM/GA4, Green, DNS or Vercel by sequence alone.",
+    "mutation_boundary": "MNT-M3-01 authorization, if granted, authorizes bounded research/evidence work only unless a separate implementation/platform mutation is explicitly authorized."
   },
   "progress": {
     "forecast_total_hours": 1240,
-    "accepted_scope_equivalent_hours": 376,
-    "remaining_forecast_hours": 864,
-    "accepted_percent": 30.3225806452,
-    "display_percent": 30.32,
-    "basis": "MNT-M0 160h + MNT-M1 96h + accepted MNT-M2-01..09 120h divided by 1240h total forecast",
+    "accepted_scope_equivalent_hours": 400,
+    "remaining_forecast_hours": 840,
+    "accepted_percent": 32.2580645161,
+    "display_percent": 32.26,
+    "basis": "MNT-M0 160h + MNT-M1 96h + accepted MNT-M2-01..10 144h divided by 1240h total forecast",
     "semantics": "PLANNING_FORECAST_NOT_ACTUAL_TIMESHEET",
     "effective_when": "THIS_REVISION_IS_IN_CANONICAL_MAIN",
-    "partial_work_rule": "MNT-M2-10 contributes 0 accepted hours until its exit criteria are fully accepted."
+    "partial_work_rule": "Planned MNT-M3 work contributes 0 accepted hours until task exit criteria are accepted."
   },
   "milestone_state_overrides": {
     "MNT-M0": "COMPLETE",
     "MNT-M1": "COMPLETE",
-    "MNT-M2": "ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION",
+    "MNT-M2": "COMPLETE",
     "MNT-M3": "PLANNED",
     "MNT-M4": "PLANNED",
     "MNT-M5": "PLANNED",
@@ -60,7 +60,8 @@
     "MNT-M2-07": "COMPLETE",
     "MNT-M2-08": "COMPLETE",
     "MNT-M2-09": "COMPLETE",
-    "MNT-M2-10": "PLANNED"
+    "MNT-M2-10": "COMPLETE",
+    "MNT-M3-01": "PLANNED"
   },
   "accepted_m1_task_ids": [
     "MNT-M1-01",
@@ -81,7 +82,8 @@
     "MNT-M2-06",
     "MNT-M2-07",
     "MNT-M2-08",
-    "MNT-M2-09"
+    "MNT-M2-09",
+    "MNT-M2-10"
   ],
   "current_evidence": {
     "mnt_m2_01_t0_inventory": {
@@ -156,58 +158,52 @@
       "source_primary_event": "mnt_lead_success",
       "ga4_primary_event": "generate_lead",
       "ga4_key_event": true,
-      "form_start_observed": 1,
-      "form_submit_attempt_observed": 1,
-      "lead_success_observed": 1,
-      "generate_lead_observed": 1,
       "visitor_pii_in_project_payload": false
+    },
+    "mnt_m2_10_e2e_qa": {
+      "ref": "docs/measurement/MNT_M2_10_LIVE_QA_UPDATE_2026-09-13.md",
+      "state": "ACCEPTED_COMPLETE_WITH_V1_RESIDUAL",
+      "merge": "5d2db073a4b345ae4e0067b675cab1cfb4a068ed",
+      "qa_01_25_adjudicated": true,
+      "unadjudicated_p0_p1": false,
+      "lead_guard_lifecycle": "v4",
+      "accepted_residual": "CLIENT_SIDE_PENDING_PLUS_COMPLETE_REDIRECT_SHAPE_CAN_BE_MANUALLY_SATISFIED",
+      "provider_authenticated_success_claimed": false,
+      "gtm_change_required": false,
+      "ga4_change_required": false
     }
   },
   "issues": [
     {
-      "id": "MNT-ISSUE-MEASUREMENT-E2E-QA",
-      "class": "REQUIRED_NEXT",
-      "scope": "MNT-M2-10",
-      "state": "OPEN / NOT_YET_AUTHORIZED",
-      "label": "Tracking implementation is accepted, but the full end-to-end Measurement QA contract remains unexecuted.",
-      "resolution_condition": "Authorize and complete MNT-M2-10 with evidence for canonical host, duplicate-path prevention, privacy, consent and event uniqueness."
+      "id": "MNT-RESIDUAL-LEAD-GUARD-CLIENT-SIDE",
+      "class": "ACCEPTED_V1_RESIDUAL",
+      "scope": "MNT-M2-10 / FUTURE_LEAD_VALIDITY_HARDENING",
+      "state": "OPEN / ACCEPTED_NON_BLOCKING",
+      "label": "The v4 thank-you gate is a client-side heuristic, not provider/server authentication.",
+      "resolution_condition": "Only revisit under an explicitly authorized stronger lead-validity architecture, such as provider-authenticated handoff/callback evidence."
     },
     {
       "id": "MNT-ISSUE-META-RUNTIME-IDENTIFIERS",
       "class": "FUTURE_IMPLEMENTATION_EVIDENCE",
       "scope": "META / LATER_GATE",
-      "state": "OPEN / NON_BLOCKING_FOR_M2-09",
+      "state": "OPEN / NON_BLOCKING",
       "label": "Dedicated Meta Dataset/browser-source IDs and relationship remain unproven and Meta runtime is not implemented.",
       "resolution_condition": "Resolve/adopt existing dedicated assets only under a future explicit Meta implementation gate."
-    },
-    {
-      "id": "MNT-RESIDUAL-MEASUREMENT-DUPLICATION",
-      "class": "QA_CONTROL_PENDING",
-      "scope": "MNT-M2-10",
-      "state": "IMPLEMENTED_PATH / FULL_E2E_PROOF_PENDING",
-      "label": "Single-dispatcher/canonical-host architecture is implemented for the accepted path, but the complete duplicate-path contract still requires MNT-M2-10 proof."
-    },
-    {
-      "id": "MNT-ISSUE-CONSENT-THIRD-PARTY-BOUNDARY",
-      "class": "RESIDUAL",
-      "scope": "RESF-CONSENT / MNT-M2",
-      "state": "OPEN / NON_BLOCKING_FOR_ACCEPTED_GA4_PATH",
-      "label": "Accepted Google consent flow is proven for the tested path; broader third-party/destination behavior remains bounded to future implementations and M2-10 as applicable."
     },
     {
       "id": "MNT-RESIDUAL-VERCEL-HOMOLOGATION-DRIFT",
       "class": "OPERATIONAL_RESIDUAL",
       "scope": "VERCEL",
       "state": "OPEN / MANUAL_DEPLOY_PENDING",
-      "label": "Vercel Production homologation is manual gate-driven and has not yet been proven updated to the latest main after PR #52."
+      "label": "Vercel Production homologation is manual gate-driven and has not been proven aligned to the latest canonical main."
     },
     {
-      "id": "MNT-GATE-M2-NEXT",
+      "id": "MNT-GATE-M3-NEXT",
       "class": "FUTURE_GATE",
-      "scope": "MNT-M2-10",
+      "scope": "MNT-M3-01",
       "state": "NOT_AUTHORIZED",
-      "label": "MNT-M2-10 requires explicit Product Authority authorization.",
-      "resolution_condition": "Product Authority explicitly authorizes bounded MNT-M2-10 execution."
+      "label": "MNT-M3-01 requires explicit Product Authority authorization.",
+      "resolution_condition": "Product Authority explicitly authorizes bounded MNT-M3-01 execution."
     }
   ],
   "state_precedence": {
