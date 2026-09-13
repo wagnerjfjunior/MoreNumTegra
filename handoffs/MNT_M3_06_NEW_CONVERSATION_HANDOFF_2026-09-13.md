@@ -13,7 +13,7 @@ PR #59 — MNT-M3-04 — COMPLETE_CANDIDATE
 head: e40389af2b0e26a9c6ce2aa99efef7150fd61828
 
 PR #60 — MNT-M3-05 — COMPLETE_CANDIDATE
-head: 7dde4335211ea2bf6f1929da7226b800dd16a009
+head: resolve live before acting
 base: PR #59 corrected head
 
 PR #61 — MNT-M3-06 — COMPLETE_CANDIDATE
