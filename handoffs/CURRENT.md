@@ -2,14 +2,16 @@
 
 > Handoff SFJM de continuidade cognitiva. `main` é a fonte canônica; sempre resolver o SHA live antes de agir.
 
-## Estado live resolvido em 2026-09-12
+## Estado live resolvido em 2026-09-13
 
 - Repositório: `wagnerjfjunior/MoreNumTegra`
-- PR #50: `MERGED` em `6eaacaca9af2c22243d45f20a24e04577ac58ce2`
-- PR #52: `MERGED` em `70f2b77e93225b65a1972c12875c58bd7198be1d`
-- MNT-M2-09: `COMPLETE / ACCEPTED`
-- Próxima task: `MNT-M2-10 — Execute end-to-end Measurement QA`
-- MNT-M2-10: `PLANNED / NOT_YET_AUTHORIZED`
+- PR #54: `MERGED` por squash
+- Merge SHA: `5d2db073a4b345ae4e0067b675cab1cfb4a068ed`
+- MNT-M2-10: `COMPLETE / ACCEPTED_WITH_V1_RESIDUAL`
+- MNT-M2: `COMPLETE`
+- Próxima fase planejada: `MNT-M3 — Intelligence, Product Truth & Search Contract`
+- Próxima task: `MNT-M3-01 — Market and Search demand research`
+- MNT-M3-01: `PLANNED / NOT_YET_AUTHORIZED`
 
 ## Measurement aceito
 
@@ -22,11 +24,7 @@ GTM = GTM-PGCR4R47
 published GTM version = 7
 ```
 
-GTM Version 7:
-
-`MNT M2-09 - Form Funnel + generate_lead - 2026-09-12`
-
-Foi publicada em 2026-09-12 e validada em Tag Assistant + GA4 DebugView.
+GTM Version 7 permanece aceita; nenhuma nova mutação GTM/GA4 foi necessária para fechar MNT-M2-10.
 
 ## Green / Form 46
 
@@ -43,38 +41,39 @@ page 292 -> src-greenn/moretegra.js
 page 294 -> src-greenn/thank-you/obrigado.js
 ```
 
-A Green possui um único campo de JavaScript customizado por página. Os módulos em `src-greenn/modules/` são apenas fontes de desenvolvimento e nunca devem ser colados individualmente na Green.
-
-O artefato consolidado da página 292 contém UI/runtime + Measurement v6 + Form 46 lead guard v4.
+A Green possui um único campo de JavaScript customizado por página. Os módulos em `src-greenn/modules/` são fontes de desenvolvimento e não devem ser colados individualmente na Green.
 
 ## Funil validado
 
-O fluxo real aceito em produção foi:
+Fluxo aceito:
 
 ```text
 mnt_form_start
 -> mnt_form_submit_attempt
 -> Green native Form 46 success
--> /obrigado
+-> /obrigado?l_=<positive integer>&p_id=292
 -> mnt_lead_success
 -> GTM
 -> GA4 generate_lead
 ```
 
-No teste aceito:
+QA live de MNT-M2-10 confirmou:
 
-```text
-mnt_form_start = 1
-mnt_form_submit_attempt = 1
-mnt_lead_success = 1
-generate_lead = 1
-```
+- `www` -> canonical sem Measurement project-owned no alias;
+- um `page_view` project-owned por document load;
+- reload gera novo event ID sem duplicação por load;
+- busca de catálogo debounced sem raw free-form query no payload;
+- `/obrigado` simples não fabrica lead;
+- lead Green real gera exatamente um `mnt_lead_success` e um `generate_lead`;
+- refresh/back não duplica lead;
+- denied consent + persistência após reload;
+- QA-01..QA-25 adjudicados.
 
-`generate_lead` está configurado no GA4 como `Evento principal` / Key event.
+## Residual V1 aceito
 
-`mnt_form_start` e `mnt_form_submit_attempt` permanecem não-conversões.
+A página 294 usa um gate client-side. Um `pending` recente + entrada manual da forma completa aceita da URL pode satisfazer o gate. Isso é um `KNOWN / ACCEPTED V1 RESIDUAL` e **não** deve ser descrito como autenticação de sucesso pelo servidor/provider Green.
 
-Green `gtm.formSubmit` continua sendo telemetria de plataforma e não é encaminhado como evento de negócio MoreNumTegra.
+Esse residual é não-bloqueante para o fechamento de MNT-M2.
 
 ## Privacy / consent
 
@@ -82,25 +81,38 @@ Green `gtm.formSubmit` continua sendo telemetria de plataforma e não é encamin
 - raw free-form catalogue search text permanece excluído;
 - sem `gtag()`/`fbq()` direto no código do projeto;
 - Consent Mode permanece default-denied com update conforme decisão do usuário;
-- teste aceito mostrou consentimento granted e `wasSetLate=false` após aceite.
+- granted e denied persistence têm evidência aceita no escopo M2.
 
 ## Evidência canônica
 
-`docs/measurement/MNT_M2_09_TRACKING_IMPLEMENTATION_EVIDENCE_2026-09-12.md`
+- `docs/measurement/MNT_M2_09_TRACKING_IMPLEMENTATION_EVIDENCE_2026-09-12.md`
+- `docs/measurement/MNT_M2_10_LIVE_QA_UPDATE_2026-09-13.md`
+- `docs/measurement/MNT_M2_10_POST_MERGE_RECONCILIATION_2026-09-13.md`
 
-Ela registra PRs, assets GA4/GTM, Version 7, runtime proof, DebugView, Key event e boundaries.
+## Progresso
+
+```text
+forecast total = 1240h
+accepted scope-equivalent = 400h
+remaining forecast = 840h
+program progress = 32.26%
+MNT-M2 accepted = 144h / 144h
+```
 
 ## Próxima ação segura
 
-Não iniciar MNT-M2-10 por sequência automática. A próxima ação é decisão explícita da Product Authority sobre autorizar `MNT-M2-10 — Execute end-to-end Measurement QA`.
+Não iniciar MNT-M3-01 por sequência automática. A próxima ação é decisão explícita da Product Authority sobre autorizar:
 
-MNT-M2-10 deve validar o contrato completo de QA, incluindo canonical host, unicidade de eventos, ausência de caminhos duplicados, consent states, privacy e residuals.
+`MNT-M3-01 — Market and Search demand research`.
+
+Quando autorizada, a task deve permanecer research/evidence-first e não autoriza implicitamente Search Console, Ads, GTM/GA4, Green, DNS ou Vercel mutations.
 
 ## Residuals preservados
 
-- Meta Pixel/Dataset/CAPI: não implementado por MNT-M2-09; gate separado;
+- Meta Pixel/Dataset/CAPI: não implementado; gate separado;
 - Google Ads linking/conversions: não autorizado;
-- Vercel Production: update manual via terminal permanece pendente e separado;
+- Vercel Production: update manual via terminal permanece separado;
 - FECH.AI/n8n/Make/webhook/backend: fora do escopo V1 atual;
 - www HTTP 301/308: ainda não provado;
-- sitemap/canonical Search residuals permanecem separados.
+- sitemap/canonical Search residuals permanecem separados;
+- lead-validity client-side residual aceito em MNT-M2-10 permanece registrado.
