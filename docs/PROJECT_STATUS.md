@@ -4,11 +4,13 @@
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra`
 - Referência: `main` — resolver SHA live antes de agir
 - MNT-M2-10 merge: PR #54 / squash merge `5d2db073a4b345ae4e0067b675cab1cfb4a068ed`
+- MNT-M2 completion reconciliation: PR #55 / squash merge `894f0a7c94f15cf19a00481a45bc9d69749b067f`
 - Produto V1: `GREEN_COMMERCIAL_V1_SEARCH_INDEXED / OPERATIONAL`
 - Programa: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
 - Fase concluída: `MNT-M2 — COMPLETE`
-- Próxima fase planejada: `MNT-M3 — Intelligence, Product Truth & Search Contract`
-- Próxima task: `MNT-M3-01 — PLANNED / EXECUTION_NOT_AUTHORIZED`
+- Fase atual candidate: `MNT-M3 — ACTIVE`
+- Task atual candidate: `MNT-M3-01 — COMPLETE_CANDIDATE / PENDING_PRODUCT_AUTHORITY_ACCEPTANCE`
+- Próxima task após aceitação, ainda não autorizada: `MNT-M3-02 — Extract and classify Search Console queries`
 - Saúde operacional do V1: `verde`
 
 ## 1. Produção atual
@@ -20,6 +22,7 @@
 - Green page 292 usa `src-greenn/moretegra.js`
 - Green page 294 usa `src-greenn/thank-you/obrigado.js`
 - Vercel Production continua exigindo atualização manual; não declarar alinhamento até evidência específica
+- MNT-M3-01 não realizou mutation em produção, Measurement, Ads, Search Console, DNS, Green ou Vercel
 
 Preservar:
 
@@ -27,12 +30,14 @@ Preservar:
 LIVE V1 OPERATIONAL != MNT-RESF PROGRAM COMPLETE
 PROGRAM PROGRESS != V1 PRODUCT READINESS
 GREEN PRODUCTION != VERCEL HOMOLOGATION
-MNT-M2 COMPLETE != MNT-M3 AUTHORIZED
+MNT-M2 COMPLETE != MNT-M3 COMPLETE
+MNT-M3-01 COMPLETE_CANDIDATE != MNT-M3-01 ACCEPTED
+MNT-M3-01 ACCEPTED != MNT-M3-02 AUTHORIZED
 ```
 
 ## 2. Programa MNT-RESF
 
-Estado canônico desta revisão:
+Estado desta revisão candidate:
 
 ```text
 MNT-M0 COMPLETE
@@ -48,18 +53,20 @@ MNT-M2 COMPLETE
   MNT-M2-08 COMPLETE
   MNT-M2-09 COMPLETE
   MNT-M2-10 COMPLETE / ACCEPTED_WITH_V1_RESIDUAL
-MNT-M3 PLANNED
-  MNT-M3-01 PLANNED / NEXT / EXECUTION_NOT_AUTHORIZED
+MNT-M3 ACTIVE
+  MNT-M3-01 COMPLETE_CANDIDATE / PENDING_ACCEPTANCE
+  MNT-M3-02..07 PLANNED / NOT_AUTHORIZED
 MNT-M4..MNT-M7 PLANNED
 ```
 
-Planning forecast:
+Planning forecast enquanto M3-01 ainda não foi aceito:
 
 ```text
 forecast total                = 1240h
 accepted scope-equivalent     = 400h
 remaining forecast            = 840h
 program progress              = 32.26%
+MNT-M3-01 candidate           = 24h / not yet accepted
 ```
 
 Accepted M2 scope-equivalent = `144h`:
@@ -159,7 +166,7 @@ META_CAPI = NOT_IMPLEMENTED / NOT_AUTHORIZED
 
 Não inferir ownership de website Pixel/Dataset por associação com Facebook Page, Lead Ads, ad account ou Green CRM.
 
-## 8. Search / GSC residuals
+## 8. Search / GSC residuals históricos
 
 P0-B permanece `PASS_WITH_RESIDUAL_RISK`.
 
@@ -179,9 +186,61 @@ CTR = 0%
 average position = 26.1
 ```
 
-Esse baseline histórico não deve ser confundido com dados atuais de MNT-M3-01.
+Esse baseline histórico não deve ser confundido com os dados current candidate de MNT-M3-01.
 
-## 9. SFJM Workspace boundary
+## 9. MNT-M3-01 — Market and Search demand research candidate
+
+Execution authorization: Product Authority explícita em `2026-09-13`.  
+Execution base: `894f0a7c94f15cf19a00481a45bc9d69749b067f`.
+
+Evidence candidate:
+
+- `docs/search/MNT_M3_01_MARKET_SEARCH_DEMAND_RESEARCH_2026-09-13.md`;
+- `docs/search/data/MNT_M3_01_GSC_DEMAND_SNAPSHOT_2026-09-13.csv`;
+- `docs/search/data/MNT_M3_01_PLANNER_UNIVERSE_2026-09-13.csv`.
+
+Observed first-party GSC range `2026-08-23..2026-09-13`:
+
+```text
+clicks = 0
+impressions = 26
+weighted average position ≈ 27.52
+```
+
+The current GSC sample is sparse and mostly brand/entity-shaped. It is insufficient for trend or causality claims.
+
+Selected Google Keyword Planner estimates, Brazil/Portuguese/Google Search:
+
+```text
+tegra = 4,400 avg monthly searches
+tegra incorporadora = 3,600
+apartamentos são paulo = 12,100
+apartamentos a venda são paulo = 8,100
+apartamentos para comprar são paulo = 1,900
+apartamentos na planta em são paulo = 590
+```
+
+Project-name demand was also material for multiple current catalogue names, including DSG Itaim, Ária Higienópolis, TEG Sacomã, Ledge Brooklin, Soma Perdizes, Zahle Jardins, Bueno Brandão 257, YPY Alto do Ipiranga, Bem Moema and others. These values are query-demand estimates and do not themselves prove entity intent, SEO ranking difficulty or page ownership.
+
+Candidate findings:
+
+- São Paulo new-residential market is active at material scale by Secovi-SP evidence;
+- MoreNumTegra organic visibility remains early relative to external Tegra/category demand;
+- brand/entity, project-name and catalogue-aligned location families are direct-fit research clusters;
+- generic São Paulo apartment-purchase terms are materially larger but need SERP/intent validation before ownership decisions;
+- stage/state demand exists and maps to current UI taxonomy;
+- rental, houses and generic brokerage terms returned by Planner are out-of-scope noise.
+
+Limitations:
+
+- GSC remains sparse;
+- Planner scope is Brazil/Portuguese, not São Paulo city-only;
+- Planner competition is paid-search competition, not organic SEO difficulty;
+- some project names require SERP/entity disambiguation;
+- Semrush metrics were unavailable because the connected API reported insufficient unit balance;
+- no page owner, canonical query, final intent or content action is defined by M3-01.
+
+## 10. SFJM Workspace boundary
 
 Consumer precedence:
 
@@ -192,14 +251,14 @@ Consumer precedence:
 
 Consumers devem resolver o live `main` antes de refresh.
 
-## 10. Próxima ação
+## 11. Próxima ação
 
-A próxima ação segura é obter autorização explícita para:
+A próxima ação segura é a decisão explícita da Product Authority sobre aceitar o candidate `MNT-M3-01` e autorizar o lifecycle Ready + merge da PR correspondente.
 
-`MNT-M3-01 — Market and Search demand research`.
+`MNT-M3-02 — Extract and classify Search Console queries` permanece planejada e não autorizada.
 
-MNT-M3-01 é research/evidence-first. Sua autorização não implica automaticamente Search Console mutation, Ads/spend, GTM/GA4 changes, Green changes, DNS changes ou Vercel deployment.
+MNT-M3-01 é research/evidence-only e não implica automaticamente Search Console mutation, Ads/spend, GTM/GA4 changes, Green changes, DNS changes, content implementation ou Vercel deployment.
 
-## 11. External gates preservados
+## 12. External gates preservados
 
 Meta Dataset/Pixel/CAPI, Google Ads/spend, DNS, Search Console mutation, automatic Vercel changes, Green structural changes, FECH.AI/n8n/Make e qualquer reabertura material de Measurement permanecem separadamente gated.

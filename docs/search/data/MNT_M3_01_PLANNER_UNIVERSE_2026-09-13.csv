@@ -1,0 +1,66 @@
+cluster,query,avg_monthly_searches,ads_competition_index,scope_fit,source_scope
+brand_entity,tegra,4400,25,DIRECT,Google Keyword Planner Brazil Portuguese Google Search
+brand_entity,tegra incorporadora,3600,32,DIRECT,Google Keyword Planner Brazil Portuguese Google Search
+brand_entity,tegra construtora,320,51,DIRECT,Google Keyword Planner Brazil Portuguese Google Search
+brand_entity,construtora tegra,210,66,DIRECT,Google Keyword Planner Brazil Portuguese Google Search
+brand_entity,tegra vendas,210,10,DIRECT,Google Keyword Planner Brazil Portuguese Google Search
+brand_entity,tegra empreendimentos,30,50,DIRECT,Google Keyword Planner Brazil Portuguese Google Search
+brand_entity,tegra lançamentos,20,51,DIRECT,Google Keyword Planner Brazil Portuguese Google Search
+brand_entity,apartamentos tegra,20,82,DIRECT,Google Keyword Planner Brazil Portuguese Google Search
+brand_entity,tegra caminhos da lapa,30,51,DIRECT,Google Keyword Planner Brazil Portuguese Google Search
+brand_entity,tegra bueno brandão,40,40,DIRECT,Google Keyword Planner Brazil Portuguese Google Search
+generic_sale,apartamentos são paulo,12100,75,BROAD_RELEVANT,Google Keyword Planner Brazil Portuguese Google Search
+generic_sale,apartamentos a venda são paulo,8100,78,BROAD_RELEVANT,Google Keyword Planner Brazil Portuguese Google Search
+generic_sale,apartamentos para comprar são paulo,1900,81,BROAD_RELEVANT,Google Keyword Planner Brazil Portuguese Google Search
+generic_sale,apartamentos em são paulo,1600,61,BROAD_RELEVANT,Google Keyword Planner Brazil Portuguese Google Search
+generic_sale,comprar apartamento são paulo,1600,81,BROAD_RELEVANT,Google Keyword Planner Brazil Portuguese Google Search
+generic_sale,apartamentos na planta em são paulo,590,80,BROAD_RELEVANT,Google Keyword Planner Brazil Portuguese Google Search
+generic_sale,lançamentos imobiliários,480,39,BROAD_RELEVANT,Google Keyword Planner Brazil Portuguese Google Search
+generic_sale,lançamentos são paulo,140,81,BROAD_RELEVANT,Google Keyword Planner Brazil Portuguese Google Search
+generic_sale,apartamento em construção são paulo,110,80,BROAD_RELEVANT,Google Keyword Planner Brazil Portuguese Google Search
+generic_sale,apartamento pronto para morar são paulo,20,89,BROAD_RELEVANT,Google Keyword Planner Brazil Portuguese Google Search
+location,cidade jardim apartamentos,1300,54,DIRECT_LOCATION_OVERLAP,Google Keyword Planner Brazil Portuguese Google Search
+location,apartamentos perdizes,1300,79,DIRECT_LOCATION_OVERLAP,Google Keyword Planner Brazil Portuguese Google Search
+location,lapa apartamentos,1000,77,DIRECT_LOCATION_OVERLAP,Google Keyword Planner Brazil Portuguese Google Search
+location,apartamentos vila nova conceição,720,72,DIRECT_LOCATION_OVERLAP,Google Keyword Planner Brazil Portuguese Google Search
+location,apartamentos jardins sao paulo,590,72,DIRECT_LOCATION_OVERLAP,Google Keyword Planner Brazil Portuguese Google Search
+location,apartamentos zona sul sao paulo,390,77,DIRECT_LOCATION_OVERLAP,Google Keyword Planner Brazil Portuguese Google Search
+location,apartamentos brooklin sao paulo,320,69,DIRECT_LOCATION_OVERLAP,Google Keyword Planner Brazil Portuguese Google Search
+location,apartamentos zona leste sao paulo,260,73,DIRECT_LOCATION_OVERLAP,Google Keyword Planner Brazil Portuguese Google Search
+location,apartamentos higienopolis sao paulo,170,69,DIRECT_LOCATION_OVERLAP,Google Keyword Planner Brazil Portuguese Google Search
+location,apartamentos moema sao paulo,140,73,DIRECT_LOCATION_OVERLAP,Google Keyword Planner Brazil Portuguese Google Search
+location,apartamentos zona oeste sao paulo,40,80,DIRECT_LOCATION_OVERLAP,Google Keyword Planner Brazil Portuguese Google Search
+stage,apartamento na planta zona sul,480,81,DIRECT_TAXONOMY_OVERLAP,Google Keyword Planner Brazil Portuguese Google Search
+stage,apartamentos prontos para morar zona sul,110,77,DIRECT_TAXONOMY_OVERLAP,Google Keyword Planner Brazil Portuguese Google Search
+stage,apartamento pronto para morar zona leste,110,76,DIRECT_TAXONOMY_OVERLAP,Google Keyword Planner Brazil Portuguese Google Search
+stage,apartamento na planta são paulo zona sul,110,83,DIRECT_TAXONOMY_OVERLAP,Google Keyword Planner Brazil Portuguese Google Search
+stage,apartamentos em construção zona sul,30,84,DIRECT_TAXONOMY_OVERLAP,Google Keyword Planner Brazil Portuguese Google Search
+project,dsg itaim,1900,26,DIRECT_PROJECT_NAME,Google Keyword Planner Brazil Portuguese Google Search
+project,ária higienópolis,1900,31,DIRECT_PROJECT_NAME,Google Keyword Planner Brazil Portuguese Google Search
+project,teg sacomã,1900,4,DIRECT_PROJECT_NAME,Google Keyword Planner Brazil Portuguese Google Search
+project,ledge brooklin,1600,25,DIRECT_PROJECT_NAME,Google Keyword Planner Brazil Portuguese Google Search
+project,soma perdizes,1300,24,DIRECT_PROJECT_NAME,Google Keyword Planner Brazil Portuguese Google Search
+project,zahle jardins,1300,20,DIRECT_PROJECT_NAME,Google Keyword Planner Brazil Portuguese Google Search
+project,bueno brandão 257,1300,14,DIRECT_PROJECT_NAME,Google Keyword Planner Brazil Portuguese Google Search
+project,ypy alto do ipiranga,1300,29,DIRECT_PROJECT_NAME,Google Keyword Planner Brazil Portuguese Google Search
+project,bem moema,1000,20,DIRECT_PROJECT_NAME,Google Keyword Planner Brazil Portuguese Google Search
+project,chateau jardin,880,40,DIRECT_PROJECT_NAME,Google Keyword Planner Brazil Portuguese Google Search
+project,caminhos da lapa reserva,880,8,DIRECT_PROJECT_NAME,Google Keyword Planner Brazil Portuguese Google Search
+project,reserva caminhos da lapa,720,36,DIRECT_PROJECT_NAME,Google Keyword Planner Brazil Portuguese Google Search
+project,ode perdizes,720,53,DIRECT_PROJECT_NAME,Google Keyword Planner Brazil Portuguese Google Search
+project,mozae higienopolis,390,26,DIRECT_PROJECT_NAME,Google Keyword Planner Brazil Portuguese Google Search
+project,ampere brooklin,170,54,DIRECT_PROJECT_NAME,Google Keyword Planner Brazil Portuguese Google Search
+project,caminhos da lapa elo duo,110,63,DIRECT_PROJECT_NAME,Google Keyword Planner Brazil Portuguese Google Search
+project,nova vivere,110,43,DIRECT_PROJECT_NAME,Google Keyword Planner Brazil Portuguese Google Search
+project,garden design tegra,50,29,DIRECT_PROJECT_NAME,Google Keyword Planner Brazil Portuguese Google Search
+project,universo tatuapé órbita,110,53,DIRECT_PROJECT_NAME,Google Keyword Planner Brazil Portuguese Google Search
+project,capitolo piero lissoni,,,DIRECT_PROJECT_NAME_METRICS_NOT_AVAILABLE,Google Keyword Planner Brazil Portuguese Google Search
+project,tiel vila nova conceicao,,,DIRECT_PROJECT_NAME_METRICS_NOT_AVAILABLE,Google Keyword Planner Brazil Portuguese Google Search
+decision_modifier,reserva caminhos da lapa preço,20,59,DIRECT_PROJECT_MODIFIER,Google Keyword Planner Brazil Portuguese Google Search
+decision_modifier,bem moema preço,20,86,DIRECT_PROJECT_MODIFIER,Google Keyword Planner Brazil Portuguese Google Search
+decision_modifier,ária higienópolis preço,20,83,DIRECT_PROJECT_MODIFIER,Google Keyword Planner Brazil Portuguese Google Search
+decision_modifier,ode perdizes preço,10,91,DIRECT_PROJECT_MODIFIER,Google Keyword Planner Brazil Portuguese Google Search
+decision_modifier,dsg itaim preco,10,86,DIRECT_PROJECT_MODIFIER,Google Keyword Planner Brazil Portuguese Google Search
+decision_modifier,reserva caminhos da lapa planta,10,0,DIRECT_PROJECT_MODIFIER,Google Keyword Planner Brazil Portuguese Google Search
+decision_modifier,teg sacoma planta,10,23,DIRECT_PROJECT_MODIFIER,Google Keyword Planner Brazil Portuguese Google Search
+decision_modifier,zahle jardins endereço,10,0,DIRECT_PROJECT_MODIFIER,Google Keyword Planner Brazil Portuguese Google Search

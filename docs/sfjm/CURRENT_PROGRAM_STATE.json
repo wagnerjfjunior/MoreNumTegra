@@ -4,30 +4,29 @@
   "program_id": "MNT-RESF",
   "state_observed_at": "2026-09-13",
   "decision_anchor": {
-    "type": "PR_LIFECYCLE_ACCEPTANCE_TARGET",
-    "scope": "MNT-M2-10 end-to-end Measurement QA and bounded lead-guard remediation",
-    "authorization": "Product Authority authorized MNT-M2-10 execution, bounded remediation, accepted the documented V1 client-side lead-validity residual, and authorized Ready + merge of PR #54 on 2026-09-13.",
-    "canonical_merge_anchor": "PR #54 / 5d2db073a4b345ae4e0067b675cab1cfb4a068ed",
-    "evidence": "docs/measurement/MNT_M2_10_LIVE_QA_UPDATE_2026-09-13.md",
-    "reconciliation": "docs/measurement/MNT_M2_10_POST_MERGE_RECONCILIATION_2026-09-13.md",
-    "meaning": "MNT-M2-10 is accepted complete with one explicit V1 client-side residual. MNT-M2 is complete. MNT-M3-01 is the next planned task and requires a separate Product Authority execution gate."
+    "type": "TASK_EXECUTION_AUTHORIZATION",
+    "scope": "MNT-M3-01 Market and Search demand research",
+    "authorization": "Product Authority explicitly authorized starting MNT-M3-01 on 2026-09-13 after PR #55 merge confirmation.",
+    "canonical_execution_base": "894f0a7c94f15cf19a00481a45bc9d69749b067f",
+    "evidence": "docs/search/MNT_M3_01_MARKET_SEARCH_DEMAND_RESEARCH_2026-09-13.md",
+    "meaning": "MNT-M3-01 bounded research has been executed and is a complete candidate pending Product Authority acceptance. MNT-M3-02 remains separately gated."
   },
   "program_state": "ACTIVE",
   "current_execution": {
-    "active_phase_id": null,
-    "active_task_id": null,
-    "immediate_execution_authority": "NONE_FOR_MNT_M3_01",
-    "reason": "MNT-M2 is complete after PR #54. Task sequence does not authorize MNT-M3-01."
+    "active_phase_id": "MNT-M3",
+    "active_task_id": "MNT-M3-01",
+    "immediate_execution_authority": "MNT_M3_01_EXECUTED_PENDING_ACCEPTANCE",
+    "reason": "The authorized research/evidence scope is complete as a candidate; acceptance and PR lifecycle remain separate gates."
   },
   "next": {
     "phase_id": "MNT-M3",
     "phase_label": "Intelligence, Product Truth & Search Contract",
-    "phase_state": "PLANNED",
+    "phase_state": "ACTIVE",
     "task_id": "MNT-M3-01",
     "task_label": "Market and Search demand research",
-    "task_state": "PLANNED / EXECUTION_NOT_AUTHORIZED",
-    "safe_action": "Obtain explicit Product Authority authorization before starting MNT-M3-01. Research must remain evidence-first and must not mutate Search Console, Ads, GTM/GA4, Green, DNS or Vercel by sequence alone.",
-    "mutation_boundary": "MNT-M3-01 authorization, if granted, authorizes bounded research/evidence work only unless a separate implementation/platform mutation is explicitly authorized."
+    "task_state": "COMPLETE_CANDIDATE / PENDING_ACCEPTANCE",
+    "safe_action": "Product Authority reviews the MNT-M3-01 candidate and explicitly authorizes acceptance/Ready/merge if satisfied. MNT-M3-02 must not start by sequence.",
+    "mutation_boundary": "No Search Console, Ads, GTM/GA4, Green, DNS, Vercel or content implementation mutation is implied by this research candidate."
   },
   "progress": {
     "forecast_total_hours": 1240,
@@ -35,16 +34,16 @@
     "remaining_forecast_hours": 840,
     "accepted_percent": 32.2580645161,
     "display_percent": 32.26,
-    "basis": "MNT-M0 160h + MNT-M1 96h + accepted MNT-M2-01..10 144h divided by 1240h total forecast",
+    "basis": "MNT-M0 160h + MNT-M1 96h + accepted MNT-M2-01..10 144h divided by 1240h total forecast. MNT-M3-01 candidate 24h is not counted until accepted.",
     "semantics": "PLANNING_FORECAST_NOT_ACTUAL_TIMESHEET",
     "effective_when": "THIS_REVISION_IS_IN_CANONICAL_MAIN",
-    "partial_work_rule": "Planned MNT-M3 work contributes 0 accepted hours until task exit criteria are accepted."
+    "partial_work_rule": "Complete candidates contribute 0 accepted hours until Product Authority acceptance and canonical integration."
   },
   "milestone_state_overrides": {
     "MNT-M0": "COMPLETE",
     "MNT-M1": "COMPLETE",
     "MNT-M2": "COMPLETE",
-    "MNT-M3": "PLANNED",
+    "MNT-M3": "ACTIVE",
     "MNT-M4": "PLANNED",
     "MNT-M5": "PLANNED",
     "MNT-M6": "PLANNED",
@@ -61,7 +60,8 @@
     "MNT-M2-08": "COMPLETE",
     "MNT-M2-09": "COMPLETE",
     "MNT-M2-10": "COMPLETE",
-    "MNT-M3-01": "PLANNED"
+    "MNT-M3-01": "COMPLETE_CANDIDATE / PENDING_ACCEPTANCE",
+    "MNT-M3-02": "PLANNED"
   },
   "accepted_m1_task_ids": [
     "MNT-M1-01",
@@ -171,9 +171,43 @@
       "provider_authenticated_success_claimed": false,
       "gtm_change_required": false,
       "ga4_change_required": false
+    },
+    "mnt_m3_01_market_search_demand": {
+      "ref": "docs/search/MNT_M3_01_MARKET_SEARCH_DEMAND_RESEARCH_2026-09-13.md",
+      "state": "COMPLETE_CANDIDATE / PENDING_ACCEPTANCE",
+      "execution_base": "894f0a7c94f15cf19a00481a45bc9d69749b067f",
+      "gsc_snapshot": "docs/search/data/MNT_M3_01_GSC_DEMAND_SNAPSHOT_2026-09-13.csv",
+      "planner_universe": "docs/search/data/MNT_M3_01_PLANNER_UNIVERSE_2026-09-13.csv",
+      "runtime_mutation": false,
+      "gsc_observed_impressions": 26,
+      "gsc_observed_clicks": 0,
+      "planner_scope": "BRAZIL / PORTUGUESE / GOOGLE_SEARCH",
+      "semrush_status": "NOT_AVAILABLE_IN_RUN / INSUFFICIENT_API_UNITS"
     }
   },
   "issues": [
+    {
+      "id": "MNT-GATE-M3-01-ACCEPTANCE",
+      "class": "CURRENT_GATE",
+      "scope": "MNT-M3-01",
+      "state": "PENDING_PRODUCT_AUTHORITY_ACCEPTANCE",
+      "label": "Authorized MNT-M3-01 research is complete as a candidate; acceptance/Ready/merge remains a separate gate.",
+      "resolution_condition": "Product Authority explicitly accepts the MNT-M3-01 candidate and authorizes PR lifecycle."
+    },
+    {
+      "id": "MNT-RESIDUAL-M3-01-GSC-SPARSE",
+      "class": "RESEARCH_LIMITATION",
+      "scope": "MNT-M3-01 / MNT-M3-02",
+      "state": "OPEN / NON_BLOCKING",
+      "label": "Current MoreNumTegra GSC evidence is sparse and cannot support trend or causality claims."
+    },
+    {
+      "id": "MNT-RESIDUAL-M3-01-PLANNER-SCOPE",
+      "class": "RESEARCH_LIMITATION",
+      "scope": "MNT-M3-01 / MNT-M3-03",
+      "state": "OPEN / NON_BLOCKING",
+      "label": "Keyword Planner evidence is Brazil/Portuguese and some project-name phrases require SERP/entity disambiguation."
+    },
     {
       "id": "MNT-RESIDUAL-LEAD-GUARD-CLIENT-SIDE",
       "class": "ACCEPTED_V1_RESIDUAL",
@@ -196,14 +230,6 @@
       "scope": "VERCEL",
       "state": "OPEN / MANUAL_DEPLOY_PENDING",
       "label": "Vercel Production homologation is manual gate-driven and has not been proven aligned to the latest canonical main."
-    },
-    {
-      "id": "MNT-GATE-M3-NEXT",
-      "class": "FUTURE_GATE",
-      "scope": "MNT-M3-01",
-      "state": "NOT_AUTHORIZED",
-      "label": "MNT-M3-01 requires explicit Product Authority authorization.",
-      "resolution_condition": "Product Authority explicitly authorizes bounded MNT-M3-01 execution."
     }
   ],
   "state_precedence": {
