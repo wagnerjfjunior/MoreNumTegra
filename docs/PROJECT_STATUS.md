@@ -1,14 +1,14 @@
 # Status do Projeto — MoreNumTegra
 
-- Data de referência: `2026-09-12`
+- Data de referência: `2026-09-13`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra`
 - Referência: `main` — resolver SHA live antes de agir
-- MNT-M2-09 implementation merge: PR #50 / `6eaacaca9af2c22243d45f20a24e04577ac58ce2`
-- MNT-M2-09 runtime hotfix merge: PR #52 / `70f2b77e93225b65a1972c12875c58bd7198be1d`
+- MNT-M2-10 merge: PR #54 / squash merge `5d2db073a4b345ae4e0067b675cab1cfb4a068ed`
 - Produto V1: `GREEN_COMMERCIAL_V1_SEARCH_INDEXED / OPERATIONAL`
 - Programa: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
-- Fase atual: `MNT-M2 — ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION`
-- Próxima task: `MNT-M2-10 — PLANNED / EXECUTION_NOT_AUTHORIZED`
+- Fase concluída: `MNT-M2 — COMPLETE`
+- Próxima fase planejada: `MNT-M3 — Intelligence, Product Truth & Search Contract`
+- Próxima task: `MNT-M3-01 — PLANNED / EXECUTION_NOT_AUTHORIZED`
 - Saúde operacional do V1: `verde`
 
 ## 1. Produção atual
@@ -17,18 +17,17 @@
 - Vercel homologation: `https://morenumtegra.vercel.app/`
 - Vercel deployment mode: `MANUAL_GATE_DRIVEN` conforme ADR-002
 - Form 46 nativo permanece autoritativo para captação
-- Green page 292 usa o artefato consolidado `src-greenn/moretegra.js`
+- Green page 292 usa `src-greenn/moretegra.js`
 - Green page 294 usa `src-greenn/thank-you/obrigado.js`
-- Vercel Production ainda requer atualização manual via terminal; não declarar alinhamento até evidência específica
+- Vercel Production continua exigindo atualização manual; não declarar alinhamento até evidência específica
 
 Preservar:
 
 ```text
 LIVE V1 OPERATIONAL != MNT-RESF PROGRAM COMPLETE
 PROGRAM PROGRESS != V1 PRODUCT READINESS
-IMPLEMENTED != END_TO_END_VALIDATED
-MNT-M2-09 COMPLETE != MNT-M2-10 COMPLETE
 GREEN PRODUCTION != VERCEL HOMOLOGATION
+MNT-M2 COMPLETE != MNT-M3 AUTHORIZED
 ```
 
 ## 2. Programa MNT-RESF
@@ -36,32 +35,34 @@ GREEN PRODUCTION != VERCEL HOMOLOGATION
 Estado canônico desta revisão:
 
 ```text
-MNT-M0  COMPLETE
-MNT-M1  COMPLETE
-MNT-M2  ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
-  MNT-M2-01  COMPLETE
-  MNT-M2-02  COMPLETE
-  MNT-M2-03  COMPLETE
-  MNT-M2-04  COMPLETE
-  MNT-M2-05  COMPLETE
-  MNT-M2-06  COMPLETE
-  MNT-M2-07  COMPLETE
-  MNT-M2-08  COMPLETE
-  MNT-M2-09  COMPLETE
-  MNT-M2-10  PLANNED / NEXT / EXECUTION_NOT_AUTHORIZED
-MNT-M3..MNT-M7  PLANNED
+MNT-M0 COMPLETE
+MNT-M1 COMPLETE
+MNT-M2 COMPLETE
+  MNT-M2-01 COMPLETE
+  MNT-M2-02 COMPLETE
+  MNT-M2-03 COMPLETE
+  MNT-M2-04 COMPLETE
+  MNT-M2-05 COMPLETE
+  MNT-M2-06 COMPLETE
+  MNT-M2-07 COMPLETE
+  MNT-M2-08 COMPLETE
+  MNT-M2-09 COMPLETE
+  MNT-M2-10 COMPLETE / ACCEPTED_WITH_V1_RESIDUAL
+MNT-M3 PLANNED
+  MNT-M3-01 PLANNED / NEXT / EXECUTION_NOT_AUTHORIZED
+MNT-M4..MNT-M7 PLANNED
 ```
 
 Planning forecast:
 
 ```text
 forecast total                = 1240h
-accepted scope-equivalent     = 376h
-remaining forecast            = 864h
-program progress              = 30.32%
+accepted scope-equivalent     = 400h
+remaining forecast            = 840h
+program progress              = 32.26%
 ```
 
-Accepted M2 scope-equivalent = `120h`:
+Accepted M2 scope-equivalent = `144h`:
 
 - M2-01 `8h`;
 - M2-02 `16h`;
@@ -71,27 +72,10 @@ Accepted M2 scope-equivalent = `120h`:
 - M2-06 `8h`;
 - M2-07 `16h`;
 - M2-08 `16h`;
-- M2-09 `24h`.
+- M2-09 `24h`;
+- M2-10 `24h`.
 
-M2-10 remains `24h` planned and contributes `0h accepted` until complete.
-
-## 3. Accepted Measurement foundation
-
-### Historical / design evidence
-
-- `docs/measurement/MNT_M2_01_TRACKING_RUNTIME_INVENTORY_2026-09-10.md`
-- `docs/measurement/MNT_M2_GTM_CONSENT_T1_2026-09-10.md`
-- `docs/measurement/MNT_M2_02_TRANSPORT_DEDUP_ARCHITECTURE_2026-09-10.md`
-- `docs/measurement/MNT_M2_03_CANONICAL_EVENT_TAXONOMY_V1_2026-09-10.md`
-- `docs/measurement/MNT_M2_04_PRIMARY_SECONDARY_CONVERSIONS_V1_2026-09-10.md`
-- `docs/measurement/MNT_M2_05_GTM_GA4_OWNERSHIP_CONTRACT_V1_2026-09-10.md`
-- `docs/measurement/MNT_M2_06_META_PIXEL_DATASET_OWNERSHIP_CONTRACT_V1_2026-09-10.md`
-
-### MNT-M2-09 runtime implementation
-
-Evidence:
-
-`docs/measurement/MNT_M2_09_TRACKING_IMPLEMENTATION_EVIDENCE_2026-09-12.md`
+## 3. Measurement foundation — COMPLETE
 
 Accepted Google runtime:
 
@@ -105,11 +89,7 @@ measurement_id = G-57M2XR0CY2
 Enhanced Measurement = OFF
 ```
 
-The earlier `NOT_PROVEN` GA4 identifiers from M2-05 are resolved by M2-09 evidence. This does not retroactively change the historical state of the M2-05 design document.
-
-## 4. Canonical event taxonomy / conversion semantics
-
-Canonical source events remain:
+Canonical source events:
 
 ```text
 mnt_page_view
@@ -122,70 +102,53 @@ mnt_form_submit_attempt
 mnt_lead_success
 ```
 
-Project conversion classification remains:
+Primary conversion mapping:
 
 ```text
-PRIMARY
-  mnt_lead_success
-
-SECONDARY
-  mnt_intent:request_conditions
-  mnt_intent:request_project_conditions
-  mnt_intent:negotiate_scenario
-  mnt_intent:schedule_visit
-  mnt_intent:whatsapp_contact
-
-NONE
-  mnt_page_view
-  mnt_section_click
-  mnt_catalog_filter
-  mnt_catalog_search
-  mnt_intent:project_interest
-  mnt_form_start
-  mnt_form_submit_attempt
+mnt_lead_success -> GA4 generate_lead
 ```
 
-GA4 mapping implemented under M2-09:
+`generate_lead` permanece GA4 `Evento principal` / Key event. Nenhum valor monetário de lead foi definido.
 
-```text
-mnt_lead_success -> generate_lead
-```
+## 4. MNT-M2-10 — end-to-end QA
 
-`generate_lead` is configured as GA4 `Evento principal` / Key event.
+Evidence:
 
-No monetary lead value is defined. No property/listing price is a conversion value.
+- `docs/measurement/MNT_M2_10_LIVE_QA_UPDATE_2026-09-13.md`
+- `docs/measurement/MNT_M2_10_POST_MERGE_RECONCILIATION_2026-09-13.md`
 
-## 5. Form 46 runtime proof
+Resultado:
 
-Accepted Green journey:
+- QA-01..QA-25 adjudicados;
+- `www` -> canonical Measurement behavior validado;
+- page-view uniqueness/reload validado;
+- catalog search debounce/privacy validado;
+- Form 46 negative bare `/obrigado` validado;
+- genuine Green success -> exatamente um `mnt_lead_success` -> um `generate_lead`;
+- refresh/back dedup validado;
+- denied consent + persistence após reload validado;
+- nenhum P0/P1 Measurement permanece sem adjudicação no escopo M2.
 
-```text
-mnt_form_start = 1
-mnt_form_submit_attempt = 1
-Green native submit success
-/obrigado
-mnt_lead_success = 1
-generate_lead = 1
-```
+## 5. Residual V1 aceito — lead validity
 
-Tag Assistant showed the `generate_lead` GA4 tag with `execute_succeeded`. GA4 DebugView independently showed `mnt_form_start = 1`, `mnt_form_submit_attempt = 1`, `generate_lead = 1` for the accepted test.
+A page 294 usa gate client-side. Um pending recente + entrada manual da forma completa aceita da URL pode satisfazer o gate.
 
-`gtm.formSubmit` emitted by Green remains platform telemetry and is not used as a project GA4 business event because it can carry visitor form fields.
+Esse comportamento foi explicitamente aceito pela Product Authority como residual V1 não-bloqueante para MNT-M2. Não deve ser descrito como provider/server authentication.
+
+Uma arquitetura mais forte exigiria gate futuro específico de lead-validity/provider handoff; não é implícita pelo fechamento de M2.
 
 ## 6. Privacy / consent
 
-- visitor name/email/phone are excluded from project MNT/GA4 Measurement payloads;
-- raw free-form catalogue search text remains excluded;
-- no direct project `gtag()` or `fbq()` path is introduced;
-- GTM remains the sole project-owned browser dispatcher;
-- Consent Mode default-denied/update model remains accepted;
-- accepted Version 7 test showed granted state after consent with `wasSetLate=false`.
-
-Full denied/granted and duplicate-path end-to-end proof remains M2-10 scope.
+- visitor name/email/phone permanecem fora dos payloads MNT/GA4;
+- raw free-form catalogue search text permanece excluído;
+- GTM permanece o dispatcher project-owned do browser;
+- sem `gtag()` ou `fbq()` direto project-owned;
+- Consent Mode default-denied/update permanece aceito;
+- granted e denied persistence possuem evidência aceita no escopo M2.
 
 ## 7. Meta Measurement boundary
 
-M2-06 governance remains valid, but Meta runtime identifiers and implementation remain unproven/not implemented by M2-09:
+Meta runtime permanece fora do MNT-M2 executado:
 
 ```text
 META_DATASET_ID = NOT_PROVEN
@@ -194,33 +157,20 @@ META_PIXEL_DATASET_RELATIONSHIP = NOT_PROVEN
 META_CAPI = NOT_IMPLEMENTED / NOT_AUTHORIZED
 ```
 
-Do not infer website Pixel/Dataset ownership from Facebook Page, Lead Ads, ad account or Green CRM relationships.
+Não inferir ownership de website Pixel/Dataset por associação com Facebook Page, Lead Ads, ad account ou Green CRM.
 
-## 8. Measurement remaining work
+## 8. Search / GSC residuals
 
-```text
-TRANSPORT / DEDUP ARCHITECTURE = COMPLETE
-CANONICAL EVENT TAXONOMY = COMPLETE
-PRIMARY / SECONDARY CONVERSIONS = COMPLETE
-GTM / GA4 OWNERSHIP = COMPLETE DESIGN
-GA4 RUNTIME IDENTIFIERS = PROVEN
-TRACKING IMPLEMENTATION = COMPLETE / MNT-M2-09
-END-TO-END MEASUREMENT QA = OPEN / MNT-M2-10 / NOT_YET_AUTHORIZED
-META RUNTIME IMPLEMENTATION = NOT_IMPLEMENTED / SEPARATE GATE
-```
+P0-B permanece `PASS_WITH_RESIDUAL_RISK`.
 
-## 9. Search / GSC residuals
-
-P0-B remains `PASS_WITH_RESIDUAL_RISK`.
-
-Residuals remain:
+Residuals:
 
 - canonical client-side;
 - sitemap unavailable;
-- `www` without proven HTTP 301/308 semantics;
-- historical `web-share` warning.
+- `www` sem HTTP 301/308 comprovado;
+- histórico `web-share` warning.
 
-GSC T0 remains historical baseline:
+GSC T0 histórico:
 
 ```text
 clicks = 0
@@ -229,7 +179,9 @@ CTR = 0%
 average position = 26.1
 ```
 
-## 10. SFJM Workspace boundary
+Esse baseline histórico não deve ser confundido com dados atuais de MNT-M3-01.
+
+## 9. SFJM Workspace boundary
 
 Consumer precedence:
 
@@ -238,8 +190,16 @@ Consumer precedence:
 3. `docs/sfjm/PROGRAM_TASK_GRAPH.json` — hierarchy/planning hours;
 4. `docs/NEXT_SAFE_ACTION.md` — execution authority.
 
-Consumers must resolve the resulting exact live `main` SHA before refresh.
+Consumers devem resolver o live `main` antes de refresh.
 
-## 11. External gates
+## 10. Próxima ação
 
-Further GTM/GA4 changes, MNT-M2-10 execution, Meta Dataset/Pixel/CAPI, Google Ads/spend, DNS, Search Console mutation, automatic Vercel changes, Green structural changes and FECH.AI/n8n/Make remain separately gated unless explicitly authorized.
+A próxima ação segura é obter autorização explícita para:
+
+`MNT-M3-01 — Market and Search demand research`.
+
+MNT-M3-01 é research/evidence-first. Sua autorização não implica automaticamente Search Console mutation, Ads/spend, GTM/GA4 changes, Green changes, DNS changes ou Vercel deployment.
+
+## 11. External gates preservados
+
+Meta Dataset/Pixel/CAPI, Google Ads/spend, DNS, Search Console mutation, automatic Vercel changes, Green structural changes, FECH.AI/n8n/Make e qualquer reabertura material de Measurement permanecem separadamente gated.
