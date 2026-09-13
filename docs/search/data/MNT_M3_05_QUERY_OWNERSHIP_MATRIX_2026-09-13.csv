@@ -1,42 +1,42 @@
 family_id,representative_query,representative_query_status,evidence_classes,evidence_refs,observed_search_intent,strategy_service_intent,service_decision,logical_owner_class,commercial_state_policy,fact_gate,intent_confidence,decision_confidence,m3_06_requirement
-brand_head,tegra,OBSERVED_GSC+SERP_VALIDATED,GSC|SERP,M3-02_GSC_MORENUM|M3-03_SERP,navigational_brand_or_corporate,brand_navigation_and_portfolio_exploration,SERVE_QUALIFIED,BRAND_PORTFOLIO_SURFACE,portfolio_only,verified_brand_and_portfolio,HIGH,MEDIUM,assign_one_brand_portfolio_owner
-brand_sales_house,tegra vendas,OBSERVED_GSC+SERP_VALIDATED,GSC|SERP,M3-02_GSC_MORENUM|M3-03_SERP,corporate_partner_recruitment_navigation,corporate_partner_recruitment_navigation,DO_NOT_TARGET,NO_OWNER,not_consumer_inventory,none,HIGH,HIGH,record_exclusion
-brand_partner_tool,tegra conecta,OBSERVED_GSC+SERP_VALIDATED,GSC|SERP,M3-02_GSC_MORENUM|M3-03_SERP,partner_or_broker_tool_navigation,partner_or_broker_tool_navigation,DO_NOT_TARGET,NO_OWNER,not_consumer_inventory,none,MEDIUM,HIGH,record_exclusion
-brand_location_multi_project,tegra campo belo,OBSERVED_GSC+SERP_VALIDATED,GSC|SERP,M3-02_GSC_MORENUM|M3-03_SERP,brand_location_portfolio_exploration,brand_location_portfolio_exploration,SERVE_QUALIFIED,LOCATION_PORTFOLIO_SURFACE,portfolio_only,verified_location_project_set,HIGH,HIGH,assign_location_owner_if_inventory_justifies
-master_caminhos,caminhos da lapa tegra,OBSERVED_GSC+SERP_VALIDATED,GSC|SERP,M3-02_GSC_CAMINHOS|M3-03_SERP,master_development_navigation_and_research,master_development_navigation_and_research,SERVE_PRIMARY,MASTER_DEVELOPMENT_SURFACE,mixed_lifecycle_master,verified_master_and_project_states,HIGH,HIGH,assign_master_owner
-master_caminhos_reverse,tegra caminhos da lapa,OBSERVED_GSC+FAMILY_GENERALIZATION,GSC|SERP_FAMILY,M3-02_GSC_CAMINHOS|M3-03_SERP,master_development_navigation_and_research,master_development_navigation_and_research,SERVE_PRIMARY,MASTER_DEVELOPMENT_SURFACE,mixed_lifecycle_master,verified_master_and_project_states,HIGH,HIGH,map_to_master_owner_no_duplicate_route
-project_active_nova_vivere,nova vivere caminhos da lapa,SERP_VALIDATED,SERP|PRODUCT_FACT,M3-03_SERP|M3-04_FACTS,project_entity_research,project_commercial_research,SERVE_PRIMARY,ACTIVE_PROJECT_SURFACE,active_or_launch,product_registry_plus_release_revalidation,HIGH,HIGH,assign_project_owner
-project_active_garden_design,garden design caminhos da lapa,SERP_VALIDATED,SERP|PRODUCT_FACT,M3-03_SERP|M3-04_FACTS,project_entity_research,project_commercial_research,SERVE_PRIMARY,ACTIVE_PROJECT_SURFACE,active_construction,product_registry_plus_release_revalidation,HIGH,HIGH,assign_project_owner
-project_active_elo_duo,caminhos da lapa elo duo,OBSERVED_GSC+SERP_VALIDATED,GSC|SERP|PRODUCT_FACT,M3-02_GSC_CAMINHOS|M3-03_SERP|M3-04_FACTS,project_entity_research,project_commercial_research,SERVE_PRIMARY,ACTIVE_PROJECT_SURFACE,last_units_or_current_exception,product_registry_plus_release_revalidation,HIGH,HIGH,assign_project_owner
-project_active_dsg,dsg itaim,OBSERVED_PLANNER+SERP_VALIDATED,PLANNER|SERP|PRODUCT_FACT,M3-01_PLANNER|M3-03_SERP|M3-04_FACTS,project_entity_research,project_entity_commercial_research,SERVE_PRIMARY,ACTIVE_PROJECT_SURFACE,current_inventory_requires_revalidation,product_registry,HIGH,HIGH,assign_project_owner
-project_active_aria,ária higienópolis,OBSERVED_PLANNER+SERP_VALIDATED,PLANNER|SERP|PRODUCT_FACT,M3-01_PLANNER|M3-03_SERP|M3-04_FACTS,project_entity_research,project_entity_commercial_research,SERVE_PRIMARY,ACTIVE_PROJECT_SURFACE,current_inventory_requires_revalidation,product_registry,HIGH,HIGH,assign_project_owner
-project_active_soma,soma perdizes,OBSERVED_PLANNER+SERP_VALIDATED,PLANNER|SERP|PRODUCT_FACT,M3-01_PLANNER|M3-03_SERP|M3-04_FACTS,project_entity_research,project_entity_commercial_research,SERVE_PRIMARY,ACTIVE_PROJECT_SURFACE,current_inventory_requires_revalidation,product_registry,HIGH,HIGH,assign_project_owner
-project_active_ledge,ledge brooklin,OBSERVED_PLANNER+SERP_VALIDATED,PLANNER|SERP|PRODUCT_FACT,M3-01_PLANNER|M3-03_SERP|M3-04_FACTS,project_entity_research,project_entity_commercial_research,SERVE_PRIMARY,ACTIVE_PROJECT_SURFACE,current_inventory_requires_revalidation,product_registry,HIGH,HIGH,assign_project_owner
-project_active_bueno,bueno brandão 257,OBSERVED_PLANNER+SERP_VALIDATED,PLANNER|SERP|PRODUCT_FACT,M3-01_PLANNER|M3-03_SERP|M3-04_FACTS,high_end_project_research,high_end_project_commercial_research,SERVE_PRIMARY,ACTIVE_PROJECT_SURFACE,current_inventory_requires_revalidation,product_registry,HIGH,HIGH,assign_project_owner
-project_active_capiitolo,capiitolo by piero lissoni,OBSERVED_PLANNER,PLANNER_NO_METRICS|PRODUCT_FACT|COMMERCIAL_FACT,M3-01_PLANNER|M3-04_FACTS|M3-04_SEPTEMBER,NOT_DIRECTLY_VALIDATED,project_entity_commercial_research,SERVE_PRIMARY,ACTIVE_PROJECT_SURFACE,current_inventory_requires_revalidation,product_registry,LOW,HIGH,assign_project_owner_strategy_decision
-project_active_mozae,mozae higienópolis,OBSERVED_PLANNER,PLANNER|PRODUCT_FACT,M3-01_PLANNER|M3-04_FACTS,project_entity_demand_serp_not_specific,project_entity_commercial_research,SERVE_PRIMARY,ACTIVE_PROJECT_SURFACE,current_inventory_requires_revalidation,product_registry,MEDIUM,HIGH,assign_project_owner
-project_active_ypy,ypy alto do ipiranga,OBSERVED_PLANNER+SERP_VALIDATED,PLANNER|SERP|PRODUCT_FACT,M3-01_PLANNER|M3-03_SERP|M3-04_FACTS,project_entity_research,project_entity_commercial_research,SERVE_PRIMARY,ACTIVE_PROJECT_SURFACE,current_inventory_requires_revalidation,product_registry,HIGH,HIGH,assign_project_owner
-project_sold_amaro,amaro tegra,OBSERVED_GSC+SERP_VALIDATED,GSC|SERP|PRODUCT_FACT,M3-02_GSC_MORENUM|M3-03_SERP|M3-04_FACTS,project_entity_navigation,project_entity_navigation,SERVE_ENTITY_HISTORICAL,SOLD_PROJECT_ENTITY_SURFACE,sold_no_current_exception,identity_and_historical_facts,HIGH,HIGH,decide_entity_surface_or_noindex_policy
-project_sold_legacy,ode perdizes tegra,OBSERVED_GSC+SERP_VALIDATED,GSC|SERP|PRODUCT_FACT|COMMERCIAL_EXCEPTION,M3-02_GSC_MORENUM|M3-03_SERP|M3-04_FACTS|M3-04_SEPTEMBER,project_entity_navigation,project_entity_navigation_with_exception_inventory,SERVE_EXCEPTION_COMMERCIAL,EXCEPTION_PROJECT_COMMERCIAL_SURFACE,public_sold_out_plus_returned_unit,September_exception_plus_release_revalidation,HIGH,HIGH,assign_same_project_entity_owner_with_exception_state
-project_ode_returned,ode perdizes preço,OBSERVED_PLANNER+FAMILY_GENERALIZATION,PLANNER|GSC_FAMILY|COMMERCIAL_EXCEPTION,M3-01_PLANNER|M3-02_GSC_MORENUM|M3-02_GSC_CAMINHOS|M3-04_SEPTEMBER,late_consideration_price_family,late_consideration_price_research,SERVE_EXCEPTION_COMMERCIAL,EXCEPTION_PROJECT_COMMERCIAL_SURFACE,returned_unit_exception,September_unit_22_plus_release_revalidation,MEDIUM,HIGH,route_to_project_owner_fact_section
-project_reserva_entity,reserva caminhos da lapa,OBSERVED_PLANNER+OBSERVED_GSC+SERP_VALIDATED,PLANNER|GSC|SERP|COMMERCIAL_EXCEPTION,M3-01_PLANNER|M3-02_GSC_CAMINHOS|M3-03_SERP|M3-04_SEPTEMBER,project_entity_navigation_and_research,project_entity_navigation_and_commercial_research,SERVE_EXCEPTION_COMMERCIAL,EXCEPTION_PROJECT_COMMERCIAL_SURFACE,public_sold_out_plus_units_under_consultation,September_reconciliation_plus_release_revalidation,HIGH,HIGH,assign_project_owner_with_exception_state
-project_reserva_price,reserva caminhos da lapa preço,OBSERVED_GSC+SERP_VALIDATED,GSC|SERP_FAMILY|COMMERCIAL_EXCEPTION,M3-02_GSC_CAMINHOS|M3-03_SERP|M3-04_SEPTEMBER,late_consideration_price_research,late_consideration_price_research,SERVE_EXCEPTION_COMMERCIAL,EXCEPTION_PROJECT_COMMERCIAL_SURFACE,units_under_consultation,no_specific_price_admitted,HIGH,HIGH,route_to_project_owner_fact_section
-project_price_active,elo caminhos da lapa preço,OBSERVED_GSC+SERP_VALIDATED,GSC|SERP_FAMILY|PRODUCT_FACT,M3-02_GSC_CAMINHOS|M3-03_SERP|M3-04_FACTS,late_consideration_price_research,late_consideration_price_research,SERVE_QUALIFIED,PROJECT_FACT_SECTION,current_unit_price_only,release_revalidation,HIGH,HIGH,attach_to_exact_project_owner
-project_address,reserva caminhos da lapa endereço,OBSERVED_GSC+SERP_VALIDATED,GSC|SERP_FAMILY|PRODUCT_FACT,M3-02_GSC_CAMINHOS|M3-03_SERP|M3-04_FACTS,location_verification,location_verification,SERVE_QUALIFIED,PROJECT_FACT_SECTION,entity_fact,address_registry,HIGH,HIGH,attach_to_exact_project_owner
-project_metragem,mozae higienópolis metragem,FAMILY_GENERALIZATION,PLANNER_PROJECT|SERP_FAMILY|PRODUCT_FACT,M3-01_PLANNER|M3-03_SERP|M3-04_FACTS,modifier_family_generalization,product_fact_research,SERVE_QUALIFIED,PROJECT_FACT_SECTION,product_fact,governed_46_73_values,MEDIUM,HIGH,attach_to_project_owner
-project_planta,planta apartamento tegra projeto,SYNTHETIC_EXAMPLE,SERP_FAMILY|PRODUCT_FACT,M3-03_SERP|M3-04_FACTS,modifier_family_generalization,product_configuration_research,SERVE_QUALIFIED,PROJECT_FACT_SECTION,product_fact,verified_typology_only,MEDIUM,MEDIUM,group_by_project_in_m3_06
-project_availability,unidades disponíveis empreendimento tegra,SYNTHETIC_EXAMPLE,SERP_FAMILY|COMMERCIAL_POLICY,M3-03_SERP|M3-04_FACTS|M3-04_SEPTEMBER,modifier_family_generalization,commercial_inventory_research,SERVE_QUALIFIED,PROJECT_FACT_SECTION,dynamic_inventory,immediate_release_revalidation,MEDIUM,HIGH,bind_to_resolved_project_owner
-stage_launch,lançamentos imobiliários tegra são paulo,SYNTHETIC_EXAMPLE,PLANNER_FAMILY|SERP_FAMILY,M3-01_PLANNER|M3-03_SERP,transactional_stage_discovery,transactional_stage_discovery,SERVE_PRIMARY,STAGE_DISCOVERY_SURFACE,portfolio_stage_filter,current_stage_registry,HIGH,HIGH,assign_one_launch_discovery_owner
-stage_construction,apartamentos tegra em construção são paulo,SYNTHETIC_EXAMPLE,PLANNER_FAMILY|SERP_FAMILY,M3-01_PLANNER|M3-03_SERP,transactional_stage_discovery,transactional_stage_discovery,SERVE_PRIMARY,STAGE_DISCOVERY_SURFACE,portfolio_stage_filter,current_stage_registry,HIGH,HIGH,assign_one_construction_discovery_owner
-stage_ready,apartamentos tegra prontos para morar são paulo,SYNTHETIC_EXAMPLE,PLANNER_FAMILY|SERP_FAMILY,M3-01_PLANNER|M3-03_SERP,mixed_commercial_stage_discovery,commercial_stage_discovery,SERVE_PRIMARY,STAGE_DISCOVERY_SURFACE,portfolio_stage_filter,current_stage_registry,HIGH,HIGH,assign_one_ready_discovery_owner
-generic_city,apartamentos são paulo,OBSERVED_PLANNER+SERP_VALIDATED,PLANNER|SERP,M3-01_PLANNER|M3-03_SERP,transactional_inventory_discovery,transactional_inventory_discovery,SUPPORT_SECONDARY,COMPARISON_DISCOVERY_SURFACE,broad_market_not_tegra_specific,none,HIGH,HIGH,do_not_default_to_home
-generic_city_sale,apartamentos à venda são paulo,OBSERVED_PLANNER+SERP_VALIDATED,PLANNER|SERP,M3-01_PLANNER|M3-03_SERP,transactional_inventory_discovery,transactional_inventory_discovery,SUPPORT_SECONDARY,COMPARISON_DISCOVERY_SURFACE,broad_market_not_tegra_specific,none,HIGH,HIGH,do_not_default_to_home
-generic_brooklin,apartamento brooklin,OBSERVED_PLANNER+SERP_VALIDATED,PLANNER|SERP,M3-01_PLANNER|M3-03_SERP,transactional_neighborhood_inventory,transactional_neighborhood_inventory,SUPPORT_SECONDARY,SUPPORTING_CONTENT_ONLY,broad_neighborhood_market,verified_tegra_projects_if_qualified,HIGH,HIGH,qualify_or_support_only
-generic_perdizes,apartamento perdizes,OBSERVED_PLANNER+SERP_VALIDATED,PLANNER|SERP,M3-01_PLANNER|M3-03_SERP,transactional_neighborhood_inventory,transactional_neighborhood_inventory,SUPPORT_SECONDARY,SUPPORTING_CONTENT_ONLY,broad_neighborhood_market,verified_tegra_projects_if_qualified,HIGH,HIGH,qualify_or_support_only
-generic_lapa,apartamento lapa,OBSERVED_GSC+OBSERVED_PLANNER+SERP_VALIDATED,GSC|PLANNER|SERP,M3-02_GSC_CAMINHOS|M3-01_PLANNER|M3-03_SERP,transactional_neighborhood_inventory,transactional_neighborhood_inventory,SUPPORT_SECONDARY,SUPPORTING_CONTENT_ONLY,broad_neighborhood_market,verified_lapa_portfolio_if_qualified,HIGH,HIGH,qualify_with_sao_paulo_tegra_or_stage
-raw_lapa,lapa,OBSERVED_PLANNER+SERP_VALIDATED,PLANNER|SERP,M3-01_PLANNER|M3-03_SERP,ambiguous_geo_or_entity,ambiguous_geo_or_entity,DO_NOT_TARGET,NO_OWNER,none,none,HIGH,HIGH,record_exclusion
-architecture_landscape,projeto paisagístico,OBSERVED_GSC+SERP_VALIDATED,GSC|SERP,M3-02_GSC_CAMINHOS|M3-03_SERP,informational_design_topic,informational_design_topic,DO_NOT_TARGET,NO_OWNER,none,none,MEDIUM,HIGH,record_exclusion
-architecture_person,benedito abbud,OBSERVED_GSC+SERP_VALIDATED,GSC|SERP,M3-02_GSC_CAMINHOS|M3-03_SERP,informational_person_entity,informational_person_entity,DO_NOT_TARGET,NO_OWNER,none,project_attribution_only,MEDIUM,HIGH,record_exclusion
-noise_typo,tegrq,OBSERVED_GSC,GSC,M3-02_GSC_MORENUM,typo_or_noise,typo_or_noise,DO_NOT_TARGET,NO_OWNER,none,none,HIGH,HIGH,record_exclusion
-unrelated_rental,aluguel apartamento lapa,OBSERVED_PLANNER,PLANNER,M3-01_PLANNER,rental_transaction,rental_transaction,DO_NOT_TARGET,NO_OWNER,not_sale_portfolio,none,HIGH,HIGH,record_exclusion
-unrelated_house,casa à venda bairro,OBSERVED_PLANNER,PLANNER,M3-01_PLANNER,house_inventory,house_inventory,DO_NOT_TARGET,NO_OWNER,outside_apartment_portfolio,none,MEDIUM,HIGH,record_exclusion
+brand_head,tegra,Q1,E1,R1,O1,T1,D1,W1,C1,F1,I1,J1,M1
+brand_sales_house,tegra vendas,Q1,E1,R1,O2,T2,D2,W2,C2,F2,I1,J2,M2
+brand_partner_tool,tegra conecta,Q1,E1,R1,O3,T3,D2,W2,C2,F2,I2,J2,M2
+brand_location_multi_project,tegra campo belo,Q1,E1,R1,O4,T4,D1,W3,C1,F3,I1,J2,M3
+master_caminhos,caminhos da lapa tegra,Q1,E1,R2,O5,T5,D3,W4,C3,F4,I1,J2,M4
+master_caminhos_reverse,tegra caminhos da lapa,Q2,E2,R2,O5,T5,D3,W4,C3,F4,I1,J2,M5
+project_active_nova_vivere,nova vivere caminhos da lapa,Q3,E3,R3,O6,T6,D3,W5,C4,F5,I1,J2,M6
+project_active_garden_design,garden design caminhos da lapa,Q3,E3,R3,O6,T6,D3,W5,C5,F5,I1,J2,M6
+project_active_elo_duo,caminhos da lapa elo duo,Q4,E4,R4,O7,T6,D3,W5,C6,F5,I2,J2,M6
+project_active_dsg,dsg itaim,Q5,E5,R5,O6,T7,D3,W5,C7,F6,I1,J2,M6
+project_active_aria,ária higienópolis,Q5,E5,R5,O6,T7,D3,W5,C7,F6,I1,J2,M6
+project_active_soma,soma perdizes,Q5,E5,R5,O6,T7,D3,W5,C7,F6,I1,J2,M6
+project_active_ledge,ledge brooklin,Q5,E5,R5,O6,T7,D3,W5,C7,F6,I1,J2,M6
+project_active_bueno,bueno brandão 257,Q5,E5,R5,O8,T8,D3,W5,C7,F6,I1,J2,M6
+project_active_capiitolo,capiitolo by piero lissoni,Q6,E6,R6,O9,T7,D3,W5,C7,F6,I3,J2,M7
+project_active_mozae,mozae higienópolis,Q7,E7,R7,O10,T7,D3,W5,C7,F6,I2,J2,M6
+project_active_ypy,ypy alto do ipiranga,Q7,E7,R7,O7,T7,D3,W5,C7,F6,I2,J2,M6
+project_sold_amaro,amaro tegra,Q1,E8,R8,O11,T9,D4,W6,C8,F7,I1,J2,M8
+project_sold_legacy,ode perdizes tegra,Q1,E9,R9,O11,T10,D5,W7,C9,F8,I1,J2,M9
+project_ode_returned,ode perdizes preço,Q8,E10,R10,O12,T11,D5,W7,C10,F9,I2,J2,M10
+project_reserva_entity,reserva caminhos da lapa,Q9,E11,R11,O13,T12,D5,W7,C11,F10,I1,J2,M11
+project_reserva_price,reserva caminhos da lapa preço,Q1,E12,R12,O14,T11,D5,W7,C12,F11,I1,J2,M10
+project_price_active,elo caminhos da lapa preço,Q2,E13,R13,O12,T11,D1,W8,C13,F12,I2,J2,M12
+project_address,reserva caminhos da lapa endereço,Q1,E14,R14,O15,T13,D1,W8,C14,F13,I1,J2,M12
+project_metragem,mozae higienópolis metragem,Q6,E15,R5,O16,T14,D1,W8,C15,F14,I2,J2,M13
+project_planta,planta apartamento tegra projeto,Q10,E16,R3,O16,T15,D1,W8,C15,F15,I2,J1,M14
+project_availability,unidades disponíveis empreendimento tegra,Q10,E17,R15,O16,T16,D1,W8,C16,F16,I2,J2,M15
+stage_launch,lançamentos imobiliários tegra são paulo,Q10,E18,R16,O17,T17,D3,W9,C17,F17,I1,J2,M16
+stage_construction,apartamentos tegra em construção são paulo,Q10,E18,R16,O17,T17,D3,W9,C17,F17,I1,J2,M17
+stage_ready,apartamentos tegra prontos para morar são paulo,Q10,E18,R16,O18,T18,D3,W9,C17,F17,I1,J2,M18
+generic_city,apartamentos são paulo,Q5,E19,R16,O19,T19,D6,W10,C18,F2,I1,J2,M19
+generic_city_sale,apartamentos à venda são paulo,Q8,E20,R17,O20,T19,D6,W10,C18,F2,I2,J2,M19
+generic_brooklin,apartamento brooklin,Q5,E19,R16,O21,T20,D6,W11,C19,F18,I1,J2,M20
+generic_perdizes,apartamento perdizes,Q5,E19,R16,O21,T20,D6,W11,C19,F18,I1,J2,M20
+generic_lapa,apartamento lapa,Q2,E21,R18,O22,T20,D6,W11,C19,F19,I2,J2,M21
+raw_lapa,lapa,Q10,E22,R19,O23,T21,D2,W2,C20,F2,I3,J2,M2
+architecture_landscape,projeto paisagístico,Q1,E1,R2,O24,T22,D2,W2,C20,F2,I2,J2,M2
+architecture_person,benedito abbud,Q11,E23,R20,O25,T23,D2,W2,C20,F20,I2,J2,M2
+noise_typo,tegrq,Q1,E1,R2,O26,T24,D2,W2,C20,F2,I3,J2,M2
+unrelated_rental,aluguel apartamento lapa,Q10,E22,R19,O23,T25,D2,W2,C21,F2,I3,J2,M2
+unrelated_house,casa à venda bairro,Q10,E22,R19,O23,T26,D2,W2,C22,F2,I3,J2,M2
