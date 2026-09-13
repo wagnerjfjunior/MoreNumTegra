@@ -13,7 +13,7 @@ PR #59 — MNT-M3-04 — COMPLETE_CANDIDATE
 head: e40389af2b0e26a9c6ce2aa99efef7150fd61828
 
 PR #60 — MNT-M3-05 — COMPLETE_CANDIDATE
-head: fcca7c3166a23f2c0d71d5273a1d18cd6f7a369b
+head: 9c1a6a13fa44b91f013a6bc22b66d769bc1ae69e
 base: PR #59 corrected head
 
 PR #61 — MNT-M3-06 — COMPLETE_CANDIDATE
@@ -46,7 +46,7 @@ The two ownership blockers were corrected:
    - Mozae metragem remains on `/empreendimentos/mozae-higienopolis/`.
 2. `tegra campo belo` no longer carries a concrete `/regioes/campo-belo/` owner. It is `NO_OWNER + CONDITIONAL_OWNER_PATTERN` until `verified_location_project_set` passes.
 
-Parameterized modifier families now separate owner resolution from URL ownership:
+Parameterized modifier families separate owner resolution from URL ownership:
 
 ```text
 project_planta
@@ -59,29 +59,13 @@ Terminology correction:
 
 `tegra caminhos da lapa` maps to the same query family/page owner; no duplicate route. This is not described as URL canonicalization.
 
-Stage-ready hardening was recorded without expanding the acceptance gate: stage membership must preserve commercial-state labels so sold/historical does not imply available inventory.
+Stage-ready hardening is recorded without expanding the acceptance gate: membership must preserve commercial-state labels so sold/historical does not imply available inventory.
 
 ## Product truth preserved
 
-ODE Perdizes:
+ODE Perdizes preserves `entregue / sold-out baseline + returned unit 22 exception`, no general stock reopening, release-time price/availability revalidation, and no old `De R$ 2.200.000` comparative without recertification.
 
-```text
-public baseline = entregue / sold out
-exception = returned unit 22
-no general stock reopening
-release-time price/availability revalidation required
-old comparative De R$ 2.200.000 not admitted without recertification
-```
-
-Reserva Caminhos da Lapa:
-
-```text
-public baseline = entregue / 100% sold
-exception = units under consultation
-no invented quantity/unit/price
-no general stock reopening
-release-time revalidation required
-```
+Reserva Caminhos da Lapa preserves `entregue / 100% sold baseline + exception units under consultation`, no invented quantity/unit/price, no general stock reopening, and release-time revalidation.
 
 Official Tegra project source/content/image permission remains registered in `docs/product/MNT_OFFICIAL_TEGRA_PROJECT_SURFACES_2026-09-13.md`; permission is not publication authorization.
 
