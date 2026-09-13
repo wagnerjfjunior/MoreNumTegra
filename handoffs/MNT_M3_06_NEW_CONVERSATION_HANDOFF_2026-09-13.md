@@ -55,9 +55,7 @@ project_availability
 -> RESOLVE_EXACT_PROJECT_THEN_INHERIT_PROJECT_OWNER
 ```
 
-Terminology correction:
-
-`tegra caminhos da lapa` maps to the same query family/page owner; no duplicate route. This is not described as URL canonicalization.
+Terminology correction: `tegra caminhos da lapa` maps to the same query family/page owner; no duplicate route. This is not URL canonicalization.
 
 Stage-ready hardening is recorded without expanding the acceptance gate: membership must preserve commercial-state labels so sold/historical does not imply available inventory.
 
@@ -67,11 +65,11 @@ ODE Perdizes preserves `entregue / sold-out baseline + returned unit 22 exceptio
 
 Reserva Caminhos da Lapa preserves `entregue / 100% sold baseline + exception units under consultation`, no invented quantity/unit/price, no general stock reopening, and release-time revalidation.
 
-Official Tegra project source/content/image permission remains registered in `docs/product/MNT_OFFICIAL_TEGRA_PROJECT_SURFACES_2026-09-13.md`; permission is not publication authorization.
+Official Tegra source/content/image permission remains registered; permission is not publication authorization.
 
 ## Retest gate
 
-For PR #60: focal `seo_strategy + seo_analytics_growth` re-review of evidence lineage only.
+For PR #60: focal `seo_strategy + seo_analytics_growth` evidence-lineage re-review only.
 
 For PR #61: focal ownership retest only:
 
