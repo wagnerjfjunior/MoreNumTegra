@@ -3,12 +3,11 @@
 - Data de referência: `2026-09-13`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra`
 - Referência: `main` — resolver SHA live antes de agir
-- MNT-M2-10 merge: PR #54 / squash merge `5d2db073a4b345ae4e0067b675cab1cfb4a068ed`
+- MNT-M2 completion reconciliation: PR #55 / squash merge `894f0a7c94f15cf19a00481a45bc9d69749b067f`
 - Produto V1: `GREEN_COMMERCIAL_V1_SEARCH_INDEXED / OPERATIONAL`
 - Programa: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
-- Fase concluída: `MNT-M2 — COMPLETE`
-- Próxima fase planejada: `MNT-M3 — Intelligence, Product Truth & Search Contract`
-- Próxima task: `MNT-M3-01 — PLANNED / EXECUTION_NOT_AUTHORIZED`
+- Fase atual: `MNT-M3 — ACTIVE`
+- Task atual: `MNT-M3-01 — COMPLETE_CANDIDATE / PENDING_PRODUCT_AUTHORITY_ACCEPTANCE`
 - Saúde operacional do V1: `verde`
 
 ## 1. Produção atual
@@ -19,187 +18,119 @@
 - Form 46 nativo permanece autoritativo para captação
 - Green page 292 usa `src-greenn/moretegra.js`
 - Green page 294 usa `src-greenn/thank-you/obrigado.js`
-- Vercel Production continua exigindo atualização manual; não declarar alinhamento até evidência específica
+- MNT-M3-01 não fez mutation em produção, GTM/GA4, Ads, Search Console, DNS, Green ou Vercel
 
 Preservar:
 
 ```text
 LIVE V1 OPERATIONAL != MNT-RESF PROGRAM COMPLETE
 PROGRAM PROGRESS != V1 PRODUCT READINESS
-GREEN PRODUCTION != VERCEL HOMOLOGATION
-MNT-M2 COMPLETE != MNT-M3 AUTHORIZED
+MNT-M3-01 COMPLETE_CANDIDATE != ACCEPTED
+MNT-M3-01 ACCEPTED != MNT-M3-02 AUTHORIZED
 ```
 
 ## 2. Programa MNT-RESF
-
-Estado canônico desta revisão:
 
 ```text
 MNT-M0 COMPLETE
 MNT-M1 COMPLETE
 MNT-M2 COMPLETE
-  MNT-M2-01 COMPLETE
-  MNT-M2-02 COMPLETE
-  MNT-M2-03 COMPLETE
-  MNT-M2-04 COMPLETE
-  MNT-M2-05 COMPLETE
-  MNT-M2-06 COMPLETE
-  MNT-M2-07 COMPLETE
-  MNT-M2-08 COMPLETE
-  MNT-M2-09 COMPLETE
-  MNT-M2-10 COMPLETE / ACCEPTED_WITH_V1_RESIDUAL
-MNT-M3 PLANNED
-  MNT-M3-01 PLANNED / NEXT / EXECUTION_NOT_AUTHORIZED
+MNT-M3 ACTIVE
+  MNT-M3-01 COMPLETE_CANDIDATE / PENDING_ACCEPTANCE
+  MNT-M3-02..07 PLANNED / NOT_AUTHORIZED
 MNT-M4..MNT-M7 PLANNED
 ```
 
-Planning forecast:
+Planning forecast enquanto o candidate M3-01 ainda não foi aceito:
 
 ```text
 forecast total                = 1240h
 accepted scope-equivalent     = 400h
 remaining forecast            = 840h
 program progress              = 32.26%
+MNT-M3-01 candidate           = 24h / not yet accepted
 ```
 
-Accepted M2 scope-equivalent = `144h`:
+## 3. MNT-M3-01 — Market and Search demand research
 
-- M2-01 `8h`;
-- M2-02 `16h`;
-- M2-03 `16h`;
-- M2-04 `8h`;
-- M2-05 `8h`;
-- M2-06 `8h`;
-- M2-07 `16h`;
-- M2-08 `16h`;
-- M2-09 `24h`;
-- M2-10 `24h`.
+Evidence candidate:
 
-## 3. Measurement foundation — COMPLETE
+- `docs/search/MNT_M3_01_MARKET_SEARCH_DEMAND_RESEARCH_2026-09-13.md`
+- `docs/search/data/MNT_M3_01_GSC_DEMAND_SNAPSHOT_2026-09-13.csv`
+- `docs/search/data/MNT_M3_01_PLANNER_UNIVERSE_2026-09-13.csv`
 
-Accepted Google runtime:
+Execution base: `894f0a7c94f15cf19a00481a45bc9d69749b067f`.
 
-```text
-GTM container = GTM-PGCR4R47
-GTM current accepted publication = Version 7
-GA4 property = MoreNumTegra
-property_id = 553742649
-stream_id = 15759638334
-measurement_id = G-57M2XR0CY2
-Enhanced Measurement = OFF
-```
-
-Canonical source events:
-
-```text
-mnt_page_view
-mnt_section_click
-mnt_catalog_filter
-mnt_catalog_search
-mnt_intent
-mnt_form_start
-mnt_form_submit_attempt
-mnt_lead_success
-```
-
-Primary conversion mapping:
-
-```text
-mnt_lead_success -> GA4 generate_lead
-```
-
-`generate_lead` permanece GA4 `Evento principal` / Key event. Nenhum valor monetário de lead foi definido.
-
-## 4. MNT-M2-10 — end-to-end QA
-
-Evidence:
-
-- `docs/measurement/MNT_M2_10_LIVE_QA_UPDATE_2026-09-13.md`
-- `docs/measurement/MNT_M2_10_POST_MERGE_RECONCILIATION_2026-09-13.md`
-
-Resultado:
-
-- QA-01..QA-25 adjudicados;
-- `www` -> canonical Measurement behavior validado;
-- page-view uniqueness/reload validado;
-- catalog search debounce/privacy validado;
-- Form 46 negative bare `/obrigado` validado;
-- genuine Green success -> exatamente um `mnt_lead_success` -> um `generate_lead`;
-- refresh/back dedup validado;
-- denied consent + persistence após reload validado;
-- nenhum P0/P1 Measurement permanece sem adjudicação no escopo M2.
-
-## 5. Residual V1 aceito — lead validity
-
-A page 294 usa gate client-side. Um pending recente + entrada manual da forma completa aceita da URL pode satisfazer o gate.
-
-Esse comportamento foi explicitamente aceito pela Product Authority como residual V1 não-bloqueante para MNT-M2. Não deve ser descrito como provider/server authentication.
-
-Uma arquitetura mais forte exigiria gate futuro específico de lead-validity/provider handoff; não é implícita pelo fechamento de M2.
-
-## 6. Privacy / consent
-
-- visitor name/email/phone permanecem fora dos payloads MNT/GA4;
-- raw free-form catalogue search text permanece excluído;
-- GTM permanece o dispatcher project-owned do browser;
-- sem `gtag()` ou `fbq()` direto project-owned;
-- Consent Mode default-denied/update permanece aceito;
-- granted e denied persistence possuem evidência aceita no escopo M2.
-
-## 7. Meta Measurement boundary
-
-Meta runtime permanece fora do MNT-M2 executado:
-
-```text
-META_DATASET_ID = NOT_PROVEN
-META_PIXEL_ID = NOT_PROVEN
-META_PIXEL_DATASET_RELATIONSHIP = NOT_PROVEN
-META_CAPI = NOT_IMPLEMENTED / NOT_AUTHORIZED
-```
-
-Não inferir ownership de website Pixel/Dataset por associação com Facebook Page, Lead Ads, ad account ou Green CRM.
-
-## 8. Search / GSC residuals
-
-P0-B permanece `PASS_WITH_RESIDUAL_RISK`.
-
-Residuals:
-
-- canonical client-side;
-- sitemap unavailable;
-- `www` sem HTTP 301/308 comprovado;
-- histórico `web-share` warning.
-
-GSC T0 histórico:
+Observed first-party Search Console range `2026-08-23..2026-09-13`:
 
 ```text
 clicks = 0
-impressions = 17
-CTR = 0%
-average position = 26.1
+impressions = 26
+weighted average position ≈ 27.52
 ```
 
-Esse baseline histórico não deve ser confundido com dados atuais de MNT-M3-01.
+The current GSC sample is sparse and mostly brand/entity-shaped. It is insufficient for trend or causality claims.
 
-## 9. SFJM Workspace boundary
+Keyword Planner research was read-only, Brazil/Portuguese/Google Search. Material demand signals include:
 
-Consumer precedence:
+```text
+tegra = 4,400 avg monthly searches
+tegra incorporadora = 3,600
+apartamentos são paulo = 12,100
+apartamentos a venda são paulo = 8,100
+apartamentos para comprar são paulo = 1,900
+apartamentos na planta em são paulo = 590
+```
 
-1. `docs/sfjm/PROJECT_READ_MODEL.json` — entrypoint/summary;
-2. `docs/sfjm/CURRENT_PROGRAM_STATE.json` — current lifecycle/progress;
-3. `docs/sfjm/PROGRAM_TASK_GRAPH.json` — hierarchy/planning hours;
-4. `docs/NEXT_SAFE_ACTION.md` — execution authority.
+Project-name demand was also material for multiple current catalogue names, including DSG Itaim, Ária Higienópolis, TEG Sacomã, Ledge Brooklin, Soma Perdizes, Zahle Jardins, Bueno Brandão 257, YPY Alto do Ipiranga, Bem Moema and others. These values are query-demand estimates and do not themselves prove entity intent or page ownership.
 
-Consumers devem resolver o live `main` antes de refresh.
+## 4. Research interpretation
 
-## 10. Próxima ação
+Candidate findings:
 
-A próxima ação segura é obter autorização explícita para:
+- São Paulo new-residential market remains active at material scale by official Secovi-SP data;
+- MoreNumTegra organic visibility remains extremely early relative to the external Tegra/category demand universe;
+- brand/entity and verified project-name families have strong direct product fit;
+- location families overlap current catalogue structure materially;
+- generic São Paulo apartment-purchase terms are much larger, but require SERP/intent validation before ownership decisions;
+- stage/state families map to the existing product taxonomy but generally have lower volume and high paid-search competition;
+- rental, houses and generic brokerage queries returned by Planner are noise/out of current product scope.
 
-`MNT-M3-01 — Market and Search demand research`.
+## 5. Limitations
 
-MNT-M3-01 é research/evidence-first. Sua autorização não implica automaticamente Search Console mutation, Ads/spend, GTM/GA4 changes, Green changes, DNS changes ou Vercel deployment.
+- GSC sample remains too small for trend/causality;
+- Planner target used Brazil/Portuguese, not São Paulo city-only;
+- Planner competition index is paid-search competition, not organic SEO difficulty;
+- some project names require SERP/entity disambiguation;
+- Semrush metrics were unavailable because the connected API reported insufficient unit balance;
+- no page owner, canonical query, final search intent or content action is defined by M3-01.
 
-## 11. External gates preservados
+## 6. Measurement foundation remains closed
 
-Meta Dataset/Pixel/CAPI, Google Ads/spend, DNS, Search Console mutation, automatic Vercel changes, Green structural changes, FECH.AI/n8n/Make e qualquer reabertura material de Measurement permanecem separadamente gated.
+MNT-M2 remains `COMPLETE`; accepted runtime stays:
+
+```text
+GTM = GTM-PGCR4R47 / Version 7
+GA4 = G-57M2XR0CY2
+primary source = mnt_lead_success
+destination = generate_lead Key event
+```
+
+The accepted V1 client-side lead-validity residual remains documented and non-blocking.
+
+## 7. Search technical residuals preserved
+
+- commercial canonical remains client-side;
+- sitemap unavailable;
+- `www` HTTP 301/308 semantics remain unproven;
+- these residuals are not changed by M3-01.
+
+## 8. Próxima ação
+
+The only next safe action is Product Authority acceptance review of the MNT-M3-01 candidate and, if satisfied, explicit Ready + merge authorization for its PR.
+
+MNT-M3-02 — `Extract and classify Search Console queries` remains planned and separately gated.
+
+## 9. External gates preservados
+
+Meta Dataset/Pixel/CAPI, Google Ads mutations/spend, DNS, Search Console mutation, Vercel deployment, Green structural changes, FECH.AI/n8n/Make and content implementation remain separately gated.
