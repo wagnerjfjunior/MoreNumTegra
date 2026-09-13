@@ -106,29 +106,44 @@ function runScenario({
 assert.equal(runScenario().events.length, 0, "direct /obrigado without pending must not emit lead");
 
 const directAfterAttempt = runScenario({pending: true});
-assert.equal(directAfterAttempt.events.length, 0, "fresh attempt without Green redirect signature must not emit lead");
+assert.equal(directAfterAttempt.events.length, 0, "fresh attempt without accepted redirect shape must not emit lead");
 assert.equal(directAfterAttempt.pending, undefined, "invalid thank-you visit must consume pending marker fail-closed");
 
 const valid = runScenario({pending: true, search: "?l_=2974&p_id=292"});
-assert.equal(valid.events.length, 1, "observed Green success redirect signature + fresh pending must emit one lead");
+assert.equal(valid.events.length, 1, "accepted redirect shape + fresh pending must emit one lead");
 assert.equal(valid.events[0].event, "mnt_lead_success");
-assert.equal(valid.pending, undefined, "valid lead must consume pending marker before emission");
-assert.equal(valid.root.dataset.leadState, "verified");
+assert.equal(valid.pending, undefined, "accepted lead must consume pending marker before emission");
+assert.equal(valid.root.dataset.leadState, "accepted");
 
+assert.equal(
+  runScenario({pending: true, search: "?p_id=292&l_=2974"}).events.length,
+  1,
+  "query-parameter order must not change evaluation"
+);
 assert.equal(
   runScenario({pending: true, search: "?l_=0&p_id=292"}).events.length,
   0,
-  "zero Green lead reference must fail closed"
+  "zero redirect reference must fail closed"
 );
 assert.equal(
   runScenario({pending: true, search: "?l_=abc&p_id=292"}).events.length,
   0,
-  "non-numeric Green lead reference must fail closed"
+  "non-numeric redirect reference must fail closed"
 );
 assert.equal(
   runScenario({pending: true, search: "?l_=2974&p_id=999"}).events.length,
   0,
-  "wrong Green source page must fail closed"
+  "wrong source page must fail closed"
+);
+assert.equal(
+  runScenario({pending: true, search: "?l_=2974&l_=2975&p_id=292"}).events.length,
+  0,
+  "duplicate redirect-reference parameters must fail closed"
+);
+assert.equal(
+  runScenario({pending: true, search: "?l_=2974&p_id=292&p_id=292"}).events.length,
+  0,
+  "duplicate source-page parameters must fail closed"
 );
 assert.equal(
   runScenario({pending: true, search: "?l_=2974&p_id=292", pendingAgeMs: 10 * 60 * 1000 + 1}).events.length,
@@ -151,4 +166,4 @@ assert.equal(firstLoad.events.length, 1);
 const refreshWithoutPending = runScenario({pending: false, search: "?l_=2974&p_id=292"});
 assert.equal(refreshWithoutPending.events.length, 0, "refresh without a new pending marker must not duplicate lead");
 
-console.log("PASS test-thank-you-lead-guard: negative/direct/stale/refresh paths fail closed; valid Green redirect path emits exactly one lead.");
+console.log("PASS test-thank-you-lead-guard: v4 exact-shape, fail-closed, stale/host/route, duplicate-param and refresh-dedup behavior verified.");
