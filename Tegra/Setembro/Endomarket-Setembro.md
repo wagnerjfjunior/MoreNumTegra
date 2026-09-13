@@ -10,3 +10,5 @@ Nova Vivere - Prêmio 2% - unidades AP2803 - 105m² - Tabela atual: R$ 13.000/m�
 Garden Design - Prêmio 2% - VPL -8%
 Capitolo by Piero Lissoni - Prêmio 2% - unidade 24 - 210m² - Tabela Antes: R$ 23.345/m² --> Tabela atual: R$ 17.369/m² - 74 unidades de 210m² com 4 suítes e 3 vagas;
 Mozae Higienópolis - Prêmio 2% - unidade 306 - 73m² - Tabela Antes: R$ 18.830/m² --> Tabela atual: R$ 15.350/m² - 33 unidades de 46m² com 1 suítes e 61 unidades de 73m² e 1 vaga;
+Reserva Caminhos da Lapa - 100% Vendido - Preço sob sonsulta
+ODE Perdizes - unidade 22 - 2º andar - R$ 2.090.000
