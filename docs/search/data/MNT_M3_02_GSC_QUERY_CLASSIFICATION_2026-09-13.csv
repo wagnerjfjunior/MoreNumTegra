@@ -1,0 +1,7 @@
+query,page,clicks,impressions,ctr,avg_position,classification,subclassification,alignment,confidence,notes
+amaro tegra,https://moretegra.com.br/,0,1,0,52,brand_plus_unresolved_entity,entity_or_location_unresolved,UNRESOLVED,LOW,"Visible in GSC; no exact supporting Keyword Planner match in uploaded studies; do not assign page ownership yet."
+ode perdizes tegra,https://moretegra.com.br/,0,1,0,50,project_plus_brand,current_catalog_project,HIGH,MEDIUM,"Direct project+brand shape; Planner study also contains the exact phrase."
+tegra,https://moretegra.com.br/,0,4,0,26,brand_head,brand,HIGH,HIGH,"Pure Tegra brand query."
+tegra campo belo,https://moretegra.com.br/,0,1,0,75,brand_plus_location,location_modifier,PARTIAL,MEDIUM,"Campo Belo is a real São Paulo apartment-demand cluster in uploaded Planner data, but direct MoreNumTegra catalogue ownership is not established by M3-02."
+tegra conecta,https://moretegra.com.br/,0,2,0,65,brand_plus_service,service_or_platform_modifier,UNRESOLVED,MEDIUM,"Planner includes exact phrase; entity/service meaning requires SERP validation in M3-03."
+tegra vendas,https://moretegra.com.br/,0,6,0,28.6667,brand_plus_commercial,commercial_modifier,HIGH,HIGH,"Commercial-intent brand modifier; Planner includes related phrases such as portal do corretor tegra vendas."
