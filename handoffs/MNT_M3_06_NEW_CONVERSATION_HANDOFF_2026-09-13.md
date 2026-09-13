@@ -2,96 +2,105 @@
 
 Canonical repo: `wagnerjfjunior/MoreNumTegra`.
 
-Live integrated main resolved before reconciliation:
+Live integrated main observed before this correction:
 
 `5bd7ec7913e802589f6025a8bc98a1ef8378f84e`
 
-## Program position
+## Current candidate stack
 
 ```text
-MNT-M0 COMPLETE
-MNT-M1 COMPLETE
-MNT-M2 COMPLETE
-MNT-M3 ACTIVE
-MNT-M3-01 COMPLETE / ACCEPTED
-MNT-M3-02 COMPLETE / ACCEPTED
-MNT-M3-03 COMPLETE / ACCEPTED / PR #58 MERGED
-MNT-M3-04 COMPLETE_CANDIDATE / PR #59 OPEN DRAFT
-MNT-M3-05 COMPLETE_CANDIDATE / PR #60 OPEN DRAFT
-MNT-M3-06 COMPLETE_CANDIDATE / PR #61 OPEN DRAFT
-MNT-M3-07 PLANNED / NOT_AUTHORIZED
+PR #59 — MNT-M3-04 — COMPLETE_CANDIDATE
+head: e40389af2b0e26a9c6ce2aa99efef7150fd61828
+
+PR #60 — MNT-M3-05 — COMPLETE_CANDIDATE
+head: fcca7c3166a23f2c0d71d5273a1d18cd6f7a369b
+base: PR #59 corrected head
+
+PR #61 — MNT-M3-06 — COMPLETE_CANDIDATE
+head: resolve live before acting
+base: PR #60 corrected head
 ```
 
-## Reconciled stack
+All three remain `OPEN / DRAFT`. No Ready or merge authorization is implied.
 
-The previously stacked candidate branches were reconciled onto the post-#58 live main without carrying the accidental placeholder history into the PR deltas:
+`MNT-M3-07 = PLANNED / NOT_AUTHORIZED`.
+
+## M3-05 SES correction now upstream
+
+PR #60 preserves its strategy but makes evidence lineage explicit per query family:
+
+- `representative_query_status` distinguishes observed, generalized and synthetic examples;
+- `evidence_classes` / `evidence_refs` identify GSC, Planner, SERP and product-fact basis;
+- `observed_search_intent` is separate from `strategy_service_intent`;
+- `intent_confidence` is separate from `decision_confidence`;
+- CAPIITOLO remains `SERVE_PRIMARY` as a strategy/product-coverage decision with search demand/intent not directly validated;
+- metragem/planta/availability and stage synthetic phrases no longer masquerade as observed exact queries.
+
+## M3-06 SES correction
+
+The two ownership blockers were corrected:
+
+1. known project modifiers now have concrete owners:
+   - `elo caminhos da lapa preço` → `/empreendimentos/caminhos-da-lapa-elo-duo/`;
+   - `reserva caminhos da lapa endereço` → `/empreendimentos/reserva-caminhos-da-lapa/`;
+   - Mozae metragem remains on `/empreendimentos/mozae-higienopolis/`.
+2. `tegra campo belo` no longer carries a concrete `/regioes/campo-belo/` owner. It is `NO_OWNER + CONDITIONAL_OWNER_PATTERN` until `verified_location_project_set` passes.
+
+Parameterized modifier families now separate owner resolution from URL ownership:
 
 ```text
-main 5bd7ec7913e802589f6025a8bc98a1ef8378f84e
--> PR #59 M3-04 head 649612a0bae8c90ccb1eee91fe1509df594abb16
--> PR #60 M3-05 head 33b11e216e94ea01c487bccee60e1cf886bd1baf
--> PR #61 M3-06 branch, resolve live head before any further mutation
+project_planta
+project_availability
+-> NO_CONCRETE_OWNER_UNTIL_PROJECT_RESOLVED
+-> RESOLVE_EXACT_PROJECT_THEN_INHERIT_PROJECT_OWNER
 ```
 
-PR #61 uses a reconciliation merge commit to preserve its existing history while adopting the new #60 ancestry. Its effective PR delta remains bounded to M3-06 files.
+Terminology correction:
 
-No Ready/merge authorization has been given for #59, #60 or #61.
+`tegra caminhos da lapa` maps to the same query family/page owner; no duplicate route. This is not described as URL canonicalization.
 
-## M3-06 result
+Stage-ready hardening was recorded without expanding the acceptance gate: stage membership must preserve commercial-state labels so sold/historical does not imply available inventory.
 
-M3-06 now defines:
+## Product truth preserved
 
-- one primary/conditional/support/no-owner disposition for every material M3-05 query family;
-- stable exact-project route ownership without treating route reservation as implementation;
-- separation of `/caminhos-da-lapa/` master intent from exact child-project intent;
-- project modifier handling on the exact project canonical rather than thin price/address/metragem doorway pages;
-- conditional stage owners under `/estagios/`;
-- conditional location-owner pattern under `/regioes/` only when a verified project set exists;
-- canonical/indexability rules for planned vs existing routes;
-- anti-overlap and internal-linking direction;
-- explicit exclusions for corporate/tool/noise/rental/house families.
-
-Artifacts:
-
-- `docs/search/MNT_M3_06_QUERY_FAMILY_PAGE_OWNER_MAP_2026-09-13.md`
-- `docs/search/data/MNT_M3_06_PAGE_OWNER_MAP_2026-09-13.csv`
-- `docs/product/MNT_OFFICIAL_TEGRA_PROJECT_SURFACES_2026-09-13.md`
-
-No runtime, Green, Vercel, Search Console, GTM/GA4, DNS or production route mutation was performed.
-
-## Product/commercial truth to preserve
-
-### ODE Perdizes
+ODE Perdizes:
 
 ```text
-public baseline = entregue / sold-out
-commercial exception = returned unit 22
+public baseline = entregue / sold out
+exception = returned unit 22
+no general stock reopening
+release-time price/availability revalidation required
+old comparative De R$ 2.200.000 not admitted without recertification
 ```
 
-The exception does not reopen general inventory. Availability/price must be immediately revalidated before public release. Do not revive the older comparative `de R$ 2.200.000` without new evidence.
-
-### Reserva Caminhos da Lapa
+Reserva Caminhos da Lapa:
 
 ```text
-public baseline = entregue / 100% vendido
-commercial exception = exception units under consultation
-quantity / units / price = not established
+public baseline = entregue / 100% sold
+exception = units under consultation
+no invented quantity/unit/price
+no general stock reopening
+release-time revalidation required
 ```
 
-Do not invent quantity, unit number, price or normal availability. `Sob consulta` requires current revalidation and must not imply general reopened inventory.
+Official Tegra project source/content/image permission remains registered in `docs/product/MNT_OFFICIAL_TEGRA_PROJECT_SURFACES_2026-09-13.md`; permission is not publication authorization.
 
-## Official Tegra sources / permission
+## Retest gate
 
-Product Authority supplied the current official Tegra project-surface list and confirmed permission to use Tegra content/images in MoreNumTegra downstream work. This is a source-use permission, not automatic publication authority. Volatile commercial facts remain governed by release-time revalidation.
+For PR #60: focal `seo_strategy + seo_analytics_growth` re-review of evidence lineage only.
 
-## Next safe lifecycle action
+For PR #61: focal ownership retest only:
 
-Review the candidate stack in order:
+- reconcile all 41 M3-05 families;
+- exactly one concrete owner, `NO_OWNER`, support-only state or unambiguous conditional state per family;
+- known exact project modifiers must not use abstract placeholders;
+- blocked location must not have a concrete owner URL;
+- confirm master × project, stage × project and location × project overlap remains resolved.
 
-`PR #59 -> PR #60 -> PR #61`
+Do not reopen runtime canonical, sitemap, deploy, media, Ads or M3-07 for this retest.
 
-Any Ready transition or merge requires explicit Product Authority authorization for the relevant PR/lifecycle step.
+## Mutation boundary
 
-`MNT-M3-07` is not authorized and must not start by sequence alone.
+No runtime, Green, Vercel, Search Console, GTM/GA4, DNS, sitemap, routing or production mutation was performed.
 
-Before any future mutation, resolve live `main`, live PR #59/#60/#61 and read the canonical SFJM entrypoints again.
+Next lifecycle action after specialist PASS remains explicit Product Authority decision. Do not mark Ready or merge without separate authorization.
