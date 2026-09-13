@@ -1,0 +1,5 @@
+project_id,severity,claim_type,runtime_claim,current_first_party_fact,disposition,required_action
+ode-perdizes,HIGH,inventory/promo,Última unidade; unidade 22; R$ 2.090.000 de R$ 2.200.000,Entregue; 100% Vendido,BLOCKED_STALE_COMMERCIAL_CLAIM,Do not reuse availability/promo claim in future implementation until new first-party inventory evidence supersedes sold-out status.
+reserva-caminhos-lapa,HIGH,inventory/commercial CTA,Pronto para morar; valor sob consulta; sales-oriented card/CTA,Entregue; 100% Vendido,BLOCKED_STALE_COMMERCIAL_CLAIM,Preserve product/entity facts only; do not imply current sale inventory/price without new first-party evidence.
+mozae-higienopolis,MEDIUM,metragem,45m² a 73m²,46m² e 73m²,RUNTIME_METRAGE_CORRECTION_REQUIRED,Use 46m² and 73m² as current official headline values in future content implementation.
+tiel-vila-nova-conceicao,MEDIUM,unit/price,Unidade 914; 21m²; R$ 598.500,Current official page shows Boutique Apartments and a visible 19m² type; no current price observed in inspected page.,UNIT_PRICE_REVALIDATION_REQUIRED,"Revalidate exact unit 914, area and price before any future commercial reuse."
