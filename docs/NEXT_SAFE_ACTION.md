@@ -2,128 +2,98 @@
 
 > Registro autoritativo da única próxima ação segura quando esta revisão estiver em `main`.
 
-- Definida em: `2026-09-12`
+- Definida em: `2026-09-13`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
 - Programa: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
-- Estado desta revisão quando integrada: `MNT-M2-09_COMPLETE / WAITING_MNT-M2-10_AUTHORIZATION`
+- Estado de entrada: `MNT-M2_COMPLETE / WAITING_MNT-M3-01_AUTHORIZATION`
+- Merge de fechamento Measurement: PR `#54` / squash merge `5d2db073a4b345ae4e0067b675cab1cfb4a068ed`
 
 ## 1. Estado de entrada
 
-MNT-M2 possui a seguinte base aceita:
-
 ```text
-MNT-M2-01 COMPLETE
-MNT-M2-02 COMPLETE
-MNT-M2-03 COMPLETE
-MNT-M2-04 COMPLETE
-MNT-M2-05 COMPLETE
-MNT-M2-06 COMPLETE
-MNT-M2-07 COMPLETE
-MNT-M2-08 COMPLETE
-MNT-M2-09 COMPLETE
-MNT-M2-10 PLANNED / NOT_YET_AUTHORIZED
+MNT-M0 COMPLETE
+MNT-M1 COMPLETE
+MNT-M2 COMPLETE
+  MNT-M2-01 COMPLETE
+  MNT-M2-02 COMPLETE
+  MNT-M2-03 COMPLETE
+  MNT-M2-04 COMPLETE
+  MNT-M2-05 COMPLETE
+  MNT-M2-06 COMPLETE
+  MNT-M2-07 COMPLETE
+  MNT-M2-08 COMPLETE
+  MNT-M2-09 COMPLETE
+  MNT-M2-10 COMPLETE / ACCEPTED_WITH_V1_RESIDUAL
+MNT-M3 PLANNED
 ```
 
-MNT-M2-09 evidence:
+Canonical MNT-M2-10 evidence:
 
-`docs/measurement/MNT_M2_09_TRACKING_IMPLEMENTATION_EVIDENCE_2026-09-12.md`
+- `docs/measurement/MNT_M2_10_LIVE_QA_UPDATE_2026-09-13.md`
+- `docs/measurement/MNT_M2_10_POST_MERGE_RECONCILIATION_2026-09-13.md`
 
-Accepted runtime baseline:
-
-```text
-GTM = GTM-PGCR4R47
-published GTM version = 7
-GA4 property_id = 553742649
-GA4 stream_id = 15759638334
-GA4 measurement_id = G-57M2XR0CY2
-source primary = mnt_lead_success
-GA4 primary mapping = generate_lead
-GA4 generate_lead = Key event / Evento principal
-```
-
-The accepted live journey proved exactly one `mnt_form_start`, one `mnt_form_submit_attempt`, one `mnt_lead_success` and one GA4 `generate_lead` for the tested successful Form 46 journey.
+Accepted V1 residual: the page-294 lead gate is client-side and can still be satisfied by a fresh pending marker plus manual entry of the complete accepted redirect shape. This is explicitly not provider/server authentication and is accepted as non-blocking for MNT-M2 closure.
 
 ## 2. Única próxima ação segura
 
-A próxima ação é uma **decisão explícita da Product Authority sobre autorizar `MNT-M2-10 — Execute end-to-end Measurement QA`**.
+A próxima ação é uma **decisão explícita da Product Authority sobre autorizar `MNT-M3-01 — Market and Search demand research`**.
 
 Até essa autorização existir:
 
 ```text
-CURRENT_ACTIVE_PHASE = MNT-M2
+CURRENT_ACTIVE_PHASE = NONE
 CURRENT_ACTIVE_TASK = NONE
-NEXT_TASK = MNT-M2-10
-MNT-M2-10 = PLANNED / EXECUTION_NOT_AUTHORIZED
+NEXT_PHASE = MNT-M3
+NEXT_TASK = MNT-M3-01
+MNT-M3-01 = PLANNED / EXECUTION_NOT_AUTHORIZED
 ```
 
-A autorização de MNT-M2-10 deve ser interpretada como QA/evidence bounded ao contrato de Measurement. Ela não autoriza automaticamente novas integrações ou mutações fora do necessário para observar/provar o estado existente.
+A sequência do WBS não constitui autorização.
 
-## 3. Escopo esperado de MNT-M2-10
+## 3. Escopo esperado de MNT-M3-01
 
-Quando autorizada, MNT-M2-10 deve provar, no mínimo:
+Quando autorizada, MNT-M3-01 deve ser pesquisa/evidência first e produzir uma visão governada de demanda de Search aplicável ao MoreNumTegra, preservando:
 
-- zero project business/page Measurement no alias `www.moretegra.com.br`;
-- exatamente um caminho de project page-view por canonical document load;
-- uma source event por ocorrência semântica;
-- ausência de direct `gtag()`/segundo caminho GA4 fora de `GTM-PGCR4R47`;
-- ausência de direct `fbq()`/segundo caminho Meta project-owned, se Meta não estiver implementado;
-- ausência de visitor PII e raw free-form catalogue search text nos payloads MNT/GA4;
-- nenhum `mnt_lead_success` sem sucesso verificável do Form 46;
-- refresh/direct `/obrigado` não fabrica lead;
-- `mnt_form_start` e `mnt_form_submit_attempt` permanecem não-conversões;
-- nenhum property/listing price vira conversion value;
-- consent default/update e comportamento denied/granted permanecem coerentes com o contrato aceito;
-- `generate_lead` ocorre uma vez por lead válido no caminho testado;
-- event/parameter naming permanece aderente à taxonomy v1.
+- fatos de produto verificados;
+- separação entre dado observado, inferência e recomendação;
+- nenhuma invenção de volume, posição, concorrente, intenção ou dado comercial;
+- nenhuma mutação Search Console, Ads, GTM/GA4, Green, DNS ou Vercel por sequência automática;
+- uso de fontes live quando a evidência exigir atualidade;
+- registro de proveniência para datasets/consultas utilizados.
 
-MNT-M2-10 pode registrar residuals sem inventar PASS. Um requisito não provado deve permanecer `NOT_PROVEN`/OPEN.
+MNT-M3-01 não autoriza automaticamente MNT-M3-02..07.
 
 ## 4. Progresso programático
 
 ```text
 forecast total = 1240h
-accepted scope-equivalent = 376h
-remaining forecast = 864h
-program progress = 30.32%
+accepted scope-equivalent = 400h
+remaining forecast = 840h
+program progress = 32.26%
+MNT-M2 accepted = 144h / 144h
 ```
 
-Accepted M2 hours:
+Effort semantics permanecem `PLANNING_FORECAST_NOT_ACTUAL_TIMESHEET`.
 
-```text
-MNT-M2-01 = 8h
-MNT-M2-02 = 16h
-MNT-M2-03 = 16h
-MNT-M2-04 = 8h
-MNT-M2-05 = 8h
-MNT-M2-06 = 8h
-MNT-M2-07 = 16h
-MNT-M2-08 = 16h
-MNT-M2-09 = 24h
-```
+## 5. Mutation boundary preservado
 
-MNT-M2 accepted scope-equivalent = `120h` of `144h`.
+O fechamento de MNT-M2 não autoriza automaticamente:
 
-## 5. Mutation boundary
-
-MNT-M2-09 completion does **not** authorize:
-
-- further GTM publication/configuration beyond a separately authorized corrective need;
-- GA4 property/stream replacement or duplicate asset creation;
-- Meta Dataset/Pixel/browser source implementation;
-- Meta CAPI, partner/server gateway or dual browser/server transport;
-- Google Ads linking or conversion tags;
-- Green Pixel/integration additions;
+- nova publicação/configuração GTM;
+- substituição/criação duplicada de GA4 property/stream;
+- Meta Dataset/Pixel/CAPI;
+- Google Ads linking/conversion tags/campaign/spend;
+- user-provided data, enhanced conversions, advanced matching ou hashed PII;
 - FECH.AI/n8n/Make/webhook/backend;
-- campaign/spend;
-- DNS/Search Console mutation;
-- automatic Vercel deployment;
-- changing Vercel `MANUAL_GATE_DRIVEN` policy.
+- mudança DNS/Search Console;
+- mudança estrutural na Green;
+- deploy automático Vercel ou mudança de `MANUAL_GATE_DRIVEN`;
+- inferir preço de imóvel como conversion value;
+- encaminhar Green `gtm.formSubmit` como evento de negócio.
 
-Vercel Production homologation remains a separate manual terminal-driven action. Do not claim it updated until independently observed.
+Vercel Production homologation continua uma ação manual separada e não deve ser declarada atualizada sem evidência.
 
 ## 6. SFJM Workspace boundary
-
-Consumers must resolve live MoreNumTegra `main` before refreshing state.
 
 ```text
 PROGRAM_TASK_GRAPH = hierarchy/planning hours
@@ -132,20 +102,17 @@ NEXT_SAFE_ACTION = execution authority
 MoreNumTegra main = project truth
 ```
 
-Workspace refresh does not authorize MNT-M2-10 or any external mutation.
+Consumidores devem resolver `main` live antes de atualizar snapshots.
 
 ## 7. Condições de parada
 
-Stop if any action attempts to:
+Stop se qualquer ação tentar:
 
-- infer MNT-M2-10 authorization from task sequence;
-- change GTM/GA4/Meta/Ads only to make a QA check pass without a separately approved remediation gate;
-- forward Green `gtm.formSubmit` with PII into GA4;
-- add a redundant `form_submit` conversion on top of the accepted `generate_lead` mapping;
-- mark `mnt_form_start` or `mnt_form_submit_attempt` as conversions;
-- add monetary conversion value by inference;
-- enable user-provided data/enhanced conversions/advanced matching/hashed PII;
-- infer Meta asset ownership from Lead Ads/Green CRM/Facebook Page relationships;
-- claim Vercel homologation is current without manual deployment evidence.
+- inferir autorização de MNT-M3-01 pela sequência;
+- inventar dado de mercado/Search;
+- transformar recomendação de Search em implementação sem gate;
+- alterar plataformas externas para forçar um resultado de pesquisa;
+- reabrir Measurement M2 sem novo finding/gate explícito;
+- tratar o residual client-side de lead como provider-authenticated success.
 
-`MNT-M2-09 COMPLETE != MNT-M2-10 AUTHORIZED != MNT-M2-10 VALIDATED != MNT-M2 COMPLETE`.
+`MNT-M2 COMPLETE != MNT-M3-01 AUTHORIZED != MNT-M3 COMPLETE`.
