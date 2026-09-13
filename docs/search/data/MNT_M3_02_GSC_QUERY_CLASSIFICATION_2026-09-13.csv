@@ -1,0 +1,7 @@
+query,page,clicks,impressions,ctr,avg_position,query_shape,alignment_to_current_product,classification_confidence,final_intent_status,page_ownership_status,notes
+amaro tegra,https://moretegra.com.br/,0,1,0,52,brand_plus_unresolved_entity,UNRESOLVED,LOW,NOT_FINALIZED,NOT_ASSIGNED,"Observed in GSC. Entity/modifier meaning remains unresolved and must be validated in MNT-M3-03 before intent or ownership decisions."
+ode perdizes tegra,https://moretegra.com.br/,0,1,0,50,project_plus_brand,HIGH,HIGH,NOT_FINALIZED,NOT_ASSIGNED,"Observed in GSC. ODE Perdizes is aligned to the current catalogue; final intent and page ownership remain later-gate decisions."
+tegra,https://moretegra.com.br/,0,4,0,26,brand_head,HIGH,HIGH,NOT_FINALIZED,NOT_ASSIGNED,"Observed pure-brand query. No final page-ownership decision is made in MNT-M3-02."
+tegra campo belo,https://moretegra.com.br/,0,1,0,75,brand_plus_location,PARTIAL,MEDIUM,NOT_FINALIZED,NOT_ASSIGNED,"Observed in GSC. Campo Belo is a real location-demand family in the Planner corpus, but current MoreNumTegra page ownership is not established here."
+tegra conecta,https://moretegra.com.br/,0,2,0,65,brand_plus_service_or_platform_modifier,UNRESOLVED,MEDIUM,NOT_FINALIZED,NOT_ASSIGNED,"Observed in GSC. Service/platform/entity meaning remains unresolved pending SERP validation."
+tegra vendas,https://moretegra.com.br/,0,6,0,28.6667,brand_plus_commercial_modifier,HIGH,HIGH,NOT_FINALIZED,NOT_ASSIGNED,"Observed in GSC. Commercial-modifier shape is clear, but final search intent and page ownership are deliberately deferred."
