@@ -4,6 +4,7 @@ Status: `COMPLETE_CANDIDATE / PENDING_PRODUCT_AUTHORITY_ACCEPTANCE`
 
 Program: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`  
 Task: `MNT-M3-06 — Query-family to page-owner map`  
+Immediate corrected upstream M3-05 head: `9c1a6a13fa44b91f013a6bc22b66d769bc1ae69e`.  
 Scope: `SEARCH ARCHITECTURE / PAGE OWNERSHIP / ANTI-CANNIBALIZATION ONLY`  
 Runtime/platform mutation: `NONE`.
 
