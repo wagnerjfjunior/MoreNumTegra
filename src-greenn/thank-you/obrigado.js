@@ -1,5 +1,6 @@
-// MoreNumTegra thank-you page lifecycle v3.
-// A verified lead requires both a fresh Form 46 submit-attempt marker and the observed Green success redirect signature.
+// MoreNumTegra thank-you page lifecycle v4.
+// V1 client-side lead gate: fresh Form 46 pending marker + exact accepted Green redirect shape.
+// This is a bounded heuristic, not cryptographic/server-side proof of Green success.
 (() => {
   "use strict";
 
@@ -51,10 +52,16 @@
     document.querySelectorAll('link[rel="canonical"]').forEach((node) => node.remove());
   }
 
-  function hasGreenSuccessRedirectSignature() {
+  function hasAcceptedGreenRedirectShape() {
     const params = new URLSearchParams(window.location.search || "");
-    const leadRef = String(params.get(GREEN_LEAD_PARAM) || "").trim();
-    const sourcePage = String(params.get(GREEN_PAGE_PARAM) || "").trim();
+    const leadRefs = params.getAll(GREEN_LEAD_PARAM);
+    const sourcePages = params.getAll(GREEN_PAGE_PARAM);
+
+    if (leadRefs.length !== 1 || sourcePages.length !== 1) return false;
+
+    const leadRef = String(leadRefs[0] || "").trim();
+    const sourcePage = String(sourcePages[0] || "").trim();
+
     if (sourcePage !== GREEN_SOURCE_PAGE_ID) return false;
     return /^[1-9]\d*$/.test(leadRef);
   }
@@ -75,8 +82,8 @@
     }
   }
 
-  function markVerifiedUi(root) {
-    root.dataset.leadState = "verified";
+  function markAcceptedLeadUi(root) {
+    root.dataset.leadState = "accepted";
     const eyebrow = root.querySelector("[data-thanks-eyebrow]");
     const message = root.querySelector("[data-thanks-message]");
     if (eyebrow) eyebrow.textContent = "SOLICITAÇÃO RECEBIDA";
@@ -85,13 +92,13 @@
     }
   }
 
-  function emitVerifiedLead(root) {
+  function emitAcceptedLead(root) {
     if (window.location.hostname !== CANONICAL_HOST) return false;
     if (normalizedPath() !== THANK_YOU_ROUTE) return false;
 
-    const hasSuccessSignature = hasGreenSuccessRedirectSignature();
+    const hasAcceptedRedirect = hasAcceptedGreenRedirectShape();
     const hasFreshPending = consumeFreshPendingLead();
-    if (!hasSuccessSignature || !hasFreshPending) return false;
+    if (!hasAcceptedRedirect || !hasFreshPending) return false;
 
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
@@ -109,7 +116,7 @@
       placement: "form_46"
     });
 
-    markVerifiedUi(root);
+    markAcceptedLeadUi(root);
     return true;
   }
 
@@ -117,7 +124,7 @@
     applyPageMetadata();
     const root = document.querySelector(ROOT_SELECTOR);
     if (!root) return;
-    emitVerifiedLead(root);
+    emitAcceptedLead(root);
   }
 
   if (document.readyState === "loading") {
