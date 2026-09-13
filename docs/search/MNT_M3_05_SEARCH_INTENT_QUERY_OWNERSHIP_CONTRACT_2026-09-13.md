@@ -5,6 +5,7 @@ Status: `COMPLETE_CANDIDATE / PENDING_PRODUCT_AUTHORITY_ACCEPTANCE`
 Program: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`  
 Task: `MNT-M3-05 — Search Intent / Query Ownership Contract`  
 Planning estimate: `24h`  
+Corrected upstream M3-04 head: `e40389af2b0e26a9c6ce2aa99efef7150fd61828`.  
 Scope class: `SEARCH STRATEGY / INTENT GOVERNANCE / LOGICAL OWNERSHIP ONLY`  
 Runtime/platform mutation: `NONE`.
 
