@@ -6,6 +6,7 @@
 - Technical baseline: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
 - ADRs: `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`, `docs/adr/ADR-002-VERCEL-MANUAL-GATE-DRIVEN-DEPLOYMENT.md`
 - Runtime Measurement evidence: `docs/measurement/MNT_M2_10_LIVE_QA_UPDATE_2026-09-13.md`
+- Search research candidate: `docs/search/MNT_M3_01_MARKET_SEARCH_DEMAND_RESEARCH_2026-09-13.md`
 - Regra: ausência nesta lista não constitui autorização.
 
 ## 1. Baseline runtime aceita após MNT-M2
@@ -14,6 +15,7 @@
 MNT-M2 = COMPLETE
 MNT-M2-10 = COMPLETE / ACCEPTED_WITH_V1_RESIDUAL
 PR #54 squash merge = 5d2db073a4b345ae4e0067b675cab1cfb4a068ed
+PR #55 squash merge = 894f0a7c94f15cf19a00481a45bc9d69749b067f
 GTM = GTM-PGCR4R47
 GTM accepted published version = 7
 GA4 property_id = 553742649
@@ -22,12 +24,11 @@ GA4 measurement_id = G-57M2XR0CY2
 primary source event = mnt_lead_success
 GA4 primary mapping = generate_lead
 generate_lead = GA4 Key event / Evento principal
-MNT-M3-01 = PLANNED / NOT_YET_AUTHORIZED
+MNT-M3-01 = COMPLETE_CANDIDATE / PENDING_ACCEPTANCE
+MNT-M3-02 = PLANNED / NOT_YET_AUTHORIZED
 ```
 
-Historical design documents preserve their point-in-time observations. MNT-M2-09/MNT-M2-10 runtime evidence supersedes earlier uncertainty for accepted Google Measurement assets without rewriting history.
-
-Meta Dataset/Pixel identifiers remain `NOT_PROVEN`; Meta runtime/CAPI remain not implemented/not authorized.
+Historical design documents preserve their point-in-time observations. Meta Dataset/Pixel identifiers remain `NOT_PROVEN`; Meta runtime/CAPI remain not implemented/not authorized.
 
 ## 2. Bloqueios ativos — código / Green / Vercel
 
@@ -68,7 +69,9 @@ Meta Dataset/Pixel identifiers remain `NOT_PROVEN`; Meta runtime/CAPI remain not
 
 | Ação bloqueada | Motivo | Condição de liberação |
 |---|---|---|
-| iniciar MNT-M3-01 por sequência automática | WBS planejada não é autorização | Product Authority autoriza explicitamente MNT-M3-01 |
+| contabilizar MNT-M3-01 como accepted antes do lifecycle de aceitação | candidate != accepted | Product Authority aceita + PR integra main |
+| iniciar MNT-M3-02 por sequência automática | M3-01 não autoriza M3-02 | Product Authority autoriza explicitamente MNT-M3-02 após fechamento de M3-01 |
+| converter Planner/GSC em search intent ou page owner final | M3-01 mede demanda; não fecha intenção/ownership | executar gates M3-02/M3-03/M3-05/M3-06 |
 | inventar volume, posição, tendência, concorrente, intenção ou demanda | viola provenance/product truth | usar evidência observada e marcar inferência separadamente |
 | alterar Search Console para produzir evidência | pesquisa não autoriza mutation | gate Search Console específico |
 | transformar recomendação de MNT-M3 em implementação | research/design != implementation authorization | gate da task de implementação aplicável |
@@ -154,7 +157,8 @@ Permitido após lifecycle/gate aplicável:
 - `tool capability` != `authorization`.
 - `GTM Version 7 published` != `future GTM mutations authorized`.
 - `GA4 generate_lead Key event` != `Google Ads conversion configured`.
-- `MNT-M2 COMPLETE` != `MNT-M3-01 AUTHORIZED`.
+- `MNT-M3-01 COMPLETE_CANDIDATE` != `MNT-M3-01 ACCEPTED`.
+- `MNT-M3-01 ACCEPTED` != `MNT-M3-02 AUTHORIZED`.
 - `Meta ownership topology defined` != `Meta runtime implemented`.
 - `www Domínio OK` != `HTTP 301/308 comprovado`.
 - `planned WBS` != `authorized execution`.
