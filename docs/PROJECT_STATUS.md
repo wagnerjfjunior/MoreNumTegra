@@ -1,6 +1,6 @@
 # Status do Projeto — MoreNumTegra
 
-- Data de referência: `2026-09-13`
+- Data de referência: `2026-09-14`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra`
 - Referência: `main` — resolver SHA live antes de agir
 - MNT-M2-10 merge: PR #54 / squash merge `5d2db073a4b345ae4e0067b675cab1cfb4a068ed`
@@ -17,11 +17,11 @@
 
 - Green Sales: `https://moretegra.com.br/`
 - Vercel homologation: `https://morenumtegra.vercel.app/`
-- Vercel deployment mode: `MANUAL_GATE_DRIVEN` conforme ADR-002
+- Vercel deployment mode: `GIT_DRIVEN_FILTERED_AUTOMATIC` conforme ADR-004
 - Form 46 nativo permanece autoritativo para captação
 - Green page 292 usa `src-greenn/moretegra.js`
 - Green page 294 usa `src-greenn/thank-you/obrigado.js`
-- Vercel Production continua exigindo atualização manual; não declarar alinhamento até evidência específica
+- mudanças runtime mergeadas em `main` disparam Vercel Production automaticamente; commits exclusivamente documentais são cancelados pelo Ignored Build Step
 - MNT-M3-01 não realizou mutation em produção, Measurement, Ads, Search Console, DNS, Green ou Vercel
 
 Preservar:
@@ -224,7 +224,7 @@ Project-name demand was also material for multiple current catalogue names, incl
 
 Candidate findings:
 
-- São Paulo new-residential market is active at material scale by Secovi-SP evidence;
+- São Paulo new-residential market is active at material scale by official Secovi-SP evidence;
 - MoreNumTegra organic visibility remains early relative to external Tegra/category demand;
 - brand/entity, project-name and catalogue-aligned location families are direct-fit research clusters;
 - generic São Paulo apartment-purchase terms are materially larger but need SERP/intent validation before ownership decisions;
@@ -261,4 +261,4 @@ MNT-M3-01 é research/evidence-only e não implica automaticamente Search Consol
 
 ## 12. External gates preservados
 
-Meta Dataset/Pixel/CAPI, Google Ads/spend, DNS, Search Console mutation, automatic Vercel changes, Green structural changes, FECH.AI/n8n/Make e qualquer reabertura material de Measurement permanecem separadamente gated.
+Meta Dataset/Pixel/CAPI, Google Ads/spend, DNS, Search Console mutation, mudanças futuras na política Vercel fora do ADR-004, Green structural changes, FECH.AI/n8n/Make e qualquer reabertura material de Measurement permanecem separadamente gated.
