@@ -1,0 +1,9 @@
+source_route,destination,owner_class,anchor_text,http_result,indexability_state,orphan_effect,status,notes
+/,/#oportunidades,portfolio_root,Empreendimentos,SAME_DOCUMENT_200,INHERITS_ROOT,0,PASS,Governed same-document catalog discovery
+/,/#como-escolher,portfolio_root,Como escolher,SAME_DOCUMENT_200,INHERITS_ROOT,0,PASS,Governed same-document decision guidance
+/,/#formulario,portfolio_root,Receber contato,SAME_DOCUMENT_200,INHERITS_ROOT,0,PASS,Governed lead CTA to native Form 46 position
+/,/#negociacao,portfolio_root,Quero negociar melhor,SAME_DOCUMENT_200,INHERITS_ROOT,0,PASS,Governed same-document value/negotiation guidance
+/,/caminhos-da-lapa/,master_owner,NA,NOT_IMPLEMENTED,NOT_IMPLEMENTED,NA,DEFERRED,No real runtime route; no dead link created
+/,/empreendimentos/<project>/,exact_project_owner,NA,NOT_IMPLEMENTED,NOT_IMPLEMENTED,NA,DEFERRED,No exact-project route published by M4-08 portfolio-root implementation
+/,/estagios/<stage>/,stage_owner,NA,NOT_IMPLEMENTED,NOT_IMPLEMENTED,NA,DEFERRED,Current stage controls are filters and are not presented as indexable routes
+/,/regioes/<location>/,location_owner,NA,NOT_IMPLEMENTED,NOT_IMPLEMENTED,NA,DEFERRED,Conditional location routes remain fact-gated
