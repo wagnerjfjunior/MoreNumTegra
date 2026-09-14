@@ -1,0 +1,4 @@
+window,channel_group,sessions,generate_lead_key_events,state,lead_use
+2026-09-10..2026-09-13,Referral,17,6,OBSERVED,TEST_ONLY
+2026-09-10..2026-09-13,Unassigned,1,1,OBSERVED,TEST_ONLY
+2026-09-10..2026-09-13,Organic Search,,,NO_ROW_OBSERVED,NOT_BASELINED
