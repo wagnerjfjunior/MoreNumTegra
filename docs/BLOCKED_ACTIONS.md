@@ -3,7 +3,7 @@
 - Atualizado em: `2026-09-14`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
 - Functional baseline: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
-- Technical baseline vigente após integração: `docs/baseline/TECHNICAL_BASELINE_V2_3.md`
+- Technical baseline: `docs/baseline/TECHNICAL_BASELINE_V2_3.md`
 - Production decision: `docs/adr/ADR-006-VERCEL-COMMERCIAL-PRODUCTION-WWW-CANONICAL.md`
 - Regra: ausência nesta lista não constitui autorização.
 
@@ -20,32 +20,26 @@ LP host = Green fallback / non-canonical
 VERCEL DEPLOYMENT = GIT_DRIVEN_FILTERED_AUTOMATIC
 ```
 
-Historical documents that describe Green Builder as the web production host or `lp.moretegra.com.br` as the Vercel canonical surface are point-in-time evidence and are superseded for current production semantics by ADR-006 + Technical Baseline V2.3.
-
 ## 2. Bloqueios ativos — código / runtime / deploy
 
-| Ação bloqueada | Motivo | Condição de liberação |
-|---|---|---|
-| alterar produção fora de branch/PR sem necessidade emergencial comprovada | quebra rastreabilidade | branch/PR + lifecycle governado |
-| promover estado Vercel diferente de `main` aprovado | drift de produção | alinhar ao SHA autorizado |
-| desabilitar deploy Git-driven automático sem nova decisão | ADR-004 é vigente | nova ADR/gate explícito |
-| remover filtro docs-only sem necessidade comprovada | consome build sem benefício | decisão infra + QA |
-| tratar Deploy Hook manual como caminho normal | supersedido por ADR-004 | usar apenas fallback/emergência |
-| adicionar framework/bundler/backend complexo sem requisito | viola simplicidade V1 | necessidade comprovada + decisão arquitetural |
-| segredo/token no HTML/JS | risco de segurança | arquitetura server-side segura aprovada |
+- alterar produção fora de branch/PR sem necessidade emergencial comprovada;
+- promover estado Vercel diferente de `main` aprovado;
+- desabilitar deploy Git-driven automático sem nova decisão;
+- remover filtro docs-only sem necessidade comprovada;
+- tratar Deploy Hook manual como caminho normal;
+- adicionar framework/bundler/backend complexo sem requisito comprovado;
+- expor segredo/token no HTML/JS.
 
-## 3. Bloqueios ativos — DNS / domínio / hosting
+## 3. DNS / domínio / hosting
 
-| Ação bloqueada | Motivo | Condição de liberação |
-|---|---|---|
-| novas mudanças DNS/domínio sem gate | risco de indisponibilidade/SEO | decisão explícita + rollback/QA |
-| ativar Cloudflare orange-cloud/proxy na frente da Vercel | muda caminho HTTP, cache e segurança | necessidade comprovada + testes específicos |
-| trocar novamente o canonical host | impacto SEO/redirect/measurement | decisão Search + infra + migration plan |
-| reutilizar target DNS por memória em futura mudança | pode estar stale | usar valor live fornecido pelo provedor |
-| remover `lp` fallback sem decisão | pode afetar rollback/Green legado | gate próprio |
-| mexer em MX/SPF/DKIM/DMARC por causa do web cutover | escopo diferente | gate de e-mail próprio |
+Permanece bloqueado sem gate próprio:
+- novas mudanças DNS/domínio;
+- Cloudflare orange-cloud/proxy;
+- nova troca de canonical host;
+- remoção do `lp` fallback;
+- qualquer alteração de MX/SPF/DKIM/DMARC motivada pelo web cutover.
 
-## 4. Bloqueios ativos — Form 46 / lead / CRM
+## 4. Form 46 / lead / CRM
 
 Contrato vigente:
 
@@ -56,17 +50,15 @@ title = MoreEmUmTegra
 POST = https://back.gdigital.com.br/form/register
 ```
 
-| Ação bloqueada | Motivo | Condição de liberação |
-|---|---|---|
-| substituir Green/GDigital como provider sem nova arquitetura | Form 46 real foi validado | necessidade + decisão + migration QA |
-| adicionar backend intermediário sem necessidade comprovada | aumenta complexidade e superfície de falha | requisito técnico/segurança explícito |
-| expor token/segredo no cliente | risco crítico | proibido; usar arquitetura segura |
-| usar seletor global `form` para mutação/interceptação | risco de colisão | usar seletor específico do MoreNumTegra |
-| remover validação/E.164/double-submit prevention | regressão funcional | nova decisão funcional + QA |
-| emitir lead success por CTA, foco ou submit attempt | semântica incorreta | somente lifecycle de lead aceito |
-| considerar `/obrigado` sozinho como prova de conversão | pode duplicar/ser acesso direto | manter marcador fresco/consumível ou arquitetura superior |
+Permanece bloqueado:
+- substituir Green/GDigital como provider sem nova arquitetura;
+- adicionar backend intermediário sem necessidade comprovada;
+- usar seletor global `form` para interceptação;
+- remover validação/E.164/double-submit prevention;
+- emitir lead success por CTA, foco ou submit attempt;
+- considerar `/obrigado` sozinho como prova de conversão.
 
-## 5. Bloqueios ativos — Measurement / GA4 / consent
+## 5. Measurement / GA4 / consent
 
 ```text
 GTM = GTM-PGCR4R47
@@ -78,42 +70,32 @@ primary GA4 mapping = generate_lead
 business host = www.moretegra.com.br
 ```
 
-| Ação bloqueada | Motivo | Condição de liberação |
-|---|---|---|
-| adicionar segundo GTM container para a mesma superfície | viola single dispatcher | decisão arquitetural superseding |
-| adicionar `gtag()` project-owned direto fora do GTM | risco de duplicação | decisão explícita |
-| criar property/stream GA4 duplicados | ativos vigentes já existem | necessidade comprovada |
-| substituir IDs por inferência | IDs canônicos observados | nova evidência explícita |
-| marcar `mnt_form_start` ou `mnt_form_submit_attempt` como conversão | taxonomy vigente os classifica como não-conversão | revisão de taxonomy |
-| criar `form_submit` redundante como conversão | duplicação semântica | revisão de contrato |
-| enviar nome/e-mail/telefone/texto livre para Measurement | PII proibida | nova arquitetura privacy/security aprovada |
-| habilitar enhanced conversions/user-provided data/advanced matching | não autorizado | privacy + ads gate específico |
-| usar preço do imóvel como conversion value do lead | não representa valor de lead | modelo de lead value governado |
-| inventar número da versão GTM publicada do cutover `www` | não registrado | evidência observada |
+Permanece bloqueado:
+- segundo GTM container para a mesma superfície;
+- `gtag()` project-owned direto fora do GTM;
+- property/stream GA4 duplicados;
+- inventar IDs ou versão GTM não observada;
+- converter `mnt_form_start` ou `mnt_form_submit_attempt` em conversão primária;
+- enviar nome/e-mail/telefone/texto livre para Measurement;
+- enhanced conversions/user-provided data/advanced matching sem gate específico;
+- usar preço do imóvel como conversion value do lead.
 
-Consent Mode vigente:
+Consent Mode vigente: default denied; aceite -> quatro sinais granted; recusa -> quatro sinais denied.
 
-```text
-default = denied
-accept = granted nos quatro sinais
-reject = denied nos quatro sinais
-```
+## 6. Search / SEO / conteúdo
 
-## 6. Bloqueios ativos — Search / SEO / conteúdo
-
+Permanece bloqueado:
 - publicar rota apenas porque está reservada na IA;
 - inserir URL 404/não publicada/não indexável no sitemap;
-- criar doorway por preço/metragem/planta/endereço/modificador quando o owner é a página exata do projeto;
-- criar localização sem conjunto de projetos verificado;
+- criar doorway por preço/metragem/planta/endereço/modificador;
+- criar localização sem conjunto verificado de projetos;
 - usar stage membership como prova de disponibilidade comercial;
-- indexar `/obrigado/`;
-- indexar `*.vercel.app` previews;
+- indexar `/obrigado/` ou `*.vercel.app` previews;
 - alterar canonical/redirect sem gate Search + infra;
 - inventar preço, metragem, endereço, disponibilidade, estágio ou claim;
 - keyword stuffing;
 - schema sem conteúdo visível/factual correspondente;
-- tratar teste de Rich Results sem item elegível como falha de indexação básica;
-- considerar sitemap deployment igual a sitemap processado pelo GSC sem evidência.
+- considerar sitemap deployment igual a sitemap processado pelo GSC.
 
 Namespace governado:
 
@@ -127,33 +109,35 @@ Namespace governado:
 
 Future `/blog/...` requires its own content/ownership gate.
 
-## 7. Meta / Ads / automação
+## 7. M5 — UX, Performance, Conversion, Lead & CRM
+
+M5 está ACTIVE e M5-01 está `IN_PROGRESS / AUTHORIZED`.
+
+A autorização atual cobre **auditoria mobile UX e acessibilidade** e registro de findings/evidências. Não autoriza automaticamente:
+- remediation material de runtime;
+- M5-02 ou tarefa posterior;
+- mudanças GTM/GA4/Form 46/DNS/Search por consequência de um finding;
+- publicação de produção fora do lifecycle governado.
+
+Cada finding deve separar `OBSERVED`, `INFERRED` e `PROPOSED_REMEDIATION`.
+
+## 8. Meta / Ads / automação
 
 Permanece bloqueado sem gate específico:
-
-- inventar/criar Meta Dataset/Pixel por ausência de evidência;
+- Meta Dataset/Pixel/CAPI/Partner Gateway;
 - `fbq()` project-owned direto;
-- Meta CAPI/Partner Gateway;
-- Standard Events/Custom Conversions inferidos;
-- Google Ads conversion tags/linkagem sem autorização;
+- Google Ads conversion tags/linkagem;
 - campaign/spend;
 - FECH.AI/n8n/Make.
 
-## 8. MNT-RESF / programa
-
-- task planejada != task autorizada;
-- merge de uma task != autorização automática da próxima;
-- Product Authority continua sendo necessária para lifecycle material;
-- SFJM/read model não pode inventar estado/horas/autorização;
-- residual factual conhecido não pode ser tratado como PASS por conveniência.
-
-## 9. Residuals atuais que não devem ser apagados
+## 9. Residuals atuais
 
 - `/favicon.ico` retornou 404 no HAR Pingdom pós-cutover;
 - número exato da versão GTM publicada para o delta `www` não foi registrado;
 - status de submissão/processamento do sitemap no GSC deve ser evidenciado separadamente;
-- residual factual Mozae 45m² vs registry governado 46m²/73m² permanece sujeito ao gate Product Truth/Search;
 - Rich Results/JSON-LD permanece trilha separada.
+
+Mozae metragem não é mais residual bloqueante: M4-09/PR #82 reconciliou áreas exatas observadas 44.85–73.40 m², tipologias comerciais atuais 46 m² e 73 m² e o uso permitido da faixa arredondada 45–73 m² quando descrita como range.
 
 ## 10. Regras de interpretação
 
@@ -164,6 +148,7 @@ SITEMAP_DEPLOYED != GSC_PROCESSED
 URL_INDEXED != RICH_RESULT_ELIGIBLE
 FORM_SUBMIT_ATTEMPT != LEAD_SUCCESS
 LEAD_SUCCESS_QA != PERMISSION_TO SEND PII TO ANALYTICS
+AUDIT_FINDING != REMEDIATION_AUTHORIZATION
 TOOL_CAPABILITY != AUTHORIZATION
 PLANNED != AUTHORIZED
 ```
