@@ -1,0 +1,11 @@
+page_type,question_family,status,visible_selector,evidence_source,notes
+portfolio_root,portfolio_purpose,PASS,.mt-hero-lead,M4_02_PAGE_CONTRACT,Direct visible explanation of More em um Tegra purpose
+portfolio_root,buying_stage_discovery,PASS,.mt-moments,M3_04_PRODUCT_FACT_REGISTRY+M4_03_CONTENT_ARCHITECTURE,Visible stage paths with explicit no-availability inference
+portfolio_root,value_interpretation,PASS,#negociacao .mt-negotiation-copy,M3_04_PLUS_RELEASE_REVALIDATION,Visible direct statement that shown values are references and current conditions require confirmation
+portfolio_root,region_discovery_context,PASS,.mt-seo,M4_02_PAGE_CONTRACT+M4_03_CONTENT_ARCHITECTURE,Visible regional discovery context with no availability implication
+master_development,master_identity,NOT_IMPLEMENTED,NA,M4_01_IA_SURFACE_REGISTRY,No real runtime route exists in current V1
+master_development,child_project_set,NOT_IMPLEMENTED,NA,M4_01_IA_SURFACE_REGISTRY,Do not manufacture master content on portfolio owner
+exact_project,project_identity,NOT_IMPLEMENTED,NA,M4_01_IA_SURFACE_REGISTRY,Exact-project routes remain planned and must not be simulated on portfolio root
+stage,stage_meaning,NOT_IMPLEMENTED_AS_ROUTE,NA,M4_01_IA_SURFACE_REGISTRY,Stage filters remain same-document discovery controls rather than indexable routes
+location,geographic_scope,NOT_IMPLEMENTED,NA,M4_01_IA_SURFACE_REGISTRY,Location routes remain conditional on verified-project-set fact gate
+historical_project,historical_state,NOT_IMPLEMENTED,NA,M4_01_IA_SURFACE_REGISTRY,Historical exact routes are not part of current runtime implementation
