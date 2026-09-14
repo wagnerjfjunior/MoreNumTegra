@@ -1,0 +1,7 @@
+family_id,query,clicks,impressions,position,classification_state
+project_sold_amaro,amaro tegra,0,1,52.0,EXACT_QUERY_BOUND_TO_M3_05_FAMILY
+project_sold_legacy,ode perdizes tegra,0,1,50.0,EXACT_QUERY_BOUND_TO_M3_05_FAMILY
+brand_head,tegra,0,3,19.3333,EXACT_QUERY_BOUND_TO_M3_05_FAMILY
+brand_location_multi_project,tegra campo belo,0,1,75.0,EXACT_QUERY_BOUND_TO_M3_05_FAMILY
+brand_partner_tool,tegra conecta,0,2,65.0,EXACT_QUERY_BOUND_TO_M3_05_FAMILY
+brand_sales_house,tegra vendas,0,5,28.6,EXACT_QUERY_BOUND_TO_M3_05_FAMILY
