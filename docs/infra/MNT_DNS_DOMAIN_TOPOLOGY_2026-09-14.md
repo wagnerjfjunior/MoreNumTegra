@@ -1,47 +1,39 @@
 # MoreNumTegra — DNS / Domain Topology Evidence — 2026-09-14
 
-- Status: `CONFIGURED / PROPAGATION_PENDING / NOT_YET_END_TO_END_VALIDATED`
+- Status: `END_TO_END_VALIDATED / CLOSED`
 - Project: `MoreNumTegra`
 - Repository: `wagnerjfjunior/MoreNumTegra`
-- Canonical base resolved before this documentation change: `bb4fd60ddd3571fce552da0fba02171d1aa4e983`
+- Final validation reconciliation base: `7272d032e8583209da1c547e2efc142e22688b85`
 - Decision record: `docs/adr/ADR-003-CLOUDFLARE-AUTHORITATIVE-DNS-VERCEL-CUSTOM-DOMAINS.md`
 
 ## Purpose
 
-Record the externally configured DNS/domain state observed during the controlled transition from Registro.br authoritative DNS to Cloudflare, while preserving Green Sales as the current commercial apex host and introducing Vercel custom-domain routing on subdomains.
+Record the completed DNS/domain transition validation from Registro.br authoritative DNS to Cloudflare, while preserving Green Sales as the commercial apex host and validating Vercel custom-domain routing on subdomains.
 
-This document is evidence/state, not authorization for additional platform changes.
+This document is evidence/state. It does not authorize future apex migration.
 
-## Observed registrar / nameserver state
+## Authoritative DNS — validated
 
-Registro.br was configured to transition authoritative DNS to:
+Public ICANN lookup observed:
 
 ```text
+moretegra.com.br
+status = active
+nameservers:
 sue.ns.cloudflare.com
 woz.ns.cloudflare.com
 ```
 
-During the same transition window, ICANN/RDAP still exposed the prior nameservers:
-
-```text
-e.sec.dns.br
-f.sec.dns.br
-```
-
-Interpretation:
+Therefore:
 
 ```text
 NAMESERVER_CHANGE_CONFIGURED = YES
-GLOBAL_PROPAGATION_COMPLETE = NOT_YET_PROVEN
+AUTHORITATIVE_DELEGATION_VALIDATED = YES
 ```
-
-DNSSEC was observed as unsigned during this transition.
 
 ## Cloudflare zone state
 
-Cloudflare imported the previously existing zone records and the web records were explicitly normalized to `DNS only`.
-
-Observed/configured records relevant to this transition:
+Relevant configured records:
 
 | Name | Type | Value | Proxy |
 |---|---|---|---|
@@ -53,29 +45,58 @@ Observed/configured records relevant to this transition:
 | `www.moretegra.com.br` | CNAME | `f5d81ddb66950472.vercel-dns-017.com` | DNS only |
 | `moretegra.com.br` | TXT | existing Google site-verification value | DNS only |
 
-The exact Google verification token is intentionally not duplicated here because its continued presence, not its token value, is the relevant state for this transition record.
+The exact Google verification token is intentionally not duplicated here.
 
-## Vercel project state
+## Vercel domain state — validated
 
 Observed in the live MoreNumTegra Vercel project UI:
 
-| Domain | Routing | State at observation |
+| Domain | Routing | Final observed state |
 |---|---|---|
 | `morenumtegra.vercel.app` | Production | `Valid Configuration` |
-| `lp.moretegra.com.br` | Production | `Invalid Configuration` while DNS propagation is pending |
-| `www.moretegra.com.br` | `308` redirect to `lp.moretegra.com.br` | `Invalid Configuration` while DNS propagation is pending |
+| `lp.moretegra.com.br` | Production | `Valid Configuration` |
+| `www.moretegra.com.br` | `308` redirect to `lp.moretegra.com.br` | `Valid Configuration` |
 
-Vercel supplied this current custom-domain CNAME target:
+Vercel CNAME target in use:
 
 ```text
 f5d81ddb66950472.vercel-dns-017.com
 ```
 
-The Vercel UI also states that legacy targets such as `cname.vercel-dns.com` / `76.76.21.21` continue to work, but this project uses the exact current target supplied for the custom domains above.
+## HTTP evidence
 
-## Current routing model
+Supplied HAR/browser evidence established:
 
-Configured transition model:
+```text
+http://www.moretegra.com.br/
+-> 307
+-> https://www.moretegra.com.br/
+
+https://www.moretegra.com.br/
+-> 308
+-> https://lp.moretegra.com.br/
+
+https://lp.moretegra.com.br/
+-> 200 OK
+```
+
+The `308` response is served by Vercel.
+
+Path/query preservation was also tested:
+
+```text
+https://www.moretegra.com.br/teste-redirect?utm_source=teste
+-> 308
+-> https://lp.moretegra.com.br/teste-redirect?utm_source=teste
+```
+
+The final destination returned Vercel `404 NOT_FOUND` because `/teste-redirect` is not a real route. This is expected and confirms that both path and query were preserved through the redirect.
+
+## Apex preservation
+
+`https://moretegra.com.br/` continued to return `200 OK` from the existing Green/GDigital application stack.
+
+Current accepted routing model:
 
 ```text
 moretegra.com.br
@@ -91,54 +112,50 @@ lp.moretegra.com.br
 www.moretegra.com.br
 -> Cloudflare authoritative DNS / DNS only
 -> Vercel CNAME
--> Vercel HTTP 308
+-> HTTP 308
 -> lp.moretegra.com.br
 ```
 
-The `www -> lp` redirect is a controlled validation configuration, not the final canonical-host policy.
+The `www -> lp` redirect is a validation configuration, not the final SEO canonical-host policy.
 
-## What has been deliberately preserved
+## Deployment state related to this topology
 
-- apex Green/GDigital A records;
-- Green Sales as current commercial production destination;
-- existing Google verification TXT;
-- Cloudflare proxy disabled for Vercel-facing records;
-- Vercel manual gate-driven deployment policy from ADR-002;
-- GitHub `main` as canonical project source.
-
-## What remains unproven
-
-At this evidence point, do not claim:
-
-- Cloudflare nameserver propagation complete globally;
-- `lp.moretegra.com.br` validated by Vercel;
-- `www.moretegra.com.br` validated by Vercel;
-- TLS/HTTPS final on either custom Vercel domain;
-- observed public HTTP `308` response from `www`;
-- path/query preservation on the redirect;
-- apex migration to Vercel;
-- final SEO canonical-host design.
-
-## Required follow-up evidence
-
-When propagation completes, append or supersede this snapshot with observed evidence for:
+Vercel deployment mode is governed by ADR-004 and has been independently validated:
 
 ```text
-NS moretegra.com.br -> sue.ns.cloudflare.com / woz.ns.cloudflare.com
-CNAME lp.moretegra.com.br -> f5d81ddb66950472.vercel-dns-017.com
-CNAME www.moretegra.com.br -> f5d81ddb66950472.vercel-dns-017.com
-Vercel lp -> Valid Configuration
-Vercel www -> Valid Configuration
-HTTPS lp -> success
-HTTP www -> 308 + expected Location
-path/query preservation -> verified
-apex moretegra.com.br -> still Green during transition
+AUTO_GIT_PREVIEW = VALIDATED
+DOCS_ONLY_FILTER = VALIDATED
+AUTO_GIT_PRODUCTION_AFTER_MAIN_MERGE = VALIDATED
+GIT_DRIVEN_END_TO_END = VALIDATED
 ```
 
-Until then:
+Documentation-only changes are skipped by the Vercel Ignored Build Step. Runtime changes continue to deploy automatically from Git.
+
+## Final adjudication
 
 ```text
-CONFIGURED != VALIDATED
-DNS_PROVIDER_CHANGE != HOSTING_MIGRATION
-WWW_TEST_REDIRECT != FINAL_SEO_CANONICAL_REDIRECT
+CLOUDFLARE_NS_DELEGATION = VALIDATED
+LP_DNS_TO_VERCEL = VALIDATED
+LP_TLS_HTTPS = VALIDATED
+LP_VERCEL_RUNTIME = VALIDATED
+WWW_DNS_TO_VERCEL = VALIDATED
+WWW_HTTPS_308 = VALIDATED
+PATH_PRESERVATION = VALIDATED
+QUERY_STRING_PRESERVATION = VALIDATED
+APEX_REMAINS_GREEN = VALIDATED
+DNS_DOMAIN_VALIDATION = CLOSED
 ```
+
+## Boundaries preserved
+
+Still not implied or authorized by this closure:
+
+- apex migration from Green to Vercel;
+- Cloudflare orange-cloud proxy on Vercel-facing records;
+- final SEO canonical-host choice;
+- Search Console mutation;
+- GA4/GTM mutation;
+- MX/SPF/DKIM/DMARC changes;
+- Green Form 46 replacement.
+
+A future apex migration must be separately gated and must prove real Form 46 capture, `/obrigado`, Measurement/conversion behavior, indexability/canonical/robots/sitemap, SSL and production smoke behavior on Vercel.
