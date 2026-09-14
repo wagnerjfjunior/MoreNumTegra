@@ -6,17 +6,31 @@
   <meta name="robots" content="noindex,nofollow">
   <meta name="googlebot" content="noindex,nofollow">
   <title>Obrigado | More em um Tegra — Preview</title>
-  <meta name="description" content="Preview técnico da página de obrigado do MoreNumTegra.">
+  <meta name="description" content="Página de confirmação do MoreNumTegra no ambiente Vercel.">
   <meta name="theme-color" content="#171813">
   <link rel="stylesheet" href="/src-greenn/thank-you/obrigado.css">
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PGCR4R47');</script>
+  <!-- End Google Tag Manager -->
 </head>
 <body style="margin:0">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGCR4R47"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
   <div id="mt-thanks-preview"></div>
+  <script src="/src-greenn/preview/thank-you-measurement.js" defer></script>
   <script>
     (async () => {
       const target = document.getElementById("mt-thanks-preview");
       try {
-        const response = await fetch("/src-greenn/thank-you/obrigado.html", {cache: "no-store"});
+        const response = await fetch("/src-greenn/thank-you/obrigado.html", {cache:"no-store"});
         if (!response.ok) throw new Error(`Falha ${response.status}`);
         target.innerHTML = await response.text();
         const script = document.createElement("script");
@@ -24,7 +38,7 @@
         script.defer = true;
         document.body.appendChild(script);
       } catch (cause) {
-        target.textContent = `Preview indisponível: ${cause.message}`;
+        target.textContent = `Página indisponível: ${cause.message}`;
       }
     })();
   </script>
