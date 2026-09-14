@@ -8,25 +8,79 @@ Estado reconciliado em 2026-09-14:
 - M2 COMPLETE
 - M3 COMPLETE / ACCEPTED
 - M4 ACTIVE
-- M4-01..07 COMPLETE / MERGED
-- M4-08 IN_PROGRESS / AUTHORIZED — PR #79
+- M4-01..08 COMPLETE / MERGED
+- M4-09 PLANNED / NOT_AUTHORIZED
 
-M4-05 foi mergeada na PR #69 em `8098997eef2eacfb74854f888bfaee2b6225b980`, adicionando FAQPage JSON-LD factual com paridade 4/4 com o FAQ visível e verificador próprio.
+M4-05 foi mergeada na PR #69 em `8098997eef2eacfb74854f888bfaee2b6225b980`.
 
-M4-06 foi mergeada na PR #77 em `72ceeab91757ebec8edb0cec6c80c926e8bba43f`, definindo o contrato GEO/AEO/answerability, matriz testável e gates de evidência.
+M4-06 foi mergeada na PR #77 em `72ceeab91757ebec8edb0cec6c80c926e8bba43f`.
 
-M4-07 foi mergeada na PR #78 em `0df3e4e116bca19a843feae4c0416ecab68dda98`, definindo semantic internal linking, graph-integrity gates e a obrigação de crawl/link evidence para implementação.
+M4-07 foi mergeada na PR #78 em `0df3e4e116bca19a843feae4c0416ecab68dda98`.
 
-M4-08 implementa primeiro a superfície runtime real da V1: portfolio root `/`. A PR #79 adiciona conteúdo visível/direct-answer para propósito, estágio, interpretação de valores e descoberta regional, preservando Form 46, catálogo e arquitetura Green/Vercel. Rotas master/exact/stage/location inexistentes não são fabricadas.
+M4-08 foi mergeada na PR #79 em `9073e3b70bd6a6e25255c1d5b147c26788c0630f`, implementando a camada priorizada de conteúdo/answerability na portfolio root `/` sem fabricar rotas master/exact/stage/location ainda inexistentes.
 
-Residual factual conhecido: `src-greenn/moretegra.js` ainda contém o lower bound histórico `45m²` para Mozae; M3-04 governa `46m²` e `73m²` e exige runtime correction/revalidation. A nova copy M4-08 não usa esse valor como evidência. Não declarar fechamento factual integrado de M4 enquanto o residual persistir.
+## Produção web / domínio — estado atual
 
-Infra concluída: PRs #70-#73 canonicalizam Cloudflare como DNS autoritativo, `lp.moretegra.com.br` no Vercel, `www.moretegra.com.br` com HTTPS 308 para `lp`, path/query preservados e deploy Vercel `GIT_DRIVEN_FILTERED_AUTOMATIC`. O apex `moretegra.com.br` permanece Green/GDigital.
+O cutover comercial Green -> Vercel foi executado e validado em 2026-09-14.
 
-Runtime parity do `lp` foi concluída/canonicalizada nas PRs #75/#76. A implementação project-owned do contrato Green Form 46, normalização E.164, thank-you gate, `GTM-PGCR4R47`, Consent Mode e taxonomia `mnt_*` permanece governada por ADR-005. A produção Green não foi substituída.
+```text
+WEB PRODUCTION = Vercel
+CANONICAL HOST = https://www.moretegra.com.br/
+APEX = https://moretegra.com.br/ -> 308 -> www
+DNS AUTHORITY = Cloudflare / DNS only
+CLOUDFLARE HTTP PROXY = OFF
+LP = Green/GDigital fallback / non-canonical
+GREEN/GDIGITAL = Form 46 provider + CRM
+```
 
-Forecast 1240h; aceito 696h; restante 544h; progresso 56.13%. M4-08 ainda não contribui horas aceitas até seu lifecycle de aceitação/merge.
+PR #80 (`ce62354cc65069afd36b4fda561819d5d4a32bbc`) promoveu `www.moretegra.com.br` a host comercial/canônico Vercel, moveu os gates reais de Form 46/Measurement para `www`, manteve `*.vercel.app` noindex e tornou a home comercial indexável.
 
-Próxima ação segura: concluir/validar a M4-08 na PR #79 e parar em `COMPLETE_CANDIDATE / PENDING_READY_MERGE` salvo autorização específica. M4-09 não inicia por sequência automática.
+PR #81 (`6fdd26f100b60413fbdd85a4af44b78dfd371f76`) adicionou `/sitemap.xml` e `/robots.txt` para descoberta Search.
 
-Continuam gated: migração do apex, novas mudanças DNS/proxy, Search Console mutation, futuras mudanças GTM/GA4 fora de gate específico, Meta/CAPI, Ads/spend, FECH.AI/n8n/Make, substituição do Form 46 nativo da Green, Green publication e M4-09 sem autorização própria.
+ADR-006 está `ACCEPTED / CUTOVER_CERTIFIED`. A baseline técnica atual é `docs/baseline/TECHNICAL_BASELINE_V2_3.md`.
+
+## Evidência de fechamento
+
+Validado:
+
+```text
+Cloudflare authoritative DNS = PASS
+Cloudflare DNS only = PASS
+apex -> Vercel = PASS
+apex 308 -> www = PASS
+path/query preservation = PASS
+www HTTPS 200 / Vercel = PASS
+www canonical = PASS
+www Google indexed = PASS
+Google-selected canonical = www = PASS
+Form 46 real on www = PASS
+Green CRM persistence = PASS
+Consent accept = PASS
+Consent reject = PASS
+mnt_lead_success QA = PASS
+generate_lead QA = PASS
+sitemap deployed = PASS
+robots sitemap discovery = PASS
+Vercel Git-driven deploy = PASS
+```
+
+O número exato da versão GTM publicada para o delta `www` não foi registrado; não inventar. O container live é `GTM-PGCR4R47` e o QA de host/events/consent foi realizado no `www`.
+
+Rich Results/JSON-LD permanece trilha Search/schema separada e não reabre a indexação/cutover.
+
+## Residuals conhecidos
+
+- `src-greenn/moretegra.js` ainda contém o lower bound histórico `45m²` para Mozae; M3-04 governa `46m²` e `73m²`. Corrigir/revalidar antes de fechamento factual integrado de M4.
+- `/favicon.ico` retornou 404 no HAR Pingdom pós-cutover; residual menor de asset.
+- status de submissão/processamento do sitemap no GSC deve ser evidenciado separadamente do deploy do sitemap.
+- exact GTM published version number for the `www` cutover = `NOT_RECORDED`.
+
+Forecast 1240h; aceito 728h; restante 512h; progresso 58.71% após merge da M4-08.
+
+## Próxima ação segura
+
+M4-09 permanece `PLANNED / NOT_AUTHORIZED`.
+
+Não iniciar M4-09 por sequência automática. A próxima mutação material só ocorre com autorização explícita do Product Authority.
+
+Continuam gated: novas mudanças DNS/proxy, futuras mudanças GTM/GA4, Meta/CAPI, Ads/spend, FECH.AI/n8n/Make, backend/secrets, novas famílias de rotas não governadas e relaxamento de Product Truth.
