@@ -1,8 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "git": {
-    "deploymentEnabled": false
-  },
   "rewrites": [
     { "source": "/", "destination": "/src-greenn/preview/index.html" },
     { "source": "/obrigado", "destination": "/src-greenn/preview/obrigado.html" },
