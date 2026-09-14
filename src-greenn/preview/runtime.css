@@ -30,10 +30,11 @@
 .mt-consent button{min-height:40px;padding:0 16px;border-radius:10px;border:1px solid #55574f;background:transparent;color:#fff;font-weight:700;cursor:pointer}
 .mt-consent button.is-primary{border-color:#EBB92E;background:#EBB92E;color:#171813}
 #mt-floating-dock{bottom:calc(max(14px,env(safe-area-inset-bottom)) + var(--mt-floating-consent-offset,0px));transition:bottom .22s ease}
-#mt-floating-dock .mt-floating{min-height:44px;padding:9px 12px;font-size:12px;line-height:1.05;box-shadow:0 9px 22px rgba(0,0,0,.18)}
+#mt-floating-dock .mt-floating{position:relative;min-height:38px;padding:6px 16px;font-size:12px;line-height:1;box-shadow:0 8px 20px rgba(0,0,0,.16)}
+#mt-floating-dock .mt-floating::before{content:"";position:absolute;inset:-3px 0;border-radius:inherit}
 @media(max-width:767px){
   #mt-floating-dock{right:10px;gap:7px}
-  #mt-floating-dock .mt-floating{min-height:44px;padding:9px 11px;font-size:12px;line-height:1.05;max-width:calc(100vw - 20px)}
+  #mt-floating-dock .mt-floating{min-height:38px;padding:6px 15px;font-size:12px;line-height:1;max-width:calc(100vw - 20px)}
 }
 @media(min-width:760px){
   .mt-lead-shell{grid-template-columns:minmax(0,.85fr) minmax(480px,1.15fr);align-items:start}
