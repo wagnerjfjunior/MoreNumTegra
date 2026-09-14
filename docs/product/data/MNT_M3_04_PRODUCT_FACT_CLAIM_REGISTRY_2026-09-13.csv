@@ -1,0 +1,22 @@
+project_id,stage,inventory,disposition,evidence
+nova-vivere,Lançamento,ACTIVE,COMMERCIAL_REVALIDATION_REQUIRED,Tegra/Empreendimentos_Tegra.md
+chateau-jardin,Lançamento,ACTIVE,COMMERCIAL_REVALIDATION_REQUIRED,Tegra/Empreendimentos_Tegra.md
+caminhos-lapa-elo-duo,Entregue,ÚLTIMAS UNIDADES,OFFER_REVALIDATION_REQUIRED,Tegra/Empreendimentos_Tegra.md
+garden-design,Em construção,ACTIVE,COMMERCIAL_REVALIDATION_REQUIRED,Tegra/Empreendimentos_Tegra.md
+ampere-brooklin,Em construção,ACTIVE,VERIFIED_CURRENT / RELEASE_REVALIDATION_REQUIRED,Tegra/Empreendimentos_Tegra.md
+mozae-higienopolis,Em construção,ACTIVE,RUNTIME_METRAGE_CORRECTION_REQUIRED / USE_46M2_AND_73M2,Tegra/Empreendimentos_Tegra.md; Endomarket@264d11477e2c6193a457f8541f58700c93743d26
+universo-tatuape-orbita,Entregue,ÚLTIMAS UNIDADES,COMMERCIAL_REVALIDATION_REQUIRED,Tegra/Empreendimentos_Tegra.md
+aria-higienopolis,Entregue,AVAILABILITY_NOT_EXPLICIT,COMMERCIAL_REVALIDATION_REQUIRED,Tegra/Empreendimentos_Tegra.md
+bem-moema,Entregue,ÚLTIMAS UNIDADES,COMMERCIAL_REVALIDATION_REQUIRED,Tegra/Empreendimentos_Tegra.md
+bem-moema-studios-offices,Entregue,AVAILABILITY_NOT_EXPLICIT,COMMERCIAL_REVALIDATION_REQUIRED,Tegra/Empreendimentos_Tegra.md
+soma-perdizes,Entregue,ÚLTIMAS UNIDADES,VERIFIED_CURRENT / RELEASE_REVALIDATION_REQUIRED,Tegra/Empreendimentos_Tegra.md
+zahle-jardins,Entregue,ÚLTIMAS UNIDADES,PRICE_REVALIDATION_REQUIRED,Tegra/Empreendimentos_Tegra.md
+bueno-brandao-257,Entregue,ÚLTIMAS UNIDADES,COMMERCIAL_REVALIDATION_REQUIRED,Tegra/Empreendimentos_Tegra.md
+capiitolo-piero-lissoni,Em construção,ACTIVE,OFFER_REVALIDATION_REQUIRED,Tegra/Empreendimentos_Tegra.md
+dsg-itaim,Entregue,ÚLTIMAS UNIDADES,PRICE_REVALIDATION_REQUIRED,Tegra/Empreendimentos_Tegra.md
+ledge-brooklin,Em construção,ACTIVE,COMMERCIAL_REVALIDATION_REQUIRED,Tegra/Empreendimentos_Tegra.md
+teg-sacoma,Entregue,ÚLTIMAS UNIDADES,COMMERCIAL_REVALIDATION_REQUIRED,Tegra/Empreendimentos_Tegra.md
+tiel-vila-nova-conceicao,Entregue,ÚLTIMAS UNIDADES,CURRENT_INTERNAL_MATCH / RELEASE_REVALIDATION_REQUIRED,Endomarket@264d11477e2c6193a457f8541f58700c93743d26
+ypy-alto-ipiranga,Em construção,ACTIVE,COMMERCIAL_REVALIDATION_REQUIRED,Tegra/Empreendimentos_Tegra.md
+ode-perdizes,Entregue,100% VENDIDO,SOLD_OUT_BASELINE + CURRENT_RETURNED_UNIT_EXCEPTION / RELEASE_REVALIDATION_REQUIRED,Endomarket@264d11477e2c6193a457f8541f58700c93743d26; PA-MNT-M3-04-ODE-2026-09-13
+reserva-caminhos-lapa,Entregue,100% VENDIDO,SOLD_OUT_BASELINE_WITH_EXCEPTION_UNITS_UNDER_CONSULTATION / RELEASE_REVALIDATION_REQUIRED,Endomarket@264d11477e2c6193a457f8541f58700c93743d26; PA-MNT-M3-04-RESERVA-2026-09-13

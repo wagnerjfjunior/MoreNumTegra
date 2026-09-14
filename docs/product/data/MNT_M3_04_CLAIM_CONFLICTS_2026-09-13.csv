@@ -1,0 +1,2 @@
+project_id,severity,claim_type,runtime_claim,current_first_party_fact,disposition,required_action
+mozae-higienopolis,MEDIUM,metragem,45m² a 73m²,46m² e 73m²,RUNTIME_METRAGE_CORRECTION_REQUIRED,Use 46m² and 73m² as current governed headline values in future authorized content/runtime implementation.
