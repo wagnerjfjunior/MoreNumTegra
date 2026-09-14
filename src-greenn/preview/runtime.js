@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const LIVE_HOST = "lp.moretegra.com.br";
+  const LIVE_HOST = "www.moretegra.com.br";
   const FORM_SELECTOR = "[data-moretegra-lead-form]";
   const FORM_ENDPOINT = "https://back.gdigital.com.br/form/register";
   const TENANT_ID = "313";
@@ -217,7 +217,7 @@
       }
 
       if (!isLiveHost()) {
-        showMessage(status, "Formulário validado. O envio real fica habilitado somente em lp.moretegra.com.br após merge em main.");
+        showMessage(status, "Formulário validado. O envio real fica habilitado somente em www.moretegra.com.br após merge em main.");
         return;
       }
 

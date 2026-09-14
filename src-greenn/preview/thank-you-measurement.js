@@ -3,7 +3,7 @@
 (() => {
   "use strict";
 
-  const ELIGIBLE_HOST = "lp.moretegra.com.br";
+  const ELIGIBLE_HOST = "www.moretegra.com.br";
   const THANK_YOU_ROUTE = "/obrigado";
   const ROOT_SELECTOR = "[data-moretegra-thank-you]";
   const LEAD_PENDING_KEY = "mnt.lead.pending.v1";
@@ -49,7 +49,6 @@
     if (eyebrow) eyebrow.textContent = "SOLICITAÇÃO RECEBIDA";
     if (message) message.textContent = "Recebemos sua solicitação. O atendimento seguirá com a Tegra Vendas para confirmar disponibilidade e condições atualizadas.";
   }
-
 
   function restoreConsent() {
     if (window.location.hostname !== ELIGIBLE_HOST) return;
