@@ -1,0 +1,21 @@
+page_type,question_family,owner_scope,required_answer,evidence_dependency,extractability_rule,commercial_state_rule,implementation_gate
+portfolio_root,portfolio_purpose,brand_portfolio,Explain what MoreNumTegra helps the visitor compare,M4_02_PAGE_CONTRACT,Visible semantic text,NONE,REQUIRED
+portfolio_root,buying_stage_discovery,brand_portfolio,Explain available buying-stage discovery paths,VERIFIED_PORTFOLIO_MEMBERSHIP,Visible semantic text,Do not equate stage with availability,REQUIRED
+portfolio_root,value_interpretation,brand_portfolio,Explain that shown values are references and current conditions require confirmation,M3_04_PLUS_RELEASE_REVALIDATION,Visible semantic text,Current conditions must be qualified,REQUIRED
+master_development,master_identity,master_owner,Explain what Caminhos da Lapa is,M3_04_OR_VERIFIED_MASTER_FACTS,Visible semantic text,NONE,REQUIRED
+master_development,child_project_set,master_owner,List only verified child projects,M3_06_PLUS_VERIFIED_CHILD_SET,Visible list with exact-project links,Do not generalize child availability,REQUIRED
+master_development,child_differences,master_owner,Explain factual stage or positioning differences among children,VERIFIED_CHILD_FACTS,Visible comparison text,No unsupported availability inference,REQUIRED
+exact_project,project_identity,exact_project_owner,State what the project is,M3_04_PRODUCT_FACT_REGISTRY,Visible semantic text,NONE,REQUIRED
+exact_project,project_location,exact_project_owner,State verified location at the supported granularity,M3_04_PRODUCT_FACT_REGISTRY,Visible semantic text,No inferred address or neighborhood,WHEN_FACT_EXISTS
+exact_project,project_stage,exact_project_owner,State governed current stage,M3_04_PLUS_RELEASE_REVALIDATION,Visible semantic text,Stage does not prove availability,WHEN_FACT_EXISTS
+exact_project,typology_metragem,exact_project_owner,State governed typologies and metragens,M3_04_PRODUCT_FACT_REGISTRY,Visible semantic text or table,No stale or inferred sizes,WHEN_FACT_EXISTS
+exact_project,differentiators,exact_project_owner,State only evidenced differentiators,M3_04_PRODUCT_FACT_REGISTRY,Visible semantic text,NONE,WHEN_FACT_EXISTS
+exact_project,price,exact_project_owner,State verified price reference or governed uncertainty,M3_04_PLUS_RELEASE_REVALIDATION,Visible semantic text,Must disclose reference/conditional/sob_consulta state,WHEN_OWNER_AND_FACT_EXIST
+exact_project,availability,exact_project_owner,State verified availability or governed uncertainty,M3_04_PLUS_RELEASE_REVALIDATION,Visible semantic text,No availability inference from silence or stage,WHEN_OWNER_AND_FACT_EXIST
+exact_project,next_action,exact_project_owner,Explain how to obtain current conditions,FORM46_CTA_CONTRACT,Visible CTA context,Do not represent submit attempt as accepted lead,REQUIRED
+stage,stage_meaning,stage_owner,Explain what the stage means for the buyer,M4_03_CONTENT_ARCHITECTURE,Visible semantic text,Stage does not prove inventory,REQUIRED
+stage,verified_members,stage_owner,List only projects factually in that stage,VERIFIED_STAGE_MEMBERSHIP,Visible list with exact-project links,Do not imply unit availability,REQUIRED
+location,geographic_scope,location_owner,Define the factual geographic scope,VERIFIED_LOCATION_FACTS,Visible semantic text,NONE,REQUIRED_AFTER_FACT_GATE
+location,verified_projects,location_owner,List only verified Tegra projects in scope,VERIFIED_PROJECT_SET_FACT_GATE,Visible list with exact-project links,No inferred membership,REQUIRED_AFTER_FACT_GATE
+historical_project,historical_state,historical_entity_owner,State historical or sold baseline clearly,M3_04_PRODUCT_FACT_REGISTRY,Visible semantic text,No general current inventory implication,REQUIRED
+historical_project,exception_inventory,historical_entity_owner,State current exception only if explicitly verified,M3_04_PLUS_RELEASE_REVALIDATION,Visible semantic text,Exception must not reopen general inventory,WHEN_VERIFIED
