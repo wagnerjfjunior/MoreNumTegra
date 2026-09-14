@@ -1,20 +1,14 @@
 # MoreNumTegra — DNS / Domain Topology Evidence — 2026-09-14
 
-- Status: `END_TO_END_VALIDATED / CLOSED`
+- Status: `FINAL_TOPOLOGY_VALIDATED / CLOSED`
 - Project: `MoreNumTegra`
 - Repository: `wagnerjfjunior/MoreNumTegra`
-- Final validation reconciliation base: `7272d032e8583209da1c547e2efc142e22688b85`
-- Decision record: `docs/adr/ADR-003-CLOUDFLARE-AUTHORITATIVE-DNS-VERCEL-CUSTOM-DOMAINS.md`
+- Final production decision: `docs/adr/ADR-006-VERCEL-COMMERCIAL-PRODUCTION-WWW-CANONICAL.md`
+- Closeout evidence: `docs/infra/MNT_VERCEL_WWW_COMMERCIAL_CUTOVER_CLOSEOUT_2026-09-14.md`
 
-## Purpose
+## 1. Authoritative DNS
 
-Record the completed DNS/domain transition validation from Registro.br authoritative DNS to Cloudflare, while preserving Green Sales as the commercial apex host and validating Vercel custom-domain routing on subdomains.
-
-This document is evidence/state. It does not authorize future apex migration.
-
-## Authoritative DNS — validated
-
-Public ICANN lookup observed:
+Public ICANN evidence established:
 
 ```text
 moretegra.com.br
@@ -24,138 +18,113 @@ sue.ns.cloudflare.com
 woz.ns.cloudflare.com
 ```
 
-Therefore:
+Cloudflare remains the authoritative DNS provider. HTTP proxy/orange-cloud is not part of the accepted architecture; relevant web records remain DNS only.
+
+## 2. Final accepted routing
 
 ```text
-NAMESERVER_CHANGE_CONFIGURED = YES
-AUTHORITATIVE_DELEGATION_VALIDATED = YES
+Registro.br
+-> Cloudflare authoritative DNS / DNS only
+   -> moretegra.com.br -> Vercel -> HTTP 308 -> www.moretegra.com.br
+   -> www.moretegra.com.br -> Vercel Production
+   -> lp.moretegra.com.br -> Green/GDigital legacy/fallback
 ```
 
-## Cloudflare zone state
+The apex uses a CNAME to the exact Vercel target shown by Vercel. Cloudflare performs CNAME flattening automatically at the zone apex; there is no separate per-record flattening switch for the apex.
 
-Relevant configured records:
+The existing Google site-verification TXT is preserved.
 
-| Name | Type | Value | Proxy |
-|---|---|---|---|
-| `moretegra.com.br` | A | `3.209.18.127` | DNS only |
-| `moretegra.com.br` | A | `3.226.196.25` | DNS only |
-| `moretegra.com.br` | A | `50.17.107.228` | DNS only |
-| `moretegra.com.br` | A | `52.7.141.145` | DNS only |
-| `lp.moretegra.com.br` | CNAME | `f5d81ddb66950472.vercel-dns-017.com` | DNS only |
-| `www.moretegra.com.br` | CNAME | `f5d81ddb66950472.vercel-dns-017.com` | DNS only |
-| `moretegra.com.br` | TXT | existing Google site-verification value | DNS only |
+## 3. Vercel state
 
-The exact Google verification token is intentionally not duplicated here.
+Observed production intent/state:
 
-## Vercel domain state — validated
+| Domain | Accepted role |
+|---|---|
+| `www.moretegra.com.br` | canonical commercial Vercel Production host |
+| `moretegra.com.br` | permanent 308 redirect to `www.moretegra.com.br` |
+| `morenumtegra.vercel.app` / previews | non-canonical Vercel surfaces, `noindex,nofollow` |
 
-Observed in the live MoreNumTegra Vercel project UI:
-
-| Domain | Routing | Final observed state |
-|---|---|---|
-| `morenumtegra.vercel.app` | Production | `Valid Configuration` |
-| `lp.moretegra.com.br` | Production | `Valid Configuration` |
-| `www.moretegra.com.br` | `308` redirect to `lp.moretegra.com.br` | `Valid Configuration` |
-
-Vercel CNAME target in use:
+Exact Vercel DNS target used during the cutover:
 
 ```text
 f5d81ddb66950472.vercel-dns-017.com
 ```
 
-## HTTP evidence
+## 4. Green fallback
 
-Supplied HAR/browser evidence established:
+`lp.moretegra.com.br` is no longer the Vercel canonical/production host. It was moved back to Green/GDigital as a legacy/fallback surface.
+
+Green remains operationally relevant as the Form 46 provider/CRM even though the commercial web frontend is now Vercel.
+
+## 5. HTTP / canonical validation
+
+The transition validation first proved Vercel redirect/path/query behavior on `www -> lp`. The final cutover then inverted the roles and established the production policy:
 
 ```text
-http://www.moretegra.com.br/
--> 307
--> https://www.moretegra.com.br/
-
-https://www.moretegra.com.br/
+https://moretegra.com.br/<path>?<query>
 -> 308
--> https://lp.moretegra.com.br/
-
-https://lp.moretegra.com.br/
--> 200 OK
+-> https://www.moretegra.com.br/<path>?<query>
 ```
 
-The `308` response is served by Vercel.
+`https://www.moretegra.com.br/` subsequently returned `200` from Vercel in supplied Pingdom HAR evidence.
 
-Path/query preservation was also tested:
+Google Search Console live inspection on 2026-09-14 established:
 
 ```text
-https://www.moretegra.com.br/teste-redirect?utm_source=teste
--> 308
--> https://lp.moretegra.com.br/teste-redirect?utm_source=teste
+www URL indexed = YES
+crawl allowed = YES
+indexing allowed = YES
+declared canonical = https://www.moretegra.com.br/
+Google-selected canonical = inspected www URL
 ```
 
-The final destination returned Vercel `404 NOT_FOUND` because `/teste-redirect` is not a real route. This is expected and confirms that both path and query were preserved through the redirect.
+## 6. Search discovery files
 
-## Apex preservation
+PR #81 deployed:
 
-`https://moretegra.com.br/` continued to return `200 OK` from the existing Green/GDigital application stack.
+- `https://www.moretegra.com.br/sitemap.xml`;
+- `https://www.moretegra.com.br/robots.txt`.
 
-Current accepted routing model:
+The sitemap starts with only the live canonical homepage. Planned project/stage/location/blog routes are excluded until actually published and indexable.
 
-```text
-moretegra.com.br
--> Cloudflare authoritative DNS
--> existing Green/GDigital A records
--> current commercial production
+## 7. Deployment policy
 
-lp.moretegra.com.br
--> Cloudflare authoritative DNS / DNS only
--> Vercel CNAME
--> MoreNumTegra Vercel Production
-
-www.moretegra.com.br
--> Cloudflare authoritative DNS / DNS only
--> Vercel CNAME
--> HTTP 308
--> lp.moretegra.com.br
-```
-
-The `www -> lp` redirect is a validation configuration, not the final SEO canonical-host policy.
-
-## Deployment state related to this topology
-
-Vercel deployment mode is governed by ADR-004 and has been independently validated:
+Vercel deployment remains governed by ADR-004:
 
 ```text
 AUTO_GIT_PREVIEW = VALIDATED
 DOCS_ONLY_FILTER = VALIDATED
 AUTO_GIT_PRODUCTION_AFTER_MAIN_MERGE = VALIDATED
 GIT_DRIVEN_END_TO_END = VALIDATED
+MANUAL_DEPLOY_HOOK = FALLBACK_ONLY
 ```
 
-Documentation-only changes are skipped by the Vercel Ignored Build Step. Runtime changes continue to deploy automatically from Git.
-
-## Final adjudication
+## 8. Final adjudication
 
 ```text
 CLOUDFLARE_NS_DELEGATION = VALIDATED
-LP_DNS_TO_VERCEL = VALIDATED
-LP_TLS_HTTPS = VALIDATED
-LP_VERCEL_RUNTIME = VALIDATED
-WWW_DNS_TO_VERCEL = VALIDATED
-WWW_HTTPS_308 = VALIDATED
-PATH_PRESERVATION = VALIDATED
-QUERY_STRING_PRESERVATION = VALIDATED
-APEX_REMAINS_GREEN = VALIDATED
-DNS_DOMAIN_VALIDATION = CLOSED
+CLOUDFLARE_DNS_ONLY = VALIDATED
+APEX_CNAME_FLATTENING = ACTIVE_BY_CLOUDFLARE_APEX_RULE
+APEX_TO_VERCEL = VALIDATED
+WWW_TO_VERCEL = VALIDATED
+APEX_308_TO_WWW = VALIDATED
+PATH_QUERY_PRESERVATION = VALIDATED
+WWW_HTTPS_200 = VALIDATED
+WWW_GOOGLE_INDEXED = VALIDATED
+GOOGLE_CANONICAL_WWW = VALIDATED
+LP_GREEN_FALLBACK = VALIDATED_AS_NON_CANONICAL_ROLE
+DNS_DOMAIN_CUTOVER = CLOSED
 ```
 
-## Boundaries preserved
+## 9. Boundaries
 
-Still not implied or authorized by this closure:
+This closure does not authorize:
 
-- apex migration from Green to Vercel;
-- Cloudflare orange-cloud proxy on Vercel-facing records;
-- final SEO canonical-host choice;
-- Search Console mutation;
-- GA4/GTM mutation;
-- MX/SPF/DKIM/DMARC changes;
-- Green Form 46 replacement.
-
-A future apex migration must be separately gated and must prove real Form 46 capture, `/obrigado`, Measurement/conversion behavior, indexability/canonical/robots/sitemap, SSL and production smoke behavior on Vercel.
+- Cloudflare HTTP proxy/orange-cloud;
+- new DNS/domain changes without gate;
+- MX/SPF/DKIM/DMARC mutation;
+- Meta/CAPI or Ads/spend;
+- FECH.AI/n8n/Make;
+- replacement of Green Form 46;
+- ungoverned route publication;
+- treating Rich Results/JSON-LD as part of this DNS cutover acceptance.
