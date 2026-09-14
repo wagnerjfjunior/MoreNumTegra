@@ -39,7 +39,9 @@ These are distinct provenance states:
 
 `FROZEN_SNAPSHOT != LATER_CONNECTOR_REREAD`
 
-Named query rows sum to 13 impressions and are not silently equated to the 23-impression property total.
+Named query rows sum to 13 impressions and are not silently equated to the 23-impression property total. Search Console can suppress or omit low-volume query rows, so the 10-impression gap is a recognized reporting possibility and MUST NOT be treated as corruption, loss, or a hidden family classification. Query-row sums and property totals are separate reporting surfaces.
+
+The named-query observation metric is descriptive only. It MUST NOT be interpreted as successful target-family coverage because the surfaced rows include `DO_NOT_TARGET` families such as `brand_partner_tool` and `brand_sales_house`.
 
 ## Governed KPI rules
 
@@ -55,11 +57,34 @@ The machine-readable KPI matrix marks the 7 all-channel `generate_lead` events a
 
 M3-05 governs 41 query families. M3-06 preserves one explicit ownership state per family. M3-04 volatile commercial claims remain subject to release-time revalidation.
 
-Future organic Search-to-lead rate is defined only as:
+## Future organic Search-to-lead reproducibility contract
 
-`production organic accepted leads / governed organic sessions`
+Future organic Search-to-lead rate may be published only as:
 
-using one frozen reporting window and consistent GA4 channel semantics.
+`validated commercial organic leads / governed Organic Search sessions`
+
+The numerator and denominator MUST be computed from the same frozen reporting window and the same GA4 property. They MUST use the same governed acquisition/channel semantics, with `session_default_channel_group = Organic Search` unless a later versioned contract explicitly supersedes that dimension.
+
+The numerator MUST use the canonical accepted commercial lead lifecycle only. Known QA/test submissions MUST be excluded from business KPI computation. `mnt_form_start` and `mnt_form_submit_attempt` are explicitly prohibited as lead proxies and MUST NOT enter the commercial lead numerator.
+
+If any of these conditions cannot be reproduced, the conversion rate state is `NOT_COMPUTABLE`, not zero.
+
+## Production baseline start rule
+
+The current QA period is not a production business baseline and MUST NOT contaminate future commercial comparisons.
+
+A commercial production baseline may start only under one of these governed conditions:
+
+1. a post-test reporting window begins after Product Authority declares GTM validation complete; or
+2. a reporting process can reproducibly identify and exclude every known QA/test submission from both the commercial numerator and any related business-outcome rollup.
+
+The preferred default is a clean post-test window. The baseline artifact MUST record the GA4 property, start/end dates, channel dimension, accepted-lead lifecycle, test-exclusion rule and observation timestamp.
+
+Until one of those conditions is met:
+
+- commercial accepted leads = `NOT_YET_BASELINED`;
+- organic accepted leads = `NOT_YET_BASELINED`;
+- organic Search-to-lead rate = `NOT_COMPUTABLE`.
 
 ## Current lifecycle
 
