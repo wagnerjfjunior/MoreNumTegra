@@ -1,175 +1,195 @@
 # MNT-M3-07 — KPI Baseline and Success Criteria — 2026-09-13
 
-Status: `IN_PROGRESS / AUTHORIZED`
+Status: `COMPLETE_CANDIDATE / PENDING_PRODUCT_AUTHORITY_ACCEPTANCE`
 
 Program: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`  
 Task: `MNT-M3-07 — KPI baseline and success criteria`  
 Planning estimate: `16h`  
-Execution authorization: Product Authority explicitly authorized MNT-M3-07 to start on `2026-09-13` after focal acceptance of M3-04/M3-05/M3-06.  
-Execution base: accepted MNT-M3-06 exact head `be81c8084e2b0356fdfb3f37edbd4d501b281cec`.  
+Execution authorization: Product Authority explicitly authorized MNT-M3-07 on `2026-09-13`.  
+Current integrated upstream: M3-04, M3-05 and M3-06 merged to `main`; M3-06 squash/main SHA `15876fc71d1e74b08d2a2be45565b2ef040c4d69`.  
 Runtime/platform mutation: `NONE`.
 
 ## 1. Purpose
 
-Define the governed baseline and measurable success criteria for Search-to-Lead before downstream M4 implementation work. This task measures and specifies evaluation; it does not authorize content publication, route implementation, Search Console mutation, Ads spend, GTM/GA4 mutation, Green changes, DNS or Vercel deployment.
+Freeze a reproducible Search-to-Lead KPI baseline and success-criteria contract before downstream M4 implementation. This task measures and specifies evaluation; it does not mutate Search Console, GA4/GTM, Green, Vercel, DNS, Ads or production content.
 
 Preserve:
 
 ```text
-BASELINE OBSERVED != TARGET ACHIEVED
-TARGET DEFINED != IMPLEMENTATION AUTHORIZED
-GSC IMPRESSION != LEAD
-GA4 LEAD != SEARCH-ATTRIBUTED LEAD WITHOUT SOURCE EVIDENCE
+FROZEN SNAPSHOT != LATER CONNECTOR REREAD
 NO OBSERVATION != ZERO
-PROGRAM KPI != V1 RELEASE GATE UNLESS EXPLICITLY DESIGNATED
+NO ORGANIC SESSION ROW != ZERO PERCENT CONVERSION
+GSC IMPRESSION != LEAD
+GA4 LEAD != SEARCH-ATTRIBUTED LEAD WITHOUT CHANNEL EVIDENCE
+TARGET DEFINED != IMPLEMENTATION AUTHORIZED
 ```
 
 ## 2. Accepted upstream inputs
 
-M3-07 consumes the accepted M3-01..M3-06 evidence stack, including:
+M3-07 consumes the accepted/merged M3-01..M3-06 evidence stack plus the accepted M2 Measurement lifecycle.
 
-- M3-01 market/search-demand baseline;
-- M3-02 Search Console query classification;
-- M3-03 SERP/search-intent analysis;
-- M3-04 governed Product Fact & Claim Registry;
-- M3-05 Search Intent / Query Ownership Contract;
-- M3-06 Query-family to Page-owner Map;
-- accepted M2 Measurement foundation and end-to-end lead lifecycle.
+Relevant governed contracts include:
 
-M3-04, M3-05 and M3-06 are accepted by Product Authority but remain `PENDING_READY_MERGE`; this branch is intentionally stacked on the accepted M3-06 exact head.
+- M3-04 Product Fact & Claim Registry;
+- M3-05 Search Intent / Query Ownership Contract with 41 governed families;
+- M3-06 Query-family to Page-owner Map with one explicit ownership state per family;
+- `mnt_lead_success -> generate_lead` as the canonical accepted lead lifecycle.
 
-## 3. Current observed baseline
+## 3. Search Console baseline
 
-### 3.1 Search Console baseline
+### 3.1 Frozen accepted M3-01 snapshot
 
-Accepted M3-01 first-party Search Console observation for `sc-domain:moretegra.com.br`:
+For `sc-domain:moretegra.com.br`:
 
 ```text
 window = 2026-08-23..2026-09-13
 clicks = 0
 impressions = 26
 weighted_average_position ≈ 27.52
+state = ACCEPTED_FROZEN_SNAPSHOT
 ```
 
-Interpretation constraints:
+This remains the historical accepted M3-01 observation and must not be overwritten by later retroactive connector reads.
 
-- the sample is sparse;
-- it is mostly brand/entity-shaped;
-- it is insufficient for trend or causality claims;
-- absence of impressions for a family is not proof of no demand.
+### 3.2 M3-07 live reread of the same window
 
-### 3.2 External search-demand context
-
-Keyword Planner provides demand context but is not an organic KPI source. Selected accepted observations include:
+A later Windsor.ai/Search Console reread returned:
 
 ```text
-tegra = 4,400 avg monthly searches
-tegra incorporadora = 3,600
-apartamentos são paulo = 12,100
-apartamentos a venda são paulo = 8,100
-apartamentos para comprar são paulo = 1,900
-apartamentos na planta em são paulo = 590
+window = 2026-08-23..2026-09-13
+clicks = 0
+impressions = 23
+ctr = 0
+average_position = 26.2609
+state = OBSERVED_LIVE_REREAD
 ```
 
-Planner values must not be used as ranking, CTR, conversion or ownership KPIs.
+Named query rows returned:
 
-### 3.3 Measurement / lead baseline
+```text
+amaro tegra = 1 impression
+ode perdizes tegra = 1
+tegra = 3
+tegra campo belo = 1
+tegra conecta = 2
+tegra vendas = 5
+named-query total = 13 impressions
+```
 
-Accepted source event:
+The property total is 23 impressions while named rows sum to 13. This is not treated as corruption: GSC query tables can omit/suppress low-volume rows. Therefore query-row sums must not be silently equated to property totals.
 
-`mnt_lead_success`
+Evidence file:
 
-Accepted GA4 mapping:
+`docs/search/data/MNT_M3_07_GSC_LIVE_RECHECK_2026-09-13.csv`
 
-`mnt_lead_success -> generate_lead`
+### 3.3 Baseline rule
 
-GA4 `generate_lead` is an accepted Key event. No monetary lead value is defined.
+For longitudinal KPI comparisons, use frozen snapshots with explicit observation timestamps/windows. Later connector rereads are separate provenance states and cannot retroactively replace the frozen baseline.
 
-Current Search-attributed lead count / organic conversion-rate baseline is:
+## 4. GA4 baseline
 
-`NOT_YET_BASELINED_FROM_A_GOVERNED_REPORTING_WINDOW`
+GA4 property:
 
-Do not substitute implementation QA events for a production acquisition baseline.
+`553742649 — MoreNumTegra`
 
-## 4. KPI model v1
+Observed window:
 
-### KPI-01 — Organic visibility
+`2026-09-10..2026-09-13`
 
-Source: GSC.
+By `session_default_channel_group`:
 
-Measures:
-- impressions;
-- clicks;
-- CTR;
-- average position.
+```text
+Referral:
+  sessions = 17
+  generate_lead key events = 6
 
-Baseline: current governed GSC snapshot above.
+Unassigned:
+  sessions = 1
+  generate_lead key events = 1
 
-Success criterion: subsequent governed observation windows must show reproducible improvement or stable qualified visibility without relying on one-query anomalies. No fixed numeric growth percentage is invented at task start.
+Total observed:
+  sessions = 18
+  generate_lead key events = 7
+```
 
-### KPI-02 — Accepted query-family coverage
+An explicit filter for:
 
-Source: GSC classified through M3-05/M3-06 taxonomy.
+`session_default_channel_group = Organic Search`
 
-Measure: number/share of accepted served query families with observed GSC impressions, separated from `DO_NOT_TARGET` and support-only families.
+returned no rows.
 
-Baseline: `TO_BE_COMPUTED_FROM_GOVERNED_GSC_CLASSIFICATION`.
+Therefore:
 
-Success criterion: coverage expands across accepted brand, project, master, stage and qualified modifier families without creating visibility in excluded/noise families as a target objective.
+```text
+organic sessions = NO_ORGANIC_SESSION_ROW_OBSERVED
+organic generate_lead = NOT_YET_BASELINED
+organic Search-to-lead rate = NOT_COMPUTABLE
+```
 
-### KPI-03 — Exact-project organic discovery
+Do not coerce the absent Organic Search row into a `0%` organic conversion rate. A conversion rate is published only when the denominator is actually observed under the same frozen channel/window definition.
 
-Source: GSC.
+Evidence file:
 
-Measure: impressions/clicks for governed exact-project families mapped by M3-06.
+`docs/search/data/MNT_M3_07_GA4_BASELINE_2026-09-13.csv`
 
-Baseline: `TO_BE_COMPUTED_FROM_GOVERNED_QUERY_CORPORA`.
+## 5. Machine-readable KPI matrix
 
-Success criterion: exact-project visibility grows while preserving exact-project ownership over master/stage/location surfaces.
+Canonical matrix:
 
-### KPI-04 — Search landing ownership integrity
+`docs/search/data/MNT_M3_07_KPI_MATRIX.csv`
 
-Source: GSC page/query evidence after implementation plus M3-06 ownership contract.
+It governs 12 KPI/control rows covering:
 
-Measure: proportion of material query families resolving to the intended page owner with no observed cannibalization requiring adjudication.
+- GSC impressions;
+- GSC clicks;
+- average position;
+- named-query visibility;
+- total GA4 sessions;
+- total accepted GA4 lead key events;
+- organic sessions;
+- organic accepted leads;
+- organic Search-to-lead rate;
+- M3-05 family coverage;
+- M3-06 ownership ambiguity;
+- M3-04 release-time commercial revalidation.
 
-Baseline: architecture-only; runtime page-owner observation is `NOT_APPLICABLE_BEFORE_IMPLEMENTATION`.
+## 6. KPI success criteria
 
-Success criterion: one intended owner per material family, with exact-project precedence and no blocked/conditional route treated as implemented.
+### Organic visibility
 
-### KPI-05 — Organic qualified lead volume
+Use GSC impressions, clicks, CTR and average position only in frozen comparable windows. Success means qualified visibility grows or improves reproducibly; no arbitrary growth percentage is invented.
 
-Sources: GA4 + acquisition/source dimensions, using canonical `generate_lead` only.
+### Query-family coverage
 
-Baseline: `NOT_YET_BASELINED_FROM_A_GOVERNED_REPORTING_WINDOW`.
+M3-05 governs exactly 41 accepted families. Success means future observed visibility expands across served brand/project/master/stage/qualified-modifier families without turning excluded/noise families into target objectives.
 
-Success criterion: organic Search produces reproducible accepted leads under the canonical lifecycle, with no use of form-start or submit-attempt as lead proxies.
+### Exact-project discovery
 
-### KPI-06 — Organic Search-to-lead conversion rate
+Success means exact-project queries increasingly resolve to the intended exact-project owner rather than master/stage/location surfaces.
+
+### Ownership integrity
+
+M3-06 accepted state has zero unresolved ownership ambiguity across accepted families. Conditional owners remain valid explicit states. Success means runtime implementation preserves one intended owner per material family.
+
+### Organic accepted leads
+
+Only canonical accepted leads count. `mnt_form_start` and `mnt_form_submit_attempt` are not lead proxies.
+
+### Organic Search-to-lead rate
 
 Definition:
 
-`organic accepted leads / governed organic session denominator`
+`organic accepted leads / governed organic sessions`
 
-Exact denominator dimension and reporting window must be frozen before a numeric baseline is published.
+The numerator and denominator must share the same GA4 channel attribution basis and frozen reporting window. Current baseline is `NOT_COMPUTABLE` because no Organic Search session row was observed.
 
-Baseline: `NOT_YET_DEFINED / DO_NOT_INVENT`.
+### Commercial-truth compliance
 
-Success criterion: measurable, reproducible conversion rate using one frozen denominator/window definition and no PII.
+All volatile public price/inventory/promotion claims must be revalidated at release time. Missing current evidence fails closed.
 
-### KPI-07 — Commercial-truth compliance
+### Mobile product guardrails
 
-Sources: M3-04 + release evidence.
-
-Measure: public Search surfaces containing volatile commercial claims that have current release-time revalidation.
-
-Baseline: governance contract exists; downstream implementation not yet authorized.
-
-Success criterion: `100%` of published volatile price/inventory/promotion claims are release-revalidated; unverified claims fail closed.
-
-### KPI-08 — Mobile performance guardrails
-
-These remain product guardrails rather than Search-demand KPIs:
+Downstream implementation must preserve:
 
 ```text
 LCP <= 2.5s
@@ -177,60 +197,74 @@ INP <= 200ms
 CLS <= 0.1
 ```
 
-They must be preserved by downstream implementation because degraded mobile performance can invalidate Search-to-Lead outcomes.
+These are product/performance guardrails, not Search-demand KPIs.
 
-## 5. Observation-window contract to finalize
+## 7. Observation-window contract
 
-M3-07 must still freeze, with provenance:
+Future comparison must freeze and record:
 
-- comparison windows for GSC;
-- query-family rollup procedure;
-- GA4 organic acquisition denominator;
-- accepted lead numerator;
-- minimum evidence requirement before declaring movement;
-- treatment of sparse/zero-click baselines;
-- post-implementation observation window;
-- separation of leading indicators from business outcomes.
+- property/account;
+- source connector/report;
+- start/end dates;
+- query/page/channel dimensions used;
+- numerator and denominator semantics;
+- observation timestamp or snapshot artifact;
+- whether the value is a frozen snapshot or later reread;
+- explicit handling of suppressed/absent rows.
 
-No arbitrary target percentage or unsupported forecast is admitted merely to make the KPI table look complete.
+Do not compare unlike windows or silently replace historical snapshots.
 
-## 6. Leading indicators vs outcome metrics
+## 8. Leading indicators vs outcomes
 
 Leading indicators:
+
 - GSC impressions;
-- qualified-query coverage;
+- query-family coverage;
 - exact-project discovery;
 - intended owner visibility;
-- CTR where sample size is material.
+- CTR when sample size is material.
 
 Outcome metrics:
+
 - organic accepted leads;
 - organic Search-to-lead conversion rate.
 
 Guardrails:
+
 - product-fact compliance;
 - mobile performance;
 - consent/privacy integrity;
 - no duplicate lead events.
 
-## 7. Current task state
+## 9. Current lifecycle
 
 ```text
-MNT-M3-04 = COMPLETE / ACCEPTED / PENDING_READY_MERGE
-MNT-M3-05 = COMPLETE / ACCEPTED / PENDING_READY_MERGE
-MNT-M3-06 = COMPLETE / ACCEPTED / PENDING_READY_MERGE
-MNT-M3-07 = IN_PROGRESS / AUTHORIZED
+MNT-M3-04 = COMPLETE / ACCEPTED / MERGED
+MNT-M3-05 = COMPLETE / ACCEPTED / MERGED
+MNT-M3-06 = COMPLETE / ACCEPTED / MERGED
+MNT-M3-07 = COMPLETE_CANDIDATE / PENDING_PRODUCT_AUTHORITY_ACCEPTANCE
+MNT-M4 = PRE_AUTHORIZED_BY_PRODUCT_AUTHORITY / NOT_STARTED
 ```
 
-Ready/merge for PRs #59/#60/#61 remains a separate Product Authority gate.
+M4 may start at the first dependency-safe point after M3-07 acceptance/lifecycle closure. Pre-authorization does not convert this candidate into accepted state.
 
-## 8. Next work inside M3-07
+## 10. Acceptance gate
 
-1. resolve current governed GSC classification inputs;
-2. compute family-level baseline counts without inventing missing observations;
-3. resolve GA4 reporting dimensions needed for organic lead numerator/denominator;
-4. freeze comparison-window semantics;
-5. publish machine-readable KPI baseline/success-criteria matrix;
-6. route candidate through the adopted `seo_analytics_growth` specialist and any additional specialist strictly required by the M3-07 acceptance gate.
+M3-07 should receive a focal independent review by `seo_analytics_growth` covering only:
 
-No M4 execution is authorized by this task.
+1. snapshot/reread provenance separation;
+2. correctness of GSC baseline semantics;
+3. correctness of GA4 channel/numerator/denominator semantics;
+4. no `NO_ROW` -> zero conversion inference;
+5. machine-readable KPI matrix consistency;
+6. success criteria being measurable without invented targets.
+
+Recommended verdict vocabulary:
+
+`APPROVE_FOR_PRODUCT_AUTHORITY_ACCEPTANCE`
+
+or
+
+`REQUEST_CHANGES`
+
+No runtime/platform mutation is required for this acceptance gate.
