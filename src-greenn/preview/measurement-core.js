@@ -1,5 +1,5 @@
 (()=>{"use strict";
-const H="lp.moretegra.com.br",R="[data-moretegra]",V=1,P="moretegra_home",D="moretegra_portfolio",N="not_applicable",pv=Symbol.for("mnt.lp.pv.v1"),bound=Symbol.for("mnt.lp.core.v1"),searchState=new WeakMap(),locations=new Map();
+const H="www.moretegra.com.br",R="[data-moretegra]",V=1,P="moretegra_home",D="moretegra_portfolio",N="not_applicable",pv=Symbol.for("mnt.lp.pv.v1"),bound=Symbol.for("mnt.lp.core.v1"),searchState=new WeakMap(),locations=new Map();
 const status={todos:"all",lancamento:"launch",construcao:"construction",entregue:"ready"},zone={todas:"all","Zona Sul":"south","Zona Oeste":"west","Zona Leste":"east"},price={todos:"all",ate700:"lte_700k","700a1200":"700k_1_2m","1200a2000":"1_2m_2m",acima2000:"gt_2m",consulta:"consult"};
 const projectOverride={"Nova Vivere | 72 m²":"Nova Vivere","Nova Vivere | 105 m²":"Nova Vivere","CAPIITOLO by Piero Lissoni | à vista":"CAPIITOLO by Piero Lissoni"};
 const faqMap={"os valores mostrados sao finais":"valores_finais","como comparar os empreendimentos":"comparar_empreendimentos","como negociar uma condicao melhor":"negociar_condicao","este e o site institucional da tegra":"site_institucional"};
