@@ -51,7 +51,7 @@ For every existing Version 7 trigger below, replace only the hostname condition 
 CE - mnt_page_view
 CE - mnt_section_click
 CE - mnt_catalog_filter
-cE - mnt_catalog_search
+CE - mnt_catalog_search
 CE - mnt_intent
 CE - mnt_form_start
 CE - mnt_form_submit_attempt
@@ -108,7 +108,6 @@ GA4 - Event - mnt_section_click
 GA4 - Event - mnt_catalog_filter
 GA4 - Event - mnt_catalog_search
 GA4 - Event - mnt_intent
-GA4 - Event - mnt_section_click
 GA4 - Event - mnt_form_start
 GA4 - Event - mnt_form_submit_attempt
 GA4 - Event - generate_lead - mnt_lead_success
@@ -141,10 +140,10 @@ Before Submit/Publish in GTM Preview / Tag Assistant on `https://lp.moretegra.co
 1. container `GTM-PGCR4R47` connects;
 2. default consent is denied for `ad_storage`, `analytics_storage`, `ad_user_data`, `ad_personalization` before choice;
 3. Vercel `Aceitar` imits `mnt_consent_accept` and all four become granted;
-4. Vercel `Recusar` imits `mnt_consent_reject` and all four remain/become denied;
+4. Vercel `Recusar` emits `mnt_consent_reject` and all four remain/become denied;
 5. reload preserves the chosen state and re-applies it;
 6. one source `mnt_page_view` produces one GA4 `page_view` when eligible under the accepted consent behavior;
-7. filters/search/section/intents produce only their matching GA4 event tagr;
+7. filters/search/section/intents produce only their matching GA4 event tag;
 8. Form 46 focus produces one `mnt_form_start` per document/form;
 9. submit click produces one `mnt_form_submit_attempt`;
 10. successful Green Form 46 response -> `/obrigado` -> exactly one `mnt_lead_success` -> exactly one `generate_lead`;
