@@ -14,8 +14,12 @@ MNT-M4-09 está COMPLETE / MERGED na PR #82 (`a5c3766d93aa4b8ae76acfd6d544f03b20
 
 MNT-M5 está ACTIVE.
 
-MNT-M5-01 — `Mobile UX and accessibility audit` — está `IN_PROGRESS / AUTHORIZED` por autorização explícita do Product Authority em 2026-09-14.
+MNT-M5-01 — `Mobile UX and accessibility audit` — está `IN_PROGRESS / AUTHORIZED`.
 
-Única próxima ação segura: executar e documentar o audit M5-01 sobre o runtime atual de `www.moretegra.com.br`, classificando findings por severidade e separando observação de remediation. Não iniciar M5-02 por sequência automática e não aplicar remediation material sem gate próprio.
+MNT-M5-02 — `Core Web Vitals/performance baseline` — está `IN_PROGRESS / AUTHORIZED` por autorização explícita do Product Authority em 2026-09-14.
+
+Próxima ação segura: executar e documentar M5-01 e M5-02 sobre o runtime atual de `www.moretegra.com.br`. M5-01 deve classificar findings por severidade e separar observação de remediation. M5-02 deve separar field data, lab data e source-level evidence; quando valores numéricos não forem observados, registrar `NOT_OBSERVED` em vez de inferir.
+
+Não iniciar M5-03 por sequência automática e não aplicar remediation material de runtime apenas porque M5-01/M5-02 encontraram um problema. Remediation permanece em gate próprio.
 
 Residual infra menor: `/favicon.ico` retornou 404 no HAR Pingdom pós-cutover. GSC sitemap submission/processing continua uma evidência separada do deploy já comprovado do sitemap. Exact GTM published version number do cutover `www` permanece `NOT_RECORDED`.

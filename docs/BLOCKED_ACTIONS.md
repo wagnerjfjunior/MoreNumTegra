@@ -111,15 +111,20 @@ Future `/blog/...` requires its own content/ownership gate.
 
 ## 7. M5 — UX, Performance, Conversion, Lead & CRM
 
-M5 está ACTIVE e M5-01 está `IN_PROGRESS / AUTHORIZED`.
+M5 está ACTIVE.
 
-A autorização atual cobre **auditoria mobile UX e acessibilidade** e registro de findings/evidências. Não autoriza automaticamente:
+Autorizado em 2026-09-14:
+- MNT-M5-01 — Mobile UX and accessibility audit;
+- MNT-M5-02 — Core Web Vitals/performance baseline.
+
+A autorização cobre auditoria/baseline e registro de evidências. Continua sem autorização automática:
 - remediation material de runtime;
-- M5-02 ou tarefa posterior;
+- M5-03 ou tarefa posterior;
 - mudanças GTM/GA4/Form 46/DNS/Search por consequência de um finding;
 - publicação de produção fora do lifecycle governado.
 
-Cada finding deve separar `OBSERVED`, `INFERRED` e `PROPOSED_REMEDIATION`.
+M5-01 deve separar `OBSERVED`, `INFERRED` e `PROPOSED_REMEDIATION`.
+M5-02 deve separar `FIELD`, `LAB` e `SOURCE_LEVEL`; ausência de valor numérico observado deve ser registrada como `NOT_OBSERVED`, nunca inferida.
 
 ## 8. Meta / Ads / automação
 
@@ -149,6 +154,7 @@ URL_INDEXED != RICH_RESULT_ELIGIBLE
 FORM_SUBMIT_ATTEMPT != LEAD_SUCCESS
 LEAD_SUCCESS_QA != PERMISSION_TO SEND PII TO ANALYTICS
 AUDIT_FINDING != REMEDIATION_AUTHORIZATION
+PERFORMANCE_SIGNAL != REMEDIATION_AUTHORIZATION
 TOOL_CAPABILITY != AUTHORIZATION
 PLANNED != AUTHORIZED
 ```
