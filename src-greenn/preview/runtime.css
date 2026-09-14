@@ -29,6 +29,11 @@
 .mt-consent-actions{display:flex;gap:8px;justify-content:flex-end}
 .mt-consent button{min-height:40px;padding:0 16px;border-radius:10px;border:1px solid #55574f;background:transparent;color:#fff;font-weight:700;cursor:pointer}
 .mt-consent button.is-primary{border-color:#EBB92E;background:#EBB92E;color:#171813}
+#mt-floating-dock{bottom:calc(max(14px,env(safe-area-inset-bottom)) + var(--mt-floating-consent-offset,0px));transition:bottom .22s ease}
+@media(max-width:767px){
+  #mt-floating-dock{right:12px;gap:8px}
+  #mt-floating-dock .mt-floating{min-height:44px;padding:10px 14px;font-size:13px;line-height:1.1;max-width:calc(100vw - 24px)}
+}
 @media(min-width:760px){
   .mt-lead-shell{grid-template-columns:minmax(0,.85fr) minmax(480px,1.15fr);align-items:start}
   .mt-lead-copy{position:sticky;top:28px;padding-top:18px}
