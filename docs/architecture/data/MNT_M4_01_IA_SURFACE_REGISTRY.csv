@@ -1,0 +1,11 @@
+surface_class,route_pattern,parent,owner_role,state,indexability,creation_gate
+portfolio_root,/,ROOT,brand_portfolio,EXISTING,EXISTING_INDEXABLE,NONE
+master_development,/caminhos-da-lapa/,/,master_owner,PLANNED,PLANNED_AFTER_IMPLEMENTATION,M3_06_OWNER
+exact_project,/empreendimentos/project/,portfolio_or_master,project_owner,PLANNED,PLANNED_AFTER_IMPLEMENTATION,M3_06_OWNER_OR_RESERVATION
+stage,/estagios/stage/,/,stage_owner,CONDITIONAL,CONDITIONAL_AFTER_FACT_GATE,M3_06_STAGE_OWNER_AND_FACTUAL_MEMBERSHIP
+location,/regioes/location/,/,location_owner,CONDITIONAL,CONDITIONAL_AFTER_FACT_GATE,VERIFIED_PROJECT_SET_FACT_GATE
+project_modifier,section,exact_project,project_owner,SECTION_ONLY,SECTION_ONLY,RESOLVED_EXACT_PROJECT_OWNER
+historical_project,/empreendimentos/project/,portfolio_or_master,project_owner,HISTORICAL_GATED,HISTORICAL_GATED,M3_06_HISTORICAL_OWNER
+route_reservation,/empreendimentos/project/,portfolio_or_master,namespace_reservation,RESERVED,NOT_INHERENTLY_INDEXABLE,M3_06_ROUTE_RESERVATION
+support_only,NONE,NONE,NONE,NO_DEDICATED_ROUTE,NO_DEDICATED_ROUTE,M3_06_SUPPORT_ONLY
+excluded,NONE,NONE,NONE,NO_ROUTE,NO_DEDICATED_ROUTE,M3_06_EXCLUDED
