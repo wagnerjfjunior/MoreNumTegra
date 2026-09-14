@@ -12,10 +12,10 @@ MNT-M4-08 está COMPLETE / MERGED na PR #79 (`9073e3b70bd6a6e25255c1d5b147c26788
 
 Infra/commercial cutover para Vercel `www.moretegra.com.br` foi executado, validado e canonicalizado por ADR-006, PR #80 e PR #81.
 
-MNT-M4-09 está `PLANNED / NOT_AUTHORIZED`.
+MNT-M4-09 está `COMPLETE_CANDIDATE / PENDING_READY_MERGE` na PR #82.
 
-Única próxima ação segura: **não iniciar MNT-M4-09 sem autorização explícita do Product Authority**. Até nova autorização, preservar o estado de produção atual e não executar novas mutações de runtime, DNS, Search Console, GTM/GA4, Ads ou integrações externas por sequência automática.
+Mozae metragem foi reconciliada com Product Authority evidence: áreas exatas observadas 44.85–73.40 m²; tipologias comerciais oficiais atuais 46 m² e 73 m²; faixa arredondada de portfólio 45–73 m² permitida quando descrita como range. O antigo blocker factual está resolvido.
 
-Residual factual conhecido: o dataset runtime do Mozae ainda contém o lower bound histórico de 45m²; M3-04 governa 46m² e 73m². Não tratar esse residual como PASS integrado até correção/revalidação.
+Única próxima ação segura: Ready + merge da PR #82 somente mediante autorização explícita do Product Authority. Após o merge, M4 pode ser declarada COMPLETE; M5 continua separadamente gated.
 
-Residual infra menor: `/favicon.ico` retornou 404 no HAR Pingdom pós-cutover; não reabre o cutover comercial.
+Residual infra menor: `/favicon.ico` retornou 404 no HAR Pingdom pós-cutover; não reabre o cutover comercial. GSC sitemap submission/processing continua uma evidência separada do deploy já comprovado do sitemap.
