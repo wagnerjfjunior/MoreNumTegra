@@ -1,0 +1,9 @@
+record_type,query,clicks,impressions,ctr,position,window,source,notes
+PROPERTY_TOTAL,,0,23,0,26.2609,2026-08-23..2026-09-13,Windsor_searchconsole_live_recheck,"Live re-read at M3-07 initiation; differs from accepted M3-01 frozen snapshot of 26 impressions / ~27.52 position; do not overwrite historical frozen snapshot"
+QUERY,amaro tegra,0,1,0,52,2026-08-23..2026-09-13,Windsor_searchconsole_live_recheck,"named query row"
+QUERY,ode perdizes tegra,0,1,0,50,2026-08-23..2026-09-13,Windsor_searchconsole_live_recheck,"named query row"
+QUERY,tegra,0,3,0,19.3333,2026-08-23..2026-09-13,Windsor_searchconsole_live_recheck,"named query row"
+QUERY,tegra campo belo,0,1,0,75,2026-08-23..2026-09-13,Windsor_searchconsole_live_recheck,"named query row"
+QUERY,tegra conecta,0,2,0,65,2026-08-23..2026-09-13,Windsor_searchconsole_live_recheck,"named query row"
+QUERY,tegra vendas,0,5,0,28.6,2026-08-23..2026-09-13,Windsor_searchconsole_live_recheck,"named query row"
+QUERY_ROWS_TOTAL,,0,13,0,,2026-08-23..2026-09-13,Windsor_searchconsole_live_recheck,"sum of surfaced named query rows; must not be assumed equal to property total"
