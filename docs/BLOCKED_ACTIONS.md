@@ -1,10 +1,10 @@
 # Ações Bloqueadas — MoreNumTegra
 
-- Atualizado em: `2026-09-13`
+- Atualizado em: `2026-09-14`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
 - Functional baseline: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 - Technical baseline: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
-- ADRs: `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`, `docs/adr/ADR-002-VERCEL-MANUAL-GATE-DRIVEN-DEPLOYMENT.md`
+- ADRs: `docs/adr/ADR-001-GREENN-BUILDER-MODULE-COMPOSITION.md`, `docs/adr/ADR-002-VERCEL-MANUAL-GATE-DRIVEN-DEPLOYMENT.md`, `docs/adr/ADR-003-CLOUDFLARE-AUTHORITATIVE-DNS-VERCEL-CUSTOM-DOMAINS.md`, `docs/adr/ADR-004-VERCEL-GIT-DRIVEN-AUTOMATIC-DEPLOYMENT.md`
 - Runtime Measurement evidence: `docs/measurement/MNT_M2_10_LIVE_QA_UPDATE_2026-09-13.md`
 - Search research candidate: `docs/search/MNT_M3_01_MARKET_SEARCH_DEMAND_RESEARCH_2026-09-13.md`
 - Regra: ausência nesta lista não constitui autorização.
@@ -39,11 +39,13 @@ Historical design documents preserve their point-in-time observations. Meta Data
 | interceptar/bloquear submit nativo do Form 46 | risco de quebrar lifecycle Green | preservar lifecycle nativo |
 | usar seletor global `form` para mutação/interceptação | risco de colisão com builder | usar seletor específico verificado |
 | colar módulos JS separados na página 292 | Green possui um único slot JS e a unidade de release é consolidada | usar `src-greenn/moretegra.js` completo |
-| restaurar deploy automático Vercel por commit | ADR-002 adotou `MANUAL_GATE_DRIVEN` | nova decisão explícita + revalidação |
-| declarar Vercel atualizado sem deploy/evidência manual | homologação pode estar em drift | executar o processo manual e verificar o estado resultante |
+| declarar Git-driven Vercel end-to-end validado sem evidência live | configuração não equivale a validação | provar Preview automático, filtro docs-only e Production automático correspondente ao Git |
+| declarar Vercel atualizado sem deployment/evidência | runtime pode estar em drift | observar deployment correspondente ao SHA esperado e executar smoke test |
 | promover Vercel diferente do `main` aprovado | drift de homologação | alinhar ao SHA aprovado |
 | indexar Vercel Production como origem comercial | Green é produção comercial | decisão Search específica |
 | segredo/token no HTML/JS | risco de segurança | arquitetura segura aprovada |
+
+ADR-004, quando integrado, supersede o bloqueio histórico de restaurar deployments automáticos por Git. O Deploy Hook manual deixa de ser o caminho canônico normal.
 
 ## 3. Bloqueios ativos — Measurement / GA4 / consent / lead validity
 
@@ -152,7 +154,8 @@ Permitido após lifecycle/gate aplicável:
 
 ## 9. Regras de interpretação
 
-- `main mergeada` != `Vercel atualizado`.
+- `main mergeada` != `Vercel deployment observado`.
+- `Vercel deployment observado` != `smoke test aprovado`.
 - `Green atualizada` != `future work authorized`.
 - `tool capability` != `authorization`.
 - `GTM Version 7 published` != `future GTM mutations authorized`.
@@ -170,10 +173,10 @@ Permitido após lifecycle/gate aplicável:
 PROJECT DESIGN / EVIDENCE
 -> MORENUMTEGRA DECISION
 -> CHANGE / BRANCH
--> MANUAL VERCEL PREVIEW WHEN NEEDED
+-> VERCEL PREVIEW AUTOMÁTICO QUANDO HOUVER MUDANÇA DE RUNTIME
 -> OWNER VALIDATION
 -> MERGE MAIN
--> MANUAL VERCEL PRODUCTION WHEN NEEDED
+-> VERCEL PRODUCTION AUTOMÁTICO QUANDO HOUVER MUDANÇA DE RUNTIME
 -> GREEN SALES WHEN NEEDED
 -> PRODUCTION SMOKE / MEASUREMENT EVIDENCE
 ```
