@@ -58,13 +58,39 @@ CE - mnt_form_submit_attempt
 CE - mnt_lead_success
 ```
 
-For `CE - mnt_lead_success`, preserve the thank-you route condition:
+### `CE - mnt_lead_success` — validated thank-you route
+
+The Green Form 46 redirect contract is:
+
+```text
+https://moretegra.com.br/obrigado + query_params
+```
+
+Observed successful runtime examples include:
+
+```text
+https://moretegra.com.br/obrigado?l_=2973&p_id=292
+https://moretegra.com.br/obrigado?l_=222&p_id=292
+```
+
+In Tag Assistant, those URLs resolved as:
+
+```text
+Page URL  = https://moretegra.com.br/obrigado?...query...
+Page Path = /obrigado
+```
+
+Therefore query parameters must **not** be copied into the GTM `Page Path` filter.
+
+For the Vercel delta, use the hardened route condition below so both `/obrigado` and `/obrigado/` are eligible:
 
 ```text
 Custom Event equals mnt_lead_success
 Page Hostname matches RegEx ^(moretegra\.com\.br|lp\.moretegra\.com\.br)$
-Page Path equals /obrigado
+Page Path matches RegEx ^/obrigado/?$
 ```
+
+The Vercel router already serves both `/obrigado` and `/obrigado/`, while the project conversion adapter normalizes a trailing slash to `/obrigado` before emitting the source event.
 
 ## 3. Consent Mode for Vercel
 
@@ -139,14 +165,14 @@ Before Submit/Publish in GTM Preview / Tag Assistant on `https://lp.moretegra.co
 
 1. container `GTM-PGCR4R47` connects;
 2. default consent is denied for `ad_storage`, `analytics_storage`, `ad_user_data`, `ad_personalization` before choice;
-3. Vercel `Aceitar` imits `mnt_consent_accept` and all four become granted;
+3. Vercel `Aceitar` emits `mnt_consent_accept` and all four become granted;
 4. Vercel `Recusar` emits `mnt_consent_reject` and all four remain/become denied;
 5. reload preserves the chosen state and re-applies it;
 6. one source `mnt_page_view` produces one GA4 `page_view` when eligible under the accepted consent behavior;
 7. filters/search/section/intents produce only their matching GA4 event tag;
 8. Form 46 focus produces one `mnt_form_start` per document/form;
 9. submit click produces one `mnt_form_submit_attempt`;
-10. successful Green Form 46 response -> `/obrigado` -> exactly one `mnt_lead_success` -> exactly one `generate_lead`;
+10. successful Green Form 46 response -> `/obrigado` or `/obrigado/` + optional query string -> exactly one `mnt_lead_success` -> exactly one `generate_lead`;
 11. refresh/back on `/obrigado` does not create another lead conversion;
 12. no `mnt_*` business events fire on arbitrary `*.vercel.app` branch previews;
 13. no visitor name/e-mail/telephone/free text appears in `dataLayer` or GA4 event parameters.
