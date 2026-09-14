@@ -1,0 +1,10 @@
+surface_class,route_pattern,owner_role,state,creation_gate
+portfolio_root,/,brand_portfolio,EXISTING,NONE
+master_development,/caminhos-da-lapa/,master_owner,PLANNED,M3_06_OWNER
+exact_project,/empreendimentos/<exact-project>/,project_owner,PLANNED,M3_06_OWNER_OR_ROUTE_RESERVATION
+stage_launch,/estagios/lancamento/,stage_owner,CONDITIONAL_PLANNED,M3_06_STAGE_OWNER_AND_FACTUAL_MEMBERSHIP
+stage_construction,/estagios/em-construcao/,stage_owner,CONDITIONAL_PLANNED,M3_06_STAGE_OWNER_AND_FACTUAL_MEMBERSHIP
+stage_ready,/estagios/pronto-para-morar/,stage_owner,CONDITIONAL_PLANNED,M3_06_STAGE_OWNER_AND_FACTUAL_MEMBERSHIP
+location,/regioes/<verified-location>/,location_owner,CONDITIONAL_ONLY,VERIFIED_PROJECT_SET_FACT_GATE
+support_only,NONE,NONE,NO_DEDICATED_ROUTE,M3_06_SUPPORT_ONLY
+excluded,NONE,NONE,NO_ROUTE,M3_06_EXCLUDED
