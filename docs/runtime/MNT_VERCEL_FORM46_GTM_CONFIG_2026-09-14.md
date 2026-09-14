@@ -34,10 +34,20 @@ texto-livre
 Vercel runtime rule:
 
 ```text
+country selector displays flag + country + dial code
+Brazil selected by default = +55
+visitor does not type DDI separately
 visible telephone = user-friendly national formatting
-submitted telephone = E.164
-Brazil default DDI = +55
+submitted telephone = selected country dial code + national number normalized to E.164
 real submit host = lp.moretegra.com.br only
+```
+
+Example:
+
+```text
+selected country = 🇧🇷 Brasil (+55)
+visible phone = (11) 98585-8585
+submitted telefone = +5511985858585
 ```
 
 No Axios dependency is required in the Vercel implementation. The Product Authority-supplied Green embed uses Axios, but the actual transport contract is a normal FormData POST and the Vercel implementation uses native `fetch`.

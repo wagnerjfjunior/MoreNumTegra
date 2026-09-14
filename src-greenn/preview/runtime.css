@@ -12,6 +12,7 @@
 .mt-field b{color:#a33b2b}
 .mt-field small{font-weight:500;color:#6f7168}
 .mt-field input,.mt-field select{width:100%;box-sizing:border-box;min-height:50px;border:1px solid #d7d7d1;border-radius:12px;background:#fff;color:#171813;padding:0 14px;font:500 16px/1.2 system-ui,sans-serif;outline:none;transition:border-color .15s,box-shadow .15s}
+.mt-field select{cursor:pointer}
 .mt-field input:focus,.mt-field select:focus{border-color:#9d7a10;box-shadow:0 0 0 3px rgba(235,185,46,.22)}
 .mt-field input[aria-invalid="true"],.mt-field select[aria-invalid="true"]{border-color:#a33b2b;box-shadow:0 0 0 3px rgba(163,59,43,.12)}
 .mt-lead-submit{width:100%;min-height:52px;margin-top:16px;border:0;border-radius:12px;background:#EBB92E;color:#171813;font:800 15px/1 system-ui,sans-serif;letter-spacing:.01em;cursor:pointer;transition:transform .15s,filter .15s}
@@ -31,10 +32,9 @@
 @media(min-width:760px){
   .mt-lead-shell{grid-template-columns:minmax(0,.85fr) minmax(480px,1.15fr);align-items:start}
   .mt-lead-copy{position:sticky;top:28px;padding-top:18px}
-  .mt-form-grid{grid-template-columns:180px minmax(0,1fr)}
+  .mt-form-grid{grid-template-columns:220px minmax(0,1fr)}
   .mt-field-wide{grid-column:1/-1}
   .mt-field-country{grid-column:1/2}
-  .mt-field-ddi{grid-column:1/2}
   .mt-field-phone{grid-column:2/3}
   .mt-lead-form{padding:26px}
   .mt-consent{grid-template-columns:1fr auto;align-items:center}

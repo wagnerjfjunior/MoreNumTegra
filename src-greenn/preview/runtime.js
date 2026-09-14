@@ -18,12 +18,6 @@
     return String(value || "").replace(/\D/g, "");
   }
 
-  function dialCode(countrySelect, manualInput) {
-    if (countrySelect.value !== "other") return countrySelect.value;
-    const value = digits(manualInput.value);
-    return value ? `+${value}` : "";
-  }
-
   function normalizeE164(rawValue, code) {
     const raw = String(rawValue || "").trim();
     if (!raw) return "";
@@ -85,15 +79,15 @@
     node.hidden = !text;
   }
 
-  function validate(form, countrySelect, manualDdi) {
+  function validate(form, countrySelect) {
     const name = form.elements.nome;
     const email = form.elements.email;
     const phone = form.elements.telefone_display;
-    const code = dialCode(countrySelect, manualDdi);
+    const code = String(countrySelect.value || "");
     const normalizedPhone = normalizeE164(phone.value, code);
     const errors = [];
 
-    [name, email, phone, countrySelect, manualDdi].forEach((field) => field?.removeAttribute("aria-invalid"));
+    [name, email, phone, countrySelect].forEach((field) => field?.removeAttribute("aria-invalid"));
 
     if (!String(name.value || "").trim()) {
       errors.push("Informe seu nome.");
@@ -106,12 +100,12 @@
     }
 
     if (!code) {
-      errors.push("Informe o DDI do telefone.");
-      (countrySelect.value === "other" ? manualDdi : countrySelect).setAttribute("aria-invalid", "true");
+      errors.push("Selecione o país do telefone.");
+      countrySelect.setAttribute("aria-invalid", "true");
     }
 
     if (!normalizedPhone) {
-      errors.push(countrySelect.value === "+55" ? "Informe um telefone brasileiro válido com DDD." : "Informe um telefone internacional válido.");
+      errors.push(code === "+55" ? "Informe um telefone brasileiro válido com DDD." : "Informe um telefone internacional válido.");
       phone.setAttribute("aria-invalid", "true");
     }
 
@@ -169,8 +163,6 @@
     if (!(form instanceof HTMLFormElement)) return;
 
     const country = form.querySelector("#mt-phone-country");
-    const manualDdiField = form.querySelector(".mt-field-ddi");
-    const manualDdi = form.querySelector("#mt-phone-ddi");
     const phone = form.querySelector("#mt-lead-phone");
     const project = form.querySelector("#mt-lead-project");
     const honeypot = form.querySelector("#mt-company-website");
@@ -181,9 +173,6 @@
     let sending = false;
 
     const syncCountry = () => {
-      const other = country.value === "other";
-      manualDdiField.hidden = !other;
-      manualDdi.required = other;
       phone.placeholder = country.value === "+55" ? "(11) 99999-9999" : "Telefone com código local";
       if (country.value === "+55") phone.value = formatBrazilPhone(phone.value);
     };
@@ -220,7 +209,7 @@
         return;
       }
 
-      const result = validate(form, country, manualDdi);
+      const result = validate(form, country);
       if (!result.valid) {
         showMessage(error, result.message);
         form.querySelector('[aria-invalid="true"]')?.focus();
