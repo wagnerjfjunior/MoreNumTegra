@@ -22,21 +22,17 @@
   function normalizeE164(rawValue, code) {
     const raw = String(rawValue || "").trim();
     if (!raw) return "";
-
     if (raw.startsWith("+")) {
       const international = digits(raw);
       return international.length >= 7 && international.length <= 15 ? `+${international}` : "";
     }
-
     const countryDigits = digits(code);
     let national = digits(raw).replace(/^0+/, "");
     if (!countryDigits || !national) return "";
-
     if (national.startsWith(countryDigits) && national.length > countryDigits.length + 6) {
       const full = national;
       return full.length <= 15 ? `+${full}` : "";
     }
-
     if (countryDigits === "55" && ![10, 11].includes(national.length)) return "";
     const full = `${countryDigits}${national}`;
     return full.length >= 7 && full.length <= 15 ? `+${full}` : "";
@@ -87,29 +83,23 @@
     const code = String(countrySelect.value || "");
     const normalizedPhone = normalizeE164(phone.value, code);
     const errors = [];
-
     [name, email, phone, countrySelect].forEach((field) => field?.removeAttribute("aria-invalid"));
-
     if (!String(name.value || "").trim()) {
       errors.push("Informe seu nome.");
       name.setAttribute("aria-invalid", "true");
     }
-
     if (!email.validity.valid || !String(email.value || "").trim()) {
       errors.push("Informe um e-mail válido.");
       email.setAttribute("aria-invalid", "true");
     }
-
     if (!code) {
       errors.push("Selecione o país do telefone.");
       countrySelect.setAttribute("aria-invalid", "true");
     }
-
     if (!normalizedPhone) {
       errors.push(code === "+55" ? "Informe um telefone brasileiro válido com DDD." : "Informe um telefone internacional válido.");
       phone.setAttribute("aria-invalid", "true");
     }
-
     return {
       valid: errors.length === 0,
       message: errors[0] || "",
@@ -127,25 +117,21 @@
       banner.hidden = true;
       return;
     }
-
     const emitChoice = (choice) => {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({event: choice === "granted" ? "mnt_consent_accept" : "mnt_consent_reject"});
     };
-
     let saved = "";
     try {
       saved = window.localStorage.getItem(CONSENT_KEY) || "";
     } catch {
       saved = "";
     }
-
     if (saved === "granted" || saved === "denied") {
       banner.hidden = true;
       emitChoice(saved);
       return;
     }
-
     banner.hidden = false;
     banner.querySelector("[data-consent-accept]")?.addEventListener("click", () => {
       try { window.localStorage.setItem(CONSENT_KEY, "granted"); } catch {}
@@ -159,10 +145,55 @@
     });
   }
 
+  function initCapiitoloExperience() {
+    if (document.documentElement.dataset.mntPageIdentity !== "capiitolo_piero_lissoni") return;
+
+    const locationImage = document.querySelector(".location > img");
+    if (locationImage instanceof HTMLImageElement) {
+      locationImage.src = "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Chacara_Klabin.webp";
+      locationImage.removeAttribute("srcset");
+    }
+
+    const filmLink = document.querySelector('.film-card a[href*="youtube.com/watch?v=iq50ei83B8U"]');
+    if (!(filmLink instanceof HTMLAnchorElement)) return;
+
+    filmLink.removeAttribute("target");
+    filmLink.removeAttribute("rel");
+    filmLink.innerHTML = "Assistir aqui <span>▶</span>";
+
+    filmLink.addEventListener("click", (event) => {
+      event.preventDefault();
+      const card = filmLink.closest(".film-card");
+      if (!(card instanceof HTMLElement) || card.querySelector("iframe[data-capiitolo-film]")) return;
+
+      const poster = card.querySelector("img");
+      const copy = card.querySelector(".media-copy");
+      if (poster instanceof HTMLElement) poster.hidden = true;
+      if (copy instanceof HTMLElement) copy.hidden = true;
+
+      const frame = document.createElement("iframe");
+      frame.dataset.capiitoloFilm = "true";
+      frame.title = "Filme oficial CAPIITOLO by Piero Lissoni";
+      frame.src = "https://www.youtube-nocookie.com/embed/iq50ei83B8U?autoplay=1&playsinline=1&rel=0&modestbranding=1";
+      frame.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+      frame.allowFullscreen = true;
+      frame.referrerPolicy = "strict-origin-when-cross-origin";
+      Object.assign(frame.style, {
+        position: "absolute",
+        inset: "0",
+        width: "100%",
+        height: "100%",
+        border: "0",
+        zIndex: "4",
+        background: "#000"
+      });
+      card.append(frame);
+    }, {once: true});
+  }
+
   function initForm() {
     const form = document.querySelector(FORM_SELECTOR);
     if (!(form instanceof HTMLFormElement)) return;
-
     const country = form.querySelector("#mt-phone-country");
     const phone = form.querySelector("#mt-lead-phone");
     const project = form.querySelector("#mt-lead-project");
@@ -205,19 +236,16 @@
       if (sending) return;
       showMessage(error, "");
       showMessage(status, "");
-
       if (honeypot?.value) {
         showMessage(error, "Não foi possível enviar. Atualize a página e tente novamente.");
         return;
       }
-
       const result = validate(form, country);
       if (!result.valid) {
         showMessage(error, result.message);
         form.querySelector('[aria-invalid="true"]')?.focus();
         return;
       }
-
       if (!isLiveHost()) {
         showMessage(status, "Formulário validado. O envio real fica habilitado somente em www.moretegra.com.br após merge em main.");
         return;
@@ -228,7 +256,6 @@
       submitLabel.textContent = "Enviando...";
       const controller = new AbortController();
       const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
-
       const payload = new FormData();
       payload.append("tenant_id", TENANT_ID);
       payload.append("form_id", FORM_ID);
@@ -246,12 +273,9 @@
           credentials: "omit",
           signal: controller.signal
         });
-
         if (!response.ok) throw new Error(`Green Form 46 respondeu HTTP ${response.status}`);
-
         let body = {};
         try { body = await response.json(); } catch { body = {}; }
-
         setPendingLead();
         showMessage(status, "Solicitação recebida. Redirecionando...");
         const query = safeProviderQuery(body?.query_params || "");
@@ -274,6 +298,7 @@
 
   function start() {
     initConsent();
+    initCapiitoloExperience();
     initForm();
   }
 
