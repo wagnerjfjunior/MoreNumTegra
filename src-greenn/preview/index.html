@@ -133,6 +133,7 @@
   <script src="/src-greenn/preview/runtime.js" defer></script>
   <script src="/src-greenn/preview/measurement-core.js" defer></script>
   <script src="/src-greenn/preview/measurement-form.js" defer></script>
+  <script src="/src-greenn/portal-links.js" defer></script>
   <script>
     (() => {
       const blocks = [
@@ -155,12 +156,20 @@
         }
       }
 
+      function prefillInterestFromUrl() {
+        const interest = new URLSearchParams(window.location.search).get("interesse");
+        const input = document.getElementById("mt-lead-project");
+        if (!interest || !input || input.value) return;
+        input.value = interest;
+      }
+
       async function load() {
         try {
           const responses = await Promise.all(blocks.map(([, url]) => fetch(url, {cache:"no-store"})));
           responses.forEach((response) => { if (!response.ok) throw new Error(`Falha ${response.status} ao carregar ${response.url}`); });
           const html = await Promise.all(responses.map((response) => response.text()));
           blocks.forEach(([id], index) => { document.getElementById(id).innerHTML = html[index]; });
+          prefillInterestFromUrl();
           const script = document.createElement("script");
           script.src = "/src-greenn/moretegra.js";
           script.defer = true;
