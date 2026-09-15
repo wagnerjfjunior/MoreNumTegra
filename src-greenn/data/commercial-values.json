@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-15",
+  "currency": "BRL",
+  "projects": {
+    "caminhos-da-lapa-elo-duo": {
+      "state": "active_reference",
+      "inventoryLabel": "Últimas unidades",
+      "priceLabel": "A partir de",
+      "price": 658000,
+      "reference": "Ref. 68 m² (unidade 109) - Ago/26 | pagamento à vista",
+      "sourceUrl": "https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/lapa/caminhos-da-lapa-elo-duo",
+      "sourceObservedAt": "2026-09-15",
+      "disclaimer": "Valor de referência observado na página oficial da Tegra. Disponibilidade, unidade e condições podem mudar; confirme as condições vigentes com a Tegra Vendas."
+    }
+  }
+}
