@@ -10,6 +10,8 @@
   const LEAD_PENDING_KEY = "mnt.lead.pending.v1";
   const CONSENT_KEY = "mnt.consent.v1";
   const REQUEST_TIMEOUT_MS = 15000;
+  const CAPIITOLO_WHATSAPP = "5511960779328";
+  const LOCATION_MESSAGE = "Solicito agendamento de visita, passe a localização.";
 
   function isLiveHost() {
     return window.location.hostname === LIVE_HOST;
@@ -145,50 +147,130 @@
     });
   }
 
+  function whatsappUrl(message = "") {
+    const base = `https://wa.me/${CAPIITOLO_WHATSAPP}`;
+    return message ? `${base}?text=${encodeURIComponent(message)}` : base;
+  }
+
+  function injectCapiitoloStyles() {
+    if (document.querySelector("#mnt-capiitolo-runtime-style")) return;
+    const style = document.createElement("style");
+    style.id = "mnt-capiitolo-runtime-style";
+    style.textContent = `
+      .mnt-price-section{background:#0a0a09;color:#fff;padding:82px 0}
+      .mnt-price-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:8vw;align-items:end}
+      .mnt-price-label{margin:0 0 12px;font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#EBB92E}
+      .mnt-price-value{font:400 clamp(3rem,7vw,6.5rem)/.95 Georgia,serif;letter-spacing:-.045em;margin:0}
+      .mnt-price-note{max-width:620px;color:#bdb8af;margin:18px 0 0}
+      .mnt-map-link{display:block;position:relative;margin-top:26px;border:1px solid rgba(10,10,9,.18);background:#ddd;text-decoration:none;color:inherit;overflow:hidden}
+      .mnt-map-frame{width:100%;height:310px;border:0;pointer-events:none}
+      .mnt-map-cta{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:15px 18px;background:#EBB92E;color:#111;font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+      .mnt-whatsapp-float{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:999px;background:#25D366;color:#071b0e;text-decoration:none;font-weight:800;box-shadow:0 12px 34px rgba(0,0,0,.25)}
+      .mnt-whatsapp-dot{width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 3px #25D366}
+      .mnt-whatsapp-float span{font-size:.78rem}
+      .mnt-location-link{font-weight:800;color:inherit;text-decoration:underline;text-underline-offset:3px}
+      @media(max-width:900px){.mnt-price-grid{grid-template-columns:1fr;gap:28px}.mnt-map-frame{height:260px}.mnt-whatsapp-float{right:12px;bottom:12px;padding:13px 14px}.mnt-whatsapp-float span{display:none}}
+    `;
+    document.head.append(style);
+  }
+
   function initCapiitoloExperience() {
     if (document.documentElement.dataset.mntPageIdentity !== "capiitolo_piero_lissoni") return;
+
+    injectCapiitoloStyles();
+    const locationWhatsapp = whatsappUrl(LOCATION_MESSAGE);
+
+    const facts = document.querySelectorAll(".facts .fact");
+    const locationFact = facts[3];
+    if (locationFact) {
+      const value = locationFact.querySelector("b");
+      const label = locationFact.querySelector("span");
+      if (value) value.textContent = "Chácara Klabin";
+      if (label) label.textContent = "São Paulo";
+    }
 
     const locationImage = document.querySelector(".location > img");
     if (locationImage instanceof HTMLImageElement) {
       locationImage.src = "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Chacara_Klabin.webp";
+      locationImage.alt = "Chácara Klabin em São Paulo";
       locationImage.removeAttribute("srcset");
     }
 
+    const locationCard = document.querySelector(".location-card");
+    if (locationCard instanceof HTMLElement) {
+      locationCard.innerHTML = `
+        <p class="eyebrow">Apartamento na Chácara Klabin · localização</p>
+        <h2 id="location-title">Viver na Chácara Klabin faz parte do projeto.</h2>
+        <p>Veja a localização do CAPIITOLO no mapa. Ao tocar, você abre o WhatsApp para solicitar a localização e agendar sua visita.</p>
+        <a class="mnt-map-link" href="${locationWhatsapp}" target="_blank" rel="noopener" aria-label="Solicitar localização do CAPIITOLO pelo WhatsApp">
+          <iframe class="mnt-map-frame" title="Localização do CAPIITOLO na Chácara Klabin" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Rua+Ibaragui+Nissui,+Chacara+Klabin,+Sao+Paulo,+SP&output=embed"></iframe>
+          <span class="mnt-map-cta">Solicitar localização para visita <b>WhatsApp ↗</b></span>
+        </a>`;
+    }
+
+    const faqFirst = document.querySelector("#faq details:first-of-type p");
+    if (faqFirst instanceof HTMLElement) {
+      faqFirst.innerHTML = `Rua Ibaragui Nissui, Chácara Klabin, São Paulo. <a class="mnt-location-link" href="${locationWhatsapp}" target="_blank" rel="noopener">Solicitar localização</a>.`;
+    }
+
+    if (!document.querySelector(".mnt-price-section")) {
+      const media = document.querySelector(".media-row");
+      if (media) {
+        const section = document.createElement("section");
+        section.className = "mnt-price-section";
+        section.setAttribute("aria-labelledby", "mnt-price-title");
+        section.innerHTML = `
+          <div class="wrap mnt-price-grid">
+            <div>
+              <p class="mnt-price-label">Valores</p>
+              <h2 id="mnt-price-title" class="display">Condições atuais.</h2>
+            </div>
+            <div data-commercial-key="capiitolo">
+              <p class="mnt-price-label">A partir de</p>
+              <p class="mnt-price-value" data-commercial-value aria-live="polite">—</p>
+              <p class="mnt-price-note">O valor será consumido de uma base comercial separada. Até a integração dessa fonte, consulte as condições vigentes no atendimento.</p>
+              <a class="btn yellow" href="#formulario">Receber condições <span>↓</span></a>
+            </div>
+          </div>`;
+        media.before(section);
+      }
+    }
+
+    if (!document.querySelector(".mnt-whatsapp-float")) {
+      const badge = document.createElement("a");
+      badge.className = "mnt-whatsapp-float";
+      badge.href = whatsappUrl();
+      badge.target = "_blank";
+      badge.rel = "noopener";
+      badge.setAttribute("aria-label", "Falar pelo WhatsApp sobre o CAPIITOLO");
+      badge.innerHTML = '<i class="mnt-whatsapp-dot" aria-hidden="true"></i><span>WhatsApp</span>';
+      document.body.append(badge);
+    }
+
     const filmLink = document.querySelector('.film-card a[href*="youtube.com/watch?v=iq50ei83B8U"]');
-    if (!(filmLink instanceof HTMLAnchorElement)) return;
-
-    filmLink.removeAttribute("target");
-    filmLink.removeAttribute("rel");
-    filmLink.innerHTML = "Assistir aqui <span>▶</span>";
-
-    filmLink.addEventListener("click", (event) => {
-      event.preventDefault();
-      const card = filmLink.closest(".film-card");
-      if (!(card instanceof HTMLElement) || card.querySelector("iframe[data-capiitolo-film]")) return;
-
-      const poster = card.querySelector("img");
-      const copy = card.querySelector(".media-copy");
-      if (poster instanceof HTMLElement) poster.hidden = true;
-      if (copy instanceof HTMLElement) copy.hidden = true;
-
-      const frame = document.createElement("iframe");
-      frame.dataset.capiitoloFilm = "true";
-      frame.title = "Filme oficial CAPIITOLO by Piero Lissoni";
-      frame.src = "https://www.youtube-nocookie.com/embed/iq50ei83B8U?autoplay=1&playsinline=1&rel=0&modestbranding=1";
-      frame.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
-      frame.allowFullscreen = true;
-      frame.referrerPolicy = "strict-origin-when-cross-origin";
-      Object.assign(frame.style, {
-        position: "absolute",
-        inset: "0",
-        width: "100%",
-        height: "100%",
-        border: "0",
-        zIndex: "4",
-        background: "#000"
-      });
-      card.append(frame);
-    }, {once: true});
+    if (filmLink instanceof HTMLAnchorElement) {
+      filmLink.removeAttribute("target");
+      filmLink.removeAttribute("rel");
+      filmLink.innerHTML = "Assistir aqui <span>▶</span>";
+      filmLink.addEventListener("click", (event) => {
+        event.preventDefault();
+        const card = filmLink.closest(".film-card");
+        if (!(card instanceof HTMLElement) || card.querySelector("iframe[data-capiitolo-film]")) return;
+        const poster = card.querySelector("img");
+        const copy = card.querySelector(".media-copy");
+        if (poster instanceof HTMLElement) poster.hidden = true;
+        if (copy instanceof HTMLElement) copy.hidden = true;
+        const frame = document.createElement("iframe");
+        frame.dataset.capiitoloFilm = "true";
+        frame.title = "Filme oficial CAPIITOLO by Piero Lissoni";
+        frame.src = "https://www.youtube-nocookie.com/embed/iq50ei83B8U?autoplay=1&playsinline=1&rel=0&modestbranding=1";
+        frame.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+        frame.allowFullscreen = true;
+        frame.referrerPolicy = "strict-origin-when-cross-origin";
+        Object.assign(frame.style, {position:"absolute",inset:"0",width:"100%",height:"100%",border:"0",zIndex:"4",background:"#000"});
+        card.append(frame);
+      }, {once:true});
+    }
   }
 
   function initForm() {
@@ -212,9 +294,7 @@
 
     country.addEventListener("change", syncCountry);
     phone.addEventListener("input", () => {
-      if (country.value === "+55" && !String(phone.value).trim().startsWith("+")) {
-        phone.value = formatBrazilPhone(phone.value);
-      }
+      if (country.value === "+55" && !String(phone.value).trim().startsWith("+")) phone.value = formatBrazilPhone(phone.value);
     });
 
     document.addEventListener("click", (event) => {
@@ -229,7 +309,7 @@
     form.addEventListener("focusin", () => {
       const interest = selectedInterest();
       if (interest && !project.value.trim()) project.value = interest;
-    }, {once: true});
+    }, {once:true});
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -266,13 +346,7 @@
       if (result.project) payload.append("texto-livre", result.project);
 
       try {
-        const response = await fetch(FORM_ENDPOINT, {
-          method: "POST",
-          body: payload,
-          mode: "cors",
-          credentials: "omit",
-          signal: controller.signal
-        });
+        const response = await fetch(FORM_ENDPOINT, {method:"POST",body:payload,mode:"cors",credentials:"omit",signal:controller.signal});
         if (!response.ok) throw new Error(`Green Form 46 respondeu HTTP ${response.status}`);
         let body = {};
         try { body = await response.json(); } catch { body = {}; }
@@ -282,9 +356,7 @@
         window.location.assign(`/obrigado${query}`);
       } catch (cause) {
         const timedOut = cause?.name === "AbortError";
-        showMessage(error, timedOut
-          ? "O envio demorou além do esperado. Tente novamente."
-          : "Não foi possível enviar agora. Verifique sua conexão e tente novamente.");
+        showMessage(error, timedOut ? "O envio demorou além do esperado. Tente novamente." : "Não foi possível enviar agora. Verifique sua conexão e tente novamente.");
       } finally {
         window.clearTimeout(timeout);
         sending = false;
@@ -302,9 +374,6 @@
     initForm();
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", start, {once: true});
-  } else {
-    start();
-  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start, {once:true});
+  else start();
 })();
