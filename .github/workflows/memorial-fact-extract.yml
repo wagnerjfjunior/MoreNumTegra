@@ -6,24 +6,24 @@ on:
       - audit/memoriais-fact-extraction
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   extract:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Install PDF text extractor
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y poppler-utils
-      - name: Extract memorial text
+      - name: Extract and generate audit evidence
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p memorial-extraction/text
-          cp src-greenn/moretegra.js memorial-extraction/runtime-moretegra.js
-          cp docs/product/data/MNT_M3_04_PRODUCT_FACT_CLAIM_REGISTRY_2026-09-13.csv memorial-extraction/product-fact-registry.csv
+          mkdir -p memorial-extraction/text docs/product/data
           printf 'filename\tsha256\tbytes\ttext_bytes\n' > memorial-extraction/manifest.tsv
           find Tegra/Memoriais_Descritivos -maxdepth 1 -type f -iname '*.pdf' -print0 | sort -z | while IFS= read -r -d '' pdf; do
             base="$(basename "$pdf" .pdf)"
@@ -36,24 +36,122 @@ jobs:
           done
           python3 - <<'PY'
           from pathlib import Path
-          import json, re
+          import csv, re, hashlib, unicodedata
+
+          root=Path('.')
+          textdir=Path('memorial-extraction/text')
+          out=Path('docs/product/data')
+
+          def norm(s):
+              s=unicodedata.normalize('NFKD',s)
+              return ''.join(c for c in s if not unicodedata.combining(c)).lower()
+          def family(fn):
+              return re.sub(r'-Memorial Descritivo.*$','',fn[:-4]).strip()
+          def read(files):
+              return '\n'.join((textdir/f.replace('.pdf','.txt')).read_text(encoding='utf-8',errors='ignore') for f in files)
+          def loc(text):
+              for line in text.splitlines():
+                  s=' '.join(line.split())
+                  if re.search(r'O referido empreendimento está localizado|O referido empreendimento esta localizado',s,re.I): return s
+              return ''
+
           rows=[]
-          area_re=re.compile(r'(?<!\d)(\d{1,3}(?:[\.,]\d{1,2})?)\s*m(?:²|2)\b', re.I)
-          for p in sorted(Path('memorial-extraction/text').glob('*.txt')):
-              text=p.read_text(encoding='utf-8', errors='ignore')
-              areas=[]
-              for x in area_re.findall(text):
-                  try: v=float(x.replace(',','.'))
-                  except: continue
-                  if 10 <= v <= 1000: areas.append(v)
-              rows.append({'source':p.name,'text_bytes':len(text.encode('utf-8')),'areas_m2_unique':sorted(set(areas)),'mentions':{
-                'gerador':bool(re.search(r'\bgerador',text,re.I)),'ar_condicionado':bool(re.search(r'ar[- ]?condicionad',text,re.I)),
-                'bicicletario':bool(re.search(r'biciclet',text,re.I)),'piscina':bool(re.search(r'piscina',text,re.I)),
-                'churrasqueira':bool(re.search(r'churrasqueir',text,re.I)),'coworking':bool(re.search(r'cowork',text,re.I)),
-                'pet':bool(re.search(r'\bpet\b|pet place|pet care',text,re.I)),'quadra':bool(re.search(r'quadra',text,re.I)),
-                'sauna':bool(re.search(r'sauna',text,re.I)),'fitness':bool(re.search(r'fitness|academia',text,re.I))}})
-          Path('memorial-extraction/summary.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2),encoding='utf-8')
+          with open('memorial-extraction/manifest.tsv',encoding='utf-8') as f:
+              next(f)
+              for line in f:
+                  fn,sha,b,tb=line.rstrip('\n').split('\t')
+                  rows.append({'project_family':family(fn),'filename':fn,'source_path':'Tegra/Memoriais_Descritivos/'+fn,'sha256':sha,'bytes':b,'text_bytes':tb})
+          counts={}
+          for r in rows: counts[r['sha256']]=counts.get(r['sha256'],0)+1
+          for r in rows:
+              tb=int(r['text_bytes'])
+              r['extraction_status']='NATIVE_TEXT_OK' if tb>=1000 else ('TEXT_LAYER_INSUFFICIENT' if tb>0 else 'NO_TEXT')
+              r['duplicate_status']='DUPLICATE_BINARY' if counts[r['sha256']]>1 else 'UNIQUE'
+          with open(out/'MNT_MEMORIAL_SOURCE_INVENTORY_2026-09-14.csv','w',encoding='utf-8',newline='') as f:
+              w=csv.DictWriter(f,fieldnames=list(rows[0])); w.writeheader(); w.writerows(rows)
+
+          mapping={
+            'nova-vivere':[], 'chateau-jardin':['Château Jardin-Memorial Descritivo - Harmonie.pdf','Château Jardin-Memorial Descritivo - Lumiere.pdf'],
+            'caminhos-lapa-elo-duo':['Caminhos da Lapa Elo Duo-Memorial Descritivo.pdf'], 'garden-design':[],
+            'ampere-brooklin':['Ampère Brooklin-Memorial Descritivo.pdf'], 'mozae-higienopolis':[],
+            'universo-tatuape-orbita':['Universo Tatuapé Órbita-Memorial Descritivo - Residencial.pdf','Universo Tatuapé Órbita-Memorial Descritivo - lojas.pdf','Universo Tatuapé Órbita-Memorial Descritivo - offices.pdf'],
+            'aria-higienopolis':['Ária Higienópolis-Memorial Descritivo - Residencial.pdf','Ária Higienópolis-Memorial Descritivo - Offices.pdf','Ária Higienópolis-Memorial Descritivo - Contratual Lojas.pdf','Ária Higienópolis-Memorial Descritivo - de Vendas Offices.pdf'],
+            'bem-moema':['Bem Moema-Memorial Descritivo.pdf'],'bem-moema-studios-offices':['Bem Moema Studios & Offices-Memorial Descritivo.pdf'],
+            'soma-perdizes':['Soma Perdizes-Memorial Descritivo - Residencial.pdf','Soma Perdizes-Memorial Descritivo - Offices.pdf'],
+            'zahle-jardins':['Zahle Jardins-Memorial Descritivo.pdf'],
+            'bueno-brandao-257':['Bueno Brandão 257-Memorial Descritivo - Residencial.pdf','Bueno Brandão 257-Memorial Descritivo - Studios.pdf'],
+            'capiitolo-piero-lissoni':['CAPIITOLO by Piero Lissoni-Memorial Descritivo.pdf'],'dsg-itaim':['DSG Itaim-Memorial Descritivo.pdf'],
+            'ledge-brooklin':['Ledge Brooklin-Memorial Descritivo - Residencial.pdf','Ledge Brooklin-Memorial Descritivo - Studios.pdf'],
+            'teg-sacoma':['TEG Sacomã-Memorial Descritivo.pdf'],'tiel-vila-nova-conceicao':[],
+            'ypy-alto-ipiranga':['YPY Alto do Ipiranga-Memorial Descritivo.pdf'],'ode-perdizes':['Ode Perdizes-Memorial Descritivo.pdf'],
+            'reserva-caminhos-lapa':['Caminhos da Lapa Reserva-Memorial Descritivo.pdf']}
+          feature_patterns={'piscina':r'\bpiscina','churrasqueira':r'churrasqueir','fitness':r'fitness|academia','coworking':r'cowork','sauna':r'\bsauna','quadra':r'\bquadra','pet':r'\bpet\b|pet place|pet care','bicicletario':r'biciclet','gerador':r'\bgerador','ar_condicionado':r'ar[- ]?condicionad','delivery':r'\bdelivery\b','brinquedoteca':r'brinquedoteca'}
+          runtime={
+            'nova-vivere':('Nova Vivere','Lapa · Zona Oeste','Lançamento','72,82 m² · 2 ou 3 suítes · 1 ou 2 vagas'),
+            'chateau-jardin':('Château Jardin','Cidade Jardim · Zona Sul','Lançamento','3 ou 4 suítes · 185m² a 355m² · 3 ou 4 vagas'),
+            'caminhos-lapa-elo-duo':('Caminhos da Lapa Elo Duo','Lapa · Zona Oeste','Pronto para morar','2 ou 3 dorms. · 47m², 55m² e 67m² · até 1 vaga'),
+            'garden-design':('Garden Design','Lapa · Zona Oeste','Em construção','2 ou 3 dorms. com suíte · 61m² a 78m² · 1 vaga'),
+            'ampere-brooklin':('Ampère Brooklin','Brooklin · Zona Sul','Em construção','4 suítes · 262m² privativos · 4 vagas'),
+            'mozae-higienopolis':('Mozae Higienópolis','Higienópolis · Zona Oeste','Em construção','1 ou 2 suítes · 45m² a 73m² · 1 vaga'),
+            'universo-tatuape-orbita':('Universo Tatuapé Órbita','Tatuapé · Zona Leste','Pronto para morar','38m² a 69m² · 1 a 3 dorms. · salas comerciais'),
+            'aria-higienopolis':('Ária Higienópolis','Higienópolis · Zona Oeste','Pronto para morar','Studios de 30m² · aptos. de 53m² · salas comerciais'),
+            'bem-moema':('Bem Moema','Moema · Zona Sul','Pronto para morar','2 a 4 dorms. · 80m², 123m² e 148m² · 1 ou 2 vagas'),
+            'bem-moema-studios-offices':('Bem Moema Studios & Offices','Moema · Zona Sul','Pronto para morar','Studios de 26m² a 29m² · aptos. de 36m² · offices'),
+            'soma-perdizes':('Soma Perdizes','Perdizes · Zona Oeste','Pronto para morar','Studios de 25m² · aptos. de 41m² e 45m² · comerciais'),
+            'zahle-jardins':('Zahle Jardins','Jardins · Zona Oeste','Pronto para morar','Studios de 28m² · aptos. de 44m² · salas de 43m² a 53m²'),
+            'bueno-brandao-257':('Bueno Brandão 257','Vila Nova Conceição · Zona Sul','Pronto para morar','500m² privativos · 5 suítes · 5 vagas'),
+            'capiitolo-piero-lissoni':('CAPIITOLO by Piero Lissoni','Chácara Klabin · Zona Sul','Em construção','4 suítes · 210m² privativos · 3 vagas'),
+            'dsg-itaim':('DSG Itaim','Itaim Bibi · Zona Sul','Pronto para morar','Studios de 27m² e 29m² · aptos. de 44m² · comerciais'),
+            'ledge-brooklin':('Ledge Brooklin','Brooklin · Zona Sul','Em construção','Studios de 30m² a 40m² · aptos. de 70m² a 122m²'),
+            'teg-sacoma':('TEG Sacomã','Sacomã · Zona Sul','Pronto para morar','1 a 3 dorms. · 45m² a 66m² · 1 ou 2 vagas'),
+            'tiel-vila-nova-conceicao':('Tièl Vila Nova Conceição','Vila Nova Conceição · Zona Sul','Pronto para morar','Boutique apartments · piscina no rooftop · fitness'),
+            'ypy-alto-ipiranga':('YPY Alto do Ipiranga','Alto do Ipiranga · Zona Sul','Em construção','2 ou 3 dorms. · 65m² e 80m² · 1 vaga'),
+            'ode-perdizes':('ODE Perdizes','Perdizes · Zona Oeste','Pronto para morar','4 dorms. · 2 suítes ou 3 suítes · 156m² · 2 vagas'),
+            'reserva-caminhos-lapa':('Reserva Caminhos da Lapa','Lapa · Zona Oeste','Pronto para morar','3 a 4 dorms. · 1 a 3 suítes · 91m², 127m² e 157m² · 2 a 3 vagas')}
+          coverage=[]; candidates=[]
+          for pid,files in mapping.items():
+              rn,rl,rs,ri=runtime[pid]
+              if not files:
+                  status='MISSING_MEMORIAL'; text=''; note=''
+                  if pid=='mozae-higienopolis': note='No memorial PDF; governed Mozae metragem supplement exists.'
+              else:
+                  text=read(files); total=sum(len((textdir/f.replace('.pdf','.txt')).read_bytes()) for f in files)
+                  if pid=='zahle-jardins': status='INVALID_DUPLICATE_SOURCE'; note='Byte-identical to YPY; extracted location is Rua Gama Lobo 1884, Ipiranga.'
+                  elif total < 1000: status='PRESENT_PDF_TEXT_LAYER_INSUFFICIENT'; note='Native text extraction insufficient; OCR or replacement PDF required.'
+                  else: status='PRESENT_VALID_NATIVE_TEXT'; note=''
+              features=[k for k,p in feature_patterns.items() if text and re.search(p,text,re.I)]
+              coverage.append({'project_id':pid,'runtime_name':rn,'runtime_location':rl,'runtime_status':rs,'runtime_info':ri,'source_status':status,'source_files':' | '.join(files),'memorial_location':loc(text) if text else '','observed_static_feature_mentions':';'.join(features),'notes':note})
+              if status=='PRESENT_VALID_NATIVE_TEXT':
+                  candidates.append({'project_id':pid,'memorial_location':loc(text),'observed_static_feature_mentions':';'.join(features),'evidence_class':'MEMORIAL_NATIVE_TEXT','adjudication':'CANDIDATE_STATIC_FACT_REQUIRES_CONTEXT_REVIEW_BEFORE_PUBLISH','source_files':' | '.join(files)})
+          fields=list(coverage[0])
+          with open(out/'MNT_MEMORIAL_RUNTIME_COVERAGE_2026-09-14.csv','w',encoding='utf-8',newline='') as f:
+              w=csv.DictWriter(f,fieldnames=fields); w.writeheader(); w.writerows(coverage)
+          with open(out/'MNT_MEMORIAL_TECHNICAL_FACT_CANDIDATES_2026-09-14.csv','w',encoding='utf-8',newline='') as f:
+              w=csv.DictWriter(f,fieldnames=list(candidates[0])); w.writeheader(); w.writerows(candidates)
+
+          high=[
+            {'project_id':'ampere-brooklin','high_value_static_enrichment':'Rua André Ampere 194; piscina adulta descoberta com raia 25m + infantil; coworking; fitness; segurança técnica'},
+            {'project_id':'universo-tatuape-orbita','high_value_static_enrichment':'Av. Celso Garcia 5000; piscina adulta raia 25m + infantil; coworking; fitness; churrasqueira/pool bar; gerador'},
+            {'project_id':'aria-higienopolis','high_value_static_enrichment':'Rua Cel. José Eusébio 145; piscina borda infinita raia 25m; coworking; fitness; sauna'},
+            {'project_id':'bem-moema','high_value_static_enrichment':'Av. Bem-te-vi 221; unidades 80/123/148m² explicitamente citadas; duas piscinas; lazer'},
+            {'project_id':'soma-perdizes','high_value_static_enrichment':'Av. Sumaré 179; piscina raia 25m; coworking; fitness; churrasqueira; sauna'},
+            {'project_id':'bueno-brandao-257','high_value_static_enrichment':'Rua Bueno Brandão 257 / Rua Jacques Félix 309; piscinas coberta/descoberta; ozônio; grelha argentina; solar'},
+            {'project_id':'capiitolo-piero-lissoni','high_value_static_enrichment':'Rua Ibaragui Nissui 166; três piscinas; raia 25m; piscina coberta com correnteza; spa; sistema solar'},
+            {'project_id':'teg-sacoma','high_value_static_enrichment':'Rua Malvina Ferrara Samarone 100; piscinas; quadra recreativa; churrasqueiras; fitness'},
+            {'project_id':'ypy-alto-ipiranga','high_value_static_enrichment':'Rua Gama Lobo 1884; piscina raia 20m + infantil; coworking; fitness; churrasqueira; gerador'},
+            {'project_id':'ode-perdizes','high_value_static_enrichment':'Rua Bartira 856; piscinas; fitness; churrasqueira gourmet; aquecimento solar; gerador'}]
+          with open(out/'MNT_MEMORIAL_HIGH_VALUE_ENRICHMENT_2026-09-14.csv','w',encoding='utf-8',newline='') as f:
+              w=csv.DictWriter(f,fieldnames=list(high[0])); w.writeheader(); w.writerows(high)
           PY
+      - name: Commit generated evidence to audit branch
+        run: |
+          git config user.name "Wagner Fernandes"
+          git config user.email "wagnerjfjunior@gmail.com"
+          git add docs/product/data/MNT_MEMORIAL_*_2026-09-14.csv
+          if ! git diff --cached --quiet; then
+            git commit -m "docs: add memorial audit evidence datasets [skip ci]"
+            git push origin HEAD:audit/memoriais-fact-extraction
+          fi
       - uses: actions/upload-artifact@v4
         with:
           name: memorial-extraction
