@@ -18,25 +18,45 @@
     document.head.appendChild(style);
   }
 
+  function normalizeProjectLink(actions, title, url) {
+    const existing = Array.from(actions.querySelectorAll("[data-project-page-link], [data-capiitolo-project-link]"));
+    const link = existing.shift() || document.createElement("a");
+    existing.forEach((node) => node.remove());
+
+    link.className = "mt-project-details";
+    link.href = url;
+    link.dataset.projectPageLink = "true";
+    if (title === "CAPIITOLO by Piero Lissoni") link.dataset.capiitoloProjectLink = "true";
+    else delete link.dataset.capiitoloProjectLink;
+    link.textContent = "Ver empreendimento →";
+
+    if (!link.isConnected) actions.appendChild(link);
+    actions.dataset.hasProjectPage = "true";
+  }
+
   function enhanceCards() {
     document.querySelectorAll(".mt-project-card").forEach((card) => {
       const title = card.querySelector("h3")?.textContent?.trim();
       const url = PAGE_BY_TITLE[title];
       if (!url) return;
       const actions = card.querySelector(".mt-project-actions");
-      if (!actions || actions.querySelector("[data-project-page-link]")) return;
-      actions.dataset.hasProjectPage = "true";
-      const link = document.createElement("a");
-      link.className = "mt-project-details";
-      link.href = url;
-      link.dataset.projectPageLink = "true";
-      link.textContent = "Ver empreendimento →";
-      actions.appendChild(link);
+      if (!actions) return;
+      normalizeProjectLink(actions, title, url);
     });
+  }
+
+  function loadFloatingUi() {
+    if (document.querySelector('script[data-mt-floating-ui]')) return;
+    const script = document.createElement("script");
+    script.src = "/src-greenn/preview/floating-ui.js";
+    script.defer = true;
+    script.dataset.mtFloatingUi = "true";
+    document.body.appendChild(script);
   }
 
   installStyle();
   enhanceCards();
+  loadFloatingUi();
   const observer = new MutationObserver(enhanceCards);
   observer.observe(document.documentElement, {subtree:true, childList:true});
 })();
