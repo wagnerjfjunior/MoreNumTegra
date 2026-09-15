@@ -6,6 +6,7 @@
   const FORM_ENDPOINT = "https://back.gdigital.com.br/form/register";
   const TENANT_ID = "313";
   const FORM_ID = "46";
+  const FORM_TITLE = "MoreEmUmTegra";
   const LEAD_PENDING_KEY = "mnt.lead.pending.v1";
   const CONSENT_KEY = "mnt.consent.v1";
   const REQUEST_TIMEOUT_MS = 15000;
@@ -168,6 +169,7 @@
     const honeypot = form.querySelector("#mt-company-website");
     const submit = form.querySelector("[data-moretegra-form-submit]");
     const submitLabel = form.querySelector("[data-submit-label]");
+    const idleSubmitLabel = submitLabel?.textContent || "Receber condições";
     const error = form.querySelector("#mt-lead-error");
     const status = form.querySelector("#mt-lead-status");
     let sending = false;
@@ -230,6 +232,7 @@
       const payload = new FormData();
       payload.append("tenant_id", TENANT_ID);
       payload.append("form_id", FORM_ID);
+      payload.append("title", FORM_TITLE);
       payload.append("nome", result.name);
       payload.append("email", result.email);
       payload.append("telefone", result.phone);
@@ -262,7 +265,7 @@
         window.clearTimeout(timeout);
         sending = false;
         submit.disabled = false;
-        submitLabel.textContent = "Receber condições";
+        submitLabel.textContent = idleSubmitLabel;
       }
     });
 
