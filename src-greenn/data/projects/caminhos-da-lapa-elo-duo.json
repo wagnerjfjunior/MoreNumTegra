@@ -1,11 +1,11 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "projectId": "caminhos-da-lapa-elo-duo",
   "name": "Caminhos da Lapa Elo Duo",
   "slug": "caminhos-da-lapa-elo-duo",
   "brand": "Tegra",
   "masterDevelopment": "Caminhos da Lapa",
-  "stage": "Entregue",
+  "stage": "Pronto para morar",
   "location": {
     "streetAddress": "Rua Fortunato Ferraz, 365",
     "neighborhood": "Lapa",
@@ -20,39 +20,53 @@
     "areasSqm": [47, 55, 67],
     "parking": "Até 1 vaga"
   },
-  "summary": "Empreendimento Tegra entregue no Caminhos da Lapa, com apartamentos de 47 m², 55 m² e 67 m², 2 ou 3 dormitórios, 1 suíte e até 1 vaga.",
-  "highlights": [
-    "Ligação com a estação de trem",
-    "Lazer completo",
-    "Piscina adulto e infantil",
+  "summary": "Empreendimento Tegra pronto para morar no Caminhos da Lapa, com apartamentos de 47 m², 55 m² e 67 m², 2 ou 3 dormitórios, 1 suíte e até 1 vaga.",
+  "urbanContext": {
+    "ruaJardim": "Primeira Rua Jardim de São Paulo, com aproximadamente 1.200 metros lineares e infraestrutura urbana planejada.",
+    "rail": "Conexão com a região da Estação Domingos de Moraes.",
+    "roadAccess": ["Marginal Tietê", "Rodovia Anhanguera", "Rodovia dos Bandeirantes"],
+    "award": "Prêmio Master Imobiliário 2026 — categoria Empreendimento — case Caminhos da Lapa: Redesenhando um Bairro"
+  },
+  "amenities": [
+    "Piscina adulto",
+    "Piscina infantil",
     "Espaço fitness equipado",
     "Espaço gourmet",
     "Salão de festas",
     "Quadra recreativa",
+    "Playground",
     "Brinquedoteca"
   ],
-  "officialUrl": "https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/lapa/caminhos-da-lapa-elo-duo",
-  "images": [
-    {
-      "url": "https://www.tegraincorporadora.com.br/_next/image?q=76&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F317%2FImagemPrincipal%2F8d3d8839-e0b7-4f21-9d0e-99c363c8f6bc.jpg&w=828",
-      "alt": "Caminhos da Lapa Elo Duo, empreendimento Tegra na Lapa, São Paulo"
+  "media": {
+    "hero": {
+      "url": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/ImagemPrincipal/8d3d8839-e0b7-4f21-9d0e-99c363c8f6bc.jpg",
+      "alt": "Elo Duo Caminhos da Lapa, apartamento pronto para morar na Lapa"
     },
-    {
-      "url": "https://www.tegraincorporadora.com.br/_next/image?q=75&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F317%2FImagem%2F09d7acf8-6317-4c6a-a4e0-589dd0db757a.jpg&w=2048",
-      "alt": "Perspectiva da Rua Jardim do Caminhos da Lapa Elo Duo"
+    "ruaJardim": {
+      "url": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/XUDkRhyRZbqT9VA4RRLdCijN2DlNrBt2yHMJLzul.webp",
+      "alt": "Rua Jardim e contexto urbano do Caminhos da Lapa"
     },
-    {
-      "url": "https://www.tegraincorporadora.com.br/_next/image?q=75&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F317%2FImagem%2F3c5ded00-e8c7-4525-b2ac-13f3ca108fa8.jpg&w=2048",
-      "alt": "Perspectiva da fachada do Caminhos da Lapa Elo Duo"
+    "floorPlans": {
+      "47": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/Planta/ae7cb4a6-1874-49ab-80e1-48de2a23fd53.jpg",
+      "55": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/Planta/21a38b04-5a4a-4c8d-928a-245263049ab6.jpg",
+      "67": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/Planta/3aac87c1-3582-4303-8c9e-0403821ed82e.jpg"
     },
-    {
-      "url": "https://www.tegraincorporadora.com.br/_next/image?q=75&url=https%3A%2F%2Fstracctegra.blob.core.windows.net%2Fassets%2FEmpreendimentoVitrine%2F317%2FImagem%2F86b37d37-1be5-4d74-9acf-b2df71520437.jpg&w=2048",
-      "alt": "Perspectiva da piscina do Caminhos da Lapa Elo Duo"
-    }
-  ],
+    "leisure": [
+      "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/Imagem/936bcaaf-a84d-4918-9c66-089d8d43664e.jpg",
+      "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/Imagem/38eaeead-6c44-4003-bbba-d3c638249a24.jpg",
+      "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/Imagem/631ec757-4fb8-476f-9fd9-583ced2b8aba.jpg",
+      "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/Imagem/86b37d37-1be5-4d74-9acf-b2df71520437.jpg"
+    ],
+    "neighborhood": [
+      "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/Imagem/shutterstock_2010085538-1759253564283.jpg",
+      "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/Imagem/lapa1-1768586279771.jpg",
+      "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/Imagem/shutterstock_659880979-1759253564602.jpg"
+    ]
+  },
   "source": {
-    "type": "official_tegra_project_surface",
-    "url": "https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/lapa/caminhos-da-lapa-elo-duo",
+    "type": "first_party_authorized_reference",
+    "projectSurface": "https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/lapa/caminhos-da-lapa-elo-duo",
+    "neighborhoodSurface": "https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/lapa",
     "observedAt": "2026-09-15"
   }
 }
