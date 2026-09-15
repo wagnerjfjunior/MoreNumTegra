@@ -22,6 +22,8 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p memorial-extraction/text
+          cp src-greenn/moretegra.js memorial-extraction/runtime-moretegra.js
+          cp docs/product/data/MNT_M3_04_PRODUCT_FACT_CLAIM_REGISTRY_2026-09-13.csv memorial-extraction/product-fact-registry.csv
           printf 'filename\tsha256\tbytes\ttext_bytes\n' > memorial-extraction/manifest.tsv
           find Tegra/Memoriais_Descritivos -maxdepth 1 -type f -iname '*.pdf' -print0 | sort -z | while IFS= read -r -d '' pdf; do
             base="$(basename "$pdf" .pdf)"
@@ -44,23 +46,12 @@ jobs:
                   try: v=float(x.replace(',','.'))
                   except: continue
                   if 10 <= v <= 1000: areas.append(v)
-              rows.append({
-                'source': p.name,
-                'text_bytes': len(text.encode('utf-8')),
-                'areas_m2_unique': sorted(set(areas)),
-                'mentions': {
-                  'gerador': bool(re.search(r'\bgerador', text, re.I)),
-                  'ar_condicionado': bool(re.search(r'ar[- ]?condicionad', text, re.I)),
-                  'bicicletario': bool(re.search(r'biciclet', text, re.I)),
-                  'piscina': bool(re.search(r'piscina', text, re.I)),
-                  'churrasqueira': bool(re.search(r'churrasqueir', text, re.I)),
-                  'coworking': bool(re.search(r'cowork', text, re.I)),
-                  'pet': bool(re.search(r'\bpet\b|pet place|pet care', text, re.I)),
-                  'quadra': bool(re.search(r'quadra', text, re.I)),
-                  'sauna': bool(re.search(r'sauna', text, re.I)),
-                  'fitness': bool(re.search(r'fitness|academia', text, re.I)),
-                }
-              })
+              rows.append({'source':p.name,'text_bytes':len(text.encode('utf-8')),'areas_m2_unique':sorted(set(areas)),'mentions':{
+                'gerador':bool(re.search(r'\bgerador',text,re.I)),'ar_condicionado':bool(re.search(r'ar[- ]?condicionad',text,re.I)),
+                'bicicletario':bool(re.search(r'biciclet',text,re.I)),'piscina':bool(re.search(r'piscina',text,re.I)),
+                'churrasqueira':bool(re.search(r'churrasqueir',text,re.I)),'coworking':bool(re.search(r'cowork',text,re.I)),
+                'pet':bool(re.search(r'\bpet\b|pet place|pet care',text,re.I)),'quadra':bool(re.search(r'quadra',text,re.I)),
+                'sauna':bool(re.search(r'sauna',text,re.I)),'fitness':bool(re.search(r'fitness|academia',text,re.I))}})
           Path('memorial-extraction/summary.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2),encoding='utf-8')
           PY
       - uses: actions/upload-artifact@v4
