@@ -5,8 +5,8 @@
     { "source": "/", "destination": "/src-greenn/preview/index.html" },
     { "source": "/obrigado", "destination": "/src-greenn/preview/obrigado.html" },
     { "source": "/obrigado/", "destination": "/src-greenn/preview/obrigado.html" },
-    { "source": "/empreendimentos/capiitolo-piero-lissoni", "destination": "/experiments/capiitolo-editorial-v3/index.html" },
-    { "source": "/empreendimentos/capiitolo-piero-lissoni/", "destination": "/experiments/capiitolo-editorial-v3/index.html" },
+    { "source": "/empreendimentos/capiitolo-piero-lissoni", "destination": "/src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html" },
+    { "source": "/empreendimentos/capiitolo-piero-lissoni/", "destination": "/src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html" },
     { "source": "/empreendimentos/caminhos-da-lapa-elo-duo", "destination": "/src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html" },
     { "source": "/empreendimentos/caminhos-da-lapa-elo-duo/", "destination": "/src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html" }
   ],
