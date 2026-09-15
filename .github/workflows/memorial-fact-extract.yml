@@ -36,19 +36,21 @@ jobs:
           done
           python3 - <<'PY'
           from pathlib import Path
-          import csv, re, hashlib, unicodedata
+          import csv, re, unicodedata
 
-          root=Path('.')
           textdir=Path('memorial-extraction/text')
           out=Path('docs/product/data')
 
           def norm(s):
               s=unicodedata.normalize('NFKD',s)
               return ''.join(c for c in s if not unicodedata.combining(c)).lower()
-          def family(fn):
-              return re.sub(r'-Memorial Descritivo.*$','',fn[:-4]).strip()
-          def read(files):
-              return '\n'.join((textdir/f.replace('.pdf','.txt')).read_text(encoding='utf-8',errors='ignore') for f in files)
+          text_index={norm(p.name):p for p in textdir.glob('*.txt')}
+          def tpath(pdf_name):
+              key=norm(pdf_name[:-4]+'.txt')
+              if key not in text_index: raise FileNotFoundError(pdf_name)
+              return text_index[key]
+          def family(fn): return re.sub(r'-Memorial Descritivo.*$','',fn[:-4]).strip()
+          def read(files): return '\n'.join(tpath(f).read_text(encoding='utf-8',errors='ignore') for f in files)
           def loc(text):
               for line in text.splitlines():
                   s=' '.join(line.split())
@@ -112,10 +114,10 @@ jobs:
           for pid,files in mapping.items():
               rn,rl,rs,ri=runtime[pid]
               if not files:
-                  status='MISSING_MEMORIAL'; text=''; note=''
+                  status='MISSING_MEMORIAL'; text=''; note='No memorial PDF.'
                   if pid=='mozae-higienopolis': note='No memorial PDF; governed Mozae metragem supplement exists.'
               else:
-                  text=read(files); total=sum(len((textdir/f.replace('.pdf','.txt')).read_bytes()) for f in files)
+                  text=read(files); total=sum(len(tpath(f).read_bytes()) for f in files)
                   if pid=='zahle-jardins': status='INVALID_DUPLICATE_SOURCE'; note='Byte-identical to YPY; extracted location is Rua Gama Lobo 1884, Ipiranga.'
                   elif total < 1000: status='PRESENT_PDF_TEXT_LAYER_INSUFFICIENT'; note='Native text extraction insufficient; OCR or replacement PDF required.'
                   else: status='PRESENT_VALID_NATIVE_TEXT'; note=''
@@ -123,9 +125,8 @@ jobs:
               coverage.append({'project_id':pid,'runtime_name':rn,'runtime_location':rl,'runtime_status':rs,'runtime_info':ri,'source_status':status,'source_files':' | '.join(files),'memorial_location':loc(text) if text else '','observed_static_feature_mentions':';'.join(features),'notes':note})
               if status=='PRESENT_VALID_NATIVE_TEXT':
                   candidates.append({'project_id':pid,'memorial_location':loc(text),'observed_static_feature_mentions':';'.join(features),'evidence_class':'MEMORIAL_NATIVE_TEXT','adjudication':'CANDIDATE_STATIC_FACT_REQUIRES_CONTEXT_REVIEW_BEFORE_PUBLISH','source_files':' | '.join(files)})
-          fields=list(coverage[0])
           with open(out/'MNT_MEMORIAL_RUNTIME_COVERAGE_2026-09-14.csv','w',encoding='utf-8',newline='') as f:
-              w=csv.DictWriter(f,fieldnames=fields); w.writeheader(); w.writerows(coverage)
+              w=csv.DictWriter(f,fieldnames=list(coverage[0])); w.writeheader(); w.writerows(coverage)
           with open(out/'MNT_MEMORIAL_TECHNICAL_FACT_CANDIDATES_2026-09-14.csv','w',encoding='utf-8',newline='') as f:
               w=csv.DictWriter(f,fieldnames=list(candidates[0])); w.writeheader(); w.writerows(candidates)
 
