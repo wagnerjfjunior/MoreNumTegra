@@ -12,6 +12,7 @@
   const REQUEST_TIMEOUT_MS = 15000;
   const CAPIITOLO_WHATSAPP = "5511960779328";
   const LOCATION_MESSAGE = "Solicito agendamento de visita, passe a localização.";
+  const CAPIITOLO_ROUTE = "/empreendimentos/capiitolo-piero-lissoni/";
 
   function isLiveHost() {
     return window.location.hostname === LIVE_HOST;
@@ -152,6 +153,36 @@
     return message ? `${base}?text=${encodeURIComponent(message)}` : base;
   }
 
+  function initCapiitoloPortalLink() {
+    if (document.documentElement.dataset.mntPageIdentity === "capiitolo_piero_lissoni") return;
+    if (!document.getElementById("mnt-capiitolo-card-link-style")) {
+      const style = document.createElement("style");
+      style.id = "mnt-capiitolo-card-link-style";
+      style.textContent = `.mnt-capiitolo-details{display:inline-flex;align-items:center;justify-content:center;min-height:30px;padding:2px 8px;color:#171813;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.01em}.mnt-capiitolo-details:hover,.mnt-capiitolo-details:focus-visible{text-decoration:underline;text-underline-offset:3px}`;
+      document.head.append(style);
+    }
+    const enhance = () => {
+      document.querySelectorAll(".mt-project-card").forEach((card) => {
+        const title = card.querySelector("h3")?.textContent?.trim();
+        if (title !== "CAPIITOLO by Piero Lissoni") return;
+        const actions = card.querySelector(".mt-project-actions");
+        if (!actions || actions.querySelector("[data-capiitolo-project-link]")) return;
+        actions.style.gridTemplateColumns = "1fr";
+        actions.style.gap = "8px";
+        const link = document.createElement("a");
+        link.className = "mnt-capiitolo-details";
+        link.href = CAPIITOLO_ROUTE;
+        link.dataset.capiitoloProjectLink = "true";
+        link.textContent = "Ver empreendimento →";
+        actions.append(link);
+      });
+    };
+    enhance();
+    const observer = new MutationObserver(enhance);
+    observer.observe(document.documentElement, {subtree:true, childList:true});
+    window.setTimeout(() => observer.disconnect(), 15000);
+  }
+
   function injectCapiitoloStyles() {
     if (document.querySelector("#mnt-capiitolo-runtime-style")) return;
     const style = document.createElement("style");
@@ -179,6 +210,11 @@
 
     injectCapiitoloStyles();
     const locationWhatsapp = whatsappUrl(LOCATION_MESSAGE);
+
+    const pilot = document.querySelector(".pilot");
+    if (pilot) pilot.textContent = "CAPIITOLO · Chácara Klabin";
+    const footerText = document.querySelector(".footer .footer-in span");
+    if (footerText) footerText.textContent = "MoreTegra · More em um Tegra · CAPIITOLO";
 
     const facts = document.querySelectorAll(".facts .fact");
     const locationFact = facts[3];
@@ -227,8 +263,8 @@
             </div>
             <div data-commercial-key="capiitolo">
               <p class="mnt-price-label">A partir de</p>
-              <p class="mnt-price-value" data-commercial-value aria-live="polite">—</p>
-              <p class="mnt-price-note">O valor será consumido de uma base comercial separada. Até a integração dessa fonte, consulte as condições vigentes no atendimento.</p>
+              <p class="mnt-price-value" data-commercial-value aria-live="polite">R$ 3.647.490</p>
+              <p class="mnt-price-note">Unidade 24 · 210 m² · R$ 17.369/m² · Valor a partir de R$ 3.647.490. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.</p>
               <a class="btn yellow" href="#formulario">Receber condições <span>↓</span></a>
             </div>
           </div>`;
@@ -370,6 +406,7 @@
 
   function start() {
     initConsent();
+    initCapiitoloPortalLink();
     initCapiitoloExperience();
     initForm();
   }
