@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.moretegra.com.br/schemas/commercial-data-v2.schema.json",
+  "title": "MoreNumTegra Commercial Data v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "generatedAt", "currency", "projects"],
+  "properties": {
+    "schemaVersion": {
+      "const": 2
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "currency": {
+      "const": "BRL"
+    },
+    "projects": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/commercialProject"
+      }
+    }
+  },
+  "$defs": {
+    "commercialProject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state"],
+      "properties": {
+        "state": {
+          "enum": ["active_reference", "consult_only", "inactive"]
+        },
+        "priceLabel": {
+          "type": ["string", "null"],
+          "minLength": 1
+        },
+        "price": {
+          "type": ["number", "null"],
+          "exclusiveMinimum": 0
+        },
+        "oldPrice": {
+          "type": ["number", "null"],
+          "exclusiveMinimum": 0
+        },
+        "unit": {
+          "type": ["string", "null"],
+          "minLength": 1
+        },
+        "areaSqm": {
+          "type": ["number", "null"],
+          "exclusiveMinimum": 0
+        },
+        "inventoryLabel": {
+          "type": ["string", "null"]
+        },
+        "reference": {
+          "type": ["string", "null"]
+        },
+        "typologyAvailability": {
+          "type": "object",
+          "additionalProperties": {
+            "enum": ["available", "last_units", "sold_out", "consult"]
+          }
+        },
+        "observedAt": {
+          "type": ["string", "null"],
+          "format": "date"
+        },
+        "validUntil": {
+          "type": ["string", "null"],
+          "format": "date"
+        },
+        "sourceClass": {
+          "type": ["string", "null"],
+          "minLength": 1
+        },
+        "sourceRef": {
+          "type": ["string", "null"]
+        },
+        "disclaimer": {
+          "type": ["string", "null"]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "state": {"const": "active_reference"}
+            },
+            "required": ["state"]
+          },
+          "then": {
+            "required": ["price", "observedAt", "sourceClass"],
+            "properties": {
+              "price": {"type": "number", "exclusiveMinimum": 0},
+              "observedAt": {"type": "string", "format": "date"},
+              "sourceClass": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "oldPrice": {"type": "number"},
+              "price": {"type": "number"}
+            },
+            "required": ["oldPrice", "price"]
+          },
+          "then": {
+            "properties": {
+              "oldPrice": {"type": "number", "exclusiveMinimum": 0}
+            }
+          }
+        }
+      ]
+    }
+  }
+}
