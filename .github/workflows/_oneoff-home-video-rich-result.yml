@@ -1,0 +1,147 @@
+name: One-off homepage VideoObject hardening
+
+on:
+  push:
+    paths:
+      - '.github/workflows/_oneoff-home-video-rich-result.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/mnt-home-video-rich-result
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Resolve verified YouTube metadata and patch homepage
+        shell: bash
+        run: |
+          set -euo pipefail
+          VIDEO_ID='SCCM3vzNlyk'
+          curl -fsSL --retry 3 --retry-delay 2 -A 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/153 Safari/537.36' \
+            "https://www.youtube.com/watch?v=${VIDEO_ID}&hl=pt-BR" -o /tmp/youtube.html
+
+          node <<'NODE'
+          const fs = require('fs');
+          const videoId = 'SCCM3vzNlyk';
+          const watch = fs.readFileSync('/tmp/youtube.html','utf8');
+          const homePath = 'src-greenn/preview/index.html';
+          const validatorPath = 'scripts/validate-m4-05r.mjs';
+          let home = fs.readFileSync(homePath,'utf8');
+          let validator = fs.readFileSync(validatorPath,'utf8');
+
+          const first = (...vals) => vals.find(v => v && String(v).trim()) || null;
+          const match = (re) => watch.match(re)?.[1] || null;
+          const decode = (s) => s ? s
+            .replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&amp;/g,'&')
+            .replace(/&lt;/g,'<').replace(/&gt;/g,'>') : s;
+
+          const uploadDate = first(
+            match(/itemprop=["']uploadDate["'][^>]*content=["']([^"']+)["']/i),
+            match(/content=["']([^"']+)["'][^>]*itemprop=["']uploadDate["']/i),
+            match(/"uploadDate"\s*:\s*"([0-9]{4}-[0-9]{2}-[0-9]{2})"/),
+            match(/"publishDate"\s*:\s*"([0-9]{4}-[0-9]{2}-[0-9]{2})"/)
+          );
+          if (!uploadDate || !/^\d{4}-\d{2}-\d{2}$/.test(uploadDate)) {
+            throw new Error('YouTube uploadDate/publishDate could not be verified; refusing runtime mutation');
+          }
+
+          const secondsRaw = first(
+            match(/"lengthSeconds"\s*:\s*"(\d+)"/),
+            match(/itemprop=["']duration["'][^>]*content=["']PT(\d+)S["']/i)
+          );
+          const seconds = secondsRaw ? Number(secondsRaw) : null;
+          const duration = Number.isFinite(seconds) && seconds > 0 ? `PT${seconds}S` : null;
+
+          const rawTitle = first(
+            match(/<meta[^>]+name=["']title["'][^>]+content=["']([^"']+)["']/i),
+            match(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']+)["']/i)
+          );
+          const rawDescription = first(
+            match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']+)["']/i),
+            match(/<meta[^>]+property=["']og:description["'][^>]+content=["']([^"']+)["']/i)
+          );
+          const title = decode(rawTitle) || 'More em um Tegra';
+          const description = decode(rawDescription) || 'Filme da campanha More em um Tegra.';
+          const thumbnail = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+          const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}`;
+          const videoEntityId = 'https://www.moretegra.com.br/#campaign-video';
+          const logoUrl = 'https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp';
+
+          if (home.includes('id="mt-home-video-schema"')) {
+            throw new Error('Homepage VideoObject already exists; refusing duplicate insertion');
+          }
+
+          const imageAnchor = '"primaryImageOfPage":{"@id":"https://www.moretegra.com.br/#home-image"},\n        "inLanguage":"pt-BR"';
+          if (!home.includes(imageAnchor)) throw new Error('CollectionPage primaryImage anchor not found');
+          home = home.replace(imageAnchor,
+            '"primaryImageOfPage":{"@id":"https://www.moretegra.com.br/#home-image"},\n        "video":{"@id":"' + videoEntityId + '"},\n        "inLanguage":"pt-BR"');
+
+          const tegraAnchor = '"name":"Tegra Incorporadora",\n        "url":"https://www.tegraincorporadora.com.br/",\n        "brand":{"@id":"https://www.moretegra.com.br/#tegra-brand"}';
+          if (!home.includes(tegraAnchor)) throw new Error('Authoritative Tegra entity anchor not found');
+          home = home.replace(tegraAnchor,
+            '"name":"Tegra Incorporadora",\n        "url":"https://www.tegraincorporadora.com.br/",\n        "logo":"' + logoUrl + '",\n        "brand":{"@id":"https://www.moretegra.com.br/#tegra-brand"}');
+
+          const localLogoAnchor = '"priceRange":"Consulte condições",\n    "identifier"';
+          if (!home.includes(localLogoAnchor)) throw new Error('Standalone RealEstateAgent priceRange anchor not found');
+          home = home.replace(localLogoAnchor,
+            '"priceRange":"Consulte condições",\n    "logo":"' + logoUrl + '",\n    "identifier"');
+
+          const video = {
+            '@context':'https://schema.org/',
+            '@type':'VideoObject',
+            '@id': videoEntityId,
+            name: title,
+            description,
+            thumbnailUrl: [thumbnail],
+            uploadDate,
+            embedUrl,
+            inLanguage:'pt-BR',
+            isFamilyFriendly:true
+          };
+          if (duration) video.duration = duration;
+
+          const videoScript = `\n  <script id="mt-home-video-schema" type="application/ld+json">\n  ${JSON.stringify(video, null, 2).split('\n').join('\n  ')}\n  <\/script>\n`;
+          const gtmAnchor = '\n  <!-- Google Tag Manager -->';
+          if (!home.includes(gtmAnchor)) throw new Error('GTM anchor not found');
+          home = home.replace(gtmAnchor, videoScript + gtmAnchor);
+
+          const typesAnchor = "requiredTypes: ['WebSite', 'CollectionPage', 'ItemList', 'RealEstateAgent', 'Brand', 'Person', 'Service'],";
+          if (!validator.includes(typesAnchor)) throw new Error('Validator home requiredTypes anchor not found');
+          validator = validator.replace(typesAnchor,
+            "requiredTypes: ['WebSite', 'CollectionPage', 'ItemList', 'RealEstateAgent', 'Brand', 'Person', 'Service', 'VideoObject'],");
+
+          const idsAnchor = "requiredIds: ['https://www.moretegra.com.br/#website', 'https://www.moretegra.com.br/#webpage', 'https://www.moretegra.com.br/#projects', TEGRA_ID, TEGRA_BRAND_ID, SABRINA_ID, SABRINA_AGENT_ID],";
+          if (!validator.includes(idsAnchor)) throw new Error('Validator home requiredIds anchor not found');
+          validator = validator.replace(idsAnchor,
+            "requiredIds: ['https://www.moretegra.com.br/#website', 'https://www.moretegra.com.br/#webpage', 'https://www.moretegra.com.br/#projects', 'https://www.moretegra.com.br/#campaign-video', TEGRA_ID, TEGRA_BRAND_ID, SABRINA_ID, SABRINA_AGENT_ID],");
+
+          const validationAnchor = '  if (page.localBusinessScriptId) {';
+          if (!validator.includes(validationAnchor)) throw new Error('Validator insertion anchor not found');
+          const validationBlock = `  if (page.name === 'home') {\n    const video = typedNode(nodes, 'https://www.moretegra.com.br/#campaign-video', 'VideoObject');\n    if (!video) fail(page.name, 'homepage VideoObject missing');\n    else {\n      if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(video.uploadDate ?? '')) fail(page.name, 'homepage VideoObject uploadDate missing or invalid');\n      if (![].concat(video.thumbnailUrl ?? []).some((value) => typeof value === 'string' && value.startsWith('https://'))) fail(page.name, 'homepage VideoObject thumbnailUrl missing');\n      if (video.embedUrl !== 'https://www.youtube-nocookie.com/embed/SCCM3vzNlyk') fail(page.name, 'homepage VideoObject embedUrl mismatch');\n    }\n  }\n\n`;
+          validator = validator.replace(validationAnchor, validationBlock + validationAnchor);
+
+          fs.writeFileSync(homePath, home);
+          fs.writeFileSync(validatorPath, validator);
+          fs.writeFileSync('/tmp/video-metadata.json', JSON.stringify({title, uploadDate, duration, thumbnail, embedUrl}, null, 2));
+          console.log(fs.readFileSync('/tmp/video-metadata.json','utf8'));
+          NODE
+
+          node scripts/validate-m4-05r.mjs
+      - name: Commit one consolidated runtime change
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rm .github/workflows/_oneoff-home-video-rich-result.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src-greenn/preview/index.html scripts/validate-m4-05r.mjs
+          git commit -m 'feat(schema): add verified homepage VideoObject and organization logo'
+          git push origin HEAD:fix/mnt-home-video-rich-result
