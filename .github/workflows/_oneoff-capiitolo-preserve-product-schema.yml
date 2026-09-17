@@ -1,0 +1,76 @@
+name: One-off CAPIITOLO Product schema preservation
+
+on:
+  push:
+    branches:
+      - fix/mnt-capiitolo-preserve-product-schema
+    paths:
+      - .github/workflows/_oneoff-capiitolo-preserve-product-schema.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/mnt-capiitolo-preserve-product-schema
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Preserve Product JSON-LD through CAPIITOLO bootstrap
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          page = Path('src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html')
+          text = page.read_text(encoding='utf-8')
+
+          replacements = [
+              (
+                  'const schemaText=document.getElementById("mnt-capiitolo-schema")?.textContent||"";',
+                  'const schemaText=document.getElementById("mnt-capiitolo-schema")?.textContent||"";const productSchemaText=document.getElementById("mnt-capiitolo-product-schema")?.textContent||"";'
+              ),
+              (
+                  "doc.head.querySelectorAll('#mnt-capiitolo-schema').forEach(node=>node.remove());",
+                  "doc.head.querySelectorAll('#mnt-capiitolo-schema').forEach(node=>node.remove());doc.head.querySelectorAll('#mnt-capiitolo-product-schema').forEach(node=>node.remove());"
+              ),
+              (
+                  'schemaNode.textContent=schemaText;doc.head.appendChild(schemaNode);',
+                  'schemaNode.textContent=schemaText;doc.head.appendChild(schemaNode);if(productSchemaText){const productSchemaNode=doc.createElement("script");productSchemaNode.type="application/ld+json";productSchemaNode.id="mnt-capiitolo-product-schema";productSchemaNode.textContent=productSchemaText;doc.head.appendChild(productSchemaNode);}'
+              )
+          ]
+
+          for old, new in replacements:
+              if old not in text:
+                  raise SystemExit(f'Expected CAPIITOLO bootstrap marker not found: {old}')
+              text = text.replace(old, new, 1)
+
+          page.write_text(text, encoding='utf-8')
+
+          validator = Path('scripts/validate-m4-05r.mjs')
+          v = validator.read_text(encoding='utf-8')
+          anchor = "if (failures.length) {\n"
+          guard = '''const capiitoloRenderGuards = [\n  'productSchemaText=document.getElementById("mnt-capiitolo-product-schema")?.textContent||""',\n  "doc.head.querySelectorAll('#mnt-capiitolo-product-schema').forEach(node=>node.remove())",\n  'productSchemaNode.id="mnt-capiitolo-product-schema"',\n  'productSchemaNode.textContent=productSchemaText'\n];\nfor (const needle of capiitoloRenderGuards) {\n  if (!capiitolo.includes(needle)) fail('capiitolo', `rendered Product schema preservation guard missing: ${needle}`);\n}\n\n'''
+          if anchor not in v:
+              raise SystemExit('Validator anchor not found')
+          if 'capiitoloRenderGuards' not in v:
+              v = v.replace(anchor, guard + anchor, 1)
+          validator.write_text(v, encoding='utf-8')
+          PY
+
+          node scripts/validate-m4-05r.mjs
+
+      - name: Commit focal runtime patch
+        shell: bash
+        run: |
+          rm .github/workflows/_oneoff-capiitolo-preserve-product-schema.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html scripts/validate-m4-05r.mjs .github/workflows/_oneoff-capiitolo-preserve-product-schema.yml
+          git commit -m "fix(schema): preserve CAPIITOLO Product after bootstrap render"
+          git push origin HEAD:fix/mnt-capiitolo-preserve-product-schema
