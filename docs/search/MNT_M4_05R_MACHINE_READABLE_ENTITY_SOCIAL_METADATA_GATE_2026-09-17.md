@@ -3,9 +3,9 @@
 - Date: `2026-09-17`
 - Repository: `wagnerjfjunior/MoreNumTegra`
 - Product Authority decision: `APPROVED`
-- Lifecycle: `APPROVED_FOR_DESIGN_AND_IMPLEMENTATION_PREPARATION`
+- Lifecycle: `IMPLEMENTATION_AND_VALIDATION_AUTHORIZED`
 - Runtime mutation: `NOT_STARTED`
-- Ready / merge / production: `NOT_AUTHORIZED_BY_THIS_RECORD`
+- Production scope authorized by Product Authority on `2026-09-17`: bounded M4-05R implementation -> Vercel Preview validation -> merge/deploy -> production smoke test on `https://www.moretegra.com.br/`, provided the preview gates pass and no unrelated scope is introduced.
 - Supersession scope: reopens the acceptance of the M4-05 structured-data deliverable without erasing the historical implementation/merge evidence from PR #69.
 
 ## 1. Why this corrective gate exists
@@ -104,7 +104,121 @@ Names may be editorially adapted for `title` or `og:title`, but they MUST NOT co
 
 Stable `@id` references must be reused across the graph instead of minting semantically different copies of the same entity.
 
-## 7. Homepage target graph
+When an authoritative external entity publishes a stable entity identifier, MoreNumTegra SHOULD reference that authoritative external `@id` instead of minting a duplicate local identity for the external organization.
+
+## 7. Approved Tegra / Sabrina entity contract
+
+Product Authority approved the following first-implementation entity model on 2026-09-17.
+
+### 7.1 Tegra Incorporadora — authoritative external entity
+
+A Product-Authority-supplied Google Rich Results test of the official Tegra surface exposed the following stable organization identity:
+
+```text
+@type = RealEstateAgent
+@id = https://www.tegraincorporadora.com.br/#organization
+name = Tegra Incorporadora
+legalName = TG SÃO PAULO EMPREENDIMENTOS IMOBILIÁRIOS S.A.
+alternateName = Tegra
+url = https://www.tegraincorporadora.com.br/
+```
+
+It also exposed official organization identity/supporting data such as logo, CRECI identifier, social `sameAs`, offices/contact points, `OfferCatalog`, `Offer`, `Apartment`, `seller` and service areas.
+
+MoreNumTegra MUST NOT mint `https://www.moretegra.com.br/#tegra-incorporadora` as the primary identity of that external organization when the authoritative Tegra `@id` above is available.
+
+The project may use a minimal reference such as:
+
+```json
+{"@id":"https://www.tegraincorporadora.com.br/#organization"}
+```
+
+or add truthful identifying fields where useful, but MUST NOT copy the entire Tegra graph merely to inflate local markup.
+
+### 7.2 Tegra brand
+
+`Tegra` may be represented as a `Brand` when a property/project relationship requires brand semantics. Brand identity MUST NOT be confused with the external corporate `RealEstateAgent` entity.
+
+### 7.3 Tegra Vendas
+
+Tegra Vendas is modeled as a distinct `Organization` for the commercial/brokerage relationship with Sabrina.
+
+Until an authoritative stable Tegra Vendas `@id` is observed, MoreNumTegra may use the local graph identifier:
+
+```text
+https://www.moretegra.com.br/#tegra-vendas
+```
+
+This local identifier describes the organization reference in the MoreNumTegra graph; it MUST NOT claim a legal corporate relationship to Tegra Incorporadora that has not been separately verified.
+
+### 7.4 Sabrina da Tegra
+
+Product Authority confirmed the following public professional facts for publication:
+
+```text
+entity = Person
+name = Sabrina da Tegra
+jobTitle = Corretora de imóveis
+CRECI-SP = 209.905-F
+worksFor = Tegra Vendas
+official Tegra Vendas profile = https://corretor.tegravendas.com.br/sabrina/sp
+public commercial phone = +55 11 96077-9328
+work location = Estande Tegra Caminhos da Lapa
+work address = Rua Fortunato Ferraz, 625 - São Paulo - SP
+```
+
+Stable MoreNumTegra identity:
+
+```text
+https://www.moretegra.com.br/#sabrina-da-tegra
+```
+
+Preferred semantic relationships:
+
+```text
+Person
+├── identifier -> CRECI-SP 209.905-F
+├── hasCredential -> professional CRECI credential when modeled
+├── worksFor -> Tegra Vendas
+├── workLocation -> Estande Tegra Caminhos da Lapa
+├── contactPoint -> public commercial contact
+└── sameAs -> official Tegra Vendas profile
+```
+
+The work address is a commercial stand location, not a residential/home address, and MUST be modeled accordingly.
+
+Normalized machine telephone:
+
+```text
++5511960779328
+```
+
+Human display may use:
+
+```text
+(11) 96077-9328
+```
+
+### 7.5 Brokerage/service relationship
+
+Where a visible MoreNumTegra commercial-attendance section exists, Sabrina may be referenced as broker through a factual `Service` graph:
+
+```text
+Service
+└── broker -> Sabrina da Tegra
+```
+
+Do not use Sabrina as `author`, `seller`, project `provider` or project owner merely to increase entity linkage.
+
+When a current valid Tegra-origin commercial `Offer` is later published, role separation is:
+
+```text
+Offer
+├── seller -> Tegra Incorporadora authoritative entity, when the applicable source supports that seller role
+└── broker -> Sabrina da Tegra, when the applicable visible commercial service supports that broker role
+```
+
+## 8. Homepage target graph
 
 The homepage is a portfolio/discovery surface.
 
@@ -114,14 +228,20 @@ Preferred target graph, subject to factual parity and current Schema.org domain/
 WebSite
 CollectionPage
 ItemList
-Organization / Brand when factual and correctly scoped
+Brand
+Person -> Sabrina da Tegra
+Organization -> Tegra Vendas
+Service -> broker Sabrina
+external Tegra RealEstateAgent reference
 ImageObject for selected governed social/editorial image when useful
 VideoObject only when required facts are verified
 ```
 
+The homepage MUST remain canonically owned by MoreNumTegra. External Tegra identity references do not change page ownership or canonical URL.
+
 `FAQPage` may remain only when the visible FAQ genuinely exists and the markup is semantically useful. It is not the primary success criterion and must not be treated as a proxy for Google rich-result eligibility.
 
-## 8. Exact-project target graph
+## 9. Exact-project target graph
 
 For exact-project landing pages, preferred stable core:
 
@@ -134,30 +254,44 @@ PostalAddress / Place when verified
 ImageObject when materially useful
 VideoObject when a real video is present and required facts are verified
 FloorPlan / Apartment only when visible facts and model semantics support them
+Person / Service references when Sabrina's commercial attendance is visible
 Offer only when a current governed commercial publication exists
 ```
 
+Whenever an official Tegra project URL exists, the MoreNumTegra project entity SHOULD reconcile to that authoritative project URL, while the MoreNumTegra WebPage retains its own canonical URL and stable project `@id`.
+
 `RealEstateListing` or any term whose Schema.org status is not in the stable core MUST NOT become the foundation without an explicit compatibility decision.
 
-## 9. Commercial data rule
+## 10. Commercial data rule
 
 Structured data MUST NOT become a stale-price backdoor.
 
+Commercial provenance contract:
+
 ```text
-NO VALID CURRENT COMMERCIAL RECORD
+AUTHORITATIVE BUSINESS SOURCE = Tegra
+TRANSPORT / GOVERNANCE = current governed project evidence; future FECH.AI Commercial Catalog when separately accepted
+PUBLICATION CHANNEL = MoreNumTegra
+```
+
+MoreNumTegra receiving, normalizing, storing or publishing a commercial value does NOT make MoreNumTegra the authoritative origin of that value.
+
+```text
+NO VALID CURRENT TEGRA-ORIGIN COMMERCIAL RECORD
 -> omit Offer
 -> visible page uses consult-only behavior as applicable
 
-VALID GOVERNED PUBLISHED COMMERCIAL RECORD
+VALID GOVERNED PUBLISHED TEGRA-ORIGIN COMMERCIAL RECORD
 -> Offer may be emitted
 -> visible price and structured-data price must be identical in meaning and freshness
+-> provenance must preserve Tegra as authoritative business source
 ```
 
 Do not derive or invent availability, price, `priceValidUntil`, discount, unit status or aggregate price range without the applicable governed evidence.
 
-Future FECH.AI Commercial Catalog integration remains a separate cross-project gate.
+Future FECH.AI Commercial Catalog integration remains a separate cross-project gate. FECH.AI may become a system of record/governance/transport layer without becoming the business origin of Tegra-supplied price or availability facts.
 
-## 10. Open Graph contract
+## 11. Open Graph contract
 
 Every indexable canonical URL should carry, directly in initial HTML where applicable:
 
@@ -180,7 +314,9 @@ Recommended social-card target is `1200x630` / approximately `1.91:1`, but actua
 
 Do not publish fictitious width/height metadata.
 
-## 11. Twitter/X Cards contract
+For a future Sabrina-owned entity page, `og:type=profile` may be considered. Project pages MUST remain project-oriented social cards; Sabrina's phone/address/CRECI SHOULD NOT be stuffed into project `og:title`/`og:description` merely because they exist in the entity graph.
+
+## 12. Twitter/X Cards contract
 
 Use explicit page-level metadata where applicable:
 
@@ -194,7 +330,7 @@ twitter:image:alt
 
 Fallback behavior from Open Graph is not the project contract; the project should declare the intended social preview explicitly.
 
-## 12. Initial-HTML invariant
+## 13. Initial-HTML invariant
 
 For critical SEO/entity information, the preferred V1 contract is:
 
@@ -215,7 +351,7 @@ Do not make the canonical entity graph depend on `fetch -> DOMParser -> document
 
 The current homepage fragment-loading and CAPIITOLO bootstrap architecture therefore require focal review under this corrective gate.
 
-## 13. HTML and accessibility parity
+## 14. HTML and accessibility parity
 
 Structured data must describe content the user can actually observe or reasonably access on the page.
 
@@ -228,9 +364,10 @@ Required parity checks include:
 - explicit image dimensions/aspect reservation where known;
 - no schema-only claims;
 - no bot-only commercial facts;
-- no hidden keyword/entity stuffing.
+- no hidden keyword/entity stuffing;
+- Sabrina professional facts emitted in structured data only when the visible page/service context presents or reasonably exposes the same commercial identity.
 
-## 14. Validation matrix
+## 15. Validation matrix
 
 M4-05R acceptance requires independent checks across distinct layers.
 
@@ -246,7 +383,8 @@ M4-05R acceptance requires independent checks across distinct layers.
 - Schema.org classes/properties compatible with the pinned stable vocabulary baseline;
 - stable `@id` graph;
 - no invented facts;
-- no unjustified pending/experimental term dependency.
+- no unjustified pending/experimental term dependency;
+- external Tegra organization references resolve to the authoritative `https://www.tegraincorporadora.com.br/#organization` identity when applicable.
 
 ### Google compatibility
 
@@ -265,7 +403,7 @@ M4-05R acceptance requires independent checks across distinct layers.
 
 Automated or reproducible checks should confirm that canonical URL, `og:url`, JSON-LD `WebPage.url`, entity `@id` bases, breadcrumb URLs and sitemap URL do not drift.
 
-## 15. Automation target
+## 16. Automation target
 
 Add a repository-owned validation script/test rather than relying only on manual browser tools.
 
@@ -276,13 +414,13 @@ The validator should be able to fail a candidate when it detects material condit
 - duplicate or conflicting `@id` identity;
 - required page identity missing;
 - schema claim with no allowed source/parity;
-- `Offer` emitted without governed commercial evidence;
+- `Offer` emitted without governed Tegra-origin commercial evidence;
 - malformed Open Graph/Twitter URL/image fields;
 - accidental use of non-approved experimental vocabulary.
 
 Exact implementation language/tooling must remain lightweight and compatible with the current vanilla/static architecture.
 
-## 16. Scope surfaces for first acceptance
+## 17. Scope surfaces for first acceptance
 
 M4-05R first acceptance is bounded to the three currently published/indexable sitemap surfaces:
 
@@ -292,12 +430,12 @@ M4-05R first acceptance is bounded to the three currently published/indexable si
 
 Future project pages inherit the accepted contract after these three reference implementations pass.
 
-## 17. Explicit non-goals
+## 18. Explicit non-goals
 
 This gate does NOT authorize by itself:
 
 - FECH.AI/Supabase integration;
-- new commercial facts;
+- new unverified commercial facts;
 - price recalculation;
 - new route families;
 - Google Ads/Meta Ads changes;
@@ -307,7 +445,7 @@ This gate does NOT authorize by itself:
 - framework migration;
 - publication of experimental Schema.org vocabulary merely for completeness.
 
-## 18. Acceptance semantics
+## 19. Acceptance semantics
 
 Target state:
 
@@ -315,7 +453,7 @@ Target state:
 MNT-M4-05 historical implementation = MERGED
 MNT-M4-05 Product Acceptance = SUPERSEDED_BY_CORRECTIVE_GATE
 MNT-M4-05R Product Decision = APPROVED
-MNT-M4-05R Runtime = NOT_STARTED
+MNT-M4-05R Runtime = AUTHORIZED / NOT_STARTED
 MNT-M4-05R Acceptance = PENDING
 ```
 
