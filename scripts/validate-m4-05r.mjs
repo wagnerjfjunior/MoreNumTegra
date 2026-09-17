@@ -291,6 +291,15 @@ for (const needle of capiitoloRenderGuards) {
   if (!capiitolo.includes(needle)) fail('capiitolo', `rendered Product schema preservation guard missing: ${needle}`);
 }
 
+const staticHome = await readFile('src-greenn/preview/index.html', 'utf8');
+const staticHomeJs = await readFile('src-greenn/moretegra.js', 'utf8');
+if (staticHome.includes('const blocks = [') || staticHome.includes('fetch(url, {cache:"no-store"})')) fail('home', 'client-side primary block loader must not exist');
+if (staticHome.includes('id="mt-block-02"') || staticHome.includes('id="mt-block-03"') || staticHome.includes('data-moretegra-fallback')) fail('home', 'dynamic/fallback block placeholders remain in initial HTML');
+if (!staticHome.includes('src="/src-greenn/moretegra.js" defer')) fail('home', 'static moretegra.js include missing');
+if ((staticHome.match(/id="formulario"/g) || []).length !== 1) fail('home', 'initial HTML must contain exactly one #formulario');
+if (!staticHome.includes('data-moretegra')) fail('home', 'primary MoreNumTegra content missing from initial HTML');
+if (staticHomeJs.includes('applySearchMetadata') || staticHomeJs.includes('SEARCH_METADATA')) fail('home', 'runtime metadata/schema rewriting must not return');
+
 if (failures.length) {
   console.error('\nM4-05R validation FAILED\n');
   for (const item of failures) console.error(`- ${item}`);

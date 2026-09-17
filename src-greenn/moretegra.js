@@ -3,80 +3,6 @@
 
   const ROOT_SELECTOR = "[data-moretegra]";
   const initializedRoots = new WeakSet();
-  const SEARCH_METADATA = Object.freeze({
-    title: "Apartamentos Tegra em São Paulo | More em um Tegra",
-    description: "Compare empreendimentos Tegra em São Paulo por região, estágio e faixa de valor. Veja lançamentos, prontos para morar e opções no premiado Caminhos da Lapa.",
-    canonical: "https://moretegra.com.br/",
-    locale: "pt_BR"
-  });
-
-  function upsertMeta(selector, attributes) {
-    if (!document.head) return null;
-    let node = document.head.querySelector(selector);
-    if (!node) {
-      node = document.createElement("meta");
-      document.head.appendChild(node);
-    }
-    Object.entries(attributes).forEach(([key, value]) => node.setAttribute(key, value));
-    return node;
-  }
-
-  function applySearchMetadata() {
-    if (!document.head) return;
-
-    document.title = SEARCH_METADATA.title;
-
-    upsertMeta('meta[name="description"]', {name:"description", content:SEARCH_METADATA.description});
-    upsertMeta('meta[property="og:type"]', {property:"og:type", content:"website"});
-    upsertMeta('meta[property="og:url"]', {property:"og:url", content:SEARCH_METADATA.canonical});
-    upsertMeta('meta[property="og:title"]', {property:"og:title", content:SEARCH_METADATA.title});
-    upsertMeta('meta[property="og:description"]', {property:"og:description", content:SEARCH_METADATA.description});
-    upsertMeta('meta[property="og:locale"]', {property:"og:locale", content:SEARCH_METADATA.locale});
-    upsertMeta('meta[property="og:site_name"]', {property:"og:site_name", content:"More em um Tegra"});
-    upsertMeta('meta[name="twitter:card"]', {name:"twitter:card", content:"summary"});
-    upsertMeta('meta[name="twitter:title"]', {name:"twitter:title", content:SEARCH_METADATA.title});
-    upsertMeta('meta[name="twitter:description"]', {name:"twitter:description", content:SEARCH_METADATA.description});
-
-    let canonical = document.head.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement("link");
-      canonical.setAttribute("rel", "canonical");
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute("href", SEARCH_METADATA.canonical);
-
-    const schema = {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebSite",
-          "@id": SEARCH_METADATA.canonical + "#website",
-          "url": SEARCH_METADATA.canonical,
-          "name": "More em um Tegra",
-          "inLanguage": "pt-BR"
-        },
-        {
-          "@type": "WebPage",
-          "@id": SEARCH_METADATA.canonical + "#webpage",
-          "url": SEARCH_METADATA.canonical,
-          "name": SEARCH_METADATA.title,
-          "description": SEARCH_METADATA.description,
-          "isPartOf": {"@id": SEARCH_METADATA.canonical + "#website"},
-          "inLanguage": "pt-BR"
-        }
-      ]
-    };
-
-    let schemaNode = document.head.querySelector("#mt-search-schema");
-    if (!schemaNode) {
-      schemaNode = document.createElement("script");
-      schemaNode.id = "mt-search-schema";
-      schemaNode.type = "application/ld+json";
-      document.head.appendChild(schemaNode);
-    }
-    schemaNode.textContent = JSON.stringify(schema);
-  }
-
   const BRL = new Intl.NumberFormat("pt-BR", {
     style: "currency",
     currency: "BRL",
@@ -804,8 +730,15 @@
     document.body.appendChild(dock);
   }
 
+  function prefillInterestFromUrl() {
+    const interest = new URLSearchParams(window.location.search).get("interesse");
+    const input = document.getElementById("mt-lead-project");
+    if (!interest || !input || input.value) return;
+    input.value = interest;
+  }
+
   function boot() {
-    applySearchMetadata();
+    prefillInterestFromUrl();
     initAll();
     mountFloatingActions();
   }
