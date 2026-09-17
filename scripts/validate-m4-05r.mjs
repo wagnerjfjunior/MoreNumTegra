@@ -118,10 +118,12 @@ for (const page of pages) {
   const expectedPageType = page.name === 'home' ? 'schema:CollectionPage' : 'schema:WebPage';
   const expectedHeadAbout = page.canonical + '#webpage';
   const headTag = html.match(/<head\b[^>]*>/i)?.[0] ?? '';
-  if (!headTag.includes(`about="${expectedHeadAbout}"`) || !headTag.includes(`typeof="${expectedPageType}"`) || !headTag.includes('schema: https://schema.org/') || !headTag.includes('og: https://ogp.me/ns#') || !headTag.includes('twitter: http://dev.twitter.com/docs/cards#')) fail(page.name, 'typed RDFa social metadata subject missing or inconsistent');
+  if (!headTag.includes(`about="${expectedHeadAbout}"`) || !headTag.includes(`typeof="${expectedPageType}"`) || !headTag.includes('schema: https://schema.org/') || !headTag.includes('og: https://ogp.me/ns#')) fail(page.name, 'typed RDFa social metadata subject missing or inconsistent');
   for (const twitterSuffix of ['card','title','description','image','image:alt']) {
-    if (!html.includes(`name="twitter:${twitterSuffix}" property="twitter:${twitterSuffix}"`)) fail(page.name, `Twitter/X RDFa property binding missing: ${twitterSuffix}`);
+    if (!html.includes(`name="twitter:${twitterSuffix}"`)) fail(page.name, `Twitter/X card metadata missing: ${twitterSuffix}`);
+    if (html.includes(`property="twitter:${twitterSuffix}"`)) fail(page.name, `Twitter/X metadata must not create RDFa triples: ${twitterSuffix}`);
   }
+  if (headTag.includes('twitter: http://dev.twitter.com/docs/cards#')) fail(page.name, 'Twitter RDFa prefix must not be declared; Twitter Cards use name attributes');
 
   if (!/<h1\b[^>]*>[\s\S]*?<\/h1>/i.test(html)) fail(page.name, 'H1 missing from initial HTML source');
 
