@@ -203,6 +203,28 @@
   }
   </script>
 
+  <script id="mnt-capiitolo-product-schema" type="application/ld+json">
+  {
+    "@context":"https://schema.org/",
+    "@type":"Product",
+    "@id":"https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#product",
+    "name":"CAPIITOLO by Piero Lissoni — apartamento de 210 m²",
+    "description":"Apartamento tipo de 210 m², 4 suítes e 3 vagas no CAPIITOLO by Piero Lissoni, empreendimento Tegra na Chácara Klabin.",
+    "url":"https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/",
+    "image":"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/349/ImagemPrincipal/Tegra-Incorporadora-Detalhe-Fachada-CAPITOLO-by-Piero-Lissoni-Apartamentos-210-Metros-Chacara-Klabin-Sao-Paulo-SP-714x640-1736369712708.jpg",
+    "brand":{"@type":"Brand","name":"Tegra"},
+    "offers":{
+      "@type":"Offer",
+      "@id":"https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#offer",
+      "url":"https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/",
+      "priceCurrency":"BRL",
+      "price":"3539900",
+      "seller":{"@type":"Organization","@id":"https://www.tegraincorporadora.com.br/#organization","name":"Tegra Incorporadora","url":"https://www.tegraincorporadora.com.br/"}
+    },
+    "additionalProperty":{"@type":"PropertyValue","name":"Referência comercial Tegra","value":"Ref. 210 m² (unidade 33) - Ago/26 | pagamento à vista"}
+  }
+  </script>
+
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PGCR4R47');</script>
   <!-- End Google Tag Manager -->
@@ -213,7 +235,7 @@
       <p>CAPIITOLO · Tegra · Chácara Klabin</p>
       <h1>CAPIITOLO<br>by Piero Lissoni</h1>
       <p>210 m² · 4 suítes · 3 vagas · Giardino 281 m² · Duplex 363 m².</p>
-      <p><strong>Condições atuais sob consulta.</strong> Valores e disponibilidade têm origem nas condições comerciais vigentes da Tegra e devem ser confirmados no atendimento.</p>
+      <p><strong>A partir de R$ 3.539.900,00.</strong> Ref. 210 m² (unidade 33) - Ago/26 | com pagamento à vista. <a href="https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/chacara-klabin/chacaraklabin" target="_blank" rel="noopener noreferrer">Fonte: Tegra Incorporadora</a>. Valor, unidade e disponibilidade podem mudar e devem ser confirmados no atendimento.</p>
       <p><strong>Sabrina da Tegra</strong> · Corretora Tegra Vendas · CRECI-SP 209.905-F · <a href="tel:+5511960779328">(11) 96077-9328</a>.</p>
       <p>Carregando experiência completa…</p>
     </div>
@@ -224,7 +246,7 @@
     const canonical="https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/";
     const source="/experiments/capiitolo-editorial-v3/index.html";
     const schemaText=document.getElementById("mnt-capiitolo-schema")?.textContent||"";
-    const priceSection=`<section class="mnt-price-section" id="valores" aria-labelledby="mnt-price-title"><div class="wrap mnt-price-grid"><div><p class="mnt-price-label">Condições comerciais</p><h2 id="mnt-price-title" class="display">Consulte a condição vigente.</h2></div><div data-commercial-key="capiitolo"><p class="mnt-price-label">Origem comercial</p><p class="mnt-price-value" data-commercial-value aria-live="polite">Consulte a Tegra</p><p class="mnt-price-note">Valores, unidades e disponibilidade têm origem nas condições comerciais vigentes da Tegra e devem ser confirmados antes da proposta.</p><a class="btn yellow" href="#formulario">Receber condições <span>↓</span></a></div></div></section>`;
+    const priceSection=`<section class="mnt-price-section" id="valores" aria-labelledby="mnt-price-title"><div class="wrap mnt-price-grid"><div><p class="mnt-price-label">A partir de</p><h2 id="mnt-price-title" class="display">R$ 3.539.900</h2></div><div data-commercial-key="capiitolo"><p class="mnt-price-label">Referência oficial Tegra</p><p class="mnt-price-value" data-commercial-value aria-live="polite">Ref. 210 m² (unidade 33) - Ago/26 | pagamento à vista</p><p class="mnt-price-note">Fonte: Tegra Incorporadora. Valor, unidade e disponibilidade podem mudar; confirme as condições vigentes antes da proposta.</p><a class="btn yellow" href="#formulario">Receber condições <span>↓</span></a></div></div></section>`;
     fetch(source,{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.text()}).then(html=>{
       const doc=new DOMParser().parseFromString(html,"text/html");
       doc.documentElement.dataset.mntRoute="/empreendimentos/capiitolo-piero-lissoni/";

@@ -18,27 +18,30 @@ const pages = [
     schemaId: 'mt-search-schema',
     requiredTypes: ['WebSite', 'CollectionPage', 'ItemList', 'RealEstateAgent', 'Brand', 'Person', 'Service'],
     requiredIds: ['https://www.moretegra.com.br/#website', 'https://www.moretegra.com.br/#webpage', 'https://www.moretegra.com.br/#projects', TEGRA_ID, TEGRA_BRAND_ID, SABRINA_ID, SABRINA_AGENT_ID],
-    visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328']
+    visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328'],
+    localBusinessScriptId: 'mt-localbusiness-schema'
   },
   {
     name: 'capiitolo',
     file: 'src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html',
     canonical: 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/',
     schemaId: 'mnt-capiitolo-schema',
-    requiredTypes: ['WebSite', 'WebPage', 'BreadcrumbList', 'ApartmentComplex', 'FloorPlan', 'ImageObject', 'RealEstateAgent', 'Brand', 'Person', 'Service'],
-    requiredIds: ['https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#webpage', 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#project', TEGRA_ID, TEGRA_BRAND_ID, SABRINA_ID, SABRINA_AGENT_ID],
+    requiredTypes: ['WebSite', 'WebPage', 'BreadcrumbList', 'ApartmentComplex', 'FloorPlan', 'ImageObject', 'RealEstateAgent', 'Brand', 'Person', 'Service', 'Product', 'Offer'],
+    requiredIds: ['https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#webpage', 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#project', 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#product', 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#offer', TEGRA_ID, TEGRA_BRAND_ID, SABRINA_ID, SABRINA_AGENT_ID],
     requiredSameAs: 'https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/chacara-klabin/chacaraklabin',
-    visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328']
+    visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328', 'R$ 3.539.900', 'Ref. 210 m² (unidade 33) - Ago/26'],
+    product: { id: 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#product', offerId: 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#offer', projectId: 'capiitolo-piero-lissoni', price: 3539900 }
   },
   {
     name: 'elo-duo',
     file: 'src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html',
     canonical: 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/',
     schemaId: 'mt-project-schema',
-    requiredTypes: ['WebSite', 'WebPage', 'BreadcrumbList', 'ApartmentComplex', 'FloorPlan', 'ImageObject', 'RealEstateAgent', 'Brand', 'Person', 'Service'],
-    requiredIds: ['https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#webpage', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#project', TEGRA_ID, TEGRA_BRAND_ID, SABRINA_ID, SABRINA_AGENT_ID],
+    requiredTypes: ['WebSite', 'WebPage', 'BreadcrumbList', 'ApartmentComplex', 'FloorPlan', 'ImageObject', 'RealEstateAgent', 'Brand', 'Person', 'Service', 'Product', 'Offer'],
+    requiredIds: ['https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#webpage', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#project', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#product', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#offer', TEGRA_ID, TEGRA_BRAND_ID, SABRINA_ID, SABRINA_AGENT_ID],
     requiredSameAs: 'https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/lapa/caminhos-da-lapa-elo-duo',
-    visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328']
+    visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328', 'R$ 658.000', 'Ref. 68 m² (unidade 109) - Ago/26'],
+    product: { id: 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#product', offerId: 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#offer', projectId: 'caminhos-da-lapa-elo-duo', price: 658000 }
   }
 ];
 
@@ -72,6 +75,10 @@ function getSchema(html, id) {
   const found = scripts.find((m) => `${m[1]} ${m[2]}`.includes(`id="${id}"`) || `${m[1]} ${m[2]}`.includes(`id='${id}'`));
   if (!found) return null;
   return found[3].trim();
+}
+
+function getAllSchemas(html) {
+  return [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)].map((m) => m[1].trim());
 }
 
 function walk(value, visit) {
@@ -128,7 +135,12 @@ for (const page of pages) {
     continue;
   }
 
-  const nodes = collectGraph(schema);
+  const allSchemas = [];
+  for (const raw of getAllSchemas(html)) {
+    try { allSchemas.push(JSON.parse(raw)); }
+    catch (error) { fail(page.name, `invalid secondary JSON-LD: ${error.message}`); }
+  }
+  const nodes = allSchemas.flatMap((item) => collectGraph(item));
   const types = new Set();
   const ids = new Set();
   const sameAs = new Set();
@@ -143,7 +155,21 @@ for (const page of pages) {
   if (page.requiredSameAs && !sameAs.has(page.requiredSameAs)) fail(page.name, `official Tegra project sameAs missing: ${page.requiredSameAs}`);
 
   if (types.has('RealEstateListing')) fail(page.name, 'RealEstateListing is not approved for the M4-05R stable core');
-  if (types.has('Offer')) fail(page.name, 'Offer emitted without an M4-05R governed commercial evidence allowlist');
+  if (types.has('Offer') && !page.product) fail(page.name, 'Offer emitted without a governed project Product allowlist');
+  if (nodes.some((node) => ['Review','AggregateRating'].some((type) => [].concat(node['@type'] ?? []).includes(type)))) fail(page.name, 'Review/AggregateRating must not be fabricated for Rich Results eligibility');
+
+  if (page.product) {
+    const product = typedNode(nodes, page.product.id, 'Product');
+    const offer = typedNode(nodes, page.product.offerId, 'Offer');
+    if (!product) fail(page.name, 'standalone Google Product root missing');
+    if (!offer) fail(page.name, 'governed Product Offer missing');
+    else {
+      if (Number(offer.price) !== page.product.price) fail(page.name, `Offer price mismatch: ${offer.price ?? 'missing'}`);
+      if (offer.priceCurrency !== 'BRL') fail(page.name, 'Offer priceCurrency must be BRL');
+      if (offer.url !== page.canonical) fail(page.name, 'Offer url must equal canonical');
+      if (offer.seller?.['@id'] !== TEGRA_ID) fail(page.name, 'Offer seller must reference authoritative Tegra entity');
+    }
+  }
 
   const webPage = nodes.find((node) => node['@type'] === 'WebPage' || node['@type'] === 'CollectionPage');
   if (!webPage) fail(page.name, 'page entity missing');
@@ -155,6 +181,19 @@ for (const page of pages) {
 
   for (const apartmentComplex of nodes.filter((node) => [].concat(node['@type'] ?? []).includes('ApartmentComplex'))) {
     if (Object.hasOwn(apartmentComplex, 'brand')) fail(page.name, 'brand is not valid on ApartmentComplex; reconcile via official project sameAs and Tegra organization entity');
+  }
+
+  if (page.localBusinessScriptId) {
+    const localRaw = getSchema(html, page.localBusinessScriptId);
+    if (!localRaw) fail(page.name, 'standalone LocalBusiness JSON-LD root missing');
+    else {
+      try {
+        const local = JSON.parse(localRaw);
+        if (![local['@type']].flat().includes('RealEstateAgent')) fail(page.name, 'standalone LocalBusiness root must be RealEstateAgent');
+        if (local.name !== 'Sabrina da Tegra — Corretora Tegra Vendas') fail(page.name, 'standalone LocalBusiness name mismatch');
+        if (local.address?.['@type'] !== 'PostalAddress' || !local.address?.streetAddress) fail(page.name, 'standalone LocalBusiness physical address missing');
+      } catch (error) { fail(page.name, `invalid standalone LocalBusiness JSON-LD: ${error.message}`); }
+    }
   }
 
   const sabrinaAgent = typedNode(nodes, SABRINA_AGENT_ID, 'RealEstateAgent');
@@ -184,6 +223,14 @@ for (const page of pages) {
   if (phone?.telephone !== SABRINA_PHONE) fail(page.name, 'Sabrina normalized commercial telephone mismatch');
 
   for (const needle of page.visibleNeedles) if (!html.includes(needle)) fail(page.name, `visible parity text missing: ${needle}`);
+}
+
+const governedCommercial = JSON.parse(await readFile('src-greenn/data/commercial-values.json', 'utf8'));
+for (const page of pages.filter((item) => item.product)) {
+  const commercial = governedCommercial.projects?.[page.product.projectId];
+  if (!commercial || commercial.state !== 'active_reference') fail(page.name, 'governed commercial active_reference missing');
+  else if (Number(commercial.price) !== page.product.price) fail(page.name, `governed commercial price mismatch: ${commercial.price ?? 'missing'}`);
+  if (commercial?.sourceClass !== 'TEGRA_OFFICIAL_WEBSITE') fail(page.name, 'commercial source must be TEGRA_OFFICIAL_WEBSITE');
 }
 
 const capiitolo = await readFile('src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html', 'utf8');
