@@ -88,6 +88,10 @@ function collectGraph(schema) {
   return nodes;
 }
 
+function typedNode(nodes, id, type) {
+  return nodes.find((node) => node['@id'] === id && [].concat(node['@type'] ?? []).includes(type));
+}
+
 for (const page of pages) {
   const html = await readFile(page.file, 'utf8');
 
@@ -143,19 +147,18 @@ for (const page of pages) {
   if (!webPage) fail(page.name, 'page entity missing');
   else if (webPage.url !== page.canonical) fail(page.name, `page entity url mismatch: ${webPage.url ?? 'missing'}`);
 
-  const tegra = nodes.find((node) => node['@id'] === TEGRA_ID);
-  if (!tegra || tegra['@type'] !== 'RealEstateAgent') fail(page.name, 'authoritative Tegra entity reference missing or wrong type');
+  const tegra = typedNode(nodes, TEGRA_ID, 'RealEstateAgent');
+  if (!tegra) fail(page.name, 'authoritative Tegra entity definition missing or wrong type');
 
-  const sabrina = nodes.find((node) => node['@id'] === SABRINA_ID);
-  if (!sabrina) fail(page.name, 'Sabrina Person entity missing');
+  const sabrina = typedNode(nodes, SABRINA_ID, 'Person');
+  if (!sabrina) fail(page.name, 'Sabrina Person entity definition missing');
   else {
-    if (sabrina['@type'] !== 'Person') fail(page.name, 'Sabrina must be a Person');
     if (sabrina.worksFor?.['@id'] !== TEGRA_VENDAS_ID) fail(page.name, 'Sabrina worksFor must reference Tegra Vendas');
     if (sabrina.sameAs !== SABRINA_PROFILE && ![].concat(sabrina.sameAs ?? []).includes(SABRINA_PROFILE)) fail(page.name, 'Sabrina official Tegra Vendas sameAs missing');
     if (sabrina.identifier?.value !== SABRINA_CRECI) fail(page.name, 'Sabrina CRECI mismatch');
   }
 
-  const phone = nodes.find((node) => node['@id'] === 'https://www.moretegra.com.br/#sabrina-contato');
+  const phone = nodes.find((node) => node['@id'] === 'https://www.moretegra.com.br/#sabrina-contato' && node.telephone);
   if (phone?.telephone !== SABRINA_PHONE) fail(page.name, 'Sabrina normalized commercial telephone mismatch');
 
   for (const needle of page.visibleNeedles) if (!html.includes(needle)) fail(page.name, `visible parity text missing: ${needle}`);
