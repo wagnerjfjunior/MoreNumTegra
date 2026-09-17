@@ -1,87 +1,82 @@
 # Próxima Ação Segura — MoreNumTegra
 
-Estado reconciliado em `2026-09-16`.
+Estado reconciliado em `2026-09-17`.
 
-Resolver `main` live antes de executar. Base observada desta reconciliação:
+Resolver `main` live antes de executar. Base observada no início deste gate:
 
 `f5b4b27cc31fa6247ad3394e40a295f2a58861d6`
 
 ## Estado atual
 
 ```text
-OPEN_PULL_REQUESTS = 0
-CAPIITOLO exact-project page = PUBLISHED / INDEXATION RELEASE MERGED
-ELO DUO exact-project page = PUBLISHED / INDEXATION RELEASE MERGED
+CAPIITOLO exact-project page = PUBLISHED / INDEXABLE
+ELO DUO exact-project page = PUBLISHED / INDEXABLE
 COMMERCIAL DATA PLANE V2 = DOCS CANONICALIZED
 COMMERCIAL CATALOG UPSTREAM DISCOVERY = HANDED OFF TO FECH.AI
 MORENUMTEGRA COMMERCIAL RUNTIME MIGRATION = DEFERRED
+MNT-M4-05 historical implementation = MERGED
+MNT-M4-05 Product Acceptance = SUPERSEDED_BY_CORRECTIVE_GATE
+MNT-M4-05R Product Decision = APPROVED
+MNT-M4-05R Runtime = IMPLEMENTATION_AND_VALIDATION_AUTHORIZED
+MNT-M4-05R Acceptance = PENDING
 ```
-
-PR #94 consolidated the current CAPIITOLO + Elo Duo exact-project production release.
-
-PR #95 reconciled the stale PR queue.
-
-PR #96 canonicalized the docs-only commercial data contract/schema/inventory.
 
 ## Única próxima ação segura local
 
-Resume the governed exact-project publication stream from canonical `main`.
+Implementar e validar `MNT-M4-05R — Machine-Readable Entity & Social Metadata Hardening` nas três superfícies já publicadas/indexáveis:
 
-Before selecting/building the next page:
+1. `https://www.moretegra.com.br/`
+2. `https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/`
+3. `https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/`
 
-1. resolve `main` live;
-2. read the current bootstrap/handoff/status/blockers/baselines;
-3. resolve the current Product Fact & Claim Registry and commercial reconciliation applicable to the candidate;
-4. resolve query-family/page ownership and Search evidence;
-5. inspect current homepage/catalog/runtime data for that project;
-6. determine whether current commercial evidence is publishable or whether the page must use consult-only behavior;
-7. choose one project or one deliberately bounded release batch;
-8. create a branch/PR and keep Preview/deployment use controlled under the Vercel provider constraints.
+Contrato focal:
 
-Do not choose the next project solely from conversation memory, homepage ordering or an old roadmap overlay.
+- conteúdo/identidade crítica presente no HTML inicial;
+- Schema.org/JSON-LD factual com `@id` estáveis;
+- Open Graph e Twitter/X Cards explícitos;
+- canonical/`og:url`/WebPage URL consistentes;
+- entidade oficial Tegra referenciada pelo `@id` autoritativo `https://www.tegraincorporadora.com.br/#organization` quando aplicável;
+- Sabrina da Tegra modelada como `Person`, com CRECI-SP `209.905-F`, `worksFor` Tegra Vendas, perfil oficial, contato comercial e `workLocation` no Estande Tegra Caminhos da Lapa, apenas com paridade visível adequada;
+- `Offer` somente quando houver condição comercial vigente, publicável e de origem autoritativa Tegra;
+- validação automatizada/reprodutível do contrato.
 
-## Parallel FECH.AI track
+Fluxo autorizado por Product Authority em `2026-09-17`:
 
-The Commercial Catalog / Publication Context discovery is now owned upstream by the FECH.AI workstream described in:
+```text
+branch runtime dedicada
+-> Vercel Preview automático
+-> validar HTML + Schema.org + Social + entity consistency + regressão mobile/runtime
+-> se PASS, Ready/merge do release focal
+-> Vercel Production automático
+-> smoke test em https://www.moretegra.com.br/
+```
 
-`docs/sfjm/MNT_FECHAI_COMMERCIAL_CATALOG_HANDOFF_2026-09-16.md`
+Não ampliar escopo durante este gate.
 
-This parallel discovery is **not a blocker** for additional MoreNumTegra exact-project pages when their own factual/Search/runtime gates pass.
+## Commercial Catalog / FECH.AI continua paralelo
 
-Until FECH.AI returns a reviewed public-consumer contract:
+O Commercial Catalog / Publication Context continua owned upstream pelo FECH.AI e não é pré-condição para esta correção de metadados/entidades.
+
+Até existir contrato upstream aceito:
 
 ```text
 NO direct FECH.AI internal-table access
 NO service_role/browser secret
 NO MoreNumTegra-owned replacement commercial backend
 NO local Stage B Commercial Data Plane runtime migration
-NO bulk migration of existing hardcoded prices into a new source by assumption
 ```
 
-## Commercial publication rule during transition
+A origem autoritativa dos fatos comerciais publicados continua sendo a Tegra quando preço/disponibilidade/condição são fornecidos pela Tegra, ainda que no futuro FECH.AI transporte ou governe esses dados.
 
-A new page may publish a commercial price/reference only when the applicable current evidence authorizes it.
+## Fora do gate
 
-If current price/unit/availability evidence is absent or stale:
+Continuam separados:
 
-```text
-PRICE = consult-only
-STRUCTURED DATA Offer = omit when no valid offer exists
-```
-
-Do not invent or silently reuse an old embedded price.
-
-## Separate future gate
-
-When FECH.AI produces an accepted upstream Commercial Catalog / Publication contract, MoreNumTegra may open a separate consumer-integration gate covering:
-
-- project identity mapping;
-- public schema/version;
-- fetch/cache/freshness behavior;
-- fail-closed semantics;
-- structured-data parity;
-- security boundary;
-- rollout/shadow validation;
-- hardcode retirement.
-
-That future integration is not authorized by this SFJM update.
+- novas famílias de rotas;
+- DNS/canonical-host changes;
+- Form 46 changes;
+- GTM/GA4 changes;
+- Meta/Ads;
+- FECH.AI/Supabase mutation;
+- backend/framework migration;
+- fatos comerciais não verificados.
