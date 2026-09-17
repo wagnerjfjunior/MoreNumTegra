@@ -40,7 +40,6 @@ jobs:
 
           const indent = (text, spaces = 2) => text.split('\n').map((line) => `${' '.repeat(spaces)}${line}`).join('\n');
 
-          // Vercel owns the real lead section; remove the Green-builder anchor to keep one #formulario.
           block1 = block1.replace(/\n\s*<div id="formulario" class="mt-form-anchor" data-form-anchor aria-hidden="true"><\/div>\s*\n/, '\n');
 
           const block1Start = html.indexOf('  <div id="mt-block-01">');
@@ -72,7 +71,6 @@ jobs:
           if (html.includes('data-moretegra-fallback')) throw new Error('fallback-only root still present');
           if (!html.includes('data-moretegra')) throw new Error('static MoreNumTegra root missing');
 
-          // Initial HTML is authoritative. Remove legacy runtime head/schema rewriting entirely.
           const metaStart = appJs.indexOf('  const SEARCH_METADATA = Object.freeze({');
           const brlStart = appJs.indexOf('  const BRL = new Intl.NumberFormat', metaStart);
           if (metaStart < 0 || brlStart < 0) throw new Error('legacy metadata mutation block not found');
@@ -96,6 +94,7 @@ jobs:
           fs.writeFileSync(validatorPath, validator);
           NODE
 
+          sed -i 's/[[:space:]]\+$//' src-greenn/preview/index.html src-greenn/moretegra.js scripts/validate-m4-05r.mjs
           node scripts/validate-m4-05r.mjs
 
       - name: Commit bounded runtime correction
