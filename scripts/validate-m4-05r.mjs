@@ -4,6 +4,7 @@ import process from 'node:process';
 const TEGRA_ID = 'https://www.tegraincorporadora.com.br/#organization';
 const TEGRA_BRAND_ID = 'https://www.moretegra.com.br/#tegra-brand';
 const SABRINA_ID = 'https://www.moretegra.com.br/#sabrina-da-tegra';
+const SABRINA_AGENT_ID = 'https://www.moretegra.com.br/#sabrina-real-estate-agent';
 const TEGRA_VENDAS_ID = 'https://www.moretegra.com.br/#tegra-vendas';
 const SABRINA_PROFILE = 'https://corretor.tegravendas.com.br/sabrina/sp';
 const SABRINA_PHONE = '+5511960779328';
@@ -16,7 +17,7 @@ const pages = [
     canonical: 'https://www.moretegra.com.br/',
     schemaId: 'mt-search-schema',
     requiredTypes: ['WebSite', 'CollectionPage', 'ItemList', 'RealEstateAgent', 'Brand', 'Person', 'Service'],
-    requiredIds: ['https://www.moretegra.com.br/#website', 'https://www.moretegra.com.br/#webpage', 'https://www.moretegra.com.br/#projects', TEGRA_ID, TEGRA_BRAND_ID, SABRINA_ID],
+    requiredIds: ['https://www.moretegra.com.br/#website', 'https://www.moretegra.com.br/#webpage', 'https://www.moretegra.com.br/#projects', TEGRA_ID, TEGRA_BRAND_ID, SABRINA_ID, SABRINA_AGENT_ID],
     visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328']
   },
   {
@@ -25,7 +26,7 @@ const pages = [
     canonical: 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/',
     schemaId: 'mnt-capiitolo-schema',
     requiredTypes: ['WebSite', 'WebPage', 'BreadcrumbList', 'ApartmentComplex', 'FloorPlan', 'ImageObject', 'RealEstateAgent', 'Brand', 'Person', 'Service'],
-    requiredIds: ['https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#webpage', 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#project', TEGRA_ID, TEGRA_BRAND_ID, SABRINA_ID],
+    requiredIds: ['https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#webpage', 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#project', TEGRA_ID, TEGRA_BRAND_ID, SABRINA_ID, SABRINA_AGENT_ID],
     requiredSameAs: 'https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/chacara-klabin/chacaraklabin',
     visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328']
   },
@@ -35,7 +36,7 @@ const pages = [
     canonical: 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/',
     schemaId: 'mt-project-schema',
     requiredTypes: ['WebSite', 'WebPage', 'BreadcrumbList', 'ApartmentComplex', 'FloorPlan', 'ImageObject', 'RealEstateAgent', 'Brand', 'Person', 'Service'],
-    requiredIds: ['https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#webpage', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#project', TEGRA_ID, TEGRA_BRAND_ID, SABRINA_ID],
+    requiredIds: ['https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#webpage', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#project', TEGRA_ID, TEGRA_BRAND_ID, SABRINA_ID, SABRINA_AGENT_ID],
     requiredSameAs: 'https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/lapa/caminhos-da-lapa-elo-duo',
     visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328']
   }
@@ -156,6 +157,17 @@ for (const page of pages) {
     if (Object.hasOwn(apartmentComplex, 'brand')) fail(page.name, 'brand is not valid on ApartmentComplex; reconcile via official project sameAs and Tegra organization entity');
   }
 
+  const sabrinaAgent = typedNode(nodes, SABRINA_AGENT_ID, 'RealEstateAgent');
+  if (!sabrinaAgent) fail(page.name, 'Sabrina RealEstateAgent/LocalBusiness entity missing');
+  else {
+    if (sabrinaAgent.name !== 'Sabrina da Tegra — Corretora Tegra Vendas') fail(page.name, 'Sabrina RealEstateAgent name mismatch');
+    if (sabrinaAgent.url !== 'https://www.moretegra.com.br/') fail(page.name, 'Sabrina RealEstateAgent url mismatch');
+    if (sabrinaAgent.telephone !== SABRINA_PHONE) fail(page.name, 'Sabrina RealEstateAgent telephone mismatch');
+    if (sabrinaAgent.sameAs !== SABRINA_PROFILE) fail(page.name, 'Sabrina RealEstateAgent official sameAs mismatch');
+    const a = sabrinaAgent.address;
+    if (a?.['@type'] !== 'PostalAddress' || a.streetAddress !== 'Rua Fortunato Ferraz, 625' || a.addressLocality !== 'São Paulo' || a.addressRegion !== 'SP' || a.addressCountry !== 'BR') fail(page.name, 'Sabrina RealEstateAgent address mismatch');
+  }
+
   const sabrina = typedNode(nodes, SABRINA_ID, 'Person');
   if (!sabrina) fail(page.name, 'Sabrina Person entity definition missing');
   else {
@@ -163,6 +175,10 @@ for (const page of pages) {
     if (sabrina.sameAs !== SABRINA_PROFILE && ![].concat(sabrina.sameAs ?? []).includes(SABRINA_PROFILE)) fail(page.name, 'Sabrina official Tegra Vendas sameAs missing');
     if (sabrina.identifier?.value !== SABRINA_CRECI) fail(page.name, 'Sabrina CRECI mismatch');
   }
+
+  const service = nodes.find((node) => [].concat(node['@type'] ?? []).includes('Service') && node.broker?.['@id'] === SABRINA_ID);
+  if (!service) fail(page.name, 'Sabrina broker Service relation missing');
+  else if (service.provider?.['@id'] !== SABRINA_AGENT_ID) fail(page.name, 'Service provider must reference Sabrina RealEstateAgent');
 
   const phone = nodes.find((node) => node['@id'] === 'https://www.moretegra.com.br/#sabrina-contato' && node.telephone);
   if (phone?.telephone !== SABRINA_PHONE) fail(page.name, 'Sabrina normalized commercial telephone mismatch');
