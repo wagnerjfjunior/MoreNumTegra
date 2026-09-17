@@ -10,7 +10,12 @@ const SABRINA_PROFILE = 'https://corretor.tegravendas.com.br/sabrina/sp';
 const SABRINA_PHONE = '+5511960779328';
 const SABRINA_CRECI = '209.905-F';
 const SABRINA_POSTAL_CODE = '05093-000';
-const SABRINA_BUSINESS_IMAGE = 'https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp';
+const SABRINA_BUSINESS_IMAGE = 'https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp';
+const SABRINA_BUSINESS_LOGO = 'https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp';
+const ESTANDE_ID = 'https://www.moretegra.com.br/#estande-caminhos-da-lapa';
+const ESTANDE_LATITUDE = -23.517165527430233;
+const ESTANDE_LONGITUDE = -46.71861778788628;
+const VIDEO_UPLOAD_DATE = '2026-08-23T19:50:00Z';
 const TEGRA_PHONE = '+55-11-3500-3223';
 const TEGRA_PRICE_RANGE = 'Consulte-nos';
 const TEGRA_LOGO = 'https://www.tegraincorporadora.com.br/images/logo-tegra-color.svg';
@@ -197,7 +202,7 @@ for (const page of pages) {
     const video = typedNode(nodes, 'https://www.moretegra.com.br/#campaign-video', 'VideoObject');
     if (!video) fail(page.name, 'homepage VideoObject missing');
     else {
-      if (!/^\d{4}-\d{2}-\d{2}$/.test(video.uploadDate ?? '')) fail(page.name, 'homepage VideoObject uploadDate missing or invalid');
+      if (video.uploadDate !== VIDEO_UPLOAD_DATE) fail(page.name, 'homepage VideoObject uploadDate must match verified UTC timestamp');
       if (![].concat(video.thumbnailUrl ?? []).some((value) => typeof value === 'string' && value.startsWith('https://'))) fail(page.name, 'homepage VideoObject thumbnailUrl missing');
       if (video.embedUrl !== 'https://www.youtube-nocookie.com/embed/SCCM3vzNlyk') fail(page.name, 'homepage VideoObject embedUrl mismatch');
     }
@@ -212,7 +217,8 @@ for (const page of pages) {
         if (![local['@type']].flat().includes('RealEstateAgent')) fail(page.name, 'standalone LocalBusiness root must be RealEstateAgent');
         if (local.name !== 'Sabrina da Tegra — Corretora Tegra Vendas') fail(page.name, 'standalone LocalBusiness name mismatch');
         if (local.address?.['@type'] !== 'PostalAddress' || !local.address?.streetAddress || local.address?.postalCode !== SABRINA_POSTAL_CODE) fail(page.name, 'standalone LocalBusiness physical address/postalCode missing');
-        if (local.priceRange !== 'Consulte condições' || local.image !== SABRINA_BUSINESS_IMAGE || local.logo !== SABRINA_BUSINESS_IMAGE) fail(page.name, 'standalone LocalBusiness recommended fields mismatch');
+        if (local.priceRange !== 'Consulte condições' || local.image !== SABRINA_BUSINESS_IMAGE || local.logo !== SABRINA_BUSINESS_LOGO) fail(page.name, 'standalone LocalBusiness recommended fields mismatch');
+        if (Number(local.geo?.latitude) !== ESTANDE_LATITUDE || Number(local.geo?.longitude) !== ESTANDE_LONGITUDE) fail(page.name, 'standalone LocalBusiness geo mismatch');
       } catch (error) { fail(page.name, `invalid standalone LocalBusiness JSON-LD: ${error.message}`); }
     }
   }
@@ -226,7 +232,8 @@ for (const page of pages) {
     if (sabrinaAgent.sameAs !== SABRINA_PROFILE) fail(page.name, 'Sabrina RealEstateAgent official sameAs mismatch');
     const a = sabrinaAgent.address;
     if (a?.['@type'] !== 'PostalAddress' || a.streetAddress !== 'Rua Fortunato Ferraz, 625' || a.addressLocality !== 'São Paulo' || a.addressRegion !== 'SP' || a.postalCode !== SABRINA_POSTAL_CODE || a.addressCountry !== 'BR') fail(page.name, 'Sabrina RealEstateAgent address mismatch');
-    if (sabrinaAgent.priceRange !== 'Consulte condições' || sabrinaAgent.logo !== SABRINA_BUSINESS_IMAGE || sabrinaAgent.image !== SABRINA_BUSINESS_IMAGE) fail(page.name, 'Sabrina RealEstateAgent recommended fields mismatch');
+    if (sabrinaAgent.priceRange !== 'Consulte condições' || sabrinaAgent.logo !== SABRINA_BUSINESS_LOGO || sabrinaAgent.image !== SABRINA_BUSINESS_IMAGE) fail(page.name, 'Sabrina RealEstateAgent recommended fields mismatch');
+    if (Number(sabrinaAgent.geo?.latitude) !== ESTANDE_LATITUDE || Number(sabrinaAgent.geo?.longitude) !== ESTANDE_LONGITUDE) fail(page.name, 'Sabrina RealEstateAgent geo mismatch');
     if (sabrinaAgent.identifier?.propertyID !== 'CRECI-SP' || sabrinaAgent.identifier?.value !== SABRINA_CRECI) fail(page.name, 'Sabrina RealEstateAgent CRECI identifier mismatch');
   }
 
@@ -236,11 +243,16 @@ for (const page of pages) {
     if (sabrina.worksFor?.['@id'] !== TEGRA_VENDAS_ID) fail(page.name, 'Sabrina worksFor must reference Tegra Vendas');
     if (sabrina.sameAs !== SABRINA_PROFILE && ![].concat(sabrina.sameAs ?? []).includes(SABRINA_PROFILE)) fail(page.name, 'Sabrina official Tegra Vendas sameAs missing');
     if (sabrina.identifier?.value !== SABRINA_CRECI) fail(page.name, 'Sabrina CRECI mismatch');
+    if (sabrina.image !== SABRINA_BUSINESS_IMAGE) fail(page.name, 'Sabrina Person image mismatch');
   }
 
   const service = nodes.find((node) => [].concat(node['@type'] ?? []).includes('Service') && node.broker?.['@id'] === SABRINA_ID);
   if (!service) fail(page.name, 'Sabrina broker Service relation missing');
   else if (service.provider?.['@id'] !== SABRINA_AGENT_ID) fail(page.name, 'Service provider must reference Sabrina RealEstateAgent');
+
+  const estande = typedNode(nodes, ESTANDE_ID, 'Place');
+  if (!estande) fail(page.name, 'Sabrina work Place missing');
+  else if (Number(estande.geo?.latitude) !== ESTANDE_LATITUDE || Number(estande.geo?.longitude) !== ESTANDE_LONGITUDE) fail(page.name, 'Sabrina work Place geo mismatch');
 
   const phone = nodes.find((node) => node['@id'] === 'https://www.moretegra.com.br/#sabrina-contato' && node.telephone);
   if (phone?.telephone !== SABRINA_PHONE) fail(page.name, 'Sabrina normalized commercial telephone mismatch');
