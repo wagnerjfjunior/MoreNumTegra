@@ -1,0 +1,168 @@
+name: One-off rich result warning hardening
+
+on:
+  push:
+    paths:
+      - '.github/workflows/_oneoff-rich-result-warning-hardening.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/mnt-rich-result-warning-hardening
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Patch factual rich-result warnings once
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs = require('fs');
+
+          const HOME = 'src-greenn/preview/index.html';
+          const ELO = 'src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html';
+          const CAPI = 'src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html';
+          const FOOTER = 'src-greenn/blocks/03-footer.html';
+          const FAQ = 'src-greenn/blocks/02-html-pos-form.html';
+          const VALIDATOR = 'scripts/validate-m4-05r.mjs';
+
+          const TEGRA_ID = 'https://www.tegraincorporadora.com.br/#organization';
+          const LOGO = 'https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp';
+          const POSTAL = '05093-000';
+          const PHONE = '+5511960779328';
+          const CRECI = '209.905-F';
+
+          const read = (p) => fs.readFileSync(p, 'utf8');
+          const write = (p, s) => fs.writeFileSync(p, s);
+          function count(text, needle) { return text.split(needle).length - 1; }
+          function rep(text, oldText, newText, expected, label) {
+            const hits = count(text, oldText);
+            if (hits !== expected) throw new Error(`${label}: expected ${expected} match(es), found ${hits}`);
+            return text.split(oldText).join(newText);
+          }
+
+          function hardenSchemaPage(text, {name, home=false}) {
+            // Do not expand Tegra's external authoritative entity as a second LocalBusiness on MoreNumTegra.
+            const tegraOld = `"@type":"RealEstateAgent",\n        "@id":"${TEGRA_ID}",`;
+            const tegraNew = `"@type":"Organization",\n        "@id":"${TEGRA_ID}",`;
+            text = rep(text, tegraOld, tegraNew, 1, `${name} authoritative Tegra type`);
+
+            // Ensure the external organization has a crawlable official logo where the local copy did not yet include it.
+            const tegraUrlBrand = `"url":"https://www.tegraincorporadora.com.br/",\n        "brand":{"@id":"https://www.moretegra.com.br/#tegra-brand"}`;
+            const tegraUrlLogoBrand = `"url":"https://www.tegraincorporadora.com.br/",\n        "logo":"${LOGO}",\n        "brand":{"@id":"https://www.moretegra.com.br/#tegra-brand"}`;
+            if (count(text, tegraUrlBrand) === 1) text = rep(text, tegraUrlBrand, tegraUrlLogoBrand, 1, `${name} Tegra logo`);
+            else if (count(text, tegraUrlLogoBrand) !== 1) throw new Error(`${name}: authoritative Tegra logo anchor not found exactly once`);
+
+            // Every work-location address for Sabrina/Estande must carry the verified postal code.
+            const addrOld = `"streetAddress":"Rua Fortunato Ferraz, 625",\n          "addressLocality":"São Paulo",\n          "addressRegion":"SP",\n          "addressCountry"`;
+            const addrNew = `"streetAddress":"Rua Fortunato Ferraz, 625",\n          "addressLocality":"São Paulo",\n          "addressRegion":"SP",\n          "postalCode":"${POSTAL}",\n          "addressCountry"`;
+            const expectedPretty = home ? 2 : 1;
+            if (count(text, addrOld)) text = rep(text, addrOld, addrNew, expectedPretty, `${name} pretty postalCode`);
+
+            // Project pages also contain a minified Sabrina LocalBusiness definition.
+            const minAddrOld = `"streetAddress":"Rua Fortunato Ferraz, 625","addressLocality":"São Paulo","addressRegion":"SP","addressCountry":"BR"`;
+            const minAddrNew = `"streetAddress":"Rua Fortunato Ferraz, 625","addressLocality":"São Paulo","addressRegion":"SP","postalCode":"${POSTAL}","addressCountry":"BR"`;
+            if (count(text, minAddrOld)) text = rep(text, minAddrOld, minAddrNew, 1, `${name} minified postalCode`);
+
+            // Enrich the Sabrina LocalBusiness node with only factual, applicable fields.
+            const minAgentOld = `"sameAs":"https://corretor.tegravendas.com.br/sabrina/sp","telephone":"${PHONE}","address":`;
+            const minAgentNew = `"sameAs":"https://corretor.tegravendas.com.br/sabrina/sp","telephone":"${PHONE}","priceRange":"Consulte condições","logo":"${LOGO}","image":"${LOGO}","identifier":{"@type":"PropertyValue","propertyID":"CRECI-SP","value":"${CRECI}"},"address":`;
+            if (count(text, minAgentOld)) text = rep(text, minAgentOld, minAgentNew, 1, `${name} minified Sabrina enrichment`);
+
+            if (home) {
+              // Home graph Sabrina node (pretty JSON-LD).
+              const prettyAgentOld = `"sameAs":"https://corretor.tegravendas.com.br/sabrina/sp",\n        "telephone":"${PHONE}",\n        "address":`;
+              const prettyAgentNew = `"sameAs":"https://corretor.tegravendas.com.br/sabrina/sp",\n        "telephone":"${PHONE}",\n        "priceRange":"Consulte condições",\n        "logo":"${LOGO}",\n        "image":"${LOGO}",\n        "identifier":{"@type":"PropertyValue","propertyID":"CRECI-SP","value":"${CRECI}"},\n        "address":`;
+              text = rep(text, prettyAgentOld, prettyAgentNew, 1, `${name} graph Sabrina enrichment`);
+
+              // Standalone LocalBusiness already has logo/priceRange; add representative image and postal code.
+              const standaloneLogoOld = `"logo":"${LOGO}",\n    "identifier"`;
+              const standaloneLogoNew = `"logo":"${LOGO}",\n    "image":"${LOGO}",\n    "identifier"`;
+              text = rep(text, standaloneLogoOld, standaloneLogoNew, 1, `${name} standalone image`);
+              const standaloneAddrOld = `"streetAddress":"Rua Fortunato Ferraz, 625",\n      "addressLocality":"São Paulo",\n      "addressRegion":"SP",\n      "addressCountry":"BR"`;
+              const standaloneAddrNew = `"streetAddress":"Rua Fortunato Ferraz, 625",\n      "addressLocality":"São Paulo",\n      "addressRegion":"SP",\n      "postalCode":"${POSTAL}",\n      "addressCountry":"BR"`;
+              text = rep(text, standaloneAddrOld, standaloneAddrNew, 1, `${name} standalone postalCode`);
+            }
+
+            return text;
+          }
+
+          let home = hardenSchemaPage(read(HOME), {name:'home', home:true});
+          let elo = hardenSchemaPage(read(ELO), {name:'elo-duo'});
+          let capi = hardenSchemaPage(read(CAPI), {name:'capiitolo'});
+          let footer = read(FOOTER);
+          let faq = read(FAQ);
+          let validator = read(VALIDATOR);
+
+          // Visible parity on home footer.
+          const footerOld = `<p><strong>Atendimento Tegra Vendas.</strong><br>Use o formulário ou o WhatsApp desta página para negociar.</p>`;
+          const footerNew = `<p><strong>Sabrina da Tegra · Corretora Tegra Vendas · CRECI-SP ${CRECI}.</strong><br>Estande Tegra Caminhos da Lapa · Rua Fortunato Ferraz, 625 · São Paulo/SP · CEP ${POSTAL}.<br><a href="tel:${PHONE}">(11) 96077-9328</a> · <a href="https://corretor.tegravendas.com.br/sabrina/sp" target="_blank" rel="noopener noreferrer">perfil oficial Tegra Vendas</a></p>`;
+          footer = rep(footer, footerOld, footerNew, 1, 'footer visible Sabrina parity');
+
+          // Visible parity on Elo Duo.
+          const eloVisibleOld = `Estande Tegra Caminhos da Lapa · Rua Fortunato Ferraz, 625 — São Paulo/SP<br>`;
+          const eloVisibleNew = `Estande Tegra Caminhos da Lapa · Rua Fortunato Ferraz, 625 — São Paulo/SP · CEP ${POSTAL}<br>`;
+          elo = rep(elo, eloVisibleOld, eloVisibleNew, 1, 'elo visible postal code');
+
+          // Visible parity on CAPIITOLO initial HTML and dynamically injected experience.
+          const capiInitialOld = `<p><strong>Sabrina da Tegra</strong> · Corretora Tegra Vendas · CRECI-SP ${CRECI} · <a href="tel:${PHONE}">(11) 96077-9328</a>.</p>`;
+          const capiInitialNew = `<p><strong>Sabrina da Tegra</strong> · Corretora Tegra Vendas · CRECI-SP ${CRECI} · Estande Tegra Caminhos da Lapa · Rua Fortunato Ferraz, 625 · São Paulo/SP · CEP ${POSTAL} · <a href="tel:${PHONE}">(11) 96077-9328</a>.</p>`;
+          capi = rep(capi, capiInitialOld, capiInitialNew, 1, 'capi initial visible postal code');
+          const capiDynamicOld = `Estande Tegra Caminhos da Lapa · Rua Fortunato Ferraz, 625 — São Paulo/SP<br>`;
+          const capiDynamicNew = `Estande Tegra Caminhos da Lapa · Rua Fortunato Ferraz, 625 — São Paulo/SP · CEP ${POSTAL}<br>`;
+          capi = rep(capi, capiDynamicOld, capiDynamicNew, 1, 'capi dynamic visible postal code');
+
+          // FAQPage ids must match the www canonical entity graph.
+          faq = rep(faq, `https://moretegra.com.br/#faq`, `https://www.moretegra.com.br/#faq`, 1, 'FAQ canonical @id');
+          faq = rep(faq, `https://moretegra.com.br/#webpage`, `https://www.moretegra.com.br/#webpage`, 1, 'FAQ isPartOf canonical @id');
+
+          // Validator constants and entity policy.
+          const constantsOld = `const SABRINA_CRECI = '${CRECI}';`;
+          const constantsNew = `const SABRINA_CRECI = '${CRECI}';\nconst SABRINA_POSTAL_CODE = '${POSTAL}';\nconst TEGRA_LOGO = '${LOGO}';`;
+          validator = rep(validator, constantsOld, constantsNew, 1, 'validator constants');
+
+          const tegraValidationOld = `const tegra = typedNode(nodes, TEGRA_ID, 'RealEstateAgent');\n  if (!tegra) fail(page.name, 'authoritative Tegra entity definition missing or wrong type');\n  else if (tegra.brand?.['@id'] !== TEGRA_BRAND_ID) fail(page.name, 'Tegra brand must be attached to the authoritative organization entity');`;
+          const tegraValidationNew = `const tegra = typedNode(nodes, TEGRA_ID, 'Organization');\n  if (!tegra) fail(page.name, 'authoritative Tegra entity definition missing or wrong type');\n  else {\n    if (tegra.brand?.['@id'] !== TEGRA_BRAND_ID) fail(page.name, 'Tegra brand must be attached to the authoritative organization entity');\n    if (tegra.logo !== TEGRA_LOGO) fail(page.name, 'authoritative Tegra logo mismatch');\n  }\n  if (typedNode(nodes, TEGRA_ID, 'RealEstateAgent')) fail(page.name, 'external Tegra entity must not be expanded as a second LocalBusiness in MoreNumTegra');`;
+          validator = rep(validator, tegraValidationOld, tegraValidationNew, 1, 'validator Tegra entity policy');
+
+          const sabrinaAddrOld = `if (a?.['@type'] !== 'PostalAddress' || a.streetAddress !== 'Rua Fortunato Ferraz, 625' || a.addressLocality !== 'São Paulo' || a.addressRegion !== 'SP' || a.addressCountry !== 'BR') fail(page.name, 'Sabrina RealEstateAgent address mismatch');`;
+          const sabrinaAddrNew = `if (a?.['@type'] !== 'PostalAddress' || a.streetAddress !== 'Rua Fortunato Ferraz, 625' || a.addressLocality !== 'São Paulo' || a.addressRegion !== 'SP' || a.postalCode !== SABRINA_POSTAL_CODE || a.addressCountry !== 'BR') fail(page.name, 'Sabrina RealEstateAgent address mismatch');\n    if (sabrinaAgent.priceRange !== 'Consulte condições') fail(page.name, 'Sabrina RealEstateAgent priceRange mismatch');\n    if (sabrinaAgent.logo !== TEGRA_LOGO || sabrinaAgent.image !== TEGRA_LOGO) fail(page.name, 'Sabrina RealEstateAgent business image/logo mismatch');\n    if (sabrinaAgent.identifier?.propertyID !== 'CRECI-SP' || sabrinaAgent.identifier?.value !== SABRINA_CRECI) fail(page.name, 'Sabrina RealEstateAgent CRECI identifier mismatch');`;
+          validator = rep(validator, sabrinaAddrOld, sabrinaAddrNew, 1, 'validator Sabrina rich fields');
+
+          const standaloneAddrCheckOld = `if (local.address?.['@type'] !== 'PostalAddress' || !local.address?.streetAddress) fail(page.name, 'standalone LocalBusiness physical address missing');`;
+          const standaloneAddrCheckNew = `if (local.address?.['@type'] !== 'PostalAddress' || !local.address?.streetAddress || local.address?.postalCode !== SABRINA_POSTAL_CODE) fail(page.name, 'standalone LocalBusiness physical address/postalCode missing');\n        if (local.image !== TEGRA_LOGO || local.logo !== TEGRA_LOGO) fail(page.name, 'standalone LocalBusiness business image/logo mismatch');\n        if (local.priceRange !== 'Consulte condições') fail(page.name, 'standalone LocalBusiness priceRange mismatch');`;
+          validator = rep(validator, standaloneAddrCheckOld, standaloneAddrCheckNew, 1, 'validator standalone LocalBusiness');
+
+          // Visible parity and canonical FAQ guards.
+          const visibleLoopOld = `for (const needle of page.visibleNeedles ?? []) if (!html.includes(needle)) fail(page.name, \`visible content missing: ${needle}\`);`;
+          if (!validator.includes(visibleLoopOld)) throw new Error('validator visibleNeedles loop anchor missing');
+          validator = validator.replace(visibleLoopOld, `${visibleLoopOld}\n  if (!html.includes('CEP ${POSTAL}')) fail(page.name, 'verified Sabrina work-location postal code missing from visible HTML');\n  if (page.name === 'home') {\n    const faqHtml = await readFile('src-greenn/blocks/02-html-pos-form.html', 'utf8');\n    if (!faqHtml.includes('https://www.moretegra.com.br/#faq') || !faqHtml.includes('https://www.moretegra.com.br/#webpage')) fail(page.name, 'homepage FAQ entity ids must use the www canonical host');\n    if (faqHtml.includes('https://moretegra.com.br/#')) fail(page.name, 'homepage FAQ retains non-www entity id');\n  }`);
+
+          write(HOME, home);
+          write(ELO, elo);
+          write(CAPI, capi);
+          write(FOOTER, footer);
+          write(FAQ, faq);
+          write(VALIDATOR, validator);
+          NODE
+
+          node scripts/validate-m4-05r.mjs
+
+      - name: Commit one consolidated runtime change
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rm .github/workflows/_oneoff-rich-result-warning-hardening.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src-greenn/preview/index.html src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html src-greenn/blocks/03-footer.html src-greenn/blocks/02-html-pos-form.html scripts/validate-m4-05r.mjs
+          git commit -m 'fix(schema): harden factual rich-result warnings'
+          git push origin HEAD:fix/mnt-rich-result-warning-hardening
