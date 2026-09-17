@@ -1,21 +1,82 @@
 # Próxima Ação Segura — MoreNumTegra
 
-MNT-M4 está ACTIVE.
+Estado reconciliado em `2026-09-17`.
 
-MNT-M4-05 está COMPLETE / MERGED na PR #69 (`8098997eef2eacfb74854f888bfaee2b6225b980`).
+Resolver `main` live antes de executar. Base observada no início deste gate:
 
-MNT-M4-06 está COMPLETE / MERGED na PR #77 (`72ceeab91757ebec8edb0cec6c80c926e8bba43f`).
+`f5b4b27cc31fa6247ad3394e40a295f2a58861d6`
 
-MNT-M4-07 está COMPLETE / MERGED na PR #78 (`0df3e4e116bca19a843feae4c0416ecab68dda98`).
+## Estado atual
 
-MNT-M4-08 está COMPLETE / MERGED na PR #79 (`9073e3b70bd6a6e25255c1d5b147c26788c0630f`).
+```text
+CAPIITOLO exact-project page = PUBLISHED / INDEXABLE
+ELO DUO exact-project page = PUBLISHED / INDEXABLE
+COMMERCIAL DATA PLANE V2 = DOCS CANONICALIZED
+COMMERCIAL CATALOG UPSTREAM DISCOVERY = HANDED OFF TO FECH.AI
+MORENUMTEGRA COMMERCIAL RUNTIME MIGRATION = DEFERRED
+MNT-M4-05 historical implementation = MERGED
+MNT-M4-05 Product Acceptance = SUPERSEDED_BY_CORRECTIVE_GATE
+MNT-M4-05R Product Decision = APPROVED
+MNT-M4-05R Runtime = IMPLEMENTATION_AND_VALIDATION_AUTHORIZED
+MNT-M4-05R Acceptance = PENDING
+```
 
-Infra/commercial cutover para Vercel `www.moretegra.com.br` foi executado, validado e canonicalizado por ADR-006, PR #80 e PR #81.
+## Única próxima ação segura local
 
-MNT-M4-09 está `COMPLETE_CANDIDATE / PENDING_READY_MERGE` na PR #82.
+Implementar e validar `MNT-M4-05R — Machine-Readable Entity & Social Metadata Hardening` nas três superfícies já publicadas/indexáveis:
 
-Mozae metragem foi reconciliada com Product Authority evidence: áreas exatas observadas 44.85–73.40 m²; tipologias comerciais oficiais atuais 46 m² e 73 m²; faixa arredondada de portfólio 45–73 m² permitida quando descrita como range. O antigo blocker factual está resolvido.
+1. `https://www.moretegra.com.br/`
+2. `https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/`
+3. `https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/`
 
-Única próxima ação segura: Ready + merge da PR #82 somente mediante autorização explícita do Product Authority. Após o merge, M4 pode ser declarada COMPLETE; M5 continua separadamente gated.
+Contrato focal:
 
-Residual infra menor: `/favicon.ico` retornou 404 no HAR Pingdom pós-cutover; não reabre o cutover comercial. GSC sitemap submission/processing continua uma evidência separada do deploy já comprovado do sitemap.
+- conteúdo/identidade crítica presente no HTML inicial;
+- Schema.org/JSON-LD factual com `@id` estáveis;
+- Open Graph e Twitter/X Cards explícitos;
+- canonical/`og:url`/WebPage URL consistentes;
+- entidade oficial Tegra referenciada pelo `@id` autoritativo `https://www.tegraincorporadora.com.br/#organization` quando aplicável;
+- Sabrina da Tegra modelada como `Person`, com CRECI-SP `209.905-F`, `worksFor` Tegra Vendas, perfil oficial, contato comercial e `workLocation` no Estande Tegra Caminhos da Lapa, apenas com paridade visível adequada;
+- `Offer` somente quando houver condição comercial vigente, publicável e de origem autoritativa Tegra;
+- validação automatizada/reprodutível do contrato.
+
+Fluxo autorizado por Product Authority em `2026-09-17`:
+
+```text
+branch runtime dedicada
+-> Vercel Preview automático
+-> validar HTML + Schema.org + Social + entity consistency + regressão mobile/runtime
+-> se PASS, Ready/merge do release focal
+-> Vercel Production automático
+-> smoke test em https://www.moretegra.com.br/
+```
+
+Não ampliar escopo durante este gate.
+
+## Commercial Catalog / FECH.AI continua paralelo
+
+O Commercial Catalog / Publication Context continua owned upstream pelo FECH.AI e não é pré-condição para esta correção de metadados/entidades.
+
+Até existir contrato upstream aceito:
+
+```text
+NO direct FECH.AI internal-table access
+NO service_role/browser secret
+NO MoreNumTegra-owned replacement commercial backend
+NO local Stage B Commercial Data Plane runtime migration
+```
+
+A origem autoritativa dos fatos comerciais publicados continua sendo a Tegra quando preço/disponibilidade/condição são fornecidos pela Tegra, ainda que no futuro FECH.AI transporte ou governe esses dados.
+
+## Fora do gate
+
+Continuam separados:
+
+- novas famílias de rotas;
+- DNS/canonical-host changes;
+- Form 46 changes;
+- GTM/GA4 changes;
+- Meta/Ads;
+- FECH.AI/Supabase mutation;
+- backend/framework migration;
+- fatos comerciais não verificados.

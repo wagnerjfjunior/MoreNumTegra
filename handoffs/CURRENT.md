@@ -2,51 +2,110 @@
 
 `main` é a fonte canônica. Resolver GitHub live antes de agir.
 
-Estado reconciliado em 2026-09-14:
-- M0 COMPLETE
-- M1 COMPLETE
-- M2 COMPLETE
-- M3 COMPLETE / ACCEPTED
-- M4 ACTIVE
-- M4-01..08 COMPLETE / MERGED
-- M4-09 COMPLETE_CANDIDATE / PENDING_READY_MERGE — PR #82
+Estado reconciliado em `2026-09-16` sobre a `main` observada em:
 
-## Produção web / domínio — estado atual
+`f5b4b27cc31fa6247ad3394e40a295f2a58861d6`
 
-O cutover comercial Green -> Vercel foi executado e validado em 2026-09-14.
+## 1. REPOSITORY_STATE
+
+```text
+CANONICAL_REPOSITORY = wagnerjfjunior/MoreNumTegra
+CANONICAL_BRANCH = main
+CANONICAL_SHA_OBSERVED = f5b4b27cc31fa6247ad3394e40a295f2a58861d6
+OPEN_PULL_REQUESTS = 0
+```
+
+Recent canonical lifecycle:
+
+- PR #94 — merged: consolidated production/indexation of CAPIITOLO + Elo Duo exact-project pages;
+- PR #95 — merged: stale-PR reconciliation and preservation of the current runtime line;
+- PR #96 — merged, docs-only: Commercial Data Plane v2 contract/schema/hardcode inventory.
+
+No open PR is carried into the next conversation.
+
+## 2. DEPLOYMENT_STATE / PRODUCTION_STATE
+
+The accepted production topology remains governed by Technical Baseline V2.3 + ADR-006:
 
 ```text
 WEB PRODUCTION = Vercel
 CANONICAL HOST = https://www.moretegra.com.br/
 APEX = https://moretegra.com.br/ -> 308 -> www
 DNS AUTHORITY = Cloudflare / DNS only
-CLOUDFLARE HTTP PROXY = OFF
-LP = Green/GDigital fallback / non-canonical
 GREEN/GDIGITAL = Form 46 provider + CRM
 ```
 
-PR #80 promoveu `www.moretegra.com.br` a host comercial/canônico Vercel e PR #81 adicionou `/sitemap.xml` e `/robots.txt`. ADR-006 está `ACCEPTED / CUTOVER_CERTIFIED`. A baseline técnica vigente é `docs/baseline/TECHNICAL_BASELINE_V2_3.md`.
+This SFJM reconciliation is documentation-only and does not itself establish a new runtime deployment or a new production validation result.
 
-Validado no cutover: apex 308 -> www com path/query preservation, www HTTPS 200, www canonical/indexed, Google-selected canonical = www, Form 46 real, CRM persistence, consent, `mnt_lead_success`, `generate_lead`, sitemap/robots e Git-driven deploy.
+Preserve:
 
-## M4-09
+```text
+REPOSITORY_STATE != DEPLOYMENT_STATE
+MERGED != DEPLOYED
+DEPLOYED != PROD_SMOKE_TESTED
+```
 
-A PR #82 foi restackada sobre o estado V2.3 para não duplicar nem regredir as PRs #80/#81. O fechamento técnico preserva a produção `www` já certificada e reconcilia o Product Truth do Mozae.
+## 3. Exact-project publication stream
 
-Mozae metragem:
-- áreas exatas observadas por unidade: 44.85 m² a 73.40 m²;
-- tipologias comerciais oficiais atuais Tegra: 46 m² e 73 m²;
-- faixa arredondada de portfólio 45 m² a 73 m² é permitida quando descrita como faixa.
+The canonical exact-project production release from PR #94 includes:
 
-Logo, o runtime `45m² a 73m²` não é uma contradição factual quando usado como rounded portfolio range. O antigo `RUNTIME_METRAGE_CORRECTION_REQUIRED` foi superseded pelo suplemento M3-04 versionado na PR #82.
+- `/empreendimentos/capiitolo-piero-lissoni/`;
+- `/empreendimentos/caminhos-da-lapa-elo-duo/`.
 
-Residuals não bloqueantes:
-- `/favicon.ico` 404 no HAR Pingdom pós-cutover;
-- GSC sitemap submission/processing não é inferido a partir do deploy;
-- exact GTM published version number for the `www` cutover = `NOT_RECORDED`.
+The next MoreNumTegra conversation should resume publication of the remaining governed project pages from clean `main`.
 
-Forecast 1240h; aceito 728h; restante 512h; progresso 58.71%. M4-09 ainda não contribui horas aceitas até merge.
+The next project must be selected only after resolving current Product Fact & Claim Registry, query/page ownership, available factual evidence and runtime state. Historical conversation ordering is not authority.
 
-Próxima ação segura: Ready + merge da PR #82 somente com autorização explícita. Após merge, M4 pode ser declarada COMPLETE. M5 não inicia por sequência automática.
+## 4. Commercial Catalog / pricing architecture handoff
 
-Continuam gated: novas mudanças DNS/proxy, futuras mudanças GTM/GA4, Meta/CAPI, Ads/spend, FECH.AI/n8n/Make, backend/secrets e novas famílias de rotas não governadas.
+Commercial-value architecture is now a separate cross-project track.
+
+Detailed handoff:
+
+`docs/sfjm/MNT_FECHAI_COMMERCIAL_CATALOG_HANDOFF_2026-09-16.md`
+
+Operational ownership:
+
+```text
+FECH.AI
+= upstream Commercial Catalog / Publication architecture discovery
+
+MoreNumTegra
+= independent public consumer / presentation / SEO / performance / Form 46
+```
+
+PR #96 remains useful as the MoreNumTegra-side Commercial Data Plane/consumer contract boundary. Do not start its former local Stage B runtime migration while the FECH.AI upstream contract is still being discovered/adjudicated.
+
+This handoff does NOT authorize MoreNumTegra to query FECH.AI internal Supabase tables or expose service credentials.
+
+## 5. Security boundary carried forward
+
+A read-only cross-project inspection observed FECH.AI/Supabase security-advisor findings that are being handed to the FECH.AI audit for live reconciliation against its current Security-to-Scale WBS.
+
+Those observations are not independent vulnerability verdicts and must not be used as a reason to bypass the FECH.AI security program.
+
+Until a governed public read contract exists:
+
+- no direct browser access to FECH.AI internal tables;
+- no service-role/client secret in MoreNumTegra;
+- no new MoreNumTegra commercial backend;
+- no cross-project runtime coupling.
+
+## 6. Page-publication rules while Commercial Catalog is pending
+
+Commercial Catalog discovery does not block publication of additional exact-project pages when existing gates pass.
+
+For every new page:
+
+- only governed factual product claims;
+- only current governed commercial evidence if a price/reference is shown;
+- otherwise consult-only behavior;
+- visible commercial price and structured-data price must remain aligned;
+- Form 46, GTM/GA4, consent, canonical, sitemap, mobile and performance contracts remain unchanged unless separately authorized;
+- do not expand hardcoded commercial values as the target architecture.
+
+## 7. Current next safe action
+
+See `docs/NEXT_SAFE_ACTION.md`.
+
+The intended local continuation is the governed exact-project page publication stream. Commercial Catalog / upstream data-platform design continues independently in FECH.AI and returns to MoreNumTegra only through a future separately authorized consumer-integration gate.
