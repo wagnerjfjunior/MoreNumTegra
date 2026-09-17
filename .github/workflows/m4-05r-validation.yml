@@ -1,0 +1,27 @@
+name: M4-05R metadata validation
+
+on:
+  pull_request:
+    paths:
+      - 'src-greenn/preview/index.html'
+      - 'src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html'
+      - 'src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html'
+      - 'scripts/validate-m4-05r.mjs'
+      - '.github/workflows/m4-05r-validation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate entity and social metadata
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Show Node version
+        run: node --version
+      - name: Run M4-05R contract validator
+        run: node scripts/validate-m4-05r.mjs
