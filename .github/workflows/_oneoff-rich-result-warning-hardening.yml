@@ -27,131 +27,118 @@ jobs:
           node <<'NODE'
           const fs = require('fs');
 
-          const HOME = 'src-greenn/preview/index.html';
-          const ELO = 'src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html';
-          const CAPI = 'src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html';
-          const FOOTER = 'src-greenn/blocks/03-footer.html';
-          const FAQ = 'src-greenn/blocks/02-html-pos-form.html';
-          const VALIDATOR = 'scripts/validate-m4-05r.mjs';
+          const HOME='src-greenn/preview/index.html';
+          const ELO='src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html';
+          const CAPI='src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html';
+          const FOOTER='src-greenn/blocks/03-footer.html';
+          const FAQ='src-greenn/blocks/02-html-pos-form.html';
+          const VALIDATOR='scripts/validate-m4-05r.mjs';
 
-          const TEGRA_ID = 'https://www.tegraincorporadora.com.br/#organization';
-          const LOGO = 'https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp';
-          const POSTAL = '05093-000';
-          const PHONE = '+5511960779328';
-          const CRECI = '209.905-F';
+          const TEGRA_ID='https://www.tegraincorporadora.com.br/#organization';
+          const TEGRA_LOGO='https://www.tegraincorporadora.com.br/images/logo-tegra-color.svg';
+          const TEGRA_IMAGE='https://www.tegraincorporadora.com.br/og-image.jpg';
+          const TEGRA_PHONE='+55-11-3500-3223';
+          const TEGRA_PRICE_RANGE='Consulte-nos';
+          const TEGRA_CRECI='028638-J';
+          const SABRINA_ID='https://www.moretegra.com.br/#sabrina-real-estate-agent';
+          const ESTANDE_ID='https://www.moretegra.com.br/#estande-caminhos-da-lapa';
+          const SABRINA_LOGO='https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp';
+          const POSTAL='05093-000';
+          const PHONE='+5511960779328';
+          const CRECI='209.905-F';
 
-          const read = (p) => fs.readFileSync(p, 'utf8');
-          const write = (p, s) => fs.writeFileSync(p, s);
-          function count(text, needle) { return text.split(needle).length - 1; }
-          function rep(text, oldText, newText, expected, label) {
-            const hits = count(text, oldText);
-            if (hits !== expected) throw new Error(`${label}: expected ${expected} match(es), found ${hits}`);
+          const read=p=>fs.readFileSync(p,'utf8');
+          const write=(p,s)=>fs.writeFileSync(p,s);
+          function rep(text,oldText,newText,expected,label){
+            const hits=text.split(oldText).length-1;
+            if(hits!==expected) throw new Error(`${label}: expected ${expected}, found ${hits}`);
             return text.split(oldText).join(newText);
           }
-
-          function hardenSchemaPage(text, {name, home=false}) {
-            // Do not expand Tegra's external authoritative entity as a second LocalBusiness on MoreNumTegra.
-            const tegraOld = `"@type":"RealEstateAgent",\n        "@id":"${TEGRA_ID}",`;
-            const tegraNew = `"@type":"Organization",\n        "@id":"${TEGRA_ID}",`;
-            text = rep(text, tegraOld, tegraNew, 1, `${name} authoritative Tegra type`);
-
-            // Ensure the external organization has a crawlable official logo where the local copy did not yet include it.
-            const tegraUrlBrand = `"url":"https://www.tegraincorporadora.com.br/",\n        "brand":{"@id":"https://www.moretegra.com.br/#tegra-brand"}`;
-            const tegraUrlLogoBrand = `"url":"https://www.tegraincorporadora.com.br/",\n        "logo":"${LOGO}",\n        "brand":{"@id":"https://www.moretegra.com.br/#tegra-brand"}`;
-            if (count(text, tegraUrlBrand) === 1) text = rep(text, tegraUrlBrand, tegraUrlLogoBrand, 1, `${name} Tegra logo`);
-            else if (count(text, tegraUrlLogoBrand) !== 1) throw new Error(`${name}: authoritative Tegra logo anchor not found exactly once`);
-
-            // Every work-location address for Sabrina/Estande must carry the verified postal code.
-            const addrOld = `"streetAddress":"Rua Fortunato Ferraz, 625",\n          "addressLocality":"São Paulo",\n          "addressRegion":"SP",\n          "addressCountry"`;
-            const addrNew = `"streetAddress":"Rua Fortunato Ferraz, 625",\n          "addressLocality":"São Paulo",\n          "addressRegion":"SP",\n          "postalCode":"${POSTAL}",\n          "addressCountry"`;
-            const expectedPretty = home ? 2 : 1;
-            if (count(text, addrOld)) text = rep(text, addrOld, addrNew, expectedPretty, `${name} pretty postalCode`);
-
-            // Project pages also contain a minified Sabrina LocalBusiness definition.
-            const minAddrOld = `"streetAddress":"Rua Fortunato Ferraz, 625","addressLocality":"São Paulo","addressRegion":"SP","addressCountry":"BR"`;
-            const minAddrNew = `"streetAddress":"Rua Fortunato Ferraz, 625","addressLocality":"São Paulo","addressRegion":"SP","postalCode":"${POSTAL}","addressCountry":"BR"`;
-            if (count(text, minAddrOld)) text = rep(text, minAddrOld, minAddrNew, 1, `${name} minified postalCode`);
-
-            // Enrich the Sabrina LocalBusiness node with only factual, applicable fields.
-            const minAgentOld = `"sameAs":"https://corretor.tegravendas.com.br/sabrina/sp","telephone":"${PHONE}","address":`;
-            const minAgentNew = `"sameAs":"https://corretor.tegravendas.com.br/sabrina/sp","telephone":"${PHONE}","priceRange":"Consulte condições","logo":"${LOGO}","image":"${LOGO}","identifier":{"@type":"PropertyValue","propertyID":"CRECI-SP","value":"${CRECI}"},"address":`;
-            if (count(text, minAgentOld)) text = rep(text, minAgentOld, minAgentNew, 1, `${name} minified Sabrina enrichment`);
-
-            if (home) {
-              // Home graph Sabrina node (pretty JSON-LD).
-              const prettyAgentOld = `"sameAs":"https://corretor.tegravendas.com.br/sabrina/sp",\n        "telephone":"${PHONE}",\n        "address":`;
-              const prettyAgentNew = `"sameAs":"https://corretor.tegravendas.com.br/sabrina/sp",\n        "telephone":"${PHONE}",\n        "priceRange":"Consulte condições",\n        "logo":"${LOGO}",\n        "image":"${LOGO}",\n        "identifier":{"@type":"PropertyValue","propertyID":"CRECI-SP","value":"${CRECI}"},\n        "address":`;
-              text = rep(text, prettyAgentOld, prettyAgentNew, 1, `${name} graph Sabrina enrichment`);
-
-              // Standalone LocalBusiness already has logo/priceRange; add representative image and postal code.
-              const standaloneLogoOld = `"logo":"${LOGO}",\n    "identifier"`;
-              const standaloneLogoNew = `"logo":"${LOGO}",\n    "image":"${LOGO}",\n    "identifier"`;
-              text = rep(text, standaloneLogoOld, standaloneLogoNew, 1, `${name} standalone image`);
-              const standaloneAddrOld = `"streetAddress":"Rua Fortunato Ferraz, 625",\n      "addressLocality":"São Paulo",\n      "addressRegion":"SP",\n      "addressCountry":"BR"`;
-              const standaloneAddrNew = `"streetAddress":"Rua Fortunato Ferraz, 625",\n      "addressLocality":"São Paulo",\n      "addressRegion":"SP",\n      "postalCode":"${POSTAL}",\n      "addressCountry":"BR"`;
-              text = rep(text, standaloneAddrOld, standaloneAddrNew, 1, `${name} standalone postalCode`);
-            }
-
-            return text;
+          function walk(value,fn){
+            if(Array.isArray(value)){value.forEach(v=>walk(v,fn));return;}
+            if(!value||typeof value!=='object')return;
+            fn(value);Object.values(value).forEach(v=>walk(v,fn));
+          }
+          function updateJsonLd(html,id,mutator){
+            const re=new RegExp(`(<script\\s+id=["']${id}["']\\s+type=["']application/ld\\+json["']>)([\\s\\S]*?)(<\\/script>)`,'i');
+            const match=html.match(re);
+            if(!match) throw new Error(`JSON-LD #${id} not found`);
+            const data=JSON.parse(match[2]);
+            mutator(data);
+            const formatted='\n  '+JSON.stringify(data,null,2).split('\n').join('\n  ')+'\n  ';
+            return html.replace(re,`${match[1]}${formatted}${match[3]}`);
+          }
+          function hardenGraph(data,label){
+            let tegra=0,sabrina=0,estande=0;
+            walk(data,node=>{
+              if(node['@id']===TEGRA_ID && [].concat(node['@type']||[]).includes('RealEstateAgent')){
+                tegra++;
+                node.name='Tegra Incorporadora';
+                node.legalName='TG SÃO PAULO EMPREENDIMENTOS IMOBILIÁRIOS S.A.';
+                node.alternateName='Tegra';
+                node.description='Incorporadora de imóveis de alto padrão em São Paulo, Campinas e Rio de Janeiro.';
+                node.url='https://www.tegraincorporadora.com.br/';
+                node.telephone=TEGRA_PHONE;
+                node.priceRange=TEGRA_PRICE_RANGE;
+                node.logo={'@type':'ImageObject','url':TEGRA_LOGO,'width':250,'height':60};
+                node.image=TEGRA_IMAGE;
+                node.identifier={'@type':'PropertyValue','propertyID':'CRECI','value':TEGRA_CRECI};
+                node.address={'@type':'PostalAddress','streetAddress':'Av. das Nações Unidas, 14.401, Torre Paineira, 1º andar','addressLocality':'São Paulo','addressRegion':'SP','postalCode':'04794-000','addressCountry':'BR'};
+                node.sameAs=['https://www.instagram.com/tegraincorporadora','https://www.linkedin.com/company/tegraincorporadora','https://www.facebook.com/tegraincorporadora','https://www.youtube.com/tegraincorporadora','https://www.pinterest.com/tegraincorporadora'];
+              }
+              if(node['@id']===SABRINA_ID && [].concat(node['@type']||[]).includes('RealEstateAgent')){
+                sabrina++;
+                node.priceRange='Consulte condições';
+                node.logo=SABRINA_LOGO;
+                node.image=SABRINA_LOGO;
+                node.identifier={'@type':'PropertyValue','propertyID':'CRECI-SP','value':CRECI};
+                if(!node.address||node.address['@type']!=='PostalAddress') throw new Error(`${label}: Sabrina address missing`);
+                node.address.postalCode=POSTAL;
+              }
+              if(node['@id']===ESTANDE_ID){
+                estande++;
+                if(node.address?.['@type']==='PostalAddress') node.address.postalCode=POSTAL;
+              }
+            });
+            if(tegra!==1) throw new Error(`${label}: expected one authoritative Tegra RealEstateAgent, got ${tegra}`);
+            if(sabrina!==1) throw new Error(`${label}: expected one Sabrina RealEstateAgent, got ${sabrina}`);
+            if(estande!==1) throw new Error(`${label}: expected one Estande entity, got ${estande}`);
           }
 
-          let home = hardenSchemaPage(read(HOME), {name:'home', home:true});
-          let elo = hardenSchemaPage(read(ELO), {name:'elo-duo'});
-          let capi = hardenSchemaPage(read(CAPI), {name:'capiitolo'});
-          let footer = read(FOOTER);
-          let faq = read(FAQ);
-          let validator = read(VALIDATOR);
+          let home=read(HOME),elo=read(ELO),capi=read(CAPI),footer=read(FOOTER),faq=read(FAQ),validator=read(VALIDATOR);
+          home=updateJsonLd(home,'mt-search-schema',d=>hardenGraph(d,'home graph'));
+          home=updateJsonLd(home,'mt-localbusiness-schema',d=>{
+            if(d['@id']!==SABRINA_ID||d['@type']!=='RealEstateAgent') throw new Error('home standalone Sabrina root mismatch');
+            d.priceRange='Consulte condições';d.logo=SABRINA_LOGO;d.image=SABRINA_LOGO;d.identifier={'@type':'PropertyValue','propertyID':'CRECI-SP','value':CRECI};d.address.postalCode=POSTAL;
+          });
+          elo=updateJsonLd(elo,'mt-project-schema',d=>hardenGraph(d,'elo graph'));
+          capi=updateJsonLd(capi,'mnt-capiitolo-schema',d=>hardenGraph(d,'capi graph'));
 
-          // Visible parity on home footer.
-          const footerOld = `<p><strong>Atendimento Tegra Vendas.</strong><br>Use o formulário ou o WhatsApp desta página para negociar.</p>`;
-          const footerNew = `<p><strong>Sabrina da Tegra · Corretora Tegra Vendas · CRECI-SP ${CRECI}.</strong><br>Estande Tegra Caminhos da Lapa · Rua Fortunato Ferraz, 625 · São Paulo/SP · CEP ${POSTAL}.<br><a href="tel:${PHONE}">(11) 96077-9328</a> · <a href="https://corretor.tegravendas.com.br/sabrina/sp" target="_blank" rel="noopener noreferrer">perfil oficial Tegra Vendas</a></p>`;
-          footer = rep(footer, footerOld, footerNew, 1, 'footer visible Sabrina parity');
+          // Visible parity for Sabrina's verified work location.
+          home=rep(home,'Estande Tegra Caminhos da Lapa · Rua Fortunato Ferraz, 625 — São Paulo/SP · <a','Estande Tegra Caminhos da Lapa · Rua Fortunato Ferraz, 625 — São Paulo/SP · CEP 05093-000 · <a',1,'home visible CEP');
+          elo=rep(elo,'Estande Tegra Caminhos da Lapa · Rua Fortunato Ferraz, 625 — São Paulo/SP<br>','Estande Tegra Caminhos da Lapa · Rua Fortunato Ferraz, 625 — São Paulo/SP · CEP 05093-000<br>',1,'elo visible CEP');
+          capi=rep(capi,`<p><strong>Sabrina da Tegra</strong> · Corretora Tegra Vendas · CRECI-SP ${CRECI} · <a href="tel:${PHONE}">(11) 96077-9328</a>.</p>`,`<p><strong>Sabrina da Tegra</strong> · Corretora Tegra Vendas · CRECI-SP ${CRECI} · Estande Tegra Caminhos da Lapa · Rua Fortunato Ferraz, 625 · São Paulo/SP · CEP ${POSTAL} · <a href="tel:${PHONE}">(11) 96077-9328</a>.</p>`,1,'capi initial CEP');
+          capi=rep(capi,'Estande Tegra Caminhos da Lapa · Rua Fortunato Ferraz, 625 — São Paulo/SP<br>','Estande Tegra Caminhos da Lapa · Rua Fortunato Ferraz, 625 — São Paulo/SP · CEP 05093-000<br>',1,'capi dynamic CEP');
+          footer=rep(footer,'<p><strong>Atendimento Tegra Vendas.</strong><br>Use o formulário ou o WhatsApp desta página para negociar.</p>',`<p><strong>Sabrina da Tegra · Corretora Tegra Vendas · CRECI-SP ${CRECI}.</strong><br>Estande Tegra Caminhos da Lapa · Rua Fortunato Ferraz, 625 · São Paulo/SP · CEP ${POSTAL}.<br><a href="tel:${PHONE}">(11) 96077-9328</a> · <a href="https://corretor.tegravendas.com.br/sabrina/sp" target="_blank" rel="noopener noreferrer">perfil oficial Tegra Vendas</a></p>`,1,'footer contact parity');
 
-          // Visible parity on Elo Duo.
-          const eloVisibleOld = `Estande Tegra Caminhos da Lapa · Rua Fortunato Ferraz, 625 — São Paulo/SP<br>`;
-          const eloVisibleNew = `Estande Tegra Caminhos da Lapa · Rua Fortunato Ferraz, 625 — São Paulo/SP · CEP ${POSTAL}<br>`;
-          elo = rep(elo, eloVisibleOld, eloVisibleNew, 1, 'elo visible postal code');
+          // Canonical consistency in the visible homepage FAQ graph.
+          faq=rep(faq,'https://moretegra.com.br/#faq','https://www.moretegra.com.br/#faq',1,'FAQ @id');
+          faq=rep(faq,'https://moretegra.com.br/#webpage','https://www.moretegra.com.br/#webpage',1,'FAQ isPartOf');
 
-          // Visible parity on CAPIITOLO initial HTML and dynamically injected experience.
-          const capiInitialOld = `<p><strong>Sabrina da Tegra</strong> · Corretora Tegra Vendas · CRECI-SP ${CRECI} · <a href="tel:${PHONE}">(11) 96077-9328</a>.</p>`;
-          const capiInitialNew = `<p><strong>Sabrina da Tegra</strong> · Corretora Tegra Vendas · CRECI-SP ${CRECI} · Estande Tegra Caminhos da Lapa · Rua Fortunato Ferraz, 625 · São Paulo/SP · CEP ${POSTAL} · <a href="tel:${PHONE}">(11) 96077-9328</a>.</p>`;
-          capi = rep(capi, capiInitialOld, capiInitialNew, 1, 'capi initial visible postal code');
-          const capiDynamicOld = `Estande Tegra Caminhos da Lapa · Rua Fortunato Ferraz, 625 — São Paulo/SP<br>`;
-          const capiDynamicNew = `Estande Tegra Caminhos da Lapa · Rua Fortunato Ferraz, 625 — São Paulo/SP · CEP ${POSTAL}<br>`;
-          capi = rep(capi, capiDynamicOld, capiDynamicNew, 1, 'capi dynamic visible postal code');
+          // Persistent regression guards.
+          validator=rep(validator,`const SABRINA_CRECI = '${CRECI}';`,`const SABRINA_CRECI = '${CRECI}';\nconst SABRINA_POSTAL_CODE = '${POSTAL}';\nconst SABRINA_BUSINESS_IMAGE = '${SABRINA_LOGO}';\nconst TEGRA_PHONE = '${TEGRA_PHONE}';\nconst TEGRA_PRICE_RANGE = '${TEGRA_PRICE_RANGE}';\nconst TEGRA_LOGO = '${TEGRA_LOGO}';\nconst TEGRA_IMAGE = '${TEGRA_IMAGE}';`,1,'validator constants');
 
-          // FAQPage ids must match the www canonical entity graph.
-          faq = rep(faq, `https://moretegra.com.br/#faq`, `https://www.moretegra.com.br/#faq`, 1, 'FAQ canonical @id');
-          faq = rep(faq, `https://moretegra.com.br/#webpage`, `https://www.moretegra.com.br/#webpage`, 1, 'FAQ isPartOf canonical @id');
+          validator=rep(validator,`const tegra = typedNode(nodes, TEGRA_ID, 'RealEstateAgent');\n  if (!tegra) fail(page.name, 'authoritative Tegra entity definition missing or wrong type');\n  else if (tegra.brand?.['@id'] !== TEGRA_BRAND_ID) fail(page.name, 'Tegra brand must be attached to the authoritative organization entity');`,`const tegra = typedNode(nodes, TEGRA_ID, 'RealEstateAgent');\n  if (!tegra) fail(page.name, 'authoritative Tegra entity definition missing or wrong type');\n  else {\n    if (tegra.brand?.['@id'] !== TEGRA_BRAND_ID) fail(page.name, 'Tegra brand must be attached to the authoritative organization entity');\n    if (tegra.telephone !== TEGRA_PHONE || tegra.priceRange !== TEGRA_PRICE_RANGE || tegra.image !== TEGRA_IMAGE) fail(page.name, 'authoritative Tegra rich-result fields mismatch');\n    if (tegra.logo?.url !== TEGRA_LOGO) fail(page.name, 'authoritative Tegra logo mismatch');\n    if (tegra.address?.postalCode !== '04794-000') fail(page.name, 'authoritative Tegra SP address mismatch');\n  }`,1,'validator Tegra fields');
 
-          // Validator constants and entity policy.
-          const constantsOld = `const SABRINA_CRECI = '${CRECI}';`;
-          const constantsNew = `const SABRINA_CRECI = '${CRECI}';\nconst SABRINA_POSTAL_CODE = '${POSTAL}';\nconst TEGRA_LOGO = '${LOGO}';`;
-          validator = rep(validator, constantsOld, constantsNew, 1, 'validator constants');
+          validator=rep(validator,`if (a?.['@type'] !== 'PostalAddress' || a.streetAddress !== 'Rua Fortunato Ferraz, 625' || a.addressLocality !== 'São Paulo' || a.addressRegion !== 'SP' || a.addressCountry !== 'BR') fail(page.name, 'Sabrina RealEstateAgent address mismatch');`,`if (a?.['@type'] !== 'PostalAddress' || a.streetAddress !== 'Rua Fortunato Ferraz, 625' || a.addressLocality !== 'São Paulo' || a.addressRegion !== 'SP' || a.postalCode !== SABRINA_POSTAL_CODE || a.addressCountry !== 'BR') fail(page.name, 'Sabrina RealEstateAgent address mismatch');\n    if (sabrinaAgent.priceRange !== 'Consulte condições') fail(page.name, 'Sabrina RealEstateAgent priceRange mismatch');\n    if (sabrinaAgent.logo !== SABRINA_BUSINESS_IMAGE || sabrinaAgent.image !== SABRINA_BUSINESS_IMAGE) fail(page.name, 'Sabrina RealEstateAgent image/logo mismatch');\n    if (sabrinaAgent.identifier?.propertyID !== 'CRECI-SP' || sabrinaAgent.identifier?.value !== SABRINA_CRECI) fail(page.name, 'Sabrina RealEstateAgent CRECI identifier mismatch');`,1,'validator Sabrina fields');
 
-          const tegraValidationOld = `const tegra = typedNode(nodes, TEGRA_ID, 'RealEstateAgent');\n  if (!tegra) fail(page.name, 'authoritative Tegra entity definition missing or wrong type');\n  else if (tegra.brand?.['@id'] !== TEGRA_BRAND_ID) fail(page.name, 'Tegra brand must be attached to the authoritative organization entity');`;
-          const tegraValidationNew = `const tegra = typedNode(nodes, TEGRA_ID, 'Organization');\n  if (!tegra) fail(page.name, 'authoritative Tegra entity definition missing or wrong type');\n  else {\n    if (tegra.brand?.['@id'] !== TEGRA_BRAND_ID) fail(page.name, 'Tegra brand must be attached to the authoritative organization entity');\n    if (tegra.logo !== TEGRA_LOGO) fail(page.name, 'authoritative Tegra logo mismatch');\n  }\n  if (typedNode(nodes, TEGRA_ID, 'RealEstateAgent')) fail(page.name, 'external Tegra entity must not be expanded as a second LocalBusiness in MoreNumTegra');`;
-          validator = rep(validator, tegraValidationOld, tegraValidationNew, 1, 'validator Tegra entity policy');
+          validator=rep(validator,`if (local.address?.['@type'] !== 'PostalAddress' || !local.address?.streetAddress) fail(page.name, 'standalone LocalBusiness physical address missing');`,`if (local.address?.['@type'] !== 'PostalAddress' || !local.address?.streetAddress || local.address?.postalCode !== SABRINA_POSTAL_CODE) fail(page.name, 'standalone LocalBusiness physical address/postalCode missing');\n        if (local.priceRange !== 'Consulte condições' || local.image !== SABRINA_BUSINESS_IMAGE || local.logo !== SABRINA_BUSINESS_IMAGE) fail(page.name, 'standalone LocalBusiness recommended fields mismatch');`,1,'validator standalone Sabrina');
 
-          const sabrinaAddrOld = `if (a?.['@type'] !== 'PostalAddress' || a.streetAddress !== 'Rua Fortunato Ferraz, 625' || a.addressLocality !== 'São Paulo' || a.addressRegion !== 'SP' || a.addressCountry !== 'BR') fail(page.name, 'Sabrina RealEstateAgent address mismatch');`;
-          const sabrinaAddrNew = `if (a?.['@type'] !== 'PostalAddress' || a.streetAddress !== 'Rua Fortunato Ferraz, 625' || a.addressLocality !== 'São Paulo' || a.addressRegion !== 'SP' || a.postalCode !== SABRINA_POSTAL_CODE || a.addressCountry !== 'BR') fail(page.name, 'Sabrina RealEstateAgent address mismatch');\n    if (sabrinaAgent.priceRange !== 'Consulte condições') fail(page.name, 'Sabrina RealEstateAgent priceRange mismatch');\n    if (sabrinaAgent.logo !== TEGRA_LOGO || sabrinaAgent.image !== TEGRA_LOGO) fail(page.name, 'Sabrina RealEstateAgent business image/logo mismatch');\n    if (sabrinaAgent.identifier?.propertyID !== 'CRECI-SP' || sabrinaAgent.identifier?.value !== SABRINA_CRECI) fail(page.name, 'Sabrina RealEstateAgent CRECI identifier mismatch');`;
-          validator = rep(validator, sabrinaAddrOld, sabrinaAddrNew, 1, 'validator Sabrina rich fields');
+          const visibilityAnchor=`for (const needle of page.visibleNeedles ?? []) if (!html.includes(needle)) fail(page.name, \`visible content missing: ${needle}\`);`;
+          if(!validator.includes(visibilityAnchor)) throw new Error('validator visible loop anchor missing');
+          validator=validator.replace(visibilityAnchor,`${visibilityAnchor}\n  if (!html.includes('CEP ${POSTAL}')) fail(page.name, 'verified Sabrina postal code missing from visible initial HTML');\n  if (page.name === 'home') {\n    const faqHtml = await readFile('src-greenn/blocks/02-html-pos-form.html', 'utf8');\n    if (!faqHtml.includes('https://www.moretegra.com.br/#faq') || !faqHtml.includes('https://www.moretegra.com.br/#webpage') || faqHtml.includes('https://moretegra.com.br/#')) fail(page.name, 'homepage FAQ canonical entity ids mismatch');\n  }`);
 
-          const standaloneAddrCheckOld = `if (local.address?.['@type'] !== 'PostalAddress' || !local.address?.streetAddress) fail(page.name, 'standalone LocalBusiness physical address missing');`;
-          const standaloneAddrCheckNew = `if (local.address?.['@type'] !== 'PostalAddress' || !local.address?.streetAddress || local.address?.postalCode !== SABRINA_POSTAL_CODE) fail(page.name, 'standalone LocalBusiness physical address/postalCode missing');\n        if (local.image !== TEGRA_LOGO || local.logo !== TEGRA_LOGO) fail(page.name, 'standalone LocalBusiness business image/logo mismatch');\n        if (local.priceRange !== 'Consulte condições') fail(page.name, 'standalone LocalBusiness priceRange mismatch');`;
-          validator = rep(validator, standaloneAddrCheckOld, standaloneAddrCheckNew, 1, 'validator standalone LocalBusiness');
-
-          // Visible parity and canonical FAQ guards.
-          const visibleLoopOld = `for (const needle of page.visibleNeedles ?? []) if (!html.includes(needle)) fail(page.name, \`visible content missing: ${needle}\`);`;
-          if (!validator.includes(visibleLoopOld)) throw new Error('validator visibleNeedles loop anchor missing');
-          validator = validator.replace(visibleLoopOld, `${visibleLoopOld}\n  if (!html.includes('CEP ${POSTAL}')) fail(page.name, 'verified Sabrina work-location postal code missing from visible HTML');\n  if (page.name === 'home') {\n    const faqHtml = await readFile('src-greenn/blocks/02-html-pos-form.html', 'utf8');\n    if (!faqHtml.includes('https://www.moretegra.com.br/#faq') || !faqHtml.includes('https://www.moretegra.com.br/#webpage')) fail(page.name, 'homepage FAQ entity ids must use the www canonical host');\n    if (faqHtml.includes('https://moretegra.com.br/#')) fail(page.name, 'homepage FAQ retains non-www entity id');\n  }`);
-
-          write(HOME, home);
-          write(ELO, elo);
-          write(CAPI, capi);
-          write(FOOTER, footer);
-          write(FAQ, faq);
-          write(VALIDATOR, validator);
+          write(HOME,home);write(ELO,elo);write(CAPI,capi);write(FOOTER,footer);write(FAQ,faq);write(VALIDATOR,validator);
           NODE
 
           node scripts/validate-m4-05r.mjs
