@@ -1,0 +1,136 @@
+name: One-off M4-05R brand-domain correction
+
+on:
+  push:
+    branches:
+      - fix/mnt-m4-05r-schema-brand-domain
+    paths:
+      - '.github/workflows/_oneoff-fix-m4-05r-brand-domain.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: fix/mnt-m4-05r-schema-brand-domain
+          fetch-depth: 0
+
+      - name: Correct Schema.org brand domain usage
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          BRAND_ID = 'https://www.moretegra.com.br/#tegra-brand'
+          TEGRA_ID = 'https://www.tegraincorporadora.com.br/#organization'
+
+          pages = [
+              Path('src-greenn/preview/index.html'),
+              Path('src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html'),
+              Path('src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html'),
+          ]
+
+          for path in pages:
+              text = path.read_text(encoding='utf-8')
+
+              # brand is not valid on ApartmentComplex. Remove the legacy relation
+              # first, then attach the Brand to Tegra's Organization/RealEstateAgent,
+              # where Schema.org explicitly allows brand.
+              text = text.replace(f'        "brand":{{"@id":"{BRAND_ID}"}},\n', '')
+              text = text.replace(f',"brand":{{"@id":"{BRAND_ID}"}}', '')
+
+              pretty_target = (
+                  f'        "@type":"RealEstateAgent",\n'
+                  f'        "@id":"{TEGRA_ID}",\n'
+                  f'        "name":"Tegra Incorporadora",\n'
+                  f'        "url":"https://www.tegraincorporadora.com.br/"\n'
+                  f'      }}'
+              )
+              pretty_replacement = (
+                  f'        "@type":"RealEstateAgent",\n'
+                  f'        "@id":"{TEGRA_ID}",\n'
+                  f'        "name":"Tegra Incorporadora",\n'
+                  f'        "url":"https://www.tegraincorporadora.com.br/",\n'
+                  f'        "brand":{{"@id":"{BRAND_ID}"}}\n'
+                  f'      }}'
+              )
+
+              compact_target = (
+                  f'{{"@type":"RealEstateAgent","@id":"{TEGRA_ID}",'
+                  f'"name":"Tegra Incorporadora","url":"https://www.tegraincorporadora.com.br/"}}'
+              )
+              compact_replacement = (
+                  f'{{"@type":"RealEstateAgent","@id":"{TEGRA_ID}",'
+                  f'"name":"Tegra Incorporadora","url":"https://www.tegraincorporadora.com.br/",'
+                  f'"brand":{{"@id":"{BRAND_ID}"}}}}'
+              )
+
+              before = text
+              if pretty_target in text:
+                  text = text.replace(pretty_target, pretty_replacement, 1)
+              elif compact_target in text:
+                  text = text.replace(compact_target, compact_replacement, 1)
+              else:
+                  raise SystemExit(f'{path}: authoritative Tegra node pattern not found')
+
+              if text == before:
+                  raise SystemExit(f'{path}: no schema change produced')
+              path.write_text(text, encoding='utf-8')
+
+          validator = Path('scripts/validate-m4-05r.mjs')
+          text = validator.read_text(encoding='utf-8')
+
+          if "const TEGRA_BRAND_ID" not in text:
+              text = text.replace(
+                  "const TEGRA_ID = 'https://www.tegraincorporadora.com.br/#organization';\n",
+                  "const TEGRA_ID = 'https://www.tegraincorporadora.com.br/#organization';\n"
+                  "const TEGRA_BRAND_ID = 'https://www.moretegra.com.br/#tegra-brand';\n",
+                  1,
+              )
+
+          text = text.replace(
+              "['WebSite', 'CollectionPage', 'ItemList', 'RealEstateAgent', 'Person', 'Service']",
+              "['WebSite', 'CollectionPage', 'ItemList', 'RealEstateAgent', 'Brand', 'Person', 'Service']",
+          )
+          text = text.replace(
+              "['WebSite', 'WebPage', 'BreadcrumbList', 'ApartmentComplex', 'FloorPlan', 'ImageObject', 'RealEstateAgent', 'Person', 'Service']",
+              "['WebSite', 'WebPage', 'BreadcrumbList', 'ApartmentComplex', 'FloorPlan', 'ImageObject', 'RealEstateAgent', 'Brand', 'Person', 'Service']",
+          )
+          text = text.replace('TEGRA_ID, SABRINA_ID]', 'TEGRA_ID, TEGRA_BRAND_ID, SABRINA_ID]')
+
+          old = "  const tegra = typedNode(nodes, TEGRA_ID, 'RealEstateAgent');\n  if (!tegra) fail(page.name, 'authoritative Tegra entity definition missing or wrong type');\n"
+          new = (
+              "  const tegra = typedNode(nodes, TEGRA_ID, 'RealEstateAgent');\n"
+              "  if (!tegra) fail(page.name, 'authoritative Tegra entity definition missing or wrong type');\n"
+              "  else if (tegra.brand?.['@id'] !== TEGRA_BRAND_ID) fail(page.name, 'Tegra brand must be attached to the authoritative organization entity');\n\n"
+              "  for (const apartmentComplex of nodes.filter((node) => [].concat(node['@type'] ?? []).includes('ApartmentComplex'))) {\n"
+              "    if (Object.hasOwn(apartmentComplex, 'brand')) fail(page.name, 'brand is not valid on ApartmentComplex; reconcile via official project sameAs and Tegra organization entity');\n"
+              "  }\n"
+          )
+          if old not in text:
+              raise SystemExit('validator: Tegra validation anchor not found')
+          text = text.replace(old, new, 1)
+          validator.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Run M4-05R validator
+        run: node scripts/validate-m4-05r.mjs
+
+      - name: Commit functional correction and remove one-off workflow
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/_oneoff-fix-m4-05r-brand-domain.yml
+          git add src-greenn/preview/index.html \
+                  src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html \
+                  src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html \
+                  scripts/validate-m4-05r.mjs
+          git commit -m "fix(schema): align Tegra brand relation with Schema.org domain"
+          git push origin HEAD:fix/mnt-m4-05r-schema-brand-domain
