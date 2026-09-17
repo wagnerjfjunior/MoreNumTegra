@@ -115,6 +115,14 @@ function typedNode(nodes, id, type) {
 for (const page of pages) {
   const html = await readFile(page.file, 'utf8');
 
+  const expectedPageType = page.name === 'home' ? 'schema:CollectionPage' : 'schema:WebPage';
+  const expectedHeadAbout = page.canonical + '#webpage';
+  const headTag = html.match(/<head\b[^>]*>/i)?.[0] ?? '';
+  if (!headTag.includes(`about="${expectedHeadAbout}"`) || !headTag.includes(`typeof="${expectedPageType}"`) || !headTag.includes('schema: https://schema.org/') || !headTag.includes('og: https://ogp.me/ns#') || !headTag.includes('twitter: http://dev.twitter.com/docs/cards#')) fail(page.name, 'typed RDFa social metadata subject missing or inconsistent');
+  for (const twitterSuffix of ['card','title','description','image','image:alt']) {
+    if (!html.includes(`name="twitter:${twitterSuffix}" property="twitter:${twitterSuffix}"`)) fail(page.name, `Twitter/X RDFa property binding missing: ${twitterSuffix}`);
+  }
+
   if (!/<h1\b[^>]*>[\s\S]*?<\/h1>/i.test(html)) fail(page.name, 'H1 missing from initial HTML source');
 
   const canonical = attr(html, /<link\b[^>]*rel=["']canonical["'][^>]*>/i, 'href');
