@@ -2,6 +2,7 @@ import { readFile } from 'node:fs/promises';
 import process from 'node:process';
 
 const TEGRA_ID = 'https://www.tegraincorporadora.com.br/#organization';
+const TEGRA_BRAND_ID = 'https://www.moretegra.com.br/#tegra-brand';
 const SABRINA_ID = 'https://www.moretegra.com.br/#sabrina-da-tegra';
 const TEGRA_VENDAS_ID = 'https://www.moretegra.com.br/#tegra-vendas';
 const SABRINA_PROFILE = 'https://corretor.tegravendas.com.br/sabrina/sp';
@@ -14,8 +15,8 @@ const pages = [
     file: 'src-greenn/preview/index.html',
     canonical: 'https://www.moretegra.com.br/',
     schemaId: 'mt-search-schema',
-    requiredTypes: ['WebSite', 'CollectionPage', 'ItemList', 'RealEstateAgent', 'Person', 'Service'],
-    requiredIds: ['https://www.moretegra.com.br/#website', 'https://www.moretegra.com.br/#webpage', 'https://www.moretegra.com.br/#projects', TEGRA_ID, SABRINA_ID],
+    requiredTypes: ['WebSite', 'CollectionPage', 'ItemList', 'RealEstateAgent', 'Brand', 'Person', 'Service'],
+    requiredIds: ['https://www.moretegra.com.br/#website', 'https://www.moretegra.com.br/#webpage', 'https://www.moretegra.com.br/#projects', TEGRA_ID, TEGRA_BRAND_ID, SABRINA_ID],
     visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328']
   },
   {
@@ -23,8 +24,8 @@ const pages = [
     file: 'src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html',
     canonical: 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/',
     schemaId: 'mnt-capiitolo-schema',
-    requiredTypes: ['WebSite', 'WebPage', 'BreadcrumbList', 'ApartmentComplex', 'FloorPlan', 'ImageObject', 'RealEstateAgent', 'Person', 'Service'],
-    requiredIds: ['https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#webpage', 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#project', TEGRA_ID, SABRINA_ID],
+    requiredTypes: ['WebSite', 'WebPage', 'BreadcrumbList', 'ApartmentComplex', 'FloorPlan', 'ImageObject', 'RealEstateAgent', 'Brand', 'Person', 'Service'],
+    requiredIds: ['https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#webpage', 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#project', TEGRA_ID, TEGRA_BRAND_ID, SABRINA_ID],
     requiredSameAs: 'https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/chacara-klabin/chacaraklabin',
     visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328']
   },
@@ -33,8 +34,8 @@ const pages = [
     file: 'src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html',
     canonical: 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/',
     schemaId: 'mt-project-schema',
-    requiredTypes: ['WebSite', 'WebPage', 'BreadcrumbList', 'ApartmentComplex', 'FloorPlan', 'ImageObject', 'RealEstateAgent', 'Person', 'Service'],
-    requiredIds: ['https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#webpage', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#project', TEGRA_ID, SABRINA_ID],
+    requiredTypes: ['WebSite', 'WebPage', 'BreadcrumbList', 'ApartmentComplex', 'FloorPlan', 'ImageObject', 'RealEstateAgent', 'Brand', 'Person', 'Service'],
+    requiredIds: ['https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#webpage', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#project', TEGRA_ID, TEGRA_BRAND_ID, SABRINA_ID],
     requiredSameAs: 'https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/lapa/caminhos-da-lapa-elo-duo',
     visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328']
   }
@@ -149,6 +150,11 @@ for (const page of pages) {
 
   const tegra = typedNode(nodes, TEGRA_ID, 'RealEstateAgent');
   if (!tegra) fail(page.name, 'authoritative Tegra entity definition missing or wrong type');
+  else if (tegra.brand?.['@id'] !== TEGRA_BRAND_ID) fail(page.name, 'Tegra brand must be attached to the authoritative organization entity');
+
+  for (const apartmentComplex of nodes.filter((node) => [].concat(node['@type'] ?? []).includes('ApartmentComplex'))) {
+    if (Object.hasOwn(apartmentComplex, 'brand')) fail(page.name, 'brand is not valid on ApartmentComplex; reconcile via official project sameAs and Tegra organization entity');
+  }
 
   const sabrina = typedNode(nodes, SABRINA_ID, 'Person');
   if (!sabrina) fail(page.name, 'Sabrina Person entity definition missing');
