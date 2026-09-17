@@ -16,8 +16,8 @@ const pages = [
     file: 'src-greenn/preview/index.html',
     canonical: 'https://www.moretegra.com.br/',
     schemaId: 'mt-search-schema',
-    requiredTypes: ['WebSite', 'CollectionPage', 'ItemList', 'RealEstateAgent', 'Brand', 'Person', 'Service'],
-    requiredIds: ['https://www.moretegra.com.br/#website', 'https://www.moretegra.com.br/#webpage', 'https://www.moretegra.com.br/#projects', TEGRA_ID, TEGRA_BRAND_ID, SABRINA_ID, SABRINA_AGENT_ID],
+    requiredTypes: ['WebSite', 'CollectionPage', 'ItemList', 'RealEstateAgent', 'Brand', 'Person', 'Service', 'VideoObject'],
+    requiredIds: ['https://www.moretegra.com.br/#website', 'https://www.moretegra.com.br/#webpage', 'https://www.moretegra.com.br/#projects', 'https://www.moretegra.com.br/#campaign-video', TEGRA_ID, TEGRA_BRAND_ID, SABRINA_ID, SABRINA_AGENT_ID],
     visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328'],
     localBusinessScriptId: 'mt-localbusiness-schema'
   },
@@ -181,6 +181,16 @@ for (const page of pages) {
 
   for (const apartmentComplex of nodes.filter((node) => [].concat(node['@type'] ?? []).includes('ApartmentComplex'))) {
     if (Object.hasOwn(apartmentComplex, 'brand')) fail(page.name, 'brand is not valid on ApartmentComplex; reconcile via official project sameAs and Tegra organization entity');
+  }
+
+  if (page.name === 'home') {
+    const video = typedNode(nodes, 'https://www.moretegra.com.br/#campaign-video', 'VideoObject');
+    if (!video) fail(page.name, 'homepage VideoObject missing');
+    else {
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(video.uploadDate ?? '')) fail(page.name, 'homepage VideoObject uploadDate missing or invalid');
+      if (![].concat(video.thumbnailUrl ?? []).some((value) => typeof value === 'string' && value.startsWith('https://'))) fail(page.name, 'homepage VideoObject thumbnailUrl missing');
+      if (video.embedUrl !== 'https://www.youtube-nocookie.com/embed/SCCM3vzNlyk') fail(page.name, 'homepage VideoObject embedUrl mismatch');
+    }
   }
 
   if (page.localBusinessScriptId) {
