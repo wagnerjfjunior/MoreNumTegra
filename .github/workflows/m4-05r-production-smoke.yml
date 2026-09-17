@@ -1,0 +1,24 @@
+name: M4-05R production smoke
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/smoke-m4-05r-production.mjs'
+      - '.github/workflows/m4-05r-production-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    name: Smoke production canonical surfaces
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Show Node version
+        run: node --version
+      - name: Fetch and validate live production
+        run: node scripts/smoke-m4-05r-production.mjs
