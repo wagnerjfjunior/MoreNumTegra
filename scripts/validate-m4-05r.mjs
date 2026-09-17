@@ -9,6 +9,12 @@ const TEGRA_VENDAS_ID = 'https://www.moretegra.com.br/#tegra-vendas';
 const SABRINA_PROFILE = 'https://corretor.tegravendas.com.br/sabrina/sp';
 const SABRINA_PHONE = '+5511960779328';
 const SABRINA_CRECI = '209.905-F';
+const SABRINA_POSTAL_CODE = '05093-000';
+const SABRINA_BUSINESS_IMAGE = 'https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp';
+const TEGRA_PHONE = '+55-11-3500-3223';
+const TEGRA_PRICE_RANGE = 'Consulte-nos';
+const TEGRA_LOGO = 'https://www.tegraincorporadora.com.br/images/logo-tegra-color.svg';
+const TEGRA_IMAGE = 'https://www.tegraincorporadora.com.br/og-image.jpg';
 
 const pages = [
   {
@@ -177,7 +183,11 @@ for (const page of pages) {
 
   const tegra = typedNode(nodes, TEGRA_ID, 'RealEstateAgent');
   if (!tegra) fail(page.name, 'authoritative Tegra entity definition missing or wrong type');
-  else if (tegra.brand?.['@id'] !== TEGRA_BRAND_ID) fail(page.name, 'Tegra brand must be attached to the authoritative organization entity');
+  else {
+    if (tegra.brand?.['@id'] !== TEGRA_BRAND_ID) fail(page.name, 'Tegra brand must be attached to the authoritative organization entity');
+    if (tegra.telephone !== TEGRA_PHONE || tegra.priceRange !== TEGRA_PRICE_RANGE || tegra.image !== TEGRA_IMAGE) fail(page.name, 'authoritative Tegra rich-result fields mismatch');
+    if (tegra.logo?.url !== TEGRA_LOGO || tegra.address?.postalCode !== '04794-000') fail(page.name, 'authoritative Tegra identity/address mismatch');
+  }
 
   for (const apartmentComplex of nodes.filter((node) => [].concat(node['@type'] ?? []).includes('ApartmentComplex'))) {
     if (Object.hasOwn(apartmentComplex, 'brand')) fail(page.name, 'brand is not valid on ApartmentComplex; reconcile via official project sameAs and Tegra organization entity');
@@ -201,7 +211,8 @@ for (const page of pages) {
         const local = JSON.parse(localRaw);
         if (![local['@type']].flat().includes('RealEstateAgent')) fail(page.name, 'standalone LocalBusiness root must be RealEstateAgent');
         if (local.name !== 'Sabrina da Tegra — Corretora Tegra Vendas') fail(page.name, 'standalone LocalBusiness name mismatch');
-        if (local.address?.['@type'] !== 'PostalAddress' || !local.address?.streetAddress) fail(page.name, 'standalone LocalBusiness physical address missing');
+        if (local.address?.['@type'] !== 'PostalAddress' || !local.address?.streetAddress || local.address?.postalCode !== SABRINA_POSTAL_CODE) fail(page.name, 'standalone LocalBusiness physical address/postalCode missing');
+        if (local.priceRange !== 'Consulte condições' || local.image !== SABRINA_BUSINESS_IMAGE || local.logo !== SABRINA_BUSINESS_IMAGE) fail(page.name, 'standalone LocalBusiness recommended fields mismatch');
       } catch (error) { fail(page.name, `invalid standalone LocalBusiness JSON-LD: ${error.message}`); }
     }
   }
@@ -214,7 +225,9 @@ for (const page of pages) {
     if (sabrinaAgent.telephone !== SABRINA_PHONE) fail(page.name, 'Sabrina RealEstateAgent telephone mismatch');
     if (sabrinaAgent.sameAs !== SABRINA_PROFILE) fail(page.name, 'Sabrina RealEstateAgent official sameAs mismatch');
     const a = sabrinaAgent.address;
-    if (a?.['@type'] !== 'PostalAddress' || a.streetAddress !== 'Rua Fortunato Ferraz, 625' || a.addressLocality !== 'São Paulo' || a.addressRegion !== 'SP' || a.addressCountry !== 'BR') fail(page.name, 'Sabrina RealEstateAgent address mismatch');
+    if (a?.['@type'] !== 'PostalAddress' || a.streetAddress !== 'Rua Fortunato Ferraz, 625' || a.addressLocality !== 'São Paulo' || a.addressRegion !== 'SP' || a.postalCode !== SABRINA_POSTAL_CODE || a.addressCountry !== 'BR') fail(page.name, 'Sabrina RealEstateAgent address mismatch');
+    if (sabrinaAgent.priceRange !== 'Consulte condições' || sabrinaAgent.logo !== SABRINA_BUSINESS_IMAGE || sabrinaAgent.image !== SABRINA_BUSINESS_IMAGE) fail(page.name, 'Sabrina RealEstateAgent recommended fields mismatch');
+    if (sabrinaAgent.identifier?.propertyID !== 'CRECI-SP' || sabrinaAgent.identifier?.value !== SABRINA_CRECI) fail(page.name, 'Sabrina RealEstateAgent CRECI identifier mismatch');
   }
 
   const sabrina = typedNode(nodes, SABRINA_ID, 'Person');
