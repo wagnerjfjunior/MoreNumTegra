@@ -238,6 +238,16 @@ for (const stale of ['3647490', '3.647.490', 'Unidade 24', '17.369']) {
   if (capiitolo.includes(stale)) fail('capiitolo', `stale hardcoded commercial value remains: ${stale}`);
 }
 
+const capiitoloRenderGuards = [
+  'productSchemaText=document.getElementById("mnt-capiitolo-product-schema")?.textContent||""',
+  "doc.head.querySelectorAll('#mnt-capiitolo-product-schema').forEach(node=>node.remove())",
+  'productSchemaNode.id="mnt-capiitolo-product-schema"',
+  'productSchemaNode.textContent=productSchemaText'
+];
+for (const needle of capiitoloRenderGuards) {
+  if (!capiitolo.includes(needle)) fail('capiitolo', `rendered Product schema preservation guard missing: ${needle}`);
+}
+
 if (failures.length) {
   console.error('\nM4-05R validation FAILED\n');
   for (const item of failures) console.error(`- ${item}`);
