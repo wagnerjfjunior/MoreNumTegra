@@ -1,0 +1,175 @@
+import { readFile } from 'node:fs/promises';
+import process from 'node:process';
+
+const TEGRA_ID = 'https://www.tegraincorporadora.com.br/#organization';
+const SABRINA_ID = 'https://www.moretegra.com.br/#sabrina-da-tegra';
+const TEGRA_VENDAS_ID = 'https://www.moretegra.com.br/#tegra-vendas';
+const SABRINA_PROFILE = 'https://corretor.tegravendas.com.br/sabrina/sp';
+const SABRINA_PHONE = '+5511960779328';
+const SABRINA_CRECI = '209.905-F';
+
+const pages = [
+  {
+    name: 'home',
+    file: 'src-greenn/preview/index.html',
+    canonical: 'https://www.moretegra.com.br/',
+    schemaId: 'mt-search-schema',
+    requiredTypes: ['WebSite', 'CollectionPage', 'ItemList', 'RealEstateAgent', 'Person', 'Service'],
+    requiredIds: ['https://www.moretegra.com.br/#website', 'https://www.moretegra.com.br/#webpage', 'https://www.moretegra.com.br/#projects', TEGRA_ID, SABRINA_ID],
+    visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328']
+  },
+  {
+    name: 'capiitolo',
+    file: 'src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html',
+    canonical: 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/',
+    schemaId: 'mnt-capiitolo-schema',
+    requiredTypes: ['WebSite', 'WebPage', 'BreadcrumbList', 'ApartmentComplex', 'FloorPlan', 'ImageObject', 'RealEstateAgent', 'Person', 'Service'],
+    requiredIds: ['https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#webpage', 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#project', TEGRA_ID, SABRINA_ID],
+    requiredSameAs: 'https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/chacara-klabin/chacaraklabin',
+    visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328']
+  },
+  {
+    name: 'elo-duo',
+    file: 'src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html',
+    canonical: 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/',
+    schemaId: 'mt-project-schema',
+    requiredTypes: ['WebSite', 'WebPage', 'BreadcrumbList', 'ApartmentComplex', 'FloorPlan', 'ImageObject', 'RealEstateAgent', 'Person', 'Service'],
+    requiredIds: ['https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#webpage', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#project', TEGRA_ID, SABRINA_ID],
+    requiredSameAs: 'https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/lapa/caminhos-da-lapa-elo-duo',
+    visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328']
+  }
+];
+
+const failures = [];
+
+function fail(page, message) {
+  failures.push(`${page}: ${message}`);
+}
+
+function attr(html, selectorPattern, attrName) {
+  const match = html.match(selectorPattern);
+  if (!match) return null;
+  const tag = match[0];
+  const attribute = tag.match(new RegExp(`${attrName}=["']([^"']+)["']`, 'i'));
+  return attribute?.[1] ?? null;
+}
+
+function metaBy(html, key, value, contentAttr = 'content') {
+  const tags = html.match(/<meta\b[^>]*>/gi) ?? [];
+  for (const tag of tags) {
+    const keyMatch = tag.match(new RegExp(`${key}=["']([^"']+)["']`, 'i'));
+    if (keyMatch?.[1] !== value) continue;
+    const content = tag.match(new RegExp(`${contentAttr}=["']([^"']*)["']`, 'i'));
+    return content?.[1] ?? '';
+  }
+  return null;
+}
+
+function getSchema(html, id) {
+  const scripts = [...html.matchAll(/<script\b([^>]*)type=["']application\/ld\+json["']([^>]*)>([\s\S]*?)<\/script>/gi)];
+  const found = scripts.find((m) => `${m[1]} ${m[2]}`.includes(`id="${id}"`) || `${m[1]} ${m[2]}`.includes(`id='${id}'`));
+  if (!found) return null;
+  return found[3].trim();
+}
+
+function walk(value, visit) {
+  if (Array.isArray(value)) {
+    for (const item of value) walk(item, visit);
+    return;
+  }
+  if (!value || typeof value !== 'object') return;
+  visit(value);
+  for (const child of Object.values(value)) walk(child, visit);
+}
+
+function collectGraph(schema) {
+  const nodes = [];
+  walk(schema, (node) => nodes.push(node));
+  return nodes;
+}
+
+for (const page of pages) {
+  const html = await readFile(page.file, 'utf8');
+
+  if (!/<h1\b[^>]*>[\s\S]*?<\/h1>/i.test(html)) fail(page.name, 'H1 missing from initial HTML source');
+
+  const canonical = attr(html, /<link\b[^>]*rel=["']canonical["'][^>]*>/i, 'href');
+  if (canonical !== page.canonical) fail(page.name, `canonical mismatch: ${canonical ?? 'missing'}`);
+
+  const ogUrl = metaBy(html, 'property', 'og:url');
+  if (ogUrl !== page.canonical) fail(page.name, `og:url mismatch: ${ogUrl ?? 'missing'}`);
+
+  const requiredSocial = [
+    ['property', 'og:type'], ['property', 'og:site_name'], ['property', 'og:locale'],
+    ['property', 'og:title'], ['property', 'og:description'], ['property', 'og:image'], ['property', 'og:image:alt'],
+    ['name', 'twitter:card'], ['name', 'twitter:title'], ['name', 'twitter:description'], ['name', 'twitter:image'], ['name', 'twitter:image:alt']
+  ];
+  for (const [key, value] of requiredSocial) {
+    if (!metaBy(html, key, value)) fail(page.name, `${value} missing or empty`);
+  }
+
+  const rawSchema = getSchema(html, page.schemaId);
+  if (!rawSchema) {
+    fail(page.name, `JSON-LD script #${page.schemaId} missing`);
+    continue;
+  }
+
+  let schema;
+  try {
+    schema = JSON.parse(rawSchema);
+  } catch (error) {
+    fail(page.name, `invalid JSON-LD: ${error.message}`);
+    continue;
+  }
+
+  const nodes = collectGraph(schema);
+  const types = new Set();
+  const ids = new Set();
+  const sameAs = new Set();
+  for (const node of nodes) {
+    for (const type of [].concat(node['@type'] ?? [])) types.add(type);
+    if (typeof node['@id'] === 'string') ids.add(node['@id']);
+    for (const value of [].concat(node.sameAs ?? [])) if (typeof value === 'string') sameAs.add(value);
+  }
+
+  for (const type of page.requiredTypes) if (!types.has(type)) fail(page.name, `required Schema.org type missing: ${type}`);
+  for (const id of page.requiredIds) if (!ids.has(id)) fail(page.name, `required @id missing: ${id}`);
+  if (page.requiredSameAs && !sameAs.has(page.requiredSameAs)) fail(page.name, `official Tegra project sameAs missing: ${page.requiredSameAs}`);
+
+  if (types.has('RealEstateListing')) fail(page.name, 'RealEstateListing is not approved for the M4-05R stable core');
+  if (types.has('Offer')) fail(page.name, 'Offer emitted without an M4-05R governed commercial evidence allowlist');
+
+  const webPage = nodes.find((node) => node['@type'] === 'WebPage' || node['@type'] === 'CollectionPage');
+  if (!webPage) fail(page.name, 'page entity missing');
+  else if (webPage.url !== page.canonical) fail(page.name, `page entity url mismatch: ${webPage.url ?? 'missing'}`);
+
+  const tegra = nodes.find((node) => node['@id'] === TEGRA_ID);
+  if (!tegra || tegra['@type'] !== 'RealEstateAgent') fail(page.name, 'authoritative Tegra entity reference missing or wrong type');
+
+  const sabrina = nodes.find((node) => node['@id'] === SABRINA_ID);
+  if (!sabrina) fail(page.name, 'Sabrina Person entity missing');
+  else {
+    if (sabrina['@type'] !== 'Person') fail(page.name, 'Sabrina must be a Person');
+    if (sabrina.worksFor?.['@id'] !== TEGRA_VENDAS_ID) fail(page.name, 'Sabrina worksFor must reference Tegra Vendas');
+    if (sabrina.sameAs !== SABRINA_PROFILE && ![].concat(sabrina.sameAs ?? []).includes(SABRINA_PROFILE)) fail(page.name, 'Sabrina official Tegra Vendas sameAs missing');
+    if (sabrina.identifier?.value !== SABRINA_CRECI) fail(page.name, 'Sabrina CRECI mismatch');
+  }
+
+  const phone = nodes.find((node) => node['@id'] === 'https://www.moretegra.com.br/#sabrina-contato');
+  if (phone?.telephone !== SABRINA_PHONE) fail(page.name, 'Sabrina normalized commercial telephone mismatch');
+
+  for (const needle of page.visibleNeedles) if (!html.includes(needle)) fail(page.name, `visible parity text missing: ${needle}`);
+}
+
+const capiitolo = await readFile('src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html', 'utf8');
+for (const stale of ['3647490', '3.647.490', 'Unidade 24', '17.369']) {
+  if (capiitolo.includes(stale)) fail('capiitolo', `stale hardcoded commercial value remains: ${stale}`);
+}
+
+if (failures.length) {
+  console.error('\nM4-05R validation FAILED\n');
+  for (const item of failures) console.error(`- ${item}`);
+  process.exit(1);
+}
+
+console.log(`M4-05R validation PASS: ${pages.length} canonical surfaces checked.`);
