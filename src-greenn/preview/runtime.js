@@ -233,7 +233,7 @@
     const pilot = document.querySelector(".pilot");
     if (pilot) pilot.textContent = "CAPIITOLO · Chácara Klabin";
     const footerText = document.querySelector(".footer .footer-in span");
-    if (footerText) footerText.textContent = "AGENDE SEU ATENDIMENTO no CAPIITOLO · Rua Ibaragui Nissui, 166 — Chácara Klabin · São Paulo/SP";
+    if (footerText) footerText.textContent = "AGENDE SEU ATENDIMENTO no CAPIITOLO · Rua Ibaragui Nissui, 166 — Chácara Klabin · São Paulo/SP · CEP 04116-200";
 
     const facts = document.querySelectorAll(".facts .fact");
     const locationFact = facts[3];
