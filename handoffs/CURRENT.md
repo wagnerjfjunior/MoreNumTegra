@@ -18,6 +18,12 @@ HOME_FORM46_CONTEXT_FIX_PR = #119 / MERGED
 RUNTIME_RELEASE_SHA = 782c25b7229af99d0f1839bbfc6af412a5cb31e7
 VERCEL_STATUS_FOR_RUNTIME_SHA = SUCCESS
 HOME_FORM46_PROJECT_CONTEXT_E2E = PASS
+SEO_POST_RELEASE_VALIDATION = PASS
+PROJECT_RICH_RESULTS_PARITY = PASS_7_7_7
+GSC_SITEMAP = ACCEPTED_4_URLS_0_ERRORS_0_WARNINGS
+ARIA_INDEXATION = INDEXED
+CAPIITOLO_INDEXATION = INDEXED
+ELO_DUO_INDEXATION = INDEXED
 OPEN_RUNTIME_PRS = 0
 ```
 
@@ -37,7 +43,7 @@ VERCEL_STATUS_FOR_RUNTIME_SHA = SUCCESS
 DEPLOYMENT_POLICY = main-only automatic deployment
 NON_MAIN_AUTO_DEPLOY = disabled
 ARIA_ROUTE = /empreendimentos/aria-higienopolis/
-PROD_HTTP_SMOKE = NOT_PROVEN_BY_CURRENT_TOOLING
+PROD_HTTP_SMOKE = PARTIALLY_PROVEN_BY_PRODUCT_AUTHORITY_AND_GSC
 ```
 
 Separação obrigatória:
@@ -81,7 +87,7 @@ REPOSITORY = MERGED
 VERCEL_DEPLOYMENT = SUCCESS
 STATIC_RELEASE_VALIDATION = PASS
 EXTERNAL_HTTP_SMOKE = NOT_PROVEN_BY_CURRENT_TOOLING
-GSC_INDEXATION = NOT_PROVEN
+GSC_INDEXATION = INDEXED
 ```
 
 Escopo publicado no runtime:
@@ -100,7 +106,35 @@ Escopo publicado no runtime:
 
 A referência comercial oficial da Tegra observada em 2026-09-18 é de outra unidade e não foi misturada com a referência autorizada no MoreNumTegra.
 
-## 5. CAPIITOLO — ENTITY AUTHORITY / IN-LOCO LOCATION
+## 5. SEO / SEARCH CONSOLE / RICH RESULTS — CLOSED
+
+```text
+GSC_SITEMAP = ACCEPTED
+SITEMAP_URLS = 4
+SITEMAP_ERRORS = 0
+SITEMAP_WARNINGS = 0
+
+HOME_INDEXATION = INDEXED
+CAPIITOLO_INDEXATION = INDEXED
+ELO_DUO_INDEXATION = INDEXED
+ARIA_INDEXATION = INDEXED
+
+CAPIITOLO_RICH_RESULTS = 7_VALID
+ELO_DUO_RICH_RESULTS = 7_VALID
+ARIA_RICH_RESULTS = 7_VALID
+HOME_RICH_RESULTS = 5_VALID
+
+ARIA_GOOGLE_CANONICAL = ACCEPTED
+CODE_CHANGE_REQUIRED = NO
+```
+
+Evidence combines Product Authority screenshots from Google Search Console / Rich Results Test and read-only Search Console data for `sc-domain:moretegra.com.br`.
+
+Canonical record: `docs/sfjm/SEO_POST_RELEASE_VALIDATION_2026-09-18.md`.
+
+This closes the prior sitemap-processing, Ária-indexation, CAPIITOLO-recrawl and project Rich Results parity residuals. No runtime mutation or WBS progress change follows from this validation.
+
+## 6. CAPIITOLO — ENTITY AUTHORITY / IN-LOCO LOCATION
 
 ```text
 PR_115 = MERGED
@@ -120,7 +154,7 @@ O CAPIITOLO preserva Product/Offer, canonical e indexabilidade, mas agora:
 
 Nenhum Preview de branch foi criado. O smoke HTTP externo continuou bloqueado pelas ferramentas por resolução DNS temporária, sem evidência de falha de produção.
 
-## 6. SITEMAP / ROBOTS
+## 7. SITEMAP / ROBOTS
 
 `sitemap.xml` em `main` contém quatro URLs canônicas:
 
@@ -133,7 +167,7 @@ Nenhum Preview de branch foi criado. O smoke HTTP externo continuou bloqueado pe
 
 A aceitação/indexação efetiva no Google permanece não comprovada por evidência de repositório.
 
-## 7. CURRENT PRODUCT CONSTRAINTS
+## 8. CURRENT PRODUCT CONSTRAINTS
 
 - HTML5 semântico + CSS + JavaScript vanilla;
 - mobile-first, SEO-first, performance-first;
@@ -146,8 +180,8 @@ A aceitação/indexação efetiva no Google permanece não comprovada por evidê
 - não criar commits artificiais para disparar deploy;
 - não reativar Preview automático sem necessidade/autorização.
 
-## 8. CURRENT NEXT SAFE ACTION
+## 9. CURRENT NEXT SAFE ACTION
 
 A fonte autoritativa é `docs/NEXT_SAFE_ACTION.md`.
 
-Próxima frente: **validação não mutativa pós-release de HTTP/Search Console/sitemap/structured data**. O defeito de propagação do empreendimento no Form 46 da home está encerrado por evidência E2E de produção. Nenhuma nova correção de código deve ser aberta antes de provar outro defeito real.
+A validação pós-release de Search Console/sitemap/structured data está encerrada com evidência positiva. A próxima ação segura é **resolver o próximo task/gate canônico no WBS e na governança do repositório**, sem inferir progresso e sem mutar runtime antes dessa resolução.
