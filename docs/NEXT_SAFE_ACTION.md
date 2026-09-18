@@ -2,68 +2,57 @@
 
 Atualizado em `2026-09-18`.
 
-Antes de executar, resolver `main` live.
+## Product Authority exception now in force
 
-Base canônica observada nesta transição:
+The previously recorded non-mutative Search Console/sitemap validation remains valid work, but its sequencing is temporarily superseded by one explicit Product Authority exception:
 
-`e13b019f9bcca9e18bde8eedf0eb56a44a50be15`
+**publish the completed Ária Higienópolis exact-project page and reconcile the release.**
 
-## Estado atual
+Authority record:
 
-```text
-HOME_RUNTIME = RESTORED / PRODUCT_AUTHORITY_SMOKE_OK
-ELO_DUO_CONSENT = FIXED / MERGED / DEPLOYED
-CAPIITOLO = PUBLISHED / INDEXABLE
-ELO_DUO = PUBLISHED / INDEXABLE
-VERCEL = PRODUCTION_ONLY_AUTOMATIC_DEPLOYMENT
-NON_MAIN_PREVIEW = DISABLED
-MNT-M4-05R = MERGED_RUNTIME / ACCEPTANCE_NOT_YET_DECLARED_COMPLETE
-```
+`docs/sfjm/ARIA_HIGIENOPOLIS_RELEASE_EXCEPTION_2026-09-18.md`
 
-## Única próxima ação segura
-
-Executar uma **validação factual e não mutativa de Search Console + sitemap + structured data** para responder:
-
-1. o sitemap atual é sintaticamente correto e servido de forma aceitável pelo Google?
-2. o `robots.txt` referencia corretamente o sitemap?
-3. há headers HTTP ou comportamento de canonical/indexação que impeçam descoberta?
-4. os "3 erros não críticos" em CAPIITOLO/Elo Duo são apenas recomendações opcionais ou representam defeito real?
-5. existe erro real de JSON-LD na home, separado de peculiaridades do Schema.org Validator?
-
-## Evidência a resolver
-
-Estado versionado atual:
-
-- `sitemap.xml`: home + CAPIITOLO + Elo Duo;
-- namespace: `http://www.sitemaps.org/schemas/sitemap/0.9`;
-- `robots.txt`: `Sitemap: https://www.moretegra.com.br/sitemap.xml`.
-
-Evidência USER_REPORTED via screenshots do Search Console:
-
-- home: "O URL está no Google";
-- CAPIITOLO: 1 Product Snippet válido, com 3 issues não críticos;
-- Elo Duo: Product detectado, com issues não críticos;
-- issues observados incluem `aggregateRating`, `review`, `availability`; Merchant Listing também pode apontar `shippingDetails` e `hasMerchantReturnPolicy`.
-
-## Restrições
-
-- não preencher `aggregateRating`, `review`, `availability`, `shippingDetails` ou `hasMerchantReturnPolicy` com dados inventados;
-- não remover Product/Offer apenas para zerar warnings sem decisão de produto/SEO;
-- não alterar sitemap, robots, JSON-LD ou headers antes de provar o problema;
-- não gerar Preview Vercel;
-- qualquer alteração de código segue branch/PR, mas somente `main` pode gerar deployment automático;
-- provider/rate-limit não deve ser classificado como falha de código sem evidência.
-
-## Condição de encerramento
-
-A ação termina quando houver uma classificação explícita:
+## Release candidate
 
 ```text
-SITEMAP = VALID_AND_ACCEPTABLE | INVALID | NOT_PROVEN
-ROBOTS = VALID | INVALID
-PRODUCT_SNIPPET_WARNINGS = OPTIONAL | ACTIONABLE
-HOME_JSONLD = VALID | INVALID | NEEDS_FURTHER_EVIDENCE
-CODE_CHANGE_REQUIRED = YES | NO
+BRANCH = feature/aria-higienopolis
+PRE_GOVERNANCE_HEAD = 651005d65d8200298c6859204ade297c9580df2e
+BASE_INCORPORATED = bb614c3234f1945237e3fe8ea9787c438aebd7e6
+NON_MAIN_AUTO_DEPLOY = disabled
+TARGET_ROUTE = /empreendimentos/aria-higienopolis/
 ```
 
-Se `CODE_CHANGE_REQUIRED = YES`, abrir nova ação segura antes de mutar produção.
+## Authorized scope
+
+- Ária exact-project page;
+- governed R$ 501.000 Studio 1510 reference already approved by Product Authority;
+- home card/internal link;
+- home published-project structured-data list;
+- sitemap entry;
+- Vercel route rewrite;
+- commercial-values entry;
+- minimal shared project-page canonical generalization required so Offer IDs resolve to the current project;
+- SFJM/release documentation.
+
+## Explicit exclusions
+
+Do not include unrelated CAPIITOLO experiment edits or a redesign of the home Form 46 field. Do not reactivate branch previews. Do not change DNS, provider, GTM/GA4 ownership, Form 46 backend contract, framework/backend architecture, FECH.AI or Ads.
+
+## Acceptance sequence
+
+1. clean branch scope;
+2. validate JSON/JSON-LD, canonical, H1, Form 46 wiring, consent/GTM ownership, home link, sitemap and Vercel route;
+3. open governed PR to `main`;
+4. verify exact PR head and changed files;
+5. merge only if scope remains clean;
+6. resolve Vercel production deployment from the merge SHA;
+7. production smoke: home + Ária + sitemap + canonical/robots/assets;
+8. docs-only SFJM post-merge reconciliation.
+
+```text
+MERGED != DEPLOYED
+DEPLOYED != PROD_SMOKE_TESTED
+SITEMAP_DEPLOYED != GSC_PROCESSED
+```
+
+After this exception is closed, return to the deferred Search Console / structured-data validation track unless a newer Product Authority decision supersedes it.

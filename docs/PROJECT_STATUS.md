@@ -1,5 +1,7 @@
 # Status do Projeto — MoreNumTegra
 
+> ACTIVE RELEASE CANDIDATE: Ária Higienópolis exact-project publication is authorized as a narrow Product Authority exception. No unrelated route/provider/DNS/deployment-policy change is authorized. Post-merge production state is not yet claimed.
+
 Atualizado em `2026-09-18`.
 
 Fonte canônica: GitHub `main`.
