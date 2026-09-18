@@ -19,23 +19,26 @@
   }
 
   function normalizeProjectLink(actions, title, url) {
-    const existing = Array.from(actions.querySelectorAll("[data-project-page-link], [data-capiitolo-project-link]"));
-    const link = existing.shift() || document.createElement("a");
-    existing.forEach((node) => node.remove());
+    const links = Array.from(actions.querySelectorAll("[data-project-page-link], [data-capiitolo-project-link]"));
+    const link = links.shift() || document.createElement("a");
+    links.forEach((node) => node.remove());
 
-    link.className = "mt-project-details";
-    link.href = url;
-    link.dataset.projectPageLink = "true";
-    if (title === "CAPIITOLO by Piero Lissoni") link.dataset.capiitoloProjectLink = "true";
-    else delete link.dataset.capiitoloProjectLink;
-    link.textContent = "Ver empreendimento →";
-
+    const capiitolo = title === "CAPIITOLO by Piero Lissoni";
+    if (link.className !== "mt-project-details") link.className = "mt-project-details";
+    if (link.getAttribute("href") !== url) link.setAttribute("href", url);
+    if (link.dataset.projectPageLink !== "true") link.dataset.projectPageLink = "true";
+    if (capiitolo) {
+      if (link.dataset.capiitoloProjectLink !== "true") link.dataset.capiitoloProjectLink = "true";
+    } else if ("capiitoloProjectLink" in link.dataset) {
+      delete link.dataset.capiitoloProjectLink;
+    }
+    if (link.textContent !== "Ver empreendimento →") link.textContent = "Ver empreendimento →";
     if (!link.isConnected) actions.appendChild(link);
-    actions.dataset.hasProjectPage = "true";
+    if (actions.dataset.hasProjectPage !== "true") actions.dataset.hasProjectPage = "true";
   }
 
-  function enhanceCards() {
-    document.querySelectorAll(".mt-project-card").forEach((card) => {
+  function enhanceCards(scope) {
+    scope.querySelectorAll(".mt-project-card").forEach((card) => {
       const title = card.querySelector("h3")?.textContent?.trim();
       const url = PAGE_BY_TITLE[title];
       if (!url) return;
@@ -45,18 +48,12 @@
     });
   }
 
-  function loadFloatingUi() {
-    if (document.querySelector('script[data-mt-floating-ui]')) return;
-    const script = document.createElement("script");
-    script.src = "/src-greenn/preview/floating-ui.js";
-    script.defer = true;
-    script.dataset.mtFloatingUi = "true";
-    document.body.appendChild(script);
-  }
-
   installStyle();
-  enhanceCards();
-  loadFloatingUi();
-  const observer = new MutationObserver(enhanceCards);
-  observer.observe(document.documentElement, {subtree:true, childList:true});
+
+  const grid = document.querySelector("[data-project-grid]");
+  if (!grid) return;
+
+  enhanceCards(grid);
+  const observer = new MutationObserver(() => enhanceCards(grid));
+  observer.observe(grid, {subtree:true, childList:true});
 })();
