@@ -1,6 +1,6 @@
 # Post-PR #117 UX Regression Fix — 2026-09-18
 
-Status: `IMPLEMENTED_IN_BRANCH / STATIC_QA_PASS / NOT_MERGED`
+Status: `IMPLEMENTED_IN_BRANCH / STATIC_QA_PASS / READY_AUTHORIZED / NOT_MERGED`
 
 Repository: `wagnerjfjunior/MoreNumTegra`  
 Base `main` resolved before implementation: `9d9751ddfcdd56192ba798bd610c74559b5d76b0`  
@@ -89,3 +89,47 @@ INDEX_FOLLOW = PRESERVED
 ## Release gate
 
 This branch is not production until reviewed and merged to `main`. No Ready/merge is implied by this implementation record.
+
+
+## Rich Results parity correction
+
+Product Authority supplied live Google Rich Results evidence:
+
+```text
+ELO_DUO = 7 valid detected items
+ARIA = 5 valid detected items
+CAPIITOLO = 5 valid detected items
+```
+
+The difference was traced to the eligible entity topology, not to Product/Offer validity:
+
+- Elo Duo already exposed two factual `RealEstateAgent` entities:
+  - Tegra Incorporadora;
+  - Sabrina da Tegra / Tegra Vendas;
+- Ária exposed Tegra Incorporadora as `RealEstateAgent` but Sabrina only as `Person`;
+- CAPIITOLO exposed Sabrina as `RealEstateAgent` but Tegra Incorporadora only as `Organization`.
+
+Correction:
+
+- Ária now has a project-scoped Sabrina `RealEstateAgent` entity, linked to the existing Person/Service graph;
+- CAPIITOLO now models the already factual Tegra Incorporadora entity as `RealEstateAgent`, using the same corporate identity contract already proven on Elo Duo;
+- all three exact-project pages now have structural parity:
+  - `Product = 1`;
+  - `BreadcrumbList = 1`;
+  - `RealEstateAgent = 2`;
+  - `Organization = 1` explicit Tegra Vendas node;
+- no duplicate internal `@id` and no dangling MoreTegra internal references were introduced.
+
+For Ária, the in-loco address used by the new Sabrina entity is also made visible in the footer, avoiding hidden factual location data:
+
+`Rua Coronel José Eusébio, 145 — Higienópolis · São Paulo/SP · CEP 01239-030`.
+
+The Google Rich Results count of exactly seven is a post-deployment external validation target, not something static repository validation can prove before Google parses the production URL.
+
+## Authorization
+
+Product Authority explicitly authorized, after this parity correction:
+
+`READY + MERGE + PRODUCTION ON VERCEL`.
+
+No branch Preview is required or generated. The active deployment policy remains main-only automatic deployment.
