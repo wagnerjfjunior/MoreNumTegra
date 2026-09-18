@@ -1,6 +1,6 @@
 # CAPIITOLO — Entity Authority & In-Loco Location Correction — 2026-09-18
 
-Status: `AUTHORIZED / IMPLEMENTATION_IN_BRANCH / NOT_MERGED`
+Status: `MERGED / VERCEL_SUCCESS / STATIC_VALIDATED / EXTERNAL_HTTP_SMOKE_NOT_PROVEN_BY_TOOLING`
 
 Repository: `wagnerjfjunior/MoreNumTegra`
 
@@ -88,4 +88,19 @@ FORM46_CONTRACT = UNCHANGED
 VERCEL_POLICY = UNCHANGED
 ```
 
-Merge is not authorized by this document.
+## Release closeout
+
+```text
+PR = #115 / MERGED
+PR_HEAD = 8f105342b34efdcd0354cb663d3a365f31acb47a
+MERGE_SHA = e9d4d63ba6fae578c2bef84aded69cf968166e29
+MAIN_AFTER_MERGE = e9d4d63ba6fae578c2bef84aded69cf968166e29
+VERCEL_STATUS = SUCCESS
+EXTERNAL_HTTP_SMOKE = NOT_PROVEN_BY_CURRENT_TOOLING
+```
+
+Post-merge GitHub status resolved the Vercel check as `success` for the merge SHA.
+
+External HTTP validation from the available web/runtime tools remained blocked by temporary DNS-resolution/tooling failure. Under the SFJM Deployment State / Provider Constraints contract this is `VALIDATION_TOOLING_BLOCKED`, not evidence of code or production failure.
+
+The merge was executed under explicit Product Authority authorization. No Preview deployment was generated for the non-`main` branch.

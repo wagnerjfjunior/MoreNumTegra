@@ -11,7 +11,7 @@ PRODUCT_AUTHORITY_EXCEPTION = CLOSED_AS_RELEASED_WITH_VALIDATION_RESIDUAL
 PR_112 = MERGED
 PR_112_MERGE_SHA = c4c5e74ac0a2b139df768484da565df471fb24ef
 PR_113 = MERGED
-RUNTIME_RELEASE_SHA = 9d5c82cccb43dcc3992dc24f0d457f24a47cf111
+RUNTIME_RELEASE_SHA = e9d4d63ba6fae578c2bef84aded69cf968166e29
 VERCEL_STATUS = SUCCESS
 PROD_HTTP_SMOKE = NOT_PROVEN_BY_CURRENT_TOOLING
 ```
@@ -46,7 +46,20 @@ NON_MAIN_DEPLOYMENTS = disabled
 RUNTIME_RELEASE_SHA = 9d5c82cccb43dcc3992dc24f0d457f24a47cf111
 ```
 
-## 3. Rotas exact-project publicadas no repositório/deployment
+## 3. CAPIITOLO — correção de autoridade/localização
+
+```text
+PR_115 = MERGED
+PR_115_HEAD = 8f105342b34efdcd0354cb663d3a365f31acb47a
+MERGE_SHA = e9d4d63ba6fae578c2bef84aded69cf968166e29
+VERCEL_STATUS = SUCCESS
+STATIC_VALIDATION = PASS
+PROD_HTTP_SMOKE = NOT_PROVEN_BY_CURRENT_TOOLING
+```
+
+A correção removeu do CAPIITOLO o endereço/geo de Caminhos da Lapa e o excesso de perfil corporativo Tegra, preservando Product/Offer, canonical, robots e o vínculo factual com a Tegra. O atendimento da Sabrina passa a ser modelado no próprio CAPIITOLO, com coordenadas fornecidas pelo Product Authority.
+
+## 4. Rotas exact-project publicadas no repositório/deployment
 
 - `/`
 - `/empreendimentos/capiitolo-piero-lissoni/`
@@ -64,7 +77,7 @@ Para Ária:
 - official Tegra page ligada por `sameAs`;
 - commercial-values `updatedAt=2026-09-18`.
 
-## 4. Sitemap / robots
+## 5. Sitemap / robots
 
 Sitemap canônico versionado contém quatro URLs, incluindo Ária. `robots.txt` continua apontando para o sitemap canônico.
 
@@ -75,7 +88,7 @@ SITEMAP_GSC_PROCESSING = NOT_PROVEN
 ARIA_GSC_INDEXATION = NOT_PROVEN
 ```
 
-## 5. Search / structured data residuals
+## 6. Search / structured data residuals
 
 Evidência anterior do Product Authority permanece:
 
@@ -86,7 +99,9 @@ Evidência anterior do Product Authority permanece:
 
 Ária ainda precisa de validação live/GSC pós-release antes de qualquer claim de indexação.
 
-## 6. M4-05R
+CAPIITOLO precisa de recrawl/inspeção pós-PR #115 para confirmar que o Product Snippet continua válido e que a nova modelagem de entidade/localização foi processada sem regressão.
+
+## 7. M4-05R
 
 ```text
 M4-05 historical implementation = MERGED
@@ -98,8 +113,8 @@ M4-05R Acceptance = NOT_YET_DECLARED_COMPLETE
 
 Nenhum progresso WBS foi alterado pelo release excepcional do Ária.
 
-## 7. Próxima ação
+## 8. Próxima ação
 
 Ver `docs/NEXT_SAFE_ACTION.md`.
 
-Executar validação não mutativa de HTTP live + sitemap/robots + Search Console + structured data, incluindo Ária. Só abrir mudança de código com evidência concreta de defeito.
+Executar validação não mutativa de HTTP live + sitemap/robots + Search Console + structured data, incluindo Ária e CAPIITOLO pós-PR #115. Só abrir mudança de código com evidência concreta de defeito.

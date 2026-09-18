@@ -11,7 +11,8 @@ CANONICAL_REPOSITORY = wagnerjfjunior/MoreNumTegra
 CANONICAL_BRANCH = main
 ARIA_RELEASE_PR = #112 / MERGED
 ARIA_SCHEMA_FIX_PR = #113 / MERGED
-RUNTIME_RELEASE_SHA = 9d5c82cccb43dcc3992dc24f0d457f24a47cf111
+CAPIITOLO_ENTITY_AUTHORITY_PR = #115 / MERGED
+RUNTIME_RELEASE_SHA = e9d4d63ba6fae578c2bef84aded69cf968166e29
 OPEN_RUNTIME_PRS = 0
 ```
 
@@ -26,7 +27,7 @@ Release Ária Higienópolis:
 ```text
 WEB_PRODUCTION = Vercel
 CANONICAL_HOST = https://www.moretegra.com.br/
-RUNTIME_RELEASE_SHA = 9d5c82cccb43dcc3992dc24f0d457f24a47cf111
+RUNTIME_RELEASE_SHA = e9d4d63ba6fae578c2bef84aded69cf968166e29
 VERCEL_STATUS_FOR_RUNTIME_SHA = SUCCESS
 DEPLOYMENT_POLICY = main-only automatic deployment
 NON_MAIN_AUTO_DEPLOY = disabled
@@ -70,7 +71,27 @@ Escopo publicado no runtime:
 
 A referência comercial oficial da Tegra observada em 2026-09-18 é de outra unidade e não foi misturada com a referência autorizada no MoreNumTegra.
 
-## 4. SITEMAP / ROBOTS
+## 4. CAPIITOLO — ENTITY AUTHORITY / IN-LOCO LOCATION
+
+```text
+PR_115 = MERGED
+PR_115_HEAD = 8f105342b34efdcd0354cb663d3a365f31acb47a
+MERGE_SHA = e9d4d63ba6fae578c2bef84aded69cf968166e29
+VERCEL_STATUS = SUCCESS
+STATIC_VALIDATION = PASS
+EXTERNAL_HTTP_SMOKE = NOT_PROVEN_BY_CURRENT_TOOLING
+```
+
+O CAPIITOLO preserva Product/Offer, canonical e indexabilidade, mas agora:
+- usa o próprio empreendimento como `workLocation` da Sabrina;
+- contém as coordenadas fornecidas pelo Product Authority;
+- remove referências de atendimento do Caminhos da Lapa;
+- reduz a entidade Tegra ao vínculo factual mínimo necessário;
+- remove redes sociais, endereço corporativo e demais dados institucionais Tegra desnecessários ao objetivo do MoreNumTegra.
+
+Nenhum Preview de branch foi criado. O smoke HTTP externo continuou bloqueado pelas ferramentas por resolução DNS temporária, sem evidência de falha de produção.
+
+## 5. SITEMAP / ROBOTS
 
 `sitemap.xml` em `main` contém quatro URLs canônicas:
 
@@ -83,7 +104,7 @@ A referência comercial oficial da Tegra observada em 2026-09-18 é de outra uni
 
 A aceitação/indexação efetiva no Google permanece não comprovada por evidência de repositório.
 
-## 5. CURRENT PRODUCT CONSTRAINTS
+## 6. CURRENT PRODUCT CONSTRAINTS
 
 - HTML5 semântico + CSS + JavaScript vanilla;
 - mobile-first, SEO-first, performance-first;
@@ -96,8 +117,8 @@ A aceitação/indexação efetiva no Google permanece não comprovada por evidê
 - não criar commits artificiais para disparar deploy;
 - não reativar Preview automático sem necessidade/autorização.
 
-## 6. CURRENT NEXT SAFE ACTION
+## 7. CURRENT NEXT SAFE ACTION
 
 A fonte autoritativa é `docs/NEXT_SAFE_ACTION.md`.
 
-Próxima frente: **validação não mutativa pós-release de HTTP/Search Console/sitemap/structured data**, agora incluindo Ária Higienópolis. Nenhuma nova correção de código deve ser aberta antes de provar um defeito real.
+Próxima frente: **validação não mutativa pós-release de HTTP/Search Console/sitemap/structured data**, incluindo Ária Higienópolis e a regressão/recrawl do CAPIITOLO após a PR #115. Nenhuma nova correção de código deve ser aberta antes de provar um defeito real.
