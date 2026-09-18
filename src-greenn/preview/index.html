@@ -604,6 +604,17 @@
         <input type="hidden" name="form_id" value="46">
 
         <div class="mt-form-grid">
+          <label class="mt-field mt-field-wide" for="mt-lead-intent">
+            <span>O que você deseja? <b aria-hidden="true">*</b></span>
+            <select id="mt-lead-intent" name="texto-livre" required aria-required="true">
+              <option value="Condições e disponibilidade" selected>Receber condições e disponibilidade</option>
+              <option value="Agendar visita">Agendar uma visita</option>
+              <option value="Simular forma de pagamento">Simular forma de pagamento</option>
+              <option value="Falar com especialista">Falar com especialista Tegra Vendas</option>
+            </select>
+          </label>
+          <p class="mt-form-context mt-field-wide" data-lead-context aria-live="polite">Nenhum empreendimento selecionado. Sabrina pode ajudar você a comparar as opções.</p>
+
           <label class="mt-field mt-field-wide" for="mt-lead-name">
             <span>Nome <b aria-hidden="true">*</b></span>
             <input id="mt-lead-name" name="nome" type="text" autocomplete="name" maxlength="120" placeholder="Seu nome" required aria-required="true">
@@ -652,17 +663,6 @@
             <span>Telefone / WhatsApp <b aria-hidden="true">*</b></span>
             <input id="mt-lead-phone" name="telefone_display" type="tel" autocomplete="tel-national" inputmode="tel" maxlength="24" placeholder="(11) 99999-9999" required aria-required="true">
           </label>
-
-          <label class="mt-field mt-field-wide" for="mt-lead-intent">
-            <span>O que você deseja? <b aria-hidden="true">*</b></span>
-            <select id="mt-lead-intent" name="texto-livre" required aria-required="true">
-              <option value="Condições e disponibilidade" selected>Receber condições e disponibilidade</option>
-              <option value="Agendar visita">Agendar uma visita</option>
-              <option value="Simular forma de pagamento">Simular forma de pagamento</option>
-              <option value="Falar com especialista">Falar com especialista Tegra Vendas</option>
-            </select>
-          </label>
-          <p class="mt-form-context mt-field-wide" data-lead-context aria-live="polite">Nenhum empreendimento selecionado. Sabrina pode ajudar você a comparar as opções.</p>
 
           <div class="mt-honeypot" aria-hidden="true">
             <label for="mt-company-website">Website</label>
