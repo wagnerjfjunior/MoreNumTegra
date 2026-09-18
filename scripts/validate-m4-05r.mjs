@@ -299,6 +299,11 @@ if (portalLinks.includes('observer.observe(document.documentElement')) fail('hom
 if (!portalLinks.includes('observer.observe(grid, {subtree:true, childList:true})')) fail('home', 'portal-links observer must remain scoped and idempotent');
 if (!portalLinks.includes('if (link.textContent !== "Ver empreendimento →")')) fail('home', 'portal-links text mutation must remain guarded');
 
+const eloPage = await readFile('src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html', 'utf8');
+const projectPageCss = await readFile('src-greenn/project-page.css', 'utf8');
+if (!eloPage.includes('data-mnt-consent') || !eloPage.includes('/src-greenn/preview/runtime.js')) fail('elo-duo', 'consent markup/runtime missing');
+if (!projectPageCss.includes('.mt-consent{position:fixed') || !projectPageCss.includes('.mt-consent[hidden]{display:none!important}')) fail('elo-duo', 'exact-project consent styles missing');
+
 const staticHome = await readFile('src-greenn/preview/index.html', 'utf8');
 const staticHomeJs = await readFile('src-greenn/moretegra.js', 'utf8');
 if (staticHome.includes('const blocks = [') || staticHome.includes('fetch(url, {cache:"no-store"})')) fail('home', 'client-side primary block loader must not exist');
