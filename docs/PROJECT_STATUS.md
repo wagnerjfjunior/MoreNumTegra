@@ -1,69 +1,92 @@
 # Status do Projeto — MoreNumTegra
 
-> ACTIVE RELEASE CANDIDATE: Ária Higienópolis exact-project publication is authorized as a narrow Product Authority exception. No unrelated route/provider/DNS/deployment-policy change is authorized. Post-merge production state is not yet claimed.
-
 Atualizado em `2026-09-18`.
 
 Fonte canônica: GitHub `main`.
 
-SHA live observado nesta reconciliação:
-
-`e13b019f9bcca9e18bde8eedf0eb56a44a50be15`
-
-## 1. Produção
+## 1. Release Ária Higienópolis
 
 ```text
-WEB PRODUCTION = Vercel
-CANONICAL HOST = https://www.moretegra.com.br/
+PRODUCT_AUTHORITY_EXCEPTION = CLOSED_AS_RELEASED_WITH_VALIDATION_RESIDUAL
+PR_112 = MERGED
+PR_112_MERGE_SHA = c4c5e74ac0a2b139df768484da565df471fb24ef
+PR_113 = MERGED
+RUNTIME_RELEASE_SHA = 9d5c82cccb43dcc3992dc24f0d457f24a47cf111
+VERCEL_STATUS = SUCCESS
+PROD_HTTP_SMOKE = NOT_PROVEN_BY_CURRENT_TOOLING
+```
+
+A exceção autorizada foi executada sem ampliar o namespace, provider, DNS, framework ou política de deployment.
+
+Foram incorporados:
+
+- exact-project page Ária;
+- link/card da home;
+- structured-data list da home;
+- sitemap com Ária;
+- Vercel rewrite;
+- commercial reference governada;
+- seções de visita e financiamento indicativo;
+- Form 46 compartilhado;
+- consentimento/GTM;
+- JSON-LD alinhado ao núcleo de identidade usado pelas demais exact-project pages.
+
+O smoke HTTP externo ficou pendente apenas por limitação dos verificadores desta sessão. O commit final de runtime recebeu `Vercel = success`.
+
+## 2. Produção
+
+```text
+WEB_PRODUCTION = Vercel
+CANONICAL_HOST = https://www.moretegra.com.br/
 APEX = 308 -> www
 DNS = Cloudflare authoritative / DNS only
 GREEN/GDIGITAL = Form 46 provider + CRM
-VERCEL AUTOMATIC DEPLOYMENTS = main only
-NON_MAIN DEPLOYMENTS = disabled
+VERCEL_AUTOMATIC_DEPLOYMENTS = main only
+NON_MAIN_DEPLOYMENTS = disabled
+RUNTIME_RELEASE_SHA = 9d5c82cccb43dcc3992dc24f0d457f24a47cf111
 ```
 
-Vercel reportou `SUCCESS` para o merge commit atual.
-
-## 2. Runtime recente
-
-PR #109 restaurou estabilidade da home após identificar feedback loop de `MutationObserver` no runtime de links de projeto.
-
-Resultado validado pelo Product Authority:
-
-- vídeo da home funcionando;
-- página fluida;
-- faixa de consentimento da home funcionando.
-
-PR #110 corrigiu a apresentação da faixa de consentimento do Elo Duo e consolidou política production-only no Vercel.
-
-## 3. Search / exact-project pages
-
-Rotas publicadas e indexáveis:
+## 3. Rotas exact-project publicadas no repositório/deployment
 
 - `/`
 - `/empreendimentos/capiitolo-piero-lissoni/`
 - `/empreendimentos/caminhos-da-lapa-elo-duo/`
+- `/empreendimentos/aria-higienopolis/`
 
-Search Console, conforme screenshots fornecidos pelo Product Authority:
+Para Ária:
+
+- canonical próprio;
+- index/follow;
+- um H1;
+- FAQ visible/schema 11/11;
+- Offer ligado ao canonical do projeto;
+- entity graph sem `@id` interno pendurado;
+- official Tegra page ligada por `sameAs`;
+- commercial-values `updatedAt=2026-09-18`.
+
+## 4. Sitemap / robots
+
+Sitemap canônico versionado contém quatro URLs, incluindo Ária. `robots.txt` continua apontando para o sitemap canônico.
+
+```text
+SITEMAP_REPOSITORY_STATE = UPDATED
+SITEMAP_DEPLOYMENT_STATE = INCLUDED_IN_VERCEL_SUCCESS_SHA
+SITEMAP_GSC_PROCESSING = NOT_PROVEN
+ARIA_GSC_INDEXATION = NOT_PROVEN
+```
+
+## 5. Search / structured data residuals
+
+Evidência anterior do Product Authority permanece:
 
 - home indexada;
 - CAPIITOLO com Product Snippet válido;
 - Elo Duo com Product detectado/válido;
-- warnings observados são apresentados como não críticos/opcionais.
+- warnings como `aggregateRating`, `review`, `availability`, `shippingDetails` e `hasMerchantReturnPolicy` não autorizam dados inventados.
 
-Não há autorização para inventar dados a fim de eliminar warnings.
+Ária ainda precisa de validação live/GSC pós-release antes de qualquer claim de indexação.
 
-## 4. Sitemap / robots
-
-Sitemap canônico contém três URLs publicadas.
-
-`robots.txt` permite crawling e referencia:
-
-`https://www.moretegra.com.br/sitemap.xml`
-
-A próxima validação deve confirmar comportamento live e aceitação no Google, não apenas sintaxe de arquivo.
-
-## 5. M4-05R
+## 6. M4-05R
 
 ```text
 M4-05 historical implementation = MERGED
@@ -73,33 +96,10 @@ M4-05R Runtime = MERGED
 M4-05R Acceptance = NOT_YET_DECLARED_COMPLETE
 ```
 
-Mudanças recentes em metadata/schema não devem ser revertidas sem evidência concreta de regressão.
-
-## 6. Deployment/provider policy
-
-Por limitação operacional/rate-limit observada no Vercel, o projeto adota atualmente:
-
-```json
-"git": {
-  "deploymentEnabled": {
-    "**": false,
-    "main": true
-  }
-}
-```
-
-Esta é uma política local ao Vercel/MoreNumTegra e não deve ser generalizada para outros providers sem evidência equivalente.
+Nenhum progresso WBS foi alterado pelo release excepcional do Ária.
 
 ## 7. Próxima ação
 
 Ver `docs/NEXT_SAFE_ACTION.md`.
 
-A próxima frente é validação não mutativa de:
-
-- sitemap;
-- robots;
-- headers/canonical/indexabilidade;
-- Product Snippet / Merchant warnings;
-- JSON-LD da home.
-
-Nenhuma correção deve ser implementada antes de classificar se existe erro real.
+Executar validação não mutativa de HTTP live + sitemap/robots + Search Console + structured data, incluindo Ária. Só abrir mudança de código com evidência concreta de defeito.

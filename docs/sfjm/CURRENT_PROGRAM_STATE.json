@@ -7,10 +7,9 @@
   "current_execution": {
     "active_phase_id": null,
     "active_task_id": null,
-    "state": "PRODUCT_AUTHORITY_EXCEPTION / ARIA_HIGIENOPOLIS_RELEASE_CANDIDATE",
+    "state": "NO_ACTIVE_WBS_TASK / ARIA_RELEASE_DEPLOYED / EXTERNAL_HTTP_SMOKE_NOT_PROVEN_BY_TOOLING",
     "pull_request": null,
-    "branch": "feature/aria-higienopolis",
-    "pre_governance_head": "651005d65d8200298c6859204ade297c9580df2e",
+    "runtime_release_sha": "9d5c82cccb43dcc3992dc24f0d457f24a47cf111",
     "authority_record": "docs/sfjm/ARIA_HIGIENOPOLIS_RELEASE_EXCEPTION_2026-09-18.md"
   },
   "progress": {
@@ -63,15 +62,18 @@
       "merge_commit": "f5b4b27cc31fa6247ad3394e40a295f2a58861d6"
     },
     "ARIA-EXCEPTION-2026-09-18": {
-      "state": "AUTHORIZED / RELEASE_CANDIDATE",
-      "purpose": "Out-of-sequence Product Authority exception to publish Ária Higienópolis exact-project route without changing route family, provider, DNS or deployment policy.",
-      "branch": "feature/aria-higienopolis"
+      "state": "MERGED / VERCEL_SUCCESS / STATIC_VALIDATED / EXTERNAL_HTTP_SMOKE_NOT_PROVEN_BY_TOOLING",
+      "purpose": "Product Authority exception: publish Ária Higienópolis exact-project route and minimum home/search integration.",
+      "release_pr": 112,
+      "release_merge_sha": "c4c5e74ac0a2b139df768484da565df471fb24ef",
+      "followup_pr": 113,
+      "runtime_release_sha": "9d5c82cccb43dcc3992dc24f0d457f24a47cf111"
     }
   },
   "next": {
     "task_id": null,
-    "state": "ARIA_HIGIENOPOLIS_RELEASE_AND_POSTMERGE_RECONCILIATION",
-    "safe_action": "Clean and validate the authorized Ária Higienópolis release candidate, merge through a governed PR if scope remains clean, then resolve Vercel production and reconcile SFJM from observed post-merge evidence."
+    "state": "POST_ARIA_NON_MUTATIVE_HTTP_SEARCH_VALIDATION",
+    "safe_action": "Validate live HTTP for home/Ária/sitemap/robots, then Search Console and structured data. Do not mutate code unless a real defect is independently proven."
   },
   "cross_project": {
     "commercial_catalog": {
@@ -85,7 +87,9 @@
     "favicon": "/favicon.ico returned 404 in post-cutover Pingdom HAR; minor asset residual",
     "gtm_www_published_version_number": "NOT_RECORDED",
     "gsc_sitemap_processing": "NOT_PROVEN_FROM_REPOSITORY_EVIDENCE",
-    "commercial_hardcodes": "KNOWN / PR96 INVENTORY CANONICAL / RETIREMENT DEFERRED PENDING UPSTREAM CONTRACT"
+    "commercial_hardcodes": "KNOWN / PR96 INVENTORY CANONICAL / RETIREMENT DEFERRED PENDING UPSTREAM CONTRACT",
+    "aria_external_http_smoke": "NOT_PROVEN_BY_CURRENT_TOOLING / VERCEL_STATUS_SUCCESS",
+    "aria_gsc_indexation": "NOT_PROVEN"
   },
   "infra": {
     "dns_authority": "CLOUDFLARE_DNS_ONLY",
