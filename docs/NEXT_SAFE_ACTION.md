@@ -2,57 +2,57 @@
 
 Atualizado em `2026-09-18`.
 
-## Product Authority exception now in force
+## Estado após a exceção Ária
 
-The previously recorded non-mutative Search Console/sitemap validation remains valid work, but its sequencing is temporarily superseded by one explicit Product Authority exception:
-
-**publish the completed Ária Higienópolis exact-project page and reconcile the release.**
-
-Authority record:
-
-`docs/sfjm/ARIA_HIGIENOPOLIS_RELEASE_EXCEPTION_2026-09-18.md`
-
-## Release candidate
+A exceção de publicação do Ária Higienópolis foi executada e fechada no pipeline:
 
 ```text
-BRANCH = feature/aria-higienopolis
-PRE_GOVERNANCE_HEAD = 651005d65d8200298c6859204ade297c9580df2e
-BASE_INCORPORATED = bb614c3234f1945237e3fe8ea9787c438aebd7e6
-NON_MAIN_AUTO_DEPLOY = disabled
-TARGET_ROUTE = /empreendimentos/aria-higienopolis/
+PR_112 = MERGED
+PR_113 = MERGED
+RUNTIME_RELEASE_SHA = 9d5c82cccb43dcc3992dc24f0d457f24a47cf111
+VERCEL_STATUS = SUCCESS
+STATIC_VALIDATION = PASS
+EXTERNAL_HTTP_SMOKE = NOT_PROVEN_BY_CURRENT_TOOLING
+GSC_INDEXATION = NOT_PROVEN
 ```
 
-## Authorized scope
+Registro: `docs/sfjm/ARIA_HIGIENOPOLIS_RELEASE_EXCEPTION_2026-09-18.md`.
 
-- Ária exact-project page;
-- governed R$ 501.000 Studio 1510 reference already approved by Product Authority;
-- home card/internal link;
-- home published-project structured-data list;
-- sitemap entry;
-- Vercel route rewrite;
-- commercial-values entry;
-- minimal shared project-page canonical generalization required so Offer IDs resolve to the current project;
-- SFJM/release documentation.
+## Única próxima ação segura
 
-## Explicit exclusions
+Executar uma **validação factual e não mutativa pós-release** para resolver:
 
-Do not include unrelated CAPIITOLO experiment edits or a redesign of the home Form 46 field. Do not reactivate branch previews. Do not change DNS, provider, GTM/GA4 ownership, Form 46 backend contract, framework/backend architecture, FECH.AI or Ads.
+1. HTTP live de `/`, `/empreendimentos/aria-higienopolis/`, `/sitemap.xml` e `/robots.txt`;
+2. canonical/indexability do Ária no runtime;
+3. carregamento de assets essenciais e existência do card/link da home;
+4. Search Console do sitemap atualizado;
+5. inspeção/descoberta do Ária no Google;
+6. structured data do Ária e da home;
+7. classificação dos warnings de Product/Merchant como opcionais ou realmente acionáveis.
 
-## Acceptance sequence
+## Restrições
 
-1. clean branch scope;
-2. validate JSON/JSON-LD, canonical, H1, Form 46 wiring, consent/GTM ownership, home link, sitemap and Vercel route;
-3. open governed PR to `main`;
-4. verify exact PR head and changed files;
-5. merge only if scope remains clean;
-6. resolve Vercel production deployment from the merge SHA;
-7. production smoke: home + Ária + sitemap + canonical/robots/assets;
-8. docs-only SFJM post-merge reconciliation.
+- não alterar código apenas porque o smoke desta sessão ficou bloqueado pelas ferramentas;
+- não classificar falha de DNS/fetch do ambiente de validação como falha de produção sem evidência independente;
+- não inventar `aggregateRating`, `review`, `availability`, `shippingDetails` ou `hasMerchantReturnPolicy`;
+- não gerar Preview Vercel;
+- qualquer correção futura segue branch/PR;
+- somente `main` permanece habilitada para deployment automático.
+
+## Condição de encerramento
+
+Produzir classificação explícita:
 
 ```text
-MERGED != DEPLOYED
-DEPLOYED != PROD_SMOKE_TESTED
-SITEMAP_DEPLOYED != GSC_PROCESSED
+HOME_HTTP = PASS | FAIL | NOT_PROVEN
+ARIA_HTTP = PASS | FAIL | NOT_PROVEN
+SITEMAP_HTTP = PASS | FAIL | NOT_PROVEN
+ROBOTS_HTTP = PASS | FAIL | NOT_PROVEN
+ARIA_CANONICAL = VALID | INVALID | NOT_PROVEN
+ARIA_STRUCTURED_DATA = VALID | INVALID | NEEDS_FURTHER_EVIDENCE
+GSC_SITEMAP = ACCEPTED | ERROR | NOT_PROVEN
+ARIA_INDEXATION = INDEXED | NOT_INDEXED | NOT_PROVEN
+CODE_CHANGE_REQUIRED = YES | NO
 ```
 
-After this exception is closed, return to the deferred Search Console / structured-data validation track unless a newer Product Authority decision supersedes it.
+Se `CODE_CHANGE_REQUIRED = YES`, abrir nova ação segura antes de mutar produção.
