@@ -4,6 +4,8 @@
 .moretegra :is(h1,h2,h3,p,span,strong,small,dt,dd,a,button,input,select,summary,li),.moretegra-supplement :is(h1,h2,h3,p,span,strong,small,dt,dd,a,button,input,select,summary,li){font-family:inherit!important}
 .moretegra .mt-hero h1,.moretegra .mt-negotiation h2,.moretegra .mt-moments h2,.moretegra .mt-projects h2,.moretegra .mt-guide h2,.moretegra .mt-seo h2,.moretegra .mt-faq h2,.moretegra .mt-form-intro h2,.moretegra-supplement .mt-post-form h2{font-weight:760!important}
 .moretegra .mt-project-body h3,.moretegra .mt-guide-list h3,.moretegra .mt-zone-grid h3,.moretegra .mt-negotiation-factors h3,.moretegra .mt-moment-grid strong{font-weight:800!important}
+.moretegra .mt-moment-cta{display:inline-flex;align-items:center;min-height:28px;margin-top:8px;color:#7a5b00;font-size:11px;font-style:normal;font-weight:850;letter-spacing:.035em;text-transform:uppercase}
+.moretegra .mt-negotiation-emphasis a{text-decoration:underline;text-underline-offset:3px}
 .moretegra .mt-button,.moretegra .mt-status-buttons button,.moretegra .mt-result-summary button,.moretegra .mt-empty button,.moretegra .mt-floating,.moretegra .mt-project-actions a{font-weight:800!important}
 :where(.moretegra,.moretegra-supplement,.moretegra-preview-form) a{color:inherit;text-decoration:none}
 :where(.moretegra,.moretegra-supplement,.moretegra-preview-form) img{display:block;max-width:100%;height:auto}

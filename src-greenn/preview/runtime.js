@@ -11,7 +11,8 @@
   const CONSENT_KEY = "mnt.consent.v1";
   const REQUEST_TIMEOUT_MS = 15000;
   const CAPIITOLO_WHATSAPP = "5511960779328";
-  const LOCATION_MESSAGE = "Solicito agendamento de visita, passe a localização.";
+  const WHATSAPP_ICON = "https://s3-gdigital.s3.amazonaws.com/gdigital/313/whatsapp-removebg.webp";
+  const LOCATION_MESSAGE = "Por favor me envie a localização exata do Tegra CAPIITOLO by Piero Lissoni.";
   const CAPIITOLO_ROUTE = "/empreendimentos/capiitolo-piero-lissoni/";
 
   function isLiveHost() {
@@ -79,14 +80,29 @@
     node.hidden = !text;
   }
 
+  function leadProjectContext(form) {
+    return String(form.dataset.projectName || selectedInterest() || "Página principal | Nenhum empreendimento selecionado").trim();
+  }
+
+  function composeLeadContext(form) {
+    const project = leadProjectContext(form);
+    const intent = String(form.elements["texto-livre"]?.value || "").trim();
+    return intent ? `${project} | ${intent}` : project;
+  }
+
   function validate(form, countrySelect) {
     const name = form.elements.nome;
     const email = form.elements.email;
     const phone = form.elements.telefone_display;
+    const intent = form.elements["texto-livre"];
     const code = String(countrySelect.value || "");
     const normalizedPhone = normalizeE164(phone.value, code);
     const errors = [];
-    [name, email, phone, countrySelect].forEach((field) => field?.removeAttribute("aria-invalid"));
+    [name, email, phone, countrySelect, intent].forEach((field) => field?.removeAttribute("aria-invalid"));
+    if (!String(intent?.value || "").trim()) {
+      errors.push("Selecione o que você deseja.");
+      intent?.setAttribute("aria-invalid", "true");
+    }
     if (!String(name.value || "").trim()) {
       errors.push("Informe seu nome.");
       name.setAttribute("aria-invalid", "true");
@@ -109,15 +125,24 @@
       phone: normalizedPhone,
       name: String(name.value || "").trim(),
       email: String(email.value || "").trim(),
-      project: String(form.elements["texto-livre"]?.value || "").trim()
+      leadContext: composeLeadContext(form)
     };
   }
 
   function initConsent() {
     const banner = document.querySelector("[data-mnt-consent]");
     if (!banner) return;
+    const syncOffset = () => {
+      const open = !banner.hidden;
+      const offset = open ? Math.ceil(banner.getBoundingClientRect().height + 28) : 14;
+      document.documentElement.style.setProperty("--mt-consent-offset", `${offset}px`);
+    };
+    new MutationObserver(syncOffset).observe(banner, {attributes:true, attributeFilter:["hidden"]});
+    if ("ResizeObserver" in window) new ResizeObserver(syncOffset).observe(banner);
+    window.addEventListener("resize", syncOffset, {passive:true});
     if (!isLiveHost()) {
       banner.hidden = true;
+      syncOffset();
       return;
     }
     const emitChoice = (choice) => {
@@ -132,19 +157,23 @@
     }
     if (saved === "granted" || saved === "denied") {
       banner.hidden = true;
+      syncOffset();
       emitChoice(saved);
       return;
     }
     banner.hidden = false;
+    syncOffset();
     banner.querySelector("[data-consent-accept]")?.addEventListener("click", () => {
       try { window.localStorage.setItem(CONSENT_KEY, "granted"); } catch {}
       emitChoice("granted");
       banner.hidden = true;
+      syncOffset();
     });
     banner.querySelector("[data-consent-reject]")?.addEventListener("click", () => {
       try { window.localStorage.setItem(CONSENT_KEY, "denied"); } catch {}
       emitChoice("denied");
       banner.hidden = true;
+      syncOffset();
     });
   }
 
@@ -188,19 +217,22 @@
     const style = document.createElement("style");
     style.id = "mnt-capiitolo-runtime-style";
     style.textContent = `
-      .mnt-price-section{background:#0a0a09;color:#fff;padding:82px 0}
-      .mnt-price-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:8vw;align-items:end}
+      .mnt-price-section{background:#0a0a09;color:#fff;padding:clamp(56px,7vw,82px) 0}
+      .mnt-price-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,72px);align-items:end}
+      .mnt-price-grid>*{min-width:0}
       .mnt-price-label{margin:0 0 12px;font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#EBB92E}
-      .mnt-price-value{font:400 clamp(3rem,7vw,6.5rem)/.95 Georgia,serif;letter-spacing:-.045em;margin:0}
-      .mnt-price-note{max-width:620px;color:#bdb8af;margin:18px 0 0}
-      .mnt-map-link{display:block;position:relative;margin-top:26px;border:1px solid rgba(10,10,9,.18);background:#ddd;text-decoration:none;color:inherit;overflow:hidden}
-      .mnt-map-frame{width:100%;height:310px;border:0;pointer-events:none}
-      .mnt-map-cta{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:15px 18px;background:#EBB92E;color:#111;font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
-      .mnt-whatsapp-float{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:999px;background:#25D366;color:#071b0e;text-decoration:none;font-weight:800;box-shadow:0 12px 34px rgba(0,0,0,.25)}
-      .mnt-whatsapp-dot{width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 3px #25D366}
-      .mnt-whatsapp-float span{font-size:.78rem}
+      .mnt-price-amount,.mnt-price-value{font:400 clamp(2.35rem,4.4vw,4.8rem)/1 Georgia,serif;letter-spacing:-.04em;margin:0;overflow-wrap:anywhere}
+      .mnt-price-reference{margin:0;font-size:clamp(1rem,1.55vw,1.3rem);line-height:1.45;font-weight:750;letter-spacing:-.01em;overflow-wrap:anywhere}
+      .mnt-price-note{max-width:620px;color:#bdb8af;margin:18px 0 0;line-height:1.6}
+      .mnt-map-link{display:block;position:relative;margin-top:26px;border:1px solid rgba(10,10,9,.18);border-radius:20px;background:#ddd;text-decoration:none;color:inherit;overflow:hidden;min-height:310px}
+      .mnt-map-frame{display:block;width:100%;height:310px;border:0;pointer-events:none}
+      .mnt-map-cta{position:absolute;left:16px;right:16px;bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:14px 16px;border-radius:14px;background:rgba(23,24,19,.94);color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.28)}
+      .mnt-map-cta strong{display:block}.mnt-map-cta small{display:block;margin-top:3px;color:#ddd8ca}.mnt-map-cta b{white-space:nowrap;color:#EBB92E}
+      .mnt-whatsapp-float{position:fixed;right:18px;bottom:var(--mt-consent-offset,18px);z-index:60;width:56px;height:56px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#25d366;text-decoration:none;box-shadow:0 12px 34px rgba(0,0,0,.25)}
+      .mnt-whatsapp-float img{width:32px;height:32px;object-fit:contain}
+      .mnt-contact-float{position:fixed;right:86px;bottom:var(--mt-consent-offset,18px);z-index:60;min-height:56px;display:flex;align-items:center;justify-content:center;padding:0 18px;border-radius:999px;background:#EBB92E;color:#171813;text-decoration:none;font-size:.8rem;font-weight:850;line-height:1.15;box-shadow:0 12px 34px rgba(0,0,0,.22)}
       .mnt-location-link{font-weight:800;color:inherit;text-decoration:underline;text-underline-offset:3px}
-      @media(max-width:900px){.mnt-price-grid{grid-template-columns:1fr;gap:28px}.mnt-map-frame{height:260px}.mnt-whatsapp-float{right:12px;bottom:12px;padding:13px 14px}.mnt-whatsapp-float span{display:none}}
+      @media(max-width:900px){.mnt-price-grid{grid-template-columns:1fr;gap:28px}.mnt-map-frame{height:280px}.mnt-whatsapp-float{right:12px;width:54px;height:54px}.mnt-contact-float{left:12px;right:76px;min-height:54px}}
     `;
     document.head.append(style);
   }
@@ -214,7 +246,7 @@
     const pilot = document.querySelector(".pilot");
     if (pilot) pilot.textContent = "CAPIITOLO · Chácara Klabin";
     const footerText = document.querySelector(".footer .footer-in span");
-    if (footerText) footerText.textContent = "MoreTegra · More em um Tegra · CAPIITOLO";
+    if (footerText) footerText.textContent = "AGENDE SEU ATENDIMENTO no CAPIITOLO · Rua Ibaragui Nissui, 166 — Chácara Klabin · São Paulo/SP · CEP 04116-200";
 
     const facts = document.querySelectorAll(".facts .fact");
     const locationFact = facts[3];
@@ -237,16 +269,16 @@
       locationCard.innerHTML = `
         <p class="eyebrow">Apartamento na Chácara Klabin · localização</p>
         <h2 id="location-title">Viver na Chácara Klabin faz parte do projeto.</h2>
-        <p>Veja a localização do CAPIITOLO no mapa. Ao tocar, você abre o WhatsApp para solicitar a localização e agendar sua visita.</p>
-        <a class="mnt-map-link" href="${locationWhatsapp}" target="_blank" rel="noopener" aria-label="Solicitar localização do CAPIITOLO pelo WhatsApp">
-          <iframe class="mnt-map-frame" title="Localização do CAPIITOLO na Chácara Klabin" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Rua+Ibaragui+Nissui,+Chacara+Klabin,+Sao+Paulo,+SP&output=embed"></iframe>
-          <span class="mnt-map-cta">Solicitar localização para visita <b>WhatsApp ↗</b></span>
+        <p>Veja o ponto do CAPIITOLO na Chácara Klabin. Para receber a localização e organizar a visita, solicite o atendimento pelo WhatsApp.</p>
+        <a class="mnt-map-link" href="${locationWhatsapp}" target="_blank" rel="noopener" aria-label="Solicitar a localização exata do CAPIITOLO pelo WhatsApp">
+          <iframe class="mnt-map-frame" title="Ponto do CAPIITOLO na Chácara Klabin" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=-23.58341615763821,-46.62704356167254&z=16&output=embed" tabindex="-1" aria-hidden="true"></iframe>
+          <span class="mnt-map-cta"><span><strong>Quer receber a localização exata?</strong><small>Toque no mapa e peça a localização pelo WhatsApp.</small></span><b>Solicitar localização →</b></span>
         </a>`;
     }
 
     const faqFirst = document.querySelector("#faq details:first-of-type p");
     if (faqFirst instanceof HTMLElement) {
-      faqFirst.innerHTML = `Rua Ibaragui Nissui, Chácara Klabin, São Paulo. <a class="mnt-location-link" href="${locationWhatsapp}" target="_blank" rel="noopener">Solicitar localização</a>.`;
+      faqFirst.innerHTML = `O CAPIITOLO fica na Chácara Klabin, em São Paulo. <a class="mnt-location-link" href="${locationWhatsapp}" target="_blank" rel="noopener">Solicitar localização e agendar visita</a>.`;
     }
 
     if (!document.querySelector(".mnt-price-section")) {
@@ -258,13 +290,13 @@
         section.innerHTML = `
           <div class="wrap mnt-price-grid">
             <div>
-              <p class="mnt-price-label">Valores</p>
-              <h2 id="mnt-price-title" class="display">Condições atuais.</h2>
+              <p class="mnt-price-label">A partir de</p>
+              <h2 id="mnt-price-title" class="mnt-price-amount" data-commercial-value aria-live="polite">R$ 3.539.900</h2>
             </div>
             <div data-commercial-key="capiitolo">
-              <p class="mnt-price-label">A partir de</p>
-              <p class="mnt-price-value" data-commercial-value aria-live="polite">R$ 3.647.490</p>
-              <p class="mnt-price-note">Unidade 24 · 210 m² · R$ 17.369/m² · Valor a partir de R$ 3.647.490. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.</p>
+              <p class="mnt-price-label">Referência comercial</p>
+              <p class="mnt-price-reference">Ref. 210 m² · unidade 33 · Ago/26 · pagamento à vista</p>
+              <p class="mnt-price-note">Unidade disponível na data de referência. Valor e condições podem mudar; confirme as condições vigentes antes da proposta.</p>
               <a class="btn yellow" href="#formulario">Receber condições <span>↓</span></a>
             </div>
           </div>`;
@@ -279,8 +311,17 @@
       badge.target = "_blank";
       badge.rel = "noopener";
       badge.setAttribute("aria-label", "Falar pelo WhatsApp sobre o CAPIITOLO");
-      badge.innerHTML = '<i class="mnt-whatsapp-dot" aria-hidden="true"></i><span>WhatsApp</span>';
+      badge.innerHTML = `<img src="${WHATSAPP_ICON}" alt="" width="32" height="32" aria-hidden="true">`;
       document.body.append(badge);
+    }
+
+    if (!document.querySelector(".mnt-contact-float")) {
+      const contact = document.createElement("a");
+      contact.className = "mnt-contact-float";
+      contact.href = "#formulario";
+      contact.textContent = "Receber condições";
+      contact.setAttribute("aria-label", "Receber condições do CAPIITOLO");
+      document.body.append(contact);
     }
 
     const filmLink = document.querySelector('.film-card a[href*="youtube.com/watch?v=iq50ei83B8U"]');
@@ -314,7 +355,7 @@
     if (!(form instanceof HTMLFormElement)) return;
     const country = form.querySelector("#mt-phone-country");
     const phone = form.querySelector("#mt-lead-phone");
-    const project = form.querySelector("#mt-lead-project");
+    const contextNode = form.querySelector("[data-lead-context]");
     const honeypot = form.querySelector("#mt-company-website");
     const submit = form.querySelector("[data-moretegra-form-submit]");
     const submitLabel = form.querySelector("[data-submit-label]");
@@ -333,19 +374,21 @@
       if (country.value === "+55" && !String(phone.value).trim().startsWith("+")) phone.value = formatBrazilPhone(phone.value);
     });
 
+    const syncLeadContext = () => {
+      if (!contextNode) return;
+      const project = leadProjectContext(form);
+      contextNode.textContent = project === "Página principal | Nenhum empreendimento selecionado"
+        ? "Nenhum empreendimento selecionado. Sabrina pode ajudar você a comparar as opções."
+        : `Empreendimento selecionado: ${project}`;
+    };
+
     document.addEventListener("click", (event) => {
-      const target = event.target instanceof Element ? event.target.closest("[data-interest]") : null;
+      const target = event.target instanceof Element ? event.target.closest("[data-interest],[data-change-interest]") : null;
       if (!target) return;
-      window.setTimeout(() => {
-        const interest = selectedInterest() || String(target.dataset.interest || "").trim();
-        if (interest) project.value = interest;
-      }, 0);
+      window.setTimeout(syncLeadContext, 0);
     }, true);
 
-    form.addEventListener("focusin", () => {
-      const interest = selectedInterest();
-      if (interest && !project.value.trim()) project.value = interest;
-    }, {once:true});
+    form.addEventListener("focusin", syncLeadContext, {once:true});
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -379,7 +422,7 @@
       payload.append("nome", result.name);
       payload.append("email", result.email);
       payload.append("telefone", result.phone);
-      if (result.project) payload.append("texto-livre", result.project);
+      if (result.leadContext) payload.append("texto-livre", result.leadContext);
 
       try {
         const response = await fetch(FORM_ENDPOINT, {method:"POST",body:payload,mode:"cors",credentials:"omit",signal:controller.signal});
@@ -402,6 +445,7 @@
     });
 
     syncCountry();
+    syncLeadContext();
   }
 
   function start() {

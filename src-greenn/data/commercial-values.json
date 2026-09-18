@@ -25,11 +25,15 @@
       "state": "active_reference",
       "priceLabel": "A partir de",
       "price": 3539900,
-      "reference": "Ref. 210 m² (unidade 33) - Ago/26 | pagamento à vista",
+      "reference": "Ref. 210 m² · unidade 33 · Ago/26 · pagamento à vista",
       "sourceClass": "TEGRA_OFFICIAL_WEBSITE",
       "sourceUrl": "https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/chacara-klabin/chacaraklabin",
       "sourceObservedAt": "2026-09-17",
-      "disclaimer": "Valor de referência comercial da Tegra. Unidade, disponibilidade e condições podem mudar; confirme as condições vigentes no atendimento."
+      "disclaimer": "Valor de referência comercial da Tegra. Unidade, disponibilidade e condições podem mudar; confirme as condições vigentes no atendimento.",
+      "inventoryLabel": "Unidade 33 disponível",
+      "availability": "in_stock",
+      "availabilityObservedAt": "2026-09-18",
+      "availabilitySourceClass": "PRODUCT_AUTHORITY_USER_REPORTED"
     },
     "aria-higienopolis": {
       "state": "active_reference",

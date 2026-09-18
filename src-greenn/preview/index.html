@@ -428,11 +428,11 @@
           <p>Use o estágio para escolher como deseja comprar: pronto para morar, em construção ou lançamento. O estágio descreve o momento do empreendimento e não confirma disponibilidade de unidades.</p>
         </div>
         <div class="mt-moment-grid" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr))">
-          <a href="#oportunidades" data-set-status="entregue"><span>01</span><strong>Quero mudar agora</strong><small>Prontos para morar</small></a>
-          <a href="#oportunidades" data-set-status="construcao"><span>02</span><strong>Quero planejar</strong><small>Em construção</small></a>
-          <a href="#oportunidades" data-set-status="lancamento"><span>03</span><strong>Quero chegar primeiro</strong><small>Lançamentos</small></a>
-          <a href="#oportunidades" data-focus-price><span>04</span><strong>Quero começar pelo valor</strong><small>Veja os valores antes de negociar</small></a>
-          <a href="#negociacao"><span>05</span><strong>Quero negociar melhor</strong><small>Já conheço os valores</small></a>
+          <a href="#oportunidades" data-set-status="entregue"><span>01</span><strong>Quero mudar agora</strong><small>Prontos para morar</small><em class="mt-moment-cta">Ver opções →</em></a>
+          <a href="#oportunidades" data-set-status="construcao"><span>02</span><strong>Quero planejar</strong><small>Em construção</small><em class="mt-moment-cta">Ver opções →</em></a>
+          <a href="#oportunidades" data-set-status="lancamento"><span>03</span><strong>Quero chegar primeiro</strong><small>Lançamentos</small><em class="mt-moment-cta">Ver opções →</em></a>
+          <a href="#oportunidades" data-focus-price><span>04</span><strong>Quero começar pelo valor</strong><small>Veja os valores antes de negociar</small><em class="mt-moment-cta">Comparar valores →</em></a>
+          <a href="#negociacao"><span>05</span><strong>Quero negociar melhor</strong><small>Já conheço os valores</small><em class="mt-moment-cta">Entender negociação →</em></a>
         </div>
       </section>
 
@@ -444,7 +444,7 @@
             <p>Os valores exibidos são referências comerciais para comparação e não devem ser interpretados como condição final garantida. Em alguns casos, podem existir condições promocionais específicas para uma unidade determinada.</p>
             <p>O valor final pode variar conforme a unidade escolhida, disponibilidade, andar, vista, posição no empreendimento, tabela vigente e, principalmente, de acordo com a composição do fluxo de pagamento.</p>
             <p>Agende uma visita com um de nossos corretores especialistas da Tegra Vendas e receba informações atualizadas diretamente da Incorporadora Tegra sobre unidades, condições e disponibilidade. A partir do seu perfil de pagamento, a negociação é feita diretamente com a Tegra Vendas, considerando entrada, fluxo e forma de pagamento para construir a condição mais adequada à sua compra.</p>
-            <p class="mt-negotiation-emphasis">Não aceite intermediação. Negocie direto com a Tegra Vendas.</p>
+            <p class="mt-negotiation-emphasis">Não aceite intermediações de terceiros. Negocie direto com a Tegra Vendas, com atendimento de <strong>Sabrina da Tegra</strong> · <a href="tel:+5511960779328">(11) 96077-9328</a>. Na recepção, solicite Sabrina da Tegra.</p>
             <div class="mt-negotiation-actions">
               <a class="mt-button mt-button-primary" href="#formulario">Quero negociar meu cenário</a>
               <a class="mt-button mt-button-ghost" href="https://wa.me/5511960779328?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20visita%20e%20entender%20as%20melhores%20condi%C3%A7%C3%B5es%20para%20um%20im%C3%B3vel%20Tegra." target="_blank" rel="noreferrer">Agendar visita</a>
@@ -595,7 +595,7 @@
         <p class="mt-eyebrow">ATENDIMENTO TEGRA</p>
         <h2 id="mt-lead-title">Receba condições atualizadas</h2>
         <p>Informe seus dados para receber disponibilidade e condições dos empreendimentos Tegra. Nome, e-mail e telefone são obrigatórios.</p>
-        <p><strong>Sabrina da Tegra</strong> · Corretora Tegra Vendas · CRECI-SP 209.905-F<br>Estande Tegra Caminhos da Lapa · Rua Fortunato Ferraz, 625 — São Paulo/SP · CEP 05093-000 · <a href="tel:+5511960779328">(11) 96077-9328</a> · <a href="https://corretor.tegravendas.com.br/sabrina/sp" target="_blank" rel="noopener noreferrer">perfil oficial Tegra Vendas</a></p>
+        <p><strong>Sabrina da Tegra</strong> · Corretora Tegra Vendas · CRECI-SP 209.905-F<br><a href="tel:+5511960779328"><strong>(11) 96077-9328</strong></a> · Na recepção, solicite <strong>Sabrina da Tegra</strong> · <a href="https://corretor.tegravendas.com.br/sabrina/sp" target="_blank" rel="noopener noreferrer">perfil oficial Tegra Vendas</a></p>
         <p class="mt-lead-privacy">Seus dados são enviados à Green Sales para atendimento comercial e não são copiados para o Google Analytics.</p>
       </div>
 
@@ -604,6 +604,17 @@
         <input type="hidden" name="form_id" value="46">
 
         <div class="mt-form-grid">
+          <label class="mt-field mt-field-wide" for="mt-lead-intent">
+            <span>O que você deseja? <b aria-hidden="true">*</b></span>
+            <select id="mt-lead-intent" name="texto-livre" required aria-required="true">
+              <option value="Condições e disponibilidade" selected>Receber condições e disponibilidade</option>
+              <option value="Agendar visita">Agendar uma visita</option>
+              <option value="Simular forma de pagamento">Simular forma de pagamento</option>
+              <option value="Falar com especialista">Falar com especialista Tegra Vendas</option>
+            </select>
+          </label>
+          <p class="mt-form-context mt-field-wide" data-lead-context aria-live="polite">Nenhum empreendimento selecionado. Sabrina pode ajudar você a comparar as opções.</p>
+
           <label class="mt-field mt-field-wide" for="mt-lead-name">
             <span>Nome <b aria-hidden="true">*</b></span>
             <input id="mt-lead-name" name="nome" type="text" autocomplete="name" maxlength="120" placeholder="Seu nome" required aria-required="true">
@@ -653,11 +664,6 @@
             <input id="mt-lead-phone" name="telefone_display" type="tel" autocomplete="tel-national" inputmode="tel" maxlength="24" placeholder="(11) 99999-9999" required aria-required="true">
           </label>
 
-          <label class="mt-field mt-field-wide" for="mt-lead-project">
-            <span>Empreendimento <small>(opcional)</small></span>
-            <input id="mt-lead-project" name="texto-livre" type="text" maxlength="180" placeholder="Qual empreendimento deseja conhecer?">
-          </label>
-
           <div class="mt-honeypot" aria-hidden="true">
             <label for="mt-company-website">Website</label>
             <input id="mt-company-website" name="company_website" type="text" tabindex="-1" autocomplete="off">
@@ -668,7 +674,7 @@
         <p id="mt-lead-status" class="mt-form-message" role="status" aria-live="polite"></p>
 
         <button class="mt-lead-submit" type="submit" data-moretegra-form-submit>
-          <span data-submit-label>Receber condições</span>
+          <span data-submit-label>Enviar solicitação</span>
         </button>
       </form>
     </div>

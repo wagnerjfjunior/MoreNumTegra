@@ -15,6 +15,7 @@
 .mt-field select{cursor:pointer}
 .mt-field input:focus,.mt-field select:focus{border-color:#9d7a10;box-shadow:0 0 0 3px rgba(235,185,46,.22)}
 .mt-field input[aria-invalid="true"],.mt-field select[aria-invalid="true"]{border-color:#a33b2b;box-shadow:0 0 0 3px rgba(163,59,43,.12)}
+.mt-form-context{margin:0;padding:11px 13px;border:1px solid #e2dccd;border-radius:12px;background:#f8f5ed;color:#5f5c54;font:600 12.5px/1.45 system-ui,sans-serif}
 .mt-lead-submit{width:100%;min-height:52px;margin-top:16px;border:0;border-radius:12px;background:#EBB92E;color:#171813;font:800 15px/1 system-ui,sans-serif;letter-spacing:.01em;cursor:pointer;transition:transform .15s,filter .15s}
 .mt-lead-submit:hover{filter:brightness(1.03)}
 .mt-lead-submit:active{transform:translateY(1px)}
