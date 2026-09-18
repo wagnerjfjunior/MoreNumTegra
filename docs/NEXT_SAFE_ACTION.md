@@ -1,82 +1,69 @@
 # Próxima Ação Segura — MoreNumTegra
 
-Estado reconciliado em `2026-09-17`.
+Atualizado em `2026-09-18`.
 
-Resolver `main` live antes de executar. Base observada no início deste gate:
+Antes de executar, resolver `main` live.
 
-`f5b4b27cc31fa6247ad3394e40a295f2a58861d6`
+Base canônica observada nesta transição:
+
+`e13b019f9bcca9e18bde8eedf0eb56a44a50be15`
 
 ## Estado atual
 
 ```text
-CAPIITOLO exact-project page = PUBLISHED / INDEXABLE
-ELO DUO exact-project page = PUBLISHED / INDEXABLE
-COMMERCIAL DATA PLANE V2 = DOCS CANONICALIZED
-COMMERCIAL CATALOG UPSTREAM DISCOVERY = HANDED OFF TO FECH.AI
-MORENUMTEGRA COMMERCIAL RUNTIME MIGRATION = DEFERRED
-MNT-M4-05 historical implementation = MERGED
-MNT-M4-05 Product Acceptance = SUPERSEDED_BY_CORRECTIVE_GATE
-MNT-M4-05R Product Decision = APPROVED
-MNT-M4-05R Runtime = IMPLEMENTATION_AND_VALIDATION_AUTHORIZED
-MNT-M4-05R Acceptance = PENDING
+HOME_RUNTIME = RESTORED / PRODUCT_AUTHORITY_SMOKE_OK
+ELO_DUO_CONSENT = FIXED / MERGED / DEPLOYED
+CAPIITOLO = PUBLISHED / INDEXABLE
+ELO_DUO = PUBLISHED / INDEXABLE
+VERCEL = PRODUCTION_ONLY_AUTOMATIC_DEPLOYMENT
+NON_MAIN_PREVIEW = DISABLED
+MNT-M4-05R = MERGED_RUNTIME / ACCEPTANCE_NOT_YET_DECLARED_COMPLETE
 ```
 
-## Única próxima ação segura local
+## Única próxima ação segura
 
-Implementar e validar `MNT-M4-05R — Machine-Readable Entity & Social Metadata Hardening` nas três superfícies já publicadas/indexáveis:
+Executar uma **validação factual e não mutativa de Search Console + sitemap + structured data** para responder:
 
-1. `https://www.moretegra.com.br/`
-2. `https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/`
-3. `https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/`
+1. o sitemap atual é sintaticamente correto e servido de forma aceitável pelo Google?
+2. o `robots.txt` referencia corretamente o sitemap?
+3. há headers HTTP ou comportamento de canonical/indexação que impeçam descoberta?
+4. os "3 erros não críticos" em CAPIITOLO/Elo Duo são apenas recomendações opcionais ou representam defeito real?
+5. existe erro real de JSON-LD na home, separado de peculiaridades do Schema.org Validator?
 
-Contrato focal:
+## Evidência a resolver
 
-- conteúdo/identidade crítica presente no HTML inicial;
-- Schema.org/JSON-LD factual com `@id` estáveis;
-- Open Graph e Twitter/X Cards explícitos;
-- canonical/`og:url`/WebPage URL consistentes;
-- entidade oficial Tegra referenciada pelo `@id` autoritativo `https://www.tegraincorporadora.com.br/#organization` quando aplicável;
-- Sabrina da Tegra modelada como `Person`, com CRECI-SP `209.905-F`, `worksFor` Tegra Vendas, perfil oficial, contato comercial e `workLocation` no Estande Tegra Caminhos da Lapa, apenas com paridade visível adequada;
-- `Offer` somente quando houver condição comercial vigente, publicável e de origem autoritativa Tegra;
-- validação automatizada/reprodutível do contrato.
+Estado versionado atual:
 
-Fluxo autorizado por Product Authority em `2026-09-17`:
+- `sitemap.xml`: home + CAPIITOLO + Elo Duo;
+- namespace: `http://www.sitemaps.org/schemas/sitemap/0.9`;
+- `robots.txt`: `Sitemap: https://www.moretegra.com.br/sitemap.xml`.
+
+Evidência USER_REPORTED via screenshots do Search Console:
+
+- home: "O URL está no Google";
+- CAPIITOLO: 1 Product Snippet válido, com 3 issues não críticos;
+- Elo Duo: Product detectado, com issues não críticos;
+- issues observados incluem `aggregateRating`, `review`, `availability`; Merchant Listing também pode apontar `shippingDetails` e `hasMerchantReturnPolicy`.
+
+## Restrições
+
+- não preencher `aggregateRating`, `review`, `availability`, `shippingDetails` ou `hasMerchantReturnPolicy` com dados inventados;
+- não remover Product/Offer apenas para zerar warnings sem decisão de produto/SEO;
+- não alterar sitemap, robots, JSON-LD ou headers antes de provar o problema;
+- não gerar Preview Vercel;
+- qualquer alteração de código segue branch/PR, mas somente `main` pode gerar deployment automático;
+- provider/rate-limit não deve ser classificado como falha de código sem evidência.
+
+## Condição de encerramento
+
+A ação termina quando houver uma classificação explícita:
 
 ```text
-branch runtime dedicada
--> Vercel Preview automático
--> validar HTML + Schema.org + Social + entity consistency + regressão mobile/runtime
--> se PASS, Ready/merge do release focal
--> Vercel Production automático
--> smoke test em https://www.moretegra.com.br/
+SITEMAP = VALID_AND_ACCEPTABLE | INVALID | NOT_PROVEN
+ROBOTS = VALID | INVALID
+PRODUCT_SNIPPET_WARNINGS = OPTIONAL | ACTIONABLE
+HOME_JSONLD = VALID | INVALID | NEEDS_FURTHER_EVIDENCE
+CODE_CHANGE_REQUIRED = YES | NO
 ```
 
-Não ampliar escopo durante este gate.
-
-## Commercial Catalog / FECH.AI continua paralelo
-
-O Commercial Catalog / Publication Context continua owned upstream pelo FECH.AI e não é pré-condição para esta correção de metadados/entidades.
-
-Até existir contrato upstream aceito:
-
-```text
-NO direct FECH.AI internal-table access
-NO service_role/browser secret
-NO MoreNumTegra-owned replacement commercial backend
-NO local Stage B Commercial Data Plane runtime migration
-```
-
-A origem autoritativa dos fatos comerciais publicados continua sendo a Tegra quando preço/disponibilidade/condição são fornecidos pela Tegra, ainda que no futuro FECH.AI transporte ou governe esses dados.
-
-## Fora do gate
-
-Continuam separados:
-
-- novas famílias de rotas;
-- DNS/canonical-host changes;
-- Form 46 changes;
-- GTM/GA4 changes;
-- Meta/Ads;
-- FECH.AI/Supabase mutation;
-- backend/framework migration;
-- fatos comerciais não verificados.
+Se `CODE_CHANGE_REQUIRED = YES`, abrir nova ação segura antes de mutar produção.

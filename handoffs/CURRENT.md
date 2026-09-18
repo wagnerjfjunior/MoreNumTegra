@@ -1,43 +1,37 @@
 # Handoff Atual — MoreNumTegra
 
-`main` é a fonte canônica. Resolver GitHub live antes de agir.
+Atualizado em `2026-09-18`.
 
-Estado reconciliado em `2026-09-16` sobre a `main` observada em:
-
-`f5b4b27cc31fa6247ad3394e40a295f2a58861d6`
+GitHub `main` é a fonte canônica. Conversa, screenshots e memória não substituem o estado versionado.
 
 ## 1. REPOSITORY_STATE
 
 ```text
 CANONICAL_REPOSITORY = wagnerjfjunior/MoreNumTegra
 CANONICAL_BRANCH = main
-CANONICAL_SHA_OBSERVED = f5b4b27cc31fa6247ad3394e40a295f2a58861d6
+CANONICAL_SHA = e13b019f9bcca9e18bde8eedf0eb56a44a50be15
 OPEN_PULL_REQUESTS = 0
 ```
 
-Recent canonical lifecycle:
+Lifecycle recente relevante:
 
-- PR #94 — merged: consolidated production/indexation of CAPIITOLO + Elo Duo exact-project pages;
-- PR #95 — merged: stale-PR reconciliation and preservation of the current runtime line;
-- PR #96 — merged, docs-only: Commercial Data Plane v2 contract/schema/hardcode inventory.
-
-No open PR is carried into the next conversation.
+- PR #108 — merged: removeu bindings RDFa `property="twitter:*"`, preservando Twitter/X Cards por `name="twitter:*"`;
+- PR #109 — merged: hotfix da home; eliminou feedback loop de `MutationObserver`, restringiu observação ao grid e removeu auto-load de `floating-ui.js`;
+- PR #110 — merged: restaurou apresentação da faixa de consentimento no Elo Duo e configurou Vercel para deployment automático somente em `main`.
 
 ## 2. DEPLOYMENT_STATE / PRODUCTION_STATE
 
-The accepted production topology remains governed by Technical Baseline V2.3 + ADR-006:
-
 ```text
 WEB PRODUCTION = Vercel
-CANONICAL HOST = https://www.moretegra.com.br/
-APEX = https://moretegra.com.br/ -> 308 -> www
-DNS AUTHORITY = Cloudflare / DNS only
-GREEN/GDIGITAL = Form 46 provider + CRM
+CANONICAL_HOST = https://www.moretegra.com.br/
+CANONICAL_SHA = e13b019f9bcca9e18bde8eedf0eb56a44a50be15
+VERCEL_STATUS = SUCCESS
+DEPLOYMENT_POLICY = main-only automatic deployment
+NON_MAIN_AUTO_DEPLOY = disabled by git.deploymentEnabled["**"] = false
+MAIN_AUTO_DEPLOY = enabled
 ```
 
-This SFJM reconciliation is documentation-only and does not itself establish a new runtime deployment or a new production validation result.
-
-Preserve:
+Preservar a distinção:
 
 ```text
 REPOSITORY_STATE != DEPLOYMENT_STATE
@@ -45,67 +39,85 @@ MERGED != DEPLOYED
 DEPLOYED != PROD_SMOKE_TESTED
 ```
 
-## 3. Exact-project publication stream
+Não criar Preview deployments para branches/PRs salvo nova autorização explícita e necessidade comprovada. Motivo operacional: reduzir consumo/rate-limit Vercel.
 
-The canonical exact-project production release from PR #94 includes:
+## 3. VALIDATION_STATE
 
-- `/empreendimentos/capiitolo-piero-lissoni/`;
-- `/empreendimentos/caminhos-da-lapa-elo-duo/`.
+Home:
 
-The next MoreNumTegra conversation should resume publication of the remaining governed project pages from clean `main`.
+- runtime voltou a funcionar após PR #109;
+- vídeo e fluidez foram validados pelo Product Authority como funcionando;
+- faixa de consentimento da home voltou ao comportamento esperado;
+- M4-05R ainda não deve ser declarado completamente aceito apenas com base em validações parciais.
 
-The next project must be selected only after resolving current Product Fact & Claim Registry, query/page ownership, available factual evidence and runtime state. Historical conversation ordering is not authority.
+Elo Duo:
 
-## 4. Commercial Catalog / pricing architecture handoff
+- faixa de consentimento corrigida pela PR #110;
+- produção atual contém o CSS compartilhado necessário no `project-page.css`.
 
-Commercial-value architecture is now a separate cross-project track.
+Google Search Console — evidência atual fornecida pelo Product Authority via screenshots:
 
-Detailed handoff:
+- home aparece como indexada / "O URL está no Google";
+- CAPIITOLO possui Product Snippet válido;
+- Elo Duo possui Product Snippet válido;
+- Product Snippet exibe issues não críticos/optionais relacionados a `aggregateRating`, `review` e `availability`;
+- Merchant listing pode exibir recomendações opcionais como `shippingDetails`, `availability` e `hasMerchantReturnPolicy`;
+- não inventar rating, review, shipping, return policy ou disponibilidade para zerar warnings.
 
-`docs/sfjm/MNT_FECHAI_COMMERCIAL_CATALOG_HANDOFF_2026-09-16.md`
+## 4. SITEMAP / ROBOTS — ESTADO CANÔNICO
 
-Operational ownership:
+`sitemap.xml` em `main` contém exatamente:
 
-```text
-FECH.AI
-= upstream Commercial Catalog / Publication architecture discovery
+1. `https://www.moretegra.com.br/`
+2. `https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/`
+3. `https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/`
 
-MoreNumTegra
-= independent public consumer / presentation / SEO / performance / Form 46
+Estrutura versionada:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  ...
+</urlset>
 ```
 
-PR #96 remains useful as the MoreNumTegra-side Commercial Data Plane/consumer contract boundary. Do not start its former local Stage B runtime migration while the FECH.AI upstream contract is still being discovered/adjudicated.
+`robots.txt` contém:
 
-This handoff does NOT authorize MoreNumTegra to query FECH.AI internal Supabase tables or expose service credentials.
+```text
+User-agent: *
+Allow: /
 
-## 5. Security boundary carried forward
+Sitemap: https://www.moretegra.com.br/sitemap.xml
+```
 
-A read-only cross-project inspection observed FECH.AI/Supabase security-advisor findings that are being handed to the FECH.AI audit for live reconciliation against its current Security-to-Scale WBS.
+A aceitação efetiva do sitemap pelo Google ainda precisa ser resolvida live no Search Console. Não confundir XML válido no repositório com aceitação/indexação confirmada pelo Google.
 
-Those observations are not independent vulnerability verdicts and must not be used as a reason to bypass the FECH.AI security program.
+## 5. CURRENT PRODUCT CONSTRAINTS
 
-Until a governed public read contract exists:
+- HTML5 semântico + CSS + JavaScript vanilla;
+- mobile-first, performance-first, SEO-first;
+- GitHub `main` = fonte de verdade;
+- Vercel = web production;
+- Green/GDigital Form 46 = captação/CRM;
+- Cloudflare = DNS authoritative / DNS only;
+- não inventar preço, metragem, endereço, disponibilidade, rating ou review;
+- não alterar produção fora de lifecycle governado;
+- não criar commits artificiais para disparar deploy;
+- não gerar Preview por padrão enquanto a política production-only estiver vigente.
 
-- no direct browser access to FECH.AI internal tables;
-- no service-role/client secret in MoreNumTegra;
-- no new MoreNumTegra commercial backend;
-- no cross-project runtime coupling.
+## 6. CURRENT NEXT SAFE ACTION
 
-## 6. Page-publication rules while Commercial Catalog is pending
+A fonte autoritativa da próxima ação é `docs/NEXT_SAFE_ACTION.md`.
 
-Commercial Catalog discovery does not block publication of additional exact-project pages when existing gates pass.
+Tema imediato para a próxima conversa:
 
-For every new page:
+**validar Search Console / sitemap / structured data sem alterar código antes de provar a causa.**
 
-- only governed factual product claims;
-- only current governed commercial evidence if a price/reference is shown;
-- otherwise consult-only behavior;
-- visible commercial price and structured-data price must remain aligned;
-- Form 46, GTM/GA4, consent, canonical, sitemap, mobile and performance contracts remain unchanged unless separately authorized;
-- do not expand hardcoded commercial values as the target architecture.
+A nova conversa deve:
 
-## 7. Current next safe action
-
-See `docs/NEXT_SAFE_ACTION.md`.
-
-The intended local continuation is the governed exact-project page publication stream. Commercial Catalog / upstream data-platform design continues independently in FECH.AI and returns to MoreNumTegra only through a future separately authorized consumer-integration gate.
+1. resolver `main` live;
+2. ler bootstrap + este handoff + PROJECT_STATUS + NEXT_SAFE_ACTION + BLOCKED_ACTIONS + baselines;
+3. validar o `sitemap.xml`, `robots.txt` e resposta HTTP live;
+4. distinguir warnings opcionais de erros reais no Product Snippet / Merchant Listings;
+5. verificar se existe qualquer problema real de JSON-LD na home;
+6. propor mudança somente se houver evidência concreta de invalidade ou perda de elegibilidade.
