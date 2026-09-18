@@ -8,7 +8,7 @@
   },
   "current": {
     "task_id": null,
-    "task_state": "POST_PR119_NON_MUTATIVE_HTTP_SEARCH_VALIDATION",
+    "task_state": "SEO_POST_RELEASE_VALIDATION_CLOSED / NEXT_WBS_RESOLUTION_REQUIRED",
     "pr": null,
     "runtime_release_sha": "782c25b7229af99d0f1839bbfc6af412a5cb31e7"
   },
