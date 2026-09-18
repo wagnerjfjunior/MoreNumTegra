@@ -377,9 +377,11 @@
     const syncLeadContext = () => {
       if (!contextNode) return;
       const project = leadProjectContext(form);
-      contextNode.textContent = project === "Página principal | Nenhum empreendimento selecionado"
+      const noProject = project === "Página principal | Nenhum empreendimento selecionado";
+      contextNode.hidden = !noProject;
+      contextNode.textContent = noProject
         ? "Nenhum empreendimento selecionado. Sabrina pode ajudar você a comparar as opções."
-        : `Empreendimento selecionado: ${project}`;
+        : "";
     };
 
     document.addEventListener("click", (event) => {
