@@ -12,7 +12,12 @@ CANONICAL_BRANCH = main
 ARIA_RELEASE_PR = #112 / MERGED
 ARIA_SCHEMA_FIX_PR = #113 / MERGED
 CAPIITOLO_ENTITY_AUTHORITY_PR = #115 / MERGED
-RUNTIME_RELEASE_SHA = e9d4d63ba6fae578c2bef84aded69cf968166e29
+UX_FORM_STANDARDIZATION_PR = #117 / MERGED
+POST_117_UX_FIX_PR = #118 / MERGED
+HOME_FORM46_CONTEXT_FIX_PR = #119 / MERGED
+RUNTIME_RELEASE_SHA = 782c25b7229af99d0f1839bbfc6af412a5cb31e7
+VERCEL_STATUS_FOR_RUNTIME_SHA = SUCCESS
+HOME_FORM46_PROJECT_CONTEXT_E2E = PASS
 OPEN_RUNTIME_PRS = 0
 ```
 
@@ -27,7 +32,7 @@ Release Ária Higienópolis:
 ```text
 WEB_PRODUCTION = Vercel
 CANONICAL_HOST = https://www.moretegra.com.br/
-RUNTIME_RELEASE_SHA = e9d4d63ba6fae578c2bef84aded69cf968166e29
+RUNTIME_RELEASE_SHA = 782c25b7229af99d0f1839bbfc6af412a5cb31e7
 VERCEL_STATUS_FOR_RUNTIME_SHA = SUCCESS
 DEPLOYMENT_POLICY = main-only automatic deployment
 NON_MAIN_AUTO_DEPLOY = disabled
@@ -45,7 +50,31 @@ SITEMAP_DEPLOYED != GSC_PROCESSED
 
 O status Vercel do SHA final de runtime foi observado como `success`. O smoke HTTP externo não pôde ser concluído nesta sessão porque o fetch web não acessou o host e o ambiente de execução retornou falha temporária de resolução DNS. Isso é `VALIDATION_TOOLING_BLOCKED`, não evidência de falha de código ou de produção.
 
-## 3. ÁRIA HIGIENÓPOLIS — RELEASE STATE
+## 3. FORM 46 HOME PROJECT CONTEXT — E2E CLOSED
+
+```text
+PR_119 = MERGED
+PR_119_HEAD = 5b6dd53ef80caabbe0564c906cbfb6090ed2c07f
+RUNTIME_RELEASE_SHA = 782c25b7229af99d0f1839bbfc6af412a5cb31e7
+VERCEL_STATUS = SUCCESS
+FORM46_PROJECT_CONTEXT_E2E = PASS
+GREEN_SALES_RECEIPT = PASS
+REGRESSION = CLOSED
+```
+
+Production evidence supplied by Product Authority after the release showed the Green Sales `texto-livre` as:
+
+```text
+YPY Alto do Ipiranga | Agendar visita
+```
+
+This proves the exact-project context now survives the home journey through Form 46 and arrives in Green Sales together with the selected intent. The fallback `Página principal | Nenhum empreendimento selecionado | <intenção>` remains valid only for a true direct-form journey with no project selection.
+
+Canonical evidence: `docs/sfjm/FORM46_HOME_PROJECT_CONTEXT_E2E_VALIDATION_2026-09-18.md`.
+
+No additional runtime mutation is required for this defect. WBS progress remains unchanged.
+
+## 4. ÁRIA HIGIENÓPOLIS — RELEASE STATE
 
 ```text
 REPOSITORY = MERGED
@@ -71,7 +100,7 @@ Escopo publicado no runtime:
 
 A referência comercial oficial da Tegra observada em 2026-09-18 é de outra unidade e não foi misturada com a referência autorizada no MoreNumTegra.
 
-## 4. CAPIITOLO — ENTITY AUTHORITY / IN-LOCO LOCATION
+## 5. CAPIITOLO — ENTITY AUTHORITY / IN-LOCO LOCATION
 
 ```text
 PR_115 = MERGED
@@ -91,7 +120,7 @@ O CAPIITOLO preserva Product/Offer, canonical e indexabilidade, mas agora:
 
 Nenhum Preview de branch foi criado. O smoke HTTP externo continuou bloqueado pelas ferramentas por resolução DNS temporária, sem evidência de falha de produção.
 
-## 5. SITEMAP / ROBOTS
+## 6. SITEMAP / ROBOTS
 
 `sitemap.xml` em `main` contém quatro URLs canônicas:
 
@@ -104,7 +133,7 @@ Nenhum Preview de branch foi criado. O smoke HTTP externo continuou bloqueado pe
 
 A aceitação/indexação efetiva no Google permanece não comprovada por evidência de repositório.
 
-## 6. CURRENT PRODUCT CONSTRAINTS
+## 7. CURRENT PRODUCT CONSTRAINTS
 
 - HTML5 semântico + CSS + JavaScript vanilla;
 - mobile-first, SEO-first, performance-first;
@@ -117,8 +146,8 @@ A aceitação/indexação efetiva no Google permanece não comprovada por evidê
 - não criar commits artificiais para disparar deploy;
 - não reativar Preview automático sem necessidade/autorização.
 
-## 7. CURRENT NEXT SAFE ACTION
+## 8. CURRENT NEXT SAFE ACTION
 
 A fonte autoritativa é `docs/NEXT_SAFE_ACTION.md`.
 
-Próxima frente: **validação não mutativa pós-release de HTTP/Search Console/sitemap/structured data**, incluindo Ária Higienópolis e a regressão/recrawl do CAPIITOLO após a PR #115. Nenhuma nova correção de código deve ser aberta antes de provar um defeito real.
+Próxima frente: **validação não mutativa pós-release de HTTP/Search Console/sitemap/structured data**. O defeito de propagação do empreendimento no Form 46 da home está encerrado por evidência E2E de produção. Nenhuma nova correção de código deve ser aberta antes de provar outro defeito real.

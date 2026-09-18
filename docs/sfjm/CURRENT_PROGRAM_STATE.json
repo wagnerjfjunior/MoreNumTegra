@@ -7,10 +7,10 @@
   "current_execution": {
     "active_phase_id": null,
     "active_task_id": null,
-    "state": "NO_ACTIVE_WBS_TASK / ARIA_RELEASE_DEPLOYED / EXTERNAL_HTTP_SMOKE_NOT_PROVEN_BY_TOOLING",
+    "state": "NO_ACTIVE_WBS_TASK / PR119_DEPLOYED / HOME_FORM46_E2E_PASS / NON_MUTATIVE_VALIDATION_NEXT",
     "pull_request": null,
-    "runtime_release_sha": "9d5c82cccb43dcc3992dc24f0d457f24a47cf111",
-    "authority_record": "docs/sfjm/ARIA_HIGIENOPOLIS_RELEASE_EXCEPTION_2026-09-18.md"
+    "runtime_release_sha": "782c25b7229af99d0f1839bbfc6af412a5cb31e7",
+    "authority_record": "docs/sfjm/FORM46_HOME_PROJECT_CONTEXT_E2E_VALIDATION_2026-09-18.md"
   },
   "progress": {
     "forecast_total_hours": 1240,
@@ -68,12 +68,29 @@
       "release_merge_sha": "c4c5e74ac0a2b139df768484da565df471fb24ef",
       "followup_pr": 113,
       "runtime_release_sha": "9d5c82cccb43dcc3992dc24f0d457f24a47cf111"
+    },
+    "PR-117": {
+      "state": "COMPLETE / MERGED / VERCEL_SUCCESS",
+      "purpose": "UX/form/structured-data standardization across home, CAPIITOLO, Ária and Elo Duo.",
+      "merge_commit": "9d9751ddfcdd56192ba798bd610c74559b5d76b0"
+    },
+    "PR-118": {
+      "state": "COMPLETE / MERGED / VERCEL_SUCCESS",
+      "purpose": "Post-117 UX regression fixes plus Rich Results entity parity correction.",
+      "merge_commit": "2ce80dab8bb8a490d567e1f867f82e62d345c3ec"
+    },
+    "PR-119": {
+      "state": "COMPLETE / MERGED / VERCEL_SUCCESS / E2E_VALIDATED",
+      "purpose": "Fix home Form 46 project-context propagation and prove Green Sales receipt.",
+      "head_sha": "5b6dd53ef80caabbe0564c906cbfb6090ed2c07f",
+      "runtime_release_sha": "782c25b7229af99d0f1839bbfc6af412a5cb31e7",
+      "evidence": "docs/sfjm/FORM46_HOME_PROJECT_CONTEXT_E2E_VALIDATION_2026-09-18.md"
     }
   },
   "next": {
     "task_id": null,
-    "state": "POST_ARIA_NON_MUTATIVE_HTTP_SEARCH_VALIDATION",
-    "safe_action": "Validate live HTTP for home/Ária/sitemap/robots, then Search Console and structured data. Do not mutate code unless a real defect is independently proven."
+    "state": "POST_PR119_NON_MUTATIVE_HTTP_SEARCH_VALIDATION",
+    "safe_action": "Continue non-mutative live HTTP, Search Console and structured-data validation. The home Form 46 project-context regression is closed by production E2E evidence; do not mutate code without new defect evidence."
   },
   "cross_project": {
     "commercial_catalog": {
@@ -89,7 +106,8 @@
     "gsc_sitemap_processing": "NOT_PROVEN_FROM_REPOSITORY_EVIDENCE",
     "commercial_hardcodes": "KNOWN / PR96 INVENTORY CANONICAL / RETIREMENT DEFERRED PENDING UPSTREAM CONTRACT",
     "aria_external_http_smoke": "NOT_PROVEN_BY_CURRENT_TOOLING / VERCEL_STATUS_SUCCESS",
-    "aria_gsc_indexation": "NOT_PROVEN"
+    "aria_gsc_indexation": "NOT_PROVEN",
+    "home_form46_project_context": "CLOSED / PR119 / GREEN_SALES_E2E_PASS"
   },
   "infra": {
     "dns_authority": "CLOUDFLARE_DNS_ONLY",

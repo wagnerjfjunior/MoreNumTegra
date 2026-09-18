@@ -4,7 +4,34 @@ Atualizado em `2026-09-18`.
 
 Fonte canônica: GitHub `main`.
 
-## 1. Release Ária Higienópolis
+## 1. Estado atual de produção — pós PR #119
+
+```text
+RUNTIME_RELEASE_SHA = 782c25b7229af99d0f1839bbfc6af412a5cb31e7
+VERCEL_STATUS = SUCCESS
+PR_117 = MERGED
+PR_118 = MERGED
+PR_119 = MERGED
+HOME_FORM46_PROJECT_CONTEXT_E2E = PASS
+GREEN_SALES_RECEIPT = PASS
+REGRESSION = CLOSED
+```
+
+A sequência #117–#119 padronizou os formulários/CTAs, corrigiu regressões visuais e encerrou o defeito de propagação do empreendimento selecionado na home até o Green Sales.
+
+A evidência E2E de produção fornecida pelo Product Authority mostra:
+
+```text
+YPY Alto do Ipiranga | Agendar visita
+```
+
+no campo `texto-livre` do lead recebido pelo Green Sales. Isso comprova a composição `<empreendimento> | <intenção>` no caminho real home → Form 46 → GDigital/Green Sales.
+
+Registro canônico: `docs/sfjm/FORM46_HOME_PROJECT_CONTEXT_E2E_VALIDATION_2026-09-18.md`.
+
+Nenhum progresso WBS foi alterado por essa correção/validação.
+
+## 2. Release Ária Higienópolis
 
 ```text
 PRODUCT_AUTHORITY_EXCEPTION = CLOSED_AS_RELEASED_WITH_VALIDATION_RESIDUAL
@@ -33,7 +60,7 @@ Foram incorporados:
 
 O smoke HTTP externo ficou pendente apenas por limitação dos verificadores desta sessão. O commit final de runtime recebeu `Vercel = success`.
 
-## 2. Produção
+## 3. Produção
 
 ```text
 WEB_PRODUCTION = Vercel
@@ -43,10 +70,10 @@ DNS = Cloudflare authoritative / DNS only
 GREEN/GDIGITAL = Form 46 provider + CRM
 VERCEL_AUTOMATIC_DEPLOYMENTS = main only
 NON_MAIN_DEPLOYMENTS = disabled
-RUNTIME_RELEASE_SHA = 9d5c82cccb43dcc3992dc24f0d457f24a47cf111
+RUNTIME_RELEASE_SHA = 782c25b7229af99d0f1839bbfc6af412a5cb31e7
 ```
 
-## 3. CAPIITOLO — correção de autoridade/localização
+## 4. CAPIITOLO — correção de autoridade/localização
 
 ```text
 PR_115 = MERGED
@@ -59,7 +86,7 @@ PROD_HTTP_SMOKE = NOT_PROVEN_BY_CURRENT_TOOLING
 
 A correção removeu do CAPIITOLO o endereço/geo de Caminhos da Lapa e o excesso de perfil corporativo Tegra, preservando Product/Offer, canonical, robots e o vínculo factual com a Tegra. O atendimento da Sabrina passa a ser modelado no próprio CAPIITOLO, com coordenadas fornecidas pelo Product Authority.
 
-## 4. Rotas exact-project publicadas no repositório/deployment
+## 5. Rotas exact-project publicadas no repositório/deployment
 
 - `/`
 - `/empreendimentos/capiitolo-piero-lissoni/`
@@ -77,7 +104,7 @@ Para Ária:
 - official Tegra page ligada por `sameAs`;
 - commercial-values `updatedAt=2026-09-18`.
 
-## 5. Sitemap / robots
+## 6. Sitemap / robots
 
 Sitemap canônico versionado contém quatro URLs, incluindo Ária. `robots.txt` continua apontando para o sitemap canônico.
 
@@ -88,7 +115,7 @@ SITEMAP_GSC_PROCESSING = NOT_PROVEN
 ARIA_GSC_INDEXATION = NOT_PROVEN
 ```
 
-## 6. Search / structured data residuals
+## 7. Search / structured data residuals
 
 Evidência anterior do Product Authority permanece:
 
@@ -101,7 +128,7 @@ Evidência anterior do Product Authority permanece:
 
 CAPIITOLO precisa de recrawl/inspeção pós-PR #115 para confirmar que o Product Snippet continua válido e que a nova modelagem de entidade/localização foi processada sem regressão.
 
-## 7. M4-05R
+## 8. M4-05R
 
 ```text
 M4-05 historical implementation = MERGED
@@ -113,7 +140,7 @@ M4-05R Acceptance = NOT_YET_DECLARED_COMPLETE
 
 Nenhum progresso WBS foi alterado pelo release excepcional do Ária.
 
-## 8. Próxima ação
+## 9. Próxima ação
 
 Ver `docs/NEXT_SAFE_ACTION.md`.
 
