@@ -370,7 +370,7 @@
     };
 
     document.addEventListener("click", (event) => {
-      const target = event.target instanceof Element ? event.target.closest("[data-interest]") : null;
+      const target = event.target instanceof Element ? event.target.closest("[data-interest],[data-change-interest]") : null;
       if (!target) return;
       window.setTimeout(syncLeadContext, 0);
     }, true);
