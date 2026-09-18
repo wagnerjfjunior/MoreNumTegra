@@ -8,9 +8,9 @@
   },
   "current": {
     "task_id": null,
-    "task_state": "POST_ARIA_NON_MUTATIVE_HTTP_SEARCH_VALIDATION",
+    "task_state": "POST_PR119_NON_MUTATIVE_HTTP_SEARCH_VALIDATION",
     "pr": null,
-    "runtime_release_sha": "9d5c82cccb43dcc3992dc24f0d457f24a47cf111"
+    "runtime_release_sha": "782c25b7229af99d0f1839bbfc6af412a5cb31e7"
   },
   "current_state_overlay": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
   "cross_project_handoff": "docs/sfjm/MNT_FECHAI_COMMERCIAL_CATALOG_HANDOFF_2026-09-16.md",
