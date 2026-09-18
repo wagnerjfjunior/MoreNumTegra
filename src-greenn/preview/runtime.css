@@ -1,9 +1,14 @@
 .mt-lead-section{padding:clamp(42px,7vw,84px) 18px;background:#171813;color:#f7f3e8}
-.mt-lead-shell{max-width:1080px;margin:0 auto;display:grid;gap:28px}
-.mt-lead-copy{max-width:680px}
+.mt-lead-shell{max-width:1180px;margin:0 auto;display:grid;gap:28px;align-items:start}
+.mt-lead-copy{max-width:680px;min-width:0}
 .mt-lead-copy .mt-eyebrow{margin:0 0 10px;color:#EBB92E;font:700 12px/1.2 system-ui,sans-serif;letter-spacing:.14em}
 .mt-lead-copy h2{margin:0 0 12px;font:700 clamp(30px,7vw,48px)/1.05 system-ui,sans-serif;letter-spacing:-.035em}
-.mt-lead-copy>p{margin:0;max-width:720px;color:#d8d4c8;font:400 16px/1.55 system-ui,sans-serif}
+.mt-lead-copy>p{margin:0 0 14px;max-width:720px;color:#d8d4c8;font:400 16px/1.55 system-ui,sans-serif}
+.mt-lead-contact{margin-top:18px!important;padding:16px 18px;border:1px solid rgba(235,185,46,.28);border-radius:14px;background:rgba(255,255,255,.055);display:grid;gap:6px;box-sizing:border-box;color:#f7f3e8!important}
+.mt-lead-contact strong{color:#fff}
+.mt-lead-contact a{color:#EBB92E!important;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;overflow-wrap:anywhere}
+.mt-lead-contact .mt-lead-phone-link{font-size:1.2rem;font-weight:900;letter-spacing:.01em;text-decoration:none}
+.mt-lead-contact span{display:block}
 .mt-lead-copy .mt-lead-privacy{margin-top:10px;color:#aaa79e;font-size:13px}
 .mt-lead-form{background:#fff;color:#171813;border-radius:22px;padding:20px;box-shadow:0 22px 60px rgba(0,0,0,.28)}
 .mt-form-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
@@ -31,12 +36,14 @@
 .mt-consent button{min-height:40px;padding:0 16px;border-radius:10px;border:1px solid #55574f;background:transparent;color:#fff;font-weight:700;cursor:pointer}
 .mt-consent button.is-primary{border-color:#EBB92E;background:#EBB92E;color:#171813}
 @media(min-width:760px){
-  .mt-lead-shell{grid-template-columns:minmax(0,.85fr) minmax(480px,1.15fr);align-items:start}
-  .mt-lead-copy{position:sticky;top:28px;padding-top:18px}
   .mt-form-grid{grid-template-columns:220px minmax(0,1fr)}
   .mt-field-wide{grid-column:1/-1}
   .mt-field-country{grid-column:1/2}
   .mt-field-phone{grid-column:2/3}
   .mt-lead-form{padding:26px}
   .mt-consent{grid-template-columns:1fr auto;align-items:center}
+}
+@media(min-width:900px){
+  .mt-lead-shell{grid-template-columns:minmax(0,1fr) minmax(520px,1.08fr);gap:48px}
+  .mt-lead-copy{position:static;padding-top:0;align-self:start}
 }
