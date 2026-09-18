@@ -30,6 +30,16 @@
       "sourceUrl": "https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/chacara-klabin/chacaraklabin",
       "sourceObservedAt": "2026-09-17",
       "disclaimer": "Valor de referência comercial da Tegra. Unidade, disponibilidade e condições podem mudar; confirme as condições vigentes no atendimento."
+    },
+    "aria-higienopolis": {
+      "state": "active_reference",
+      "priceLabel": "A partir de",
+      "price": 501000,
+      "reference": "Studio 1510 · 30 m² · R$ 16.700/m² · referência Ago/26",
+      "sourceClass": "MORENUMTEGRA_CANONICAL_CATALOG",
+      "sourceUrl": "https://www.moretegra.com.br/",
+      "sourceObservedAt": "2026-09-18",
+      "disclaimer": "Valor de referência comercial. Disponibilidade, unidade e condições podem mudar; confirme as condições vigentes no atendimento."
     }
   }
 }
