@@ -293,6 +293,12 @@ for (const needle of capiitoloRenderGuards) {
   if (!capiitolo.includes(needle)) fail('capiitolo', `rendered Product schema preservation guard missing: ${needle}`);
 }
 
+const portalLinks = await readFile('src-greenn/portal-links.js', 'utf8');
+if (portalLinks.includes('loadFloatingUi') || portalLinks.includes('floating-ui.js')) fail('home', 'floating consent overlay runtime must not be auto-loaded');
+if (portalLinks.includes('observer.observe(document.documentElement')) fail('home', 'portal-links observer must not watch the full document');
+if (!portalLinks.includes('observer.observe(grid, {subtree:true, childList:true})')) fail('home', 'portal-links observer must remain scoped and idempotent');
+if (!portalLinks.includes('if (link.textContent !== "Ver empreendimento →")')) fail('home', 'portal-links text mutation must remain guarded');
+
 const staticHome = await readFile('src-greenn/preview/index.html', 'utf8');
 const staticHomeJs = await readFile('src-greenn/moretegra.js', 'utf8');
 if (staticHome.includes('const blocks = [') || staticHome.includes('fetch(url, {cache:"no-store"})')) fail('home', 'client-side primary block loader must not exist');
