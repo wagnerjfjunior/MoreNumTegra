@@ -344,8 +344,7 @@
 
     context.querySelector("[data-change-interest]")?.addEventListener("click", (event) => {
       event.preventDefault();
-      document.documentElement.removeAttribute("data-moretegra-interest");
-      context.hidden = true;
+      setInterestContext(root, "");
       scrollToSelector("#oportunidades");
     });
 
@@ -374,6 +373,8 @@
       if (pitchNode) pitchNode.textContent = "";
       renderInterestGallery(context, null);
       document.documentElement.removeAttribute("data-moretegra-interest");
+      const leadForm = document.querySelector("[data-moretegra-lead-form]");
+      if (leadForm instanceof HTMLFormElement) delete leadForm.dataset.selectedProject;
       return context;
     }
 
@@ -396,6 +397,8 @@
 
     context.hidden = false;
     document.documentElement.dataset.moretegraInterest = name;
+    const leadForm = document.querySelector("[data-moretegra-lead-form]");
+    if (leadForm instanceof HTMLFormElement) leadForm.dataset.selectedProject = name;
     return context;
   }
 
@@ -688,9 +691,6 @@
         if (link.hasAttribute("data-focus-price") || link.hasAttribute("data-interest") || link.hasAttribute("data-continue-form")) return;
         const selector = link.getAttribute("href");
         if (!selector || selector === "#") return;
-        if (selector === "#formulario") {
-          setInterestContext(root, "");
-        }
         if (scrollToSelector(selector)) event.preventDefault();
       })
     );

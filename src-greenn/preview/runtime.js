@@ -81,7 +81,12 @@
   }
 
   function leadProjectContext(form) {
-    return String(form.dataset.projectName || selectedInterest() || "Página principal | Nenhum empreendimento selecionado").trim();
+    return String(
+      form.dataset.selectedProject ||
+      form.dataset.projectName ||
+      selectedInterest() ||
+      "Página principal | Nenhum empreendimento selecionado"
+    ).trim();
   }
 
   function composeLeadContext(form) {
@@ -385,9 +390,26 @@
     };
 
     document.addEventListener("click", (event) => {
-      const target = event.target instanceof Element ? event.target.closest("[data-interest],[data-change-interest]") : null;
-      if (!target) return;
-      window.setTimeout(syncLeadContext, 0);
+      const element = event.target instanceof Element ? event.target : null;
+      if (!element) return;
+
+      const interestTarget = element.closest("[data-interest]");
+      if (interestTarget) {
+        const project = String(interestTarget.dataset.interest || "").trim();
+        if (project) {
+          form.dataset.selectedProject = project;
+          document.documentElement.dataset.moretegraInterest = project;
+        }
+        window.setTimeout(syncLeadContext, 0);
+        return;
+      }
+
+      const changeTarget = element.closest("[data-change-interest]");
+      if (changeTarget) {
+        delete form.dataset.selectedProject;
+        document.documentElement.removeAttribute("data-moretegra-interest");
+        window.setTimeout(syncLeadContext, 0);
+      }
     }, true);
 
     form.addEventListener("focusin", syncLeadContext, {once:true});
