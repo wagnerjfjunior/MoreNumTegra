@@ -4,7 +4,39 @@ Atualizado em `2026-09-18`.
 
 Fonte canônica: GitHub `main`.
 
-## 1. Estado atual de produção — pós PR #119
+## 1. SEO / Search Console / Rich Results — fechamento pós-release
+
+```text
+GSC_SITEMAP = ACCEPTED
+SITEMAP_URLS = 4
+SITEMAP_ERRORS = 0
+SITEMAP_WARNINGS = 0
+
+HOME_INDEXATION = INDEXED
+CAPIITOLO_INDEXATION = INDEXED
+ELO_DUO_INDEXATION = INDEXED
+ARIA_INDEXATION = INDEXED
+
+CAPIITOLO_RICH_RESULTS = 7_VALID
+ELO_DUO_RICH_RESULTS = 7_VALID
+ARIA_RICH_RESULTS = 7_VALID
+HOME_RICH_RESULTS = 5_VALID
+
+ARIA_GOOGLE_CANONICAL = ACCEPTED
+CODE_CHANGE_REQUIRED = NO
+```
+
+Product Authority supplied Google Search Console and Rich Results evidence after the PR #118/#119 runtime. Search Console also confirmed the resubmitted sitemap with four submitted URLs, zero errors and zero warnings.
+
+The three exact-project pages now have externally proven Rich Results parity: one Product Snippet, one Merchant Listing, one Breadcrumb, two Local Business results and two Organization results, totaling seven valid items per project page.
+
+The home is indexed and has five valid Rich Results items: two Local Business, two Organization and one Video. Search Console showing no indexed video is not treated as a page-indexation or structured-data defect.
+
+Canonical evidence: `docs/sfjm/SEO_POST_RELEASE_VALIDATION_2026-09-18.md`.
+
+No code change or WBS progress adjustment is required.
+
+## 2. Estado atual de produção — pós PR #119
 
 ```text
 RUNTIME_RELEASE_SHA = 782c25b7229af99d0f1839bbfc6af412a5cb31e7
@@ -31,7 +63,7 @@ Registro canônico: `docs/sfjm/FORM46_HOME_PROJECT_CONTEXT_E2E_VALIDATION_2026-0
 
 Nenhum progresso WBS foi alterado por essa correção/validação.
 
-## 2. Release Ária Higienópolis
+## 3. Release Ária Higienópolis
 
 ```text
 PRODUCT_AUTHORITY_EXCEPTION = CLOSED_AS_RELEASED_WITH_VALIDATION_RESIDUAL
@@ -60,7 +92,7 @@ Foram incorporados:
 
 O smoke HTTP externo ficou pendente apenas por limitação dos verificadores desta sessão. O commit final de runtime recebeu `Vercel = success`.
 
-## 3. Produção
+## 4. Produção
 
 ```text
 WEB_PRODUCTION = Vercel
@@ -73,7 +105,7 @@ NON_MAIN_DEPLOYMENTS = disabled
 RUNTIME_RELEASE_SHA = 782c25b7229af99d0f1839bbfc6af412a5cb31e7
 ```
 
-## 4. CAPIITOLO — correção de autoridade/localização
+## 5. CAPIITOLO — correção de autoridade/localização
 
 ```text
 PR_115 = MERGED
@@ -86,7 +118,7 @@ PROD_HTTP_SMOKE = NOT_PROVEN_BY_CURRENT_TOOLING
 
 A correção removeu do CAPIITOLO o endereço/geo de Caminhos da Lapa e o excesso de perfil corporativo Tegra, preservando Product/Offer, canonical, robots e o vínculo factual com a Tegra. O atendimento da Sabrina passa a ser modelado no próprio CAPIITOLO, com coordenadas fornecidas pelo Product Authority.
 
-## 5. Rotas exact-project publicadas no repositório/deployment
+## 6. Rotas exact-project publicadas no repositório/deployment
 
 - `/`
 - `/empreendimentos/capiitolo-piero-lissoni/`
@@ -104,18 +136,18 @@ Para Ária:
 - official Tegra page ligada por `sameAs`;
 - commercial-values `updatedAt=2026-09-18`.
 
-## 6. Sitemap / robots
+## 7. Sitemap / robots
 
 Sitemap canônico versionado contém quatro URLs, incluindo Ária. `robots.txt` continua apontando para o sitemap canônico.
 
 ```text
 SITEMAP_REPOSITORY_STATE = UPDATED
 SITEMAP_DEPLOYMENT_STATE = INCLUDED_IN_VERCEL_SUCCESS_SHA
-SITEMAP_GSC_PROCESSING = NOT_PROVEN
-ARIA_GSC_INDEXATION = NOT_PROVEN
+SITEMAP_GSC_PROCESSING = ACCEPTED_4_URLS_0_ERRORS_0_WARNINGS
+ARIA_GSC_INDEXATION = INDEXED
 ```
 
-## 7. Search / structured data residuals
+## 8. Search / structured data residuals
 
 Evidência anterior do Product Authority permanece:
 
@@ -124,11 +156,9 @@ Evidência anterior do Product Authority permanece:
 - Elo Duo com Product detectado/válido;
 - warnings como `aggregateRating`, `review`, `availability`, `shippingDetails` e `hasMerchantReturnPolicy` não autorizam dados inventados.
 
-Ária ainda precisa de validação live/GSC pós-release antes de qualquer claim de indexação.
+A validação live/GSC pós-release foi concluída: home, CAPIITOLO, Elo Duo e Ária estão indexados; CAPIITOLO, Elo Duo e Ária retornam sete itens válidos cada no Rich Results; o sitemap atualizado foi aceito com quatro URLs, zero erros e zero warnings.
 
-CAPIITOLO precisa de recrawl/inspeção pós-PR #115 para confirmar que o Product Snippet continua válido e que a nova modelagem de entidade/localização foi processada sem regressão.
-
-## 8. M4-05R
+## 9. M4-05R
 
 ```text
 M4-05 historical implementation = MERGED
@@ -140,8 +170,8 @@ M4-05R Acceptance = NOT_YET_DECLARED_COMPLETE
 
 Nenhum progresso WBS foi alterado pelo release excepcional do Ária.
 
-## 9. Próxima ação
+## 10. Próxima ação
 
 Ver `docs/NEXT_SAFE_ACTION.md`.
 
-Executar validação não mutativa de HTTP live + sitemap/robots + Search Console + structured data, incluindo Ária e CAPIITOLO pós-PR #115. Só abrir mudança de código com evidência concreta de defeito.
+Resolver o próximo task/gate canônico a partir do WBS e da governança vigente. A frente de validação pós-release de sitemap/indexação/structured data está encerrada e não requer mudança de código.
