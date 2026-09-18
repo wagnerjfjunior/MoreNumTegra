@@ -1,6 +1,6 @@
 # UX / Form / Structured Data Standardization — 2026-09-18
 
-Status: `IMPLEMENTED_IN_BRANCH / STATIC_QA_PENDING_FINAL / NOT_MERGED`
+Status: `IMPLEMENTED_IN_BRANCH / STATIC_QA_PASS / NOT_MERGED`
 
 Repository: `wagnerjfjunior/MoreNumTegra`  
 Canonical base resolved before implementation: `2a30a4fa4080b58d4fa571915f05809c634ba929`  
@@ -102,3 +102,40 @@ Before merge, the branch must pass static checks for:
 - CAPIITOLO availability/postal code;
 - Ária Product -> Offer linkage;
 - no regression to canonical/index/follow.
+
+
+## Static QA result
+
+Validated on the exact branch state before PR creation:
+
+```text
+BASE_MAIN = 2a30a4fa4080b58d4fa571915f05809c634ba929
+BRANCH = fix/ux-form-schema-standardization-20260918
+STATIC_QA = PASS
+JSON_LD_PARSE = PASS
+CANONICALS = PRESERVED
+INDEX_FOLLOW = PRESERVED
+H1 = 1 per home/exact-project source
+FORM46_CONTRACT = PRESERVED
+HOME_FORM = 1
+CAPIITOLO_RENDER_SOURCE_FORM = 1
+ARIA_FORM = 1
+ELO_DUO_FORM = 1
+HOME_MANUAL_PROJECT_INPUT = REMOVED
+LEAD_CONTEXT_COMPOSITION = PASS
+CAPIITOLO_POSTAL_CODE = 04116-200
+CAPIITOLO_UNIT_33_AVAILABILITY = InStock
+CAPIITOLO_HAS_MERCHANT_RETURN_POLICY = ABSENT_BY_DESIGN
+CAPIITOLO_MAP_STREET_QUERY = ABSENT
+CAPIITOLO_MAP_COORDINATE_POINT = PRESENT
+CAPIITOLO_VISIBLE_FAQ_SCHEMA_PARITY = 6/6
+ARIA_VISIBLE_FAQ_SCHEMA_PARITY = 11/11
+ARIA_PRODUCT_OFFER_LINK = PASS
+ARIA_INTERNAL_SCHEMA_REFERENCES = PASS
+FLOATING_WHATSAPP_ASSET = STANDARDIZED
+CONSENT_BANNER_OFFSET = SHARED_RUNTIME
+```
+
+The CAPIITOLO exact address remains present in factual structured data and the footer, while the map/location/FAQ conversion path does not expose street/number and routes location requests through WhatsApp.
+
+This is branch/static evidence only. It is not evidence of Vercel deployment, production HTTP behavior, Search Console processing or Google recrawl.
