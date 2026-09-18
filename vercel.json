@@ -14,7 +14,9 @@
     { "source": "/empreendimentos/capiitolo-piero-lissoni", "destination": "/src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html" },
     { "source": "/empreendimentos/capiitolo-piero-lissoni/", "destination": "/src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html" },
     { "source": "/empreendimentos/caminhos-da-lapa-elo-duo", "destination": "/src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html" },
-    { "source": "/empreendimentos/caminhos-da-lapa-elo-duo/", "destination": "/src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html" }
+    { "source": "/empreendimentos/caminhos-da-lapa-elo-duo/", "destination": "/src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html" },
+    { "source": "/empreendimentos/aria-higienopolis", "destination": "/src-greenn/empreendimentos/aria-higienopolis/index.html" },
+    { "source": "/empreendimentos/aria-higienopolis/", "destination": "/src-greenn/empreendimentos/aria-higienopolis/index.html" }
   ],
   "headers": [
     {

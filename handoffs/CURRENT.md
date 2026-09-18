@@ -1,5 +1,7 @@
 # Handoff Atual — MoreNumTegra
 
+> RELEASE EXCEPTION ACTIVE (2026-09-18): Ária Higienópolis publication authorized by Product Authority. See `docs/sfjm/ARIA_HIGIENOPOLIS_RELEASE_EXCEPTION_2026-09-18.md`. Exact post-merge SHA/deployment must be reconciled after release.
+
 Atualizado em `2026-09-18`.
 
 GitHub `main` é a fonte canônica. Conversa, screenshots e memória não substituem o estado versionado.

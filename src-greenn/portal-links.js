@@ -3,7 +3,8 @@
 
   const PAGE_BY_TITLE = Object.freeze({
     "Caminhos da Lapa Elo Duo": "/empreendimentos/caminhos-da-lapa-elo-duo/",
-    "CAPIITOLO by Piero Lissoni": "/empreendimentos/capiitolo-piero-lissoni/"
+    "CAPIITOLO by Piero Lissoni": "/empreendimentos/capiitolo-piero-lissoni/",
+    "Ária Higienópolis": "/empreendimentos/aria-higienopolis/"
   });
 
   function installStyle() {

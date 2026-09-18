@@ -39,7 +39,7 @@
     }
 
     const graph = Array.isArray(schema["@graph"]) ? schema["@graph"] : [];
-    const canonical = "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/";
+    const canonical = document.body?.dataset.projectCanonical || "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/";
     const withoutOffer = graph.filter((item) => item?.["@id"] !== `${canonical}#offer`);
     withoutOffer.push({
       "@type": "Offer",
