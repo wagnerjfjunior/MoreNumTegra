@@ -7,10 +7,10 @@
   "current_execution": {
     "active_phase_id": null,
     "active_task_id": null,
-    "state": "NO_ACTIVE_WBS_TASK / PR119_DEPLOYED / HOME_FORM46_E2E_PASS / NON_MUTATIVE_VALIDATION_NEXT",
+    "state": "NO_ACTIVE_WBS_TASK / SEO_POST_RELEASE_VALIDATION_CLOSED / NEXT_WBS_RESOLUTION_REQUIRED",
     "pull_request": null,
     "runtime_release_sha": "782c25b7229af99d0f1839bbfc6af412a5cb31e7",
-    "authority_record": "docs/sfjm/FORM46_HOME_PROJECT_CONTEXT_E2E_VALIDATION_2026-09-18.md"
+    "authority_record": "docs/sfjm/SEO_POST_RELEASE_VALIDATION_2026-09-18.md"
   },
   "progress": {
     "forecast_total_hours": 1240,
@@ -85,12 +85,18 @@
       "head_sha": "5b6dd53ef80caabbe0564c906cbfb6090ed2c07f",
       "runtime_release_sha": "782c25b7229af99d0f1839bbfc6af412a5cb31e7",
       "evidence": "docs/sfjm/FORM46_HOME_PROJECT_CONTEXT_E2E_VALIDATION_2026-09-18.md"
+    },
+    "SEO-POST-RELEASE-VALIDATION-2026-09-18": {
+      "state": "PASS / GSC_INDEXATION_CONFIRMED / RICH_RESULTS_PARITY_7_7_7 / NO_CODE_CHANGE",
+      "purpose": "Close sitemap, indexation, recrawl and Rich Results parity residuals after PRs #117-#119.",
+      "runtime_release_sha": "782c25b7229af99d0f1839bbfc6af412a5cb31e7",
+      "evidence": "docs/sfjm/SEO_POST_RELEASE_VALIDATION_2026-09-18.md"
     }
   },
   "next": {
     "task_id": null,
-    "state": "POST_PR119_NON_MUTATIVE_HTTP_SEARCH_VALIDATION",
-    "safe_action": "Continue non-mutative live HTTP, Search Console and structured-data validation. The home Form 46 project-context regression is closed by production E2E evidence; do not mutate code without new defect evidence."
+    "state": "RESOLVE_NEXT_CANONICAL_WBS_GATE",
+    "safe_action": "Resolve the next canonical WBS/gate from repository governance, including the still-not-declared M4-05R acceptance state. Do not infer progress or mutate runtime before that resolution."
   },
   "cross_project": {
     "commercial_catalog": {
@@ -103,11 +109,13 @@
   "known_residuals": {
     "favicon": "/favicon.ico returned 404 in post-cutover Pingdom HAR; minor asset residual",
     "gtm_www_published_version_number": "NOT_RECORDED",
-    "gsc_sitemap_processing": "NOT_PROVEN_FROM_REPOSITORY_EVIDENCE",
+    "gsc_sitemap_processing": "CLOSED / ACCEPTED / 4_URLS / 0_ERRORS / 0_WARNINGS",
     "commercial_hardcodes": "KNOWN / PR96 INVENTORY CANONICAL / RETIREMENT DEFERRED PENDING UPSTREAM CONTRACT",
-    "aria_external_http_smoke": "NOT_PROVEN_BY_CURRENT_TOOLING / VERCEL_STATUS_SUCCESS",
-    "aria_gsc_indexation": "NOT_PROVEN",
-    "home_form46_project_context": "CLOSED / PR119 / GREEN_SALES_E2E_PASS"
+    "aria_external_http_smoke": "CLOSED_FOR_SEARCH_VALIDATION / GSC_GOOGLEBOT_SMARTPHONE_FETCH_SUCCESS",
+    "aria_gsc_indexation": "CLOSED / INDEXED / GOOGLE_SELECTED_CANONICAL_INSPECTED_URL",
+    "home_form46_project_context": "CLOSED / PR119 / GREEN_SALES_E2E_PASS",
+    "capiitolo_post_115_recrawl": "CLOSED / INDEXED / RICH_RESULTS_VALID",
+    "project_rich_results_parity": "CLOSED / CAPIITOLO_7 / ELO_DUO_7 / ARIA_7"
   },
   "infra": {
     "dns_authority": "CLOUDFLARE_DNS_ONLY",
