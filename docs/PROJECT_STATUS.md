@@ -1,14 +1,14 @@
-# Status do Projeto
+# Status do Projeto — MoreNumTegra
 
-Estado reconciliado em `2026-09-16`.
+Atualizado em `2026-09-18`.
 
 Fonte canônica: GitHub `main`.
 
-Base live observada nesta reconciliação:
+SHA live observado nesta reconciliação:
 
-`f5b4b27cc31fa6247ad3394e40a295f2a58861d6`
+`e13b019f9bcca9e18bde8eedf0eb56a44a50be15`
 
-## 1. Produção atual
+## 1. Produção
 
 ```text
 WEB PRODUCTION = Vercel
@@ -16,88 +16,88 @@ CANONICAL HOST = https://www.moretegra.com.br/
 APEX = 308 -> www
 DNS = Cloudflare authoritative / DNS only
 GREEN/GDIGITAL = Form 46 provider + CRM
-LP = Green/GDigital fallback / non-canonical
+VERCEL AUTOMATIC DEPLOYMENTS = main only
+NON_MAIN DEPLOYMENTS = disabled
 ```
 
-Technical baseline vigente: `docs/baseline/TECHNICAL_BASELINE_V2_3.md`.
+Vercel reportou `SUCCESS` para o merge commit atual.
 
-Decision record: `docs/adr/ADR-006-VERCEL-COMMERCIAL-PRODUCTION-WWW-CANONICAL.md`.
+## 2. Runtime recente
 
-This documentation reconciliation does not by itself prove a new Vercel deployment or a new production smoke test. Repository, deployment, production and validation state remain separate.
+PR #109 restaurou estabilidade da home após identificar feedback loop de `MutationObserver` no runtime de links de projeto.
 
-## 2. Repository lifecycle
+Resultado validado pelo Product Authority:
 
-At the observed base:
+- vídeo da home funcionando;
+- página fluida;
+- faixa de consentimento da home funcionando.
+
+PR #110 corrigiu a apresentação da faixa de consentimento do Elo Duo e consolidou política production-only no Vercel.
+
+## 3. Search / exact-project pages
+
+Rotas publicadas e indexáveis:
+
+- `/`
+- `/empreendimentos/capiitolo-piero-lissoni/`
+- `/empreendimentos/caminhos-da-lapa-elo-duo/`
+
+Search Console, conforme screenshots fornecidos pelo Product Authority:
+
+- home indexada;
+- CAPIITOLO com Product Snippet válido;
+- Elo Duo com Product detectado/válido;
+- warnings observados são apresentados como não críticos/opcionais.
+
+Não há autorização para inventar dados a fim de eliminar warnings.
+
+## 4. Sitemap / robots
+
+Sitemap canônico contém três URLs publicadas.
+
+`robots.txt` permite crawling e referencia:
+
+`https://www.moretegra.com.br/sitemap.xml`
+
+A próxima validação deve confirmar comportamento live e aceitação no Google, não apenas sintaxe de arquivo.
+
+## 5. M4-05R
 
 ```text
-OPEN_PULL_REQUESTS = 0
+M4-05 historical implementation = MERGED
+M4-05 Product Acceptance = SUPERSEDED_BY_CORRECTIVE_GATE
+M4-05R Product Decision = APPROVED
+M4-05R Runtime = MERGED
+M4-05R Acceptance = NOT_YET_DECLARED_COMPLETE
 ```
 
-Recent merged work:
+Mudanças recentes em metadata/schema não devem ser revertidas sem evidência concreta de regressão.
 
-- PR #94 — exact-project production/indexation release for CAPIITOLO + Elo Duo;
-- PR #95 — stale-PR queue reconciliation/current runtime preservation;
-- PR #96 — docs-only Commercial Data Plane v2 architecture/schema/hardcode inventory.
+## 6. Deployment/provider policy
 
-## 3. Current published exact-project stream
+Por limitação operacional/rate-limit observada no Vercel, o projeto adota atualmente:
 
-Canonical release routes currently established by PR #94:
-
-- `https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/`
-- `https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/`
-
-The project may continue publishing additional governed exact-project pages without waiting for the FECH.AI Commercial Catalog architecture, provided each page independently passes Product Truth, Search/ownership, commercial-evidence, mobile, performance, Form 46 and measurement gates.
-
-## 4. Commercial data architecture
-
-PR #96 canonicalized the MoreNumTegra Commercial Data Plane v2 docs-only contract.
-
-The architecture track is now split:
-
-```text
-FECH.AI
-= upstream Commercial Catalog / Publication Context discovery
-
-MoreNumTegra
-= consumer contract / public rendering / SEO / conversion
+```json
+"git": {
+  "deploymentEnabled": {
+    "**": false,
+    "main": true
+  }
+}
 ```
 
-Detailed cross-project handoff:
+Esta é uma política local ao Vercel/MoreNumTegra e não deve ser generalizada para outros providers sem evidência equivalente.
 
-`docs/sfjm/MNT_FECHAI_COMMERCIAL_CATALOG_HANDOFF_2026-09-16.md`
+## 7. Próxima ação
 
-The former local runtime Stage B from PR #96 is deferred while the upstream FECH.AI contract is being designed/adjudicated.
+Ver `docs/NEXT_SAFE_ACTION.md`.
 
-No MoreNumTegra runtime/backend/Supabase integration is authorized by this state update.
+A próxima frente é validação não mutativa de:
 
-## 5. Security boundary
+- sitemap;
+- robots;
+- headers/canonical/indexabilidade;
+- Product Snippet / Merchant warnings;
+- JSON-LD da home.
 
-Read-only cross-project discovery found FECH.AI/Supabase security-advisor observations that have been transferred to the FECH.AI audit for live reconciliation.
-
-Until the upstream publication boundary is reviewed and accepted:
-
-- MoreNumTegra does not read FECH.AI internal operational tables directly;
-- no privileged key/service role is exposed to browser code;
-- no new MoreNumTegra commercial backend is created by implication;
-- commercial runtime integration remains a separate future gate.
-
-## 6. Search / publication continuation
-
-Next local objective: continue the exact-project publication stream from clean canonical `main`.
-
-The next page candidate must be resolved from current repository evidence, including Product Fact & Claim Registry and query/page ownership. Do not infer the candidate from conversation memory.
-
-For commercial values during the transition:
-
-- current governed evidence -> may be published under its applicable disclaimer/gate;
-- absent/stale evidence -> consult-only;
-- no stale hardcoded fallback should be introduced as new target architecture;
-- visible price and structured data must not diverge.
-
-## 7. Current pointers
-
-Handoff atual: `handoffs/CURRENT.md`.
-
-Próxima ação segura: `docs/NEXT_SAFE_ACTION.md`.
-
-Ações bloqueadas: `docs/BLOCKED_ACTIONS.md`.
+Nenhuma correção deve ser implementada antes de classificar se existe erro real.
