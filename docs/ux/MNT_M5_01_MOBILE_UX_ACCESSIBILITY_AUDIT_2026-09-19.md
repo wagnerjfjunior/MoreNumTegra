@@ -72,6 +72,17 @@ Current `main` preserves:
 - These are small-text treatments and do not meet the 4.5:1 normal-text threshold.
 - Exact-project footers use dark backgrounds with materially stronger contrast; this finding is specific to the Home light-footer palette.
 
+
+### M5-01-F13 — Home small gold helper text is slightly below contrast threshold
+
+- Evidence: `SOURCE_LEVEL / STATIC_CONTRAST_CALCULATION`
+- Severity: `P2 / COLOR CONTRAST`
+- The base Home eyebrow color `#8b6b12` on `#f4f1e9` is approximately `4.42:1` at 11px.
+- The zone helper color `#856710` on `#ece8df` is approximately `4.35:1` at 10px.
+- Both are below the 4.5:1 threshold for normal text.
+- PR #135 now includes a bounded remediation to `#80600e`, yielding approximately `5.17:1` on `#f4f1e9` and `4.77:1` on `#ece8df`.
+- Dark-section eyebrow overrides remain Tegra yellow and are not changed.
+
 ### M5-01-F12 — CAPIITOLO ARIA tab widgets are incomplete for keyboard users
 
 - Evidence: `SOURCE_LEVEL`
@@ -167,13 +178,14 @@ The Product Authority's latest local ZIP visual smoke is treated only as `USER_R
 ```text
 P0 = 0 open proven
 P1 = 0 open proven
-P2 = 5 open source-level findings
+P2 = 6 open source-level findings
 P3 = 0 open proven
 
 RESOLVED = F03–F09
 REMEDIATION_READY_NOT_MERGED = F01–F02 / PR #133
-NEW_STATIC_CONTRAST_FINDINGS = F10–F11
+NEW_STATIC_CONTRAST_FINDINGS = F10–F11 + F13
 NEW_KEYBOARD_ARIA_FINDING = F12
+REMEDIATION_READY_NOT_MERGED = F01/F02 -> PR #133; F10/F11/F13 -> PR #135; F12 -> PR #137
 RUNTIME_DEVICE_RESIDUALS = OPEN
 ```
 
@@ -183,7 +195,7 @@ RUNTIME_DEVICE_RESIDUALS = OPEN
 MNT_M5_01 = IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED
 RUNTIME_REMEDIATION_REQUIRED = NOT_YET_ADJUDICATED
 WBS_PROGRESS_CHANGE = NO
-NEXT = representative runtime/device accessibility verification, queued release gates for F01/F02 and F10/F11, and bounded remediation design for F12
+NEXT = representative runtime/device accessibility verification and queued fresh release gates for PR #133, PR #135 and PR #137 after the pending SEO runtime is validated
 ```
 
 Do not start M5-02 merely by sequence until M5-01 reaches its own acceptance gate.
