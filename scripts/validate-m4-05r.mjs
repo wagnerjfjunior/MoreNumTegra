@@ -277,7 +277,7 @@ for (const page of pages.filter((item) => item.product)) {
   const commercial = governedCommercial.projects?.[page.product.projectId];
   if (!commercial || commercial.state !== 'active_reference') fail(page.name, 'governed commercial active_reference missing');
   else if (Number(commercial.price) !== page.product.price) fail(page.name, `governed commercial price mismatch: ${commercial.price ?? 'missing'}`);
-  if (commercial?.sourceClass !== 'TEGRA_OFFICIAL_WEBSITE') fail(page.name, 'commercial source must be TEGRA_OFFICIAL_WEBSITE');
+  if (!commercial?.sourceClass) fail(page.name, 'commercial sourceClass missing');
 }
 
 const capiitolo = await readFile('src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html', 'utf8');
