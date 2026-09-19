@@ -92,7 +92,7 @@ MNT-M5 = ACTIVE
 MNT-M5-01 = IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED
 P0_OPEN = 0
 P1_OPEN = 0
-P2_OPEN = 7
+P2_OPEN = 8
 P3_OPEN = 0
 RUNTIME_DEVICE_RESIDUALS = OPEN
 ```
@@ -106,10 +106,12 @@ Open source-level findings:
 - F13 — Home small gold helper text slightly below 4.5:1.
 - F12 — CAPIITOLO ARIA tab widgets lack complete keyboard/panel semantics.
 - F14 — CAPIITOLO mobile horizontal overflow.
+- F15 — Home fixed dock overlaps required Form 46 controls under high zoom / short reflow.
 
 Prepared runtime candidates, all NOT_MERGED:
 - PR #133 — F01/F02 — Ready; local candidate PASS for mobile navigation, no-overlap criterion and skip-link focus transfer.
 - PR #135 — F10/F11/F13 — Ready, stacked on #133.
+- PR #145 — F15 — Ready, stacked after #135; local candidate validation PASS (125% dock visible, 200% dock hidden, Form 46 unobstructed).
 - PR #137 — F12/F14 — Ready; local candidate validation PASS, production pending.
 
 Resolved findings F03–F09 are documented in the current audit. PR #123 is merged, and later PRs #124–#130 preserve/refine its mobile/footer/map controls.
@@ -120,4 +122,4 @@ Audit record: `docs/ux/MNT_M5_01_MOBILE_UX_ACCESSIBILITY_AUDIT_2026-09-19.md`.
 
 See `docs/NEXT_SAFE_ACTION.md`.
 
-Preserve the ordered runtime queue (#133 -> #135 -> #137), continue the Home/runtime-device matrix after the CAPIITOLO local candidate PASS, and do not start M5-02 until M5-01 reaches its own gate. Do not start M5-02 or create remediation merely by sequence.
+Preserve the ordered runtime queue (#133 -> #135 -> #145 -> #137), continue the Home/runtime-device matrix after the CAPIITOLO local candidate PASS, and do not start M5-02 until M5-01 reaches its own gate. Do not start M5-02 or create remediation merely by sequence.
