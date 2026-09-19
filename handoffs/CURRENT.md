@@ -226,3 +226,12 @@ PROJECT_MAPS = NEIGHBORHOOD_LEVEL_VISUAL + WHATSAPP_ONLY_CLICK
 ```
 
 Exact street/number/postal-code content must not appear visibly outside the canonical commercial footer. Tegra corporate-site URLs and proxy dependencies must not ship in commercial HTML/JS. Structured data may retain governed exact addresses for entity consistency.
+
+
+## SEO continuity bridge — 2026-09-19
+
+For the next conversation focused on SEO/Search Console, read:
+
+`handoffs/2026-09-19-seo-continuity.md`
+
+This bridge captures the latest indexed-state evidence, canonical query ownership context, connected Search Console source, and the exact next analysis to resume. It does not change WBS acceptance or runtime authorization.
