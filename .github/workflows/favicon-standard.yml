@@ -1,0 +1,26 @@
+name: Favicon standard validation
+
+on:
+  pull_request:
+    paths:
+      - 'src-greenn/**/*.html'
+      - 'experiments/**/*.html'
+      - 'scripts/validate-favicon-standard.mjs'
+      - '.github/workflows/favicon-standard.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate canonical favicon
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Show Node version
+        run: node --version
+      - name: Validate favicon standard
+        run: node scripts/validate-favicon-standard.mjs

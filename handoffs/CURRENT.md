@@ -185,3 +185,16 @@ A aceitação/indexação efetiva no Google permanece não comprovada por evidê
 A fonte autoritativa é `docs/NEXT_SAFE_ACTION.md`.
 
 A validação pós-release de Search Console/sitemap/structured data está encerrada com evidência positiva. A próxima ação segura é **resolver o próximo task/gate canônico no WBS e na governança do repositório**, sem inferir progresso e sem mutar runtime antes dessa resolução.
+
+
+## Favicon standard — 2026-09-19
+
+```text
+CANONICAL_FAVICON = https://s3-gdigital.s3.amazonaws.com/gdigital/313/Favicon_Tegra_500x500_nobg.webp
+SCOPE = ALL_STANDALONE_HTML_PAGES_WITH_HEAD
+FUTURE_PAGE_ENFORCEMENT = CI_REQUIRED
+OLD_HORIZONTAL_LOGO_AS_FAVICON = FORBIDDEN
+GOOGLE_SEARCH_FAVICON_FORMAT = OPEN / WEBP_NOT_LISTED_AS_SUPPORTED
+```
+
+Canonical contract: `docs/brand/FAVICON_STANDARD.md`. CI guard: `scripts/validate-favicon-standard.mjs` + `.github/workflows/favicon-standard.yml`.

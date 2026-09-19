@@ -170,11 +170,29 @@ Mobile remains the primary acceptance path. Targets remain:
 
 Optional video/media must not block catalog, filters, CTAs or Form 46.
 
-## 10. Current residuals and boundaries
+## 10. Brand favicon standard
+
+Canonical browser favicon asset:
+
+`https://s3-gdigital.s3.amazonaws.com/gdigital/313/Favicon_Tegra_500x500_nobg.webp`
+
+Every standalone HTML page with its own `<head>` under `src-greenn` or `experiments` must declare exactly one `rel="icon"` pointing to that asset. The horizontal Tegra logo is not a favicon and must never be reused as one.
+
+This rule is enforced by:
+
+- `docs/brand/FAVICON_STANDARD.md`;
+- `scripts/validate-favicon-standard.mjs`;
+- `.github/workflows/favicon-standard.yml`.
+
+HTML fragments without their own `<head>` inherit the favicon from the containing page.
+
+Google Search favicon eligibility remains a separate validation concern because the supplied canonical asset is WebP and WebP is not currently listed among Google Search's supported favicon formats. Do not mark the SERP favicon fixed without a supported-format derivative and Google recrawl evidence.
+
+## 11. Current residuals and boundaries
 
 Known residuals do not silently become PASS:
 
-- favicon request `/favicon.ico` returned 404 in the supplied Pingdom HAR; minor asset residual;
+- browser favicon standard is canonicalized to the approved square Tegra WebP asset; Google Search favicon eligibility remains open because WebP is not listed as a supported Search favicon format;
 - exact published GTM version number for the `www` host cutover is not recorded in project evidence;
 - Search Console sitemap submission/processing status must be evidenced separately from sitemap deployment;
 - project/content factual residuals such as the governed Mozae metragem correction remain under their Search/Product Truth gates.
@@ -189,7 +207,7 @@ Separate authorization remains required for:
 - CMS/database/backend expansion;
 - material new route families beyond governed Search ownership.
 
-## 11. Supersession
+## 12. Supersession
 
 V2.3 supersedes V2.2 only where V2.2 says:
 
