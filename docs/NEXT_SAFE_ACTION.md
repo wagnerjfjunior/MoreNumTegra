@@ -15,11 +15,12 @@ MNT-M5-01 = IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED
 
 P0_OPEN = 0
 P1_OPEN = 0
-P2_OPEN = 7
+P2_OPEN = 8
 P3_OPEN = 0
 
 F01/F02 = REMEDIATION_READY_NOT_MERGED / PR #133 / LOCAL_CANDIDATE_PASS
 F10/F11/F13 = SOURCE_LEVEL_STATIC_CONTRAST_FINDINGS / PR #135 READY
+F15 = HOME_HIGH_ZOOM_DOCK_OVERLAP / PR #145 READY / LOCAL_CANDIDATE_PASS
 F12/F14 = CAPIITOLO ARIA_TABS + MOBILE_OVERFLOW / PR #137 READY / LOCAL_CANDIDATE_PASS
 
 FORECAST_TOTAL_HOURS = 1240
@@ -46,10 +47,11 @@ Work that may continue now:
 
 1. preserve PR #133 as the bounded remediation candidate for F01/F02;
 2. preserve PR #135 as the bounded stacked remediation candidate for F10/F11/F13;
-3. preserve PR #137 as the bounded remediation candidate for F12/F14; local candidate validation for both is PASS, production validation pending;
-4. complete source-level accessibility checks that do not require a representative browser/device;
-5. execute the canonical runtime/device verification matrix when a representative browser/device is available;
-6. retain any still-unexecuted browser/device checks as `NOT_OBSERVED` until valid evidence exists.
+3. preserve PR #145 as the bounded stacked remediation candidate for F15; local candidate validation PASS at 125%/200%, production pending;
+4. preserve PR #137 as the bounded remediation candidate for F12/F14; local candidate validation for both is PASS, production validation pending;
+5. complete source-level accessibility checks that do not require a representative browser/device;
+6. execute the canonical runtime/device verification matrix when a representative browser/device is available;
+7. retain any still-unexecuted browser/device checks as `NOT_OBSERVED` until valid evidence exists.
 
 When Vercel recovers, execute the ordered recovery queue in:
 
@@ -77,6 +79,7 @@ The first production action is always the exact approved runtime `353f4a5d...`, 
 5. F13 — Home small gold helper text slightly below 4.5:1; PR #135 ready.
 6. F12 — CAPIITOLO ARIA tab widgets lack complete keyboard/panel semantics; PR #137 ready; local keyboard interaction user-reported PASS.
 7. F14 — CAPIITOLO mobile horizontal overflow; PR #137 ready; local visual validation PASS at 360/375/393/440 px.
+8. F15 — Home fixed dock overlaps Form 46 at high zoom/short reflow; PR #145 ready; 125% visible + 200% hidden/unobstructed local PASS.
 
 ## Boundaries
 
