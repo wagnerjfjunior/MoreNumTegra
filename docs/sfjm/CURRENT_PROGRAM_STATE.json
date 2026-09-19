@@ -9,7 +9,7 @@
     "active_task_id": "MNT-M5-01",
     "state": "IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED / RUNTIME_QUEUE_PREPARED",
     "pull_request": 122,
-    "repository_head_sha": "f53cd72276a4aa4f552816d1758770676c5d7bdd",
+    "repository_head_sha": "ea52592af1da6721051bb7239db1d33974c34bb7",
     "latest_main_runtime_sha": "353f4a5dba058f2fb60fd4001128f8c857cd6fce",
     "deployment_state": "PROVIDER_BLOCKED / VERCEL build-rate-limit",
     "last_verified_vercel_success_sha": "6e852f1c41ea834aa138e333cef56519f382dc5f",
@@ -23,7 +23,7 @@
           "F01",
           "F02"
         ],
-        "state": "READY / NOT_MERGED / F01_F02_LOCAL_CANDIDATE_PASS"
+        "state": "READY / NOT_MERGED / LOCAL_CANDIDATE_PASS"
       },
       {
         "pr": 135,
@@ -34,6 +34,14 @@
           "F13"
         ],
         "state": "READY / NOT_MERGED / STACKED_ON_133"
+      },
+      {
+        "pr": 145,
+        "head": "1bb048701d6eb97404ae7ca58c5f09cf4adf34fe",
+        "findings": [
+          "F15"
+        ],
+        "state": "READY / NOT_MERGED / STACKED_ON_135 / LOCAL_CANDIDATE_PASS"
       },
       {
         "pr": 137,
@@ -168,14 +176,15 @@
     "capiitolo_post_115_recrawl": "CLOSED / INDEXED / RICH_RESULTS_VALID",
     "project_rich_results_parity": "CLOSED / CAPIITOLO_7 / ELO_DUO_7 / ARIA_7",
     "m4_05r_acceptance": "CLOSED / COMPLETE / ACCEPTED / ZERO_ADDITIONAL_WBS_HOURS",
-    "m5_01_open_findings": "P2=7 / F01 F02 F10 F11 F13 F12 F14",
+    "m5_01_open_findings": "P2=8 / F01 F02 F10 F11 F13 F12 F14 F15",
     "m5_01_runtime_device_validation": "OPEN / NOT_FULLY_OBSERVED",
     "latest_main_deployment": "PROVIDER_BLOCKED / VERCEL build-rate-limit / approved runtime SHA 353f4a5dba058f2fb60fd4001128f8c857cd6fce",
-    "m5_01_runtime_queue": "PR133_READY -> PR135_READY_STACKED -> PR137_READY_F12_F14_LOCAL_PASS / NONE_MERGED",
+    "m5_01_runtime_queue": "PR133_READY -> PR135_READY_STACKED -> PR145_READY_STACKED_LOCAL_PASS -> PR137_READY_LOCAL_PASS / NONE_MERGED",
     "production_content_state": "CONFIRMED_PRE_PR132 / HTTP_200 / PR132_MARKERS_ABSENT",
     "m5_01_capiitolo_local_validation": "F12 USER_REPORTED_PASS / F14 PASS 360_375_393_440 / PRODUCTION_PENDING",
     "m5_01_home_local_validation": "F01 PASS ~360_393_400 / F02 PASS first-tab+focus-transfer / F10_F11_F13 STATIC_PASS_VISUAL_PENDING",
-    "m5_01_qa_candidate_head": "dc6e69adb30427a0afa3995fef86d890fc221378"
+    "m5_01_qa_candidate_head": "dc6e69adb30427a0afa3995fef86d890fc221378",
+    "m5_01_home_reflow_validation": "F15 PASS / 125_PERCENT_DOCK_VISIBLE / 200_PERCENT_DOCK_HIDDEN / FORM46_UNOBSTRUCTED / PRODUCTION_PENDING"
   },
   "infra": {
     "dns_authority": "CLOUDFLARE_DNS_ONLY",

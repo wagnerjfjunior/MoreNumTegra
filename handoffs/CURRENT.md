@@ -9,10 +9,10 @@ GitHub `main` é a fonte canônica. Resolver estado live antes de qualquer nova 
 ```text
 CANONICAL_REPOSITORY = wagnerjfjunior/MoreNumTegra
 CANONICAL_BRANCH = main
-MAIN_SHA_OBSERVED = bee925766398d9d9e629c96cf95511a35f0df175
+MAIN_SHA_OBSERVED = ea52592af1da6721051bb7239db1d33974c34bb7
 PR_123 = MERGED / M5-01 MOBILE REMEDIATION
 PR_132 = MERGED / SEMANTIC ON-PAGE SEO
-OPEN_RUNTIME_QUEUE = PR #133 -> PR #135 -> PR #137 / ALL NOT_MERGED
+OPEN_RUNTIME_QUEUE = PR #133 -> PR #135 -> PR #145 -> PR #137 / ALL NOT_MERGED
 ```
 
 PR #132 changed Home, CAPIITOLO, Elo Duo and Ária semantic on-page content. Its exact head `5dc3aea5e0256574edb498dcc63fe5f7bb2ca2a6` passed the three repository checks before merge.
@@ -68,7 +68,7 @@ MNT-M5 = ACTIVE
 MNT-M5-01 = IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED
 P0_OPEN = 0
 P1_OPEN = 0
-P2_OPEN = 6
+P2_OPEN = 8
 P3_OPEN = 0
 WBS_PROGRESS_CHANGE = NO
 ```
@@ -81,11 +81,14 @@ Open P2 findings:
 4. F11 — Home light-footer secondary/contact contrast below 4.5:1.
 5. F13 — Home small gold helper text slightly below 4.5:1.
 6. F12 — CAPIITOLO ARIA tabs incomplete for keyboard/panel semantics.
+7. F14 — CAPIITOLO mobile horizontal overflow.
+8. F15 — Home fixed dock overlaps Form 46 under high zoom / short reflow.
 
 Prepared runtime queue:
 - PR #133 — F01/F02 — Ready, not merged.
 - PR #135 — F10/F11/F13 — Ready, stacked on #133, not merged.
-- PR #137 — F12 — Ready, not merged.
+- PR #145 — F15 — Ready, stacked after #135, local candidate PASS.
+- PR #137 — F12/F14 — Ready, not merged, local candidate PASS.
 
 Resolved in current `main`:
 

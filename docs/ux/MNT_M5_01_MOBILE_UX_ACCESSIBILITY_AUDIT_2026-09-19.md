@@ -107,6 +107,16 @@ Current `main` preserves:
 - Re-tested locally at 360, 375, 393 and 440 px: no page-level horizontal displacement was observed and the H1/pilot remained inside the viewport.
 - Production validation remains pending.
 
+### M5-01-F15 — Home fixed dock overlaps Form 46 under high zoom / short reflow
+
+- Evidence: `USER_REPORTED_LOCAL_RUNTIME / VISUAL`
+- Severity: `P2 / REFLOW + INTERACTION OBSTRUCTION`
+- Initial 200% zoom validation showed the fixed lead/WhatsApp dock covering required Form 46 controls.
+- The first `max-height:520px` guard hid the dock too early at 125% and was rejected.
+- PR #145 narrows the guard to `max-height:400px`.
+- Final local candidate validation: 125% retains the dock; 200% hides it; Form 46 remains fully visible and unobstructed.
+- `F15_LOCAL_CANDIDATE_VALIDATION = PASS`; production validation pending.
+
 ### M5-01-C10 — Ária gallery has explicit keyboard navigation
 
 - Evidence: `SOURCE_LEVEL`
@@ -185,7 +195,7 @@ Still `NOT_OBSERVED` as an accessibility acceptance set:
 - representative keyboard focus order across Home and exact-project pages;
 - full keyboard operation;
 - screen-reader announcements;
-- 200% text resize / browser zoom;
+- 200% text resize / browser zoom on routes not yet locally exercised (Home dock/Form46 case now locally PASS);
 - measured color contrast for states not covered by the static calculations above;
 - adjacent touch-target spacing;
 - Home and other not-yet-exercised page-level horizontal overflow at representative mobile widths;
@@ -198,7 +208,7 @@ The Product Authority's latest local ZIP visual smoke is treated only as `USER_R
 ```text
 P0 = 0 open proven
 P1 = 0 open proven
-P2 = 7 open source/runtime findings
+P2 = 8 open source/runtime findings
 P3 = 0 open proven
 
 RESOLVED = F03–F09
@@ -206,7 +216,8 @@ REMEDIATION_READY_NOT_MERGED = F01–F02 / PR #133
 NEW_STATIC_CONTRAST_FINDINGS = F10–F11 + F13
 NEW_KEYBOARD_ARIA_FINDING = F12
 NEW_MOBILE_OVERFLOW_FINDING = F14 / LOCAL_CANDIDATE_PASS
-REMEDIATION_READY_NOT_MERGED = F01/F02 -> PR #133; F10/F11/F13 -> PR #135; F12/F14 -> PR #137
+NEW_REFLOW_OBSTRUCTION_FINDING = F15 / PR #145 / LOCAL_CANDIDATE_PASS
+REMEDIATION_READY_NOT_MERGED = F01/F02 -> PR #133; F10/F11/F13 -> PR #135; F15 -> PR #145; F12/F14 -> PR #137
 RUNTIME_DEVICE_RESIDUALS = OPEN
 ```
 

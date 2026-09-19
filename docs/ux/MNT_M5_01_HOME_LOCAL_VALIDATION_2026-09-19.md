@@ -47,6 +47,28 @@ F02_LOCAL_CANDIDATE_VALIDATION = PASS
 PRODUCTION_VALIDATION = PENDING
 ```
 
+## F15 — fixed dock overlap under high zoom / short reflow viewport
+
+Initial 200% browser-zoom validation exposed a real overlap: the fixed lead/WhatsApp dock covered required Form 46 controls.
+
+A first remediation using `max-height:520px` hid the dock too early at 125% zoom and was rejected by local evidence.
+
+The final PR #145 candidate narrows the guard to `max-height:400px`.
+
+Local validation on the rebuilt integrated candidate proved:
+
+- 125% zoom: floating dock remains visible;
+- 200% zoom: floating dock is hidden;
+- 200% zoom: Form 46 country, phone and submit controls remain fully visible and unobstructed.
+
+```text
+F15_LOCAL_CANDIDATE_VALIDATION = PASS
+125_PERCENT_DOCK = VISIBLE
+200_PERCENT_DOCK = HIDDEN
+200_PERCENT_FORM46_OBSTRUCTION = NONE
+PRODUCTION_VALIDATION = PENDING
+```
+
 ## Contrast findings
 
 F10/F11/F13 have static source-level contrast remediation in PR #135, but the supplied screenshots do not yet cover stage badges and the light footer closely enough for visual candidate evidence.
