@@ -44,6 +44,28 @@ Current governed footer addresses:
 
 A future page must not invent an address. The address must come from governed Product Truth / approved structured-data facts.
 
+### Address exposure rule
+
+Exact street address, street number and postal code are **forbidden in visible page content outside the canonical commercial footer**.
+
+Allowed:
+- the page-specific address inside `data-mnt-footer-address`;
+- non-visible JSON-LD / structured data when required for factual entity consistency;
+- internal governed evidence that is not rendered to the visitor.
+
+Forbidden outside the footer:
+- hero/facts cards;
+- location copy;
+- FAQ visible answers;
+- map labels/buttons;
+- standalone visit cards;
+- external map links that reveal the exact address;
+- exact-address map queries.
+
+Visible location copy may use only neighborhood/region/city-level wording such as `Chácara Klabin · São Paulo`, `Higienópolis · São Paulo` or `Caminhos da Lapa · São Paulo`.
+
+Structured-data addresses must remain consistent with the governed footer address but must not be copied into another visible section.
+
 ## 4. Mandatory commercial contact
 
 Every commercial footer must contain:
@@ -67,9 +89,32 @@ Commercial pages must expose:
 
 These hooks are governance/validation hooks and must not be repurposed.
 
-## 6. CAPIITOLO map interaction
+## 6. Tegra corporate-site isolation
 
-The CAPIITOLO location map is a WhatsApp conversion surface, not an interactive Maps navigation surface.
+Public MoreNumTegra commercial HTML and browser-delivered JavaScript must not expose or depend on Tegra corporate website URLs.
+
+Forbidden in public commercial runtime:
+- `tegraincorporadora.com.br`;
+- subdomains such as `arquivos.tegraincorporadora.com.br`;
+- visible "Fonte Tegra" links to the corporate site;
+- project `sameAs` links to the Tegra corporate website;
+- Tegra corporate website URL/logo/image references in JSON-LD;
+- catalogue `official` URL fields;
+- image proxy URLs routed through the Tegra corporate website.
+
+Project media may use the already-authorized direct asset origins such as Azure Blob or GDigital/S3.
+
+The only Tegra-related profile link authorized in the canonical commercial disclaimer is:
+
+`https://corretor.tegravendas.com.br/sabrina/sp`
+
+This rule does not prohibit functional links such as WhatsApp, telephone, MoreNumTegra internal navigation, consent/analytics infrastructure or separately approved media providers.
+
+## 7. Location-map interaction
+
+Project location maps are WhatsApp conversion surfaces, not exact-address disclosure or interactive Maps navigation surfaces.
+
+CAPIITOLO, Elo Duo and Ária must follow the same interaction rule.
 
 Required behavior:
 
@@ -77,16 +122,17 @@ Required behavior:
 - the embedded map itself has pointer interaction disabled;
 - no external `Abrir no Maps` button/link is exposed;
 - no direct `google.com/maps/search` navigation link is exposed;
+- map queries are neighborhood/region level, never exact street/number or exact project coordinates;
 - the current yellow `Solicitar localização` WhatsApp button remains;
 - the map iframe may remain as a visual background only.
 
 This rule prevents zoom/pan/Maps navigation from competing with the intended lead action.
 
-## 7. CI enforcement
+## 8. CI enforcement
 
 Guard:
 
 - `scripts/validate-commercial-page-standard.mjs`
 - `.github/workflows/commercial-page-standard.yml`
 
-The guard must fail when a current commercial page loses the canonical footer text/logo/contact/address hooks or when the CAPIITOLO map regresses to an interactive Maps navigation surface.
+The guard must fail when a current commercial page loses the canonical footer text/logo/contact/address hooks, exposes an exact address outside the footer/structured data, reintroduces any Tegra corporate-site URL into public commercial runtime, or regresses a project map to an interactive/direct Maps navigation surface.
