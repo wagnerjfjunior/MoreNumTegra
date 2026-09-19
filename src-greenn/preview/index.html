@@ -35,314 +35,267 @@
   <style>html,body{margin:0;padding:0;background:#f4f1e9}#mt-preview-error{display:none;padding:24px;font:600 14px system-ui;color:#8b1e16;background:#fff0ee}</style>
 
   <script id="mt-search-schema" type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://www.moretegra.com.br/#website",
-        "url": "https://www.moretegra.com.br/",
-        "name": "More em um Tegra",
-        "inLanguage": "pt-BR"
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.moretegra.com.br/#website",
+      "url": "https://www.moretegra.com.br/",
+      "name": "More em um Tegra",
+      "inLanguage": "pt-BR"
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://www.moretegra.com.br/#webpage",
+      "url": "https://www.moretegra.com.br/",
+      "name": "Apartamentos Tegra em São Paulo | More em um Tegra",
+      "description": "Experiência de descoberta comercial para comparar empreendimentos Tegra em São Paulo por região, estágio e momento de compra.",
+      "isPartOf": {
+        "@id": "https://www.moretegra.com.br/#website"
       },
-      {
-        "@type": "CollectionPage",
-        "@id": "https://www.moretegra.com.br/#webpage",
-        "url": "https://www.moretegra.com.br/",
-        "name": "Apartamentos Tegra em São Paulo | More em um Tegra",
-        "description": "Experiência de descoberta comercial para comparar empreendimentos Tegra em São Paulo por região, estágio e momento de compra.",
-        "isPartOf": {
-          "@id": "https://www.moretegra.com.br/#website"
-        },
-        "about": {
-          "@id": "https://www.tegraincorporadora.com.br/#organization"
-        },
-        "mentions": {
-          "@id": "https://www.moretegra.com.br/#sabrina-da-tegra"
-        },
-        "mainEntity": {
-          "@id": "https://www.moretegra.com.br/#projects"
-        },
-        "primaryImageOfPage": {
-          "@id": "https://www.moretegra.com.br/#home-image"
-        },
-        "video": {
-          "@id": "https://www.moretegra.com.br/#campaign-video"
-        },
-        "inLanguage": "pt-BR"
+      "mentions": {
+        "@id": "https://www.moretegra.com.br/#sabrina-da-tegra"
       },
-      {
-        "@type": "ItemList",
-        "@id": "https://www.moretegra.com.br/#projects",
-        "name": "Empreendimentos Tegra com página publicada no More em um Tegra",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "url": "https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/",
-            "item": {
-              "@id": "https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#project"
-            }
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "url": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/",
-            "item": {
-              "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#project"
-            }
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "url": "https://www.moretegra.com.br/empreendimentos/aria-higienopolis/",
-            "item": {
-              "@id": "https://www.moretegra.com.br/empreendimentos/aria-higienopolis/#project"
-            }
+      "mainEntity": {
+        "@id": "https://www.moretegra.com.br/#projects"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://www.moretegra.com.br/#home-image"
+      },
+      "video": {
+        "@id": "https://www.moretegra.com.br/#campaign-video"
+      },
+      "inLanguage": "pt-BR"
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://www.moretegra.com.br/#projects",
+      "name": "Empreendimentos Tegra com página publicada no More em um Tegra",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "url": "https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/",
+          "item": {
+            "@id": "https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#project"
           }
-        ]
-      },
-      {
-        "@type": "ImageObject",
-        "@id": "https://www.moretegra.com.br/#home-image",
-        "contentUrl": "https://i.ytimg.com/vi/SCCM3vzNlyk/hqdefault.jpg",
-        "width": 480,
-        "height": 360,
-        "caption": "Prévia do filme More em um Tegra"
-      },
-      {
-        "@type": "RealEstateAgent",
-        "@id": "https://www.tegraincorporadora.com.br/#organization",
-        "name": "Tegra Incorporadora",
-        "url": "https://www.tegraincorporadora.com.br/",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://www.tegraincorporadora.com.br/images/logo-tegra-color.svg",
-          "width": 250,
-          "height": 60
         },
-        "brand": {
-          "@id": "https://www.moretegra.com.br/#tegra-brand"
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "url": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/",
+          "item": {
+            "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#project"
+          }
         },
-        "legalName": "TG SÃO PAULO EMPREENDIMENTOS IMOBILIÁRIOS S.A.",
-        "alternateName": "Tegra",
-        "description": "Incorporadora de imóveis de alto padrão em São Paulo, Campinas e Rio de Janeiro.",
-        "telephone": "+55-11-3500-3223",
-        "priceRange": "Consulte-nos",
-        "image": "https://www.tegraincorporadora.com.br/og-image.jpg",
-        "identifier": {
-          "@type": "PropertyValue",
-          "propertyID": "CRECI",
-          "value": "028638-J"
-        },
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Av. das Nações Unidas, 14.401, Torre Paineira, 1º andar",
-          "addressLocality": "São Paulo",
-          "addressRegion": "SP",
-          "postalCode": "04794-000",
-          "addressCountry": "BR"
-        },
-        "sameAs": [
-          "https://www.instagram.com/tegraincorporadora",
-          "https://www.linkedin.com/company/tegraincorporadora",
-          "https://www.facebook.com/tegraincorporadora",
-          "https://www.youtube.com/tegraincorporadora",
-          "https://www.pinterest.com/tegraincorporadora"
-        ]
-      },
-      {
-        "@type": "Brand",
-        "@id": "https://www.moretegra.com.br/#tegra-brand",
-        "name": "Tegra"
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://www.moretegra.com.br/#tegra-vendas",
-        "name": "Tegra Vendas"
-      },
-      {
-        "@type": "Place",
-        "@id": "https://www.moretegra.com.br/#estande-caminhos-da-lapa",
-        "name": "Estande Tegra Caminhos da Lapa",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Rua Fortunato Ferraz, 625",
-          "addressLocality": "São Paulo",
-          "addressRegion": "SP",
-          "addressCountry": {
-            "@type": "Country",
-            "name": "BR"
-          },
-          "postalCode": "05093-000"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": -23.517165527430233,
-          "longitude": -46.71861778788628
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "url": "https://www.moretegra.com.br/empreendimentos/aria-higienopolis/",
+          "item": {
+            "@id": "https://www.moretegra.com.br/empreendimentos/aria-higienopolis/#project"
+          }
         }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://www.moretegra.com.br/#home-image",
+      "contentUrl": "https://i.ytimg.com/vi/SCCM3vzNlyk/hqdefault.jpg",
+      "width": 480,
+      "height": 360,
+      "caption": "Prévia do filme More em um Tegra"
+    },
+    {
+      "@type": "Brand",
+      "@id": "https://www.moretegra.com.br/#tegra-brand",
+      "name": "Tegra"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.moretegra.com.br/#tegra-vendas",
+      "name": "Tegra Vendas"
+    },
+    {
+      "@type": "Place",
+      "@id": "https://www.moretegra.com.br/#estande-caminhos-da-lapa",
+      "name": "Estande Tegra Caminhos da Lapa",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Fortunato Ferraz, 625",
+        "addressLocality": "São Paulo",
+        "addressRegion": "SP",
+        "addressCountry": {
+          "@type": "Country",
+          "name": "BR"
+        },
+        "postalCode": "05093-000"
       },
-      {
-        "@type": "ContactPoint",
-        "@id": "https://www.moretegra.com.br/#sabrina-contato",
-        "contactType": "Atendimento comercial",
-        "telephone": "+5511960779328",
-        "availableLanguage": "pt-BR",
-        "areaServed": {
-          "@type": "City",
-          "name": "São Paulo"
-        }
-      },
-      {
-        "@type": "RealEstateAgent",
-        "@id": "https://www.moretegra.com.br/#sabrina-real-estate-agent",
-        "name": "Sabrina da Tegra — Corretora Tegra Vendas",
-        "description": "Atendimento imobiliário de Sabrina da Tegra, corretora Tegra Vendas, para empreendimentos Tegra em São Paulo.",
-        "url": "https://www.moretegra.com.br/",
-        "sameAs": "https://corretor.tegravendas.com.br/sabrina/sp",
-        "telephone": "+5511960779328",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Rua Fortunato Ferraz, 625",
-          "addressLocality": "São Paulo",
-          "addressRegion": "SP",
-          "addressCountry": "BR",
-          "postalCode": "05093-000"
-        },
-        "areaServed": {
-          "@type": "City",
-          "name": "São Paulo"
-        },
-        "priceRange": "Consulte condições",
-        "logo": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp",
-        "image": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp",
-        "identifier": {
-          "@type": "PropertyValue",
-          "propertyID": "CRECI-SP",
-          "value": "209.905-F"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": -23.517165527430233,
-          "longitude": -46.71861778788628
-        }
-      },
-      {
-        "@type": "Person",
-        "@id": "https://www.moretegra.com.br/#sabrina-da-tegra",
-        "name": "Sabrina da Tegra",
-        "jobTitle": "Corretora de imóveis",
-        "identifier": {
-          "@type": "PropertyValue",
-          "propertyID": "CRECI-SP",
-          "value": "209.905-F"
-        },
-        "worksFor": {
-          "@id": "https://www.moretegra.com.br/#tegra-vendas"
-        },
-        "workLocation": {
-          "@id": "https://www.moretegra.com.br/#estande-caminhos-da-lapa"
-        },
-        "contactPoint": {
-          "@id": "https://www.moretegra.com.br/#sabrina-contato"
-        },
-        "sameAs": "https://corretor.tegravendas.com.br/sabrina/sp",
-        "image": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp"
-      },
-      {
-        "@type": "Service",
-        "@id": "https://www.moretegra.com.br/#atendimento-imobiliario",
-        "name": "Atendimento imobiliário More em um Tegra",
-        "serviceType": "Atendimento para empreendimentos Tegra em São Paulo",
-        "provider": {
-          "@id": "https://www.moretegra.com.br/#sabrina-real-estate-agent"
-        },
-        "broker": {
-          "@id": "https://www.moretegra.com.br/#sabrina-da-tegra"
-        },
-        "areaServed": {
-          "@type": "City",
-          "name": "São Paulo"
-        }
-      },
-      {
-        "@type": "ApartmentComplex",
-        "@id": "https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#project",
-        "name": "CAPIITOLO by Piero Lissoni",
-        "url": "https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/",
-        "sameAs": "https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/chacara-klabin/chacaraklabin"
-      },
-      {
-        "@type": "ApartmentComplex",
-        "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#project",
-        "name": "Caminhos da Lapa Elo Duo",
-        "url": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/",
-        "sameAs": "https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/lapa/caminhos-da-lapa-elo-duo"
-      },
-      {
-        "@type": "ApartmentComplex",
-        "@id": "https://www.moretegra.com.br/empreendimentos/aria-higienopolis/#project",
-        "name": "Ária Higienópolis",
-        "url": "https://www.moretegra.com.br/empreendimentos/aria-higienopolis/",
-        "sameAs": "https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/higienopolis/aria-higienopolis"
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -23.517165527430233,
+        "longitude": -46.71861778788628
       }
-    ]
-  }
+    },
+    {
+      "@type": "ContactPoint",
+      "@id": "https://www.moretegra.com.br/#sabrina-contato",
+      "contactType": "Atendimento comercial",
+      "telephone": "+5511960779328",
+      "availableLanguage": "pt-BR",
+      "areaServed": {
+        "@type": "City",
+        "name": "São Paulo"
+      }
+    },
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://www.moretegra.com.br/#sabrina-real-estate-agent",
+      "name": "Sabrina da Tegra — Corretora Tegra Vendas",
+      "description": "Atendimento imobiliário de Sabrina da Tegra, corretora Tegra Vendas, para empreendimentos Tegra em São Paulo.",
+      "url": "https://www.moretegra.com.br/",
+      "sameAs": "https://corretor.tegravendas.com.br/sabrina/sp",
+      "telephone": "+5511960779328",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Fortunato Ferraz, 625",
+        "addressLocality": "São Paulo",
+        "addressRegion": "SP",
+        "addressCountry": "BR",
+        "postalCode": "05093-000"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "São Paulo"
+      },
+      "priceRange": "Consulte condições",
+      "logo": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp",
+      "image": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "CRECI-SP",
+        "value": "209.905-F"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -23.517165527430233,
+        "longitude": -46.71861778788628
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.moretegra.com.br/#sabrina-da-tegra",
+      "name": "Sabrina da Tegra",
+      "jobTitle": "Corretora de imóveis",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "CRECI-SP",
+        "value": "209.905-F"
+      },
+      "worksFor": {
+        "@id": "https://www.moretegra.com.br/#tegra-vendas"
+      },
+      "workLocation": {
+        "@id": "https://www.moretegra.com.br/#estande-caminhos-da-lapa"
+      },
+      "contactPoint": {
+        "@id": "https://www.moretegra.com.br/#sabrina-contato"
+      },
+      "sameAs": "https://corretor.tegravendas.com.br/sabrina/sp",
+      "image": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.moretegra.com.br/#atendimento-imobiliario",
+      "name": "Atendimento imobiliário More em um Tegra",
+      "serviceType": "Atendimento para empreendimentos Tegra em São Paulo",
+      "provider": {
+        "@id": "https://www.moretegra.com.br/#sabrina-real-estate-agent"
+      },
+      "broker": {
+        "@id": "https://www.moretegra.com.br/#sabrina-da-tegra"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "São Paulo"
+      }
+    },
+    {
+      "@type": "ApartmentComplex",
+      "@id": "https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#project",
+      "name": "CAPIITOLO by Piero Lissoni",
+      "url": "https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/"
+    },
+    {
+      "@type": "ApartmentComplex",
+      "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#project",
+      "name": "Caminhos da Lapa Elo Duo",
+      "url": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/"
+    },
+    {
+      "@type": "ApartmentComplex",
+      "@id": "https://www.moretegra.com.br/empreendimentos/aria-higienopolis/#project",
+      "name": "Ária Higienópolis",
+      "url": "https://www.moretegra.com.br/empreendimentos/aria-higienopolis/"
+    }
+  ]
+}
   </script>
 
   <script id="mt-localbusiness-schema" type="application/ld+json">
-  {
-    "@context": "https://schema.org/",
-    "@type": "RealEstateAgent",
-    "@id": "https://www.moretegra.com.br/#sabrina-real-estate-agent",
-    "name": "Sabrina da Tegra — Corretora Tegra Vendas",
-    "description": "Atendimento imobiliário de Sabrina da Tegra, corretora Tegra Vendas, para empreendimentos Tegra em São Paulo.",
-    "url": "https://www.moretegra.com.br/",
-    "sameAs": "https://corretor.tegravendas.com.br/sabrina/sp",
-    "telephone": "+5511960779328",
-    "priceRange": "Consulte condições",
-    "logo": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp",
-    "identifier": {
-      "@type": "PropertyValue",
-      "propertyID": "CRECI-SP",
-      "value": "209.905-F"
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Rua Fortunato Ferraz, 625",
-      "addressLocality": "São Paulo",
-      "addressRegion": "SP",
-      "addressCountry": "BR",
-      "postalCode": "05093-000"
-    },
-    "areaServed": {
-      "@type": "City",
-      "name": "São Paulo"
-    },
-    "image": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp",
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": -23.517165527430233,
-      "longitude": -46.71861778788628
-    }
+{
+  "@context": "https://schema.org/",
+  "@type": "RealEstateAgent",
+  "@id": "https://www.moretegra.com.br/#sabrina-real-estate-agent",
+  "name": "Sabrina da Tegra — Corretora Tegra Vendas",
+  "description": "Atendimento imobiliário de Sabrina da Tegra, corretora Tegra Vendas, para empreendimentos Tegra em São Paulo.",
+  "url": "https://www.moretegra.com.br/",
+  "sameAs": "https://corretor.tegravendas.com.br/sabrina/sp",
+  "telephone": "+5511960779328",
+  "priceRange": "Consulte condições",
+  "logo": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "CRECI-SP",
+    "value": "209.905-F"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua Fortunato Ferraz, 625",
+    "addressLocality": "São Paulo",
+    "addressRegion": "SP",
+    "addressCountry": "BR",
+    "postalCode": "05093-000"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "São Paulo"
+  },
+  "image": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -23.517165527430233,
+    "longitude": -46.71861778788628
   }
+}
   </script>
 
   <script id="mt-home-video-schema" type="application/ld+json">
-  {
-    "@context": "https://schema.org/",
-    "@type": "VideoObject",
-    "@id": "https://www.moretegra.com.br/#campaign-video",
-    "name": "Os melhores apartamentos de São Paulo, separados para você escolher conforme tamanho e localização!",
-    "description": "E você já mora em um Tegra???\nSe ainda não, aproveite agora mesmo para conhecer.\n\nFale com Sabrina da Tegra (11-96077-9328)",
-    "thumbnailUrl": [
-      "https://i4.ytimg.com/vi/SCCM3vzNlyk/hqdefault.jpg"
-    ],
-    "uploadDate": "2026-08-23T19:50:00Z",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/SCCM3vzNlyk",
-    "inLanguage": "pt-BR",
-    "isFamilyFriendly": true
-  }
+{
+  "@context": "https://schema.org/",
+  "@type": "VideoObject",
+  "@id": "https://www.moretegra.com.br/#campaign-video",
+  "name": "Os melhores apartamentos de São Paulo, separados para você escolher conforme tamanho e localização!",
+  "description": "E você já mora em um Tegra???\nSe ainda não, aproveite agora mesmo para conhecer.\n\nFale com Sabrina da Tegra (11-96077-9328)",
+  "thumbnailUrl": [
+    "https://i4.ytimg.com/vi/SCCM3vzNlyk/hqdefault.jpg"
+  ],
+  "uploadDate": "2026-08-23T19:50:00Z",
+  "embedUrl": "https://www.youtube-nocookie.com/embed/SCCM3vzNlyk",
+  "inLanguage": "pt-BR",
+  "isFamilyFriendly": true
+}
   </script>
 
   <!-- Google Tag Manager -->
@@ -687,7 +640,7 @@
   </section>
 
   <div class="moretegra-supplement">
-    <!-- FACT_SOURCE_TEGRA_2026_08_26: https://www.tegraincorporadora.com.br/sobre -->
+    
     <section class="mt-post-form" aria-labelledby="mt-post-form-title">
       <div>
         <p class="mt-eyebrow">ESCOLHA TEGRA</p>
@@ -703,46 +656,48 @@
   </div>
 
   <script id="mt-faq-schema" type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "@id": "https://www.moretegra.com.br/#faq",
-    "isPartOf": {"@id": "https://www.moretegra.com.br/#webpage"},
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Os valores mostrados são finais?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Não necessariamente. São referências comerciais vinculadas às unidades indicadas e podem incluir condições promocionais específicas. O valor final depende da disponibilidade, unidade escolhida, tabela vigente, entrada, fluxo, forma de pagamento e negociação."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Como comparar os empreendimentos?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Use os filtros por estágio, zona e faixa de valor, além da busca por nome ou bairro. Depois, solicite a disponibilidade atualizada do projeto de interesse."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Como negociar uma condição melhor?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Apresente sua forma de pagamento à equipe Tegra Vendas. Entrada, parcelas, fluxo e unidade escolhida são considerados na negociação direta com a Tegra, sempre de acordo com as condições vigentes."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Este é o site institucional da Tegra?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Esta página é voltada ao atendimento comercial da Tegra Vendas e não substitui o site institucional corporativo da Tegra Incorporadora. Para disponibilidade, condições e negociação, utilize o formulário ou o WhatsApp desta página."
-        }
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://www.moretegra.com.br/#faq",
+  "isPartOf": {
+    "@id": "https://www.moretegra.com.br/#webpage"
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Os valores mostrados são finais?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Não necessariamente. São referências comerciais vinculadas às unidades indicadas e podem incluir condições promocionais específicas. O valor final depende da disponibilidade, unidade escolhida, tabela vigente, entrada, fluxo, forma de pagamento e negociação."
       }
-    ]
-  }
+    },
+    {
+      "@type": "Question",
+      "name": "Como comparar os empreendimentos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use os filtros por estágio, zona e faixa de valor, além da busca por nome ou bairro. Depois, solicite a disponibilidade atualizada do projeto de interesse."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como negociar uma condição melhor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Apresente sua forma de pagamento à equipe Tegra Vendas. Entrada, parcelas, fluxo e unidade escolhida são considerados na negociação direta com a Tegra, sempre de acordo com as condições vigentes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Este é o site institucional da Tegra?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Esta página é voltada ao atendimento comercial da Tegra Vendas e não substitui o site institucional corporativo da Tegra Incorporadora. Para disponibilidade, condições e negociação, utilize o formulário ou o WhatsApp desta página."
+      }
+    }
+  ]
+}
   </script>
   <div class="moretegra-supplement">
     <footer class="mt-footer" data-mnt-commercial-footer><div class="mt-footer-standard">
