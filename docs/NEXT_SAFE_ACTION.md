@@ -5,7 +5,7 @@ Atualizado em `2026-09-19`.
 ## Estado canônico resolvido
 
 ```text
-MAIN_SHA = 353f4a5dba058f2fb60fd4001128f8c857cd6fce
+MAIN_SHA_BEFORE_THIS_DOCS_UPDATE = df17eb027060551589514d69ea9211031524d8d4
 
 MNT-M4-05R = COMPLETE / ACCEPTED
 M4-05R_ADDITIONAL_WBS_HOURS = 0
@@ -15,41 +15,61 @@ MNT-M5-01 = IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED
 
 P0_OPEN = 0
 P1_OPEN = 0
-P2_OPEN = 2
+P2_OPEN = 4
 P3_OPEN = 0
+
+F01/F02 = REMEDIATION_READY_NOT_MERGED / PR #133
+F10/F11 = SOURCE_LEVEL_STATIC_CONTRAST_FINDINGS
 
 FORECAST_TOTAL_HOURS = 1240
 ACCEPTED_SCOPE_EQUIVALENT_HOURS = 752
 REMAINING_FORECAST_HOURS = 488
 ACCEPTED_PERCENT = 60.65
 
-LATEST_MAIN_DEPLOYMENT = PROVIDER_BLOCKED / VERCEL build-rate-limit
+APPROVED_PENDING_RUNTIME_SHA = 353f4a5dba058f2fb60fd4001128f8c857cd6fce
+LATEST_RUNTIME_DEPLOYMENT = PROVIDER_BLOCKED / VERCEL build-rate-limit
 ```
 
 Canonical records:
 
 - `docs/sfjm/MNT_M4_05R_ACCEPTANCE_CLOSURE_2026-09-19.md`
 - `docs/ux/MNT_M5_01_MOBILE_UX_ACCESSIBILITY_AUDIT_2026-09-19.md`
+- `docs/sfjm/VERCEL_RECOVERY_QUEUE_2026-09-19.md`
 
 ## Única próxima ação segura
 
-Complete `MNT-M5-01 — Mobile UX and accessibility audit` with representative runtime/device accessibility verification.
+Continue `MNT-M5-01 — Mobile UX and accessibility audit` without merging additional runtime while the approved PR #132 runtime is provider-blocked.
 
-The remaining gate must verify or explicitly retain as `NOT_OBSERVED`:
+Work that may continue now:
 
-- keyboard focus order;
+1. preserve PR #133 as the bounded remediation candidate for F01/F02;
+2. design/adjudicate a bounded remediation for F10/F11 color contrast without merging it;
+3. complete source-level accessibility checks that do not require a representative browser/device;
+4. retain the remaining browser/device checks as `NOT_OBSERVED` until valid evidence exists.
+
+When Vercel recovers, execute the ordered recovery queue in:
+
+`docs/sfjm/VERCEL_RECOVERY_QUEUE_2026-09-19.md`
+
+The first production action is always the exact approved runtime `353f4a5d...`, followed by production smoke. PR #133 comes only after that smoke passes and after a fresh lifecycle gate.
+
+## Remaining runtime/device set
+
+- representative keyboard focus order;
 - full keyboard operation;
 - screen-reader announcement behavior;
 - 200% text resize / browser zoom;
-- measured color contrast for interactive states;
+- color contrast for states not covered by current static calculations;
 - adjacent touch-target spacing;
 - horizontal overflow on representative mobile widths;
 - gallery/tab interaction on representative mobile browser.
 
-Then adjudicate the two current P2 findings:
+## Current P2 findings
 
-1. mobile Home primary navigation hidden below 760px;
-2. Home without explicit skip-to-content.
+1. F01 — mobile Home primary navigation hidden below 760px; PR #133 ready, not merged.
+2. F02 — Home without explicit skip-to-content; PR #133 ready, not merged.
+3. F10 — Home stage badges: construction/launch text contrast below 4.5:1.
+4. F11 — Home light-footer secondary/contact text contrast below 4.5:1.
 
 ## Boundaries
 
@@ -57,8 +77,8 @@ Then adjudicate the two current P2 findings:
 - a finding is not automatic authorization for runtime mutation;
 - do not start M5-02 by sequence alone;
 - do not create an artificial commit to bypass Vercel build-rate-limit;
-- do not reopen M4-05R, Form 46, sitemap, indexation or Rich Results without new contrary evidence;
-- latest PR #132 production validation waits for the exact approved main deployment.
+- do not merge additional runtime before the pending PR #132 production state is reconciled;
+- do not reopen M4-05R, Form 46, sitemap, indexation or Rich Results without new contrary evidence.
 
 ## Condition of exit
 
