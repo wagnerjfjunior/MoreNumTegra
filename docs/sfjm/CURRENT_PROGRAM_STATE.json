@@ -9,11 +9,11 @@
     "active_task_id": "MNT-M5-01",
     "state": "IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED / RUNTIME_QUEUE_PREPARED",
     "pull_request": 122,
-    "repository_head_sha": "9f303d8265972269db078198f7e8eeef0ed64c4e",
+    "repository_head_sha": "bee925766398d9d9e629c96cf95511a35f0df175",
     "latest_main_runtime_sha": "353f4a5dba058f2fb60fd4001128f8c857cd6fce",
     "deployment_state": "PROVIDER_BLOCKED / VERCEL build-rate-limit",
     "last_verified_vercel_success_sha": "6e852f1c41ea834aa138e333cef56519f382dc5f",
-    "production_exact_sha": "NOT_REVALIDATED_AFTER_BLOCK",
+    "production_exact_sha": "CONFIRMED_PRE_PR132 / HTTP_200 / EXACT_SHA_NOT_REVALIDATED",
     "authority_record": "docs/ux/MNT_M5_01_MOBILE_UX_ACCESSIBILITY_AUDIT_2026-09-19.md",
     "remediation_queue": [
       {
@@ -43,7 +43,8 @@
         ],
         "state": "READY / NOT_MERGED"
       }
-    ]
+    ],
+    "production_content_evidence": "docs/sfjm/PR132_PRODUCTION_NOT_UPDATED_EVIDENCE_2026-09-19.md"
   },
   "progress": {
     "forecast_total_hours": 1240,
@@ -168,8 +169,9 @@
     "m4_05r_acceptance": "CLOSED / COMPLETE / ACCEPTED / ZERO_ADDITIONAL_WBS_HOURS",
     "m5_01_open_findings": "P2=6 / F01 F02 F10 F11 F13 F12",
     "m5_01_runtime_device_validation": "OPEN / NOT_FULLY_OBSERVED",
-    "latest_main_deployment": "PROVIDER_BLOCKED / VERCEL build-rate-limit / SHA 353f4a5dba058f2fb60fd4001128f8c857cd6fce",
-    "m5_01_runtime_queue": "PR133_READY -> PR135_READY_STACKED -> PR137_READY / NONE_MERGED"
+    "latest_main_deployment": "PROVIDER_BLOCKED / VERCEL build-rate-limit / approved runtime SHA 353f4a5dba058f2fb60fd4001128f8c857cd6fce",
+    "m5_01_runtime_queue": "PR133_READY -> PR135_READY_STACKED -> PR137_READY / NONE_MERGED",
+    "production_content_state": "CONFIRMED_PRE_PR132 / HTTP_200 / PR132_MARKERS_ABSENT"
   },
   "infra": {
     "dns_authority": "CLOUDFLARE_DNS_ONLY",

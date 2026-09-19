@@ -16,6 +16,7 @@ CURRENT_MAIN_BEFORE_THIS_DOCS_PR = df17eb027060551589514d69ea9211031524d8d4
 APPROVED_PENDING_RUNTIME_SHA = 353f4a5dba058f2fb60fd4001128f8c857cd6fce
 APPROVED_PENDING_RUNTIME_SCOPE = PR #132 semantic on-page SEO
 APPROVED_PENDING_RUNTIME_DEPLOYMENT = PROVIDER_BLOCKED / build-rate-limit
+CURRENT_PRODUCTION_CONTENT = CONFIRMED_PRE_PR132 / HTTP_200
 
 M5_01_F01_F02_PR = #133
 M5_01_F01_F02_HEAD = 5e054b9799159364139be5fce757cc06133269b6
@@ -37,6 +38,8 @@ M5_01_F12_STATE = READY / CLEAN / NOT_MERGED
 Resolve the live Vercel/GitHub deployment status for `353f4a5d...`.
 
 Do not infer release from elapsed time and do not create a new commit merely to obtain a build.
+
+Direct authenticated production evidence already confirms the current canonical host is still pre-PR #132. See `docs/sfjm/PR132_PRODUCTION_NOT_UPDATED_EVIDENCE_2026-09-19.md`.
 
 ### R2 — Deploy the approved pending runtime
 

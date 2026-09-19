@@ -7,7 +7,7 @@ Fonte canônica: GitHub `main`.
 ## 1. Estado integrado atual
 
 ```text
-MAIN_SHA = 353f4a5dba058f2fb60fd4001128f8c857cd6fce
+MAIN_SHA = bee925766398d9d9e629c96cf95511a35f0df175
 PR_132 = MERGED
 PR_123 = MERGED
 MNT-M4-05R = COMPLETE / ACCEPTED
@@ -26,6 +26,7 @@ VERCEL_STATUS = FAILURE / PROVIDER_BLOCKED
 VERCEL_REASON = build-rate-limit
 LAST_VERIFIED_VERCEL_SUCCESS_SHA = 6e852f1c41ea834aa138e333cef56519f382dc5f
 PRODUCTION_EXACT_SHA_AFTER_BLOCK = NOT_REVALIDATED
+PRODUCTION_CONTENT_STATE = CONFIRMED_PRE_PR132 / HTTP_200
 ```
 
 The Vercel status is a provider capacity/rate-limit block, not evidence of code failure. No artificial commit may be created merely to trigger another deployment.
@@ -41,7 +42,7 @@ Merged scope:
 - Elo Duo H1: `Elo Duo Tegra — Caminhos da Lapa`;
 - Ária H1: `Ária Tegra Higienópolis — apartamentos prontos para morar`.
 
-Repository validation passed before merge. Production validation remains pending the Vercel provider block.
+Repository validation passed before merge. Direct authenticated Vercel fetches on 2026-09-19 confirmed that production is healthy (HTTP 200) but still serves pre-PR #132 markers on Home, CAPIITOLO, Elo Duo and Ária. Evidence: `docs/sfjm/PR132_PRODUCTION_NOT_UPDATED_EVIDENCE_2026-09-19.md`.
 
 ## 4. Search / structured data baseline
 

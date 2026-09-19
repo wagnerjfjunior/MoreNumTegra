@@ -9,10 +9,10 @@ GitHub `main` é a fonte canônica. Resolver estado live antes de qualquer nova 
 ```text
 CANONICAL_REPOSITORY = wagnerjfjunior/MoreNumTegra
 CANONICAL_BRANCH = main
-MAIN_SHA_OBSERVED = 353f4a5dba058f2fb60fd4001128f8c857cd6fce
+MAIN_SHA_OBSERVED = bee925766398d9d9e629c96cf95511a35f0df175
 PR_123 = MERGED / M5-01 MOBILE REMEDIATION
 PR_132 = MERGED / SEMANTIC ON-PAGE SEO
-OPEN_RUNTIME_MUTATION = NONE_AUTHORIZED_FROM_THIS_HANDOFF
+OPEN_RUNTIME_QUEUE = PR #133 -> PR #135 -> PR #137 / ALL NOT_MERGED
 ```
 
 PR #132 changed Home, CAPIITOLO, Elo Duo and Ária semantic on-page content. Its exact head `5dc3aea5e0256574edb498dcc63fe5f7bb2ca2a6` passed the three repository checks before merge.
@@ -31,6 +31,7 @@ VERCEL_REASON = build-rate-limit
 
 LAST_VERIFIED_VERCEL_SUCCESS_SHA = 6e852f1c41ea834aa138e333cef56519f382dc5f
 PRODUCTION_EXACT_SHA_AFTER_BLOCK = NOT_REVALIDATED
+PRODUCTION_CONTENT_STATE = CONFIRMED_PRE_PR132 / HTTP_200
 ```
 
 Interpretation:
@@ -67,15 +68,24 @@ MNT-M5 = ACTIVE
 MNT-M5-01 = IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED
 P0_OPEN = 0
 P1_OPEN = 0
-P2_OPEN = 2
+P2_OPEN = 6
 P3_OPEN = 0
 WBS_PROGRESS_CHANGE = NO
 ```
 
 Open P2 findings:
 
-1. Home primary navigation remains hidden below 760px.
-2. Home still lacks an explicit skip-to-content link.
+1. F01 — Home primary navigation hidden below 760px.
+2. F02 — Home lacks explicit skip-to-content.
+3. F10 — Home construction/launch stage-badge contrast below 4.5:1.
+4. F11 — Home light-footer secondary/contact contrast below 4.5:1.
+5. F13 — Home small gold helper text slightly below 4.5:1.
+6. F12 — CAPIITOLO ARIA tabs incomplete for keyboard/panel semantics.
+
+Prepared runtime queue:
+- PR #133 — F01/F02 — Ready, not merged.
+- PR #135 — F10/F11/F13 — Ready, stacked on #133, not merged.
+- PR #137 — F12 — Ready, not merged.
 
 Resolved in current `main`:
 
@@ -109,7 +119,7 @@ ARIA_RICH_RESULTS = 7_VALID
 HOME_RICH_RESULTS = 5_VALID
 ```
 
-The new PR #132 semantic changes are not yet production-validated because the exact main deployment is provider-blocked.
+The PR #132 semantic changes are confirmed NOT PRESENT in production. Authenticated Vercel fetches on 2026-09-19 returned HTTP 200 on all four canonical routes while showing the pre-PR #132 title/H1/content markers. Evidence: `docs/sfjm/PR132_PRODUCTION_NOT_UPDATED_EVIDENCE_2026-09-19.md`.
 
 ## 6. FORM 46
 
@@ -128,4 +138,4 @@ Do not reopen the Form 46 regression without new evidence.
 
 Authority: `docs/NEXT_SAFE_ACTION.md`.
 
-Complete M5-01 representative runtime/device accessibility verification and adjudicate F01/F02. Do not start M5-02 by sequence alone and do not mutate runtime merely because an audit finding exists.
+Preserve the ordered runtime queue (#133 -> #135 -> #137), execute the canonical runtime/device matrix when representative browser/device evidence is available, and keep PR #132 exact runtime deployment first in the Vercel recovery sequence. Do not start M5-02 by sequence alone.
