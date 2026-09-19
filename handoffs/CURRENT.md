@@ -198,3 +198,18 @@ GOOGLE_SEARCH_FAVICON_FORMAT = OPEN / WEBP_NOT_LISTED_AS_SUPPORTED
 ```
 
 Canonical contract: `docs/brand/FAVICON_STANDARD.md`. CI guard: `scripts/validate-favicon-standard.mjs` + `.github/workflows/favicon-standard.yml`.
+
+
+## Commercial footer/location standard — 2026-09-19
+
+Canonical contract: `docs/content/COMMERCIAL_FOOTER_AND_LOCATION_STANDARD.md`.
+
+```text
+COMMERCIAL_FOOTER_STANDARD = REQUIRED_ON_HOME_AND_ALL_PUBLIC_PROJECT_PAGES
+FOOTER_LOGO = https://s3-gdigital.s3.amazonaws.com/gdigital/313/dkRxNEw3OY1mr3apBCmTbFFGpzD4PZnbGLWpJq1q.webp
+PAGE_SPECIFIC_ADDRESS = GOVERNED_FACT / REQUIRED
+SABRINA_CONTACT = REQUIRED
+CAPIITOLO_MAP = WHATSAPP_ONLY_CLICK_SURFACE
+CAPIITOLO_DIRECT_MAPS_NAVIGATION = FORBIDDEN
+FUTURE_PAGE_ENFORCEMENT = CI_REQUIRED
+```
