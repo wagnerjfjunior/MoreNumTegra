@@ -36,6 +36,7 @@ Canonical records:
 - `docs/sfjm/MNT_M4_05R_ACCEPTANCE_CLOSURE_2026-09-19.md`
 - `docs/ux/MNT_M5_01_MOBILE_UX_ACCESSIBILITY_AUDIT_2026-09-19.md`
 - `docs/sfjm/VERCEL_RECOVERY_QUEUE_2026-09-19.md`
+- `docs/ux/MNT_M5_01_RUNTIME_DEVICE_VERIFICATION_MATRIX_2026-09-19.md`
 
 ## Única próxima ação segura
 
@@ -47,7 +48,8 @@ Work that may continue now:
 2. preserve PR #135 as the bounded stacked remediation candidate for F10/F11/F13;
 3. preserve PR #137 as the bounded remediation candidate for F12;
 4. complete source-level accessibility checks that do not require a representative browser/device;
-5. retain the remaining browser/device checks as `NOT_OBSERVED` until valid evidence exists.
+5. execute the canonical runtime/device verification matrix when a representative browser/device is available;
+6. retain any still-unexecuted browser/device checks as `NOT_OBSERVED` until valid evidence exists.
 
 When Vercel recovers, execute the ordered recovery queue in:
 
