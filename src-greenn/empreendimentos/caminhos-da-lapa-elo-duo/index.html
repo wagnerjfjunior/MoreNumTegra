@@ -37,7 +37,7 @@
     .mt-award{background:#171813;color:#fff;border-radius:20px;padding:22px}.mt-award strong{display:block;color:var(--mt-yellow);font-size:1.1rem}.mt-award p{margin:8px 0 0;color:#d8d5cc}
     .mt-finance{background:#171813;color:#fff}.mt-finance .mt-section-head p{color:#d8d5cc}.mt-finance-grid{display:grid;gap:14px}.mt-finance-card{background:#25261f;border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:18px}.mt-finance-card strong{display:block;color:var(--mt-yellow);font-size:1.3rem;margin-bottom:6px}.mt-finance-card p{margin:0;color:#d8d5cc}.mt-fineprint{font-size:11px!important;color:#aaa69b!important;margin-top:12px!important}
     .mt-bank{margin-top:16px;background:#fff8df;border:1px solid #ead28b;border-radius:16px;padding:18px;color:#171813}.mt-bank strong{display:block;font-size:1.05rem}.mt-bank p{margin:6px 0 0;color:#5f5747}
-    .mt-map-card{overflow:hidden;margin-top:20px;border:1px solid var(--mt-line);border-radius:20px;background:#fff}.mt-map-card iframe{display:block;width:100%;height:320px;border:0}.mt-map-actions{display:grid;gap:10px;padding:14px;background:#171813;color:#fff}.mt-map-copy strong{display:block}.mt-map-copy small{display:block;margin-top:3px;color:#aaa69b}.mt-map-buttons{display:grid;grid-template-columns:1fr;gap:8px}.mt-map-buttons a{display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:999px;padding:0 16px;text-decoration:none;font-size:13px;font-weight:900;text-align:center}.mt-map-whatsapp{background:var(--mt-yellow);color:#171813}.mt-map-external{border:1px solid #5f5c54;color:#ddd8ca;background:#24251f}@media(min-width:620px){.mt-map-actions{grid-template-columns:minmax(0,1fr) auto;align-items:center}.mt-map-buttons{grid-template-columns:auto auto}}
+    .mt-map-card{overflow:hidden;margin-top:20px;border:1px solid var(--mt-line);border-radius:20px;background:#fff}.mt-map-visual{position:relative;height:320px;background:#ddd}.mt-map-card iframe{display:block;width:100%;height:100%;border:0;pointer-events:none}.mt-map-hit{position:absolute;inset:0;z-index:2;display:block;cursor:pointer}.mt-map-hit:focus-visible{outline:4px solid var(--mt-yellow);outline-offset:-4px}.mt-map-actions{display:grid;gap:10px;padding:14px;background:#171813;color:#fff}.mt-map-copy strong{display:block}.mt-map-copy small{display:block;margin-top:3px;color:#aaa69b}.mt-map-buttons{display:grid;grid-template-columns:1fr;gap:8px}.mt-map-buttons a{display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:999px;padding:0 16px;text-decoration:none;font-size:13px;font-weight:900;text-align:center}.mt-map-whatsapp{background:var(--mt-yellow);color:#171813}@media(min-width:620px){.mt-map-actions{grid-template-columns:minmax(0,1fr) auto;align-items:center}.mt-map-buttons{grid-template-columns:auto}}
     .mt-quick-actions{position:fixed;z-index:45;left:12px;right:12px;bottom:var(--mt-consent-offset,14px);display:grid;grid-template-columns:minmax(0,1fr) 54px;gap:8px;transition:bottom .2s ease}.mt-quick-actions a{display:flex;align-items:center;justify-content:center;min-height:54px;border-radius:999px;text-decoration:none;font-size:13px;font-weight:900;line-height:1.15;box-shadow:0 10px 28px rgba(0,0,0,.22)}.mt-quick-whatsapp{grid-column:2;width:54px;height:54px;padding:0;background:#25d366;color:#071b0e}.mt-quick-whatsapp img{width:32px;height:32px;object-fit:contain}.mt-quick-lead{grid-column:1;grid-row:1;padding:0 18px;background:var(--mt-yellow);color:#171813}.mt-quick-actions a:focus-visible{outline:3px solid #fff;outline-offset:2px}body{padding-bottom:80px}
     .mt-choice{background:#fff8df}.mt-choice strong{color:#7a5b00}
     .mt-urban{display:grid;gap:18px;align-items:center}.mt-urban-media{border-radius:20px;overflow:hidden;background:#ddd}.mt-urban-media img{width:100%;display:block;height:auto}.mt-urban-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.mt-urban-list div{background:#fff;border:1px solid var(--mt-line);border-radius:14px;padding:12px}.mt-urban-list strong{display:block;font-size:14px}.mt-urban-list small{color:var(--mt-muted)}
@@ -51,352 +51,313 @@
   </style>
 
   <script id="mt-project-schema" type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://www.moretegra.com.br/#website",
-        "url": "https://www.moretegra.com.br/",
-        "name": "More em um Tegra",
-        "inLanguage": "pt-BR"
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.moretegra.com.br/#website",
+      "url": "https://www.moretegra.com.br/",
+      "name": "More em um Tegra",
+      "inLanguage": "pt-BR"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#webpage",
+      "url": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/",
+      "name": "Elo Duo Caminhos da Lapa | Apartamento pronto na Lapa | More em um Tegra",
+      "description": "Página do Caminhos da Lapa Elo Duo, com apartamentos prontos para morar na Lapa, 2 ou 3 dormitórios, plantas de 47, 55 e 67 m², lazer completo e contexto do bairro.",
+      "isPartOf": {
+        "@id": "https://www.moretegra.com.br/#website"
       },
-      {
-        "@type": "WebPage",
-        "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#webpage",
-        "url": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/",
-        "name": "Elo Duo Caminhos da Lapa | Apartamento pronto na Lapa | More em um Tegra",
-        "description": "Página do Caminhos da Lapa Elo Duo, com apartamentos prontos para morar na Lapa, 2 ou 3 dormitórios, plantas de 47, 55 e 67 m², lazer completo e contexto do bairro.",
-        "isPartOf": {
-          "@id": "https://www.moretegra.com.br/#website"
-        },
-        "mainEntity": {
-          "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#project"
-        },
-        "breadcrumb": {
-          "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#breadcrumb"
-        },
-        "primaryImageOfPage": {
-          "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#primary-image"
-        },
-        "mentions": [
-          {
-            "@id": "https://www.tegraincorporadora.com.br/#organization"
-          },
-          {
-            "@id": "https://www.moretegra.com.br/#sabrina-da-tegra"
-          }
-        ],
-        "inLanguage": "pt-BR"
+      "mainEntity": {
+        "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#project"
       },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#breadcrumb",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "More em um Tegra",
-            "item": "https://www.moretegra.com.br/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Caminhos da Lapa Elo Duo",
-            "item": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/"
-          }
-        ]
+      "breadcrumb": {
+        "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#breadcrumb"
       },
-      {
-        "@type": "ImageObject",
-        "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#primary-image",
-        "contentUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/ImagemPrincipal/8d3d8839-e0b7-4f21-9d0e-99c363c8f6bc.jpg",
-        "width": 828,
-        "height": 743,
-        "caption": "Elo Duo Caminhos da Lapa, empreendimento Tegra pronto para morar na Lapa"
+      "primaryImageOfPage": {
+        "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#primary-image"
       },
-      {
-        "@type": "Brand",
-        "@id": "https://www.moretegra.com.br/#tegra-brand",
-        "name": "Tegra"
-      },
-      {
-        "@type": "RealEstateAgent",
-        "@id": "https://www.tegraincorporadora.com.br/#organization",
-        "name": "Tegra Incorporadora",
-        "url": "https://www.tegraincorporadora.com.br/",
-        "brand": {
-          "@id": "https://www.moretegra.com.br/#tegra-brand"
-        },
-        "legalName": "TG SÃO PAULO EMPREENDIMENTOS IMOBILIÁRIOS S.A.",
-        "alternateName": "Tegra",
-        "description": "Incorporadora de imóveis de alto padrão em São Paulo, Campinas e Rio de Janeiro.",
-        "telephone": "+55-11-3500-3223",
-        "priceRange": "Consulte-nos",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://www.tegraincorporadora.com.br/images/logo-tegra-color.svg",
-          "width": 250,
-          "height": 60
-        },
-        "image": "https://www.tegraincorporadora.com.br/og-image.jpg",
-        "identifier": {
-          "@type": "PropertyValue",
-          "propertyID": "CRECI",
-          "value": "028638-J"
-        },
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Av. das Nações Unidas, 14.401, Torre Paineira, 1º andar",
-          "addressLocality": "São Paulo",
-          "addressRegion": "SP",
-          "postalCode": "04794-000",
-          "addressCountry": "BR"
-        },
-        "sameAs": [
-          "https://www.instagram.com/tegraincorporadora",
-          "https://www.linkedin.com/company/tegraincorporadora",
-          "https://www.facebook.com/tegraincorporadora",
-          "https://www.youtube.com/tegraincorporadora",
-          "https://www.pinterest.com/tegraincorporadora"
-        ]
-      },
-      {
-        "@type": "ApartmentComplex",
-        "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#project",
-        "name": "Caminhos da Lapa Elo Duo",
-        "description": "Empreendimento Tegra pronto para morar na Lapa, em São Paulo, com apartamentos de 47, 55 e 67 m², 2 ou 3 dormitórios, 1 suíte e até 1 vaga.",
-        "url": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/",
-        "sameAs": "https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/lapa/caminhos-da-lapa-elo-duo",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Rua Fortunato Ferraz, 365",
-          "addressLocality": "São Paulo",
-          "addressRegion": "SP",
-          "addressCountry": {
-            "@type": "Country",
-            "name": "BR"
-          }
-        },
-        "image": {
-          "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#primary-image"
-        },
-        "accommodationFloorPlan": [
-          {
-            "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#floorplan-47"
-          },
-          {
-            "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#floorplan-55"
-          },
-          {
-            "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#floorplan-67"
-          }
-        ],
-        "amenityFeature": [
-          {
-            "@type": "LocationFeatureSpecification",
-            "name": "Piscina adulto",
-            "value": true
-          },
-          {
-            "@type": "LocationFeatureSpecification",
-            "name": "Piscina infantil",
-            "value": true
-          },
-          {
-            "@type": "LocationFeatureSpecification",
-            "name": "Espaço fitness equipado",
-            "value": true
-          },
-          {
-            "@type": "LocationFeatureSpecification",
-            "name": "Espaço gourmet",
-            "value": true
-          },
-          {
-            "@type": "LocationFeatureSpecification",
-            "name": "Salão de festas",
-            "value": true
-          },
-          {
-            "@type": "LocationFeatureSpecification",
-            "name": "Quadra recreativa",
-            "value": true
-          },
-          {
-            "@type": "LocationFeatureSpecification",
-            "name": "Playground",
-            "value": true
-          },
-          {
-            "@type": "LocationFeatureSpecification",
-            "name": "Brinquedoteca",
-            "value": true
-          }
-        ]
-      },
-      {
-        "@type": "FloorPlan",
-        "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#floorplan-47",
-        "name": "Planta 47 m²",
-        "floorSize": {
-          "@type": "QuantitativeValue",
-          "value": 47,
-          "unitCode": "MTK"
-        }
-      },
-      {
-        "@type": "FloorPlan",
-        "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#floorplan-55",
-        "name": "Planta 55 m²",
-        "floorSize": {
-          "@type": "QuantitativeValue",
-          "value": 55,
-          "unitCode": "MTK"
-        }
-      },
-      {
-        "@type": "FloorPlan",
-        "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#floorplan-67",
-        "name": "Planta 67 m²",
-        "floorSize": {
-          "@type": "QuantitativeValue",
-          "value": 67,
-          "unitCode": "MTK"
-        }
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://www.moretegra.com.br/#tegra-vendas",
-        "name": "Tegra Vendas"
-      },
-      {
-        "@type": "Place",
-        "@id": "https://www.moretegra.com.br/#estande-caminhos-da-lapa",
-        "name": "Estande Tegra Caminhos da Lapa",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Rua Fortunato Ferraz, 625",
-          "addressLocality": "São Paulo",
-          "addressRegion": "SP",
-          "addressCountry": {
-            "@type": "Country",
-            "name": "BR"
-          },
-          "postalCode": "05093-000"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": -23.517165527430233,
-          "longitude": -46.71861778788628
-        }
-      },
-      {
-        "@type": "ContactPoint",
-        "@id": "https://www.moretegra.com.br/#sabrina-contato",
-        "contactType": "Atendimento comercial",
-        "telephone": "+5511960779328",
-        "availableLanguage": "pt-BR",
-        "areaServed": {
-          "@type": "City",
-          "name": "São Paulo"
-        }
-      },
-      {
-        "@type": "RealEstateAgent",
-        "@id": "https://www.moretegra.com.br/#sabrina-real-estate-agent",
-        "name": "Sabrina da Tegra — Corretora Tegra Vendas",
-        "description": "Atendimento imobiliário de Sabrina da Tegra, corretora Tegra Vendas, para empreendimentos Tegra em São Paulo.",
-        "url": "https://www.moretegra.com.br/",
-        "sameAs": "https://corretor.tegravendas.com.br/sabrina/sp",
-        "telephone": "+5511960779328",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Rua Fortunato Ferraz, 625",
-          "addressLocality": "São Paulo",
-          "addressRegion": "SP",
-          "addressCountry": "BR",
-          "postalCode": "05093-000"
-        },
-        "areaServed": {
-          "@type": "City",
-          "name": "São Paulo"
-        },
-        "priceRange": "Consulte condições",
-        "logo": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp",
-        "image": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp",
-        "identifier": {
-          "@type": "PropertyValue",
-          "propertyID": "CRECI-SP",
-          "value": "209.905-F"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": -23.517165527430233,
-          "longitude": -46.71861778788628
-        }
-      },
-      {
-        "@type": "Person",
-        "@id": "https://www.moretegra.com.br/#sabrina-da-tegra",
-        "name": "Sabrina da Tegra",
-        "jobTitle": "Corretora de imóveis",
-        "identifier": {
-          "@type": "PropertyValue",
-          "propertyID": "CRECI-SP",
-          "value": "209.905-F"
-        },
-        "worksFor": {
-          "@id": "https://www.moretegra.com.br/#tegra-vendas"
-        },
-        "workLocation": {
-          "@id": "https://www.moretegra.com.br/#estande-caminhos-da-lapa"
-        },
-        "contactPoint": {
-          "@id": "https://www.moretegra.com.br/#sabrina-contato"
-        },
-        "sameAs": "https://corretor.tegravendas.com.br/sabrina/sp",
-        "image": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp"
-      },
-      {
-        "@type": "Service",
-        "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#atendimento",
-        "name": "Atendimento comercial Elo Duo",
-        "serviceType": "Atendimento para o empreendimento Caminhos da Lapa Elo Duo",
-        "provider": {
-          "@id": "https://www.moretegra.com.br/#sabrina-real-estate-agent"
-        },
-        "broker": {
+      "mentions": [
+        {
           "@id": "https://www.moretegra.com.br/#sabrina-da-tegra"
-        },
-        "areaServed": {
-          "@type": "City",
-          "name": "São Paulo"
         }
+      ],
+      "inLanguage": "pt-BR"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "More em um Tegra",
+          "item": "https://www.moretegra.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Caminhos da Lapa Elo Duo",
+          "item": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/"
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#primary-image",
+      "contentUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/ImagemPrincipal/8d3d8839-e0b7-4f21-9d0e-99c363c8f6bc.jpg",
+      "width": 828,
+      "height": 743,
+      "caption": "Elo Duo Caminhos da Lapa, empreendimento Tegra pronto para morar na Lapa"
+    },
+    {
+      "@type": "Brand",
+      "@id": "https://www.moretegra.com.br/#tegra-brand",
+      "name": "Tegra"
+    },
+    {
+      "@type": "ApartmentComplex",
+      "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#project",
+      "name": "Caminhos da Lapa Elo Duo",
+      "description": "Empreendimento Tegra pronto para morar na Lapa, em São Paulo, com apartamentos de 47, 55 e 67 m², 2 ou 3 dormitórios, 1 suíte e até 1 vaga.",
+      "url": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Fortunato Ferraz, 365",
+        "addressLocality": "São Paulo",
+        "addressRegion": "SP",
+        "addressCountry": {
+          "@type": "Country",
+          "name": "BR"
+        }
+      },
+      "image": {
+        "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#primary-image"
+      },
+      "accommodationFloorPlan": [
+        {
+          "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#floorplan-47"
+        },
+        {
+          "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#floorplan-55"
+        },
+        {
+          "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#floorplan-67"
+        }
+      ],
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Piscina adulto",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Piscina infantil",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Espaço fitness equipado",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Espaço gourmet",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Salão de festas",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Quadra recreativa",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Playground",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Brinquedoteca",
+          "value": true
+        }
+      ]
+    },
+    {
+      "@type": "FloorPlan",
+      "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#floorplan-47",
+      "name": "Planta 47 m²",
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 47,
+        "unitCode": "MTK"
       }
-    ]
-  }
+    },
+    {
+      "@type": "FloorPlan",
+      "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#floorplan-55",
+      "name": "Planta 55 m²",
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 55,
+        "unitCode": "MTK"
+      }
+    },
+    {
+      "@type": "FloorPlan",
+      "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#floorplan-67",
+      "name": "Planta 67 m²",
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 67,
+        "unitCode": "MTK"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.moretegra.com.br/#tegra-vendas",
+      "name": "Tegra Vendas"
+    },
+    {
+      "@type": "Place",
+      "@id": "https://www.moretegra.com.br/#estande-caminhos-da-lapa",
+      "name": "Estande Tegra Caminhos da Lapa",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Fortunato Ferraz, 625",
+        "addressLocality": "São Paulo",
+        "addressRegion": "SP",
+        "addressCountry": {
+          "@type": "Country",
+          "name": "BR"
+        },
+        "postalCode": "05093-000"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -23.517165527430233,
+        "longitude": -46.71861778788628
+      }
+    },
+    {
+      "@type": "ContactPoint",
+      "@id": "https://www.moretegra.com.br/#sabrina-contato",
+      "contactType": "Atendimento comercial",
+      "telephone": "+5511960779328",
+      "availableLanguage": "pt-BR",
+      "areaServed": {
+        "@type": "City",
+        "name": "São Paulo"
+      }
+    },
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://www.moretegra.com.br/#sabrina-real-estate-agent",
+      "name": "Sabrina da Tegra — Corretora Tegra Vendas",
+      "description": "Atendimento imobiliário de Sabrina da Tegra, corretora Tegra Vendas, para empreendimentos Tegra em São Paulo.",
+      "url": "https://www.moretegra.com.br/",
+      "sameAs": "https://corretor.tegravendas.com.br/sabrina/sp",
+      "telephone": "+5511960779328",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Fortunato Ferraz, 625",
+        "addressLocality": "São Paulo",
+        "addressRegion": "SP",
+        "addressCountry": "BR",
+        "postalCode": "05093-000"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "São Paulo"
+      },
+      "priceRange": "Consulte condições",
+      "logo": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp",
+      "image": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "CRECI-SP",
+        "value": "209.905-F"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -23.517165527430233,
+        "longitude": -46.71861778788628
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.moretegra.com.br/#sabrina-da-tegra",
+      "name": "Sabrina da Tegra",
+      "jobTitle": "Corretora de imóveis",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "CRECI-SP",
+        "value": "209.905-F"
+      },
+      "worksFor": {
+        "@id": "https://www.moretegra.com.br/#tegra-vendas"
+      },
+      "workLocation": {
+        "@id": "https://www.moretegra.com.br/#estande-caminhos-da-lapa"
+      },
+      "contactPoint": {
+        "@id": "https://www.moretegra.com.br/#sabrina-contato"
+      },
+      "sameAs": "https://corretor.tegravendas.com.br/sabrina/sp",
+      "image": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#atendimento",
+      "name": "Atendimento comercial Elo Duo",
+      "serviceType": "Atendimento para o empreendimento Caminhos da Lapa Elo Duo",
+      "provider": {
+        "@id": "https://www.moretegra.com.br/#sabrina-real-estate-agent"
+      },
+      "broker": {
+        "@id": "https://www.moretegra.com.br/#sabrina-da-tegra"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "São Paulo"
+      }
+    }
+  ]
+}
   </script>
   <script id="mt-elo-product-schema" type="application/ld+json">
-  {
-    "@context":"https://schema.org/",
-    "@type":"Product",
-    "@id":"https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#product",
-    "name":"Caminhos da Lapa Elo Duo — apartamento pronto na Lapa",
-    "description":"Apartamento pronto para morar no Caminhos da Lapa, com plantas de 47 m², 55 m² e 67 m² e referência comercial oficial Tegra.",
-    "url":"https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/",
-    "image":"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/ImagemPrincipal/8d3d8839-e0b7-4f21-9d0e-99c363c8f6bc.jpg",
-    "brand":{"@type":"Brand","name":"Tegra"},
-    "offers":{
-      "@type":"Offer",
-      "@id":"https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#offer",
-      "url":"https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/",
-      "priceCurrency":"BRL",
-      "price":"658000",
-      "seller":{"@type":"Organization","@id":"https://www.tegraincorporadora.com.br/#organization","name":"Tegra Incorporadora","url":"https://www.tegraincorporadora.com.br/"}
-    },
-    "additionalProperty":{"@type":"PropertyValue","name":"Referência comercial Tegra","value":"Ref. 68 m² (unidade 109) - Ago/26 | pagamento à vista"}
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#product",
+  "name": "Caminhos da Lapa Elo Duo — apartamento pronto na Lapa",
+  "description": "Apartamento pronto para morar no Caminhos da Lapa, com plantas de 47 m², 55 m² e 67 m² e referência comercial oficial Tegra.",
+  "url": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/",
+  "image": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/ImagemPrincipal/8d3d8839-e0b7-4f21-9d0e-99c363c8f6bc.jpg",
+  "brand": {
+    "@type": "Brand",
+    "name": "Tegra"
+  },
+  "offers": {
+    "@type": "Offer",
+    "@id": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#offer",
+    "url": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/",
+    "priceCurrency": "BRL",
+    "price": "658000"
+  },
+  "additionalProperty": {
+    "@type": "PropertyValue",
+    "name": "Referência comercial Tegra",
+    "value": "Ref. 68 m² (unidade 109) - Ago/26 | pagamento à vista"
   }
+}
   </script>
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PGCR4R47');</script>
 </head>
@@ -409,7 +370,7 @@
     <div class="mt-shell mt-commercial"><section class="mt-commercial-card" aria-labelledby="commercial-title"><div><span id="commercial-title" class="mt-commercial-label" data-commercial-label>Condições comerciais</span><div class="mt-price" data-commercial-price>R$ 658.000</div><p class="mt-commercial-copy" data-commercial-reference>Ref. 68 m² (unidade 109) - Ago/26 | pagamento à vista</p><p class="mt-commercial-copy"><strong data-inventory-label>Consulte disponibilidade</strong></p><p class="mt-commercial-copy" data-commercial-disclaimer>Valor de referência da Tegra Incorporadora. Disponibilidade, unidade e condições podem mudar; confirme a condição vigente no atendimento.</p></div><div class="mt-actions"><a class="mt-btn mt-btn-primary" href="#formulario" data-project-intent="conditions">Negociar condições</a><a class="mt-btn mt-btn-secondary" href="#plantas">Ver plantas</a></div></section></div>
     <section id="detalhes" aria-labelledby="details-title"><div class="mt-shell mt-seo-copy"><p class="mt-eyebrow">APARTAMENTO NA LAPA</p><h2 id="details-title">Apartamento de 2 ou 3 dormitórios pronto para morar na Lapa</h2><p>Para quem procura apartamento de 2 dormitórios na Lapa ou apartamento de 3 dormitórios na Lapa, o Elo Duo reúne tipologias em um condomínio entregue, com 1 suíte, até 1 vaga e diferentes metragens para comparar. As plantas do projeto são de 47 m², 55 m² e 67 m².</p><p>O empreendimento integra o Caminhos da Lapa e atende uma busca de fundo de funil: quem já conhece a região pode comparar planta, disponibilidade, valor de referência, lazer, financiamento e condição de pagamento antes de avançar para a proposta.</p></div></section>
     <section aria-labelledby="garden-title"><div class="mt-shell"><div class="mt-urban"><div><div class="mt-section-head"><p class="mt-eyebrow">CAMINHOS DA LAPA</p><h2 id="garden-title">A primeira Rua Jardim de São Paulo</h2><p>O Caminhos da Lapa foi concebido com uma Rua Jardim de aproximadamente 1.200 metros lineares, paisagismo, áreas de convivência e infraestrutura urbana que conectam os empreendimentos do complexo.</p></div><div class="mt-urban-list"><div><strong>Rua Jardim</strong><small>aprox. 1.200 m lineares</small></div><div><strong>Arborização</strong><small>paisagismo e canteiro central</small></div><div><strong>Mobilidade</strong><small>integração com a região da Lapa</small></div><div><strong>Infraestrutura</strong><small>fiação subterrânea no eixo planejado</small></div></div></div><div class="mt-urban-media"><img src="https://s3-gdigital.s3.amazonaws.com/gdigital/313/XUDkRhyRZbqT9VA4RRLdCijN2DlNrBt2yHMJLzul.webp" alt="Rua Jardim e contexto urbano do Caminhos da Lapa" width="1200" height="800" loading="lazy" decoding="async"></div></div><div class="mt-award" style="margin-top:18px"><strong>PRÊMIO MASTER IMOBILIÁRIO 2026</strong><p>O Caminhos da Lapa foi reconhecido na categoria Empreendimento com o case “Caminhos da Lapa: Redesenhando um Bairro”. O reconhecimento é do complexo urbano do qual o Elo Duo faz parte.</p></div></div></section>
-    <section aria-labelledby="access-title"><div class="mt-shell"><div class="mt-section-head"><p class="mt-eyebrow">LOCALIZAÇÃO E ACESSOS</p><h2 id="access-title">Lapa com acesso a trem, marginais e rodovias</h2><p>O Elo Duo fica no Caminhos da Lapa, em uma área da Lapa conectada à Estação Domingos de Moraes e aos principais eixos viários da Zona Oeste. O acesso à Marginal Tietê facilita a ligação com as rodovias Anhanguera e Bandeirantes.</p></div><div class="mt-feature-grid"><article class="mt-feature-card"><h3>Estação Domingos de Moraes</h3><p>A conexão ferroviária amplia as alternativas de deslocamento para quem trabalha ou estuda em outras regiões de São Paulo.</p></article><article class="mt-feature-card"><h3>Marginal Tietê</h3><p>Um dos principais corredores de acesso da cidade e ligação rápida com diferentes zonas de São Paulo.</p></article><article class="mt-feature-card"><h3>Anhanguera e Bandeirantes</h3><p>Rotas importantes para deslocamentos metropolitanos e viagens pelo eixo oeste do estado.</p></article></div><div class="mt-map-card"><iframe title="Mapa do Caminhos da Lapa · Elo Duo" src="https://www.google.com/maps?q=-23.517165527430233,-46.71861778788628&z=16&output=embed" width="600" height="320" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><div class="mt-map-actions"><span class="mt-map-copy"><strong>Localização do Caminhos da Lapa · Elo Duo</strong><small>Explore o mapa ou solicite a localização e o atendimento pelo WhatsApp.</small></span><span class="mt-map-buttons"><a class="mt-map-whatsapp" href="https://wa.me/5511960779328?text=Por%20favor%20me%20envie%20a%20localiza%C3%A7%C3%A3o%20exata%20do%20Tegra%20Caminhos%20da%20Lapa%20Elo%20Duo." target="_blank" rel="noopener noreferrer">Solicitar localização</a><a class="mt-map-external" href="https://www.google.com/maps/search/?api=1&query=-23.517165527430233%2C-46.71861778788628" target="_blank" rel="noopener noreferrer">Abrir no Maps ↗</a></span></div></div></div></section>
+    <section aria-labelledby="access-title"><div class="mt-shell"><div class="mt-section-head"><p class="mt-eyebrow">LOCALIZAÇÃO E ACESSOS</p><h2 id="access-title">Lapa com acesso a trem, marginais e rodovias</h2><p>O Elo Duo fica no Caminhos da Lapa, em uma área da Lapa conectada à Estação Domingos de Moraes e aos principais eixos viários da Zona Oeste. O acesso à Marginal Tietê facilita a ligação com as rodovias Anhanguera e Bandeirantes.</p></div><div class="mt-feature-grid"><article class="mt-feature-card"><h3>Estação Domingos de Moraes</h3><p>A conexão ferroviária amplia as alternativas de deslocamento para quem trabalha ou estuda em outras regiões de São Paulo.</p></article><article class="mt-feature-card"><h3>Marginal Tietê</h3><p>Um dos principais corredores de acesso da cidade e ligação rápida com diferentes zonas de São Paulo.</p></article><article class="mt-feature-card"><h3>Anhanguera e Bandeirantes</h3><p>Rotas importantes para deslocamentos metropolitanos e viagens pelo eixo oeste do estado.</p></article></div><div class="mt-map-card"><div class="mt-map-visual"><iframe title="Mapa da região do Caminhos da Lapa · Elo Duo" src="https://www.google.com/maps?q=Caminhos%20da%20Lapa%2C%20S%C3%A3o%20Paulo%2C%20SP&z=15&output=embed" width="600" height="320" loading="lazy" tabindex="-1" aria-hidden="true" referrerpolicy="no-referrer-when-downgrade"></iframe><a class="mt-map-hit" href="https://wa.me/5511960779328?text=Por%20favor%20me%20envie%20a%20localiza%C3%A7%C3%A3o%20exata%20do%20Tegra%20Caminhos%20da%20Lapa%20Elo%20Duo." target="_blank" rel="noopener noreferrer" aria-label="Solicitar a localização do Elo Duo pelo WhatsApp"></a></div><div class="mt-map-actions"><span class="mt-map-copy"><strong>Região do Caminhos da Lapa · Elo Duo</strong><small>Clique no mapa ou use o botão para solicitar a localização exata pelo WhatsApp.</small></span><span class="mt-map-buttons"><a class="mt-map-whatsapp" href="https://wa.me/5511960779328?text=Por%20favor%20me%20envie%20a%20localiza%C3%A7%C3%A3o%20exata%20do%20Tegra%20Caminhos%20da%20Lapa%20Elo%20Duo." target="_blank" rel="noopener noreferrer">Solicitar localização</a></span></div></div></div></section>
     <section id="plantas" aria-labelledby="plants-title"><div class="mt-shell"><div class="mt-section-head"><p class="mt-eyebrow">PLANTAS E DISPONIBILIDADE</p><h2 id="plants-title">Apartamentos de 47 m², 55 m² e 67 m²</h2><p>As opções de planta atendem diferentes perfis de compra. A disponibilidade muda ao longo das vendas e deve ser confirmada antes da proposta.</p></div><div class="mt-plant-grid"><article class="mt-plant-card"><img src="https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/Planta/ae7cb4a6-1874-49ab-80e1-48de2a23fd53.jpg" alt="Planta de 47 m² do Elo Duo" loading="lazy" decoding="async"><div class="mt-plant-copy"><div class="mt-plant-head"><h3>47 m²</h3><span class="mt-availability" data-typology-status="47">Consultar</span></div><p>Alternativa compacta para quem procura apartamento de 2 dormitórios na Lapa e quer praticidade em um empreendimento pronto.</p></div></article><article class="mt-plant-card"><img src="https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/Planta/21a38b04-5a4a-4c8d-928a-245263049ab6.jpg" alt="Planta de 55 m² do Elo Duo" loading="lazy" decoding="async"><div class="mt-plant-copy"><div class="mt-plant-head"><h3>55 m²</h3><span class="mt-availability" data-typology-status="55">Consultar</span></div><p>Faixa intermediária para comparar distribuição interna, dormitórios e rotina da família antes da proposta.</p></div></article><article class="mt-plant-card"><img src="https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/Planta/3aac87c1-3582-4303-8c9e-0403821ed82e.jpg" alt="Planta de 67 m² do Elo Duo" loading="lazy" decoding="async"><div class="mt-plant-copy"><div class="mt-plant-head"><h3>67 m²</h3><span class="mt-availability" data-typology-status="67">Consultar</span></div><p>Maior metragem entre as tipologias principais do Elo Duo, indicada para quem busca mais espaço dentro do Caminhos da Lapa.</p></div></article></div><p class="mt-fineprint" style="color:var(--mt-muted)!important">Disponibilidade por tipologia é informação comercial sujeita a alteração. Confirme a unidade disponível no atendimento.</p></div></section>
     <section aria-labelledby="leisure-title"><div class="mt-shell"><div class="mt-section-head"><p class="mt-eyebrow">LAZER</p><h2 id="leisure-title">Lazer completo para a rotina da família</h2><p>O condomínio reúne ambientes de lazer e convivência para diferentes momentos do dia.</p></div><ul class="mt-amenities"><li>Piscina adulto</li><li>Piscina infantil</li><li>Espaço fitness</li><li>Espaço gourmet</li><li>Salão de festas</li><li>Quadra recreativa</li><li>Playground</li><li>Brinquedoteca</li></ul><div class="mt-leisure-gallery"><figure><img src="https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/Imagem/936bcaaf-a84d-4918-9c66-089d8d43664e.jpg" alt="Espaço fitness do Elo Duo" loading="lazy" decoding="async"></figure><figure><img src="https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/Imagem/38eaeead-6c44-4003-bbba-d3c638249a24.jpg" alt="Salão de festas do Elo Duo" loading="lazy" decoding="async"></figure><figure><img src="https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/Imagem/631ec757-4fb8-476f-9fd9-583ced2b8aba.jpg" alt="Espaço gourmet do Elo Duo" loading="lazy" decoding="async"></figure><figure><img src="https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/Imagem/86b37d37-1be5-4d74-9acf-b2df71520437.jpg" alt="Piscina do Elo Duo" loading="lazy" decoding="async"></figure></div></div></section>
     <section aria-labelledby="neighborhood-title"><div class="mt-shell"><div class="mt-section-head"><p class="mt-eyebrow">MORAR NA LAPA</p><h2 id="neighborhood-title">Infraestrutura urbana, serviços e vida de bairro</h2><p>A Lapa combina áreas residenciais tradicionais com novos empreendimentos, comércio, supermercados, escolas, restaurantes, serviços e opções culturais. O bairro também conta com referências como o Mercadão da Lapa, Sesc Pompeia e diferentes opções de transporte público.</p></div><div class="mt-feature-grid"><article class="mt-feature-card"><h3>Comércio e serviços</h3><p>Mercados, farmácias, escolas, restaurantes, academias e serviços para resolver a rotina perto de casa.</p></article><article class="mt-feature-card"><h3>Mobilidade</h3><p>Acesso a CPTM, linhas de ônibus, ciclovias e eixos viários que conectam a Zona Oeste ao restante da cidade.</p></article><article class="mt-feature-card"><h3>Tradição e renovação</h3><p>Alto da Lapa, Vila Romana, Vila Ipojuca, Lapa de Baixo e Vila Anastácio compõem um eixo urbano diverso e consolidado.</p></article></div><div class="mt-neighborhood-gallery"><figure><img src="https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/Imagem/shutterstock_2010085538-1759253564283.jpg" alt="Contexto urbano da Lapa em São Paulo" loading="lazy" decoding="async"></figure><figure><img src="https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/Imagem/lapa1-1768586279771.jpg" alt="Bairro da Lapa, Zona Oeste de São Paulo" loading="lazy" decoding="async"></figure><figure><img src="https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/Imagem/shutterstock_659880979-1759253564602.jpg" alt="Infraestrutura e vida urbana na Lapa" loading="lazy" decoding="async"></figure></div></div></section>
@@ -418,7 +379,12 @@
     <section class="mt-visit" aria-labelledby="visit-title"><div class="mt-shell"><div class="mt-section-head"><p class="mt-eyebrow">VISITE O CAMINHOS DA LAPA</p><h2 id="visit-title">Conheça o Elo Duo presencialmente</h2><p>Para avançar na decisão de compra, fale diretamente com Sabrina da Tegra, confirme a disponibilidade e agende sua visita ao plantão.</p></div><div class="mt-visit-grid"><article class="mt-visit-card"><strong>Sabrina da Tegra</strong><p>Corretora Tegra Vendas · CRECI-SP 209.905-F<br><strong>Stand Caminhos da Lapa</strong><br><a href="tel:+5511960779328">(11) 96077-9328</a> · <a href="https://corretor.tegravendas.com.br/sabrina/sp" target="_blank" rel="noopener noreferrer">perfil oficial Tegra Vendas</a></p></article><article class="mt-visit-card"><strong>Maquete do Caminhos da Lapa</strong><p>Conheça presencialmente a grande maquete do complexo e entenda a implantação, a Rua Jardim e a relação entre os empreendimentos.</p></article><article class="mt-visit-card"><strong>Apartamento decorado</strong><p>Visite o apartamento decorado na própria torre e avalie os ambientes, a distribuição da planta e a experiência de morar no Elo Duo.</p></article></div></div></section>
     <section id="formulario" aria-labelledby="form-title"><div class="mt-shell"><div class="mt-section-head"><p class="mt-eyebrow">TEGRA VENDAS · ELO DUO</p><h2 id="form-title">Receba disponibilidade, condições e agende sua visita</h2><p>Fale com Sabrina da Tegra para confirmar unidades disponíveis, condições comerciais e possibilidades de pagamento. Se desejar conhecer o empreendimento, solicite também o agendamento para visitar o plantão, a maquete do Caminhos da Lapa e o apartamento decorado na própria torre.</p></div><form id="moretegra-lead-form" class="mt-local-form" data-moretegra-lead-form data-form-id="46" data-project-name="Caminhos da Lapa Elo Duo" novalidate><input type="hidden" name="tenant_id" value="313"><input type="hidden" name="form_id" value="46"><div class="mt-form-grid"><label class="mt-field mt-field-wide" for="mt-lead-intent"><span>O que você deseja? *</span><select id="mt-lead-intent" name="texto-livre" required><option value="Condições e disponibilidade" selected>Receber condições e disponibilidade</option><option value="Agendar visita">Agendar uma visita</option><option value="Simular forma de pagamento">Simular forma de pagamento</option><option value="Falar com especialista">Falar com especialista Tegra Vendas</option></select></label><label class="mt-field mt-field-wide" for="mt-lead-name"><span>Nome *</span><input id="mt-lead-name" name="nome" type="text" autocomplete="name" maxlength="120" required></label><label class="mt-field mt-field-wide" for="mt-lead-email"><span>E-mail *</span><input id="mt-lead-email" name="email" type="email" autocomplete="email" maxlength="160" required></label><label class="mt-field" for="mt-phone-country"><span>País *</span><select id="mt-phone-country" name="pais" autocomplete="country"><option value="+55" selected>Brasil (+55)</option><option value="+1">Estados Unidos / Canadá (+1)</option><option value="+351">Portugal (+351)</option><option value="+34">Espanha (+34)</option><option value="+44">Reino Unido (+44)</option></select></label><label class="mt-field" for="mt-lead-phone"><span>Telefone / WhatsApp *</span><input id="mt-lead-phone" name="telefone_display" type="tel" autocomplete="tel-national" inputmode="tel" maxlength="24" placeholder="(11) 99999-9999" required></label><div class="mt-honeypot" aria-hidden="true"><label for="mt-company-website">Website</label><input id="mt-company-website" name="company_website" type="text" tabindex="-1" autocomplete="off"></div></div><p id="mt-lead-error" class="mt-form-message is-error" role="alert" aria-live="assertive" hidden></p><p id="mt-lead-status" class="mt-form-message" role="status" aria-live="polite"></p><button class="mt-lead-submit" type="submit" data-moretegra-form-submit><span data-submit-label>Enviar solicitação</span></button><p class="mt-form-note">Ao enviar, você autoriza contato sobre este empreendimento.</p></form></div></section>
   </main>
-  <footer class="mt-footer"><div class="mt-shell mt-footer-grid"><p class="mt-note">Valores, disponibilidade e condições podem mudar. Confirme as informações vigentes antes da contratação.</p><div class="mt-footer-contact"><strong>AGENDE SEU ATENDIMENTO no CAMINHOS DA LAPA · ELO DUO</strong><p class="mt-note mt-footer-address">Rua Fortunato Ferraz, 625 — São Paulo/SP · CEP 05093-000</p></div></div></footer>
+  <footer class="mt-footer" data-mnt-commercial-footer><div class="mt-shell mt-footer-standard">
+      <img class="mt-footer-logo" src="https://s3-gdigital.s3.amazonaws.com/gdigital/313/dkRxNEw3OY1mr3apBCmTbFFGpzD4PZnbGLWpJq1q.webp" alt="Tegra" loading="lazy" decoding="async" style="width:96px;height:auto;display:block;margin:0 0 18px">
+      <p>Página de atendimento comercial More em um Tegra. Informações de unidades, disponibilidade e condições devem ser confirmadas diretamente com a equipe Tegra Vendas. Imagens, perspectivas, preços e condições podem ser atualizados sem aviso prévio.</p>
+      <p class="mt-footer-disclaimer">Os valores exibidos nesta página são referências comerciais vinculadas às unidades indicadas e podem sofrer alterações. Alguns empreendimentos podem apresentar condições promocionais específicas, sujeitas à disponibilidade da respectiva unidade. Preços, unidades, disponibilidade e condições comerciais devem ser confirmados com nossos corretores no atendimento. <span class="mt-footer-address" data-mnt-footer-address>Estande Tegra Caminhos da Lapa · Rua Fortunato Ferraz, 625 · São Paulo/SP · CEP 05093-000.</span></p>
+      <p class="mt-footer-contact"><strong>Sabrina da Tegra · Corretora Tegra Vendas · CRECI-SP 209.905-F.</strong><br><a href="tel:+5511960779328">(11) 96077-9328</a> · <a href="https://corretor.tegravendas.com.br/sabrina/sp" target="_blank" rel="noopener noreferrer">perfil oficial Tegra Vendas</a></p>
+    </div></footer>
   <nav class="mt-quick-actions" aria-label="Ações rápidas"><a class="mt-quick-lead" data-project-intent="floating-conditions" href="#formulario">Receber condições</a><a class="mt-quick-whatsapp" href="https://wa.me/5511960779328?text=Ol%C3%A1%2C%20quero%20receber%20as%20condi%C3%A7%C3%B5es%20atuais%20do%20Caminhos%20da%20Lapa%20Elo%20Duo." target="_blank" rel="noopener noreferrer" aria-label="Falar pelo WhatsApp sobre o Elo Duo"><img src="https://s3-gdigital.s3.amazonaws.com/gdigital/313/whatsapp-removebg.webp" alt="" width="32" height="32" aria-hidden="true"></a></nav>
   <aside class="mt-consent" data-mnt-consent hidden aria-label="Preferências de privacidade"><div><strong>Privacidade</strong><p>Você pode aceitar ou recusar cookies de medição.</p></div><div class="mt-consent-actions"><button type="button" data-consent-reject>Recusar</button><button type="button" class="is-primary" data-consent-accept>Aceitar</button></div></aside>
   <script src="/src-greenn/preview/runtime.js" defer></script>

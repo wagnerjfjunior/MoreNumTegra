@@ -188,3 +188,31 @@ GOOGLE_SEARCH_FAVICON_FORMAT = OPEN / WEBP_NOT_LISTED_AS_SUPPORTED
 ```
 
 Canonical contract: `docs/brand/FAVICON_STANDARD.md`. CI guard: `scripts/validate-favicon-standard.mjs` + `.github/workflows/favicon-standard.yml`.
+
+
+## Commercial footer/location standard — 2026-09-19
+
+Canonical contract: `docs/content/COMMERCIAL_FOOTER_AND_LOCATION_STANDARD.md`.
+
+```text
+COMMERCIAL_FOOTER_STANDARD = REQUIRED_ON_HOME_AND_ALL_PUBLIC_PROJECT_PAGES
+FOOTER_LOGO = https://s3-gdigital.s3.amazonaws.com/gdigital/313/dkRxNEw3OY1mr3apBCmTbFFGpzD4PZnbGLWpJq1q.webp
+PAGE_SPECIFIC_ADDRESS = GOVERNED_FACT / REQUIRED
+SABRINA_CONTACT = REQUIRED
+PROJECT_MAPS = WHATSAPP_ONLY_CLICK_SURFACES
+DIRECT_MAPS_NAVIGATION = FORBIDDEN
+FUTURE_PAGE_ENFORCEMENT = CI_REQUIRED
+```
+
+
+### Address/link exposure hard rule — 2026-09-19
+
+```text
+VISIBLE_EXACT_ADDRESS = FOOTER_ONLY
+JSON_LD_EXACT_ADDRESS = ALLOWED_WHEN_GOVERNED
+TEGRA_CORPORATE_WEBSITE_URLS_IN_PUBLIC_RUNTIME = FORBIDDEN
+ONLY_TEGRA_RELATED_PROFILE_LINK_IN_DISCLAIMER = https://corretor.tegravendas.com.br/sabrina/sp
+PROJECT_MAPS = NEIGHBORHOOD_LEVEL_VISUAL + WHATSAPP_ONLY_CLICK
+```
+
+Exact street/number/postal-code content must not appear visibly outside the canonical commercial footer. Tegra corporate-site URLs and proxy dependencies must not ship in commercial HTML/JS. Structured data may retain governed exact addresses for entity consistency.
