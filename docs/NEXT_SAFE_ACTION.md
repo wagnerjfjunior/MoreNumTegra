@@ -15,12 +15,12 @@ MNT-M5-01 = IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED
 
 P0_OPEN = 0
 P1_OPEN = 0
-P2_OPEN = 5
+P2_OPEN = 6
 P3_OPEN = 0
 
 F01/F02 = REMEDIATION_READY_NOT_MERGED / PR #133
-F10/F11 = SOURCE_LEVEL_STATIC_CONTRAST_FINDINGS
-F12 = SOURCE_LEVEL_CAPIITOLO_ARIA_TABS_KEYBOARD_FINDING
+F10/F11/F13 = SOURCE_LEVEL_STATIC_CONTRAST_FINDINGS / PR #135 READY
+F12 = SOURCE_LEVEL_CAPIITOLO_ARIA_TABS_KEYBOARD_FINDING / PR #137 READY
 
 FORECAST_TOTAL_HOURS = 1240
 ACCEPTED_SCOPE_EQUIVALENT_HOURS = 752
@@ -44,8 +44,8 @@ Continue `MNT-M5-01 — Mobile UX and accessibility audit` without merging addit
 Work that may continue now:
 
 1. preserve PR #133 as the bounded remediation candidate for F01/F02;
-2. preserve PR #135 as the bounded stacked remediation candidate for F10/F11;
-3. design/adjudicate a bounded CAPIITOLO remediation for F12 without merging it;
+2. preserve PR #135 as the bounded stacked remediation candidate for F10/F11/F13;
+3. preserve PR #137 as the bounded remediation candidate for F12;
 4. complete source-level accessibility checks that do not require a representative browser/device;
 5. retain the remaining browser/device checks as `NOT_OBSERVED` until valid evidence exists.
 
@@ -72,7 +72,8 @@ The first production action is always the exact approved runtime `353f4a5d...`, 
 2. F02 — Home without explicit skip-to-content; PR #133 ready, not merged.
 3. F10 — Home stage badges: construction/launch text contrast below 4.5:1.
 4. F11 — Home light-footer secondary/contact text contrast below 4.5:1.
-5. F12 — CAPIITOLO ARIA tab widgets lack complete keyboard/panel semantics.
+5. F13 — Home small gold helper text slightly below 4.5:1; PR #135 ready.
+6. F12 — CAPIITOLO ARIA tab widgets lack complete keyboard/panel semantics; PR #137 ready.
 
 ## Boundaries
 
