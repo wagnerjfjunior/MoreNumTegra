@@ -25,6 +25,16 @@ function getFooterAddress(footer) {
   return match?.[1]?.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim() ?? "";
 }
 
+function validateNeutralFooterAddress(file, html, footer) {
+  const opening = footer.match(/<[^>]*data-mnt-footer-address[^>]*>/i)?.[0] ?? "";
+  if (!opening) return;
+  if (/\bclass\s*=/i.test(opening)) fail(`${file}: footer address must not carry a styling class`);
+  if (/\bstyle\s*=/i.test(opening)) fail(`${file}: footer address must not carry inline styling`);
+  if (/\.mt-footer-address\b|\.mnt-footer-address\b|\[data-mnt-footer-address\]\s*\{/i.test(html)) {
+    fail(`${file}: footer address must inherit disclaimer typography without dedicated CSS`);
+  }
+}
+
 function extractStreetAndNumber(address) {
   const match = address.match(/\b(Rua|Avenida|Av\.|Alameda|Travessa|Estrada|Praça)\s+[^·]+?,\s*\d+[A-Za-z-]*/i);
   return match?.[0] ?? "";
@@ -62,6 +72,7 @@ for(const [file,address] of governed){
   if(!footer.includes('href="tel:+5511960779328"')) fail(`${file}: missing canonical phone link in footer`);
   if(!footer.includes(PROFILE)) fail(`${file}: missing official Tegra Vendas profile in footer`);
   if(!footer.includes(address)) fail(`${file}: governed footer address drift`);
+  validateNeutralFooterAddress(file, html, footer);
   if(TEGRA_CORPORATE_HOST.test(html)) fail(`${file}: Tegra corporate-site URL is forbidden in public commercial HTML`);
   const visibleOutsideFooter = stripNonVisibleAddressZones(html);
   const ownStreet=extractStreetAndNumber(address);
@@ -84,6 +95,7 @@ if(fs.existsSync(projectsDir)){
     if(!footer.includes(CONTACT)) fail(`${rel}: future-page canonical Sabrina contact missing`);
     if(!footer.includes('href="tel:+5511960779328"')) fail(`${rel}: future-page canonical phone link missing`);
     if(!footer.includes(PROFILE)) fail(`${rel}: future-page official Sabrina profile missing`);
+    validateNeutralFooterAddress(rel, html, footer);
     if(TEGRA_CORPORATE_HOST.test(html)) fail(`${rel}: future-page Tegra corporate-site URL is forbidden`);
     const address=getFooterAddress(footer);
     const ownStreet=extractStreetAndNumber(address);
