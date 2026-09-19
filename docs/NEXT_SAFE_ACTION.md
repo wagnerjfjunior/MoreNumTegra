@@ -15,11 +15,12 @@ MNT-M5-01 = IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED
 
 P0_OPEN = 0
 P1_OPEN = 0
-P2_OPEN = 4
+P2_OPEN = 5
 P3_OPEN = 0
 
 F01/F02 = REMEDIATION_READY_NOT_MERGED / PR #133
 F10/F11 = SOURCE_LEVEL_STATIC_CONTRAST_FINDINGS
+F12 = SOURCE_LEVEL_CAPIITOLO_ARIA_TABS_KEYBOARD_FINDING
 
 FORECAST_TOTAL_HOURS = 1240
 ACCEPTED_SCOPE_EQUIVALENT_HOURS = 752
@@ -43,9 +44,10 @@ Continue `MNT-M5-01 — Mobile UX and accessibility audit` without merging addit
 Work that may continue now:
 
 1. preserve PR #133 as the bounded remediation candidate for F01/F02;
-2. design/adjudicate a bounded remediation for F10/F11 color contrast without merging it;
-3. complete source-level accessibility checks that do not require a representative browser/device;
-4. retain the remaining browser/device checks as `NOT_OBSERVED` until valid evidence exists.
+2. preserve PR #135 as the bounded stacked remediation candidate for F10/F11;
+3. design/adjudicate a bounded CAPIITOLO remediation for F12 without merging it;
+4. complete source-level accessibility checks that do not require a representative browser/device;
+5. retain the remaining browser/device checks as `NOT_OBSERVED` until valid evidence exists.
 
 When Vercel recovers, execute the ordered recovery queue in:
 
@@ -70,6 +72,7 @@ The first production action is always the exact approved runtime `353f4a5d...`, 
 2. F02 — Home without explicit skip-to-content; PR #133 ready, not merged.
 3. F10 — Home stage badges: construction/launch text contrast below 4.5:1.
 4. F11 — Home light-footer secondary/contact text contrast below 4.5:1.
+5. F12 — CAPIITOLO ARIA tab widgets lack complete keyboard/panel semantics.
 
 ## Boundaries
 
@@ -78,6 +81,7 @@ The first production action is always the exact approved runtime `353f4a5d...`, 
 - do not start M5-02 by sequence alone;
 - do not create an artificial commit to bypass Vercel build-rate-limit;
 - do not merge additional runtime before the pending PR #132 production state is reconciled;
+- preserve runtime queue order and re-resolve exact heads before every merge;
 - do not reopen M4-05R, Form 46, sitemap, indexation or Rich Results without new contrary evidence.
 
 ## Condition of exit
