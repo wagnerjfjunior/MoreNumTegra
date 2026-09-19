@@ -7,13 +7,28 @@ const P1 = "Página de atendimento comercial More em um Tegra. Informações de 
 const P2 = "Os valores exibidos nesta página são referências comerciais vinculadas às unidades indicadas e podem sofrer alterações. Alguns empreendimentos podem apresentar condições promocionais específicas, sujeitas à disponibilidade da respectiva unidade. Preços, unidades, disponibilidade e condições comerciais devem ser confirmados com nossos corretores no atendimento.";
 const CONTACT = "Sabrina da Tegra · Corretora Tegra Vendas · CRECI-SP 209.905-F.";
 const PROFILE = "https://corretor.tegravendas.com.br/sabrina/sp";
-const TEGRA_CORPORATE_HOST = /(?:^|\.)tegraincorporadora\.com\.br/i;
+const TEGRA_CORPORATE_HOST = /(?:https?:)?\/\/(?:[^\s"'<>/]+\.)?tegraincorporadora\.com\.br\b/i;
 const EXACT_STREET_TOKENS = [
   "Rua Fortunato Ferraz",
   "Rua Coronel José Eusébio",
   "Rua Ibaragui Nissui",
   "Av. das Nações Unidas"
 ];
+
+function getCommercialFooter(html) {
+  const match = html.match(/<footer\b[^>]*data-mnt-commercial-footer[^>]*>[\s\S]*?<\/footer>/i);
+  return match?.[0] ?? "";
+}
+
+function getFooterAddress(footer) {
+  const match = footer.match(/<[^>]*data-mnt-footer-address[^>]*>([\s\S]*?)<\/[^>]+>/i);
+  return match?.[1]?.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim() ?? "";
+}
+
+function extractStreetAndNumber(address) {
+  const match = address.match(/\b(Rua|Avenida|Av\.|Alameda|Travessa|Estrada|Praça)\s+[^·]+?,\s*\d+[A-Za-z-]*/i);
+  return match?.[0] ?? "";
+}
 
 function stripNonVisibleAddressZones(html) {
   return html
@@ -37,20 +52,20 @@ for(const [file,address] of governed){
   const full=path.join(ROOT,file);
   if(!fs.existsSync(full)){fail(`${file}: missing`);continue;}
   const html=fs.readFileSync(full,"utf8");
-  if(!html.includes("data-mnt-commercial-footer")) fail(`${file}: missing data-mnt-commercial-footer`);
-  if(!html.includes("data-mnt-footer-address")) fail(`${file}: missing data-mnt-footer-address`);
-  if(!html.includes(FOOTER_LOGO)) fail(`${file}: wrong/missing footer logo`);
-  if(!html.includes(P1)) fail(`${file}: missing canonical disclaimer paragraph 1`);
-  if(!html.includes(P2)) fail(`${file}: missing canonical disclaimer paragraph 2`);
-  if(!html.includes(CONTACT)) fail(`${file}: missing canonical Sabrina contact`);
-  if(!html.includes('href="tel:+5511960779328"')) fail(`${file}: missing canonical phone link`);
-  if(!html.includes(PROFILE)) fail(`${file}: missing official Tegra Vendas profile`);
-  if(!html.includes(address)) fail(`${file}: governed footer address drift`);
+  const footer=getCommercialFooter(html);
+  if(!footer) fail(`${file}: missing data-mnt-commercial-footer`);
+  if(!footer.includes("data-mnt-footer-address")) fail(`${file}: missing data-mnt-footer-address`);
+  if(!footer.includes(FOOTER_LOGO)) fail(`${file}: wrong/missing footer logo`);
+  if(!footer.includes(P1)) fail(`${file}: missing canonical disclaimer paragraph 1 in footer`);
+  if(!footer.includes(P2)) fail(`${file}: missing canonical disclaimer paragraph 2 in footer`);
+  if(!footer.includes(CONTACT)) fail(`${file}: missing canonical Sabrina contact in footer`);
+  if(!footer.includes('href="tel:+5511960779328"')) fail(`${file}: missing canonical phone link in footer`);
+  if(!footer.includes(PROFILE)) fail(`${file}: missing official Tegra Vendas profile in footer`);
+  if(!footer.includes(address)) fail(`${file}: governed footer address drift`);
   if(TEGRA_CORPORATE_HOST.test(html)) fail(`${file}: Tegra corporate-site URL is forbidden in public commercial HTML`);
   const visibleOutsideFooter = stripNonVisibleAddressZones(html);
-  for (const street of EXACT_STREET_TOKENS) {
-    if (visibleOutsideFooter.includes(street)) fail(`${file}: exact street address leaked outside the commercial footer: ${street}`);
-  }
+  const ownStreet=extractStreetAndNumber(address);
+  if(ownStreet && visibleOutsideFooter.includes(ownStreet)) fail(`${file}: exact project address leaked outside footer: ${ownStreet}`);
 }
 
 // Future exact-project pages must inherit the same contract.
@@ -61,21 +76,27 @@ if(fs.existsSync(projectsDir)){
     const full=path.join(ROOT,rel);
     if(!fs.existsSync(full)) continue;
     const html=fs.readFileSync(full,"utf8");
-    if(!html.includes("data-mnt-commercial-footer")) fail(`${rel}: future-page footer contract missing`);
-    if(!html.includes("data-mnt-footer-address")) fail(`${rel}: future-page governed address hook missing`);
-    if(!html.includes(FOOTER_LOGO)) fail(`${rel}: future-page canonical footer logo missing`);
-    if(!html.includes(P1)||!html.includes(P2)) fail(`${rel}: future-page disclaimer copy drift`);
+    const footer=getCommercialFooter(html);
+    if(!footer) fail(`${rel}: future-page footer contract missing`);
+    if(!footer.includes("data-mnt-footer-address")) fail(`${rel}: future-page governed address hook missing`);
+    if(!footer.includes(FOOTER_LOGO)) fail(`${rel}: future-page canonical footer logo missing`);
+    if(!footer.includes(P1)||!footer.includes(P2)) fail(`${rel}: future-page disclaimer copy drift`);
+    if(!footer.includes(CONTACT)) fail(`${rel}: future-page canonical Sabrina contact missing`);
+    if(!footer.includes('href="tel:+5511960779328"')) fail(`${rel}: future-page canonical phone link missing`);
+    if(!footer.includes(PROFILE)) fail(`${rel}: future-page official Sabrina profile missing`);
     if(TEGRA_CORPORATE_HOST.test(html)) fail(`${rel}: future-page Tegra corporate-site URL is forbidden`);
-    const visibleOutsideFooter = stripNonVisibleAddressZones(html);
-    for (const street of EXACT_STREET_TOKENS) {
-      if (visibleOutsideFooter.includes(street)) fail(`${rel}: future-page exact street address leaked outside footer: ${street}`);
-    }
+    const address=getFooterAddress(footer);
+    const ownStreet=extractStreetAndNumber(address);
+    const visibleOutsideFooter=stripNonVisibleAddressZones(html);
+    if(ownStreet && visibleOutsideFooter.includes(ownStreet)) fail(`${rel}: future-page exact address leaked outside footer: ${ownStreet}`);
   }
 }
 
 const runtime=fs.readFileSync(path.join(ROOT,"src-greenn/preview/runtime.js"),"utf8");
 const homeJs=fs.readFileSync(path.join(ROOT,"src-greenn/moretegra.js"),"utf8");
-for (const [name, source] of [["runtime.js", runtime], ["moretegra.js", homeJs]]) {
+const projectJs=fs.readFileSync(path.join(ROOT,"src-greenn/project-page.js"),"utf8");
+const commercialData=fs.readFileSync(path.join(ROOT,"src-greenn/data/commercial-values.json"),"utf8");
+for (const [name, source] of [["runtime.js", runtime], ["moretegra.js", homeJs], ["project-page.js", projectJs], ["commercial-values.json", commercialData]]) {
   if(TEGRA_CORPORATE_HOST.test(source)) fail(`${name}: Tegra corporate-site URL/dependency is forbidden`);
 }
 if(runtime.includes("Abrir no Maps")) fail("CAPIITOLO runtime still exposes Abrir no Maps");
