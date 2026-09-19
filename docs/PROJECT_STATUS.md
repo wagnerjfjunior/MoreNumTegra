@@ -175,3 +175,16 @@ Nenhum progresso WBS foi alterado pelo release excepcional do Ária.
 Ver `docs/NEXT_SAFE_ACTION.md`.
 
 Resolver o próximo task/gate canônico a partir do WBS e da governança vigente. A frente de validação pós-release de sitemap/indexação/structured data está encerrada e não requer mudança de código.
+
+
+## Favicon standard — 2026-09-19
+
+```text
+CANONICAL_FAVICON = https://s3-gdigital.s3.amazonaws.com/gdigital/313/Favicon_Tegra_500x500_nobg.webp
+SCOPE = ALL_STANDALONE_HTML_PAGES_WITH_HEAD
+FUTURE_PAGE_ENFORCEMENT = CI_REQUIRED
+OLD_HORIZONTAL_LOGO_AS_FAVICON = FORBIDDEN
+GOOGLE_SEARCH_FAVICON_FORMAT = OPEN / WEBP_NOT_LISTED_AS_SUPPORTED
+```
+
+Canonical contract: `docs/brand/FAVICON_STANDARD.md`. CI guard: `scripts/validate-favicon-standard.mjs` + `.github/workflows/favicon-standard.yml`.
