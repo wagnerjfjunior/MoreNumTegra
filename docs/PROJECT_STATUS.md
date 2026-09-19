@@ -1,10 +1,51 @@
 # Status do Projeto — MoreNumTegra
 
-Atualizado em `2026-09-18`.
+Atualizado em `2026-09-19`.
 
 Fonte canônica: GitHub `main`.
 
-## 1. SEO / Search Console / Rich Results — fechamento pós-release
+## 1. Estado integrado atual
+
+```text
+MAIN_SHA = 353f4a5dba058f2fb60fd4001128f8c857cd6fce
+PR_132 = MERGED
+PR_123 = MERGED
+MNT-M4-05R = COMPLETE / ACCEPTED
+MNT-M5-01 = IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 752
+ACCEPTED_PERCENT = 60.65
+```
+
+## 2. Deployment / produção
+
+```text
+WEB_PRODUCTION = Vercel
+CANONICAL_HOST = https://www.moretegra.com.br/
+LATEST_MAIN_RUNTIME_SHA = 353f4a5dba058f2fb60fd4001128f8c857cd6fce
+VERCEL_STATUS = FAILURE / PROVIDER_BLOCKED
+VERCEL_REASON = build-rate-limit
+LAST_VERIFIED_VERCEL_SUCCESS_SHA = 6e852f1c41ea834aa138e333cef56519f382dc5f
+PRODUCTION_EXACT_SHA_AFTER_BLOCK = NOT_REVALIDATED
+```
+
+The Vercel status is a provider capacity/rate-limit block, not evidence of code failure. No artificial commit may be created merely to trigger another deployment.
+
+## 3. PR #132 — semantic on-page SEO
+
+Merged scope:
+
+- Home title: `Apartamentos Tegra em São Paulo | Escolha Tegra`;
+- Home H1: `Apartamentos Tegra em São Paulo`;
+- CAPIITOLO H1: `CAPIITOLO Tegra Chácara Klabin`;
+- CAPIITOLO editorial depth expanded to ~1.1k visible words with governed Garden/parking/location semantics;
+- Elo Duo H1: `Elo Duo Tegra — Caminhos da Lapa`;
+- Ária H1: `Ária Tegra Higienópolis — apartamentos prontos para morar`.
+
+Repository validation passed before merge. Production validation remains pending the Vercel provider block.
+
+## 4. Search / structured data baseline
+
+Previously proven:
 
 ```text
 GSC_SITEMAP = ACCEPTED
@@ -21,198 +62,51 @@ CAPIITOLO_RICH_RESULTS = 7_VALID
 ELO_DUO_RICH_RESULTS = 7_VALID
 ARIA_RICH_RESULTS = 7_VALID
 HOME_RICH_RESULTS = 5_VALID
-
 ARIA_GOOGLE_CANONICAL = ACCEPTED
-CODE_CHANGE_REQUIRED = NO
 ```
 
-Product Authority supplied Google Search Console and Rich Results evidence after the PR #118/#119 runtime. Search Console also confirmed the resubmitted sitemap with four submitted URLs, zero errors and zero warnings.
+Do not reinterpret this historical validation as validation of the undeployed PR #132 content.
 
-The three exact-project pages now have externally proven Rich Results parity: one Product Snippet, one Merchant Listing, one Breadcrumb, two Local Business results and two Organization results, totaling seven valid items per project page.
+## 5. Form 46
 
-The home is indexed and has five valid Rich Results items: two Local Business, two Organization and one Video. Search Console showing no indexed video is not treated as a page-indexation or structured-data defect.
+The home project-context regression remains closed with Green Sales E2E evidence. Contract remains tenant 313 / form 46 / title `MoreEmUmTegra`.
 
-Canonical evidence: `docs/sfjm/SEO_POST_RELEASE_VALIDATION_2026-09-18.md`.
-
-No code change or WBS progress adjustment is required.
-
-## 2. Estado atual de produção — pós PR #119
+## 6. M4-05R
 
 ```text
-RUNTIME_RELEASE_SHA = 782c25b7229af99d0f1839bbfc6af412a5cb31e7
-VERCEL_STATUS = SUCCESS
-PR_117 = MERGED
-PR_118 = MERGED
-PR_119 = MERGED
-HOME_FORM46_PROJECT_CONTEXT_E2E = PASS
-GREEN_SALES_RECEIPT = PASS
-REGRESSION = CLOSED
-```
-
-A sequência #117–#119 padronizou os formulários/CTAs, corrigiu regressões visuais e encerrou o defeito de propagação do empreendimento selecionado na home até o Green Sales.
-
-A evidência E2E de produção fornecida pelo Product Authority mostra:
-
-```text
-YPY Alto do Ipiranga | Agendar visita
-```
-
-no campo `texto-livre` do lead recebido pelo Green Sales. Isso comprova a composição `<empreendimento> | <intenção>` no caminho real home → Form 46 → GDigital/Green Sales.
-
-Registro canônico: `docs/sfjm/FORM46_HOME_PROJECT_CONTEXT_E2E_VALIDATION_2026-09-18.md`.
-
-Nenhum progresso WBS foi alterado por essa correção/validação.
-
-## 3. Release Ária Higienópolis
-
-```text
-PRODUCT_AUTHORITY_EXCEPTION = CLOSED_AS_RELEASED_WITH_VALIDATION_RESIDUAL
-PR_112 = MERGED
-PR_112_MERGE_SHA = c4c5e74ac0a2b139df768484da565df471fb24ef
-PR_113 = MERGED
-RUNTIME_RELEASE_SHA = e9d4d63ba6fae578c2bef84aded69cf968166e29
-VERCEL_STATUS = SUCCESS
-PROD_HTTP_SMOKE = NOT_PROVEN_BY_CURRENT_TOOLING
-```
-
-A exceção autorizada foi executada sem ampliar o namespace, provider, DNS, framework ou política de deployment.
-
-Foram incorporados:
-
-- exact-project page Ária;
-- link/card da home;
-- structured-data list da home;
-- sitemap com Ária;
-- Vercel rewrite;
-- commercial reference governada;
-- seções de visita e financiamento indicativo;
-- Form 46 compartilhado;
-- consentimento/GTM;
-- JSON-LD alinhado ao núcleo de identidade usado pelas demais exact-project pages.
-
-O smoke HTTP externo ficou pendente apenas por limitação dos verificadores desta sessão. O commit final de runtime recebeu `Vercel = success`.
-
-## 4. Produção
-
-```text
-WEB_PRODUCTION = Vercel
-CANONICAL_HOST = https://www.moretegra.com.br/
-APEX = 308 -> www
-DNS = Cloudflare authoritative / DNS only
-GREEN/GDIGITAL = Form 46 provider + CRM
-VERCEL_AUTOMATIC_DEPLOYMENTS = main only
-NON_MAIN_DEPLOYMENTS = disabled
-RUNTIME_RELEASE_SHA = 782c25b7229af99d0f1839bbfc6af412a5cb31e7
-```
-
-## 5. CAPIITOLO — correção de autoridade/localização
-
-```text
-PR_115 = MERGED
-PR_115_HEAD = 8f105342b34efdcd0354cb663d3a365f31acb47a
-MERGE_SHA = e9d4d63ba6fae578c2bef84aded69cf968166e29
-VERCEL_STATUS = SUCCESS
-STATIC_VALIDATION = PASS
-PROD_HTTP_SMOKE = NOT_PROVEN_BY_CURRENT_TOOLING
-```
-
-A correção removeu do CAPIITOLO o endereço/geo de Caminhos da Lapa e o excesso de perfil corporativo Tegra, preservando Product/Offer, canonical, robots e o vínculo factual com a Tegra. O atendimento da Sabrina passa a ser modelado no próprio CAPIITOLO, com coordenadas fornecidas pelo Product Authority.
-
-## 6. Rotas exact-project publicadas no repositório/deployment
-
-- `/`
-- `/empreendimentos/capiitolo-piero-lissoni/`
-- `/empreendimentos/caminhos-da-lapa-elo-duo/`
-- `/empreendimentos/aria-higienopolis/`
-
-Para Ária:
-
-- canonical próprio;
-- index/follow;
-- um H1;
-- FAQ visible/schema 11/11;
-- Offer ligado ao canonical do projeto;
-- entity graph sem `@id` interno pendurado;
-- official Tegra page ligada por `sameAs`;
-- commercial-values `updatedAt=2026-09-18`.
-
-## 7. Sitemap / robots
-
-Sitemap canônico versionado contém quatro URLs, incluindo Ária. `robots.txt` continua apontando para o sitemap canônico.
-
-```text
-SITEMAP_REPOSITORY_STATE = UPDATED
-SITEMAP_DEPLOYMENT_STATE = INCLUDED_IN_VERCEL_SUCCESS_SHA
-SITEMAP_GSC_PROCESSING = ACCEPTED_4_URLS_0_ERRORS_0_WARNINGS
-ARIA_GSC_INDEXATION = INDEXED
-```
-
-## 8. Search / structured data residuals
-
-Evidência anterior do Product Authority permanece:
-
-- home indexada;
-- CAPIITOLO com Product Snippet válido;
-- Elo Duo com Product detectado/válido;
-- warnings como `aggregateRating`, `review`, `availability`, `shippingDetails` e `hasMerchantReturnPolicy` não autorizam dados inventados.
-
-A validação live/GSC pós-release foi concluída: home, CAPIITOLO, Elo Duo e Ária estão indexados; CAPIITOLO, Elo Duo e Ária retornam sete itens válidos cada no Rich Results; o sitemap atualizado foi aceito com quatro URLs, zero erros e zero warnings.
-
-## 9. M4-05R
-
-```text
-M4-05 historical implementation = MERGED
+M4-05 historical implementation = COMPLETE / MERGED
 M4-05 Product Acceptance = SUPERSEDED_BY_CORRECTIVE_GATE
 M4-05R Product Decision = APPROVED
 M4-05R Runtime = MERGED
-M4-05R Acceptance = NOT_YET_DECLARED_COMPLETE
+M4-05R Acceptance = COMPLETE / ACCEPTED
+M4-05R Additional WBS Hours = 0
 ```
 
-Nenhum progresso WBS foi alterado pelo release excepcional do Ária.
+Canonical record: `docs/sfjm/MNT_M4_05R_ACCEPTANCE_CLOSURE_2026-09-19.md`.
 
-## 10. Próxima ação
-
-Ver `docs/NEXT_SAFE_ACTION.md`.
-
-Resolver o próximo task/gate canônico a partir do WBS e da governança vigente. A frente de validação pós-release de sitemap/indexação/structured data está encerrada e não requer mudança de código.
-
-
-## Favicon standard — 2026-09-19
+## 7. M5-01
 
 ```text
-CANONICAL_FAVICON = https://s3-gdigital.s3.amazonaws.com/gdigital/313/Favicon_Tegra_500x500_nobg.webp
-SCOPE = ALL_STANDALONE_HTML_PAGES_WITH_HEAD
-FUTURE_PAGE_ENFORCEMENT = CI_REQUIRED
-OLD_HORIZONTAL_LOGO_AS_FAVICON = FORBIDDEN
-GOOGLE_SEARCH_FAVICON_FORMAT = OPEN / WEBP_NOT_LISTED_AS_SUPPORTED
+MNT-M5 = ACTIVE
+MNT-M5-01 = IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED
+P0_OPEN = 0
+P1_OPEN = 0
+P2_OPEN = 2
+P3_OPEN = 0
+RUNTIME_DEVICE_RESIDUALS = OPEN
 ```
 
-Canonical contract: `docs/brand/FAVICON_STANDARD.md`. CI guard: `scripts/validate-favicon-standard.mjs` + `.github/workflows/favicon-standard.yml`.
+Open findings:
 
+- Home mobile primary navigation hidden below 760px.
+- Home lacks explicit skip-to-content.
 
-## Commercial footer/location standard — 2026-09-19
+Resolved findings F03–F09 are documented in the current audit. PR #123 is merged, and later PRs #124–#130 preserve/refine its mobile/footer/map controls.
 
-Canonical contract: `docs/content/COMMERCIAL_FOOTER_AND_LOCATION_STANDARD.md`.
+Audit record: `docs/ux/MNT_M5_01_MOBILE_UX_ACCESSIBILITY_AUDIT_2026-09-19.md`.
 
-```text
-COMMERCIAL_FOOTER_STANDARD = REQUIRED_ON_HOME_AND_ALL_PUBLIC_PROJECT_PAGES
-FOOTER_LOGO = https://s3-gdigital.s3.amazonaws.com/gdigital/313/dkRxNEw3OY1mr3apBCmTbFFGpzD4PZnbGLWpJq1q.webp
-PAGE_SPECIFIC_ADDRESS = GOVERNED_FACT / REQUIRED
-SABRINA_CONTACT = REQUIRED
-PROJECT_MAPS = WHATSAPP_ONLY_CLICK_SURFACES
-DIRECT_MAPS_NAVIGATION = FORBIDDEN
-FUTURE_PAGE_ENFORCEMENT = CI_REQUIRED
-```
+## 8. Next action
 
+See `docs/NEXT_SAFE_ACTION.md`.
 
-### Address/link exposure hard rule — 2026-09-19
-
-```text
-VISIBLE_EXACT_ADDRESS = FOOTER_ONLY
-JSON_LD_EXACT_ADDRESS = ALLOWED_WHEN_GOVERNED
-TEGRA_CORPORATE_WEBSITE_URLS_IN_PUBLIC_RUNTIME = FORBIDDEN
-ONLY_TEGRA_RELATED_PROFILE_LINK_IN_DISCLAIMER = https://corretor.tegravendas.com.br/sabrina/sp
-PROJECT_MAPS = NEIGHBORHOOD_LEVEL_VISUAL + WHATSAPP_ONLY_CLICK
-```
-
-Exact street/number/postal-code content must not appear visibly outside the canonical commercial footer. Tegra corporate-site URLs and proxy dependencies must not ship in commercial HTML/JS. Structured data may retain governed exact addresses for entity consistency.
+Complete representative runtime/device accessibility verification for M5-01 and adjudicate the two remaining P2 findings. Do not start M5-02 or create remediation merely by sequence.
