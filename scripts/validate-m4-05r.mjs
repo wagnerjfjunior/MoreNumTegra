@@ -15,6 +15,10 @@ const SABRINA_BUSINESS_LOGO = 'https://s3-gdigital.s3.amazonaws.com/gdigital/313
 const ESTANDE_ID = 'https://www.moretegra.com.br/#estande-caminhos-da-lapa';
 const ESTANDE_LATITUDE = -23.517165527430233;
 const ESTANDE_LONGITUDE = -46.71861778788628;
+const CAPIITOLO_AGENT_ID = 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#sabrina-atendimento';
+const CAPIITOLO_PROJECT_ID = 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#project';
+const CAPIITOLO_LATITUDE = -23.58341615763821;
+const CAPIITOLO_LONGITUDE = -46.62704356167254;
 const VIDEO_UPLOAD_DATE = '2026-08-23T19:50:00Z';
 const TEGRA_PHONE = '+55-11-3500-3223';
 const TEGRA_PRICE_RANGE = 'Consulte-nos';
@@ -38,9 +42,9 @@ const pages = [
     canonical: 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/',
     schemaId: 'mnt-capiitolo-schema',
     requiredTypes: ['WebSite', 'WebPage', 'BreadcrumbList', 'ApartmentComplex', 'FloorPlan', 'ImageObject', 'RealEstateAgent', 'Brand', 'Person', 'Service', 'Product', 'Offer'],
-    requiredIds: ['https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#webpage', 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#project', 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#product', 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#offer', TEGRA_ID, TEGRA_BRAND_ID, SABRINA_ID, SABRINA_AGENT_ID],
+    requiredIds: ['https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#webpage', CAPIITOLO_PROJECT_ID, 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#product', 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#offer', TEGRA_ID, TEGRA_BRAND_ID, SABRINA_ID, CAPIITOLO_AGENT_ID],
     requiredSameAs: 'https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/chacara-klabin/chacaraklabin',
-    visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328', 'R$ 3.539.900', 'Ref. 210 m² (unidade 33) - Ago/26'],
+    visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328', 'R$ 3.539.900', 'Ref. 210 m² · unidade 33 · Ago/26'],
     product: { id: 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#product', offerId: 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#offer', projectId: 'capiitolo-piero-lissoni', price: 3539900 }
   },
   {
@@ -233,17 +237,24 @@ for (const page of pages) {
     }
   }
 
-  const sabrinaAgent = typedNode(nodes, SABRINA_AGENT_ID, 'RealEstateAgent');
+  const isCapiitolo = page.name === 'capiitolo';
+  const expectedAgentId = isCapiitolo ? CAPIITOLO_AGENT_ID : SABRINA_AGENT_ID;
+  const sabrinaAgent = typedNode(nodes, expectedAgentId, 'RealEstateAgent');
   if (!sabrinaAgent) fail(page.name, 'Sabrina RealEstateAgent/LocalBusiness entity missing');
   else {
     if (sabrinaAgent.name !== 'Sabrina da Tegra — Corretora Tegra Vendas') fail(page.name, 'Sabrina RealEstateAgent name mismatch');
-    if (sabrinaAgent.url !== 'https://www.moretegra.com.br/') fail(page.name, 'Sabrina RealEstateAgent url mismatch');
+    if (sabrinaAgent.url !== (isCapiitolo ? page.canonical : 'https://www.moretegra.com.br/')) fail(page.name, 'Sabrina RealEstateAgent url mismatch');
     if (sabrinaAgent.telephone !== SABRINA_PHONE) fail(page.name, 'Sabrina RealEstateAgent telephone mismatch');
     if (sabrinaAgent.sameAs !== SABRINA_PROFILE) fail(page.name, 'Sabrina RealEstateAgent official sameAs mismatch');
     const a = sabrinaAgent.address;
-    if (a?.['@type'] !== 'PostalAddress' || a.streetAddress !== 'Rua Fortunato Ferraz, 625' || a.addressLocality !== 'São Paulo' || a.addressRegion !== 'SP' || a.postalCode !== SABRINA_POSTAL_CODE || a.addressCountry !== 'BR') fail(page.name, 'Sabrina RealEstateAgent address mismatch');
-    if (sabrinaAgent.priceRange !== 'Consulte condições' || sabrinaAgent.logo !== SABRINA_BUSINESS_LOGO || sabrinaAgent.image !== SABRINA_BUSINESS_IMAGE) fail(page.name, 'Sabrina RealEstateAgent recommended fields mismatch');
-    if (Number(sabrinaAgent.geo?.latitude) !== ESTANDE_LATITUDE || Number(sabrinaAgent.geo?.longitude) !== ESTANDE_LONGITUDE) fail(page.name, 'Sabrina RealEstateAgent geo mismatch');
+    const expectedStreet = isCapiitolo ? 'Rua Ibaragui Nissui, 166' : 'Rua Fortunato Ferraz, 625';
+    const expectedPostalCode = isCapiitolo ? '04116-200' : SABRINA_POSTAL_CODE;
+    if (a?.['@type'] !== 'PostalAddress' || a.streetAddress !== expectedStreet || a.addressLocality !== 'São Paulo' || a.addressRegion !== 'SP' || a.postalCode !== expectedPostalCode || a.addressCountry !== 'BR') fail(page.name, 'Sabrina RealEstateAgent address mismatch');
+    if (sabrinaAgent.priceRange !== 'Consulte condições' || sabrinaAgent.image !== SABRINA_BUSINESS_IMAGE) fail(page.name, 'Sabrina RealEstateAgent recommended fields mismatch');
+    if (!isCapiitolo && sabrinaAgent.logo !== SABRINA_BUSINESS_LOGO) fail(page.name, 'Sabrina RealEstateAgent logo mismatch');
+    const expectedLat = isCapiitolo ? CAPIITOLO_LATITUDE : ESTANDE_LATITUDE;
+    const expectedLng = isCapiitolo ? CAPIITOLO_LONGITUDE : ESTANDE_LONGITUDE;
+    if (Number(sabrinaAgent.geo?.latitude) !== expectedLat || Number(sabrinaAgent.geo?.longitude) !== expectedLng) fail(page.name, 'Sabrina RealEstateAgent geo mismatch');
     if (sabrinaAgent.identifier?.propertyID !== 'CRECI-SP' || sabrinaAgent.identifier?.value !== SABRINA_CRECI) fail(page.name, 'Sabrina RealEstateAgent CRECI identifier mismatch');
   }
 
@@ -254,15 +265,21 @@ for (const page of pages) {
     if (sabrina.sameAs !== SABRINA_PROFILE && ![].concat(sabrina.sameAs ?? []).includes(SABRINA_PROFILE)) fail(page.name, 'Sabrina official Tegra Vendas sameAs missing');
     if (sabrina.identifier?.value !== SABRINA_CRECI) fail(page.name, 'Sabrina CRECI mismatch');
     if (sabrina.image !== SABRINA_BUSINESS_IMAGE) fail(page.name, 'Sabrina Person image mismatch');
+    const expectedWorkLocation = isCapiitolo ? CAPIITOLO_PROJECT_ID : ESTANDE_ID;
+    if (sabrina.workLocation?.['@id'] !== expectedWorkLocation) fail(page.name, 'Sabrina workLocation mismatch');
   }
 
   const service = nodes.find((node) => [].concat(node['@type'] ?? []).includes('Service') && node.broker?.['@id'] === SABRINA_ID);
   if (!service) fail(page.name, 'Sabrina broker Service relation missing');
-  else if (service.provider?.['@id'] !== SABRINA_AGENT_ID) fail(page.name, 'Service provider must reference Sabrina RealEstateAgent');
+  else if (service.provider?.['@id'] !== expectedAgentId) fail(page.name, 'Service provider must reference the page-governed Sabrina RealEstateAgent');
 
-  const estande = typedNode(nodes, ESTANDE_ID, 'Place');
-  if (!estande) fail(page.name, 'Sabrina work Place missing');
-  else if (Number(estande.geo?.latitude) !== ESTANDE_LATITUDE || Number(estande.geo?.longitude) !== ESTANDE_LONGITUDE) fail(page.name, 'Sabrina work Place geo mismatch');
+  const workLocation = isCapiitolo ? typedNode(nodes, CAPIITOLO_PROJECT_ID, 'ApartmentComplex') : typedNode(nodes, ESTANDE_ID, 'Place');
+  if (!workLocation) fail(page.name, 'Sabrina work location entity missing');
+  else {
+    const expectedWorkLat = isCapiitolo ? CAPIITOLO_LATITUDE : ESTANDE_LATITUDE;
+    const expectedWorkLng = isCapiitolo ? CAPIITOLO_LONGITUDE : ESTANDE_LONGITUDE;
+    if (Number(workLocation.geo?.latitude) !== expectedWorkLat || Number(workLocation.geo?.longitude) !== expectedWorkLng) fail(page.name, 'Sabrina work location geo mismatch');
+  }
 
   const phone = nodes.find((node) => node['@id'] === 'https://www.moretegra.com.br/#sabrina-contato' && node.telephone);
   if (phone?.telephone !== SABRINA_PHONE) fail(page.name, 'Sabrina normalized commercial telephone mismatch');

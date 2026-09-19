@@ -717,14 +717,14 @@
     dock.id = "mt-floating-dock";
     dock.setAttribute("aria-label", "Ações rápidas");
     dock.innerHTML = `
+      <a class="mt-floating mt-floating-lead"
+         href="#formulario"
+         aria-label="Receber condições">Receber condições</a>
       <a class="mt-floating mt-floating-whatsapp"
          href="https://wa.me/5511960779328?text=Ol%C3%A1%2C%20quero%20conhecer%20as%20oportunidades%20Tegra%20em%20S%C3%A3o%20Paulo."
          target="_blank"
          rel="noreferrer"
-         aria-label="Conversar pelo WhatsApp">WhatsApp</a>
-      <a class="mt-floating mt-floating-lead"
-         href="#formulario"
-         aria-label="Receber condições">Receber condições</a>
+         aria-label="Conversar pelo WhatsApp"><img src="https://s3-gdigital.s3.amazonaws.com/gdigital/313/whatsapp-removebg.webp" alt="" width="32" height="32" aria-hidden="true"></a>
     `;
 
     document.body.appendChild(dock);

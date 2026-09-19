@@ -229,10 +229,14 @@
       .mnt-price-amount,.mnt-price-value{font:400 clamp(2.35rem,4.4vw,4.8rem)/1 Georgia,serif;letter-spacing:-.04em;margin:0;overflow-wrap:anywhere}
       .mnt-price-reference{margin:0;font-size:clamp(1rem,1.55vw,1.3rem);line-height:1.45;font-weight:750;letter-spacing:-.01em;overflow-wrap:anywhere}
       .mnt-price-note{max-width:620px;color:#bdb8af;margin:18px 0 0;line-height:1.6}
-      .mnt-map-link{display:block;position:relative;margin-top:26px;border:1px solid rgba(10,10,9,.18);border-radius:20px;background:#ddd;text-decoration:none;color:inherit;overflow:hidden;min-height:310px}
-      .mnt-map-frame{display:block;width:100%;height:310px;border:0;pointer-events:none}
-      .mnt-map-cta{position:absolute;left:16px;right:16px;bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:14px 16px;border-radius:14px;background:rgba(23,24,19,.94);color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.28)}
-      .mnt-map-cta strong{display:block}.mnt-map-cta small{display:block;margin-top:3px;color:#ddd8ca}.mnt-map-cta b{white-space:nowrap;color:#EBB92E}
+      .mnt-map-card{overflow:hidden;margin-top:26px;border:1px solid rgba(10,10,9,.18);border-radius:20px;background:#fff}
+      .mnt-map-frame{display:block;width:100%;height:310px;border:0}
+      .mnt-map-actions{display:grid;gap:10px;padding:14px;background:#171813;color:#fff}
+      .mnt-map-copy strong{display:block}.mnt-map-copy small{display:block;margin-top:3px;color:#aaa69b}
+      .mnt-map-buttons{display:grid;grid-template-columns:1fr;gap:8px}
+      .mnt-map-buttons a{display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:999px;padding:0 16px;text-decoration:none;font-size:13px;font-weight:900;text-align:center}
+      .mnt-map-whatsapp{background:#EBB92E;color:#171813}.mnt-map-external{border:1px solid #5f5c54;color:#ddd8ca;background:#24251f}
+      @media(min-width:620px){.mnt-map-actions{grid-template-columns:minmax(0,1fr) auto;align-items:center}.mnt-map-buttons{grid-template-columns:auto auto}}
       .mnt-whatsapp-float{position:fixed;right:18px;bottom:var(--mt-consent-offset,18px);z-index:60;width:56px;height:56px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#25d366;text-decoration:none;box-shadow:0 12px 34px rgba(0,0,0,.25)}
       .mnt-whatsapp-float img{width:32px;height:32px;object-fit:contain}
       .mnt-contact-float{position:fixed;right:86px;bottom:var(--mt-consent-offset,18px);z-index:60;min-height:56px;display:flex;align-items:center;justify-content:center;padding:0 18px;border-radius:999px;background:#EBB92E;color:#171813;text-decoration:none;font-size:.8rem;font-weight:850;line-height:1.15;box-shadow:0 12px 34px rgba(0,0,0,.22)}
@@ -251,7 +255,11 @@
     const pilot = document.querySelector(".pilot");
     if (pilot) pilot.textContent = "CAPIITOLO · Chácara Klabin";
     const footerText = document.querySelector(".footer .footer-in span");
-    if (footerText) footerText.textContent = "AGENDE SEU ATENDIMENTO no CAPIITOLO · Rua Ibaragui Nissui, 166 — Chácara Klabin · São Paulo/SP · CEP 04116-200";
+    if (footerText) {
+      footerText.textContent = "AGENDE SEU ATENDIMENTO no CAPIITOLO · Rua Ibaragui Nissui, 166 — Chácara Klabin · São Paulo/SP · CEP 04116-200";
+      footerText.classList.add("mnt-footer-address");
+      footerText.style.color = "#858178";
+    }
 
     const facts = document.querySelectorAll(".facts .fact");
     const locationFact = facts[3];
@@ -275,10 +283,16 @@
         <p class="eyebrow">Apartamento na Chácara Klabin · localização</p>
         <h2 id="location-title">Viver na Chácara Klabin faz parte do projeto.</h2>
         <p>Veja o ponto do CAPIITOLO na Chácara Klabin. Para receber a localização e organizar a visita, solicite o atendimento pelo WhatsApp.</p>
-        <a class="mnt-map-link" href="${locationWhatsapp}" target="_blank" rel="noopener" aria-label="Solicitar a localização exata do CAPIITOLO pelo WhatsApp">
-          <iframe class="mnt-map-frame" title="Ponto do CAPIITOLO na Chácara Klabin" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=-23.58341615763821,-46.62704356167254&z=16&output=embed" tabindex="-1" aria-hidden="true"></iframe>
-          <span class="mnt-map-cta"><span><strong>Quer receber a localização exata?</strong><small>Toque no mapa e peça a localização pelo WhatsApp.</small></span><b>Solicitar localização →</b></span>
-        </a>`;
+        <div class="mnt-map-card">
+          <iframe class="mnt-map-frame" title="Mapa do CAPIITOLO na Chácara Klabin" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=-23.58341615763821,-46.62704356167254&z=16&output=embed"></iframe>
+          <div class="mnt-map-actions">
+            <span class="mnt-map-copy"><strong>Localização do CAPIITOLO</strong><small>Explore o mapa ou solicite a localização e o agendamento pelo WhatsApp.</small></span>
+            <span class="mnt-map-buttons">
+              <a class="mnt-map-whatsapp" href="${locationWhatsapp}" target="_blank" rel="noopener">Solicitar localização</a>
+              <a class="mnt-map-external" href="https://www.google.com/maps/search/?api=1&query=-23.58341615763821%2C-46.62704356167254" target="_blank" rel="noopener">Abrir no Maps ↗</a>
+            </span>
+          </div>
+        </div>`;
     }
 
     const faqFirst = document.querySelector("#faq details:first-of-type p");
