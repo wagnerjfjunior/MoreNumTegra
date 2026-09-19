@@ -41,7 +41,7 @@ Current `main` preserves:
 - Current CSS keeps `.mt-header nav` hidden below the desktop breakpoint.
 - Primary content, catalog and conversion journeys remain available; this is not a proven blocked journey.
 - PR #133 is the bounded remediation candidate. Local integrated candidate screenshots at ~360/393/400 px show the primary navigation visible without apparent page-level horizontal displacement.
-- `F01_LOCAL_CANDIDATE_VISUAL_VALIDATION = PASS`; production validation pending.
+- `F01_LOCAL_CANDIDATE_VISUAL_VALIDATION = PASS`; supplied lower-page screenshot also shows no required content covered by the floating dock. Production validation pending.
 
 ### M5-01-F02 — Home has no explicit skip-to-content link
 
