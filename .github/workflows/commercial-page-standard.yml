@@ -1,0 +1,29 @@
+name: Commercial page standard validation
+
+on:
+  pull_request:
+    paths:
+      - 'src-greenn/preview/index.html'
+      - 'src-greenn/preview/runtime.js'
+      - 'src-greenn/empreendimentos/**/index.html'
+      - 'experiments/**/index.html'
+      - 'scripts/validate-commercial-page-standard.mjs'
+      - 'docs/content/COMMERCIAL_FOOTER_AND_LOCATION_STANDARD.md'
+      - '.github/workflows/commercial-page-standard.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate commercial page standard
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Show Node version
+        run: node --version
+      - name: Validate commercial page standard
+        run: node scripts/validate-commercial-page-standard.mjs
