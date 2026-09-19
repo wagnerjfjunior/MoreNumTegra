@@ -9,7 +9,7 @@ GitHub `main` é a fonte canônica. Resolver estado live antes de qualquer nova 
 ```text
 CANONICAL_REPOSITORY = wagnerjfjunior/MoreNumTegra
 CANONICAL_BRANCH = main
-MAIN_SHA_OBSERVED = ea52592af1da6721051bb7239db1d33974c34bb7
+MAIN_SHA_OBSERVED = 0e2e6e3a454dd4e3597696b9e9bb9ad909ddb1e8
 PR_123 = MERGED / M5-01 MOBILE REMEDIATION
 PR_132 = MERGED / SEMANTIC ON-PAGE SEO
 OPEN_RUNTIME_QUEUE = PR #133 -> PR #135 -> PR #145 -> PR #137 / ALL NOT_MERGED
@@ -68,7 +68,7 @@ MNT-M5 = ACTIVE
 MNT-M5-01 = IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED
 P0_OPEN = 0
 P1_OPEN = 0
-P2_OPEN = 8
+P2_OPEN = 9
 P3_OPEN = 0
 WBS_PROGRESS_CHANGE = NO
 ```
@@ -83,12 +83,13 @@ Open P2 findings:
 6. F12 — CAPIITOLO ARIA tabs incomplete for keyboard/panel semantics.
 7. F14 — CAPIITOLO mobile horizontal overflow.
 8. F15 — Home fixed dock overlaps Form 46 under high zoom / short reflow.
+9. F16 — CAPIITOLO fixed dock overlaps content/Form 46 under high zoom / short reflow.
 
 Prepared runtime queue:
 - PR #133 — F01/F02 — Ready, not merged.
 - PR #135 — F10/F11/F13 — Ready, stacked on #133, not merged.
 - PR #145 — F15 — Ready, stacked after #135, local candidate PASS.
-- PR #137 — F12/F14 — Ready, not merged, local candidate PASS.
+- PR #137 — F12/F14/F16 — Ready, not merged, local candidate PASS.
 
 Resolved in current `main`:
 
@@ -141,4 +142,4 @@ Do not reopen the Form 46 regression without new evidence.
 
 Authority: `docs/NEXT_SAFE_ACTION.md`.
 
-Preserve the ordered runtime queue (#133 -> #135 -> #137), execute the canonical runtime/device matrix when representative browser/device evidence is available, and keep PR #132 exact runtime deployment first in the Vercel recovery sequence. Do not start M5-02 by sequence alone.
+Preserve the ordered runtime queue (#133 -> #135 -> #145 -> #137), execute the canonical runtime/device matrix when representative browser/device evidence is available, and keep PR #132 exact runtime deployment first in the Vercel recovery sequence. Do not start M5-02 by sequence alone.

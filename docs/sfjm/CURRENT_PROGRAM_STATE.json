@@ -9,7 +9,7 @@
     "active_task_id": "MNT-M5-01",
     "state": "IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED / RUNTIME_QUEUE_PREPARED",
     "pull_request": 122,
-    "repository_head_sha": "ea52592af1da6721051bb7239db1d33974c34bb7",
+    "repository_head_sha": "0e2e6e3a454dd4e3597696b9e9bb9ad909ddb1e8",
     "latest_main_runtime_sha": "353f4a5dba058f2fb60fd4001128f8c857cd6fce",
     "deployment_state": "PROVIDER_BLOCKED / VERCEL build-rate-limit",
     "last_verified_vercel_success_sha": "6e852f1c41ea834aa138e333cef56519f382dc5f",
@@ -45,10 +45,11 @@
       },
       {
         "pr": 137,
-        "head": "e270e5ab199f0d8160e6c628fd597d67a7c529a3",
+        "head": "d8ad43e1c4cd16933576785fab2ecf01d70195e7",
         "findings": [
           "F12",
-          "F14"
+          "F14",
+          "F16"
         ],
         "state": "READY / NOT_MERGED / LOCAL_CANDIDATE_PASS"
       }
@@ -176,14 +177,14 @@
     "capiitolo_post_115_recrawl": "CLOSED / INDEXED / RICH_RESULTS_VALID",
     "project_rich_results_parity": "CLOSED / CAPIITOLO_7 / ELO_DUO_7 / ARIA_7",
     "m4_05r_acceptance": "CLOSED / COMPLETE / ACCEPTED / ZERO_ADDITIONAL_WBS_HOURS",
-    "m5_01_open_findings": "P2=8 / F01 F02 F10 F11 F13 F12 F14 F15",
+    "m5_01_open_findings": "P2=9 / F01 F02 F10 F11 F13 F12 F14 F15 F16",
     "m5_01_runtime_device_validation": "OPEN / NOT_FULLY_OBSERVED",
     "latest_main_deployment": "PROVIDER_BLOCKED / VERCEL build-rate-limit / approved runtime SHA 353f4a5dba058f2fb60fd4001128f8c857cd6fce",
-    "m5_01_runtime_queue": "PR133_READY -> PR135_READY_STACKED -> PR145_READY_STACKED_LOCAL_PASS -> PR137_READY_LOCAL_PASS / NONE_MERGED",
+    "m5_01_runtime_queue": "PR133_READY -> PR135_READY_STACKED -> PR145_READY_STACKED_LOCAL_PASS -> PR137_READY_F12_F14_F16_LOCAL_PASS / NONE_MERGED",
     "production_content_state": "CONFIRMED_PRE_PR132 / HTTP_200 / PR132_MARKERS_ABSENT",
-    "m5_01_capiitolo_local_validation": "F12 USER_REPORTED_PASS / F14 PASS 360_375_393_440 / PRODUCTION_PENDING",
+    "m5_01_capiitolo_local_validation": "F12 USER_REPORTED_PASS / F14 PASS 360_375_393_440 / F16 PASS 150_PERCENT_VISIBLE_200_PERCENT_HIDDEN_FORM46_UNOBSTRUCTED / PRODUCTION_PENDING",
     "m5_01_home_local_validation": "F01 PASS ~360_393_400 / F02 PASS first-tab+focus-transfer / F10_F11_F13 STATIC_PASS_VISUAL_PENDING",
-    "m5_01_qa_candidate_head": "dc6e69adb30427a0afa3995fef86d890fc221378",
+    "m5_01_qa_candidate_head": "01bba0b662923c57756cd7360b57f7babcc01ec8",
     "m5_01_home_reflow_validation": "F15 PASS / 125_PERCENT_DOCK_VISIBLE / 200_PERCENT_DOCK_HIDDEN / FORM46_UNOBSTRUCTED / PRODUCTION_PENDING"
   },
   "infra": {
