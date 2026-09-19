@@ -6,7 +6,13 @@ on:
       - 'src-greenn/preview/index.html'
       - 'src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html'
       - 'src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html'
+      - 'src-greenn/empreendimentos/aria-higienopolis/index.html'
+      - 'src-greenn/moretegra.css'
+      - 'src-greenn/moretegra.js'
+      - 'src-greenn/preview/runtime.js'
+      - 'experiments/capiitolo-editorial-v3/index.html'
       - 'scripts/validate-m4-05r.mjs'
+      - 'scripts/validate-mobile-ui-standard.mjs'
       - '.github/workflows/m4-05r-validation.yml'
   workflow_dispatch:
 
@@ -25,3 +31,5 @@ jobs:
         run: node --version
       - name: Run M4-05R contract validator
         run: node scripts/validate-m4-05r.mjs
+      - name: Run mobile UI standard validator
+        run: node scripts/validate-mobile-ui-standard.mjs
