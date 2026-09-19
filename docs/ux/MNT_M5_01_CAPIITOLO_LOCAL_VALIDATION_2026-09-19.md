@@ -2,7 +2,7 @@
 
 Date: `2026-09-19`  
 Candidate branch: `qa/m5-01-integrated-candidate-20260919`  
-Candidate head observed: `2477f7ccfd584b40ad5c77c7ee96516e45781f40`
+Candidate head observed for final reflow retest: `01bba0b662923c57756cd7360b57f7babcc01ec8`
 
 ## Scope
 
@@ -44,6 +44,26 @@ The Product Authority reported the instructed keyboard interaction as working in
 ```text
 F12_LOCAL_CANDIDATE_KEYBOARD_VALIDATION = USER_REPORTED_PASS
 F12_SOURCE_ARIA_CONTRACT = STATIC_VALIDATED
+PRODUCTION_VALIDATION = PENDING
+```
+
+## F16 — fixed dock overlap under high zoom / short reflow viewport
+
+Initial local 200% browser-zoom validation showed the fixed `Receber condições` and WhatsApp controls covering required CAPIITOLO content.
+
+PR #137 was extended at the runtime injection source so that only the CAPIITOLO fixed controls are hidden when the effective viewport height is `<= 400px`.
+
+Final local validation proved:
+
+- 150% zoom: both fixed controls remain visible;
+- 200% zoom: both fixed controls are hidden;
+- 200% Form 46 view: country, phone and `Enviar solicitação` remain visible and unobstructed.
+
+```text
+F16_LOCAL_CANDIDATE_VALIDATION = PASS
+150_PERCENT_DOCK = VISIBLE
+200_PERCENT_DOCK = HIDDEN
+200_PERCENT_FORM46_OBSTRUCTION = NONE
 PRODUCTION_VALIDATION = PENDING
 ```
 
