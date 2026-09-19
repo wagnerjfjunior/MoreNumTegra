@@ -50,6 +50,8 @@ Current `main` preserves:
 - Home has semantic header/nav/main, but no explicit skip link.
 - Exact-project pages already implement the pattern.
 - Runtime remediation candidate: PR #133, `READY / NOT_MERGED`.
+- Local rebuilt integrated candidate: first Tab exposes the skip link and Enter moves DOM focus to `#conteudo`; `document.activeElement.id === "conteudo"`.
+- `F02_LOCAL_CANDIDATE_VALIDATION = PASS`; production validation pending.
 
 ### M5-01-F10 — Home stage-badge contrast is insufficient for two states
 
