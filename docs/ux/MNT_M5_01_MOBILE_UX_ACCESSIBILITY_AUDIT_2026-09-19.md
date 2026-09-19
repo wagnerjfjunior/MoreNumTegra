@@ -93,6 +93,17 @@ Current `main` preserves:
 - Because the UI opts into ARIA tab semantics, native-button tabbing alone does not complete the tab pattern.
 - Scope is limited to the CAPIITOLO gallery and typology selector; content, images, product facts and Form 46 are unaffected.
 
+
+### M5-01-F14 — CAPIITOLO mobile horizontal overflow
+
+- Evidence: `USER_REPORTED_LOCAL_RUNTIME / VISUAL`
+- Severity: `P2 / MOBILE LAYOUT`
+- The initial integrated candidate showed page-level horizontal overflow around 393–440 px, clipping the hero H1/header pilot.
+- PR #137 was extended with a bounded mobile-hero remediation: smaller mobile H1 clamp, `min-width:0` for nav flex children, and bounded/wrapping pilot badge.
+- No global `overflow-x:hidden` workaround was used.
+- Re-tested locally at 360, 375, 393 and 440 px: no page-level horizontal displacement was observed and the H1/pilot remained inside the viewport.
+- Production validation remains pending.
+
 ### M5-01-C10 — Ária gallery has explicit keyboard navigation
 
 - Evidence: `SOURCE_LEVEL`
@@ -162,6 +173,8 @@ This does not invalidate repository/source findings. It means the newest SEO con
 
 Canonical execution matrix: `docs/ux/MNT_M5_01_RUNTIME_DEVICE_VERIFICATION_MATRIX_2026-09-19.md`.
 
+Local CAPIITOLO candidate evidence is recorded in `docs/ux/MNT_M5_01_CAPIITOLO_LOCAL_VALIDATION_2026-09-19.md`.
+
 Still `NOT_OBSERVED` as an accessibility acceptance set:
 
 - representative keyboard focus order across Home and exact-project pages;
@@ -170,8 +183,8 @@ Still `NOT_OBSERVED` as an accessibility acceptance set:
 - 200% text resize / browser zoom;
 - measured color contrast for states not covered by the static calculations above;
 - adjacent touch-target spacing;
-- horizontal overflow at representative mobile widths;
-- gallery/tab interaction on representative mobile browser.
+- Home and other not-yet-exercised page-level horizontal overflow at representative mobile widths;
+- screen-reader-level interpretation of gallery/tab interaction.
 
 The Product Authority's latest local ZIP visual smoke is treated only as `USER_REPORTED_LOCAL_SMOKE = PASS`, not as proof of the checks above.
 
@@ -180,14 +193,15 @@ The Product Authority's latest local ZIP visual smoke is treated only as `USER_R
 ```text
 P0 = 0 open proven
 P1 = 0 open proven
-P2 = 6 open source-level findings
+P2 = 7 open source/runtime findings
 P3 = 0 open proven
 
 RESOLVED = F03–F09
 REMEDIATION_READY_NOT_MERGED = F01–F02 / PR #133
 NEW_STATIC_CONTRAST_FINDINGS = F10–F11 + F13
 NEW_KEYBOARD_ARIA_FINDING = F12
-REMEDIATION_READY_NOT_MERGED = F01/F02 -> PR #133; F10/F11/F13 -> PR #135; F12 -> PR #137
+NEW_MOBILE_OVERFLOW_FINDING = F14 / LOCAL_CANDIDATE_PASS
+REMEDIATION_READY_NOT_MERGED = F01/F02 -> PR #133; F10/F11/F13 -> PR #135; F12/F14 -> PR #137
 RUNTIME_DEVICE_RESIDUALS = OPEN
 ```
 
