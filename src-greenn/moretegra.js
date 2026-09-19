@@ -1373,6 +1373,24 @@
   start();
 })();
 
+// MNT-M5-01 F02: make skip-link focus transfer explicit across browsers.
+(() => {
+  "use strict";
+
+  document.addEventListener("click", (event) => {
+    const target = event.target instanceof Element ? event.target : null;
+    const skip = target?.closest('a.mt-skip[href="#conteudo"]');
+    if (!skip) return;
+
+    const main = document.getElementById("conteudo");
+    if (!main) return;
+
+    window.requestAnimationFrame(() => {
+      main.focus({preventScroll: false});
+    });
+  });
+})();
+
 // MNT-M2-09 Form 46 lead guard v4.
 // Stores only a short-lived submit timestamp. Never reads or stores visitor PII.
 (() => {
