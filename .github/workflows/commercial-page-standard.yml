@@ -5,6 +5,9 @@ on:
     paths:
       - 'src-greenn/preview/index.html'
       - 'src-greenn/preview/runtime.js'
+      - 'src-greenn/moretegra.js'
+      - 'src-greenn/project-page.js'
+      - 'src-greenn/data/commercial-values.json'
       - 'src-greenn/empreendimentos/**/index.html'
       - 'experiments/**/index.html'
       - 'scripts/validate-commercial-page-standard.mjs'

@@ -16,18 +16,16 @@
       },
       "typologyAvailabilityObservedAt": "2026-09-15",
       "typologyAvailabilitySourceClass": "PRODUCT_AUTHORITY_USER_REPORTED",
-      "sourceUrl": "https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/lapa/caminhos-da-lapa-elo-duo",
       "sourceObservedAt": "2026-09-17",
       "disclaimer": "Valor de referência comercial. Disponibilidade, unidade e condições podem mudar; confirme as condições vigentes no atendimento.",
-      "sourceClass": "TEGRA_OFFICIAL_WEBSITE"
+      "sourceClass": "GOVERNED_COMMERCIAL_REFERENCE"
     },
     "capiitolo-piero-lissoni": {
       "state": "active_reference",
       "priceLabel": "A partir de",
       "price": 3539900,
       "reference": "Ref. 210 m² · unidade 33 · Ago/26 · pagamento à vista",
-      "sourceClass": "TEGRA_OFFICIAL_WEBSITE",
-      "sourceUrl": "https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/chacara-klabin/chacaraklabin",
+      "sourceClass": "GOVERNED_COMMERCIAL_REFERENCE",
       "sourceObservedAt": "2026-09-17",
       "disclaimer": "Valor de referência comercial da Tegra. Unidade, disponibilidade e condições podem mudar; confirme as condições vigentes no atendimento.",
       "inventoryLabel": "Unidade 33 disponível",
@@ -41,7 +39,6 @@
       "price": 501000,
       "reference": "Studio 1510 · 30 m² · R$ 16.700/m² · referência Ago/26",
       "sourceClass": "MORENUMTEGRA_CANONICAL_CATALOG",
-      "sourceUrl": "https://www.moretegra.com.br/",
       "sourceObservedAt": "2026-09-18",
       "disclaimer": "Valor de referência comercial. Disponibilidade, unidade e condições podem mudar; confirme as condições vigentes no atendimento."
     }
