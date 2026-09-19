@@ -23,24 +23,30 @@ assert(homeJs.includes("whatsapp-removebg.webp"), "home WhatsApp floating action
 
 for (const [name, html] of [["Ária", aria], ["Elo Duo", elo]]) {
   assert(html.includes('class="mt-map-card"'), `${name} must use the shared visible map-card pattern`);
-  assert(html.includes('class="mt-map-whatsapp"'), `${name} must expose a separate WhatsApp location CTA`);
-  assert(html.includes('class="mt-map-external"'), `${name} must expose an external Maps CTA`);
-  assert(!html.includes(".mt-map-cta{position:absolute"), `${name} map CTA must not cover the map`);
-  assert(!html.includes("pointer-events:none"), `${name} embedded map must remain interactive`);
+  assert(html.includes('class="mt-map-whatsapp"'), `${name} must expose the yellow WhatsApp location CTA`);
+  assert(html.includes('class="mt-map-hit"'), `${name} map visual must be a WhatsApp click surface`);
+  assert(!html.includes('class="mt-map-external"'), `${name} must not expose an external Maps CTA`);
+  assert(!html.includes("google.com/maps/search"), `${name} must not expose direct Maps navigation`);
+  assert(html.includes("pointer-events:none"), `${name} embedded map must not be zoomable/pannable`);
   assert(html.indexOf('<a class="mt-quick-lead"') < html.indexOf('<a class="mt-quick-whatsapp"'), `${name} floating actions must use lead-left / WhatsApp-right ordering`);
-  assert(html.includes("mt-footer-address"), `${name} footer must use the muted address treatment`);
+  assert(html.includes("mt-footer-address"), `${name} footer must use the governed address treatment`);
 }
 
-assert(aria.includes("Rua%20Coronel%20Jos%C3%A9%20Eus%C3%A9bio%2C%20145"), "Ária map must use the governed project address query");
-assert(elo.includes("-23.517165527430233,-46.71861778788628"), "Elo Duo map must use the governed in-loco coordinates");
+assert(aria.includes("Higien%C3%B3polis%2C%20S%C3%A3o%20Paulo"), "Ária visible map must be neighborhood-level only");
+assert(!aria.includes("Rua%20Coronel%20Jos%C3%A9%20Eus%C3%A9bio%2C%20145"), "Ária exact address must not leak into visible map query");
+assert(elo.includes("Caminhos%20da%20Lapa%2C%20S%C3%A3o%20Paulo"), "Elo Duo visible map must be neighborhood-level only");
+assert(!elo.includes("-23.517165527430233,-46.71861778788628&z="), "Elo Duo exact coordinates must not drive the visible map");
 
 assert(runtime.includes('class="mnt-map-card"'), "CAPIITOLO runtime must use the shared visible map-card pattern");
-assert(runtime.includes('class="mnt-map-whatsapp"'), "CAPIITOLO must expose a separate WhatsApp location CTA");
-assert(runtime.includes('class="mnt-map-external"'), "CAPIITOLO must expose an external Maps CTA");
-assert(!runtime.includes(".mnt-map-cta{position:absolute"), "CAPIITOLO map CTA must not cover the map");
-assert(runtime.includes("-23.58341615763821,-46.62704356167254"), "CAPIITOLO map must preserve the governed coordinates");
+assert(runtime.includes('class="mnt-map-whatsapp"'), "CAPIITOLO must expose the yellow WhatsApp location CTA");
+assert(runtime.includes('class="mnt-map-hit"'), "CAPIITOLO map visual must be a WhatsApp click surface");
+assert(!runtime.includes('class="mnt-map-external"'), "CAPIITOLO must not expose an external Maps CTA");
+assert(!runtime.includes("google.com/maps/search"), "CAPIITOLO must not expose direct Maps navigation");
+assert(runtime.includes("pointer-events:none"), "CAPIITOLO embedded map must not be zoomable/pannable");
+assert(runtime.includes("Ch%C3%A1cara%20Klabin%2C%20S%C3%A3o%20Paulo"), "CAPIITOLO visible map must be neighborhood-level only");
+assert(!runtime.includes("-23.58341615763821,-46.62704356167254&z="), "CAPIITOLO exact coordinates must not drive the visible map");
 assert(capiitolo.includes(".field select{width:100%;min-height:54px;border:1px solid #62625e;border-radius:12px"), "CAPIITOLO selects must read visually as selectable controls");
-assert(capiitolo.includes(".footer-in span{color:#858178"), "CAPIITOLO footer address/contact line must use muted gray");
-assert(homeHtml.includes("mt-footer-address"), "home footer address must use muted address treatment");
+assert(capiitolo.includes("footer-standard"), "CAPIITOLO must use the canonical commercial footer standard");
+assert(homeHtml.includes("mt-footer-address"), "home footer address must use the governed address treatment");
 
 if (!process.exitCode) console.log("PASS: mobile UI standard validation");
