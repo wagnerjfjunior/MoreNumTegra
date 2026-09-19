@@ -30,9 +30,9 @@ M5_01_F15_PR = #145
 M5_01_F15_HEAD = 1bb048701d6eb97404ae7ca58c5f09cf4adf34fe
 M5_01_F15_STATE = READY / CLEAN / NOT_MERGED / STACKED_ON_135 / LOCAL_CANDIDATE_PASS
 
-M5_01_F12_F14_PR = #137
-M5_01_F12_F14_HEAD = e270e5ab199f0d8160e6c628fd597d67a7c529a3
-M5_01_F12_F14_STATE = READY / CLEAN / NOT_MERGED / LOCAL_CANDIDATE_PASS
+M5_01_F12_F14_F16_PR = #137
+M5_01_F12_F14_F16_HEAD = d8ad43e1c4cd16933576785fab2ecf01d70195e7
+M5_01_F12_F14_F16_STATE = READY / CLEAN / NOT_MERGED / LOCAL_CANDIDATE_PASS
 ```
 
 ## Recovery sequence
@@ -147,7 +147,7 @@ After the previous Home remediation release is proven:
 
 - resolve PR #137 exact head against the then-current main;
 - require clean mergeability and successful checks;
-- confirm the diff remains CAPIITOLO editorial ARIA/keyboard behavior only.
+- confirm the diff remains bounded to CAPIITOLO editorial ARIA/mobile-layout work plus the CAPIITOLO-specific runtime fixed-dock reflow rule.
 
 ### R12 — PR #137 release and smoke
 
@@ -156,13 +156,16 @@ Validate:
 - one tab in each list remains in the tab order;
 - active `aria-selected`, `aria-controls` and panel `aria-labelledby` remain synchronized;
 - tab panels expose visible focus when reached;
-- content, product facts and Form 46 remain unchanged.
+- content, product facts and Form 46 contract remain unchanged;
+- 150%/ordinary zoom retains the fixed CAPIITOLO actions;
+- 200%/short reflow hides the fixed actions;
+- Form 46 remains unobstructed at 200%.
 
 ### R13 — M5-01 closure work
 
 After #133, #135, #145 and #137 runtimes are individually proven:
 
-- mark F01/F02/F10/F11/F13/F15/F12/F14 resolved only with matching release evidence;
+- mark F01/F02/F10/F11/F13/F15/F12/F14/F16 resolved only with matching release evidence;
 - finish remaining device/browser residuals;
 - only then decide whether `MNT-M5-01 = COMPLETE_CANDIDATE`.
 
