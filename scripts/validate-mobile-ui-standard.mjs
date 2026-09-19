@@ -29,7 +29,7 @@ for (const [name, html] of [["Ária", aria], ["Elo Duo", elo]]) {
   assert(!html.includes("google.com/maps/search"), `${name} must not expose direct Maps navigation`);
   assert(html.includes("pointer-events:none"), `${name} embedded map must not be zoomable/pannable`);
   assert(html.indexOf('<a class="mt-quick-lead"') < html.indexOf('<a class="mt-quick-whatsapp"'), `${name} floating actions must use lead-left / WhatsApp-right ordering`);
-  assert(html.includes("mt-footer-address"), `${name} footer must use the governed address treatment`);
+  assert(html.includes("data-mnt-footer-address"), `${name} footer must use the governed address treatment`);
 }
 
 assert(aria.includes("Higien%C3%B3polis%2C%20S%C3%A3o%20Paulo"), "Ária visible map must be neighborhood-level only");
@@ -47,6 +47,6 @@ assert(runtime.includes("Ch%C3%A1cara%20Klabin%2C%20S%C3%A3o%20Paulo"), "CAPIITO
 assert(!runtime.includes("-23.58341615763821,-46.62704356167254&z="), "CAPIITOLO exact coordinates must not drive the visible map");
 assert(capiitolo.includes(".field select{width:100%;min-height:54px;border:1px solid #62625e;border-radius:12px"), "CAPIITOLO selects must read visually as selectable controls");
 assert(capiitolo.includes("footer-standard"), "CAPIITOLO must use the canonical commercial footer standard");
-assert(homeHtml.includes("mt-footer-address"), "home footer address must use the governed address treatment");
+assert(homeHtml.includes("data-mnt-footer-address"), "home footer address must use the governed address treatment");
 
 if (!process.exitCode) console.log("PASS: mobile UI standard validation");
