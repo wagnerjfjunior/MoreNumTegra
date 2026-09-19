@@ -92,7 +92,7 @@ MNT-M5 = ACTIVE
 MNT-M5-01 = IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED
 P0_OPEN = 0
 P1_OPEN = 0
-P2_OPEN = 8
+P2_OPEN = 9
 P3_OPEN = 0
 RUNTIME_DEVICE_RESIDUALS = OPEN
 ```
@@ -107,12 +107,13 @@ Open source-level findings:
 - F12 — CAPIITOLO ARIA tab widgets lack complete keyboard/panel semantics.
 - F14 — CAPIITOLO mobile horizontal overflow.
 - F15 — Home fixed dock overlaps required Form 46 controls under high zoom / short reflow.
+- F16 — CAPIITOLO fixed dock overlaps required content/Form 46 under high zoom / short reflow.
 
 Prepared runtime candidates, all NOT_MERGED:
 - PR #133 — F01/F02 — Ready; local candidate PASS for mobile navigation, no-overlap criterion and skip-link focus transfer.
 - PR #135 — F10/F11/F13 — Ready, stacked on #133.
 - PR #145 — F15 — Ready, stacked after #135; local candidate validation PASS (125% dock visible, 200% dock hidden, Form 46 unobstructed).
-- PR #137 — F12/F14 — Ready; local candidate validation PASS, production pending.
+- PR #137 — F12/F14/F16 — Ready; local candidate validation PASS for keyboard tabs, mobile overflow and 150%/200% reflow, production pending.
 
 Resolved findings F03–F09 are documented in the current audit. PR #123 is merged, and later PRs #124–#130 preserve/refine its mobile/footer/map controls.
 
