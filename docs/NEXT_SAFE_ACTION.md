@@ -1,73 +1,76 @@
 # Próxima Ação Segura — MoreNumTegra
 
-Atualizado em `2026-09-18`.
+Atualizado em `2026-09-19`.
 
-## Estado após fechamento SEO pós-release
-
-A frente de validação pós-release foi concluída com evidência externa positiva:
+## Estado canônico resolvido
 
 ```text
-RUNTIME_RELEASE_SHA = 782c25b7229af99d0f1839bbfc6af412a5cb31e7
-VERCEL_STATUS = SUCCESS
+MAIN_SHA = 353f4a5dba058f2fb60fd4001128f8c857cd6fce
 
-HOME_FORM46_PROJECT_CONTEXT_E2E = PASS
-GREEN_SALES_RECEIPT = PASS
+MNT-M4-05R = COMPLETE / ACCEPTED
+M4-05R_ADDITIONAL_WBS_HOURS = 0
 
-GSC_SITEMAP = ACCEPTED
-SITEMAP_URLS = 4
-SITEMAP_ERRORS = 0
-SITEMAP_WARNINGS = 0
+MNT-M5 = ACTIVE
+MNT-M5-01 = IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED
 
-HOME_INDEXATION = INDEXED
-CAPIITOLO_INDEXATION = INDEXED
-ELO_DUO_INDEXATION = INDEXED
-ARIA_INDEXATION = INDEXED
+P0_OPEN = 0
+P1_OPEN = 0
+P2_OPEN = 2
+P3_OPEN = 0
 
-CAPIITOLO_RICH_RESULTS = 7_VALID
-ELO_DUO_RICH_RESULTS = 7_VALID
-ARIA_RICH_RESULTS = 7_VALID
-HOME_RICH_RESULTS = 5_VALID
+FORECAST_TOTAL_HOURS = 1240
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 752
+REMAINING_FORECAST_HOURS = 488
+ACCEPTED_PERCENT = 60.65
 
-ARIA_GOOGLE_CANONICAL = ACCEPTED
-CODE_CHANGE_REQUIRED = NO
+LATEST_MAIN_DEPLOYMENT = PROVIDER_BLOCKED / VERCEL build-rate-limit
 ```
 
-Registros canônicos:
+Canonical records:
 
-- `docs/sfjm/FORM46_HOME_PROJECT_CONTEXT_E2E_VALIDATION_2026-09-18.md`
-- `docs/sfjm/SEO_POST_RELEASE_VALIDATION_2026-09-18.md`
+- `docs/sfjm/MNT_M4_05R_ACCEPTANCE_CLOSURE_2026-09-19.md`
+- `docs/ux/MNT_M5_01_MOBILE_UX_ACCESSIBILITY_AUDIT_2026-09-19.md`
 
 ## Única próxima ação segura
 
-Resolver **o próximo gate/task canônico a partir do WBS e dos documentos de governança vigentes**, sem inferir progresso.
+Complete `MNT-M5-01 — Mobile UX and accessibility audit` with representative runtime/device accessibility verification.
 
-A resolução deve:
+The remaining gate must verify or explicitly retain as `NOT_OBSERVED`:
 
-1. ler o WBS/estado canônico vigente;
-2. verificar explicitamente se há um gate de aceitação ainda aberto, inclusive `M4-05R Acceptance = NOT_YET_DECLARED_COMPLETE`;
-3. identificar o próximo task autorizável sem inventar ordem ou progresso;
-4. manter `accepted_percent = 60.65` e `accepted_scope_equivalent_hours = 752` até existir evidência canônica de aceitação adicional;
-5. não abrir mutação de runtime apenas porque a validação SEO foi encerrada.
+- keyboard focus order;
+- full keyboard operation;
+- screen-reader announcement behavior;
+- 200% text resize / browser zoom;
+- measured color contrast for interactive states;
+- adjacent touch-target spacing;
+- horizontal overflow on representative mobile widths;
+- gallery/tab interaction on representative mobile browser.
 
-## Restrições
+Then adjudicate the two current P2 findings:
 
-- o defeito de contexto do Form 46 da home está encerrado; não reabrir sem nova evidência;
-- sitemap/indexação/Rich Results pós-release estão encerrados; não criar correção SEO sem novo defeito factual;
-- warnings opcionais de Product/Merchant não autorizam dados inventados;
-- não gerar Preview Vercel sem necessidade/autorização;
-- qualquer nova mudança de runtime segue branch/PR e lifecycle governado;
-- somente `main` permanece habilitada para deployment automático.
+1. mobile Home primary navigation hidden below 760px;
+2. Home without explicit skip-to-content.
 
-## Condição de saída
+## Boundaries
 
-Produzir uma decisão explícita, derivada do WBS/governança:
+- M5-01 remains audit-first;
+- a finding is not automatic authorization for runtime mutation;
+- do not start M5-02 by sequence alone;
+- do not create an artificial commit to bypass Vercel build-rate-limit;
+- do not reopen M4-05R, Form 46, sitemap, indexation or Rich Results without new contrary evidence;
+- latest PR #132 production validation waits for the exact approved main deployment.
+
+## Condition of exit
 
 ```text
-CURRENT_WBS_GATE = <resolved canonical state>
-NEXT_TASK = <resolved task id or NO_TASK>
+MNT_M5_01 = COMPLETE_CANDIDATE | IN_PROGRESS
+P0 = <count>
+P1 = <count>
+P2 = <count>
+P3 = <count>
+RUNTIME_DEVICE_RESIDUALS = NONE | <explicit set>
+RUNTIME_REMEDIATION_REQUIRED = YES | NO | NOT_YET_ADJUDICATED
+WBS_PROGRESS_CHANGE = NO
+NEXT_TASK = MNT-M5-02 | NO_TASK
 AUTHORITY_REQUIRED = YES | NO
-RUNTIME_MUTATION_REQUIRED = YES | NO
-WBS_PROGRESS_CHANGE = YES | NO
 ```
-
-Não preencher esses campos por inferência.
