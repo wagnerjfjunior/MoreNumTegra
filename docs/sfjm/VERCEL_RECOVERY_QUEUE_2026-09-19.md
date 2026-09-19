@@ -17,9 +17,17 @@ APPROVED_PENDING_RUNTIME_SHA = 353f4a5dba058f2fb60fd4001128f8c857cd6fce
 APPROVED_PENDING_RUNTIME_SCOPE = PR #132 semantic on-page SEO
 APPROVED_PENDING_RUNTIME_DEPLOYMENT = PROVIDER_BLOCKED / build-rate-limit
 
-M5_01_REMEDIATION_PR = #133
-M5_01_REMEDIATION_HEAD = 5e054b9799159364139be5fce757cc06133269b6
-M5_01_REMEDIATION_STATE = READY / CLEAN / NOT_MERGED
+M5_01_F01_F02_PR = #133
+M5_01_F01_F02_HEAD = 5e054b9799159364139be5fce757cc06133269b6
+M5_01_F01_F02_STATE = READY / CLEAN / NOT_MERGED
+
+M5_01_F10_F11_F13_PR = #135
+M5_01_F10_F11_F13_HEAD = 08b132044ebbec49c0f8f978eff69eb76aac49fb
+M5_01_F10_F11_F13_STATE = READY / CLEAN / NOT_MERGED / STACKED_ON_133
+
+M5_01_F12_PR = #137
+M5_01_F12_HEAD = ccffe32e4197c01264656b30279f01ff8009cd0e
+M5_01_F12_STATE = READY / CLEAN / NOT_MERGED
 ```
 
 ## Recovery sequence
@@ -91,16 +99,50 @@ After a valid merge gate, the resulting new runtime SHA must be deployed and val
 - desktop navigation preserved;
 - Home H1/canonical/robots/Form 46 unchanged.
 
-### R7 — M5-01 closure work
+### R7 — Fresh gate PR #135
 
-After the #133 runtime is proven:
+After #133 is merged, deployed and smoke-tested:
 
-- mark F01/F02 resolved only with matching production evidence;
-- adjudicate F10/F11 color-contrast remediation;
+- re-resolve PR #135 exact head;
+- reconcile its stacked base to the new main without widening scope;
+- require clean mergeability and successful checks;
+- confirm scope remains Home CSS-only contrast remediation for F10/F11/F13.
+
+### R8 — PR #135 release and smoke
+
+Validate:
+- stage-badge contrast treatments;
+- light-footer text contrast treatment;
+- small gold helper-text contrast;
+- no semantic stage/content changes;
+- no visual regression in Home hierarchy.
+
+### R9 — Fresh gate PR #137
+
+After the previous Home remediation release is proven:
+
+- resolve PR #137 exact head against the then-current main;
+- require clean mergeability and successful checks;
+- confirm the diff remains CAPIITOLO editorial ARIA/keyboard behavior only.
+
+### R10 — PR #137 release and smoke
+
+Validate:
+- ArrowLeft/ArrowRight/Home/End on both CAPIITOLO tablists;
+- one tab in each list remains in the tab order;
+- active `aria-selected`, `aria-controls` and panel `aria-labelledby` remain synchronized;
+- tab panels expose visible focus when reached;
+- content, product facts and Form 46 remain unchanged.
+
+### R11 — M5-01 closure work
+
+After #133, #135 and #137 runtimes are individually proven:
+
+- mark F01/F02/F10/F11/F13/F12 resolved only with matching release evidence;
 - finish remaining device/browser residuals;
 - only then decide whether `MNT-M5-01 = COMPLETE_CANDIDATE`.
 
-### R8 — M5-02 gate
+### R12 — M5-02 gate
 
 Do not start `MNT-M5-02 — Core Web Vitals/performance baseline` until M5-01 reaches its own accepted/closed gate or governance explicitly supersedes that sequence.
 
@@ -108,7 +150,7 @@ Do not start `MNT-M5-02 — Core Web Vitals/performance baseline` until M5-01 re
 
 - no artificial deployment commit;
 - no non-main production promotion;
-- no merge of PR #133 while its exact head/scope is unresolved;
+- no merge of PR #133, #135 or #137 while the relevant exact head/scope is unresolved;
 - no Form 46/CRM contract change from this recovery queue;
 - no invented production SHA;
 - `PROVIDER_BLOCKED` is not a code failure.
