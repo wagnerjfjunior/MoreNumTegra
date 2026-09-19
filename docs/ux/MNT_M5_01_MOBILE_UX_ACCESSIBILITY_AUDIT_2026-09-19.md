@@ -72,6 +72,25 @@ Current `main` preserves:
 - These are small-text treatments and do not meet the 4.5:1 normal-text threshold.
 - Exact-project footers use dark backgrounds with materially stronger contrast; this finding is specific to the Home light-footer palette.
 
+### M5-01-F12 — CAPIITOLO ARIA tab widgets are incomplete for keyboard users
+
+- Evidence: `SOURCE_LEVEL`
+- Severity: `P2 / KEYBOARD + ARIA SEMANTICS`
+- Both CAPIITOLO controls declare `role="tablist"`, and dynamically-created controls declare `role="tab"` with `aria-selected`.
+- The current implementation changes scenes/tipologies on click only.
+- It does not implement the expected tab keyboard model (Left/Right, and optionally Home/End), does not rove `tabindex`, and does not associate tabs with a corresponding `role="tabpanel"` through `aria-controls` / `aria-labelledby`.
+- Because the UI opts into ARIA tab semantics, native-button tabbing alone does not complete the tab pattern.
+- Scope is limited to the CAPIITOLO gallery and typology selector; content, images, product facts and Form 46 are unaffected.
+
+### M5-01-C10 — Ária gallery has explicit keyboard navigation
+
+- Evidence: `SOURCE_LEVEL`
+- State: `POSITIVE_CONTROL`
+- Ária uses native buttons for thumbnails and previous/next controls.
+- The gallery also handles `ArrowLeft` / `ArrowRight` at the gallery container and updates `aria-current` on the active thumbnail.
+- This does not by itself prove screen-reader behavior, but source-level keyboard navigation is present.
+
+
 ## 4. Findings resolved in current main
 
 ### M5-01-F03 — Stage-filter accessible state
@@ -148,12 +167,13 @@ The Product Authority's latest local ZIP visual smoke is treated only as `USER_R
 ```text
 P0 = 0 open proven
 P1 = 0 open proven
-P2 = 4 open source-level findings
+P2 = 5 open source-level findings
 P3 = 0 open proven
 
 RESOLVED = F03–F09
 REMEDIATION_READY_NOT_MERGED = F01–F02 / PR #133
 NEW_STATIC_CONTRAST_FINDINGS = F10–F11
+NEW_KEYBOARD_ARIA_FINDING = F12
 RUNTIME_DEVICE_RESIDUALS = OPEN
 ```
 
@@ -163,7 +183,7 @@ RUNTIME_DEVICE_RESIDUALS = OPEN
 MNT_M5_01 = IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED
 RUNTIME_REMEDIATION_REQUIRED = NOT_YET_ADJUDICATED
 WBS_PROGRESS_CHANGE = NO
-NEXT = representative runtime/device accessibility verification, merge/release gate for PR #133 after the pending SEO deployment is validated, and separate remediation design for F10/F11
+NEXT = representative runtime/device accessibility verification, queued release gates for F01/F02 and F10/F11, and bounded remediation design for F12
 ```
 
 Do not start M5-02 merely by sequence until M5-01 reaches its own acceptance gate.
