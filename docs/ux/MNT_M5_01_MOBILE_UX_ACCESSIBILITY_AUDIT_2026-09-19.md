@@ -40,7 +40,8 @@ Current `main` preserves:
 - Severity: `P2 / UX DISCOVERABILITY`
 - Current CSS keeps `.mt-header nav` hidden below the desktop breakpoint.
 - Primary content, catalog and conversion journeys remain available; this is not a proven blocked journey.
-- Decision still required: intentional mobile simplification versus discoverability remediation.
+- PR #133 is the bounded remediation candidate. Local integrated candidate screenshots at ~360/393/400 px show the primary navigation visible without apparent page-level horizontal displacement.
+- `F01_LOCAL_CANDIDATE_VISUAL_VALIDATION = PASS`; production validation pending.
 
 ### M5-01-F02 — Home has no explicit skip-to-content link
 
@@ -174,6 +175,8 @@ This does not invalidate repository/source findings. It means the newest SEO con
 Canonical execution matrix: `docs/ux/MNT_M5_01_RUNTIME_DEVICE_VERIFICATION_MATRIX_2026-09-19.md`.
 
 Local CAPIITOLO candidate evidence is recorded in `docs/ux/MNT_M5_01_CAPIITOLO_LOCAL_VALIDATION_2026-09-19.md`.
+
+Local Home candidate evidence is recorded in `docs/ux/MNT_M5_01_HOME_LOCAL_VALIDATION_2026-09-19.md`.
 
 Still `NOT_OBSERVED` as an accessibility acceptance set:
 
