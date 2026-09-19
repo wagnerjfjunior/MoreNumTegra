@@ -23,8 +23,11 @@ Observed result:
 
 ```text
 F01_LOCAL_CANDIDATE_VISUAL_VALIDATION = PASS
+HOME_FLOATING_DOCK_CONTENT_OVERLAP = NOT_OBSERVED
 PRODUCTION_VALIDATION = PENDING
 ```
+
+Additional supplied local screenshot at ~400 px width and the lower-page/footer area showed the floating lead/WhatsApp actions without obscuring required footer content or links. This is treated as a local visual PASS for the no-covering criterion.
 
 ## F02 — skip-to-content
 
