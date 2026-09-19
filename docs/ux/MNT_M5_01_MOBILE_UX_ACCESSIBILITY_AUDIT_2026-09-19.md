@@ -4,7 +4,7 @@ Status: `IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED`
 
 Reconciled: `2026-09-19`  
 Planning effort: `16h`  
-Canonical repository head observed: `353f4a5dba058f2fb60fd4001128f8c857cd6fce`
+Canonical repository head observed before this docs-only update: `df17eb027060551589514d69ea9211031524d8d4`
 
 ## 1. Evidence boundary
 
@@ -48,7 +48,29 @@ Current `main` preserves:
 - Severity: `P2 / KEYBOARD ACCESSIBILITY`
 - Home has semantic header/nav/main, but no explicit skip link.
 - Exact-project pages already implement the pattern.
-- Runtime remediation remains a separate decision.
+- Runtime remediation candidate: PR #133, `READY / NOT_MERGED`.
+
+### M5-01-F10 — Home stage-badge contrast is insufficient for two states
+
+- Evidence: `SOURCE_LEVEL / STATIC_CONTRAST_CALCULATION`
+- Severity: `P2 / COLOR CONTRAST`
+- Current Home badge text is 10px, bold, white.
+- `Pronto para Morar`: white on `#15864f` = approximately `4.61:1` — passes the 4.5:1 normal-text threshold.
+- `Em construção`: white on `#d96322` = approximately `3.65:1` — fails the 4.5:1 normal-text threshold.
+- `Lançamento`: white on `#a97a00` = approximately `3.84:1` — fails the 4.5:1 normal-text threshold.
+- Remediation must preserve semantic stage distinction; changing text, stage facts or availability semantics is out of scope.
+
+### M5-01-F11 — Home light-footer secondary text contrast is insufficient
+
+- Evidence: `SOURCE_LEVEL / STATIC_CONTRAST_CALCULATION`
+- Severity: `P2 / COLOR CONTRAST`
+- Home footer background is `#ddd8cd`.
+- Disclaimer/address `#77736b` ≈ `3.32:1`.
+- Contact text `#8f8b82` ≈ `2.39:1`.
+- Contact links `#9a968d` ≈ `2.08:1`.
+- Contact strong `#b7b2a8` ≈ `1.49:1`.
+- These are small-text treatments and do not meet the 4.5:1 normal-text threshold.
+- Exact-project footers use dark backgrounds with materially stronger contrast; this finding is specific to the Home light-footer palette.
 
 ## 4. Findings resolved in current main
 
@@ -114,7 +136,7 @@ Still `NOT_OBSERVED` as an accessibility acceptance set:
 - full keyboard operation;
 - screen-reader announcements;
 - 200% text resize / browser zoom;
-- measured color contrast for all interactive states;
+- measured color contrast for states not covered by the static calculations above;
 - adjacent touch-target spacing;
 - horizontal overflow at representative mobile widths;
 - gallery/tab interaction on representative mobile browser.
@@ -126,10 +148,12 @@ The Product Authority's latest local ZIP visual smoke is treated only as `USER_R
 ```text
 P0 = 0 open proven
 P1 = 0 open proven
-P2 = 2 open source-level findings
+P2 = 4 open source-level findings
 P3 = 0 open proven
 
 RESOLVED = F03–F09
+REMEDIATION_READY_NOT_MERGED = F01–F02 / PR #133
+NEW_STATIC_CONTRAST_FINDINGS = F10–F11
 RUNTIME_DEVICE_RESIDUALS = OPEN
 ```
 
@@ -139,7 +163,7 @@ RUNTIME_DEVICE_RESIDUALS = OPEN
 MNT_M5_01 = IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED
 RUNTIME_REMEDIATION_REQUIRED = NOT_YET_ADJUDICATED
 WBS_PROGRESS_CHANGE = NO
-NEXT = representative runtime/device accessibility verification and adjudication of F01/F02
+NEXT = representative runtime/device accessibility verification, merge/release gate for PR #133 after the pending SEO deployment is validated, and separate remediation design for F10/F11
 ```
 
 Do not start M5-02 merely by sequence until M5-01 reaches its own acceptance gate.
