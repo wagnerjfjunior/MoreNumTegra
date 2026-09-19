@@ -108,7 +108,7 @@ Open source-level findings:
 - F14 — CAPIITOLO mobile horizontal overflow.
 
 Prepared runtime candidates, all NOT_MERGED:
-- PR #133 — F01/F02 — Ready.
+- PR #133 — F01/F02 — Ready; F01 local visual candidate PASS, F02 focused skip-link test pending.
 - PR #135 — F10/F11/F13 — Ready, stacked on #133.
 - PR #137 — F12/F14 — Ready; local candidate validation PASS, production pending.
 
