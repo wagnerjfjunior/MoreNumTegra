@@ -245,6 +245,7 @@
       .mnt-contact-float{position:fixed;right:86px;bottom:var(--mt-consent-offset,18px);z-index:60;min-height:56px;display:flex;align-items:center;justify-content:center;padding:0 18px;border-radius:999px;background:#EBB92E;color:#171813;text-decoration:none;font-size:.8rem;font-weight:850;line-height:1.15;box-shadow:0 12px 34px rgba(0,0,0,.22)}
       .mnt-location-link{font-weight:800;color:inherit;text-decoration:underline;text-underline-offset:3px}
       @media(max-width:900px){.mnt-price-grid{grid-template-columns:1fr;gap:28px}.mnt-map-visual{height:280px}.mnt-whatsapp-float{right:12px;width:54px;height:54px}.mnt-contact-float{left:12px;right:76px;min-height:54px}}
+      @media(max-height:400px){.mnt-whatsapp-float,.mnt-contact-float{display:none}}
     `;
     document.head.append(style);
   }
