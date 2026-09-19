@@ -26,9 +26,13 @@ M5_01_F10_F11_F13_PR = #135
 M5_01_F10_F11_F13_HEAD = 08b132044ebbec49c0f8f978eff69eb76aac49fb
 M5_01_F10_F11_F13_STATE = READY / CLEAN / NOT_MERGED / STACKED_ON_133
 
-M5_01_F12_PR = #137
-M5_01_F12_HEAD = ccffe32e4197c01264656b30279f01ff8009cd0e
-M5_01_F12_STATE = READY / CLEAN / NOT_MERGED
+M5_01_F15_PR = #145
+M5_01_F15_HEAD = 1bb048701d6eb97404ae7ca58c5f09cf4adf34fe
+M5_01_F15_STATE = READY / CLEAN / NOT_MERGED / STACKED_ON_135 / LOCAL_CANDIDATE_PASS
+
+M5_01_F12_F14_PR = #137
+M5_01_F12_F14_HEAD = e270e5ab199f0d8160e6c628fd597d67a7c529a3
+M5_01_F12_F14_STATE = READY / CLEAN / NOT_MERGED / LOCAL_CANDIDATE_PASS
 ```
 
 ## Recovery sequence
@@ -120,7 +124,24 @@ Validate:
 - no semantic stage/content changes;
 - no visual regression in Home hierarchy.
 
-### R9 — Fresh gate PR #137
+### R9 — Fresh gate PR #145
+
+After PR #135 is merged, deployed and smoke-tested:
+
+- resolve PR #145 exact head against the then-current main;
+- preserve the single-purpose F15 scope;
+- require clean mergeability and successful checks;
+- confirm 125% retains the dock and 200% hides it in production-equivalent reflow.
+
+### R10 — PR #145 release and smoke
+
+Validate:
+- ordinary zoom keeps the floating dock;
+- 200% reflow hides the dock only when required;
+- Form 46 fields and submit action remain unobstructed;
+- no loss of in-content conversion path.
+
+### R11 — Fresh gate PR #137
 
 After the previous Home remediation release is proven:
 
@@ -128,7 +149,7 @@ After the previous Home remediation release is proven:
 - require clean mergeability and successful checks;
 - confirm the diff remains CAPIITOLO editorial ARIA/keyboard behavior only.
 
-### R10 — PR #137 release and smoke
+### R12 — PR #137 release and smoke
 
 Validate:
 - ArrowLeft/ArrowRight/Home/End on both CAPIITOLO tablists;
@@ -137,15 +158,15 @@ Validate:
 - tab panels expose visible focus when reached;
 - content, product facts and Form 46 remain unchanged.
 
-### R11 — M5-01 closure work
+### R13 — M5-01 closure work
 
-After #133, #135 and #137 runtimes are individually proven:
+After #133, #135, #145 and #137 runtimes are individually proven:
 
-- mark F01/F02/F10/F11/F13/F12 resolved only with matching release evidence;
+- mark F01/F02/F10/F11/F13/F15/F12/F14 resolved only with matching release evidence;
 - finish remaining device/browser residuals;
 - only then decide whether `MNT-M5-01 = COMPLETE_CANDIDATE`.
 
-### R12 — M5-02 gate
+### R14 — M5-02 gate
 
 Do not start `MNT-M5-02 — Core Web Vitals/performance baseline` until M5-01 reaches its own accepted/closed gate or governance explicitly supersedes that sequence.
 
@@ -153,7 +174,7 @@ Do not start `MNT-M5-02 — Core Web Vitals/performance baseline` until M5-01 re
 
 - no artificial deployment commit;
 - no non-main production promotion;
-- no merge of PR #133, #135 or #137 while the relevant exact head/scope is unresolved;
+- no merge of PR #133, #135, #145 or #137 while the relevant exact head/scope is unresolved;
 - no Form 46/CRM contract change from this recovery queue;
 - no invented production SHA;
 - `PROVIDER_BLOCKED` is not a code failure.
