@@ -18,7 +18,7 @@ P1_OPEN = 0
 P2_OPEN = 7
 P3_OPEN = 0
 
-F01/F02 = REMEDIATION_READY_NOT_MERGED / PR #133 / F01_LOCAL_PASS / F02_PENDING
+F01/F02 = REMEDIATION_READY_NOT_MERGED / PR #133 / LOCAL_CANDIDATE_PASS
 F10/F11/F13 = SOURCE_LEVEL_STATIC_CONTRAST_FINDINGS / PR #135 READY
 F12/F14 = CAPIITOLO ARIA_TABS + MOBILE_OVERFLOW / PR #137 READY / LOCAL_CANDIDATE_PASS
 
@@ -71,7 +71,7 @@ The first production action is always the exact approved runtime `353f4a5d...`, 
 ## Current P2 findings
 
 1. F01 — mobile Home primary navigation hidden below 760px; PR #133 ready, not merged; local visual validation PASS at ~360/393/400 px.
-2. F02 — Home without explicit skip-to-content; PR #133 ready, not merged; focused skip-link behavior still NOT_YET_OBSERVED.
+2. F02 — Home without explicit skip-to-content; PR #133 ready, not merged; local candidate PASS: first Tab exposes skip link and Enter moves focus to `#conteudo`.
 3. F10 — Home stage badges: construction/launch text contrast below 4.5:1.
 4. F11 — Home light-footer secondary/contact text contrast below 4.5:1.
 5. F13 — Home small gold helper text slightly below 4.5:1; PR #135 ready.

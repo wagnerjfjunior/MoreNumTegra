@@ -2,7 +2,7 @@
 
 Date: `2026-09-19`  
 Candidate branch: `qa/m5-01-integrated-candidate-20260919`  
-Candidate head observed: `2477f7ccfd584b40ad5c77c7ee96516e45781f40`
+Candidate head observed for final skip-link retest: `dc6e69adb30427a0afa3995fef86d890fc221378`
 
 ## F01 — mobile primary navigation
 
@@ -31,19 +31,21 @@ Additional supplied local screenshot at ~400 px width and the lower-page/footer 
 
 ## F02 — skip-to-content
 
-The supplied screenshots do not show the skip link in its focused state.
+Local Chrome validation on the rebuilt integrated candidate proved both required behaviors:
+
+1. after reload, the first Tab exposes the visible `Ir para o conteúdo` skip link with a clear focus indicator;
+2. after Enter, DevTools `document.activeElement.id` returned exactly `"conteudo"`.
+
+The earlier build exposed the skip link but did not transfer DOM focus. PR #133 was revised with an explicit vanilla-JS focus transfer and the rebuilt QA candidate was re-tested successfully.
 
 ```text
-F02_LOCAL_CANDIDATE_VALIDATION = NOT_YET_OBSERVED
+SKIP_LINK_VISIBLE_ON_FIRST_TAB = PASS
+SKIP_LINK_FOCUS_INDICATOR = PASS
+SKIP_LINK_ACTIVATION_TARGET = #conteudo
+DOCUMENT_ACTIVE_ELEMENT_ID_AFTER_ENTER = conteudo
+F02_LOCAL_CANDIDATE_VALIDATION = PASS
+PRODUCTION_VALIDATION = PENDING
 ```
-
-Required follow-up:
-
-1. reload Home at the top;
-2. press Tab once;
-3. confirm `Ir para o conteúdo` becomes visibly focused;
-4. press Enter;
-5. confirm focus moves to `#conteudo`.
 
 ## Contrast findings
 
