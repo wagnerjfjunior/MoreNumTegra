@@ -160,6 +160,8 @@ This does not invalidate repository/source findings. It means the newest SEO con
 
 ## 6. Remaining runtime/device verification
 
+Canonical execution matrix: `docs/ux/MNT_M5_01_RUNTIME_DEVICE_VERIFICATION_MATRIX_2026-09-19.md`.
+
 Still `NOT_OBSERVED` as an accessibility acceptance set:
 
 - representative keyboard focus order across Home and exact-project pages;
