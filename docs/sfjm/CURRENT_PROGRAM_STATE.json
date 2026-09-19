@@ -7,14 +7,43 @@
   "current_execution": {
     "active_phase_id": "MNT-M5",
     "active_task_id": "MNT-M5-01",
-    "state": "IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED",
+    "state": "IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED / RUNTIME_QUEUE_PREPARED",
     "pull_request": 122,
-    "repository_head_sha": "353f4a5dba058f2fb60fd4001128f8c857cd6fce",
+    "repository_head_sha": "9f303d8265972269db078198f7e8eeef0ed64c4e",
     "latest_main_runtime_sha": "353f4a5dba058f2fb60fd4001128f8c857cd6fce",
     "deployment_state": "PROVIDER_BLOCKED / VERCEL build-rate-limit",
     "last_verified_vercel_success_sha": "6e852f1c41ea834aa138e333cef56519f382dc5f",
     "production_exact_sha": "NOT_REVALIDATED_AFTER_BLOCK",
-    "authority_record": "docs/ux/MNT_M5_01_MOBILE_UX_ACCESSIBILITY_AUDIT_2026-09-19.md"
+    "authority_record": "docs/ux/MNT_M5_01_MOBILE_UX_ACCESSIBILITY_AUDIT_2026-09-19.md",
+    "remediation_queue": [
+      {
+        "pr": 133,
+        "head": "5e054b9799159364139be5fce757cc06133269b6",
+        "findings": [
+          "F01",
+          "F02"
+        ],
+        "state": "READY / NOT_MERGED"
+      },
+      {
+        "pr": 135,
+        "head": "08b132044ebbec49c0f8f978eff69eb76aac49fb",
+        "findings": [
+          "F10",
+          "F11",
+          "F13"
+        ],
+        "state": "READY / NOT_MERGED / STACKED_ON_133"
+      },
+      {
+        "pr": 137,
+        "head": "ccffe32e4197c01264656b30279f01ff8009cd0e",
+        "findings": [
+          "F12"
+        ],
+        "state": "READY / NOT_MERGED"
+      }
+    ]
   },
   "progress": {
     "forecast_total_hours": 1240,
@@ -116,7 +145,7 @@
   "next": {
     "task_id": "MNT-M5-01",
     "state": "IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED",
-    "safe_action": "Complete representative runtime/device accessibility verification and adjudicate the two remaining P2 findings. Do not start M5-02 by sequence alone."
+    "safe_action": "Preserve runtime queue #133 -> #135 -> #137 while PR #132 deployment is provider-blocked; continue source-level checks and retain representative browser/device checks as NOT_OBSERVED. Do not start M5-02 by sequence alone."
   },
   "cross_project": {
     "commercial_catalog": {
@@ -137,9 +166,10 @@
     "capiitolo_post_115_recrawl": "CLOSED / INDEXED / RICH_RESULTS_VALID",
     "project_rich_results_parity": "CLOSED / CAPIITOLO_7 / ELO_DUO_7 / ARIA_7",
     "m4_05r_acceptance": "CLOSED / COMPLETE / ACCEPTED / ZERO_ADDITIONAL_WBS_HOURS",
-    "m5_01_open_findings": "P2=2 / HOME_MOBILE_NAV_HIDDEN / HOME_SKIP_LINK_ABSENT",
+    "m5_01_open_findings": "P2=6 / F01 F02 F10 F11 F13 F12",
     "m5_01_runtime_device_validation": "OPEN / NOT_FULLY_OBSERVED",
-    "latest_main_deployment": "PROVIDER_BLOCKED / VERCEL build-rate-limit / SHA 353f4a5dba058f2fb60fd4001128f8c857cd6fce"
+    "latest_main_deployment": "PROVIDER_BLOCKED / VERCEL build-rate-limit / SHA 353f4a5dba058f2fb60fd4001128f8c857cd6fce",
+    "m5_01_runtime_queue": "PR133_READY -> PR135_READY_STACKED -> PR137_READY / NONE_MERGED"
   },
   "infra": {
     "dns_authority": "CLOUDFLARE_DNS_ONLY",
