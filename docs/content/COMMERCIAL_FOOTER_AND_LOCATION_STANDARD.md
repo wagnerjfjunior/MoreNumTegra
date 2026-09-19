@@ -89,6 +89,20 @@ Commercial pages must expose:
 
 These hooks are governance/validation hooks and must not be repurposed.
 
+### Footer address presentation
+
+The visible page-specific address inside `data-mnt-footer-address` must be visually neutral and must **inherit the same font family, font size, font weight and color as the disclaimer paragraph that contains it**.
+
+Forbidden:
+- bold or semibold emphasis;
+- a different font family;
+- a larger or smaller font size;
+- a distinct color;
+- badge/pill treatment;
+- separate line styling intended to call attention to the address.
+
+The purpose is factual parity with structured data without giving the exact address visual prominence.
+
 ## 6. Tegra corporate-site isolation
 
 Public MoreNumTegra commercial HTML and browser-delivered JavaScript must not expose or depend on Tegra corporate website URLs.
