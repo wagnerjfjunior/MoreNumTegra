@@ -212,8 +212,8 @@ META NOT_PROVEN != META DOES_NOT_EXIST
 | MNT-M5-04 | Regression of filters, touch and mobile controls | 16 | COMPLETE / PRODUCTION_REGRESSION_PASS / PHYSICAL_DEVICE_NOT_OBSERVED |
 | MNT-M5-05 | Conversion architecture | 16 | COMPLETE / ARCHITECTURE_CANONICALIZED / NO_RUNTIME_MUTATION |
 | MNT-M5-06 | CTA/form journey optimization design | 16 | COMPLETE / PRODUCTION_JOURNEY_PASS / SEARCH_VARIANT_PRESERVED |
-| MNT-M5-07 | Lead semantics and lead-validity contract | 16 | PLANNED |
-| MNT-M5-08 | Green/Form 46 CRM handoff contract | 16 | PLANNED |
+| MNT-M5-07 | Lead semantics and lead-validity contract | 16 | ACTIVE / DECISION_REQUIRED / NO_RUNTIME_MUTATION |
+| MNT-M5-08 | Green/Form 46 CRM handoff contract | 16 | PLANNED / BLOCKED_BY_M5_07_DECISION_AND_ACCEPTANCE |
 | MNT-M5-09 | Form/CTA conversion QA | 16 | PLANNED |
 | MNT-M5-10 | Authorized performance remediation | 24 | PLANNED_NOT_AUTHORIZED |
 
@@ -262,11 +262,12 @@ MNT-M5 ACTIVE
   M5-04 COMPLETE / PRODUCTION_REGRESSION_PASS / PHYSICAL_DEVICE_NOT_OBSERVED
   M5-05 COMPLETE / ARCHITECTURE_CANONICALIZED / NO_RUNTIME_MUTATION
   M5-06 COMPLETE / PRODUCTION_JOURNEY_PASS / SEARCH_VARIANT_PRESERVED
-  M5-07 AUTHORIZED / READY_TO_START
+  M5-07 ACTIVE / DECISION_REQUIRED / NO_RUNTIME_MUTATION
+  M5-08 PLANNED / BLOCKED_BY_M5_07_DECISION_AND_ACCEPTANCE
   M5-10 PLANNED_NOT_AUTHORIZED
 ```
 
-Product Authority's continuing authorization permits planned task execution and governed Ready/merge lifecycle, stopping at material decisions. Explicit hard blocks are not overridden.
+M5-07 is stopped at one material Product Authority decision: reuse `negotiate_scenario` for payment simulation or add a new canonical `payment_simulation` intent type.
 
 Consumers must use `CURRENT_PROGRAM_STATE.json` for current lifecycle/progress and this WBS for structure/planning hours.
 
