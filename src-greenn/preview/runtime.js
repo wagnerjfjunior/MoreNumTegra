@@ -468,7 +468,7 @@
         setPendingLead();
         showMessage(status, "Solicitação recebida. Redirecionando...");
         const query = safeProviderQuery(body?.query_params || "");
-        window.location.assign(`/obrigado${query}`);
+        window.location.assign(`/obrigado/${query}`);
       } catch (cause) {
         const timedOut = cause?.name === "AbortError";
         showMessage(error, timedOut ? "O envio demorou além do esperado. Tente novamente." : "Não foi possível enviar agora. Verifique sua conexão e tente novamente.");
