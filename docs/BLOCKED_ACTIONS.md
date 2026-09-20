@@ -141,7 +141,8 @@ Permanece bloqueado sem gate específico:
 
 ## 8. MNT-RESF / programa
 
-- MNT-M5-02 permanece bloqueado até autorização explícita da Product Authority; o aceite de M5-01 não autoriza execução por sequência;
+- MNT-M5-03 permanece bloqueado até autorização explícita da Product Authority; a conclusão de M5-02 não autoriza execução por sequência;
+- MNT-M5-10 — performance remediation — permanece explicitamente não autorizado; findings de baseline/strategy não autorizam mutação de runtime;
 - task planejada != task autorizada;
 - merge de uma task != autorização automática da próxima;
 - Product Authority continua sendo necessária para lifecycle material;

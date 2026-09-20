@@ -2,24 +2,26 @@
 
 Atualizado em `2026-09-20`.
 
-Fonte canônica: GitHub `main`. O estado live deve ser resolvido novamente antes de qualquer mutação.
+Fonte canônica: GitHub `main`. Resolver o estado live antes de qualquer mutação.
 
 ## 1. Estado integrado
 
 ```text
-ACCEPTANCE_RUNTIME_SHA = 6aec388443410a2bff4d7c7a8ddff9d90224d8c9
+CANONICAL_MAIN_BEFORE_THIS_DOCS_CHANGE = d7b37bb3a510258d93850ffeae8eebb0be3856b6
+EFFECTIVE_PRODUCTION_RUNTIME_SHA = 6aec388443410a2bff4d7c7a8ddff9d90224d8c9
+
 MNT-M4-05R = COMPLETE / ACCEPTED
 MNT-M5 = ACTIVE
 MNT-M5-01 = COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS
-MNT-M5-02 = PLANNED / NOT_AUTHORIZED_BY_SEQUENCE
+MNT-M5-02 = COMPLETE / LAB_BASELINE_ESTABLISHED / FIELD_CWV_NOT_OBSERVED
+MNT-M5-03 = PLANNED / AUTHORIZATION_REQUIRED / NOT_AUTHORIZED_BY_SEQUENCE
+MNT-M5-10 = PLANNED_NOT_AUTHORIZED
 
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 768
-REMAINING_FORECAST_HOURS = 472
-ACCEPTED_PERCENT = 61.94
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 784
+REMAINING_FORECAST_HOURS = 456
+ACCEPTED_PERCENT = 63.23
 ```
-
-M5-01 contributes its governed 16h planning scope only after the acceptance gate was closed.
 
 ## 2. Production / Vercel
 
@@ -31,56 +33,52 @@ PRODUCTION_STATE = READY
 CURRENT_RATE_LIMIT_BLOCK = NO
 ```
 
-PR #178 is the latest runtime change in the accepted M5-01 chain.
+The newer docs-only `main` state did not replace runtime because Vercel's Ignored Build Step canceled the documentation deployment as designed.
 
-## 3. M5-01 acceptance
+## 3. M5-01
 
-Final Production acceptance run:
+M5-01 remains closed under:
+
+`docs/sfjm/MNT_M5_01_PRODUCTION_ACCEPTANCE_CLOSURE_2026-09-20.md`.
+
+The two accepted evidence residuals remain explicit and are not converted into PASS.
+
+## 4. M5-02 performance baseline
+
+Canonical evidence:
+
+`docs/performance/MNT_M5_02_PRODUCTION_PERFORMANCE_BASELINE_2026-09-20.md`
+
+Diagnostic run:
 
 ```text
-RUN = 35537580700
+RUN = 35538473832
 RESULT = SUCCESS
-PASS = 100
-FAIL = 0
-NOT_OBSERVED = 2
-TOTAL = 102
-P0_OPEN = 0
-P1_OPEN = 0
-P2_OPEN = 0
-P3_OPEN = 0
+ARTIFACT = 10612579543
+METHOD = Lighthouse 13.5 mobile / 393x852 / simulated throttling / 3 runs per route / medians
 ```
 
-The prior run `35536868292` had one real residual at Home / WebKit / C02-ACCEPT. PR #178 bounded the fix to the consent focus-release path and the final Production run passed the same case.
+Lab medians:
 
-Explicit residuals retained:
+| Route | LCP | LCP target | CLS | CLS target |
+|---|---:|---|---:|---|
+| Home | 1,346 ms | PASS | 0.0131 | PASS |
+| CAPIITOLO | 5,493 ms | FAIL | 0.0012 | PASS |
+| Elo Duo | 8,234 ms | FAIL | 0.0299 | PASS |
+| Ária Higienópolis | 5,357 ms | FAIL | 0.0281 | PASS |
 
-- real screen-reader session: `NOT_OBSERVED / ACCEPTED_RESIDUAL / NOT_PASS`;
-- real physical-device touch validation: `NOT_OBSERVED / ACCEPTED_RESIDUAL / NOT_PASS`.
+Field CWV/INP is `NOT_OBSERVED`. The PageSpeed/CrUX probe returned HTTP 429 provider quota; TBT is not substituted for INP.
 
-These are accepted as non-blocking for M5-01 only. They are not accessibility certification evidence.
+The project-page LCP elements are hero JPEG images and Lighthouse reports material image-delivery savings. This is evidence for the next strategy task, not runtime-remediation authority.
 
-Canonical closure: `docs/sfjm/MNT_M5_01_PRODUCTION_ACCEPTANCE_CLOSURE_2026-09-20.md`.
+## 5. Form 46 / Measurement / Search
 
-## 4. Form 46 / measurement
-
-No contract change and no regression evidence.
-
-```text
-provider = Green Sales / GDigital
-tenant_id = 313
-form_id = 46
-title = MoreEmUmTegra
-POST = https://back.gdigital.com.br/form/register
-```
-
-The final matrix validated invalid-input behavior without sending a real lead.
-
-## 5. Search / canonical baseline
-
-No SEO, canonical, DNS, structured-data or commercial-content mutation was part of PR #178 or the M5-01 acceptance closure.
+No Form 46 submission, GTM mutation, SEO/canonical change, DNS change, commercial-content change or runtime code mutation occurred in M5-02.
 
 ## 6. Immediate next safe action
 
 Authority: `docs/NEXT_SAFE_ACTION.md`.
 
-M5-02 does not become executable by sequence. The next safe action is an explicit Product Authority decision on whether to authorize MNT-M5-02.
+Obtain explicit Product Authority authorization before starting **MNT-M5-03 — Media/image/video performance strategy**.
+
+Do not start M5-03 by sequence alone. Do not perform M5-10 performance remediation from M5-02 evidence.

@@ -2,49 +2,49 @@
 
 Atualizado em `2026-09-20`.
 
-## Estado após aceite M5-01
+## Estado após M5-02
 
 ```text
-ACCEPTANCE_RUNTIME_SHA = 6aec388443410a2bff4d7c7a8ddff9d90224d8c9
 MNT-M5 = ACTIVE
 MNT-M5-01 = COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS
-P0_OPEN = 0
-P1_OPEN = 0
-P2_OPEN = 0
-P3_OPEN = 0
+MNT-M5-02 = COMPLETE / LAB_BASELINE_ESTABLISHED / FIELD_CWV_NOT_OBSERVED
+MNT-M5-03 = PLANNED / AUTHORIZATION_REQUIRED / NOT_AUTHORIZED_BY_SEQUENCE
+MNT-M5-10 = PLANNED_NOT_AUTHORIZED
 
+EFFECTIVE_PRODUCTION_RUNTIME_SHA = 6aec388443410a2bff4d7c7a8ddff9d90224d8c9
 PRODUCTION_DEPLOYMENT = dpl_HTzsFxSeTmpqFjyNRwMNrPXvcBLD
-PRODUCTION_SOURCE_SHA = 6aec388443410a2bff4d7c7a8ddff9d90224d8c9
 PRODUCTION_STATE = READY
-FINAL_ACCEPTANCE_RUN = 35537580700
-FINAL_MATRIX = 100 PASS / 0 FAIL / 2 NOT_OBSERVED / 102
-```
 
-The two remaining evidence gaps are explicitly adjudicated residuals, not PASS:
-
-```text
-SCREEN_READER = NOT_OBSERVED / ACCEPTED_RESIDUAL / NOT_PASS
-PHYSICAL_DEVICE = NOT_OBSERVED / ACCEPTED_RESIDUAL / NOT_PASS
+M5_02_RUN = 35538473832
+HOME_LAB_LCP = 1346 ms / PASS
+CAPIITOLO_LAB_LCP = 5493 ms / FAIL
+ELO_DUO_LAB_LCP = 8234 ms / FAIL
+ARIA_LAB_LCP = 5357 ms / FAIL
+LAB_CLS = PASS_ALL_ROUTES
+FIELD_CWV_INP = NOT_OBSERVED / PSI_API_429_PROVIDER_QUOTA
 ```
 
 ## Única próxima ação segura
 
-Obter decisão explícita da Product Authority sobre **autorizar ou não MNT-M5-02 — Core Web Vitals/performance baseline**.
+Obter decisão explícita da Product Authority sobre **autorizar ou não MNT-M5-03 — Media/image/video performance strategy**.
 
 Until that decision:
 
-- MNT-M5-02 remains `PLANNED / AUTHORIZATION_REQUIRED / NOT_AUTHORIZED_BY_SEQUENCE`;
-- do not start performance/runtime mutation;
-- do not infer authorization from M5-01 completion;
-- do not alter Form 46, GTM, SEO, canonical, DNS, content or Vercel configuration as part of this gate.
+- do not start M5-03 by sequence;
+- do not modify production media/assets;
+- do not convert/recompress/replace hero images;
+- do not alter preload/fetchpriority behavior;
+- do not alter GTM/GA4 to chase Lighthouse unused-JS diagnostics;
+- do not execute MNT-M5-10 performance remediation;
+- preserve Form 46, SEO/canonical, DNS, content and Vercel configuration.
 
-## Evidência do gate anterior
+## Evidence
 
-- `docs/sfjm/MNT_M5_01_PRODUCTION_ACCEPTANCE_CLOSURE_2026-09-20.md`;
-- `docs/ux/MNT_M5_01_RUNTIME_DEVICE_VERIFICATION_MATRIX_2026-09-19.md`;
-- `handoffs/HANDOFF-2026-09-20-M5-01-PRODUCTION-ACCEPTED.md`;
-- GitHub Actions run `35537580700`.
+- `docs/performance/MNT_M5_02_PRODUCTION_PERFORMANCE_BASELINE_2026-09-20.md`;
+- GitHub Actions run `35538473832`;
+- artifact `10612579543`;
+- `handoffs/HANDOFF-2026-09-20-M5-02-PERFORMANCE-BASELINE.md`.
 
 ## Diagnostic cleanup
 
-PR #176 is diagnostic-only and must never be merged into runtime. After this closure package is merged to canonical `main`, close PR #176.
+PR #180 is diagnostic-only and must never be merged into runtime. Close it after this M5-02 evidence package is canonical in `main`.

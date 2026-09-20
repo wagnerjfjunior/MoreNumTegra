@@ -29,7 +29,7 @@ The program forecast is a planning model, not a timesheet.
 - `CURRENT_PROGRAM_STATE.json` owns current lifecycle/progress;
 - `PROGRAM_TASK_GRAPH.json` owns hierarchy/planning hours.
 
-Current planning forecast when this revision is integrated:
+Historical planning-state snapshot retained from the 2026-09-10 planning baseline. **Do not use the State/Accepted columns below as current lifecycle truth; `docs/sfjm/CURRENT_PROGRAM_STATE.json` owns current lifecycle/progress.**
 
 | Phase | Name | State | Hours | Accepted |
 |---|---|---|---:|---:|
@@ -43,9 +43,7 @@ Current planning forecast when this revision is integrated:
 | MNT-M7 | QA, Release, Observability & Learning Loop | PLANNED | 192 | 0 |
 | **TOTAL** |  |  | **1240** | **376** |
 
-Accepted/completed scope-equivalent effort: `376h`  
-Remaining forecast: `864h`  
-Program progress: `30.32%`
+At that historical planning-state snapshot: accepted/completed scope-equivalent effort `376h`, remaining forecast `864h`, program progress `30.32%`. Current values are resolved only from `docs/sfjm/CURRENT_PROGRAM_STATE.json`.
 
 Program progress is not V1 product readiness. Commercial V1 remains operational.
 
@@ -204,12 +202,12 @@ META NOT_PROVEN != META DOES_NOT_EXIST
 | MNT-M4-08 | Implement prioritized content/architecture | 32 | PLANNED_NOT_AUTHORIZED |
 | MNT-M4-09 | Resolve technical SEO residuals: sitemap/www/canonical where capability permits | 24 | PLANNED_NOT_AUTHORIZED |
 
-### MNT-M5 — UX, Performance, Conversion, Lead & CRM — 168h — PLANNED
+### MNT-M5 — UX, Performance, Conversion, Lead & CRM — 168h — ACTIVE
 
 | ID | Activity | Hours | State |
 |---|---|---:|---|
-| MNT-M5-01 | Mobile UX and accessibility audit | 16 | PLANNED |
-| MNT-M5-02 | Core Web Vitals/performance baseline | 16 | PLANNED |
+| MNT-M5-01 | Mobile UX and accessibility audit | 16 | COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS |
+| MNT-M5-02 | Core Web Vitals/performance baseline | 16 | COMPLETE / LAB_BASELINE_ESTABLISHED / FIELD_CWV_NOT_OBSERVED |
 | MNT-M5-03 | Media/image/video performance strategy | 16 | PLANNED |
 | MNT-M5-04 | Regression of filters, touch and mobile controls | 16 | PLANNED |
 | MNT-M5-05 | Conversion architecture | 16 | PLANNED |
@@ -254,26 +252,17 @@ Performance targets retained: LCP <= 2.5s, INP <= 200ms, CLS <= 0.1.
 
 ## 4. Current journey position
 
+Current lifecycle authority is `docs/sfjm/CURRENT_PROGRAM_STATE.json`.
+
 ```text
-MNT-M0 COMPLETE
--> MNT-M1 COMPLETE
--> MNT-M2 ACTIVE
-     M2-01 COMPLETE
-     M2-02 COMPLETE
-     M2-03 COMPLETE
-     M2-04 COMPLETE
-     M2-05 COMPLETE
-     M2-06 COMPLETE
-     M2-07 COMPLETE
-     M2-08 COMPLETE
-     M2-09 COMPLETE
-     M2-10 PLANNED / NEXT / EXECUTION_NOT_AUTHORIZED
--> MNT-M3 PLANNED
--> MNT-M4 PLANNED
--> MNT-M5 PLANNED
--> MNT-M6 PLANNED
--> MNT-M7 PLANNED
+MNT-M5 ACTIVE
+  M5-01 COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS
+  M5-02 COMPLETE / LAB_BASELINE_ESTABLISHED / FIELD_CWV_NOT_OBSERVED
+  M5-03 PLANNED / AUTHORIZATION_REQUIRED / NOT_AUTHORIZED_BY_SEQUENCE
+  M5-10 PLANNED_NOT_AUTHORIZED
 ```
+
+Earlier phase/task lifecycle detail is intentionally not re-derived here from the historical planning snapshot. Consumers must use `CURRENT_PROGRAM_STATE.json` for current lifecycle/progress and this WBS for program structure/planning hours.
 
 No planned task becomes executable by sequence alone. `docs/NEXT_SAFE_ACTION.md` owns execution authority.
 
