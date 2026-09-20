@@ -230,6 +230,8 @@ Shared Elo Duo/Ária Form 46 touch-target evidence is recorded in `docs/ux/MNT_M
 
 CAPIITOLO Form 46 touch-target evidence is recorded in `docs/ux/MNT_M5_01_CAPIITOLO_FORM46_TOUCH_TARGET_VALIDATION_2026-09-20.md`.
 
+CAPIITOLO gallery touch-target evidence is recorded in `docs/ux/MNT_M5_01_CAPIITOLO_GALLERY_TOUCH_TARGET_VALIDATION_2026-09-20.md`.
+
 Still `NOT_OBSERVED` as an accessibility acceptance set:
 
 - representative keyboard focus order is locally PASS on Home, CAPIITOLO, Elo Duo and Ária; production/cross-browser confirmation remains pending;
