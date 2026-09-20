@@ -1,25 +1,28 @@
 # Vercel Recovery Queue — MoreNumTegra
 
-Status: `ACTIVE / PROVIDER_BLOCKED`  
-Updated: `2026-09-19`
+Status: `ACTIVE / DEPLOYMENT_PENDING / HISTORICAL_RATE_LIMIT_NOT_REPROVEN`  
+Updated: `2026-09-20`
 
 ## Purpose
 
-Preserve the exact ordered actions that must resume when the current Vercel `build-rate-limit` block clears. This runbook does not authorize artificial commits, deployment drift or automatic merging of later runtime PRs.
+Preserve the exact ordered actions that must resume when the approved runtime can be safely redeployed after rechecking the historical Vercel `build-rate-limit` state. This runbook does not authorize artificial commits, deployment drift or automatic merging of later runtime PRs.
 
 ## Current identities
 
 ```text
 CANONICAL_REPOSITORY = wagnerjfjunior/MoreNumTegra
-CURRENT_MAIN_BEFORE_THIS_DOCS_PR = df17eb027060551589514d69ea9211031524d8d4
+CURRENT_MAIN_BEFORE_THIS_DOCS_PR = 50cc466e778feb2de38a5241b4b2820c6b1ea016
 
 APPROVED_PENDING_RUNTIME_SHA = 353f4a5dba058f2fb60fd4001128f8c857cd6fce
 APPROVED_PENDING_RUNTIME_SCOPE = PR #132 semantic on-page SEO
-APPROVED_PENDING_RUNTIME_DEPLOYMENT = PROVIDER_BLOCKED / build-rate-limit
+HISTORICAL_STATUS_FOR_APPROVED_RUNTIME = FAILURE / build-rate-limit
+CURRENT_MORENUMTEGRA_RATE_LIMIT = NOT_REPROVEN
+CURRENT_PRODUCTION_DEPLOYMENT = dpl_H6KtyTDQHHAaWxx4FXHSUJBk97HK / READY
+CURRENT_PRODUCTION_SHA = 82fd666596b283d1ff5645776ba892abe27885a6
 CURRENT_PRODUCTION_CONTENT = CONFIRMED_PRE_PR132 / HTTP_200
 
 M5_01_F01_F02_PR = #133
-M5_01_F01_F02_HEAD = 5e054b9799159364139be5fce757cc06133269b6
+M5_01_F01_F02_HEAD = 1a2401a2105e4fba62a7833754987c8598a6ce58
 M5_01_F01_F02_STATE = READY / CLEAN / NOT_MERGED
 
 M5_01_F10_F11_F13_PR = #135
@@ -30,13 +33,16 @@ M5_01_F15_PR = #145
 M5_01_F15_HEAD = 1bb048701d6eb97404ae7ca58c5f09cf4adf34fe
 M5_01_F15_STATE = READY / CLEAN / NOT_MERGED / STACKED_ON_135 / LOCAL_CANDIDATE_PASS
 
-M5_01_F17_PR = #148
-M5_01_F17_HEAD = 2e7cb45696b6d0cfd191be77fbce975649ddca01
-M5_01_F17_STATE = READY / CLEAN / NOT_MERGED / LOCAL_CANDIDATE_PASS
+M5_01_F17_F18_PR = #148
+M5_01_F17_F18_HEAD = 508ebf55f4ea96261d8eeb4dc753158d7c0ec950
+M5_01_F17_F18_STATE = READY / NOT_MERGED / LOCAL_CANDIDATE_PASS
 
 M5_01_F12_F14_F16_PR = #137
 M5_01_F12_F14_F16_HEAD = d8ad43e1c4cd16933576785fab2ecf01d70195e7
 M5_01_F12_F14_F16_STATE = READY / CLEAN / NOT_MERGED / LOCAL_CANDIDATE_PASS
+
+M5_01_F03_STATE = REGRESSION_REOPENED / NO_RUNTIME_CANDIDATE
+M5_01_F19_STATE = OPEN / NO_RUNTIME_CANDIDATE
 ```
 
 ## Recovery sequence
@@ -45,13 +51,15 @@ M5_01_F12_F14_F16_STATE = READY / CLEAN / NOT_MERGED / LOCAL_CANDIDATE_PASS
 
 Resolve the live Vercel/GitHub deployment status for `353f4a5d...`.
 
+The 2026-09-20 revalidation proved production is still `82fd666...` / `dpl_H6K...` READY and the historical `353f4a5d...` Git status remains `failure / build-rate-limit`. A controlled retry did not create a new MoreNumTegra deployment, so a current project-specific rate-limit block is not proven.
+
 Do not infer release from elapsed time and do not create a new commit merely to obtain a build.
 
 Direct authenticated production evidence already confirms the current canonical host is still pre-PR #132. See `docs/sfjm/PR132_PRODUCTION_NOT_UPDATED_EVIDENCE_2026-09-19.md`.
 
 ### R2 — Deploy the approved pending runtime
 
-When the provider block clears, deploy/redeploy exactly:
+When a controlled production redeploy is available and no current provider block is observed, deploy/redeploy exactly:
 
 `353f4a5dba058f2fb60fd4001128f8c857cd6fce`
 

@@ -7,7 +7,7 @@ Fonte canônica: GitHub `main`.
 ## 1. Estado integrado atual
 
 ```text
-MAIN_SHA = bee925766398d9d9e629c96cf95511a35f0df175
+MAIN_SHA_BEFORE_THIS_DOCS_UPDATE = 50cc466e778feb2de38a5241b4b2820c6b1ea016
 PR_132 = MERGED
 PR_123 = MERGED
 MNT-M4-05R = COMPLETE / ACCEPTED
@@ -22,10 +22,11 @@ ACCEPTED_PERCENT = 60.65
 WEB_PRODUCTION = Vercel
 CANONICAL_HOST = https://www.moretegra.com.br/
 LATEST_MAIN_RUNTIME_SHA = 353f4a5dba058f2fb60fd4001128f8c857cd6fce
-VERCEL_STATUS = FAILURE / PROVIDER_BLOCKED
-VERCEL_REASON = build-rate-limit
-LAST_VERIFIED_VERCEL_SUCCESS_SHA = 6e852f1c41ea834aa138e333cef56519f382dc5f
-PRODUCTION_EXACT_SHA_AFTER_BLOCK = NOT_REVALIDATED
+HISTORICAL_VERCEL_STATUS_FOR_353f4a5d = FAILURE / build-rate-limit
+CURRENT_MORENUMTEGRA_RATE_LIMIT = NOT_REPROVEN
+LAST_VERIFIED_VERCEL_SUCCESS_SHA = 82fd666596b283d1ff5645776ba892abe27885a6
+CURRENT_PRODUCTION_DEPLOYMENT = dpl_H6KtyTDQHHAaWxx4FXHSUJBk97HK / READY
+PRODUCTION_EXACT_SHA = 82fd666596b283d1ff5645776ba892abe27885a6
 PRODUCTION_CONTENT_STATE = CONFIRMED_PRE_PR132 / HTTP_200
 ```
 
@@ -92,7 +93,7 @@ MNT-M5 = ACTIVE
 MNT-M5-01 = IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED
 P0_OPEN = 0
 P1_OPEN = 0
-P2_OPEN = 10
+P2_OPEN = 13
 P3_OPEN = 0
 RUNTIME_DEVICE_RESIDUALS = OPEN
 ```
@@ -100,6 +101,7 @@ RUNTIME_DEVICE_RESIDUALS = OPEN
 Open source-level findings:
 
 - F01 — Home mobile primary navigation hidden below 760px.
+- F03 — REOPENED regression: Home stage-filter buttons do not synchronize `aria-pressed`.
 - F02 — Home lacks explicit skip-to-content.
 - F10 — Home construction/launch stage-badge contrast below 4.5:1.
 - F11 — Home light-footer secondary/contact text contrast below 4.5:1.
@@ -109,6 +111,8 @@ Open source-level findings:
 - F15 — Home fixed dock overlaps required Form 46 controls under high zoom / short reflow.
 - F16 — CAPIITOLO fixed dock overlaps required content/Form 46 under high zoom / short reflow.
 - F17 — Elo Duo/Ária shared exact-project dock overlaps required content under high zoom / short reflow.
+- F18 — Elo Duo/Ária shared topbar back-link hitbox below governed touch baseline; PR #148 local candidate PASS.
+- F19 — Home reduced-motion video retains stale synthetic-button semantics after iframe activation.
 
 Prepared runtime candidates, all NOT_MERGED:
 - PR #133 — F01/F02 — Ready; local candidate PASS for mobile navigation, no-overlap criterion and skip-link focus transfer.
@@ -117,7 +121,7 @@ Prepared runtime candidates, all NOT_MERGED:
 - PR #148 — F17 — Ready; one shared CSS fix; Elo Duo and Ária local 150%/200% validation PASS, production pending.
 - PR #137 — F12/F14/F16 — Ready; local candidate validation PASS for keyboard tabs, mobile overflow and 150%/200% reflow, production pending.
 
-Resolved findings F03–F09 are documented in the current audit. PR #123 is merged, and later PRs #124–#130 preserve/refine its mobile/footer/map controls.
+Resolved findings F04–F09 are documented in the current audit. F03 was reopened on 2026-09-20 after direct source revalidation. PR #123 is merged, and later PRs #124–#130 preserve/refine its mobile/footer/map controls.
 
 Audit record: `docs/ux/MNT_M5_01_MOBILE_UX_ACCESSIBILITY_AUDIT_2026-09-19.md`.
 

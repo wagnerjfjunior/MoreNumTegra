@@ -5,7 +5,7 @@ Atualizado em `2026-09-19`.
 ## Estado canônico resolvido
 
 ```text
-MAIN_SHA_BEFORE_THIS_DOCS_UPDATE = df17eb027060551589514d69ea9211031524d8d4
+MAIN_SHA_BEFORE_THIS_DOCS_UPDATE = 50cc466e778feb2de38a5241b4b2820c6b1ea016
 
 MNT-M4-05R = COMPLETE / ACCEPTED
 M4-05R_ADDITIONAL_WBS_HOURS = 0
@@ -15,14 +15,16 @@ MNT-M5-01 = IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED
 
 P0_OPEN = 0
 P1_OPEN = 0
-P2_OPEN = 11
+P2_OPEN = 13
 P3_OPEN = 0
 
 F01/F02 = REMEDIATION_READY_NOT_MERGED / PR #133 / LOCAL_CANDIDATE_PASS
+F03 = REGRESSION_REOPENED / HOME_STAGE_FILTER_ARIA_PRESSED_MISSING / NO_RUNTIME_CANDIDATE
 F10/F11/F13 = SOURCE_LEVEL_STATIC_CONTRAST_FINDINGS / PR #135 READY
 F15 = HOME_HIGH_ZOOM_DOCK_OVERLAP / PR #145 READY / LOCAL_CANDIDATE_PASS
 F17 = ELO_DUO_ARIA_SHARED_HIGH_ZOOM_DOCK / PR #148 READY / LOCAL_CANDIDATE_PASS
 F18 = ELO_DUO_ARIA_SHARED_TOPBAR_TOUCH_TARGET / PR #148 READY / LOCAL_CANDIDATE_PASS
+F19 = HOME_REDUCED_MOTION_VIDEO_STALE_BUTTON_SEMANTICS / NO_RUNTIME_CANDIDATE
 F12/F14/F16 = CAPIITOLO ARIA_TABS + MOBILE_OVERFLOW + HIGH_ZOOM_DOCK / PR #137 READY / LOCAL_CANDIDATE_PASS
 
 FORECAST_TOTAL_HOURS = 1240
@@ -31,7 +33,10 @@ REMAINING_FORECAST_HOURS = 488
 ACCEPTED_PERCENT = 60.65
 
 APPROVED_PENDING_RUNTIME_SHA = 353f4a5dba058f2fb60fd4001128f8c857cd6fce
-LATEST_RUNTIME_DEPLOYMENT = PROVIDER_BLOCKED / VERCEL build-rate-limit
+CURRENT_PRODUCTION_DEPLOYMENT = dpl_H6KtyTDQHHAaWxx4FXHSUJBk97HK / READY / SHA 82fd666596b283d1ff5645776ba892abe27885a6
+APPROVED_PENDING_RUNTIME_DEPLOYMENT = NOT_DEPLOYED
+HISTORICAL_VERCEL_STATUS_FOR_353f4a5d = FAILURE / build-rate-limit
+CURRENT_MORENUMTEGRA_RATE_LIMIT = NOT_REPROVEN
 ```
 
 Canonical records:
@@ -77,14 +82,17 @@ The first production action is always the exact approved runtime `353f4a5d...`, 
 
 1. F01 — mobile Home primary navigation hidden below 760px; PR #133 ready, not merged; local visual validation PASS at ~360/393/400 px.
 2. F02 — Home without explicit skip-to-content; PR #133 ready, not merged; local candidate PASS: first Tab exposes skip link and Enter moves focus to `#conteudo`.
-3. F10 — Home stage badges: construction/launch text contrast below 4.5:1.
-4. F11 — Home light-footer secondary/contact text contrast below 4.5:1.
-5. F13 — Home small gold helper text slightly below 4.5:1; PR #135 ready.
-6. F12 — CAPIITOLO ARIA tab widgets lack complete keyboard/panel semantics; PR #137 ready; local keyboard interaction user-reported PASS.
-7. F14 — CAPIITOLO mobile horizontal overflow; PR #137 ready; local visual validation PASS at 360/375/393/440 px.
-8. F15 — Home fixed dock overlaps Form 46 at high zoom/short reflow; PR #145 ready; 125% visible + 200% hidden/unobstructed local PASS.
-9. F16 — CAPIITOLO fixed dock overlaps content/Form 46 at high zoom/short reflow; PR #137 ready; 150% visible + 200% hidden/Form46 unobstructed local PASS.
-10. F17 — Elo Duo/Ária shared exact-project dock overlaps content under high zoom/short reflow; PR #148 ready; both routes 150% visible + 200% hidden/unobstructed local PASS.
+3. F03 — REOPENED: Home stage-filter buttons do not synchronize `aria-pressed`; no runtime candidate yet.
+4. F10 — Home stage badges: construction/launch text contrast below 4.5:1.
+5. F11 — Home light-footer secondary/contact text contrast below 4.5:1.
+6. F13 — Home small gold helper text slightly below 4.5:1; PR #135 ready.
+7. F12 — CAPIITOLO ARIA tab widgets lack complete keyboard/panel semantics; PR #137 ready; local keyboard interaction user-reported PASS.
+8. F14 — CAPIITOLO mobile horizontal overflow; PR #137 ready; local visual validation PASS at 360/375/393/440 px.
+9. F15 — Home fixed dock overlaps Form 46 at high zoom/short reflow; PR #145 ready; 125% visible + 200% hidden/unobstructed local PASS.
+10. F16 — CAPIITOLO fixed dock overlaps content/Form 46 at high zoom/short reflow; PR #137 ready; 150% visible + 200% hidden/Form46 unobstructed local PASS.
+11. F17 — Elo Duo/Ária shared exact-project dock overlaps content under high zoom/short reflow; PR #148 ready; both routes 150% visible + 200% hidden/unobstructed local PASS.
+12. F18 — Elo Duo/Ária shared topbar back-link hitbox below the governed 46px baseline; PR #148 ready; both routes measured 46px locally.
+13. F19 — Home reduced-motion video trigger remains a stale focusable button after mounting the iframe; no runtime candidate yet.
 
 ## Boundaries
 
