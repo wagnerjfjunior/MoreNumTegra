@@ -20,9 +20,9 @@ jobs:
       - name: Checkout exact runtime candidate
         uses: actions/checkout@v4
         with:
-          ref: "3ae1d0c7a1a959f4e81d4ee1bb4f659f154532a9"
+          ref: "a4fcec608ef038ab8ecd3671e4058db1f33b093b"
       - name: Verify exact candidate
-        run: test "$(git rev-parse HEAD)" = "3ae1d0c7a1a959f4e81d4ee1bb4f659f154532a9"
+        run: test "$(git rev-parse HEAD)" = "a4fcec608ef038ab8ecd3671e4058db1f33b093b"
       - name: Repository validators
         run: |
           node scripts/validate-commercial-page-standard.mjs
