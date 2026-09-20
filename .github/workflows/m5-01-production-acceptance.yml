@@ -5,7 +5,15 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/m5-01-production-acceptance.yml"
-      - ".github/diagnostics/m5-01-production-acceptance.mjs"\n      - ".github/diagnostics/m5-01-production-triage.mjs"
+      - ".github/diagnostics/m5-01-production-acceptance.mjs"
+      - ".github/diagnostics/m5-01-production-triage.mjs"
+  push:
+    branches:
+      - "diag/m5-01-production-acceptance-20260920"
+    paths:
+      - ".github/workflows/m5-01-production-acceptance.yml"
+      - ".github/diagnostics/m5-01-production-acceptance.mjs"
+      - ".github/diagnostics/m5-01-production-triage.mjs"
   workflow_dispatch:
 
 permissions:
@@ -33,15 +41,15 @@ jobs:
       - name: Install browser engines
         run: npx playwright install --with-deps chromium firefox webkit
 
-      - name: Run M5-01 Production acceptance diagnostic
+      - name: Run focused M5-01 Production triage
         run: node .github/diagnostics/m5-01-production-triage.mjs
 
       - name: Upload diagnostic evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: m5-01-production-acceptance
+          name: m5-01-production-triage
           path: |
-            m5-01-production-acceptance-results.json
-            m5-01-production-acceptance-summary.txt
+            m5-01-production-triage-results.json
+            m5-01-production-triage-summary.txt
           if-no-files-found: error
