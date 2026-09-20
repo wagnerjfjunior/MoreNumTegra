@@ -1,0 +1,69 @@
+name: M5-06 CTA/Form journey
+
+on:
+  pull_request:
+    paths:
+      - "src-greenn/preview/runtime.js"
+      - "src-greenn/preview/index.html"
+      - "src-greenn/moretegra.js"
+      - "src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html"
+      - "src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html"
+      - "src-greenn/empreendimentos/aria-higienopolis/index.html"
+      - "experiments/capiitolo-editorial-v3/index.html"
+      - "scripts/validate-m5-06-cta-form-journey.mjs"
+      - ".github/diagnostics/m5-06-cta-form-smoke.mjs"
+      - ".github/workflows/m5-06-cta-form-journey.yml"
+  push:
+    branches: [main]
+    paths:
+      - "src-greenn/preview/runtime.js"
+      - "src-greenn/preview/index.html"
+      - "src-greenn/moretegra.js"
+      - "src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html"
+      - "src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html"
+      - "src-greenn/empreendimentos/aria-higienopolis/index.html"
+      - "experiments/capiitolo-editorial-v3/index.html"
+      - "scripts/validate-m5-06-cta-form-journey.mjs"
+      - ".github/diagnostics/m5-06-cta-form-smoke.mjs"
+      - ".github/workflows/m5-06-cta-form-journey.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Static M5-06 contract
+        run: node scripts/validate-m5-06-cta-form-journey.mjs
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium firefox webkit
+      - name: Start local Vercel-equivalent static routes
+        run: |
+          python3 - <<'PY' > /tmp/m5-06-server.log 2>&1 &
+          from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+          class Handler(SimpleHTTPRequestHandler):
+              def do_GET(self):
+                  route=self.path.split("?",1)[0]
+                  mapping={
+                      "/":"/src-greenn/preview/index.html",
+                      "/empreendimentos/capiitolo-piero-lissoni/":"/src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html",
+                      "/empreendimentos/caminhos-da-lapa-elo-duo/":"/src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html",
+                      "/empreendimentos/aria-higienopolis/":"/src-greenn/empreendimentos/aria-higienopolis/index.html",
+                  }
+                  self.path=mapping.get(route,self.path)
+                  return super().do_GET()
+          ThreadingHTTPServer(("127.0.0.1",4173),Handler).serve_forever()
+          PY
+          echo $! > /tmp/m5-06-server.pid
+          sleep 1
+      - name: Browser smoke
+        run: node .github/diagnostics/m5-06-cta-form-smoke.mjs
