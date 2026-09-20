@@ -5,7 +5,7 @@ Atualizado em `2026-09-19`.
 ## Estado canônico resolvido
 
 ```text
-MAIN_SHA_BEFORE_THIS_DOCS_UPDATE = df17eb027060551589514d69ea9211031524d8d4
+MAIN_SHA_BEFORE_THIS_DOCS_UPDATE = 50cc466e778feb2de38a5241b4b2820c6b1ea016
 
 MNT-M4-05R = COMPLETE / ACCEPTED
 M4-05R_ADDITIONAL_WBS_HOURS = 0
@@ -82,14 +82,17 @@ The first production action is always the exact approved runtime `353f4a5d...`, 
 
 1. F01 — mobile Home primary navigation hidden below 760px; PR #133 ready, not merged; local visual validation PASS at ~360/393/400 px.
 2. F02 — Home without explicit skip-to-content; PR #133 ready, not merged; local candidate PASS: first Tab exposes skip link and Enter moves focus to `#conteudo`.
-3. F10 — Home stage badges: construction/launch text contrast below 4.5:1.
-4. F11 — Home light-footer secondary/contact text contrast below 4.5:1.
-5. F13 — Home small gold helper text slightly below 4.5:1; PR #135 ready.
-6. F12 — CAPIITOLO ARIA tab widgets lack complete keyboard/panel semantics; PR #137 ready; local keyboard interaction user-reported PASS.
-7. F14 — CAPIITOLO mobile horizontal overflow; PR #137 ready; local visual validation PASS at 360/375/393/440 px.
-8. F15 — Home fixed dock overlaps Form 46 at high zoom/short reflow; PR #145 ready; 125% visible + 200% hidden/unobstructed local PASS.
-9. F16 — CAPIITOLO fixed dock overlaps content/Form 46 at high zoom/short reflow; PR #137 ready; 150% visible + 200% hidden/Form46 unobstructed local PASS.
-10. F17 — Elo Duo/Ária shared exact-project dock overlaps content under high zoom/short reflow; PR #148 ready; both routes 150% visible + 200% hidden/unobstructed local PASS.
+3. F03 — REOPENED: Home stage-filter buttons do not synchronize `aria-pressed`; no runtime candidate yet.
+4. F10 — Home stage badges: construction/launch text contrast below 4.5:1.
+5. F11 — Home light-footer secondary/contact text contrast below 4.5:1.
+6. F13 — Home small gold helper text slightly below 4.5:1; PR #135 ready.
+7. F12 — CAPIITOLO ARIA tab widgets lack complete keyboard/panel semantics; PR #137 ready; local keyboard interaction user-reported PASS.
+8. F14 — CAPIITOLO mobile horizontal overflow; PR #137 ready; local visual validation PASS at 360/375/393/440 px.
+9. F15 — Home fixed dock overlaps Form 46 at high zoom/short reflow; PR #145 ready; 125% visible + 200% hidden/unobstructed local PASS.
+10. F16 — CAPIITOLO fixed dock overlaps content/Form 46 at high zoom/short reflow; PR #137 ready; 150% visible + 200% hidden/Form46 unobstructed local PASS.
+11. F17 — Elo Duo/Ária shared exact-project dock overlaps content under high zoom/short reflow; PR #148 ready; both routes 150% visible + 200% hidden/unobstructed local PASS.
+12. F18 — Elo Duo/Ária shared topbar back-link hitbox below the governed 46px baseline; PR #148 ready; both routes measured 46px locally.
+13. F19 — Home reduced-motion video trigger remains a stale focusable button after mounting the iframe; no runtime candidate yet.
 
 ## Boundaries
 
