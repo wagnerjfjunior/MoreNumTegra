@@ -186,6 +186,13 @@ Shared exact-project Form 46 local/source-level status: `PASS / 2026-09-20`.
 - at 393x852 no form-control overlap or fixed-dock obstruction was observed;
 - production/physical-device confirmation remains pending.
 
+CAPIITOLO Form 46 local/source-level status: `PASS / 2026-09-20`.
+- Country select uses explicit `min-height:54px`;
+- text inputs use 12px vertical padding with inherited 16px form typography;
+- submit uses 16px vertical padding;
+- at 440x956 no form-control overlap or fixed-dock obstruction was observed;
+- production/physical-device confirmation remains pending.
+
 ## 9. Consent versus fixed actions
 
 ### C01 — initial consent visible
