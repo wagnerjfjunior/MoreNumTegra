@@ -5,7 +5,7 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/m5-01-production-acceptance.yml"
-      - ".github/diagnostics/m5-01-production-acceptance.mjs"
+      - ".github/diagnostics/m5-01-production-acceptance.mjs"\n      - ".github/diagnostics/m5-01-production-triage.mjs"
   workflow_dispatch:
 
 permissions:
@@ -34,7 +34,7 @@ jobs:
         run: npx playwright install --with-deps chromium firefox webkit
 
       - name: Run M5-01 Production acceptance diagnostic
-        run: node .github/diagnostics/m5-01-production-acceptance.mjs
+        run: node .github/diagnostics/m5-01-production-triage.mjs
 
       - name: Upload diagnostic evidence
         if: always()
