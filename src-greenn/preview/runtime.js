@@ -166,17 +166,26 @@
 
   function releaseConsentFocus(banner) {
     if (!banner.contains(document.activeElement)) return;
+
+    const candidates = [
+      ".mnt-contact-float",
+      ".mt-quick-lead",
+      "#mt-floating-dock .mt-floating-lead",
+      "main a[href='#formulario']"
+    ];
+    const target = candidates
+      .map((selector) => document.querySelector(selector))
+      .find((node) => node instanceof HTMLElement && node.getClientRects().length > 0);
+
+    if (!target) return;
+
+    const transferFocus = () => {
+      target.focus({preventScroll: true});
+    };
+
+    transferFocus();
     window.requestAnimationFrame(() => {
-      const candidates = [
-        ".mnt-contact-float",
-        ".mt-quick-lead",
-        "#mt-floating-dock .mt-floating-lead",
-        "main a[href='#formulario']"
-      ];
-      const target = candidates
-        .map((selector) => document.querySelector(selector))
-        .find((node) => node instanceof HTMLElement && node.getClientRects().length > 0);
-      target?.focus({preventScroll: true});
+      if (banner.contains(document.activeElement)) transferFocus();
     });
   }
 
