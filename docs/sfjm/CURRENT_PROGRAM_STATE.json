@@ -9,11 +9,11 @@
     "active_task_id": "MNT-M5-01",
     "state": "IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED / RUNTIME_QUEUE_PREPARED",
     "pull_request": 122,
-    "repository_head_sha": "50cc466e778feb2de38a5241b4b2820c6b1ea016",
-    "latest_main_runtime_sha": "353f4a5dba058f2fb60fd4001128f8c857cd6fce",
-    "deployment_state": "PENDING_REDEPLOY / HISTORICAL build-rate-limit / CURRENT_MORENUMTEGRA_RATE_LIMIT_NOT_REPROVEN",
-    "last_verified_vercel_success_sha": "82fd666596b283d1ff5645776ba892abe27885a6",
-    "production_exact_sha": "82fd666596b283d1ff5645776ba892abe27885a6 / dpl_H6KtyTDQHHAaWxx4FXHSUJBk97HK / READY",
+    "repository_head_sha": "d9d971d6f667c235723b35d251041ec11c021558",
+    "latest_main_runtime_sha": "aa9df4be65f579e233a67fbd90c8d3f47d0ea1e2",
+    "deployment_state": "RECOVERED / PRODUCTION_READY / HISTORICAL_RATE_LIMIT_CLOSED",
+    "last_verified_vercel_success_sha": "aa9df4be65f579e233a67fbd90c8d3f47d0ea1e2",
+    "production_exact_sha": "aa9df4be65f579e233a67fbd90c8d3f47d0ea1e2 / dpl_Fzk6Js2EZsxRgMinz8ADTQM9dwEK / READY",
     "authority_record": "docs/ux/MNT_M5_01_MOBILE_UX_ACCESSIBILITY_AUDIT_2026-09-19.md",
     "remediation_queue": [
       {
@@ -23,7 +23,16 @@
           "F01",
           "F02"
         ],
-        "state": "READY / NOT_MERGED / LOCAL_CANDIDATE_PASS"
+        "state": "OPEN / LOCAL_PASS / STALE_LINEAGE / REBUILD_FIRST"
+      },
+      {
+        "pr": 167,
+        "head": "a8f48fb1e92e615f1f7337ab254ced7c25fb9ed8",
+        "findings": [
+          "F03",
+          "F19"
+        ],
+        "state": "OPEN / READY / CHECKS_PASS / LOCAL_BEHAVIOR_PASS / QUEUE_POSITION_PENDING"
       },
       {
         "pr": 135,
@@ -33,7 +42,7 @@
           "F11",
           "F13"
         ],
-        "state": "READY / NOT_MERGED / STACKED_ON_133"
+        "state": "OPEN / LOCAL_CONTRAST_PASS / STALE_STACK"
       },
       {
         "pr": 145,
@@ -41,7 +50,7 @@
         "findings": [
           "F15"
         ],
-        "state": "READY / NOT_MERGED / STACKED_ON_135 / LOCAL_CANDIDATE_PASS"
+        "state": "OPEN / LOCAL_PASS / STALE_STACK"
       },
       {
         "pr": 148,
@@ -50,7 +59,7 @@
           "F17",
           "F18"
         ],
-        "state": "READY / NOT_MERGED / LOCAL_CANDIDATE_PASS"
+        "state": "OPEN / LOCAL_PASS / STALE_LINEAGE"
       },
       {
         "pr": 137,
@@ -60,10 +69,10 @@
           "F14",
           "F16"
         ],
-        "state": "READY / NOT_MERGED / LOCAL_CANDIDATE_PASS"
+        "state": "OPEN / LOCAL_PASS / STALE_LINEAGE"
       }
     ],
-    "production_content_evidence": "docs/ux/MNT_M5_01_SOURCE_SEMANTICS_REVALIDATION_2026-09-20.md"
+    "production_content_evidence": "handoffs/HANDOFF-2026-09-20-M5-01-SESSION-TRANSITION.md"
   },
   "progress": {
     "forecast_total_hours": 1240,
@@ -156,16 +165,22 @@
       "merge_commit": "830dd775641f25bb137a0f58de7c9c2a35ab0a2c"
     },
     "PR-132": {
-      "state": "MERGED / DEPLOYMENT_PROVIDER_BLOCKED",
+      "state": "MERGED / DEPLOYED / PRODUCTION_VERIFIED",
       "purpose": "Semantic on-page SEO alignment for Home and indexed project pages.",
-      "merge_commit": "353f4a5dba058f2fb60fd4001128f8c857cd6fce",
-      "deployment_reason": "Vercel build-rate-limit"
+      "merge_commit": "353f4a5dba058f2fb60fd4001128f8c857cd6fce"
+    },
+    "HTTP-CANONICALIZATION-2026-09-20": {
+      "state": "COMPLETE / PRODUCTION_READY / B4_PROD_PASS",
+      "purpose": "Canonical trailing-slash HTTP routing with minimal Vercel mechanism.",
+      "production_sha": "aa9df4be65f579e233a67fbd90c8d3f47d0ea1e2",
+      "deployment_id": "dpl_Fzk6Js2EZsxRgMinz8ADTQM9dwEK",
+      "b4_prod_run": 35530041309
     }
   },
   "next": {
     "task_id": "MNT-M5-01",
-    "state": "IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED",
-    "safe_action": "Preserve runtime queue #133 -> #135 -> #145 -> #148 -> #137 while PR #132 deployment is provider-blocked; continue the canonical runtime/device matrix and retain unexecuted checks as NOT_OBSERVED. Do not start M5-02 by sequence alone."
+    "state": "IN_PROGRESS / AUTHORIZED / POST_RECOVERY_QUEUE_RECONCILIATION",
+    "safe_action": "Resolve live main, rebuild/rebase PR #133 onto that exact main, verify bounded F01/F02 diff and exact-head checks/local smoke, then stop before merge. After that reconcile the remaining runtime queue including PR #167."
   },
   "cross_project": {
     "commercial_catalog": {
@@ -188,12 +203,12 @@
     "m4_05r_acceptance": "CLOSED / COMPLETE / ACCEPTED / ZERO_ADDITIONAL_WBS_HOURS",
     "m5_01_open_findings": "P2=13 / F01 F02 F03 F10 F11 F13 F12 F14 F15 F16 F17 F18 F19",
     "m5_01_runtime_device_validation": "OPEN / NOT_FULLY_OBSERVED",
-    "latest_main_deployment": "APPROVED_RUNTIME_353f4a5d NOT_DEPLOYED / HISTORICAL build-rate-limit / CURRENT_MORENUMTEGRA_RATE_LIMIT_NOT_REPROVEN / PROD_SHA_82fd666596b283d1ff5645776ba892abe27885a6",
-    "m5_01_runtime_queue": "PR133_READY -> PR135_READY_STACKED -> PR145_READY_STACKED_LOCAL_PASS -> PR148_READY_F17_F18_LOCAL_PASS -> PR137_READY_F12_F14_F16_LOCAL_PASS / F03_F19_NO_RUNTIME_CANDIDATE / NONE_MERGED",
-    "production_content_state": "CONFIRMED_PRE_PR132 / HTTP_200 / PROD_DEPLOYMENT_dpl_H6KtyTDQHHAaWxx4FXHSUJBk97HK / SHA_82fd666596b283d1ff5645776ba892abe27885a6",
+    "latest_main_deployment": "PRODUCTION_READY / SHA_aa9df4be65f579e233a67fbd90c8d3f47d0ea1e2 / dpl_Fzk6Js2EZsxRgMinz8ADTQM9dwEK / PR132_CONTENT_PRESENT",
+    "m5_01_runtime_queue": "STALE_LINEAGE_RECONCILIATION_REQUIRED / START_WITH_PR133_REBUILD / INCLUDE_PR167",
+    "production_content_state": "PR132_PRESENT / HTTP_200 / CANONICALIZATION_B4_PROD_PASS",
     "m5_01_capiitolo_local_validation": "F12 USER_REPORTED_PASS / F14 PASS 360_375_393_440 / F16 PASS 150_PERCENT_VISIBLE_200_PERCENT_HIDDEN_FORM46_UNOBSTRUCTED / PRODUCTION_PENDING",
-    "m5_01_home_local_validation": "F01 PASS ~360_393_400 / F02 PASS first-tab+focus-transfer / F10_F11_F13 STATIC_PASS_VISUAL_PENDING",
-    "m5_01_qa_candidate_head": "445d9feafdc934369706bc837d194bfbd4102bd6",
+    "m5_01_home_local_validation": "F01 PASS / F02 PASS / F03 BEHAVIOR PASS / F10 F11 F13 CONTRAST PASS / F19 REDUCED_MOTION BEHAVIOR PASS / PRODUCTION_REMEDIATION_PENDING",
+    "m5_01_qa_candidate_head": "d36b114641014425623887dc6f408d2de0259b52",
     "m5_01_home_reflow_validation": "F15 PASS / 125_PERCENT_DOCK_VISIBLE / 200_PERCENT_DOCK_HIDDEN / FORM46_UNOBSTRUCTED / PRODUCTION_PENDING",
     "m5_01_shared_exact_project_reflow_validation": "F17 PASS / ELO_DUO 150_VISIBLE_200_HIDDEN_UNOBSTRUCTED / ARIA 150_VISIBLE_200_HIDDEN_UNOBSTRUCTED / PRODUCTION_PENDING",
     "m5_01_exact_project_mobile_width_validation": "ELO_DUO PASS 360x800_393x852 / ARIA PASS 360x800_393x852 / LOCAL_CHROME_EMULATION / PRODUCTION_PENDING",
@@ -216,7 +231,8 @@
     "m5_01_capiitolo_floating_touch_target_validation": "PASS / 393x852 / WHATSAPP_54X54 / CONTACT_MIN_HEIGHT_54 / NO_PAGE_OVERFLOW / NO_DOCK_OBSTRUCTION / PRODUCTION_PHYSICAL_DEVICE_PENDING",
     "m5_01_shared_topbar_touch_target_validation": "LOCAL_CANDIDATE_PASS / ELO_DUO_176_234375X46 / ARIA_176_234375X46 / QA_HEAD_445d9feafdc934369706bc837d194bfbd4102bd6 / PR148_HEAD_508ebf55f4ea96261d8eeb4dc753158d7c0ec950 / PRODUCTION_PHYSICAL_DEVICE_PENDING",
     "m5_01_open_p2_count": 13,
-    "m5_01_source_semantics_revalidation": "2026-09-20 / FORM46_SOURCE_CONTROLS_PASS / CAPIITOLO_PR137_TAB_MODEL_SOURCE_PASS / F03_REGRESSION_REOPENED / F19_OPEN"
+    "m5_01_source_semantics_revalidation": "2026-09-20 / F03_F19_REMEDIATION_PR167_OPEN_CHECKS_PASS_LOCAL_BEHAVIOR_PASS",
+    "vercel_recovery": "CLOSED / MULTIPLE_LATER_PRODUCTION_BUILDS_READY / HISTORICAL_RATE_LIMIT_NOT_ACTIVE"
   },
   "infra": {
     "dns_authority": "CLOUDFLARE_DNS_ONLY",

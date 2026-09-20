@@ -1,68 +1,58 @@
 # Handoff Atual — MoreNumTegra
 
-Atualizado em `2026-09-19`.
+Atualizado em `2026-09-20`.
 
-GitHub `main` é a fonte canônica. Resolver estado live antes de qualquer nova conclusão ou mutação.
+GitHub `main` é a fonte canônica. Resolver o estado live antes de qualquer conclusão ou mutação.
+
+Handoff de transição detalhado:
+
+`handoffs/HANDOFF-2026-09-20-M5-01-SESSION-TRANSITION.md`
 
 ## 1. REPOSITORY_STATE
 
 ```text
 CANONICAL_REPOSITORY = wagnerjfjunior/MoreNumTegra
 CANONICAL_BRANCH = main
-MAIN_SHA_OBSERVED_BEFORE_THIS_DOCS_UPDATE = 50cc466e778feb2de38a5241b4b2820c6b1ea016
-PR_123 = MERGED / M5-01 MOBILE REMEDIATION
-PR_132 = MERGED / SEMANTIC ON-PAGE SEO
-OPEN_RUNTIME_QUEUE = PR #133 -> PR #135 -> PR #145 -> PR #148 -> PR #137 / ALL NOT_MERGED
-```
+MAIN_AT_TRANSITION_START = d9d971d6f667c235723b35d251041ec11c021558
 
-PR #132 changed Home, CAPIITOLO, Elo Duo and Ária semantic on-page content. Its exact head `5dc3aea5e0256574edb498dcc63fe5f7bb2ca2a6` passed the three repository checks before merge.
+PR_168 = MERGED
+PR_169 = MERGED
+PR_170 = MERGED / TEMP_DIAGNOSTIC
+PR_171 = MERGED / FINAL_MINIMAL_CANONICALIZATION
+PR_172 = CLOSED_NOT_MERGED / DIAGNOSTIC_ONLY
+PR_173 = MERGED / DIAGNOSTIC_CLEANUP
+
+OPEN_M5_RUNTIME_PRS = #133 #135 #145 #148 #137 #167
+```
 
 ## 2. DEPLOYMENT_STATE / PRODUCTION_STATE
 
 ```text
 WEB_PRODUCTION = Vercel
 CANONICAL_HOST = https://www.moretegra.com.br/
-DEPLOYMENT_POLICY = main-only automatic deployment
-NON_MAIN_AUTO_DEPLOY = disabled
-
-LATEST_MAIN_RUNTIME_SHA = 353f4a5dba058f2fb60fd4001128f8c857cd6fce
-HISTORICAL_VERCEL_STATUS_FOR_353f4a5d = FAILURE / build-rate-limit
-CURRENT_MORENUMTEGRA_RATE_LIMIT = NOT_REPROVEN
-
-LAST_VERIFIED_VERCEL_SUCCESS_SHA = 82fd666596b283d1ff5645776ba892abe27885a6
-CURRENT_PRODUCTION_DEPLOYMENT = dpl_H6KtyTDQHHAaWxx4FXHSUJBk97HK / READY
-PRODUCTION_EXACT_SHA = 82fd666596b283d1ff5645776ba892abe27885a6
-PRODUCTION_CONTENT_STATE = CONFIRMED_PRE_PR132 / HTTP_200
+PRODUCTION_DEPLOYMENT = dpl_Fzk6Js2EZsxRgMinz8ADTQM9dwEK
+PRODUCTION_STATE = READY
+PRODUCTION_SOURCE_SHA = aa9df4be65f579e233a67fbd90c8d3f47d0ea1e2
+PR132_SEMANTIC_CONTENT_IN_PRODUCTION = YES
+B4_PROD_RUN = 35530041309 / SUCCESS
+HISTORICAL_BUILD_RATE_LIMIT = CLOSED_AS_ACTIVE_BLOCKER
 ```
 
-Interpretation:
+Current `main` is newer only because PR #173 removed the temporary `.github` diagnostic workflow; its Vercel build was intentionally ignored/canceled.
 
-```text
-MERGED != DEPLOYED
-DEPLOYMENT_PROVIDER_BLOCKED != CODE_FAILURE
-DEPLOYED != PROD_HTTP_SMOKE_TESTED
-```
+## 3. HTTP CANONICALIZATION
 
-Do not create an artificial commit to trigger deployment. When the provider block clears, deploy/retry the exact approved `main` state.
+Current `vercel.json`:
 
-## 3. M4-05R ACCEPTANCE
+- `trailingSlash: true`;
+- slash-only rewrites;
+- no redundant explicit canonical redirects;
+- non-main Vercel deployment disabled;
+- docs/handoffs/bootstrap/.github-only changes ignored by build.
 
-```text
-MNT-M4 = COMPLETE / ACCEPTED
-MNT-M4-05R = COMPLETE / ACCEPTED
-M4-05R_ADDITIONAL_WBS_HOURS = 0
+Raw B4-PROD assertions passed for routing, query preservation, apex routing, canonical tags and thank-you `noindex`.
 
-FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 752
-REMAINING_FORECAST_HOURS = 488
-ACCEPTED_PERCENT = 60.65
-```
-
-Canonical acceptance record:
-
-`docs/sfjm/MNT_M4_05R_ACCEPTANCE_CLOSURE_2026-09-19.md`
-
-## 4. M5-01 — MOBILE UX AND ACCESSIBILITY
+## 4. M5-01
 
 ```text
 MNT-M5 = ACTIVE
@@ -74,64 +64,20 @@ P3_OPEN = 0
 WBS_PROGRESS_CHANGE = NO
 ```
 
-Open P2 findings:
+Local candidate status:
 
-1. F01 — Home primary navigation hidden below 760px.
-2. F02 — Home lacks explicit skip-to-content.
-3. F03 — REOPENED regression: Home stage-filter buttons do not synchronize `aria-pressed`.
-4. F10 — Home construction/launch stage-badge contrast below 4.5:1.
-5. F11 — Home light-footer secondary/contact contrast below 4.5:1.
-6. F13 — Home small gold helper text slightly below 4.5:1.
-7. F12 — CAPIITOLO ARIA tabs incomplete for keyboard/panel semantics.
-8. F14 — CAPIITOLO mobile horizontal overflow.
-9. F15 — Home fixed dock overlaps Form 46 under high zoom / short reflow.
-10. F16 — CAPIITOLO fixed dock overlaps content/Form 46 under high zoom / short reflow.
-11. F17 — Elo Duo/Ária shared exact-project dock overlaps required content under high zoom / short reflow.
-12. F18 — Elo Duo/Ária shared topbar back-link touch target; PR #148 local candidate PASS.
-13. F19 — Home reduced-motion video retains stale synthetic-button semantics after iframe activation.
+- F01/F02 — PASS — PR #133.
+- F03/F19 — behavioral local PASS — PR #167; exact Production pending.
+- F10/F11/F13 — contrast local PASS — PR #135.
+- F12/F14/F16 — PASS — PR #137.
+- F15 — PASS — PR #145.
+- F17/F18 — PASS — PR #148.
 
-Prepared runtime queue:
-- PR #133 — F01/F02 — Ready, not merged.
-- PR #135 — F10/F11/F13 — Ready, stacked on #133, not merged.
-- PR #145 — F15 — Ready, stacked after #135, local candidate PASS.
-- PR #148 — F17 — Ready, not merged, shared CSS candidate, local candidate PASS on Elo Duo and Ária.
-- PR #137 — F12/F14/F16 — Ready, not merged, local candidate PASS.
+All remain open until their runtime remediation is integrated/accepted.
 
-Resolved in current `main`:
+The old runtime queue is stale because its PR branches are behind the current canonicalization main and PR #167 was added later. Do not merge the historical queue mechanically.
 
-
-- consent-aware mobile floating action dock;
-- 9:16 mobile campaign video;
-- map CTA placement / governed WhatsApp-only map pattern;
-- Ária neighborhood map query;
-- CAPIITOLO intent-select affordance remediation;
-- footer/address visual standardization.
-
-PR #123 is merged at `830dd775641f25bb137a0f58de7c9c2a35ab0a2c`. Subsequent PRs #124–#130 further standardized footer/address and map policy.
-
-Current audit:
-
-`docs/ux/MNT_M5_01_MOBILE_UX_ACCESSIBILITY_AUDIT_2026-09-19.md`
-
-## 5. SEARCH / INDEXATION BASELINE
-
-Previously proven and still canonical unless new contrary evidence appears:
-
-```text
-GSC_SITEMAP = ACCEPTED / 4 URLS / 0 ERRORS / 0 WARNINGS
-HOME_INDEXATION = INDEXED
-CAPIITOLO_INDEXATION = INDEXED
-ELO_DUO_INDEXATION = INDEXED
-ARIA_INDEXATION = INDEXED
-CAPIITOLO_RICH_RESULTS = 7_VALID
-ELO_DUO_RICH_RESULTS = 7_VALID
-ARIA_RICH_RESULTS = 7_VALID
-HOME_RICH_RESULTS = 5_VALID
-```
-
-The PR #132 semantic changes are confirmed NOT PRESENT in production. Authenticated Vercel fetches on 2026-09-19 returned HTTP 200 on all four canonical routes while showing the pre-PR #132 title/H1/content markers. Evidence: `docs/sfjm/PR132_PRODUCTION_NOT_UPDATED_EVIDENCE_2026-09-19.md`.
-
-## 6. FORM 46
+## 5. FORM 46
 
 ```text
 provider = Green Sales / GDigital
@@ -142,10 +88,12 @@ POST = https://back.gdigital.com.br/form/register
 HOME_PROJECT_CONTEXT_E2E = PASS
 ```
 
-Do not reopen the Form 46 regression without new evidence.
+No new regression evidence.
 
-## 7. CURRENT NEXT SAFE ACTION
+## 6. NEXT SAFE ACTION
 
 Authority: `docs/NEXT_SAFE_ACTION.md`.
 
-Preserve the ordered runtime queue (#133 -> #135 -> #145 -> #148 -> #137), execute the canonical runtime/device matrix when representative browser/device evidence is available, and keep PR #132 exact runtime deployment first in the Vercel recovery sequence. Do not start M5-02 by sequence alone.
+Resolve live `main`, then rebuild/rebase PR #133 onto that exact main, verify the bounded F01/F02 diff, rerun exact-head checks/local smoke, and stop before merge. After that, reconcile the remaining runtime queue including PR #167.
+
+Do not start M5-02 by sequence alone.
