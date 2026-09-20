@@ -186,6 +186,12 @@ Shared exact-project Form 46 local/source-level status: `PASS / 2026-09-20`.
 - at 393x852 no form-control overlap or fixed-dock obstruction was observed;
 - production/physical-device confirmation remains pending.
 
+CAPIITOLO floating-action touch-target local/source-level status: `PASS / 2026-09-20`.
+- WhatsApp mobile target is 54x54px;
+- floating `Receber condições` uses `min-height:54px`;
+- at 393x852 no page-level horizontal overflow or fixed-dock obstruction was observed;
+- production/physical-device confirmation remains pending.
+
 CAPIITOLO type-tab touch-target local/source-level status: `PASS / 2026-09-20`.
 - 210 m² / 281 m² Giardino (Garden) / 363 m² Duplex tabs use 18px vertical padding around one-line labels;
 - active-state differentiation remains visible;
