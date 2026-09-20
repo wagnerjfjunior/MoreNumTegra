@@ -9,7 +9,7 @@
     "active_task_id": "MNT-M5-01",
     "state": "IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED / RUNTIME_QUEUE_PREPARED",
     "pull_request": 122,
-    "repository_head_sha": "f488b0810ac6d887beeb8d944e5caf44d6eda895",
+    "repository_head_sha": "3d9d66ee146a83a64a68806be1b2e98fc956463c",
     "latest_main_runtime_sha": "353f4a5dba058f2fb60fd4001128f8c857cd6fce",
     "deployment_state": "PROVIDER_BLOCKED / VERCEL build-rate-limit",
     "last_verified_vercel_success_sha": "6e852f1c41ea834aa138e333cef56519f382dc5f",
@@ -196,7 +196,8 @@
     "m5_01_home_reflow_validation": "F15 PASS / 125_PERCENT_DOCK_VISIBLE / 200_PERCENT_DOCK_HIDDEN / FORM46_UNOBSTRUCTED / PRODUCTION_PENDING",
     "m5_01_shared_exact_project_reflow_validation": "F17 PASS / ELO_DUO 150_VISIBLE_200_HIDDEN_UNOBSTRUCTED / ARIA 150_VISIBLE_200_HIDDEN_UNOBSTRUCTED / PRODUCTION_PENDING",
     "m5_01_exact_project_mobile_width_validation": "ELO_DUO PASS 360x800_393x852 / ARIA PASS 360x800_393x852 / LOCAL_CHROME_EMULATION / PRODUCTION_PENDING",
-    "m5_01_local_horizontal_overflow_matrix": "HOME PASS / CAPIITOLO PASS / ELO_DUO PASS / ARIA PASS / CROSS_BROWSER_DEVICE_RESIDUAL_OPEN"
+    "m5_01_local_horizontal_overflow_matrix": "HOME PASS / CAPIITOLO PASS / ELO_DUO PASS / ARIA PASS / CROSS_BROWSER_DEVICE_RESIDUAL_OPEN",
+    "m5_01_aria_gallery_keyboard_validation": "G01 PASS / SPACE_ENTER_ARROWS / TAB_TRAVERSES / NO_FOCUS_TRAP_OBSERVED / PRODUCTION_AND_SCREEN_READER_PENDING"
   },
   "infra": {
     "dns_authority": "CLOUDFLARE_DNS_ONLY",
