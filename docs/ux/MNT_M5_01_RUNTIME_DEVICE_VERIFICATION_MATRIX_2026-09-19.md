@@ -180,9 +180,17 @@ PASS without submission:
 Local candidate evidence on Ária:
 - empty required identity/contact fields -> visible `Informe seu nome.` and focus on `#mt-lead-name`;
 - Name filled / e-mail empty -> visible `Informe um e-mail válido.` and focus on `#mt-lead-email`;
-- no Form 46 POST observed during these invalid local submissions.
+- valid Name/E-mail + invalid BR phone `11` -> visible `Informe um telefone brasileiro válido com DDD.` and focus on `#mt-lead-phone`;
+- all locally valid fields -> visible localhost guard status: `Formulário validado. O envio real fica habilitado somente em www.moretegra.com.br após merge em main.`;
+- no Form 46 POST observed during invalid or valid-data localhost checks.
 
-`FORM46_LOCAL_INVALID_VALIDATION = PASS`. Production validation remains pending.
+```text
+FORM46_LOCAL_INVALID_VALIDATION = PASS
+FORM46_LOCAL_VALID_DATA_GUARD = PASS
+LOCAL_REAL_POST = NOT_SENT
+```
+
+Production validation remains pending.
 
 Production E2E lead receipt remains a separate already-proven contract and should not be replayed casually.
 
