@@ -1,6 +1,6 @@
 # MNT-M5-06 — CTA/Form Journey Optimization — Product Decision Gate
 
-Status: `ACTIVE / DECISION_REQUIRED / NO_RUNTIME_MUTATION`
+Status: `ACTIVE / DECISION_APPROVED / IMPLEMENTATION_AUTHORIZED / NO_RUNTIME_MUTATION_YET`
 
 Date: `2026-09-20`
 
@@ -8,9 +8,19 @@ Date: `2026-09-20`
 
 Product Authority granted continuing authorization to proceed through planned MoreNumTegra tasks and governed PR Ready/merge lifecycle, stopping only when a material product/architecture decision is required.
 
-MNT-M5-06 reached that stop condition.
+MNT-M5-06 reached that stop condition and Product Authority adjudicated it in conversation on 2026-09-20.
 
-No runtime mutation is made by this decision packet.
+Approved direction:
+
+```text
+OPTION_B = APPROVED
+CONTEXTUAL_CTA_INTENT -> PRESELECT_EXISTING_FORM46_INTENT
+HOME_NEGOTIATE = ADD_CONTROLLED_OPTION "Negociar meu cenário"
+CAPIITOLO_HERO = SINGLE_PURPOSE "Receber condições"
+CAPIITOLO_VISIT = KEEP_SEPARATE "Agendar visita"
+```
+
+No runtime mutation is made by this decision packet itself.
 
 ## 2. Exact state analyzed
 
@@ -235,7 +245,27 @@ CAPIITOLO hero
 
 The first recommendation aligns with the already-canonical Measurement taxonomy `negotiate_scenario`. The second avoids encoding two business intents into one action.
 
-These recommendations are **not authorized decisions until Product Authority chooses**.
+These recommendations are **approved by Product Authority** and may be implemented under the continuing execution authorization.
+
+### 7.1 Search/branding constraint added by Product Authority
+
+Product Authority explicitly required that the official branding **CAPIITOLO** must not cause the project to lose organic relevance for the natural user spelling **Capitolo**.
+
+The implementation contract is:
+
+```text
+OFFICIAL_BRAND_DISPLAY = CAPIITOLO
+H1_BRAND = CAPIITOLO
+CANONICAL_ROUTE = /empreendimentos/capiitolo-piero-lissoni/
+SEARCH_VARIANT = Capitolo / Capitolo Tegra / Capitolo by Piero Lissoni
+ONE_PAGE_OWNER = same CAPIITOLO canonical exact-project page
+NO_DUPLICATE_ALIAS_ROUTE = required
+NO_KEYWORD_STUFFING = required
+```
+
+The common spelling must be covered naturally in indexable copy/metadata without replacing the official brand or creating a competing URL.
+
+Current external evidence confirms both usages exist: Tegra's current commercial surface uses `CAPIITOLO`, while a Tegra 2024 report and current real-estate portals expose `Capitolo`. This supports treating `Capitolo` as a legitimate search variant rather than inventing a second product identity.
 
 ## 8. Explicitly not decided here
 
@@ -259,7 +289,7 @@ ACCEPTED_SCOPE_EQUIVALENT_HOURS = 832
 REMAINING_FORECAST_HOURS = 408
 ACCEPTED_PERCENT = 67.10
 
-MNT-M5-06 = ACTIVE / DECISION_REQUIRED / NO_RUNTIME_MUTATION
-MNT-M5-07 = BLOCKED_BY_M5_06_DECISION
+MNT-M5-06 = ACTIVE / DECISION_APPROVED / IMPLEMENTATION_AUTHORIZED
+MNT-M5-07 = BLOCKED_BY_M5_06_IMPLEMENTATION_AND_ACCEPTANCE
 MNT-M5-10 = PLANNED_NOT_AUTHORIZED
 ```
