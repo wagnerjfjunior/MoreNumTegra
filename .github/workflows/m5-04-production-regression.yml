@@ -1,0 +1,40 @@
+name: M5-04 Production mobile regression
+
+on:
+  push:
+    branches:
+      - "diag/m5-04-mobile-regression-20260920"
+    paths:
+      - ".github/workflows/m5-04-production-regression.yml"
+      - ".github/diagnostics/m5-04-production-regression.mjs"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  production-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout diagnostic
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install diagnostic dependencies
+        run: npm install --no-save playwright@1.55.0
+      - name: Install browser engines
+        run: npx playwright install --with-deps chromium firefox webkit
+      - name: Run M5-04 Production regression
+        run: node .github/diagnostics/m5-04-production-regression.mjs
+      - name: Upload M5-04 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m5-04-production-regression
+          path: |
+            m5-04-production-regression.json
+            m5-04-production-regression.txt
+          if-no-files-found: error
