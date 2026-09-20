@@ -114,11 +114,16 @@ PASS:
 
 ### G01 — keyboard operation
 
-PASS:
-- previous/next buttons work with Enter/Space;
+Local candidate status: `PASS / 2026-09-20`.
+
+Observed locally:
+- previous/next and focused gallery controls work with Enter/Space;
 - Left/Right arrows change the image;
-- active thumbnail receives `aria-current="true"`;
-- gallery does not trap focus.
+- active thumbnail state is maintained through the existing `aria-current="true"` implementation;
+- Tab traverses the gallery controls and continues outside the gallery;
+- no focus trap observed.
+
+Production and screen-reader validation remain pending.
 
 ## 7. Zoom / text resize
 
