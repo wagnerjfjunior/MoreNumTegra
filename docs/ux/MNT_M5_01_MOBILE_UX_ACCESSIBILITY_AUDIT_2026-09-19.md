@@ -138,11 +138,12 @@ Current `main` preserves:
 
 ### M5-01-C10 — Ária gallery has explicit keyboard navigation
 
-- Evidence: `SOURCE_LEVEL`
-- State: `POSITIVE_CONTROL`
+- Evidence: `SOURCE_LEVEL + USER_REPORTED_LOCAL_RUNTIME`
+- State: `POSITIVE_CONTROL / LOCAL_G01_PASS`
 - Ária uses native buttons for thumbnails and previous/next controls.
-- The gallery also handles `ArrowLeft` / `ArrowRight` at the gallery container and updates `aria-current` on the active thumbnail.
-- This does not by itself prove screen-reader behavior, but source-level keyboard navigation is present.
+- The gallery handles `ArrowLeft` / `ArrowRight` at the gallery container and updates `aria-current` on the active thumbnail.
+- Local keyboard validation confirms Space/Enter and ArrowLeft/ArrowRight change images, Tab traverses the interactive controls, and focus exits the gallery normally with no focus trap observed.
+- `G01_LOCAL_CANDIDATE_VALIDATION = PASS`; production and screen-reader validation remain pending.
 
 
 ## 4. Findings resolved in current main
@@ -212,6 +213,8 @@ Local Home candidate evidence is recorded in `docs/ux/MNT_M5_01_HOME_LOCAL_VALID
 Shared Elo Duo/Ária reflow evidence is recorded in `docs/ux/MNT_M5_01_SHARED_EXACT_PROJECT_REFLOW_VALIDATION_2026-09-20.md`.
 
 Elo Duo/Ária representative mobile-width evidence is recorded in `docs/ux/MNT_M5_01_EXACT_PROJECT_MOBILE_VALIDATION_2026-09-20.md`.
+
+Ária gallery keyboard evidence is recorded in `docs/ux/MNT_M5_01_ARIA_GALLERY_KEYBOARD_VALIDATION_2026-09-20.md`.
 
 Still `NOT_OBSERVED` as an accessibility acceptance set:
 
