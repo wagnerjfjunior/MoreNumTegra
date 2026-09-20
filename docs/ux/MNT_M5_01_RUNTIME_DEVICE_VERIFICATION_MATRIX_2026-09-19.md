@@ -179,6 +179,13 @@ Home filter-surface local/source-level status: `PASS / 2026-09-20`.
 - at 393x852 no overlap or ambiguous adjacent activation area was observed;
 - production/physical-device confirmation remains pending.
 
+Shared exact-project Form 46 local/source-level status: `PASS / 2026-09-20`.
+- Elo Duo and Ária field controls use shared `min-height:50px`;
+- submit control uses `min-height:52px`;
+- form grid uses 14px vertical gap;
+- at 393x852 no form-control overlap or fixed-dock obstruction was observed;
+- production/physical-device confirmation remains pending.
+
 ## 9. Consent versus fixed actions
 
 ### C01 — initial consent visible
