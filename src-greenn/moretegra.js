@@ -1404,8 +1404,15 @@
     const main = document.getElementById("conteudo");
     if (!main) return;
 
+    event.preventDefault();
+    const transferFocus = () => {
+      main.focus({preventScroll: true});
+      main.scrollIntoView({block: "start"});
+    };
+
+    transferFocus();
     window.requestAnimationFrame(() => {
-      main.focus({preventScroll: false});
+      if (document.activeElement !== main) transferFocus();
     });
   });
 })();
