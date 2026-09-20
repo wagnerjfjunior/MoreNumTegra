@@ -80,6 +80,9 @@ Product Authority traversed Elo Duo from the page header through Form 46 and onw
 Ária local candidate status: `PASS / 2026-09-20`.
 Product Authority traversed Ária from the page header through Form 46 and onward to footer/WhatsApp controls, with visible focus retained.
 
+CAPIITOLO local candidate status: `PASS / 2026-09-20`.
+Product Authority traversed the refreshed CAPIITOLO candidate through Form 46 and onward to footer/WhatsApp controls, with visible focus retained.
+
 ### K03 — logical focus order
 
 PASS:
@@ -95,6 +98,9 @@ Elo Duo local candidate status: `PASS / 2026-09-20`.
 Observed sequence progressed through Form 46 and continued to footer/WhatsApp controls with no unexpected jump or focus trap.
 
 Ária local candidate status: `PASS / 2026-09-20`.
+Observed sequence progressed through Form 46 and continued to footer/WhatsApp controls with no unexpected jump or focus trap.
+
+CAPIITOLO local candidate status: `PASS / 2026-09-20`.
 Observed sequence progressed through Form 46 and continued to footer/WhatsApp controls with no unexpected jump or focus trap.
 
 ## 5. CAPIITOLO tabs
