@@ -179,6 +179,13 @@ Home filter-surface local/source-level status: `PASS / 2026-09-20`.
 - at 393x852 no overlap or ambiguous adjacent activation area was observed;
 - production/physical-device confirmation remains pending.
 
+Shared exact-project topbar back-link touch-target local/candidate status: `PASS / 2026-09-20`.
+- Elo Duo measured `.mt-back`: 176.234375 x 46px;
+- Ária measured `.mt-back`: 176.234375 x 46px;
+- both meet the governed 46px interaction baseline while preserving the compact 13px text treatment;
+- candidate head: `445d9feafdc934369706bc837d194bfbd4102bd6`;
+- remediation remains queued in PR #148; production/physical-device confirmation remains pending.
+
 Shared exact-project Form 46 local/source-level status: `PASS / 2026-09-20`.
 - Elo Duo and Ária field controls use shared `min-height:50px`;
 - submit control uses `min-height:52px`;
