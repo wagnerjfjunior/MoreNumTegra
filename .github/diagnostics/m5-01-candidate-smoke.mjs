@@ -21,7 +21,7 @@ async function axePass(browser,path,ready){
 }
 
 const chromiumBrowser=await chromium.launch({headless:true});
-await axePass(chromiumBrowser,"/src-greenn/preview/index.html","[data-filter-status]");
+await axePass(chromiumBrowser,"/src-greenn/preview/index.html","[data-status-mobile]");
 await axePass(chromiumBrowser,"/src-greenn/empreendimentos/aria-higienopolis/index.html","[data-aria-gallery]");
 {
   const c=await chromiumBrowser.newContext({viewport:{width:393,height:852},locale:"pt-BR"}),p=await c.newPage();
