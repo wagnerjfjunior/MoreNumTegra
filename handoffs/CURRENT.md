@@ -2,33 +2,32 @@
 
 Atualizado em `2026-09-20`.
 
-**GitHub `main` / versionado é a fonte canônica.** Resolver o estado live antes de qualquer conclusão ou mutação.
+**GitHub `main` / versionado é a fonte canônica.** Resolver estado live antes de qualquer conclusão ou mutação.
 
 Handoff detalhado vigente:
 
-`handoffs/HANDOFF-2026-09-20-M5-03-MEDIA-PERFORMANCE-STRATEGY.md`
+`handoffs/HANDOFF-2026-09-20-M5-04-PRODUCTION-REGRESSION-CLOSURE.md`
 
 ## 1. REPOSITORY_STATE
 
 ```text
 CANONICAL_REPOSITORY = wagnerjfjunior/MoreNumTegra
 CANONICAL_BRANCH = main
-MAIN_AT_M5_03_START = 0114b386b5fe9b58287e40424eb50947f6fa1f95
+MAIN_RUNTIME = a070e968a547cf94a68b0eb2a38a4bb2e9f64758
 
-PR_180 = CLOSED / NOT_MERGED / M5_02_DIAGNOSTIC_ONLY
-PR_181 = MERGED / M5_02_BASELINE
-PR_182 = MERGED / M5_02_DIAGNOSTIC_CLOSURE
+PR_184 = OPEN_DRAFT / M5_04_DIAGNOSTIC_ONLY / NEVER_MERGE_TO_RUNTIME
+PR_185 = MERGED / M5_04_ARIA_TOUCH_TARGET_REMEDIATION
 ```
 
-## 2. DEPLOYMENT_STATE / PRODUCTION_STATE
+PR #184 may be closed without merge after this closure package is canonical in `main`.
+
+## 2. PRODUCTION_STATE
 
 ```text
-WEB_PRODUCTION = Vercel
 CANONICAL_HOST = https://www.moretegra.com.br/
-PRODUCTION_DEPLOYMENT = dpl_HTzsFxSeTmpqFjyNRwMNrPXvcBLD
+PRODUCTION_DEPLOYMENT = dpl_C9zyvyKSDgYmep24dEj88xacNZ73
+PRODUCTION_SOURCE_SHA = a070e968a547cf94a68b0eb2a38a4bb2e9f64758
 PRODUCTION_STATE = READY
-PRODUCTION_SOURCE_SHA = 6aec388443410a2bff4d7c7a8ddff9d90224d8c9
-DOCS_ONLY_DEPLOYMENTS = CANCELED_BY_IGNORED_BUILD_STEP / EXPECTED
 ```
 
 ## 3. M5 state
@@ -38,29 +37,32 @@ MNT-M5 = ACTIVE
 MNT-M5-01 = COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS
 MNT-M5-02 = COMPLETE / LAB_BASELINE_ESTABLISHED / FIELD_CWV_NOT_OBSERVED
 MNT-M5-03 = COMPLETE / STRATEGY_ESTABLISHED / NO_RUNTIME_MUTATION
-MNT-M5-04 = PLANNED / AUTHORIZATION_REQUIRED / NOT_AUTHORIZED_BY_SEQUENCE
+MNT-M5-04 = COMPLETE / PRODUCTION_REGRESSION_PASS / PHYSICAL_DEVICE_NOT_OBSERVED
+MNT-M5-05 = AUTHORIZED / READY_TO_START
 MNT-M5-10 = PLANNED_NOT_AUTHORIZED
 ```
 
-M5-03 strategy preserves initial-HTML hero discovery and defines responsive AVIF/WebP/JPEG derivative delivery, below-fold lazy loading, thumbnail derivatives, progressive video enhancement and CAPIITOLO bootstrap containment.
+Post-fix M5-04 Production regression:
+
+```text
+RUN = 35540543038
+PASS = 57
+FAIL = 0
+NOT_OBSERVED = 1
+PHYSICAL_DEVICE = NOT_OBSERVED / NOT_PASS
+```
 
 ## 4. PROGRAM PROGRESS
 
 ```text
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 800
-REMAINING_FORECAST_HOURS = 440
-ACCEPTED_PERCENT = 64.52
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 816
+REMAINING_FORECAST_HOURS = 424
+ACCEPTED_PERCENT = 65.81
 ```
 
-## 5. FORM 46 / Measurement
+## 5. NEXT SAFE ACTION
 
-No Form 46 contract change, no real lead submission and no GTM/GA4 mutation occurred in M5-03.
+Start MNT-M5-05 — Conversion architecture under Product Authority's continuing authorization.
 
-## 6. NEXT SAFE ACTION
-
-Authority: `docs/NEXT_SAFE_ACTION.md`.
-
-Obtain explicit Product Authority authorization before starting MNT-M5-04.
-
-MNT-M5-10 performance remediation remains explicitly not authorized.
+Stop only at a material product/architecture decision. Explicit hard blocks, including M5-10, remain in force.
