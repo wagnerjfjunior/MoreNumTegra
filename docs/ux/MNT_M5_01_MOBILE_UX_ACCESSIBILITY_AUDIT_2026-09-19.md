@@ -206,7 +206,7 @@ This does not invalidate repository/source findings. It means the newest SEO con
 
 Canonical execution matrix: `docs/ux/MNT_M5_01_RUNTIME_DEVICE_VERIFICATION_MATRIX_2026-09-19.md`.
 
-Local CAPIITOLO candidate evidence is recorded in `docs/ux/MNT_M5_01_CAPIITOLO_LOCAL_VALIDATION_2026-09-19.md`.
+Local CAPIITOLO candidate evidence is recorded in `docs/ux/MNT_M5_01_CAPIITOLO_LOCAL_VALIDATION_2026-09-19.md`, including full-page K02/K03 keyboard traversal and stale-page false-positive closure.
 
 Local Home candidate evidence is recorded in `docs/ux/MNT_M5_01_HOME_LOCAL_VALIDATION_2026-09-19.md`, including full-page K02/K03 keyboard traversal.
 
@@ -226,7 +226,7 @@ Consent/floating-action local visual evidence is recorded in `docs/ux/MNT_M5_01_
 
 Still `NOT_OBSERVED` as an accessibility acceptance set:
 
-- representative keyboard focus order across remaining exact-project pages; Home, Elo Duo and Ária full-page K02/K03 are locally PASS;
+- representative keyboard focus order is locally PASS on Home, CAPIITOLO, Elo Duo and Ária; production/cross-browser confirmation remains pending;
 - full keyboard operation;
 - screen-reader announcements;
 - 200% text resize / browser zoom on routes not yet locally exercised (Home and CAPIITOLO dock/Form46 cases now locally PASS);
