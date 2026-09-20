@@ -9,7 +9,7 @@
     "active_task_id": "MNT-M5-01",
     "state": "IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED / RUNTIME_QUEUE_PREPARED",
     "pull_request": 122,
-    "repository_head_sha": "0e2e6e3a454dd4e3597696b9e9bb9ad909ddb1e8",
+    "repository_head_sha": "aa38bbe400a4e1a3e6430a5ec1cc1a5c74a40284",
     "latest_main_runtime_sha": "353f4a5dba058f2fb60fd4001128f8c857cd6fce",
     "deployment_state": "PROVIDER_BLOCKED / VERCEL build-rate-limit",
     "last_verified_vercel_success_sha": "6e852f1c41ea834aa138e333cef56519f382dc5f",
@@ -42,6 +42,14 @@
           "F15"
         ],
         "state": "READY / NOT_MERGED / STACKED_ON_135 / LOCAL_CANDIDATE_PASS"
+      },
+      {
+        "pr": 148,
+        "head": "2e7cb45696b6d0cfd191be77fbce975649ddca01",
+        "findings": [
+          "F17"
+        ],
+        "state": "READY / NOT_MERGED / LOCAL_CANDIDATE_PASS"
       },
       {
         "pr": 137,
@@ -156,7 +164,7 @@
   "next": {
     "task_id": "MNT-M5-01",
     "state": "IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED",
-    "safe_action": "Preserve runtime queue #133 -> #135 -> #137 while PR #132 deployment is provider-blocked; continue source-level checks and retain representative browser/device checks as NOT_OBSERVED. Do not start M5-02 by sequence alone."
+    "safe_action": "Preserve runtime queue #133 -> #135 -> #145 -> #148 -> #137 while PR #132 deployment is provider-blocked; continue the canonical runtime/device matrix and retain unexecuted checks as NOT_OBSERVED. Do not start M5-02 by sequence alone."
   },
   "cross_project": {
     "commercial_catalog": {
@@ -177,15 +185,16 @@
     "capiitolo_post_115_recrawl": "CLOSED / INDEXED / RICH_RESULTS_VALID",
     "project_rich_results_parity": "CLOSED / CAPIITOLO_7 / ELO_DUO_7 / ARIA_7",
     "m4_05r_acceptance": "CLOSED / COMPLETE / ACCEPTED / ZERO_ADDITIONAL_WBS_HOURS",
-    "m5_01_open_findings": "P2=9 / F01 F02 F10 F11 F13 F12 F14 F15 F16",
+    "m5_01_open_findings": "P2=10 / F01 F02 F10 F11 F13 F12 F14 F15 F16 F17",
     "m5_01_runtime_device_validation": "OPEN / NOT_FULLY_OBSERVED",
     "latest_main_deployment": "PROVIDER_BLOCKED / VERCEL build-rate-limit / approved runtime SHA 353f4a5dba058f2fb60fd4001128f8c857cd6fce",
-    "m5_01_runtime_queue": "PR133_READY -> PR135_READY_STACKED -> PR145_READY_STACKED_LOCAL_PASS -> PR137_READY_F12_F14_F16_LOCAL_PASS / NONE_MERGED",
+    "m5_01_runtime_queue": "PR133_READY -> PR135_READY_STACKED -> PR145_READY_STACKED_LOCAL_PASS -> PR148_READY_LOCAL_PASS -> PR137_READY_F12_F14_F16_LOCAL_PASS / NONE_MERGED",
     "production_content_state": "CONFIRMED_PRE_PR132 / HTTP_200 / PR132_MARKERS_ABSENT",
     "m5_01_capiitolo_local_validation": "F12 USER_REPORTED_PASS / F14 PASS 360_375_393_440 / F16 PASS 150_PERCENT_VISIBLE_200_PERCENT_HIDDEN_FORM46_UNOBSTRUCTED / PRODUCTION_PENDING",
     "m5_01_home_local_validation": "F01 PASS ~360_393_400 / F02 PASS first-tab+focus-transfer / F10_F11_F13 STATIC_PASS_VISUAL_PENDING",
-    "m5_01_qa_candidate_head": "01bba0b662923c57756cd7360b57f7babcc01ec8",
-    "m5_01_home_reflow_validation": "F15 PASS / 125_PERCENT_DOCK_VISIBLE / 200_PERCENT_DOCK_HIDDEN / FORM46_UNOBSTRUCTED / PRODUCTION_PENDING"
+    "m5_01_qa_candidate_head": "bb53e0d0ee17ae1a5aa908173e5e5e40feb91456",
+    "m5_01_home_reflow_validation": "F15 PASS / 125_PERCENT_DOCK_VISIBLE / 200_PERCENT_DOCK_HIDDEN / FORM46_UNOBSTRUCTED / PRODUCTION_PENDING",
+    "m5_01_shared_exact_project_reflow_validation": "F17 PASS / ELO_DUO 150_VISIBLE_200_HIDDEN_UNOBSTRUCTED / ARIA 150_VISIBLE_200_HIDDEN_UNOBSTRUCTED / PRODUCTION_PENDING"
   },
   "infra": {
     "dns_authority": "CLOUDFLARE_DNS_ONLY",
