@@ -26,11 +26,12 @@ DEPLOYMENT_POLICY = main-only automatic deployment
 NON_MAIN_AUTO_DEPLOY = disabled
 
 LATEST_MAIN_RUNTIME_SHA = 353f4a5dba058f2fb60fd4001128f8c857cd6fce
-VERCEL_STATUS_FOR_LATEST_MAIN = FAILURE / PROVIDER_BLOCKED
-VERCEL_REASON = build-rate-limit
+HISTORICAL_VERCEL_STATUS_FOR_353f4a5d = FAILURE / build-rate-limit
+CURRENT_MORENUMTEGRA_RATE_LIMIT = NOT_REPROVEN
 
-LAST_VERIFIED_VERCEL_SUCCESS_SHA = 6e852f1c41ea834aa138e333cef56519f382dc5f
-PRODUCTION_EXACT_SHA_AFTER_BLOCK = NOT_REVALIDATED
+LAST_VERIFIED_VERCEL_SUCCESS_SHA = 82fd666596b283d1ff5645776ba892abe27885a6
+CURRENT_PRODUCTION_DEPLOYMENT = dpl_H6KtyTDQHHAaWxx4FXHSUJBk97HK / READY
+PRODUCTION_EXACT_SHA = 82fd666596b283d1ff5645776ba892abe27885a6
 PRODUCTION_CONTENT_STATE = CONFIRMED_PRE_PR132 / HTTP_200
 ```
 
@@ -68,7 +69,7 @@ MNT-M5 = ACTIVE
 MNT-M5-01 = IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED
 P0_OPEN = 0
 P1_OPEN = 0
-P2_OPEN = 10
+P2_OPEN = 13
 P3_OPEN = 0
 WBS_PROGRESS_CHANGE = NO
 ```
@@ -76,6 +77,7 @@ WBS_PROGRESS_CHANGE = NO
 Open P2 findings:
 
 1. F01 — Home primary navigation hidden below 760px.
+2. F03 — REOPENED regression: Home stage-filter buttons do not synchronize `aria-pressed`.
 2. F02 — Home lacks explicit skip-to-content.
 3. F10 — Home construction/launch stage-badge contrast below 4.5:1.
 4. F11 — Home light-footer secondary/contact contrast below 4.5:1.
@@ -85,6 +87,8 @@ Open P2 findings:
 8. F15 — Home fixed dock overlaps Form 46 under high zoom / short reflow.
 9. F16 — CAPIITOLO fixed dock overlaps content/Form 46 under high zoom / short reflow.
 10. F17 — Elo Duo/Ária shared exact-project dock overlaps required content under high zoom / short reflow.
+11. F18 — Elo Duo/Ária shared topbar back-link touch target; PR #148 local candidate PASS.
+12. F19 — Home reduced-motion video retains stale synthetic-button semantics after iframe activation.
 
 Prepared runtime queue:
 - PR #133 — F01/F02 — Ready, not merged.
@@ -95,7 +99,7 @@ Prepared runtime queue:
 
 Resolved in current `main`:
 
-- stage-filter `aria-pressed` state;
+
 - consent-aware mobile floating action dock;
 - 9:16 mobile campaign video;
 - map CTA placement / governed WhatsApp-only map pattern;
