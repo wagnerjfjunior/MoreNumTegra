@@ -1,6 +1,11 @@
 name: B4-PROD HTTP characterization
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/b4-prod-http-characterization.yml'
   pull_request:
     paths:
       - '.github/workflows/b4-prod-http-characterization.yml'
