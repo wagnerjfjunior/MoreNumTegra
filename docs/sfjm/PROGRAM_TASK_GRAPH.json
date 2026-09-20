@@ -35,10 +35,10 @@
   },
   "progress": {
     "forecast_total_hours": 1240,
-    "accepted_scope_equivalent_hours": 816,
-    "remaining_forecast_hours": 424,
-    "accepted_percent": 65.8065,
-    "display_percent": 65.81,
+    "accepted_scope_equivalent_hours": 832,
+    "remaining_forecast_hours": 408,
+    "accepted_percent": 67.0968,
+    "display_percent": 67.1,
     "basis": "COMPLETE_TASK_HOURS_DIVIDED_BY_TOTAL_FORECAST_HOURS",
     "source": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
     "warning": "Current lifecycle/progress is sourced from CURRENT_PROGRAM_STATE. This task graph remains structural authority for hierarchy/task IDs/planning hours; do not infer stale child state outside reconciled slices."
@@ -47,11 +47,11 @@
     "phase_id": "MNT-M5",
     "phase_state": "ACTIVE",
     "work_package": "UX, Performance, Conversion, Lead & CRM",
-    "current_task_id": "MNT-M5-04",
-    "current_task_state": "COMPLETE / PRODUCTION_REGRESSION_PASS / PHYSICAL_DEVICE_NOT_OBSERVED",
-    "next_task_id": "MNT-M5-05",
+    "current_task_id": "MNT-M5-05",
+    "current_task_state": "COMPLETE / ARCHITECTURE_CANONICALIZED / NO_RUNTIME_MUTATION",
+    "next_task_id": "MNT-M5-06",
     "next_task_state": "AUTHORIZED / READY_TO_START",
-    "next_safe_action": "Start MNT-M5-05 conversion architecture under continuing Product Authority authorization; stop at any material product/architecture decision. MNT-M5-10 remains not authorized.",
+    "next_safe_action": "Start MNT-M5-06 CTA/form journey optimization design under continuing Product Authority authorization; stop at any material journey/product decision. MNT-M5-10 remains not authorized.",
     "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md",
     "current_state_source": "docs/sfjm/CURRENT_PROGRAM_STATE.json"
   },
@@ -480,7 +480,7 @@
       "label": "UX, Performance, Conversion, Lead & CRM",
       "state": "ACTIVE",
       "hours": 168,
-      "accepted_hours": 64,
+      "accepted_hours": 80,
       "effort_class": "CONSUMER_PLANNING_ESTIMATE",
       "tasks": [
         {
@@ -518,15 +518,15 @@
         {
           "id": "MNT-M5-05",
           "label": "Conversion architecture",
-          "state": "AUTHORIZED / READY_TO_START",
+          "state": "COMPLETE / ARCHITECTURE_CANONICALIZED / NO_RUNTIME_MUTATION",
           "hours": 16,
-          "accepted_hours": 0,
+          "accepted_hours": 16,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE"
         },
         {
           "id": "MNT-M5-06",
           "label": "CTA/form journey optimization design",
-          "state": "PLANNED",
+          "state": "AUTHORIZED / READY_TO_START",
           "hours": 16,
           "accepted_hours": 0,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE"

@@ -4,19 +4,19 @@
     "id": "MNT-RESF",
     "state": "ACTIVE",
     "current_active_phase_id": "MNT-M5",
-    "accepted_percent": 65.81
+    "accepted_percent": 67.1
   },
   "current": {
-    "task_id": "MNT-M5-04",
-    "task_state": "COMPLETE / PRODUCTION_REGRESSION_PASS / PHYSICAL_DEVICE_NOT_OBSERVED",
-    "pr": 186,
-    "repository_head_sha": "a070e968a547cf94a68b0eb2a38a4bb2e9f64758",
+    "task_id": "MNT-M5-05",
+    "task_state": "COMPLETE / ARCHITECTURE_CANONICALIZED / NO_RUNTIME_MUTATION",
+    "pr": 187,
+    "repository_head_sha": "0316ab7c482111006d2e909d5da0c4c8b5fa1983",
     "latest_main_runtime_sha": "a070e968a547cf94a68b0eb2a38a4bb2e9f64758",
-    "deployment_state": "PRODUCTION_READY / M5_04_REGRESSION_ACCEPTED",
+    "deployment_state": "PRODUCTION_READY / M5_05_DESIGN_ONLY",
     "last_verified_vercel_success_sha": "a070e968a547cf94a68b0eb2a38a4bb2e9f64758",
     "production_deployment_id": "dpl_C9zyvyKSDgYmep24dEj88xacNZ73",
-    "acceptance_run": 35540543038,
-    "next_task_id": "MNT-M5-05",
+    "acceptance_run": null,
+    "next_task_id": "MNT-M5-06",
     "next_task_state": "AUTHORIZED / READY_TO_START"
   },
   "current_state_overlay": "docs/sfjm/CURRENT_PROGRAM_STATE.json",

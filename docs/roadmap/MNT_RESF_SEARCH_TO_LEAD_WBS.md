@@ -210,8 +210,8 @@ META NOT_PROVEN != META DOES_NOT_EXIST
 | MNT-M5-02 | Core Web Vitals/performance baseline | 16 | COMPLETE / LAB_BASELINE_ESTABLISHED / FIELD_CWV_NOT_OBSERVED |
 | MNT-M5-03 | Media/image/video performance strategy | 16 | COMPLETE / STRATEGY_ESTABLISHED / NO_RUNTIME_MUTATION |
 | MNT-M5-04 | Regression of filters, touch and mobile controls | 16 | COMPLETE / PRODUCTION_REGRESSION_PASS / PHYSICAL_DEVICE_NOT_OBSERVED |
-| MNT-M5-05 | Conversion architecture | 16 | AUTHORIZED / READY_TO_START |
-| MNT-M5-06 | CTA/form journey optimization design | 16 | PLANNED |
+| MNT-M5-05 | Conversion architecture | 16 | COMPLETE / ARCHITECTURE_CANONICALIZED / NO_RUNTIME_MUTATION |
+| MNT-M5-06 | CTA/form journey optimization design | 16 | AUTHORIZED / READY_TO_START |
 | MNT-M5-07 | Lead semantics and lead-validity contract | 16 | PLANNED |
 | MNT-M5-08 | Green/Form 46 CRM handoff contract | 16 | PLANNED |
 | MNT-M5-09 | Form/CTA conversion QA | 16 | PLANNED |
@@ -260,11 +260,12 @@ MNT-M5 ACTIVE
   M5-02 COMPLETE / LAB_BASELINE_ESTABLISHED / FIELD_CWV_NOT_OBSERVED
   M5-03 COMPLETE / STRATEGY_ESTABLISHED / NO_RUNTIME_MUTATION
   M5-04 COMPLETE / PRODUCTION_REGRESSION_PASS / PHYSICAL_DEVICE_NOT_OBSERVED
-  M5-05 AUTHORIZED / READY_TO_START
+  M5-05 COMPLETE / ARCHITECTURE_CANONICALIZED / NO_RUNTIME_MUTATION
+  M5-06 AUTHORIZED / READY_TO_START
   M5-10 PLANNED_NOT_AUTHORIZED
 ```
 
-Product Authority granted continuing authorization on 2026-09-20 to advance planned tasks and governed Ready/merge lifecycle, stopping at material product/architecture decisions. Explicit hard blocks are not overridden.
+Product Authority's continuing authorization permits planned task execution and governed Ready/merge lifecycle, but requires a stop at material product/architecture decisions. Explicit hard blocks are not overridden.
 
 Consumers must use `CURRENT_PROGRAM_STATE.json` for current lifecycle/progress and this WBS for structure/planning hours.
 
