@@ -2,39 +2,33 @@
 
 Atualizado em `2026-09-20`.
 
-## Estado após M5-04
+## Estado após M5-05
 
 ```text
 MNT-M5 = ACTIVE
-MNT-M5-04 = COMPLETE / PRODUCTION_REGRESSION_PASS / PHYSICAL_DEVICE_NOT_OBSERVED
-MNT-M5-05 = AUTHORIZED / READY_TO_START
+MNT-M5-05 = COMPLETE / ARCHITECTURE_CANONICALIZED / NO_RUNTIME_MUTATION
+MNT-M5-06 = AUTHORIZED / READY_TO_START
 MNT-M5-10 = PLANNED_NOT_AUTHORIZED
 
-MAIN_RUNTIME = a070e968a547cf94a68b0eb2a38a4bb2e9f64758
+EFFECTIVE_PRODUCTION_RUNTIME_SHA = a070e968a547cf94a68b0eb2a38a4bb2e9f64758
 PRODUCTION_DEPLOYMENT = dpl_C9zyvyKSDgYmep24dEj88xacNZ73
 PRODUCTION_STATE = READY
-
-M5_04_ACCEPTANCE_RUN = 35540543038
-PASS = 57
-FAIL = 0
-NOT_OBSERVED = 1
-PHYSICAL_DEVICE = NOT_OBSERVED / NOT_PASS
 ```
 
 ## Única próxima ação segura
 
-Executar **MNT-M5-05 — Conversion architecture** sob a autorização contínua da Product Authority.
+Executar **MNT-M5-06 — CTA/form journey optimization design** sob a autorização contínua da Product Authority.
 
-A execução pode avançar por análise, documentação, PR Ready e merge quando os gates forem objetivos.
+Pode avançar por análise e documentação sem nova microaprovação quando a decisão já estiver determinada pelos contratos canônicos.
 
-**PARAR** quando surgir uma decisão material de produto/arquitetura, inclusive escolha entre alternativas de conversão com impacto em jornada, semântica de lead, privacidade, CRM, Measurement ou dependência de backend que não esteja resolvida pelos contratos canônicos.
+**PARAR** diante de escolha material de produto/jornada, por exemplo:
 
-Continuam bloqueados sem decisão específica:
+- alterar hierarquia estratégica Form 46 vs WhatsApp;
+- tornar WhatsApp uma conversão primária;
+- alterar campos obrigatórios/intent obrigatório do formulário;
+- remover ou adicionar uma etapa material na jornada;
+- introduzir modal/stepper/chat como caminho principal;
+- redefinir comportamento de CTA de forma que troque o objetivo da ação;
+- mudar provider/CRM, lead validity, privacy ou Measurement semantics.
 
-- MNT-M5-10 performance remediation;
-- mudança do contrato Form 46;
-- novo backend/intermediário;
-- GTM/GA4/Consent mutation fora de gate próprio;
-- DNS/canonical/SEO structural mutation;
-- FECH.AI/n8n/Make;
-- Meta/Ads.
+Continuam explicitamente bloqueados sem decisão específica: M5-10, novo backend, FECH.AI/n8n/Make, Meta/Ads, DNS/canonical e Measurement mutation fora de gate.
