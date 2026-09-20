@@ -67,6 +67,29 @@ F16_LOCAL_CANDIDATE_VALIDATION = PASS
 PRODUCTION_VALIDATION = PENDING
 ```
 
+## K02/K03 — full-page keyboard traversal
+
+Local Product Authority validation completed on the refreshed CAPIITOLO candidate at a representative mobile viewport.
+
+Observed:
+
+- visible focus remained present on interactive controls;
+- Tab traversal reached Form 46 normally;
+- traversal continued through footer/contact controls to WhatsApp;
+- no unexpected focus jump was observed;
+- no focus trap was observed;
+- fixed actions did not block the focused control sequence.
+
+A prior screenshot that appeared clipped was rechecked after refresh and treated as a stale-page false positive: the refreshed candidate showed the responsive hero, dock and WhatsApp normally, with no page-level horizontal overflow observed.
+
+```text
+CAPIITOLO_K02_VISIBLE_FOCUS_LOCAL = PASS
+CAPIITOLO_K03_LOGICAL_FOCUS_ORDER_LOCAL = PASS
+CAPIITOLO_FULL_PAGE_FOCUS_TRAP = NONE_OBSERVED
+STALE_PAGE_FALSE_POSITIVE = CLOSED_AFTER_REFRESH
+PRODUCTION_VALIDATION = PENDING
+```
+
 ## Evidence boundary
 
 This is local candidate evidence only.
