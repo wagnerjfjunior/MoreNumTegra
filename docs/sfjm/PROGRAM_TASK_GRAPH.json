@@ -47,11 +47,11 @@
     "phase_id": "MNT-M5",
     "phase_state": "ACTIVE",
     "work_package": "UX, Performance, Conversion, Lead & CRM",
-    "current_task_id": "MNT-M5-05",
-    "current_task_state": "COMPLETE / ARCHITECTURE_CANONICALIZED / NO_RUNTIME_MUTATION",
+    "current_task_id": "MNT-M5-06",
+    "current_task_state": "ACTIVE / DECISION_APPROVED / IMPLEMENTATION_AUTHORIZED",
     "next_task_id": "MNT-M5-06",
-    "next_task_state": "AUTHORIZED / READY_TO_START",
-    "next_safe_action": "Start MNT-M5-06 CTA/form journey optimization design under continuing Product Authority authorization; stop at any material journey/product decision. MNT-M5-10 remains not authorized.",
+    "next_task_state": "IMPLEMENTATION_AUTHORIZED",
+    "next_safe_action": "Implement approved CTA-to-Form46 intent preselection plus same-page CAPIITOLO/Capitolo search-variant coverage; exact-head and Production validation required before M5-06 completion.",
     "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md",
     "current_state_source": "docs/sfjm/CURRENT_PROGRAM_STATE.json"
   },
@@ -526,7 +526,7 @@
         {
           "id": "MNT-M5-06",
           "label": "CTA/form journey optimization design",
-          "state": "AUTHORIZED / READY_TO_START",
+          "state": "ACTIVE / DECISION_APPROVED / IMPLEMENTATION_AUTHORIZED",
           "hours": 16,
           "accepted_hours": 0,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE"
@@ -534,7 +534,7 @@
         {
           "id": "MNT-M5-07",
           "label": "Lead semantics and lead-validity contract",
-          "state": "PLANNED",
+          "state": "PLANNED / BLOCKED_BY_M5_06_ACCEPTANCE",
           "hours": 16,
           "accepted_hours": 0,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE"

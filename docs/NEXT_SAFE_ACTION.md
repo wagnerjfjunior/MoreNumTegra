@@ -2,12 +2,12 @@
 
 Atualizado em `2026-09-20`.
 
-## Estado após M5-05
+## Estado M5-06 após decisão da Product Authority
 
 ```text
 MNT-M5 = ACTIVE
-MNT-M5-05 = COMPLETE / ARCHITECTURE_CANONICALIZED / NO_RUNTIME_MUTATION
-MNT-M5-06 = AUTHORIZED / READY_TO_START
+MNT-M5-06 = ACTIVE / DECISION_APPROVED / IMPLEMENTATION_AUTHORIZED
+MNT-M5-07 = PLANNED / BLOCKED_BY_M5_06_ACCEPTANCE
 MNT-M5-10 = PLANNED_NOT_AUTHORIZED
 
 EFFECTIVE_PRODUCTION_RUNTIME_SHA = a070e968a547cf94a68b0eb2a38a4bb2e9f64758
@@ -17,18 +17,27 @@ PRODUCTION_STATE = READY
 
 ## Única próxima ação segura
 
-Executar **MNT-M5-06 — CTA/form journey optimization design** sob a autorização contínua da Product Authority.
+Implementar o change set aprovado de **MNT-M5-06 — CTA/Form journey optimization**:
 
-Pode avançar por análise e documentação sem nova microaprovação quando a decisão já estiver determinada pelos contratos canônicos.
+- CTA contextual deve pré-selecionar a intenção correspondente no Form 46;
+- o mapping deve ser allowlisted e não derivar texto arbitrário do DOM;
+- adicionar a opção controlada `Negociar meu cenário` aos formulários governados;
+- Home `Quero negociar meu cenário` -> `Negociar meu cenário`;
+- `Agendar visita` -> `Agendar visita`;
+- `Simular possibilidades de pagamento` -> `Simular forma de pagamento`;
+- condições/consultar unidades/negociar condições/floating -> `Condições e disponibilidade`;
+- CAPIITOLO hero deve se tornar um CTA único `Receber condições`, preservando o CTA separado de visita;
+- CAPIITOLO continua sendo o branding oficial/H1;
+- a mesma página canônica deve cobrir naturalmente a variante de busca `Capitolo`, sem nova URL e sem keyword stuffing.
 
-**PARAR** diante de escolha material de produto/jornada, por exemplo:
+Após implementação: checks do repositório + smoke exact-head + validação Production.
 
-- alterar hierarquia estratégica Form 46 vs WhatsApp;
-- tornar WhatsApp uma conversão primária;
-- alterar campos obrigatórios/intent obrigatório do formulário;
-- remover ou adicionar uma etapa material na jornada;
-- introduzir modal/stepper/chat como caminho principal;
-- redefinir comportamento de CTA de forma que troque o objetivo da ação;
-- mudar provider/CRM, lead validity, privacy ou Measurement semantics.
+Não alterar sem gate próprio:
 
-Continuam explicitamente bloqueados sem decisão específica: M5-10, novo backend, FECH.AI/n8n/Make, Meta/Ads, DNS/canonical e Measurement mutation fora de gate.
+- semântica Measurement dos project-page `mnt_intent` (M5-07);
+- Form 46 provider/endpoint;
+- lead validity;
+- GTM/GA4;
+- DNS/canonical;
+- backend;
+- M5-10.
