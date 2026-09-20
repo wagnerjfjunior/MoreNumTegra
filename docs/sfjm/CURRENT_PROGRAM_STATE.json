@@ -9,7 +9,7 @@
     "active_task_id": "MNT-M5-01",
     "state": "IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED / RUNTIME_QUEUE_PREPARED",
     "pull_request": 122,
-    "repository_head_sha": "6cf6f75e2862991b9baa3df852cbeef023c8f22a",
+    "repository_head_sha": "abe2e83dfc0c5cef53deaa9946c0a8d28caa5ed1",
     "latest_main_runtime_sha": "353f4a5dba058f2fb60fd4001128f8c857cd6fce",
     "deployment_state": "PROVIDER_BLOCKED / VERCEL build-rate-limit",
     "last_verified_vercel_success_sha": "6e852f1c41ea834aa138e333cef56519f382dc5f",
@@ -205,7 +205,8 @@
     "m5_01_elo_duo_keyboard_order_validation": "K02 PASS / K03 PASS / FULL_PAGE_TAB_TRAVERSAL_THROUGH_FORM46_TO_FOOTER_WHATSAPP / VISIBLE_FOCUS / NO_TRAP_OBSERVED / PRODUCTION_PENDING",
     "m5_01_aria_keyboard_order_validation": "K02 PASS / K03 PASS / FULL_PAGE_TAB_TRAVERSAL_THROUGH_FORM46_TO_FOOTER_WHATSAPP / VISIBLE_FOCUS / NO_TRAP_OBSERVED / PRODUCTION_PENDING",
     "m5_01_capiitolo_keyboard_order_validation": "K02 PASS / K03 PASS / FULL_PAGE_TAB_TRAVERSAL_THROUGH_FORM46_TO_FOOTER_WHATSAPP / VISIBLE_FOCUS / NO_TRAP_OBSERVED / STALE_PAGE_FALSE_POSITIVE_CLOSED_AFTER_REFRESH / PRODUCTION_PENDING",
-    "m5_01_keyboard_order_matrix": "HOME PASS / CAPIITOLO PASS / ELO_DUO PASS / ARIA PASS / LOCAL_CHROME / PRODUCTION_AND_CROSS_BROWSER_PENDING"
+    "m5_01_keyboard_order_matrix": "HOME PASS / CAPIITOLO PASS / ELO_DUO PASS / ARIA PASS / LOCAL_CHROME / PRODUCTION_AND_CROSS_BROWSER_PENDING",
+    "m5_01_home_filter_touch_target_validation": "PASS / 393x852 / MIN_HEIGHT_46PX / QUICK_ZONE_GAP_8PX / NO_OVERLAP_OBSERVED / PRODUCTION_PHYSICAL_DEVICE_PENDING"
   },
   "infra": {
     "dns_authority": "CLOUDFLARE_DNS_ONLY",

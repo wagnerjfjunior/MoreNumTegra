@@ -173,6 +173,12 @@ PASS baseline:
 
 Any control that relies on a WCAG spacing exception rather than target size must be recorded explicitly, not silently passed.
 
+Home filter-surface local/source-level status: `PASS / 2026-09-20`.
+- zone quick buttons, stage select, search and value select inherit the governed `min-height:46px` interaction baseline;
+- zone quick buttons retain an 8px gap;
+- at 393x852 no overlap or ambiguous adjacent activation area was observed;
+- production/physical-device confirmation remains pending.
+
 ## 9. Consent versus fixed actions
 
 ### C01 — initial consent visible
