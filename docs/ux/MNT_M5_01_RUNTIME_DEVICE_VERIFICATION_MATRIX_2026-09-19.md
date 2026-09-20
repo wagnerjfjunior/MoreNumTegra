@@ -153,10 +153,14 @@ Any control that relies on a WCAG spacing exception rather than target size must
 
 ### C01 — initial consent visible
 
-PASS:
+Local visual simulation status: `PASS / 2026-09-20`.
+
+Observed on Ária at 393x852 by manually exposing the banner and recomputing the governed consent offset:
 - consent panel remains readable;
 - floating lead/WhatsApp controls are offset above it;
 - neither surface blocks the other.
+
+This is visual-geometry evidence only because localhost intentionally disables consent runtime behavior.
 
 ### C02 — accept / reject
 
@@ -164,6 +168,8 @@ PASS:
 - after either choice, the consent panel leaves the viewport;
 - floating actions return to their normal bottom position;
 - keyboard focus is not lost into an inaccessible state.
+
+Current status: `NOT_OBSERVED_LOCAL / PRODUCTION_REQUIRED`, because localhost intentionally returns before registering Accept/Reject handlers.
 
 ## 10. Form 46
 
