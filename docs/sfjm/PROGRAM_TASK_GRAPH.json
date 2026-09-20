@@ -40,8 +40,8 @@
     "accepted_percent": 63.2258,
     "display_percent": 63.23,
     "basis": "COMPLETE_TASK_HOURS_DIVIDED_BY_TOTAL_FORECAST_HOURS",
-    "warning": "Current lifecycle/progress is sourced from CURRENT_PROGRAM_STATE. This task graph remains structural authority for hierarchy/task IDs/planning hours; do not infer stale child state outside reconciled slices.",
-    "source": "docs/sfjm/CURRENT_PROGRAM_STATE.json"
+    "source": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
+    "warning": "Current lifecycle/progress is sourced from CURRENT_PROGRAM_STATE. This task graph remains structural authority for hierarchy/task IDs/planning hours; do not infer stale child state outside reconciled slices."
   },
   "current": {
     "phase_id": "MNT-M5",
@@ -76,78 +76,15 @@
       "accepted_hours": 160,
       "effort_class": "RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE",
       "tasks": [
-        {
-          "id": "MNT-M0-01",
-          "label": "Governance, canonical GitHub flow and baselines",
-          "state": "COMPLETE",
-          "hours": 16,
-          "accepted_hours": 16,
-          "effort_class": "RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE"
-        },
-        {
-          "id": "MNT-M0-02",
-          "label": "Portable HTML/CSS/JS architecture for Vercel/Green",
-          "state": "COMPLETE",
-          "hours": 16,
-          "accepted_hours": 16,
-          "effort_class": "RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE"
-        },
-        {
-          "id": "MNT-M0-03",
-          "label": "Catalogue, data model, filters and stage visibility",
-          "state": "COMPLETE",
-          "hours": 24,
-          "accepted_hours": 24,
-          "effort_class": "RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE"
-        },
-        {
-          "id": "MNT-M0-04",
-          "label": "Mobile UX, floating CTAs and WhatsApp",
-          "state": "COMPLETE",
-          "hours": 16,
-          "accepted_hours": 16,
-          "effort_class": "RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE"
-        },
-        {
-          "id": "MNT-M0-05",
-          "label": "Green native Form 46 and lead journey",
-          "state": "COMPLETE",
-          "hours": 24,
-          "accepted_hours": 24,
-          "effort_class": "RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE"
-        },
-        {
-          "id": "MNT-M0-06",
-          "label": "Vercel Preview and stable homologation flow",
-          "state": "COMPLETE",
-          "hours": 16,
-          "accepted_hours": 16,
-          "effort_class": "RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE"
-        },
-        {
-          "id": "MNT-M0-07",
-          "label": "Search + Conversion package and indexability work",
-          "state": "COMPLETE",
-          "hours": 24,
-          "accepted_hours": 24,
-          "effort_class": "RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE"
-        },
-        {
-          "id": "MNT-M0-08",
-          "label": "Controlled Green release and production smoke",
-          "state": "COMPLETE",
-          "hours": 16,
-          "accepted_hours": 16,
-          "effort_class": "RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE"
-        },
-        {
-          "id": "MNT-M0-09",
-          "label": "Initial Search Console/indexation evidence",
-          "state": "COMPLETE",
-          "hours": 8,
-          "accepted_hours": 8,
-          "effort_class": "RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE"
-        }
+        {"id":"MNT-M0-01","label":"Governance, canonical GitHub flow and baselines","state":"COMPLETE","hours":16,"accepted_hours":16,"effort_class":"RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE"},
+        {"id":"MNT-M0-02","label":"Portable HTML/CSS/JS architecture for Vercel/Green","state":"COMPLETE","hours":16,"accepted_hours":16,"effort_class":"RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE"},
+        {"id":"MNT-M0-03","label":"Catalogue, data model, filters and stage visibility","state":"COMPLETE","hours":24,"accepted_hours":24,"effort_class":"RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE"},
+        {"id":"MNT-M0-04","label":"Mobile UX, floating CTAs and WhatsApp","state":"COMPLETE","hours":16,"accepted_hours":16,"effort_class":"RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE"},
+        {"id":"MNT-M0-05","label":"Green native Form 46 and lead journey","state":"COMPLETE","hours":24,"accepted_hours":24,"effort_class":"RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE"},
+        {"id":"MNT-M0-06","label":"Vercel Preview and stable homologation flow","state":"COMPLETE","hours":16,"accepted_hours":16,"effort_class":"RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE"},
+        {"id":"MNT-M0-07","label":"Search + Conversion package and indexability work","state":"COMPLETE","hours":24,"accepted_hours":24,"effort_class":"RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE"},
+        {"id":"MNT-M0-08","label":"Controlled Green release and production smoke","state":"COMPLETE","hours":16,"accepted_hours":16,"effort_class":"RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE"},
+        {"id":"MNT-M0-09","label":"Initial Search Console/indexation evidence","state":"COMPLETE","hours":8,"accepted_hours":8,"effort_class":"RETROSPECTIVE_SCOPE_EQUIVALENT_ESTIMATE"}
       ]
     },
     {
@@ -159,78 +96,14 @@
       "effort_class": "CONSUMER_PLANNING_ESTIMATE",
       "authorization": "DOCUMENTATION_ONLY_AUTHORIZED",
       "tasks": [
-        {
-          "id": "MNT-M1-01",
-          "label": "Resolve and pin RESF v1 immutable provider revision",
-          "state": "ACTIVE",
-          "hours": 8,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "DOCUMENTATION_ONLY_AUTHORIZED"
-        },
-        {
-          "id": "MNT-M1-02",
-          "label": "Create RESF consumer adoption manifest",
-          "state": "ACTIVE",
-          "hours": 8,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "DOCUMENTATION_ONLY_AUTHORIZED"
-        },
-        {
-          "id": "MNT-M1-03",
-          "label": "Classify adopted, deferred and rejected RESF modules",
-          "state": "ACTIVE",
-          "hours": 8,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "DOCUMENTATION_ONLY_AUTHORIZED"
-        },
-        {
-          "id": "MNT-M1-04",
-          "label": "Reconcile existing implementation/evidence against RESF contracts",
-          "state": "ACTIVE",
-          "hours": 24,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "DOCUMENTATION_ONLY_AUTHORIZED"
-        },
-        {
-          "id": "MNT-M1-05",
-          "label": "Register GSC T0 baseline observed 2026-09-10",
-          "state": "ACTIVE",
-          "hours": 8,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "DOCUMENTATION_ONLY_AUTHORIZED"
-        },
-        {
-          "id": "MNT-M1-06",
-          "label": "Register gaps, overrides and residual risks",
-          "state": "ACTIVE",
-          "hours": 8,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "DOCUMENTATION_ONLY_AUTHORIZED"
-        },
-        {
-          "id": "MNT-M1-07",
-          "label": "Publish consumer-readable WBS/task graph and continuity entrypoints",
-          "state": "ACTIVE",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "DOCUMENTATION_ONLY_AUTHORIZED"
-        },
-        {
-          "id": "MNT-M1-08",
-          "label": "Schema/consistency review, independent documentation audit and PR lifecycle",
-          "state": "ACTIVE",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "SEPARATE_LIFECYCLE_GATES_APPLY"
-        }
+        {"id":"MNT-M1-01","label":"Resolve and pin RESF v1 immutable provider revision","state":"ACTIVE","hours":8,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE","authorization":"DOCUMENTATION_ONLY_AUTHORIZED"},
+        {"id":"MNT-M1-02","label":"Create RESF consumer adoption manifest","state":"ACTIVE","hours":8,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE","authorization":"DOCUMENTATION_ONLY_AUTHORIZED"},
+        {"id":"MNT-M1-03","label":"Classify adopted, deferred and rejected RESF modules","state":"ACTIVE","hours":8,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE","authorization":"DOCUMENTATION_ONLY_AUTHORIZED"},
+        {"id":"MNT-M1-04","label":"Reconcile existing implementation/evidence against RESF contracts","state":"ACTIVE","hours":24,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE","authorization":"DOCUMENTATION_ONLY_AUTHORIZED"},
+        {"id":"MNT-M1-05","label":"Register GSC T0 baseline observed 2026-09-10","state":"ACTIVE","hours":8,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE","authorization":"DOCUMENTATION_ONLY_AUTHORIZED"},
+        {"id":"MNT-M1-06","label":"Register gaps, overrides and residual risks","state":"ACTIVE","hours":8,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE","authorization":"DOCUMENTATION_ONLY_AUTHORIZED"},
+        {"id":"MNT-M1-07","label":"Publish consumer-readable WBS/task graph and continuity entrypoints","state":"ACTIVE","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE","authorization":"DOCUMENTATION_ONLY_AUTHORIZED"},
+        {"id":"MNT-M1-08","label":"Schema/consistency review, independent documentation audit and PR lifecycle","state":"ACTIVE","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE","authorization":"SEPARATE_LIFECYCLE_GATES_APPLY"}
       ]
     },
     {
@@ -241,87 +114,16 @@
       "accepted_hours": 0,
       "effort_class": "CONSUMER_PLANNING_ESTIMATE",
       "tasks": [
-        {
-          "id": "MNT-M2-01",
-          "label": "Inventory tracking already present in live runtime",
-          "state": "PLANNED",
-          "hours": 8,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M2-02",
-          "label": "Define transport architecture and duplicate-event prevention",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M2-03",
-          "label": "Define canonical event taxonomy",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M2-04",
-          "label": "Define primary and secondary conversions",
-          "state": "PLANNED",
-          "hours": 8,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M2-05",
-          "label": "Define ownership for MoreNumTegra GTM and GA4",
-          "state": "PLANNED",
-          "hours": 8,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M2-06",
-          "label": "Define ownership for Meta Pixel/Dataset",
-          "state": "PLANNED",
-          "hours": 8,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M2-07",
-          "label": "Define consent model and LGPD gating",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M2-08",
-          "label": "Define denied/granted consent QA contract",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M2-09",
-          "label": "Implement authorized tracking configuration",
-          "state": "PLANNED",
-          "hours": 24,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "NOT_AUTHORIZED"
-        },
-        {
-          "id": "MNT-M2-10",
-          "label": "Execute end-to-end Measurement QA",
-          "state": "PLANNED",
-          "hours": 24,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        }
+        {"id":"MNT-M2-01","label":"Inventory tracking already present in live runtime","state":"PLANNED","hours":8,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M2-02","label":"Define transport architecture and duplicate-event prevention","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M2-03","label":"Define canonical event taxonomy","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M2-04","label":"Define primary and secondary conversions","state":"PLANNED","hours":8,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M2-05","label":"Define ownership for MoreNumTegra GTM and GA4","state":"PLANNED","hours":8,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M2-06","label":"Define ownership for Meta Pixel/Dataset","state":"PLANNED","hours":8,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M2-07","label":"Define consent model and LGPD gating","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M2-08","label":"Define denied/granted consent QA contract","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M2-09","label":"Implement authorized tracking configuration","state":"PLANNED","hours":24,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE","authorization":"NOT_AUTHORIZED"},
+        {"id":"MNT-M2-10","label":"Execute end-to-end Measurement QA","state":"PLANNED","hours":24,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"}
       ]
     },
     {
@@ -332,62 +134,13 @@
       "accepted_hours": 0,
       "effort_class": "CONSUMER_PLANNING_ESTIMATE",
       "tasks": [
-        {
-          "id": "MNT-M3-01",
-          "label": "Market and Search demand research",
-          "state": "PLANNED",
-          "hours": 24,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M3-02",
-          "label": "Extract and classify Search Console queries",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M3-03",
-          "label": "SERP, competitor and search-intent analysis",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M3-04",
-          "label": "Governed Product Fact & Claim Registry",
-          "state": "PLANNED",
-          "hours": 24,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M3-05",
-          "label": "Search Intent / Query Ownership Contract",
-          "state": "PLANNED",
-          "hours": 24,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M3-06",
-          "label": "Query-family to page-owner map",
-          "state": "PLANNED",
-          "hours": 24,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M3-07",
-          "label": "KPI baseline and success criteria",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        }
+        {"id":"MNT-M3-01","label":"Market and Search demand research","state":"PLANNED","hours":24,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M3-02","label":"Extract and classify Search Console queries","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M3-03","label":"SERP, competitor and search-intent analysis","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M3-04","label":"Governed Product Fact & Claim Registry","state":"PLANNED","hours":24,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M3-05","label":"Search Intent / Query Ownership Contract","state":"PLANNED","hours":24,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M3-06","label":"Query-family to page-owner map","state":"PLANNED","hours":24,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M3-07","label":"KPI baseline and success criteria","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"}
       ]
     },
     {
@@ -398,81 +151,15 @@
       "accepted_hours": 0,
       "effort_class": "CONSUMER_PLANNING_ESTIMATE",
       "tasks": [
-        {
-          "id": "MNT-M4-01",
-          "label": "Information Architecture",
-          "state": "PLANNED",
-          "hours": 24,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M4-02",
-          "label": "Page contracts and page types",
-          "state": "PLANNED",
-          "hours": 24,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M4-03",
-          "label": "Decision-useful content architecture",
-          "state": "PLANNED",
-          "hours": 24,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M4-04",
-          "label": "Entity graph and schema contract",
-          "state": "PLANNED",
-          "hours": 24,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M4-05",
-          "label": "Factual JSON-LD expansion",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "NOT_AUTHORIZED"
-        },
-        {
-          "id": "MNT-M4-06",
-          "label": "GEO/AEO / answerability / AI discoverability readiness",
-          "state": "PLANNED",
-          "hours": 24,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M4-07",
-          "label": "Semantic internal-linking contract",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M4-08",
-          "label": "Implement prioritized content/architecture",
-          "state": "PLANNED",
-          "hours": 32,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "NOT_AUTHORIZED"
-        },
-        {
-          "id": "MNT-M4-09",
-          "label": "Resolve technical SEO residuals: sitemap/www/canonical where capability permits",
-          "state": "PLANNED",
-          "hours": 24,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "NOT_AUTHORIZED"
-        }
+        {"id":"MNT-M4-01","label":"Information Architecture","state":"PLANNED","hours":24,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M4-02","label":"Page contracts and page types","state":"PLANNED","hours":24,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M4-03","label":"Decision-useful content architecture","state":"PLANNED","hours":24,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M4-04","label":"Entity graph and schema contract","state":"PLANNED","hours":24,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M4-05","label":"Factual JSON-LD expansion","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE","authorization":"NOT_AUTHORIZED"},
+        {"id":"MNT-M4-06","label":"GEO/AEO / answerability / AI discoverability readiness","state":"PLANNED","hours":24,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M4-07","label":"Semantic internal-linking contract","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M4-08","label":"Implement prioritized content/architecture","state":"PLANNED","hours":32,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE","authorization":"NOT_AUTHORIZED"},
+        {"id":"MNT-M4-09","label":"Resolve technical SEO residuals: sitemap/www/canonical where capability permits","state":"PLANNED","hours":24,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE","authorization":"NOT_AUTHORIZED"}
       ]
     },
     {
@@ -483,87 +170,16 @@
       "accepted_hours": 32,
       "effort_class": "CONSUMER_PLANNING_ESTIMATE",
       "tasks": [
-        {
-          "id": "MNT-M5-01",
-          "label": "Mobile UX and accessibility audit",
-          "state": "COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS",
-          "hours": 16,
-          "accepted_hours": 16,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M5-02",
-          "label": "Core Web Vitals/performance baseline",
-          "state": "COMPLETE / LAB_BASELINE_ESTABLISHED / FIELD_CWV_NOT_OBSERVED",
-          "hours": 16,
-          "accepted_hours": 16,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M5-03",
-          "label": "Media/image/video performance strategy",
-          "state": "PLANNED / AUTHORIZATION_REQUIRED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M5-04",
-          "label": "Regression of filters, touch and mobile controls",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M5-05",
-          "label": "Conversion architecture",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M5-06",
-          "label": "CTA/form journey optimization design",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M5-07",
-          "label": "Lead semantics and lead-validity contract",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M5-08",
-          "label": "Green/Form 46 CRM handoff contract",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M5-09",
-          "label": "Form/CTA conversion QA",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M5-10",
-          "label": "Authorized performance remediation",
-          "state": "PLANNED",
-          "hours": 24,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "NOT_AUTHORIZED"
-        }
+        {"id":"MNT-M5-01","label":"Mobile UX and accessibility audit","state":"COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS","hours":16,"accepted_hours":16,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M5-02","label":"Core Web Vitals/performance baseline","state":"COMPLETE / LAB_BASELINE_ESTABLISHED / FIELD_CWV_NOT_OBSERVED","hours":16,"accepted_hours":16,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M5-03","label":"Media/image/video performance strategy","state":"PLANNED / AUTHORIZATION_REQUIRED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M5-04","label":"Regression of filters, touch and mobile controls","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M5-05","label":"Conversion architecture","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M5-06","label":"CTA/form journey optimization design","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M5-07","label":"Lead semantics and lead-validity contract","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M5-08","label":"Green/Form 46 CRM handoff contract","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M5-09","label":"Form/CTA conversion QA","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M5-10","label":"Authorized performance remediation","state":"PLANNED","hours":24,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE","authorization":"NOT_AUTHORIZED"}
       ]
     },
     {
@@ -574,72 +190,14 @@
       "accepted_hours": 0,
       "effort_class": "CONSUMER_PLANNING_ESTIMATE",
       "tasks": [
-        {
-          "id": "MNT-M6-01",
-          "label": "Attribution model and identifier boundaries",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M6-02",
-          "label": "UTM/source/medium/campaign contract",
-          "state": "PLANNED",
-          "hours": 8,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M6-03",
-          "label": "Google Ads conversion architecture",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M6-04",
-          "label": "SEM campaign/query contract",
-          "state": "PLANNED",
-          "hours": 24,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M6-05",
-          "label": "Landing-page/query mapping",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M6-06",
-          "label": "Budget/spend authorization gate",
-          "state": "PLANNED",
-          "hours": 8,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "NOT_AUTHORIZED"
-        },
-        {
-          "id": "MNT-M6-07",
-          "label": "Authorized external platform implementation",
-          "state": "PLANNED",
-          "hours": 24,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "NOT_AUTHORIZED"
-        },
-        {
-          "id": "MNT-M6-08",
-          "label": "Paid conversion QA",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        }
+        {"id":"MNT-M6-01","label":"Attribution model and identifier boundaries","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M6-02","label":"UTM/source/medium/campaign contract","state":"PLANNED","hours":8,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M6-03","label":"Google Ads conversion architecture","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M6-04","label":"SEM campaign/query contract","state":"PLANNED","hours":24,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M6-05","label":"Landing-page/query mapping","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M6-06","label":"Budget/spend authorization gate","state":"PLANNED","hours":8,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE","authorization":"NOT_AUTHORIZED"},
+        {"id":"MNT-M6-07","label":"Authorized external platform implementation","state":"PLANNED","hours":24,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE","authorization":"NOT_AUTHORIZED"},
+        {"id":"MNT-M6-08","label":"Paid conversion QA","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"}
       ]
     },
     {
@@ -650,113 +208,19 @@
       "accepted_hours": 0,
       "effort_class": "CONSUMER_PLANNING_ESTIMATE",
       "tasks": [
-        {
-          "id": "MNT-M7-01",
-          "label": "Preview validation",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M7-02",
-          "label": "Technical/content QA",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M7-03",
-          "label": "Independent mobile QA",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M7-04",
-          "label": "Tracking + lead end-to-end QA",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M7-05",
-          "label": "Regression suite",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M7-06",
-          "label": "P0/P1 release adjudication",
-          "state": "PLANNED",
-          "hours": 8,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M7-07",
-          "label": "Vercel Production homologation",
-          "state": "PLANNED",
-          "hours": 8,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "NOT_AUTHORIZED"
-        },
-        {
-          "id": "MNT-M7-08",
-          "label": "Controlled Green publication",
-          "state": "PLANNED",
-          "hours": 8,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "NOT_AUTHORIZED"
-        },
-        {
-          "id": "MNT-M7-09",
-          "label": "Production smoke",
-          "state": "PLANNED",
-          "hours": 8,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M7-10",
-          "label": "Post-release measurement",
-          "state": "PLANNED",
-          "hours": 24,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M7-11",
-          "label": "GSC/GA4/Ads observation window",
-          "state": "PLANNED",
-          "hours": 24,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M7-12",
-          "label": "Result registration with provenance",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
-        },
-        {
-          "id": "MNT-M7-13",
-          "label": "RESF provider evidence intake / learning loop",
-          "state": "PLANNED",
-          "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "NOT_AUTHORIZED"
-        }
+        {"id":"MNT-M7-01","label":"Preview validation","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M7-02","label":"Technical/content QA","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M7-03","label":"Independent mobile QA","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M7-04","label":"Tracking + lead end-to-end QA","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M7-05","label":"Regression suite","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M7-06","label":"P0/P1 release adjudication","state":"PLANNED","hours":8,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M7-07","label":"Vercel Production homologation","state":"PLANNED","hours":8,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE","authorization":"NOT_AUTHORIZED"},
+        {"id":"MNT-M7-08","label":"Controlled Green publication","state":"PLANNED","hours":8,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE","authorization":"NOT_AUTHORIZED"},
+        {"id":"MNT-M7-09","label":"Production smoke","state":"PLANNED","hours":8,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M7-10","label":"Post-release measurement","state":"PLANNED","hours":24,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M7-11","label":"GSC/GA4/Ads observation window","state":"PLANNED","hours":24,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M7-12","label":"Result registration with provenance","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE"},
+        {"id":"MNT-M7-13","label":"RESF provider evidence intake / learning loop","state":"PLANNED","hours":16,"accepted_hours":0,"effort_class":"CONSUMER_PLANNING_ESTIMATE","authorization":"NOT_AUTHORIZED"}
       ]
     }
   ],
