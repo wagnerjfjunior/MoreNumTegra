@@ -208,7 +208,7 @@ Canonical execution matrix: `docs/ux/MNT_M5_01_RUNTIME_DEVICE_VERIFICATION_MATRI
 
 Local CAPIITOLO candidate evidence is recorded in `docs/ux/MNT_M5_01_CAPIITOLO_LOCAL_VALIDATION_2026-09-19.md`.
 
-Local Home candidate evidence is recorded in `docs/ux/MNT_M5_01_HOME_LOCAL_VALIDATION_2026-09-19.md`.
+Local Home candidate evidence is recorded in `docs/ux/MNT_M5_01_HOME_LOCAL_VALIDATION_2026-09-19.md`, including full-page K02/K03 keyboard traversal.
 
 Shared Elo Duo/Ária reflow evidence is recorded in `docs/ux/MNT_M5_01_SHARED_EXACT_PROJECT_REFLOW_VALIDATION_2026-09-20.md`.
 
@@ -222,7 +222,7 @@ Consent/floating-action local visual evidence is recorded in `docs/ux/MNT_M5_01_
 
 Still `NOT_OBSERVED` as an accessibility acceptance set:
 
-- representative keyboard focus order across Home and exact-project pages;
+- representative keyboard focus order across exact-project pages; Home full-page K02/K03 is locally PASS;
 - full keyboard operation;
 - screen-reader announcements;
 - 200% text resize / browser zoom on routes not yet locally exercised (Home and CAPIITOLO dock/Form46 cases now locally PASS);
