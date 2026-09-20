@@ -2,42 +2,42 @@
 
 Atualizado em `2026-09-20`.
 
-## Estado M5-06 após decisão da Product Authority
+## Estado após M5-06
 
 ```text
 MNT-M5 = ACTIVE
-MNT-M5-06 = ACTIVE / DECISION_APPROVED / IMPLEMENTATION_AUTHORIZED
-MNT-M5-07 = PLANNED / BLOCKED_BY_M5_06_ACCEPTANCE
+MNT-M5-06 = COMPLETE / PRODUCTION_JOURNEY_PASS / SEARCH_VARIANT_PRESERVED
+MNT-M5-07 = AUTHORIZED / READY_TO_START
 MNT-M5-10 = PLANNED_NOT_AUTHORIZED
 
-EFFECTIVE_PRODUCTION_RUNTIME_SHA = a070e968a547cf94a68b0eb2a38a4bb2e9f64758
-PRODUCTION_DEPLOYMENT = dpl_C9zyvyKSDgYmep24dEj88xacNZ73
+MAIN_RUNTIME = be7f229ea04cf4050c40c471e21f262f4cfc845d
+PRODUCTION_DEPLOYMENT = dpl_CZEKd9SmbVTx6T2L7y4rFkTRdQhP
 PRODUCTION_STATE = READY
+M5_06_PRODUCTION_RUN = 35543247914 / 24 PASS / 0 FAIL
 ```
 
 ## Única próxima ação segura
 
-Implementar o change set aprovado de **MNT-M5-06 — CTA/Form journey optimization**:
+Executar **MNT-M5-07 — Lead semantics** sob a autorização contínua da Product Authority.
 
-- CTA contextual deve pré-selecionar a intenção correspondente no Form 46;
-- o mapping deve ser allowlisted e não derivar texto arbitrário do DOM;
-- adicionar a opção controlada `Negociar meu cenário` aos formulários governados;
-- Home `Quero negociar meu cenário` -> `Negociar meu cenário`;
-- `Agendar visita` -> `Agendar visita`;
-- `Simular possibilidades de pagamento` -> `Simular forma de pagamento`;
-- condições/consultar unidades/negociar condições/floating -> `Condições e disponibilidade`;
-- CAPIITOLO hero deve se tornar um CTA único `Receber condições`, preservando o CTA separado de visita;
-- CAPIITOLO continua sendo o branding oficial/H1;
-- a mesma página canônica deve cobrir naturalmente a variante de busca `Capitolo`, sem nova URL e sem keyword stuffing.
+Preservar:
 
-Após implementação: checks do repositório + smoke exact-head + validação Production.
+- Form 46 como provider V1;
+- `mnt_lead_success` como única conversão primária vigente;
+- CTA -> Form 46 intent preselection aceito em M5-06;
+- nenhuma PII do visitante em Measurement;
+- uma única rota `/obrigado/`;
+- nenhuma mudança silenciosa em GTM/GA4/Consent.
 
-Não alterar sem gate próprio:
+**PARAR** diante de escolha material que altere:
 
-- semântica Measurement dos project-page `mnt_intent` (M5-07);
-- Form 46 provider/endpoint;
-- lead validity;
-- GTM/GA4;
-- DNS/canonical;
-- backend;
-- M5-10.
+- o que constitui um lead válido;
+- diferença entre intenção, submit attempt e lead;
+- papel de WhatsApp como secondary vs primary;
+- semântica `mnt_intent`/taxonomy;
+- provider/CRM;
+- privacy/PII;
+- deduplicação/conversion counting;
+- backend/server-side proof.
+
+MNT-M5-10 permanece explicitamente bloqueado.
