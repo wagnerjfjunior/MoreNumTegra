@@ -214,6 +214,8 @@ Shared Elo Duo/Ária reflow evidence is recorded in `docs/ux/MNT_M5_01_SHARED_EX
 
 Elo Duo/Ária representative mobile-width evidence is recorded in `docs/ux/MNT_M5_01_EXACT_PROJECT_MOBILE_VALIDATION_2026-09-20.md`.
 
+Elo Duo full-page keyboard evidence is recorded in `docs/ux/MNT_M5_01_ELO_DUO_KEYBOARD_VALIDATION_2026-09-20.md`.
+
 Ária gallery keyboard evidence is recorded in `docs/ux/MNT_M5_01_ARIA_GALLERY_KEYBOARD_VALIDATION_2026-09-20.md`.
 
 Form 46 local validation evidence (invalid focus, phone validation and valid-data localhost no-send guard) is recorded in `docs/ux/MNT_M5_01_FORM46_INVALID_FOCUS_VALIDATION_2026-09-20.md`.
@@ -222,7 +224,7 @@ Consent/floating-action local visual evidence is recorded in `docs/ux/MNT_M5_01_
 
 Still `NOT_OBSERVED` as an accessibility acceptance set:
 
-- representative keyboard focus order across exact-project pages; Home full-page K02/K03 is locally PASS;
+- representative keyboard focus order across remaining exact-project pages; Home and Elo Duo full-page K02/K03 are locally PASS;
 - full keyboard operation;
 - screen-reader announcements;
 - 200% text resize / browser zoom on routes not yet locally exercised (Home and CAPIITOLO dock/Form46 cases now locally PASS);
