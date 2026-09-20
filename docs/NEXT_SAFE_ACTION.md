@@ -45,6 +45,3 @@ Until that decision:
 - artifact `10612579543`;
 - `handoffs/HANDOFF-2026-09-20-M5-02-PERFORMANCE-BASELINE.md`.
 
-## Diagnostic cleanup
-
-PR #180 is diagnostic-only and must never be merged into runtime. Close it after this M5-02 evidence package is canonical in `main`.
