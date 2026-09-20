@@ -53,4 +53,9 @@ MNT-M5-10 performance remediation remains explicitly not authorized.
 
 ## Diagnostic lifecycle
 
-PR #180 is temporary diagnostic evidence only and must never be merged into runtime. Close it after the M5-02 evidence is canonical in `main`.
+```text
+PR_180 = CLOSED / NOT_MERGED / DIAGNOSTIC_ONLY
+DIAGNOSTIC_HEAD = e4bb61b701ec9baa9affcb8eb0239c07eb1e4eaf
+```
+
+The temporary harness was closed after its evidence was canonicalized through PR #181. It never entered runtime.
