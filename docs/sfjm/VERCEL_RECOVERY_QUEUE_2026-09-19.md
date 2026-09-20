@@ -30,6 +30,10 @@ M5_01_F15_PR = #145
 M5_01_F15_HEAD = 1bb048701d6eb97404ae7ca58c5f09cf4adf34fe
 M5_01_F15_STATE = READY / CLEAN / NOT_MERGED / STACKED_ON_135 / LOCAL_CANDIDATE_PASS
 
+M5_01_F17_PR = #148
+M5_01_F17_HEAD = 2e7cb45696b6d0cfd191be77fbce975649ddca01
+M5_01_F17_STATE = READY / CLEAN / NOT_MERGED / LOCAL_CANDIDATE_PASS
+
 M5_01_F12_F14_F16_PR = #137
 M5_01_F12_F14_F16_HEAD = d8ad43e1c4cd16933576785fab2ecf01d70195e7
 M5_01_F12_F14_F16_STATE = READY / CLEAN / NOT_MERGED / LOCAL_CANDIDATE_PASS
@@ -141,15 +145,33 @@ Validate:
 - Form 46 fields and submit action remain unobstructed;
 - no loss of in-content conversion path.
 
-### R11 — Fresh gate PR #137
+### R11 — Fresh gate PR #148
 
-After the previous Home remediation release is proven:
+After PR #145 is merged, deployed and smoke-tested:
+
+- resolve PR #148 exact head against the then-current main;
+- preserve the single-file shared exact-project CSS scope;
+- require clean mergeability and applicable repository validation;
+- confirm Elo Duo and Ária retain the dock at ordinary/150% zoom and hide it only in short reflow.
+
+### R12 — PR #148 release and smoke
+
+Validate:
+- Elo Duo fixed actions remain available at ordinary/150% zoom;
+- Ária fixed actions remain available at ordinary/150% zoom;
+- both hide fixed actions at 200%/short reflow;
+- Form 46/footer content remains unobstructed;
+- no loss of in-content conversion paths.
+
+### R13 — Fresh gate PR #137
+
+After the shared exact-project remediation release is proven:
 
 - resolve PR #137 exact head against the then-current main;
 - require clean mergeability and successful checks;
 - confirm the diff remains bounded to CAPIITOLO editorial ARIA/mobile-layout work plus the CAPIITOLO-specific runtime fixed-dock reflow rule.
 
-### R12 — PR #137 release and smoke
+### R14 — PR #137 release and smoke
 
 Validate:
 - ArrowLeft/ArrowRight/Home/End on both CAPIITOLO tablists;
@@ -161,15 +183,15 @@ Validate:
 - 200%/short reflow hides the fixed actions;
 - Form 46 remains unobstructed at 200%.
 
-### R13 — M5-01 closure work
+### R15 — M5-01 closure work
 
-After #133, #135, #145 and #137 runtimes are individually proven:
+After #133, #135, #145, #148 and #137 runtimes are individually proven:
 
-- mark F01/F02/F10/F11/F13/F15/F12/F14/F16 resolved only with matching release evidence;
+- mark F01/F02/F10/F11/F13/F15/F17/F12/F14/F16 resolved only with matching release evidence;
 - finish remaining device/browser residuals;
 - only then decide whether `MNT-M5-01 = COMPLETE_CANDIDATE`.
 
-### R14 — M5-02 gate
+### R16 — M5-02 gate
 
 Do not start `MNT-M5-02 — Core Web Vitals/performance baseline` until M5-01 reaches its own accepted/closed gate or governance explicitly supersedes that sequence.
 
@@ -177,7 +199,7 @@ Do not start `MNT-M5-02 — Core Web Vitals/performance baseline` until M5-01 re
 
 - no artificial deployment commit;
 - no non-main production promotion;
-- no merge of PR #133, #135, #145 or #137 while the relevant exact head/scope is unresolved;
+- no merge of PR #133, #135, #145, #148 or #137 while the relevant exact head/scope is unresolved;
 - no Form 46/CRM contract change from this recovery queue;
 - no invented production SHA;
 - `PROVIDER_BLOCKED` is not a code failure.
