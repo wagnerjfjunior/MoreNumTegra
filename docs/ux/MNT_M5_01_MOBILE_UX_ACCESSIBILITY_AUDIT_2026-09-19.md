@@ -136,6 +136,16 @@ Current `main` preserves:
 - Final local candidate validation: both routes retain the dock at 150%, hide it at 200%, and leave Form 46/footer content unobstructed.
 - `F17_LOCAL_CANDIDATE_VALIDATION = PASS`; production validation pending.
 
+### M5-01-F18 — Shared exact-project topbar back-link hitbox is below governed touch baseline
+
+- Evidence: `SOURCE_LEVEL + USER_REPORTED_LOCAL_RUNTIME / MEASURED`
+- Severity: `P2 / TOUCH TARGET`
+- Elo Duo and Ária share `.mt-back` for the `Todos os empreendimentos` topbar link.
+- Original shared CSS used 13px text without explicit vertical padding or minimum interaction height, leaving the hitbox below the governed 46px interaction baseline.
+- PR #148 now adds `display:inline-flex; align-items:center; min-height:46px; padding-inline:4px` without enlarging the visible typography.
+- Rebuilt integrated candidate `445d9feafdc934369706bc837d194bfbd4102bd6` measured `176.234375 x 46px` on both Elo Duo and Ária at 393x852.
+- `F18_LOCAL_CANDIDATE_VALIDATION = PASS`; production/physical-device validation pending.
+
 ### M5-01-C10 — Ária gallery has explicit keyboard navigation
 
 - Evidence: `SOURCE_LEVEL + USER_REPORTED_LOCAL_RUNTIME`
@@ -243,7 +253,7 @@ Still `NOT_OBSERVED` as an accessibility acceptance set:
 - screen-reader announcements;
 - 200% text resize / browser zoom on routes not yet locally exercised (Home and CAPIITOLO dock/Form46 cases now locally PASS);
 - measured color contrast for states not covered by the static calculations above;
-- adjacent touch-target spacing on remaining surfaces/routes; Home filter controls, Form 46 on CAPIITOLO/Elo Duo/Ária, and CAPIITOLO gallery/type tabs are locally/source-level PASS;
+- adjacent touch-target spacing on remaining surfaces/routes; Home filter controls, Form 46 on CAPIITOLO/Elo Duo/Ária, CAPIITOLO gallery/type tabs/floating actions, and the shared Elo Duo/Ária topbar back-link are locally/source-level/candidate PASS;
 - cross-browser/device horizontal-overflow behavior beyond the locally exercised Chrome emulation matrix; Home, CAPIITOLO, Elo Duo and Ária now have local representative-width evidence;
 - screen-reader-level interpretation of gallery/tab interaction.
 
@@ -254,7 +264,7 @@ The Product Authority's latest local ZIP visual smoke is treated only as `USER_R
 ```text
 P0 = 0 open proven
 P1 = 0 open proven
-P2 = 10 open source/runtime findings
+P2 = 11 open source/runtime findings
 P3 = 0 open proven
 
 RESOLVED = F03–F09
@@ -265,7 +275,8 @@ NEW_MOBILE_OVERFLOW_FINDING = F14 / LOCAL_CANDIDATE_PASS
 NEW_REFLOW_OBSTRUCTION_FINDING = F15 / PR #145 / LOCAL_CANDIDATE_PASS
 NEW_CAPIITOLO_REFLOW_FINDING = F16 / PR #137 / LOCAL_CANDIDATE_PASS
 NEW_SHARED_EXACT_PROJECT_REFLOW_FINDING = F17 / PR #148 / LOCAL_CANDIDATE_PASS
-REMEDIATION_READY_NOT_MERGED = F01/F02 -> PR #133; F10/F11/F13 -> PR #135; F15 -> PR #145; F17 -> PR #148; F12/F14/F16 -> PR #137
+NEW_SHARED_TOPBAR_TOUCH_TARGET_FINDING = F18 / PR #148 / LOCAL_CANDIDATE_PASS
+REMEDIATION_READY_NOT_MERGED = F01/F02 -> PR #133; F10/F11/F13 -> PR #135; F15 -> PR #145; F17/F18 -> PR #148; F12/F14/F16 -> PR #137
 RUNTIME_DEVICE_RESIDUALS = OPEN
 ```
 
