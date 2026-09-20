@@ -224,6 +224,8 @@ Form 46 local validation evidence (invalid focus, phone validation and valid-dat
 
 Consent/floating-action local visual evidence is recorded in `docs/ux/MNT_M5_01_CONSENT_FLOATING_ACTIONS_VISUAL_VALIDATION_2026-09-20.md`.
 
+Home filter touch-target evidence is recorded in `docs/ux/MNT_M5_01_HOME_TOUCH_TARGET_VALIDATION_2026-09-20.md`.
+
 Still `NOT_OBSERVED` as an accessibility acceptance set:
 
 - representative keyboard focus order is locally PASS on Home, CAPIITOLO, Elo Duo and Ária; production/cross-browser confirmation remains pending;
@@ -231,7 +233,7 @@ Still `NOT_OBSERVED` as an accessibility acceptance set:
 - screen-reader announcements;
 - 200% text resize / browser zoom on routes not yet locally exercised (Home and CAPIITOLO dock/Form46 cases now locally PASS);
 - measured color contrast for states not covered by the static calculations above;
-- adjacent touch-target spacing;
+- adjacent touch-target spacing on remaining surfaces/routes; Home filter controls are locally/source-level PASS;
 - cross-browser/device horizontal-overflow behavior beyond the locally exercised Chrome emulation matrix; Home, CAPIITOLO, Elo Duo and Ária now have local representative-width evidence;
 - screen-reader-level interpretation of gallery/tab interaction.
 
