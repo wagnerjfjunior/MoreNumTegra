@@ -47,6 +47,38 @@ F02_LOCAL_CANDIDATE_VALIDATION = PASS
 PRODUCTION_VALIDATION = PENDING
 ```
 
+## K02/K03 — Home full-page keyboard focus and order
+
+Local Product Authority validation at mobile viewport confirmed keyboard traversal from the top navigation through the page to the footer.
+
+Observed order included:
+
+```text
+Empreendimentos
+-> Como escolher
+-> Receber contato
+-> Explorar empreendimentos
+-> Receber condições
+-> downstream interactive controls
+-> footer contact/link controls
+-> Sabrina da Tegra / Tegra Vendas link
+```
+
+Observed behavior:
+
+- visible focus indicator remained present on focused controls;
+- traversal followed the document/page journey without unexpected jumps;
+- focus continued through the page to the footer;
+- no focus trap was observed;
+- no hidden/inaccessible keyboard stop was reported during the local traversal.
+
+```text
+HOME_K02_VISIBLE_FOCUS_LOCAL = PASS
+HOME_K03_LOGICAL_FOCUS_ORDER_LOCAL = PASS
+HOME_FULL_PAGE_FOCUS_TRAP = NONE_OBSERVED
+PRODUCTION_VALIDATION = PENDING
+```
+
 ## F15 — fixed dock overlap under high zoom / short reflow viewport
 
 Initial 200% browser-zoom validation exposed a real overlap: the fixed lead/WhatsApp dock covered required Form 46 controls.
