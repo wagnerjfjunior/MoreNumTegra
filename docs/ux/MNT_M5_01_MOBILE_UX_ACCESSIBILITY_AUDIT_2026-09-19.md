@@ -306,3 +306,41 @@ NEXT = representative runtime/device accessibility verification and queued fresh
 ```
 
 Do not start M5-02 merely by sequence until M5-01 reaches its own acceptance gate.
+
+
+## 9. Post-reconciliation addendum — 2026-09-20
+
+This addendum supersedes only the **current-state** statements above that describe the M5-01 remediation PRs as open/not merged or Vercel as provider-blocked. Historical observations remain evidence of their time.
+
+```text
+RUNTIME_MAIN = 16515a8c69e30dd97e04e092ded3077ea396319f
+PRODUCTION_DEPLOYMENT = dpl_CuT2rozyJ4xNvyXCbtrbjWL1KaFL / READY
+OPEN_RUNTIME_REMEDIATION_PRS = 0
+P2_REMEDIATIONS_INTEGRATED = 13
+P2_OPEN_FOR_ACCEPTANCE = 13
+```
+
+Integrated mapping:
+
+- F01/F02 -> PR #133 -> merged;
+- F10/F11/F13 -> PR #135 -> merged;
+- F15 -> PR #145 -> merged;
+- F03/F19 -> PR #167 -> merged;
+- F17/F18 -> PR #148 -> merged;
+- F12/F14/F16 -> PR #137 -> merged.
+
+Production source/assets were verified for each remediation family. CAPIITOLO's public route remains a wrapper that fetches `/experiments/capiitolo-editorial-v3/index.html`; that Production asset contains the F12/F14 changes, while `src-greenn/preview/runtime.js` contains F16.
+
+The severity count is intentionally **not** reduced by source integration alone. The 13 P2 items remain open until the Production/runtime-device matrix supplies matching behavioral evidence or Product Authority explicitly adjudicates an accepted residual.
+
+Current gate:
+
+```text
+MNT_M5_01 = IN_PROGRESS / REMEDIATIONS_INTEGRATED / ACCEPTANCE_PENDING
+NEXT = PRODUCTION_RUNTIME_DEVICE_ACCESSIBILITY_MATRIX
+M5_02 = NOT_AUTHORIZED_BY_SEQUENCE
+```
+
+Canonical reconciliation handoff:
+
+`handoffs/HANDOFF-2026-09-20-M5-01-RUNTIME-QUEUE-RECONCILED.md`

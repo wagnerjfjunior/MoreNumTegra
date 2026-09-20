@@ -7,72 +7,81 @@
   "current_execution": {
     "active_phase_id": "MNT-M5",
     "active_task_id": "MNT-M5-01",
-    "state": "IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED / RUNTIME_QUEUE_PREPARED",
+    "state": "IN_PROGRESS / RUNTIME_QUEUE_RECONCILED / REMEDIATIONS_INTEGRATED / ACCEPTANCE_PENDING",
     "pull_request": 122,
-    "repository_head_sha": "d9d971d6f667c235723b35d251041ec11c021558",
-    "latest_main_runtime_sha": "aa9df4be65f579e233a67fbd90c8d3f47d0ea1e2",
-    "deployment_state": "RECOVERED / PRODUCTION_READY / HISTORICAL_RATE_LIMIT_CLOSED",
-    "last_verified_vercel_success_sha": "aa9df4be65f579e233a67fbd90c8d3f47d0ea1e2",
-    "production_exact_sha": "aa9df4be65f579e233a67fbd90c8d3f47d0ea1e2 / dpl_Fzk6Js2EZsxRgMinz8ADTQM9dwEK / READY",
+    "repository_head_sha": "16515a8c69e30dd97e04e092ded3077ea396319f",
+    "latest_main_runtime_sha": "16515a8c69e30dd97e04e092ded3077ea396319f",
+    "deployment_state": "PRODUCTION_READY / RUNTIME_QUEUE_INTEGRATED / ACCEPTANCE_PENDING",
+    "last_verified_vercel_success_sha": "16515a8c69e30dd97e04e092ded3077ea396319f",
+    "production_exact_sha": "16515a8c69e30dd97e04e092ded3077ea396319f / dpl_CuT2rozyJ4xNvyXCbtrbjWL1KaFL / READY",
     "authority_record": "docs/ux/MNT_M5_01_MOBILE_UX_ACCESSIBILITY_AUDIT_2026-09-19.md",
     "remediation_queue": [
       {
         "pr": 133,
-        "head": "1a2401a2105e4fba62a7833754987c8598a6ce58",
+        "head": "2a1582405a836b00ef4bb8f526cfc6657a3ef220",
+        "merge_commit": "d9b4a67912b317ec44d511db9561d966fb7e6914",
         "findings": [
           "F01",
           "F02"
         ],
-        "state": "OPEN / LOCAL_PASS / STALE_LINEAGE / REBUILD_FIRST"
-      },
-      {
-        "pr": 167,
-        "head": "a8f48fb1e92e615f1f7337ab254ced7c25fb9ed8",
-        "findings": [
-          "F03",
-          "F19"
-        ],
-        "state": "OPEN / READY / CHECKS_PASS / LOCAL_BEHAVIOR_PASS / QUEUE_POSITION_PENDING"
+        "state": "MERGED / PRODUCTION_SOURCE_CONFIRMED / ACCEPTANCE_PENDING"
       },
       {
         "pr": 135,
-        "head": "08b132044ebbec49c0f8f978eff69eb76aac49fb",
+        "head": "2582b50ce282a1ba5b18e8b82bf6c3b8c34310f3",
+        "merge_commit": "2a468e9373820f2cef9ba5486d1e2262fe1f8b14",
         "findings": [
           "F10",
           "F11",
           "F13"
         ],
-        "state": "OPEN / LOCAL_CONTRAST_PASS / STALE_STACK"
+        "state": "MERGED / PRODUCTION_SOURCE_CONFIRMED / ACCEPTANCE_PENDING"
       },
       {
         "pr": 145,
-        "head": "1bb048701d6eb97404ae7ca58c5f09cf4adf34fe",
+        "head": "824ac0ecf375ffdbaad061e4433555b57600db9b",
+        "merge_commit": "575efb1c880f59a501e6ee37337c672187d89570",
         "findings": [
           "F15"
         ],
-        "state": "OPEN / LOCAL_PASS / STALE_STACK"
+        "state": "MERGED / PRODUCTION_SOURCE_CONFIRMED / ACCEPTANCE_PENDING"
+      },
+      {
+        "pr": 167,
+        "head": "8ac21b9bfc9ee3e8b53975d2ab6d2e3a288254a3",
+        "merge_commit": "a8d36fc94084eb866657bf678aa7e6c28629304f",
+        "findings": [
+          "F03",
+          "F19"
+        ],
+        "state": "MERGED / PRODUCTION_SOURCE_CONFIRMED / ACCEPTANCE_PENDING"
       },
       {
         "pr": 148,
-        "head": "508ebf55f4ea96261d8eeb4dc753158d7c0ec950",
+        "head": "424369d0d9738556d66369b229318de41d1f55c2",
+        "merge_commit": "e8400adbc0d8deb22f621e5bbbf0bf74467ec57b",
         "findings": [
           "F17",
           "F18"
         ],
-        "state": "OPEN / LOCAL_PASS / STALE_LINEAGE"
+        "state": "MERGED / PRODUCTION_SOURCE_CONFIRMED / ACCEPTANCE_PENDING"
       },
       {
         "pr": 137,
-        "head": "d8ad43e1c4cd16933576785fab2ecf01d70195e7",
+        "head": "72b52c794f9929a292cbd4a9f3badc7e4a9e5f30",
+        "merge_commit": "16515a8c69e30dd97e04e092ded3077ea396319f",
         "findings": [
           "F12",
           "F14",
           "F16"
         ],
-        "state": "OPEN / LOCAL_PASS / STALE_LINEAGE"
+        "state": "MERGED / PRODUCTION_SOURCE_CONFIRMED / ACCEPTANCE_PENDING"
       }
     ],
-    "production_content_evidence": "handoffs/HANDOFF-2026-09-20-M5-01-SESSION-TRANSITION.md"
+    "production_content_evidence": "handoffs/HANDOFF-2026-09-20-M5-01-RUNTIME-QUEUE-RECONCILED.md",
+    "p2_findings_total": 13,
+    "p2_remediations_integrated": 13,
+    "p2_acceptance_open": 13
   },
   "progress": {
     "forecast_total_hours": 1240,
@@ -175,12 +184,19 @@
       "production_sha": "aa9df4be65f579e233a67fbd90c8d3f47d0ea1e2",
       "deployment_id": "dpl_Fzk6Js2EZsxRgMinz8ADTQM9dwEK",
       "b4_prod_run": 35530041309
+    },
+    "M5-01-RUNTIME-QUEUE-RECONCILIATION-2026-09-20": {
+      "state": "RUNTIME_QUEUE_RECONCILED / ALL_REMEDIATIONS_MERGED / PRODUCTION_READY / ACCEPTANCE_PENDING",
+      "purpose": "Rebuild/reconcile and integrate all 13 open M5-01 P2 remediation candidates without widening scope.",
+      "runtime_main_sha": "16515a8c69e30dd97e04e092ded3077ea396319f",
+      "deployment_id": "dpl_CuT2rozyJ4xNvyXCbtrbjWL1KaFL",
+      "evidence": "handoffs/HANDOFF-2026-09-20-M5-01-RUNTIME-QUEUE-RECONCILED.md"
     }
   },
   "next": {
     "task_id": "MNT-M5-01",
-    "state": "IN_PROGRESS / AUTHORIZED / POST_RECOVERY_QUEUE_RECONCILIATION",
-    "safe_action": "Resolve live main, rebuild/rebase PR #133 onto that exact main, verify bounded F01/F02 diff and exact-head checks/local smoke, then stop before merge. After that reconcile the remaining runtime queue including PR #167."
+    "state": "IN_PROGRESS / PRODUCTION_ACCEPTANCE_PENDING",
+    "safe_action": "Resolve live main and effective Production runtime, execute the M5-01 Production runtime/device/accessibility acceptance matrix, record PASS/FAIL/NOT_OBSERVED with route/runtime/browser evidence, adjudicate remaining P2 residuals, and do not start M5-02 by sequence alone."
   },
   "cross_project": {
     "commercial_catalog": {
@@ -201,11 +217,11 @@
     "capiitolo_post_115_recrawl": "CLOSED / INDEXED / RICH_RESULTS_VALID",
     "project_rich_results_parity": "CLOSED / CAPIITOLO_7 / ELO_DUO_7 / ARIA_7",
     "m4_05r_acceptance": "CLOSED / COMPLETE / ACCEPTED / ZERO_ADDITIONAL_WBS_HOURS",
-    "m5_01_open_findings": "P2=13 / F01 F02 F03 F10 F11 F13 F12 F14 F15 F16 F17 F18 F19",
-    "m5_01_runtime_device_validation": "OPEN / NOT_FULLY_OBSERVED",
-    "latest_main_deployment": "PRODUCTION_READY / SHA_aa9df4be65f579e233a67fbd90c8d3f47d0ea1e2 / dpl_Fzk6Js2EZsxRgMinz8ADTQM9dwEK / PR132_CONTENT_PRESENT",
-    "m5_01_runtime_queue": "STALE_LINEAGE_RECONCILIATION_REQUIRED / START_WITH_PR133_REBUILD / INCLUDE_PR167",
-    "production_content_state": "PR132_PRESENT / HTTP_200 / CANONICALIZATION_B4_PROD_PASS",
+    "m5_01_open_findings": "P2=13 / ALL_13_HAVE_INTEGRATED_REMEDIATION / ACCEPTANCE_PENDING",
+    "m5_01_runtime_device_validation": "OPEN / PRODUCTION_REPRESENTATIVE_ACCEPTANCE_PENDING",
+    "latest_main_deployment": "PRODUCTION_READY / SHA_16515a8c69e30dd97e04e092ded3077ea396319f / dpl_CuT2rozyJ4xNvyXCbtrbjWL1KaFL",
+    "m5_01_runtime_queue": "CLOSED / ALL_6_REMEDIATION_PRS_REBUILT_RECONCILED_MERGED / 13_FINDINGS_REMEDIATED / ACCEPTANCE_PENDING",
+    "production_content_state": "M5_01_REMEDIATIONS_PRESENT / HTTP_200_SOURCE_ASSETS_VERIFIED / BEHAVIORAL_ACCEPTANCE_PENDING",
     "m5_01_capiitolo_local_validation": "F12 USER_REPORTED_PASS / F14 PASS 360_375_393_440 / F16 PASS 150_PERCENT_VISIBLE_200_PERCENT_HIDDEN_FORM46_UNOBSTRUCTED / PRODUCTION_PENDING",
     "m5_01_home_local_validation": "F01 PASS / F02 PASS / F03 BEHAVIOR PASS / F10 F11 F13 CONTRAST PASS / F19 REDUCED_MOTION BEHAVIOR PASS / PRODUCTION_REMEDIATION_PENDING",
     "m5_01_qa_candidate_head": "d36b114641014425623887dc6f408d2de0259b52",
@@ -231,8 +247,9 @@
     "m5_01_capiitolo_floating_touch_target_validation": "PASS / 393x852 / WHATSAPP_54X54 / CONTACT_MIN_HEIGHT_54 / NO_PAGE_OVERFLOW / NO_DOCK_OBSTRUCTION / PRODUCTION_PHYSICAL_DEVICE_PENDING",
     "m5_01_shared_topbar_touch_target_validation": "LOCAL_CANDIDATE_PASS / ELO_DUO_176_234375X46 / ARIA_176_234375X46 / QA_HEAD_445d9feafdc934369706bc837d194bfbd4102bd6 / PR148_HEAD_508ebf55f4ea96261d8eeb4dc753158d7c0ec950 / PRODUCTION_PHYSICAL_DEVICE_PENDING",
     "m5_01_open_p2_count": 13,
-    "m5_01_source_semantics_revalidation": "2026-09-20 / F03_F19_REMEDIATION_PR167_OPEN_CHECKS_PASS_LOCAL_BEHAVIOR_PASS",
-    "vercel_recovery": "CLOSED / MULTIPLE_LATER_PRODUCTION_BUILDS_READY / HISTORICAL_RATE_LIMIT_NOT_ACTIVE"
+    "m5_01_source_semantics_revalidation": "2026-09-20 / F03_F19_MERGED / PRODUCTION_SOURCE_CONFIRMED / BEHAVIORAL_ACCEPTANCE_PENDING",
+    "vercel_recovery": "CLOSED / MULTIPLE_LATER_PRODUCTION_BUILDS_READY / HISTORICAL_RATE_LIMIT_NOT_ACTIVE",
+    "m5_01_remediations_integrated_count": 13
   },
   "infra": {
     "dns_authority": "CLOUDFLARE_DNS_ONLY",
