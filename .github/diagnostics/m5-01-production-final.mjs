@@ -3,7 +3,7 @@ import axe from "axe-core";
 import fs from "node:fs";
 
 const BASE="https://www.moretegra.com.br";
-const SHA="1d3d7d0f9213586ae8a5a3a015b8afda3ce21603";
+const SHA="6aec388443410a2bff4d7c7a8ddff9d90224d8c9";
 const R={
   HOME:"/",
   CAPI:"/empreendimentos/capiitolo-piero-lissoni/",
