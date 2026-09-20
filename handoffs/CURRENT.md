@@ -9,7 +9,7 @@ GitHub `main` é a fonte canônica. Resolver estado live antes de qualquer nova 
 ```text
 CANONICAL_REPOSITORY = wagnerjfjunior/MoreNumTegra
 CANONICAL_BRANCH = main
-MAIN_SHA_OBSERVED = aa38bbe400a4e1a3e6430a5ec1cc1a5c74a40284
+MAIN_SHA_OBSERVED_BEFORE_THIS_DOCS_UPDATE = 50cc466e778feb2de38a5241b4b2820c6b1ea016
 PR_123 = MERGED / M5-01 MOBILE REMEDIATION
 PR_132 = MERGED / SEMANTIC ON-PAGE SEO
 OPEN_RUNTIME_QUEUE = PR #133 -> PR #135 -> PR #145 -> PR #148 -> PR #137 / ALL NOT_MERGED
@@ -77,18 +77,18 @@ WBS_PROGRESS_CHANGE = NO
 Open P2 findings:
 
 1. F01 — Home primary navigation hidden below 760px.
-2. F03 — REOPENED regression: Home stage-filter buttons do not synchronize `aria-pressed`.
 2. F02 — Home lacks explicit skip-to-content.
-3. F10 — Home construction/launch stage-badge contrast below 4.5:1.
-4. F11 — Home light-footer secondary/contact contrast below 4.5:1.
-5. F13 — Home small gold helper text slightly below 4.5:1.
-6. F12 — CAPIITOLO ARIA tabs incomplete for keyboard/panel semantics.
-7. F14 — CAPIITOLO mobile horizontal overflow.
-8. F15 — Home fixed dock overlaps Form 46 under high zoom / short reflow.
-9. F16 — CAPIITOLO fixed dock overlaps content/Form 46 under high zoom / short reflow.
-10. F17 — Elo Duo/Ária shared exact-project dock overlaps required content under high zoom / short reflow.
-11. F18 — Elo Duo/Ária shared topbar back-link touch target; PR #148 local candidate PASS.
-12. F19 — Home reduced-motion video retains stale synthetic-button semantics after iframe activation.
+3. F03 — REOPENED regression: Home stage-filter buttons do not synchronize `aria-pressed`.
+4. F10 — Home construction/launch stage-badge contrast below 4.5:1.
+5. F11 — Home light-footer secondary/contact contrast below 4.5:1.
+6. F13 — Home small gold helper text slightly below 4.5:1.
+7. F12 — CAPIITOLO ARIA tabs incomplete for keyboard/panel semantics.
+8. F14 — CAPIITOLO mobile horizontal overflow.
+9. F15 — Home fixed dock overlaps Form 46 under high zoom / short reflow.
+10. F16 — CAPIITOLO fixed dock overlaps content/Form 46 under high zoom / short reflow.
+11. F17 — Elo Duo/Ária shared exact-project dock overlaps required content under high zoom / short reflow.
+12. F18 — Elo Duo/Ária shared topbar back-link touch target; PR #148 local candidate PASS.
+13. F19 — Home reduced-motion video retains stale synthetic-button semantics after iframe activation.
 
 Prepared runtime queue:
 - PR #133 — F01/F02 — Ready, not merged.
