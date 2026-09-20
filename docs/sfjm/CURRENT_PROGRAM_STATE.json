@@ -9,7 +9,7 @@
     "active_task_id": "MNT-M5-01",
     "state": "IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED / RUNTIME_QUEUE_PREPARED",
     "pull_request": 122,
-    "repository_head_sha": "46c900a53c0ea466db4219eba0c785e2dbd6a2cf",
+    "repository_head_sha": "9251dec8424a4617a89b5a651e605cec4eb34dbd",
     "latest_main_runtime_sha": "353f4a5dba058f2fb60fd4001128f8c857cd6fce",
     "deployment_state": "PROVIDER_BLOCKED / VERCEL build-rate-limit",
     "last_verified_vercel_success_sha": "6e852f1c41ea834aa138e333cef56519f382dc5f",
@@ -200,7 +200,8 @@
     "m5_01_aria_gallery_keyboard_validation": "G01 PASS / SPACE_ENTER_ARROWS / TAB_TRAVERSES / NO_FOCUS_TRAP_OBSERVED / PRODUCTION_AND_SCREEN_READER_PENDING",
     "m5_01_form46_invalid_focus_validation": "PASS / EMPTY->mt-lead-name / NAME_ONLY->mt-lead-email / INVALID_BR_PHONE->mt-lead-phone / VISIBLE_ERRORS / PRODUCTION_PENDING",
     "m5_01_form46_local_valid_data_guard": "PASS / VALID_LOCAL_DATA_SHOWS_NON_LIVE_GUARD_STATUS / NO_FORM46_POST_OBSERVED / REAL_LEAD_NOT_SENT",
-    "m5_01_consent_visual_validation": "C01 LOCAL_VISUAL_SIMULATION_PASS / 393x852 / PANEL_READABLE / ACTIONS_OFFSET / NO_OVERLAP / C02_PRODUCTION_REQUIRED"
+    "m5_01_consent_visual_validation": "C01 LOCAL_VISUAL_SIMULATION_PASS / 393x852 / PANEL_READABLE / ACTIONS_OFFSET / NO_OVERLAP / C02_PRODUCTION_REQUIRED",
+    "m5_01_home_keyboard_order_validation": "K02 PASS / K03 PASS / FULL_PAGE_TAB_TRAVERSAL_TO_FOOTER / VISIBLE_FOCUS / NO_TRAP_OBSERVED / PRODUCTION_PENDING"
   },
   "infra": {
     "dns_authority": "CLOUDFLARE_DNS_ONLY",
