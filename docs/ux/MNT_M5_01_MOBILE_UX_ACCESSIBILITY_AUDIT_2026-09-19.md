@@ -216,7 +216,7 @@ Elo Duo/Ária representative mobile-width evidence is recorded in `docs/ux/MNT_M
 
 Ária gallery keyboard evidence is recorded in `docs/ux/MNT_M5_01_ARIA_GALLERY_KEYBOARD_VALIDATION_2026-09-20.md`.
 
-Form 46 invalid-submit focus evidence is recorded in `docs/ux/MNT_M5_01_FORM46_INVALID_FOCUS_VALIDATION_2026-09-20.md`.
+Form 46 local validation evidence (invalid focus, phone validation and valid-data localhost no-send guard) is recorded in `docs/ux/MNT_M5_01_FORM46_INVALID_FOCUS_VALIDATION_2026-09-20.md`.
 
 Still `NOT_OBSERVED` as an accessibility acceptance set:
 
