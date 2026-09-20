@@ -359,3 +359,50 @@ Execute the still-pending Production/representative checks in this document and 
 Do not replay a real Form 46 lead merely to repeat the separately proven Green Sales E2E contract.
 
 M5-02 remains gated until M5-01 reaches its own acceptance decision.
+
+
+## 17. Final Production acceptance — 2026-09-20
+
+Final effective runtime:
+
+```text
+RUNTIME_SHA = 6aec388443410a2bff4d7c7a8ddff9d90224d8c9
+PRODUCTION_DEPLOYMENT = dpl_HTzsFxSeTmpqFjyNRwMNrPXvcBLD
+PRODUCTION_STATE = READY
+FINAL_RUN = 35537580700
+FINAL_SUMMARY = 100 PASS / 0 FAIL / 2 NOT_OBSERVED / 102
+```
+
+The previous unique WebKit failure from run `35536868292` is closed by matching Production evidence:
+
+```text
+ROUTE = /
+BROWSER_DEVICE = WebKit 393x852
+TEST = C02-ACCEPT
+RESULT = PASS
+EVIDENCE = hidden=true; stored=granted; hiddenFocus=false; active=Receber condições
+```
+
+All 13 P2 finding families covered by this acceptance matrix have matching Production behavioral evidence and are accepted for M5-01.
+
+The two automation gaps remain factual `NOT_OBSERVED` states:
+
+```text
+SCREEN-READER = NOT_OBSERVED / ACCEPTED_RESIDUAL / NOT_PASS
+PHYSICAL-DEVICE = NOT_OBSERVED / ACCEPTED_RESIDUAL / NOT_PASS
+```
+
+Product Authority adjudicated both residuals as non-blocking for the bounded M5-01 gate. This does not convert either item to PASS and does not establish a WCAG certification claim. Reopen M5-01 if later real AT/device evidence exposes a material regression.
+
+Exit rule result:
+
+```text
+P0_UNRESOLVED = 0
+P1_UNRESOLVED = 0
+P2_UNRESOLVED = 0
+P3_UNRESOLVED = 0
+NOT_OBSERVED_UNADJUDICATED = 0
+MNT-M5-01 = COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS
+```
+
+Canonical closure: `docs/sfjm/MNT_M5_01_PRODUCTION_ACCEPTANCE_CLOSURE_2026-09-20.md`.
