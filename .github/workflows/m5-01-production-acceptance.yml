@@ -1,4 +1,4 @@
-name: M5-01 final Production acceptance
+name: M5-01 WebKit consent candidate smoke
 
 on:
   push:
@@ -6,19 +6,27 @@ on:
       - "diag/m5-01-production-acceptance-20260920"
     paths:
       - ".github/workflows/m5-01-production-acceptance.yml"
-      - ".github/diagnostics/m5-01-production-final.mjs"
+      - ".github/diagnostics/m5-01-webkit-consent-candidate.mjs"
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  production-acceptance:
+  webkit-consent:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 20
     steps:
       - name: Checkout diagnostic
         uses: actions/checkout@v4
+        with:
+          path: diag
+
+      - name: Checkout exact candidate
+        uses: actions/checkout@v4
+        with:
+          ref: fix/m5-01-consent-focus-webkit-20260920
+          path: candidate
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -26,20 +34,30 @@ jobs:
           node-version: "20"
 
       - name: Install diagnostic dependencies
-        run: npm install --no-save playwright@1.55.0 axe-core@4.10.3
+        working-directory: diag
+        run: npm install --no-save playwright@1.55.0
 
-      - name: Install browser engines
-        run: npx playwright install --with-deps chromium firefox webkit
+      - name: Install WebKit
+        working-directory: diag
+        run: npx playwright install --with-deps webkit
 
-      - name: Run final Production acceptance matrix
-        run: node .github/diagnostics/m5-01-production-final.mjs
+      - name: Start exact candidate
+        run: |
+          python3 -m http.server 4173 --directory candidate >/tmp/m5-webkit-candidate.log 2>&1 &
+          for i in {1..20}; do
+            curl -fsS http://127.0.0.1:4173/src-greenn/preview/index.html >/dev/null && exit 0
+            sleep 1
+          done
+          cat /tmp/m5-webkit-candidate.log
+          exit 1
 
-      - name: Upload Production acceptance evidence
+      - name: Run repeated WebKit consent focus smoke
+        run: node diag/.github/diagnostics/m5-01-webkit-consent-candidate.mjs
+
+      - name: Upload evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: m5-01-production-final
-          path: |
-            m5-01-production-final.json
-            m5-01-production-final.txt
+          name: m5-01-webkit-consent-candidate
+          path: m5-01-webkit-consent-candidate.json
           if-no-files-found: error
