@@ -500,7 +500,8 @@
     if (!id) return;
 
     const mount = (autoplay = true) => {
-      if (frame.querySelector("iframe")) return;
+      const existing = frame.querySelector("iframe");
+      if (existing) return existing;
       const iframe = document.createElement("iframe");
       const params = new URLSearchParams({
         autoplay: autoplay ? "1" : "0",
@@ -520,19 +521,30 @@
       iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
       iframe.referrerPolicy = "strict-origin-when-cross-origin";
       iframe.allowFullscreen = true;
+      iframe.tabIndex = 0;
       frame.replaceChildren(iframe);
+      return iframe;
     };
 
     const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches === true;
     if (reduced) {
       frame.setAttribute("role", "button");
       frame.setAttribute("tabindex", "0");
-      const play = () => mount(true);
-      frame.addEventListener("click", play, {once: true});
+      frame.setAttribute("aria-label", "Reproduzir filme da campanha More em um Tegra");
+      const play = (focusPlayer = false) => {
+        frame.removeAttribute("role");
+        frame.removeAttribute("tabindex");
+        frame.removeAttribute("aria-label");
+        const iframe = mount(true);
+        if (focusPlayer && iframe) {
+          window.requestAnimationFrame(() => iframe.focus());
+        }
+      };
+      frame.addEventListener("click", () => play(false), {once: true});
       frame.addEventListener("keydown", (event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
-          play();
+          play(true);
         }
       }, {once: true});
       return;
@@ -613,11 +625,17 @@
       });
     };
 
+    const updateStatusButtons = () => {
+      statusButtons.forEach((button) => {
+        const active = button.dataset.filterStatus === state.status;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+    };
+
     const setStatus = (value) => {
       state.status = value || "todos";
-      statusButtons.forEach((button) => {
-        button.classList.toggle("is-active", button.dataset.filterStatus === state.status);
-      });
+      updateStatusButtons();
       if (mobileStatus) mobileStatus.value = state.status;
       render();
     };
@@ -702,6 +720,7 @@
     });
 
     updateQuickZones();
+    updateStatusButtons();
     render();
   }
 
@@ -1371,6 +1390,24 @@
   }
 
   start();
+})();
+
+// MNT-M5-01 F02: make skip-link focus transfer explicit across browsers.
+(() => {
+  "use strict";
+
+  document.addEventListener("click", (event) => {
+    const target = event.target instanceof Element ? event.target : null;
+    const skip = target?.closest('a.mt-skip[href="#conteudo"]');
+    if (!skip) return;
+
+    const main = document.getElementById("conteudo");
+    if (!main) return;
+
+    window.requestAnimationFrame(() => {
+      main.focus({preventScroll: false});
+    });
+  });
 })();
 
 // MNT-M2-09 Form 46 lead guard v4.
