@@ -2,83 +2,85 @@
 
 Atualizado em `2026-09-20`.
 
-Fonte canônica: GitHub `main`.
+Fonte canônica: GitHub `main`. O estado live deve ser resolvido novamente antes de qualquer mutação.
 
 ## 1. Estado integrado
 
 ```text
-RUNTIME_MAIN_BEFORE_DOCS_RECONCILIATION = 16515a8c69e30dd97e04e092ded3077ea396319f
+ACCEPTANCE_RUNTIME_SHA = 6aec388443410a2bff4d7c7a8ddff9d90224d8c9
 MNT-M4-05R = COMPLETE / ACCEPTED
 MNT-M5 = ACTIVE
-MNT-M5-01 = IN_PROGRESS / RUNTIME_QUEUE_RECONCILED / REMEDIATIONS_INTEGRATED / ACCEPTANCE_PENDING
+MNT-M5-01 = COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS
+MNT-M5-02 = PLANNED / NOT_AUTHORIZED_BY_SEQUENCE
 
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 752
-REMAINING_FORECAST_HOURS = 488
-ACCEPTED_PERCENT = 60.65
-WBS_PROGRESS_CHANGE = NO
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 768
+REMAINING_FORECAST_HOURS = 472
+ACCEPTED_PERCENT = 61.94
 ```
 
-No WBS progress was added merely because remediation code was integrated.
+M5-01 contributes its governed 16h planning scope only after the acceptance gate was closed.
 
 ## 2. Production / Vercel
 
 ```text
 CANONICAL_HOST = https://www.moretegra.com.br/
-PRODUCTION_DEPLOYMENT = dpl_CuT2rozyJ4xNvyXCbtrbjWL1KaFL
-PRODUCTION_SOURCE_SHA = 16515a8c69e30dd97e04e092ded3077ea396319f
+PRODUCTION_DEPLOYMENT = dpl_HTzsFxSeTmpqFjyNRwMNrPXvcBLD
+PRODUCTION_SOURCE_SHA = 6aec388443410a2bff4d7c7a8ddff9d90224d8c9
 PRODUCTION_STATE = READY
-PR132_SEMANTIC_CONTENT_IN_PRODUCTION = YES
-HISTORICAL_BUILD_RATE_LIMIT = NO_LONGER_ACTIVE_BLOCKER
+CURRENT_RATE_LIMIT_BLOCK = NO
 ```
 
-All six reconciled M5-01 remediation releases reached Vercel Production through the Git-driven flow.
+PR #178 is the latest runtime change in the accepted M5-01 chain.
 
-## 3. M5-01 runtime reconciliation
+## 3. M5-01 acceptance
 
-Merged remediation mapping:
-
-- PR #133 — F01/F02 — merge `d9b4a67912b317ec44d511db9561d966fb7e6914`;
-- PR #135 — F10/F11/F13 — merge `2a468e9373820f2cef9ba5486d1e2262fe1f8b14`;
-- PR #145 — F15 — merge `575efb1c880f59a501e6ee37337c672187d89570`;
-- PR #167 — F03/F19 — merge `a8d36fc94084eb866657bf678aa7e6c28629304f`;
-- PR #148 — F17/F18 — merge `e8400adbc0d8deb22f621e5bbbf0bf74467ec57b`;
-- PR #137 — F12/F14/F16 — merge `16515a8c69e30dd97e04e092ded3077ea396319f`.
+Final Production acceptance run:
 
 ```text
-OPEN_RUNTIME_REMEDIATION_PRS = 0
-P2_REMEDIATIONS_INTEGRATED = 13
+RUN = 35537580700
+RESULT = SUCCESS
+PASS = 100
+FAIL = 0
+NOT_OBSERVED = 2
+TOTAL = 102
 P0_OPEN = 0
 P1_OPEN = 0
-P2_OPEN = 13
+P2_OPEN = 0
 P3_OPEN = 0
-RUNTIME_DEVICE_RESIDUALS = OPEN
 ```
 
-The P2 findings remain open for acceptance; merged code/source presence is not silently promoted to behavioral PASS.
+The prior run `35536868292` had one real residual at Home / WebKit / C02-ACCEPT. PR #178 bounded the fix to the consent focus-release path and the final Production run passed the same case.
 
-## 4. Validation already confirmed
+Explicit residuals retained:
 
-- exact-head repository checks passed where applicable;
-- #148 had no direct workflow on its single shared CSS head; source scope and prior integrated QA evidence were preserved and revalidated;
-- current Production source serves Home F01/F02, F03/F19, F10/F11/F13 and F15 changes;
-- shared project CSS in Production serves F17/F18;
-- CAPIITOLO wrapper still loads the Production experiment asset;
-- the Production experiment asset serves F12/F14;
-- Production runtime JS serves F16.
+- real screen-reader session: `NOT_OBSERVED / ACCEPTED_RESIDUAL / NOT_PASS`;
+- real physical-device touch validation: `NOT_OBSERVED / ACCEPTED_RESIDUAL / NOT_PASS`.
 
-## 5. Form 46 / measurement
+These are accepted as non-blocking for M5-01 only. They are not accessibility certification evidence.
 
-No regression evidence. Contract remains Green Sales/GDigital tenant 313 / Form 46 / title `MoreEmUmTegra`.
+Canonical closure: `docs/sfjm/MNT_M5_01_PRODUCTION_ACCEPTANCE_CLOSURE_2026-09-20.md`.
 
-No new real lead should be sent merely to repeat the already proven E2E contract.
+## 4. Form 46 / measurement
 
-## 6. Search / canonical baseline
+No contract change and no regression evidence.
 
-Previously accepted indexation/Rich Results and B4-PROD canonical-routing evidence remain valid unless contrary evidence appears. No Search/DNS/canonical mutation occurred in the M5-01 queue reconciliation.
+```text
+provider = Green Sales / GDigital
+tenant_id = 313
+form_id = 46
+title = MoreEmUmTegra
+POST = https://back.gdigital.com.br/form/register
+```
 
-## 7. Immediate next safe action
+The final matrix validated invalid-input behavior without sending a real lead.
 
-Authoritative detail: `docs/NEXT_SAFE_ACTION.md`.
+## 5. Search / canonical baseline
 
-Execute the representative M5-01 Production acceptance matrix and adjudicate remaining P2/`NOT_OBSERVED` items. Do not start M5-02 by sequence alone.
+No SEO, canonical, DNS, structured-data or commercial-content mutation was part of PR #178 or the M5-01 acceptance closure.
+
+## 6. Immediate next safe action
+
+Authority: `docs/NEXT_SAFE_ACTION.md`.
+
+M5-02 does not become executable by sequence. The next safe action is an explicit Product Authority decision on whether to authorize MNT-M5-02.
