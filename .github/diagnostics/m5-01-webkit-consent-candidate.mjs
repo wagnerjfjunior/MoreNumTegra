@@ -1,7 +1,7 @@
 import { webkit } from "playwright";
 import fs from "node:fs";
 
-const BASE="http://127.0.0.1:4173";
+const BASE="http://www.moretegra.com.br:4173";
 const routes=["/src-greenn/preview/index.html","/src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html"];
 const rows=[];
 function add(route,choice,iteration,result,evidence){const r={route,choice,iteration,result,evidence};rows.push(r);console.log(JSON.stringify(r));}
