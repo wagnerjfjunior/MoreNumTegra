@@ -333,3 +333,29 @@ M5-01 may become `COMPLETE_CANDIDATE` only when:
 - the representative matrix has no unresolved P0/P1;
 - remaining P2/P3 and `NOT_OBSERVED` items are explicitly adjudicated;
 - no WBS progress is inferred solely from preparing this matrix.
+
+
+## 16. Post-reconciliation execution state — 2026-09-20
+
+The runtime release queue described in section 14 has now been executed and reconciled.
+
+```text
+#133 F01/F02 = MERGED / PRODUCTION_SOURCE_CONFIRMED
+#135 F10/F11/F13 = MERGED / PRODUCTION_SOURCE_CONFIRMED
+#145 F15 = MERGED / PRODUCTION_SOURCE_CONFIRMED
+#167 F03/F19 = MERGED / PRODUCTION_SOURCE_CONFIRMED
+#148 F17/F18 = MERGED / PRODUCTION_SOURCE_CONFIRMED
+#137 F12/F14/F16 = MERGED / PRODUCTION_SOURCE_CONFIRMED
+
+EFFECTIVE_RUNTIME_SHA = 16515a8c69e30dd97e04e092ded3077ea396319f
+PRODUCTION_DEPLOYMENT = dpl_CuT2rozyJ4xNvyXCbtrbjWL1KaFL
+PRODUCTION_STATE = READY
+```
+
+The matrix is therefore no longer waiting for Vercel recovery or remediation integration. Its remaining purpose is **Production behavioral acceptance**.
+
+Execute the still-pending Production/representative checks in this document and keep any unexecuted item as `NOT_OBSERVED`. Do not infer PASS from source presence alone.
+
+Do not replay a real Form 46 lead merely to repeat the separately proven Green Sales E2E contract.
+
+M5-02 remains gated until M5-01 reaches its own acceptance decision.
