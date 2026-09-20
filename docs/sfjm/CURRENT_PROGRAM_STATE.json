@@ -2,18 +2,18 @@
   "schema_version": "sfjm.project-current-state.v1",
   "project_id": "morenumtegra",
   "program_id": "MNT-RESF",
-  "state_observed_at": "2026-09-19",
+  "state_observed_at": "2026-09-20",
   "program_state": "ACTIVE",
   "current_execution": {
     "active_phase_id": "MNT-M5",
     "active_task_id": "MNT-M5-01",
     "state": "IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED / RUNTIME_QUEUE_PREPARED",
     "pull_request": 122,
-    "repository_head_sha": "b17b2e660fbec13ffa6288215e28f19a3eaaa1df",
+    "repository_head_sha": "50cc466e778feb2de38a5241b4b2820c6b1ea016",
     "latest_main_runtime_sha": "353f4a5dba058f2fb60fd4001128f8c857cd6fce",
-    "deployment_state": "PROVIDER_BLOCKED / VERCEL build-rate-limit",
-    "last_verified_vercel_success_sha": "6e852f1c41ea834aa138e333cef56519f382dc5f",
-    "production_exact_sha": "CONFIRMED_PRE_PR132 / HTTP_200 / EXACT_SHA_NOT_REVALIDATED",
+    "deployment_state": "PENDING_REDEPLOY / HISTORICAL build-rate-limit / CURRENT_MORENUMTEGRA_RATE_LIMIT_NOT_REPROVEN",
+    "last_verified_vercel_success_sha": "82fd666596b283d1ff5645776ba892abe27885a6",
+    "production_exact_sha": "82fd666596b283d1ff5645776ba892abe27885a6 / dpl_H6KtyTDQHHAaWxx4FXHSUJBk97HK / READY",
     "authority_record": "docs/ux/MNT_M5_01_MOBILE_UX_ACCESSIBILITY_AUDIT_2026-09-19.md",
     "remediation_queue": [
       {
@@ -45,9 +45,10 @@
       },
       {
         "pr": 148,
-        "head": "2e7cb45696b6d0cfd191be77fbce975649ddca01",
+        "head": "508ebf55f4ea96261d8eeb4dc753158d7c0ec950",
         "findings": [
-          "F17"
+          "F17",
+          "F18"
         ],
         "state": "READY / NOT_MERGED / LOCAL_CANDIDATE_PASS"
       },
@@ -62,7 +63,7 @@
         "state": "READY / NOT_MERGED / LOCAL_CANDIDATE_PASS"
       }
     ],
-    "production_content_evidence": "docs/sfjm/PR132_PRODUCTION_NOT_UPDATED_EVIDENCE_2026-09-19.md"
+    "production_content_evidence": "docs/ux/MNT_M5_01_SOURCE_SEMANTICS_REVALIDATION_2026-09-20.md"
   },
   "progress": {
     "forecast_total_hours": 1240,
@@ -185,14 +186,14 @@
     "capiitolo_post_115_recrawl": "CLOSED / INDEXED / RICH_RESULTS_VALID",
     "project_rich_results_parity": "CLOSED / CAPIITOLO_7 / ELO_DUO_7 / ARIA_7",
     "m4_05r_acceptance": "CLOSED / COMPLETE / ACCEPTED / ZERO_ADDITIONAL_WBS_HOURS",
-    "m5_01_open_findings": "P2=10 / F01 F02 F10 F11 F13 F12 F14 F15 F16 F17",
+    "m5_01_open_findings": "P2=13 / F01 F02 F03 F10 F11 F13 F12 F14 F15 F16 F17 F18 F19",
     "m5_01_runtime_device_validation": "OPEN / NOT_FULLY_OBSERVED",
-    "latest_main_deployment": "PROVIDER_BLOCKED / VERCEL build-rate-limit / approved runtime SHA 353f4a5dba058f2fb60fd4001128f8c857cd6fce",
-    "m5_01_runtime_queue": "PR133_READY -> PR135_READY_STACKED -> PR145_READY_STACKED_LOCAL_PASS -> PR148_READY_LOCAL_PASS -> PR137_READY_F12_F14_F16_LOCAL_PASS / NONE_MERGED",
-    "production_content_state": "CONFIRMED_PRE_PR132 / HTTP_200 / PR132_MARKERS_ABSENT",
+    "latest_main_deployment": "APPROVED_RUNTIME_353f4a5d NOT_DEPLOYED / HISTORICAL build-rate-limit / CURRENT_MORENUMTEGRA_RATE_LIMIT_NOT_REPROVEN / PROD_SHA_82fd666596b283d1ff5645776ba892abe27885a6",
+    "m5_01_runtime_queue": "PR133_READY -> PR135_READY_STACKED -> PR145_READY_STACKED_LOCAL_PASS -> PR148_READY_F17_F18_LOCAL_PASS -> PR137_READY_F12_F14_F16_LOCAL_PASS / F03_F19_NO_RUNTIME_CANDIDATE / NONE_MERGED",
+    "production_content_state": "CONFIRMED_PRE_PR132 / HTTP_200 / PROD_DEPLOYMENT_dpl_H6KtyTDQHHAaWxx4FXHSUJBk97HK / SHA_82fd666596b283d1ff5645776ba892abe27885a6",
     "m5_01_capiitolo_local_validation": "F12 USER_REPORTED_PASS / F14 PASS 360_375_393_440 / F16 PASS 150_PERCENT_VISIBLE_200_PERCENT_HIDDEN_FORM46_UNOBSTRUCTED / PRODUCTION_PENDING",
     "m5_01_home_local_validation": "F01 PASS ~360_393_400 / F02 PASS first-tab+focus-transfer / F10_F11_F13 STATIC_PASS_VISUAL_PENDING",
-    "m5_01_qa_candidate_head": "bb53e0d0ee17ae1a5aa908173e5e5e40feb91456",
+    "m5_01_qa_candidate_head": "445d9feafdc934369706bc837d194bfbd4102bd6",
     "m5_01_home_reflow_validation": "F15 PASS / 125_PERCENT_DOCK_VISIBLE / 200_PERCENT_DOCK_HIDDEN / FORM46_UNOBSTRUCTED / PRODUCTION_PENDING",
     "m5_01_shared_exact_project_reflow_validation": "F17 PASS / ELO_DUO 150_VISIBLE_200_HIDDEN_UNOBSTRUCTED / ARIA 150_VISIBLE_200_HIDDEN_UNOBSTRUCTED / PRODUCTION_PENDING",
     "m5_01_exact_project_mobile_width_validation": "ELO_DUO PASS 360x800_393x852 / ARIA PASS 360x800_393x852 / LOCAL_CHROME_EMULATION / PRODUCTION_PENDING",
@@ -214,7 +215,8 @@
     "m5_01_capiitolo_type_tabs_touch_target_validation": "PASS / 393x852 / 18PX_VERTICAL_PADDING_EACH_SIDE / ACTIVE_STATE_VISIBLE / NO_PAGE_OVERFLOW / NO_DOCK_OBSTRUCTION / PRODUCTION_PHYSICAL_DEVICE_PENDING",
     "m5_01_capiitolo_floating_touch_target_validation": "PASS / 393x852 / WHATSAPP_54X54 / CONTACT_MIN_HEIGHT_54 / NO_PAGE_OVERFLOW / NO_DOCK_OBSTRUCTION / PRODUCTION_PHYSICAL_DEVICE_PENDING",
     "m5_01_shared_topbar_touch_target_validation": "LOCAL_CANDIDATE_PASS / ELO_DUO_176_234375X46 / ARIA_176_234375X46 / QA_HEAD_445d9feafdc934369706bc837d194bfbd4102bd6 / PR148_HEAD_508ebf55f4ea96261d8eeb4dc753158d7c0ec950 / PRODUCTION_PHYSICAL_DEVICE_PENDING",
-    "m5_01_open_p2_count": 11
+    "m5_01_open_p2_count": 13,
+    "m5_01_source_semantics_revalidation": "2026-09-20 / FORM46_SOURCE_CONTROLS_PASS / CAPIITOLO_PR137_TAB_MODEL_SOURCE_PASS / F03_REGRESSION_REOPENED / F19_OPEN"
   },
   "infra": {
     "dns_authority": "CLOUDFLARE_DNS_ONLY",
