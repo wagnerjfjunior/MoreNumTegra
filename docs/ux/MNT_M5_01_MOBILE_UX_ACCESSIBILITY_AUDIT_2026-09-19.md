@@ -211,6 +211,8 @@ Local Home candidate evidence is recorded in `docs/ux/MNT_M5_01_HOME_LOCAL_VALID
 
 Shared Elo Duo/Ária reflow evidence is recorded in `docs/ux/MNT_M5_01_SHARED_EXACT_PROJECT_REFLOW_VALIDATION_2026-09-20.md`.
 
+Elo Duo/Ária representative mobile-width evidence is recorded in `docs/ux/MNT_M5_01_EXACT_PROJECT_MOBILE_VALIDATION_2026-09-20.md`.
+
 Still `NOT_OBSERVED` as an accessibility acceptance set:
 
 - representative keyboard focus order across Home and exact-project pages;
@@ -219,7 +221,7 @@ Still `NOT_OBSERVED` as an accessibility acceptance set:
 - 200% text resize / browser zoom on routes not yet locally exercised (Home and CAPIITOLO dock/Form46 cases now locally PASS);
 - measured color contrast for states not covered by the static calculations above;
 - adjacent touch-target spacing;
-- Home and other not-yet-exercised page-level horizontal overflow at representative mobile widths;
+- cross-browser/device horizontal-overflow behavior beyond the locally exercised Chrome emulation matrix; Home, CAPIITOLO, Elo Duo and Ária now have local representative-width evidence;
 - screen-reader-level interpretation of gallery/tab interaction.
 
 The Product Authority's latest local ZIP visual smoke is treated only as `USER_REPORTED_LOCAL_SMOKE = PASS`, not as proof of the checks above.
