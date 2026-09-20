@@ -232,6 +232,8 @@ CAPIITOLO Form 46 touch-target evidence is recorded in `docs/ux/MNT_M5_01_CAPIIT
 
 CAPIITOLO gallery touch-target evidence is recorded in `docs/ux/MNT_M5_01_CAPIITOLO_GALLERY_TOUCH_TARGET_VALIDATION_2026-09-20.md`.
 
+CAPIITOLO type-tab touch-target evidence is recorded in `docs/ux/MNT_M5_01_CAPIITOLO_TYPE_TABS_TOUCH_TARGET_VALIDATION_2026-09-20.md`.
+
 Still `NOT_OBSERVED` as an accessibility acceptance set:
 
 - representative keyboard focus order is locally PASS on Home, CAPIITOLO, Elo Duo and Ária; production/cross-browser confirmation remains pending;
@@ -239,7 +241,7 @@ Still `NOT_OBSERVED` as an accessibility acceptance set:
 - screen-reader announcements;
 - 200% text resize / browser zoom on routes not yet locally exercised (Home and CAPIITOLO dock/Form46 cases now locally PASS);
 - measured color contrast for states not covered by the static calculations above;
-- adjacent touch-target spacing on remaining surfaces/routes; Home filter controls and Form 46 on CAPIITOLO, Elo Duo and Ária are locally/source-level PASS;
+- adjacent touch-target spacing on remaining surfaces/routes; Home filter controls, Form 46 on CAPIITOLO/Elo Duo/Ária, and CAPIITOLO gallery/type tabs are locally/source-level PASS;
 - cross-browser/device horizontal-overflow behavior beyond the locally exercised Chrome emulation matrix; Home, CAPIITOLO, Elo Duo and Ária now have local representative-width evidence;
 - screen-reader-level interpretation of gallery/tab interaction.
 
