@@ -1,6 +1,6 @@
 # MNT-M5-01 — Mobile UX and Accessibility Audit
 
-Status: `IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED`
+Status: `COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS`
 
 Reconciled: `2026-09-19`  
 Planning effort: `16h`  
@@ -344,3 +344,32 @@ M5_02 = NOT_AUTHORIZED_BY_SEQUENCE
 Canonical reconciliation handoff:
 
 `handoffs/HANDOFF-2026-09-20-M5-01-RUNTIME-QUEUE-RECONCILED.md`
+
+
+## 10. Final Production acceptance addendum — 2026-09-20
+
+This addendum supersedes prior current-state statements that keep the 13 P2 findings open for Production acceptance.
+
+```text
+RUNTIME_MAIN = 6aec388443410a2bff4d7c7a8ddff9d90224d8c9
+PRODUCTION_DEPLOYMENT = dpl_HTzsFxSeTmpqFjyNRwMNrPXvcBLD / READY
+FINAL_PRODUCTION_RUN = 35537580700
+FINAL_MATRIX = 100 PASS / 0 FAIL / 2 NOT_OBSERVED / 102
+P0_OPEN = 0
+P1_OPEN = 0
+P2_OPEN = 0
+P3_OPEN = 0
+```
+
+The prior run `35536868292` isolated one real residual at Home / WebKit / C02-ACCEPT. PR #178 corrected the focus-release timing in `src-greenn/preview/runtime.js`; the matching case passed in the final Production run with `hiddenFocus=false` and focus on `Receber condições`.
+
+The 13 P2 findings F01/F02/F03/F10/F11/F12/F13/F14/F15/F16/F17/F18/F19 are accepted with matching Production behavioral evidence.
+
+Two evidence gaps remain explicit:
+
+- real NVDA/VoiceOver session: `NOT_OBSERVED / ACCEPTED_RESIDUAL / NOT_PASS`;
+- real physical mobile device: `NOT_OBSERVED / ACCEPTED_RESIDUAL / NOT_PASS`.
+
+Product Authority adjudicated both as non-blocking for M5-01. This is not a WCAG certification and does not erase the evidence gaps. A later material defect observed on real assistive technology or physical hardware reopens the relevant finding/gate.
+
+Canonical closure: `docs/sfjm/MNT_M5_01_PRODUCTION_ACCEPTANCE_CLOSURE_2026-09-20.md`.
