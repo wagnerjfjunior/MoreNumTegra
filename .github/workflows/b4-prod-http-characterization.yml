@@ -119,7 +119,7 @@ jobs:
           do
             body="$(curl -sS "https://www.moretegra.com.br$path")"
             expected="https://www.moretegra.com.br$path"
-            printf '%s' "$body" | grep -Fq "rel=\"canonical\" href=\"$expected\""
+            grep -Fq "rel=\"canonical\" href=\"$expected\"" <<<"$body"
             echo "CANONICAL=$expected PASS"
           done
 
@@ -128,5 +128,5 @@ jobs:
         run: |
           set -euo pipefail
           body="$(curl -sS 'https://www.moretegra.com.br/obrigado/')"
-          printf '%s' "$body" | grep -Eqi '<meta[^>]+name=["'"'"']robots["'"'"'][^>]+content=["'"'"']noindex,nofollow["'"'"']'
+          grep -Eqi '<meta[^>]+name=["'"'"']robots["'"'"'][^>]+content=["'"'"']noindex,nofollow["'"'"']' <<<"$body"
           echo "THANK_YOU_NOINDEX=PASS"
