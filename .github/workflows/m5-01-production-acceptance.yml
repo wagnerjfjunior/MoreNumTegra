@@ -1,34 +1,32 @@
-name: M5-01 Production acceptance diagnostic
+name: M5-01 candidate smoke diagnostic
 
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - ".github/workflows/m5-01-production-acceptance.yml"
-      - ".github/diagnostics/m5-01-production-acceptance.mjs"
-      - ".github/diagnostics/m5-01-production-triage.mjs"
   push:
     branches:
       - "diag/m5-01-production-acceptance-20260920"
     paths:
       - ".github/workflows/m5-01-production-acceptance.yml"
-      - ".github/diagnostics/m5-01-production-acceptance.mjs"
-      - ".github/diagnostics/m5-01-production-triage.mjs"
+      - ".github/diagnostics/m5-01-candidate-smoke.mjs"
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  production-acceptance:
+  candidate-smoke:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
-    env:
-      EXPECTED_RUNTIME_SHA: "16515a8c69e30dd97e04e092ded3077ea396319f"
-      BASE_URL: "https://www.moretegra.com.br"
+    timeout-minutes: 20
     steps:
       - name: Checkout diagnostic
         uses: actions/checkout@v4
+        with:
+          path: diag
+
+      - name: Checkout exact remediation candidate
+        uses: actions/checkout@v4
+        with:
+          ref: fix/m5-01-production-acceptance-residuals-20260920
+          path: candidate
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -36,20 +34,30 @@ jobs:
           node-version: "20"
 
       - name: Install diagnostic dependencies
+        working-directory: diag
         run: npm install --no-save playwright@1.55.0 axe-core@4.10.3
 
       - name: Install browser engines
-        run: npx playwright install --with-deps chromium firefox webkit
+        working-directory: diag
+        run: npx playwright install --with-deps chromium webkit
 
-      - name: Run focused M5-01 Production triage
-        run: node .github/diagnostics/m5-01-production-triage.mjs
+      - name: Start candidate static server
+        run: |
+          python3 -m http.server 4173 --directory candidate >/tmp/m5-candidate-server.log 2>&1 &
+          for i in {1..20}; do
+            curl -fsS http://127.0.0.1:4173/src-greenn/preview/index.html >/dev/null && exit 0
+            sleep 1
+          done
+          cat /tmp/m5-candidate-server.log
+          exit 1
 
-      - name: Upload diagnostic evidence
+      - name: Run exact-head candidate smoke
+        run: node diag/.github/diagnostics/m5-01-candidate-smoke.mjs
+
+      - name: Upload candidate evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: m5-01-production-triage
-          path: |
-            m5-01-production-triage-results.json
-            m5-01-production-triage-summary.txt
+          name: m5-01-candidate-smoke
+          path: m5-01-candidate-smoke.json
           if-no-files-found: error
