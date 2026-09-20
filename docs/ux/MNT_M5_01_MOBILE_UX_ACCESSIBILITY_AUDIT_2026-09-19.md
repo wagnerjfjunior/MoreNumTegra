@@ -218,6 +218,8 @@ Elo Duo/Ária representative mobile-width evidence is recorded in `docs/ux/MNT_M
 
 Form 46 local validation evidence (invalid focus, phone validation and valid-data localhost no-send guard) is recorded in `docs/ux/MNT_M5_01_FORM46_INVALID_FOCUS_VALIDATION_2026-09-20.md`.
 
+Consent/floating-action local visual evidence is recorded in `docs/ux/MNT_M5_01_CONSENT_FLOATING_ACTIONS_VISUAL_VALIDATION_2026-09-20.md`.
+
 Still `NOT_OBSERVED` as an accessibility acceptance set:
 
 - representative keyboard focus order across Home and exact-project pages;
