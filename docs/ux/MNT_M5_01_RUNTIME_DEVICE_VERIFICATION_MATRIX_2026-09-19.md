@@ -74,6 +74,9 @@ PASS:
 Home local candidate status: `PASS / 2026-09-20`.
 Product Authority traversed the Home from header navigation through CTAs/filters and onward to footer contact links, with visible focus retained.
 
+Elo Duo local candidate status: `PASS / 2026-09-20`.
+Product Authority traversed Elo Duo from the page header through Form 46 and onward to footer/WhatsApp controls, with visible focus retained.
+
 ### K03 — logical focus order
 
 PASS:
@@ -84,6 +87,9 @@ PASS:
 
 Home local candidate status: `PASS / 2026-09-20`.
 Observed sequence progressed from the header navigation through primary Home actions and continued to the footer/Tegra Vendas contact link with no unexpected jump or focus trap.
+
+Elo Duo local candidate status: `PASS / 2026-09-20`.
+Observed sequence progressed through Form 46 and continued to footer/WhatsApp controls with no unexpected jump or focus trap.
 
 ## 5. CAPIITOLO tabs
 
