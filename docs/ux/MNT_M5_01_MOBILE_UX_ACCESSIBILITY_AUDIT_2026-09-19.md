@@ -53,6 +53,15 @@ Current `main` preserves:
 - Local rebuilt integrated candidate: first Tab exposes the skip link and Enter moves DOM focus to `#conteudo`; `document.activeElement.id === "conteudo"`.
 - `F02_LOCAL_CANDIDATE_VALIDATION = PASS`; production validation pending.
 
+### M5-01-F03 — Home stage-filter accessible state regression
+
+- Evidence: `SOURCE_LEVEL / REVALIDATED 2026-09-20`
+- Severity: `P2 / FILTER STATE ACCESSIBILITY`
+- Current Home stage buttons under `[data-filter-status]` do not expose `aria-pressed`.
+- Current `setStatus()` toggles only `.is-active` and does not synchronize an assistive-technology selected state.
+- The previous F03 closure statement is therefore not supported by current source.
+- `F03 = REGRESSION_REOPENED`; no runtime remediation candidate has been created in this revalidation.
+
 ### M5-01-F10 — Home stage-badge contrast is insufficient for two states
 
 - Evidence: `SOURCE_LEVEL / STATIC_CONTRAST_CALCULATION`
@@ -146,6 +155,15 @@ Current `main` preserves:
 - Rebuilt integrated candidate `445d9feafdc934369706bc837d194bfbd4102bd6` measured `176.234375 x 46px` on both Elo Duo and Ária at 393x852.
 - `F18_LOCAL_CANDIDATE_VALIDATION = PASS`; production/physical-device validation pending.
 
+### M5-01-F19 — Home reduced-motion video retains stale button semantics after activation
+
+- Evidence: `SOURCE_LEVEL / REVALIDATED 2026-09-20`
+- Severity: `P2 / KEYBOARD + ARIA SEMANTICS`
+- Under `prefers-reduced-motion: reduce`, Home assigns `role="button"` and `tabindex="0"` to the video frame so playback requires explicit user activation.
+- Activation mounts the YouTube iframe with `replaceChildren(iframe)`, but current source does not remove the synthetic button role/tab stop.
+- After the one-time activation handler is consumed, the outer container remains a focusable button while containing the focusable iframe, creating stale/nested interactive semantics.
+- `F19 = OPEN`; no runtime remediation candidate has been created in this revalidation.
+
 ### M5-01-C10 — Ária gallery has explicit keyboard navigation
 
 - Evidence: `SOURCE_LEVEL + USER_REPORTED_LOCAL_RUNTIME`
@@ -157,12 +175,6 @@ Current `main` preserves:
 
 
 ## 4. Findings resolved in current main
-
-### M5-01-F03 — Stage-filter accessible state
-
-State: `RESOLVED / MERGED`
-
-Current `src-greenn/moretegra.js` updates `aria-pressed` on `[data-filter-status]` together with visual active state.
 
 ### M5-01-F04 — Home floating action dock / consent collision
 
@@ -246,6 +258,8 @@ CAPIITOLO type-tab touch-target evidence is recorded in `docs/ux/MNT_M5_01_CAPII
 
 CAPIITOLO floating-action touch-target evidence is recorded in `docs/ux/MNT_M5_01_CAPIITOLO_FLOATING_ACTION_TOUCH_TARGET_VALIDATION_2026-09-20.md`.
 
+Source-level semantic revalidation, including reopened F03 and new F19, is recorded in `docs/ux/MNT_M5_01_SOURCE_SEMANTICS_REVALIDATION_2026-09-20.md`.
+
 Still `NOT_OBSERVED` as an accessibility acceptance set:
 
 - representative keyboard focus order is locally PASS on Home, CAPIITOLO, Elo Duo and Ária; production/cross-browser confirmation remains pending;
@@ -264,10 +278,10 @@ The Product Authority's latest local ZIP visual smoke is treated only as `USER_R
 ```text
 P0 = 0 open proven
 P1 = 0 open proven
-P2 = 11 open source/runtime findings
+P2 = 13 open source/runtime findings
 P3 = 0 open proven
 
-RESOLVED = F03–F09
+RESOLVED = F04–F09
 REMEDIATION_READY_NOT_MERGED = F01–F02 / PR #133
 NEW_STATIC_CONTRAST_FINDINGS = F10–F11 + F13
 NEW_KEYBOARD_ARIA_FINDING = F12
@@ -276,6 +290,8 @@ NEW_REFLOW_OBSTRUCTION_FINDING = F15 / PR #145 / LOCAL_CANDIDATE_PASS
 NEW_CAPIITOLO_REFLOW_FINDING = F16 / PR #137 / LOCAL_CANDIDATE_PASS
 NEW_SHARED_EXACT_PROJECT_REFLOW_FINDING = F17 / PR #148 / LOCAL_CANDIDATE_PASS
 NEW_SHARED_TOPBAR_TOUCH_TARGET_FINDING = F18 / PR #148 / LOCAL_CANDIDATE_PASS
+REGRESSED_REOPENED = F03 / HOME STAGE FILTER ARIA-PRESSED MISSING / NO_RUNTIME_CANDIDATE
+NEW_REDUCED_MOTION_VIDEO_SEMANTICS_FINDING = F19 / HOME / NO_RUNTIME_CANDIDATE
 REMEDIATION_READY_NOT_MERGED = F01/F02 -> PR #133; F10/F11/F13 -> PR #135; F15 -> PR #145; F17/F18 -> PR #148; F12/F14/F16 -> PR #137
 RUNTIME_DEVICE_RESIDUALS = OPEN
 ```
