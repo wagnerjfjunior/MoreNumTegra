@@ -7,78 +7,83 @@ Fonte canônica: GitHub `main`. Resolver o estado live antes de qualquer mutaç�
 ## 1. Estado integrado
 
 ```text
-CANONICAL_MAIN_AT_M5_03_START = 0114b386b5fe9b58287e40424eb50947f6fa1f95
-EFFECTIVE_PRODUCTION_RUNTIME_SHA = 6aec388443410a2bff4d7c7a8ddff9d90224d8c9
+CANONICAL_MAIN_RUNTIME = a070e968a547cf94a68b0eb2a38a4bb2e9f64758
+PRODUCTION_DEPLOYMENT = dpl_C9zyvyKSDgYmep24dEj88xacNZ73
+PRODUCTION_STATE = READY
 
 MNT-M5 = ACTIVE
 MNT-M5-01 = COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS
 MNT-M5-02 = COMPLETE / LAB_BASELINE_ESTABLISHED / FIELD_CWV_NOT_OBSERVED
 MNT-M5-03 = COMPLETE / STRATEGY_ESTABLISHED / NO_RUNTIME_MUTATION
-MNT-M5-04 = PLANNED / AUTHORIZATION_REQUIRED / NOT_AUTHORIZED_BY_SEQUENCE
+MNT-M5-04 = COMPLETE / PRODUCTION_REGRESSION_PASS / PHYSICAL_DEVICE_NOT_OBSERVED
+MNT-M5-05 = AUTHORIZED / READY_TO_START
 MNT-M5-10 = PLANNED_NOT_AUTHORIZED
 
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 800
-REMAINING_FORECAST_HOURS = 440
-ACCEPTED_PERCENT = 64.52
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 816
+REMAINING_FORECAST_HOURS = 424
+ACCEPTED_PERCENT = 65.81
 ```
 
-## 2. Production / Vercel
+## 2. M5-04 Production regression
+
+Canonical evidence:
+
+`docs/ux/MNT_M5_04_PRODUCTION_MOBILE_REGRESSION_CLOSURE_2026-09-20.md`
+
+Pre-fix Production:
+
+```text
+RUN = 35540073578
+RUNTIME = 6aec388443410a2bff4d7c7a8ddff9d90224d8c9
+PASS = 54
+FAIL = 3
+NOT_OBSERVED = 1
+```
+
+All three failures were the same Ária gallery touch-target finding (44x44) observed in Chromium, Firefox and WebKit.
+
+PR #185 applied the bounded 46x46 remediation and repository guard.
+
+Exact-head gate:
+
+`35540432189 / SUCCESS`
+
+Post-fix Production:
+
+```text
+RUN = 35540543038
+RUNTIME = a070e968a547cf94a68b0eb2a38a4bb2e9f64758
+PASS = 57
+FAIL = 0
+NOT_OBSERVED = 1
+TOTAL = 58
+ARTIFACT = 10614387172
+```
+
+Physical-device testing remains `NOT_OBSERVED / NOT_PASS`. It is not inferred from browser-engine touch emulation.
+
+## 3. Production / Vercel
 
 ```text
 CANONICAL_HOST = https://www.moretegra.com.br/
-PRODUCTION_DEPLOYMENT = dpl_HTzsFxSeTmpqFjyNRwMNrPXvcBLD
-PRODUCTION_SOURCE_SHA = 6aec388443410a2bff4d7c7a8ddff9d90224d8c9
+PRODUCTION_SOURCE_SHA = a070e968a547cf94a68b0eb2a38a4bb2e9f64758
+PRODUCTION_DEPLOYMENT = dpl_C9zyvyKSDgYmep24dEj88xacNZ73
 PRODUCTION_STATE = READY
 ```
 
-M5-03 is docs/strategy only and does not change the effective runtime.
+## 4. Form 46 / Measurement / Search
 
-## 3. M5-02 baseline retained
+M5-04 sent no real Form 46 lead and made no GTM/GA4, SEO/canonical, DNS, commercial-content or media-source changes.
 
-| Route | LCP | LCP target | CLS | CLS target |
-|---|---:|---|---:|---|
-| Home | 1,346 ms | PASS | 0.0131 | PASS |
-| CAPIITOLO | 5,493 ms | FAIL | 0.0012 | PASS |
-| Elo Duo | 8,234 ms | FAIL | 0.0299 | PASS |
-| Ária Higienópolis | 5,357 ms | FAIL | 0.0281 | PASS |
+## 5. Continuing execution authority
 
-Field CWV/INP remains `NOT_OBSERVED`; TBT is not used as INP.
+On 2026-09-20 Product Authority authorized continuing through planned tasks, including governed Ready/merge lifecycle, stopping only when a material decision is required.
 
-## 4. M5-03 media strategy
+This continuing authorization does not supersede explicit hard blocks. In particular, MNT-M5-10 remains `NOT_AUTHORIZED`.
 
-Canonical strategy:
+## 6. Immediate next action
 
-`docs/performance/MNT_M5_03_MEDIA_IMAGE_VIDEO_PERFORMANCE_STRATEGY_2026-09-20.md`
+Start **MNT-M5-05 — Conversion architecture**.
 
-Key decisions:
-
-- hero/LCP media must be directly discoverable in initial HTML;
-- use pre-generated responsive AVIF/WebP variants with JPEG fallback;
-- keep large binaries outside GitHub;
-- authorized GDigital/S3 or another authorized media/CDN origin is preferred for derivatives;
-- do not add blanket preloads;
-- preserve lazy loading below the fold and use dedicated thumbnail derivatives;
-- keep CAPIITOLO video disabled on mobile, Save-Data and reduced-motion;
-- do not replicate CAPIITOLO client fetch/parse/document.write bootstrap on new project pages;
-- image optimization precedes any GTM tuning as the first performance-remediation strategy;
-- M5-10 is still not authorized.
-
-Recommended future M5-10 slice order, if separately authorized:
-
-1. Elo Duo hero;
-2. Ária hero + first gallery asset;
-3. CAPIITOLO hero + heavy below-fold images;
-4. optional CAPIITOLO bootstrap flattening assessment after image-only evidence.
-
-## 5. Form 46 / Measurement / Search
-
-No Form 46 submission, GTM mutation, SEO/canonical change, DNS change, commercial-content change or runtime mutation occurred in M5-03.
-
-## 6. Immediate next safe action
-
-Authority: `docs/NEXT_SAFE_ACTION.md`.
-
-Obtain explicit Product Authority authorization before starting **MNT-M5-04 — Regression of filters, touch and mobile controls**.
-
-Do not perform M5-10 performance remediation from the M5-03 strategy without a separate explicit authorization.
+Stop when M5-05 reaches a material product/architecture choice that cannot be resolved from canonical requirements and existing accepted contracts.

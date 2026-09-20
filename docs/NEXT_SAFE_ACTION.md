@@ -2,36 +2,39 @@
 
 Atualizado em `2026-09-20`.
 
-## Estado após M5-03
+## Estado após M5-04
 
 ```text
 MNT-M5 = ACTIVE
-MNT-M5-01 = COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS
-MNT-M5-02 = COMPLETE / LAB_BASELINE_ESTABLISHED / FIELD_CWV_NOT_OBSERVED
-MNT-M5-03 = COMPLETE / STRATEGY_ESTABLISHED / NO_RUNTIME_MUTATION
-MNT-M5-04 = PLANNED / AUTHORIZATION_REQUIRED / NOT_AUTHORIZED_BY_SEQUENCE
+MNT-M5-04 = COMPLETE / PRODUCTION_REGRESSION_PASS / PHYSICAL_DEVICE_NOT_OBSERVED
+MNT-M5-05 = AUTHORIZED / READY_TO_START
 MNT-M5-10 = PLANNED_NOT_AUTHORIZED
 
-EFFECTIVE_PRODUCTION_RUNTIME_SHA = 6aec388443410a2bff4d7c7a8ddff9d90224d8c9
-PRODUCTION_DEPLOYMENT = dpl_HTzsFxSeTmpqFjyNRwMNrPXvcBLD
+MAIN_RUNTIME = a070e968a547cf94a68b0eb2a38a4bb2e9f64758
+PRODUCTION_DEPLOYMENT = dpl_C9zyvyKSDgYmep24dEj88xacNZ73
 PRODUCTION_STATE = READY
+
+M5_04_ACCEPTANCE_RUN = 35540543038
+PASS = 57
+FAIL = 0
+NOT_OBSERVED = 1
+PHYSICAL_DEVICE = NOT_OBSERVED / NOT_PASS
 ```
 
 ## Única próxima ação segura
 
-Obter decisão explícita da Product Authority sobre **autorizar ou não MNT-M5-04 — Regression of filters, touch and mobile controls**.
+Executar **MNT-M5-05 — Conversion architecture** sob a autorização contínua da Product Authority.
 
-Until that decision:
+A execução pode avançar por análise, documentação, PR Ready e merge quando os gates forem objetivos.
 
-- do not start M5-04 by sequence;
-- do not implement the M5-03 media strategy in Production;
-- do not execute M5-10 performance remediation;
-- do not replace/recompress hero or gallery assets;
-- do not change preload/fetchpriority, GTM/GA4, Form 46, SEO/canonical, DNS or Vercel configuration;
-- preserve the current Production runtime.
+**PARAR** quando surgir uma decisão material de produto/arquitetura, inclusive escolha entre alternativas de conversão com impacto em jornada, semântica de lead, privacidade, CRM, Measurement ou dependência de backend que não esteja resolvida pelos contratos canônicos.
 
-## Evidence
+Continuam bloqueados sem decisão específica:
 
-- `docs/performance/MNT_M5_02_PRODUCTION_PERFORMANCE_BASELINE_2026-09-20.md`;
-- `docs/performance/MNT_M5_03_MEDIA_IMAGE_VIDEO_PERFORMANCE_STRATEGY_2026-09-20.md`;
-- `handoffs/HANDOFF-2026-09-20-M5-03-MEDIA-PERFORMANCE-STRATEGY.md`.
+- MNT-M5-10 performance remediation;
+- mudança do contrato Form 46;
+- novo backend/intermediário;
+- GTM/GA4/Consent mutation fora de gate próprio;
+- DNS/canonical/SEO structural mutation;
+- FECH.AI/n8n/Make;
+- Meta/Ads.
