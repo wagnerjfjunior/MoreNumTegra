@@ -1,17 +1,17 @@
 # Vercel Recovery Queue — MoreNumTegra
 
 Status: `ACTIVE / DEPLOYMENT_PENDING / HISTORICAL_RATE_LIMIT_NOT_REPROVEN`  
-Updated: `2026-09-19`
+Updated: `2026-09-20`
 
 ## Purpose
 
-Preserve the exact ordered actions that must resume when the current Vercel `build-rate-limit` block clears. This runbook does not authorize artificial commits, deployment drift or automatic merging of later runtime PRs.
+Preserve the exact ordered actions that must resume when the approved runtime can be safely redeployed after rechecking the historical Vercel `build-rate-limit` state. This runbook does not authorize artificial commits, deployment drift or automatic merging of later runtime PRs.
 
 ## Current identities
 
 ```text
 CANONICAL_REPOSITORY = wagnerjfjunior/MoreNumTegra
-CURRENT_MAIN_BEFORE_THIS_DOCS_PR = df17eb027060551589514d69ea9211031524d8d4
+CURRENT_MAIN_BEFORE_THIS_DOCS_PR = 50cc466e778feb2de38a5241b4b2820c6b1ea016
 
 APPROVED_PENDING_RUNTIME_SHA = 353f4a5dba058f2fb60fd4001128f8c857cd6fce
 APPROVED_PENDING_RUNTIME_SCOPE = PR #132 semantic on-page SEO
@@ -59,7 +59,7 @@ Direct authenticated production evidence already confirms the current canonical 
 
 ### R2 — Deploy the approved pending runtime
 
-When the provider block clears, deploy/redeploy exactly:
+When a controlled production redeploy is available and no current provider block is observed, deploy/redeploy exactly:
 
 `353f4a5dba058f2fb60fd4001128f8c857cd6fce`
 
