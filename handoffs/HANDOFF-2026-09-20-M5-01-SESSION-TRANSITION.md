@@ -7,6 +7,7 @@ REPOSITORY = wagnerjfjunior/MoreNumTegra
 CANONICAL_BRANCH = main
 SOURCE_MAIN_AT_TRANSITION_START = d9d971d6f667c235723b35d251041ec11c021558
 SFJM = wagnerjfjunior/StopJuniorMode
+TRANSITION_PR = #174
 ```
 
 GitHub `main` is canonical. Conversation history, local files, screenshots and older handoffs are evidence only unless reconciled against live `main`.
