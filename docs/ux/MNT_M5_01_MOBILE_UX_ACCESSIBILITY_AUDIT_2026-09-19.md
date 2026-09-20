@@ -126,6 +126,16 @@ Current `main` preserves:
 - Final local candidate validation: 150% retains both fixed controls; 200% hides them; Form 46 remains fully visible and unobstructed.
 - `F16_LOCAL_CANDIDATE_VALIDATION = PASS`; production validation pending.
 
+### M5-01-F17 — Shared exact-project fixed dock overlaps content under high zoom / short reflow
+
+- Evidence: `USER_REPORTED_LOCAL_RUNTIME / VISUAL`
+- Severity: `P2 / REFLOW + INTERACTION OBSTRUCTION`
+- Elo Duo and Ária both use the shared `.mt-quick-actions` pattern.
+- Initial 200% zoom validation showed required content obscured: footer/form content on Elo Duo and lower Form 46 note/content on Ária.
+- PR #148 adds one shared `project-page.css` rule: `@media(max-height:400px){body .mt-quick-actions{display:none}}`.
+- Final local candidate validation: both routes retain the dock at 150%, hide it at 200%, and leave Form 46/footer content unobstructed.
+- `F17_LOCAL_CANDIDATE_VALIDATION = PASS`; production validation pending.
+
 ### M5-01-C10 — Ária gallery has explicit keyboard navigation
 
 - Evidence: `SOURCE_LEVEL`
@@ -199,6 +209,8 @@ Local CAPIITOLO candidate evidence is recorded in `docs/ux/MNT_M5_01_CAPIITOLO_L
 
 Local Home candidate evidence is recorded in `docs/ux/MNT_M5_01_HOME_LOCAL_VALIDATION_2026-09-19.md`.
 
+Shared Elo Duo/Ária reflow evidence is recorded in `docs/ux/MNT_M5_01_SHARED_EXACT_PROJECT_REFLOW_VALIDATION_2026-09-20.md`.
+
 Still `NOT_OBSERVED` as an accessibility acceptance set:
 
 - representative keyboard focus order across Home and exact-project pages;
@@ -217,7 +229,7 @@ The Product Authority's latest local ZIP visual smoke is treated only as `USER_R
 ```text
 P0 = 0 open proven
 P1 = 0 open proven
-P2 = 9 open source/runtime findings
+P2 = 10 open source/runtime findings
 P3 = 0 open proven
 
 RESOLVED = F03–F09
@@ -227,7 +239,8 @@ NEW_KEYBOARD_ARIA_FINDING = F12
 NEW_MOBILE_OVERFLOW_FINDING = F14 / LOCAL_CANDIDATE_PASS
 NEW_REFLOW_OBSTRUCTION_FINDING = F15 / PR #145 / LOCAL_CANDIDATE_PASS
 NEW_CAPIITOLO_REFLOW_FINDING = F16 / PR #137 / LOCAL_CANDIDATE_PASS
-REMEDIATION_READY_NOT_MERGED = F01/F02 -> PR #133; F10/F11/F13 -> PR #135; F15 -> PR #145; F12/F14/F16 -> PR #137
+NEW_SHARED_EXACT_PROJECT_REFLOW_FINDING = F17 / PR #148 / LOCAL_CANDIDATE_PASS
+REMEDIATION_READY_NOT_MERGED = F01/F02 -> PR #133; F10/F11/F13 -> PR #135; F15 -> PR #145; F17 -> PR #148; F12/F14/F16 -> PR #137
 RUNTIME_DEVICE_RESIDUALS = OPEN
 ```
 
@@ -237,7 +250,7 @@ RUNTIME_DEVICE_RESIDUALS = OPEN
 MNT_M5_01 = IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED
 RUNTIME_REMEDIATION_REQUIRED = NOT_YET_ADJUDICATED
 WBS_PROGRESS_CHANGE = NO
-NEXT = representative runtime/device accessibility verification and queued fresh release gates for PR #133, PR #135, PR #145 and PR #137 after the pending SEO runtime is validated
+NEXT = representative runtime/device accessibility verification and queued fresh release gates for PR #133, PR #135, PR #145, PR #148 and PR #137 after the pending SEO runtime is validated
 ```
 
 Do not start M5-02 merely by sequence until M5-01 reaches its own acceptance gate.
