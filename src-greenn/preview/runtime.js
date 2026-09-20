@@ -14,6 +14,13 @@
   const WHATSAPP_ICON = "https://s3-gdigital.s3.amazonaws.com/gdigital/313/whatsapp-removebg.webp";
   const LOCATION_MESSAGE = "Por favor me envie a localização exata do Tegra CAPIITOLO by Piero Lissoni.";
   const CAPIITOLO_ROUTE = "/empreendimentos/capiitolo-piero-lissoni/";
+  const FORM_INTENT_VALUES = Object.freeze({
+    conditions: "Condições e disponibilidade",
+    schedule_visit: "Agendar visita",
+    payment_simulation: "Simular forma de pagamento",
+    specialist: "Falar com especialista",
+    negotiate_scenario: "Negociar meu cenário"
+  });
 
   function isLiveHost() {
     return window.location.hostname === LIVE_HOST;
@@ -393,6 +400,7 @@
       const contact = document.createElement("a");
       contact.className = "mnt-contact-float";
       contact.href = "#formulario";
+      contact.dataset.formIntent = "conditions";
       contact.textContent = "Receber condições";
       contact.setAttribute("aria-label", "Receber condições do CAPIITOLO");
       document.body.append(contact);
@@ -458,9 +466,22 @@
         : "";
     };
 
+    const applyFormIntent = (intentKey) => {
+      const key = String(intentKey || "").trim();
+      const value = FORM_INTENT_VALUES[key];
+      const intent = form.elements["texto-livre"];
+      if (!value || !(intent instanceof HTMLSelectElement)) return false;
+      if (![...intent.options].some((option) => option.value === value)) return false;
+      intent.value = value;
+      return true;
+    };
+
     document.addEventListener("click", (event) => {
       const element = event.target instanceof Element ? event.target : null;
       if (!element) return;
+
+      const formIntentTarget = element.closest("[data-form-intent]");
+      if (formIntentTarget) applyFormIntent(formIntentTarget.dataset.formIntent);
 
       const interestTarget = element.closest("[data-interest]");
       if (interestTarget) {
