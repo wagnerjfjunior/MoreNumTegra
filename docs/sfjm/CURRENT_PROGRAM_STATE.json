@@ -9,7 +9,7 @@
     "active_task_id": "MNT-M5-01",
     "state": "IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED / RUNTIME_QUEUE_PREPARED",
     "pull_request": 122,
-    "repository_head_sha": "b09ad39cd190be2c80186be56e896b116851ba08",
+    "repository_head_sha": "97a5f99fcae289cc07ccbda1b14d3e2a4c9929c8",
     "latest_main_runtime_sha": "353f4a5dba058f2fb60fd4001128f8c857cd6fce",
     "deployment_state": "PROVIDER_BLOCKED / VERCEL build-rate-limit",
     "last_verified_vercel_success_sha": "6e852f1c41ea834aa138e333cef56519f382dc5f",
@@ -211,7 +211,8 @@
     "m5_01_capiitolo_form46_touch_target_validation": "PASS / 440x956 / COUNTRY_MIN_HEIGHT_54PX / INPUT_PADDING_Y_12PX / SUBMIT_PADDING_Y_16PX / NO_DOCK_OBSTRUCTION / PRODUCTION_PHYSICAL_DEVICE_PENDING",
     "m5_01_form46_touch_target_matrix": "CAPIITOLO PASS / ELO_DUO PASS / ARIA PASS / LOCAL_CHROME_SOURCE_LEVEL / PRODUCTION_PHYSICAL_DEVICE_PENDING",
     "m5_01_capiitolo_gallery_touch_target_validation": "PASS / 393x852 / APPROX_TARGET_HEIGHT_50_8PX / GAP_5PX / OWN_HORIZONTAL_SCROLL_SURFACE / NO_PAGE_OVERFLOW / NO_DOCK_OBSTRUCTION / PRODUCTION_PHYSICAL_DEVICE_PENDING",
-    "m5_01_capiitolo_type_tabs_touch_target_validation": "PASS / 393x852 / 18PX_VERTICAL_PADDING_EACH_SIDE / ACTIVE_STATE_VISIBLE / NO_PAGE_OVERFLOW / NO_DOCK_OBSTRUCTION / PRODUCTION_PHYSICAL_DEVICE_PENDING"
+    "m5_01_capiitolo_type_tabs_touch_target_validation": "PASS / 393x852 / 18PX_VERTICAL_PADDING_EACH_SIDE / ACTIVE_STATE_VISIBLE / NO_PAGE_OVERFLOW / NO_DOCK_OBSTRUCTION / PRODUCTION_PHYSICAL_DEVICE_PENDING",
+    "m5_01_capiitolo_floating_touch_target_validation": "PASS / 393x852 / WHATSAPP_54X54 / CONTACT_MIN_HEIGHT_54 / NO_PAGE_OVERFLOW / NO_DOCK_OBSTRUCTION / PRODUCTION_PHYSICAL_DEVICE_PENDING"
   },
   "infra": {
     "dns_authority": "CLOUDFLARE_DNS_ONLY",
