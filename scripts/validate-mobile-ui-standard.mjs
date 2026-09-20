@@ -32,6 +32,7 @@ for (const [name, html] of [["Ária", aria], ["Elo Duo", elo]]) {
   assert(html.includes("data-mnt-footer-address"), `${name} footer must use the governed address treatment`);
 }
 
+assert(aria.includes(".mt-gallery-arrow{position:absolute;z-index:2;top:50%;translate:0 -50%;display:grid;place-items:center;width:46px;height:46px;"), "Ária gallery arrows must preserve >=46px touch targets");
 assert(aria.includes("Higien%C3%B3polis%2C%20S%C3%A3o%20Paulo"), "Ária visible map must be neighborhood-level only");
 assert(!aria.includes("Rua%20Coronel%20Jos%C3%A9%20Eus%C3%A9bio%2C%20145"), "Ária exact address must not leak into visible map query");
 assert(elo.includes("Caminhos%20da%20Lapa%2C%20S%C3%A3o%20Paulo"), "Elo Duo visible map must be neighborhood-level only");
