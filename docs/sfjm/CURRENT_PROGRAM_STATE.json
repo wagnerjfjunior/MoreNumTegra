@@ -15,90 +15,6 @@
     "last_verified_vercel_success_sha": "6aec388443410a2bff4d7c7a8ddff9d90224d8c9",
     "production_exact_sha": "6aec388443410a2bff4d7c7a8ddff9d90224d8c9 / dpl_HTzsFxSeTmpqFjyNRwMNrPXvcBLD / READY",
     "authority_record": "docs/performance/MNT_M5_02_PRODUCTION_PERFORMANCE_BASELINE_2026-09-20.md",
-    "remediation_queue": [
-      {
-        "pr": 133,
-        "head": "2a1582405a836b00ef4bb8f526cfc6657a3ef220",
-        "merge_commit": "d9b4a67912b317ec44d511db9561d966fb7e6914",
-        "findings": [
-          "F01",
-          "F02"
-        ],
-        "state": "MERGED / PRODUCTION_ACCEPTED"
-      },
-      {
-        "pr": 135,
-        "head": "2582b50ce282a1ba5b18e8b82bf6c3b8c34310f3",
-        "merge_commit": "2a468e9373820f2cef9ba5486d1e2262fe1f8b14",
-        "findings": [
-          "F10",
-          "F11",
-          "F13"
-        ],
-        "state": "MERGED / PRODUCTION_ACCEPTED"
-      },
-      {
-        "pr": 145,
-        "head": "824ac0ecf375ffdbaad061e4433555b57600db9b",
-        "merge_commit": "575efb1c880f59a501e6ee37337c672187d89570",
-        "findings": [
-          "F15"
-        ],
-        "state": "MERGED / PRODUCTION_ACCEPTED"
-      },
-      {
-        "pr": 167,
-        "head": "8ac21b9bfc9ee3e8b53975d2ab6d2e3a288254a3",
-        "merge_commit": "a8d36fc94084eb866657bf678aa7e6c28629304f",
-        "findings": [
-          "F03",
-          "F19"
-        ],
-        "state": "MERGED / PRODUCTION_ACCEPTED"
-      },
-      {
-        "pr": 148,
-        "head": "424369d0d9738556d66369b229318de41d1f55c2",
-        "merge_commit": "e8400adbc0d8deb22f621e5bbbf0bf74467ec57b",
-        "findings": [
-          "F17",
-          "F18"
-        ],
-        "state": "MERGED / PRODUCTION_ACCEPTED"
-      },
-      {
-        "pr": 137,
-        "head": "72b52c794f9929a292cbd4a9f3badc7e4a9e5f30",
-        "merge_commit": "16515a8c69e30dd97e04e092ded3077ea396319f",
-        "findings": [
-          "F12",
-          "F14",
-          "F16"
-        ],
-        "state": "MERGED / PRODUCTION_ACCEPTED"
-      }
-    ],
-    "production_content_evidence": "docs/sfjm/MNT_M5_01_PRODUCTION_ACCEPTANCE_CLOSURE_2026-09-20.md",
-    "p2_findings_total": 13,
-    "p2_remediations_integrated": 13,
-    "p2_acceptance_open": 0,
-    "acceptance_run": 35537580700,
-    "acceptance_summary": {
-      "pass": 100,
-      "fail": 0,
-      "not_observed": 2,
-      "total": 102
-    },
-    "accepted_residuals": [
-      {
-        "id": "SCREEN-READER",
-        "state": "NOT_OBSERVED / ACCEPTED_RESIDUAL / NOT_PASS"
-      },
-      {
-        "id": "PHYSICAL-DEVICE",
-        "state": "NOT_OBSERVED / ACCEPTED_RESIDUAL / NOT_PASS"
-      }
-    ],
     "performance_baseline": {
       "run_id": 35538473832,
       "artifact_id": 10612579543,
@@ -176,7 +92,33 @@
       "runtime_sha": "6aec388443410a2bff4d7c7a8ddff9d90224d8c9",
       "deployment_id": "dpl_HTzsFxSeTmpqFjyNRwMNrPXvcBLD",
       "acceptance_run": 35537580700,
-      "evidence": "docs/sfjm/MNT_M5_01_PRODUCTION_ACCEPTANCE_CLOSURE_2026-09-20.md"
+      "evidence": "docs/sfjm/MNT_M5_01_PRODUCTION_ACCEPTANCE_CLOSURE_2026-09-20.md",
+      "acceptance_summary": {
+        "pass": 100,
+        "fail": 0,
+        "not_observed": 2,
+        "total": 102
+      },
+      "accepted_residuals": [
+        {
+          "id": "SCREEN-READER",
+          "state": "NOT_OBSERVED / ACCEPTED_RESIDUAL / NOT_PASS"
+        },
+        {
+          "id": "PHYSICAL-DEVICE",
+          "state": "NOT_OBSERVED / ACCEPTED_RESIDUAL / NOT_PASS"
+        }
+      ],
+      "remediation_prs": [
+        133,
+        135,
+        145,
+        167,
+        148,
+        137,
+        177,
+        178
+      ]
     },
     "MNT-M5-02": {
       "state": "COMPLETE / LAB_BASELINE_ESTABLISHED / FIELD_CWV_NOT_OBSERVED",
