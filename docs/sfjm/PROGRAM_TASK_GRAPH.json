@@ -62,7 +62,7 @@
     "next_safe_action": "docs/NEXT_SAFE_ACTION.md",
     "blocked_actions": "docs/BLOCKED_ACTIONS.md",
     "functional_baseline": "docs/baseline/FUNCTIONAL_BASELINE_V2.md",
-    "technical_baseline": "docs/baseline/TECHNICAL_BASELINE_V2_2.md",
+    "technical_baseline": "docs/baseline/TECHNICAL_BASELINE_V2_3.md",
     "resf_adoption": "docs/frameworks/resf/ADOPTION.yaml",
     "resf_reconciliation": "docs/frameworks/resf/ADOPTION_BASELINE.md",
     "gsc_t0": "docs/evidence/search/GSC_BASELINE_2026-09-10.md"
