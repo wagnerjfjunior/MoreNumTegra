@@ -177,6 +177,13 @@ PASS without submission:
 - error/status messages are exposed visibly and through their ARIA live regions;
 - submit button state is readable.
 
+Local candidate evidence on Ária:
+- empty required identity/contact fields -> visible `Informe seu nome.` and focus on `#mt-lead-name`;
+- Name filled / e-mail empty -> visible `Informe um e-mail válido.` and focus on `#mt-lead-email`;
+- no Form 46 POST observed during these invalid local submissions.
+
+`FORM46_LOCAL_INVALID_VALIDATION = PASS`. Production validation remains pending.
+
 Production E2E lead receipt remains a separate already-proven contract and should not be replayed casually.
 
 ## 11. Horizontal overflow triage
