@@ -134,9 +134,54 @@
     };
   }
 
+  function ensureConsentBanner() {
+    const existing = document.querySelector("[data-mnt-consent]");
+    if (existing) return existing;
+
+    if (!document.getElementById("mnt-runtime-consent-style")) {
+      const style = document.createElement("style");
+      style.id = "mnt-runtime-consent-style";
+      style.textContent = `
+        .mnt-runtime-consent{position:fixed;z-index:9999;left:14px;right:14px;bottom:14px;max-width:780px;margin:0 auto;padding:16px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:#1b1c18;color:#fff;box-shadow:0 16px 50px rgba(0,0,0,.34);font-family:system-ui,sans-serif;display:grid;gap:14px}
+        .mnt-runtime-consent[hidden]{display:none!important}
+        .mnt-runtime-consent strong{color:#fff}.mnt-runtime-consent p{margin:4px 0 0;color:#ccc8bd;font-size:12px}
+        .mnt-runtime-consent-actions{display:flex;flex-wrap:wrap;gap:8px}
+        .mnt-runtime-consent button{min-height:46px;border-radius:999px;border:1px solid #777267;background:transparent;color:#fff;padding:9px 14px;font-weight:800;cursor:pointer}
+        .mnt-runtime-consent button.is-primary{background:#EBB92E;color:#171813;border-color:#EBB92E}
+        .mnt-runtime-consent button:focus-visible{outline:3px solid #EBB92E;outline-offset:3px}
+        @media(min-width:720px){.mnt-runtime-consent{left:auto;right:20px;max-width:520px;grid-template-columns:1fr auto;align-items:center}}
+      `;
+      document.head.append(style);
+    }
+
+    const banner = document.createElement("aside");
+    banner.className = "mnt-runtime-consent";
+    banner.dataset.mntConsent = "";
+    banner.hidden = true;
+    banner.setAttribute("aria-label", "Preferências de privacidade");
+    banner.innerHTML = `<div><strong>Privacidade</strong><p>Você pode aceitar ou recusar cookies de medição.</p></div><div class="mnt-runtime-consent-actions"><button type="button" data-consent-reject>Recusar</button><button type="button" class="is-primary" data-consent-accept>Aceitar</button></div>`;
+    document.body.append(banner);
+    return banner;
+  }
+
+  function releaseConsentFocus(banner) {
+    if (!banner.contains(document.activeElement)) return;
+    window.requestAnimationFrame(() => {
+      const candidates = [
+        ".mnt-contact-float",
+        ".mt-quick-lead",
+        "#mt-floating-dock .mt-floating-lead",
+        "main a[href='#formulario']"
+      ];
+      const target = candidates
+        .map((selector) => document.querySelector(selector))
+        .find((node) => node instanceof HTMLElement && node.getClientRects().length > 0);
+      target?.focus({preventScroll: true});
+    });
+  }
+
   function initConsent() {
-    const banner = document.querySelector("[data-mnt-consent]");
-    if (!banner) return;
+    const banner = ensureConsentBanner();
     const syncOffset = () => {
       const open = !banner.hidden;
       const offset = open ? Math.ceil(banner.getBoundingClientRect().height + 28) : 14;
@@ -173,12 +218,14 @@
       emitChoice("granted");
       banner.hidden = true;
       syncOffset();
+      releaseConsentFocus(banner);
     });
     banner.querySelector("[data-consent-reject]")?.addEventListener("click", () => {
       try { window.localStorage.setItem(CONSENT_KEY, "denied"); } catch {}
       emitChoice("denied");
       banner.hidden = true;
       syncOffset();
+      releaseConsentFocus(banner);
     });
   }
 
