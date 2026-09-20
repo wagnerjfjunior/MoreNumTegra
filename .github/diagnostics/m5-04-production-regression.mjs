@@ -2,7 +2,7 @@ import { chromium, firefox, webkit } from "playwright";
 import fs from "node:fs";
 
 const BASE="https://www.moretegra.com.br";
-const RUNTIME_SHA="6aec388443410a2bff4d7c7a8ddff9d90224d8c9";
+const RUNTIME_SHA="a070e968a547cf94a68b0eb2a38a4bb2e9f64758";
 const R={HOME:"/",CAPI:"/empreendimentos/capiitolo-piero-lissoni/",ELO:"/empreendimentos/caminhos-da-lapa-elo-duo/",ARIA:"/empreendimentos/aria-higienopolis/"};
 const rows=[];
 const U=p=>new URL(p,BASE).toString();
