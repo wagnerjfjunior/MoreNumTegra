@@ -186,6 +186,12 @@ Shared exact-project Form 46 local/source-level status: `PASS / 2026-09-20`.
 - at 393x852 no form-control overlap or fixed-dock obstruction was observed;
 - production/physical-device confirmation remains pending.
 
+CAPIITOLO type-tab touch-target local/source-level status: `PASS / 2026-09-20`.
+- 210 m² / 281 m² Giardino (Garden) / 363 m² Duplex tabs use 18px vertical padding around one-line labels;
+- active-state differentiation remains visible;
+- at 393x852 no page-level horizontal overflow or fixed-dock obstruction was observed;
+- production/physical-device confirmation remains pending.
+
 CAPIITOLO gallery touch-target local/source-level status: `PASS / 2026-09-20`.
 - scene buttons use 13px vertical padding over inherited 16px/1.55 typography (~50.8px target height);
 - scene-nav retains a 5px inter-button gap and its own horizontal scroll surface;
