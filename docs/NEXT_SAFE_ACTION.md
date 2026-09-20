@@ -69,7 +69,7 @@ The first production action is always the exact approved runtime `353f4a5d...`, 
 - 200% text resize / browser zoom;
 - color contrast for states not covered by current static calculations;
 - adjacent touch-target spacing;
-- horizontal overflow on representative mobile widths;
+- cross-browser/device horizontal overflow beyond the completed local Chrome width matrix;
 - gallery/tab interaction on representative mobile browser.
 
 ## Current P2 findings
