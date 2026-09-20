@@ -1,0 +1,46 @@
+name: M5-04 exact-head candidate smoke
+
+on:
+  push:
+    branches:
+      - "diag/m5-04-mobile-regression-20260920"
+    paths:
+      - ".github/workflows/m5-04-candidate-smoke.yml"
+      - ".github/diagnostics/m5-04-candidate-smoke.mjs"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  candidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout exact runtime candidate
+        uses: actions/checkout@v4
+        with:
+          ref: "3ae1d0c7a1a959f4e81d4ee1bb4f659f154532a9"
+      - name: Verify exact candidate
+        run: test "$(git rev-parse HEAD)" = "3ae1d0c7a1a959f4e81d4ee1bb4f659f154532a9"
+      - name: Repository validators
+        run: |
+          node scripts/validate-commercial-page-standard.mjs
+          node scripts/validate-m4-05r.mjs
+          node scripts/validate-mobile-ui-standard.mjs
+          node scripts/validate-favicon-standard.mjs
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium firefox webkit
+      - name: Start local static server
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/m5-04-server.log 2>&1 &
+          echo $! > /tmp/m5-04-server.pid
+          sleep 1
+      - name: Run exact-head gallery smoke
+        run: node .github/diagnostics/m5-04-candidate-smoke.mjs
