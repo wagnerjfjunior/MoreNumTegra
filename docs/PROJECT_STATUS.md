@@ -7,7 +7,7 @@ Fonte canônica: GitHub `main`.
 ## 1. Estado integrado atual
 
 ```text
-MAIN_SHA = bee925766398d9d9e629c96cf95511a35f0df175
+MAIN_SHA_BEFORE_THIS_DOCS_UPDATE = 50cc466e778feb2de38a5241b4b2820c6b1ea016
 PR_132 = MERGED
 PR_123 = MERGED
 MNT-M4-05R = COMPLETE / ACCEPTED
