@@ -208,8 +208,8 @@ META NOT_PROVEN != META DOES_NOT_EXIST
 |---|---|---:|---|
 | MNT-M5-01 | Mobile UX and accessibility audit | 16 | COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS |
 | MNT-M5-02 | Core Web Vitals/performance baseline | 16 | COMPLETE / LAB_BASELINE_ESTABLISHED / FIELD_CWV_NOT_OBSERVED |
-| MNT-M5-03 | Media/image/video performance strategy | 16 | PLANNED |
-| MNT-M5-04 | Regression of filters, touch and mobile controls | 16 | PLANNED |
+| MNT-M5-03 | Media/image/video performance strategy | 16 | COMPLETE / STRATEGY_ESTABLISHED / NO_RUNTIME_MUTATION |
+| MNT-M5-04 | Regression of filters, touch and mobile controls | 16 | PLANNED / AUTHORIZATION_REQUIRED |
 | MNT-M5-05 | Conversion architecture | 16 | PLANNED |
 | MNT-M5-06 | CTA/form journey optimization design | 16 | PLANNED |
 | MNT-M5-07 | Lead semantics and lead-validity contract | 16 | PLANNED |
@@ -258,7 +258,8 @@ Current lifecycle authority is `docs/sfjm/CURRENT_PROGRAM_STATE.json`.
 MNT-M5 ACTIVE
   M5-01 COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS
   M5-02 COMPLETE / LAB_BASELINE_ESTABLISHED / FIELD_CWV_NOT_OBSERVED
-  M5-03 PLANNED / AUTHORIZATION_REQUIRED / NOT_AUTHORIZED_BY_SEQUENCE
+  M5-03 COMPLETE / STRATEGY_ESTABLISHED / NO_RUNTIME_MUTATION
+  M5-04 PLANNED / AUTHORIZATION_REQUIRED / NOT_AUTHORIZED_BY_SEQUENCE
   M5-10 PLANNED_NOT_AUTHORIZED
 ```
 
