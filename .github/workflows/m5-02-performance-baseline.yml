@@ -1,0 +1,44 @@
+name: M5-02 temporary Production performance baseline
+
+on:
+  push:
+    branches:
+      - "diag/m5-02-performance-baseline-20260920"
+    paths:
+      - ".github/workflows/m5-02-performance-baseline.yml"
+      - ".github/diagnostics/m5-02-performance-baseline.mjs"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  production-performance-baseline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout diagnostic
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install Lighthouse
+        run: npm install --no-save lighthouse@13.5.0
+
+      - name: Confirm Chrome
+        run: |
+          google-chrome --version || chromium --version || chromium-browser --version
+
+      - name: Run M5-02 Production baseline
+        run: node .github/diagnostics/m5-02-performance-baseline.mjs
+
+      - name: Upload baseline evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m5-02-performance-baseline
+          path: m5-02-performance-baseline/
+          if-no-files-found: error
