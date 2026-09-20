@@ -65,10 +65,10 @@ async function checkHome(browser,name){
     ok(s?.[1]==="true"&&s?.[2]===true&&state.filter(x=>x[1]==="true").length===1,`state=${JSON.stringify(state)}`);
     add("F03",R.HOME,`${name} 393x852`,"PASS",JSON.stringify(state),"F03");
 
-    for(const sel of ["[data-status-mobile]","[data-project-search]","[data-zone-filter]","[data-price-filter]"]){
+    for(const sel of ["[data-status-mobile]","[data-project-search]","[data-quick-zone=\"Zona Oeste\"]","[data-price-filter]"]){
       const b=await box(p,sel); ok(b.height>=46,`${sel}=${b.height}`);
     }
-    add("TOUCH-HOME",R.HOME,`${name} 393x852`,"PASS","filter/search/select targets >=46px","F01/F03");
+    add("TOUCH-HOME",R.HOME,`${name} 393x852`,"PASS","stage/search/visible quick-zone/price targets >=46px","F01/F03");
   }catch(e){add("HOME-CORE",R.HOME,`${name} 393x852`,"FAIL",String(e),"F01/F02/F03")}
   await c.close();
 
