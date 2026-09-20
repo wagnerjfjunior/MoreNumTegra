@@ -9,10 +9,10 @@ GitHub `main` é a fonte canônica. Resolver estado live antes de qualquer nova 
 ```text
 CANONICAL_REPOSITORY = wagnerjfjunior/MoreNumTegra
 CANONICAL_BRANCH = main
-MAIN_SHA_OBSERVED = 0e2e6e3a454dd4e3597696b9e9bb9ad909ddb1e8
+MAIN_SHA_OBSERVED = aa38bbe400a4e1a3e6430a5ec1cc1a5c74a40284
 PR_123 = MERGED / M5-01 MOBILE REMEDIATION
 PR_132 = MERGED / SEMANTIC ON-PAGE SEO
-OPEN_RUNTIME_QUEUE = PR #133 -> PR #135 -> PR #145 -> PR #137 / ALL NOT_MERGED
+OPEN_RUNTIME_QUEUE = PR #133 -> PR #135 -> PR #145 -> PR #148 -> PR #137 / ALL NOT_MERGED
 ```
 
 PR #132 changed Home, CAPIITOLO, Elo Duo and Ária semantic on-page content. Its exact head `5dc3aea5e0256574edb498dcc63fe5f7bb2ca2a6` passed the three repository checks before merge.
@@ -68,7 +68,7 @@ MNT-M5 = ACTIVE
 MNT-M5-01 = IN_PROGRESS / AUTHORIZED / SOURCE_REVALIDATED
 P0_OPEN = 0
 P1_OPEN = 0
-P2_OPEN = 9
+P2_OPEN = 10
 P3_OPEN = 0
 WBS_PROGRESS_CHANGE = NO
 ```
@@ -84,11 +84,13 @@ Open P2 findings:
 7. F14 — CAPIITOLO mobile horizontal overflow.
 8. F15 — Home fixed dock overlaps Form 46 under high zoom / short reflow.
 9. F16 — CAPIITOLO fixed dock overlaps content/Form 46 under high zoom / short reflow.
+10. F17 — Elo Duo/Ária shared exact-project dock overlaps required content under high zoom / short reflow.
 
 Prepared runtime queue:
 - PR #133 — F01/F02 — Ready, not merged.
 - PR #135 — F10/F11/F13 — Ready, stacked on #133, not merged.
 - PR #145 — F15 — Ready, stacked after #135, local candidate PASS.
+- PR #148 — F17 — Ready, not merged, shared CSS candidate, local candidate PASS on Elo Duo and Ária.
 - PR #137 — F12/F14/F16 — Ready, not merged, local candidate PASS.
 
 Resolved in current `main`:
@@ -142,4 +144,4 @@ Do not reopen the Form 46 regression without new evidence.
 
 Authority: `docs/NEXT_SAFE_ACTION.md`.
 
-Preserve the ordered runtime queue (#133 -> #135 -> #145 -> #137), execute the canonical runtime/device matrix when representative browser/device evidence is available, and keep PR #132 exact runtime deployment first in the Vercel recovery sequence. Do not start M5-02 by sequence alone.
+Preserve the ordered runtime queue (#133 -> #135 -> #145 -> #148 -> #137), execute the canonical runtime/device matrix when representative browser/device evidence is available, and keep PR #132 exact runtime deployment first in the Vercel recovery sequence. Do not start M5-02 by sequence alone.
