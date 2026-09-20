@@ -1,0 +1,38 @@
+name: M5-06 Production journey diagnostic
+
+on:
+  push:
+    branches:
+      - "diag/m5-06-production-journey-20260920"
+    paths:
+      - ".github/diagnostics/m5-06-production-journey.mjs"
+      - ".github/workflows/m5-06-production-journey.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium firefox webkit
+      - name: Run Production CTA/Form journey
+        run: node .github/diagnostics/m5-06-production-journey.mjs
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m5-06-production-journey
+          path: |
+            m5-06-production-journey.json
+            m5-06-production-journey.txt
+          if-no-files-found: error
