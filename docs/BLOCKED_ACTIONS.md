@@ -141,7 +141,7 @@ Permanece bloqueado sem gate específico:
 
 ## 8. MNT-RESF / programa
 
-- MNT-M5-07 está autorizado sob a autorização contínua da Product Authority de 2026-09-20, mas deve parar diante de decisão material de lead semantics/Measurement/provider/privacy;
+- MNT-M5-07 está ACTIVE / DECISION_REQUIRED; runtime/Measurement permanece bloqueado até Product Authority decidir a semântica de `Simular forma de pagamento` (`negotiate_scenario` existente vs novo `payment_simulation`);
 - MNT-M5-10 — performance remediation — permanece explicitamente não autorizado; findings de baseline/strategy não autorizam mutação de runtime;
 - task planejada != task autorizada;
 - merge de uma task != autorização automática da próxima;

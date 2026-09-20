@@ -18,7 +18,8 @@ MNT-M5-03 = COMPLETE / STRATEGY_ESTABLISHED / NO_RUNTIME_MUTATION
 MNT-M5-04 = COMPLETE / PRODUCTION_REGRESSION_PASS / PHYSICAL_DEVICE_NOT_OBSERVED
 MNT-M5-05 = COMPLETE / ARCHITECTURE_CANONICALIZED / NO_RUNTIME_MUTATION
 MNT-M5-06 = COMPLETE / PRODUCTION_JOURNEY_PASS / SEARCH_VARIANT_PRESERVED
-MNT-M5-07 = AUTHORIZED / READY_TO_START
+MNT-M5-07 = ACTIVE / DECISION_REQUIRED / NO_RUNTIME_MUTATION
+MNT-M5-08 = PLANNED / BLOCKED_BY_M5_07_DECISION_AND_ACCEPTANCE
 MNT-M5-10 = PLANNED_NOT_AUTHORIZED
 
 FORECAST_TOTAL_HOURS = 1240
@@ -78,10 +79,25 @@ PRODUCTION_DEPLOYMENT = dpl_CZEKd9SmbVTx6T2L7y4rFkTRdQhP
 PRODUCTION_STATE = READY
 ```
 
-## 5. Immediate next action
+## 5. M5-07 — Lead semantics
 
-Start **MNT-M5-07 — Lead semantics** under Product Authority's continuing authorization.
+Status:
 
-Stop when a material decision would change lead validity, provider/CRM ownership, privacy/PII, primary conversion or Measurement taxonomy.
+```text
+MNT-M5-07 = ACTIVE / DECISION_REQUIRED / NO_RUNTIME_MUTATION
+```
 
-MNT-M5-10 remains explicitly not authorized.
+Canonical decision packet:
+
+`docs/conversion/MNT_M5_07_LEAD_SEMANTICS_DECISION_GATE_2026-09-20.md`
+
+Existing contracts resolve all currently observed semantic mappings except one: `Simular forma de pagamento`.
+
+Product Authority must choose:
+
+- reuse existing `negotiate_scenario` as SECONDARY (recommended); or
+- add new canonical `payment_simulation` as SECONDARY and revise M2 taxonomy/conversion contracts.
+
+Progress remains `848 / 1240h = 68.39%` until M5-07 is accepted.
+
+MNT-M5-08 is blocked by this decision/acceptance. MNT-M5-10 remains explicitly not authorized.

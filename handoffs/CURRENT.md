@@ -6,17 +6,14 @@ Atualizado em `2026-09-20`.
 
 Handoff detalhado vigente:
 
-`handoffs/HANDOFF-2026-09-20-M5-06-CTA-FORM-JOURNEY-CLOSURE.md`
+`handoffs/HANDOFF-2026-09-20-M5-07-LEAD-SEMANTICS-DECISION-GATE.md`
 
 ## 1. REPOSITORY_STATE
 
 ```text
 CANONICAL_REPOSITORY = wagnerjfjunior/MoreNumTegra
 CANONICAL_BRANCH = main
-MAIN_RUNTIME = be7f229ea04cf4050c40c471e21f262f4cfc845d
-
-PR_189 = MERGED / M5_06_RUNTIME
-PR_190 = OPEN_DRAFT / M5_06_PRODUCTION_DIAGNOSTIC_ONLY / CLOSE_WITHOUT_MERGE_AFTER_CANONICALIZATION
+MAIN_AT_M5_07_ANALYSIS = af9a58cb49200b5e4a226ab5ede8a7df6b532f03
 ```
 
 ## 2. PRODUCTION_STATE
@@ -32,23 +29,27 @@ PRODUCTION_STATE = READY
 
 ```text
 MNT-M5-06 = COMPLETE / PRODUCTION_JOURNEY_PASS / SEARCH_VARIANT_PRESERVED
-MNT-M5-07 = AUTHORIZED / READY_TO_START
+MNT-M5-07 = ACTIVE / DECISION_REQUIRED / NO_RUNTIME_MUTATION
+MNT-M5-08 = PLANNED / BLOCKED_BY_M5_07_DECISION_AND_ACCEPTANCE
 MNT-M5-10 = PLANNED_NOT_AUTHORIZED
 ```
 
-M5-06 Production:
+## 4. Decision
+
+Only unresolved semantic:
+
+`Simular forma de pagamento`
+
+Choices:
 
 ```text
-RUN = 35543247914
-PASS = 24
-FAIL = 0
-TOTAL = 24
-ARTIFACT = 10615004501
+A = negotiate_scenario / SECONDARY / recommended
+B = new payment_simulation / SECONDARY / taxonomy expansion
 ```
 
-CAPIITOLO remains official branding/title/H1. `Capitolo` remains a same-page search variant under the same canonical URL.
+No runtime/Measurement mutation is authorized before Product Authority chooses.
 
-## 4. PROGRAM PROGRESS
+## 5. Progress
 
 ```text
 FORECAST_TOTAL_HOURS = 1240
@@ -56,9 +57,3 @@ ACCEPTED_SCOPE_EQUIVALENT_HOURS = 848
 REMAINING_FORECAST_HOURS = 392
 ACCEPTED_PERCENT = 68.39
 ```
-
-## 5. NEXT SAFE ACTION
-
-Start MNT-M5-07 — Lead semantics.
-
-Stop only at a material decision affecting lead validity, provider/CRM ownership, privacy/PII, primary conversion or Measurement taxonomy. MNT-M5-10 remains explicitly not authorized.

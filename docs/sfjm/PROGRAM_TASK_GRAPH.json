@@ -47,11 +47,11 @@
     "phase_id": "MNT-M5",
     "phase_state": "ACTIVE",
     "work_package": "UX, Performance, Conversion, Lead & CRM",
-    "current_task_id": "MNT-M5-06",
-    "current_task_state": "COMPLETE / PRODUCTION_JOURNEY_PASS / SEARCH_VARIANT_PRESERVED",
+    "current_task_id": "MNT-M5-07",
+    "current_task_state": "ACTIVE / DECISION_REQUIRED / NO_RUNTIME_MUTATION",
     "next_task_id": "MNT-M5-07",
-    "next_task_state": "AUTHORIZED / READY_TO_START",
-    "next_safe_action": "Start MNT-M5-07 lead semantics under continuing Product Authority authorization; stop at material lead-validity/provider/privacy/primary-conversion/taxonomy decisions. MNT-M5-10 remains not authorized.",
+    "next_task_state": "DECISION_REQUIRED",
+    "next_safe_action": "Product Authority decision required: map payment simulation to existing negotiate_scenario or add new canonical payment_simulation intent type. No runtime/Measurement mutation before decision.",
     "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md",
     "current_state_source": "docs/sfjm/CURRENT_PROGRAM_STATE.json"
   },
@@ -534,7 +534,7 @@
         {
           "id": "MNT-M5-07",
           "label": "Lead semantics and lead-validity contract",
-          "state": "AUTHORIZED / READY_TO_START",
+          "state": "ACTIVE / DECISION_REQUIRED / NO_RUNTIME_MUTATION",
           "hours": 16,
           "accepted_hours": 0,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE"
@@ -542,7 +542,7 @@
         {
           "id": "MNT-M5-08",
           "label": "Green/Form 46 CRM handoff contract",
-          "state": "PLANNED",
+          "state": "PLANNED / BLOCKED_BY_M5_07_DECISION_AND_ACCEPTANCE",
           "hours": 16,
           "accepted_hours": 0,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE"
