@@ -21,7 +21,7 @@ MNT-M5-06 = COMPLETE / PRODUCTION_JOURNEY_PASS / SEARCH_VARIANT_PRESERVED
 MNT-M5-07 = COMPLETE / PRODUCTION_GA4_PASS / GTM_VERSION_12_LIVE
 MNT-M5-08 = COMPLETE / CRM_HANDOFF_CONTRACT_CANONICALIZED / NO_RUNTIME_MUTATION
 MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
-MNT-M5-10 = PLANNED_NOT_AUTHORIZED / PRODUCT_AUTHORITY_DECISION_REQUIRED
+MNT-M5-10 = ACTIVE / SLICE_01_AUTHORIZED / ELO_DUO_TWO_IMAGE_TRIAL
 
 FORECAST_TOTAL_HOURS = 1240
 ACCEPTED_SCOPE_EQUIVALENT_HOURS = 896
@@ -159,3 +159,21 @@ No additional real Green lead was created by the diagnostic. Accepted M5-07/M5-0
 M5-09 is COMPLETE.
 
 Next gate: M5-10 performance remediation remains explicitly not authorized and requires Product Authority decision.
+
+
+## 10. M5-10 Elo Duo slice 01 authorization
+
+Product Authority authorized a bounded practical trial with two Green/GDigital-hosted Elo Duo images.
+
+Media probe run `35606609562`:
+
+```text
+current hero = 236596 B JPEG / 694x930
+Green hero = 175392 B WebP / 1080x1350
+current complex = 62606 B WebP / 835x467
+Green complex = 83076 B WebP / 1126x630
+```
+
+The raw uploaded Complexo PNG was 1318029 B and Green emitted an 83076 B WebP at the same dimensions (~93.7% reduction), supporting direct-original upload as the default workflow.
+
+Authorization is limited to these two Elo Duo assets. Other M5-10 slices remain blocked pending evidence after this trial.
