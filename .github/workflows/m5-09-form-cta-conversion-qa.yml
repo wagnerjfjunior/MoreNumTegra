@@ -1,0 +1,32 @@
+name: M5-09 Form CTA conversion QA
+
+on:
+  push:
+    branches:
+      - "diag/m5-09-form-cta-conversion-qa-20260921"
+    paths:
+      - ".github/diagnostics/m5-09-form-cta-conversion-qa.mjs"
+      - ".github/workflows/m5-09-form-cta-conversion-qa.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Static M5-07 contract regression
+        run: node scripts/validate-m5-07-lead-semantics.mjs
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium firefox webkit
+      - name: Re-run candidate lead success and privacy smoke
+        run: node .github/diagnostics/m5-07-lead-semantics-smoke.mjs
+      - name: Run candidate and Production CTA/Form regression
+        run: node .github/diagnostics/m5-09-form-cta-conversion-qa.mjs
