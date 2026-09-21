@@ -48,10 +48,10 @@
     "phase_state": "ACTIVE",
     "work_package": "UX, Performance, Conversion, Lead & CRM",
     "current_task_id": "MNT-M5-07",
-    "current_task_state": "ACTIVE / DECISION_APPROVED / IMPLEMENTATION_AUTHORIZED",
+    "current_task_state": "ACTIVE / SOURCE_PRODUCTION_PASS / GTM_PREVIEW_PASS / GTM_PUBLISH_REQUIRED",
     "next_task_id": "MNT-M5-07",
-    "next_task_state": "IMPLEMENTATION_AUTHORIZED",
-    "next_safe_action": "Implement approved M5-07 semantics and controlled project/offer continuity through lead success; exact-head and Production validation required.",
+    "next_task_state": "GTM_PUBLISH_REQUIRED",
+    "next_safe_action": "Publish tested GTM-PGCR4R47 version and verify one production lead outside Preview carries project_name/offer_name to generate_lead.",
     "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md",
     "current_state_source": "docs/sfjm/CURRENT_PROGRAM_STATE.json"
   },
@@ -534,7 +534,7 @@
         {
           "id": "MNT-M5-07",
           "label": "Lead semantics and lead-validity contract",
-          "state": "ACTIVE / DECISION_APPROVED / IMPLEMENTATION_AUTHORIZED",
+          "state": "ACTIVE / SOURCE_PRODUCTION_PASS / GTM_PREVIEW_PASS / GTM_PUBLISH_REQUIRED",
           "hours": 16,
           "accepted_hours": 0,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE"
@@ -542,7 +542,7 @@
         {
           "id": "MNT-M5-08",
           "label": "Green/Form 46 CRM handoff contract",
-          "state": "PLANNED / BLOCKED_BY_M5_07_IMPLEMENTATION_AND_ACCEPTANCE",
+          "state": "PLANNED / BLOCKED_BY_M5_07_PUBLISH_AND_PRODUCTION_VERIFICATION",
           "hours": 16,
           "accepted_hours": 0,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE"
