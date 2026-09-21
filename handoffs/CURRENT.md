@@ -29,25 +29,23 @@ PRODUCTION_STATE = READY
 
 ```text
 MNT-M5-06 = COMPLETE / PRODUCTION_JOURNEY_PASS / SEARCH_VARIANT_PRESERVED
-MNT-M5-07 = ACTIVE / DECISION_REQUIRED / NO_RUNTIME_MUTATION
-MNT-M5-08 = PLANNED / BLOCKED_BY_M5_07_DECISION_AND_ACCEPTANCE
+MNT-M5-07 = ACTIVE / DECISION_APPROVED / IMPLEMENTATION_AUTHORIZED
+MNT-M5-08 = PLANNED / BLOCKED_BY_M5_07_IMPLEMENTATION_AND_ACCEPTANCE
 MNT-M5-10 = PLANNED_NOT_AUTHORIZED
 ```
 
 ## 4. Decision
 
-Only unresolved semantic:
-
-`Simular forma de pagamento`
-
-Choices:
+Product Authority approved Option A on 2026-09-21:
 
 ```text
-A = negotiate_scenario / SECONDARY / recommended
-B = new payment_simulation / SECONDARY / taxonomy expansion
+Form 46 / CRM = Simular forma de pagamento
+Measurement = negotiate_scenario / form / SECONDARY
 ```
 
-No runtime/Measurement mutation is authorized before Product Authority chooses.
+Also approved: preserve controlled non-PII `project_name` / `offer_name` through `mnt_lead_success` and GA4 `generate_lead`.
+
+Implementation is authorized. Visitor name, e-mail, telephone and raw/free-form form text remain prohibited in Measurement.
 
 ## 5. Progress
 
