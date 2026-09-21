@@ -1,0 +1,35 @@
+name: M5-10 Elo slice 01 Production performance
+
+on:
+  push:
+    branches:
+      - "diag/m5-10-elo-slice01-performance-20260921"
+    paths:
+      - ".github/diagnostics/m5-10-elo-slice01-performance.mjs"
+      - ".github/workflows/m5-10-elo-slice01-performance.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install Lighthouse
+        run: npm install --no-save lighthouse@13.5.0
+      - name: Confirm Chrome
+        run: google-chrome --version || chromium --version || chromium-browser --version
+      - name: Run Elo Production performance comparison
+        run: node .github/diagnostics/m5-10-elo-slice01-performance.mjs
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m5-10-elo-slice01-performance
+          path: m5-10-elo-slice01-performance/
+          if-no-files-found: error
