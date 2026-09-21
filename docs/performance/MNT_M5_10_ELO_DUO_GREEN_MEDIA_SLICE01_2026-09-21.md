@@ -2,7 +2,7 @@
 
 Date: `2026-09-21`
 
-Status: `ACTIVE / SLICE_01_AUTHORIZED / ELO_DUO_TWO_IMAGE_TRIAL`
+Status: `SLICE_01_COMPLETE / KEEP_ASSETS / IMPROVEMENT_OBSERVED / LCP_TARGET_NOT_MET`
 
 ## Scope authorized by Product Authority
 
@@ -69,3 +69,121 @@ The new complex image is larger than the current 62606-byte asset but remains be
 - simple rollback to previous immutable URLs if results are negative.
 
 No other M5-10 remediation is authorized by this slice.
+
+
+## Production implementation and measurement result
+
+Runtime PR:
+
+`#200 — merged`
+
+Runtime SHA:
+
+`a43431ce65468a70a06844452fc17589fb49c68d`
+
+Production deployment:
+
+`dpl_5nz8h9AzHNqYAwM9aaw12xorVrUX / READY`
+
+All exact-head gates passed after metadata/social/structured-data references were aligned to the new hero asset.
+
+Production performance diagnostic:
+
+```text
+RUN = 35608067789
+RESULT = SUCCESS
+ARTIFACT = 10643068494
+ARTIFACT_SHA256 = b70526fab31061ae0a1a69d10aa292382a4fd4be39e9acd24a7d7a85eb5caa9e
+METHODOLOGY = Lighthouse 13.5.0 / mobile / 393x852 / simulated throttling / 3 runs / median
+```
+
+Results:
+
+```text
+historical M5-02 Elo LCP median = 8234 ms
+slice 01 Elo LCP median = 7486 ms
+delta = -748 ms
+historical-baseline improvement = 9.1%
+
+slice 01 runs:
+  4014 ms
+  7759 ms
+  7486 ms
+
+CLS median = 0.0357 / PASS
+total-byte-weight median = 1076432 B
+```
+
+The LCP element is still the Elo Duo hero image.
+
+LCP breakdown on the new hero observed resource-load durations:
+
+```text
+run 1 = 471 ms
+run 2 = 595 ms
+run 3 = 486 ms
+median = 486 ms
+```
+
+Historical M5-02 observed hero resource-load duration was approximately `1442 ms`.
+
+The Green hero is:
+
+```text
+175392 B
+1080x1350
+WebP
+HTTP 200
+```
+
+The Green complex image is:
+
+```text
+83076 B
+1126x630
+WebP
+HTTP 200
+loading = lazy
+```
+
+The new hero did not appear as a material item in the Lighthouse image-delivery waste list. The complex image was occasionally estimated at about 18.5 KiB responsive-sizing waste; it remains below the M5-03 preferred <=120 KiB gallery/main-image budget.
+
+## Interpretation
+
+This slice demonstrates that Green/GDigital conversion is sufficient as the default compression path for ordinary media uploads.
+
+Direct evidence:
+
+- raw Complexo PNG supplied in the session = 1318029 B / 1126x630;
+- Green output = 83076 B / 1126x630 WebP;
+- approximate byte reduction = 93.7%;
+- dimensions were preserved.
+
+Therefore:
+
+```text
+DEFAULT_UPLOAD_WORKFLOW:
+original/source image
+-> dimension/crop review
+-> upload to Green/GDigital
+-> use Green WebP
+-> verify output bytes/dimensions
+```
+
+Manual pre-compression is not required by default.
+
+Important limitation: Green compresses/formats but does not prove automatic responsive resizing. Dimension and crop governance remain project-owned.
+
+The scored Lighthouse LCP remains above the <=2500 ms target and is highly variable. The historical comparison is useful directional evidence, not a strict same-runtime causal A/B because M5-02 predates later accepted runtime changes.
+
+## Slice decision
+
+```text
+SLICE_01 = COMPLETE
+ASSET_DECISION = KEEP_GREEN_ASSETS
+GREEN_AS_MEDIA_REPOSITORY = VALIDATED_FOR_THIS_WORKFLOW
+MANUAL_PRECOMPRESSION_DEFAULT = NOT_REQUIRED
+DIMENSION_CROP_REVIEW = REQUIRED
+LCP_TARGET = NOT_MET
+ADDITIONAL_M5_10_SLICE = NOT_AUTHORIZED_BY_THIS_SLICE
+```
