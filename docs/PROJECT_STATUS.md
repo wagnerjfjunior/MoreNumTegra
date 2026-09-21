@@ -103,7 +103,7 @@ Product Authority approved on 2026-09-21:
 
 M5-07 is accepted. Progress is `864 / 1240h = 69.68%`.
 
-MNT-M5-08 is blocked by M5-07 implementation/acceptance. MNT-M5-10 remains explicitly not authorized.
+MNT-M5-07, MNT-M5-08 and MNT-M5-09 are complete. MNT-M5-10 is active; Slice 01 is complete and the next slice requires a new Product Authority decision.
 
 ## 6. M5-07 GTM Preview validation
 
