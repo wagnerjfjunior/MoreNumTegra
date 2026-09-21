@@ -1,14 +1,21 @@
-(()=>{"use strict";
+(()=>{
+"use strict";
 const H="www.moretegra.com.br",R="[data-moretegra]",V=1,P="moretegra_home",D="moretegra_portfolio",N="not_applicable",pv=Symbol.for("mnt.lp.pv.v1"),bound=Symbol.for("mnt.lp.core.v1"),searchState=new WeakMap(),locations=new Map();
 const status={todos:"all",lancamento:"launch",construcao:"construction",entregue:"ready"},zone={todas:"all","Zona Sul":"south","Zona Oeste":"west","Zona Leste":"east"},price={todos:"all",ate700:"lte_700k","700a1200":"700k_1_2m","1200a2000":"1_2m_2m",acima2000:"gt_2m",consulta:"consult"};
 const projectOverride={"Nova Vivere | 72 m²":"Nova Vivere","Nova Vivere | 105 m²":"Nova Vivere","CAPIITOLO by Piero Lissoni | à vista":"CAPIITOLO by Piero Lissoni"};
 const faqMap={"os valores mostrados sao finais":"valores_finais","como comparar os empreendimentos":"comparar_empreendimentos","como negociar uma condicao melhor":"negociar_condicao","este e o site institucional da tegra":"site_institucional"};
-function ok(){return location.hostname===H} function root(){return document.querySelector(R)} function el(t){return t instanceof Element?t:t?.parentElement||null}
-function norm(v){return String(v||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim()} function ctl(v){return norm(v).replace(/[^a-z0-9]+/g," ").replace(/\s+/g," ").trim()} function slug(v){return ctl(v).replace(/\s+/g,"_")}
+function ok(){return location.hostname===H}
+function root(){return document.querySelector(R)}
+function el(t){return t instanceof Element?t:t?.parentElement||null}
+function norm(v){return String(v||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim()}
+function ctl(v){return norm(v).replace(/[^a-z0-9]+/g," ").replace(/\s+/g," ").trim()}
+function slug(v){return ctl(v).replace(/\s+/g,"_")}
 function id(){return crypto?.randomUUID?.()||`mnt-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,12)}`}
 function pageMeta(){const d=document.documentElement.dataset;return{page_identity:String(d.mntPageIdentity||P),product_identity:String(d.mntProductIdentity||D),route:String(d.mntRoute||location.pathname||"/")}}
+function exactProject(){return pageMeta().product_identity!==D}
 function emit(event,funnel,p={}){if(!ok()||!root())return false;window.dataLayer=window.dataLayer||[];window.dataLayer.push({event,mnt_event_id:id(),mnt_event_version:V,...pageMeta(),funnel_stage:funnel,...p});return true}
-function context(v){v=String(v||"").trim();return v?{project_name:projectOverride[v]||v,offer_name:v}:{project_name:N,offer_name:N}} function selected(){return context(document.documentElement.dataset.moretegraInterest||"")}
+function context(v){v=String(v||"").trim();return v?{project_name:projectOverride[v]||v,offer_name:v}:{project_name:N,offer_name:N}}
+function selected(){return context(document.documentElement.dataset.moretegraInterest||"")}
 function count(r){const n=parseInt(r?.querySelector("[data-result-count]")?.textContent||"",10);return Number.isFinite(n)?n:0}
 function currentStatus(r){return r?.querySelector("[data-filter-status].is-active")?.dataset.filterStatus||r?.querySelector("[data-status-mobile]")?.value||"todos"}
 function register(v){const n=ctl(v),s=slug(v);if(n&&s&&n!=="todas"&&!locations.has(n))locations.set(n,s)}
@@ -22,7 +29,48 @@ function onChange(e){const t=el(e.target),r=t?.closest(R);if(!r)return;if(t.matc
 function onInput(e){const t=el(e.target);if(!t?.matches("[data-project-search]"))return;const r=t.closest(R);if(!r)return;refreshLocations(r);let s=searchState.get(t);if(!s){s={last:norm(t.defaultValue),timer:0};searchState.set(t,s)}const next=norm(t.value);clearTimeout(s.timer);s.timer=setTimeout(()=>{if(next===s.last)return;s.last=next;emit("mnt_catalog_search","consideration",{search_state:next?"active":"cleared",search_location:next?classify(next):N,result_count:count(r),placement:"catalog_search"})},600)}
 function intent(type,channel,place,c={}){later(()=>emit("mnt_intent","intent",{intent_type:type,contact_channel:channel,placement:place,...c}))}
 function section(name,place,faq=N){later(()=>emit("mnt_section_click","consideration",{section_target:name,faq_item:faq,placement:place}))}
-function onClick(e){const x=el(e.target);if(!x)return;const floating=x.closest("#mt-floating-dock a");if(floating){const c=selected();if(floating.matches(".mt-floating-lead"))intent("request_conditions","form","floating",c);else if(floating.matches(".mt-floating-whatsapp"))intent("whatsapp_contact","whatsapp","floating",c);return}const r=x.closest(R);if(!r)return;const faq=x.closest(".mt-faq summary,#faq summary");if(faq&&r.contains(faq)){if(faq.closest("details")?.open!==true)section("faq","faq",faqItem(faq));return}const t=x.closest("a,button");if(!t||!r.contains(t))return;const card=t.closest("[data-interest]");if(card){intent("project_interest","form","catalog_card",context(card.dataset.interest));return}if(t.closest("[data-continue-form]")){intent("request_project_conditions","form","interest_context",selected());return}const sb=t.closest("[data-filter-status]");if(sb){if(!sb.classList.contains("is-active"))later(()=>filter(r,"status",sb.dataset.filterStatus||"todos","status_buttons"));return}const qz=t.closest("[data-quick-zone]");if(qz){if(!qz.classList.contains("is-active"))later(()=>filter(r,"zone",qz.dataset.quickZone||"todas","zone_quick"));return}const ms=t.closest("[data-set-status]");if(ms){const n=ms.dataset.setStatus||"todos";if(n!==currentStatus(r))later(()=>filter(r,"status",n,"moment_selector"));return}if(t.closest("[data-focus-price]")){section("opportunities","moment_selector");return}if(t.closest("[data-change-interest]")){section("opportunities","content");return}const href=t.getAttribute("href")||"";if(href==="#formulario"){if(t.closest(".mt-header"))intent("request_conditions","form","header_nav",selected());else if(t.closest(".mt-hero")||t.closest(".hero")||t.matches('[data-event="mnt_intent"]'))intent("request_conditions","form","hero",selected());else if(t.closest(".mt-negotiation"))intent("negotiate_scenario","form","negotiation",selected());else intent("request_conditions","form","content",selected());return}const targets={"#oportunidades":"opportunities","#como-escolher":"how_to_choose","#negociacao":"negotiation","#inicio":"top"};if(targets[href]){section(targets[href],t.closest(".mt-header")?"header_nav":t.closest(".mt-hero")?"hero":"content");return}if(t.matches('a[href^="https://wa.me/"]')&&t.closest(".mt-negotiation"))intent("schedule_visit","whatsapp","negotiation")}
+function formPlacement(t){if(t.closest(".mt-header"))return"header_nav";if(t.closest(".mt-hero")||t.closest(".hero")||t.matches('[data-event="mnt_intent"]'))return"hero";if(t.closest(".mt-negotiation"))return"negotiation";return"content"}
+function mappedFormIntent(t){
+  const key=String(t.dataset.formIntent||"").trim();
+  if(!key)return false;
+  const c=selected(),place=formPlacement(t);
+  if(key==="schedule_visit"){intent("schedule_visit","form",place,c);return true}
+  if(key==="payment_simulation"||key==="negotiate_scenario"){intent("negotiate_scenario","form",place,c);return true}
+  if(key==="conditions"||key==="specialist"){intent(exactProject()?"request_project_conditions":"request_conditions","form",place,c);return true}
+  return false
+}
+function onClick(e){
+  const x=el(e.target);if(!x)return;
+  const floating=x.closest("#mt-floating-dock a");
+  if(floating){const c=selected();if(floating.matches(".mt-floating-lead"))intent("request_conditions","form","floating",c);else if(floating.matches(".mt-floating-whatsapp"))intent("whatsapp_contact","whatsapp","floating",c);return}
+  const r=x.closest(R);if(!r)return;
+  const faq=x.closest(".mt-faq summary,#faq summary");
+  if(faq&&r.contains(faq)){if(faq.closest("details")?.open!==true)section("faq","faq",faqItem(faq));return}
+  const t=x.closest("a,button");if(!t||!r.contains(t))return;
+  const card=t.closest("[data-interest]");
+  if(card){intent("project_interest","form","catalog_card",context(card.dataset.interest));return}
+  if(t.closest("[data-continue-form]")){intent("request_project_conditions","form","interest_context",selected());return}
+  const sb=t.closest("[data-filter-status]");if(sb){if(!sb.classList.contains("is-active"))later(()=>filter(r,"status",sb.dataset.filterStatus||"todos","status_buttons"));return}
+  const qz=t.closest("[data-quick-zone]");if(qz){if(!qz.classList.contains("is-active"))later(()=>filter(r,"zone",qz.dataset.quickZone||"todas","zone_quick"));return}
+  const ms=t.closest("[data-set-status]");if(ms){const n=ms.dataset.setStatus||"todos";if(n!==currentStatus(r))later(()=>filter(r,"status",n,"moment_selector"));return}
+  if(t.closest("[data-focus-price]")){section("opportunities","moment_selector");return}
+  if(t.closest("[data-change-interest]")){section("opportunities","content");return}
+  const href=t.getAttribute("href")||"";
+  if(href==="#formulario"){
+    if(mappedFormIntent(t))return;
+    if(t.closest(".mt-header"))intent("request_conditions","form","header_nav",selected());
+    else if(t.closest(".mt-hero")||t.closest(".hero")||t.matches('[data-event="mnt_intent"]'))intent(exactProject()?"request_project_conditions":"request_conditions","form","hero",selected());
+    else if(t.closest(".mt-negotiation"))intent("negotiate_scenario","form","negotiation",selected());
+    else intent(exactProject()?"request_project_conditions":"request_conditions","form","content",selected());
+    return
+  }
+  const targets={"#oportunidades":"opportunities","#como-escolher":"how_to_choose","#negociacao":"negotiation","#inicio":"top"};
+  if(targets[href]){section(targets[href],t.closest(".mt-header")?"header_nav":t.closest(".mt-hero")?"hero":"content");return}
+  if(t.matches('a[href^="https://wa.me/"]')){
+    if(t.closest(".mt-negotiation")){intent("schedule_visit","whatsapp","negotiation",selected());return}
+    if(exactProject()){intent("whatsapp_contact","whatsapp",t.matches(".mnt-whatsapp-float")?"floating":"content",selected());return}
+  }
+}
 function bind(){if(window[bound])return;window[bound]=true;document.addEventListener("click",onClick,true);document.addEventListener("change",onChange,true);document.addEventListener("input",onInput,true)}
 function prime(){const r=root();if(!r)return false;refreshLocations(r);pageView();return true}
 function start(){if(!ok())return;bind();if(prime())return;const o=new MutationObserver(()=>{if(prime())o.disconnect()});o.observe(document.documentElement,{childList:true,subtree:true});setTimeout(()=>o.disconnect(),10000)}
