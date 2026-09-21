@@ -156,3 +156,31 @@ Before publishing the GA4 `generate_lead` tag:
 8. an expired pending timestamp emits no lead;
 9. no MNT payload contains visitor name, email or phone;
 10. after that proof, configure GTM `mnt_lead_success -> GA4 generate_lead` and validate one real GA4 hit.
+
+## Vercel M5-07 supersession — 2026-09-21
+
+The historical Green-native timestamp-only marker above remains point-in-time evidence. The current Vercel commercial runtime is authorized to move to a privacy-preserving versioned marker:
+
+```text
+key = mnt.lead.pending.v2
+value = JSON {
+  version: 2,
+  submitted_at: <timestamp>,
+  project_name?: <controlled business metadata>,
+  offer_name?: <controlled business metadata>
+}
+TTL = 10 minutes
+scope = sessionStorage / same browser tab session
+```
+
+Rollout compatibility requirement:
+
+- V2 writes only `mnt.lead.pending.v2` and removes stale V1 state;
+- the thank-you adapter may consume legacy `mnt.lead.pending.v1` timestamp markers during rollout;
+- either marker is single-use and removed before/while validation;
+- V2 context comes only from project-owned catalog/page state;
+- no visitor name, email, phone, raw `texto-livre`, provider `l_` or `p_id` is stored in the marker;
+- `mnt_lead_success` may emit `project_name` / `offer_name` only when both controlled values are present and valid;
+- direct/stale/refresh behavior remains fail-closed.
+
+This supersession does not change the lead-validity rule: only an HTTP-successful project-owned Form 46 submission can create the pending marker in the Vercel runtime.
