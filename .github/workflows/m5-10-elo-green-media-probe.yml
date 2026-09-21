@@ -1,0 +1,40 @@
+name: M5-10 Elo Green media probe
+
+on:
+  push:
+    branches:
+      - "diag/m5-10-elo-green-media-probe-20260921"
+    paths:
+      - ".github/workflows/m5-10-elo-green-media-probe.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Probe current and Green candidate media
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/m510
+          urls=(
+            "current_hero|https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/ImagemPrincipal/8d3d8839-e0b7-4f21-9d0e-99c363c8f6bc.jpg"
+            "green_hero|https://s3-gdigital.s3.amazonaws.com/gdigital/313/Caminhos%20da%20lapa%20-%20Elo%20Duo%20-%201350x1090%20-%20Fachada.webp"
+            "current_complex|https://s3-gdigital.s3.amazonaws.com/gdigital/313/XUDkRhyRZbqT9VA4RRLdCijN2DlNrBt2yHMJLzul.webp"
+            "green_complex|https://s3-gdigital.s3.amazonaws.com/gdigital/313/Caminhos%20da%20lapa%20-%20Elo%20Duo%20-%20630x1126%20-%20Complexo.webp"
+          )
+          for item in "${urls[@]}"; do
+            name="${item%%|*}"
+            url="${item#*|}"
+            out="/tmp/m510/${name}"
+            echo "=== ${name} ==="
+            curl -L --fail --silent --show-error --retry 2 -D "${out}.headers" -o "${out}.bin" "${url}"
+            echo "bytes=$(stat -c%s "${out}.bin")"
+            echo "file=$(file -b "${out}.bin")"
+            echo "content_type=$(awk 'BEGIN{IGNORECASE=1}/^content-type:/{gsub("\r","");print $2;exit}' "${out}.headers")"
+            echo "content_length=$(awk 'BEGIN{IGNORECASE=1}/^content-length:/{gsub("\r","");print $2;exit}' "${out}.headers")"
+            echo
+          done
