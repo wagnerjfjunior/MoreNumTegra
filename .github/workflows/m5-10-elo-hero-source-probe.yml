@@ -1,0 +1,39 @@
+name: M5-10 Elo hero source probe
+
+on:
+  push:
+    branches:
+      - "diag/m5-10-elo-hero-source-probe-20260921"
+    paths:
+      - ".github/workflows/m5-10-elo-hero-source-probe.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Probe current, compact and original Green hero media
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/m510
+          urls=(
+            "current|https://s3-gdigital.s3.amazonaws.com/gdigital/313/Caminhos%20da%20lapa%20-%20Elo%20Duo%20-%201350x1090%20-%20Fachada.webp"
+            "compact|https://s3-gdigital.s3.amazonaws.com/gdigital/313/Compac%20-%20Caminhos%20da%20lapa%20-%20Elo%20Duo%20-%201350x1090%20-%20Fachada.webp"
+            "original|https://s3-gdigital.s3.amazonaws.com/gdigital/313/Caminhos%20da%20Lapa%20Elo%20Duo-Perspectiva%20da%20fachada.webp"
+          )
+          for item in "${urls[@]}"; do
+            name="${item%%|*}"
+            url="${item#*|}"
+            out="/tmp/m510/${name}.webp"
+            curl -L --fail --silent --show-error --retry 2 -D "/tmp/m510/${name}.headers" -o "$out" "$url"
+            echo "=== ${name} ==="
+            echo "bytes=$(stat -c%s "$out")"
+            echo "file=$(file -b "$out")"
+            echo "sha256=$(sha256sum "$out" | awk '{print $1}')"
+            echo "cache_control=$(awk 'BEGIN{IGNORECASE=1}/^cache-control:/{gsub("\r","");$1="";sub(/^ /,"");print;exit}' "/tmp/m510/${name}.headers")"
+            echo
+          done
