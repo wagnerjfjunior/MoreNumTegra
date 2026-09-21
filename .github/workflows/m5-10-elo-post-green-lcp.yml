@@ -1,0 +1,35 @@
+name: M5-10 Elo post-Green LCP diagnostic
+
+on:
+  push:
+    branches:
+      - "diag/m5-10-elo-post-green-lcp-20260921"
+    paths:
+      - ".github/diagnostics/m5-10-elo-post-green-lcp.mjs"
+      - ".github/workflows/m5-10-elo-post-green-lcp.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install Lighthouse
+        run: npm install --no-save lighthouse@13.5.0
+      - name: Confirm Chrome
+        run: google-chrome --version || chromium --version || chromium-browser --version
+      - name: Measure Elo Duo post-Green
+        run: node .github/diagnostics/m5-10-elo-post-green-lcp.mjs
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m5-10-elo-post-green-lcp
+          path: m5-10-elo-post-green-lcp/
+          if-no-files-found: error
