@@ -6,11 +6,11 @@
   "program_state": "ACTIVE",
   "current_execution": {
     "active_phase_id": "MNT-M5",
-    "active_task_id": "MNT-M5-07",
-    "state": "ACTIVE / SOURCE_PRODUCTION_PASS / GTM_PREVIEW_PASS / GTM_PUBLISH_REQUIRED",
-    "repository_head_sha": "6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8",
+    "active_task_id": "MNT-M5-08",
+    "state": "AUTHORIZED / READY_TO_START",
+    "repository_head_sha": "b9d7c55945a1ff2ed76c6cfc782b04753f97afed",
     "latest_main_runtime_sha": "6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8",
-    "deployment_state": "PRODUCTION_READY / M5_07_SOURCE_ACCEPTANCE_PENDING_GTM_PUBLISH",
+    "deployment_state": "PRODUCTION_READY / M5_07_ACCEPTED",
     "last_verified_vercel_success_sha": "6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8",
     "production_exact_sha": "6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8 / dpl_AWHaTzE4UrJQaZ3LnKqhEMd8wsBs / READY",
     "authority_record": "docs/conversion/MNT_M5_07_LEAD_SEMANTICS_DECISION_GATE_2026-09-20.md",
@@ -19,18 +19,19 @@
       "runtime_pr": 194,
       "production_run": 35596887663,
       "production_artifact": 10637092633,
-      "production_semantics": "SUCCESS / READ_ONLY",
       "gtm_container": "GTM-PGCR4R47",
-      "gtm_preview": "PASS / QUICK_PREVIEW",
-      "generate_lead_mapping": "project_name + offer_name observed at destination G-57M2XR0CY2",
-      "remaining_gate": "PUBLISH_GTM_AND_VERIFY_PRODUCTION_OUTSIDE_PREVIEW"
+      "gtm_published_version": 12,
+      "gtm_status": "LIVE / LATEST",
+      "ga4_destination": "G-57M2XR0CY2",
+      "generate_lead_context": "project_name + offer_name observed",
+      "result": "COMPLETE / PRODUCTION_GA4_PASS"
     }
   },
   "progress": {
     "forecast_total_hours": 1240,
-    "accepted_scope_equivalent_hours": 848,
-    "remaining_forecast_hours": 392,
-    "accepted_percent": 68.39
+    "accepted_scope_equivalent_hours": 864,
+    "remaining_forecast_hours": 376,
+    "accepted_percent": 69.68
   },
   "completed": {
     "MNT-M4-05": {
@@ -122,6 +123,13 @@
       "runtime_sha": "be7f229ea04cf4050c40c471e21f262f4cfc845d",
       "acceptance_run": 35543247914,
       "evidence": "docs/conversion/MNT_M5_06_CTA_FORM_JOURNEY_CLOSURE_2026-09-20.md"
+    },
+    "MNT-M5-07": {
+      "state": "COMPLETE / PRODUCTION_GA4_PASS / GTM_VERSION_12_LIVE",
+      "accepted_hours": 16,
+      "runtime_sha": "6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8",
+      "acceptance_run": 35596887663,
+      "evidence": "docs/conversion/MNT_M5_07_GTM_PREVIEW_VALIDATION_2026-09-21.md"
     }
   },
   "recent_post_m4_events": {
@@ -218,9 +226,9 @@
     }
   },
   "next": {
-    "task_id": "MNT-M5-07",
-    "state": "GTM_PUBLISH_REQUIRED",
-    "safe_action": "Publish the tested GTM-PGCR4R47 workspace version, record the published version identifier/name, then verify one production lead outside Preview carries project_name and offer_name to generate_lead. Only then close M5-07. M5-10 remains not authorized."
+    "task_id": "MNT-M5-08",
+    "state": "AUTHORIZED / READY_TO_START",
+    "safe_action": "Start MNT-M5-08 Green/Form 46 CRM handoff contract under continuing Product Authority authorization. Preserve Form 46 as V1 provider, exact controlled project+intent CRM context, no PII in Measurement, and vendor-owned seller/tag enrichment. Stop at any material provider/CRM ownership, field-schema, routing or privacy decision. MNT-M5-10 remains not authorized."
   },
   "cross_project": {
     "commercial_catalog": {
@@ -232,7 +240,7 @@
   },
   "known_residuals": {
     "favicon": "/favicon.ico returned 404 in post-cutover Pingdom HAR; minor asset residual",
-    "gtm_www_published_version_number": "PENDING / M5_07_GTM_PREVIEW_PASS / QUICK_PREVIEW_ONLY",
+    "gtm_www_published_version_number": "CLOSED / VERSION_12_LIVE / 2026-09-21",
     "gsc_sitemap_processing": "CLOSED / ACCEPTED / 4_URLS / 0_ERRORS / 0_WARNINGS",
     "commercial_hardcodes": "KNOWN / PR96 INVENTORY CANONICAL / RETIREMENT DEFERRED PENDING UPSTREAM CONTRACT",
     "aria_external_http_smoke": "CLOSED_FOR_SEARCH_VALIDATION / GSC_GOOGLEBOT_SMARTPHONE_FETCH_SUCCESS",
@@ -292,7 +300,7 @@
     "m5_06_capiitolo_search_variant": "CLOSED / CAPIITOLO_OFFICIAL / CAPITOLO_SAME_CANONICAL_PAGE",
     "m5_07_source_runtime": "PASS / SHA_6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8 / dpl_AWHaTzE4UrJQaZ3LnKqhEMd8wsBs / READY",
     "m5_07_production_semantics": "PASS / RUN_35596887663 / ARTIFACT_10637092633",
-    "m5_07_gtm_destination": "PREVIEW_PASS / GTM-PGCR4R47 / generate_lead project_name+offer_name / PUBLISH_REQUIRED"
+    "m5_07_gtm_destination": "CLOSED / PRODUCTION_GA4_PASS / project_name+offer_name"
   },
   "infra": {
     "dns_authority": "CLOUDFLARE_DNS_ONLY",

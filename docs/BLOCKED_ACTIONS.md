@@ -141,7 +141,7 @@ Permanece bloqueado sem gate específico:
 
 ## 8. MNT-RESF / programa
 
-- MNT-M5-07 está ACTIVE / DECISION_APPROVED / IMPLEMENTATION_AUTHORIZED; aprovado `Simular forma de pagamento` -> `negotiate_scenario / form / SECONDARY` e continuidade não-PII de `project_name`/`offer_name` até lead success; GTM destination mapping só deve ser alterado após prova do source event.
+- MNT-M5-08 está autorizado sob a autorização contínua da Product Authority; parar diante de decisão material de provider/CRM ownership, schema de campos, roteamento de vendedor/tag, privacy/PII ou backend intermediário.
 - MNT-M5-10 — performance remediation — permanece explicitamente não autorizado; findings de baseline/strategy não autorizam mutação de runtime;
 - task planejada != task autorizada;
 - merge de uma task != autorização automática da próxima;

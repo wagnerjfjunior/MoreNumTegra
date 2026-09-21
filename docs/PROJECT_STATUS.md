@@ -18,14 +18,14 @@ MNT-M5-03 = COMPLETE / STRATEGY_ESTABLISHED / NO_RUNTIME_MUTATION
 MNT-M5-04 = COMPLETE / PRODUCTION_REGRESSION_PASS / PHYSICAL_DEVICE_NOT_OBSERVED
 MNT-M5-05 = COMPLETE / ARCHITECTURE_CANONICALIZED / NO_RUNTIME_MUTATION
 MNT-M5-06 = COMPLETE / PRODUCTION_JOURNEY_PASS / SEARCH_VARIANT_PRESERVED
-MNT-M5-07 = ACTIVE / SOURCE_PRODUCTION_PASS / GTM_PREVIEW_PASS / GTM_PUBLISH_REQUIRED
-MNT-M5-08 = PLANNED / BLOCKED_BY_M5_07_PUBLISH_AND_PRODUCTION_VERIFICATION
+MNT-M5-07 = COMPLETE / PRODUCTION_GA4_PASS / GTM_VERSION_12_LIVE
+MNT-M5-08 = AUTHORIZED / READY_TO_START
 MNT-M5-10 = PLANNED_NOT_AUTHORIZED
 
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 848
-REMAINING_FORECAST_HOURS = 392
-ACCEPTED_PERCENT = 68.39
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 864
+REMAINING_FORECAST_HOURS = 376
+ACCEPTED_PERCENT = 69.68
 ```
 
 ## 2. M5-06 CTA/Form journey
@@ -84,7 +84,7 @@ PRODUCTION_STATE = READY
 Status:
 
 ```text
-MNT-M5-07 = ACTIVE / SOURCE_PRODUCTION_PASS / GTM_PREVIEW_PASS / GTM_PUBLISH_REQUIRED
+MNT-M5-07 = COMPLETE / PRODUCTION_GA4_PASS / GTM_VERSION_12_LIVE
 ```
 
 Canonical decision packet:
@@ -100,7 +100,7 @@ Product Authority approved on 2026-09-21:
 - controlled `project_name` / `offer_name` must continue through `mnt_lead_success` and the GA4 `generate_lead` destination;
 - no visitor PII or raw `texto-livre` enters Measurement.
 
-Progress remains `848 / 1240h = 68.39%` until M5-07 implementation and acceptance are complete.
+M5-07 is accepted. Progress is `864 / 1240h = 69.68%`.
 
 MNT-M5-08 is blocked by M5-07 implementation/acceptance. MNT-M5-10 remains explicitly not authorized.
 
@@ -112,3 +112,16 @@ Evidence: `docs/conversion/MNT_M5_07_GTM_PREVIEW_VALIDATION_2026-09-21.md`
 - Production semantics run `35596887663` = SUCCESS;
 - GTM Preview proves `mnt_lead_success -> generate_lead` carries `project_name` and `offer_name` to `G-57M2XR0CY2`;
 - uploaded GTM state is `QUICK_PREVIEW`, therefore publication is still required before acceptance.
+
+
+## 7. M5-07 final acceptance
+
+Final evidence confirms:
+
+- GTM `GTM-PGCR4R47` version `12` = Live / Latest;
+- version name = `Update "GA4 - Event - generate_lead - mnt_lead_success" tag`;
+- GA4 `G-57M2XR0CY2` receives `generate_lead` with `project_name` and `offer_name`;
+- normal-site Pixel Helper export contains no `gtm_debug`;
+- no PII or raw `texto-livre` was added to Measurement.
+
+M5-07 is COMPLETE and M5-08 is released under continuing Product Authority authorization.
