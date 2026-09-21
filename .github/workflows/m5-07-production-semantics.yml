@@ -1,0 +1,35 @@
+name: M5-07 Production semantics diagnostic
+
+on:
+  push:
+    branches:
+      - "diag/m5-07-production-semantics-20260921"
+    paths:
+      - ".github/diagnostics/m5-07-production-semantics.mjs"
+      - ".github/workflows/m5-07-production-semantics.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install Chromium
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Run read-only Production semantic smoke
+        run: node .github/diagnostics/m5-07-production-semantics.mjs
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m5-07-production-semantics
+          path: m5-07-production-semantics.json
+          if-no-files-found: error
