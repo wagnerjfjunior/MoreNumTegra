@@ -28,7 +28,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p /tmp/m510
-          hero="https://s3-gdigital.s3.amazonaws.com/gdigital/313/Compac%20-%20Caminhos%20da%20lapa%20-%20Elo%20Duo%20-%201350x1090%20-%20Fachada.webp"
+          hero="https://s3-gdigital.s3.amazonaws.com/gdigital/313/Caminhos%20da%20Lapa%20Elo%20Duo-Perspectiva%20da%20fachada.webp"
           complex="https://s3-gdigital.s3.amazonaws.com/gdigital/313/Caminhos%20da%20lapa%20-%20Elo%20Duo%20-%20630x1126%20-%20Complexo.webp"
           curl -L --fail --silent --show-error --retry 2 -o /tmp/m510/hero.webp "$hero"
           curl -L --fail --silent --show-error --retry 2 -o /tmp/m510/complex.webp "$complex"
