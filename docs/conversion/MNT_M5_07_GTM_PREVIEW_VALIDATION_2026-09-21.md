@@ -2,7 +2,7 @@
 
 Date: `2026-09-21`
 
-Status: `ACTIVE / SOURCE_PRODUCTION_PASS / GTM_PREVIEW_PASS / GTM_PUBLISH_REQUIRED`
+Status: `COMPLETE / PRODUCTION_GA4_PASS / GTM_VERSION_12_LIVE`
 
 ## Runtime
 - main/runtime: `6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8`
@@ -78,3 +78,44 @@ Required before M5-07 acceptance:
 - no PII/raw texto-livre enters Measurement.
 - no conversion `value`/`currency` invented.
 - no M5-10 performance remediation authorized.
+
+
+## Final publication and GA4 acceptance — 2026-09-21
+
+Product Authority supplied final publication/GA4 evidence after the Preview validation.
+
+Published GTM evidence:
+
+```text
+container = GTM-PGCR4R47
+container canonical id = 263769019
+published version = 12
+status = Live, Latest
+published date = 2026-09-21
+version name = Update "GA4 - Event - generate_lead - mnt_lead_success" tag
+```
+
+GA4 evidence supplied by Product Authority shows `generate_lead` in property MoreNumTegra with both:
+
+```text
+project_name
+offer_name
+```
+
+The observed lead context includes controlled project/offer business metadata and does not add visitor PII.
+
+A subsequent Pixel Helper navigation export from the normal `https://www.moretegra.com.br/` surface contains no `gtm_debug` parameter. That CSV stops before the thank-you redirect and therefore is not, by itself, the final `generate_lead` proof; final acceptance is based on the composite evidence:
+
+1. Version 12 shown Live/Latest;
+2. prior exact mapping proof in GTM Preview;
+3. GA4 receipt of `generate_lead` with `project_name` / `offer_name`;
+4. normal-site Pixel Helper session without `gtm_debug`;
+5. Product Authority confirmation that the GA4 screenshots were taken with the container already published.
+
+Final state:
+
+```text
+MNT-M5-07 = COMPLETE / PRODUCTION_GA4_PASS / GTM_VERSION_12_LIVE
+```
+
+No conversion-role change occurred. `mnt_lead_success` remains the sole PRIMARY conversion. WhatsApp and intent events remain SECONDARY.
