@@ -1,0 +1,40 @@
+name: M5-10 Elo delayed commercial JS slice 06
+
+on:
+  pull_request:
+    paths:
+      - "src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html"
+      - "src-greenn/data/commercial-values.json"
+      - "src-greenn/project-page.js"
+      - "scripts/validate-m5-10-elo-delay-commercial-js-slice06.mjs"
+      - ".github/workflows/m5-10-elo-delay-commercial-js-slice06.yml"
+  push:
+    branches: [main]
+    paths:
+      - "src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html"
+      - "src-greenn/data/commercial-values.json"
+      - "src-greenn/project-page.js"
+      - "scripts/validate-m5-10-elo-delay-commercial-js-slice06.mjs"
+      - ".github/workflows/m5-10-elo-delay-commercial-js-slice06.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Slice 06 delayed commercial JS contract
+        run: node scripts/validate-m5-10-elo-delay-commercial-js-slice06.mjs
+      - name: Preserve selected Green media contract
+        run: node scripts/validate-m5-10-elo-green-media-slice01.mjs
+      - name: Preserve commercial page contract
+        run: node scripts/validate-commercial-page-standard.mjs
+      - name: Preserve favicon contract
+        run: node scripts/validate-favicon-standard.mjs
+      - name: Preserve CTA/Form journey contract
+        run: node scripts/validate-m5-06-cta-form-journey.mjs
+      - name: Preserve lead semantics contract
+        run: node scripts/validate-m5-07-lead-semantics.mjs
