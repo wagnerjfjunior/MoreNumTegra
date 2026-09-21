@@ -7,8 +7,8 @@ Fonte canônica: GitHub `main`. Resolver estado live antes de qualquer mutação
 ## 1. Estado integrado
 
 ```text
-CANONICAL_MAIN_RUNTIME = 6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8
-PRODUCTION_DEPLOYMENT = dpl_AWHaTzE4UrJQaZ3LnKqhEMd8wsBs
+CANONICAL_MAIN_RUNTIME = 5b60e5862fd8581996b92ca8e1e40ce93285b4e4
+PRODUCTION_DEPLOYMENT = dpl_2FsJfM4L8o95vUzHTiV2Cp4ePrr8
 PRODUCTION_STATE = READY
 
 MNT-M5 = ACTIVE
@@ -21,7 +21,7 @@ MNT-M5-06 = COMPLETE / PRODUCTION_JOURNEY_PASS / SEARCH_VARIANT_PRESERVED
 MNT-M5-07 = COMPLETE / PRODUCTION_GA4_PASS / GTM_VERSION_12_LIVE
 MNT-M5-08 = COMPLETE / CRM_HANDOFF_CONTRACT_CANONICALIZED / NO_RUNTIME_MUTATION
 MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
-MNT-M5-10 = ACTIVE / SLICE_01_AUTHORIZED / ELO_DUO_TWO_IMAGE_TRIAL
+MNT-M5-10 = ACTIVE / SLICE_01_COMPLETE / NEXT_SLICE_DECISION_REQUIRED
 
 FORECAST_TOTAL_HOURS = 1240
 ACCEPTED_SCOPE_EQUIVALENT_HOURS = 896
@@ -177,3 +177,36 @@ Green complex = 83076 B WebP / 1126x630
 The raw uploaded Complexo PNG was 1318029 B and Green emitted an 83076 B WebP at the same dimensions (~93.7% reduction), supporting direct-original upload as the default workflow.
 
 Authorization is limited to these two Elo Duo assets. Other M5-10 slices remain blocked pending evidence after this trial.
+
+
+## 11. M5-10 Elo Duo Slice 01 — final A/B state
+
+Canonical transition evidence:
+
+`handoffs/HANDOFF-2026-09-21-M5-10-ELO-MEDIA-AB-SESSION-TRANSITION.md`
+
+Production:
+
+```text
+SHA = 5b60e5862fd8581996b92ca8e1e40ce93285b4e4
+DEPLOYMENT = dpl_2FsJfM4L8o95vUzHTiV2Cp4ePrr8
+STATE = READY
+```
+
+Current Elo Duo media:
+
+- hero = compact-source Green WebP, `160,918 B`;
+- complex/Rua Jardim = raw-source Green WebP, `83,076 B`.
+
+Hero five-run medians:
+
+```text
+compact = LCP 3,947 ms / score 70 / transfer 1,062,054 B
+original = LCP 4,037 ms / score 65 / transfer 1,086,450 B
+```
+
+The compact hero is selected, but the `<=2,500 ms` LCP target remains unmet.
+
+The manually pre-compressed complex-source experiment was rejected because Green generated a larger WebP (`106,720 B`) than from the raw source (`83,076 B`).
+
+M5-10 remains ACTIVE. No task hours are accepted from Slice 01 alone. The next performance slice requires a Product Authority decision.
