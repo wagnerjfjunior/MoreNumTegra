@@ -7,8 +7,8 @@ Fonte canônica: GitHub `main`. Resolver estado live antes de qualquer mutação
 ## 1. Estado integrado
 
 ```text
-CANONICAL_MAIN_RUNTIME = 6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8
-PRODUCTION_DEPLOYMENT = dpl_AWHaTzE4UrJQaZ3LnKqhEMd8wsBs
+CANONICAL_MAIN_RUNTIME = f4bb33e42f746682578f3404011daaa64e485e90
+PRODUCTION_DEPLOYMENT = dpl_jm8WcAjoVFxEydxdn2XiSsf222dP
 PRODUCTION_STATE = READY
 
 MNT-M5 = ACTIVE
@@ -21,7 +21,7 @@ MNT-M5-06 = COMPLETE / PRODUCTION_JOURNEY_PASS / SEARCH_VARIANT_PRESERVED
 MNT-M5-07 = COMPLETE / PRODUCTION_GA4_PASS / GTM_VERSION_12_LIVE
 MNT-M5-08 = COMPLETE / CRM_HANDOFF_CONTRACT_CANONICALIZED / NO_RUNTIME_MUTATION
 MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
-MNT-M5-10 = ACTIVE / SLICE_01_AUTHORIZED / ELO_DUO_TWO_IMAGE_TRIAL
+MNT-M5-10 = ACTIVE / SLICE_01_MEASURED / ROLLBACK_APPLIED / NEXT_DECISION_REQUIRED
 
 FORECAST_TOTAL_HOURS = 1240
 ACCEPTED_SCOPE_EQUIVALENT_HOURS = 896
@@ -103,7 +103,7 @@ Product Authority approved on 2026-09-21:
 
 M5-07 is accepted. Progress is `864 / 1240h = 69.68%`.
 
-MNT-M5-08 is blocked by M5-07 implementation/acceptance. MNT-M5-10 remains explicitly not authorized.
+MNT-M5-08 is blocked by M5-07 implementation/acceptance. MNT-M5-10 slice 01 was authorized and measured; additional slices require a new explicit decision.
 
 ## 6. M5-07 GTM Preview validation
 
@@ -158,7 +158,7 @@ No additional real Green lead was created by the diagnostic. Accepted M5-07/M5-0
 
 M5-09 is COMPLETE.
 
-Next gate: M5-10 performance remediation remains explicitly not authorized and requires Product Authority decision.
+M5-10 slice 01 is complete at the evidence level; additional slices require Product Authority decision.
 
 
 ## 10. M5-10 Elo Duo slice 01 authorization
@@ -177,3 +177,17 @@ Green complex = 83076 B WebP / 1126x630
 The raw uploaded Complexo PNG was 1318029 B and Green emitted an 83076 B WebP at the same dimensions (~93.7% reduction), supporting direct-original upload as the default workflow.
 
 Authorization is limited to these two Elo Duo assets. Other M5-10 slices remain blocked pending evidence after this trial.
+
+
+## 11. M5-10 Elo Duo slice 01 measured result
+
+Evidence: docs/performance/MNT_M5_10_ELO_DUO_COMPACT_SOURCE_COMPARISON_2026-09-21.md
+
+- raw-source Green WebP: 83,076 B;
+- compact-source Green WebP: 106,720 B;
+- manual pre-compression produced a 28.5% larger delivered WebP;
+- compact trial PR #201 was rolled back by PR #202;
+- current Production SHA f4bb33e42f746682578f3404011daaa64e485e90 / dpl_jm8WcAjoVFxEydxdn2XiSsf222dP / READY;
+- LCP lab results show material run-to-run variability, so the below-fold asset is not assigned causal LCP impact.
+
+Next M5-10 slice requires explicit Product Authority authorization.
