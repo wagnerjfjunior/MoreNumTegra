@@ -7,34 +7,26 @@
   "current_execution": {
     "active_phase_id": "MNT-M5",
     "active_task_id": "MNT-M5-09",
-    "state": "AUTHORIZED / READY_TO_START",
-    "repository_head_sha": "6b1901130d8aed1f00ae247e29492ac3a3ec9187",
+    "state": "COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION",
+    "repository_head_sha": "f3eea1fdce5fdd7b24ed5a2910340642040e94e0",
     "latest_main_runtime_sha": "6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8",
-    "deployment_state": "PRODUCTION_READY / M5_08_ACCEPTED",
+    "deployment_state": "PRODUCTION_READY / M5_09_ACCEPTED",
     "last_verified_vercel_success_sha": "6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8",
     "production_exact_sha": "6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8 / dpl_AWHaTzE4UrJQaZ3LnKqhEMd8wsBs / READY",
-    "authority_record": "docs/conversion/MNT_M5_08_GREEN_FORM46_CRM_HANDOFF_CONTRACT_2026-09-21.md",
+    "authority_record": "docs/conversion/MNT_M5_09_FORM_CTA_CONVERSION_QA_2026-09-21.md",
     "acceptance_summary": {
-      "result": "COMPLETE / CRM_HANDOFF_CONTRACT_CANONICALIZED / NO_RUNTIME_MUTATION",
-      "provider": "Green Sales / GDigital / Form 46",
-      "payload_fields": [
-        "tenant_id",
-        "form_id",
-        "title",
-        "nome",
-        "email",
-        "telefone",
-        "texto-livre"
-      ],
-      "crm_context": "project + controlled intent",
-      "downstream_enrichment": "Green-owned seller/tag; not frontend-owned"
+      "run": 35602579028,
+      "result": "SUCCESS",
+      "candidate_lead_privacy": "36 PASS / 0 FAIL",
+      "cta_form_matrix": "42 PASS / 0 FAIL",
+      "runtime_mutation": "NONE"
     }
   },
   "progress": {
     "forecast_total_hours": 1240,
-    "accepted_scope_equivalent_hours": 880,
-    "remaining_forecast_hours": 360,
-    "accepted_percent": 70.97
+    "accepted_scope_equivalent_hours": 896,
+    "remaining_forecast_hours": 344,
+    "accepted_percent": 72.26
   },
   "completed": {
     "MNT-M4-05": {
@@ -139,6 +131,13 @@
       "accepted_hours": 16,
       "runtime_sha": "6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8",
       "evidence": "docs/conversion/MNT_M5_08_GREEN_FORM46_CRM_HANDOFF_CONTRACT_2026-09-21.md"
+    },
+    "MNT-M5-09": {
+      "state": "COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION",
+      "accepted_hours": 16,
+      "runtime_sha": "6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8",
+      "acceptance_run": 35602579028,
+      "evidence": "docs/conversion/MNT_M5_09_FORM_CTA_CONVERSION_QA_2026-09-21.md"
     }
   },
   "recent_post_m4_events": {
@@ -235,9 +234,9 @@
     }
   },
   "next": {
-    "task_id": "MNT-M5-09",
-    "state": "AUTHORIZED / READY_TO_START",
-    "safe_action": "Execute MNT-M5-09 Form/CTA conversion QA against the unchanged effective Production runtime and accepted M5-06/M5-07/M5-08 contracts. Avoid unnecessary live lead creation; reuse accepted real Green/GA4 evidence where it remains exact-runtime applicable. Stop at any material conversion-definition or provider mutation decision. MNT-M5-10 remains not authorized."
+    "task_id": "MNT-M5-10",
+    "state": "PLANNED_NOT_AUTHORIZED / PRODUCT_AUTHORITY_DECISION_REQUIRED",
+    "safe_action": "Stop. MNT-M5-10 performance remediation remains explicitly not authorized. Product Authority must decide whether to authorize the bounded remediation sequence already defined by M5-03/M5-02 evidence."
   },
   "cross_project": {
     "commercial_catalog": {
