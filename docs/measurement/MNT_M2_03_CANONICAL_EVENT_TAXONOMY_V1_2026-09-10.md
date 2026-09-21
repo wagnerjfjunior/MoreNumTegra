@@ -274,6 +274,11 @@ Current V1 mapping contract:
 | Selected-project “Quero receber as condições deste Tegra” | `request_project_conditions` | `form` | `interest_context` | required |
 | Floating “Receber condições” | `request_conditions` | `form` | `floating` | optional current project context |
 | Floating WhatsApp | `whatsapp_contact` | `whatsapp` | `floating` | optional current project context |
+| Exact-project “Receber condições” | `request_project_conditions` | `form` | `hero | commercial_card | content | floating` | required |
+| Exact-project “Agendar visita” via form | `schedule_visit` | `form` | `content` | required |
+| Exact-project “Simular forma de pagamento” | `negotiate_scenario` | `form` | `content` | required |
+| Exact-project WhatsApp general/contact | `whatsapp_contact` | `whatsapp` | `content | floating` | required |
+| Exact-project visit via WhatsApp | `schedule_visit` | `whatsapp` | `content` | required |
 
 Rules:
 
@@ -344,7 +349,7 @@ funnel_stage = lead
 placement = form_46
 ```
 
-Optional project context may be attached when a selected project exists.
+Optional project context may be attached when a selected project exists. When attached, `project_name` and `offer_name` must come only from project-owned controlled catalog/page state and must never be reconstructed from visitor PII or raw/free-form form values.
 
 Hard validity rule:
 
@@ -513,3 +518,9 @@ The next task candidate becomes:
 `MNT-M2-04 — Define primary and secondary conversions / PLANNED_NOT_AUTHORIZED`.
 
 `MNT-M2-03 COMPLETE != MNT-M2-04 AUTHORIZED`.
+
+## M5-07 approved semantic specialization — 2026-09-21
+
+MNT-M5-07 does not add a new `intent_type` for payment simulation. Product Authority approved normalization of the controlled Form 46 choice `Simular forma de pagamento` to the existing `negotiate_scenario` semantic event. The CRM preserves the exact commercial choice while Measurement stays compact.
+
+For accepted Form 46 leads, controlled non-PII `project_name` / `offer_name` may be carried through the browser lead-success guard and emitted on `mnt_lead_success`. Visitor name, email, phone, provider query parameters and raw `texto-livre` remain prohibited from ordinary Measurement.
