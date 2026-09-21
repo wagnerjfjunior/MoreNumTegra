@@ -2,49 +2,29 @@
 
 Date: `2026-09-21`
 
-Status: `ACTIVE / SLICE_06_AUTHORIZED / COMMERCIAL_RUNTIME_SCHEDULING_EXPERIMENT`
+Status: `COMPLETE / REJECTED_AS_INCONCLUSIVE / ROLLED_BACK`
 
-## Scope
+## Candidate
 
-This bounded experiment does **not** change Measurement, GTM, GA4, Form 46, commercial data, media, CSS or event semantics.
+The bounded experiment changed only the Elo Duo loading schedule for the already-governed commercial synchronization runtime `/src-greenn/project-page.js`:
 
-It tests only when Elo Duo loads the already-governed commercial synchronization runtime `/src-greenn/project-page.js`.
+- control: parser-discovered `defer` script;
+- candidate: inject the same script after `window.load`.
 
-## Evidence
+No change was made to `project-page.js`, `commercial-values.json`, Measurement, Form 46, media, CSS, CTA, schema or accessibility.
 
-Production control before Slice 06:
+Candidate runtime:
 
 ```text
-RUNTIME_SHA = c4e0ef29449e4efce0ec1be3df64b6d9d1e9c427
-DEPLOYMENT = dpl_4o7syJcZWbse6G3h13fDaXgijNyZ
+PR = #215
+MERGE_SHA = f4b025f9ccddba541a8827cc7037f9a78129ddad
+PRODUCTION_DEPLOYMENT = dpl_7HULHSf5P8TLySCxBGQkiA3xRp4b
 STATE = READY
 ```
 
-The GTM-block laboratory established that third-party Measurement is the largest remaining CPU cost:
+## Commercial safety
 
-```text
-normal median LCP = 5,080 ms
-GTM/gtag-blocked median LCP = 3,166 ms
-delta = -1,914 ms / -37.68%
-normal median TBT = 496 ms
-blocked median TBT = 33 ms
-```
-
-This is diagnostic evidence only and does not authorize a Measurement mutation.
-
-A separate owned-JavaScript ceiling matrix showed directional improvement when `project-page.js` was blocked in lab:
-
-```text
-normal median LCP = 7,183 ms
-project-page.js blocked median = 6,494 ms
-directional delta = -689 ms / -9.59%
-```
-
-That matrix ran in a slower lab window, so the absolute values are not compared to earlier Production controls. Its purpose is only to identify candidate work.
-
-## Commercial safety precondition
-
-The Elo HTML already contains the governed current commercial reference before JavaScript executes:
+Before JavaScript, candidate HTML continued to expose the governed values:
 
 ```text
 price = R$ 658.000
@@ -52,45 +32,71 @@ reference = Ref. 68 m² (unidade 109) - Ago/26 | pagamento à vista
 inventory fallback = Consulte disponibilidade
 ```
 
-The canonical `commercial-values.json` contains the same price/reference and a more specific inventory state. Therefore delaying synchronization does not invent or expose an unsupported commercial value. Before sync, the page remains conservative on inventory.
+The more specific inventory state remained in canonical `commercial-values.json` and synchronized after load.
 
-## Slice 06 single runtime variable
+## Production performance evidence
 
-Replace the parser-time deferred load:
+```text
+RUN = 35662744385
+JOB = 106541527185
+CHROME = 152.0.7977.82
+LIGHTHOUSE = 13.5.0
+RUNS = 5
 
-```html
-<script src="/src-greenn/project-page.js" defer></script>
+run 1 = LCP 3,637 ms / score 77 / TBT 482 ms
+run 2 = LCP 3,642 ms / score 77 / TBT 472 ms
+run 3 = LCP 3,586 ms / score 79 / TBT 461 ms
+run 4 = LCP 3,678 ms / score 76 / TBT 490 ms
+run 5 = LCP 3,779 ms / score 68 / TBT 890 ms
+
+median LCP = 3,642 ms
+median score = 77
+median TBT = 482 ms
+median transfer = 1,062,105 B
 ```
 
-with a loader that injects the same canonical script only after `window.load`.
+Nearest accepted clean historical control using the same five-run methodology:
 
-No change is made to `project-page.js` itself.
+```text
+median LCP = 3,676 ms
+median score = 74
+median transfer = 1,061,852 B
+```
 
-## Preservation contract
+Observed delta:
 
-Preserve:
+```text
+LCP = -34 ms / -0.92%
+score = +3
+transfer = +253 B / effectively unchanged
+target <=2,500 ms = FAIL
+```
 
-- governed `commercial-values.json`;
-- same initial price/reference in HTML;
-- conservative inventory fallback before sync;
-- same eventual commercial synchronization runtime;
-- selected Green hero and complex media;
-- hero `fetchpriority=high`, dimensions and `decoding=async`;
-- external canonical CSS;
-- Azure + S3 preconnects;
-- no hero preload;
-- GTM/GA4/Consent/Measurement;
-- Form 46;
-- CTA/WhatsApp;
-- schema/accessibility/commercial copy.
+## Decision
 
-## Validation
+The `34 ms / 0.92%` median improvement is too small to classify as a material LCP win under the observed Lighthouse runner variance.
 
-1. exact-head repository gates;
-2. browser regression gates already triggered by the Elo HTML change;
-3. Production READY on exact merge SHA;
-4. public HTML confirms delayed loader and preserved initial commercial values;
-5. same five-run Lighthouse mobile battery;
-6. retain only if non-regressive and materially useful.
+The candidate also intentionally delays inventory/typology synchronization, so keeping added scheduling complexity without material performance value is not justified.
+
+Therefore Slice 06 is **rejected as inconclusive/non-useful** and the direct `defer` load is restored.
+
+## Remaining dominant bottleneck
+
+The adjacent paired laboratory that blocked only `googletagmanager.com` in Lighthouse—without changing Production—showed:
+
+```text
+normal median LCP = 5,080 ms
+GTM/gtag-blocked median LCP = 3,166 ms
+delta = -1,914 ms / -37.68%
+
+normal median TBT = 496 ms
+GTM/gtag-blocked median TBT = 33 ms
+delta = -463 ms
+
+normal median score = 70
+blocked median score = 93
+```
+
+Representative CPU attribution showed GTM + gtag as the largest boot-up costs. This is diagnostic evidence only. It does not authorize a Measurement runtime or GTM publication change.
 
 M5-10 remains active. Target LCP remains `<=2,500 ms`.
