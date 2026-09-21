@@ -7,7 +7,8 @@
   const TENANT_ID = "313";
   const FORM_ID = "46";
   const FORM_TITLE = "MoreEmUmTegra";
-  const LEAD_PENDING_KEY = "mnt.lead.pending.v1";
+  const LEAD_PENDING_KEY = "mnt.lead.pending.v2";
+  const LEGACY_LEAD_PENDING_KEY = "mnt.lead.pending.v1";
   const CONSENT_KEY = "mnt.consent.v1";
   const REQUEST_TIMEOUT_MS = 15000;
   const CAPIITOLO_WHATSAPP = "5511960779328";
@@ -21,6 +22,12 @@
     specialist: "Falar com especialista",
     negotiate_scenario: "Negociar meu cenário"
   });
+  const PROJECT_NAME_OVERRIDES = Object.freeze({
+    "Nova Vivere | 72 m²": "Nova Vivere",
+    "Nova Vivere | 105 m²": "Nova Vivere",
+    "CAPIITOLO by Piero Lissoni | à vista": "CAPIITOLO by Piero Lissoni"
+  });
+  const NO_PROJECT_CONTEXT = "Página principal | Nenhum empreendimento selecionado";
 
   function isLiveHost() {
     return window.location.hostname === LIVE_HOST;
@@ -69,9 +76,15 @@
     return serialized ? `?${serialized}` : "";
   }
 
-  function setPendingLead() {
+  function setPendingLead(form) {
     try {
-      window.sessionStorage.setItem(LEAD_PENDING_KEY, String(Date.now()));
+      const marker = {
+        version: 2,
+        submitted_at: Date.now(),
+        ...measurementProjectContext(form)
+      };
+      window.sessionStorage.setItem(LEAD_PENDING_KEY, JSON.stringify(marker));
+      window.sessionStorage.removeItem(LEGACY_LEAD_PENDING_KEY);
     } catch {
       // Lead conversion may be undercounted if storage is unavailable; PII is never stored.
     }
@@ -92,8 +105,17 @@
       form.dataset.selectedProject ||
       form.dataset.projectName ||
       selectedInterest() ||
-      "Página principal | Nenhum empreendimento selecionado"
+      NO_PROJECT_CONTEXT
     ).trim();
+  }
+
+  function measurementProjectContext(form) {
+    const offerName = leadProjectContext(form);
+    if (!offerName || offerName === NO_PROJECT_CONTEXT) return {};
+    return {
+      project_name: PROJECT_NAME_OVERRIDES[offerName] || offerName,
+      offer_name: offerName
+    };
   }
 
   function composeLeadContext(form) {
@@ -543,7 +565,7 @@
         if (!response.ok) throw new Error(`Green Form 46 respondeu HTTP ${response.status}`);
         let body = {};
         try { body = await response.json(); } catch { body = {}; }
-        setPendingLead();
+        setPendingLead(form);
         showMessage(status, "Solicitação recebida. Redirecionando...");
         const query = safeProviderQuery(body?.query_params || "");
         window.location.assign(`/obrigado/${query}`);

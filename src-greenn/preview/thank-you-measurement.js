@@ -6,7 +6,8 @@
   const ELIGIBLE_HOST = "www.moretegra.com.br";
   const THANK_YOU_ROUTE = "/obrigado";
   const ROOT_SELECTOR = "[data-moretegra-thank-you]";
-  const LEAD_PENDING_KEY = "mnt.lead.pending.v1";
+  const LEAD_PENDING_KEY = "mnt.lead.pending.v2";
+  const LEGACY_LEAD_PENDING_KEY = "mnt.lead.pending.v1";
   const CONSENT_KEY = "mnt.consent.v1";
   const LEAD_MAX_AGE_MS = 10 * 60 * 1000;
   const EVENT_VERSION = 1;
@@ -30,15 +31,47 @@
     return `mnt-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,12)}`;
   }
 
+  function controlledBusinessLabel(value) {
+    const normalized = String(value || "").trim();
+    if (!normalized || normalized.length > 160) return "";
+    if (/[<>@\r\n]/.test(normalized)) return "";
+    return normalized;
+  }
+
+  function freshTimestamp(value) {
+    const submittedAt = Number(value);
+    if (!Number.isFinite(submittedAt) || submittedAt <= 0) return false;
+    const age = Date.now() - submittedAt;
+    return age >= 0 && age <= LEAD_MAX_AGE_MS;
+  }
+
   function consumeFreshPendingLead() {
     try {
-      const submittedAt = Number(window.sessionStorage.getItem(LEAD_PENDING_KEY) || "");
-      if (!Number.isFinite(submittedAt) || submittedAt <= 0) return false;
-      const age = Date.now() - submittedAt;
-      window.sessionStorage.removeItem(LEAD_PENDING_KEY);
-      return age >= 0 && age <= LEAD_MAX_AGE_MS;
+      const rawV2 = window.sessionStorage.getItem(LEAD_PENDING_KEY);
+      const rawV1 = window.sessionStorage.getItem(LEGACY_LEAD_PENDING_KEY);
+
+      if (rawV2 !== null) {
+        window.sessionStorage.removeItem(LEAD_PENDING_KEY);
+        window.sessionStorage.removeItem(LEGACY_LEAD_PENDING_KEY);
+
+        let marker = null;
+        try { marker = JSON.parse(rawV2); } catch { marker = null; }
+        if (!marker || marker.version !== 2 || !freshTimestamp(marker.submitted_at)) return null;
+
+        const projectName = controlledBusinessLabel(marker.project_name);
+        const offerName = controlledBusinessLabel(marker.offer_name);
+        if (projectName && offerName) return {project_name: projectName, offer_name: offerName};
+        return {};
+      }
+
+      if (rawV1 !== null) {
+        window.sessionStorage.removeItem(LEGACY_LEAD_PENDING_KEY);
+        return freshTimestamp(rawV1) ? {} : null;
+      }
+
+      return null;
     } catch {
-      return false;
+      return null;
     }
   }
 
@@ -62,7 +95,8 @@
   function emit(root) {
     if (window[RUN_MARKER]) return false;
     if (window.location.hostname !== ELIGIBLE_HOST || normalizedPath() !== THANK_YOU_ROUTE) return false;
-    if (!consumeFreshPendingLead()) return false;
+    const leadContext = consumeFreshPendingLead();
+    if (leadContext === null) return false;
 
     window[RUN_MARKER] = true;
     window.dataLayer = window.dataLayer || [];
@@ -78,7 +112,8 @@
       form_id: 46,
       form_name: "MoreEmUmTegra",
       lead_method: "green_form_46",
-      placement: "form_46"
+      placement: "form_46",
+      ...leadContext
     });
     markAcceptedLeadUi(root);
     return true;
