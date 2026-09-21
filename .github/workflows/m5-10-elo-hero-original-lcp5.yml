@@ -1,0 +1,33 @@
+name: M5-10 Elo original hero LCP5
+
+on:
+  push:
+    branches:
+      - "diag/m5-10-elo-hero-original-lcp5-20260921"
+    paths:
+      - ".github/diagnostics/m5-10-elo-hero-original-lcp5.mjs"
+      - ".github/workflows/m5-10-elo-hero-original-lcp5.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install Lighthouse
+        run: npm install --no-save lighthouse@13.5.0
+      - name: Measure original hero Production
+        run: node .github/diagnostics/m5-10-elo-hero-original-lcp5.mjs
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m5-10-elo-hero-original-lcp5
+          path: m5-10-elo-hero-original-lcp5/
+          if-no-files-found: error
