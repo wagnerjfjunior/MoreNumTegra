@@ -4,26 +4,37 @@ Atualizado em `2026-09-21`.
 
 ```text
 MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
-MNT-M5-10 = ACTIVE / SLICE_01_AUTHORIZED / ELO_DUO_TWO_IMAGE_TRIAL
+MNT-M5-10 = ACTIVE / SLICE_01_COMPLETE / NEXT_SLICE_DECISION_REQUIRED
 
-MAIN = 02f1a5caf792ee5f527c125c8f3e52a1db05df5c
-EFFECTIVE_PRODUCTION_RUNTIME_SHA = 6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8
-PRODUCTION_DEPLOYMENT = dpl_AWHaTzE4UrJQaZ3LnKqhEMd8wsBs
+MAIN_RUNTIME = a43431ce65468a70a06844452fc17589fb49c68d
+PRODUCTION_DEPLOYMENT = dpl_5nz8h9AzHNqYAwM9aaw12xorVrUX
 PRODUCTION_STATE = READY
+
 MEDIA_PROBE_RUN = 35606609562 / SUCCESS
+PERFORMANCE_RUN = 35608067789 / SUCCESS
+ELO_LCP_MEDIAN = 7486 ms
+ELO_CLS_MEDIAN = 0.0357
 ```
 
-## Única próxima ação segura
+## Resultado do slice 01
 
-Implementar somente o slice 01 autorizado de M5-10 no Elo Duo:
+- Green hero e Green complex permanecem em Production;
+- Green validada como repositório/mecanismo de conversão WebP para este fluxo;
+- upload direto do original é permitido por padrão;
+- pré-compressão manual não é necessária por padrão;
+- revisão de dimensão/crop continua obrigatória;
+- hero permanece LCP;
+- LCP melhorou direcionalmente vs baseline histórico, mas continua acima de 2500 ms.
 
-- hero -> Green WebP da fachada;
-- Rua Jardim/complexo -> Green WebP do complexo;
-- atualizar dimensões intrínsecas para os arquivos reais;
-- preservar lazy loading da imagem abaixo da dobra;
-- preservar Search/Form46/Measurement/CTA/WhatsApp;
-- rodar checks exact-head;
-- merge;
-- medir Production com 3 runs mobile e comparar a mediana ao baseline M5-02.
+## Próximo gate
 
-Parar antes de qualquer outro slice M5-10.
+**PARAR.**
+
+Nenhum novo slice de M5-10 está autorizado por esta execução.
+
+Product Authority deve decidir se deseja:
+- continuar refinando Elo Duo;
+- avançar para Ária;
+- ou outra ação dentro da estratégia M5-10.
+
+Não iniciar Ária/CAPIITOLO ou nova remediação Elo sem nova autorização.
