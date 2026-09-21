@@ -2,26 +2,24 @@
 
 Date: `2026-09-21`
 
-Status: `ACTIVE / SLICE_05_AUTHORIZED / CSS_DELIVERY_EXPERIMENT`
+Status: `COMPLETE / REJECTED / ROLLED_BACK`
 
-## Product Authority scope
+## Candidate
 
-The Product Authority authorized additional bounded Elo Duo attempts to reduce LCP.
+The experiment removed the external `/src-greenn/project-page.css` request on Elo Duo and inlined the exact byte-for-byte contents of the canonical stylesheet in the same head position.
 
-## Current clean control
+No CSS rule, hero asset, preconnect, Form 46, Measurement, Consent, CTA, schema, accessibility or commercial-content semantics were changed.
 
-Production before Slice 05:
+Candidate runtime:
 
 ```text
-RUNTIME_SHA = bbf3520dec470c7a65b0d0b1ca21947dfa6ea440
-DEPLOYMENT = dpl_4vkZDEbz3WpvQeVZzuDUmdWZZdQW
+PR = #213
+MERGE_SHA = db8c65460743347e60e8a6f2b27765be241fac81
+PRODUCTION_DEPLOYMENT = dpl_Eoz5C332j6PbnotadvUUWzEzc7vy
 STATE = READY
-HERO = compact Green WebP / 160,918 B / 1080x1350
-HERO_DECODING = async
-HERO_PRELOAD = absent
-AZURE_PRECONNECT = present
-S3_PRECONNECT = present
 ```
+
+## Control
 
 Nearest clean five-run control:
 
@@ -30,66 +28,75 @@ LCP = 3,895 / 3,039 / 3,676 / 3,776 / 3,128 ms
 MEDIAN_LCP = 3,676 ms
 MEDIAN_SCORE = 74
 MEDIAN_TRANSFER = 1,061,852 B
-TARGET <=2,500 ms = FAIL
 ```
 
-## Evidence supporting this attempt
-
-The Slice 04 representative Lighthouse run showed:
+## Five-run Production evidence
 
 ```text
-LCP timeToFirstByte ~= 51.9 ms
-LCP resourceLoadDelay ~= 28.6 ms
-LCP resourceLoadDuration ~= 174.6 ms
-LCP elementRenderDelay ~= 225.8 ms
+RUN = 35660251814
+JOB = 106533528329
+CHROME = 152.0.7977.82
+LIGHTHOUSE = 13.5.0
+
+run 1 = LCP 4,119 ms / score 70 / TBT 615 ms
+run 2 = LCP 3,875 ms / score 78 / TBT 404 ms
+run 3 = LCP 5,805 ms / score 59 / TBT 851 ms
+run 4 = LCP 5,208 ms / score 69 / TBT 408 ms
+run 5 = LCP 5,255 ms / score 71 / TBT 343 ms
+
+median LCP = 5,208 ms
+median score = 70
+median TBT = 408 ms
+median transfer = 1,061,291 B
 ```
 
-LCP discovery already passes all relevant checks: initial-document discoverability, eager loading and `fetchpriority=high`.
-
-The remaining render-blocking audit identifies only:
+Delta versus control:
 
 ```text
-/src-greenn/project-page.css
-transfer ~= 2.3 KiB
-estimated blocking savings ~= 161 ms
+LCP = +1,532 ms / +41.68%
+score = -4
+transfer = -561 B / effectively unchanged
+target <=2,500 ms = FAIL
 ```
 
-The canonical stylesheet is 6,578 source characters and is already minified. This slice therefore tests CSS delivery only, without changing CSS semantics.
+## Diagnostic finding
 
-An independent media probe also confirmed the current HTML intrinsic dimensions are correct:
+The candidate successfully removed the external render-blocking stylesheet from Lighthouse, but did not improve LCP.
+
+Representative run 4:
 
 ```text
-hero WebP = 1080x1350 / 160,918 B
-complex WebP = 1126x630 / 83,076 B
+render-blocking resources = none
+main-thread work ~= 1,973 ms
+script evaluation ~= 785 ms
+style/layout ~= 412 ms
+script parse/compile ~= 187 ms
 ```
 
-## Slice 05 single runtime variable
+Boot-up CPU attribution in the representative run:
 
-On Elo Duo only:
+```text
+GTM container ~= 430 ms
+gtag ~= 391 ms
+MoreNumTegra preview/runtime.js ~= 222 ms
+MoreNumTegra project-page.js ~= 122 ms
+```
 
-- remove the external render-blocking `<link rel="stylesheet" href="/src-greenn/project-page.css">`;
-- inline the **exact byte-for-byte contents** of canonical `src-greenn/project-page.css` in the same head position.
+Lighthouse unused-JavaScript evidence:
 
-No CSS rule changes are permitted by this slice.
+```text
+gtag wasted ~= 75.8 KB
+GTM wasted ~= 63.2 KB
+total estimated unused JS ~= 136 KiB
+estimated LCP savings ~= 750 ms
+```
 
-## Preservation contract
+This does not authorize a Measurement mutation by itself. It establishes that the next performance investigation should prioritize main-thread JavaScript over further hero/CSS delivery experiments.
 
-Preserve:
+## Decision
 
-- exact hero and complex media;
-- hero `decoding="async"`, dimensions and `fetchpriority="high"`;
-- both preconnects;
-- no hero preload;
-- Search, Form 46, Measurement, Consent, CTA/WhatsApp, schema, accessibility and commercial content;
-- canonical shared CSS file itself unchanged.
+Inline CSS is rejected for Elo Duo. It removes one request but materially worsens the five-run Production LCP and adds undesirable source duplication.
 
-This is an A/B delivery experiment. It is not a decision to duplicate shared CSS permanently. If retained, architecture must subsequently decide whether an automated inline-build step is preferable to committed duplication.
+Rollback restores the canonical external stylesheet link and retires the candidate-specific validator/workflow.
 
-## Validation
-
-1. exact-head static and browser gates;
-2. Production READY on exact merge SHA;
-3. same Lighthouse 13.5.0 mobile 393x852 simulated-throttling 5-run battery;
-4. compare median LCP, performance score, CLS, TBT and transfer against the adjacent clean control.
-
-Retain only if evidence is useful and non-regressive. Otherwise restore the external stylesheet link.
+M5-10 remains active. The `<=2,500 ms` target remains unmet.
