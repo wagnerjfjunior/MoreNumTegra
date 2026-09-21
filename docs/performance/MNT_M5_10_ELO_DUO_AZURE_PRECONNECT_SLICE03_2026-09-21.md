@@ -2,15 +2,15 @@
 
 Date: `2026-09-21`
 
-Status: `ACTIVE / SLICE_03_AUTHORIZED / AZURE_PRECONNECT_EXPERIMENT`
+Status: `COMPLETE / REJECTED / ROLLED_BACK`
 
 ## Product Authority scope
 
 The Product Authority authorized additional bounded Elo Duo attempts to reduce LCP after Slice 01.
 
-## Control state before candidate
+## Control state
 
-After rejecting and rolling back the explicit hero preload, Production returned to:
+Adjacent Production control before the candidate:
 
 ```text
 RUNTIME_SHA = 00ce9808123e1491dab7b063ae9224171a06c850
@@ -19,11 +19,7 @@ STATE = READY
 HERO_PRELOAD = ABSENT
 S3_PRECONNECT = PRESENT
 AZURE_PRECONNECT = PRESENT
-```
 
-Contemporaneous rollback control:
-
-```text
 RUN = 35656855740
 JOB = 106522542312
 CHROME = 152.0.7977.82
@@ -34,37 +30,70 @@ LCP = 3,895 / 3,039 / 3,676 / 3,776 / 3,128 ms
 MEDIAN_LCP = 3,676 ms
 MEDIAN_SCORE = 74
 MEDIAN_TRANSFER = 1,061,852 B
-TARGET <=2,500 ms = FAIL
 ```
 
-This adjacent control also confirms that the prior explicit hero preload candidate did not earn retention: its five-run median was `5,453 ms`.
+## Candidate
 
-## Hypothesis
-
-The Elo hero is served from Green/GDigital S3 and already has the S3 preconnect. The page also speculatively opens a connection to Tegra Azure even though the Azure assets are below the fold.
-
-On constrained mobile, the unnecessary early Azure connection may compete for connection/network resources without helping the LCP. This hypothesis must be measured, not assumed.
-
-## Slice 03 single runtime variable
-
-Remove only:
+Slice 03 removed only:
 
 ```html
 <link rel="preconnect" href="https://stracctegra.blob.core.windows.net" crossorigin>
 ```
 
-Preserve:
+All Azure media URLs remained present. S3 preconnect, selected compact Green hero, hero dimensions, visible `fetchpriority="high"`, Search, Form 46, Measurement, Consent, CTA/WhatsApp, schema, accessibility and commercial content were preserved.
 
-- S3 preconnect;
-- selected compact Green hero and 160,918 B payload;
-- visible hero `fetchpriority="high"`;
-- no hero preload;
-- all Azure image URLs themselves;
-- lazy behavior of below-fold content;
-- Search, Form 46, Measurement, Consent, CTA/WhatsApp, schema, accessibility and commercial content.
+Candidate runtime:
 
-## Validation
+```text
+PR = #209
+MERGE_SHA = cbe2794bac9f32e6bd16044f1f90c75623e95379
+PRODUCTION_DEPLOYMENT = dpl_GM8wzPfeymp35aAjcynNHWXZ3upk
+STATE = READY
+```
 
-After exact-head gates and Production deployment, execute the same five-run Lighthouse 13.5.0 mobile 393x852 simulated-throttling method and compare primarily with the adjacent rollback-control median `3,676 ms`.
+## Production measurement
 
-Retain only if the candidate is non-regressive and provides useful evidence. Roll back if it is worse or inconclusive.
+```text
+RUN = 35657444861
+JOB = 106524479813
+CHROME = 152.0.7977.82
+LIGHTHOUSE = 13.5.0
+RUNS = 5
+RESULT = SUCCESS
+
+run 1 = LCP 6,726 ms / score 66 / transfer 1,061,782 B
+run 2 = LCP 7,711 ms / score 54 / transfer 1,062,078 B
+run 3 = LCP 5,289 ms / score 69 / transfer 1,061,786 B
+run 4 = LCP 7,426 ms / score 57 / transfer 1,061,807 B
+run 5 = LCP 7,233 ms / score 60 / transfer 1,061,885 B
+
+median = LCP 7,233 ms / score 60 / transfer 1,061,807 B
+```
+
+Observed delta versus the adjacent control:
+
+```text
+LCP = +3,557 ms / +96.76%
+score = -14
+transfer = -45 B / effectively unchanged
+target <=2,500 ms = FAIL
+```
+
+## Decision
+
+Removing the Azure preconnect is **rejected** for the current Elo Duo runtime.
+
+The experiment materially regressed LCP while payload stayed effectively unchanged. The safe action is to restore the Azure preconnect before any new optimization experiment.
+
+This result does not establish a universal requirement for Azure preconnect. It establishes that the current page performs materially worse without it under the governed adjacent A/B methodology.
+
+## Rollback contract
+
+- restore the Azure preconnect exactly where it was;
+- keep S3 preconnect;
+- keep the selected compact Green hero;
+- keep the rejected hero preload absent;
+- preserve all accepted Search/Form46/Measurement/Consent/CTA/accessibility contracts;
+- retire the Slice 03 validator/workflow as a current runtime contract.
+
+M5-10 remains active. The `<=2,500 ms` LCP target remains unmet.
