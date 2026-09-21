@@ -21,7 +21,7 @@ MNT-M5-06 = COMPLETE / PRODUCTION_JOURNEY_PASS / SEARCH_VARIANT_PRESERVED
 MNT-M5-07 = COMPLETE / PRODUCTION_GA4_PASS / GTM_VERSION_12_LIVE
 MNT-M5-08 = COMPLETE / CRM_HANDOFF_CONTRACT_CANONICALIZED / NO_RUNTIME_MUTATION
 MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
-MNT-M5-10 = ACTIVE / SLICE_01_AUTHORIZED / ELO_DUO_TWO_IMAGE_TRIAL
+MNT-M5-10 = ACTIVE / SLICE_01_COMPLETE / NEXT_SLICE_DECISION_REQUIRED
 
 FORECAST_TOTAL_HOURS = 1240
 ACCEPTED_SCOPE_EQUIVALENT_HOURS = 896
@@ -177,3 +177,32 @@ Green complex = 83076 B WebP / 1126x630
 The raw uploaded Complexo PNG was 1318029 B and Green emitted an 83076 B WebP at the same dimensions (~93.7% reduction), supporting direct-original upload as the default workflow.
 
 Authorization is limited to these two Elo Duo assets. Other M5-10 slices remain blocked pending evidence after this trial.
+
+
+## 11. M5-10 Elo Duo slice 01 result
+
+Runtime:
+`a43431ce65468a70a06844452fc17589fb49c68d`
+
+Production:
+`dpl_5nz8h9AzHNqYAwM9aaw12xorVrUX / READY`
+
+Performance evidence:
+`35608067789 / SUCCESS / artifact 10643068494`
+
+```text
+historical Elo LCP = 8234 ms
+slice01 LCP = 7486 ms
+directional improvement = 9.1%
+CLS = 0.0357 / PASS
+```
+
+The LCP element remains the Elo hero. Observed hero resource-load duration fell to ~486 ms median from ~1442 ms historical baseline.
+
+The Green media workflow is accepted for ordinary migration:
+- direct-original upload is acceptable;
+- Green WebP output must still be verified;
+- dimension/crop governance remains mandatory;
+- manual pre-compression is not required by default.
+
+M5-10 remains ACTIVE but no additional slice is authorized yet. Program accepted hours remain unchanged until M5-10 is completed/accepted as a task.
