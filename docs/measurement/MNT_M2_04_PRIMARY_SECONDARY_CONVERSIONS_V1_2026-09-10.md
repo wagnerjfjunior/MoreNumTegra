@@ -56,7 +56,7 @@ The project-level role is a semantic contract. Vendor platforms may have similar
 | `mnt_intent` + `request_conditions` | `SECONDARY` | explicit request to receive conditions, but no lead success yet |
 | `mnt_intent` + `request_project_conditions` | `SECONDARY` | explicit project-specific request, but no lead success yet |
 | `mnt_intent` + `negotiate_scenario` | `SECONDARY` | explicit commercial negotiation intent, but no lead success yet |
-| `mnt_intent` + `schedule_visit` | `SECONDARY` | explicit visit/contact intent through WhatsApp, but no verified lead registration |
+| `mnt_intent` + `schedule_visit` | `SECONDARY` | explicit visit/contact intent through form or WhatsApp, but no verified lead registration |
 | `mnt_intent` + `whatsapp_contact` | `SECONDARY` | explicit outbound contact intent, but click/open does not prove a conversation or lead |
 | `mnt_intent` + `project_interest` | `NONE` | selecting a project/card establishes context and intent progression, not a contact outcome |
 | `mnt_form_submit_attempt` | `NONE` | submit initiation may fail validation, network, application processing or Green registration |
@@ -235,3 +235,15 @@ MNT-M2-04 may be accepted complete when all are true:
 - next task remains separately gated.
 
 This document satisfies those design criteria.
+
+## M5-07 approved specialization — 2026-09-21
+
+The controlled Form 46 choice `Simular forma de pagamento` does **not** create a new conversion semantic. It maps to:
+
+```text
+mnt_intent.intent_type = negotiate_scenario
+contact_channel = form
+project role = SECONDARY
+```
+
+The exact CRM/form value remains available in Green Sales. This keeps analytics taxonomy compact and does not change the sole PRIMARY conversion: `mnt_lead_success`.
