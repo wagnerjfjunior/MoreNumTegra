@@ -1,0 +1,48 @@
+name: M5-10 Elo Green media slice 01
+
+on:
+  pull_request:
+    paths:
+      - "src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html"
+      - "scripts/validate-m5-10-elo-green-media-slice01.mjs"
+      - ".github/workflows/m5-10-elo-green-media-slice01.yml"
+  push:
+    branches: [main]
+    paths:
+      - "src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html"
+      - "scripts/validate-m5-10-elo-green-media-slice01.mjs"
+      - ".github/workflows/m5-10-elo-green-media-slice01.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Static contract
+        run: node scripts/validate-m5-10-elo-green-media-slice01.mjs
+      - name: Probe Green media bytes and dimensions
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/m510
+          hero="https://s3-gdigital.s3.amazonaws.com/gdigital/313/Caminhos%20da%20lapa%20-%20Elo%20Duo%20-%201350x1090%20-%20Fachada.webp"
+          complex="https://s3-gdigital.s3.amazonaws.com/gdigital/313/Caminhos%20da%20lapa%20-%20Elo%20Duo%20-%20630x1126%20-%20Complexo.webp"
+          curl -L --fail --silent --show-error --retry 2 -o /tmp/m510/hero.webp "$hero"
+          curl -L --fail --silent --show-error --retry 2 -o /tmp/m510/complex.webp "$complex"
+          hero_bytes=$(stat -c%s /tmp/m510/hero.webp)
+          complex_bytes=$(stat -c%s /tmp/m510/complex.webp)
+          echo "hero_bytes=$hero_bytes"
+          echo "hero_file=$(file -b /tmp/m510/hero.webp)"
+          echo "hero_sha256=$(sha256sum /tmp/m510/hero.webp | awk '{print $1}')"
+          echo "complex_bytes=$complex_bytes"
+          echo "complex_file=$(file -b /tmp/m510/complex.webp)"
+          echo "complex_sha256=$(sha256sum /tmp/m510/complex.webp | awk '{print $1}')"
+          test "$hero_bytes" -le 200000
+          test "$complex_bytes" -le 120000
+          file -b /tmp/m510/hero.webp | grep -q "Web/P image"
+          file -b /tmp/m510/hero.webp | grep -q "1080x1350"
+          file -b /tmp/m510/complex.webp | grep -q "Web/P image"
+          file -b /tmp/m510/complex.webp | grep -q "1126x630"
