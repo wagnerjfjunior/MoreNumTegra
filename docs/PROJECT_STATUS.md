@@ -18,8 +18,8 @@ MNT-M5-03 = COMPLETE / STRATEGY_ESTABLISHED / NO_RUNTIME_MUTATION
 MNT-M5-04 = COMPLETE / PRODUCTION_REGRESSION_PASS / PHYSICAL_DEVICE_NOT_OBSERVED
 MNT-M5-05 = COMPLETE / ARCHITECTURE_CANONICALIZED / NO_RUNTIME_MUTATION
 MNT-M5-06 = COMPLETE / PRODUCTION_JOURNEY_PASS / SEARCH_VARIANT_PRESERVED
-MNT-M5-07 = ACTIVE / DECISION_REQUIRED / NO_RUNTIME_MUTATION
-MNT-M5-08 = PLANNED / BLOCKED_BY_M5_07_DECISION_AND_ACCEPTANCE
+MNT-M5-07 = ACTIVE / DECISION_APPROVED / IMPLEMENTATION_AUTHORIZED
+MNT-M5-08 = PLANNED / BLOCKED_BY_M5_07_IMPLEMENTATION_AND_ACCEPTANCE
 MNT-M5-10 = PLANNED_NOT_AUTHORIZED
 
 FORECAST_TOTAL_HOURS = 1240
@@ -84,7 +84,7 @@ PRODUCTION_STATE = READY
 Status:
 
 ```text
-MNT-M5-07 = ACTIVE / DECISION_REQUIRED / NO_RUNTIME_MUTATION
+MNT-M5-07 = ACTIVE / DECISION_APPROVED / IMPLEMENTATION_AUTHORIZED
 ```
 
 Canonical decision packet:
@@ -93,11 +93,13 @@ Canonical decision packet:
 
 Existing contracts resolve all currently observed semantic mappings except one: `Simular forma de pagamento`.
 
-Product Authority must choose:
+Product Authority approved on 2026-09-21:
 
-- reuse existing `negotiate_scenario` as SECONDARY (recommended); or
-- add new canonical `payment_simulation` as SECONDARY and revise M2 taxonomy/conversion contracts.
+- `Simular forma de pagamento` remains precise in Form 46/Green CRM;
+- Measurement normalizes that action to `negotiate_scenario / form / SECONDARY`;
+- controlled `project_name` / `offer_name` must continue through `mnt_lead_success` and the GA4 `generate_lead` destination;
+- no visitor PII or raw `texto-livre` enters Measurement.
 
-Progress remains `848 / 1240h = 68.39%` until M5-07 is accepted.
+Progress remains `848 / 1240h = 68.39%` until M5-07 implementation and acceptance are complete.
 
-MNT-M5-08 is blocked by this decision/acceptance. MNT-M5-10 remains explicitly not authorized.
+MNT-M5-08 is blocked by M5-07 implementation/acceptance. MNT-M5-10 remains explicitly not authorized.

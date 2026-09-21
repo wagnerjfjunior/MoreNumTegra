@@ -7,7 +7,7 @@
   "current_execution": {
     "active_phase_id": "MNT-M5",
     "active_task_id": "MNT-M5-07",
-    "state": "ACTIVE / DECISION_REQUIRED / NO_RUNTIME_MUTATION",
+    "state": "ACTIVE / DECISION_APPROVED / IMPLEMENTATION_AUTHORIZED",
     "repository_head_sha": "af9a58cb49200b5e4a226ab5ede8a7df6b532f03",
     "latest_main_runtime_sha": "be7f229ea04cf4050c40c471e21f262f4cfc845d",
     "deployment_state": "PRODUCTION_READY / M5_07_DECISION_GATE",
@@ -15,10 +15,10 @@
     "production_exact_sha": "be7f229ea04cf4050c40c471e21f262f4cfc845d / dpl_CZEKd9SmbVTx6T2L7y4rFkTRdQhP / READY",
     "authority_record": "docs/conversion/MNT_M5_07_LEAD_SEMANTICS_DECISION_GATE_2026-09-20.md",
     "decision_summary": {
-      "unresolved": "PAYMENT_SIMULATION_MEASUREMENT_SEMANTIC",
-      "option_a": "reuse negotiate_scenario / SECONDARY / recommended",
-      "option_b": "add payment_simulation / SECONDARY / taxonomy expansion",
-      "runtime_mutation": "NONE_PENDING_DECISION"
+      "payment_simulation": "APPROVED -> negotiate_scenario / form / SECONDARY",
+      "lead_success_context": "APPROVED -> controlled project_name + offer_name / NO_PII",
+      "destination": "GA4 generate_lead should receive project_name + offer_name after source proof",
+      "runtime_mutation": "AUTHORIZED"
     }
   },
   "progress": {
@@ -214,8 +214,8 @@
   },
   "next": {
     "task_id": "MNT-M5-07",
-    "state": "DECISION_REQUIRED",
-    "safe_action": "Product Authority must choose whether payment-simulation intent reuses negotiate_scenario or becomes a new canonical payment_simulation intent type. No Measurement/runtime mutation before this decision. MNT-M5-10 remains explicitly not authorized."
+    "state": "IMPLEMENTATION_AUTHORIZED",
+    "safe_action": "Implement approved M5-07 source semantics and controlled project/offer continuity through mnt_lead_success; validate exact head and Production. Update GTM generate_lead mapping only after source proof. MNT-M5-10 remains not authorized."
   },
   "cross_project": {
     "commercial_catalog": {

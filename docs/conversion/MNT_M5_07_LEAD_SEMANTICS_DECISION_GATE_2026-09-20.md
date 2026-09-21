@@ -1,6 +1,6 @@
 # MNT-M5-07 — Lead Semantics and Lead-Validity Contract — Product Decision Gate
 
-Status: `ACTIVE / DECISION_REQUIRED / NO_RUNTIME_MUTATION`
+Status: `ACTIVE / DECISION_APPROVED / IMPLEMENTATION_AUTHORIZED / NO_RUNTIME_MUTATION_YET`
 
 Date: `2026-09-20`
 
@@ -238,7 +238,16 @@ Measurement = negotiate_scenario
 
 This avoids making ordinary analytics taxonomy mirror every CRM option.
 
-This recommendation is not an authorization decision.
+Product Authority approved **Option A** on 2026-09-21 after reviewing the live Pixel Helper navigation/conversion evidence and the persisted Green Sales lead.
+
+Approved semantic:
+
+```text
+Form 46 / CRM = Simular forma de pagamento
+Measurement = mnt_intent / negotiate_scenario / form / SECONDARY
+```
+
+Product Authority also approved preserving controlled `project_name` / `offer_name` through `mnt_lead_success` and the GA4 `generate_lead` destination, with the explicit privacy boundary that visitor name, email, phone and raw/free-form form text remain excluded from Measurement.
 
 ## 8. Semantic alignment that may proceed after the decision
 
@@ -282,7 +291,21 @@ ACCEPTED_SCOPE_EQUIVALENT_HOURS = 848
 REMAINING_FORECAST_HOURS = 392
 ACCEPTED_PERCENT = 68.39
 
-MNT-M5-07 = ACTIVE / DECISION_REQUIRED / NO_RUNTIME_MUTATION
-MNT-M5-08 = BLOCKED_BY_M5_07_DECISION_AND_ACCEPTANCE
+MNT-M5-07 = ACTIVE / DECISION_APPROVED / IMPLEMENTATION_AUTHORIZED
+MNT-M5-08 = BLOCKED_BY_M5_07_IMPLEMENTATION_AND_ACCEPTANCE
 MNT-M5-10 = PLANNED_NOT_AUTHORIZED
 ```
+
+## 11. Approved implementation delta — 2026-09-21
+
+The implementation is authorized to:
+
+- normalize the payment-simulation CTA to existing `negotiate_scenario`;
+- align exact-project conditions to `request_project_conditions`;
+- align form-based visit requests to `schedule_visit / form`;
+- preserve WhatsApp as SECONDARY and never as a verified lead;
+- carry controlled non-PII project/offer context through the successful Form 46 pending state to `mnt_lead_success`;
+- preserve backward compatibility with the existing timestamp-only pending marker during rollout;
+- add `project_name` and `offer_name` to the GTM `mnt_lead_success -> GA4 generate_lead` mapping only after source-event evidence is present.
+
+The approved project/offer context is business metadata, not visitor PII, and must originate only from project-owned controlled catalog/page state. Raw `texto-livre`, visitor-entered values and provider query parameters must not be copied into Measurement.
