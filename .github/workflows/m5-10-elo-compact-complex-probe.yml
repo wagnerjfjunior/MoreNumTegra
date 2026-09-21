@@ -1,0 +1,34 @@
+name: M5-10 Elo compact complex probe
+
+on:
+  push:
+    branches:
+      - "diag/m5-10-elo-compact-complex-probe-20260921"
+    paths:
+      - ".github/workflows/m5-10-elo-compact-complex-probe.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Probe old and compact Green complex media
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/m510
+          old="https://s3-gdigital.s3.amazonaws.com/gdigital/313/Caminhos%20da%20lapa%20-%20Elo%20Duo%20-%20630x1126%20-%20Complexo.webp"
+          compact="https://s3-gdigital.s3.amazonaws.com/gdigital/313/Compact-Caminhos%20da%20lapa%20-%20Elo%20Duo%20-%20630x1126%20-%20Complexo.webp"
+          curl -L --fail --silent --show-error --retry 2 -o /tmp/m510/old.webp "$old"
+          curl -L --fail --silent --show-error --retry 2 -o /tmp/m510/compact.webp "$compact"
+          echo "old_bytes=$(stat -c%s /tmp/m510/old.webp)"
+          echo "old_file=$(file -b /tmp/m510/old.webp)"
+          echo "old_sha256=$(sha256sum /tmp/m510/old.webp | awk '{print $1}')"
+          echo "compact_bytes=$(stat -c%s /tmp/m510/compact.webp)"
+          echo "compact_file=$(file -b /tmp/m510/compact.webp)"
+          echo "compact_sha256=$(sha256sum /tmp/m510/compact.webp | awk '{print $1}')"
+          test "$(file -b /tmp/m510/compact.webp | grep -c 'Web/P image')" -eq 1
+          file -b /tmp/m510/compact.webp | grep -q "1126x630"
