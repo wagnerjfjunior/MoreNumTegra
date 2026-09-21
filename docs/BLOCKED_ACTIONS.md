@@ -141,7 +141,7 @@ Permanece bloqueado sem gate específico:
 
 ## 8. MNT-RESF / programa
 
-- MNT-M5-10 está autorizado somente para o slice 01 Elo Duo (hero + imagem do complexo na Green); qualquer slice adicional continua bloqueado até nova evidência/decisão.
+- MNT-M5-10 slice 01 Elo Duo está COMPLETE; qualquer novo slice (mais Elo, Ária, CAPIITOLO ou outro) permanece bloqueado até nova autorização da Product Authority.
 - MNT-M5-10 — performance remediation — permanece explicitamente não autorizado; findings de baseline/strategy não autorizam mutação de runtime;
 - task planejada != task autorizada;
 - merge de uma task != autorização automática da próxima;
