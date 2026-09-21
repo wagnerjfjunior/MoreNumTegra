@@ -7,14 +7,35 @@
   "current_execution": {
     "active_phase_id": "MNT-M5",
     "active_task_id": "MNT-M5-10",
-    "state": "ACTIVE / SLICE_01_AUTHORIZED / ELO_DUO_TWO_IMAGE_TRIAL",
-    "repository_head_sha": "02f1a5caf792ee5f527c125c8f3e52a1db05df5c",
-    "latest_main_runtime_sha": "6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8",
-    "deployment_state": "PRODUCTION_READY / M5_10_SLICE_01_PENDING_IMPLEMENTATION",
-    "last_verified_vercel_success_sha": "6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8",
-    "production_exact_sha": "6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8 / dpl_AWHaTzE4UrJQaZ3LnKqhEMd8wsBs / READY",
+    "state": "ACTIVE / SLICE_01_COMPLETE / NEXT_SLICE_DECISION_REQUIRED",
+    "repository_head_sha": "5b60e5862fd8581996b92ca8e1e40ce93285b4e4",
+    "latest_main_runtime_sha": "5b60e5862fd8581996b92ca8e1e40ce93285b4e4",
+    "deployment_state": "PRODUCTION_READY / ELO_DUO_SLICE_01_COMPLETE",
+    "last_verified_vercel_success_sha": "5b60e5862fd8581996b92ca8e1e40ce93285b4e4",
+    "production_exact_sha": "5b60e5862fd8581996b92ca8e1e40ce93285b4e4 / dpl_2FsJfM4L8o95vUzHTiV2Cp4ePrr8 / READY",
     "authority_record": "docs/performance/MNT_M5_10_ELO_DUO_GREEN_MEDIA_SLICE01_2026-09-21.md",
-    "acceptance_summary": null
+    "transition_record": "handoffs/HANDOFF-2026-09-21-M5-10-ELO-MEDIA-AB-SESSION-TRANSITION.md",
+    "acceptance_summary": {
+      "slice_01": "COMPLETE / BOUNDED_EXPERIMENT",
+      "runtime_prs": [
+        200,
+        201,
+        202,
+        203,
+        204,
+        205
+      ],
+      "current_hero_url": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Compac%20-%20Caminhos%20da%20lapa%20-%20Elo%20Duo%20-%201350x1090%20-%20Fachada.webp",
+      "current_complex_url": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Caminhos%20da%20lapa%20-%20Elo%20Duo%20-%20630x1126%20-%20Complexo.webp",
+      "compact_hero_bytes": 160918,
+      "original_hero_bytes": 185446,
+      "compact_hero_lcp_median_ms": 3947,
+      "original_hero_lcp_median_ms": 4037,
+      "target_lcp_ms": 2500,
+      "complex_raw_source_green_bytes": 83076,
+      "complex_precompressed_source_green_bytes": 106720,
+      "task_hours_accepted": 0
+    }
   },
   "progress": {
     "forecast_total_hours": 1240,
@@ -229,8 +250,8 @@
   },
   "next": {
     "task_id": "MNT-M5-10",
-    "state": "SLICE_01_IMPLEMENTATION_AUTHORIZED",
-    "safe_action": "Implement only the authorized Elo Duo two-image Green media trial, validate exact head, merge after gates, measure Production with the M5-02 methodology, and stop before any additional M5-10 slice."
+    "state": "NEXT_SLICE_DECISION_REQUIRED",
+    "safe_action": "Stop before further runtime mutation. Product Authority must choose the next bounded M5-10 slice: continue Elo Duo hero optimization toward <=2.5s or advance to the next M5-03 target (Aria hero + first gallery asset). Resolve live main/Production again before acting."
   },
   "cross_project": {
     "commercial_catalog": {
@@ -292,7 +313,7 @@
     "m5_02_media_delivery": "OPEN_ANALYSIS_CANDIDATE / PROJECT_LCP_ELEMENTS_ARE_HERO_JPEG_IMAGES / M5_03_NOT_YET_AUTHORIZED",
     "m5_03_strategy": "CLOSED / RESPONSIVE_MODERN_IMAGE_STRATEGY_ESTABLISHED / NO_RUNTIME_MUTATION",
     "m5_03_remediation_order": "M5_10_CANDIDATE_ONLY / ELO_DUO_HERO -> ARIA_HERO_GALLERY -> CAPIITOLO_HERO_HEAVY_MEDIA -> OPTIONAL_BOOTSTRAP_FLATTENING_ASSESSMENT",
-    "m5_10_authority": "NOT_AUTHORIZED / STRATEGY_DOES_NOT_GRANT_RUNTIME_MUTATION",
+    "m5_10_authority": "SLICE_01_COMPLETE / NEXT_SLICE_NOT_AUTHORIZED / PRODUCT_AUTHORITY_DECISION_REQUIRED",
     "m5_04_regression": "CLOSED / RUN_35540543038 / 57_PASS_0_FAIL_1_NOT_OBSERVED",
     "m5_04_physical_device": "NOT_OBSERVED / NOT_PASS",
     "m5_04_aria_gallery_touch": "CLOSED / PR185 / 46X46 / CHROMIUM_FIREFOX_WEBKIT_EXACT_HEAD_AND_PRODUCTION_PASS",
@@ -302,7 +323,9 @@
     "m5_06_capiitolo_search_variant": "CLOSED / CAPIITOLO_OFFICIAL / CAPITOLO_SAME_CANONICAL_PAGE",
     "m5_07_source_runtime": "PASS / SHA_6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8 / dpl_AWHaTzE4UrJQaZ3LnKqhEMd8wsBs / READY",
     "m5_07_production_semantics": "PASS / RUN_35596887663 / ARTIFACT_10637092633",
-    "m5_07_gtm_destination": "CLOSED / PRODUCTION_GA4_PASS / project_name+offer_name"
+    "m5_07_gtm_destination": "CLOSED / PRODUCTION_GA4_PASS / project_name+offer_name",
+    "m5_10_elo_duo_slice01": "COMPLETE / PR205_COMPACT_HERO_SELECTED / COMPLEX_RAW_SOURCE_GREEN_83KB_RETAINED",
+    "m5_10_elo_duo_lcp": "IMPROVED_VS_M5_02_BASELINE / COMPACT_5RUN_MEDIAN_3947MS / TARGET_2500MS_NOT_MET / LAB_VARIANCE_PRESENT"
   },
   "infra": {
     "dns_authority": "CLOUDFLARE_DNS_ONLY",
