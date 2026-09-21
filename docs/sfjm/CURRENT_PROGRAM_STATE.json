@@ -6,32 +6,35 @@
   "program_state": "ACTIVE",
   "current_execution": {
     "active_phase_id": "MNT-M5",
-    "active_task_id": "MNT-M5-08",
+    "active_task_id": "MNT-M5-09",
     "state": "AUTHORIZED / READY_TO_START",
-    "repository_head_sha": "b9d7c55945a1ff2ed76c6cfc782b04753f97afed",
+    "repository_head_sha": "6b1901130d8aed1f00ae247e29492ac3a3ec9187",
     "latest_main_runtime_sha": "6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8",
-    "deployment_state": "PRODUCTION_READY / M5_07_ACCEPTED",
+    "deployment_state": "PRODUCTION_READY / M5_08_ACCEPTED",
     "last_verified_vercel_success_sha": "6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8",
     "production_exact_sha": "6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8 / dpl_AWHaTzE4UrJQaZ3LnKqhEMd8wsBs / READY",
-    "authority_record": "docs/conversion/MNT_M5_07_LEAD_SEMANTICS_DECISION_GATE_2026-09-20.md",
-    "validation_record": "docs/conversion/MNT_M5_07_GTM_PREVIEW_VALIDATION_2026-09-21.md",
+    "authority_record": "docs/conversion/MNT_M5_08_GREEN_FORM46_CRM_HANDOFF_CONTRACT_2026-09-21.md",
     "acceptance_summary": {
-      "runtime_pr": 194,
-      "production_run": 35596887663,
-      "production_artifact": 10637092633,
-      "gtm_container": "GTM-PGCR4R47",
-      "gtm_published_version": 12,
-      "gtm_status": "LIVE / LATEST",
-      "ga4_destination": "G-57M2XR0CY2",
-      "generate_lead_context": "project_name + offer_name observed",
-      "result": "COMPLETE / PRODUCTION_GA4_PASS"
+      "result": "COMPLETE / CRM_HANDOFF_CONTRACT_CANONICALIZED / NO_RUNTIME_MUTATION",
+      "provider": "Green Sales / GDigital / Form 46",
+      "payload_fields": [
+        "tenant_id",
+        "form_id",
+        "title",
+        "nome",
+        "email",
+        "telefone",
+        "texto-livre"
+      ],
+      "crm_context": "project + controlled intent",
+      "downstream_enrichment": "Green-owned seller/tag; not frontend-owned"
     }
   },
   "progress": {
     "forecast_total_hours": 1240,
-    "accepted_scope_equivalent_hours": 864,
-    "remaining_forecast_hours": 376,
-    "accepted_percent": 69.68
+    "accepted_scope_equivalent_hours": 880,
+    "remaining_forecast_hours": 360,
+    "accepted_percent": 70.97
   },
   "completed": {
     "MNT-M4-05": {
@@ -130,6 +133,12 @@
       "runtime_sha": "6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8",
       "acceptance_run": 35596887663,
       "evidence": "docs/conversion/MNT_M5_07_GTM_PREVIEW_VALIDATION_2026-09-21.md"
+    },
+    "MNT-M5-08": {
+      "state": "COMPLETE / CRM_HANDOFF_CONTRACT_CANONICALIZED / NO_RUNTIME_MUTATION",
+      "accepted_hours": 16,
+      "runtime_sha": "6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8",
+      "evidence": "docs/conversion/MNT_M5_08_GREEN_FORM46_CRM_HANDOFF_CONTRACT_2026-09-21.md"
     }
   },
   "recent_post_m4_events": {
@@ -226,9 +235,9 @@
     }
   },
   "next": {
-    "task_id": "MNT-M5-08",
+    "task_id": "MNT-M5-09",
     "state": "AUTHORIZED / READY_TO_START",
-    "safe_action": "Start MNT-M5-08 Green/Form 46 CRM handoff contract under continuing Product Authority authorization. Preserve Form 46 as V1 provider, exact controlled project+intent CRM context, no PII in Measurement, and vendor-owned seller/tag enrichment. Stop at any material provider/CRM ownership, field-schema, routing or privacy decision. MNT-M5-10 remains not authorized."
+    "safe_action": "Execute MNT-M5-09 Form/CTA conversion QA against the unchanged effective Production runtime and accepted M5-06/M5-07/M5-08 contracts. Avoid unnecessary live lead creation; reuse accepted real Green/GA4 evidence where it remains exact-runtime applicable. Stop at any material conversion-definition or provider mutation decision. MNT-M5-10 remains not authorized."
   },
   "cross_project": {
     "commercial_catalog": {

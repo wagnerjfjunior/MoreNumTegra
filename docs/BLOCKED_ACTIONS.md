@@ -141,7 +141,7 @@ Permanece bloqueado sem gate específico:
 
 ## 8. MNT-RESF / programa
 
-- MNT-M5-08 está autorizado sob a autorização contínua da Product Authority; parar diante de decisão material de provider/CRM ownership, schema de campos, roteamento de vendedor/tag, privacy/PII ou backend intermediário.
+- MNT-M5-09 está autorizado sob a autorização contínua da Product Authority; executar QA sem redefinir conversão, provider/CRM, privacy/PII ou criar novo comportamento de runtime.
 - MNT-M5-10 — performance remediation — permanece explicitamente não autorizado; findings de baseline/strategy não autorizam mutação de runtime;
 - task planejada != task autorizada;
 - merge de uma task != autorização automática da próxima;
