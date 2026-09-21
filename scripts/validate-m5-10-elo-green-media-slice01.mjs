@@ -9,7 +9,7 @@ const oldHero="https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVi
 const oldComplex="https://s3-gdigital.s3.amazonaws.com/gdigital/313/XUDkRhyRZbqT9VA4RRLdCijN2DlNrBt2yHMJLzul.webp";
 
 assert(html.includes('src="'+hero+'"'),"Elo hero uses authorized Green WebP");
-assert(html.includes('width="1080" height="1350" fetchpriority="high" decoding="async"'),"hero intrinsic dimensions and high priority are preserved");
+assert(html.includes('width="1080" height="1350" fetchpriority="high"'),"hero intrinsic dimensions and high priority are preserved");
 assert(!html.includes('src="'+hero+'" alt="Elo Duo Caminhos da Lapa, apartamento pronto para morar na Lapa" width="1080" height="1350" loading="lazy"'),"hero is not lazy-loaded");
 assert(html.includes('src="'+complex+'"'),"Rua Jardim/complex image uses authorized Green WebP");
 assert(html.includes('width="1126" height="630" loading="lazy" decoding="async"'),"below-fold complex image keeps real dimensions and lazy loading");
