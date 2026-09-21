@@ -2,77 +2,81 @@
 
 Date: `2026-09-21`
 
-Status: `ACTIVE / SLICE_04_AUTHORIZED / HERO_DECODE_EXPERIMENT`
+Status: `COMPLETE / REJECTED_AS_NEUTRAL / ROLLED_BACK`
 
-## Product Authority scope
+## Candidate
 
-The Product Authority authorized additional bounded attempts on Elo Duo to reduce LCP.
+The bounded experiment changed only the visible Elo hero from `decoding="async"` to `decoding="sync"`, preserving the exact image URL, bytes, dimensions, `fetchpriority="high"`, both preconnects, no explicit hero preload, all below-fold behavior and all accepted Search/Form46/Measurement/Consent/CTA/accessibility contracts.
 
-## Preserved control
-
-The restored Production runtime before Slice 04 is:
+Candidate runtime:
 
 ```text
-RUNTIME_SHA = 093b59d0f5e2f98c8d22fc8c6d69ac6e95f0f7f4
-DEPLOYMENT = dpl_3dArqtMgTcARmHGuPcvqg6unz2Pb
+PR = #211
+MERGE_SHA = c116d2d2239932a8526a2b3b2f7ce33e160686f4
+PRODUCTION_DEPLOYMENT = dpl_8ZWk3WWKgfUUgt9CzZ8C9qKkhfuo
 STATE = READY
-HERO_PRELOAD = ABSENT
-AZURE_PRECONNECT = PRESENT
-S3_PRECONNECT = PRESENT
-HERO_DECODING = async
 ```
 
-The nearest clean five-run control of this same runtime shape recorded:
+## Five-run Production evidence
 
 ```text
-LCP = 3,895 / 3,039 / 3,676 / 3,776 / 3,128 ms
-MEDIAN_LCP = 3,676 ms
-MEDIAN_SCORE = 74
-MEDIAN_TRANSFER = 1,061,852 B
-TARGET <=2,500 ms = FAIL
+RUN = 35659129972
+JOB = 106529891452
+CHROME = 152.0.7977.82
+LIGHTHOUSE = 13.5.0
+
+run 1 = LCP 2,892 ms / score 74
+run 2 = LCP 3,700 ms / score 79
+run 3 = LCP 3,717 ms / score 74
+run 4 = LCP 3,045 ms / score 74
+run 5 = LCP 3,898 ms / score 75
+
+median LCP = 3,700 ms
+median score = 74
+median transfer = 1,061,902 B
 ```
 
-Rejected prior experiments:
+Clean adjacent control:
 
-- explicit hero preload: median LCP `5,453 ms`;
-- Azure preconnect removal: median LCP `7,233 ms`.
-
-## Hypothesis
-
-The visible LCP image currently declares `decoding="async"`. For an above-the-fold LCP image, asynchronous decode may allow the browser to defer image presentation even after the resource is available. This slice tests the opposite policy directly.
-
-This is a bounded browser-rendering hypothesis, not an assumption of guaranteed improvement.
-
-## Slice 04 single runtime variable
-
-Change only the visible Elo hero from:
-
-```html
-decoding="async"
+```text
+median LCP = 3,676 ms
+median score = 74
+median transfer = 1,061,852 B
 ```
 
-to:
+Delta:
 
-```html
-decoding="sync"
+```text
+LCP = +24 ms / +0.65%
+score = 0
+transfer = +50 B / effectively unchanged
+target <=2,500 ms = FAIL
 ```
 
-Preserve:
+## LCP-path finding
 
-- exact hero URL and bytes;
-- width/height attributes;
-- `fetchpriority="high"`;
-- no explicit hero preload;
-- Azure and S3 preconnects;
-- all below-fold media behavior;
-- Search, Form 46, Measurement, Consent, CTA/WhatsApp, schema, accessibility and commercial content.
+Representative run 2 recorded:
 
-The existing Slice 01 media validator is narrowed to its proper concern—source, intrinsic dimensions and fetch priority—so decode strategy can be tested independently without weakening the media-source contract.
+```text
+TTFB ~= 51.9 ms
+resource load delay ~= 28.6 ms
+resource load duration ~= 174.6 ms
+element render delay ~= 225.8 ms
+```
 
-## Validation
+Lighthouse confirmed:
 
-After exact-head repository gates and exact Production deployment, run the same Lighthouse 13.5.0 mobile 393x852 simulated-throttling five-run battery.
+- the LCP request is discoverable in the initial document;
+- `fetchpriority=high` is applied;
+- the LCP image is eagerly loaded;
+- the image-delivery audit did not identify the hero as a material remaining image-waste item.
 
-Primary comparison: adjacent clean control median `3,676 ms`.
+The page still shows more meaningful optimization signals in render-blocking CSS and JavaScript/main-thread work than in hero decode policy.
 
-Retain only if the candidate is non-regressive and materially useful. Otherwise restore `decoding="async"`.
+## Decision
+
+Synchronous decode is rejected as neutral/non-useful under the governed A/B method. Restore `decoding="async"`.
+
+The Slice 01 media validator remains decoupled from decode policy because its proper invariant is the selected source, intrinsic dimensions, non-lazy behavior and high fetch priority—not a specific experimental decode strategy.
+
+M5-10 remains active. The `<=2,500 ms` LCP target remains unmet.
