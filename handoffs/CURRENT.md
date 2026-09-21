@@ -1,23 +1,25 @@
 # Handoff Atual — MoreNumTegra
 
-Atualizado em `2026-09-21`.
+Atualizado em 2026-09-21.
 
-```text
 CANONICAL_REPOSITORY = wagnerjfjunior/MoreNumTegra
 CANONICAL_BRANCH = main
 
-EFFECTIVE_PRODUCTION_RUNTIME_SHA = 6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8
-PRODUCTION_DEPLOYMENT = dpl_AWHaTzE4UrJQaZ3LnKqhEMd8wsBs
+EFFECTIVE_PRODUCTION_RUNTIME_SHA = f4bb33e42f746682578f3404011daaa64e485e90
+PRODUCTION_DEPLOYMENT = dpl_jm8WcAjoVFxEydxdn2XiSsf222dP
 PRODUCTION_STATE = READY
 
 MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
-MNT-M5-10 = ACTIVE / SLICE_01_AUTHORIZED / ELO_DUO_TWO_IMAGE_TRIAL
-```
+MNT-M5-10 = ACTIVE / SLICE_01_MEASURED / ROLLBACK_APPLIED / NEXT_DECISION_REQUIRED
 
-Authorization/evidence:
-`docs/performance/MNT_M5_10_ELO_DUO_GREEN_MEDIA_SLICE01_2026-09-21.md`
+Canonical evidence:
+docs/performance/MNT_M5_10_ELO_DUO_COMPACT_SOURCE_COMPARISON_2026-09-21.md
 
-Media probe:
-`35606609562 / SUCCESS`
+Result:
+- raw-source Green complex asset = 83,076 B;
+- compact-source Green complex asset = 106,720 B;
+- manual pre-compression did not improve the delivered asset;
+- rollback to the smaller asset is live;
+- LCP lab runs show material variability, so no causal LCP claim is assigned to this below-fold image.
 
-Next safe action: implement only the two authorized Elo Duo Green media replacements, validate, merge, measure Production, and stop before any additional M5-10 slice.
+Next safe action: stop before any additional M5-10 slice and obtain Product Authority decision for the next remediation.
