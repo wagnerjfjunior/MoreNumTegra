@@ -7,7 +7,7 @@ const payload=JSON.parse(fs.readFileSync(dataPath,"utf8"));
 const commercial=payload?.projects?.["caminhos-da-lapa-elo-duo"];
 
 function assert(ok,msg){if(!ok){console.error("FAIL:",msg);process.exitCode=1}else console.log("PASS:",msg)}
-const brl=new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL",maximumFractionDigits:0}).format(Number(commercial?.price)).replace(/\\u00a0/g," ");
+const brl=`R$ ${Number(commercial?.price).toLocaleString("pt-BR",{maximumFractionDigits:0})}`;
 
 assert(!html.includes('<script src="/src-greenn/project-page.js" defer></script>'),"direct parser-time deferred commercial script is absent");
 assert(html.includes('window.addEventListener("load",load,{once:true})'),"commercial script waits for window load");
