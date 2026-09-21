@@ -122,3 +122,5 @@ if(repBlocked){
   console.log("REP_BLOCKED_UNUSED_JS "+JSON.stringify(repBlocked.unused_js).slice(0,9000));
   console.log("REP_BLOCKED_LCP_BREAKDOWN "+JSON.stringify(repBlocked.lcp_breakdown).slice(0,6000));
 }
+
+// trigger after workflow registration
