@@ -1,0 +1,48 @@
+name: M5-07 Lead semantics
+
+on:
+  pull_request:
+    paths:
+      - "src-greenn/preview/runtime.js"
+      - "src-greenn/preview/thank-you-measurement.js"
+      - "src-greenn/preview/measurement-core.js"
+      - "src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html"
+      - "src-greenn/empreendimentos/aria-higienopolis/index.html"
+      - "docs/measurement/MNT_M2_03_CANONICAL_EVENT_TAXONOMY_V1_2026-09-10.md"
+      - "docs/measurement/MNT_M2_04_PRIMARY_SECONDARY_CONVERSIONS_V1_2026-09-10.md"
+      - "docs/measurement/MNT_M2_09_FORM46_THANK_YOU_LEAD_CONTRACT_2026-09-12.md"
+      - "scripts/validate-m5-07-lead-semantics.mjs"
+      - ".github/diagnostics/m5-07-lead-semantics-smoke.mjs"
+      - ".github/workflows/m5-07-lead-semantics.yml"
+  push:
+    branches: [main]
+    paths:
+      - "src-greenn/preview/runtime.js"
+      - "src-greenn/preview/thank-you-measurement.js"
+      - "src-greenn/preview/measurement-core.js"
+      - "src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html"
+      - "src-greenn/empreendimentos/aria-higienopolis/index.html"
+      - "scripts/validate-m5-07-lead-semantics.mjs"
+      - ".github/diagnostics/m5-07-lead-semantics-smoke.mjs"
+      - ".github/workflows/m5-07-lead-semantics.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Static M5-07 contract
+        run: node scripts/validate-m5-07-lead-semantics.mjs
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium firefox webkit
+      - name: Candidate semantic and lead-context smoke
+        run: node .github/diagnostics/m5-07-lead-semantics-smoke.mjs
