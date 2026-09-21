@@ -7,8 +7,8 @@ Fonte canônica: GitHub `main`. Resolver estado live antes de qualquer mutação
 ## 1. Estado integrado
 
 ```text
-CANONICAL_MAIN_RUNTIME = be7f229ea04cf4050c40c471e21f262f4cfc845d
-PRODUCTION_DEPLOYMENT = dpl_CZEKd9SmbVTx6T2L7y4rFkTRdQhP
+CANONICAL_MAIN_RUNTIME = 6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8
+PRODUCTION_DEPLOYMENT = dpl_AWHaTzE4UrJQaZ3LnKqhEMd8wsBs
 PRODUCTION_STATE = READY
 
 MNT-M5 = ACTIVE
@@ -18,8 +18,8 @@ MNT-M5-03 = COMPLETE / STRATEGY_ESTABLISHED / NO_RUNTIME_MUTATION
 MNT-M5-04 = COMPLETE / PRODUCTION_REGRESSION_PASS / PHYSICAL_DEVICE_NOT_OBSERVED
 MNT-M5-05 = COMPLETE / ARCHITECTURE_CANONICALIZED / NO_RUNTIME_MUTATION
 MNT-M5-06 = COMPLETE / PRODUCTION_JOURNEY_PASS / SEARCH_VARIANT_PRESERVED
-MNT-M5-07 = ACTIVE / DECISION_APPROVED / IMPLEMENTATION_AUTHORIZED
-MNT-M5-08 = PLANNED / BLOCKED_BY_M5_07_IMPLEMENTATION_AND_ACCEPTANCE
+MNT-M5-07 = ACTIVE / SOURCE_PRODUCTION_PASS / GTM_PREVIEW_PASS / GTM_PUBLISH_REQUIRED
+MNT-M5-08 = PLANNED / BLOCKED_BY_M5_07_PUBLISH_AND_PRODUCTION_VERIFICATION
 MNT-M5-10 = PLANNED_NOT_AUTHORIZED
 
 FORECAST_TOTAL_HOURS = 1240
@@ -84,7 +84,7 @@ PRODUCTION_STATE = READY
 Status:
 
 ```text
-MNT-M5-07 = ACTIVE / DECISION_APPROVED / IMPLEMENTATION_AUTHORIZED
+MNT-M5-07 = ACTIVE / SOURCE_PRODUCTION_PASS / GTM_PREVIEW_PASS / GTM_PUBLISH_REQUIRED
 ```
 
 Canonical decision packet:
@@ -103,3 +103,12 @@ Product Authority approved on 2026-09-21:
 Progress remains `848 / 1240h = 68.39%` until M5-07 implementation and acceptance are complete.
 
 MNT-M5-08 is blocked by M5-07 implementation/acceptance. MNT-M5-10 remains explicitly not authorized.
+
+## 6. M5-07 GTM Preview validation
+
+Evidence: `docs/conversion/MNT_M5_07_GTM_PREVIEW_VALIDATION_2026-09-21.md`
+
+- runtime PR #194 merged;
+- Production semantics run `35596887663` = SUCCESS;
+- GTM Preview proves `mnt_lead_success -> generate_lead` carries `project_name` and `offer_name` to `G-57M2XR0CY2`;
+- uploaded GTM state is `QUICK_PREVIEW`, therefore publication is still required before acceptance.
