@@ -1,29 +1,23 @@
 # Próxima Ação Segura — MoreNumTegra
 
-Atualizado em `2026-09-21`.
+Atualizado em 2026-09-21.
 
-```text
 MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
-MNT-M5-10 = ACTIVE / SLICE_01_AUTHORIZED / ELO_DUO_TWO_IMAGE_TRIAL
+MNT-M5-10 = ACTIVE / SLICE_01_MEASURED / ROLLBACK_APPLIED / NEXT_DECISION_REQUIRED
 
-MAIN = 02f1a5caf792ee5f527c125c8f3e52a1db05df5c
-EFFECTIVE_PRODUCTION_RUNTIME_SHA = 6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8
-PRODUCTION_DEPLOYMENT = dpl_AWHaTzE4UrJQaZ3LnKqhEMd8wsBs
+MAIN_RUNTIME = f4bb33e42f746682578f3404011daaa64e485e90
+PRODUCTION_DEPLOYMENT = dpl_jm8WcAjoVFxEydxdn2XiSsf222dP
 PRODUCTION_STATE = READY
-MEDIA_PROBE_RUN = 35606609562 / SUCCESS
-```
 
-## Única próxima ação segura
+RAW_SOURCE_GREEN_COMPLEX = 83,076 B
+COMPACT_SOURCE_GREEN_COMPLEX = 106,720 B
 
-Implementar somente o slice 01 autorizado de M5-10 no Elo Duo:
+## Próximo gate
 
-- hero -> Green WebP da fachada;
-- Rua Jardim/complexo -> Green WebP do complexo;
-- atualizar dimensões intrínsecas para os arquivos reais;
-- preservar lazy loading da imagem abaixo da dobra;
-- preservar Search/Form46/Measurement/CTA/WhatsApp;
-- rodar checks exact-head;
-- merge;
-- medir Production com 3 runs mobile e comparar a mediana ao baseline M5-02.
+PARAR antes de qualquer novo slice M5-10.
 
-Parar antes de qualquer outro slice M5-10.
+O slice 01 demonstrou que a compressão manual do PNG antes do upload para Green não melhora o asset final neste caso; o WebP resultante ficou 28,5% maior. A versão menor foi restaurada em Production.
+
+Próxima decisão material: autorizar ou não uma nova slice focada no caminho crítico do hero/LCP do Elo Duo.
+
+Não iniciar Ária, CAPIITOLO ou nova alteração do hero sem autorização explícita.
