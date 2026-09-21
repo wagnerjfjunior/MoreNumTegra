@@ -19,7 +19,7 @@ assert(runtime.includes("project_name: PROJECT_NAME_OVERRIDES[offerName] || offe
 assert(runtime.includes("setPendingLead(form);"),"marker is written only after successful Form46 response path");
 
 assert(thankyou.includes('const LEAD_PENDING_KEY = "mnt.lead.pending.v2";'),"thank-you consumes v2 marker");
-assert(thankyou.includes('const LEGAACY_LEAD_PENDING_KEY = "mnt.lead.pending.v1";'),"thank-you preserves rollout compatibility with v1");
+assert(thankyou.includes('const LEGACY_LEAD_PENDING_KEY = "mnt.lead.pending.v1";'),"thank-you preserves rollout compatibility with v1");
 assert(thankyou.includes("if (leadContext === null) return false;"),"invalid/missing marker fails closed");
 assert(thankyou.includes("...leadContext"),"lead success carries controlled project context");
 assert(thankyou.includes("/[<>@\\r\\n]/"),"thank-you rejects obviously unsafe business-label input");
