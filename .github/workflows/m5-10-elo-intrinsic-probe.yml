@@ -1,0 +1,25 @@
+name: M5-10 Elo intrinsic media probe
+
+on:
+  push:
+    branches:
+      - "diag/m5-10-elo-hero-intrinsic-probe-20260921"
+    paths:
+      - ".github/diagnostics/m5-10-elo-intrinsic-probe.mjs"
+      - ".github/workflows/m5-10-elo-intrinsic-probe.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Probe exact Green media bytes and intrinsic dimensions
+        run: node .github/diagnostics/m5-10-elo-intrinsic-probe.mjs
