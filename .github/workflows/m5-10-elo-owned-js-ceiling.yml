@@ -1,0 +1,36 @@
+name: M5-10 Elo owned JS ceiling lab
+
+on:
+  push:
+    branches:
+      - "diag/m5-10-elo-owned-js-ceiling-20260921"
+    paths:
+      - ".github/diagnostics/m5-10-elo-owned-js-ceiling.mjs"
+      - ".github/workflows/m5-10-elo-owned-js-ceiling.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  measure:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install Lighthouse
+        run: npm install --no-save lighthouse@13.5.0
+      - name: Confirm Chrome
+        run: google-chrome --version || chromium --version || chromium-browser --version
+      - name: Run owned JavaScript ceiling matrix
+        run: node .github/diagnostics/m5-10-elo-owned-js-ceiling.mjs
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m5-10-elo-owned-js-ceiling
+          path: m5-10-elo-owned-js-ceiling/
+          if-no-files-found: error
