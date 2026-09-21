@@ -43,6 +43,13 @@ function onClick(e){
   const x=el(e.target);if(!x)return;
   const floating=x.closest("#mt-floating-dock a");
   if(floating){const c=selected();if(floating.matches(".mt-floating-lead"))intent("request_conditions","form","floating",c);else if(floating.matches(".mt-floating-whatsapp"))intent("whatsapp_contact","whatsapp","floating",c);return}
+  const projectFloating=x.closest(".mnt-contact-float,.mnt-whatsapp-float");
+  if(projectFloating&&exactProject()){
+    const c=selected();
+    if(projectFloating.matches(".mnt-contact-float"))intent("request_project_conditions","form","floating",c);
+    else intent("whatsapp_contact","whatsapp","floating",c);
+    return
+  }
   const r=x.closest(R);if(!r)return;
   const faq=x.closest(".mt-faq summary,#faq summary");
   if(faq&&r.contains(faq)){if(faq.closest("details")?.open!==true)section("faq","faq",faqItem(faq));return}
