@@ -20,13 +20,13 @@ MNT-M5-05 = COMPLETE / ARCHITECTURE_CANONICALIZED / NO_RUNTIME_MUTATION
 MNT-M5-06 = COMPLETE / PRODUCTION_JOURNEY_PASS / SEARCH_VARIANT_PRESERVED
 MNT-M5-07 = COMPLETE / PRODUCTION_GA4_PASS / GTM_VERSION_12_LIVE
 MNT-M5-08 = COMPLETE / CRM_HANDOFF_CONTRACT_CANONICALIZED / NO_RUNTIME_MUTATION
-MNT-M5-09 = AUTHORIZED / READY_TO_START
-MNT-M5-10 = PLANNED_NOT_AUTHORIZED
+MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
+MNT-M5-10 = PLANNED_NOT_AUTHORIZED / PRODUCT_AUTHORITY_DECISION_REQUIRED
 
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 880
-REMAINING_FORECAST_HOURS = 360
-ACCEPTED_PERCENT = 70.97
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 896
+REMAINING_FORECAST_HOURS = 344
+ACCEPTED_PERCENT = 72.26
 ```
 
 ## 2. M5-06 CTA/Form journey
@@ -140,3 +140,22 @@ Accepted boundary:
 - no runtime mutation required.
 
 M5-08 is COMPLETE. M5-09 is authorized to start.
+
+
+## 9. M5-09 Form/CTA conversion QA
+
+Canonical evidence:
+`docs/conversion/MNT_M5_09_FORM_CTA_CONVERSION_QA_2026-09-21.md`
+
+Run `35602579028` = SUCCESS.
+
+```text
+candidate lead/privacy = 36 PASS / 0 FAIL
+candidate + Production CTA/Form matrix = 42 PASS / 0 FAIL
+```
+
+No additional real Green lead was created by the diagnostic. Accepted M5-07/M5-08 real Green + GA4 evidence remained applicable because effective Production runtime is unchanged.
+
+M5-09 is COMPLETE.
+
+Next gate: M5-10 performance remediation remains explicitly not authorized and requires Product Authority decision.
