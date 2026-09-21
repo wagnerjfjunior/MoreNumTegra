@@ -19,13 +19,14 @@ MNT-M5-04 = COMPLETE / PRODUCTION_REGRESSION_PASS / PHYSICAL_DEVICE_NOT_OBSERVED
 MNT-M5-05 = COMPLETE / ARCHITECTURE_CANONICALIZED / NO_RUNTIME_MUTATION
 MNT-M5-06 = COMPLETE / PRODUCTION_JOURNEY_PASS / SEARCH_VARIANT_PRESERVED
 MNT-M5-07 = COMPLETE / PRODUCTION_GA4_PASS / GTM_VERSION_12_LIVE
-MNT-M5-08 = AUTHORIZED / READY_TO_START
+MNT-M5-08 = COMPLETE / CRM_HANDOFF_CONTRACT_CANONICALIZED / NO_RUNTIME_MUTATION
+MNT-M5-09 = AUTHORIZED / READY_TO_START
 MNT-M5-10 = PLANNED_NOT_AUTHORIZED
 
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 864
-REMAINING_FORECAST_HOURS = 376
-ACCEPTED_PERCENT = 69.68
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 880
+REMAINING_FORECAST_HOURS = 360
+ACCEPTED_PERCENT = 70.97
 ```
 
 ## 2. M5-06 CTA/Form journey
@@ -125,3 +126,17 @@ Final evidence confirms:
 - no PII or raw `texto-livre` was added to Measurement.
 
 M5-07 is COMPLETE and M5-08 is released under continuing Product Authority authorization.
+
+
+## 8. M5-08 Green/Form 46 CRM handoff
+
+Canonical contract:
+`docs/conversion/MNT_M5_08_GREEN_FORM46_CRM_HANDOFF_CONTRACT_2026-09-21.md`
+
+Accepted boundary:
+- frontend sends Form 46 contract fields plus controlled `texto-livre`;
+- real Green evidence proves project + commercial intent reach CRM;
+- tag and seller are Green downstream enrichment, not frontend-owned payload;
+- no runtime mutation required.
+
+M5-08 is COMPLETE. M5-09 is authorized to start.
