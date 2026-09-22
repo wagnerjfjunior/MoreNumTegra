@@ -1,5 +1,17 @@
 # MoreNumTegra — Commercial Data Plane v2
 
+## Supersession note — 2026-09-22
+
+The separation/fail-closed/public-read-vs-admin-write principles remain valid.
+
+The v2 single-commercial-record-per-project data shape is superseded for future implementation by:
+
+- `docs/architecture/MNT_COMMERCIAL_DATA_PLANE_V3.md`;
+- `docs/architecture/MNT_COMMERCIAL_DATA_SCHEMA_V3.schema.json`.
+
+Reason: current Home proves legitimate multi-offer projects and secondary commercial references.
+
+
 Status: `PROPOSED / DOCS-ONLY / NO_RUNTIME_MUTATION`
 Date: 2026-09-16
 Canonical repository: `wagnerjfjunior/MoreNumTegra`
