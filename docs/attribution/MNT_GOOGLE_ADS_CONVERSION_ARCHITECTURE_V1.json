@@ -1,0 +1,73 @@
+{
+  "schema_version": "morenumtegra.google-ads-conversion-architecture.v1",
+  "status": "CANONICAL_WHEN_MERGED",
+  "source": {
+    "project_event": "mnt_lead_success",
+    "ga4_event": "generate_lead",
+    "google_ads_source": "google_analytics"
+  },
+  "planned_conversion_action": {
+    "display_name": "MoreNumTegra | Lead Form 46 | GA4 generate_lead",
+    "category": "Submit lead form",
+    "business_goal": "Leads",
+    "external_conversion_action_id": null
+  },
+  "prerequisites": {
+    "ga4_ads_link_required": true,
+    "auto_tagging_required": true,
+    "click_id_survival_required": true,
+    "ga4_generate_lead_exists_required": true,
+    "ga4_key_event_state_live_verify_required": true,
+    "duplicate_semantic_conversion_inventory_required": true
+  },
+  "optimization": {
+    "initial": "secondary",
+    "promote_to_primary_requires": [
+      "MNT-M6-06_PASS",
+      "MNT-M6-08_PASS",
+      "EXPLICIT_PRODUCT_AUTHORITY_ACTIVATION"
+    ]
+  },
+  "counting": {
+    "method": "one"
+  },
+  "value": {
+    "enabled": false,
+    "property_price_forbidden": true,
+    "currency_required": false
+  },
+  "windows": {
+    "click_through_days": 30,
+    "engaged_view": "REVIEW_IF_NETWORK_SCOPE_REQUIRES",
+    "view_through": "REVIEW_IF_NETWORK_SCOPE_REQUIRES"
+  },
+  "attribution": {
+    "preferred_model": "data_driven_where_available",
+    "credit_channel_target": "google_paid_channels",
+    "paid_and_organic_live_setting": "STOP_FOR_MATERIAL_SETTINGS_DECISION",
+    "project_first_last_touch_separate": true
+  },
+  "dedupe": {
+    "architecture": "single_conversion_path",
+    "native_parallel_lead_tag": false,
+    "offline_parallel_import": false,
+    "mnt_event_id_as_ads_order_id": false
+  },
+  "enhanced_conversions": {
+    "authorized": false,
+    "hashed_pii_authorized": false,
+    "user_provided_data_authorized": false
+  },
+  "offline_conversions": {
+    "authorized": false,
+    "crm_click_id_transport_authorized": false,
+    "provider_stable_lead_id_proven": false
+  },
+  "qa": {
+    "real_lead_requires_explicit_bounded_authorization": true,
+    "no_unrelated_campaign_bidding": true
+  },
+  "runtime_mutation": "NONE",
+  "external_platform_mutation": "NONE",
+  "next_gate": "MNT-M6-04"
+}

@@ -261,3 +261,18 @@ PLANNED != AUTHORIZED
 - CRM attribution transport remains not authorized.
 - No Ads conversion action, account link, spend, offline import, enhanced conversions, GTM/GA4 mutation or Meta mutation is authorized.
 - MNT-M6-03 requires explicit Product Authority authorization.
+
+
+## M6-03 closure gate — 2026-09-22
+
+- MNT-M6-03 is COMPLETE / DESIGN_CANONICALIZED / NO_EXTERNAL_MUTATION.
+- V1 Google Ads conversion source is GA4 generate_lead from project semantic mnt_lead_success.
+- Initial action state is Secondary / observe only.
+- Count = One; conversion value is undefined; click window = 30 days.
+- No parallel native Google Ads lead tag is allowed in V1.
+- Enhanced conversions and offline conversion imports remain unauthorized.
+- CRM transport of click IDs remains unauthorized.
+- Existing Google Ads/GA4 live account/link/key-event/settings state must be resolved before any external implementation.
+- If an existing conversion already represents the same Form 46 lead semantic, implementation must STOP for duplicate adjudication.
+- MNT-M6-04 requires explicit Product Authority authorization.
+- No campaign creation, keyword upload, spend, conversion-action creation, GTM/GA4 mutation or external Ads mutation is authorized.
