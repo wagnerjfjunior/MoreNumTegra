@@ -304,3 +304,14 @@ PLANNED != AUTHORIZED
 - No hidden keyword text or keyword stuffing is authorized.
 - MNT-M6-06 requires explicit Product Authority authorization.
 - No Ads budget, spend, campaign creation, keyword upload, bid change, conversion-action creation or external Ads mutation is authorized.
+
+
+## M6-06 active monetary gate — 2026-09-22
+
+- Product Authority authorized M6-06 design execution.
+- The bounded budget/spend proposal is documented at `docs/attribution/MNT_M6_06_BUDGET_SPEND_AUTHORIZATION_GATE_2026-09-22.md`.
+- Current authorized Ads spend remains `R$ 0`.
+- Recommended but not yet authorized: R$ 1,500 total / 14 days / staged average daily budgets up to R$ 70/day / Maximize Clicks / R$ 10 max CPC bid limit.
+- No Google Ads campaign creation, keyword upload, conversion-action mutation, bid/budget mutation or spend is authorized before explicit monetary approval.
+- M6-07 remains NOT_AUTHORIZED.
+- Meta Pixel/Dataset/CAPI remains a separate explicit gate.
