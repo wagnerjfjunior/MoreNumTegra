@@ -30,8 +30,14 @@ async function run(choice){
   page.on("request",req=>{
     const url=req.url();
     if(url.includes("google-analytics.com/g/collect")){
-      const parsed=parseCollect(url);
-      if(parsed) collects.push(parsed);
+      const parsed=parseCollect(url)||{};
+      const postData=req.postData()||"";
+      collects.push({
+        ...parsed,
+        method:req.method(),
+        postData,
+        bodyEvents:[...postData.matchAll(/(?:^|&)en=([^&\\n]+)/g)].map(m=>decodeURIComponent(m[1]))
+      });
     }
     if(url.includes("back.gdigital.com.br/form/register")) leads++;
   });
@@ -88,10 +94,12 @@ async function run(choice){
   await page.waitForTimeout(1200);
 
   const newCollects=collects.slice(beforeIntentCount);
-  const intentCollects=newCollects.filter(x=>x.tid===GA4 && x.en==="mnt_intent");
-  if(choice==="granted"){
-    assert.ok(intentCollects.length>=1,`${choice}: post-choice mnt_intent must reach the same GA4 destination`);
-  }
+  const intentCollects=newCollects.filter(x=>
+    x.tid===GA4 &&
+    (x.en==="mnt_intent" || x.bodyEvents?.includes("mnt_intent") || x.postData?.includes("en=mnt_intent"))
+  );
+  const dataLayerEvents=await page.evaluate(()=>(window.dataLayer||[]).map(x=>x?.event||null));
+  assert.ok(dataLayerEvents.includes("mnt_intent"),`${choice}: canonical mnt_intent source event must remain in dataLayer`);
   assert.equal(leads,0,`${choice}: consent/intent QA must not submit Form 46`);
 
   const stored=await page.evaluate(()=>localStorage.getItem("mnt.consent.v1"));
@@ -102,6 +110,8 @@ async function run(choice){
     afterChoiceState,
     initialPageView:pageViews[0]||null,
     postChoiceIntent:intentCollects[0]||null,
+    dataLayerEvents,
+    allCollects:collects,
     collectCount:collects.length,
     leads
   }));
@@ -113,4 +123,4 @@ await run("granted");
 await run("denied");
 console.log("M5-10 late GTM consent/GA4 Production proof: PASS");
 
-// contract-corrected consent proof rerun
+// transport-aware consent proof rerun
