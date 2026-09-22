@@ -219,12 +219,12 @@ META NOT_PROVEN != META DOES_NOT_EXIST
 
 Performance targets retained: LCP <= 2.5s, INP <= 200ms, CLS <= 0.1.
 
-### MNT-M6 — Attribution & Paid Media Readiness — 128h — PLANNED
+### MNT-M6 — Attribution & Paid Media Readiness — 128h — ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
 
 | ID | Activity | Hours | State |
 |---|---|---:|---|
-| MNT-M6-01 | Attribution model and identifier boundaries | 16 | PLANNED |
-| MNT-M6-02 | UTM/source/medium/campaign contract | 8 | PLANNED |
+| MNT-M6-01 | Attribution model and identifier boundaries | 16 | COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION |
+| MNT-M6-02 | UTM/source/medium/campaign contract | 8 | PLANNED / NEXT / AUTHORIZATION_REQUIRED |
 | MNT-M6-03 | Google Ads conversion architecture | 16 | PLANNED |
 | MNT-M6-04 | SEM campaign/query contract | 24 | PLANNED |
 | MNT-M6-05 | Landing-page/query mapping | 16 | PLANNED |
@@ -268,7 +268,7 @@ MNT-M5 ACTIVE
   M5-10 COMPLETE / ACCEPTED / CANDIDATE1_RETAINED / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE
 ```
 
-M5-10 is accepted complete with Candidate 1 retained by Product Authority. The A/B remains performance-direction inconclusive while both candidate batteries meet the laboratory target. M5 is complete at 168h. Historical M2-10 is also reconciled as COMPLETE / ACCEPTED_WITH_V1_RESIDUAL without double counting. The next structural gate is MNT-M6-01.
+M5 is complete at 168h. M6-01 is complete as design-only attribution architecture: dual first/last eligible touch, separated event/campaign/click/lead/person namespaces, current www canonical-host precedence, no project user ID/fingerprinting, and no CRM attribution transport yet. The next gate is MNT-M6-02.
 
 Consumers must use `CURRENT_PROGRAM_STATE.json` for current lifecycle/progress and this WBS for structure/planning hours.
 
