@@ -215,7 +215,7 @@ META NOT_PROVEN != META DOES_NOT_EXIST
 | MNT-M5-07 | Lead semantics and lead-validity contract | 16 | COMPLETE / PRODUCTION_GA4_PASS / GTM_VERSION_12_LIVE |
 | MNT-M5-08 | Green/Form 46 CRM handoff contract | 16 | COMPLETE / CRM_HANDOFF_CONTRACT_CANONICALIZED / NO_RUNTIME_MUTATION |
 | MNT-M5-09 | Form/CTA conversion QA | 16 | COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION |
-| MNT-M5-10 | Authorized performance remediation | 24 | ACTIVE / SLICE_09_RETAINED / RESPONSIVE_MEDIA_STANDARD_ADOPTED / ELO_AND_ARIA_LAB_LCP_TARGET_MET / NEXT_SLICE_DECISION_REQUIRED |
+| MNT-M5-10 | Authorized performance remediation | 24 | ACTIVE / ARIA_HERO_CANDIDATE1_LIVE / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE / PRODUCT_DECISION_REQUIRED |
 
 Performance targets retained: LCP <= 2.5s, INP <= 200ms, CLS <= 0.1.
 
@@ -265,10 +265,10 @@ MNT-M5 ACTIVE
   M5-07 COMPLETE / PRODUCTION_GA4_PASS / GTM_VERSION_12_LIVE
   M5-08 COMPLETE / CRM_HANDOFF_CONTRACT_CANONICALIZED / NO_RUNTIME_MUTATION
   M5-09 COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
-  M5-10 ACTIVE / SLICE_09_RETAINED / RESPONSIVE_MEDIA_STANDARD_ADOPTED / ELO_AND_ARIA_LAB_LCP_TARGET_MET / NEXT_SLICE_DECISION_REQUIRED
+  M5-10 ACTIVE / ARIA_HERO_CANDIDATE1_LIVE / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE / PRODUCT_DECISION_REQUIRED
 ```
 
-M5-07 accepted: GTM version 12 is Live and GA4 generate_lead receives controlled project/offer context without PII. M5-10 Slice 09 is retained in Production; responsive media is cross-project validated on Elo Duo and Ária, with both pages meeting the current laboratory LCP target. The responsive media standard is adopted for new exact-project photographic media. No M5-10 task hours are accepted, and a new Product Authority decision is required before another runtime slice.
+M5-07 accepted: GTM version 12 is Live and GA4 generate_lead receives controlled project/offer context without PII. M5-10 Candidate 1 is live in Production after a bounded Ária hero A/B. Both candidate batteries meet the laboratory LCP target, but the two median deltas point in opposite directions and do not prove a speed win/loss. Product Authority must choose retain Candidate 1 or restore the prior hero. The rooftop-pool image remains untested. No M5-10 task hours are accepted.
 
 Consumers must use `CURRENT_PROGRAM_STATE.json` for current lifecycle/progress and this WBS for structure/planning hours.
 
