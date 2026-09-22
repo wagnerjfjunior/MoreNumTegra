@@ -765,16 +765,16 @@ Production state = READY
 
 The Home post-interest mount/gallery journey was restored without duplicating `#formulario`. Visible project cards now use natural project/location semantics and regular priced cards use `Preço a partir de`; commercial facts were not changed.
 
-Program progress:
+Historical progress immediately after M6-05/M6-06 closure:
 
 ```text
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 1008
-REMAINING_FORECAST_HOURS = 232
-ACCEPTED_PERCENT = 81.29
+ACCEPTED_SCOPE_EQUIVALENT_HOURS_AT_M6_CLOSURE = 1008
+REMAINING_FORECAST_HOURS_AT_M6_CLOSURE = 232
+ACCEPTED_PERCENT_AT_M6_CLOSURE = 81.29
 ```
 
-Paid-media continuation is frozen by Product Authority. The zero-spend GA4 audience runbook remains authorized.
+Current progress is resolved from section 1 / `CURRENT_PROGRAM_STATE.json`. Paid-media continuation remains frozen by Product Authority.
 
 
 ## 22. M6-06 — Budget / spend authorization gate
@@ -845,7 +845,7 @@ Product Authority approved the complete bounded Search policy and then froze pai
 ```text
 MNT-M6-06 = COMPLETE / BUDGET_SPEND_POLICY_AUTHORIZED / PAID_MEDIA_FROZEN
 accepted_hours = 8
-program_progress = 1008 / 1240h = 81.29%
+program_progress_at_M6_06_closure = 1008 / 1240h = 81.29%
 financial ceiling = R$ 1,000 / 30 days
 configured average daily total = R$ 32/day
 bidding = Maximize Clicks
