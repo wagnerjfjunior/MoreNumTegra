@@ -344,23 +344,47 @@ Future account `560-869-4042 / SWL Consultoria de imoveis` is user-designated bu
 Looker Studio is deferred by Product Authority and is not a current blocking action.
 
 
-## M7-02 Product Truth blockers — 2026-09-22
+## M7-02 Product Truth gate — CLOSED 2026-09-22
 
-RESF C15 release progression is blocked while either P1 remains open:
+The prior P1 Product Truth blockers were closed by direct Product Authority recertification of the current Home commercial state.
 
-- Home volatile commercial price/unit/promotion claims may not be treated as release-valid without release-time revalidation for the same commercial object.
-- ODE comparative `De R$ 2.200.000 por R$ 2.090.000` may not remain as an accepted release claim unless the older R$ 2.200.000 value is explicitly recertified; canonical M3-04 currently classifies it as not recertified/prohibited.
+Authority:
 
-Blocked:
+`docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md`
 
-- inventing replacement values;
-- treating disclaimer text as a substitute for Product Truth evidence;
-- marking M7-02 PASS with P1>0;
-- progressing to M7-03 as a way to bypass the material blocker;
-- changing commercial truth without Product Authority/current evidence.
+Re-adjudication:
 
-Allowed:
+`docs/qa/MNT_M7_02_PRODUCT_TRUTH_READJUDICATION_2026-09-22.md`
 
-- read-only evidence collection;
-- explicit commercial revalidation by Product Authority/source;
-- separately authorized fail-closed removal of unsupported claims.
+Current severity:
+
+```text
+P0 = 0
+P1 = 0
+P2 = 2
+P3 = 0
+```
+
+Do not reinterpret the older M7-02 P1 report as current blocking state.
+
+
+## Commercial Data Plane v3 gate — 2026-09-22
+
+Blocked until provider/publication-owner selection and proof:
+
+- migrating the Home consumer to an unproven remote source;
+- direct browser reads from FECH.AI internal operational tables;
+- exposing Supabase/service-role/provider secrets in browser code;
+- treating repository-local `src-greenn/data/commercial-values.json` as the final independent update medium;
+- changing current Home commercial values during architecture migration;
+- publishing a candidate snapshot as current without explicit publish authority;
+- provider adoption without versioning, rollback, audit and fail-closed proof.
+
+Allowed now:
+
+- provider-neutral schema/contract work;
+- candidate snapshot generation from the recertified Home;
+- read-only provider discovery;
+- projectId/offerId crosswalk and parity validation.
+
+Current Home commercial truth must remain preserved until separately changed by Product Authority.
