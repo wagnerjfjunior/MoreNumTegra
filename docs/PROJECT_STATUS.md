@@ -766,30 +766,30 @@ Program progress:
 
 ```text
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 1000
-REMAINING_FORECAST_HOURS = 240
-ACCEPTED_PERCENT = 80.65
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 1008
+REMAINING_FORECAST_HOURS = 232
+ACCEPTED_PERCENT = 81.29
 ```
 
-Next gate: `MNT-M6-06 — Budget/spend authorization gate — 8h / AUTHORIZATION_REQUIRED`.
+Paid-media continuation is frozen by Product Authority. The zero-spend GA4 audience runbook remains authorized.
 
 
 ## 22. M6-06 — Budget / spend authorization gate
 
-Canonical proposal:
+Canonical policy:
 
 `docs/attribution/MNT_M6_06_BUDGET_SPEND_AUTHORIZATION_GATE_2026-09-22.md`
 
 Status:
 
 ```text
-MNT-M6-06 = ACTIVE / DESIGN_PROPOSAL_READY / FINANCIAL_CEILING_AUTHORIZED / BID_STAGE_POLICY_PENDING
-AUTHORIZED_SPEND = R$ 0
+MNT-M6-06 = COMPLETE / BUDGET_SPEND_POLICY_AUTHORIZED / PAID_MEDIA_FROZEN
+AUTHORIZED_SPEND_NOW = R$ 0
 EXTERNAL_GOOGLE_ADS_MUTATIONS = 0
-ACCEPTED_HOURS = 0
+ACCEPTED_HOURS = 8
 ```
 
-Read-only provider evidence observed on 2026-09-22:
+Read-only provider evidence observed during design on 2026-09-22:
 
 - two connected Google Ads customer candidates exist, but the exact MoreNumTegra customer account is not adjudicated by M6-06;
 - the current read path returned zero campaign/metric rows for both candidates;
@@ -797,7 +797,7 @@ Read-only provider evidence observed on 2026-09-22:
 - measurable canonical seeds showed average CPC values from approximately R$ 3.72 to R$ 12.25;
 - the six canonical seed families with non-null average CPC had median ~= R$ 5.89 and mean ~= R$ 6.38.
 
-Recommended, not yet financially authorized:
+Final authorized future envelope:
 
 ```text
 financial ceiling = R$ 1,000
@@ -808,7 +808,7 @@ max CPC bid limit = R$ 10.00
 stages = Ária + Elo -> CAPIITOLO -> Portfolio
 ```
 
-Product Authority monetary approval is the only next safe action. No campaign creation, keyword upload, conversion-action mutation or spend is authorized while the approved financial ceiling remains R$ 0.
+Product Authority then froze paid media. Campaign creation, keyword upload, conversion-action mutation and spend remain deferred; manual GA4 audience accumulation is the authorized zero-spend continuation.
 
 
 M6-06 financial decision update:
