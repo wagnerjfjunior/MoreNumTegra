@@ -1,0 +1,47 @@
+name: M5-10 Aria access hero candidate 1
+on:
+  pull_request:
+    paths:
+      - "src-greenn/empreendimentos/aria-higienopolis/index.html"
+      - "assets/aria-higienopolis/candidate1/**"
+      - "scripts/validate-m5-10-aria-access-hero-candidate1.mjs"
+      - ".github/diagnostics/m5-10-aria-access-hero-candidate1-smoke.mjs"
+      - ".github/workflows/m5-10-aria-access-hero-candidate1.yml"
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Static candidate contract
+        run: node scripts/validate-m5-10-aria-access-hero-candidate1.mjs
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Start local route
+        run: |
+          python3 - <<'PY' >/tmp/aria-candidate1.log 2>&1 &
+          from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+          class Handler(SimpleHTTPRequestHandler):
+              def do_GET(self):
+                  route=self.path.split("?",1)[0]
+                  mapping={"/empreendimentos/aria-higienopolis/":"/src-greenn/empreendimentos/aria-higienopolis/index.html"}
+                  self.path=mapping.get(route,self.path)
+                  return super().do_GET()
+          ThreadingHTTPServer(("127.0.0.1",4173),Handler).serve_forever()
+          PY
+          sleep 1
+      - name: Browser smoke
+        run: node .github/diagnostics/m5-10-aria-access-hero-candidate1-smoke.mjs
+      - name: Preserve commercial contract
+        run: node scripts/validate-commercial-page-standard.mjs
+      - name: Preserve CTA/Form journey
+        run: node scripts/validate-m5-06-cta-form-journey.mjs
+      - name: Preserve lead semantics
+        run: node scripts/validate-m5-07-lead-semantics.mjs

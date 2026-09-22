@@ -5,8 +5,6 @@ let failed=false;
 const check=(ok,msg)=>{if(ok) console.log("PASS:",msg); else {console.error("FAIL:",msg);failed=true;}};
 
 const assets=[
-  ["assets/aria-higienopolis/hero-mobile-640.webp",70822,100*1024],
-  ["assets/aria-higienopolis/hero-mobile-714.webp",82846,100*1024],
   ["assets/aria-higienopolis/gallery1-mobile-640.webp",66072,120*1024],
   ["assets/aria-higienopolis/gallery1-mobile-828.webp",102838,120*1024],
   ["assets/aria-higienopolis/gallery1-thumb-240.webp",10474,30*1024]
@@ -19,14 +17,13 @@ for(const [path,bytes,budget] of assets){
     check(fs.statSync(path).size<=budget,path+" meets budget");
   }
 }
-check(!fs.existsSync("assets/aria-higienopolis/hero-mobile-828.webp"),"no upscaled 828w hero retained");
 check(!fs.existsSync("assets/aria-higienopolis/gallery1-mobile-1080.webp"),"over-budget unused 1080w gallery derivative removed");
 
-check(html.includes('/assets/aria-higienopolis/hero-mobile-640.webp 640w'),"Aria hero 640w declared");
-check(html.includes('/assets/aria-higienopolis/hero-mobile-714.webp 714w'),"Aria hero max native-width candidate declared");
-check(html.includes('media="(max-width:719px)"'),"mobile breakpoint preserved");
-check(html.includes('sizes="calc(100vw - 32px)"'),"mobile sizes contract declared");
-check(html.includes('fetchpriority="high" decoding="async"'),"hero remains high-priority direct HTML");
+const heroMatch=html.match(/<div class="mt-hero-media"><picture[\s\S]*?<source\s+media="\(max-width:719px\)"\s+type="image\/webp"\s+srcset="([^"]+)"\s+sizes="calc\(100vw - 32px\)"[\s\S]*?<img[^>]+fetchpriority="high"[^>]*>[\s\S]*?<\/picture><\/div>/);
+check(Boolean(heroMatch),"Aria hero preserves responsive picture contract");
+check(Boolean(heroMatch?.[1]?.includes("640w")),"Aria hero includes 640w mobile candidate");
+check(Boolean(heroMatch?.[1] && /\s\d+w(?:,|$)/.test(heroMatch[1])),"Aria hero declares width-descriptor srcset");
+check(!/mt-hero-media[\s\S]{0,1200}loading="lazy"/.test(html),"Aria hero remains non-lazy");
 check(!html.includes('rel="preload" as="image"'),"no new hero preload");
 
 check(html.includes('data-gallery-picture'),"first gallery main has picture wrapper");

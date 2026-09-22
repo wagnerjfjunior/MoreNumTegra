@@ -2,7 +2,6 @@ import assert from "node:assert/strict";
 import { chromium } from "playwright";
 
 const URL="http://127.0.0.1:4173/empreendimentos/aria-higienopolis/";
-const HERO_ORIG="ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada";
 const GALLERY1_ORIG="309b34e4-72f0-48d0-a8f8-1f8e94a90cbb";
 const GALLERY2_ORIG="71beba8c-baff-43aa-a782-9bbff8ad82e9";
 const PIXEL=Buffer.from("R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==","base64");
@@ -17,7 +16,6 @@ async function run(name,viewport,dpr,mobile){
     const u=req.url();
     if(
       u.includes("/assets/aria-higienopolis/") ||
-      u.includes(HERO_ORIG) ||
       u.includes(GALLERY1_ORIG) ||
       u.includes(GALLERY2_ORIG)
     ) seen.push(u);
@@ -39,12 +37,15 @@ async function run(name,viewport,dpr,mobile){
   const heroBox=await page.locator(".mt-hero-media").boundingBox();
   assert.ok(heroBox && Math.abs(heroBox.width/heroBox.height-1.15)<0.03,name+": hero box framing preserved");
 
-  const heroCurrent=await page.locator(".mt-hero-media img").evaluate(img=>img.currentSrc);
+  const hero=page.locator(".mt-hero-media img");
+  const heroCurrent=await hero.evaluate(img=>img.currentSrc);
+  const fallbackRaw=await hero.getAttribute("src");
+  const fallbackAbs=new globalThis.URL(fallbackRaw,URL).href;
   if(mobile){
-    assert.ok(heroCurrent.includes("/assets/aria-higienopolis/hero-mobile-"),name+": responsive mobile hero selected");
-    assert.equal(seen.some(u=>u.includes(HERO_ORIG)),false,name+": original 221KB hero not requested mobile");
+    assert.ok(heroCurrent.includes("/assets/aria-higienopolis/"),name+": responsive repository-owned mobile hero selected");
+    assert.notEqual(decodeURIComponent(heroCurrent),decodeURIComponent(fallbackAbs),name+": mobile hero differs from external fallback");
   }else{
-    assert.ok(heroCurrent.includes(HERO_ORIG),name+": desktop keeps Azure hero");
+    assert.equal(decodeURIComponent(heroCurrent),decodeURIComponent(fallbackAbs),name+": desktop keeps governed external hero fallback");
   }
 
   await page.locator("[data-aria-gallery]").scrollIntoViewIfNeeded();
@@ -74,7 +75,7 @@ async function run(name,viewport,dpr,mobile){
   console.log("PASS:",name,JSON.stringify({
     heroCurrent,
     galleryCurrent:await main.evaluate(img=>img.currentSrc),
-    targetRequests:seen.filter(u=>u.includes("/assets/aria-higienopolis/")||u.includes(HERO_ORIG)||u.includes(GALLERY1_ORIG)||u.includes(GALLERY2_ORIG))
+    targetRequests:seen.filter(u=>u.includes("/assets/aria-higienopolis/")||u.includes(GALLERY1_ORIG)||u.includes(GALLERY2_ORIG))
   }));
   await browser.close();
 }
