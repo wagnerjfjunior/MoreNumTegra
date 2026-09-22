@@ -77,7 +77,7 @@ Canonical manual runbook:
 
 `docs/attribution/MNT_GA4_AUDIENCE_MANUAL_RUNBOOK_V1_2026-09-22.md`
 
-Current GA4 connector is read-only; live audience creation remains manual / NOT_YET_PROVEN.
+Current GA4 connector is read-only. Manual audience creation is COMPLETE / SCREENSHOT_OBSERVED. Evidence: `docs/attribution/MNT_GA4_AUDIENCE_MANUAL_COMPLETION_2026-09-22.md`.
 
 ## Looker Studio
 
@@ -87,4 +87,4 @@ Connection/dashboard work is explicitly deferred.
 
 Read `docs/NEXT_SAFE_ACTION.md`.
 
-Without reopening paid media, the next safe operational action is manual GA4 audience creation and live verification. M6-07 external Google Ads implementation requires a new explicit Product Authority decision.
+Manual GA4 audience creation is complete. Paid media remains frozen; M6-07 external Google Ads implementation requires a new explicit Product Authority decision.
