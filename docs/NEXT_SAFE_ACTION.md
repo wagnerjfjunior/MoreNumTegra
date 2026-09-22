@@ -3,51 +3,36 @@
 Atualizado em `2026-09-22`.
 
 ```text
-MNT-M5-10 = ACTIVE / SLICE_09_RETAINED / RESPONSIVE_MEDIA_STANDARD_ADOPTED / ELO_AND_ARIA_LAB_LCP_TARGET_MET / NEXT_SLICE_DECISION_REQUIRED
-
-LATEST_RUNTIME_SHA = ac7958db2f2f4cd3d3bfccf4b6e9592f81a5d739
-PRODUCTION_SOURCE_SHA = ac7958db2f2f4cd3d3bfccf4b6e9592f81a5d739
-PRODUCTION_DEPLOYMENT = dpl_6bepVcnUTT9hDhgkHbQsAdtkoE8T
+MNT-M5-10 = ACTIVE / ARIA_CANDIDATE1_LIVE / PERFORMANCE_INCONCLUSIVE / LCP_TARGET_PASS / SECOND_IMAGE_DECISION_REQUIRED
+LATEST_RUNTIME_SHA = 5a0df7b6757930bf34664d04d66b9a41e841f577
+PRODUCTION_SOURCE_SHA = 5a0df7b6757930bf34664d04d66b9a41e841f577
+PRODUCTION_DEPLOYMENT = dpl_AmvdNUQdqA6URbcL8JaWfJyPLmPc
 PRODUCTION_STATE = READY
 ```
 
-## Encerramento da Slice 09
-
-Ária responsive-media delivery is retained.
+## Candidate 1 result
 
 ```text
-baseline LCP = 5,621 ms
-attempt 1 median = 1,906 ms / -66.09%
-attempt 2 median = 1,442 ms / -74.35%
-transfer reduction ~= 39.5%
-target <=2,500 ms = PASS / REPLICATED
+control LCP = 1,853 ms
+candidate attempt 1 = 2,149 ms
+candidate attempt 2 = 1,464 ms
+candidate target <=2,500 ms = PASS / PASS
+performance winner = NOT_DETERMINED
+hero payload delta ~= +16.5 KB
 ```
 
-Cross-project standard is adopted:
+Candidate 1 is live as a visual/commercial candidate. No performance-win claim is supported.
 
-`docs/performance/RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1.md`
-
-The standard governs new exact-project photographic media by default, but does not authorize automatic rewrites of existing pages.
+The rooftop-pool candidate remains untested.
 
 ## Única próxima ação segura
 
-**PARAR antes de nova mutação de runtime.**
+**PARAR antes de segunda imagem, carousel ou rotação.**
 
-The next candidate in the M5-03 sequence is CAPIITOLO hero + large below-the-fold images.
+Product Authority must explicitly select one of the following bounded actions:
 
-CAPIITOLO is a special case:
+1. retain Candidate 1 as the single Ária hero;
+2. restore the prior Ária hero;
+3. authorize a separate one-image rooftop-pool hero test using the same baseline/Production methodology.
 
-- near-full-viewport hero;
-- stronger art-direction need;
-- legacy bootstrap/experiment containment;
-- existing mobile video suppression to preserve.
-
-Therefore any CAPIITOLO remediation requires its own explicit Product Authority authorization and bounded exact-head/Production QA.
-
-Before any next execution:
-
-1. resolve `main` live;
-2. resolve Vercel Production live;
-3. read this file and the current handoff;
-4. read the responsive-media standard;
-5. confirm the exact next slice authorized by Product Authority.
+No other runtime mutation is authorized by this result.
