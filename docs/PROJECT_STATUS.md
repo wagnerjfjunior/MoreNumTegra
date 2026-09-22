@@ -12,9 +12,9 @@ PRODUCTION_DEPLOYMENT = dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C
 PRODUCTION_STATE = READY
 
 MNT-M5 = COMPLETE / ACCEPTED
-MNT-M6 = ACTIVE / M6-06_FINANCIAL_CEILING_AUTHORIZED / BID_STAGE_POLICY_PENDING
+MNT-M6 = ACTIVE / PAID_MEDIA_FROZEN / M6-07_DEFERRED
 MNT-M6-01 = COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION
-MNT-M6-06 = ACTIVE / DESIGN_PROPOSAL_READY / FINANCIAL_CEILING_AUTHORIZED / BID_STAGE_POLICY_PENDING
+MNT-M6-06 = COMPLETE / BUDGET_SPEND_POLICY_AUTHORIZED / PAID_MEDIA_FROZEN
 MNT-M5-01 = COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS
 MNT-M5-02 = COMPLETE / LAB_BASELINE_ESTABLISHED / FIELD_CWV_NOT_OBSERVED
 MNT-M5-03 = COMPLETE / STRATEGY_ESTABLISHED / NO_RUNTIME_MUTATION
@@ -27,9 +27,9 @@ MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
 MNT-M5-10 = COMPLETE / ACCEPTED / CANDIDATE1_RETAINED / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE
 
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 1000
-REMAINING_FORECAST_HOURS = 240
-ACCEPTED_PERCENT = 80.65
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 1008
+REMAINING_FORECAST_HOURS = 232
+ACCEPTED_PERCENT = 81.29
 ```
 
 ## 2. M5-06 CTA/Form journey
@@ -833,3 +833,46 @@ GA4_ADMIN_WRITE_CAPABILITY_CURRENT_RUNTIME = NOT_EXPOSED
 
 Canonical contract:
 `docs/attribution/MNT_M6_AUDIENCE_ACCUMULATION_CONTRACT_V1_2026-09-22.md`
+
+
+## M6-06 final closure / paid-media freeze
+
+Product Authority approved the complete bounded Search policy and then froze paid media.
+
+```text
+MNT-M6-06 = COMPLETE / BUDGET_SPEND_POLICY_AUTHORIZED / PAID_MEDIA_FROZEN
+accepted_hours = 8
+program_progress = 1008 / 1240h = 81.29%
+financial ceiling = R$ 1,000 / 30 days
+configured average daily total = R$ 32/day
+bidding = Maximize Clicks
+max CPC = R$ 10
+geo = São Paulo city
+language = Portuguese
+Search Partners = OFF initially
+Display expansion = OFF
+Broad = NOT_AUTHORIZED
+AI Max = NOT_AUTHORIZED
+current paid spend = R$ 0
+external Google Ads mutations = 0
+```
+
+Future M6-07 preflight target designated by Product Authority:
+
+```text
+customer_id = 560-869-4042
+display_name = SWL Consultoria de imoveis
+state = USER_DESIGNATED_TARGET / NOT_YET_PREFLIGHT_VALIDATED
+```
+
+A user-provided screenshot showed overdue balance and ads not serving. Remediation is deferred while paid media is frozen.
+
+GA4 audience accumulation remains authorized with zero spend. Because the connected GA4 integration exposes no write actions, creation is manual using:
+
+`docs/attribution/MNT_GA4_AUDIENCE_MANUAL_RUNBOOK_V1_2026-09-22.md`
+
+Looker Studio connection/dashboard is deferred.
+
+Canonical closure handoff:
+
+`handoffs/HANDOFF-2026-09-22-M6-06-COMPLETE-PAID-MEDIA-FROZEN.md`
