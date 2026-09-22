@@ -7,8 +7,8 @@ Fonte canônica: GitHub `main`. Resolver estado live antes de qualquer mutação
 ## 1. Estado integrado
 
 ```text
-CANONICAL_MAIN_RUNTIME = 8d99996edddd66a59835992da161edbbb3579ad0
-PRODUCTION_DEPLOYMENT = dpl_6BP6WssMhisgJMdy91TbFSLyFVXX
+CANONICAL_MAIN_RUNTIME = 90745255775129638b3d8f061ab067d8ecc1c425
+PRODUCTION_DEPLOYMENT = dpl_6Dw473nRdfcCgAiEBQGAk5Uer6QL
 PRODUCTION_STATE = READY
 
 MNT-M5 = ACTIVE
@@ -21,7 +21,7 @@ MNT-M5-06 = COMPLETE / PRODUCTION_JOURNEY_PASS / SEARCH_VARIANT_PRESERVED
 MNT-M5-07 = COMPLETE / PRODUCTION_GA4_PASS / GTM_VERSION_12_LIVE
 MNT-M5-08 = COMPLETE / CRM_HANDOFF_CONTRACT_CANONICALIZED / NO_RUNTIME_MUTATION
 MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
-MNT-M5-10 = ACTIVE / SLICE_07_RETAINED / NEXT_SLICE_DECISION_REQUIRED
+MNT-M5-10 = ACTIVE / SLICE_08_RETAINED / ELO_LAB_LCP_TARGET_MET / NEXT_SLICE_DECISION_REQUIRED
 
 FORECAST_TOTAL_HOURS = 1240
 ACCEPTED_SCOPE_EQUIVALENT_HOURS = 896
@@ -75,8 +75,8 @@ No alias/duplicate route was introduced and the canonical remains:
 
 ```text
 CANONICAL_HOST = https://www.moretegra.com.br/
-PRODUCTION_SOURCE_SHA = 8d99996edddd66a59835992da161edbbb3579ad0
-PRODUCTION_DEPLOYMENT = dpl_6BP6WssMhisgJMdy91TbFSLyFVXX
+PRODUCTION_SOURCE_SHA = 90745255775129638b3d8f061ab067d8ecc1c425
+PRODUCTION_DEPLOYMENT = dpl_6Dw473nRdfcCgAiEBQGAk5Uer6QL
 PRODUCTION_STATE = READY
 ```
 
@@ -252,3 +252,54 @@ delta = -397 ms / -10.80%
 The performance gain is material and Slice 07 is retained. The project target `LCP <= 2,500 ms` remains unmet.
 
 No M5-10 task hours are accepted from Slice 07 alone. The next runtime slice requires a new Product Authority decision.
+
+
+## 13. M5-10 Elo Duo Slice 08 — responsive hero retained
+
+Canonical evidence:
+
+`docs/performance/MNT_M5_10_ELO_DUO_RESPONSIVE_HERO_SLICE08_2026-09-22.md`
+
+Runtime:
+
+```text
+PR = #219 / MERGED
+SHA = 90745255775129638b3d8f061ab067d8ecc1c425
+DEPLOYMENT = dpl_6Dw473nRdfcCgAiEBQGAk5Uer6QL
+STATE = READY
+```
+
+Retained mobile delivery:
+
+```text
+640x557 WebP = 52,278 B
+828x720 WebP = 72,376 B
+393x852 DPR2.75 selected = 828w
+desktop fallback = original Green/S3 hero
+```
+
+Production QA run `35740314881` = SUCCESS.
+
+Five-run medians:
+
+```text
+LCP = 2,383 ms
+score = 92
+CLS = 0.0325
+TBT = 248 ms
+hero transfer ~= 72.6 KB
+total transfer = 974,092 B
+```
+
+Delta vs retained Slice 07:
+
+```text
+LCP 3,279 -> 2,383 ms
+delta = -896 ms / -27.33%
+score 84 -> 92
+transfer delta = -88,516 B
+```
+
+Elo Duo now meets the current laboratory target `LCP <= 2,500 ms`.
+
+No M5-10 task hours are accepted from Slice 08 alone. The next runtime slice requires a new Product Authority decision.

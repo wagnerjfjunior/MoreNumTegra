@@ -215,7 +215,7 @@ META NOT_PROVEN != META DOES_NOT_EXIST
 | MNT-M5-07 | Lead semantics and lead-validity contract | 16 | COMPLETE / PRODUCTION_GA4_PASS / GTM_VERSION_12_LIVE |
 | MNT-M5-08 | Green/Form 46 CRM handoff contract | 16 | COMPLETE / CRM_HANDOFF_CONTRACT_CANONICALIZED / NO_RUNTIME_MUTATION |
 | MNT-M5-09 | Form/CTA conversion QA | 16 | COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION |
-| MNT-M5-10 | Authorized performance remediation | 24 | ACTIVE / SLICE_07_RETAINED / NEXT_SLICE_DECISION_REQUIRED |
+| MNT-M5-10 | Authorized performance remediation | 24 | ACTIVE / SLICE_08_RETAINED / ELO_LAB_LCP_TARGET_MET / NEXT_SLICE_DECISION_REQUIRED |
 
 Performance targets retained: LCP <= 2.5s, INP <= 200ms, CLS <= 0.1.
 
@@ -265,10 +265,10 @@ MNT-M5 ACTIVE
   M5-07 COMPLETE / PRODUCTION_GA4_PASS / GTM_VERSION_12_LIVE
   M5-08 COMPLETE / CRM_HANDOFF_CONTRACT_CANONICALIZED / NO_RUNTIME_MUTATION
   M5-09 COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
-  M5-10 ACTIVE / SLICE_07_RETAINED / NEXT_SLICE_DECISION_REQUIRED
+  M5-10 ACTIVE / SLICE_08_RETAINED / ELO_LAB_LCP_TARGET_MET / NEXT_SLICE_DECISION_REQUIRED
 ```
 
-M5-07 accepted: GTM version 12 is Live and GA4 generate_lead receives controlled project/offer context without PII. M5-10 Slice 07 is retained in Production with late GTM network bootstrap, no M5-10 task hours accepted, and a new Product Authority decision required before another runtime slice.
+M5-07 accepted: GTM version 12 is Live and GA4 generate_lead receives controlled project/offer context without PII. M5-10 Slice 08 is retained in Production; Elo Duo now meets the current laboratory LCP target at 2,383 ms. No M5-10 task hours are accepted, and a new Product Authority decision is required before another runtime slice.
 
 Consumers must use `CURRENT_PROGRAM_STATE.json` for current lifecycle/progress and this WBS for structure/planning hours.
 

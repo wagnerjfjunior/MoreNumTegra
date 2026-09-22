@@ -185,3 +185,13 @@ PLANNED != AUTHORIZED
 - No direct project `gtag()`, second GTM container, duplicate GA4 destination, or change to `mnt_lead_success -> generate_lead` is authorized.
 - No M5-10 task hours are accepted merely from Slice 07.
 - Product Authority must explicitly choose the next bounded M5-10 slice.
+
+
+## M5-10 post-Slice-08 gate — 2026-09-22
+
+- Slice 08 responsive Elo hero is retained and Production-validated at runtime SHA `90745255775129638b3d8f061ab067d8ecc1c425`.
+- Elo Duo current five-run lab median LCP is `2,383 ms`, therefore the current `<=2,500 ms` lab target is met.
+- This result does **not** authorize another Elo mutation, Ária optimization, CAPIITOLO optimization, GTM/GA4 change, Form 46 change, or any other runtime slice.
+- The retained mobile derivatives are small essential assets; the large source remains external.
+- No M5-10 task hours are accepted merely from Slice 08.
+- Product Authority must explicitly select the next bounded M5-10 slice.
