@@ -228,7 +228,7 @@ Performance targets retained: LCP <= 2.5s, INP <= 200ms, CLS <= 0.1.
 | MNT-M6-03 | Google Ads conversion architecture | 16 | COMPLETE / DESIGN_CANONICALIZED / NO_EXTERNAL_MUTATION |
 | MNT-M6-04 | SEM campaign/query contract | 24 | COMPLETE / DESIGN_CANONICALIZED / INTERNAL_REGISTRY_ONLY / NO_EXTERNAL_MUTATION |
 | MNT-M6-05 | Landing-page/query mapping | 16 | COMPLETE / LANDING_QUERY_MAP_ACCEPTED / RUNTIME_REGRESSION_FIXED |
-| MNT-M6-06 | Budget/spend authorization gate | 8 | ACTIVE / DESIGN_PROPOSAL_READY / MONETARY_AUTHORITY_REQUIRED |
+| MNT-M6-06 | Budget/spend authorization gate | 8 | ACTIVE / DESIGN_PROPOSAL_READY / FINANCIAL_CEILING_AUTHORIZED / BID_STAGE_POLICY_PENDING |
 | MNT-M6-07 | Authorized external platform implementation | 24 | PLANNED_NOT_AUTHORIZED |
 | MNT-M6-08 | Paid conversion QA | 16 | PLANNED |
 
