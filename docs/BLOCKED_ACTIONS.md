@@ -317,3 +317,5 @@ PLANNED != AUTHORIZED
 - Meta Pixel/Dataset/CAPI remains a separate explicit gate.
 
 - 2026-09-22 Product Authority set the Google Ads pilot financial ceiling to R$ 1,000 for 30 days. External spend remains R$ 0 until M6-07 authorization and implementation.
+
+- GA4 audience accumulation is explicitly authorized by Product Authority; this exception does not authorize remarketing campaigns/spend, Customer Match, CRM/PII uploads, Meta audiences or any consent bypass.
