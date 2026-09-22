@@ -1,0 +1,43 @@
+name: M5-10 Aria current baseline
+on:
+  push:
+    branches:
+      - "diag/m5-10-aria-baseline-20260922"
+    paths:
+      - ".github/diagnostics/m5-10-aria-current-baseline.mjs"
+      - ".github/diagnostics/m5-10-aria-current-smoke.mjs"
+      - ".github/workflows/m5-10-aria-current-baseline.yml"
+permissions:
+  contents: read
+jobs:
+  baseline:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Record current Azure asset bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/312/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Apartamento-Studio-Salas-Comerciais-Aria-Higienopolis-Sao-Paulo-SP-1715881825537.jpg" -o /tmp/hero.jpg
+          curl -fsSL "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/312/Imagem/309b34e4-72f0-48d0-a8f8-1f8e94a90cbb.jpg" -o /tmp/gallery.jpg
+          echo "ARIA_CURRENT_HERO_BYTES=$(wc -c </tmp/hero.jpg)"
+          echo "ARIA_CURRENT_GALLERY1_BYTES=$(wc -c </tmp/gallery.jpg)"
+          file /tmp/hero.jpg /tmp/gallery.jpg
+      - name: Install QA
+        run: |
+          npm install --no-save playwright@1.55.0 lighthouse@13.5.0
+          npx playwright install --with-deps chromium
+      - name: Current browser smoke
+        run: node .github/diagnostics/m5-10-aria-current-smoke.mjs
+      - name: Current five-run Lighthouse
+        run: node .github/diagnostics/m5-10-aria-current-baseline.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: m5-10-aria-current-baseline
+          path: m5-10-aria-current-baseline/
+          if-no-files-found: warn
