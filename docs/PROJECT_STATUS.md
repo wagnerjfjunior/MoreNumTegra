@@ -7,13 +7,14 @@ Fonte canônica: GitHub `main`. Resolver estado live antes de qualquer mutação
 ## 1. Estado integrado
 
 ```text
-CANONICAL_MAIN_RUNTIME = 5a0df7b6757930bf34664d04d66b9a41e841f577
-PRODUCTION_DEPLOYMENT = dpl_AmvdNUQdqA6URbcL8JaWfJyPLmPc
+CANONICAL_MAIN_RUNTIME = 124b620855175a583c528733462d6d0f4f44cd41
+PRODUCTION_DEPLOYMENT = dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C
 PRODUCTION_STATE = READY
 
 MNT-M5 = COMPLETE / ACCEPTED
-MNT-M6 = ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
+MNT-M6 = ACTIVE / M6-06_MONETARY_AUTHORITY_REQUIRED
 MNT-M6-01 = COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION
+MNT-M6-06 = ACTIVE / DESIGN_PROPOSAL_READY / MONETARY_AUTHORITY_REQUIRED
 MNT-M5-01 = COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS
 MNT-M5-02 = COMPLETE / LAB_BASELINE_ESTABLISHED / FIELD_CWV_NOT_OBSERVED
 MNT-M5-03 = COMPLETE / STRATEGY_ESTABLISHED / NO_RUNTIME_MUTATION
@@ -77,7 +78,7 @@ No alias/duplicate route was introduced and the canonical remains:
 
 ```text
 CANONICAL_HOST = https://www.moretegra.com.br/
-PRODUCTION_SOURCE_SHA = 5a0df7b6757930bf34664d04d66b9a41e841f577
+PRODUCTION_SOURCE_SHA = 124b620855175a583c528733462d6d0f4f44cd41
 PRODUCTION_DEPLOYMENT = dpl_AmvdNUQdqA6URbcL8JaWfJyPLmPc
 PRODUCTION_STATE = READY
 ```
@@ -771,3 +772,40 @@ ACCEPTED_PERCENT = 80.65
 ```
 
 Next gate: `MNT-M6-06 — Budget/spend authorization gate — 8h / AUTHORIZATION_REQUIRED`.
+
+
+## 22. M6-06 — Budget / spend authorization gate
+
+Canonical proposal:
+
+`docs/attribution/MNT_M6_06_BUDGET_SPEND_AUTHORIZATION_GATE_2026-09-22.md`
+
+Status:
+
+```text
+MNT-M6-06 = ACTIVE / DESIGN_PROPOSAL_READY / MONETARY_AUTHORITY_REQUIRED
+AUTHORIZED_SPEND = R$ 0
+EXTERNAL_GOOGLE_ADS_MUTATIONS = 0
+ACCEPTED_HOURS = 0
+```
+
+Read-only provider evidence observed on 2026-09-22:
+
+- two connected Google Ads customer candidates exist, but the exact MoreNumTegra customer account is not adjudicated by M6-06;
+- the current read path returned zero campaign/metric rows for both candidates;
+- Keyword Planner was read for São Paulo city / Portuguese / Google Search;
+- measurable canonical seeds showed average CPC values from approximately R$ 3.72 to R$ 12.25;
+- the six canonical seed families with non-null average CPC had median ~= R$ 5.89 and mean ~= R$ 6.38.
+
+Recommended, not yet financially authorized:
+
+```text
+financial ceiling = R$ 1,500
+pilot = 14 days
+full-stage configured average daily total = R$ 70/day
+initial bidding = Maximize Clicks
+max CPC bid limit = R$ 10.00
+stages = Ária + Elo -> CAPIITOLO -> Portfolio
+```
+
+Product Authority monetary approval is the only next safe action. No campaign creation, keyword upload, conversion-action mutation or spend is authorized while the approved financial ceiling remains R$ 0.
