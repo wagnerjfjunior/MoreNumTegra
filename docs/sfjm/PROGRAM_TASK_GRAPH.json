@@ -51,10 +51,10 @@
     "current_task_state": "ACTIVE / SLICE_01_COMPLETE / NEXT_SLICE_DECISION_REQUIRED",
     "next_task_id": "MNT-M5-10",
     "next_task_state": "NEXT_SLICE_DECISION_REQUIRED",
-    "next_safe_action": "Stop before M6 execution. Product Authority must explicitly authorize MNT-M6-01.",
+    "next_safe_action": "Stop before M6-02. Product Authority authorization required.",
     "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md",
     "current_state_source": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
-    "task_id": "MNT-M6-01",
+    "task_id": "MNT-M6-02",
     "state": "PLANNED / AUTHORIZATION_REQUIRED"
   },
   "sources": {
@@ -573,27 +573,29 @@
     {
       "id": "MNT-M6",
       "label": "Attribution & Paid Media Readiness",
-      "state": "PLANNED / NEXT_PHASE",
+      "state": "ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION",
       "hours": 128,
-      "accepted_hours": 0,
+      "accepted_hours": 16,
       "effort_class": "CONSUMER_PLANNING_ESTIMATE",
       "tasks": [
         {
           "id": "MNT-M6-01",
           "label": "Attribution model and identifier boundaries",
-          "state": "PLANNED / AUTHORIZATION_REQUIRED",
+          "state": "COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION",
           "hours": 16,
-          "accepted_hours": 0,
+          "accepted_hours": 16,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "NOT_AUTHORIZED"
+          "authorization": "CLOSED",
+          "evidence": "docs/attribution/MNT_M6_01_ATTRIBUTION_MODEL_IDENTIFIER_BOUNDARIES_V1_2026-09-22.md"
         },
         {
           "id": "MNT-M6-02",
           "label": "UTM/source/medium/campaign contract",
-          "state": "PLANNED",
+          "state": "PLANNED / AUTHORIZATION_REQUIRED",
           "hours": 8,
           "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
+          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
+          "authorization": "NOT_AUTHORIZED"
         },
         {
           "id": "MNT-M6-03",
