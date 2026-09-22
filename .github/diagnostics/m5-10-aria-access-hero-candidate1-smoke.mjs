@@ -43,7 +43,7 @@ async function run(name,viewport,dpr,mobile){
     assert.equal(seen.some(u=>u.includes(GREEN)),false,name+": Green original not downloaded on mobile");
     assert.equal(seen.some(u=>u.includes(OLD_HERO)),false,name+": previous hero derivative not downloaded");
   }else{
-    assert.ok(heroCurrent.includes(GREEN),name+": desktop uses Green candidate source");
+    assert.ok(decodeURIComponent(heroCurrent).includes("Ária Higienópolis-Perspectiva ilustrada do acesso residencial..webp"),name+": desktop uses Green candidate source");
   }
 
   await page.locator("[data-aria-gallery]").scrollIntoViewIfNeeded();
