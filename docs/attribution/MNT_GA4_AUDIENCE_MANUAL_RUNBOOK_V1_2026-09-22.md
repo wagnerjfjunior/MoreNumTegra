@@ -70,22 +70,49 @@ Opening WhatsApp is intent, not a verified lead.
 
 ## 3. Phase A audiences — create first
 
-### AUD-001 — All eligible visitors | 180d
+### AUD-001 — Existing `All Users` audience — retain
+
+The GA4 property already contains the native audience:
+
+```text
+All Users
+```
+
+Do **not** create a duplicate custom "all visitors" audience.
+
+Purpose: broad audience-size baseline.
+
+### AUD-001A — Home visitors | 180d
 
 Name:
 
 ```text
-MNT | All eligible visitors | 180d
+MNT | Home visitors | 180d
 ```
 
-Create:
+Include:
 
-1. New custom audience.
-2. Include users when `event_name` exactly matches `page_view`.
-3. Membership duration: `180 days`.
-4. Save.
+```text
+event_name = page_view
+AND
+page_location exactly matches https://www.moretegra.com.br/
+```
 
-Purpose: broad audience-size baseline and future remarketing reservoir.
+Membership: `180 days`.
+
+### AUD-001B — Home visitors | 540d
+
+Name:
+
+```text
+MNT | Home visitors | 540d
+```
+
+Same Home condition as AUD-001A.
+
+Membership: `540 days`.
+
+Purpose: historical Home-visitor reservoir.
 
 ### AUD-002 — Any exact-project visitor | 180d
 
