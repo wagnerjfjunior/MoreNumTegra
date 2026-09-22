@@ -220,3 +220,14 @@ PLANNED != AUTHORIZED
 - Do not introduce a hero slider/carousel or second hero image under the Candidate 1 authorization.
 - No M5-10 task hours are accepted merely from this A/B.
 - Product Authority must choose retain Candidate 1 or restore the prior hero before another Ária hero mutation.
+
+
+## Post-M5 closure gate — 2026-09-22
+
+- MNT-M5-10 is COMPLETE / ACCEPTED and Ária Candidate 1 is retained.
+- MNT-M5 is COMPLETE / ACCEPTED at 168h.
+- MNT-M2-10 is historically COMPLETE / ACCEPTED_WITH_V1_RESIDUAL via PR #54; do not rerun/count it merely because stale surfaces previously showed PLANNED.
+- Program accepted progress is 920/1240h = 74.19%.
+- Do not introduce the rooftop-pool hero, carousel or rotation without a new bounded authorization.
+- MNT-M6-01 is the next gate but is not authorized by this closure.
+- No Ads spend, campaign launch, conversion-action creation, Meta implementation or external paid-media mutation is authorized.

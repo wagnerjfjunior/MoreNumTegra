@@ -51,11 +51,11 @@
     "current_task_state": "ACTIVE / SLICE_01_COMPLETE / NEXT_SLICE_DECISION_REQUIRED",
     "next_task_id": "MNT-M5-10",
     "next_task_state": "NEXT_SLICE_DECISION_REQUIRED",
-    "next_safe_action": "Stop before runtime mutation. Product Authority must choose retain Candidate 1 or restore the prior Aria hero; pool candidate remains untested.",
+    "next_safe_action": "Stop before M6 execution. Product Authority must explicitly authorize MNT-M6-01.",
     "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md",
     "current_state_source": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
-    "task_id": "MNT-M5-10",
-    "state": "ACTIVE / ARIA_HERO_CANDIDATE1_LIVE / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE / PRODUCT_DECISION_REQUIRED"
+    "task_id": "MNT-M6-01",
+    "state": "PLANNED / AUTHORIZATION_REQUIRED"
   },
   "sources": {
     "bootstrap": "bootstrap/BOOTSTRAP_CANONICO.md",
@@ -238,91 +238,91 @@
     {
       "id": "MNT-M2",
       "label": "Measurement Foundation & Consent",
-      "state": "PLANNED",
+      "state": "COMPLETE",
       "hours": 144,
-      "accepted_hours": 0,
+      "accepted_hours": 144,
       "effort_class": "CONSUMER_PLANNING_ESTIMATE",
       "tasks": [
         {
           "id": "MNT-M2-01",
           "label": "Inventory tracking already present in live runtime",
-          "state": "PLANNED",
+          "state": "COMPLETE",
           "hours": 8,
-          "accepted_hours": 0,
+          "accepted_hours": 8,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE"
         },
         {
           "id": "MNT-M2-02",
           "label": "Define transport architecture and duplicate-event prevention",
-          "state": "PLANNED",
+          "state": "COMPLETE",
           "hours": 16,
-          "accepted_hours": 0,
+          "accepted_hours": 16,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE"
         },
         {
           "id": "MNT-M2-03",
           "label": "Define canonical event taxonomy",
-          "state": "PLANNED",
+          "state": "COMPLETE",
           "hours": 16,
-          "accepted_hours": 0,
+          "accepted_hours": 16,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE"
         },
         {
           "id": "MNT-M2-04",
           "label": "Define primary and secondary conversions",
-          "state": "PLANNED",
+          "state": "COMPLETE",
           "hours": 8,
-          "accepted_hours": 0,
+          "accepted_hours": 8,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE"
         },
         {
           "id": "MNT-M2-05",
           "label": "Define ownership for MoreNumTegra GTM and GA4",
-          "state": "PLANNED",
+          "state": "COMPLETE",
           "hours": 8,
-          "accepted_hours": 0,
+          "accepted_hours": 8,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE"
         },
         {
           "id": "MNT-M2-06",
           "label": "Define ownership for Meta Pixel/Dataset",
-          "state": "PLANNED",
+          "state": "COMPLETE",
           "hours": 8,
-          "accepted_hours": 0,
+          "accepted_hours": 8,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE"
         },
         {
           "id": "MNT-M2-07",
           "label": "Define consent model and LGPD gating",
-          "state": "PLANNED",
+          "state": "COMPLETE",
           "hours": 16,
-          "accepted_hours": 0,
+          "accepted_hours": 16,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE"
         },
         {
           "id": "MNT-M2-08",
           "label": "Define denied/granted consent QA contract",
-          "state": "PLANNED",
+          "state": "COMPLETE",
           "hours": 16,
-          "accepted_hours": 0,
+          "accepted_hours": 16,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE"
         },
         {
           "id": "MNT-M2-09",
           "label": "Implement authorized tracking configuration",
-          "state": "PLANNED",
+          "state": "COMPLETE",
           "hours": 24,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "NOT_AUTHORIZED"
+          "accepted_hours": 24,
+          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
         },
         {
           "id": "MNT-M2-10",
           "label": "Execute end-to-end Measurement QA",
-          "state": "PLANNED",
+          "state": "COMPLETE / ACCEPTED_WITH_V1_RESIDUAL",
           "hours": 24,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
+          "accepted_hours": 24,
+          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
+          "evidence": "docs/measurement/MNT_M2_10_POST_MERGE_RECONCILIATION_2026-09-13.md"
         }
       ]
     },
@@ -480,9 +480,9 @@
     {
       "id": "MNT-M5",
       "label": "UX, Performance, Conversion, Lead & CRM",
-      "state": "ACTIVE",
+      "state": "COMPLETE / ACCEPTED",
       "hours": 168,
-      "accepted_hours": 144,
+      "accepted_hours": 168,
       "effort_class": "CONSUMER_PLANNING_ESTIMATE",
       "tasks": [
         {
@@ -560,12 +560,12 @@
         {
           "id": "MNT-M5-10",
           "label": "Authorized performance remediation",
-          "state": "ACTIVE / ARIA_HERO_CANDIDATE1_LIVE / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE / PRODUCT_DECISION_REQUIRED",
+          "state": "COMPLETE / ACCEPTED / CANDIDATE1_RETAINED / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE",
           "hours": 24,
-          "accepted_hours": 0,
+          "accepted_hours": 24,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "PRODUCT_DECISION_REQUIRED",
-          "evidence": "docs/performance/MNT_M5_10_ARIA_HERO_ACCESS_CANDIDATE1_2026-09-22.md",
+          "authorization": "CLOSED",
+          "evidence": "docs/sfjm/MNT_M5_10_M5_PHASE_CLOSURE_2026-09-22.md",
           "standard": "docs/performance/RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1.md"
         }
       ]
@@ -573,7 +573,7 @@
     {
       "id": "MNT-M6",
       "label": "Attribution & Paid Media Readiness",
-      "state": "PLANNED",
+      "state": "PLANNED / NEXT_PHASE",
       "hours": 128,
       "accepted_hours": 0,
       "effort_class": "CONSUMER_PLANNING_ESTIMATE",
@@ -581,10 +581,11 @@
         {
           "id": "MNT-M6-01",
           "label": "Attribution model and identifier boundaries",
-          "state": "PLANNED",
+          "state": "PLANNED / AUTHORIZATION_REQUIRED",
           "hours": 16,
           "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
+          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
+          "authorization": "NOT_AUTHORIZED"
         },
         {
           "id": "MNT-M6-02",

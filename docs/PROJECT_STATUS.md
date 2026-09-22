@@ -11,7 +11,7 @@ CANONICAL_MAIN_RUNTIME = 5a0df7b6757930bf34664d04d66b9a41e841f577
 PRODUCTION_DEPLOYMENT = dpl_AmvdNUQdqA6URbcL8JaWfJyPLmPc
 PRODUCTION_STATE = READY
 
-MNT-M5 = ACTIVE
+MNT-M5 = COMPLETE / ACCEPTED
 MNT-M5-01 = COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS
 MNT-M5-02 = COMPLETE / LAB_BASELINE_ESTABLISHED / FIELD_CWV_NOT_OBSERVED
 MNT-M5-03 = COMPLETE / STRATEGY_ESTABLISHED / NO_RUNTIME_MUTATION
@@ -21,12 +21,12 @@ MNT-M5-06 = COMPLETE / PRODUCTION_JOURNEY_PASS / SEARCH_VARIANT_PRESERVED
 MNT-M5-07 = COMPLETE / PRODUCTION_GA4_PASS / GTM_VERSION_12_LIVE
 MNT-M5-08 = COMPLETE / CRM_HANDOFF_CONTRACT_CANONICALIZED / NO_RUNTIME_MUTATION
 MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
-MNT-M5-10 = ACTIVE / ARIA_HERO_CANDIDATE1_LIVE / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE / PRODUCT_DECISION_REQUIRED
+MNT-M5-10 = COMPLETE / ACCEPTED / CANDIDATE1_RETAINED / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE
 
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 896
-REMAINING_FORECAST_HOURS = 344
-ACCEPTED_PERCENT = 72.26
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 920
+REMAINING_FORECAST_HOURS = 320
+ACCEPTED_PERCENT = 74.19
 ```
 
 ## 2. M5-06 CTA/Form journey
@@ -452,3 +452,41 @@ Interpretation:
 - rooftop-pool candidate was not tested.
 
 M5-10 remains ACTIVE. Product Authority must decide whether Candidate 1 is retained or the prior hero is restored. No M5-10 task hours are accepted from this A/B.
+
+
+## 16. M5 final closure / M2-10 reconciliation
+
+Canonical closure:
+
+`docs/sfjm/MNT_M5_10_M5_PHASE_CLOSURE_2026-09-22.md`
+
+Product Authority retained the live Ária Candidate 1 hero and accepted M5-10.
+
+```text
+MNT-M5-10 = COMPLETE / ACCEPTED / 24h
+MNT-M5 = COMPLETE / ACCEPTED / 168h
+```
+
+Candidate 1 remains within the laboratory LCP target but its speed direction versus the prior hero remains inconclusive. No performance-win claim is made.
+
+Live GitHub verification also confirmed historical M2-10 closure:
+
+```text
+PR #54 = MERGED
+merge SHA = 5d2db073a4b345ae4e0067b675cab1cfb4a068ed
+MNT-M2-10 = COMPLETE / ACCEPTED_WITH_V1_RESIDUAL
+MNT-M2 = COMPLETE
+```
+
+M2-10 is reconciled without adding hours again.
+
+Current aggregate:
+
+```text
+FORECAST_TOTAL_HOURS = 1240
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 920
+REMAINING_FORECAST_HOURS = 320
+ACCEPTED_PERCENT = 74.19
+```
+
+Next gate: `MNT-M6-01 — Attribution model and identifier boundaries` / explicit authorization required.

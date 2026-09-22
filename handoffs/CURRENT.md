@@ -6,7 +6,7 @@ Atualizado em `2026-09-22`.
 
 Handoff detalhado vigente:
 
-`handoffs/HANDOFF-2026-09-22-M5-10-ARIA-HERO-CANDIDATE1-AB.md`
+`handoffs/HANDOFF-2026-09-22-M5-COMPLETE-M6-GATE.md`
 
 ## REPOSITORY_STATE
 
@@ -29,45 +29,28 @@ PRODUCTION_STATE = READY
 ## VALIDATION_STATE
 
 ```text
-MNT-M5-10 = ACTIVE / ARIA_HERO_CANDIDATE1_LIVE / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE / PRODUCT_DECISION_REQUIRED
+MNT-M2-10 = COMPLETE / ACCEPTED_WITH_V1_RESIDUAL / HISTORICAL_RECONCILED
+MNT-M2 = COMPLETE
+MNT-M5-10 = COMPLETE / ACCEPTED / CANDIDATE1_RETAINED
+MNT-M5 = COMPLETE / ACCEPTED
+NEXT = MNT-M6-01 / AUTHORIZATION_REQUIRED
 ```
 
-Candidate 1 is the Product Authority-supplied Ária residential-access image.
-
-Contemporaneous control:
-
-- LCP median = `1,853 ms`;
-- score = `95`;
-- total transfer = `535,700 B`;
-- hero transfer ~= `83,042 B`.
-
-Candidate 1 Production:
-
-- attempt 1 median = `2,149 ms` / `+15.97%`;
-- attempt 2 median = `1,464 ms` / `-20.99%`;
-- both attempts pass `LCP <=2,500 ms`;
-- deterministic hero transfer ~= `99.5 KB`, about `+16.5 KB / +19.85%`;
-- total transfer ~= `552.25 KB`, about `+3.09%`;
-- opposite LCP directions mean no speed win/loss is proven;
-- descriptive pooled candidate 10-run median ~= `1,818 ms`, essentially tied with the five-run control but not treated as a controlled 10-run comparison;
-- GTM/GA4/Form46/gallery/canonical contracts preserved;
-- zero QA Form46 lead submissions.
-
-The rooftop-pool image supplied by Product Authority was **not tested** and remains outside the current slice.
+Ária Candidate 1 remains the single retained hero. Its speed direction versus the prior hero remains inconclusive, while both candidate batteries pass the laboratory LCP target. The rooftop-pool image remains untested.
 
 ## PROGRAM PROGRESS
 
 ```text
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 896
-REMAINING_FORECAST_HOURS = 344
-ACCEPTED_PERCENT = 72.26
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 920
+REMAINING_FORECAST_HOURS = 320
+ACCEPTED_PERCENT = 74.19
 ```
 
-No M5-10 task hours are accepted from this A/B.
+The new +24h is M5-10 only. Historical M2-10 acceptance is reconciled without double counting.
 
 ## NEXT SAFE ACTION
 
 Read `docs/NEXT_SAFE_ACTION.md`.
 
-Current gate: STOP before runtime mutation. Product Authority must decide whether Candidate 1 is retained or the prior Ária hero is restored. The rooftop-pool candidate remains untested and not automatically authorized.
+STOP before M6 execution. Product Authority must explicitly authorize MNT-M6-01.

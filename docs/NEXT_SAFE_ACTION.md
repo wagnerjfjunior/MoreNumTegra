@@ -3,50 +3,41 @@
 Atualizado em `2026-09-22`.
 
 ```text
-MNT-M5-10 = ACTIVE / ARIA_HERO_CANDIDATE1_LIVE / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE / PRODUCT_DECISION_REQUIRED
+MNT-M5 = COMPLETE / ACCEPTED
+MNT-M5-10 = COMPLETE / ACCEPTED / CANDIDATE1_RETAINED
+MNT-M2-10 = COMPLETE / ACCEPTED_WITH_V1_RESIDUAL / HISTORICAL_RECONCILED
 
 LATEST_RUNTIME_SHA = 5a0df7b6757930bf34664d04d66b9a41e841f577
 PRODUCTION_SOURCE_SHA = 5a0df7b6757930bf34664d04d66b9a41e841f577
 PRODUCTION_DEPLOYMENT = dpl_AmvdNUQdqA6URbcL8JaWfJyPLmPc
 PRODUCTION_STATE = READY
+
+PROGRAM_PROGRESS = 920 / 1240h = 74.19%
 ```
 
-## Candidate 1 result
+## Current closure
 
-The residential-access hero is live and technically valid.
+Candidate 1 is retained as the single Ária hero by Product Authority decision.
+
+The A/B remains correctly classified:
 
 ```text
-CONTROL:
-LCP median = 1,853 ms
-hero transfer ~= 83,042 B
-total transfer = 535,700 B
-
-CANDIDATE 1 / ATTEMPT 1:
-LCP median = 2,149 ms
-delta = +15.97%
-target = PASS
-
-CANDIDATE 1 / ATTEMPT 2:
-LCP median = 1,464 ms
-delta = -20.99%
-target = PASS
-
-CANDIDATE 1 DETERMINISTIC PAYLOAD:
-hero ~= +16.5 KB / +19.85%
-total ~= +3.09%
+performance direction = INCONCLUSIVE
+lab LCP target <=2,500 ms = PASS
+rooftop-pool image = NOT_TESTED
 ```
 
-The opposite post-change LCP directions make the speed comparison inconclusive. Both candidate batteries pass the project LCP target.
-
-The rooftop-pool image has not been tested or introduced.
+M2-10 was already merged/accepted in PR #54 on 2026-09-13 and is not rerun or counted twice.
 
 ## Única próxima ação segura
 
-**PARAR antes de nova mutação de runtime.**
+**PARAR antes de execução de M6.**
 
-Product Authority must choose one bounded action:
+The next structural task is:
 
-1. **retain Candidate 1** because its visual/commercial value is preferred, accepting the measured payload overhead while LCP remains within target; or
-2. **restore the prior Ária hero**, because deterministic payload is lower and Candidate 1 did not prove a performance advantage.
+```text
+MNT-M6-01 — Attribution model and identifier boundaries — 16h
+STATE = PLANNED / AUTHORIZATION_REQUIRED
+```
 
-The rooftop-pool candidate may be tested only after an explicit subsequent decision. Do not add a second hero/slider/carousel from the current authorization.
+M6-01 is design/architecture scope. It does not authorize budget, spend, campaign launch, Google Ads conversion creation, Meta implementation or other external paid-media mutation.
