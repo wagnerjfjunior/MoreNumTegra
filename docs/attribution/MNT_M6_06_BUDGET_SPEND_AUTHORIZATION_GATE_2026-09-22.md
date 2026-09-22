@@ -372,7 +372,11 @@ EXTERNAL_ADS_MUTATIONS = 0
 
 This Google Search budget gate does not automatically authorize Meta Pixel/Dataset/CAPI or Google remarketing audience implementation.
 
-Google remarketing/audience design is a separate measurement activation concern and should preserve the existing GA4/GTM/consent architecture. Customer Match or other uploaded first-party lists remain outside the current authorization because they introduce a distinct PII/consent boundary.
+Google remarketing/audience accumulation is governed separately by `docs/attribution/MNT_M6_AUDIENCE_ACCUMULATION_CONTRACT_V1_2026-09-22.md`.
+
+Product Authority has explicitly authorized GA4 audience creation now so lists can accumulate before later remarketing activation.
+
+This does not authorize remarketing campaign creation or spend. Customer Match or uploaded CRM/PII lists remain outside authorization.
 
 The existing Meta ownership contract remains:
 
