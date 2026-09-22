@@ -219,7 +219,7 @@ META NOT_PROVEN != META DOES_NOT_EXIST
 
 Performance targets retained: LCP <= 2.5s, INP <= 200ms, CLS <= 0.1.
 
-### MNT-M6 — Attribution & Paid Media Readiness — 128h — ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
+### MNT-M6 — Attribution & Paid Media Readiness — 128h — ACTIVE / PAID_MEDIA_FROZEN
 
 | ID | Activity | Hours | State |
 |---|---|---:|---|
@@ -228,11 +228,32 @@ Performance targets retained: LCP <= 2.5s, INP <= 200ms, CLS <= 0.1.
 | MNT-M6-03 | Google Ads conversion architecture | 16 | COMPLETE / DESIGN_CANONICALIZED / NO_EXTERNAL_MUTATION |
 | MNT-M6-04 | SEM campaign/query contract | 24 | COMPLETE / DESIGN_CANONICALIZED / INTERNAL_REGISTRY_ONLY / NO_EXTERNAL_MUTATION |
 | MNT-M6-05 | Landing-page/query mapping | 16 | COMPLETE / LANDING_QUERY_MAP_ACCEPTED / RUNTIME_REGRESSION_FIXED |
-| MNT-M6-06 | Budget/spend authorization gate | 8 | ACTIVE / DESIGN_PROPOSAL_READY / FINANCIAL_CEILING_AUTHORIZED / BID_STAGE_POLICY_PENDING |
-| MNT-M6-07 | Authorized external platform implementation | 24 | PLANNED_NOT_AUTHORIZED |
-| MNT-M6-08 | Paid conversion QA | 16 | PLANNED |
+| MNT-M6-06 | Budget/spend authorization gate | 8 | COMPLETE / BUDGET_SPEND_POLICY_AUTHORIZED / PAID_MEDIA_FROZEN |
+| MNT-M6-07 | Authorized external platform implementation | 24 | DEFERRED / PAID_MEDIA_FROZEN / GA4_AUDIENCE_MANUAL_SETUP_ALLOWED |
+| MNT-M6-08 | Paid conversion QA | 16 | DEFERRED / DEPENDS_ON_M6-07 |
 
-Accepted M6 scope-equivalent remains `80h` from M6-01 through M6-05. M6-06 design is active but has `0h` accepted until Product Authority explicitly approves the monetary ceiling.
+Accepted M6 scope-equivalent is `88h`: M6-01 through M6-06 are accepted. M6-07/M6-08 remain unaccepted while paid media is frozen.
+
+M6-06 Product Authority closure on 2026-09-22:
+
+```text
+financial ceiling = R$ 1,000 / 30 days
+configured average daily total = R$ 32/day
+Maximize Clicks / max CPC R$ 10
+São Paulo city / Portuguese
+Search Partners OFF initially
+paid media = FROZEN
+current spend = R$ 0
+future Google Ads target = 560-869-4042 / SWL Consultoria de imoveis / USER_DESIGNATED_NOT_YET_PREFLIGHT_VALIDATED
+GA4 audience manual setup = AUTHORIZED / ZERO_SPEND
+Looker Studio = DEFERRED
+```
+
+Canonical closure evidence:
+
+- `docs/attribution/MNT_M6_06_BUDGET_SPEND_AUTHORIZATION_GATE_2026-09-22.md`
+- `docs/attribution/MNT_GA4_AUDIENCE_MANUAL_RUNBOOK_V1_2026-09-22.md`
+- `handoffs/HANDOFF-2026-09-22-M6-06-COMPLETE-PAID-MEDIA-FROZEN.md`
 
 ### MNT-M7 — QA, Release, Observability & Learning Loop — 192h — PLANNED
 
