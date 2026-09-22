@@ -126,6 +126,7 @@
         "state": {
           "enum": [
             "active_reference",
+            "reference_only",
             "consult_only",
             "inactive"
           ]
@@ -136,6 +137,7 @@
             "cash",
             "promotion",
             "consult",
+            "reference_only",
             "other"
           ]
         },
@@ -217,6 +219,20 @@
             "string",
             "null"
           ]
+        },
+        "pricePerSqm": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "tablePrice": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
         }
       },
       "allOf": [
@@ -251,6 +267,36 @@
                 "minLength": 1
               }
             }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "reference_only"
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "required": [
+              "observedAt",
+              "sourceClass"
+            ],
+            "anyOf": [
+              {
+                "required": [
+                  "pricePerSqm"
+                ]
+              },
+              {
+                "required": [
+                  "reference"
+                ]
+              }
+            ]
           }
         }
       ]
