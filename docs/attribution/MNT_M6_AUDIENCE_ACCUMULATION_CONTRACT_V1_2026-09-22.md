@@ -2,7 +2,7 @@
 
 Date: `2026-09-22`
 
-Status: `AUTHORIZED_FOR_MANUAL_GA4_AUDIENCE_CREATION / REMARKETING_ACTIVATION_DEFERRED / PAID_MEDIA_FROZEN / NO_SPEND`
+Status: `MANUAL_GA4_AUDIENCE_SETUP_COMPLETE / REMARKETING_ACTIVATION_DEFERRED / PAID_MEDIA_FROZEN / NO_SPEND`
 
 ## 1. Product Authority decision
 
@@ -97,7 +97,7 @@ No raw CTA text, visitor PII or free-text payload is needed for membership.
 ```text
 name = MNT | Form start no lead | 30d
 include = event_name = mnt_form_start
-exclude = event_name = mnt_lead_success
+exclude = GA4 event_name = generate_lead
 membership = 30 days
 purpose = future high-priority remarketing
 activation = DEFERRED
@@ -109,7 +109,7 @@ The exact GA4 exclusion mode must be configured so a valid lead leaves this acqu
 
 ```text
 name = MNT | Lead success suppression | 540d
-include = event_name = mnt_lead_success
+include = GA4 event_name = generate_lead
 membership = 540 days
 purpose = exclusion/suppression from acquisition remarketing
 activation = FUTURE_EXCLUSION_ONLY
@@ -190,12 +190,12 @@ Therefore:
 PRODUCT_AUTHORIZATION = GRANTED
 GA4_AUDIENCE_DESIGN = CANONICALIZED
 GA4_ADMIN_WRITE_CAPABILITY_IN_CURRENT_RUNTIME = NOT_EXPOSED
-AUDIENCES_CREATED_LIVE = NOT_YET_PROVEN
+AUDIENCES_CREATED_LIVE = SCREENSHOT_OBSERVED / MANUAL_SETUP_COMPLETE
 REMARKETING_CAMPAIGNS = ZERO
 REMARKETING_SPEND = R$ 0
 ```
 
-Do not claim these audiences exist in GA4 until exact live admin evidence proves creation.
+Manual GA4 admin screenshots now provide live creation evidence. Connector-side admin write remains unavailable.
 
 ## 8. Relationship to M6
 
@@ -260,3 +260,22 @@ Because the live `googleanalytics4` connector exposes no write actions, use the 
 `docs/attribution/MNT_GA4_AUDIENCE_MANUAL_RUNBOOK_V1_2026-09-22.md`
 
 Product Authority froze paid media after M6-06 closure. Audience accumulation remains allowed; Search and remarketing spend remain R$ 0 until explicit reopening.
+
+
+## 12. Manual creation completion
+
+Manual creation was completed and observed in the GA4 audience list on 2026-09-22.
+
+Evidence:
+
+`docs/attribution/MNT_GA4_AUDIENCE_MANUAL_COMPLETION_2026-09-22.md`
+
+Important destination-event rule:
+
+```text
+project source = mnt_lead_success
+GA4 destination = generate_lead
+GA4 audience lead rules = generate_lead
+```
+
+Paid media and remarketing remain frozen.
