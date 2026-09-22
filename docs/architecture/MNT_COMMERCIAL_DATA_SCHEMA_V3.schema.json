@@ -1,0 +1,232 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.moretegra.com.br/schemas/commercial-data-v3.schema.json",
+  "title": "MoreNumTegra Commercial Data v3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "snapshotId",
+    "publishedAt",
+    "currency",
+    "projects"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 3
+    },
+    "snapshotId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "publishedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "currency": {
+      "const": "BRL"
+    },
+    "projects": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/projectCommercialState"
+      }
+    }
+  },
+  "$defs": {
+    "projectCommercialState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "offers"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "active",
+            "consult_only",
+            "inactive"
+          ]
+        },
+        "inventoryLabel": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "legacyAliases": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "typologyAvailability": {
+          "type": "object",
+          "additionalProperties": {
+            "enum": [
+              "available",
+              "last_units",
+              "sold_out",
+              "consult"
+            ]
+          }
+        },
+        "offers": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/offer"
+          }
+        }
+      }
+    },
+    "offer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "offerKind"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "active_reference",
+            "consult_only",
+            "inactive"
+          ]
+        },
+        "offerKind": {
+          "enum": [
+            "standard",
+            "cash",
+            "promotion",
+            "consult",
+            "other"
+          ]
+        },
+        "priceLabel": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "price": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "oldPrice": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "unit": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "areaSqm": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "reference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "urgency": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "observedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "validUntil": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "sourceClass": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "sourceRef": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "disclaimer": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "active_reference"
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "required": [
+              "price",
+              "observedAt",
+              "sourceClass"
+            ],
+            "properties": {
+              "price": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "observedAt": {
+                "type": "string",
+                "format": "date"
+              },
+              "sourceClass": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
