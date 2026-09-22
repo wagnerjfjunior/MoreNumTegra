@@ -51,7 +51,7 @@ jobs:
           hero_crop=center_crop_ratio(hero,1.15)
           print(f"HERO_SOURCE dimensions={hero.size[0]}x{hero.size[1]} bytes={hero_path.stat().st_size} sha256={sha(hero_path)}")
           print(f"HERO_CROP dimensions={hero_crop.size[0]}x{hero_crop.size[1]} ratio={hero_crop.size[0]/hero_crop.size[1]:.5f}")
-          for w in (640,828):
+          for w in (640,714):
               h=round(w/1.15)
               img=hero_crop.resize((w,h),Image.Resampling.LANCZOS)
               p=outdir/f"hero-mobile-{w}.webp"
@@ -79,7 +79,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/aria-higienopolis/
+          rm -f assets/aria-higienopolis/hero-mobile-828.webp
+          git add -A assets/aria-higienopolis/
           git diff --cached --stat
-          git commit -m "diag: generate Aria responsive derivatives"
+          git commit -m "diag: correct Aria hero derivatives without upscale"
           git push origin HEAD:diag/m5-10-aria-derivatives-20260922
