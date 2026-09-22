@@ -206,3 +206,14 @@ PLANNED != AUTHORIZED
 - CAPIITOLO remains a separate bounded slice because its hero composition/bootstrap differ materially.
 - No M5-10 task hours are accepted merely from Slice 09.
 - Product Authority must explicitly authorize the next material runtime slice.
+
+
+## M5-10 Ária Hero Candidate 1 gate — 2026-09-22
+
+- Candidate 1 residential-access hero is live at runtime SHA `5a0df7b6757930bf34664d04d66b9a41e841f577`.
+- Two independent candidate batteries both pass `LCP <=2,500 ms` but disagree on direction versus the contemporaneous 1,853 ms control.
+- Therefore performance winner is `NOT_DETERMINED`.
+- Deterministic mobile hero payload is ~16.5 KB larger than the prior hero.
+- Do not claim Candidate 1 is a performance improvement.
+- Do not introduce the rooftop-pool image, hero carousel, image rotation, or second hero source without new explicit Product Authority authorization.
+- No M5-10 hours are accepted from this candidate test.
