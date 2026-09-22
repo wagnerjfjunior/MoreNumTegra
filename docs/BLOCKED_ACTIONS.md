@@ -231,3 +231,18 @@ PLANNED != AUTHORIZED
 - Do not introduce the rooftop-pool hero, carousel or rotation without a new bounded authorization.
 - MNT-M6-01 is the next gate but is not authorized by this closure.
 - No Ads spend, campaign launch, conversion-action creation, Meta implementation or external paid-media mutation is authorized.
+
+
+## M6-01 closure gate — 2026-09-22
+
+- MNT-M6-01 is COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION.
+- Canonical attribution model = FIRST_ELIGIBLE_TOUCH + LAST_ELIGIBLE_TOUCH.
+- Event/campaign/click/lead/person identifier namespaces must remain separated.
+- No project-owned user ID, cross-device identity or fingerprinting is authorized.
+- No hashed PII / enhanced-conversion implementation is authorized by M6-01.
+- No UTM persistence or CRM attribution transport is implemented yet.
+- Google click IDs are reserved as opaque attribution data only.
+- Meta identifier semantics remain deferred.
+- Historical M2-02 non-www host wording must not override current ADR-006/www canonical host.
+- MNT-M6-02 requires explicit Product Authority authorization.
+- No Ads spend, campaign launch, external paid-media mutation, GTM/GA4 mutation or Meta implementation is authorized.
