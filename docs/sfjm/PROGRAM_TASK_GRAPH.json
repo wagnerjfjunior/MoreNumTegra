@@ -53,7 +53,9 @@
     "next_task_state": "NEXT_SLICE_DECISION_REQUIRED",
     "next_safe_action": "Stop before further runtime mutation. Product Authority must choose the next bounded M5-10 slice after reviewing Elo Duo Slice 01 evidence.",
     "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md",
-    "current_state_source": "docs/sfjm/CURRENT_PROGRAM_STATE.json"
+    "current_state_source": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
+    "task_id": "MNT-M5-10",
+    "state": "ACTIVE / SLICE_07_RETAINED / NEXT_SLICE_DECISION_REQUIRED"
   },
   "sources": {
     "bootstrap": "bootstrap/BOOTSTRAP_CANONICO.md",
@@ -558,11 +560,12 @@
         {
           "id": "MNT-M5-10",
           "label": "Authorized performance remediation",
-          "state": "ACTIVE / SLICE_01_COMPLETE / NEXT_SLICE_DECISION_REQUIRED",
+          "state": "ACTIVE / SLICE_07_RETAINED / NEXT_SLICE_DECISION_REQUIRED",
           "hours": 24,
           "accepted_hours": 0,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "NEXT_SLICE_NOT_AUTHORIZED"
+          "authorization": "NEXT_SLICE_NOT_AUTHORIZED",
+          "evidence": "docs/performance/MNT_M5_10_ELO_DUO_LATE_GTM_BOOTSTRAP_SLICE07_2026-09-22.md"
         }
       ]
     },
