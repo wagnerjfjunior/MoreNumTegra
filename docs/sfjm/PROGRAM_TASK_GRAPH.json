@@ -20,7 +20,7 @@
     "framework": "RESF v1 — Search-to-Lead",
     "framework_provider": "wagnerjfjunior/Blogs-sites-portais-seo",
     "framework_provider_ref": "7a61aa036d677015ee4540ca8c5dc9a41f0165d4",
-    "state": "ACTIVE",
+    "state": "ACTIVE / PAID_MEDIA_FROZEN",
     "planning_baseline_date": "2026-09-10",
     "wbs_source": "docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md"
   },
@@ -35,27 +35,27 @@
   },
   "progress": {
     "forecast_total_hours": 1240,
-    "accepted_scope_equivalent_hours": 1000,
-    "remaining_forecast_hours": 240,
-    "accepted_percent": 80.65,
-    "display_percent": 80.65,
+    "accepted_scope_equivalent_hours": 1008,
+    "remaining_forecast_hours": 232,
+    "accepted_percent": 81.29,
+    "display_percent": 81.29,
     "basis": "COMPLETE_TASK_HOURS_DIVIDED_BY_TOTAL_FORECAST_HOURS",
     "source": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
     "warning": "Current lifecycle/progress is sourced from CURRENT_PROGRAM_STATE. This task graph remains structural authority for hierarchy/task IDs/planning hours; do not infer stale child state outside reconciled slices."
   },
   "current": {
     "phase_id": "MNT-M6",
-    "phase_state": "ACTIVE",
+    "phase_state": "ACTIVE / PAID_MEDIA_FROZEN",
     "work_package": "Attribution & Paid Media Readiness",
-    "current_task_id": "MNT-M6-06",
-    "current_task_state": "ACTIVE / FINANCIAL_CEILING_AUTHORIZED / BID_STAGE_POLICY_PENDING",
-    "next_task_id": "MNT-M6-06",
-    "next_task_state": "BID_STAGE_POLICY_PENDING",
-    "next_safe_action": "Approve or amend the remaining M6-06 operating constraints; spend remains zero.",
+    "current_task_id": "MNT-M6-07",
+    "current_task_state": "DEFERRED / PAID_MEDIA_FROZEN",
+    "next_task_id": "MNT-M6-07",
+    "next_task_state": "DEFERRED / EXPLICIT_REOPEN_REQUIRED",
+    "next_safe_action": "Zero-spend GA4 audience creation is authorized; paid-media implementation remains frozen until Product Authority explicitly reopens M6-07.",
     "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md",
     "current_state_source": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
-    "task_id": "MNT-M6-06",
-    "state": "ACTIVE / FINANCIAL_CEILING_AUTHORIZED / BID_STAGE_POLICY_PENDING"
+    "task_id": "MNT-M6-07",
+    "state": "DEFERRED / PAID_MEDIA_FROZEN"
   },
   "sources": {
     "bootstrap": "bootstrap/BOOTSTRAP_CANONICO.md",
@@ -573,9 +573,9 @@
     {
       "id": "MNT-M6",
       "label": "Attribution & Paid Media Readiness",
-      "state": "ACTIVE / M6_06_BID_STAGE_POLICY_PENDING",
+      "state": "ACTIVE / PAID_MEDIA_FROZEN / M6_07_DEFERRED",
       "hours": 128,
-      "accepted_hours": 80,
+      "accepted_hours": 88,
       "effort_class": "CONSUMER_PLANNING_ESTIMATE",
       "tasks": [
         {
@@ -631,30 +631,31 @@
         {
           "id": "MNT-M6-06",
           "label": "Budget/spend authorization gate",
-          "state": "ACTIVE / FINANCIAL_CEILING_AUTHORIZED / BID_STAGE_POLICY_PENDING",
+          "state": "COMPLETE / BUDGET_SPEND_POLICY_AUTHORIZED / PAID_MEDIA_FROZEN",
           "hours": 8,
-          "accepted_hours": 0,
+          "accepted_hours": 8,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "FINANCIAL_CEILING_AUTHORIZED / EXTERNAL_MUTATION_NOT_AUTHORIZED",
+          "authorization": "CLOSED",
           "evidence": "docs/attribution/MNT_M6_06_BUDGET_SPEND_AUTHORIZATION_GATE_2026-09-22.md"
         },
         {
           "id": "MNT-M6-07",
           "label": "Authorized external platform implementation",
-          "state": "PLANNED / PARTIAL_AUTHORIZATION / GA4_AUDIENCE_CREATION_ONLY",
+          "state": "DEFERRED / PAID_MEDIA_FROZEN / GA4_AUDIENCE_MANUAL_SETUP_ALLOWED",
           "hours": 24,
           "accepted_hours": 0,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "PARTIAL_AUTHORIZED / GA4_AUDIENCE_CREATION_ONLY",
-          "evidence": "docs/attribution/MNT_M6_AUDIENCE_ACCUMULATION_CONTRACT_V1_2026-09-22.md"
+          "authorization": "PAID_MEDIA_NOT_AUTHORIZED / GA4_AUDIENCE_MANUAL_SETUP_AUTHORIZED",
+          "evidence": "docs/attribution/MNT_GA4_AUDIENCE_MANUAL_RUNBOOK_V1_2026-09-22.md"
         },
         {
           "id": "MNT-M6-08",
           "label": "Paid conversion QA",
-          "state": "PLANNED",
+          "state": "DEFERRED / DEPENDS_ON_M6_07",
           "hours": 16,
           "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
+          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
+          "authorization": "NOT_AUTHORIZED"
         }
       ]
     },
