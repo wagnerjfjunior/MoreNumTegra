@@ -3,65 +3,82 @@
 Atualizado em `2026-09-22`.
 
 ```text
-MNT-M7-01 = COMPLETE / NO_ACTIVE_PREVIEW_CANDIDATE / EXISTING_RELEASE_EVIDENCE_REUSED
-MNT-M7-02 = ACTIVE / QA_EXECUTED / P1_PRODUCT_TRUTH_BLOCKERS_OPEN
+MNT-M7-01 = COMPLETE
+MNT-M7-02 = COMPLETE / ACCEPTED_WITH_P2_RESIDUALS
+MNT-M7-03 = PLANNED / AUTHORIZATION_REQUIRED
 MNT-M7 = ACTIVE
-MNT-M6-07 = DEFERRED / PAID_MEDIA_FROZEN
-MNT-M6-08 = DEFERRED
+
+P0 = 0
+P1 = 0
+P2 = 2
+P3 = 0
+
+PROGRAM_PROGRESS = 1040 / 1240h = 83.87%
+REMAINING_FORECAST = 200h
+
 PAID_MEDIA = FROZEN
 LOOKER_STUDIO = DEFERRED
-
 LATEST_RUNTIME_SHA = 124b620855175a583c528733462d6d0f4f44cd41
 PRODUCTION_DEPLOYMENT = dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C
 PRODUCTION_STATE = READY
-
-PROGRAM_PROGRESS = 1024 / 1240h = 82.58%
-REMAINING_FORECAST = 216h
 ```
 
-## M7-01
+## Product Authority commercial decision
 
-M7-01 was closed without fabricating a Preview deployment.
+Current Home commercial state is explicitly recertified as the interim MoreNumTegra Home commercial truth.
 
-Evidence:
+Authority:
 
-`docs/qa/MNT_M7_01_PREVIEW_VALIDATION_ADJUDICATION_2026-09-22.md`
+`docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md`
 
-No active runtime release candidate exists. PR #141 is a historical QA aggregation whose own contract says `DO NOT MERGE`. The effective release runtime is already Production READY at SHA `124b620...`.
+This includes current prices, units, consult states, promotions and comparative values already published. No Home commercial value should be changed as part of architecture migration unless Product Authority separately changes it.
 
-## M7-02
+## Commercial Data Plane priority
 
-Technical/content QA was executed against Production.
+Product Authority directed work on the update medium.
 
-Evidence:
+Current architecture:
 
-`docs/qa/MNT_M7_02_TECHNICAL_CONTENT_QA_2026-09-22.md`
+- `docs/architecture/MNT_COMMERCIAL_UPDATE_MEDIUM_REENTRY_2026-09-22.md`
+- `docs/architecture/MNT_COMMERCIAL_DATA_PLANE_V3.md`
+- `docs/architecture/MNT_COMMERCIAL_DATA_SCHEMA_V3.schema.json`
 
-Severity:
+Candidate snapshot:
+
+`docs/architecture/data/MNT_HOME_COMMERCIAL_SNAPSHOT_V3_CANDIDATE_2026-09-22.json`
+
+Binding map:
+
+`docs/architecture/data/MNT_HOME_CARD_COMMERCIAL_BINDINGS_V1_2026-09-22.json`
+
+Validated:
 
 ```text
-P0 = 0
-P1 = 2
-P2 = 2
-P3 = 0
+projects = 21
+offers = 25
+Home cards = 23
+primary price parity = 23/23
+old/comparative price parity = PASS
+runtime mutation = 0
+provider = NOT_SELECTED
 ```
-
-### P1 blockers
-
-1. The Home still owns volatile price/unit/promotion claims in `src-greenn/moretegra.js` without a current release-time revalidation receipt. Exact-project pages already consume newer governed references for Elo Duo and CAPIITOLO.
-2. ODE Perdizes Production copy still contains the comparative `De R$ 2.200.000 por R$ 2.090.000`, while the canonical Product Fact & Claim Registry states the older R$ 2.200.000 comparative is not recertified and remains prohibited.
 
 ## Única próxima ação segura
 
-Product Authority must choose a bounded Product Truth path:
+Select the Commercial Data Plane publication provider/owner and prove:
 
-A. provide/revalidate current commercial evidence for the affected Home objects; or
+1. public HTTPS read;
+2. protected admin write;
+3. atomic/versioned publication;
+4. rollback;
+5. CORS/cache/freshness;
+6. no browser secret;
+7. audit trail;
+8. commercial update without MoreNumTegra runtime deployment.
 
-B. authorize fail-closed runtime remediation that removes unsupported/uncertified volatile claims until current evidence is available.
+FECH.AI remains a future candidate only. Live discovery did not prove a MoreNumTegra public publication context and Security Go is not granted. Direct browser access to FECH.AI internal tables is forbidden.
 
-Do not invent replacement prices.
-
-Do not advance to M7-03 merely to bypass the P1 findings.
+M7-03 remains a separate authorization gate and is not implicitly started by this architecture work.
 
 ## Still frozen
 
@@ -70,5 +87,5 @@ Google Ads implementation/spend = FROZEN
 remarketing spend = R$ 0
 Meta paid media/CAPI = NOT_AUTHORIZED
 Looker Studio = DEFERRED
-M7-07/M7-08 publication authority = NOT_GRANTED_BY_THIS_QA
+runtime consumer migration to Commercial Data Plane = NOT_YET_AUTHORIZED
 ```
