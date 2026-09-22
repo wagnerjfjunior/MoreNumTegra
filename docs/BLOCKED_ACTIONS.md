@@ -276,3 +276,17 @@ PLANNED != AUTHORIZED
 - If an existing conversion already represents the same Form 46 lead semantic, implementation must STOP for duplicate adjudication.
 - MNT-M6-04 requires explicit Product Authority authorization.
 - No campaign creation, keyword upload, spend, conversion-action creation, GTM/GA4 mutation or external Ads mutation is authorized.
+
+
+## M6-04 closure gate — 2026-09-22
+
+- MNT-M6-04 is COMPLETE / DESIGN_CANONICALIZED / INTERNAL_REGISTRY_ONLY / NO_EXTERNAL_MUTATION.
+- Four internal planned Search campaign records exist; zero Google Ads campaigns were created.
+- Initial match types are Exact + Phrase only.
+- Broad, campaign-level Broad Match and AI Max are not authorized for initial launch.
+- Competitor conquest is not authorized.
+- Queries for products without canonical pages remain catalog gaps and do not authorize paid campaigns.
+- Thirty planned keyword seeds exist and remain gated by M6-05 landing relevance.
+- Search Console evidence is qualitative only and must not be used to infer volume, CPA or budget.
+- MNT-M6-05 requires explicit Product Authority authorization.
+- No external Google Ads mutation, keyword upload, spend or landing-page runtime change is authorized.
