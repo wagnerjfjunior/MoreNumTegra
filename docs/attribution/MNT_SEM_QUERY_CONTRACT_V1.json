@@ -191,5 +191,276 @@
   "geo_targeting": "DEFERRED_TO_M6_06_M6_07",
   "runtime_mutation": "NONE",
   "external_ads_mutation": "NONE",
-  "next_gate": "MNT-M6-05"
+  "next_gate": "MNT-M6-05",
+  "search_console_evidence": {
+    "account": "sc-domain:moretegra.com.br",
+    "window": "last_90d_including_today",
+    "observed_rows": 12,
+    "impressions": 29,
+    "clicks": 1,
+    "demand_estimation_allowed": false,
+    "observed_project_queries": [
+      "aria higienopolis",
+      "caminhos da lapa elo",
+      "capítulo tegra"
+    ],
+    "observed_portfolio_queries": [
+      "tegra vendas",
+      "tegra"
+    ],
+    "catalog_gap_queries": [
+      "amaro tegra",
+      "brooklin bricks tegra",
+      "ode perdizes tegra",
+      "tegra campo belo"
+    ]
+  },
+  "seed_keywords": [
+    {
+      "id": "aria-001",
+      "campaign_id": "mnt-cmp-000001",
+      "term": "ária higienópolis",
+      "match_type": "EXACT",
+      "intent": "Q1_PROJECT_NAVIGATIONAL",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "aria-002",
+      "campaign_id": "mnt-cmp-000001",
+      "term": "ária higienópolis",
+      "match_type": "PHRASE",
+      "intent": "Q1_PROJECT_NAVIGATIONAL",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "aria-003",
+      "campaign_id": "mnt-cmp-000001",
+      "term": "ária tegra",
+      "match_type": "EXACT",
+      "intent": "Q1_PROJECT_NAVIGATIONAL",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "aria-004",
+      "campaign_id": "mnt-cmp-000001",
+      "term": "apartamento ária higienópolis",
+      "match_type": "PHRASE",
+      "intent": "Q2_PROJECT_COMMERCIAL",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "aria-005",
+      "campaign_id": "mnt-cmp-000001",
+      "term": "studio ária higienópolis",
+      "match_type": "PHRASE",
+      "intent": "Q3_PROJECT_FEATURE",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "aria-006",
+      "campaign_id": "mnt-cmp-000001",
+      "term": "ária higienópolis preço",
+      "match_type": "PHRASE",
+      "intent": "Q2_PROJECT_COMMERCIAL",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "aria-007",
+      "campaign_id": "mnt-cmp-000001",
+      "term": "ária higienópolis visita",
+      "match_type": "PHRASE",
+      "intent": "Q2_PROJECT_COMMERCIAL",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "aria-008",
+      "campaign_id": "mnt-cmp-000001",
+      "term": "ária higienópolis pronto para morar",
+      "match_type": "PHRASE",
+      "intent": "Q3_PROJECT_FEATURE",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "elo-001",
+      "campaign_id": "mnt-cmp-000002",
+      "term": "elo duo",
+      "match_type": "EXACT",
+      "intent": "Q1_PROJECT_NAVIGATIONAL",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "elo-002",
+      "campaign_id": "mnt-cmp-000002",
+      "term": "elo duo",
+      "match_type": "PHRASE",
+      "intent": "Q1_PROJECT_NAVIGATIONAL",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "elo-003",
+      "campaign_id": "mnt-cmp-000002",
+      "term": "elo duo tegra",
+      "match_type": "EXACT",
+      "intent": "Q1_PROJECT_NAVIGATIONAL",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "elo-004",
+      "campaign_id": "mnt-cmp-000002",
+      "term": "caminhos da lapa elo duo",
+      "match_type": "PHRASE",
+      "intent": "Q1_PROJECT_NAVIGATIONAL",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "elo-005",
+      "campaign_id": "mnt-cmp-000002",
+      "term": "apartamento elo duo",
+      "match_type": "PHRASE",
+      "intent": "Q2_PROJECT_COMMERCIAL",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "elo-006",
+      "campaign_id": "mnt-cmp-000002",
+      "term": "elo duo preço",
+      "match_type": "PHRASE",
+      "intent": "Q2_PROJECT_COMMERCIAL",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "elo-007",
+      "campaign_id": "mnt-cmp-000002",
+      "term": "elo duo visita",
+      "match_type": "PHRASE",
+      "intent": "Q2_PROJECT_COMMERCIAL",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "elo-008",
+      "campaign_id": "mnt-cmp-000002",
+      "term": "elo duo pronto para morar",
+      "match_type": "PHRASE",
+      "intent": "Q3_PROJECT_FEATURE",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "cap-001",
+      "campaign_id": "mnt-cmp-000003",
+      "term": "capiitolo",
+      "match_type": "EXACT",
+      "intent": "Q1_PROJECT_NAVIGATIONAL",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "cap-002",
+      "campaign_id": "mnt-cmp-000003",
+      "term": "capiitolo tegra",
+      "match_type": "EXACT",
+      "intent": "Q1_PROJECT_NAVIGATIONAL",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "cap-003",
+      "campaign_id": "mnt-cmp-000003",
+      "term": "capiitolo piero lissoni",
+      "match_type": "PHRASE",
+      "intent": "Q1_PROJECT_NAVIGATIONAL",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "cap-004",
+      "campaign_id": "mnt-cmp-000003",
+      "term": "capiitolo chácara klabin",
+      "match_type": "PHRASE",
+      "intent": "Q1_PROJECT_NAVIGATIONAL",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "cap-005",
+      "campaign_id": "mnt-cmp-000003",
+      "term": "apartamento capiitolo",
+      "match_type": "PHRASE",
+      "intent": "Q2_PROJECT_COMMERCIAL",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "cap-006",
+      "campaign_id": "mnt-cmp-000003",
+      "term": "capiitolo 210 m2",
+      "match_type": "PHRASE",
+      "intent": "Q3_PROJECT_FEATURE",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "cap-007",
+      "campaign_id": "mnt-cmp-000003",
+      "term": "capiitolo preço",
+      "match_type": "PHRASE",
+      "intent": "Q2_PROJECT_COMMERCIAL",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "cap-008",
+      "campaign_id": "mnt-cmp-000003",
+      "term": "capiitolo visita",
+      "match_type": "PHRASE",
+      "intent": "Q2_PROJECT_COMMERCIAL",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "prt-001",
+      "campaign_id": "mnt-cmp-000004",
+      "term": "apartamentos tegra",
+      "match_type": "EXACT",
+      "intent": "Q5_TEGRA_PORTFOLIO",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "prt-002",
+      "campaign_id": "mnt-cmp-000004",
+      "term": "apartamentos tegra",
+      "match_type": "PHRASE",
+      "intent": "Q5_TEGRA_PORTFOLIO",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "prt-003",
+      "campaign_id": "mnt-cmp-000004",
+      "term": "apartamentos tegra são paulo",
+      "match_type": "PHRASE",
+      "intent": "Q5_TEGRA_PORTFOLIO",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "prt-004",
+      "campaign_id": "mnt-cmp-000004",
+      "term": "empreendimentos tegra são paulo",
+      "match_type": "PHRASE",
+      "intent": "Q5_TEGRA_PORTFOLIO",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "prt-005",
+      "campaign_id": "mnt-cmp-000004",
+      "term": "tegra apartamentos",
+      "match_type": "PHRASE",
+      "intent": "Q5_TEGRA_PORTFOLIO",
+      "status": "PLANNED_M6_05_GATE"
+    },
+    {
+      "id": "prt-006",
+      "campaign_id": "mnt-cmp-000004",
+      "term": "tegra vendas",
+      "match_type": "EXACT",
+      "intent": "Q5_TEGRA_PORTFOLIO",
+      "status": "PLANNED_M6_05_GATE_SEARCH_CONSOLE_OBSERVED"
+    }
+  ],
+  "seo_coexistence": {
+    "organic_ranking_blocks_paid": false,
+    "organic_impression_authorizes_paid": false,
+    "paid_vs_organic_incrementality": "POST_LAUNCH_MEASUREMENT_REQUIRED",
+    "paid_utm_in_canonical_urls": false
+  }
 }
