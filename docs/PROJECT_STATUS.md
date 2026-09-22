@@ -7,8 +7,8 @@ Fonte canônica: GitHub `main`. Resolver estado live antes de qualquer mutação
 ## 1. Estado integrado
 
 ```text
-CANONICAL_MAIN_RUNTIME = ac7958db2f2f4cd3d3bfccf4b6e9592f81a5d739
-PRODUCTION_DEPLOYMENT = dpl_6bepVcnUTT9hDhgkHbQsAdtkoE8T
+CANONICAL_MAIN_RUNTIME = 5a0df7b6757930bf34664d04d66b9a41e841f577
+PRODUCTION_DEPLOYMENT = dpl_AmvdNUQdqA6URbcL8JaWfJyPLmPc
 PRODUCTION_STATE = READY
 
 MNT-M5 = ACTIVE
@@ -21,7 +21,7 @@ MNT-M5-06 = COMPLETE / PRODUCTION_JOURNEY_PASS / SEARCH_VARIANT_PRESERVED
 MNT-M5-07 = COMPLETE / PRODUCTION_GA4_PASS / GTM_VERSION_12_LIVE
 MNT-M5-08 = COMPLETE / CRM_HANDOFF_CONTRACT_CANONICALIZED / NO_RUNTIME_MUTATION
 MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
-MNT-M5-10 = ACTIVE / SLICE_09_RETAINED / RESPONSIVE_MEDIA_STANDARD_ADOPTED / ELO_AND_ARIA_LAB_LCP_TARGET_MET / NEXT_SLICE_DECISION_REQUIRED
+MNT-M5-10 = ACTIVE / ARIA_HERO_CANDIDATE1_LIVE / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE / PRODUCT_DECISION_REQUIRED
 
 FORECAST_TOTAL_HOURS = 1240
 ACCEPTED_SCOPE_EQUIVALENT_HOURS = 896
@@ -75,8 +75,8 @@ No alias/duplicate route was introduced and the canonical remains:
 
 ```text
 CANONICAL_HOST = https://www.moretegra.com.br/
-PRODUCTION_SOURCE_SHA = ac7958db2f2f4cd3d3bfccf4b6e9592f81a5d739
-PRODUCTION_DEPLOYMENT = dpl_6bepVcnUTT9hDhgkHbQsAdtkoE8T
+PRODUCTION_SOURCE_SHA = 5a0df7b6757930bf34664d04d66b9a41e841f577
+PRODUCTION_DEPLOYMENT = dpl_AmvdNUQdqA6URbcL8JaWfJyPLmPc
 PRODUCTION_STATE = READY
 ```
 
@@ -379,3 +379,76 @@ RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1 = ADOPTED
 The standard is the default for new exact-project photographic media. Existing-page bulk mutation remains unauthorized; each remediation stays bounded.
 
 M5-10 remains ACTIVE and no task hours are accepted from Slice 09 alone.
+
+
+## 15. M5-10 Ária Hero Candidate 1 — residential-access A/B
+
+Canonical evidence:
+
+`docs/performance/MNT_M5_10_ARIA_HERO_ACCESS_CANDIDATE1_2026-09-22.md`
+
+Runtime:
+
+```text
+PR = #223 / MERGED
+SHA = 5a0df7b6757930bf34664d04d66b9a41e841f577
+DEPLOYMENT = dpl_AmvdNUQdqA6URbcL8JaWfJyPLmPc
+STATE = READY
+```
+
+Candidate source supplied by Product Authority:
+
+```text
+Green source = 1600x853 WebP / 219,786 B
+mobile 640x557 = 64,508 B
+mobile 828x720 = 99,308 B
+```
+
+Contemporaneous control immediately before the hero change:
+
+```text
+RUN = 35743393547 / attempt 3
+LCP median = 1,853 ms
+score = 95
+CLS = 0.0287
+TBT = 244 ms
+transfer = 535,700 B
+hero transfer ~= 83,042 B
+```
+
+Candidate Production attempt 1:
+
+```text
+RUN = 35748892328 / attempt 1
+JOB = 106817504327
+LCP median = 2,149 ms
+delta vs control = +296 ms / +15.97%
+score = 92
+transfer = 552,273 B
+target <=2,500 ms = PASS
+```
+
+Candidate Production attempt 2, with no code/runtime mutation:
+
+```text
+RUN = 35748892328 / attempt 2
+JOB = 106818874846
+LCP median = 1,464 ms
+delta vs control = -389 ms / -20.99%
+score = 89
+transfer = 552,242 B
+target <=2,500 ms = PASS
+```
+
+Interpretation:
+
+- both candidate batteries meet the LCP target;
+- opposite LCP directions make a speed win/loss claim unsupported;
+- descriptive pooled candidate 10-run median ~= 1,818 ms, effectively tied with the five-run 1,853 ms contemporaneous control but not a controlled ten-run comparison;
+- deterministic hero payload increases by ~16.5 KB / ~19.85%;
+- deterministic total transfer increases by ~3.09%;
+- gallery, GTM/GA4, Form46, canonical and commercial contracts passed;
+- zero QA Form46 leads were submitted;
+- rooftop-pool candidate was not tested.
+
+M5-10 remains ACTIVE. Product Authority must decide whether Candidate 1 is retained or the prior hero is restored. No M5-10 task hours are accepted from this A/B.
