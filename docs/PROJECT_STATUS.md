@@ -26,9 +26,9 @@ MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
 MNT-M5-10 = COMPLETE / ACCEPTED / CANDIDATE1_RETAINED / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE
 
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 960
-REMAINING_FORECAST_HOURS = 280
-ACCEPTED_PERCENT = 77.42
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 984
+REMAINING_FORECAST_HOURS = 256
+ACCEPTED_PERCENT = 79.35
 ```
 
 ## 2. M5-06 CTA/Form journey
@@ -643,3 +643,75 @@ ACCEPTED_PERCENT = 77.42
 ```
 
 Next gate: `MNT-M6-04 — SEM campaign/query contract — 24h / AUTHORIZATION_REQUIRED`.
+
+
+## 20. M6-04 — SEM campaign/query contract
+
+Canonical authority:
+
+- `docs/attribution/MNT_M6_04_SEM_CAMPAIGN_QUERY_CONTRACT_V1_2026-09-22.md`
+- `docs/attribution/MNT_SEM_QUERY_CONTRACT_V1.json`
+
+Status:
+
+```text
+MNT-M6-04 = COMPLETE / DESIGN_CANONICALIZED / INTERNAL_REGISTRY_ONLY / NO_EXTERNAL_MUTATION
+MNT-M6 = ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
+```
+
+Internal planned Search registry:
+
+```text
+mnt-cmp-000001 = Ária Higienópolis
+mnt-cmp-000002 = Elo Duo
+mnt-cmp-000003 = CAPIITOLO
+mnt-cmp-000004 = Portfolio Tegra
+external campaigns created = 0
+```
+
+Search V1:
+
+```text
+network = Search only
+initial match = Exact + Phrase
+Broad = not authorized initially
+Broad-match campaign setting / AI Max = not authorized
+competitor targeting = forbidden V1
+ambiguous single-token positive keywords = blocked by default
+final URL mapping = deferred to M6-05
+geo targeting = deferred
+```
+
+Live Search Console read-only evidence:
+
+```text
+property = sc-domain:moretegra.com.br
+window = last 90 days including today
+query-page rows = 12
+impressions = 29
+clicks = 1
+```
+
+The sample is explicitly too small for demand/CPA/budget estimation and was used only as qualitative query evidence.
+
+Observed project/portfolio query evidence includes:
+
+- `aria higienopolis`;
+- `caminhos da lapa elo`;
+- `capítulo tegra`;
+- `tegra vendas`.
+
+Observed product queries without canonical exact-project pages remain catalog gaps and do not authorize paid campaigns.
+
+Planned keyword seed registry = `30` records, all gated by M6-05 landing/query acceptance.
+
+Program progress:
+
+```text
+FORECAST_TOTAL_HOURS = 1240
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 984
+REMAINING_FORECAST_HOURS = 256
+ACCEPTED_PERCENT = 79.35
+```
+
+Next gate: `MNT-M6-05 — Landing-page/query mapping — 16h / AUTHORIZATION_REQUIRED`.
