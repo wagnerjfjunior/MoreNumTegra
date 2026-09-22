@@ -33,6 +33,11 @@ for(const [name,text] of [["Home",home],["Elo Duo",elo],["Ária",aria],["CAPIITO
 assert(home.includes('href="#formulario" data-form-intent="negotiate_scenario">Quero negociar meu cenário</a>'),"Home negotiation CTA preserves its intent");
 assert(home.includes('href="#formulario" data-form-intent="conditions">Receber condições</a>'),"Home conditions CTA preserves conditions intent");
 assert(homeJs.includes('data-interest="${escapeHtml(interestValue)}" data-form-intent="conditions"'),"Home project cards preserve conditions intent");
+assert((home.match(/data-form-anchor/g)||[]).length===1,"Home exposes exactly one post-interest context mount");
+assert(!home.includes('id="formulario" class="mt-form-anchor"'),"Home interest mount does not duplicate #formulario");
+assert(homeJs.includes('function ensureInterestContext(root)')&&homeJs.includes('data-interest-gallery'),"Home preserves post-interest gallery journey");
+assert(homeJs.includes('function projectSearchLead(project)')&&homeJs.includes('mt-project-search-lead'),"Home renders semantic project-card copy");
+assert(homeJs.includes('"Preço a partir de"'),"Home regular price labels expose natural price intent");
 assert(homeJs.includes('data-form-intent="conditions"\n         aria-label="Receber condições"'),"Home floating CTA preserves conditions intent");
 
 assert(elo.includes('data-project-intent="conditions" data-form-intent="conditions"'),"Elo Duo commercial CTA maps to conditions");
