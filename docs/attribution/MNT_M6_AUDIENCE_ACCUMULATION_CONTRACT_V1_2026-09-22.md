@@ -40,13 +40,33 @@ Existing consent and measurement authority remains controlling.
 
 ## 3. Audience registry
 
-### AUD-001 — All eligible visitors
+### AUD-001 — Existing All Users audience
 
 ```text
-name = MNT | All eligible visitors | 180d
-include = any user with a page_view on MoreNumTegra
+name = All Users
+source = GA4 native existing audience
+action = RETAIN / DO_NOT_DUPLICATE
+purpose = broad audience sizing
+activation = DEFERRED
+```
+
+### AUD-001A — Home visitors | 180d
+
+```text
+name = MNT | Home visitors | 180d
+include = page_view AND page_location exactly matches https://www.moretegra.com.br/
 membership = 180 days
-purpose = broad future remarketing / audience sizing
+purpose = recent Home interest
+activation = DEFERRED
+```
+
+### AUD-001B — Home visitors | 540d
+
+```text
+name = MNT | Home visitors | 540d
+include = same Home condition
+membership = 540 days
+purpose = historical Home interest
 activation = DEFERRED
 ```
 
