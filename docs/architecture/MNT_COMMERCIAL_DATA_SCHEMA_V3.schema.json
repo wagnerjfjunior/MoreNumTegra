@@ -7,8 +7,11 @@
   "required": [
     "schemaVersion",
     "snapshotId",
+    "snapshotState",
+    "generatedAt",
     "publishedAt",
     "currency",
+    "authorityRef",
     "projects"
   ],
   "properties": {
@@ -20,7 +23,10 @@
       "minLength": 1
     },
     "publishedAt": {
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "format": "date-time"
     },
     "currency": {
@@ -34,6 +40,27 @@
       "additionalProperties": {
         "$ref": "#/$defs/projectCommercialState"
       }
+    },
+    "snapshotState": {
+      "enum": [
+        "candidate",
+        "published",
+        "retired"
+      ]
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "authorityRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "supersedesSnapshotId": {
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "$defs": {
@@ -228,5 +255,27 @@
         }
       ]
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "snapshotState": {
+            "const": "published"
+          }
+        },
+        "required": [
+          "snapshotState"
+        ]
+      },
+      "then": {
+        "properties": {
+          "publishedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  ]
 }
