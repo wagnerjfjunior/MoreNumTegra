@@ -35,27 +35,27 @@
   },
   "progress": {
     "forecast_total_hours": 1240,
-    "accepted_scope_equivalent_hours": 896,
-    "remaining_forecast_hours": 344,
-    "accepted_percent": 72.2581,
-    "display_percent": 72.26,
+    "accepted_scope_equivalent_hours": 1000,
+    "remaining_forecast_hours": 240,
+    "accepted_percent": 80.65,
+    "display_percent": 80.65,
     "basis": "COMPLETE_TASK_HOURS_DIVIDED_BY_TOTAL_FORECAST_HOURS",
     "source": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
     "warning": "Current lifecycle/progress is sourced from CURRENT_PROGRAM_STATE. This task graph remains structural authority for hierarchy/task IDs/planning hours; do not infer stale child state outside reconciled slices."
   },
   "current": {
-    "phase_id": "MNT-M5",
+    "phase_id": "MNT-M6",
     "phase_state": "ACTIVE",
-    "work_package": "UX, Performance, Conversion, Lead & CRM",
-    "current_task_id": "MNT-M5-10",
-    "current_task_state": "ACTIVE / SLICE_01_COMPLETE / NEXT_SLICE_DECISION_REQUIRED",
-    "next_task_id": "MNT-M5-10",
-    "next_task_state": "NEXT_SLICE_DECISION_REQUIRED",
-    "next_safe_action": "Stop before M6-06. Product Authority authorization required.",
+    "work_package": "Attribution & Paid Media Readiness",
+    "current_task_id": "MNT-M6-06",
+    "current_task_state": "ACTIVE / DESIGN_PROPOSAL_READY / MONETARY_AUTHORITY_REQUIRED",
+    "next_task_id": "MNT-M6-06",
+    "next_task_state": "MONETARY_AUTHORITY_REQUIRED",
+    "next_safe_action": "Approve or amend the M6-06 monetary ceiling; spend remains zero.",
     "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md",
     "current_state_source": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
     "task_id": "MNT-M6-06",
-    "state": "PLANNED / AUTHORIZATION_REQUIRED"
+    "state": "ACTIVE / DESIGN_PROPOSAL_READY / MONETARY_AUTHORITY_REQUIRED"
   },
   "sources": {
     "bootstrap": "bootstrap/BOOTSTRAP_CANONICO.md",
@@ -573,7 +573,7 @@
     {
       "id": "MNT-M6",
       "label": "Attribution & Paid Media Readiness",
-      "state": "ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION",
+      "state": "ACTIVE / M6_06_MONETARY_AUTHORITY_REQUIRED",
       "hours": 128,
       "accepted_hours": 80,
       "effort_class": "CONSUMER_PLANNING_ESTIMATE",
@@ -631,11 +631,12 @@
         {
           "id": "MNT-M6-06",
           "label": "Budget/spend authorization gate",
-          "state": "PLANNED / AUTHORIZATION_REQUIRED",
+          "state": "ACTIVE / DESIGN_PROPOSAL_READY / MONETARY_AUTHORITY_REQUIRED",
           "hours": 8,
           "accepted_hours": 0,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "NOT_AUTHORIZED"
+          "authorization": "AUTHORIZED_FOR_DESIGN / MONETARY_AUTHORITY_PENDING",
+          "evidence": "docs/attribution/MNT_M6_06_BUDGET_SPEND_AUTHORIZATION_GATE_2026-09-22.md"
         },
         {
           "id": "MNT-M6-07",
