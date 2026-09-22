@@ -514,3 +514,15 @@ ACCEPTED_PERCENT = 75.48
 Next gate:
 
 `MNT-M6-02 — UTM/source/medium/campaign contract — 8h / AUTHORIZATION_REQUIRED`.
+
+
+## 16. External platform references observed
+
+Observed on `2026-09-22` from official Google documentation:
+
+- Google Ads Help — Google Click ID (GCLID): `https://support.google.com/google-ads/answer/9744275?hl=pt-BR`
+- Google Ads Help — ValueTrack parameters: `https://support.google.com/google-ads/answer/2375447?hl=pt-BR`
+- Google Ads Help — GBRAID URL parameter: `https://support.google.com/google-ads/answer/16297842?hl=pt-BR`
+- Google Ads Help — iOS campaign measurement updates / WBRAID: `https://support.google.com/google-ads/answer/10417364?hl=pt-BR`
+
+These references support the platform-owned identifier class only. They do not authorize MoreNumTegra implementation, Ads account mutation, offline conversion upload, enhanced conversions, user-data upload or spend.
