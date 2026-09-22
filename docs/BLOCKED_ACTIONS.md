@@ -290,3 +290,17 @@ PLANNED != AUTHORIZED
 - Search Console evidence is qualitative only and must not be used to infer volume, CPA or budget.
 - MNT-M6-05 requires explicit Product Authority authorization.
 - No external Google Ads mutation, keyword upload, spend or landing-page runtime change is authorized.
+
+
+## M6-05 closure gate — 2026-09-22
+
+- MNT-M6-05 is COMPLETE / LANDING_QUERY_MAP_ACCEPTED / RUNTIME_REGRESSION_FIXED.
+- PR #231 restored the Home post-interest gallery/context journey and enriched visible card semantics.
+- Production runtime is `124b620855175a583c528733462d6d0f4f44cd41` / `dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C` / READY.
+- Seed mapping: 30 total / 29 READY / 1 BLOCKED_DO_NOT_TARGET / 0 HOLD.
+- `tegra vendas` remains blocked for paid buyer targeting under the earlier M3-06 corporate/partner intent decision.
+- Search volume or Search Console appearance does not supersede query-intent ownership.
+- The post-interest gallery is conversion UX and must not be treated as primary SEO evidence because it requires user interaction.
+- No hidden keyword text or keyword stuffing is authorized.
+- MNT-M6-06 requires explicit Product Authority authorization.
+- No Ads budget, spend, campaign creation, keyword upload, bid change, conversion-action creation or external Ads mutation is authorized.
