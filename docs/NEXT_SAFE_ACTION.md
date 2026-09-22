@@ -5,6 +5,7 @@ Atualizado em `2026-09-22`.
 ```text
 MNT-M6-01 = COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION
 MNT-M6-02 = COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION
+MNT-M6-03 = COMPLETE / DESIGN_CANONICALIZED / NO_EXTERNAL_MUTATION
 MNT-M6 = ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
 
 LATEST_RUNTIME_SHA = 5a0df7b6757930bf34664d04d66b9a41e841f577
@@ -12,39 +13,39 @@ PRODUCTION_SOURCE_SHA = 5a0df7b6757930bf34664d04d66b9a41e841f577
 PRODUCTION_DEPLOYMENT = dpl_AmvdNUQdqA6URbcL8JaWfJyPLmPc
 PRODUCTION_STATE = READY
 
-PROGRAM_PROGRESS = 944 / 1240h = 76.13%
+PROGRAM_PROGRESS = 960 / 1240h = 77.42%
 ```
 
-## M6-02 closure
+## M6-03 closure
 
-Canonical contract:
+Canonical architecture:
 
-- `docs/attribution/MNT_M6_02_UTM_SOURCE_MEDIUM_CAMPAIGN_CONTRACT_V1_2026-09-22.md`
-- `docs/attribution/MNT_UTM_CONTRACT_V1.json`
+- `docs/attribution/MNT_M6_03_GOOGLE_ADS_CONVERSION_ARCHITECTURE_V1_2026-09-22.md`
+- `docs/attribution/MNT_GOOGLE_ADS_CONVERSION_ARCHITECTURE_V1.json`
 
-Key boundary:
+Key target:
 
 ```text
-minimum governed UTM tuple = source + medium + campaign
-future paid launch requires utm_id too
-stable campaign key = mnt-cmp-NNNNNN
-pre-consent persistence = none
-future post-consent project window = fixed 30 days
-internal UTM propagation = forbidden
-untagged referral/organic = vendor-native only
-CRM attribution transport = not authorized
-active campaigns created = 0
+GA4 generate_lead -> one Google Ads web conversion
+category = Submit lead form
+Secondary initially
+count = One
+value = none
+click window = 30d
+no parallel native lead tag
+no enhanced conversions
+no offline import
 ```
 
 ## Única próxima ação segura
 
-**PARAR antes de M6-03.**
+**PARAR antes de M6-04.**
 
 ```text
-MNT-M6-03 — Google Ads conversion architecture — 16h
+MNT-M6-04 — SEM campaign/query contract — 24h
 STATE = PLANNED / AUTHORIZATION_REQUIRED
 ```
 
-M6-03 may define Google Ads conversion architecture only after explicit Product Authority authorization.
+M6-04 may define SEM campaign/query structure only after explicit Product Authority authorization.
 
-No conversion action creation, account linking, spend, offline import, enhanced conversions, GTM/GA4 mutation or external Ads mutation is authorized.
+No campaign creation, keyword upload, spend, conversion-action creation or external Ads mutation is authorized.
