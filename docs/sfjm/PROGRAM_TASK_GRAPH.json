@@ -641,11 +641,12 @@
         {
           "id": "MNT-M6-07",
           "label": "Authorized external platform implementation",
-          "state": "PLANNED",
+          "state": "PLANNED / PARTIAL_AUTHORIZATION / GA4_AUDIENCE_CREATION_ONLY",
           "hours": 24,
           "accepted_hours": 0,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "NOT_AUTHORIZED"
+          "authorization": "PARTIAL_AUTHORIZED / GA4_AUDIENCE_CREATION_ONLY",
+          "evidence": "docs/attribution/MNT_M6_AUDIENCE_ACCUMULATION_CONTRACT_V1_2026-09-22.md"
         },
         {
           "id": "MNT-M6-08",
