@@ -13,9 +13,9 @@ PRODUCTION_STATE = READY
 
 MNT-M5 = COMPLETE / ACCEPTED
 MNT-M6 = ACTIVE / PAID_MEDIA_FROZEN / M6-07_DEFERRED
-MNT-M7 = ACTIVE / M7-02_P1_PRODUCT_TRUTH_BLOCKERS_OPEN
+MNT-M7 = ACTIVE / M7_02_COMPLETE / M7_03_AUTHORIZATION_REQUIRED
 MNT-M7-01 = COMPLETE / NO_ACTIVE_PREVIEW_CANDIDATE / EXISTING_RELEASE_EVIDENCE_REUSED
-MNT-M7-02 = ACTIVE / QA_EXECUTED / P1_PRODUCT_TRUTH_BLOCKERS_OPEN
+MNT-M7-02 = COMPLETE / ACCEPTED_WITH_P2_RESIDUALS
 MNT-M6-01 = COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION
 MNT-M6-06 = COMPLETE / BUDGET_SPEND_POLICY_AUTHORIZED / PAID_MEDIA_FROZEN
 MNT-M5-01 = COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS
@@ -30,9 +30,9 @@ MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
 MNT-M5-10 = COMPLETE / ACCEPTED / CANDIDATE1_RETAINED / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE
 
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 1024
-REMAINING_FORECAST_HOURS = 216
-ACCEPTED_PERCENT = 82.58
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 1040
+REMAINING_FORECAST_HOURS = 200
+ACCEPTED_PERCENT = 83.87
 ```
 
 ## 2. M5-06 CTA/Form journey
@@ -956,3 +956,59 @@ Canonical M7-02 evidence:
 `docs/qa/MNT_M7_02_TECHNICAL_CONTENT_QA_2026-09-22.md`
 
 M7-02 remains ACTIVE at 0 accepted hours. RESF C15 P0=0/P1=0 release posture is not met. Product Authority/current commercial evidence is required before progression.
+
+
+## M7-02 Product Truth re-adjudication
+
+Product Authority explicitly recertified the current Home commercial state as interim commercial truth:
+
+`docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md`
+
+Re-adjudication:
+
+`docs/qa/MNT_M7_02_PRODUCT_TRUTH_READJUDICATION_2026-09-22.md`
+
+Result:
+
+```text
+P0 = 0
+P1 = 0
+P2 = 2
+P3 = 0
+MNT-M7-02 = COMPLETE / ACCEPTED_WITH_P2_RESIDUALS
+accepted hours = 16
+program progress = 1040 / 1240h = 83.87%
+```
+
+The closure is by direct Product Authority recertification, not by inference from the September Endomarket source.
+
+The Home runtime remains unchanged.
+
+## Commercial Data Plane v3 re-entry
+
+Product Authority directed work on the commercial update medium while preserving the current Home exactly as-is.
+
+Canonical architecture:
+
+- `docs/architecture/MNT_COMMERCIAL_UPDATE_MEDIUM_REENTRY_2026-09-22.md`
+- `docs/architecture/MNT_COMMERCIAL_DATA_PLANE_V3.md`
+- `docs/architecture/MNT_COMMERCIAL_DATA_SCHEMA_V3.schema.json`
+
+Candidate data artifacts:
+
+- `docs/architecture/data/MNT_HOME_COMMERCIAL_SNAPSHOT_V3_CANDIDATE_2026-09-22.json`
+- `docs/architecture/data/MNT_HOME_CARD_COMMERCIAL_BINDINGS_V1_2026-09-22.json`
+
+Validation:
+
+```text
+projects = 21
+offers = 25
+Home cards = 23
+runtime primary price parity = 23/23
+runtime old/comparative price parity = PASS
+provider = NOT_SELECTED
+runtime mutation = 0
+```
+
+Live FECH.AI read-only discovery at `main@0e9573552cf96d4bad780f35d0517aefd6463d2c` found useful internal MesaCliente inventory structures but no proven public MoreNumTegra publication context. FECH.AI remains a candidate upstream only; direct browser access to internal FECH.AI tables is forbidden.
