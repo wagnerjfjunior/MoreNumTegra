@@ -61,3 +61,19 @@ M6-07 = NOT_AUTHORIZED
 ```
 
 Meta Pixel/Dataset/CAPI remains a separate explicit gate.
+
+
+## Audience accumulation decision
+
+Product Authority authorized creation of governed GA4 audiences now, with remarketing activation/spend deferred.
+
+Canonical:
+`docs/attribution/MNT_M6_AUDIENCE_ACCUMULATION_CONTRACT_V1_2026-09-22.md`
+
+Current runtime capability:
+```text
+GA4 admin write via exposed connector = NOT_AVAILABLE
+audience design = CANONICALIZED
+live audience creation = NOT_YET_PROVEN
+remarketing spend = R$ 0
+```
