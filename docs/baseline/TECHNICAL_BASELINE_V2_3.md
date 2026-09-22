@@ -170,6 +170,10 @@ Mobile remains the primary acceptance path. Targets remain:
 
 Optional video/media must not block catalog, filters, CTAs or Form 46.
 
+Canonical photographic delivery standard: `docs/performance/RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1.md`.
+
+For new exact-project photographic hero/gallery implementations, responsive derivatives are the default. Hero must remain statically discoverable in initial HTML, high priority, non-lazy and non-JS-dependent. Mobile derivatives must not upscale beyond useful source detail. Existing-page bulk rewrites remain gated; each material remediation requires bounded validation.
+
 ## 10. Brand favicon standard
 
 Canonical browser favicon asset:
