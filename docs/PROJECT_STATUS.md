@@ -12,9 +12,9 @@ PRODUCTION_DEPLOYMENT = dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C
 PRODUCTION_STATE = READY
 
 MNT-M5 = COMPLETE / ACCEPTED
-MNT-M6 = ACTIVE / M6-06_MONETARY_AUTHORITY_REQUIRED
+MNT-M6 = ACTIVE / M6-06_FINANCIAL_CEILING_AUTHORIZED / BID_STAGE_POLICY_PENDING
 MNT-M6-01 = COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION
-MNT-M6-06 = ACTIVE / DESIGN_PROPOSAL_READY / MONETARY_AUTHORITY_REQUIRED
+MNT-M6-06 = ACTIVE / DESIGN_PROPOSAL_READY / FINANCIAL_CEILING_AUTHORIZED / BID_STAGE_POLICY_PENDING
 MNT-M5-01 = COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS
 MNT-M5-02 = COMPLETE / LAB_BASELINE_ESTABLISHED / FIELD_CWV_NOT_OBSERVED
 MNT-M5-03 = COMPLETE / STRATEGY_ESTABLISHED / NO_RUNTIME_MUTATION
@@ -783,7 +783,7 @@ Canonical proposal:
 Status:
 
 ```text
-MNT-M6-06 = ACTIVE / DESIGN_PROPOSAL_READY / MONETARY_AUTHORITY_REQUIRED
+MNT-M6-06 = ACTIVE / DESIGN_PROPOSAL_READY / FINANCIAL_CEILING_AUTHORIZED / BID_STAGE_POLICY_PENDING
 AUTHORIZED_SPEND = R$ 0
 EXTERNAL_GOOGLE_ADS_MUTATIONS = 0
 ACCEPTED_HOURS = 0
@@ -800,12 +800,22 @@ Read-only provider evidence observed on 2026-09-22:
 Recommended, not yet financially authorized:
 
 ```text
-financial ceiling = R$ 1,500
-pilot = 14 days
-full-stage configured average daily total = R$ 70/day
+financial ceiling = R$ 1,000
+pilot = 30 days
+full-stage configured average daily total = R$ 32/day
 initial bidding = Maximize Clicks
 max CPC bid limit = R$ 10.00
 stages = Ária + Elo -> CAPIITOLO -> Portfolio
 ```
 
 Product Authority monetary approval is the only next safe action. No campaign creation, keyword upload, conversion-action mutation or spend is authorized while the approved financial ceiling remains R$ 0.
+
+
+M6-06 financial decision update:
+
+```text
+FINANCIAL_CEILING = R$ 1,000 / AUTHORIZED
+PILOT_WINDOW = 30 days / AUTHORIZED
+RECOMMENDED_CONFIGURED_DAILY_TOTAL = R$ 32/day
+AUTHORIZED_SPEND_NOW = R$ 0
+```
