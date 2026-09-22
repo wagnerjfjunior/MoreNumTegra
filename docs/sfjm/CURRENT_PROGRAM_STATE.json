@@ -184,7 +184,12 @@
       "m6_06_external_google_ads_mutations": 0,
       "m6_06_provider_read_only_evidence": "GOOGLE_ADS_KEYWORD_PLANNER / SAO_PAULO_CITY / PORTUGUESE / GOOGLE_SEARCH",
       "m6_06_authorized_financial_ceiling_brl": 1000,
-      "m6_06_authorized_pilot_window_days": 30
+      "m6_06_authorized_pilot_window_days": 30,
+      "ga4_audience_accumulation": "AUTHORIZED_FOR_CREATION / LIVE_CREATION_NOT_YET_PROVEN",
+      "remarketing_activation": "DEFERRED",
+      "remarketing_spend_brl": 0,
+      "customer_match": "NOT_AUTHORIZED",
+      "ga4_admin_write_capability_current_runtime": "NOT_EXPOSED"
     }
   },
   "progress": {
