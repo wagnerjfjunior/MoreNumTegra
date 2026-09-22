@@ -2,7 +2,7 @@
 
 Date: `2026-09-22`
 
-Status: `ACTIVE / FINANCIAL_CEILING_AUTHORIZED / BID_STAGE_POLICY_PENDING / NO_EXTERNAL_MUTATION`
+Status: `COMPLETE / BUDGET_SPEND_POLICY_AUTHORIZED / PAID_MEDIA_FROZEN / NO_EXTERNAL_MUTATION`
 
 ## 1. Purpose
 
@@ -114,14 +114,14 @@ Provider estimates are planning evidence only. They are not a CPA forecast, lead
 
 ## 4. Authorized financial envelope and revised operational recommendation
 
-The following is the M6-06 **recommended** launch envelope:
+Product Authority approved the following bounded launch envelope for future use when paid media is explicitly resumed:
 
 ```text
 AUTHORIZED_PILOT_WINDOW = 30 calendar days
 AUTHORIZED_FINANCIAL_CEILING = R$ 1,000 total billable spend
-RECOMMENDED_CONFIGURED_AVERAGE_DAILY_BUDGET_TOTAL = R$ 32/day
-RECOMMENDED_INITIAL_BIDDING = Maximize Clicks
-RECOMMENDED_MAX_CPC_BID_LIMIT = R$ 10.00
+AUTHORIZED_CONFIGURED_AVERAGE_DAILY_BUDGET_TOTAL = R$ 32/day
+AUTHORIZED_INITIAL_BIDDING = Maximize Clicks
+AUTHORIZED_MAX_CPC_BID_LIMIT = R$ 10.00
 AUTOMATIC_BUDGET_INCREASE = FORBIDDEN
 TARGET_CPA = NOT_SET
 TARGET_ROAS = NOT_SET
@@ -132,9 +132,9 @@ Product Authority explicitly set the financial ceiling at **R$ 1,000 for 30 days
 
 The R$ 32/day configured-total recommendation is intentionally below R$ 1,000 / 30 because Google Ads daily budgets are average budgets and provider billing can fluctuate by day. The project hard stop remains the cumulative authorized ceiling of R$ 1,000.
 
-This authorization defines the financial envelope only. It does not by itself authorize external Google Ads mutation or activation.
+The financial and operating envelope is authorized as policy. Product Authority simultaneously froze paid media, so external Google Ads mutation, activation and spend remain deferred.
 
-## 5. Revised staged budget allocation — recommendation pending final gate approval
+## 5. Authorized staged budget allocation
 
 The R$ 32/day envelope is held constant across stages. Later stages reallocate the same total instead of adding budget.
 
@@ -146,7 +146,7 @@ The R$ 32/day envelope is held constant across stages. Later stages reallocate t
 | `mnt-cmp-000004` — Portfolio Tegra | OFF | OFF | R$ 5/day |
 | **Configured total** | **R$ 32/day** | **R$ 32/day** | **R$ 32/day** |
 
-The stage allocation is a design recommendation, not yet an external-platform authorization.
+The stage allocation is accepted policy for a future resumed pilot. It is not permission to mutate or activate the external Google Ads account while paid media is frozen.
 
 ## 6. Staged launch boundary
 
@@ -209,7 +209,7 @@ No stage transition is automatic.
 
 ## 7. Geographic and language constraints
 
-Recommended initial configuration:
+Authorized future initial configuration:
 
 ```text
 geo target = São Paulo city
@@ -225,7 +225,7 @@ Expansion beyond the initial geo requires evidence from search-term/geographic p
 
 ## 8. Bidding constraint
 
-Initial recommendation:
+Authorized future initial constraint:
 
 ```text
 strategy = Maximize Clicks
@@ -340,33 +340,47 @@ Promotion to Primary still requires:
 3. M6-08 paid conversion QA PASS;
 4. explicit Product Authority activation.
 
-## 13. Remaining Product Authority decision
+## 13. Product Authority closure decision
 
-The financial ceiling and pilot duration are approved:
+On 2026-09-22 Product Authority approved the complete M6-06 operating envelope:
 
 ```text
 financial ceiling = R$ 1,000
 pilot window = 30 days
+configured average daily total = R$ 32/day
+initial bidding = Maximize Clicks
+max CPC bid limit = R$ 10.00
+staged allocation = Ária + Elo -> +CAPIITOLO -> +Portfolio, always reallocating within R$ 32/day
+geo/language = São Paulo city / Portuguese
+Search Partners = OFF initially
+Display expansion = OFF
+Broad = NOT_AUTHORIZED
+AI Max = NOT_AUTHORIZED
+conversion = Secondary / observe only
+automatic budget increase = FORBIDDEN
 ```
 
-Still pending for M6-06 final closure:
+At the same decision point Product Authority froze paid media:
 
 ```text
-configured average daily total = proposed R$ 32/day
-initial bidding = proposed Maximize Clicks
-max CPC bid limit = proposed R$ 10.00
-staged budget allocation = proposed / constant-total reallocation
-geo/language = proposed São Paulo city / Portuguese
-Search Partners = proposed OFF initially
-```
-
-Until those operating constraints are accepted:
-
-```text
-MNT-M6-06 = ACTIVE / FINANCIAL_CEILING_AUTHORIZED / BID_STAGE_POLICY_PENDING
+PAID_MEDIA_STATE = FROZEN
 AUTHORIZED_SPEND_NOW = R$ 0
-EXTERNAL_ADS_MUTATIONS = 0
+EXTERNAL_ADS_MUTATIONS_NOW = 0
+M6_07_EXTERNAL_IMPLEMENTATION = DEFERRED
+M6_08_PAID_CONVERSION_QA = DEFERRED_DEPENDENT_ON_M6_07
 ```
+
+The authorized R$ 1,000 / 30-day envelope is retained for future resumption; it is not currently active spend authority.
+
+User-designated future Google Ads preflight target:
+
+```text
+customer_id = 560-869-4042
+display_name observed = SWL Consultoria de imoveis
+classification = USER_DESIGNATED_TARGET / NOT_YET_M6_07_PREFLIGHT_VALIDATED
+```
+
+The user-provided Google Ads screenshot on 2026-09-22 visibly showed an overdue-balance warning and that ads were not being served. Because paid media is frozen, billing remediation is deferred and becomes a future M6-07 preflight obligation.
 
 ## 14. Meta / audience / remarketing boundary
 
@@ -377,8 +391,6 @@ Google remarketing/audience accumulation is governed separately by `docs/attribu
 Product Authority has explicitly authorized GA4 audience creation now so lists can accumulate before later remarketing activation.
 
 This does not authorize remarketing campaign creation or spend. Customer Match or uploaded CRM/PII lists remain outside authorization.
-
-The existing Meta ownership contract remains:
 
 This Google Search budget gate does not authorize Meta Pixel/Dataset/CAPI implementation or Meta spend.
 
@@ -405,4 +417,23 @@ M6-06 is eligible for `COMPLETE / BUDGET_SPEND_POLICY_AUTHORIZED` only when:
 - spend is still zero at the design-gate closure;
 - no external Google Ads mutation occurred merely to close M6-06.
 
-Until the remaining operating constraints are explicitly accepted, accepted task hours remain zero.
+All exit criteria are satisfied at the design/policy layer. M6-06 is accepted at 8 scope-equivalent hours. External spend remains zero and no Google Ads mutation occurred.
+
+
+## 16. Closure receipt
+
+```text
+MNT-M6-06 = COMPLETE / BUDGET_SPEND_POLICY_AUTHORIZED / PAID_MEDIA_FROZEN
+accepted_hours = 8
+program accepted scope-equivalent = 1008 / 1240h
+program accepted percent = 81.29%
+remaining forecast = 232h
+actual Ads spend at closure = R$ 0
+external Google Ads mutations at closure = 0
+```
+
+Audience accumulation remains permitted under:
+- `docs/attribution/MNT_M6_AUDIENCE_ACCUMULATION_CONTRACT_V1_2026-09-22.md`
+- `docs/attribution/MNT_GA4_AUDIENCE_MANUAL_RUNBOOK_V1_2026-09-22.md`
+
+Looker Studio integration is deferred and does not block M6-06 closure.
