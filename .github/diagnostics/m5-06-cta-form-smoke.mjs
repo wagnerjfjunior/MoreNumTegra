@@ -29,6 +29,30 @@ for(const [browserName,type] of Object.entries({chromium,firefox,webkit})){
     await context.close();
   }
 
+  const homeContext=await browser.newContext({viewport:{width:393,height:852},hasTouch:true,locale:"pt-BR"});
+  const homePage=await homeContext.newPage();
+  await homePage.goto(ORIGIN+"/",{waitUntil:"domcontentloaded",timeout:30000});
+  const somaCard=homePage.locator('.mt-project-card').filter({has:homePage.locator('h3',{hasText:"Soma Perdizes"})}).first();
+  await somaCard.waitFor({state:"visible",timeout:20000});
+  const searchLead=(await somaCard.locator(".mt-project-search-lead").innerText()).replace(/\s+/g," ").trim();
+  if(searchLead!=="Studios e apartamentos Tegra em Perdizes.") throw new Error(`${browserName}/home-soma: unexpected search lead: ${searchLead}`);
+  const info=(await somaCard.locator(".mt-project-info").innerText()).replace(/\s+/g," ").trim();
+  if(!info.includes("apartamentos de 41m² e 45m²")||!info.includes("salas comerciais")) throw new Error(`${browserName}/home-soma: expanded product wording missing: ${info}`);
+  const priceLabel=(await somaCard.locator('.mt-price-block span').first().innerText()).replace(/\s+/g," ").trim();
+  if(priceLabel!=="Preço a partir de") throw new Error(`${browserName}/home-soma: unexpected price label: ${priceLabel}`);
+  await somaCard.locator('a[data-interest="Soma Perdizes"]').tap();
+  const interest=homePage.locator("[data-interest-context]");
+  await interest.waitFor({state:"visible",timeout:20000});
+  const interestName=(await interest.locator("[data-interest-name]").innerText()).replace(/\s+/g," ").trim();
+  if(interestName!=="Soma Perdizes") throw new Error(`${browserName}/home-soma: unexpected interest name: ${interestName}`);
+  const galleryCount=await interest.locator("[data-interest-gallery] img").count();
+  if(galleryCount<2) throw new Error(`${browserName}/home-soma: expected curated gallery with >=2 images, got ${galleryCount}`);
+  if(await interest.locator("[data-continue-form]").count()!==1) throw new Error(`${browserName}/home-soma: continue-form CTA missing`);
+  const selectedProject=await homePage.locator("[data-moretegra-lead-form]").getAttribute("data-selected-project");
+  if(selectedProject!=="Soma Perdizes") throw new Error(`${browserName}/home-soma: form selected project mismatch: ${selectedProject}`);
+  console.log(JSON.stringify({browser:browserName,test:"home-soma-interest-gallery",searchLead,priceLabel,interestName,galleryCount,selectedProject,result:"PASS"}));
+  await homeContext.close();
+
   const context=await browser.newContext({viewport:{width:393,height:852},hasTouch:true,locale:"pt-BR"});
   const page=await context.newPage();
   await page.goto(ORIGIN+"/empreendimentos/capiitolo-piero-lissoni/",{waitUntil:"domcontentloaded",timeout:30000});
