@@ -30,9 +30,9 @@ PRODUCTION_STATE = READY
 
 ```text
 MNT-M6-05 = COMPLETE / LANDING_QUERY_MAP_ACCEPTED / RUNTIME_REGRESSION_FIXED
-MNT-M6-06 = ACTIVE / DESIGN_PROPOSAL_READY / MONETARY_AUTHORITY_REQUIRED
+MNT-M6-06 = ACTIVE / DESIGN_PROPOSAL_READY / FINANCIAL_CEILING_AUTHORIZED / BID_STAGE_POLICY_PENDING
 MNT-M6 = ACTIVE
-NEXT = MNT-M6-06 / MONETARY_AUTHORITY_REQUIRED
+NEXT = MNT-M6-06 / FINANCIAL_CEILING_AUTHORIZED / BID_STAGE_POLICY_PENDING
 ```
 
 Canonical landing/query map:
@@ -62,4 +62,7 @@ Canonical proposal:
 
 `docs/attribution/MNT_M6_06_BUDGET_SPEND_AUTHORIZATION_GATE_2026-09-22.md`
 
-Recommended but not yet financially authorized: R$ 1,500 total / 14 days / up to R$ 70/day configured after staged activation / Maximize Clicks / R$ 10 max CPC bid limit. Authorized spend remains R$ 0.
+Recommended but not yet financially authorized: R$ 1,000 total / 30 days / up to R$ 32/day configured after staged activation / Maximize Clicks / R$ 10 max CPC bid limit. Authorized spend remains R$ 0.
+
+
+M6-06 financial ceiling decision: R$ 1,000 / 30 days. Operational daily/bid/stage settings remain pending final Product Authority acceptance. External spend remains R$ 0.
