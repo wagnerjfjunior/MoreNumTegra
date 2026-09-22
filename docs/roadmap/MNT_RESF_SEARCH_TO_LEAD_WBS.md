@@ -225,14 +225,14 @@ Performance targets retained: LCP <= 2.5s, INP <= 200ms, CLS <= 0.1.
 |---|---|---:|---|
 | MNT-M6-01 | Attribution model and identifier boundaries | 16 | COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION |
 | MNT-M6-02 | UTM/source/medium/campaign contract | 8 | COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION |
-| MNT-M6-03 | Google Ads conversion architecture | 16 | PLANNED / NEXT / AUTHORIZATION_REQUIRED |
-| MNT-M6-04 | SEM campaign/query contract | 24 | PLANNED |
+| MNT-M6-03 | Google Ads conversion architecture | 16 | COMPLETE / DESIGN_CANONICALIZED / NO_EXTERNAL_MUTATION |
+| MNT-M6-04 | SEM campaign/query contract | 24 | PLANNED / NEXT / AUTHORIZATION_REQUIRED |
 | MNT-M6-05 | Landing-page/query mapping | 16 | PLANNED |
 | MNT-M6-06 | Budget/spend authorization gate | 8 | PLANNED_NOT_AUTHORIZED |
 | MNT-M6-07 | Authorized external platform implementation | 24 | PLANNED_NOT_AUTHORIZED |
 | MNT-M6-08 | Paid conversion QA | 16 | PLANNED |
 
-Accepted M6 scope-equivalent: `24h` from M6-01 and M6-02. M6-03 remains separately gated.
+Accepted M6 scope-equivalent: `40h` from M6-01 through M6-03. M6-04 remains separately gated.
 
 ### MNT-M7 — QA, Release, Observability & Learning Loop — 192h — PLANNED
 
@@ -270,7 +270,7 @@ MNT-M5 COMPLETE
   M5-10 COMPLETE / ACCEPTED / CANDIDATE1_RETAINED / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE
 ```
 
-M5 is complete at 168h. M6-01 and M6-02 are complete as design-only attribution architecture. M6-02 defines the governed UTM tuple, stable utm_id, initial paid source/medium vocabulary, 30-day consent-gated first/last-touch persistence design, no internal UTM propagation, and no CRM attribution transport. The next gate is MNT-M6-03.
+M5 is complete at 168h. M6-01 through M6-03 are complete as design-only paid-media architecture. M6-03 selects a single GA4-derived Google Ads lead conversion from generate_lead, initially Secondary, count One, no value, 30-day click window, no parallel native lead tag, no enhanced conversions and no offline import. The next gate is MNT-M6-04.
 
 Consumers must use `CURRENT_PROGRAM_STATE.json` for current lifecycle/progress and this WBS for structure/planning hours.
 
