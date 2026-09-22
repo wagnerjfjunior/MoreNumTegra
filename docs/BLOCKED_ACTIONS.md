@@ -246,3 +246,18 @@ PLANNED != AUTHORIZED
 - Historical M2-02 non-www host wording must not override current ADR-006/www canonical host.
 - MNT-M6-02 requires explicit Product Authority authorization.
 - No Ads spend, campaign launch, external paid-media mutation, GTM/GA4 mutation or Meta implementation is authorized.
+
+
+## M6-02 closure gate — 2026-09-22
+
+- MNT-M6-02 is COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION.
+- No active campaign was created.
+- Only governed source/medium/campaign tuples may populate future project UTM attribution.
+- Paid launch additionally requires stable project `utm_id`.
+- Internal UTM propagation is forbidden.
+- Direct/internal arrivals must not overwrite eligible acquisition state.
+- Untagged organic/referral remains vendor-native only in project V1.
+- Project attribution persistence is not implemented; future design requires affirmative consent and fixed 30-day project window.
+- CRM attribution transport remains not authorized.
+- No Ads conversion action, account link, spend, offline import, enhanced conversions, GTM/GA4 mutation or Meta mutation is authorized.
+- MNT-M6-03 requires explicit Product Authority authorization.
