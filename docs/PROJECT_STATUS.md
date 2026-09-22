@@ -26,9 +26,9 @@ MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
 MNT-M5-10 = COMPLETE / ACCEPTED / CANDIDATE1_RETAINED / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE
 
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 944
-REMAINING_FORECAST_HOURS = 296
-ACCEPTED_PERCENT = 76.13
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 960
+REMAINING_FORECAST_HOURS = 280
+ACCEPTED_PERCENT = 77.42
 ```
 
 ## 2. M5-06 CTA/Form journey
@@ -592,3 +592,54 @@ ACCEPTED_PERCENT = 76.13
 ```
 
 Next gate: `MNT-M6-03 — Google Ads conversion architecture — 16h / AUTHORIZATION_REQUIRED`.
+
+
+## 19. M6-03 — Google Ads conversion architecture
+
+Canonical authority:
+
+- `docs/attribution/MNT_M6_03_GOOGLE_ADS_CONVERSION_ARCHITECTURE_V1_2026-09-22.md`
+- `docs/attribution/MNT_GOOGLE_ADS_CONVERSION_ARCHITECTURE_V1.json`
+
+Status:
+
+```text
+MNT-M6-03 = COMPLETE / DESIGN_CANONICALIZED / NO_EXTERNAL_MUTATION
+MNT-M6 = ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
+```
+
+Core decisions:
+
+```text
+V1 conversion source = GA4 generate_lead
+project semantic = mnt_lead_success
+category = Submit lead form
+initial optimization = Secondary / observe only
+promotion to Primary = only after M6-06 + M6-08 + explicit activation
+counting = One
+conversion value = none
+click window = 30 days
+attribution = Data-driven where available
+credit channel target = Google paid channels / live-setting gate
+Ads<->GA4 link = required
+auto-tagging = required
+gclid/wbraid/gbraid survival = required
+parallel native Ads lead tag = forbidden in V1
+enhanced conversions = not authorized
+offline conversion import = not authorized
+CRM click-ID transport = not authorized
+property price as value = forbidden
+```
+
+M6-03 explicitly does not create any conversion action or external Ads mutation.
+
+Program progress:
+
+```text
+FORECAST_TOTAL_HOURS = 1240
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 960
+REMAINING_FORECAST_HOURS = 280
+ACCEPTED_PERCENT = 77.42
+```
+
+Next gate: `MNT-M6-04 — SEM campaign/query contract — 24h / AUTHORIZATION_REQUIRED`.
