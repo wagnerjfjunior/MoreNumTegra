@@ -1,14 +1,14 @@
 # Status do Projeto — MoreNumTegra
 
-Atualizado em `2026-09-20`.
+Atualizado em `2026-09-22`.
 
 Fonte canônica: GitHub `main`. Resolver estado live antes de qualquer mutação.
 
 ## 1. Estado integrado
 
 ```text
-CANONICAL_MAIN_RUNTIME = 5b60e5862fd8581996b92ca8e1e40ce93285b4e4
-PRODUCTION_DEPLOYMENT = dpl_2FsJfM4L8o95vUzHTiV2Cp4ePrr8
+CANONICAL_MAIN_RUNTIME = 8d99996edddd66a59835992da161edbbb3579ad0
+PRODUCTION_DEPLOYMENT = dpl_6BP6WssMhisgJMdy91TbFSLyFVXX
 PRODUCTION_STATE = READY
 
 MNT-M5 = ACTIVE
@@ -21,7 +21,7 @@ MNT-M5-06 = COMPLETE / PRODUCTION_JOURNEY_PASS / SEARCH_VARIANT_PRESERVED
 MNT-M5-07 = COMPLETE / PRODUCTION_GA4_PASS / GTM_VERSION_12_LIVE
 MNT-M5-08 = COMPLETE / CRM_HANDOFF_CONTRACT_CANONICALIZED / NO_RUNTIME_MUTATION
 MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
-MNT-M5-10 = ACTIVE / SLICE_01_COMPLETE / NEXT_SLICE_DECISION_REQUIRED
+MNT-M5-10 = ACTIVE / SLICE_07_RETAINED / NEXT_SLICE_DECISION_REQUIRED
 
 FORECAST_TOTAL_HOURS = 1240
 ACCEPTED_SCOPE_EQUIVALENT_HOURS = 896
@@ -75,8 +75,8 @@ No alias/duplicate route was introduced and the canonical remains:
 
 ```text
 CANONICAL_HOST = https://www.moretegra.com.br/
-PRODUCTION_SOURCE_SHA = be7f229ea04cf4050c40c471e21f262f4cfc845d
-PRODUCTION_DEPLOYMENT = dpl_CZEKd9SmbVTx6T2L7y4rFkTRdQhP
+PRODUCTION_SOURCE_SHA = 8d99996edddd66a59835992da161edbbb3579ad0
+PRODUCTION_DEPLOYMENT = dpl_6BP6WssMhisgJMdy91TbFSLyFVXX
 PRODUCTION_STATE = READY
 ```
 
@@ -210,3 +210,45 @@ The compact hero is selected, but the `<=2,500 ms` LCP target remains unmet.
 The manually pre-compressed complex-source experiment was rejected because Green generated a larger WebP (`106,720 B`) than from the raw source (`83,076 B`).
 
 M5-10 remains ACTIVE. No task hours are accepted from Slice 01 alone. The next performance slice requires a Product Authority decision.
+
+
+## 12. M5-10 Elo Duo Slice 07 — retained late GTM bootstrap
+
+Canonical evidence:
+
+`docs/performance/MNT_M5_10_ELO_DUO_LATE_GTM_BOOTSTRAP_SLICE07_2026-09-22.md`
+
+Runtime:
+
+```text
+PR = #217 / MERGED
+SHA = 8d99996edddd66a59835992da161edbbb3579ad0
+DEPLOYMENT = dpl_6BP6WssMhisgJMdy91TbFSLyFVXX
+STATE = READY
+```
+
+The retained implementation keeps `GTM-PGCR4R47` as the sole dispatcher and keeps the canonical `gtm.js` queue marker immediate, but delays the GTM network bootstrap to `window.load` or first pointer/keyboard interaction.
+
+Validation:
+
+```text
+PR #217 exact-head gates = 7/7 SUCCESS
+Production QA run 35736764272 = SUCCESS
+Final Consent/GA4 proof run 35737706576 = SUCCESS
+Form46 lead submissions during QA = 0
+```
+
+Five-run Production median:
+
+```text
+LCP = 3,279 ms
+score = 84
+TBT = 237 ms
+CLS = 0.0307
+clean-control LCP = 3,676 ms
+delta = -397 ms / -10.80%
+```
+
+The performance gain is material and Slice 07 is retained. The project target `LCP <= 2,500 ms` remains unmet.
+
+No M5-10 task hours are accepted from Slice 07 alone. The next runtime slice requires a new Product Authority decision.

@@ -1,28 +1,28 @@
 # Handoff Atual — MoreNumTegra
 
-Atualizado em `2026-09-21`.
+Atualizado em `2026-09-22`.
 
 **GitHub `main` é a fonte canônica. Resolver live antes de qualquer conclusão ou mutação.**
 
 Handoff detalhado vigente:
 
-`handoffs/HANDOFF-2026-09-21-M5-10-ELO-MEDIA-AB-SESSION-TRANSITION.md`
+`handoffs/HANDOFF-2026-09-22-M5-10-ELO-LATE-GTM-SLICE07.md`
 
 ## REPOSITORY_STATE
 
 ```text
 CANONICAL_REPOSITORY = wagnerjfjunior/MoreNumTegra
 CANONICAL_BRANCH = main
-MAIN_AT_TRANSITION = 5b60e5862fd8581996b92ca8e1e40ce93285b4e4
-LATEST_RUNTIME_PR = #205 / MERGED
+LAST_RUNTIME_PR = #217 / MERGED
+LATEST_RUNTIME_SHA = 8d99996edddd66a59835992da161edbbb3579ad0
 ```
 
 ## DEPLOYMENT_STATE / PRODUCTION_STATE
 
 ```text
 CANONICAL_HOST = https://www.moretegra.com.br/
-PRODUCTION_DEPLOYMENT = dpl_2FsJfM4L8o95vUzHTiV2Cp4ePrr8
-PRODUCTION_SOURCE_SHA = 5b60e5862fd8581996b92ca8e1e40ce93285b4e4
+PRODUCTION_DEPLOYMENT = dpl_6BP6WssMhisgJMdy91TbFSLyFVXX
+PRODUCTION_SOURCE_SHA = 8d99996edddd66a59835992da161edbbb3579ad0
 PRODUCTION_STATE = READY
 ```
 
@@ -30,17 +30,24 @@ PRODUCTION_STATE = READY
 
 ```text
 MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
-MNT-M5-10 = ACTIVE / SLICE_01_COMPLETE / NEXT_SLICE_DECISION_REQUIRED
+MNT-M5-10 = ACTIVE / SLICE_07_RETAINED / NEXT_SLICE_DECISION_REQUIRED
 ```
 
-Elo Duo Slice 01 closed the bounded media experiments:
+Slice 07 late GTM bootstrap:
 
-- raw-source Green complex WebP retained: `83,076 B`;
-- manually compressed-source complex WebP rejected: `106,720 B`;
-- compact-source hero selected: `160,918 B`;
-- original-source hero rejected for current Production: `185,446 B`;
-- five-run median LCP: compact `3,947 ms` vs original `4,037 ms`;
-- project LCP target `<=2,500 ms` remains unmet.
+- same sole container `GTM-PGCR4R47`;
+- same GA4 `G-57M2XR0CY2`;
+- same Consent Mode source events and four-signal state transitions;
+- same Form 46 contract;
+- GTM network request delayed to `window.load` or first pointer/keyboard interaction;
+- exact one GTM + one gtag resource in Lighthouse;
+- Production QA run `35736764272` = SUCCESS;
+- final consent proof run `35737706576` = SUCCESS;
+- zero real Form 46 submissions during QA;
+- five-run median LCP = `3,279 ms`;
+- nearest clean control = `3,676 ms`;
+- improvement = `-397 ms / -10.80%`;
+- target `<=2,500 ms` remains unmet.
 
 ## PROGRAM PROGRESS
 
@@ -51,10 +58,10 @@ REMAINING_FORECAST_HOURS = 344
 ACCEPTED_PERCENT = 72.26
 ```
 
-No M5-10 task hours are accepted merely from this slice.
+No M5-10 task hours are accepted merely from Slice 07.
 
 ## NEXT SAFE ACTION
 
 Read `docs/NEXT_SAFE_ACTION.md`.
 
-Current gate: Product Authority must choose the next bounded M5-10 slice. No additional performance mutation is authorized by sequence.
+Current gate: STOP before another runtime mutation. Product Authority must choose the next bounded M5-10 slice.

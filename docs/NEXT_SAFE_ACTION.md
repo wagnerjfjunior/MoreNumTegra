@@ -1,46 +1,54 @@
 # Próxima Ação Segura — MoreNumTegra
 
-Atualizado em `2026-09-21`.
+Atualizado em `2026-09-22`.
 
 ```text
-MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
-MNT-M5-10 = ACTIVE / SLICE_01_COMPLETE / NEXT_SLICE_DECISION_REQUIRED
+MNT-M5-10 = ACTIVE / SLICE_07_RETAINED / NEXT_SLICE_DECISION_REQUIRED
 
-MAIN_AT_TRANSITION = 5b60e5862fd8581996b92ca8e1e40ce93285b4e4
-PRODUCTION_SOURCE_SHA = 5b60e5862fd8581996b92ca8e1e40ce93285b4e4
-PRODUCTION_DEPLOYMENT = dpl_2FsJfM4L8o95vUzHTiV2Cp4ePrr8
+LATEST_RUNTIME_SHA = 8d99996edddd66a59835992da161edbbb3579ad0
+PRODUCTION_SOURCE_SHA = 8d99996edddd66a59835992da161edbbb3579ad0
+PRODUCTION_DEPLOYMENT = dpl_6BP6WssMhisgJMdy91TbFSLyFVXX
 PRODUCTION_STATE = READY
 ```
 
-## Estado encerrado do Slice 01
+## Estado encerrado da Slice 07
 
-Elo Duo media A/B:
+Elo Duo late GTM bootstrap:
 
-- compact hero Green WebP selected: `160,918 B`;
-- original-source hero Green WebP rejected for current Production: `185,446 B`;
-- compact five-run median LCP: `3,947 ms`;
-- original five-run median LCP: `4,037 ms`;
-- lower-byte raw-source Green complex retained: `83,076 B`;
-- manually pre-compressed source produced larger Green complex WebP: `106,720 B`;
-- project LCP target `<=2,500 ms` remains unmet.
+- Production QA = PASS;
+- final Consent/GA4 proof = PASS;
+- GTM `GTM-PGCR4R47` remains sole dispatcher;
+- GA4 `G-57M2XR0CY2` preserved;
+- Form 46 unchanged;
+- QA created zero real leads;
+- median LCP = `3,279 ms`;
+- nearest clean control = `3,676 ms`;
+- delta = `-397 ms / -10.80%`;
+- performance score median = `84`;
+- TBT median = `237 ms`;
+- CLS median = `0.0307`;
+- project target `LCP <= 2,500 ms` remains unmet.
+
+Canonical evidence:
+
+`docs/performance/MNT_M5_10_ELO_DUO_LATE_GTM_BOOTSTRAP_SLICE07_2026-09-22.md`
 
 ## Única próxima ação segura
 
 **PARAR antes de nova mutação de runtime.**
 
-A Product Authority deve escolher o próximo slice M5-10.
+Product Authority must explicitly choose the next bounded M5-10 slice.
 
-Alternativas plausíveis para decisão:
+Plausible next decisions:
 
-1. continuar Elo Duo hero optimization até tentar aproximar/atingir `LCP <= 2,500 ms`, com responsive derivatives / `srcset` / `sizes` / revisão de preconnect/origin; ou
-2. avançar para o próximo alvo da estratégia M5-03: Ária hero + first gallery asset.
+1. one bounded Elo responsive-hero derivative / `srcset` / `sizes` experiment, because the representative retained run still shows about `419 ms` of hero resource-load duration; or
+2. advance to the next M5-03 target: Ária hero + first-gallery optimization.
 
-A escolha acima é um gate de produto/escopo. Nenhum dos dois caminhos está autorizado por sequência.
+Neither path is authorized by sequence.
 
-Antes de qualquer execução na nova conversa:
+Before any next execution:
 
-1. resolver `main` live;
-2. executar o bootstrap canônico;
-3. resolver Vercel Production live;
-4. ler o handoff M5-10 de transição;
-5. confirmar explicitamente qual slice está autorizado.
+1. resolve `main` live;
+2. resolve Vercel Production live;
+3. read this file and the current handoff;
+4. confirm the exact next slice authorized by Product Authority.

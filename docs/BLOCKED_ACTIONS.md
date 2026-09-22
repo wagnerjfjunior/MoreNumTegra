@@ -1,6 +1,6 @@
 # Ações Bloqueadas — MoreNumTegra
 
-- Atualizado em: `2026-09-14`
+- Atualizado em: `2026-09-22`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
 - Functional baseline: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 - Technical baseline vigente após integração: `docs/baseline/TECHNICAL_BASELINE_V2_3.md`
@@ -176,3 +176,12 @@ PLANNED != AUTHORIZED
 - No additional M5-10 runtime slice is authorized by sequence.
 - Product Authority must choose the next bounded slice before further performance mutation.
 - Do not infer approval to modify Ária, CAPIITOLO, GTM, Form 46, SEO/canonical, or additional Elo assets from Slice 01 completion.
+
+
+## M5-10 post-Slice-07 gate — 2026-09-22
+
+- Slice 07 late GTM bootstrap is retained and Production-validated at runtime SHA `8d99996edddd66a59835992da161edbbb3579ad0`.
+- This retention does **not** authorize further GTM/GA4 changes, another Elo optimization, Ária optimization, Form 46 mutation, or any other runtime slice.
+- No direct project `gtag()`, second GTM container, duplicate GA4 destination, or change to `mnt_lead_success -> generate_lead` is authorized.
+- No M5-10 task hours are accepted merely from Slice 07.
+- Product Authority must explicitly choose the next bounded M5-10 slice.
