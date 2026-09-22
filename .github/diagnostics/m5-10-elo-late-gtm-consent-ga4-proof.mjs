@@ -111,3 +111,5 @@ async function run(choice){
 await run("granted");
 await run("denied");
 console.log("M5-10 late GTM consent/GA4 Production proof: PASS");
+
+// trigger registered consent proof workflow
