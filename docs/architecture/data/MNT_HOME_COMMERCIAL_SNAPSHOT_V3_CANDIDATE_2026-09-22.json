@@ -1,0 +1,632 @@
+{
+  "schemaVersion": 3,
+  "snapshotId": "mnt-home-commercial-2026-09-22-candidate-01",
+  "snapshotState": "candidate",
+  "generatedAt": "2026-09-22T19:21:00-03:00",
+  "publishedAt": null,
+  "currency": "BRL",
+  "authorityRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+  "supersedesSnapshotId": null,
+  "projects": {
+    "nova-vivere": {
+      "state": "active",
+      "inventoryLabel": null,
+      "legacyAliases": [],
+      "typologyAvailability": {},
+      "offers": {
+        "unit-701-72m2": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "active_reference",
+          "offerKind": "standard",
+          "priceLabel": "Preço a partir de",
+          "price": 852586.08,
+          "oldPrice": null,
+          "tablePrice": null,
+          "unit": "701",
+          "areaSqm": 72.82,
+          "pricePerSqm": 11708,
+          "reference": "Unidade 701 · 72,82 m² · R$ 11.708/m² · Valor a partir de R$ 852.586,08. Consulte a Tegra Vendas para confirmar disponibilidade e condições vigentes.",
+          "urgency": null,
+          "validUntil": null,
+          "disclaimer": "Consulte a Tegra Vendas para confirmar disponibilidade e condições vigentes."
+        },
+        "cash-unit-708-105m2": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "active_reference",
+          "offerKind": "cash",
+          "priceLabel": "Condição à vista",
+          "price": 1129900,
+          "oldPrice": null,
+          "tablePrice": null,
+          "unit": "708",
+          "areaSqm": 105,
+          "pricePerSqm": null,
+          "reference": "*Unidade 708 · 105 m². Valor para pagamento à vista, confirmado em 29/08/2026. Sujeito à disponibilidade e alteração. Consulte condições vigentes.",
+          "urgency": "Sujeito à disponibilidade e alteração.",
+          "validUntil": null,
+          "disclaimer": "Consulte condições vigentes."
+        }
+      }
+    },
+    "chateau-jardin": {
+      "state": "active",
+      "inventoryLabel": null,
+      "legacyAliases": [],
+      "typologyAvailability": {},
+      "offers": {
+        "unit-501": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "active_reference",
+          "offerKind": "standard",
+          "priceLabel": "Preço a partir de",
+          "price": 3690361,
+          "oldPrice": null,
+          "tablePrice": null,
+          "unit": "501",
+          "areaSqm": 185,
+          "pricePerSqm": 19947,
+          "reference": "Unidade 501 · 185 m² · R$ 19.947/m² · Valor a partir de R$ 3.690.361. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.",
+          "urgency": null,
+          "validUntil": null,
+          "disclaimer": "Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."
+        }
+      }
+    },
+    "caminhos-lapa-elo-duo": {
+      "state": "active",
+      "inventoryLabel": null,
+      "legacyAliases": [
+        "caminhos-da-lapa-elo-duo"
+      ],
+      "typologyAvailability": {},
+      "offers": {
+        "promo-ap2408": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "active_reference",
+          "offerKind": "promotion",
+          "priceLabel": "Valor promocional",
+          "price": 663000,
+          "oldPrice": 714712.34,
+          "tablePrice": null,
+          "unit": "AP2408",
+          "areaSqm": 67.42,
+          "pricePerSqm": null,
+          "reference": "Pronto para morar · Unidade AP2408 · 67,42 m² · 1 vaga · De R$ 714.712,34 por R$ 663.000. Condição sujeita à disponibilidade.",
+          "urgency": "Unidade específica · condição sujeita à disponibilidade",
+          "validUntil": null,
+          "disclaimer": "Condição sujeita à disponibilidade."
+        }
+      }
+    },
+    "garden-design": {
+      "state": "active",
+      "inventoryLabel": null,
+      "legacyAliases": [],
+      "typologyAvailability": {},
+      "offers": {
+        "unit-0112": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "active_reference",
+          "offerKind": "standard",
+          "priceLabel": "Preço a partir de",
+          "price": 673050,
+          "oldPrice": null,
+          "tablePrice": null,
+          "unit": "0112",
+          "areaSqm": null,
+          "pricePerSqm": 11020,
+          "reference": "Unidade 0112 · R$ 11.020/m² · Valor a partir de R$ 673.050. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.",
+          "urgency": null,
+          "validUntil": null,
+          "disclaimer": "Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."
+        }
+      }
+    },
+    "ampere-brooklin": {
+      "state": "active",
+      "inventoryLabel": null,
+      "legacyAliases": [],
+      "typologyAvailability": {},
+      "offers": {
+        "unit-0121": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "active_reference",
+          "offerKind": "standard",
+          "priceLabel": "Preço a partir de",
+          "price": 4770000,
+          "oldPrice": null,
+          "tablePrice": null,
+          "unit": "0121",
+          "areaSqm": 262.35,
+          "pricePerSqm": 18181,
+          "reference": "Unidade 0121 · 262,35 m² · R$ 18.181/m² · Valor a partir de R$ 4.770.000. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.",
+          "urgency": null,
+          "validUntil": null,
+          "disclaimer": "Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."
+        }
+      }
+    },
+    "mozae-higienopolis": {
+      "state": "active",
+      "inventoryLabel": null,
+      "legacyAliases": [],
+      "typologyAvailability": {},
+      "offers": {
+        "unit-ap0301": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "active_reference",
+          "offerKind": "standard",
+          "priceLabel": "Preço a partir de",
+          "price": 721510,
+          "oldPrice": null,
+          "tablePrice": null,
+          "unit": "AP0301",
+          "areaSqm": 46,
+          "pricePerSqm": 15685,
+          "reference": "Unidade AP0301 · 46 m² · R$ 15.685/m² · Valor a partir de R$ 721.510. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.",
+          "urgency": null,
+          "validUntil": null,
+          "disclaimer": "Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."
+        }
+      }
+    },
+    "universo-tatuape-orbita": {
+      "state": "active",
+      "inventoryLabel": null,
+      "legacyAliases": [],
+      "typologyAvailability": {},
+      "offers": {
+        "unit-ap0609": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "active_reference",
+          "offerKind": "standard",
+          "priceLabel": "Preço a partir de",
+          "price": 611685,
+          "oldPrice": null,
+          "tablePrice": null,
+          "unit": "AP0609",
+          "areaSqm": 69,
+          "pricePerSqm": 8865,
+          "reference": "Unidade AP0609 · 69 m² · R$ 8.865/m² · Valor a partir de R$ 611.685. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.",
+          "urgency": null,
+          "validUntil": null,
+          "disclaimer": "Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."
+        }
+      }
+    },
+    "aria-higienopolis": {
+      "state": "active",
+      "inventoryLabel": null,
+      "legacyAliases": [],
+      "typologyAvailability": {},
+      "offers": {
+        "studio-1510": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "active_reference",
+          "offerKind": "standard",
+          "priceLabel": "Preço a partir de",
+          "price": 501000,
+          "oldPrice": null,
+          "tablePrice": null,
+          "unit": "Studio 1510",
+          "areaSqm": 30,
+          "pricePerSqm": 16700,
+          "reference": "Studio 1510 · 30 m² · R$ 16.700/m² · Valor a partir de R$ 501.000. Consulte a Tegra Vendas para confirmar disponibilidade e condições vigentes.",
+          "urgency": null,
+          "validUntil": null,
+          "disclaimer": "Consulte a Tegra Vendas para confirmar disponibilidade e condições vigentes."
+        },
+        "apt-ap1214-rate": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "reference_only",
+          "offerKind": "reference_only",
+          "priceLabel": "Referência por m²",
+          "price": null,
+          "oldPrice": null,
+          "tablePrice": null,
+          "unit": "AP1214",
+          "areaSqm": 54,
+          "pricePerSqm": 17856,
+          "reference": "Também há referência para a unidade AP1214 · 54 m² · R$ 17.856/m².",
+          "urgency": null,
+          "validUntil": null,
+          "disclaimer": null
+        }
+      }
+    },
+    "bem-moema": {
+      "state": "active",
+      "inventoryLabel": null,
+      "legacyAliases": [],
+      "typologyAvailability": {},
+      "offers": {
+        "unit-ap0202": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "active_reference",
+          "offerKind": "standard",
+          "priceLabel": "Preço a partir de",
+          "price": 1811200,
+          "oldPrice": null,
+          "tablePrice": null,
+          "unit": "AP0202",
+          "areaSqm": 80,
+          "pricePerSqm": 22640,
+          "reference": "Unidade AP0202 · 80 m² · R$ 22.640/m² · Valor a partir de R$ 1.811.200. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.",
+          "urgency": null,
+          "validUntil": null,
+          "disclaimer": "Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."
+        }
+      }
+    },
+    "bem-moema-studios-offices": {
+      "state": "active",
+      "inventoryLabel": null,
+      "legacyAliases": [],
+      "typologyAvailability": {},
+      "offers": {
+        "studio-1702": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "active_reference",
+          "offerKind": "standard",
+          "priceLabel": "Preço a partir de",
+          "price": 509600,
+          "oldPrice": null,
+          "tablePrice": null,
+          "unit": "Studio 1702",
+          "areaSqm": 28,
+          "pricePerSqm": 18200,
+          "reference": "Studio 1702 · 28 m² · R$ 18.200/m² · Valor a partir de R$ 509.600. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.",
+          "urgency": null,
+          "validUntil": null,
+          "disclaimer": "Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."
+        }
+      }
+    },
+    "soma-perdizes": {
+      "state": "active",
+      "inventoryLabel": null,
+      "legacyAliases": [],
+      "typologyAvailability": {},
+      "offers": {
+        "unit-0602": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "active_reference",
+          "offerKind": "standard",
+          "priceLabel": "Preço a partir de",
+          "price": 630000,
+          "oldPrice": null,
+          "tablePrice": null,
+          "unit": "0602",
+          "areaSqm": 45,
+          "pricePerSqm": 14000,
+          "reference": "Unidade 0602 · 45 m² · R$ 14.000/m² · Valor a partir de R$ 630.000. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.",
+          "urgency": null,
+          "validUntil": null,
+          "disclaimer": "Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."
+        }
+      }
+    },
+    "zahle-jardins": {
+      "state": "consult_only",
+      "inventoryLabel": null,
+      "legacyAliases": [],
+      "typologyAvailability": {},
+      "offers": {
+        "consult-current": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "consult_only",
+          "offerKind": "consult",
+          "priceLabel": "Valor",
+          "price": null,
+          "oldPrice": null,
+          "tablePrice": null,
+          "unit": null,
+          "areaSqm": null,
+          "pricePerSqm": null,
+          "reference": "Valor sob consulta. Consulte a Tegra Vendas para confirmar unidades disponíveis e condições vigentes.",
+          "urgency": null,
+          "validUntil": null,
+          "disclaimer": "Consulte a Tegra Vendas para confirmar unidades disponíveis e condições vigentes."
+        }
+      }
+    },
+    "bueno-brandao-257": {
+      "state": "active",
+      "inventoryLabel": null,
+      "legacyAliases": [],
+      "typologyAvailability": {},
+      "offers": {
+        "unit-31": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "active_reference",
+          "offerKind": "standard",
+          "priceLabel": "Preço a partir de",
+          "price": 21750000,
+          "oldPrice": null,
+          "tablePrice": null,
+          "unit": "31",
+          "areaSqm": 500,
+          "pricePerSqm": 43500,
+          "reference": "Unidade 31 · 500 m² · R$ 43.500/m² · Valor a partir de R$ 21.750.000. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.",
+          "urgency": null,
+          "validUntil": null,
+          "disclaimer": "Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."
+        }
+      }
+    },
+    "capiitolo-piero-lissoni": {
+      "state": "active",
+      "inventoryLabel": null,
+      "legacyAliases": [],
+      "typologyAvailability": {},
+      "offers": {
+        "unit-24-standard": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "active_reference",
+          "offerKind": "standard",
+          "priceLabel": "Preço a partir de",
+          "price": 3647490,
+          "oldPrice": null,
+          "tablePrice": null,
+          "unit": "24",
+          "areaSqm": 210,
+          "pricePerSqm": 17369,
+          "reference": "Unidade 24 · 210 m² · R$ 17.369/m² · Valor a partir de R$ 3.647.490. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.",
+          "urgency": null,
+          "validUntil": null,
+          "disclaimer": "Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."
+        },
+        "cash-unit-24": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "active_reference",
+          "offerKind": "cash",
+          "priceLabel": "A partir de",
+          "price": 3160000,
+          "oldPrice": null,
+          "tablePrice": 3942628,
+          "unit": "24",
+          "areaSqm": 210,
+          "pricePerSqm": null,
+          "reference": "*Unidade 24 · 210 m². Valor para pagamento à vista, referência Agosto/26. Valor de tabela R$ 3.942.628. Sujeito à disponibilidade e alteração. Consulte condições vigentes.",
+          "urgency": "Sujeito à disponibilidade e alteração.",
+          "validUntil": null,
+          "disclaimer": "Consulte condições vigentes."
+        }
+      }
+    },
+    "dsg-itaim": {
+      "state": "consult_only",
+      "inventoryLabel": null,
+      "legacyAliases": [],
+      "typologyAvailability": {},
+      "offers": {
+        "unit-201-consult": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "consult_only",
+          "offerKind": "consult",
+          "priceLabel": "Valor",
+          "price": null,
+          "oldPrice": null,
+          "tablePrice": null,
+          "unit": "201",
+          "areaSqm": 27,
+          "pricePerSqm": null,
+          "reference": "Unidade 201 · 27 m² · Valor sob consulta. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.",
+          "urgency": null,
+          "validUntil": null,
+          "disclaimer": "Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."
+        }
+      }
+    },
+    "ledge-brooklin": {
+      "state": "active",
+      "inventoryLabel": null,
+      "legacyAliases": [],
+      "typologyAvailability": {},
+      "offers": {
+        "studio-0052": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "active_reference",
+          "offerKind": "standard",
+          "priceLabel": "Preço a partir de",
+          "price": 600000,
+          "oldPrice": null,
+          "tablePrice": null,
+          "unit": "Studio 0052",
+          "areaSqm": null,
+          "pricePerSqm": 16666,
+          "reference": "Studio 0052 · R$ 16.666/m² · Valor a partir de R$ 600.000. Consulte a Tegra Vendas para confirmar disponibilidade e condições vigentes.",
+          "urgency": null,
+          "validUntil": null,
+          "disclaimer": "Consulte a Tegra Vendas para confirmar disponibilidade e condições vigentes."
+        },
+        "unit-1223": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "active_reference",
+          "offerKind": "standard",
+          "priceLabel": "Referência adicional",
+          "price": 1199000,
+          "oldPrice": null,
+          "tablePrice": null,
+          "unit": "1223",
+          "areaSqm": null,
+          "pricePerSqm": 17116,
+          "reference": "Também há referência para a unidade 1223 · R$ 17.116/m² · R$ 1.199.000.",
+          "urgency": null,
+          "validUntil": null,
+          "disclaimer": null
+        }
+      }
+    },
+    "teg-sacoma": {
+      "state": "active",
+      "inventoryLabel": null,
+      "legacyAliases": [],
+      "typologyAvailability": {},
+      "offers": {
+        "unit-0011": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "active_reference",
+          "offerKind": "standard",
+          "priceLabel": "Preço a partir de",
+          "price": 390000,
+          "oldPrice": null,
+          "tablePrice": null,
+          "unit": "0011",
+          "areaSqm": 65,
+          "pricePerSqm": 6000,
+          "reference": "Unidade 0011 · 65 m² · R$ 6.000/m² · Valor a partir de R$ 390.000. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.",
+          "urgency": null,
+          "validUntil": null,
+          "disclaimer": "Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."
+        }
+      }
+    },
+    "tiel-vila-nova-conceicao": {
+      "state": "active",
+      "inventoryLabel": null,
+      "legacyAliases": [],
+      "typologyAvailability": {},
+      "offers": {
+        "unit-914": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "active_reference",
+          "offerKind": "standard",
+          "priceLabel": "Preço a partir de",
+          "price": 598500,
+          "oldPrice": null,
+          "tablePrice": null,
+          "unit": "914",
+          "areaSqm": 21,
+          "pricePerSqm": 28500,
+          "reference": "Unidade 914 · 21 m² · R$ 28.500/m² · Valor a partir de R$ 598.500. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.",
+          "urgency": null,
+          "validUntil": null,
+          "disclaimer": "Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."
+        }
+      }
+    },
+    "ypy-alto-ipiranga": {
+      "state": "active",
+      "inventoryLabel": null,
+      "legacyAliases": [],
+      "typologyAvailability": {},
+      "offers": {
+        "unit-ap0207": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "active_reference",
+          "offerKind": "standard",
+          "priceLabel": "Preço a partir de",
+          "price": 727650,
+          "oldPrice": null,
+          "tablePrice": null,
+          "unit": "AP0207",
+          "areaSqm": 66,
+          "pricePerSqm": 11025,
+          "reference": "Unidade AP0207 · 66 m² · R$ 11.025/m² · Valor a partir de R$ 727.650. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes.",
+          "urgency": null,
+          "validUntil": null,
+          "disclaimer": "Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."
+        }
+      }
+    },
+    "ode-perdizes": {
+      "state": "active",
+      "inventoryLabel": null,
+      "legacyAliases": [],
+      "typologyAvailability": {},
+      "offers": {
+        "unit-22-promo": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "active_reference",
+          "offerKind": "promotion",
+          "priceLabel": "Valor promocional",
+          "price": 2090000,
+          "oldPrice": 2200000,
+          "tablePrice": null,
+          "unit": "22 / 2º andar",
+          "areaSqm": 156,
+          "pricePerSqm": null,
+          "reference": "Pronto para morar · Unidade 22 · 2º andar · única unidade disponível · De R$ 2.200.000 por R$ 2.090.000. Condição sujeita à disponibilidade.",
+          "urgency": "Última unidade · condição sujeita à disponibilidade",
+          "validUntil": null,
+          "disclaimer": "Condição sujeita à disponibilidade."
+        }
+      }
+    },
+    "reserva-caminhos-lapa": {
+      "state": "consult_only",
+      "inventoryLabel": null,
+      "legacyAliases": [],
+      "typologyAvailability": {},
+      "offers": {
+        "consult-current": {
+          "observedAt": "2026-09-22",
+          "sourceClass": "PRODUCT_AUTHORITY_HOME_RECERTIFICATION",
+          "sourceRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+          "state": "consult_only",
+          "offerKind": "consult",
+          "priceLabel": "Valor",
+          "price": null,
+          "oldPrice": null,
+          "tablePrice": null,
+          "unit": null,
+          "areaSqm": null,
+          "pricePerSqm": null,
+          "reference": "Pronto para morar. Plantas de 91 m², 127 m² e 157 m², com lazer completo e beach tennis. Consulte a Tegra Vendas para confirmar unidades disponíveis e condições vigentes.",
+          "urgency": null,
+          "validUntil": null,
+          "disclaimer": "Consulte a Tegra Vendas para confirmar unidades disponíveis e condições vigentes."
+        }
+      }
+    }
+  }
+}
