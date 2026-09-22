@@ -11,6 +11,7 @@
 - Baseline funcional vigente: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 - Baseline técnica vigente: `docs/baseline/TECHNICAL_BASELINE_V2_3.md`
 - Baseline técnica anterior: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
+- Padrão canônico de mídia responsiva: `docs/performance/RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1.md`
 - ADRs operacionais atuais: ADR-004, ADR-005 e ADR-006
 - Programa Search-to-Lead: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
 - WBS: `docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md`
@@ -225,6 +226,8 @@ Targets:
 - CLS <= 0,1.
 
 Nenhuma função principal depende de hover. Vídeo/media não pode bloquear catálogo, filtros, CTA ou formulário.
+
+Para páginas exatas e remediação fotográfica, aplicar `docs/performance/RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1.md`: hero descobrível no HTML inicial, derivados responsivos sem upscale, budgets mobile, gallery/thumb derivatives e fallback governado.
 
 ## 12. Produto / catálogo
 
