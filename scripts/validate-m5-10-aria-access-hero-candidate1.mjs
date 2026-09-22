@@ -20,7 +20,7 @@ check(html.includes('/assets/aria-higienopolis/candidate1/hero-access-mobile-640
 check(html.includes('/assets/aria-higienopolis/candidate1/hero-access-mobile-828.webp 828w'),"candidate 828w declared");
 check(html.includes('sizes="calc(100vw - 32px)"'),"mobile sizes preserved");
 check(html.includes('fetchpriority="high" decoding="async"'),"hero remains high priority and non-lazy");
-check(html.includes('Ária%20Higien%C3%B3polis-Perspectiva%20ilustrada%20do%20acesso%20residencial..webp'),"Green candidate retained as desktop/fallback source");
+check(html.includes('%C3%81ria%20Higien%C3%B3polis-Perspectiva%20ilustrada%20do%20acesso%20residencial..webp'),"Green candidate retained as desktop/fallback source");
 check(html.includes('alt="Perspectiva ilustrada do acesso residencial do Ária Higienópolis"'),"candidate alt matches content");
 check(!html.includes('rel="preload" as="image"'),"no blanket image preload added");
 
