@@ -312,7 +312,12 @@ if (staticHome.includes('const blocks = [') || staticHome.includes('fetch(url, {
 if (staticHome.includes('id="mt-block-02"') || staticHome.includes('id="mt-block-03"') || staticHome.includes('data-moretegra-fallback')) fail('home', 'dynamic/fallback block placeholders remain in initial HTML');
 if (!staticHome.includes('src="/src-greenn/moretegra.js" defer')) fail('home', 'static moretegra.js include missing');
 if ((staticHome.match(/id="formulario"/g) || []).length !== 1) fail('home', 'initial HTML must contain exactly one #formulario');
+if ((staticHome.match(/data-form-anchor/g) || []).length !== 1) fail('home', 'initial HTML must contain exactly one interest-context mount');
+if (staticHome.includes('id="formulario" class="mt-form-anchor"')) fail('home', 'interest-context mount must not reuse #formulario');
 if (!staticHome.includes('data-moretegra')) fail('home', 'primary MoreNumTegra content missing from initial HTML');
+if (!staticHomeJs.includes('function ensureInterestContext(root)') || !staticHomeJs.includes('data-interest-gallery')) fail('home', 'post-interest gallery journey must remain implemented');
+if (!staticHomeJs.includes('function projectSearchLead(project)') || !staticHomeJs.includes('class="mt-project-search-lead"')) fail('home', 'semantic project-card search copy must remain rendered');
+if (!staticHomeJs.includes('"Preço a partir de"')) fail('home', 'regular priced cards must expose natural price intent wording');
 if (staticHomeJs.includes('applySearchMetadata') || staticHomeJs.includes('SEARCH_METADATA')) fail('home', 'runtime metadata/schema rewriting must not return');
 
 if (failures.length) {
