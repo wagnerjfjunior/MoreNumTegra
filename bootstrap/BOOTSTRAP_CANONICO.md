@@ -12,6 +12,7 @@
 - Baseline técnica vigente: `docs/baseline/TECHNICAL_BASELINE_V2_3.md`
 - Baseline técnica anterior: `docs/baseline/TECHNICAL_BASELINE_V2_2.md`
 - Padrão canônico de mídia responsiva: `docs/performance/RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1.md`
+- Contrato canônico de atribuição/identificadores: `docs/attribution/MNT_M6_01_ATTRIBUTION_MODEL_IDENTIFIER_BOUNDARIES_V1_2026-09-22.md`
 - ADRs operacionais atuais: ADR-004, ADR-005 e ADR-006
 - Programa Search-to-Lead: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
 - WBS: `docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md`

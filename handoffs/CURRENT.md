@@ -6,7 +6,7 @@ Atualizado em `2026-09-22`.
 
 Handoff detalhado vigente:
 
-`handoffs/HANDOFF-2026-09-22-M5-COMPLETE-M6-GATE.md`
+`handoffs/HANDOFF-2026-09-22-M6-01-COMPLETE-M6-02-GATE.md`
 
 ## REPOSITORY_STATE
 
@@ -29,28 +29,26 @@ PRODUCTION_STATE = READY
 ## VALIDATION_STATE
 
 ```text
-MNT-M2-10 = COMPLETE / ACCEPTED_WITH_V1_RESIDUAL / HISTORICAL_RECONCILED
-MNT-M2 = COMPLETE
-MNT-M5-10 = COMPLETE / ACCEPTED / CANDIDATE1_RETAINED
-MNT-M5 = COMPLETE / ACCEPTED
-NEXT = MNT-M6-01 / AUTHORIZATION_REQUIRED
+MNT-M6-01 = COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION
+MNT-M6 = ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
+NEXT = MNT-M6-02 / AUTHORIZATION_REQUIRED
 ```
 
-Ária Candidate 1 remains the single retained hero. Its speed direction versus the prior hero remains inconclusive, while both candidate batteries pass the laboratory LCP target. The rooftop-pool image remains untested.
+Canonical attribution contract:
+
+`docs/attribution/MNT_M6_01_ATTRIBUTION_MODEL_IDENTIFIER_BOUNDARIES_V1_2026-09-22.md`
 
 ## PROGRAM PROGRESS
 
 ```text
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 920
-REMAINING_FORECAST_HOURS = 320
-ACCEPTED_PERCENT = 74.19
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 936
+REMAINING_FORECAST_HOURS = 304
+ACCEPTED_PERCENT = 75.48
 ```
-
-The new +24h is M5-10 only. Historical M2-10 acceptance is reconciled without double counting.
 
 ## NEXT SAFE ACTION
 
 Read `docs/NEXT_SAFE_ACTION.md`.
 
-STOP before M6 execution. Product Authority must explicitly authorize MNT-M6-01.
+STOP before M6-02. Product Authority authorization required.

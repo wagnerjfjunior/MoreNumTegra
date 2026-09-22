@@ -12,6 +12,8 @@ PRODUCTION_DEPLOYMENT = dpl_AmvdNUQdqA6URbcL8JaWfJyPLmPc
 PRODUCTION_STATE = READY
 
 MNT-M5 = COMPLETE / ACCEPTED
+MNT-M6 = ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
+MNT-M6-01 = COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION
 MNT-M5-01 = COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS
 MNT-M5-02 = COMPLETE / LAB_BASELINE_ESTABLISHED / FIELD_CWV_NOT_OBSERVED
 MNT-M5-03 = COMPLETE / STRATEGY_ESTABLISHED / NO_RUNTIME_MUTATION
@@ -24,9 +26,9 @@ MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
 MNT-M5-10 = COMPLETE / ACCEPTED / CANDIDATE1_RETAINED / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE
 
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 920
-REMAINING_FORECAST_HOURS = 320
-ACCEPTED_PERCENT = 74.19
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 936
+REMAINING_FORECAST_HOURS = 304
+ACCEPTED_PERCENT = 75.48
 ```
 
 ## 2. M5-06 CTA/Form journey
@@ -490,3 +492,49 @@ ACCEPTED_PERCENT = 74.19
 ```
 
 Next gate: `MNT-M6-01 — Attribution model and identifier boundaries` / explicit authorization required.
+
+
+## 17. M6-01 — Attribution model and identifier boundaries
+
+Canonical contract:
+
+`docs/attribution/MNT_M6_01_ATTRIBUTION_MODEL_IDENTIFIER_BOUNDARIES_V1_2026-09-22.md`
+
+Status:
+
+```text
+MNT-M6-01 = COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION
+MNT-M6 = ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
+```
+
+Core decisions:
+
+```text
+project attribution model = FIRST_ELIGIBLE_TOUCH + LAST_ELIGIBLE_TOUCH
+project event identity = mnt_event_id
+project user identity = NOT_DEFINED
+cross-device identity = NOT_IMPLEMENTED
+fingerprinting = FORBIDDEN
+UTM class = RESERVED / exact contract deferred to M6-02
+Google click IDs = gclid/wbraid/gbraid / OPAQUE / RESERVED
+Meta click identifier contract = DEFERRED
+CRM attribution transport = NOT_AUTHORIZED
+Green l_/p_id = NOT lead/attribution IDs
+enhanced conversions / hashed PII = NOT_AUTHORIZED
+canonical host for M6 = www.moretegra.com.br
+```
+
+The historical M2-02 non-www canonical-host clause is point-in-time evidence and is superseded by ADR-006/current Technical Baseline for M6 work.
+
+M6-01 performs no runtime, GTM, GA4, Google Ads, Meta, Green, DNS or budget mutation.
+
+Program progress:
+
+```text
+FORECAST_TOTAL_HOURS = 1240
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 936
+REMAINING_FORECAST_HOURS = 304
+ACCEPTED_PERCENT = 75.48
+```
+
+Next gate: `MNT-M6-02 — UTM/source/medium/campaign contract — 8h / AUTHORIZATION_REQUIRED`.

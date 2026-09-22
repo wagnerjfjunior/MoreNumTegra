@@ -3,41 +3,44 @@
 Atualizado em `2026-09-22`.
 
 ```text
-MNT-M5 = COMPLETE / ACCEPTED
-MNT-M5-10 = COMPLETE / ACCEPTED / CANDIDATE1_RETAINED
-MNT-M2-10 = COMPLETE / ACCEPTED_WITH_V1_RESIDUAL / HISTORICAL_RECONCILED
+MNT-M6-01 = COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION
+MNT-M6 = ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
 
 LATEST_RUNTIME_SHA = 5a0df7b6757930bf34664d04d66b9a41e841f577
 PRODUCTION_SOURCE_SHA = 5a0df7b6757930bf34664d04d66b9a41e841f577
 PRODUCTION_DEPLOYMENT = dpl_AmvdNUQdqA6URbcL8JaWfJyPLmPc
 PRODUCTION_STATE = READY
 
-PROGRAM_PROGRESS = 920 / 1240h = 74.19%
+PROGRAM_PROGRESS = 936 / 1240h = 75.48%
 ```
 
-## Current closure
+## M6-01 closure
 
-Candidate 1 is retained as the single Ária hero by Product Authority decision.
+Canonical contract:
 
-The A/B remains correctly classified:
+`docs/attribution/MNT_M6_01_ATTRIBUTION_MODEL_IDENTIFIER_BOUNDARIES_V1_2026-09-22.md`
+
+Key boundary:
 
 ```text
-performance direction = INCONCLUSIVE
-lab LCP target <=2,500 ms = PASS
-rooftop-pool image = NOT_TESTED
+first eligible touch + last eligible touch
+event identity != click identity != lead identity != person identity
+no project user ID
+no fingerprinting
+no hashed PII/enhanced conversions
+no CRM attribution transport yet
+www.moretegra.com.br = current canonical host
 ```
-
-M2-10 was already merged/accepted in PR #54 on 2026-09-13 and is not rerun or counted twice.
 
 ## Única próxima ação segura
 
-**PARAR antes de execução de M6.**
-
-The next structural task is:
+**PARAR antes de M6-02.**
 
 ```text
-MNT-M6-01 — Attribution model and identifier boundaries — 16h
+MNT-M6-02 — UTM/source/medium/campaign contract — 8h
 STATE = PLANNED / AUTHORIZATION_REQUIRED
 ```
 
-M6-01 is design/architecture scope. It does not authorize budget, spend, campaign launch, Google Ads conversion creation, Meta implementation or other external paid-media mutation.
+M6-02 may define naming/allowlists/persistence design only after explicit Product Authority authorization.
+
+No Ads spend, campaign launch, conversion-action creation, Meta implementation, GTM/GA4 mutation or Form46/CRM attribution mutation is authorized.
