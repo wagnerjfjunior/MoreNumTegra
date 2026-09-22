@@ -255,12 +255,12 @@ Canonical closure evidence:
 - `docs/attribution/MNT_GA4_AUDIENCE_MANUAL_RUNBOOK_V1_2026-09-22.md`
 - `handoffs/HANDOFF-2026-09-22-M6-06-COMPLETE-PAID-MEDIA-FROZEN.md`
 
-### MNT-M7 — QA, Release, Observability & Learning Loop — 192h — PLANNED
+### MNT-M7 — QA, Release, Observability & Learning Loop — 192h — ACTIVE / M7-02_P1_PRODUCT_TRUTH_BLOCKERS_OPEN
 
 | ID | Activity | Hours | State |
 |---|---|---:|---|
-| MNT-M7-01 | Preview validation | 16 | PLANNED |
-| MNT-M7-02 | Technical/content QA | 16 | PLANNED |
+| MNT-M7-01 | Preview validation | 16 | COMPLETE / NO_ACTIVE_PREVIEW_CANDIDATE / EXISTING_RELEASE_EVIDENCE_REUSED |
+| MNT-M7-02 | Technical/content QA | 16 | ACTIVE / QA_EXECUTED / P1_PRODUCT_TRUTH_BLOCKERS_OPEN |
 | MNT-M7-03 | Independent mobile QA | 16 | PLANNED |
 | MNT-M7-04 | Tracking + lead end-to-end QA | 16 | PLANNED |
 | MNT-M7-05 | Regression suite | 16 | PLANNED |
@@ -291,7 +291,16 @@ MNT-M5 COMPLETE
   M5-10 COMPLETE / ACCEPTED / CANDIDATE1_RETAINED / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE
 ```
 
-M5 is complete at 168h. M6-01 through M6-05 are complete. M6-05 maps all 30 planned Search seeds to clean canonical landing URLs: 29 READY, 1 BLOCKED_DO_NOT_TARGET (`tegra vendas`), 0 HOLD. The Home post-interest gallery regression was fixed by PR #231 and Production-validated at SHA `124b620855175a583c528733462d6d0f4f44cd41`. External Google Ads campaigns and spend remain zero. MNT-M6-06 design is active. Its recommended budget envelope is documented, but authorized spend remains R$ 0 until Product Authority explicitly approves or amends the monetary ceiling.
+M5 is complete at 168h. M6-01 through M6-06 are complete; M6-07/M6-08 remain deferred while paid media is frozen. Manual GA4 audience setup is complete.
+
+M7-01 is complete at 16h without creating an artificial Preview: no active runtime candidate existed, the effective runtime `124b620855175a583c528733462d6d0f4f44cd41` was already Production READY, and later main deltas were docs-only.
+
+M7-02 technical/content QA has been executed but is not accepted because two P1 Product Truth blockers remain open:
+
+- Home volatile commercial objects lack release-time revalidation and drift from newer governed exact-project commercial snapshots;
+- ODE still exposes the unrecertified comparative `De R$ 2.200.000 por R$ 2.090.000`, which the canonical Product Fact & Claim Registry prohibits until recertified.
+
+Current accepted program progress is `1024 / 1240h = 82.58%`. M7-02 remains at `0h` accepted until the P1 findings are closed.
 
 Consumers must use `CURRENT_PROGRAM_STATE.json` for current lifecycle/progress and this WBS for structure/planning hours.
 

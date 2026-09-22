@@ -342,3 +342,25 @@ Allowed while frozen:
 Future account `560-869-4042 / SWL Consultoria de imoveis` is user-designated but not yet M6-07 preflight validated. User-provided screenshot showed overdue balance / ads not serving; remediation is deferred until paid media is resumed.
 
 Looker Studio is deferred by Product Authority and is not a current blocking action.
+
+
+## M7-02 Product Truth blockers — 2026-09-22
+
+RESF C15 release progression is blocked while either P1 remains open:
+
+- Home volatile commercial price/unit/promotion claims may not be treated as release-valid without release-time revalidation for the same commercial object.
+- ODE comparative `De R$ 2.200.000 por R$ 2.090.000` may not remain as an accepted release claim unless the older R$ 2.200.000 value is explicitly recertified; canonical M3-04 currently classifies it as not recertified/prohibited.
+
+Blocked:
+
+- inventing replacement values;
+- treating disclaimer text as a substitute for Product Truth evidence;
+- marking M7-02 PASS with P1>0;
+- progressing to M7-03 as a way to bypass the material blocker;
+- changing commercial truth without Product Authority/current evidence.
+
+Allowed:
+
+- read-only evidence collection;
+- explicit commercial revalidation by Product Authority/source;
+- separately authorized fail-closed removal of unsupported claims.

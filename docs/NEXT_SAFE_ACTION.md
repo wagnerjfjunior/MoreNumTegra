@@ -3,79 +3,72 @@
 Atualizado em `2026-09-22`.
 
 ```text
-MNT-M6-06 = COMPLETE / BUDGET_SPEND_POLICY_AUTHORIZED / PAID_MEDIA_FROZEN
+MNT-M7-01 = COMPLETE / NO_ACTIVE_PREVIEW_CANDIDATE / EXISTING_RELEASE_EVIDENCE_REUSED
+MNT-M7-02 = ACTIVE / QA_EXECUTED / P1_PRODUCT_TRUTH_BLOCKERS_OPEN
+MNT-M7 = ACTIVE
 MNT-M6-07 = DEFERRED / PAID_MEDIA_FROZEN
-MNT-M6-08 = DEFERRED / DEPENDS_ON_M6-07
-MNT-M6 = ACTIVE / PAID_MEDIA_FROZEN
+MNT-M6-08 = DEFERRED
+PAID_MEDIA = FROZEN
+LOOKER_STUDIO = DEFERRED
 
 LATEST_RUNTIME_SHA = 124b620855175a583c528733462d6d0f4f44cd41
-PRODUCTION_SOURCE_SHA = 124b620855175a583c528733462d6d0f4f44cd41
 PRODUCTION_DEPLOYMENT = dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C
 PRODUCTION_STATE = READY
 
-PROGRAM_PROGRESS = 1008 / 1240h = 81.29%
-AUTHORIZED_FUTURE_SEARCH_CEILING = R$ 1,000 / 30 days
-AUTHORIZED_FUTURE_CONFIGURED_DAILY_TOTAL = R$ 32/day
-AUTHORIZED_FUTURE_MAX_CPC = R$ 10
-AUTHORIZED_ADS_SPEND_NOW = R$ 0
-EXTERNAL_ADS_MUTATIONS = 0
+PROGRAM_PROGRESS = 1024 / 1240h = 82.58%
+REMAINING_FORECAST = 216h
 ```
 
-## Paid-media state
+## M7-01
 
-Product Authority accepted the complete M6-06 policy and then froze paid media.
-
-Future Search policy remains canonical:
-
-```text
-bidding = Maximize Clicks
-max CPC = R$ 10
-geo = São Paulo city
-language = Portuguese
-Search Partners = OFF initially
-Display expansion = OFF
-Broad = NOT_AUTHORIZED
-AI Max = NOT_AUTHORIZED
-conversion = Secondary / observe only
-```
-
-Future Google Ads M6-07 preflight target designated by Product Authority:
-
-```text
-customer_id = 560-869-4042
-display_name = SWL Consultoria de imoveis
-state = USER_DESIGNATED_TARGET / NOT_YET_M6_07_PREFLIGHT_VALIDATED
-```
-
-The user-provided screenshot showed an overdue-balance warning and ads not serving. Billing remediation is deferred while paid media is frozen.
-
-## GA4 audience setup
-
-Manual GA4 audience creation is COMPLETE and screenshot-observed.
+M7-01 was closed without fabricating a Preview deployment.
 
 Evidence:
 
-`docs/attribution/MNT_GA4_AUDIENCE_MANUAL_COMPLETION_2026-09-22.md`
+`docs/qa/MNT_M7_01_PREVIEW_VALIDATION_ADJUDICATION_2026-09-22.md`
+
+No active runtime release candidate exists. PR #141 is a historical QA aggregation whose own contract says `DO NOT MERGE`. The effective release runtime is already Production READY at SHA `124b620...`.
+
+## M7-02
+
+Technical/content QA was executed against Production.
+
+Evidence:
+
+`docs/qa/MNT_M7_02_TECHNICAL_CONTENT_QA_2026-09-22.md`
+
+Severity:
 
 ```text
-GA4 audience manual setup = COMPLETE
-remarketing activation = DEFERRED
+P0 = 0
+P1 = 2
+P2 = 2
+P3 = 0
+```
+
+### P1 blockers
+
+1. The Home still owns volatile price/unit/promotion claims in `src-greenn/moretegra.js` without a current release-time revalidation receipt. Exact-project pages already consume newer governed references for Elo Duo and CAPIITOLO.
+2. ODE Perdizes Production copy still contains the comparative `De R$ 2.200.000 por R$ 2.090.000`, while the canonical Product Fact & Claim Registry states the older R$ 2.200.000 comparative is not recertified and remains prohibited.
+
+## Única próxima ação segura
+
+Product Authority must choose a bounded Product Truth path:
+
+A. provide/revalidate current commercial evidence for the affected Home objects; or
+
+B. authorize fail-closed runtime remediation that removes unsupported/uncertified volatile claims until current evidence is available.
+
+Do not invent replacement prices.
+
+Do not advance to M7-03 merely to bypass the P1 findings.
+
+## Still frozen
+
+```text
+Google Ads implementation/spend = FROZEN
 remarketing spend = R$ 0
+Meta paid media/CAPI = NOT_AUTHORIZED
+Looker Studio = DEFERRED
+M7-07/M7-08 publication authority = NOT_GRANTED_BY_THIS_QA
 ```
-
-There is no remaining zero-spend audience-creation action required in M6.
-
-## Explicitly frozen/deferred
-
-```text
-Google Ads campaign creation = FROZEN
-keyword upload = FROZEN
-budget/bid mutation = FROZEN
-conversion-action mutation = FROZEN
-Search activation = FROZEN
-remarketing activation = FROZEN
-Meta paid media = NOT_AUTHORIZED
-Looker Studio connection/dashboard = DEFERRED
-```
-
-M6-07 may resume only after a new explicit Product Authority decision.

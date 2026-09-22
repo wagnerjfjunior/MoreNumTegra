@@ -20,7 +20,7 @@
     "framework": "RESF v1 — Search-to-Lead",
     "framework_provider": "wagnerjfjunior/Blogs-sites-portais-seo",
     "framework_provider_ref": "7a61aa036d677015ee4540ca8c5dc9a41f0165d4",
-    "state": "ACTIVE / PAID_MEDIA_FROZEN",
+    "state": "ACTIVE / M7_ACTIVE / PAID_MEDIA_FROZEN",
     "planning_baseline_date": "2026-09-10",
     "wbs_source": "docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md"
   },
@@ -35,27 +35,27 @@
   },
   "progress": {
     "forecast_total_hours": 1240,
-    "accepted_scope_equivalent_hours": 1008,
-    "remaining_forecast_hours": 232,
-    "accepted_percent": 81.29,
-    "display_percent": 81.29,
+    "accepted_scope_equivalent_hours": 1024,
+    "remaining_forecast_hours": 216,
+    "accepted_percent": 82.58,
+    "display_percent": 82.58,
     "basis": "COMPLETE_TASK_HOURS_DIVIDED_BY_TOTAL_FORECAST_HOURS",
     "source": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
     "warning": "Current lifecycle/progress is sourced from CURRENT_PROGRAM_STATE. This task graph remains structural authority for hierarchy/task IDs/planning hours; do not infer stale child state outside reconciled slices."
   },
   "current": {
-    "phase_id": "MNT-M6",
-    "phase_state": "ACTIVE / PAID_MEDIA_FROZEN",
-    "work_package": "Attribution & Paid Media Readiness",
-    "current_task_id": "MNT-M6-07",
-    "current_task_state": "DEFERRED / PAID_MEDIA_FROZEN / GA4_AUDIENCE_SETUP_COMPLETE",
-    "next_task_id": "MNT-M6-07",
-    "next_task_state": "DEFERRED / EXPLICIT_REOPEN_REQUIRED",
-    "next_safe_action": "No paid-media action is authorized. GA4 audience manual setup is complete; M6-07 resumes only after explicit Product Authority reopening.",
+    "phase_id": "MNT-M7",
+    "phase_state": "ACTIVE",
+    "work_package": "QA, Release, Observability & Learning Loop",
+    "current_task_id": "MNT-M7-02",
+    "current_task_state": "ACTIVE / QA_EXECUTED / P1_PRODUCT_TRUTH_BLOCKERS_OPEN",
+    "next_task_id": "MNT-M7-02",
+    "next_task_state": "PRODUCT_AUTHORITY_DECISION_REQUIRED",
+    "next_safe_action": "Resolve the two M7-02 P1 Product Truth blockers; M7-03 must not bypass them.",
     "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md",
     "current_state_source": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
-    "task_id": "MNT-M6-07",
-    "state": "DEFERRED / PAID_MEDIA_FROZEN / GA4_AUDIENCE_SETUP_COMPLETE"
+    "task_id": "MNT-M7-02",
+    "state": "ACTIVE / QA_EXECUTED / P1_PRODUCT_TRUTH_BLOCKERS_OPEN"
   },
   "sources": {
     "bootstrap": "bootstrap/BOOTSTRAP_CANONICO.md",
@@ -662,26 +662,30 @@
     {
       "id": "MNT-M7",
       "label": "QA, Release, Observability & Learning Loop",
-      "state": "PLANNED",
+      "state": "ACTIVE / M7_02_P1_PRODUCT_TRUTH_BLOCKERS_OPEN",
       "hours": 192,
-      "accepted_hours": 0,
+      "accepted_hours": 16,
       "effort_class": "CONSUMER_PLANNING_ESTIMATE",
       "tasks": [
         {
           "id": "MNT-M7-01",
           "label": "Preview validation",
-          "state": "PLANNED",
+          "state": "COMPLETE / NO_ACTIVE_PREVIEW_CANDIDATE / EXISTING_RELEASE_EVIDENCE_REUSED",
           "hours": 16,
-          "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
+          "accepted_hours": 16,
+          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
+          "authorization": "CLOSED",
+          "evidence": "docs/qa/MNT_M7_01_PREVIEW_VALIDATION_ADJUDICATION_2026-09-22.md"
         },
         {
           "id": "MNT-M7-02",
           "label": "Technical/content QA",
-          "state": "PLANNED",
+          "state": "ACTIVE / QA_EXECUTED / P1_PRODUCT_TRUTH_BLOCKERS_OPEN",
           "hours": 16,
           "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
+          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
+          "authorization": "AUTHORIZED_FOR_QA / RUNTIME_REMEDIATION_REQUIRES_BOUNDED_PRODUCT_AUTHORITY_DECISION",
+          "evidence": "docs/qa/MNT_M7_02_TECHNICAL_CONTENT_QA_2026-09-22.md"
         },
         {
           "id": "MNT-M7-03",
