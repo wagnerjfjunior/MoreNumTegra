@@ -30,8 +30,9 @@ PRODUCTION_STATE = READY
 
 ```text
 MNT-M6-05 = COMPLETE / LANDING_QUERY_MAP_ACCEPTED / RUNTIME_REGRESSION_FIXED
-MNT-M6 = ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
-NEXT = MNT-M6-06 / AUTHORIZATION_REQUIRED
+MNT-M6-06 = ACTIVE / DESIGN_PROPOSAL_READY / MONETARY_AUTHORITY_REQUIRED
+MNT-M6 = ACTIVE
+NEXT = MNT-M6-06 / MONETARY_AUTHORITY_REQUIRED
 ```
 
 Canonical landing/query map:
@@ -52,4 +53,13 @@ ACCEPTED_PERCENT = 80.65
 
 Read `docs/NEXT_SAFE_ACTION.md`.
 
-STOP before M6-06. Product Authority authorization required.
+M6-06 design execution is authorized and its bounded proposal is documented. Spend remains R$ 0. Product Authority monetary approval is required before M6-06 can close or M6-07 can mutate Google Ads.
+
+
+## M6-06 active design gate
+
+Canonical proposal:
+
+`docs/attribution/MNT_M6_06_BUDGET_SPEND_AUTHORIZATION_GATE_2026-09-22.md`
+
+Recommended but not yet financially authorized: R$ 1,500 total / 14 days / up to R$ 70/day configured after staged activation / Maximize Clicks / R$ 10 max CPC bid limit. Authorized spend remains R$ 0.
