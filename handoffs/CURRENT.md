@@ -66,3 +66,6 @@ Recommended but not yet financially authorized: R$ 1,000 total / 30 days / up to
 
 
 M6-06 financial ceiling decision: R$ 1,000 / 30 days. Operational daily/bid/stage settings remain pending final Product Authority acceptance. External spend remains R$ 0.
+
+
+GA4 audience accumulation is authorized now; remarketing activation/spend remains deferred. Canonical audience registry: `docs/attribution/MNT_M6_AUDIENCE_ACCUMULATION_CONTRACT_V1_2026-09-22.md`. Current exposed GA4 connector is read-only, so live creation remains NOT_YET_PROVEN.
