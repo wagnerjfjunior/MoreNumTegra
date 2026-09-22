@@ -3,18 +3,18 @@
   "project_id": "morenumtegra",
   "program_id": "MNT-RESF",
   "state_observed_at": "2026-09-22",
-  "program_state": "ACTIVE",
+  "program_state": "ACTIVE / PAID_MEDIA_FROZEN",
   "current_execution": {
     "active_phase_id": "MNT-M6",
-    "active_task_id": "MNT-M6-06",
-    "state": "ACTIVE / FINANCIAL_CEILING_AUTHORIZED / BID_STAGE_POLICY_PENDING",
+    "active_task_id": "MNT-M6-07",
+    "state": "DEFERRED / PAID_MEDIA_FROZEN / GA4_AUDIENCE_MANUAL_SETUP_ALLOWED",
     "repository_head_sha": "124b620855175a583c528733462d6d0f4f44cd41",
     "latest_main_runtime_sha": "124b620855175a583c528733462d6d0f4f44cd41",
-    "deployment_state": "PRODUCTION_READY / M6_06_DESIGN_ACTIVE / SPEND_ZERO",
+    "deployment_state": "PRODUCTION_READY / PAID_MEDIA_FROZEN / SPEND_ZERO",
     "last_verified_vercel_success_sha": "124b620855175a583c528733462d6d0f4f44cd41",
     "production_exact_sha": "124b620855175a583c528733462d6d0f4f44cd41 / dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C / READY",
     "authority_record": "docs/attribution/MNT_M6_06_BUDGET_SPEND_AUTHORIZATION_GATE_2026-09-22.md",
-    "transition_record": "handoffs/HANDOFF-2026-09-22-M6-05-COMPLETE-M6-06-GATE.md",
+    "transition_record": "handoffs/HANDOFF-2026-09-22-M6-06-COMPLETE-PAID-MEDIA-FROZEN.md",
     "acceptance_summary": {
       "slice_01": "COMPLETE / BOUNDED_EXPERIMENT",
       "runtime_prs": [
@@ -174,29 +174,39 @@
       "home_interest_gallery": "RESTORED / CROSS_BROWSER_PASS",
       "external_google_ads_mutations": 0,
       "ads_spend": 0,
-      "m6_06": "ACTIVE / FINANCIAL_CEILING_AUTHORIZED / BID_STAGE_POLICY_PENDING",
-      "m6_06_accepted_hours": 0,
+      "m6_06": "COMPLETE / BUDGET_SPEND_POLICY_AUTHORIZED / PAID_MEDIA_FROZEN",
+      "m6_06_accepted_hours": 8,
       "m6_06_authorized_spend_brl": 0,
-      "m6_06_recommended_financial_ceiling_brl": 1500,
-      "m6_06_recommended_full_stage_average_daily_budget_brl": 32,
-      "m6_06_recommended_max_cpc_brl": 10,
-      "m6_06_pilot_window_days": 14,
       "m6_06_external_google_ads_mutations": 0,
       "m6_06_provider_read_only_evidence": "GOOGLE_ADS_KEYWORD_PLANNER / SAO_PAULO_CITY / PORTUGUESE / GOOGLE_SEARCH",
       "m6_06_authorized_financial_ceiling_brl": 1000,
       "m6_06_authorized_pilot_window_days": 30,
-      "ga4_audience_accumulation": "AUTHORIZED_FOR_CREATION / LIVE_CREATION_NOT_YET_PROVEN",
+      "ga4_audience_accumulation": "AUTHORIZED_FOR_MANUAL_CREATION / LIVE_CREATION_NOT_YET_PROVEN",
       "remarketing_activation": "DEFERRED",
       "remarketing_spend_brl": 0,
       "customer_match": "NOT_AUTHORIZED",
-      "ga4_admin_write_capability_current_runtime": "NOT_EXPOSED"
+      "ga4_admin_write_capability_current_runtime": "NOT_EXPOSED",
+      "m6_06_authorized_configured_average_daily_budget_brl": 32,
+      "m6_06_authorized_max_cpc_brl": 10,
+      "m6_06_authorized_bidding": "Maximize Clicks",
+      "m6_06_authorized_geo": "Sao Paulo city",
+      "m6_06_authorized_language": "Portuguese",
+      "m6_06_search_partners": "OFF_INITIALLY",
+      "m6_06_display_expansion": "OFF",
+      "paid_media_state": "FROZEN",
+      "future_google_ads_target_customer_id": "560-869-4042",
+      "future_google_ads_target_display_name": "SWL Consultoria de imoveis",
+      "future_google_ads_target_state": "USER_DESIGNATED_TARGET / NOT_YET_M6_07_PREFLIGHT_VALIDATED",
+      "future_google_ads_billing_observation": "USER_PROVIDED_SCREENSHOT / OVERDUE_BALANCE_WARNING / ADS_NOT_SERVING / DEFERRED_WHILE_FROZEN",
+      "ga4_audience_runbook": "docs/attribution/MNT_GA4_AUDIENCE_MANUAL_RUNBOOK_V1_2026-09-22.md",
+      "looker_studio": "DEFERRED"
     }
   },
   "progress": {
     "forecast_total_hours": 1240,
-    "accepted_scope_equivalent_hours": 1000,
-    "remaining_forecast_hours": 240,
-    "accepted_percent": 80.65
+    "accepted_scope_equivalent_hours": 1008,
+    "remaining_forecast_hours": 232,
+    "accepted_percent": 81.29
   },
   "completed": {
     "MNT-M4-05": {
@@ -354,6 +364,12 @@
       "machine_contract": "docs/attribution/MNT_PAID_LANDING_QUERY_MAP_V1.json",
       "runtime_sha": "124b620855175a583c528733462d6d0f4f44cd41",
       "production_deployment": "dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C"
+    },
+    "MNT-M6-06": {
+      "state": "COMPLETE / BUDGET_SPEND_POLICY_AUTHORIZED / PAID_MEDIA_FROZEN",
+      "accepted_hours": 8,
+      "evidence": "docs/attribution/MNT_M6_06_BUDGET_SPEND_AUTHORIZATION_GATE_2026-09-22.md",
+      "transition_record": "handoffs/HANDOFF-2026-09-22-M6-06-COMPLETE-PAID-MEDIA-FROZEN.md"
     }
   },
   "recent_post_m4_events": {
@@ -491,9 +507,9 @@
     }
   },
   "next": {
-    "task_id": "MNT-M6-06",
-    "state": "PLANNED / AUTHORIZATION_REQUIRED",
-    "safe_action": "Stop before M6-06. Product Authority must explicitly authorize the budget/spend gate. No campaign creation or spend is authorized."
+    "task_id": "MNT-M6-07",
+    "state": "DEFERRED / PAID_MEDIA_FROZEN",
+    "safe_action": "Paid media remains frozen. Zero-spend GA4 audience creation is authorized using the canonical manual runbook; M6-07 external Google Ads implementation requires explicit reopening."
   },
   "cross_project": {
     "commercial_catalog": {
