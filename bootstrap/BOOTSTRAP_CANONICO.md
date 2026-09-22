@@ -15,6 +15,8 @@
 - Contrato canônico de atribuição/identificadores: `docs/attribution/MNT_M6_01_ATTRIBUTION_MODEL_IDENTIFIER_BOUNDARIES_V1_2026-09-22.md`
 - Contrato canônico UTM/source/medium/campaign: `docs/attribution/MNT_M6_02_UTM_SOURCE_MEDIUM_CAMPAIGN_CONTRACT_V1_2026-09-22.md`
 - Contrato UTM machine-readable: `docs/attribution/MNT_UTM_CONTRACT_V1.json`
+- Arquitetura canônica de conversão Google Ads: `docs/attribution/MNT_M6_03_GOOGLE_ADS_CONVERSION_ARCHITECTURE_V1_2026-09-22.md`
+- Arquitetura Google Ads machine-readable: `docs/attribution/MNT_GOOGLE_ADS_CONVERSION_ARCHITECTURE_V1.json`
 - ADRs operacionais atuais: ADR-004, ADR-005 e ADR-006
 - Programa Search-to-Lead: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
 - WBS: `docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md`
