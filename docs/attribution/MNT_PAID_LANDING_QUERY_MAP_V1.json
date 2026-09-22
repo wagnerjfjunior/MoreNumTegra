@@ -1,0 +1,894 @@
+{
+  "schema_version": "morenumtegra.paid-landing-query-map.v1",
+  "status": "CANONICAL_WHEN_MERGED",
+  "runtime_anchor": {
+    "main_sha": "124b620855175a583c528733462d6d0f4f44cd41",
+    "production_deployment": "dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C",
+    "production_state": "READY",
+    "regression_fix_pr": 231
+  },
+  "landing_pages": [
+    {
+      "campaign_id": "mnt-cmp-000001",
+      "name": "Ária Higienópolis",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/aria-higienopolis/",
+      "state": "READY"
+    },
+    {
+      "campaign_id": "mnt-cmp-000002",
+      "name": "Elo Duo",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/",
+      "state": "READY"
+    },
+    {
+      "campaign_id": "mnt-cmp-000003",
+      "name": "CAPIITOLO by Piero Lissoni",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/",
+      "state": "READY"
+    },
+    {
+      "campaign_id": "mnt-cmp-000004",
+      "name": "Portfolio Tegra / Home",
+      "final_url": "https://www.moretegra.com.br/",
+      "state": "READY"
+    }
+  ],
+  "seed_summary": {
+    "total": 30,
+    "ready": 29,
+    "blocked": 1,
+    "hold": 0
+  },
+  "mappings": [
+    {
+      "keyword_id": "aria-001",
+      "campaign_id": "mnt-cmp-000001",
+      "term": "ária higienópolis",
+      "match_type": "EXACT",
+      "intent": "Q1_PROJECT_NAVIGATIONAL",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/aria-higienopolis/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "Ária Higienópolis",
+        "title": "Ária Tegra Higienópolis | Studios e apartamentos prontos",
+        "h1": "Ária Tegra Higienópolis — apartamentos prontos para morar",
+        "coverage": [
+          "project name",
+          "Tegra",
+          "Higienópolis",
+          "apartamentos",
+          "studios",
+          "preço/valor",
+          "visita",
+          "pronto para morar",
+          "Form 46",
+          "condições"
+        ]
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "aria-002",
+      "campaign_id": "mnt-cmp-000001",
+      "term": "ária higienópolis",
+      "match_type": "PHRASE",
+      "intent": "Q1_PROJECT_NAVIGATIONAL",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/aria-higienopolis/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "Ária Higienópolis",
+        "title": "Ária Tegra Higienópolis | Studios e apartamentos prontos",
+        "h1": "Ária Tegra Higienópolis — apartamentos prontos para morar",
+        "coverage": [
+          "project name",
+          "Tegra",
+          "Higienópolis",
+          "apartamentos",
+          "studios",
+          "preço/valor",
+          "visita",
+          "pronto para morar",
+          "Form 46",
+          "condições"
+        ]
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "aria-003",
+      "campaign_id": "mnt-cmp-000001",
+      "term": "ária tegra",
+      "match_type": "EXACT",
+      "intent": "Q1_PROJECT_NAVIGATIONAL",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/aria-higienopolis/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "Ária Higienópolis",
+        "title": "Ária Tegra Higienópolis | Studios e apartamentos prontos",
+        "h1": "Ária Tegra Higienópolis — apartamentos prontos para morar",
+        "coverage": [
+          "project name",
+          "Tegra",
+          "Higienópolis",
+          "apartamentos",
+          "studios",
+          "preço/valor",
+          "visita",
+          "pronto para morar",
+          "Form 46",
+          "condições"
+        ]
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "aria-004",
+      "campaign_id": "mnt-cmp-000001",
+      "term": "apartamento ária higienópolis",
+      "match_type": "PHRASE",
+      "intent": "Q2_PROJECT_COMMERCIAL",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/aria-higienopolis/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "Ária Higienópolis",
+        "title": "Ária Tegra Higienópolis | Studios e apartamentos prontos",
+        "h1": "Ária Tegra Higienópolis — apartamentos prontos para morar",
+        "coverage": [
+          "project name",
+          "Tegra",
+          "Higienópolis",
+          "apartamentos",
+          "studios",
+          "preço/valor",
+          "visita",
+          "pronto para morar",
+          "Form 46",
+          "condições"
+        ]
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "aria-005",
+      "campaign_id": "mnt-cmp-000001",
+      "term": "studio ária higienópolis",
+      "match_type": "PHRASE",
+      "intent": "Q3_PROJECT_FEATURE",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/aria-higienopolis/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "Ária Higienópolis",
+        "title": "Ária Tegra Higienópolis | Studios e apartamentos prontos",
+        "h1": "Ária Tegra Higienópolis — apartamentos prontos para morar",
+        "coverage": [
+          "project name",
+          "Tegra",
+          "Higienópolis",
+          "apartamentos",
+          "studios",
+          "preço/valor",
+          "visita",
+          "pronto para morar",
+          "Form 46",
+          "condições"
+        ]
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "aria-006",
+      "campaign_id": "mnt-cmp-000001",
+      "term": "ária higienópolis preço",
+      "match_type": "PHRASE",
+      "intent": "Q2_PROJECT_COMMERCIAL",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/aria-higienopolis/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "Ária Higienópolis",
+        "title": "Ária Tegra Higienópolis | Studios e apartamentos prontos",
+        "h1": "Ária Tegra Higienópolis — apartamentos prontos para morar",
+        "coverage": [
+          "project name",
+          "Tegra",
+          "Higienópolis",
+          "apartamentos",
+          "studios",
+          "preço/valor",
+          "visita",
+          "pronto para morar",
+          "Form 46",
+          "condições"
+        ]
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "aria-007",
+      "campaign_id": "mnt-cmp-000001",
+      "term": "ária higienópolis visita",
+      "match_type": "PHRASE",
+      "intent": "Q2_PROJECT_COMMERCIAL",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/aria-higienopolis/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "Ária Higienópolis",
+        "title": "Ária Tegra Higienópolis | Studios e apartamentos prontos",
+        "h1": "Ária Tegra Higienópolis — apartamentos prontos para morar",
+        "coverage": [
+          "project name",
+          "Tegra",
+          "Higienópolis",
+          "apartamentos",
+          "studios",
+          "preço/valor",
+          "visita",
+          "pronto para morar",
+          "Form 46",
+          "condições"
+        ]
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "aria-008",
+      "campaign_id": "mnt-cmp-000001",
+      "term": "ária higienópolis pronto para morar",
+      "match_type": "PHRASE",
+      "intent": "Q3_PROJECT_FEATURE",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/aria-higienopolis/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "Ária Higienópolis",
+        "title": "Ária Tegra Higienópolis | Studios e apartamentos prontos",
+        "h1": "Ária Tegra Higienópolis — apartamentos prontos para morar",
+        "coverage": [
+          "project name",
+          "Tegra",
+          "Higienópolis",
+          "apartamentos",
+          "studios",
+          "preço/valor",
+          "visita",
+          "pronto para morar",
+          "Form 46",
+          "condições"
+        ]
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "elo-001",
+      "campaign_id": "mnt-cmp-000002",
+      "term": "elo duo",
+      "match_type": "EXACT",
+      "intent": "Q1_PROJECT_NAVIGATIONAL",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "Elo Duo",
+        "title": "Elo Duo Tegra Caminhos da Lapa | Apartamento pronto na Lapa",
+        "h1": "Elo Duo Tegra — Caminhos da Lapa",
+        "coverage": [
+          "project name",
+          "Tegra",
+          "Caminhos da Lapa",
+          "apartamento",
+          "preço/valor",
+          "visita",
+          "pronto para morar",
+          "Form 46",
+          "condições"
+        ]
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "elo-002",
+      "campaign_id": "mnt-cmp-000002",
+      "term": "elo duo",
+      "match_type": "PHRASE",
+      "intent": "Q1_PROJECT_NAVIGATIONAL",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "Elo Duo",
+        "title": "Elo Duo Tegra Caminhos da Lapa | Apartamento pronto na Lapa",
+        "h1": "Elo Duo Tegra — Caminhos da Lapa",
+        "coverage": [
+          "project name",
+          "Tegra",
+          "Caminhos da Lapa",
+          "apartamento",
+          "preço/valor",
+          "visita",
+          "pronto para morar",
+          "Form 46",
+          "condições"
+        ]
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "elo-003",
+      "campaign_id": "mnt-cmp-000002",
+      "term": "elo duo tegra",
+      "match_type": "EXACT",
+      "intent": "Q1_PROJECT_NAVIGATIONAL",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "Elo Duo",
+        "title": "Elo Duo Tegra Caminhos da Lapa | Apartamento pronto na Lapa",
+        "h1": "Elo Duo Tegra — Caminhos da Lapa",
+        "coverage": [
+          "project name",
+          "Tegra",
+          "Caminhos da Lapa",
+          "apartamento",
+          "preço/valor",
+          "visita",
+          "pronto para morar",
+          "Form 46",
+          "condições"
+        ]
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "elo-004",
+      "campaign_id": "mnt-cmp-000002",
+      "term": "caminhos da lapa elo duo",
+      "match_type": "PHRASE",
+      "intent": "Q1_PROJECT_NAVIGATIONAL",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "Elo Duo",
+        "title": "Elo Duo Tegra Caminhos da Lapa | Apartamento pronto na Lapa",
+        "h1": "Elo Duo Tegra — Caminhos da Lapa",
+        "coverage": [
+          "project name",
+          "Tegra",
+          "Caminhos da Lapa",
+          "apartamento",
+          "preço/valor",
+          "visita",
+          "pronto para morar",
+          "Form 46",
+          "condições"
+        ]
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "elo-005",
+      "campaign_id": "mnt-cmp-000002",
+      "term": "apartamento elo duo",
+      "match_type": "PHRASE",
+      "intent": "Q2_PROJECT_COMMERCIAL",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "Elo Duo",
+        "title": "Elo Duo Tegra Caminhos da Lapa | Apartamento pronto na Lapa",
+        "h1": "Elo Duo Tegra — Caminhos da Lapa",
+        "coverage": [
+          "project name",
+          "Tegra",
+          "Caminhos da Lapa",
+          "apartamento",
+          "preço/valor",
+          "visita",
+          "pronto para morar",
+          "Form 46",
+          "condições"
+        ]
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "elo-006",
+      "campaign_id": "mnt-cmp-000002",
+      "term": "elo duo preço",
+      "match_type": "PHRASE",
+      "intent": "Q2_PROJECT_COMMERCIAL",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "Elo Duo",
+        "title": "Elo Duo Tegra Caminhos da Lapa | Apartamento pronto na Lapa",
+        "h1": "Elo Duo Tegra — Caminhos da Lapa",
+        "coverage": [
+          "project name",
+          "Tegra",
+          "Caminhos da Lapa",
+          "apartamento",
+          "preço/valor",
+          "visita",
+          "pronto para morar",
+          "Form 46",
+          "condições"
+        ]
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "elo-007",
+      "campaign_id": "mnt-cmp-000002",
+      "term": "elo duo visita",
+      "match_type": "PHRASE",
+      "intent": "Q2_PROJECT_COMMERCIAL",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "Elo Duo",
+        "title": "Elo Duo Tegra Caminhos da Lapa | Apartamento pronto na Lapa",
+        "h1": "Elo Duo Tegra — Caminhos da Lapa",
+        "coverage": [
+          "project name",
+          "Tegra",
+          "Caminhos da Lapa",
+          "apartamento",
+          "preço/valor",
+          "visita",
+          "pronto para morar",
+          "Form 46",
+          "condições"
+        ]
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "elo-008",
+      "campaign_id": "mnt-cmp-000002",
+      "term": "elo duo pronto para morar",
+      "match_type": "PHRASE",
+      "intent": "Q3_PROJECT_FEATURE",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "Elo Duo",
+        "title": "Elo Duo Tegra Caminhos da Lapa | Apartamento pronto na Lapa",
+        "h1": "Elo Duo Tegra — Caminhos da Lapa",
+        "coverage": [
+          "project name",
+          "Tegra",
+          "Caminhos da Lapa",
+          "apartamento",
+          "preço/valor",
+          "visita",
+          "pronto para morar",
+          "Form 46",
+          "condições"
+        ]
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "cap-001",
+      "campaign_id": "mnt-cmp-000003",
+      "term": "capiitolo",
+      "match_type": "EXACT",
+      "intent": "Q1_PROJECT_NAVIGATIONAL",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "CAPIITOLO",
+        "title": "CAPIITOLO Tegra Chácara Klabin | Piero Lissoni",
+        "h1": "CAPIITOLO Tegra Chácara Klabin",
+        "coverage": [
+          "CAPIITOLO/Capitolo",
+          "Tegra",
+          "Piero Lissoni",
+          "Chácara Klabin",
+          "apartamentos",
+          "210 m²",
+          "preço/valor",
+          "visita",
+          "Form 46",
+          "condições"
+        ],
+        "runtime_note": "CAPIITOLO commercial content and visit/conditions CTAs are runtime-validated by the existing M5-06 browser smoke."
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "cap-002",
+      "campaign_id": "mnt-cmp-000003",
+      "term": "capiitolo tegra",
+      "match_type": "EXACT",
+      "intent": "Q1_PROJECT_NAVIGATIONAL",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "CAPIITOLO",
+        "title": "CAPIITOLO Tegra Chácara Klabin | Piero Lissoni",
+        "h1": "CAPIITOLO Tegra Chácara Klabin",
+        "coverage": [
+          "CAPIITOLO/Capitolo",
+          "Tegra",
+          "Piero Lissoni",
+          "Chácara Klabin",
+          "apartamentos",
+          "210 m²",
+          "preço/valor",
+          "visita",
+          "Form 46",
+          "condições"
+        ],
+        "runtime_note": "CAPIITOLO commercial content and visit/conditions CTAs are runtime-validated by the existing M5-06 browser smoke."
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "cap-003",
+      "campaign_id": "mnt-cmp-000003",
+      "term": "capiitolo piero lissoni",
+      "match_type": "PHRASE",
+      "intent": "Q1_PROJECT_NAVIGATIONAL",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "CAPIITOLO",
+        "title": "CAPIITOLO Tegra Chácara Klabin | Piero Lissoni",
+        "h1": "CAPIITOLO Tegra Chácara Klabin",
+        "coverage": [
+          "CAPIITOLO/Capitolo",
+          "Tegra",
+          "Piero Lissoni",
+          "Chácara Klabin",
+          "apartamentos",
+          "210 m²",
+          "preço/valor",
+          "visita",
+          "Form 46",
+          "condições"
+        ],
+        "runtime_note": "CAPIITOLO commercial content and visit/conditions CTAs are runtime-validated by the existing M5-06 browser smoke."
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "cap-004",
+      "campaign_id": "mnt-cmp-000003",
+      "term": "capiitolo chácara klabin",
+      "match_type": "PHRASE",
+      "intent": "Q1_PROJECT_NAVIGATIONAL",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "CAPIITOLO",
+        "title": "CAPIITOLO Tegra Chácara Klabin | Piero Lissoni",
+        "h1": "CAPIITOLO Tegra Chácara Klabin",
+        "coverage": [
+          "CAPIITOLO/Capitolo",
+          "Tegra",
+          "Piero Lissoni",
+          "Chácara Klabin",
+          "apartamentos",
+          "210 m²",
+          "preço/valor",
+          "visita",
+          "Form 46",
+          "condições"
+        ],
+        "runtime_note": "CAPIITOLO commercial content and visit/conditions CTAs are runtime-validated by the existing M5-06 browser smoke."
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "cap-005",
+      "campaign_id": "mnt-cmp-000003",
+      "term": "apartamento capiitolo",
+      "match_type": "PHRASE",
+      "intent": "Q2_PROJECT_COMMERCIAL",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "CAPIITOLO",
+        "title": "CAPIITOLO Tegra Chácara Klabin | Piero Lissoni",
+        "h1": "CAPIITOLO Tegra Chácara Klabin",
+        "coverage": [
+          "CAPIITOLO/Capitolo",
+          "Tegra",
+          "Piero Lissoni",
+          "Chácara Klabin",
+          "apartamentos",
+          "210 m²",
+          "preço/valor",
+          "visita",
+          "Form 46",
+          "condições"
+        ],
+        "runtime_note": "CAPIITOLO commercial content and visit/conditions CTAs are runtime-validated by the existing M5-06 browser smoke."
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "cap-006",
+      "campaign_id": "mnt-cmp-000003",
+      "term": "capiitolo 210 m2",
+      "match_type": "PHRASE",
+      "intent": "Q3_PROJECT_FEATURE",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "CAPIITOLO",
+        "title": "CAPIITOLO Tegra Chácara Klabin | Piero Lissoni",
+        "h1": "CAPIITOLO Tegra Chácara Klabin",
+        "coverage": [
+          "CAPIITOLO/Capitolo",
+          "Tegra",
+          "Piero Lissoni",
+          "Chácara Klabin",
+          "apartamentos",
+          "210 m²",
+          "preço/valor",
+          "visita",
+          "Form 46",
+          "condições"
+        ],
+        "runtime_note": "CAPIITOLO commercial content and visit/conditions CTAs are runtime-validated by the existing M5-06 browser smoke."
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "cap-007",
+      "campaign_id": "mnt-cmp-000003",
+      "term": "capiitolo preço",
+      "match_type": "PHRASE",
+      "intent": "Q2_PROJECT_COMMERCIAL",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "CAPIITOLO",
+        "title": "CAPIITOLO Tegra Chácara Klabin | Piero Lissoni",
+        "h1": "CAPIITOLO Tegra Chácara Klabin",
+        "coverage": [
+          "CAPIITOLO/Capitolo",
+          "Tegra",
+          "Piero Lissoni",
+          "Chácara Klabin",
+          "apartamentos",
+          "210 m²",
+          "preço/valor",
+          "visita",
+          "Form 46",
+          "condições"
+        ],
+        "runtime_note": "CAPIITOLO commercial content and visit/conditions CTAs are runtime-validated by the existing M5-06 browser smoke."
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "cap-008",
+      "campaign_id": "mnt-cmp-000003",
+      "term": "capiitolo visita",
+      "match_type": "PHRASE",
+      "intent": "Q2_PROJECT_COMMERCIAL",
+      "final_url": "https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "CAPIITOLO",
+        "title": "CAPIITOLO Tegra Chácara Klabin | Piero Lissoni",
+        "h1": "CAPIITOLO Tegra Chácara Klabin",
+        "coverage": [
+          "CAPIITOLO/Capitolo",
+          "Tegra",
+          "Piero Lissoni",
+          "Chácara Klabin",
+          "apartamentos",
+          "210 m²",
+          "preço/valor",
+          "visita",
+          "Form 46",
+          "condições"
+        ],
+        "runtime_note": "CAPIITOLO commercial content and visit/conditions CTAs are runtime-validated by the existing M5-06 browser smoke."
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "prt-001",
+      "campaign_id": "mnt-cmp-000004",
+      "term": "apartamentos tegra",
+      "match_type": "EXACT",
+      "intent": "Q5_TEGRA_PORTFOLIO",
+      "final_url": "https://www.moretegra.com.br/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "Home / Portfolio Tegra",
+        "title": "Apartamentos Tegra em São Paulo | Escolha Tegra",
+        "h1": "Apartamentos Tegra em São Paulo",
+        "coverage": [
+          "apartamentos Tegra",
+          "empreendimentos Tegra",
+          "São Paulo",
+          "preço/valor",
+          "visita",
+          "Form 46",
+          "condições",
+          "portfolio discovery"
+        ],
+        "runtime_note": "PR #231 restored the post-interest gallery/context journey and enriched visible card semantics without changing commercial facts."
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "prt-002",
+      "campaign_id": "mnt-cmp-000004",
+      "term": "apartamentos tegra",
+      "match_type": "PHRASE",
+      "intent": "Q5_TEGRA_PORTFOLIO",
+      "final_url": "https://www.moretegra.com.br/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "Home / Portfolio Tegra",
+        "title": "Apartamentos Tegra em São Paulo | Escolha Tegra",
+        "h1": "Apartamentos Tegra em São Paulo",
+        "coverage": [
+          "apartamentos Tegra",
+          "empreendimentos Tegra",
+          "São Paulo",
+          "preço/valor",
+          "visita",
+          "Form 46",
+          "condições",
+          "portfolio discovery"
+        ],
+        "runtime_note": "PR #231 restored the post-interest gallery/context journey and enriched visible card semantics without changing commercial facts."
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "prt-003",
+      "campaign_id": "mnt-cmp-000004",
+      "term": "apartamentos tegra são paulo",
+      "match_type": "PHRASE",
+      "intent": "Q5_TEGRA_PORTFOLIO",
+      "final_url": "https://www.moretegra.com.br/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "Home / Portfolio Tegra",
+        "title": "Apartamentos Tegra em São Paulo | Escolha Tegra",
+        "h1": "Apartamentos Tegra em São Paulo",
+        "coverage": [
+          "apartamentos Tegra",
+          "empreendimentos Tegra",
+          "São Paulo",
+          "preço/valor",
+          "visita",
+          "Form 46",
+          "condições",
+          "portfolio discovery"
+        ],
+        "runtime_note": "PR #231 restored the post-interest gallery/context journey and enriched visible card semantics without changing commercial facts."
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "prt-004",
+      "campaign_id": "mnt-cmp-000004",
+      "term": "empreendimentos tegra são paulo",
+      "match_type": "PHRASE",
+      "intent": "Q5_TEGRA_PORTFOLIO",
+      "final_url": "https://www.moretegra.com.br/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "Home / Portfolio Tegra",
+        "title": "Apartamentos Tegra em São Paulo | Escolha Tegra",
+        "h1": "Apartamentos Tegra em São Paulo",
+        "coverage": [
+          "apartamentos Tegra",
+          "empreendimentos Tegra",
+          "São Paulo",
+          "preço/valor",
+          "visita",
+          "Form 46",
+          "condições",
+          "portfolio discovery"
+        ],
+        "runtime_note": "PR #231 restored the post-interest gallery/context journey and enriched visible card semantics without changing commercial facts."
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "prt-005",
+      "campaign_id": "mnt-cmp-000004",
+      "term": "tegra apartamentos",
+      "match_type": "PHRASE",
+      "intent": "Q5_TEGRA_PORTFOLIO",
+      "final_url": "https://www.moretegra.com.br/",
+      "decision": "READY",
+      "reason": "Exact landing matches the governed project/portfolio intent and exposes the required factual/CTA coverage.",
+      "evidence": {
+        "page": "Home / Portfolio Tegra",
+        "title": "Apartamentos Tegra em São Paulo | Escolha Tegra",
+        "h1": "Apartamentos Tegra em São Paulo",
+        "coverage": [
+          "apartamentos Tegra",
+          "empreendimentos Tegra",
+          "São Paulo",
+          "preço/valor",
+          "visita",
+          "Form 46",
+          "condições",
+          "portfolio discovery"
+        ],
+        "runtime_note": "PR #231 restored the post-interest gallery/context journey and enriched visible card semantics without changing commercial facts."
+      },
+      "source_contract": "MNT-M6-04 + canonical landing content"
+    },
+    {
+      "keyword_id": "prt-006",
+      "campaign_id": "mnt-cmp-000004",
+      "term": "tegra vendas",
+      "match_type": "EXACT",
+      "intent": "Q5_TEGRA_PORTFOLIO",
+      "final_url": "https://www.moretegra.com.br/",
+      "decision": "BLOCKED_DO_NOT_TARGET",
+      "reason": "The earlier M3-06 ownership contract classifies 'tegra vendas' as corporate/partner/recruitment navigation, not buyer inventory intent. Search Console appearance does not supersede that intent decision.",
+      "evidence": {
+        "page": "Home / Portfolio Tegra",
+        "title": "Apartamentos Tegra em São Paulo | Escolha Tegra",
+        "h1": "Apartamentos Tegra em São Paulo",
+        "coverage": [
+          "apartamentos Tegra",
+          "empreendimentos Tegra",
+          "São Paulo",
+          "preço/valor",
+          "visita",
+          "Form 46",
+          "condições",
+          "portfolio discovery"
+        ],
+        "runtime_note": "PR #231 restored the post-interest gallery/context journey and enriched visible card semantics without changing commercial facts."
+      },
+      "source_contract": "docs/search/data/MNT_M3_06_PAGE_OWNER_MAP_2026-09-13.csv / family brand_sales_house"
+    }
+  ],
+  "home_semantic_runtime": {
+    "card_copy": "VISIBLE_JS_RENDERED_ON_INITIAL_PAGE_RENDER",
+    "card_template": "project H3 + project/location search lead + expanded product wording + governed price block",
+    "regular_price_label": "Preço a partir de",
+    "interest_gallery": "USER_INTERACTION_ONLY / CONVERSION_UX / NOT_PRIMARY_SEO_EVIDENCE",
+    "hidden_keyword_text": false,
+    "keyword_stuffing_strategy": false
+  },
+  "final_url_rules": {
+    "canonical_urls_clean": true,
+    "internal_utm_propagation": false,
+    "paid_utm_transport": "DEFERRED_TO_M6_07",
+    "click_ids_preserved_required": true
+  },
+  "external_ads_mutation": "NONE",
+  "next_gate": "MNT-M6-06"
+}

@@ -227,12 +227,12 @@ Performance targets retained: LCP <= 2.5s, INP <= 200ms, CLS <= 0.1.
 | MNT-M6-02 | UTM/source/medium/campaign contract | 8 | COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION |
 | MNT-M6-03 | Google Ads conversion architecture | 16 | COMPLETE / DESIGN_CANONICALIZED / NO_EXTERNAL_MUTATION |
 | MNT-M6-04 | SEM campaign/query contract | 24 | COMPLETE / DESIGN_CANONICALIZED / INTERNAL_REGISTRY_ONLY / NO_EXTERNAL_MUTATION |
-| MNT-M6-05 | Landing-page/query mapping | 16 | PLANNED / NEXT / AUTHORIZATION_REQUIRED |
-| MNT-M6-06 | Budget/spend authorization gate | 8 | PLANNED_NOT_AUTHORIZED |
+| MNT-M6-05 | Landing-page/query mapping | 16 | COMPLETE / LANDING_QUERY_MAP_ACCEPTED / RUNTIME_REGRESSION_FIXED |
+| MNT-M6-06 | Budget/spend authorization gate | 8 | PLANNED / NEXT / AUTHORIZATION_REQUIRED |
 | MNT-M6-07 | Authorized external platform implementation | 24 | PLANNED_NOT_AUTHORIZED |
 | MNT-M6-08 | Paid conversion QA | 16 | PLANNED |
 
-Accepted M6 scope-equivalent: `64h` from M6-01 through M6-04. M6-05 remains separately gated.
+Accepted M6 scope-equivalent: `80h` from M6-01 through M6-05. M6-06 remains separately gated.
 
 ### MNT-M7 — QA, Release, Observability & Learning Loop — 192h — PLANNED
 
@@ -270,7 +270,7 @@ MNT-M5 COMPLETE
   M5-10 COMPLETE / ACCEPTED / CANDIDATE1_RETAINED / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE
 ```
 
-M5 is complete at 168h. M6-01 through M6-04 are complete as design-only paid-media architecture. M6-04 creates four internal Search campaign registry records, Exact+Phrase initial match policy, factual/query-intent governance, Search Terms/negative governance and 30 planned keyword seeds grounded in canonical content plus limited live Search Console evidence. External Google Ads campaigns remain zero. The next gate is MNT-M6-05.
+M5 is complete at 168h. M6-01 through M6-05 are complete. M6-05 maps all 30 planned Search seeds to clean canonical landing URLs: 29 READY, 1 BLOCKED_DO_NOT_TARGET (`tegra vendas`), 0 HOLD. The Home post-interest gallery regression was fixed by PR #231 and Production-validated at SHA `124b620855175a583c528733462d6d0f4f44cd41`. External Google Ads campaigns and spend remain zero. The next gate is MNT-M6-06.
 
 Consumers must use `CURRENT_PROGRAM_STATE.json` for current lifecycle/progress and this WBS for structure/planning hours.
 

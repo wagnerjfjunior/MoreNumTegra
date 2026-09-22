@@ -26,9 +26,9 @@ MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
 MNT-M5-10 = COMPLETE / ACCEPTED / CANDIDATE1_RETAINED / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE
 
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 984
-REMAINING_FORECAST_HOURS = 256
-ACCEPTED_PERCENT = 79.35
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 1000
+REMAINING_FORECAST_HOURS = 240
+ACCEPTED_PERCENT = 80.65
 ```
 
 ## 2. M5-06 CTA/Form journey
@@ -715,3 +715,59 @@ ACCEPTED_PERCENT = 79.35
 ```
 
 Next gate: `MNT-M6-05 — Landing-page/query mapping — 16h / AUTHORIZATION_REQUIRED`.
+
+
+## 21. M6-05 — Landing-page/query mapping
+
+Canonical authority:
+
+- `docs/attribution/MNT_M6_05_LANDING_PAGE_QUERY_MAPPING_V1_2026-09-22.md`
+- `docs/attribution/MNT_PAID_LANDING_QUERY_MAP_V1.json`
+
+Status:
+
+```text
+MNT-M6-05 = COMPLETE / LANDING_QUERY_MAP_ACCEPTED / RUNTIME_REGRESSION_FIXED
+MNT-M6 = ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
+```
+
+Result:
+
+```text
+planned seeds = 30
+READY = 29
+BLOCKED_DO_NOT_TARGET = 1
+HOLD = 0
+blocked seed = prt-006 / tegra vendas
+external keywords uploaded = 0
+Ads spend = 0
+```
+
+Landing families:
+
+- Ária Higienópolis -> exact-project page / READY
+- Elo Duo -> exact-project page / READY
+- CAPIITOLO -> exact-project page / READY
+- Portfolio Tegra -> Home / READY
+
+M6-05 runtime correction:
+
+```text
+PR = #231
+runtime SHA = 124b620855175a583c528733462d6d0f4f44cd41
+Production deployment = dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C
+Production state = READY
+```
+
+The Home post-interest mount/gallery journey was restored without duplicating `#formulario`. Visible project cards now use natural project/location semantics and regular priced cards use `Preço a partir de`; commercial facts were not changed.
+
+Program progress:
+
+```text
+FORECAST_TOTAL_HOURS = 1240
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 1000
+REMAINING_FORECAST_HOURS = 240
+ACCEPTED_PERCENT = 80.65
+```
+
+Next gate: `MNT-M6-06 — Budget/spend authorization gate — 8h / AUTHORIZATION_REQUIRED`.

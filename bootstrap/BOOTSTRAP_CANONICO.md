@@ -19,6 +19,8 @@
 - Arquitetura Google Ads machine-readable: `docs/attribution/MNT_GOOGLE_ADS_CONVERSION_ARCHITECTURE_V1.json`
 - Contrato canônico SEM campanha/query: `docs/attribution/MNT_M6_04_SEM_CAMPAIGN_QUERY_CONTRACT_V1_2026-09-22.md`
 - Contrato SEM machine-readable: `docs/attribution/MNT_SEM_QUERY_CONTRACT_V1.json`
+- Mapeamento canônico landing/query: `docs/attribution/MNT_M6_05_LANDING_PAGE_QUERY_MAPPING_V1_2026-09-22.md`
+- Mapa landing/query machine-readable: `docs/attribution/MNT_PAID_LANDING_QUERY_MAP_V1.json`
 - ADRs operacionais atuais: ADR-004, ADR-005 e ADR-006
 - Programa Search-to-Lead: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
 - WBS: `docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md`
