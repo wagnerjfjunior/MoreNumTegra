@@ -319,3 +319,26 @@ PLANNED != AUTHORIZED
 - 2026-09-22 Product Authority set the Google Ads pilot financial ceiling to R$ 1,000 for 30 days. External spend remains R$ 0 until M6-07 authorization and implementation.
 
 - GA4 audience accumulation is explicitly authorized by Product Authority; this exception does not authorize remarketing campaigns/spend, Customer Match, CRM/PII uploads, Meta audiences or any consent bypass.
+
+
+## 2026-09-22 — Post-M6-06 paid-media freeze
+
+Product Authority closed M6-06 with the future Search envelope authorized, then froze paid media.
+
+Blocked until explicit reopening:
+
+- Google Ads campaign/ad group/ad creation;
+- keyword/negative upload;
+- budget/bidding/geo/language mutation;
+- Search activation/spend;
+- remarketing campaign activation/spend;
+- M6-08 paid conversion QA that depends on live M6-07 implementation.
+
+Allowed while frozen:
+
+- manual GA4 audience creation under `docs/attribution/MNT_GA4_AUDIENCE_MANUAL_RUNBOOK_V1_2026-09-22.md`;
+- zero-spend verification of created audiences.
+
+Future account `560-869-4042 / SWL Consultoria de imoveis` is user-designated but not yet M6-07 preflight validated. User-provided screenshot showed overdue balance / ads not serving; remediation is deferred until paid media is resumed.
+
+Looker Studio is deferred by Product Authority and is not a current blocking action.
