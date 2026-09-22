@@ -232,6 +232,8 @@ Performance targets retained: LCP <= 2.5s, INP <= 200ms, CLS <= 0.1.
 | MNT-M6-07 | Authorized external platform implementation | 24 | PLANNED_NOT_AUTHORIZED |
 | MNT-M6-08 | Paid conversion QA | 16 | PLANNED |
 
+Accepted M6 scope-equivalent: `16h` from M6-01. M6-02 remains separately gated.
+
 ### MNT-M7 — QA, Release, Observability & Learning Loop — 192h — PLANNED
 
 | ID | Activity | Hours | State |
@@ -255,7 +257,7 @@ Performance targets retained: LCP <= 2.5s, INP <= 200ms, CLS <= 0.1.
 Current lifecycle authority is `docs/sfjm/CURRENT_PROGRAM_STATE.json`.
 
 ```text
-MNT-M5 ACTIVE
+MNT-M5 COMPLETE
   M5-01 COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS
   M5-02 COMPLETE / LAB_BASELINE_ESTABLISHED / FIELD_CWV_NOT_OBSERVED
   M5-03 COMPLETE / STRATEGY_ESTABLISHED / NO_RUNTIME_MUTATION
