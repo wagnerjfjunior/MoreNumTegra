@@ -48,14 +48,14 @@
     "phase_state": "ACTIVE",
     "work_package": "Attribution & Paid Media Readiness",
     "current_task_id": "MNT-M6-06",
-    "current_task_state": "ACTIVE / DESIGN_PROPOSAL_READY / MONETARY_AUTHORITY_REQUIRED",
+    "current_task_state": "ACTIVE / FINANCIAL_CEILING_AUTHORIZED / BID_STAGE_POLICY_PENDING",
     "next_task_id": "MNT-M6-06",
-    "next_task_state": "MONETARY_AUTHORITY_REQUIRED",
-    "next_safe_action": "Approve or amend the M6-06 monetary ceiling; spend remains zero.",
+    "next_task_state": "BID_STAGE_POLICY_PENDING",
+    "next_safe_action": "Approve or amend the remaining M6-06 operating constraints; spend remains zero.",
     "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md",
     "current_state_source": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
     "task_id": "MNT-M6-06",
-    "state": "ACTIVE / DESIGN_PROPOSAL_READY / MONETARY_AUTHORITY_REQUIRED"
+    "state": "ACTIVE / FINANCIAL_CEILING_AUTHORIZED / BID_STAGE_POLICY_PENDING"
   },
   "sources": {
     "bootstrap": "bootstrap/BOOTSTRAP_CANONICO.md",
@@ -573,7 +573,7 @@
     {
       "id": "MNT-M6",
       "label": "Attribution & Paid Media Readiness",
-      "state": "ACTIVE / M6_06_MONETARY_AUTHORITY_REQUIRED",
+      "state": "ACTIVE / M6_06_BID_STAGE_POLICY_PENDING",
       "hours": 128,
       "accepted_hours": 80,
       "effort_class": "CONSUMER_PLANNING_ESTIMATE",
@@ -631,11 +631,11 @@
         {
           "id": "MNT-M6-06",
           "label": "Budget/spend authorization gate",
-          "state": "ACTIVE / DESIGN_PROPOSAL_READY / MONETARY_AUTHORITY_REQUIRED",
+          "state": "ACTIVE / FINANCIAL_CEILING_AUTHORIZED / BID_STAGE_POLICY_PENDING",
           "hours": 8,
           "accepted_hours": 0,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "AUTHORIZED_FOR_DESIGN / MONETARY_AUTHORITY_PENDING",
+          "authorization": "FINANCIAL_CEILING_AUTHORIZED / EXTERNAL_MUTATION_NOT_AUTHORIZED",
           "evidence": "docs/attribution/MNT_M6_06_BUDGET_SPEND_AUTHORIZATION_GATE_2026-09-22.md"
         },
         {
