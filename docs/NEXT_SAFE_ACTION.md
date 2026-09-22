@@ -4,6 +4,7 @@ Atualizado em `2026-09-22`.
 
 ```text
 MNT-M6-01 = COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION
+MNT-M6-02 = COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION
 MNT-M6 = ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
 
 LATEST_RUNTIME_SHA = 5a0df7b6757930bf34664d04d66b9a41e841f577
@@ -11,36 +12,39 @@ PRODUCTION_SOURCE_SHA = 5a0df7b6757930bf34664d04d66b9a41e841f577
 PRODUCTION_DEPLOYMENT = dpl_AmvdNUQdqA6URbcL8JaWfJyPLmPc
 PRODUCTION_STATE = READY
 
-PROGRAM_PROGRESS = 936 / 1240h = 75.48%
+PROGRAM_PROGRESS = 944 / 1240h = 76.13%
 ```
 
-## M6-01 closure
+## M6-02 closure
 
 Canonical contract:
 
-`docs/attribution/MNT_M6_01_ATTRIBUTION_MODEL_IDENTIFIER_BOUNDARIES_V1_2026-09-22.md`
+- `docs/attribution/MNT_M6_02_UTM_SOURCE_MEDIUM_CAMPAIGN_CONTRACT_V1_2026-09-22.md`
+- `docs/attribution/MNT_UTM_CONTRACT_V1.json`
 
 Key boundary:
 
 ```text
-first eligible touch + last eligible touch
-event identity != click identity != lead identity != person identity
-no project user ID
-no fingerprinting
-no hashed PII/enhanced conversions
-no CRM attribution transport yet
-www.moretegra.com.br = current canonical host
+minimum governed UTM tuple = source + medium + campaign
+future paid launch requires utm_id too
+stable campaign key = mnt-cmp-NNNNNN
+pre-consent persistence = none
+future post-consent project window = fixed 30 days
+internal UTM propagation = forbidden
+untagged referral/organic = vendor-native only
+CRM attribution transport = not authorized
+active campaigns created = 0
 ```
 
 ## Única próxima ação segura
 
-**PARAR antes de M6-02.**
+**PARAR antes de M6-03.**
 
 ```text
-MNT-M6-02 — UTM/source/medium/campaign contract — 8h
+MNT-M6-03 — Google Ads conversion architecture — 16h
 STATE = PLANNED / AUTHORIZATION_REQUIRED
 ```
 
-M6-02 may define naming/allowlists/persistence design only after explicit Product Authority authorization.
+M6-03 may define Google Ads conversion architecture only after explicit Product Authority authorization.
 
-No Ads spend, campaign launch, conversion-action creation, Meta implementation, GTM/GA4 mutation or Form46/CRM attribution mutation is authorized.
+No conversion action creation, account linking, spend, offline import, enhanced conversions, GTM/GA4 mutation or external Ads mutation is authorized.

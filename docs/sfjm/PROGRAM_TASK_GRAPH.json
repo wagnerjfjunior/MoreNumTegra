@@ -51,10 +51,10 @@
     "current_task_state": "ACTIVE / SLICE_01_COMPLETE / NEXT_SLICE_DECISION_REQUIRED",
     "next_task_id": "MNT-M5-10",
     "next_task_state": "NEXT_SLICE_DECISION_REQUIRED",
-    "next_safe_action": "Stop before M6-02. Product Authority authorization required.",
+    "next_safe_action": "Stop before M6-03. Product Authority authorization required.",
     "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md",
     "current_state_source": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
-    "task_id": "MNT-M6-02",
+    "task_id": "MNT-M6-03",
     "state": "PLANNED / AUTHORIZATION_REQUIRED"
   },
   "sources": {
@@ -575,7 +575,7 @@
       "label": "Attribution & Paid Media Readiness",
       "state": "ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION",
       "hours": 128,
-      "accepted_hours": 16,
+      "accepted_hours": 24,
       "effort_class": "CONSUMER_PLANNING_ESTIMATE",
       "tasks": [
         {
@@ -591,19 +591,21 @@
         {
           "id": "MNT-M6-02",
           "label": "UTM/source/medium/campaign contract",
-          "state": "PLANNED / AUTHORIZATION_REQUIRED",
+          "state": "COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION",
           "hours": 8,
-          "accepted_hours": 0,
+          "accepted_hours": 8,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "NOT_AUTHORIZED"
+          "authorization": "CLOSED",
+          "evidence": "docs/attribution/MNT_M6_02_UTM_SOURCE_MEDIUM_CAMPAIGN_CONTRACT_V1_2026-09-22.md"
         },
         {
           "id": "MNT-M6-03",
           "label": "Google Ads conversion architecture",
-          "state": "PLANNED",
+          "state": "PLANNED / AUTHORIZATION_REQUIRED",
           "hours": 16,
           "accepted_hours": 0,
-          "effort_class": "CONSUMER_PLANNING_ESTIMATE"
+          "effort_class": "CONSUMER_PLANNING_ESTIMATE",
+          "authorization": "NOT_AUTHORIZED"
         },
         {
           "id": "MNT-M6-04",

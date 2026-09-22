@@ -1,0 +1,150 @@
+{
+  "schema_version": "morenumtegra.utm-contract.v1",
+  "status": "CANONICAL_WHEN_MERGED",
+  "canonical_host": "www.moretegra.com.br",
+  "active_campaign_count": 0,
+  "manual_campaign_params": [
+    "utm_id",
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_content",
+    "utm_term"
+  ],
+  "click_id_params": [
+    "gclid",
+    "wbraid",
+    "gbraid"
+  ],
+  "attribution_allowlist": [
+    "utm_id",
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_content",
+    "utm_term",
+    "gclid",
+    "wbraid",
+    "gbraid"
+  ],
+  "governed_utm_minimum": [
+    "utm_source",
+    "utm_medium",
+    "utm_campaign"
+  ],
+  "paid_launch_required": [
+    "utm_id",
+    "utm_source",
+    "utm_medium",
+    "utm_campaign"
+  ],
+  "utm_id": {
+    "pattern": "^mnt-cmp-[0-9]{6}$",
+    "max_length": 32,
+    "immutable": true,
+    "recyclable": false
+  },
+  "source": {
+    "max_length": 64,
+    "allowed": [
+      "google",
+      "facebook",
+      "instagram",
+      "youtube"
+    ]
+  },
+  "medium": {
+    "max_length": 64,
+    "allowed": [
+      "cpc",
+      "paid_social",
+      "paid_video"
+    ]
+  },
+  "source_medium_pairs": [
+    {
+      "source": "google",
+      "medium": "cpc",
+      "channel_hint": "paid_search"
+    },
+    {
+      "source": "facebook",
+      "medium": "paid_social",
+      "channel_hint": "paid_social"
+    },
+    {
+      "source": "instagram",
+      "medium": "paid_social",
+      "channel_hint": "paid_social"
+    },
+    {
+      "source": "youtube",
+      "medium": "paid_video",
+      "channel_hint": "paid_video"
+    }
+  ],
+  "campaign": {
+    "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+    "min_length": 3,
+    "max_length": 96,
+    "technical_key": false
+  },
+  "content": {
+    "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+    "max_length": 96,
+    "optional": true
+  },
+  "term": {
+    "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+    "max_length": 128,
+    "optional": true,
+    "raw_user_query_forbidden": true
+  },
+  "click_ids": {
+    "max_length_each": 512,
+    "preserve_case": true,
+    "opaque": true,
+    "parse_business_meaning": false
+  },
+  "eligible_touch": {
+    "complete_utm_tuple": true,
+    "allowlisted_click_id": true,
+    "direct": false,
+    "internal": false,
+    "untagged_referral": false,
+    "untagged_organic": false
+  },
+  "consent": {
+    "before_grant": "memory_only",
+    "after_grant_future_store": "localStorage:mnt_attribution_v1",
+    "denied": "no_persistence_and_clear_project_store"
+  },
+  "persistence": {
+    "implementation_authorized": false,
+    "store_key": "mnt_attribution_v1",
+    "fixed_window_days": 30,
+    "rolling": false,
+    "first_touch_immutable_within_window": true,
+    "eligible_touch_updates_last": true
+  },
+  "url_policy": {
+    "destructive_cleanup_default": false,
+    "internal_utm_propagation": false,
+    "canonical_query_free": true,
+    "sitemap_query_free": true,
+    "schema_entity_urls_query_free": true,
+    "apex_to_www_must_preserve_allowlisted_inbound_query": true
+  },
+  "crm": {
+    "attribution_transport_authorized": false,
+    "form46_payload_change_authorized": false
+  },
+  "privacy": {
+    "project_user_id_defined": false,
+    "fingerprinting_forbidden": true,
+    "pii_in_attribution_forbidden": true,
+    "hashed_pii_authorized": false
+  },
+  "runtime_mutation": "NONE",
+  "next_gate": "MNT-M6-03"
+}

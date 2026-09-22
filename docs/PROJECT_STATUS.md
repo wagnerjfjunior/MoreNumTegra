@@ -26,9 +26,9 @@ MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
 MNT-M5-10 = COMPLETE / ACCEPTED / CANDIDATE1_RETAINED / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE
 
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 936
-REMAINING_FORECAST_HOURS = 304
-ACCEPTED_PERCENT = 75.48
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 944
+REMAINING_FORECAST_HOURS = 296
+ACCEPTED_PERCENT = 76.13
 ```
 
 ## 2. M5-06 CTA/Form journey
@@ -538,3 +538,57 @@ ACCEPTED_PERCENT = 75.48
 ```
 
 Next gate: `MNT-M6-02 — UTM/source/medium/campaign contract — 8h / AUTHORIZATION_REQUIRED`.
+
+
+## 18. M6-02 — UTM / source / medium / campaign contract
+
+Canonical authority:
+
+- `docs/attribution/MNT_M6_02_UTM_SOURCE_MEDIUM_CAMPAIGN_CONTRACT_V1_2026-09-22.md`
+- `docs/attribution/MNT_UTM_CONTRACT_V1.json`
+
+Status:
+
+```text
+MNT-M6-02 = COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION
+MNT-M6 = ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
+```
+
+Core decisions:
+
+```text
+minimum governed UTM tuple = utm_source + utm_medium + utm_campaign
+future paid-launch tuple = utm_id + utm_source + utm_medium + utm_campaign
+stable campaign key = utm_id / mnt-cmp-NNNNNN
+paid source v1 = google/facebook/instagram/youtube
+paid medium v1 = cpc/paid_social/paid_video
+google search = google/cpc
+facebook = facebook/paid_social
+instagram = instagram/paid_social
+youtube = youtube/paid_video
+utm_content = optional controlled creative variant
+utm_term = optional controlled term / never raw user query
+inbound attribution allowlist = UTMs + gclid/wbraid/gbraid
+direct/internal = never overwrite eligible touch
+untagged referral/organic = vendor-native only in project V1
+pre-consent = memory only
+future persistence after grant = localStorage mnt_attribution_v1
+project attribution window = fixed 30 days
+internal UTM propagation = forbidden
+destructive query cleanup = disabled by default
+CRM attribution transport = still not authorized
+active campaigns created = 0
+```
+
+No runtime, GTM, GA4, Google Ads, Meta, Green/Form46 or budget mutation occurred.
+
+Program progress:
+
+```text
+FORECAST_TOTAL_HOURS = 1240
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 944
+REMAINING_FORECAST_HOURS = 296
+ACCEPTED_PERCENT = 76.13
+```
+
+Next gate: `MNT-M6-03 — Google Ads conversion architecture — 16h / AUTHORIZATION_REQUIRED`.
