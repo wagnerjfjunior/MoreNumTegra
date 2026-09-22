@@ -48,14 +48,14 @@
     "phase_state": "ACTIVE / PAID_MEDIA_FROZEN",
     "work_package": "Attribution & Paid Media Readiness",
     "current_task_id": "MNT-M6-07",
-    "current_task_state": "DEFERRED / PAID_MEDIA_FROZEN",
+    "current_task_state": "DEFERRED / PAID_MEDIA_FROZEN / GA4_AUDIENCE_SETUP_COMPLETE",
     "next_task_id": "MNT-M6-07",
     "next_task_state": "DEFERRED / EXPLICIT_REOPEN_REQUIRED",
-    "next_safe_action": "Zero-spend GA4 audience creation is authorized; paid-media implementation remains frozen until Product Authority explicitly reopens M6-07.",
+    "next_safe_action": "No paid-media action is authorized. GA4 audience manual setup is complete; M6-07 resumes only after explicit Product Authority reopening.",
     "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md",
     "current_state_source": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
     "task_id": "MNT-M6-07",
-    "state": "DEFERRED / PAID_MEDIA_FROZEN"
+    "state": "DEFERRED / PAID_MEDIA_FROZEN / GA4_AUDIENCE_SETUP_COMPLETE"
   },
   "sources": {
     "bootstrap": "bootstrap/BOOTSTRAP_CANONICO.md",
@@ -641,12 +641,12 @@
         {
           "id": "MNT-M6-07",
           "label": "Authorized external platform implementation",
-          "state": "DEFERRED / PAID_MEDIA_FROZEN / GA4_AUDIENCE_MANUAL_SETUP_ALLOWED",
+          "state": "DEFERRED / PAID_MEDIA_FROZEN / GA4_AUDIENCE_SETUP_COMPLETE",
           "hours": 24,
           "accepted_hours": 0,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
           "authorization": "PAID_MEDIA_NOT_AUTHORIZED / GA4_AUDIENCE_MANUAL_SETUP_AUTHORIZED",
-          "evidence": "docs/attribution/MNT_GA4_AUDIENCE_MANUAL_RUNBOOK_V1_2026-09-22.md"
+          "evidence": "docs/attribution/MNT_GA4_AUDIENCE_MANUAL_COMPLETION_2026-09-22.md"
         },
         {
           "id": "MNT-M6-08",
