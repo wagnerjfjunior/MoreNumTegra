@@ -1,0 +1,77 @@
+name: Inspect Aria hero candidate 1
+on:
+  push:
+    branches:
+      - "diag/m5-10-aria-hero-candidate1-20260922"
+    paths:
+      - ".github/workflows/m5-10-inspect-aria-hero-candidate1.yml"
+permissions:
+  contents: write
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: "diag/m5-10-aria-hero-candidate1-20260922"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pillow==11.3.0
+      - name: Fetch exact Green source and derive mobile framing
+        shell: bash
+        run: |
+          set -euo pipefail
+          SRC='https://s3-gdigital.s3.amazonaws.com/gdigital/313/%C3%81ria%20Higien%C3%B3polis-Perspectiva%20ilustrada%20do%20acesso%20residencial..webp'
+          mkdir -p assets/aria-higienopolis/candidate1
+          curl -fL --retry 3 --retry-all-errors "$SRC" -o /tmp/aria-candidate1.webp
+          python - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          import hashlib
+
+          src=Path("/tmp/aria-candidate1.webp")
+          im=Image.open(src).convert("RGB")
+          w,h=im.size
+          print(f"CANDIDATE1_SOURCE dimensions={w}x{h} bytes={src.stat().st_size} sha256={hashlib.sha256(src.read_bytes()).hexdigest()}")
+
+          ratio=1.15
+          cur=w/h
+          if cur < ratio:
+              crop_h=round(w/ratio)
+              top=max(0,(h-crop_h)//2)
+              crop=im.crop((0,top,w,top+crop_h))
+          else:
+              crop_w=round(h*ratio)
+              left=max(0,(w-crop_w)//2)
+              crop=im.crop((left,0,left+crop_w,h))
+
+          cw,ch=crop.size
+          print(f"CANDIDATE1_CENTER_CROP dimensions={cw}x{ch} ratio={cw/ch:.5f}")
+
+          maxw=min(cw,828)
+          widths=[]
+          for cand in (640,maxw):
+              if cand <= cw and cand not in widths:
+                  widths.append(cand)
+          for outw in widths:
+              outh=round(outw/ratio)
+              out=crop.resize((outw,outh),Image.Resampling.LANCZOS)
+              p=Path(f"assets/aria-higienopolis/candidate1/hero-access-mobile-{outw}.webp")
+              out.save(p,"WEBP",quality=82,method=6)
+              print(f"CANDIDATE1_DERIVATIVE dimensions={outw}x{outh} bytes={p.stat().st_size} sha256={hashlib.sha256(p.read_bytes()).hexdigest()}")
+
+          preview=crop.resize((361,314),Image.Resampling.LANCZOS)
+          pp=Path("assets/aria-higienopolis/candidate1/hero-access-preview-361x314.jpg")
+          preview.save(pp,"JPEG",quality=48,optimize=True)
+          print(f"CANDIDATE1_PREVIEW dimensions=361x314 bytes={pp.stat().st_size} sha256={hashlib.sha256(pp.read_bytes()).hexdigest()}")
+          PY
+      - name: Commit candidate derivatives and preview
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/aria-higienopolis/candidate1/
+          git diff --cached --stat
+          git commit -m "diag: derive Aria access-residential hero candidate"
+          git push origin HEAD:diag/m5-10-aria-hero-candidate1-20260922
