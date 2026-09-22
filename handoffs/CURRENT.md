@@ -6,14 +6,13 @@ Atualizado em `2026-09-22`.
 
 Handoff detalhado vigente:
 
-`handoffs/HANDOFF-2026-09-22-M7-01-COMPLETE-M7-02-P1-GATE.md`
+`handoffs/HANDOFF-2026-09-22-HOME-COMMERCIAL-TRUTH-CDP-V3-REENTRY.md`
 
 ## REPOSITORY_STATE
 
 ```text
 CANONICAL_REPOSITORY = wagnerjfjunior/MoreNumTegra
 CANONICAL_BRANCH = main
-LAST_RUNTIME_PR = #231 / MERGED
 LATEST_RUNTIME_SHA = 124b620855175a583c528733462d6d0f4f44cd41
 ```
 
@@ -29,42 +28,61 @@ PRODUCTION_STATE = READY
 ## VALIDATION_STATE
 
 ```text
-MNT-M7-01 = COMPLETE / NO_ACTIVE_PREVIEW_CANDIDATE / EXISTING_RELEASE_EVIDENCE_REUSED
-MNT-M7-02 = ACTIVE / QA_EXECUTED / P1_PRODUCT_TRUTH_BLOCKERS_OPEN
+MNT-M7-01 = COMPLETE
+MNT-M7-02 = COMPLETE / ACCEPTED_WITH_P2_RESIDUALS
+MNT-M7-03 = PLANNED / AUTHORIZATION_REQUIRED
 MNT-M7 = ACTIVE
 
 P0 = 0
-P1 = 2
+P1 = 0
 P2 = 2
 P3 = 0
 ```
-
-Canonical QA:
-
-- `docs/qa/MNT_M7_01_PREVIEW_VALIDATION_ADJUDICATION_2026-09-22.md`
-- `docs/qa/MNT_M7_02_TECHNICAL_CONTENT_QA_2026-09-22.md`
 
 ## PROGRAM PROGRESS
 
 ```text
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 1024
-REMAINING_FORECAST_HOURS = 216
-ACCEPTED_PERCENT = 82.58
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 1040
+REMAINING_FORECAST_HOURS = 200
+ACCEPTED_PERCENT = 83.87
 ```
 
-## P1 GATE
+## HOME COMMERCIAL TRUTH
 
-P1-F01: Home volatile commercial objects lack a current release-time revalidation receipt. Do not infer that older Home unit/price/promotion objects remain current merely because the exact-project page has another valid unit/reference.
+Authority:
 
-P1-F02: ODE Home runtime still exposes `De R$ 2.200.000 por R$ 2.090.000`; M3-04 explicitly says the older R$ 2.200.000 comparative is not recertified and remains prohibited.
+`docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md`
 
-No replacement price may be invented.
+Current Production Home commercial state is the interim Home truth until separately superseded. No current Home value is changed by the Commercial Data Plane architecture work.
 
-## GA4 / PAID MEDIA / LOOKER
+## COMMERCIAL DATA PLANE
 
 ```text
-GA4 audience manual setup = COMPLETE / SCREENSHOT_OBSERVED
+state = ACTIVE / DESIGN_ONLY
+schema = v3 / multi-offer
+projects = 21
+offers = 25
+Home cards = 23
+runtime price parity = PASS 23/23
+snapshot = CANDIDATE / NOT_PUBLISHED
+provider = NOT_SELECTED
+runtime migration = NOT_AUTHORIZED
+```
+
+Canonical architecture:
+
+- `docs/architecture/MNT_COMMERCIAL_UPDATE_MEDIUM_REENTRY_2026-09-22.md`
+- `docs/architecture/MNT_COMMERCIAL_DATA_PLANE_V3.md`
+- `docs/architecture/MNT_COMMERCIAL_DATA_SCHEMA_V3.schema.json`
+
+## FECH.AI
+
+Read-only discovery found useful internal MesaCliente inventory structures but no proven MoreNumTegra public publication context. Direct browser access to FECH.AI internal tables remains forbidden.
+
+## PAID MEDIA / LOOKER
+
+```text
 M6-07 Google Ads = DEFERRED / PAID_MEDIA_FROZEN
 M6-08 = DEFERRED
 Search spend = R$ 0
@@ -76,4 +94,4 @@ Looker Studio = DEFERRED
 
 Read `docs/NEXT_SAFE_ACTION.md`.
 
-Product Authority must either revalidate the current Home commercial objects or authorize bounded fail-closed removal of unsupported/uncertified Home claims. Do not advance M7-03 while P1 remains open.
+Select and prove the Commercial Data Plane publication provider/owner before any runtime consumer migration. M7-03 remains a separate authorization gate.
