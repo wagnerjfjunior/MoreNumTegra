@@ -2,7 +2,7 @@
 
 Date: `2026-09-22`
 
-Status: `AUTHORIZED_FOR_GA4_AUDIENCE_CREATION / REMARKETING_ACTIVATION_DEFERRED / NO_SPEND`
+Status: `AUTHORIZED_FOR_MANUAL_GA4_AUDIENCE_CREATION / REMARKETING_ACTIVATION_DEFERRED / PAID_MEDIA_FROZEN / NO_SPEND`
 
 ## 1. Product Authority decision
 
@@ -251,3 +251,12 @@ REMARKETING_SPEND = R$ 0
 ```
 
 This is a provider/tooling capability constraint, not a project-code failure and not evidence that GA4 itself lacks audience administration.
+
+
+## 11. Manual execution runbook
+
+Because the live `googleanalytics4` connector exposes no write actions, use the canonical manual procedure:
+
+`docs/attribution/MNT_GA4_AUDIENCE_MANUAL_RUNBOOK_V1_2026-09-22.md`
+
+Product Authority froze paid media after M6-06 closure. Audience accumulation remains allowed; Search and remarketing spend remain R$ 0 until explicit reopening.
