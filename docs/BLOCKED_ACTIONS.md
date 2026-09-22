@@ -304,3 +304,41 @@ PLANNED != AUTHORIZED
 - No hidden keyword text or keyword stuffing is authorized.
 - MNT-M6-06 requires explicit Product Authority authorization.
 - No Ads budget, spend, campaign creation, keyword upload, bid change, conversion-action creation or external Ads mutation is authorized.
+
+
+## M6-06 active monetary gate — 2026-09-22
+
+- Product Authority authorized M6-06 design execution.
+- The bounded budget/spend proposal is documented at `docs/attribution/MNT_M6_06_BUDGET_SPEND_AUTHORIZATION_GATE_2026-09-22.md`.
+- Current authorized Ads spend remains `R$ 0`.
+- Recommended but not yet authorized: R$ 1,000 total / 30 days / staged average daily budgets up to R$ 32/day / Maximize Clicks / R$ 10 max CPC bid limit.
+- No Google Ads campaign creation, keyword upload, conversion-action mutation, bid/budget mutation or spend is authorized before explicit monetary approval.
+- M6-07 remains NOT_AUTHORIZED.
+- Meta Pixel/Dataset/CAPI remains a separate explicit gate.
+
+- 2026-09-22 Product Authority set the Google Ads pilot financial ceiling to R$ 1,000 for 30 days. External spend remains R$ 0 until M6-07 authorization and implementation.
+
+- GA4 audience accumulation is explicitly authorized by Product Authority; this exception does not authorize remarketing campaigns/spend, Customer Match, CRM/PII uploads, Meta audiences or any consent bypass.
+
+
+## 2026-09-22 — Post-M6-06 paid-media freeze
+
+Product Authority closed M6-06 with the future Search envelope authorized, then froze paid media.
+
+Blocked until explicit reopening:
+
+- Google Ads campaign/ad group/ad creation;
+- keyword/negative upload;
+- budget/bidding/geo/language mutation;
+- Search activation/spend;
+- remarketing campaign activation/spend;
+- M6-08 paid conversion QA that depends on live M6-07 implementation.
+
+Allowed while frozen:
+
+- manual GA4 audience creation under `docs/attribution/MNT_GA4_AUDIENCE_MANUAL_RUNBOOK_V1_2026-09-22.md`;
+- zero-spend verification of created audiences.
+
+Future account `560-869-4042 / SWL Consultoria de imoveis` is user-designated but not yet M6-07 preflight validated. User-provided screenshot showed overdue balance / ads not serving; remediation is deferred until paid media is resumed.
+
+Looker Studio is deferred by Product Authority and is not a current blocking action.

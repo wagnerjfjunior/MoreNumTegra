@@ -3,43 +3,83 @@
 Atualizado em `2026-09-22`.
 
 ```text
-MNT-M6-05 = COMPLETE / LANDING_QUERY_MAP_ACCEPTED / RUNTIME_REGRESSION_FIXED
-MNT-M6 = ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
+MNT-M6-06 = COMPLETE / BUDGET_SPEND_POLICY_AUTHORIZED / PAID_MEDIA_FROZEN
+MNT-M6-07 = DEFERRED / PAID_MEDIA_FROZEN
+MNT-M6-08 = DEFERRED / DEPENDS_ON_M6-07
+MNT-M6 = ACTIVE / PAID_MEDIA_FROZEN
 
 LATEST_RUNTIME_SHA = 124b620855175a583c528733462d6d0f4f44cd41
 PRODUCTION_SOURCE_SHA = 124b620855175a583c528733462d6d0f4f44cd41
 PRODUCTION_DEPLOYMENT = dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C
 PRODUCTION_STATE = READY
 
-PROGRAM_PROGRESS = 1000 / 1240h = 80.65%
+PROGRAM_PROGRESS = 1008 / 1240h = 81.29%
+AUTHORIZED_FUTURE_SEARCH_CEILING = R$ 1,000 / 30 days
+AUTHORIZED_FUTURE_CONFIGURED_DAILY_TOTAL = R$ 32/day
+AUTHORIZED_FUTURE_MAX_CPC = R$ 10
+AUTHORIZED_ADS_SPEND_NOW = R$ 0
+EXTERNAL_ADS_MUTATIONS = 0
 ```
 
-## M6-05 closure
+## Paid-media state
+
+Product Authority accepted the complete M6-06 policy and then froze paid media.
+
+Future Search policy remains canonical:
 
 ```text
-planned seeds = 30
-READY = 29
-BLOCKED_DO_NOT_TARGET = 1
-HOLD = 0
-blocked = prt-006 / tegra vendas
-external Ads mutations = 0
-spend = 0
+bidding = Maximize Clicks
+max CPC = R$ 10
+geo = São Paulo city
+language = Portuguese
+Search Partners = OFF initially
+Display expansion = OFF
+Broad = NOT_AUTHORIZED
+AI Max = NOT_AUTHORIZED
+conversion = Secondary / observe only
 ```
 
-Canonical:
-
-- `docs/attribution/MNT_M6_05_LANDING_PAGE_QUERY_MAPPING_V1_2026-09-22.md`
-- `docs/attribution/MNT_PAID_LANDING_QUERY_MAP_V1.json`
-
-## Única próxima ação segura
-
-**PARAR antes de M6-06.**
+Future Google Ads M6-07 preflight target designated by Product Authority:
 
 ```text
-MNT-M6-06 — Budget/spend authorization gate — 8h
-STATE = PLANNED / AUTHORIZATION_REQUIRED
+customer_id = 560-869-4042
+display_name = SWL Consultoria de imoveis
+state = USER_DESIGNATED_TARGET / NOT_YET_M6_07_PREFLIGHT_VALIDATED
 ```
 
-M6-06 may define budget ceilings, spend authority, campaign activation limits, geo/bid constraints and kill switches only after explicit Product Authority authorization.
+The user-provided screenshot showed an overdue-balance warning and ads not serving. Billing remediation is deferred while paid media is frozen.
 
-No campaign creation, keyword upload or spend is authorized yet.
+## Única próxima ação segura sem mídia paga
+
+Manual GA4 audience creation is already authorized and has zero media spend.
+
+Use:
+
+`docs/attribution/MNT_GA4_AUDIENCE_MANUAL_RUNBOOK_V1_2026-09-22.md`
+
+After creation, verify live that each audience exists and capture its conditions, duration and size/eligibility state.
+
+Current connector constraint:
+
+```text
+googleanalytics4 read = AVAILABLE
+googleanalytics4 write actions = []
+manual GA4 admin creation = REQUIRED
+remarketing activation = DEFERRED
+remarketing spend = R$ 0
+```
+
+## Explicitly frozen/deferred
+
+```text
+Google Ads campaign creation = FROZEN
+keyword upload = FROZEN
+budget/bid mutation = FROZEN
+conversion-action mutation = FROZEN
+Search activation = FROZEN
+remarketing activation = FROZEN
+Meta paid media = NOT_AUTHORIZED
+Looker Studio connection/dashboard = DEFERRED
+```
+
+M6-07 may resume only after a new explicit Product Authority decision.

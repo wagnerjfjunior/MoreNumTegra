@@ -7,13 +7,14 @@ Fonte canônica: GitHub `main`. Resolver estado live antes de qualquer mutação
 ## 1. Estado integrado
 
 ```text
-CANONICAL_MAIN_RUNTIME = 5a0df7b6757930bf34664d04d66b9a41e841f577
-PRODUCTION_DEPLOYMENT = dpl_AmvdNUQdqA6URbcL8JaWfJyPLmPc
+CANONICAL_MAIN_RUNTIME = 124b620855175a583c528733462d6d0f4f44cd41
+PRODUCTION_DEPLOYMENT = dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C
 PRODUCTION_STATE = READY
 
 MNT-M5 = COMPLETE / ACCEPTED
-MNT-M6 = ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
+MNT-M6 = ACTIVE / PAID_MEDIA_FROZEN / M6-07_DEFERRED
 MNT-M6-01 = COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION
+MNT-M6-06 = COMPLETE / BUDGET_SPEND_POLICY_AUTHORIZED / PAID_MEDIA_FROZEN
 MNT-M5-01 = COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS
 MNT-M5-02 = COMPLETE / LAB_BASELINE_ESTABLISHED / FIELD_CWV_NOT_OBSERVED
 MNT-M5-03 = COMPLETE / STRATEGY_ESTABLISHED / NO_RUNTIME_MUTATION
@@ -26,9 +27,9 @@ MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
 MNT-M5-10 = COMPLETE / ACCEPTED / CANDIDATE1_RETAINED / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE
 
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 1000
-REMAINING_FORECAST_HOURS = 240
-ACCEPTED_PERCENT = 80.65
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 1008
+REMAINING_FORECAST_HOURS = 232
+ACCEPTED_PERCENT = 81.29
 ```
 
 ## 2. M5-06 CTA/Form journey
@@ -77,7 +78,7 @@ No alias/duplicate route was introduced and the canonical remains:
 
 ```text
 CANONICAL_HOST = https://www.moretegra.com.br/
-PRODUCTION_SOURCE_SHA = 5a0df7b6757930bf34664d04d66b9a41e841f577
+PRODUCTION_SOURCE_SHA = 124b620855175a583c528733462d6d0f4f44cd41
 PRODUCTION_DEPLOYMENT = dpl_AmvdNUQdqA6URbcL8JaWfJyPLmPc
 PRODUCTION_STATE = READY
 ```
@@ -765,9 +766,113 @@ Program progress:
 
 ```text
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 1000
-REMAINING_FORECAST_HOURS = 240
-ACCEPTED_PERCENT = 80.65
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 1008
+REMAINING_FORECAST_HOURS = 232
+ACCEPTED_PERCENT = 81.29
 ```
 
-Next gate: `MNT-M6-06 — Budget/spend authorization gate — 8h / AUTHORIZATION_REQUIRED`.
+Paid-media continuation is frozen by Product Authority. The zero-spend GA4 audience runbook remains authorized.
+
+
+## 22. M6-06 — Budget / spend authorization gate
+
+Canonical policy:
+
+`docs/attribution/MNT_M6_06_BUDGET_SPEND_AUTHORIZATION_GATE_2026-09-22.md`
+
+Status:
+
+```text
+MNT-M6-06 = COMPLETE / BUDGET_SPEND_POLICY_AUTHORIZED / PAID_MEDIA_FROZEN
+AUTHORIZED_SPEND_NOW = R$ 0
+EXTERNAL_GOOGLE_ADS_MUTATIONS = 0
+ACCEPTED_HOURS = 8
+```
+
+Read-only provider evidence observed during design on 2026-09-22:
+
+- two connected Google Ads customer candidates exist, but the exact MoreNumTegra customer account is not adjudicated by M6-06;
+- the current read path returned zero campaign/metric rows for both candidates;
+- Keyword Planner was read for São Paulo city / Portuguese / Google Search;
+- measurable canonical seeds showed average CPC values from approximately R$ 3.72 to R$ 12.25;
+- the six canonical seed families with non-null average CPC had median ~= R$ 5.89 and mean ~= R$ 6.38.
+
+Final authorized future envelope:
+
+```text
+financial ceiling = R$ 1,000
+pilot = 30 days
+full-stage configured average daily total = R$ 32/day
+initial bidding = Maximize Clicks
+max CPC bid limit = R$ 10.00
+stages = Ária + Elo -> CAPIITOLO -> Portfolio
+```
+
+Product Authority then froze paid media. Campaign creation, keyword upload, conversion-action mutation and spend remain deferred; manual GA4 audience accumulation is the authorized zero-spend continuation.
+
+
+M6-06 financial decision update:
+
+```text
+FINANCIAL_CEILING = R$ 1,000 / AUTHORIZED
+PILOT_WINDOW = 30 days / AUTHORIZED
+RECOMMENDED_CONFIGURED_DAILY_TOTAL = R$ 32/day
+AUTHORIZED_SPEND_NOW = R$ 0
+```
+
+
+## M6 audience accumulation authorization
+
+```text
+GA4_AUDIENCE_ACCUMULATION = AUTHORIZED
+REMARKETING_ACTIVATION = DEFERRED
+REMARKETING_SPEND = R$ 0
+CUSTOMER_MATCH = NOT_AUTHORIZED
+GA4_ADMIN_WRITE_CAPABILITY_CURRENT_RUNTIME = NOT_EXPOSED
+```
+
+Canonical contract:
+`docs/attribution/MNT_M6_AUDIENCE_ACCUMULATION_CONTRACT_V1_2026-09-22.md`
+
+
+## M6-06 final closure / paid-media freeze
+
+Product Authority approved the complete bounded Search policy and then froze paid media.
+
+```text
+MNT-M6-06 = COMPLETE / BUDGET_SPEND_POLICY_AUTHORIZED / PAID_MEDIA_FROZEN
+accepted_hours = 8
+program_progress = 1008 / 1240h = 81.29%
+financial ceiling = R$ 1,000 / 30 days
+configured average daily total = R$ 32/day
+bidding = Maximize Clicks
+max CPC = R$ 10
+geo = São Paulo city
+language = Portuguese
+Search Partners = OFF initially
+Display expansion = OFF
+Broad = NOT_AUTHORIZED
+AI Max = NOT_AUTHORIZED
+current paid spend = R$ 0
+external Google Ads mutations = 0
+```
+
+Future M6-07 preflight target designated by Product Authority:
+
+```text
+customer_id = 560-869-4042
+display_name = SWL Consultoria de imoveis
+state = USER_DESIGNATED_TARGET / NOT_YET_PREFLIGHT_VALIDATED
+```
+
+A user-provided screenshot showed overdue balance and ads not serving. Remediation is deferred while paid media is frozen.
+
+GA4 audience accumulation remains authorized with zero spend. Because the connected GA4 integration exposes no write actions, creation is manual using:
+
+`docs/attribution/MNT_GA4_AUDIENCE_MANUAL_RUNBOOK_V1_2026-09-22.md`
+
+Looker Studio connection/dashboard is deferred.
+
+Canonical closure handoff:
+
+`handoffs/HANDOFF-2026-09-22-M6-06-COMPLETE-PAID-MEDIA-FROZEN.md`

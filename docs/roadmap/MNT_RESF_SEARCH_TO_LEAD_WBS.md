@@ -219,7 +219,7 @@ META NOT_PROVEN != META DOES_NOT_EXIST
 
 Performance targets retained: LCP <= 2.5s, INP <= 200ms, CLS <= 0.1.
 
-### MNT-M6 — Attribution & Paid Media Readiness — 128h — ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
+### MNT-M6 — Attribution & Paid Media Readiness — 128h — ACTIVE / PAID_MEDIA_FROZEN
 
 | ID | Activity | Hours | State |
 |---|---|---:|---|
@@ -228,11 +228,32 @@ Performance targets retained: LCP <= 2.5s, INP <= 200ms, CLS <= 0.1.
 | MNT-M6-03 | Google Ads conversion architecture | 16 | COMPLETE / DESIGN_CANONICALIZED / NO_EXTERNAL_MUTATION |
 | MNT-M6-04 | SEM campaign/query contract | 24 | COMPLETE / DESIGN_CANONICALIZED / INTERNAL_REGISTRY_ONLY / NO_EXTERNAL_MUTATION |
 | MNT-M6-05 | Landing-page/query mapping | 16 | COMPLETE / LANDING_QUERY_MAP_ACCEPTED / RUNTIME_REGRESSION_FIXED |
-| MNT-M6-06 | Budget/spend authorization gate | 8 | PLANNED / NEXT / AUTHORIZATION_REQUIRED |
-| MNT-M6-07 | Authorized external platform implementation | 24 | PLANNED_NOT_AUTHORIZED |
-| MNT-M6-08 | Paid conversion QA | 16 | PLANNED |
+| MNT-M6-06 | Budget/spend authorization gate | 8 | COMPLETE / BUDGET_SPEND_POLICY_AUTHORIZED / PAID_MEDIA_FROZEN |
+| MNT-M6-07 | Authorized external platform implementation | 24 | DEFERRED / PAID_MEDIA_FROZEN / GA4_AUDIENCE_MANUAL_SETUP_ALLOWED |
+| MNT-M6-08 | Paid conversion QA | 16 | DEFERRED / DEPENDS_ON_M6-07 |
 
-Accepted M6 scope-equivalent: `80h` from M6-01 through M6-05. M6-06 remains separately gated.
+Accepted M6 scope-equivalent is `88h`: M6-01 through M6-06 are accepted. M6-07/M6-08 remain unaccepted while paid media is frozen.
+
+M6-06 Product Authority closure on 2026-09-22:
+
+```text
+financial ceiling = R$ 1,000 / 30 days
+configured average daily total = R$ 32/day
+Maximize Clicks / max CPC R$ 10
+São Paulo city / Portuguese
+Search Partners OFF initially
+paid media = FROZEN
+current spend = R$ 0
+future Google Ads target = 560-869-4042 / SWL Consultoria de imoveis / USER_DESIGNATED_NOT_YET_PREFLIGHT_VALIDATED
+GA4 audience manual setup = AUTHORIZED / ZERO_SPEND
+Looker Studio = DEFERRED
+```
+
+Canonical closure evidence:
+
+- `docs/attribution/MNT_M6_06_BUDGET_SPEND_AUTHORIZATION_GATE_2026-09-22.md`
+- `docs/attribution/MNT_GA4_AUDIENCE_MANUAL_RUNBOOK_V1_2026-09-22.md`
+- `handoffs/HANDOFF-2026-09-22-M6-06-COMPLETE-PAID-MEDIA-FROZEN.md`
 
 ### MNT-M7 — QA, Release, Observability & Learning Loop — 192h — PLANNED
 
@@ -270,7 +291,7 @@ MNT-M5 COMPLETE
   M5-10 COMPLETE / ACCEPTED / CANDIDATE1_RETAINED / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE
 ```
 
-M5 is complete at 168h. M6-01 through M6-05 are complete. M6-05 maps all 30 planned Search seeds to clean canonical landing URLs: 29 READY, 1 BLOCKED_DO_NOT_TARGET (`tegra vendas`), 0 HOLD. The Home post-interest gallery regression was fixed by PR #231 and Production-validated at SHA `124b620855175a583c528733462d6d0f4f44cd41`. External Google Ads campaigns and spend remain zero. The next gate is MNT-M6-06.
+M5 is complete at 168h. M6-01 through M6-05 are complete. M6-05 maps all 30 planned Search seeds to clean canonical landing URLs: 29 READY, 1 BLOCKED_DO_NOT_TARGET (`tegra vendas`), 0 HOLD. The Home post-interest gallery regression was fixed by PR #231 and Production-validated at SHA `124b620855175a583c528733462d6d0f4f44cd41`. External Google Ads campaigns and spend remain zero. MNT-M6-06 design is active. Its recommended budget envelope is documented, but authorized spend remains R$ 0 until Product Authority explicitly approves or amends the monetary ceiling.
 
 Consumers must use `CURRENT_PROGRAM_STATE.json` for current lifecycle/progress and this WBS for structure/planning hours.
 
