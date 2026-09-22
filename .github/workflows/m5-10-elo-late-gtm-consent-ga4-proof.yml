@@ -1,0 +1,29 @@
+name: M5-10 Elo late GTM consent GA4 proof
+
+on:
+  push:
+    branches:
+      - "diag/m5-10-elo-late-gtm-prod-qa-20260922"
+    paths:
+      - ".github/diagnostics/m5-10-elo-late-gtm-consent-ga4-proof.mjs"
+      - ".github/workflows/m5-10-elo-late-gtm-consent-ga4-proof.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prove:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install Playwright Chromium
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Prove Consent + GA4 on Production
+        run: node .github/diagnostics/m5-10-elo-late-gtm-consent-ga4-proof.mjs
