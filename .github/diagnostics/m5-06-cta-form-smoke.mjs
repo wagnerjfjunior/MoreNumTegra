@@ -39,7 +39,7 @@ for(const [browserName,type] of Object.entries({chromium,firefox,webkit})){
   const info=(await somaCard.locator(".mt-project-info").innerText()).replace(/\s+/g," ").trim();
   if(!info.includes("apartamentos de 41m² e 45m²")||!info.includes("salas comerciais")) throw new Error(`${browserName}/home-soma: expanded product wording missing: ${info}`);
   const priceLabel=(await somaCard.locator('.mt-price-block span').first().innerText()).replace(/\s+/g," ").trim();
-  if(priceLabel!=="Preço a partir de") throw new Error(`${browserName}/home-soma: unexpected price label: ${priceLabel}`);
+  if(priceLabel.toLocaleLowerCase("pt-BR")!=="preço a partir de") throw new Error(`${browserName}/home-soma: unexpected price label: ${priceLabel}`);
   await somaCard.locator('a[data-interest="Soma Perdizes"]').tap();
   const interest=homePage.locator("[data-interest-context]");
   await interest.waitFor({state:"visible",timeout:20000});
