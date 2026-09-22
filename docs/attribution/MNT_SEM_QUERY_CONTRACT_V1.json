@@ -1,0 +1,195 @@
+{
+  "schema_version": "morenumtegra.sem-query-contract.v1",
+  "status": "CANONICAL_WHEN_MERGED",
+  "network_scope": [
+    "search"
+  ],
+  "external_campaigns_created": 0,
+  "internal_campaigns": [
+    {
+      "utm_id": "mnt-cmp-000001",
+      "utm_campaign": "aria-higienopolis-leads-sp-202609",
+      "target": "aria-higienopolis",
+      "class": "exact_project_search",
+      "channel": {
+        "source": "google",
+        "medium": "cpc"
+      },
+      "external_state": "NOT_CREATED",
+      "candidate_landing_family": "aria_higienopolis_exact_project"
+    },
+    {
+      "utm_id": "mnt-cmp-000002",
+      "utm_campaign": "elo-duo-leads-sp-202609",
+      "target": "elo-duo",
+      "class": "exact_project_search",
+      "channel": {
+        "source": "google",
+        "medium": "cpc"
+      },
+      "external_state": "NOT_CREATED",
+      "candidate_landing_family": "elo_duo_exact_project"
+    },
+    {
+      "utm_id": "mnt-cmp-000003",
+      "utm_campaign": "capiitolo-leads-sp-202609",
+      "target": "capiitolo-piero-lissoni",
+      "class": "exact_project_search",
+      "channel": {
+        "source": "google",
+        "medium": "cpc"
+      },
+      "external_state": "NOT_CREATED",
+      "candidate_landing_family": "capiitolo_exact_project"
+    },
+    {
+      "utm_id": "mnt-cmp-000004",
+      "utm_campaign": "portfolio-tegra-leads-sp-202609",
+      "target": "portfolio-tegra",
+      "class": "portfolio_brand_search",
+      "channel": {
+        "source": "google",
+        "medium": "cpc"
+      },
+      "external_state": "NOT_CREATED",
+      "candidate_landing_family": "morenumtegra_home"
+    }
+  ],
+  "match_policy": {
+    "initial_allowed": [
+      "EXACT",
+      "PHRASE"
+    ],
+    "broad_initial": false,
+    "broad_match_campaign_setting": false,
+    "ai_max": false,
+    "future_broad_requires": [
+      "MNT-M6-08_PASS",
+      "CONVERSION_OPTIMIZATION_READY",
+      "SEARCH_TERMS_EVIDENCE",
+      "NEGATIVE_REVIEW",
+      "PRODUCT_AUTHORITY"
+    ]
+  },
+  "ad_group_classes": {
+    "exact_project": [
+      "PROJECT_BRAND",
+      "PROJECT_COMMERCIAL"
+    ],
+    "deferred": [
+      "LOCATION_PRODUCT"
+    ],
+    "portfolio": [
+      "TEGRA_PORTFOLIO"
+    ],
+    "portfolio_deferred": [
+      "TEGRA_LOCATION_PORTFOLIO"
+    ]
+  },
+  "query_classes": {
+    "Q1_PROJECT_NAVIGATIONAL": "SEED_ELIGIBLE",
+    "Q2_PROJECT_COMMERCIAL": "SEED_ELIGIBLE",
+    "Q3_PROJECT_FEATURE": "SEED_ELIGIBLE_IF_FACT_PROVEN",
+    "Q4_LOCATION_PROJECT_DISCOVERY": "DEFERRED_TO_M6_05",
+    "Q5_TEGRA_PORTFOLIO": "SEED_ELIGIBLE",
+    "Q6_RESEARCH_LOW_INTENT": "NOT_POSITIVE_ELIGIBLE",
+    "Q7_COMPETITOR_BRAND": "FORBIDDEN_V1"
+  },
+  "ambiguous_single_token_positive_keywords": {
+    "default": "BLOCKED",
+    "examples": [
+      "aria",
+      "elo",
+      "duo",
+      "tegra",
+      "jardim",
+      "garden",
+      "reserva"
+    ]
+  },
+  "negative_intent_families": {
+    "careers": [
+      "emprego",
+      "empregos",
+      "vaga",
+      "vagas",
+      "estágio",
+      "estagio",
+      "jovem aprendiz",
+      "trabalhar na tegra",
+      "trabalhe conosco",
+      "salário",
+      "salarios"
+    ],
+    "rental": [
+      "aluguel",
+      "alugar",
+      "locação",
+      "locacao",
+      "temporada",
+      "airbnb"
+    ],
+    "supplier": [
+      "fornecedor",
+      "fornecedores",
+      "portal fornecedor",
+      "compras fornecedor"
+    ],
+    "support": [
+      "segunda via",
+      "boleto",
+      "assistência técnica",
+      "assistencia tecnica",
+      "portal do cliente",
+      "login cliente",
+      "pós venda",
+      "pos venda"
+    ]
+  },
+  "protected_not_global_negative_by_default": [
+    "preço",
+    "valor",
+    "endereço",
+    "localização",
+    "telefone",
+    "contato",
+    "fotos",
+    "planta",
+    "planta baixa",
+    "metragem",
+    "condomínio",
+    "financiamento",
+    "entrada",
+    "visita",
+    "reclamação",
+    "avaliação",
+    "review",
+    "entrega",
+    "pronto para morar",
+    "lançamento",
+    "obra"
+  ],
+  "competitor_positive_targeting": false,
+  "search_terms_actions": [
+    "KEEP",
+    "PROMOTE_TO_KEYWORD",
+    "NEGATIVE",
+    "MONITOR",
+    "LANDING_MISMATCH",
+    "NEW_INTENT_REVIEW"
+  ],
+  "rsa_structure": {
+    "minimum_valid_rsa_per_ad_group": 1,
+    "target_rsa_per_ad_group": 2,
+    "target_ad_strength": [
+      "GOOD",
+      "EXCELLENT"
+    ],
+    "auto_text_customization_authorized": false
+  },
+  "final_url_mapping": "DEFERRED_TO_M6_05",
+  "geo_targeting": "DEFERRED_TO_M6_06_M6_07",
+  "runtime_mutation": "NONE",
+  "external_ads_mutation": "NONE",
+  "next_gate": "MNT-M6-05"
+}
