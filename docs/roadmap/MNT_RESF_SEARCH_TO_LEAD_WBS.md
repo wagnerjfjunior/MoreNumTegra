@@ -78,7 +78,7 @@ Closure anchor: PR `#39`, merge `dba0de3bfefc7aec90c5a88588c54eae4317c61f`.
 | MNT-M1-07 | Publish consumer-readable WBS/task graph and continuity entrypoints | 16 | COMPLETE |
 | MNT-M1-08 | Schema/consistency review, documentation audit and PR lifecycle | 16 | COMPLETE |
 
-### MNT-M2 — Measurement Foundation & Consent — 144h — ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION
+### MNT-M2 — Measurement Foundation & Consent — 144h — COMPLETE
 
 | ID | Activity | Hours | State |
 |---|---|---:|---|
@@ -91,9 +91,9 @@ Closure anchor: PR `#39`, merge `dba0de3bfefc7aec90c5a88588c54eae4317c61f`.
 | MNT-M2-07 | Define consent model and LGPD gating | 16 | COMPLETE |
 | MNT-M2-08 | Define denied/granted consent QA contract | 16 | COMPLETE |
 | MNT-M2-09 | Implement authorized tracking configuration | 24 | COMPLETE |
-| MNT-M2-10 | Execute end-to-end Measurement QA | 24 | PLANNED / NEXT / EXECUTION_NOT_AUTHORIZED |
+| MNT-M2-10 | Execute end-to-end Measurement QA | 24 | COMPLETE / ACCEPTED_WITH_V1_RESIDUAL |
 
-Accepted M2 scope-equivalent: `120h` from M2-01 through M2-09.
+Accepted M2 scope-equivalent: `144h / 144h`. M2-10 was accepted through PR #54 on 2026-09-13; this 2026-09-22 reconciliation does not add those hours again.
 
 M2-09 closure anchors:
 
@@ -202,7 +202,7 @@ META NOT_PROVEN != META DOES_NOT_EXIST
 | MNT-M4-08 | Implement prioritized content/architecture | 32 | PLANNED_NOT_AUTHORIZED |
 | MNT-M4-09 | Resolve technical SEO residuals: sitemap/www/canonical where capability permits | 24 | PLANNED_NOT_AUTHORIZED |
 
-### MNT-M5 — UX, Performance, Conversion, Lead & CRM — 168h — ACTIVE
+### MNT-M5 — UX, Performance, Conversion, Lead & CRM — 168h — COMPLETE
 
 | ID | Activity | Hours | State |
 |---|---|---:|---|
@@ -215,7 +215,7 @@ META NOT_PROVEN != META DOES_NOT_EXIST
 | MNT-M5-07 | Lead semantics and lead-validity contract | 16 | COMPLETE / PRODUCTION_GA4_PASS / GTM_VERSION_12_LIVE |
 | MNT-M5-08 | Green/Form 46 CRM handoff contract | 16 | COMPLETE / CRM_HANDOFF_CONTRACT_CANONICALIZED / NO_RUNTIME_MUTATION |
 | MNT-M5-09 | Form/CTA conversion QA | 16 | COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION |
-| MNT-M5-10 | Authorized performance remediation | 24 | ACTIVE / ARIA_HERO_CANDIDATE1_LIVE / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE / PRODUCT_DECISION_REQUIRED |
+| MNT-M5-10 | Authorized performance remediation | 24 | COMPLETE / ACCEPTED / CANDIDATE1_RETAINED / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE |
 
 Performance targets retained: LCP <= 2.5s, INP <= 200ms, CLS <= 0.1.
 
@@ -265,10 +265,10 @@ MNT-M5 ACTIVE
   M5-07 COMPLETE / PRODUCTION_GA4_PASS / GTM_VERSION_12_LIVE
   M5-08 COMPLETE / CRM_HANDOFF_CONTRACT_CANONICALIZED / NO_RUNTIME_MUTATION
   M5-09 COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
-  M5-10 ACTIVE / ARIA_HERO_CANDIDATE1_LIVE / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE / PRODUCT_DECISION_REQUIRED
+  M5-10 COMPLETE / ACCEPTED / CANDIDATE1_RETAINED / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE
 ```
 
-M5-07 accepted: GTM version 12 is Live and GA4 generate_lead receives controlled project/offer context without PII. M5-10 Candidate 1 is live in Production after a bounded Ária hero A/B. Both candidate batteries meet the laboratory LCP target, but the two median deltas point in opposite directions and do not prove a speed win/loss. Product Authority must choose retain Candidate 1 or restore the prior hero. The rooftop-pool image remains untested. No M5-10 task hours are accepted.
+M5-10 is accepted complete with Candidate 1 retained by Product Authority. The A/B remains performance-direction inconclusive while both candidate batteries meet the laboratory target. M5 is complete at 168h. Historical M2-10 is also reconciled as COMPLETE / ACCEPTED_WITH_V1_RESIDUAL without double counting. The next structural gate is MNT-M6-01.
 
 Consumers must use `CURRENT_PROGRAM_STATE.json` for current lifecycle/progress and this WBS for structure/planning hours.
 
