@@ -7,8 +7,8 @@ Fonte canônica: GitHub `main`. Resolver estado live antes de qualquer mutação
 ## 1. Estado integrado
 
 ```text
-CANONICAL_MAIN_RUNTIME = ac7958db2f2f4cd3d3bfccf4b6e9592f81a5d739
-PRODUCTION_DEPLOYMENT = dpl_6bepVcnUTT9hDhgkHbQsAdtkoE8T
+CANONICAL_MAIN_RUNTIME = 5a0df7b6757930bf34664d04d66b9a41e841f577
+PRODUCTION_DEPLOYMENT = dpl_AmvdNUQdqA6URbcL8JaWfJyPLmPc
 PRODUCTION_STATE = READY
 
 MNT-M5 = ACTIVE
@@ -21,7 +21,7 @@ MNT-M5-06 = COMPLETE / PRODUCTION_JOURNEY_PASS / SEARCH_VARIANT_PRESERVED
 MNT-M5-07 = COMPLETE / PRODUCTION_GA4_PASS / GTM_VERSION_12_LIVE
 MNT-M5-08 = COMPLETE / CRM_HANDOFF_CONTRACT_CANONICALIZED / NO_RUNTIME_MUTATION
 MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
-MNT-M5-10 = ACTIVE / SLICE_09_RETAINED / RESPONSIVE_MEDIA_STANDARD_ADOPTED / ELO_AND_ARIA_LAB_LCP_TARGET_MET / NEXT_SLICE_DECISION_REQUIRED
+MNT-M5-10 = ACTIVE / ARIA_CANDIDATE1_LIVE / PERFORMANCE_INCONCLUSIVE / LCP_TARGET_PASS / SECOND_IMAGE_DECISION_REQUIRED
 
 FORECAST_TOTAL_HOURS = 1240
 ACCEPTED_SCOPE_EQUIVALENT_HOURS = 896
@@ -75,8 +75,8 @@ No alias/duplicate route was introduced and the canonical remains:
 
 ```text
 CANONICAL_HOST = https://www.moretegra.com.br/
-PRODUCTION_SOURCE_SHA = ac7958db2f2f4cd3d3bfccf4b6e9592f81a5d739
-PRODUCTION_DEPLOYMENT = dpl_6bepVcnUTT9hDhgkHbQsAdtkoE8T
+PRODUCTION_SOURCE_SHA = 5a0df7b6757930bf34664d04d66b9a41e841f577
+PRODUCTION_DEPLOYMENT = dpl_AmvdNUQdqA6URbcL8JaWfJyPLmPc
 PRODUCTION_STATE = READY
 ```
 
@@ -379,3 +379,48 @@ RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1 = ADOPTED
 The standard is the default for new exact-project photographic media. Existing-page bulk mutation remains unauthorized; each remediation stays bounded.
 
 M5-10 remains ACTIVE and no task hours are accepted from Slice 09 alone.
+
+
+## 15. M5-10 Ária Hero Candidate 1 — residential access A/B
+
+Runtime:
+
+```text
+PR = #223 / MERGED
+SHA = 5a0df7b6757930bf34664d04d66b9a41e841f577
+DEPLOYMENT = dpl_AmvdNUQdqA6URbcL8JaWfJyPLmPc
+STATE = READY
+```
+
+Candidate source:
+
+```text
+Green source = 1600x853 / 219,786 B
+mobile 640x557 = 64,508 B
+mobile 828x720 = 99,308 B
+```
+
+Contemporaneous prior-hero control:
+
+```text
+LCP median = 1,853 ms
+hero transfer ~= 83.0 KB
+```
+
+Candidate Production attempts:
+
+```text
+attempt 1 LCP median = 2,149 ms / +15.97%
+attempt 2 LCP median = 1,464 ms / -20.99%
+hero transfer ~= 99.5 KB
+payload delta ~= +16.5 KB / +19.85%
+target <=2,500 ms = PASS / PASS
+```
+
+The independent candidate batteries disagree on LCP direction. Therefore Candidate 1 is not established as a performance winner or loser under current lab variance.
+
+It remains live as a visual/commercial candidate. The rooftop-pool image has not been introduced or tested.
+
+Canonical evidence:
+
+`docs/performance/MNT_M5_10_ARIA_HERO_ACCESS_CANDIDATE1_2026-09-22.md`
