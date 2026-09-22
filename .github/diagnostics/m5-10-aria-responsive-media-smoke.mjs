@@ -40,7 +40,7 @@ async function run(name,viewport,dpr,mobile){
   const hero=page.locator(".mt-hero-media img");
   const heroCurrent=await hero.evaluate(img=>img.currentSrc);
   const fallbackRaw=await hero.getAttribute("src");
-  const fallbackAbs=new URL(fallbackRaw,URL).href;
+  const fallbackAbs=new globalThis.URL(fallbackRaw,URL).href;
   if(mobile){
     assert.ok(heroCurrent.includes("/assets/aria-higienopolis/"),name+": responsive repository-owned mobile hero selected");
     assert.notEqual(decodeURIComponent(heroCurrent),decodeURIComponent(fallbackAbs),name+": mobile hero differs from external fallback");
