@@ -203,3 +203,38 @@ Before any runtime consumer migration:
 5. select the publication provider;
 6. prove independent publish/version/rollback/read behavior;
 7. only then alter runtime consumers.
+
+
+## 12. Candidate snapshot receipt
+
+A zero-change candidate snapshot was materialized from the recertified Home state:
+
+docs/architecture/data/MNT_HOME_COMMERCIAL_SNAPSHOT_V3_CANDIDATE_2026-09-22.json
+
+Card binding map:
+
+docs/architecture/data/MNT_HOME_CARD_COMMERCIAL_BINDINGS_V1_2026-09-22.json
+
+Validation receipt:
+
+~~~text
+canonical projects = 21
+commercial offers = 25
+Home cards = 23
+multi-offer projects = 4
+runtime primary-price parity = 23/23
+runtime old/comparative-price parity = PASS
+structural issues = 0
+snapshot state = candidate
+publishedAt = null
+runtime mutation = 0
+~~~
+
+Multi-offer projects proven by the current Home:
+
+- nova-vivere;
+- aria-higienopolis;
+- capiitolo-piero-lissoni;
+- ledge-brooklin.
+
+The snapshot is not published and is not consumed by Production.
