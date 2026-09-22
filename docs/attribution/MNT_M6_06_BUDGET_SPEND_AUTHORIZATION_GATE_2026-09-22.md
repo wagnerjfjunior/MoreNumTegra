@@ -2,7 +2,7 @@
 
 Date: `2026-09-22`
 
-Status: `ACTIVE / DESIGN_PROPOSAL_READY / MONETARY_AUTHORITY_REQUIRED / NO_EXTERNAL_MUTATION`
+Status: `ACTIVE / FINANCIAL_CEILING_AUTHORIZED / BID_STAGE_POLICY_PENDING / NO_EXTERNAL_MUTATION`
 
 ## 1. Purpose
 
@@ -112,14 +112,14 @@ Many long-tail canonical seeds returned null planner volume/CPC. Null is treated
 
 Provider estimates are planning evidence only. They are not a CPA forecast, lead forecast, conversion-rate forecast or guarantee of spend.
 
-## 4. Recommended V1 pilot envelope — not yet authorized
+## 4. Authorized financial envelope and revised operational recommendation
 
 The following is the M6-06 **recommended** launch envelope:
 
 ```text
-PILOT_WINDOW = 14 calendar days
-RECOMMENDED_FINANCIAL_CEILING = R$ 1,500 total billable spend
-RECOMMENDED_CONFIGURED_AVERAGE_DAILY_BUDGET_TOTAL = R$ 70/day
+AUTHORIZED_PILOT_WINDOW = 30 calendar days
+AUTHORIZED_FINANCIAL_CEILING = R$ 1,000 total billable spend
+RECOMMENDED_CONFIGURED_AVERAGE_DAILY_BUDGET_TOTAL = R$ 32/day
 RECOMMENDED_INITIAL_BIDDING = Maximize Clicks
 RECOMMENDED_MAX_CPC_BID_LIMIT = R$ 10.00
 AUTOMATIC_BUDGET_INCREASE = FORBIDDEN
@@ -128,30 +128,25 @@ TARGET_ROAS = NOT_SET
 CONVERSION_VALUE = NONE
 ```
 
-This recommendation is derived from the currently observable Search CPC range and is deliberately bounded because no MoreNumTegra paid-history CPA exists.
+Product Authority explicitly set the financial ceiling at **R$ 1,000 for 30 days** on 2026-09-22.
 
-The R$ 1,500 ceiling is **not** spend authorization until Product Authority explicitly accepts it.
+The R$ 32/day configured-total recommendation is intentionally below R$ 1,000 / 30 because Google Ads daily budgets are average budgets and provider billing can fluctuate by day. The project hard stop remains the cumulative authorized ceiling of R$ 1,000.
 
-## 5. Recommended campaign budget split
+This authorization defines the financial envelope only. It does not by itself authorize external Google Ads mutation or activation.
 
-When each stage is reached:
+## 5. Revised staged budget allocation — recommendation pending final gate approval
 
-| Campaign | Recommended avg daily budget | Activation |
-|---|---:|---|
-| `mnt-cmp-000001` — Ária Higienópolis | R$ 30/day | Stage 1 |
-| `mnt-cmp-000002` — Elo Duo | R$ 20/day | Stage 1 |
-| `mnt-cmp-000003` — CAPIITOLO | R$ 10/day | Stage 2 |
-| `mnt-cmp-000004` — Portfolio Tegra | R$ 10/day | Stage 3 |
+The R$ 32/day envelope is held constant across stages. Later stages reallocate the same total instead of adding budget.
 
-Configured total after full staged activation:
+| Campaign | Stage 1 | Stage 2 | Stage 3 |
+|---|---:|---:|---:|
+| `mnt-cmp-000001` — Ária Higienópolis | R$ 20/day | R$ 16/day | R$ 14/day |
+| `mnt-cmp-000002` — Elo Duo | R$ 12/day | R$ 10/day | R$ 8/day |
+| `mnt-cmp-000003` — CAPIITOLO | OFF | R$ 6/day | R$ 5/day |
+| `mnt-cmp-000004` — Portfolio Tegra | OFF | OFF | R$ 5/day |
+| **Configured total** | **R$ 32/day** | **R$ 32/day** | **R$ 32/day** |
 
-```text
-R$ 70/day average
-```
-
-This is an average daily budget, not a guaranteed same-day charge ceiling.
-
-The operational hard stop is the Product Authority-approved cumulative financial ceiling, not merely the sum of configured daily budgets.
+The stage allocation is a design recommendation, not yet an external-platform authorization.
 
 ## 6. Staged launch boundary
 
@@ -178,9 +173,9 @@ Required state before spend:
 Initial activation candidate:
 
 ```text
-Ária = R$ 30/day
-Elo Duo = R$ 20/day
-configured total = R$ 50/day average
+Ária = R$ 20/day
+Elo Duo = R$ 12/day
+configured total = R$ 32/day average
 minimum observation before expansion = 72 hours
 ```
 
@@ -191,8 +186,10 @@ Reason: these two families have the strongest currently observed exact-project p
 Eligible only if Stage 1 has no global kill condition.
 
 ```text
-CAPIITOLO = +R$ 10/day
-configured total = R$ 60/day average
+Ária = R$ 16/day
+Elo Duo = R$ 10/day
+CAPIITOLO = R$ 6/day
+configured total = R$ 32/day average
 ```
 
 ### Stage 3 — Portfolio Tegra
@@ -200,8 +197,11 @@ configured total = R$ 60/day average
 Eligible only after at least seven calendar days of controlled paid observation and no unresolved P0/P1 measurement or landing defect.
 
 ```text
-Portfolio Tegra = +R$ 10/day
-configured total = R$ 70/day average
+Ária = R$ 14/day
+Elo Duo = R$ 8/day
+CAPIITOLO = R$ 5/day
+Portfolio Tegra = R$ 5/day
+configured total = R$ 32/day average
 prt-006 / tegra vendas = BLOCKED_DO_NOT_TARGET
 ```
 
@@ -245,14 +245,16 @@ The CPC ceiling is a pilot guardrail, not a target price.
 
 ## 9. Financial controls
 
-Until Product Authority provides explicit monetary approval:
+Product Authority decision:
 
 ```text
-AUTHORIZED_FINANCIAL_CEILING = R$ 0
-AUTHORIZED_SPEND = R$ 0
+AUTHORIZED_FINANCIAL_CEILING = R$ 1,000
+AUTHORIZED_PILOT_WINDOW = 30 calendar days
+AUTHORIZED_EXTERNAL_MUTATION = NO / still gated by M6-07
+AUTHORIZED_SPEND_NOW = R$ 0
 ```
 
-After explicit approval, the approved ceiling must be recorded verbatim before M6-07 spend activation.
+The ceiling and pilot duration are now canonical. No spend occurs during M6-06 design closure.
 
 Rules:
 
@@ -300,7 +302,8 @@ Required reviews:
 ```text
 T+48h
 T+7d
-T+14d / pilot close
+T+14d
+T+30d / pilot close
 ```
 
 Observe at minimum:
@@ -337,35 +340,41 @@ Promotion to Primary still requires:
 3. M6-08 paid conversion QA PASS;
 4. explicit Product Authority activation.
 
-## 13. Product Authority decision required
+## 13. Remaining Product Authority decision
 
-M6-06 cannot honestly close while the project has no explicit monetary ceiling.
-
-Recommended decision packet:
+The financial ceiling and pilot duration are approved:
 
 ```text
-APPROVE_RECOMMENDED_PILOT =
-  financial ceiling: R$ 1,500
-  pilot window: 14 days
-  configured average daily total after full staged activation: R$ 70/day
-  max CPC bid limit: R$ 10.00
-  staged activation: Ária + Elo -> CAPIITOLO -> Portfolio
+financial ceiling = R$ 1,000
+pilot window = 30 days
 ```
 
-Product Authority may:
-
-- approve this recommendation unchanged; or
-- provide a different explicit financial ceiling.
-
-Until then:
+Still pending for M6-06 final closure:
 
 ```text
-MNT-M6-06 = ACTIVE / DESIGN_PROPOSAL_READY / MONETARY_AUTHORITY_REQUIRED
-AUTHORIZED_SPEND = R$ 0
+configured average daily total = proposed R$ 32/day
+initial bidding = proposed Maximize Clicks
+max CPC bid limit = proposed R$ 10.00
+staged budget allocation = proposed / constant-total reallocation
+geo/language = proposed São Paulo city / Portuguese
+Search Partners = proposed OFF initially
+```
+
+Until those operating constraints are accepted:
+
+```text
+MNT-M6-06 = ACTIVE / FINANCIAL_CEILING_AUTHORIZED / BID_STAGE_POLICY_PENDING
+AUTHORIZED_SPEND_NOW = R$ 0
 EXTERNAL_ADS_MUTATIONS = 0
 ```
 
-## 14. Meta boundary
+## 14. Meta / audience / remarketing boundary
+
+This Google Search budget gate does not automatically authorize Meta Pixel/Dataset/CAPI or Google remarketing audience implementation.
+
+Google remarketing/audience design is a separate measurement activation concern and should preserve the existing GA4/GTM/consent architecture. Customer Match or other uploaded first-party lists remain outside the current authorization because they introduce a distinct PII/consent boundary.
+
+The existing Meta ownership contract remains:
 
 This Google Search budget gate does not authorize Meta Pixel/Dataset/CAPI implementation or Meta spend.
 
@@ -392,4 +401,4 @@ M6-06 is eligible for `COMPLETE / BUDGET_SPEND_POLICY_AUTHORIZED` only when:
 - spend is still zero at the design-gate closure;
 - no external Google Ads mutation occurred merely to close M6-06.
 
-Until that decision, accepted task hours remain zero.
+Until the remaining operating constraints are explicitly accepted, accepted task hours remain zero.
