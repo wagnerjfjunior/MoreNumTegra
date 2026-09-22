@@ -51,11 +51,11 @@
     "current_task_state": "ACTIVE / SLICE_01_COMPLETE / NEXT_SLICE_DECISION_REQUIRED",
     "next_task_id": "MNT-M5-10",
     "next_task_state": "NEXT_SLICE_DECISION_REQUIRED",
-    "next_safe_action": "Stop before further runtime mutation. CAPIITOLO responsive-media remediation requires explicit Product Authority authorization.",
+    "next_safe_action": "Stop before second-image/carousel/rotation mutation. Product Authority decision required.",
     "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md",
     "current_state_source": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
     "task_id": "MNT-M5-10",
-    "state": "ACTIVE / SLICE_09_RETAINED / RESPONSIVE_MEDIA_STANDARD_ADOPTED / ELO_AND_ARIA_LAB_LCP_TARGET_MET / NEXT_SLICE_DECISION_REQUIRED"
+    "state": "ACTIVE / ARIA_CANDIDATE1_LIVE / PERFORMANCE_INCONCLUSIVE / LCP_TARGET_PASS / SECOND_IMAGE_DECISION_REQUIRED"
   },
   "sources": {
     "bootstrap": "bootstrap/BOOTSTRAP_CANONICO.md",
@@ -560,12 +560,12 @@
         {
           "id": "MNT-M5-10",
           "label": "Authorized performance remediation",
-          "state": "ACTIVE / SLICE_09_RETAINED / RESPONSIVE_MEDIA_STANDARD_ADOPTED / ELO_AND_ARIA_LAB_LCP_TARGET_MET / NEXT_SLICE_DECISION_REQUIRED",
+          "state": "ACTIVE / ARIA_CANDIDATE1_LIVE / PERFORMANCE_INCONCLUSIVE / LCP_TARGET_PASS / SECOND_IMAGE_DECISION_REQUIRED",
           "hours": 24,
           "accepted_hours": 0,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "NEXT_SLICE_NOT_AUTHORIZED",
-          "evidence": "docs/performance/MNT_M5_10_ARIA_RESPONSIVE_MEDIA_SLICE09_2026-09-22.md",
+          "authorization": "SECOND_IMAGE_NOT_AUTHORIZED",
+          "evidence": "docs/performance/MNT_M5_10_ARIA_HERO_ACCESS_CANDIDATE1_2026-09-22.md",
           "standard": "docs/performance/RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1.md"
         }
       ]
