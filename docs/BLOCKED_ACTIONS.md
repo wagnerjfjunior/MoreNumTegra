@@ -195,3 +195,14 @@ PLANNED != AUTHORIZED
 - The retained mobile derivatives are small essential assets; the large source remains external.
 - No M5-10 task hours are accepted merely from Slice 08.
 - Product Authority must explicitly select the next bounded M5-10 slice.
+
+
+## M5-10 post-Slice-09 gate — 2026-09-22
+
+- Slice 09 Ária responsive media is retained at runtime SHA `ac7958db2f2f4cd3d3bfccf4b6e9592f81a5d739`.
+- Ária current lab target `LCP <=2,500 ms` is replicated across two independent five-run Production batteries.
+- `docs/performance/RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1.md` is adopted as the canonical photographic delivery pattern for new exact-project pages.
+- Standard adoption does **not** authorize an automatic bulk rewrite of existing project pages.
+- CAPIITOLO remains a separate bounded slice because its hero composition/bootstrap differ materially.
+- No M5-10 task hours are accepted merely from Slice 09.
+- Product Authority must explicitly authorize the next material runtime slice.

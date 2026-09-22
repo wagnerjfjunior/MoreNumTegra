@@ -486,3 +486,37 @@ MNT-M5 = ACTIVE
 MNT-M5-04 = PLANNED / AUTHORIZATION_REQUIRED / NOT_AUTHORIZED_BY_SEQUENCE
 MNT-M5-10 = PLANNED_NOT_AUTHORIZED
 ```
+
+
+## 12. Post-strategy validation — 2026-09-22
+
+M5-10 subsequently validated the responsive-media strategy on two independent exact-project pages.
+
+Elo Duo Slice 08:
+
+```text
+LCP 3,279 -> 2,383 ms
+delta = -27.33%
+target <=2,500 ms = PASS
+```
+
+Ária Slice 09:
+
+```text
+baseline LCP = 5,621 ms
+post-change independent median A = 1,906 ms / -66.09%
+post-change independent median B = 1,442 ms / -74.35%
+transfer reduction ~= 39.5%
+target <=2,500 ms = PASS / REPLICATED
+```
+
+Therefore:
+
+```text
+M5_03_D01 = RESPONSIVE_MODERN_FORMAT_DERIVATIVES / ADOPT / CROSS_PROJECT_VALIDATED
+M5_03_D02 = LARGE_MEDIA_IN_GITHUB / REJECT / SMALL_ESSENTIAL_DERIVATIVES_ALLOWED
+M5_03_D10 = M5_10_RUNTIME_REMEDIATION / AUTHORIZED_PER_SLICE_ONLY
+RESPONSIVE_MEDIA_STANDARD = docs/performance/RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1.md
+```
+
+This addendum does not retroactively authorize bulk mutation. Existing pages remain bounded remediation slices.

@@ -7,8 +7,8 @@ Fonte canônica: GitHub `main`. Resolver estado live antes de qualquer mutação
 ## 1. Estado integrado
 
 ```text
-CANONICAL_MAIN_RUNTIME = 90745255775129638b3d8f061ab067d8ecc1c425
-PRODUCTION_DEPLOYMENT = dpl_6Dw473nRdfcCgAiEBQGAk5Uer6QL
+CANONICAL_MAIN_RUNTIME = ac7958db2f2f4cd3d3bfccf4b6e9592f81a5d739
+PRODUCTION_DEPLOYMENT = dpl_6bepVcnUTT9hDhgkHbQsAdtkoE8T
 PRODUCTION_STATE = READY
 
 MNT-M5 = ACTIVE
@@ -21,7 +21,7 @@ MNT-M5-06 = COMPLETE / PRODUCTION_JOURNEY_PASS / SEARCH_VARIANT_PRESERVED
 MNT-M5-07 = COMPLETE / PRODUCTION_GA4_PASS / GTM_VERSION_12_LIVE
 MNT-M5-08 = COMPLETE / CRM_HANDOFF_CONTRACT_CANONICALIZED / NO_RUNTIME_MUTATION
 MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
-MNT-M5-10 = ACTIVE / SLICE_08_RETAINED / ELO_LAB_LCP_TARGET_MET / NEXT_SLICE_DECISION_REQUIRED
+MNT-M5-10 = ACTIVE / SLICE_09_RETAINED / RESPONSIVE_MEDIA_STANDARD_ADOPTED / ELO_AND_ARIA_LAB_LCP_TARGET_MET / NEXT_SLICE_DECISION_REQUIRED
 
 FORECAST_TOTAL_HOURS = 1240
 ACCEPTED_SCOPE_EQUIVALENT_HOURS = 896
@@ -75,8 +75,8 @@ No alias/duplicate route was introduced and the canonical remains:
 
 ```text
 CANONICAL_HOST = https://www.moretegra.com.br/
-PRODUCTION_SOURCE_SHA = 90745255775129638b3d8f061ab067d8ecc1c425
-PRODUCTION_DEPLOYMENT = dpl_6Dw473nRdfcCgAiEBQGAk5Uer6QL
+PRODUCTION_SOURCE_SHA = ac7958db2f2f4cd3d3bfccf4b6e9592f81a5d739
+PRODUCTION_DEPLOYMENT = dpl_6bepVcnUTT9hDhgkHbQsAdtkoE8T
 PRODUCTION_STATE = READY
 ```
 
@@ -303,3 +303,79 @@ transfer delta = -88,516 B
 Elo Duo now meets the current laboratory target `LCP <= 2,500 ms`.
 
 No M5-10 task hours are accepted from Slice 08 alone. The next runtime slice requires a new Product Authority decision.
+
+
+## 14. M5-10 Ária Slice 09 — responsive media replicated / standard adopted
+
+Canonical evidence:
+
+- `docs/performance/MNT_M5_10_ARIA_RESPONSIVE_MEDIA_SLICE09_2026-09-22.md`
+- `docs/performance/RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1.md`
+
+Runtime:
+
+```text
+PR = #221 / MERGED
+SHA = ac7958db2f2f4cd3d3bfccf4b6e9592f81a5d739
+DEPLOYMENT = dpl_6bepVcnUTT9hDhgkHbQsAdtkoE8T
+STATE = READY
+```
+
+Pre-change Ária baseline:
+
+```text
+hero = 221,132 B JPEG
+gallery1 = 314,816 B JPEG
+LCP median = 5,621 ms
+score = 74
+transfer = 886,131 B
+```
+
+Retained mobile derivatives:
+
+```text
+hero 640x557 = 70,822 B
+hero 714x621 = 82,846 B
+gallery1 640x480 = 66,072 B
+gallery1 828x621 = 102,838 B
+thumb 240x180 = 10,474 B
+```
+
+No hero derivative upscales beyond the 714px-wide source. The 1080w gallery candidate at 151,796 B was excluded because it exceeded the preferred M5-03 mobile gallery budget.
+
+Production QA attempt 1:
+
+```text
+RUN = 35743393547 / attempt 1
+JOB = 106798642833
+LCP median = 1,906 ms
+delta = -66.09%
+score = 88
+transfer ~= 535.7 KB
+```
+
+Independent Production QA attempt 2:
+
+```text
+RUN = 35743393547 / attempt 2
+JOB = 106800317696
+LCP median = 1,442 ms
+delta = -74.35%
+score = 97
+TBT median = 201 ms
+transfer ~= 535.7 KB
+```
+
+Both independent post-change batteries meet `LCP <=2,500 ms`. Public browser smoke preserved gallery navigation/accessibility semantics, GTM/GA4 presence and zero Form46 lead submissions.
+
+Cross-project consequence:
+
+```text
+ELO RESPONSIVE MEDIA = VALIDATED / TARGET PASS
+ARIA RESPONSIVE MEDIA = VALIDATED / TARGET PASS / REPLICATED
+RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1 = ADOPTED
+```
+
+The standard is the default for new exact-project photographic media. Existing-page bulk mutation remains unauthorized; each remediation stays bounded.
+
+M5-10 remains ACTIVE and no task hours are accepted from Slice 09 alone.
