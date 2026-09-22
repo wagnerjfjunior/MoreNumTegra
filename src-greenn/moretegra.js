@@ -402,6 +402,38 @@
     return context;
   }
 
+  const PROJECT_LOCATION_COPY = Object.freeze({
+    "Lapa": "na Lapa",
+    "Cidade Jardim": "em Cidade Jardim",
+    "Brooklin": "no Brooklin",
+    "Higienópolis": "em Higienópolis",
+    "Tatuapé": "no Tatuapé",
+    "Moema": "em Moema",
+    "Perdizes": "em Perdizes",
+    "Jardins": "nos Jardins",
+    "Vila Nova Conceição": "na Vila Nova Conceição",
+    "Chácara Klabin": "na Chácara Klabin",
+    "Itaim Bibi": "no Itaim Bibi",
+    "Sacomã": "no Sacomã",
+    "Alto do Ipiranga": "no Alto do Ipiranga"
+  });
+
+  function projectInfoForCard(info) {
+    return String(info || "")
+      .replace(/\baptos\./gi, "apartamentos")
+      .replace(/\bdorms\./gi, "dormitórios")
+      .replace(/·\s*comerciais\b/gi, "· salas comerciais")
+      .replace(/(\d) m²/g, "$1 m²")
+      .trim();
+  }
+
+  function projectSearchLead(project) {
+    const neighborhood = String(project?.location || "").split("·")[0].trim();
+    const location = PROJECT_LOCATION_COPY[neighborhood] || (neighborhood ? `em ${neighborhood}` : "em São Paulo");
+    const hasStudios = /\bstudios?\b/i.test(String(project?.info || ""));
+    return `${hasStudios ? "Studios e apartamentos Tegra" : "Apartamentos Tegra"} ${location}.`;
+  }
+
   function priceMarkup(project) {
     let headline = "Sob consulta";
     let label = "Valor";
@@ -413,7 +445,7 @@
       accent = "#8b1e16";
     } else if (Number.isFinite(project.price)) {
       headline = BRL.format(project.price);
-      label = project.priceLabel || "A partir de";
+      label = !project.priceLabel || project.priceLabel === "A partir de" ? "Preço a partir de" : project.priceLabel;
       accent = "#171813";
     }
 
@@ -460,7 +492,8 @@
         <div class="mt-project-body">
           <p class="mt-project-location">${escapeHtml(project.location)}</p>
           <h3>${escapeHtml(project.name)}</h3>
-          <span class="mt-project-info">${escapeHtml(project.info)}</span>
+          <p class="mt-project-search-lead">${escapeHtml(projectSearchLead(project))}</p>
+          <span class="mt-project-info">${escapeHtml(projectInfoForCard(project.info))}</span>
           ${project.award && project.award.tagline ? `<div class="mt-award-context" title="${escapeHtml(project.award.label)}">${escapeHtml(project.award.tagline)}</div>` : ""}
           ${priceMarkup(project)}
           <div class="mt-project-actions" style="grid-template-columns:1fr">
