@@ -221,3 +221,33 @@ For each audience, capture:
 - timestamp.
 
 No audience is considered live solely because this contract exists.
+
+
+## 10. Live capability retest — 2026-09-22
+
+A second live capability test was executed after Product Authority requested a retest.
+
+Observed connector state:
+
+```text
+connector = googleanalytics4
+connected property = 553742649 / MoreNumTegra
+connector read access = AVAILABLE
+connector write actions = []
+create_audience = NOT_EXPOSED
+update_audience = NOT_EXPOSED
+delete_audience = NOT_EXPOSED
+GA4 admin mutation through current connector = NOT_AVAILABLE
+```
+
+The connector catalog explicitly returned an empty write-action list for `googleanalytics4`.
+
+Therefore:
+
+```text
+AUDIENCE_CREATION_AUTHORIZATION = GRANTED
+LIVE_GA4_AUDIENCE_CREATION = BLOCKED_BY_CURRENT_CONNECTOR_CAPABILITY
+REMARKETING_SPEND = R$ 0
+```
+
+This is a provider/tooling capability constraint, not a project-code failure and not evidence that GA4 itself lacks audience administration.
