@@ -1,0 +1,195 @@
+{
+  "version": 1,
+  "authorityRef": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+  "runtimeSha": "124b620855175a583c528733462d6d0f4f44cd41",
+  "cards": [
+    {
+      "order": 1,
+      "cardKey": "home-nova-vivere-72",
+      "displayName": "Nova Vivere | 72 m²",
+      "projectId": "nova-vivere",
+      "primaryOfferId": "unit-701-72m2",
+      "secondaryOfferIds": []
+    },
+    {
+      "order": 2,
+      "cardKey": "home-chateau-jardin",
+      "displayName": "Château Jardin",
+      "projectId": "chateau-jardin",
+      "primaryOfferId": "unit-501",
+      "secondaryOfferIds": []
+    },
+    {
+      "order": 3,
+      "cardKey": "home-elo-duo",
+      "displayName": "Caminhos da Lapa Elo Duo",
+      "projectId": "caminhos-lapa-elo-duo",
+      "primaryOfferId": "promo-ap2408",
+      "secondaryOfferIds": []
+    },
+    {
+      "order": 4,
+      "cardKey": "home-garden-design",
+      "displayName": "Garden Design",
+      "projectId": "garden-design",
+      "primaryOfferId": "unit-0112",
+      "secondaryOfferIds": []
+    },
+    {
+      "order": 5,
+      "cardKey": "home-ampere-brooklin",
+      "displayName": "Ampère Brooklin",
+      "projectId": "ampere-brooklin",
+      "primaryOfferId": "unit-0121",
+      "secondaryOfferIds": []
+    },
+    {
+      "order": 6,
+      "cardKey": "home-mozae-higienopolis",
+      "displayName": "Mozae Higienópolis",
+      "projectId": "mozae-higienopolis",
+      "primaryOfferId": "unit-ap0301",
+      "secondaryOfferIds": []
+    },
+    {
+      "order": 7,
+      "cardKey": "home-universo-tatuape-orbita",
+      "displayName": "Universo Tatuapé Órbita",
+      "projectId": "universo-tatuape-orbita",
+      "primaryOfferId": "unit-ap0609",
+      "secondaryOfferIds": []
+    },
+    {
+      "order": 8,
+      "cardKey": "home-aria-higienopolis",
+      "displayName": "Ária Higienópolis",
+      "projectId": "aria-higienopolis",
+      "primaryOfferId": "studio-1510",
+      "secondaryOfferIds": [
+        "apt-ap1214-rate"
+      ]
+    },
+    {
+      "order": 9,
+      "cardKey": "home-bem-moema",
+      "displayName": "Bem Moema",
+      "projectId": "bem-moema",
+      "primaryOfferId": "unit-ap0202",
+      "secondaryOfferIds": []
+    },
+    {
+      "order": 10,
+      "cardKey": "home-bem-moema-studios-offices",
+      "displayName": "Bem Moema Studios & Offices",
+      "projectId": "bem-moema-studios-offices",
+      "primaryOfferId": "studio-1702",
+      "secondaryOfferIds": []
+    },
+    {
+      "order": 11,
+      "cardKey": "home-nova-vivere-105",
+      "displayName": "Nova Vivere | 105 m²",
+      "projectId": "nova-vivere",
+      "primaryOfferId": "cash-unit-708-105m2",
+      "secondaryOfferIds": []
+    },
+    {
+      "order": 12,
+      "cardKey": "home-soma-perdizes",
+      "displayName": "Soma Perdizes",
+      "projectId": "soma-perdizes",
+      "primaryOfferId": "unit-0602",
+      "secondaryOfferIds": []
+    },
+    {
+      "order": 13,
+      "cardKey": "home-zahle-jardins",
+      "displayName": "Zahle Jardins",
+      "projectId": "zahle-jardins",
+      "primaryOfferId": "consult-current",
+      "secondaryOfferIds": []
+    },
+    {
+      "order": 14,
+      "cardKey": "home-bueno-brandao-257",
+      "displayName": "Bueno Brandão 257",
+      "projectId": "bueno-brandao-257",
+      "primaryOfferId": "unit-31",
+      "secondaryOfferIds": []
+    },
+    {
+      "order": 15,
+      "cardKey": "home-capiitolo-standard",
+      "displayName": "CAPIITOLO by Piero Lissoni",
+      "projectId": "capiitolo-piero-lissoni",
+      "primaryOfferId": "unit-24-standard",
+      "secondaryOfferIds": []
+    },
+    {
+      "order": 16,
+      "cardKey": "home-dsg-itaim",
+      "displayName": "DSG Itaim",
+      "projectId": "dsg-itaim",
+      "primaryOfferId": "unit-201-consult",
+      "secondaryOfferIds": []
+    },
+    {
+      "order": 17,
+      "cardKey": "home-ledge-brooklin",
+      "displayName": "Ledge Brooklin",
+      "projectId": "ledge-brooklin",
+      "primaryOfferId": "studio-0052",
+      "secondaryOfferIds": [
+        "unit-1223"
+      ]
+    },
+    {
+      "order": 18,
+      "cardKey": "home-teg-sacoma",
+      "displayName": "TEG Sacomã",
+      "projectId": "teg-sacoma",
+      "primaryOfferId": "unit-0011",
+      "secondaryOfferIds": []
+    },
+    {
+      "order": 19,
+      "cardKey": "home-capiitolo-cash",
+      "displayName": "CAPIITOLO by Piero Lissoni | à vista",
+      "projectId": "capiitolo-piero-lissoni",
+      "primaryOfferId": "cash-unit-24",
+      "secondaryOfferIds": []
+    },
+    {
+      "order": 20,
+      "cardKey": "home-tiel-vila-nova-conceicao",
+      "displayName": "Tièl Vila Nova Conceição",
+      "projectId": "tiel-vila-nova-conceicao",
+      "primaryOfferId": "unit-914",
+      "secondaryOfferIds": []
+    },
+    {
+      "order": 21,
+      "cardKey": "home-ypy-alto-ipiranga",
+      "displayName": "YPY Alto do Ipiranga",
+      "projectId": "ypy-alto-ipiranga",
+      "primaryOfferId": "unit-ap0207",
+      "secondaryOfferIds": []
+    },
+    {
+      "order": 22,
+      "cardKey": "home-ode-perdizes",
+      "displayName": "ODE Perdizes",
+      "projectId": "ode-perdizes",
+      "primaryOfferId": "unit-22-promo",
+      "secondaryOfferIds": []
+    },
+    {
+      "order": 23,
+      "cardKey": "home-reserva-caminhos-lapa",
+      "displayName": "Reserva Caminhos da Lapa",
+      "projectId": "reserva-caminhos-lapa",
+      "primaryOfferId": "consult-current",
+      "secondaryOfferIds": []
+    }
+  ]
+}

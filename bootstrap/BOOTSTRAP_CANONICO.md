@@ -22,6 +22,9 @@
 - Mapeamento canônico landing/query: `docs/attribution/MNT_M6_05_LANDING_PAGE_QUERY_MAPPING_V1_2026-09-22.md`
 - Mapa landing/query machine-readable: `docs/attribution/MNT_PAID_LANDING_QUERY_MAP_V1.json`
 - ADRs operacionais atuais: ADR-004, ADR-005 e ADR-006
+- Autoridade comercial transitória da Home: `docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md`
+- Commercial Data Plane v3: `docs/architecture/MNT_COMMERCIAL_DATA_PLANE_V3.md`
+- Schema comercial v3: `docs/architecture/MNT_COMMERCIAL_DATA_SCHEMA_V3.schema.json`
 - Programa Search-to-Lead: `MNT-RESF — MoreNumTegra Search-to-Lead 2026`
 - WBS: `docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md`
 - Read model: `docs/sfjm/PROJECT_READ_MODEL.json`
@@ -242,7 +245,9 @@ Para páginas exatas e remediação fotográfica, aplicar `docs/performance/RESP
 
 Não inventar preço, disponibilidade, metragem, endereço, estágio ou característica.
 
-Dados comerciais e claims continuam subordinados ao Product Fact & Claim Registry e gates de revalidação aplicáveis.
+Dados comerciais e claims continuam subordinados ao Product Fact & Claim Registry, decisões posteriores de Product Authority e gates de revalidação aplicáveis.
+
+Desde 2026-09-22, a Home atual em Production possui autoridade comercial transitória explícita por `PA-MNT-HOME-COMMERCIAL-TRUTH-2026-09-22`. Essa decisão preserva os valores atuais enquanto o Commercial Data Plane v3 é desenhado; não autoriza mudanças automáticas de preço nem integração direta com FECH.AI.
 
 Known project-fact residuals are not waived by the Vercel/DNS cutover.
 

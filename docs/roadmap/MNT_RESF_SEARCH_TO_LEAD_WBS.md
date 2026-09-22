@@ -255,13 +255,13 @@ Canonical closure evidence:
 - `docs/attribution/MNT_GA4_AUDIENCE_MANUAL_RUNBOOK_V1_2026-09-22.md`
 - `handoffs/HANDOFF-2026-09-22-M6-06-COMPLETE-PAID-MEDIA-FROZEN.md`
 
-### MNT-M7 — QA, Release, Observability & Learning Loop — 192h — ACTIVE / M7-02_P1_PRODUCT_TRUTH_BLOCKERS_OPEN
+### MNT-M7 — QA, Release, Observability & Learning Loop — 192h — ACTIVE / M7_02_COMPLETE / M7_03_AUTHORIZATION_REQUIRED
 
 | ID | Activity | Hours | State |
 |---|---|---:|---|
 | MNT-M7-01 | Preview validation | 16 | COMPLETE / NO_ACTIVE_PREVIEW_CANDIDATE / EXISTING_RELEASE_EVIDENCE_REUSED |
-| MNT-M7-02 | Technical/content QA | 16 | ACTIVE / QA_EXECUTED / P1_PRODUCT_TRUTH_BLOCKERS_OPEN |
-| MNT-M7-03 | Independent mobile QA | 16 | PLANNED |
+| MNT-M7-02 | Technical/content QA | 16 | COMPLETE / ACCEPTED_WITH_P2_RESIDUALS |
+| MNT-M7-03 | Independent mobile QA | 16 | PLANNED / AUTHORIZATION_REQUIRED |
 | MNT-M7-04 | Tracking + lead end-to-end QA | 16 | PLANNED |
 | MNT-M7-05 | Regression suite | 16 | PLANNED |
 | MNT-M7-06 | P0/P1 release adjudication | 8 | PLANNED |
@@ -326,3 +326,23 @@ For current lifecycle/progress use `docs/sfjm/CURRENT_PROGRAM_STATE.json`. Struc
 Preserve:
 
 `DOCUMENTED != IMPLEMENTED != DEPLOYED != VALIDATED != FULL_PHASE_COMPLETE`.
+
+
+## Commercial Data Plane re-entry priority — outside RESF hour accounting
+
+Product Authority explicitly recertified the current Home commercial state and directed work on an independent commercial update mechanism.
+
+This parallel architecture workstream is not counted as additional RESF accepted hours.
+
+Canonical artifacts:
+
+- `docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md`
+- `docs/architecture/MNT_COMMERCIAL_UPDATE_MEDIUM_REENTRY_2026-09-22.md`
+- `docs/architecture/MNT_COMMERCIAL_DATA_PLANE_V3.md`
+- `docs/architecture/MNT_COMMERCIAL_DATA_SCHEMA_V3.schema.json`
+- `docs/architecture/data/MNT_HOME_COMMERCIAL_SNAPSHOT_V3_CANDIDATE_2026-09-22.json`
+- `docs/architecture/data/MNT_HOME_CARD_COMMERCIAL_BINDINGS_V1_2026-09-22.json`
+
+Validation: 21 canonical projects / 25 offers / 23 Home cards / 23-of-23 runtime primary-price parity / no runtime mutation.
+
+Current RESF accepted progress: `1040 / 1240h = 83.87%`.

@@ -4,11 +4,11 @@
     "id": "MNT-RESF",
     "state": "ACTIVE / M7_ACTIVE / PAID_MEDIA_FROZEN",
     "current_active_phase_id": "MNT-M7",
-    "accepted_percent": 82.58
+    "accepted_percent": 83.87
   },
   "current": {
-    "task_id": "MNT-M7-02",
-    "task_state": "ACTIVE / QA_EXECUTED / P1_PRODUCT_TRUTH_BLOCKERS_OPEN",
+    "task_id": "MNT-M7-03",
+    "task_state": "AUTHORIZATION_REQUIRED",
     "pr": null,
     "repository_head_sha": "124b620855175a583c528733462d6d0f4f44cd41",
     "latest_main_runtime_sha": "124b620855175a583c528733462d6d0f4f44cd41",
@@ -16,10 +16,10 @@
     "last_verified_vercel_success_sha": "124b620855175a583c528733462d6d0f4f44cd41",
     "production_deployment_id": "dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C",
     "acceptance_run": null,
-    "next_task_id": "MNT-M7-02",
-    "next_task_state": "PRODUCT_AUTHORITY_DECISION_REQUIRED",
+    "next_task_id": "MNT-M7-03",
+    "next_task_state": "AUTHORIZATION_REQUIRED",
     "final_consent_ga4_proof_run": 35737706576,
-    "evidence": "docs/qa/MNT_M7_02_TECHNICAL_CONTENT_QA_2026-09-22.md",
+    "evidence": "docs/qa/MNT_M7_02_PRODUCT_TRUTH_READJUDICATION_2026-09-22.md",
     "baseline_run": 35743393547,
     "responsive_media_standard": "docs/performance/RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1.md",
     "audience_accumulation_state": "COMPLETE / MANUAL_CREATION / SCREENSHOT_OBSERVED",
@@ -31,12 +31,20 @@
     "audience_completion_evidence": "docs/attribution/MNT_GA4_AUDIENCE_MANUAL_COMPLETION_2026-09-22.md",
     "qa_severity": {
       "P0": 0,
-      "P1": 2,
+      "P1": 0,
       "P2": 2,
       "P3": 0
-    }
+    },
+    "home_commercial_truth": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
+    "commercial_data_plane_state": "ACTIVE / V3_CANONICAL_CANDIDATE / PROVIDER_NOT_SELECTED / NO_RUNTIME_MUTATION"
   },
   "current_state_overlay": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
   "cross_project_handoff": "docs/sfjm/MNT_FECHAI_COMMERCIAL_CATALOG_HANDOFF_2026-09-16.md",
-  "last_reconciled_at": "2026-09-22"
+  "last_reconciled_at": "2026-09-22",
+  "priority_workstream": {
+    "id": "COMMERCIAL_DATA_PLANE_REENTRY",
+    "state": "ACTIVE / DESIGN_ONLY",
+    "architecture": "docs/architecture/MNT_COMMERCIAL_DATA_PLANE_V3.md",
+    "provider": "NOT_SELECTED"
+  }
 }
