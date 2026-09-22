@@ -35,10 +35,10 @@
   },
   "progress": {
     "forecast_total_hours": 1240,
-    "accepted_scope_equivalent_hours": 1024,
-    "remaining_forecast_hours": 216,
-    "accepted_percent": 82.58,
-    "display_percent": 82.58,
+    "accepted_scope_equivalent_hours": 1040,
+    "remaining_forecast_hours": 200,
+    "accepted_percent": 83.87,
+    "display_percent": 83.87,
     "basis": "COMPLETE_TASK_HOURS_DIVIDED_BY_TOTAL_FORECAST_HOURS",
     "source": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
     "warning": "Current lifecycle/progress is sourced from CURRENT_PROGRAM_STATE. This task graph remains structural authority for hierarchy/task IDs/planning hours; do not infer stale child state outside reconciled slices."
@@ -47,15 +47,15 @@
     "phase_id": "MNT-M7",
     "phase_state": "ACTIVE",
     "work_package": "QA, Release, Observability & Learning Loop",
-    "current_task_id": "MNT-M7-02",
-    "current_task_state": "ACTIVE / QA_EXECUTED / P1_PRODUCT_TRUTH_BLOCKERS_OPEN",
-    "next_task_id": "MNT-M7-02",
-    "next_task_state": "PRODUCT_AUTHORITY_DECISION_REQUIRED",
-    "next_safe_action": "Resolve the two M7-02 P1 Product Truth blockers; M7-03 must not bypass them.",
+    "current_task_id": "MNT-M7-03",
+    "current_task_state": "AUTHORIZATION_REQUIRED",
+    "next_task_id": "MNT-M7-03",
+    "next_task_state": "AUTHORIZATION_REQUIRED",
+    "next_safe_action": "Product Authority priority is Commercial Data Plane provider/publication-owner selection. M7-03 remains separately gated.",
     "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md",
     "current_state_source": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
-    "task_id": "MNT-M7-02",
-    "state": "ACTIVE / QA_EXECUTED / P1_PRODUCT_TRUTH_BLOCKERS_OPEN"
+    "task_id": "MNT-M7-03",
+    "state": "AUTHORIZATION_REQUIRED"
   },
   "sources": {
     "bootstrap": "bootstrap/BOOTSTRAP_CANONICO.md",
@@ -662,9 +662,9 @@
     {
       "id": "MNT-M7",
       "label": "QA, Release, Observability & Learning Loop",
-      "state": "ACTIVE / M7_02_P1_PRODUCT_TRUTH_BLOCKERS_OPEN",
+      "state": "ACTIVE / M7_02_COMPLETE / M7_03_AUTHORIZATION_REQUIRED",
       "hours": 192,
-      "accepted_hours": 16,
+      "accepted_hours": 32,
       "effort_class": "CONSUMER_PLANNING_ESTIMATE",
       "tasks": [
         {
@@ -680,17 +680,17 @@
         {
           "id": "MNT-M7-02",
           "label": "Technical/content QA",
-          "state": "ACTIVE / QA_EXECUTED / P1_PRODUCT_TRUTH_BLOCKERS_OPEN",
+          "state": "COMPLETE / ACCEPTED_WITH_P2_RESIDUALS",
           "hours": 16,
-          "accepted_hours": 0,
+          "accepted_hours": 16,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "AUTHORIZED_FOR_QA / RUNTIME_REMEDIATION_REQUIRES_BOUNDED_PRODUCT_AUTHORITY_DECISION",
-          "evidence": "docs/qa/MNT_M7_02_TECHNICAL_CONTENT_QA_2026-09-22.md"
+          "authorization": "CLOSED",
+          "evidence": "docs/qa/MNT_M7_02_PRODUCT_TRUTH_READJUDICATION_2026-09-22.md"
         },
         {
           "id": "MNT-M7-03",
           "label": "Independent mobile QA",
-          "state": "PLANNED",
+          "state": "PLANNED / AUTHORIZATION_REQUIRED",
           "hours": 16,
           "accepted_hours": 0,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE"
@@ -792,5 +792,12 @@
     "show_provenance": true,
     "show_observed_sha": true,
     "show_observed_at": true
+  },
+  "priority_workstream": {
+    "id": "COMMERCIAL_DATA_PLANE_REENTRY",
+    "counted_in_resf_hours": false,
+    "state": "ACTIVE / DESIGN_ONLY / PROVIDER_NOT_SELECTED",
+    "authority": "PRODUCT_AUTHORITY_2026_09_22",
+    "architecture": "docs/architecture/MNT_COMMERCIAL_DATA_PLANE_V3.md"
   }
 }
