@@ -6,7 +6,7 @@ Atualizado em `2026-09-22`.
 
 Handoff detalhado vigente:
 
-`handoffs/HANDOFF-2026-09-22-M6-06-COMPLETE-PAID-MEDIA-FROZEN.md`
+`handoffs/HANDOFF-2026-09-22-GA4-AUDIENCE-MANUAL-COMPLETE.md`
 
 ## REPOSITORY_STATE
 
@@ -88,3 +88,7 @@ Connection/dashboard work is explicitly deferred.
 Read `docs/NEXT_SAFE_ACTION.md`.
 
 Manual GA4 audience creation is complete. Paid media remains frozen; M6-07 external Google Ads implementation requires a new explicit Product Authority decision.
+
+
+GA4 audience manual setup = COMPLETE / SCREENSHOT_OBSERVED.
+Evidence: `docs/attribution/MNT_GA4_AUDIENCE_MANUAL_COMPLETION_2026-09-22.md`.
