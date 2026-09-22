@@ -8,7 +8,7 @@
   },
   "current": {
     "task_id": "MNT-M6-06",
-    "task_state": "ACTIVE / DESIGN_PROPOSAL_READY / MONETARY_AUTHORITY_REQUIRED",
+    "task_state": "ACTIVE / FINANCIAL_CEILING_AUTHORIZED / BID_STAGE_POLICY_PENDING",
     "pr": null,
     "repository_head_sha": "124b620855175a583c528733462d6d0f4f44cd41",
     "latest_main_runtime_sha": "124b620855175a583c528733462d6d0f4f44cd41",
@@ -17,7 +17,7 @@
     "production_deployment_id": "dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C",
     "acceptance_run": null,
     "next_task_id": "MNT-M6-06",
-    "next_task_state": "MONETARY_AUTHORITY_REQUIRED",
+    "next_task_state": "BID_STAGE_POLICY_PENDING",
     "final_consent_ga4_proof_run": 35737706576,
     "evidence": "docs/attribution/MNT_M6_06_BUDGET_SPEND_AUTHORIZATION_GATE_2026-09-22.md",
     "baseline_run": 35743393547,
