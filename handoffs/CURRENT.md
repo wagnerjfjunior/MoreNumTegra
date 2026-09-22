@@ -6,7 +6,7 @@ Atualizado em `2026-09-22`.
 
 Handoff detalhado vigente:
 
-`handoffs/HANDOFF-2026-09-22-M6-05-COMPLETE-M6-06-GATE.md`
+`handoffs/HANDOFF-2026-09-22-M6-05-SESSION-TRANSITION.md`
 
 ## REPOSITORY_STATE
 
