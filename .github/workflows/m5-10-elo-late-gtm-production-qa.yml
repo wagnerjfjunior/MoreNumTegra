@@ -1,0 +1,41 @@
+name: M5-10 Elo late GTM Production QA
+
+on:
+  push:
+    branches:
+      - "diag/m5-10-elo-late-gtm-prod-qa-20260922"
+    paths:
+      - ".github/diagnostics/m5-10-elo-late-gtm-production-smoke.mjs"
+      - ".github/diagnostics/m5-10-elo-late-gtm-production-perf.mjs"
+      - ".github/workflows/m5-10-elo-late-gtm-production-qa.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  production-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install QA tools
+        run: |
+          npm install --no-save playwright@1.55.0 lighthouse@13.5.0
+          npx playwright install --with-deps chromium
+      - name: Confirm Chrome
+        run: google-chrome --version || chromium --version || chromium-browser --version
+      - name: Production GTM/dataLayer/consent smoke
+        run: node .github/diagnostics/m5-10-elo-late-gtm-production-smoke.mjs
+      - name: Five-run Lighthouse Production battery
+        run: node .github/diagnostics/m5-10-elo-late-gtm-production-perf.mjs
+      - name: Upload performance evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m5-10-elo-late-gtm-prod-qa
+          path: m5-10-elo-late-gtm-prod-qa/
+          if-no-files-found: warn
