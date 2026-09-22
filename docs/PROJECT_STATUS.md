@@ -876,3 +876,30 @@ Looker Studio connection/dashboard is deferred.
 Canonical closure handoff:
 
 `handoffs/HANDOFF-2026-09-22-M6-06-COMPLETE-PAID-MEDIA-FROZEN.md`
+
+
+## GA4 audience manual setup complete
+
+Manual GA4 audience creation was completed on 2026-09-22 for property `553742649 / MoreNumTegra`.
+
+Observed custom audiences: `11`. Existing `All Users` was retained and not duplicated.
+
+Canonical evidence:
+`docs/attribution/MNT_GA4_AUDIENCE_MANUAL_COMPLETION_2026-09-22.md`
+
+Important GA4 semantic mapping:
+
+```text
+project source event = mnt_lead_success
+GA4 destination event = generate_lead
+GA4 lead-dependent audience rules = generate_lead
+```
+
+Paid media remains frozen:
+
+```text
+Search spend = R$ 0
+remarketing spend = R$ 0
+M6-07 = DEFERRED
+Looker Studio = DEFERRED
+```

@@ -49,25 +49,21 @@ state = USER_DESIGNATED_TARGET / NOT_YET_M6_07_PREFLIGHT_VALIDATED
 
 The user-provided screenshot showed an overdue-balance warning and ads not serving. Billing remediation is deferred while paid media is frozen.
 
-## Única próxima ação segura sem mídia paga
+## GA4 audience setup
 
-Manual GA4 audience creation is already authorized and has zero media spend.
+Manual GA4 audience creation is COMPLETE and screenshot-observed.
 
-Use:
+Evidence:
 
-`docs/attribution/MNT_GA4_AUDIENCE_MANUAL_RUNBOOK_V1_2026-09-22.md`
-
-After creation, verify live that each audience exists and capture its conditions, duration and size/eligibility state.
-
-Current connector constraint:
+`docs/attribution/MNT_GA4_AUDIENCE_MANUAL_COMPLETION_2026-09-22.md`
 
 ```text
-googleanalytics4 read = AVAILABLE
-googleanalytics4 write actions = []
-manual GA4 admin creation = REQUIRED
+GA4 audience manual setup = COMPLETE
 remarketing activation = DEFERRED
 remarketing spend = R$ 0
 ```
+
+There is no remaining zero-spend audience-creation action required in M6.
 
 ## Explicitly frozen/deferred
 

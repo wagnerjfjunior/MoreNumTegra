@@ -8,7 +8,7 @@
   },
   "current": {
     "task_id": "MNT-M6-07",
-    "task_state": "DEFERRED / PAID_MEDIA_FROZEN",
+    "task_state": "DEFERRED / PAID_MEDIA_FROZEN / GA4_AUDIENCE_SETUP_COMPLETE",
     "pr": 234,
     "repository_head_sha": "124b620855175a583c528733462d6d0f4f44cd41",
     "latest_main_runtime_sha": "124b620855175a583c528733462d6d0f4f44cd41",
@@ -22,12 +22,13 @@
     "evidence": "handoffs/HANDOFF-2026-09-22-M6-06-COMPLETE-PAID-MEDIA-FROZEN.md",
     "baseline_run": 35743393547,
     "responsive_media_standard": "docs/performance/RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1.md",
-    "audience_accumulation_state": "AUTHORIZED_FOR_MANUAL_CREATION / LIVE_CREATION_NOT_YET_PROVEN",
+    "audience_accumulation_state": "COMPLETE / MANUAL_CREATION / SCREENSHOT_OBSERVED",
     "remarketing_state": "DEFERRED / SPEND_ZERO",
     "audience_runbook": "docs/attribution/MNT_GA4_AUDIENCE_MANUAL_RUNBOOK_V1_2026-09-22.md",
     "paid_media_state": "FROZEN",
     "google_ads_target_account": "560-869-4042 / SWL Consultoria de imoveis / USER_DESIGNATED_NOT_YET_PREFLIGHT_VALIDATED",
-    "looker_studio_state": "DEFERRED"
+    "looker_studio_state": "DEFERRED",
+    "audience_completion_evidence": "docs/attribution/MNT_GA4_AUDIENCE_MANUAL_COMPLETION_2026-09-22.md"
   },
   "current_state_overlay": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
   "cross_project_handoff": "docs/sfjm/MNT_FECHAI_COMMERCIAL_CATALOG_HANDOFF_2026-09-16.md",

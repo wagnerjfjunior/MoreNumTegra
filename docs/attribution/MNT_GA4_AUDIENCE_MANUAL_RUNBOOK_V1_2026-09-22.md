@@ -2,7 +2,7 @@
 
 Date: `2026-09-22`
 
-Status: `READY_FOR_MANUAL_EXECUTION / ZERO_PAID_SPEND`
+Status: `MANUAL_EXECUTION_COMPLETE / SCREENSHOT_OBSERVED / ZERO_PAID_SPEND`
 
 Property:
 
@@ -22,10 +22,12 @@ Before creating any audience:
 
 1. Select the exact GA4 property `MoreNumTegra / 553742649`.
 2. Confirm the operator has a GA4 property role that can create audiences.
-3. Confirm canonical events are visible in GA4:
+3. Confirm required GA4-visible events are available:
    - `mnt_intent`
    - `mnt_form_start`
-   - `mnt_lead_success`
+   - `generate_lead`
+
+   Project source event `mnt_lead_success` is mapped by GTM to GA4 `generate_lead`; audience rules inside GA4 must use the GA4 destination event `generate_lead`.
 4. Confirm audience conditions never use visitor name, email, phone, raw Form 46 values or free text.
 5. Preserve the accepted Consent Mode and advertising-personalization rules.
 
@@ -68,22 +70,49 @@ Opening WhatsApp is intent, not a verified lead.
 
 ## 3. Phase A audiences — create first
 
-### AUD-001 — All eligible visitors | 180d
+### AUD-001 — Existing `All Users` audience — retain
+
+The GA4 property already contains the native audience:
+
+```text
+All Users
+```
+
+Do **not** create a duplicate custom "all visitors" audience.
+
+Purpose: broad audience-size baseline.
+
+### AUD-001A — Home visitors | 180d
 
 Name:
 
 ```text
-MNT | All eligible visitors | 180d
+MNT | Home visitors | 180d
 ```
 
-Create:
+Include:
 
-1. New custom audience.
-2. Include users when `event_name` exactly matches `page_view`.
-3. Membership duration: `180 days`.
-4. Save.
+```text
+event_name = page_view
+AND
+page_location exactly matches https://www.moretegra.com.br/
+```
 
-Purpose: broad audience-size baseline and future remarketing reservoir.
+Membership: `180 days`.
+
+### AUD-001B — Home visitors | 540d
+
+Name:
+
+```text
+MNT | Home visitors | 540d
+```
+
+Same Home condition as AUD-001A.
+
+Membership: `540 days`.
+
+Purpose: historical Home-visitor reservoir.
 
 ### AUD-002 — Any exact-project visitor | 180d
 
@@ -228,7 +257,7 @@ Add exclusion:
 
 ```text
 Exclude users permanently when:
-event_name = mnt_lead_success
+event_name = generate_lead
 ```
 
 Membership: `30 days`.
@@ -246,7 +275,7 @@ MNT | Lead success suppression | 540d
 Include:
 
 ```text
-event_name = mnt_lead_success
+event_name = generate_lead
 ```
 
 Membership: `540 days`.
@@ -257,7 +286,7 @@ No visitor PII is needed or permitted.
 
 ### AUD-010 — Google paid visitors | 90d
 
-Create only after Search traffic starts.
+Created in advance so it can begin populating automatically when Search traffic starts.
 
 Name:
 
@@ -268,9 +297,7 @@ MNT | Google paid visitors | 90d
 Condition:
 
 ```text
-source = google
-AND
-medium = cpc
+Session source / medium exactly matches google / cpc
 ```
 
 Membership: `90 days`.
@@ -385,3 +412,14 @@ Future reporting intake should use the existing governed sources:
 - no visitor PII.
 
 Dashboard design must not become a source of truth for campaign/product state; canonical project data remains in GitHub and provider metrics remain provider evidence.
+
+
+## 10. Completion receipt
+
+Manual GA4 audience setup was completed on 2026-09-22 and observed through screenshots.
+
+Canonical evidence:
+
+`docs/attribution/MNT_GA4_AUDIENCE_MANUAL_COMPLETION_2026-09-22.md`
+
+The existing `All Users` audience was retained rather than duplicated. Paid media remains frozen.
