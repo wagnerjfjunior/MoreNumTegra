@@ -1,0 +1,76 @@
+name: Generate Elo responsive hero derivatives
+
+on:
+  push:
+    branches:
+      - "diag/m5-10-elo-hero-derivatives-20260922"
+    paths:
+      - ".github/workflows/m5-10-generate-elo-hero-derivatives.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: "diag/m5-10-elo-hero-derivatives-20260922"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Pillow
+        run: pip install pillow==11.3.0
+      - name: Generate mobile derivatives
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p assets/elo-duo
+          SRC=/tmp/elo-hero-source.webp
+          curl --fail --location --silent --show-error \
+            "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Compac%20-%20Caminhos%20da%20lapa%20-%20Elo%20Duo%20-%201350x1090%20-%20Fachada.webp" \
+            -o "$SRC"
+          python - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          import hashlib, os
+
+          src = Path("/tmp/elo-hero-source.webp")
+          im = Image.open(src).convert("RGB")
+          w,h = im.size
+
+          # Match the existing mobile CSS container exactly: aspect-ratio 1.15 / 1,
+          # object-fit: cover, default object-position center.
+          target_ratio = 1.15
+          current_ratio = w / h
+          if current_ratio < target_ratio:
+              crop_h = round(w / target_ratio)
+              top = max(0, (h - crop_h)//2)
+              crop = im.crop((0, top, w, top + crop_h))
+          else:
+              crop_w = round(h * target_ratio)
+              left = max(0, (w - crop_w)//2)
+              crop = im.crop((left, 0, left + crop_w, h))
+
+          print(f"SOURCE dimensions={w}x{h} bytes={src.stat().st_size} sha256={hashlib.sha256(src.read_bytes()).hexdigest()}")
+          print(f"CROP dimensions={crop.size[0]}x{crop.size[1]} ratio={crop.size[0]/crop.size[1]:.5f}")
+
+          for out_w in (640, 828):
+              out_h = round(out_w / target_ratio)
+              resized = crop.resize((out_w,out_h), Image.Resampling.LANCZOS)
+              out = Path(f"assets/elo-duo/hero-mobile-{out_w}.webp")
+              resized.save(out, "WEBP", quality=82, method=6)
+              print(f"DERIVATIVE width={out_w} dimensions={out_w}x{out_h} bytes={out.stat().st_size} sha256={hashlib.sha256(out.read_bytes()).hexdigest()}")
+          PY
+      - name: Commit generated assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/elo-duo/hero-mobile-640.webp assets/elo-duo/hero-mobile-828.webp
+          git diff --cached --stat
+          git commit -m "diag: generate Elo responsive hero derivatives"
+          git push origin HEAD:diag/m5-10-elo-hero-derivatives-20260922
