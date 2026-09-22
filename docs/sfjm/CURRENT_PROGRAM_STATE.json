@@ -5,16 +5,16 @@
   "state_observed_at": "2026-09-22",
   "program_state": "ACTIVE",
   "current_execution": {
-    "active_phase_id": "MNT-M5",
-    "active_task_id": "MNT-M5-10",
-    "state": "ACTIVE / ARIA_HERO_CANDIDATE1_LIVE / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE / PRODUCT_DECISION_REQUIRED",
+    "active_phase_id": "MNT-M6",
+    "active_task_id": "MNT-M6-01",
+    "state": "PLANNED / AUTHORIZATION_REQUIRED",
     "repository_head_sha": "5a0df7b6757930bf34664d04d66b9a41e841f577",
     "latest_main_runtime_sha": "5a0df7b6757930bf34664d04d66b9a41e841f577",
-    "deployment_state": "PRODUCTION_READY / ARIA_HERO_CANDIDATE1_LIVE / PRODUCT_DECISION_REQUIRED",
+    "deployment_state": "PRODUCTION_READY / M5_COMPLETE / M6_01_GATE",
     "last_verified_vercel_success_sha": "5a0df7b6757930bf34664d04d66b9a41e841f577",
     "production_exact_sha": "5a0df7b6757930bf34664d04d66b9a41e841f577 / dpl_AmvdNUQdqA6URbcL8JaWfJyPLmPc / READY",
-    "authority_record": "docs/performance/MNT_M5_10_ARIA_HERO_ACCESS_CANDIDATE1_2026-09-22.md",
-    "transition_record": "handoffs/HANDOFF-2026-09-22-M5-10-ARIA-HERO-CANDIDATE1-AB.md",
+    "authority_record": "docs/sfjm/MNT_M5_10_M5_PHASE_CLOSURE_2026-09-22.md",
+    "transition_record": "handoffs/HANDOFF-2026-09-22-M5-COMPLETE-M6-GATE.md",
     "acceptance_summary": {
       "slice_01": "COMPLETE / BOUNDED_EXPERIMENT",
       "runtime_prs": [
@@ -71,7 +71,7 @@
       "aria_lcp_target_met": true,
       "responsive_media_standard": "docs/performance/RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1.md",
       "responsive_media_standard_state": "ADOPTED / CROSS_PROJECT_VALIDATED",
-      "candidate_1": "LIVE / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE / PRODUCT_DECISION_REQUIRED",
+      "candidate_1": "RETAINED / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE",
       "aria_candidate1_source_bytes": 219786,
       "aria_candidate1_640_bytes": 64508,
       "aria_candidate1_828_bytes": 99308,
@@ -90,14 +90,22 @@
       "aria_candidate1_total_transfer_delta_percent": 3.09,
       "aria_candidate1_target_met": true,
       "aria_candidate1_speed_direction": "INCONCLUSIVE",
-      "aria_pool_candidate_state": "NOT_TESTED / NOT_AUTHORIZED_BY_CANDIDATE1_SLICE"
+      "aria_pool_candidate_state": "NOT_TESTED / NOT_AUTHORIZED",
+      "m2_10": "COMPLETE / ACCEPTED_WITH_V1_RESIDUAL / HISTORICAL_RECONCILED",
+      "m2_10_pr": 54,
+      "m2_10_merge_sha": "5d2db073a4b345ae4e0067b675cab1cfb4a068ed",
+      "m2_10_hours_added_in_2026_09_22_reconciliation": 0,
+      "m5_10": "COMPLETE / ACCEPTED",
+      "m5_10_accepted_hours": 24,
+      "m5": "COMPLETE / ACCEPTED",
+      "m5_accepted_hours": 168
     }
   },
   "progress": {
     "forecast_total_hours": 1240,
-    "accepted_scope_equivalent_hours": 896,
-    "remaining_forecast_hours": 344,
-    "accepted_percent": 72.26
+    "accepted_scope_equivalent_hours": 920,
+    "remaining_forecast_hours": 320,
+    "accepted_percent": 74.19
   },
   "completed": {
     "MNT-M4-05": {
@@ -209,6 +217,21 @@
       "runtime_sha": "6dc362a63de8b797082fb1c7b4ac70a8a5aa2ae8",
       "acceptance_run": 35602579028,
       "evidence": "docs/conversion/MNT_M5_09_FORM_CTA_CONVERSION_QA_2026-09-21.md"
+    },
+    "MNT-M2-10": {
+      "state": "COMPLETE / ACCEPTED_WITH_V1_RESIDUAL",
+      "accepted_hours": 24,
+      "pull_request": 54,
+      "merge_commit": "5d2db073a4b345ae4e0067b675cab1cfb4a068ed",
+      "evidence": "docs/measurement/MNT_M2_10_POST_MERGE_RECONCILIATION_2026-09-13.md",
+      "note": "Historical acceptance reconciled on 2026-09-22; no duplicate aggregate-hour increment."
+    },
+    "MNT-M5-10": {
+      "state": "COMPLETE / ACCEPTED / CANDIDATE1_RETAINED / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE",
+      "accepted_hours": 24,
+      "runtime_sha": "5a0df7b6757930bf34664d04d66b9a41e841f577",
+      "deployment_id": "dpl_AmvdNUQdqA6URbcL8JaWfJyPLmPc",
+      "evidence": "docs/sfjm/MNT_M5_10_M5_PHASE_CLOSURE_2026-09-22.md"
     }
   },
   "recent_post_m4_events": {
@@ -346,9 +369,9 @@
     }
   },
   "next": {
-    "task_id": "MNT-M5-10",
-    "state": "PRODUCT_DECISION_REQUIRED",
-    "safe_action": "Stop before runtime mutation. Product Authority must choose whether to retain Aria Candidate 1 or restore the prior hero. The rooftop-pool candidate remains untested and requires a separate explicit authorization."
+    "task_id": "MNT-M6-01",
+    "state": "PLANNED / AUTHORIZATION_REQUIRED",
+    "safe_action": "Stop before M6 execution. Product Authority must explicitly authorize MNT-M6-01 — Attribution model and identifier boundaries. No paid spend or external platform mutation is authorized by M5 closure."
   },
   "cross_project": {
     "commercial_catalog": {
