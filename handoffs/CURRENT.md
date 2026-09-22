@@ -6,52 +6,47 @@ Atualizado em `2026-09-22`.
 
 Handoff detalhado vigente:
 
-`handoffs/HANDOFF-2026-09-22-M5-10-ARIA-SLICE09-RESPONSIVE-MEDIA-STANDARD.md`
+`handoffs/HANDOFF-2026-09-22-M5-10-ARIA-HERO-CANDIDATE1.md`
 
 ## REPOSITORY_STATE
 
 ```text
 CANONICAL_REPOSITORY = wagnerjfjunior/MoreNumTegra
 CANONICAL_BRANCH = main
-LAST_RUNTIME_PR = #221 / MERGED
-LATEST_RUNTIME_SHA = ac7958db2f2f4cd3d3bfccf4b6e9592f81a5d739
+LAST_RUNTIME_PR = #223 / MERGED
+LATEST_RUNTIME_SHA = 5a0df7b6757930bf34664d04d66b9a41e841f577
 ```
 
 ## DEPLOYMENT_STATE / PRODUCTION_STATE
 
 ```text
 CANONICAL_HOST = https://www.moretegra.com.br/
-PRODUCTION_DEPLOYMENT = dpl_6bepVcnUTT9hDhgkHbQsAdtkoE8T
-PRODUCTION_SOURCE_SHA = ac7958db2f2f4cd3d3bfccf4b6e9592f81a5d739
+PRODUCTION_DEPLOYMENT = dpl_AmvdNUQdqA6URbcL8JaWfJyPLmPc
+PRODUCTION_SOURCE_SHA = 5a0df7b6757930bf34664d04d66b9a41e841f577
 PRODUCTION_STATE = READY
 ```
 
 ## VALIDATION_STATE
 
 ```text
-MNT-M5-10 = ACTIVE / SLICE_09_RETAINED / RESPONSIVE_MEDIA_STANDARD_ADOPTED / ELO_AND_ARIA_LAB_LCP_TARGET_MET / NEXT_SLICE_DECISION_REQUIRED
+MNT-M5-10 = ACTIVE / ARIA_CANDIDATE1_LIVE / PERFORMANCE_INCONCLUSIVE / LCP_TARGET_PASS / SECOND_IMAGE_DECISION_REQUIRED
 ```
 
-Ária Slice 09:
+Candidate 1 = residential-access hero only.
 
-- pre-change five-run LCP median = `5,621 ms`;
-- responsive Production attempt 1 median = `1,906 ms` / `-66.09%`;
-- responsive Production attempt 2 median = `1,442 ms` / `-74.35%`;
-- transfer = `886,131 B -> ~535,7 KB` / `~ -39.5%`;
-- hero mobile = `714w / ~83 KB`;
-- first gallery mobile = `828w / ~103 KB`;
-- first thumb = `240x180 / 10.5 KB`;
-- LCP target `<=2,500 ms` = PASS in both independent post-change batteries;
-- public smoke preserved gallery navigation, GTM/GA4 and zero Form46 lead submissions.
+- control LCP median = `1,853 ms`;
+- candidate attempt 1 = `2,149 ms`;
+- candidate attempt 2 = `1,464 ms`;
+- both candidate batteries remain <=2,500 ms;
+- mobile hero transfer = `~99.5 KB`;
+- prior hero transfer = `~83.0 KB`;
+- deterministic payload delta = `~+16.5 KB`;
+- no functional regression observed;
+- rooftop-pool image remains untested and absent from runtime.
 
-Cross-project evidence:
+Canonical evidence:
 
-- Elo Duo responsive hero = target PASS;
-- Ária responsive hero + first-gallery delivery = target PASS / replicated.
-
-Canonical media standard:
-
-`docs/performance/RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1.md`
+`docs/performance/MNT_M5_10_ARIA_HERO_ACCESS_CANDIDATE1_2026-09-22.md`
 
 ## PROGRAM PROGRESS
 
@@ -62,10 +57,10 @@ REMAINING_FORECAST_HOURS = 344
 ACCEPTED_PERCENT = 72.26
 ```
 
-No M5-10 task hours are accepted merely from Slice 09.
+No M5-10 task hours are accepted from this candidate test.
 
 ## NEXT SAFE ACTION
 
 Read `docs/NEXT_SAFE_ACTION.md`.
 
-Current gate: STOP before another runtime mutation. Product Authority must choose the next bounded M5-10 slice.
+STOP before second-image/carousel/rotation mutation. Product Authority decision required.
