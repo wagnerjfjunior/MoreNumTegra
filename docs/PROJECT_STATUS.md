@@ -13,6 +13,9 @@ PRODUCTION_STATE = READY
 
 MNT-M5 = COMPLETE / ACCEPTED
 MNT-M6 = ACTIVE / PAID_MEDIA_FROZEN / M6-07_DEFERRED
+MNT-M7 = ACTIVE / M7-02_P1_PRODUCT_TRUTH_BLOCKERS_OPEN
+MNT-M7-01 = COMPLETE / NO_ACTIVE_PREVIEW_CANDIDATE / EXISTING_RELEASE_EVIDENCE_REUSED
+MNT-M7-02 = ACTIVE / QA_EXECUTED / P1_PRODUCT_TRUTH_BLOCKERS_OPEN
 MNT-M6-01 = COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION
 MNT-M6-06 = COMPLETE / BUDGET_SPEND_POLICY_AUTHORIZED / PAID_MEDIA_FROZEN
 MNT-M5-01 = COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS
@@ -27,9 +30,9 @@ MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
 MNT-M5-10 = COMPLETE / ACCEPTED / CANDIDATE1_RETAINED / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE
 
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 1008
-REMAINING_FORECAST_HOURS = 232
-ACCEPTED_PERCENT = 81.29
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 1024
+REMAINING_FORECAST_HOURS = 216
+ACCEPTED_PERCENT = 82.58
 ```
 
 ## 2. M5-06 CTA/Form journey
@@ -79,7 +82,7 @@ No alias/duplicate route was introduced and the canonical remains:
 ```text
 CANONICAL_HOST = https://www.moretegra.com.br/
 PRODUCTION_SOURCE_SHA = 124b620855175a583c528733462d6d0f4f44cd41
-PRODUCTION_DEPLOYMENT = dpl_AmvdNUQdqA6URbcL8JaWfJyPLmPc
+PRODUCTION_DEPLOYMENT = dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C
 PRODUCTION_STATE = READY
 ```
 
@@ -903,3 +906,53 @@ remarketing spend = R$ 0
 M6-07 = DEFERRED
 Looker Studio = DEFERRED
 ```
+
+
+## M7-01 / M7-02 QA state
+
+M7-01 closed without an artificial Preview because no active runtime candidate exists and the effective runtime is already Production READY.
+
+Canonical evidence:
+
+- `docs/qa/MNT_M7_01_PREVIEW_VALIDATION_ADJUDICATION_2026-09-22.md`
+- runtime SHA `124b620855175a583c528733462d6d0f4f44cd41`
+- Production deployment `dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C / READY`
+
+M7-02 technical/content QA was executed against the four canonical sitemap URLs.
+
+Observed technical baseline:
+
+```text
+4/4 canonical URLs = HTTP 200
+4/4 = self-canonical
+4/4 = index,follow
+4/4 = one H1
+robots.txt = PASS
+sitemap.xml = PASS / 4 canonical URLs
+exact-project visible price vs Offer = PASS for CAPIITOLO / Elo Duo / Ária
+```
+
+Open findings:
+
+```text
+P0 = 0
+P1 = 2
+P2 = 2
+P3 = 0
+```
+
+P1:
+
+1. Home volatile commercial objects remain hardcoded/duplicated without current release-time revalidation and drift from newer exact-project commercial snapshots.
+2. ODE Production Home runtime still exposes `De R$ 2.200.000 por R$ 2.090.000`; canonical M3-04 states the older R$ 2.200.000 comparative is not recertified and remains prohibited.
+
+P2:
+
+1. CAPIITOLO critical body is composed client-side from the editorial source through fetch/DOMParser/document replacement.
+2. Google Search favicon eligibility residual remains open for the canonical WebP favicon.
+
+Canonical M7-02 evidence:
+
+`docs/qa/MNT_M7_02_TECHNICAL_CONTENT_QA_2026-09-22.md`
+
+M7-02 remains ACTIVE at 0 accepted hours. RESF C15 P0=0/P1=0 release posture is not met. Product Authority/current commercial evidence is required before progression.
