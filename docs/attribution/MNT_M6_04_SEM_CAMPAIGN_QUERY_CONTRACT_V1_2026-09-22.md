@@ -631,3 +631,132 @@ Program progress after acceptance:
 
 Next gate:
 MNT-M6-05 — Landing-page/query mapping — 16h / AUTHORIZATION_REQUIRED
+
+
+## 29. Live Search Console evidence — MoreTegra
+
+Read-only Search Console evidence was observed for `sc-domain:moretegra.com.br` over the last 90 days including today.
+
+Observed aggregate:
+
+```text
+query-page rows = 12
+impressions = 29
+clicks = 1
+```
+
+This sample is too small to estimate Search Ads demand, CPA, budget or match-type performance. It is used only as qualitative query evidence.
+
+Observed exact-project/query evidence includes:
+
+```text
+aria higienopolis -> Ária exact-project page
+caminhos da lapa elo -> Elo Duo exact-project page
+capítulo tegra -> CAPIITOLO exact-project page
+```
+
+Observed portfolio evidence includes:
+
+```text
+tegra vendas
+tegra
+```
+
+`tegra` remains blocked as a standalone positive seed despite organic appearance because it is semantically broad. `tegra vendas` is admitted as a planned Q5 portfolio seed because it carries explicit commercial intent.
+
+Observed queries for products without a canonical exact-project page include:
+
+```text
+amaro tegra
+brooklin bricks tegra
+ode perdizes tegra
+tegra campo belo
+```
+
+These queries do not authorize paid campaigns or keywords. They remain `CATALOG_GAP / NO_POSITIVE_SEED` until a canonical product/landing exists and Product Authority admits it.
+
+This reinforces:
+
+```text
+SEARCH_QUERY_EXISTS != CANONICAL_PRODUCT_EXISTS
+ORGANIC_IMPRESSION != PAID_KEYWORD_AUTHORIZATION
+```
+
+## 30. Initial planned seed registry
+
+The following keyword records are canonical planned seeds only. They are not uploaded to Google Ads and remain subject to M6-05 landing-page/query mapping.
+
+### Ária — mnt-cmp-000001
+
+```text
+aria-001 | ária higienópolis | EXACT  | Q1_PROJECT_NAVIGATIONAL
+aria-002 | ária higienópolis | PHRASE | Q1_PROJECT_NAVIGATIONAL
+aria-003 | ária tegra | EXACT | Q1_PROJECT_NAVIGATIONAL
+aria-004 | apartamento ária higienópolis | PHRASE | Q2_PROJECT_COMMERCIAL
+aria-005 | studio ária higienópolis | PHRASE | Q3_PROJECT_FEATURE
+aria-006 | ária higienópolis preço | PHRASE | Q2_PROJECT_COMMERCIAL
+aria-007 | ária higienópolis visita | PHRASE | Q2_PROJECT_COMMERCIAL
+aria-008 | ária higienópolis pronto para morar | PHRASE | Q3_PROJECT_FEATURE
+```
+
+### Elo Duo — mnt-cmp-000002
+
+```text
+elo-001 | elo duo | EXACT | Q1_PROJECT_NAVIGATIONAL
+elo-002 | elo duo | PHRASE | Q1_PROJECT_NAVIGATIONAL
+elo-003 | elo duo tegra | EXACT | Q1_PROJECT_NAVIGATIONAL
+elo-004 | caminhos da lapa elo duo | PHRASE | Q1_PROJECT_NAVIGATIONAL
+elo-005 | apartamento elo duo | PHRASE | Q2_PROJECT_COMMERCIAL
+elo-006 | elo duo preço | PHRASE | Q2_PROJECT_COMMERCIAL
+elo-007 | elo duo visita | PHRASE | Q2_PROJECT_COMMERCIAL
+elo-008 | elo duo pronto para morar | PHRASE | Q3_PROJECT_FEATURE
+```
+
+### CAPIITOLO — mnt-cmp-000003
+
+```text
+cap-001 | capiitolo | EXACT | Q1_PROJECT_NAVIGATIONAL
+cap-002 | capiitolo tegra | EXACT | Q1_PROJECT_NAVIGATIONAL
+cap-003 | capiitolo piero lissoni | PHRASE | Q1_PROJECT_NAVIGATIONAL
+cap-004 | capiitolo chácara klabin | PHRASE | Q1_PROJECT_NAVIGATIONAL
+cap-005 | apartamento capiitolo | PHRASE | Q2_PROJECT_COMMERCIAL
+cap-006 | capiitolo 210 m2 | PHRASE | Q3_PROJECT_FEATURE
+cap-007 | capiitolo preço | PHRASE | Q2_PROJECT_COMMERCIAL
+cap-008 | capiitolo visita | PHRASE | Q2_PROJECT_COMMERCIAL
+```
+
+### Portfolio Tegra — mnt-cmp-000004
+
+```text
+prt-001 | apartamentos tegra | EXACT | Q5_TEGRA_PORTFOLIO
+prt-002 | apartamentos tegra | PHRASE | Q5_TEGRA_PORTFOLIO
+prt-003 | apartamentos tegra são paulo | PHRASE | Q5_TEGRA_PORTFOLIO
+prt-004 | empreendimentos tegra são paulo | PHRASE | Q5_TEGRA_PORTFOLIO
+prt-005 | tegra apartamentos | PHRASE | Q5_TEGRA_PORTFOLIO
+prt-006 | tegra vendas | EXACT | Q5_TEGRA_PORTFOLIO / SEARCH_CONSOLE_OBSERVED
+```
+
+Keyword accents are preserved in the canonical planned text. Google positive matching can treat accents as close variants; duplicate accentless keyword records are not created merely to mirror an organic query spelling.
+
+## 31. SEO coexistence
+
+Paid Search and organic Search are separate acquisition surfaces.
+
+Rules:
+
+- an organic ranking does not automatically block a paid keyword;
+- an organic impression does not justify paid activation;
+- exact-project paid terms with organic overlap must be measured for incremental value after launch rather than assumed to be cannibalization;
+- no SEO title/H1/content should be distorted merely to mirror ad keyword syntax;
+- paid UTM parameters never become canonical SEO URLs;
+- Search Console evidence and Ads Search Terms evidence remain separate provider datasets.
+
+Later observation may classify a paid keyword as:
+
+```text
+INCREMENTAL
+CANNIBALIZING
+UNDETERMINED
+```
+
+No such classification is made by M6-04 because no paid campaign exists yet.
