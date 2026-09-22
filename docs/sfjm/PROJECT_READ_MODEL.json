@@ -21,7 +21,9 @@
     "final_consent_ga4_proof_run": 35737706576,
     "evidence": "docs/attribution/MNT_M6_06_BUDGET_SPEND_AUTHORIZATION_GATE_2026-09-22.md",
     "baseline_run": 35743393547,
-    "responsive_media_standard": "docs/performance/RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1.md"
+    "responsive_media_standard": "docs/performance/RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1.md",
+    "audience_accumulation_state": "AUTHORIZED_FOR_CREATION / LIVE_CREATION_NOT_YET_PROVEN",
+    "remarketing_state": "DEFERRED / SPEND_ZERO"
   },
   "current_state_overlay": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
   "cross_project_handoff": "docs/sfjm/MNT_FECHAI_COMMERCIAL_CATALOG_HANDOFF_2026-09-16.md",
