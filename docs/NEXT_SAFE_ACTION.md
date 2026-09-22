@@ -3,51 +3,50 @@
 Atualizado em `2026-09-22`.
 
 ```text
-MNT-M5-10 = ACTIVE / SLICE_09_RETAINED / RESPONSIVE_MEDIA_STANDARD_ADOPTED / ELO_AND_ARIA_LAB_LCP_TARGET_MET / NEXT_SLICE_DECISION_REQUIRED
+MNT-M5-10 = ACTIVE / ARIA_HERO_CANDIDATE1_LIVE / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE / PRODUCT_DECISION_REQUIRED
 
-LATEST_RUNTIME_SHA = ac7958db2f2f4cd3d3bfccf4b6e9592f81a5d739
-PRODUCTION_SOURCE_SHA = ac7958db2f2f4cd3d3bfccf4b6e9592f81a5d739
-PRODUCTION_DEPLOYMENT = dpl_6bepVcnUTT9hDhgkHbQsAdtkoE8T
+LATEST_RUNTIME_SHA = 5a0df7b6757930bf34664d04d66b9a41e841f577
+PRODUCTION_SOURCE_SHA = 5a0df7b6757930bf34664d04d66b9a41e841f577
+PRODUCTION_DEPLOYMENT = dpl_AmvdNUQdqA6URbcL8JaWfJyPLmPc
 PRODUCTION_STATE = READY
 ```
 
-## Encerramento da Slice 09
+## Candidate 1 result
 
-Ária responsive-media delivery is retained.
+The residential-access hero is live and technically valid.
 
 ```text
-baseline LCP = 5,621 ms
-attempt 1 median = 1,906 ms / -66.09%
-attempt 2 median = 1,442 ms / -74.35%
-transfer reduction ~= 39.5%
-target <=2,500 ms = PASS / REPLICATED
+CONTROL:
+LCP median = 1,853 ms
+hero transfer ~= 83,042 B
+total transfer = 535,700 B
+
+CANDIDATE 1 / ATTEMPT 1:
+LCP median = 2,149 ms
+delta = +15.97%
+target = PASS
+
+CANDIDATE 1 / ATTEMPT 2:
+LCP median = 1,464 ms
+delta = -20.99%
+target = PASS
+
+CANDIDATE 1 DETERMINISTIC PAYLOAD:
+hero ~= +16.5 KB / +19.85%
+total ~= +3.09%
 ```
 
-Cross-project standard is adopted:
+The opposite post-change LCP directions make the speed comparison inconclusive. Both candidate batteries pass the project LCP target.
 
-`docs/performance/RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1.md`
-
-The standard governs new exact-project photographic media by default, but does not authorize automatic rewrites of existing pages.
+The rooftop-pool image has not been tested or introduced.
 
 ## Única próxima ação segura
 
 **PARAR antes de nova mutação de runtime.**
 
-The next candidate in the M5-03 sequence is CAPIITOLO hero + large below-the-fold images.
+Product Authority must choose one bounded action:
 
-CAPIITOLO is a special case:
+1. **retain Candidate 1** because its visual/commercial value is preferred, accepting the measured payload overhead while LCP remains within target; or
+2. **restore the prior Ária hero**, because deterministic payload is lower and Candidate 1 did not prove a performance advantage.
 
-- near-full-viewport hero;
-- stronger art-direction need;
-- legacy bootstrap/experiment containment;
-- existing mobile video suppression to preserve.
-
-Therefore any CAPIITOLO remediation requires its own explicit Product Authority authorization and bounded exact-head/Production QA.
-
-Before any next execution:
-
-1. resolve `main` live;
-2. resolve Vercel Production live;
-3. read this file and the current handoff;
-4. read the responsive-media standard;
-5. confirm the exact next slice authorized by Product Authority.
+The rooftop-pool candidate may be tested only after an explicit subsequent decision. Do not add a second hero/slider/carousel from the current authorization.
