@@ -959,8 +959,8 @@
     },
     {
       "id": "MNT-RES-02",
-      "state": "OPEN / P2",
-      "label": "Search favicon eligibility residual"
+      "state": "SITE_SIDE_FIXED / AWAITING_GOOGLE_RECRAWL / NOT_OBSERVED",
+      "label": "Google Search favicon visual refresh"
     },
     {
       "id": "MNT-RES-03",
@@ -977,5 +977,14 @@
       "state": "NOT_OBSERVED / ACCEPTED_RESIDUAL",
       "label": "Field CWV / field INP"
     }
-  ]
+  ],
+  "public_surface_remediation": {
+    "state": "COMPLETE / PRODUCTION_VALIDATED",
+    "pr": 241,
+    "runtime_sha": "1543bb2a16d2ecace4d697fa6f381f9353df7582",
+    "deployment": "dpl_GAKSbqFmB3xExV2wYhPMN1iErJfp",
+    "favicon_state": "SITE_SIDE_FIXED / GOOGLE_RECRAWL_PENDING",
+    "social_sharing_state": "LIVE_METADATA_VALIDATED",
+    "capiitolo_variant_state": "IMPLEMENTED / SINGLE_CANONICAL_PAGE"
+  }
 }
