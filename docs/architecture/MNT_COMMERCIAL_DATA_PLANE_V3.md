@@ -58,7 +58,11 @@ Logical shape:
 snapshot
   schemaVersion = 3
   snapshotId
+  snapshotState = candidate | published | retired
+  generatedAt
   publishedAt
+  authorityRef
+  supersedesSnapshotId
   currency
   projects
     canonical projectId
@@ -73,8 +77,10 @@ snapshot
           priceLabel
           price
           oldPrice
+          tablePrice
           unit
           areaSqm
+          pricePerSqm
           reference
           urgency
           observedAt
@@ -131,7 +137,9 @@ Where price and area are present:
 pricePerSqm = price / areaSqm
 ~~~
 
-The consumer should derive it rather than store a second independent value, unless Product Authority explicitly governs a supplied per-square-meter figure and validation checks consistency.
+The consumer should derive it where possible rather than create an independent competing value. The v3 schema also supports `pricePerSqm` for legitimate reference-only/current Home cases where that rate is itself the governed commercial object. If both total price and rate are present, validation must check semantic consistency.
+
+`tablePrice` is separate from `oldPrice`: table/base price is not automatically a promotional previous price.
 
 ## 7. Current Home bootstrap authority
 
@@ -238,3 +246,19 @@ Multi-offer projects proven by the current Home:
 - ledge-brooklin.
 
 The snapshot is not published and is not consumed by Production.
+
+
+## 13. Post-RESF task decomposition
+
+Current operational decomposition:
+
+| ID | Task | State |
+|---|---|---|
+| MNT-CDP-01 | Select/prove provider/publication owner | ACTIVE / PROVIDER_SELECTION |
+| MNT-CDP-02 | Public read + protected admin write | PLANNED / BLOCKED_BY_CDP_01 |
+| MNT-CDP-03 | Spreadsheet/CSV operator update path | PLANNED / PENDING |
+| MNT-CDP-04 | Approval/publish/version/rollback/audit | PLANNED |
+| MNT-CDP-05 | Runtime consumer migration | PLANNED / NOT_AUTHORIZED |
+| MNT-CDP-06 | E2E value-only update without site deploy + rollback proof | PLANNED |
+
+The spreadsheet/CSV task must output the same v3 candidate shape as any future admin UI or GPT-assisted transform. It is not a second source of truth.
