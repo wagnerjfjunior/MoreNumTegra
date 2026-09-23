@@ -390,24 +390,35 @@ Allowed now:
 Current Home commercial truth must remain preserved until separately changed by Product Authority.
 
 
-## M7-13 provider intake gate — 2026-09-23
+## M7-13 provider intake gate — CLOSED 2026-09-23
 
-Product Authority authorized continuing the non-paid RESF sequence.
+Provider intake completed through `wagnerjfjunior/Blogs-sites-portais-seo` PR #15 and merge `c8cf9c8f49982c30d641b6c590ddf53018802e52`.
 
-Allowed:
+Exact-head workflow passed and independent SES Documentation Auditor returned `PASS_WITH_RESIDUAL_RISK`.
 
-- merge the MoreNumTegra M7-03..M7-12 evidence packet;
-- resolve the resulting consumer `main` SHA;
-- resolve the RESF provider live governance/main;
-- create a provenance-preserving provider evidence intake for M7-13;
-- return the canonical provider intake reference to MoreNumTegra.
+No framework lifecycle or registry promotion occurred.
 
-Blocked:
+M7-13 is COMPLETE and the M7/RESF closure is recorded in:
 
-- treating evidence intake as automatic RESF lifecycle promotion;
-- mutating provider patterns/contracts beyond the provider's own governance;
-- claiming M6-07/M6-08 complete;
-- creating/activating Google Ads or spend to force 100% completion;
-- manufacturing paid-conversion evidence.
+`docs/sfjm/MNT_RESF_PROGRAM_CLOSURE_2026-09-23.md`
 
-M6-08 may remain deferred without spend because its prerequisite M6-07 external implementation is intentionally frozen.
+
+
+## Paid-media scope after RESF closure — 2026-09-23
+
+MNT-RESF is closed with 40h explicitly deferred:
+
+```text
+M6-07 = 24h / DEFERRED / PAID_MEDIA_FROZEN
+M6-08 = 16h / DEFERRED / DEPENDS_ON_M6-07
+```
+
+Blocked without a new explicit Product Authority decision:
+
+- creating or activating Google Ads campaigns;
+- spending against the R$1,000 ceiling;
+- performing M6-08 as if M6-07 existed;
+- reclassifying either deferred task as accepted merely to display 100%;
+- treating zero-row Ads observation as paid-conversion QA.
+
+A future reopening of M6-07/M6-08 is allowed only as a new paid-media decision and does not reopen the already completed M7 evidence chain automatically.
