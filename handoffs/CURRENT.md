@@ -77,19 +77,39 @@ remarketing spend = R$ 0
 
 A later paid-media reopening requires a new explicit Product Authority decision.
 
+## DASHBOARD / WBS STATE
+
+Canonical dashboard reconciliation:
+
+`docs/sfjm/MNT_DASHBOARD_WBS_STATE_RECONCILIATION_2026-09-23.md`
+
+```text
+M1 = COMPLETE / ACCEPTED
+M3 = COMPLETE / ACCEPTED
+M4 = COMPLETE / ACCEPTED
+M7 = COMPLETE / ACCEPTED
+M6-07 = DEFERRED / PAID_MEDIA_FROZEN
+M6-08 = DEFERRED / DEPENDS_ON_M6_07
+historical planning snapshot = ARCHIVE_ONLY
+```
+
 ## CURRENT PRIORITY
 
 Commercial Data Plane v3 is now the active product-priority workstream outside RESF accounting.
 
 ```text
-COMMERCIAL_DATA_PLANE_REENTRY = ACTIVE / DESIGN_ONLY
+COMMERCIAL_DATA_PLANE_REENTRY = ACTIVE / DECOMPOSED
+CURRENT_CHILD = MNT-CDP-01 / provider selection
+MNT-CDP-03 = PLANNED / PENDING / spreadsheet-CSV value update path
 provider/publication owner = NOT_SELECTED
 runtime migration = NOT_AUTHORIZED
 current Home commercial truth = PRESERVE
 ```
 
+The spreadsheet/CSV is an operator input channel, not a direct runtime data source.
+
 ## NEXT SAFE ACTION
 
 Read `docs/NEXT_SAFE_ACTION.md`.
 
-Select and prove the Commercial Data Plane publication provider/owner before any runtime consumer migration.
+Execute MNT-CDP-01: select and prove the Commercial Data Plane publication provider/owner. Keep M6-07/M6-08 and the pending MNT-CDP-03 spreadsheet/CSV path visible in the dashboard.
