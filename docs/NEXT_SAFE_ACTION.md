@@ -56,10 +56,10 @@ No runtime consumer migration is authorized by this step.
 ```text
 P0 = 0
 P1 = 0
-P2 = 2
+CURRENT_CODE_OWNED_P2 = 1
 
 P2-01 = CAPIITOLO client-side editorial composition
-P2-02 = Search favicon eligibility
+FAVICON = SITE_SIDE_FIXED / AWAITING_GOOGLE_RECRAWL / NOT_OBSERVED
 
 physical-device QA = NOT_OBSERVED
 screen-reader validation = NOT_OBSERVED
@@ -80,3 +80,24 @@ Looker Studio = DEFERRED
 Do not activate paid media merely to change the RESF percentage.
 
 Do not change current Home commercial values as part of architecture migration unless Product Authority separately changes them.
+
+
+## Public surface remediation completed — 2026-09-23
+
+```text
+PR = #241
+runtime SHA = 1543bb2a16d2ecace4d697fa6f381f9353df7582
+deployment = dpl_GAKSbqFmB3xExV2wYhPMN1iErJfp / READY
+
+/favicon.ico = HTTP 200
+favicon format = ICO
+favicon site-side issue = CLOSED
+Google SERP visual refresh = AWAITING_EXTERNAL_RECRAWL
+
+social sharing metadata = LIVE / VALIDATED
+Home share image = 1280x720
+CAPIITOLO/Capitolo variant strategy = LIVE / SINGLE_CANONICAL_PAGE
+runtime errors after deploy = NONE OBSERVED
+```
+
+Next safe action remains `MNT-CDP-01`.
