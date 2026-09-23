@@ -13,15 +13,15 @@ Handoff detalhado vigente:
 ```text
 CANONICAL_REPOSITORY = wagnerjfjunior/MoreNumTegra
 CANONICAL_BRANCH = main
-LATEST_RUNTIME_SHA = 847a2f4460894e1f0fdcc30501f6b6396ec67b75
+LATEST_RUNTIME_SHA = c80a8e1d773d85af563d9630f6e460e7ad85ea02
 ```
 
 ## DEPLOYMENT_STATE / PRODUCTION_STATE
 
 ```text
 CANONICAL_HOST = www.moretegra.com.br
-PRODUCTION_DEPLOYMENT = dpl_AeLHW8cj3w7kDgUdueLL56ezCeS7
-PRODUCTION_SOURCE_SHA = 847a2f4460894e1f0fdcc30501f6b6396ec67b75
+PRODUCTION_DEPLOYMENT = dpl_4F8SF29FyNj7EcpyqM9zT57oYAoi
+PRODUCTION_SOURCE_SHA = c80a8e1d773d85af563d9630f6e460e7ad85ea02
 PRODUCTION_STATE = READY
 ```
 
@@ -120,10 +120,13 @@ Execute MNT-CDP-01: select and prove the Commercial Data Plane publication provi
 ```text
 source = Product Authority PNG 500x500 / transparent
 source SHA-256 = 0fd8e12cc711543f44a6b34581bdb09981e7e30570b783cb8b29057ff408caf8
-/favicon.ico = LIVE / 48x48 + 96x96 + 192x192 / Tegra yellow T
+/favicon.ico = LIVE / 16x16 + 32x32 + 48x48 + 96x96 + 192x192 / Tegra yellow T
+/favicon-16x16.png = LIVE
+/favicon-32x32.png = LIVE
 /favicon-48x48.png = LIVE
 /favicon-96x96.png = LIVE
 /favicon-192x192.png = LIVE
 /apple-touch-icon.png = LIVE / 180x180
+browser tab recheck = REQUIRED / site-side assets and declarations are LIVE
 Google SERP refresh = AWAITING_EXTERNAL_RECRAWL / NOT_OBSERVED
 ```
