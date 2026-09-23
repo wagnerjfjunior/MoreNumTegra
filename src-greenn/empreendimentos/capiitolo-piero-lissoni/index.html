@@ -323,35 +323,6 @@
 }
   </script>
 
-  <script id="mnt-capiitolo-product-schema" type="application/ld+json">
-{
-  "@context": "https://schema.org/",
-  "@type": "Product",
-  "@id": "https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#product",
-  "name": "CAPIITOLO by Piero Lissoni — apartamento de 210 m²",
-  "description": "Apartamento tipo de 210 m², 4 suítes e 3 vagas de garagem no CAPIITOLO by Piero Lissoni, empreendimento Tegra na Chácara Klabin.",
-  "url": "https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/",
-  "image": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/349/ImagemPrincipal/Tegra-Incorporadora-Detalhe-Fachada-CAPITOLO-by-Piero-Lissoni-Apartamentos-210-Metros-Chacara-Klabin-Sao-Paulo-SP-714x640-1736369712708.jpg",
-  "brand": {
-    "@type": "Brand",
-    "name": "Tegra"
-  },
-  "offers": {
-    "@type": "Offer",
-    "@id": "https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#offer",
-    "url": "https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/",
-    "priceCurrency": "BRL",
-    "price": "3539900",
-    "availability": "https://schema.org/InStock"
-  },
-  "additionalProperty": {
-    "@type": "PropertyValue",
-    "name": "Referência comercial Tegra",
-    "value": "Ref. 210 m² · unidade 33 · Ago/26 · pagamento à vista"
-  }
-}
-  </script>
-
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PGCR4R47');</script>
   <!-- End Google Tag Manager -->
@@ -379,7 +350,7 @@
   (()=>{"use strict";
     const canonical="https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/";
     const source="/experiments/capiitolo-editorial-v3/index.html";
-    const schemaText=document.getElementById("mnt-capiitolo-schema")?.textContent||"";const productSchemaText=document.getElementById("mnt-capiitolo-product-schema")?.textContent||"";
+    const schemaText=document.getElementById("mnt-capiitolo-schema")?.textContent||"";const productSchemaText="";
     const priceSection=`<section class="mnt-price-section" id="valores" aria-labelledby="mnt-price-title"><div class="wrap mnt-price-grid"><div><p class="mnt-price-label">A partir de</p><h2 id="mnt-price-title" class="mnt-price-amount" data-commercial-value aria-live="polite">R$ 3.539.900</h2></div><div data-commercial-key="capiitolo"><p class="mnt-price-label">Referência comercial</p><p class="mnt-price-reference">Ref. 210 m² · unidade 33 · Ago/26 · pagamento à vista</p><p class="mnt-price-note">Unidade disponível na data de referência. Fonte: Tegra Incorporadora. Valor e condições podem mudar; confirme as condições vigentes antes da proposta.</p><a class="btn yellow" href="#formulario" data-form-intent="conditions">Receber condições <span>↓</span></a></div></div></section>`;
     fetch(source,{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.text()}).then(html=>{
       const doc=new DOMParser().parseFromString(html,"text/html");
@@ -394,7 +365,7 @@
       const twitter={"twitter:card":"summary_large_image","twitter:title":"CAPIITOLO Tegra Chácara Klabin | Piero Lissoni","twitter:description":"CAPIITOLO na Chácara Klabin: 210 m² com 4 suítes e 3 vagas de garagem, Giardino (Garden) 281 m² e Duplex 363 m², com plantas, lazer e atendimento especializado.","twitter:image":"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/349/ImagemPrincipal/Tegra-Incorporadora-Detalhe-Fachada-CAPITOLO-by-Piero-Lissoni-Apartamentos-210-Metros-Chacara-Klabin-Sao-Paulo-SP-714x640-1736369712708.jpg","twitter:image:alt":"Fachada do CAPIITOLO by Piero Lissoni na Chácara Klabin"};
       Object.entries(twitter).forEach(([name,content])=>{let node=doc.head.querySelector(`meta[name="${name}"]`);if(!node){node=doc.createElement("meta");node.setAttribute("name",name);doc.head.appendChild(node)}node.setAttribute("content",content)});
       doc.head.querySelectorAll('#mnt-capiitolo-schema').forEach(node=>node.remove());doc.head.querySelectorAll('#mnt-capiitolo-product-schema').forEach(node=>node.remove());
-      const schemaNode=doc.createElement("script");schemaNode.type="application/ld+json";schemaNode.id="mnt-capiitolo-schema";schemaNode.textContent=schemaText;doc.head.appendChild(schemaNode);if(productSchemaText){const productSchemaNode=doc.createElement("script");productSchemaNode.type="application/ld+json";productSchemaNode.id="mnt-capiitolo-product-schema";productSchemaNode.textContent=productSchemaText;doc.head.appendChild(productSchemaNode);}
+      const schemaNode=doc.createElement("script");schemaNode.type="application/ld+json";schemaNode.id="mnt-capiitolo-schema";schemaNode.textContent=schemaText;doc.head.appendChild(schemaNode);
       const gtm=doc.createElement("script");gtm.textContent="(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PGCR4R47');";doc.head.appendChild(gtm);
       const ns=doc.createElement("noscript");ns.innerHTML='<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGCR4R47" height="0" width="0" style="display:none;visibility:hidden"></iframe>';doc.body.insertBefore(ns,doc.body.firstChild);
       const badge=doc.querySelector(".pilot");if(badge)badge.textContent="CAPIITOLO · MoreTegra";
