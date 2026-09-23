@@ -21,7 +21,10 @@ This source is the basis for the favicon package below.
 All standalone MoreNumTegra HTML pages declare:
 
 ```html
-<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="shortcut icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 ```
 
@@ -34,7 +37,9 @@ https://www.moretegra.com.br/favicon.ico
 ## Generated package
 
 ```text
-/favicon.ico             = ICO with validated 48x48, 96x96 and 192x192 PNG frames
+/favicon.ico             = ICO with validated 16x16, 32x32, 48x48, 96x96 and 192x192 PNG frames
+/favicon-16x16.png       = 16x16 PNG
+/favicon-32x32.png       = 32x32 PNG
 /favicon-48x48.png       = 48x48 PNG
 /favicon-96x96.png       = 96x96 PNG
 /favicon-192x192.png     = 192x192 PNG
@@ -43,7 +48,7 @@ https://www.moretegra.com.br/favicon.ico
 
 All derivatives preserve transparency and the same Tegra mark.
 
-The final ICO uses only three validated PNG frames: 48×48, 96×96 and 192×192. The validator checks every frame boundary and PNG signature, preventing a repeat of the corrupt-frame regression.
+The final ICO includes browser-tab frames 16×16 and 32×32 plus Search/high-density frames 48×48, 96×96 and 192×192. The HTML also declares explicit 16/32/48 PNG icons so Chrome does not depend on its cached ICO selection.
 
 ## Google Search eligibility
 
@@ -69,9 +74,10 @@ HTML fragments without a `<head>` inherit the containing document favicon.
 - `favicon.ico` exists and has a valid ICO directory;
 - every embedded ICO frame stays inside file bounds;
 - every embedded ICO frame is a PNG frame;
-- at least one ICO frame is square and 48x48 or larger;
+- ICO includes valid 16×16, 32×32, 48×48, 96×96 and 192×192 frames;
 - PNG derivative signatures and exact dimensions are valid;
-- every standalone page declares exactly one `rel="icon"`;
+- every standalone page declares explicit 48×48, 32×32 and 16×16 PNG icons;
+- every standalone page declares the canonical `/favicon.ico` as `shortcut icon`;
 - every standalone page declares exactly one `rel="apple-touch-icon"`;
 - the canonical paths are used;
 - the former WebP favicon is absent;
@@ -110,3 +116,27 @@ apple-touch-icon.png = HTTP 200
 ```
 
 The visible source-derived mark is the Tegra yellow `T`.
+
+
+## Browser-tab remediation — 2026-09-23
+
+Production feedback showed that the site favicon still failed to appear in the browser tab even though the Search-facing 48/96/192 package was valid.
+
+Concrete gap:
+
+```text
+tab-oriented 16x16 frame = MISSING
+tab-oriented 32x32 frame = MISSING
+explicit 16/32 PNG declarations = MISSING
+```
+
+Final browser strategy:
+
+```text
+Chrome/browser tab = explicit 32x32 and 16x16 PNGs
+Google/Search = explicit 48x48 PNG + stable /favicon.ico
+ICO fallback = 16/32/48/96/192
+Apple = 180x180 PNG
+```
+
+All assets derive from the same Product Authority 500×500 transparent Tegra “T” source.
