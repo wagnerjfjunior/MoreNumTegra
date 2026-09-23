@@ -2,13 +2,13 @@
   "schema_version": "sfjm.project-read-model.v1",
   "program": {
     "id": "MNT-RESF",
-    "state": "ACTIVE / M7_ACTIVE / PAID_MEDIA_FROZEN",
+    "state": "ACTIVE / M7_13_PROVIDER_INTAKE_NEXT / PAID_MEDIA_FROZEN",
     "current_active_phase_id": "MNT-M7",
-    "accepted_percent": 83.87
+    "accepted_percent": 95.48
   },
   "current": {
-    "task_id": "MNT-M7-03",
-    "task_state": "AUTHORIZATION_REQUIRED",
+    "task_id": "MNT-M7-13",
+    "task_state": "AUTHORIZED_BY_SEQUENCE / PROVIDER_INTAKE_NEXT",
     "pr": null,
     "repository_head_sha": "124b620855175a583c528733462d6d0f4f44cd41",
     "latest_main_runtime_sha": "124b620855175a583c528733462d6d0f4f44cd41",
@@ -16,10 +16,10 @@
     "last_verified_vercel_success_sha": "124b620855175a583c528733462d6d0f4f44cd41",
     "production_deployment_id": "dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C",
     "acceptance_run": null,
-    "next_task_id": "MNT-M7-03",
-    "next_task_state": "AUTHORIZATION_REQUIRED",
+    "next_task_id": "MNT-M7-13",
+    "next_task_state": "AUTHORIZED_BY_SEQUENCE",
     "final_consent_ga4_proof_run": 35737706576,
-    "evidence": "docs/qa/MNT_M7_02_PRODUCT_TRUTH_READJUDICATION_2026-09-22.md",
+    "evidence": "docs/observability/MNT_M7_12_RESULT_PROVENANCE_REGISTRY_2026-09-23.md",
     "baseline_run": 35743393547,
     "responsive_media_standard": "docs/performance/RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1.md",
     "audience_accumulation_state": "COMPLETE / MANUAL_CREATION / SCREENSHOT_OBSERVED",
