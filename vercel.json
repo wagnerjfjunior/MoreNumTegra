@@ -9,29 +9,71 @@
   },
   "ignoreCommand": "if git diff --name-only HEAD^ HEAD | grep -Ev '^(docs/|handoffs/|bootstrap/|\\.github/|README\\.md$)' | grep -q .; then exit 1; else exit 0; fi",
   "rewrites": [
-    { "source": "/", "destination": "/src-greenn/preview/index.html" },
-    { "source": "/obrigado/", "destination": "/src-greenn/preview/obrigado.html" },
-    { "source": "/empreendimentos/capiitolo-piero-lissoni/", "destination": "/src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html" },
-    { "source": "/empreendimentos/caminhos-da-lapa-elo-duo/", "destination": "/src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html" },
-    { "source": "/empreendimentos/aria-higienopolis/", "destination": "/src-greenn/empreendimentos/aria-higienopolis/index.html" }
+    {
+      "source": "/",
+      "destination": "/src-greenn/preview/index.html"
+    },
+    {
+      "source": "/obrigado/",
+      "destination": "/src-greenn/preview/obrigado.html"
+    },
+    {
+      "source": "/empreendimentos/capiitolo-piero-lissoni/",
+      "destination": "/src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html"
+    },
+    {
+      "source": "/empreendimentos/caminhos-da-lapa-elo-duo/",
+      "destination": "/src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html"
+    },
+    {
+      "source": "/empreendimentos/aria-higienopolis/",
+      "destination": "/src-greenn/empreendimentos/aria-higienopolis/index.html"
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
       ]
     },
     {
       "source": "/(.*)",
       "has": [
-        { "type": "host", "value": ".*\\.vercel\\.app" }
+        {
+          "type": "host",
+          "value": ".*\\.vercel\\.app"
+        }
       ],
       "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/empreendimentos/capitolo-piero-lissoni/",
+      "destination": "/empreendimentos/capiitolo-piero-lissoni/",
+      "permanent": true
+    },
+    {
+      "source": "/empreendimentos/capitolo-tegra/",
+      "destination": "/empreendimentos/capiitolo-piero-lissoni/",
+      "permanent": true
     }
   ]
 }

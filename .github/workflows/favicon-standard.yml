@@ -3,6 +3,7 @@ name: Favicon standard validation
 on:
   pull_request:
     paths:
+      - 'favicon.ico'
       - 'src-greenn/**/*.html'
       - 'experiments/**/*.html'
       - 'scripts/validate-favicon-standard.mjs'
