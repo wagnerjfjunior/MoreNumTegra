@@ -21,7 +21,7 @@ This source is the basis for the favicon package below.
 All standalone MoreNumTegra HTML pages declare:
 
 ```html
-<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=tegra-t-20260923" sizes="any">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 ```
 
@@ -86,3 +86,16 @@ Workflow:
 The former remote WebP favicon was replaced because Google Search documentation does not list WebP among supported Search favicon formats.
 
 A later hand-built multi-frame ICO contained broken larger frames and could render as a blank square. That package is superseded by this source-derived package.
+
+
+## Browser cache busting
+
+Public asset URL remains:
+
+`https://www.moretegra.com.br/favicon.ico`
+
+HTML currently references the stable revisioned URL:
+
+`/favicon.ico?v=tegra-t-20260923`
+
+The query string exists only to force browsers that cached the former favicon to fetch the new Tegra “T” asset. The underlying canonical file remains `/favicon.ico`.
