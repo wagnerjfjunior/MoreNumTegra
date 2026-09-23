@@ -10,11 +10,11 @@
     "task_id": "MNT-CDP-01",
     "task_state": "ACTIVE / PROVIDER_SELECTION / OUTSIDE_RESF_ACCOUNTING",
     "pr": null,
-    "repository_head_sha": "847a2f4460894e1f0fdcc30501f6b6396ec67b75",
-    "latest_main_runtime_sha": "847a2f4460894e1f0fdcc30501f6b6396ec67b75",
+    "repository_head_sha": "c80a8e1d773d85af563d9630f6e460e7ad85ea02",
+    "latest_main_runtime_sha": "c80a8e1d773d85af563d9630f6e460e7ad85ea02",
     "deployment_state": "PRODUCTION_READY / PAID_MEDIA_FROZEN / SPEND_ZERO",
-    "last_verified_vercel_success_sha": "847a2f4460894e1f0fdcc30501f6b6396ec67b75",
-    "production_deployment_id": "dpl_AeLHW8cj3w7kDgUdueLL56ezCeS7",
+    "last_verified_vercel_success_sha": "c80a8e1d773d85af563d9630f6e460e7ad85ea02",
+    "production_deployment_id": "dpl_4F8SF29FyNj7EcpyqM9zT57oYAoi",
     "acceptance_run": null,
     "next_task_id": "MNT-CDP-01",
     "next_task_state": "ACTIVE / PROVIDER_SELECTION",
@@ -45,8 +45,8 @@
     "dashboard_reconciliation": "docs/sfjm/MNT_DASHBOARD_WBS_STATE_RECONCILIATION_2026-09-23.md",
     "wbs_current_state_source": "docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md",
     "wbs_historical_archive": "docs/roadmap/archive/MNT_RESF_PLANNING_BASELINE_2026-09-10.md",
-    "runtime_sha": "847a2f4460894e1f0fdcc30501f6b6396ec67b75",
-    "production_deployment": "dpl_AeLHW8cj3w7kDgUdueLL56ezCeS7 / READY"
+    "runtime_sha": "c80a8e1d773d85af563d9630f6e460e7ad85ea02",
+    "production_deployment": "dpl_4F8SF29FyNj7EcpyqM9zT57oYAoi / READY"
   },
   "current_state_overlay": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
   "cross_project_handoff": "docs/sfjm/MNT_FECHAI_COMMERCIAL_CATALOG_HANDOFF_2026-09-16.md",
@@ -134,7 +134,7 @@
   ],
   "public_surface_remediation": {
     "state": "COMPLETE / PRODUCTION_VALIDATED",
-    "favicon": "TEGRA_T_SOURCE_DERIVED / LIVE / GOOGLE_SERP_RECRAWL_PENDING",
+    "favicon": "TEGRA_T_BROWSER_AND_SEARCH_PACKAGE / LIVE / USER_BROWSER_RECHECK_REQUIRED / GOOGLE_SERP_RECRAWL_PENDING",
     "social_sharing": "LIVE_METADATA_VALIDATED",
     "capiitolo_search_variant": "IMPLEMENTED"
   }
