@@ -474,3 +474,28 @@ MNT-RES-05 = NOT_OBSERVED / field CWV / field INP
 ```
 
 No P0/P1 release blocker is currently open.
+
+
+## Public surface remediation state — 2026-09-23
+
+Site-side favicon defect is no longer blocked:
+
+```text
+/favicon.ico = HTTP 200
+format = ICO
+public pages = /favicon.ico
+Google SERP visual refresh = external recrawl pending
+```
+
+Do not treat the lack of immediate Google visual refresh as a code failure.
+
+CAPIITOLO search-variant remediation is live on the single canonical page. Do not create a duplicate `Capitolo` landing page.
+
+Still open:
+
+- CAPIITOLO client-side editorial composition — P2;
+- physical-device QA — not observed;
+- screen-reader validation — not observed;
+- field CWV / field INP — not observed.
+
+Paid-media and Commercial Data Plane blocks remain unchanged.
