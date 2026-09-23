@@ -10,6 +10,29 @@ if (!fs.existsSync("favicon.ico") || fs.statSync("favicon.ico").size < 100) {
   process.exit(1);
 }
 
+const ico = fs.readFileSync("favicon.ico");
+const reserved = ico.readUInt16LE(0);
+const type = ico.readUInt16LE(2);
+const count = ico.readUInt16LE(4);
+
+if (reserved !== 0 || type !== 1 || count < 1 || ico.length < 6 + count * 16) {
+  console.error("FAIL: favicon.ico is not a valid ICO directory");
+  process.exit(1);
+}
+
+let hasRecommendedSquare = false;
+for (let i = 0; i < count; i += 1) {
+  const offset = 6 + i * 16;
+  const width = ico[offset] === 0 ? 256 : ico[offset];
+  const height = ico[offset + 1] === 0 ? 256 : ico[offset + 1];
+  if (width === height && width >= 48) hasRecommendedSquare = true;
+}
+
+if (!hasRecommendedSquare) {
+  console.error("FAIL: favicon.ico must contain at least one square 48x48-or-larger image");
+  process.exit(1);
+}
+
 const roots = ["src-greenn", "experiments"];
 const htmlFiles = [];
 
