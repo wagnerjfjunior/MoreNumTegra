@@ -399,7 +399,8 @@ These items are **not part of the 1240h RESF denominator**. They remain visible 
 
 | ID | Work item | RESF hours | Current state | Dependency / boundary |
 |---|---|---:|---|---|
-| MNT-CDP-01 | Select Commercial Data Plane publication provider/owner | — | ACTIVE / NEXT_SAFE_ACTION | provider must satisfy public-read/admin-write/version/rollback/audit contract |
+| MNT-PERF-01 | **Favicon load / LCP regression validation** | — | **ACTIVE / NEXT_SAFE_ACTION / MEASUREMENT_ONLY** | user confirmed favicon works visually; perceived delay is USER_REPORTED; measure before remediation |
+| MNT-CDP-01 | Select Commercial Data Plane publication provider/owner | — | QUEUED / RESUME_AFTER_MNT_PERF_01 | provider must satisfy public-read/admin-write/version/rollback/audit contract |
 | MNT-CDP-02 | Define/prove public read + protected admin-write publication contract | — | PLANNED / BLOCKED_BY_CDP_01 | no browser secret; atomic/current pointer; CORS/cache/freshness |
 | MNT-CDP-03 | **Planilha/CSV para atualização de valores**: import, normalize, validate and create candidate snapshot | — | PLANNED / PENDING | spreadsheet is operator input, not direct site source; no invented values |
 | MNT-CDP-04 | Approval, publish, version history, rollback and audit workflow | — | PLANNED | requires provider contract |
@@ -413,7 +414,7 @@ These items are **not part of the 1240h RESF denominator**. They remain visible 
 | ID | Residual | Current state | Release impact |
 |---|---|---|---|
 | MNT-RES-01 | CAPIITOLO body composed client-side through editorial fetch/document replacement | OPEN / P2 | accepted residual; future bounded remediation |
-| MNT-RES-02 | Google Search favicon eligibility for current WebP favicon | OPEN / P2 | accepted residual; do not claim SERP favicon fixed |
+| MNT-RES-02 | Google Search favicon visual refresh | SITE_SIDE_FIXED / AWAITING_GOOGLE_RECRAWL / NOT_OBSERVED | favicon package is live; external SERP refresh must still be observed |
 | MNT-RES-03 | Physical-device mobile QA | NOT_OBSERVED / ACCEPTED_RESIDUAL | emulated touch multi-browser passed; physical device still not proven |
 | MNT-RES-04 | Screen-reader validation | NOT_OBSERVED / ACCEPTED_RESIDUAL | accessibility residual, not a hidden PASS |
 | MNT-RES-05 | Field CWV / field INP | NOT_OBSERVED / ACCEPTED_RESIDUAL | lab targets do not substitute for field data |
