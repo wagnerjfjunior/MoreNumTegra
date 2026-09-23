@@ -961,7 +961,7 @@ P1:
 P2:
 
 1. CAPIITOLO critical body is composed client-side from the editorial source through fetch/DOMParser/document replacement.
-2. Google Search favicon eligibility residual remains open for the canonical WebP favicon.
+2. Historical M7-02 finding: Google Search favicon eligibility was unresolved for the former WebP favicon. Superseded by PR #241 on 2026-09-23.
 
 Canonical M7-02 evidence:
 
@@ -1207,7 +1207,7 @@ Still open/observable:
 
 ```text
 MNT-RES-01 = OPEN / P2 / CAPIITOLO client-side editorial composition
-MNT-RES-02 = OPEN / P2 / Search favicon eligibility
+MNT-RES-02 = SITE_SIDE_FIXED / AWAITING_GOOGLE_RECRAWL / NOT_OBSERVED
 MNT-RES-03 = NOT_OBSERVED / physical-device mobile QA
 MNT-RES-04 = NOT_OBSERVED / screen-reader validation
 MNT-RES-05 = NOT_OBSERVED / field CWV / field INP
@@ -1235,7 +1235,7 @@ Elo Duo = HTTP 200
 Not all residuals are eliminated:
 
 ```text
-/favicon.ico = HTTP 404 / residual still open
+/favicon.ico = HISTORICAL_HTTP_404 / SUPERSEDED_BY_PR_241
 CAPIITOLO client-side editorial composition = P2 / still open
 physical-device QA = NOT_OBSERVED
 screen-reader validation = NOT_OBSERVED
