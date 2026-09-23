@@ -7,8 +7,8 @@ Fonte canônica: GitHub `main`. Resolver estado live antes de qualquer mutação
 ## 1. Estado integrado
 
 ```text
-CANONICAL_MAIN_RUNTIME = 124b620855175a583c528733462d6d0f4f44cd41
-PRODUCTION_DEPLOYMENT = dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C
+CANONICAL_MAIN_RUNTIME = 847a2f4460894e1f0fdcc30501f6b6396ec67b75
+PRODUCTION_DEPLOYMENT = dpl_AeLHW8cj3w7kDgUdueLL56ezCeS7
 PRODUCTION_STATE = READY
 
 MNT-RESF = CLOSED / COMPLETE_WITH_DEFERRED_PAID_MEDIA_SCOPE
@@ -93,7 +93,7 @@ No alias/duplicate route was introduced and the canonical remains:
 
 ```text
 CANONICAL_HOST = https://www.moretegra.com.br/
-PRODUCTION_SOURCE_SHA = 124b620855175a583c528733462d6d0f4f44cd41
+PRODUCTION_SOURCE_SHA = 847a2f4460894e1f0fdcc30501f6b6396ec67b75
 PRODUCTION_DEPLOYMENT = dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C
 PRODUCTION_STATE = READY
 ```
@@ -1288,3 +1288,21 @@ physical-device QA = NOT_OBSERVED
 screen-reader validation = NOT_OBSERVED
 field CWV / field INP = NOT_OBSERVED
 ```
+
+
+## Final Tegra T favicon package — 2026-09-23
+
+```text
+PR = #244
+runtime = 847a2f4460894e1f0fdcc30501f6b6396ec67b75
+deployment = dpl_AeLHW8cj3w7kDgUdueLL56ezCeS7 / READY
+source = Product Authority transparent PNG 500x500
+/favicon.ico = HTTP 200 / image/x-icon
+ICO frames = 48x48 / 96x96 / 192x192
+apple-touch-icon = 180x180
+cache = must-revalidate
+```
+
+The previous wordmark/blank-square favicon packages are superseded.
+
+Site-side favicon state is complete. Google Search visual refresh remains external and must not be claimed until observed.

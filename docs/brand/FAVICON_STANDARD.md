@@ -1,6 +1,6 @@
 # MoreNumTegra — Favicon Standard
 
-Status: `CANDIDATE / GENERATED_FROM_PRODUCT_AUTHORITY_SOURCE`  
+Status: `CANONICAL / PRODUCTION_VALIDATED`  
 Date: `2026-09-23`
 
 ## Source asset
@@ -95,3 +95,18 @@ Public asset URL remains:
 `https://www.moretegra.com.br/favicon.ico`
 
 HTML references the stable canonical URL `/favicon.ico`. Vercel sends `Cache-Control: public, max-age=0, must-revalidate` for this asset so browsers revalidate the file instead of retaining the former favicon indefinitely.
+
+
+## Production validation
+
+```text
+PR = #244
+runtime SHA = 847a2f4460894e1f0fdcc30501f6b6396ec67b75
+deployment = dpl_AeLHW8cj3w7kDgUdueLL56ezCeS7
+state = READY
+/favicon.ico = HTTP 200 / image/x-icon
+favicon-48x48.png = HTTP 200
+apple-touch-icon.png = HTTP 200
+```
+
+The visible source-derived mark is the Tegra yellow `T`.
