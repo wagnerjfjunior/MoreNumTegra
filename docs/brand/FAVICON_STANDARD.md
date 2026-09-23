@@ -1,6 +1,6 @@
 # MoreNumTegra — Favicon Standard
 
-Status: `CANONICAL_CANDIDATE` until merged to `main`  
+Status: `CANONICAL` after production validation  
 Date: `2026-09-23`
 
 ## Canonical favicon
@@ -17,7 +17,7 @@ Canonical file:
 /favicon.ico
 ```
 
-The file is a square multi-size ICO derivative of the approved Tegra favicon identity and is served from the canonical MoreNumTegra origin.
+The file is a square ICO using one validated 48×48 embedded PNG frame of the approved Tegra favicon identity and is served from the canonical MoreNumTegra origin.
 
 ## Why the WebP favicon was superseded
 
@@ -47,6 +47,9 @@ HTML fragments without a `<head>` inherit the containing document favicon.
 `scripts/validate-favicon-standard.mjs` verifies:
 
 - root `favicon.ico` exists;
+- ICO directory and embedded frame boundaries are valid;
+- every embedded frame is a valid PNG frame;
+- at least one square frame is 48×48 or larger;
 - each standalone HTML page has exactly one favicon declaration;
 - each standalone page points to `/favicon.ico`;
 - former WebP favicon is not still used;
@@ -63,10 +66,17 @@ This change fixes the site-side technical eligibility problem:
 ```text
 /favicon.ico = PRESENT
 supported Search favicon format = ICO
-square multi-size asset = YES
+square validated 48x48 asset = YES
 canonical page favicon declaration = /favicon.ico
 ```
 
 Google Search controls recrawl and SERP refresh timing. Merge/deploy therefore does not guarantee immediate visual replacement in search results.
 
 Do not claim the SERP favicon has updated until it is observed live.
+
+
+## Corrupt multi-frame regression — 2026-09-23
+
+A prior 6-frame ICO passed the directory-level validator but contained broken larger embedded frames. Chrome could select a broken frame and render a blank square.
+
+The replacement deliberately uses one validated 48×48 frame. The CI validator now checks every embedded frame boundary and PNG signature so the same defect cannot silently pass again.

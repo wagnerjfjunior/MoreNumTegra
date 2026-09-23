@@ -21,16 +21,34 @@ if (reserved !== 0 || type !== 1 || count < 1 || ico.length < 6 + count * 16) {
 }
 
 let hasRecommendedSquare = false;
+const pngSignature = [137, 80, 78, 71, 13, 10, 26, 10];
+
 for (let i = 0; i < count; i += 1) {
   const offset = 6 + i * 16;
   const width = ico[offset] === 0 ? 256 : ico[offset];
   const height = ico[offset + 1] === 0 ? 256 : ico[offset + 1];
+  const size = ico.readUInt32LE(offset + 8);
+  const imageOffset = ico.readUInt32LE(offset + 12);
+
   if (width === height && width >= 48) hasRecommendedSquare = true;
+
+  if (imageOffset + size > ico.length) {
+    console.error(`FAIL: favicon.ico frame ${i} points outside the file`);
+    failed = true;
+    continue;
+  }
+
+  const frame = ico.subarray(imageOffset, imageOffset + size);
+  const isPng = pngSignature.every((value, index) => frame[index] === value);
+  if (!isPng) {
+    console.error(`FAIL: favicon.ico frame ${i} is not a valid embedded PNG frame`);
+    failed = true;
+  }
 }
 
 if (!hasRecommendedSquare) {
   console.error("FAIL: favicon.ico must contain at least one square 48x48-or-larger image");
-  process.exit(1);
+  failed = true;
 }
 
 const roots = ["src-greenn", "experiments"];
