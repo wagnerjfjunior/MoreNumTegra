@@ -1,11 +1,10 @@
 # Próxima Ação Segura — MoreNumTegra
 
-Atualizado em `2026-09-22`.
+Atualizado em `2026-09-23`.
 
 ```text
-MNT-M7-01 = COMPLETE
-MNT-M7-02 = COMPLETE / ACCEPTED_WITH_P2_RESIDUALS
-MNT-M7-03 = PLANNED / AUTHORIZATION_REQUIRED
+MNT-M7-01 through MNT-M7-12 = COMPLETE / ACCEPTED
+MNT-M7-13 = ACTIVE / AUTHORIZED_BY_SEQUENCE / PROVIDER_INTAKE_NEXT
 MNT-M7 = ACTIVE
 
 P0 = 0
@@ -13,79 +12,85 @@ P1 = 0
 P2 = 2
 P3 = 0
 
-PROGRAM_PROGRESS = 1040 / 1240h = 83.87%
-REMAINING_FORECAST = 200h
+PROGRAM_PROGRESS = 1184 / 1240h = 95.48%
+REMAINING_FORECAST = 56h
 
+MNT-M6-07 = DEFERRED / PAID_MEDIA_FROZEN
+MNT-M6-08 = DEFERRED / DEPENDS_ON_M6-07
 PAID_MEDIA = FROZEN
-LOOKER_STUDIO = DEFERRED
+ADS_SPEND = R$ 0
+
 LATEST_RUNTIME_SHA = 124b620855175a583c528733462d6d0f4f44cd41
 PRODUCTION_DEPLOYMENT = dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C
 PRODUCTION_STATE = READY
 ```
 
-## Product Authority commercial decision
+## M6-08 dependency
 
-Current Home commercial state is explicitly recertified as the interim MoreNumTegra Home commercial truth.
+M6-08 does not inherently require paid spend, but it requires the external paid implementation owned by M6-07 to exist before paid conversion QA can be real.
 
-Authority:
-
-`docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md`
-
-This includes current prices, units, consult states, promotions and comparative values already published. No Home commercial value should be changed as part of architecture migration unless Product Authority separately changes it.
-
-## Commercial Data Plane priority
-
-Product Authority directed work on the update medium.
-
-Current architecture:
-
-- `docs/architecture/MNT_COMMERCIAL_UPDATE_MEDIUM_REENTRY_2026-09-22.md`
-- `docs/architecture/MNT_COMMERCIAL_DATA_PLANE_V3.md`
-- `docs/architecture/MNT_COMMERCIAL_DATA_SCHEMA_V3.schema.json`
-
-Candidate snapshot:
-
-`docs/architecture/data/MNT_HOME_COMMERCIAL_SNAPSHOT_V3_CANDIDATE_2026-09-22.json`
-
-Binding map:
-
-`docs/architecture/data/MNT_HOME_CARD_COMMERCIAL_BINDINGS_V1_2026-09-22.json`
-
-Validated:
+Because M6-07 remains intentionally frozen/unimplemented:
 
 ```text
-projects = 21
-offers = 25
-Home cards = 23
-primary price parity = 23/23
-old/comparative price parity = PASS
-runtime mutation = 0
-provider = NOT_SELECTED
+M6-07 = DEFERRED
+M6-08 = DEFERRED
+no Ads implementation/spend is required for the current non-paid closure path
 ```
+
+## M7 release state
+
+M7-03 through M7-12 have been accepted with canonical evidence.
+
+Highlights:
+
+- mobile/touch exact-tree QA = 27 PASS / 0 FAIL across Chromium, Firefox and WebKit;
+- tracking/lead chain preserved and live GA4 `generate_lead` observed;
+- regression suite = PASS;
+- P0/P1 release gate = PASS;
+- existing Vercel Production homologated;
+- historical Green web publication task = accepted by ADR-006 supersession;
+- Production smoke = PASS;
+- timestamped post-release traffic observed;
+- GSC/GA4 current available window captured;
+- Google Ads observation = zero rows while frozen;
+- result/provenance registry completed.
+
+Canonical aggregate evidence:
+
+`docs/observability/MNT_M7_12_RESULT_PROVENANCE_REGISTRY_2026-09-23.md`
 
 ## Única próxima ação segura
 
-Select the Commercial Data Plane publication provider/owner and prove:
+Execute **MNT-M7-13 — RESF provider evidence intake / learning loop**.
 
-1. public HTTPS read;
-2. protected admin write;
-3. atomic/versioned publication;
-4. rollback;
-5. CORS/cache/freshness;
-6. no browser secret;
-7. audit trail;
-8. commercial update without MoreNumTegra runtime deployment.
+Sequence:
 
-FECH.AI remains a future candidate only. Live discovery did not prove a MoreNumTegra public publication context and Security Go is not granted. Direct browser access to FECH.AI internal tables is forbidden.
+1. merge the current MoreNumTegra consumer-evidence branch;
+2. resolve the resulting MoreNumTegra `main` SHA live;
+3. resolve the RESF provider `wagnerjfjunior/Blogs-sites-portais-seo` live state and governance;
+4. submit a provenance-preserving MoreNumTegra evidence intake against that immutable consumer SHA;
+5. do not promote provider lifecycle/patterns merely because intake exists;
+6. return to MoreNumTegra and close M7-13 only after provider-side evidence is canonical.
 
-M7-03 remains a separate authorization gate and is not implicitly started by this architecture work.
+## Parallel Commercial Data Plane
+
+Commercial Data Plane v3 remains a separate operational/architecture workstream outside RESF accepted-hour accounting.
+
+It does not block M7-13 or RESF closure.
+
+Current Home commercial truth remains governed by:
+
+`docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md`
+
+No runtime migration to the Commercial Data Plane is authorized yet.
 
 ## Still frozen
 
 ```text
 Google Ads implementation/spend = FROZEN
+M6-07 = DEFERRED
+M6-08 = DEFERRED
 remarketing spend = R$ 0
 Meta paid media/CAPI = NOT_AUTHORIZED
 Looker Studio = DEFERRED
-runtime consumer migration to Commercial Data Plane = NOT_YET_AUTHORIZED
 ```
