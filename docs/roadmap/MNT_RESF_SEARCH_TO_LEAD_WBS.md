@@ -255,23 +255,23 @@ Canonical closure evidence:
 - `docs/attribution/MNT_GA4_AUDIENCE_MANUAL_RUNBOOK_V1_2026-09-22.md`
 - `handoffs/HANDOFF-2026-09-22-M6-06-COMPLETE-PAID-MEDIA-FROZEN.md`
 
-### MNT-M7 — QA, Release, Observability & Learning Loop — 192h — ACTIVE / M7_02_COMPLETE / M7_03_AUTHORIZATION_REQUIRED
+### MNT-M7 — QA, Release, Observability & Learning Loop — 192h — ACTIVE / M7_12_COMPLETE / M7_13_NEXT
 
 | ID | Activity | Hours | State |
 |---|---|---:|---|
 | MNT-M7-01 | Preview validation | 16 | COMPLETE / NO_ACTIVE_PREVIEW_CANDIDATE / EXISTING_RELEASE_EVIDENCE_REUSED |
 | MNT-M7-02 | Technical/content QA | 16 | COMPLETE / ACCEPTED_WITH_P2_RESIDUALS |
-| MNT-M7-03 | Independent mobile QA | 16 | PLANNED / AUTHORIZATION_REQUIRED |
-| MNT-M7-04 | Tracking + lead end-to-end QA | 16 | PLANNED |
-| MNT-M7-05 | Regression suite | 16 | PLANNED |
-| MNT-M7-06 | P0/P1 release adjudication | 8 | PLANNED |
-| MNT-M7-07 | Vercel Production homologation | 8 | PLANNED_NOT_AUTHORIZED |
-| MNT-M7-08 | Controlled Green publication | 8 | PLANNED_NOT_AUTHORIZED |
-| MNT-M7-09 | Production smoke | 8 | PLANNED |
-| MNT-M7-10 | Post-release measurement | 24 | PLANNED |
-| MNT-M7-11 | GSC/GA4/Ads observation window | 24 | PLANNED |
-| MNT-M7-12 | Result registration with provenance | 16 | PLANNED |
-| MNT-M7-13 | RESF provider evidence intake / learning loop | 16 | PLANNED_NOT_AUTHORIZED |
+| MNT-M7-03 | Independent mobile QA | 16 | COMPLETE / ACCEPTED |
+| MNT-M7-04 | Tracking + lead end-to-end QA | 16 | COMPLETE / ACCEPTED |
+| MNT-M7-05 | Regression suite | 16 | COMPLETE / ACCEPTED |
+| MNT-M7-06 | P0/P1 release adjudication | 8 | COMPLETE / ACCEPTED / P0_P1_GATE_PASS |
+| MNT-M7-07 | Vercel Production homologation | 8 | COMPLETE / ACCEPTED / EXISTING_PRODUCTION_HOMOLOGATED |
+| MNT-M7-08 | Controlled Green publication | 8 | COMPLETE / ACCEPTED_BY_SUPERSESSION |
+| MNT-M7-09 | Production smoke | 8 | COMPLETE / ACCEPTED |
+| MNT-M7-10 | Post-release measurement | 24 | COMPLETE / ACCEPTED |
+| MNT-M7-11 | GSC/GA4/Ads observation window | 24 | COMPLETE / ACCEPTED / PAID_MEDIA_FROZEN |
+| MNT-M7-12 | Result registration with provenance | 16 | COMPLETE / ACCEPTED |
+| MNT-M7-13 | RESF provider evidence intake / learning loop | 16 | ACTIVE / AUTHORIZED_BY_SEQUENCE / PROVIDER_INTAKE_NEXT |
 
 ## 4. Current journey position
 
@@ -293,14 +293,24 @@ MNT-M5 COMPLETE
 
 M5 is complete at 168h. M6-01 through M6-06 are complete; M6-07/M6-08 remain deferred while paid media is frozen. Manual GA4 audience setup is complete.
 
-M7-01 is complete at 16h without creating an artificial Preview: no active runtime candidate existed, the effective runtime `124b620855175a583c528733462d6d0f4f44cd41` was already Production READY, and later main deltas were docs-only.
+M7-01 through M7-12 are complete/accepted under their recorded evidence. M7-08 was accepted by supersession because ADR-006 makes Vercel the canonical commercial web runtime and Green/GDigital the Form46/CRM provider; no artificial Green web publication was performed.
 
-M7-02 technical/content QA has been executed but is not accepted because two P1 Product Truth blockers remain open:
+M7 release severity is:
 
-- Home volatile commercial objects lack release-time revalidation and drift from newer governed exact-project commercial snapshots;
-- ODE still exposes the unrecertified comparative `De R$ 2.200.000 por R$ 2.090.000`, which the canonical Product Fact & Claim Registry prohibits until recertified.
+```text
+P0 = 0
+P1 = 0
+P2 = 2
+P3 = 0
+```
 
-Current accepted program progress is `1024 / 1240h = 82.58%`. M7-02 remains at `0h` accepted until the P1 findings are closed.
+The retained P2 residuals are CAPIITOLO client-side editorial composition and Search favicon eligibility.
+
+M7 accepted scope-equivalent is `176 / 192h`. M7-13 provider evidence intake is the final M7 task and is authorized by Product Authority sequence.
+
+M6-07/M6-08 remain deferred while paid media is frozen; no Ads implementation, spend or paid conversion QA is manufactured.
+
+Current accepted program progress is `1184 / 1240h = 95.48%`; remaining forecast is `56h` = M7-13 16h + frozen M6-07/M6-08 40h.
 
 Consumers must use `CURRENT_PROGRAM_STATE.json` for current lifecycle/progress and this WBS for structure/planning hours.
 
@@ -345,4 +355,4 @@ Canonical artifacts:
 
 Validation: 21 canonical projects / 25 offers / 23 Home cards / 23-of-23 runtime primary-price parity / no runtime mutation.
 
-Current RESF accepted progress: `1040 / 1240h = 83.87%`.
+Current RESF accepted progress: `1184 / 1240h = 95.48%`.
