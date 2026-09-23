@@ -44,7 +44,9 @@
     "m7_13_provider_merge": "c8cf9c8f49982c30d641b6c590ddf53018802e52",
     "dashboard_reconciliation": "docs/sfjm/MNT_DASHBOARD_WBS_STATE_RECONCILIATION_2026-09-23.md",
     "wbs_current_state_source": "docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md",
-    "wbs_historical_archive": "docs/roadmap/archive/MNT_RESF_PLANNING_BASELINE_2026-09-10.md"
+    "wbs_historical_archive": "docs/roadmap/archive/MNT_RESF_PLANNING_BASELINE_2026-09-10.md",
+    "runtime_sha": "1543bb2a16d2ecace4d697fa6f381f9353df7582",
+    "production_deployment": "dpl_GAKSbqFmB3xExV2wYhPMN1iErJfp / READY"
   },
   "current_state_overlay": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
   "cross_project_handoff": "docs/sfjm/MNT_FECHAI_COMMERCIAL_CATALOG_HANDOFF_2026-09-16.md",
@@ -111,8 +113,8 @@
     },
     {
       "id": "MNT-RES-02",
-      "state": "OPEN / P2",
-      "label": "Search favicon eligibility"
+      "state": "SITE_SIDE_FIXED / AWAITING_GOOGLE_RECRAWL / NOT_OBSERVED",
+      "label": "Google Search favicon visual refresh"
     },
     {
       "id": "MNT-RES-03",
@@ -129,5 +131,11 @@
       "state": "NOT_OBSERVED / ACCEPTED_RESIDUAL",
       "label": "Field CWV / field INP"
     }
-  ]
+  ],
+  "public_surface_remediation": {
+    "state": "COMPLETE / PRODUCTION_VALIDATED",
+    "favicon": "SITE_SIDE_FIXED / EXTERNAL_SERP_REFRESH_PENDING",
+    "social_sharing": "LIVE_METADATA_VALIDATED",
+    "capiitolo_search_variant": "IMPLEMENTED"
+  }
 }
