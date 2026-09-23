@@ -1143,3 +1143,74 @@ The 40h deferred scope is exactly:
 No paid-media mutation or spend was used to close RESF.
 
 The active priority after RESF closure is Commercial Data Plane v3 provider/publication-owner selection, outside RESF accepted-hour accounting.
+
+
+## Dashboard/WBS reconciliation — 2026-09-23
+
+Canonical reconciliation:
+
+`docs/sfjm/MNT_DASHBOARD_WBS_STATE_RECONCILIATION_2026-09-23.md`
+
+The stale historical planning table was removed from the active WBS current-state surface and archived at:
+
+`docs/roadmap/archive/MNT_RESF_PLANNING_BASELINE_2026-09-10.md`
+
+Current phase truth exposed to dashboard consumers:
+
+```text
+M0 = COMPLETE / 160h accepted
+M1 = COMPLETE / ACCEPTED / 96h
+M2 = COMPLETE / ACCEPTED / 144h
+M3 = COMPLETE / ACCEPTED / 144h
+M4 = COMPLETE / ACCEPTED / 208h
+M5 = COMPLETE / ACCEPTED / 168h
+M6 = 88h accepted / 40h DEFERRED / PAID_MEDIA_FROZEN
+M7 = COMPLETE / ACCEPTED / 192h
+
+TOTAL = 1200 / 1240h accepted
+DEFERRED = 40h
+```
+
+The structured task graph was also reconciled: stale M1 ACTIVE and M3/M4 PLANNED states were corrected to their later accepted lifecycle.
+
+### Frozen work must remain visible
+
+```text
+MNT-M6-07 = DEFERRED / PAID_MEDIA_FROZEN / NOT_ACCEPTED / 24h
+MNT-M6-08 = DEFERRED / DEPENDS_ON_M6_07 / NOT_ACCEPTED / 16h
+```
+
+### Post-RESF operational backlog
+
+Current priority workstream is outside RESF accounting:
+
+`COMMERCIAL_DATA_PLANE_REENTRY`
+
+Published children:
+
+```text
+MNT-CDP-01 = ACTIVE / provider selection
+MNT-CDP-02 = PLANNED / public-read + protected-admin-write contract
+MNT-CDP-03 = PLANNED / PENDING / planilha-CSV para atualização de valores
+MNT-CDP-04 = PLANNED / approval-publish-version-rollback-audit
+MNT-CDP-05 = PLANNED / NOT_AUTHORIZED / runtime consumer migration
+MNT-CDP-06 = PLANNED / first value-only update E2E + rollback proof
+```
+
+The spreadsheet/CSV is an operator input channel. It must be normalized/validated into a governed candidate snapshot; the browser must not consume the spreadsheet directly.
+
+### General residual status
+
+No current P0/P1 release blocker remains.
+
+Still open/observable:
+
+```text
+MNT-RES-01 = OPEN / P2 / CAPIITOLO client-side editorial composition
+MNT-RES-02 = OPEN / P2 / Search favicon eligibility
+MNT-RES-03 = NOT_OBSERVED / physical-device mobile QA
+MNT-RES-04 = NOT_OBSERVED / screen-reader validation
+MNT-RES-05 = NOT_OBSERVED / field CWV / field INP
+```
+
+These residuals are not hidden PASS conditions and remain dashboard-visible.
