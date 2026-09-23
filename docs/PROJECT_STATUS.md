@@ -1,6 +1,6 @@
 # Status do Projeto — MoreNumTegra
 
-Atualizado em `2026-09-22`.
+Atualizado em `2026-09-23`.
 
 Fonte canônica: GitHub `main`. Resolver estado live antes de qualquer mutação.
 
@@ -13,9 +13,20 @@ PRODUCTION_STATE = READY
 
 MNT-M5 = COMPLETE / ACCEPTED
 MNT-M6 = ACTIVE / PAID_MEDIA_FROZEN / M6-07_DEFERRED
-MNT-M7 = ACTIVE / M7_02_COMPLETE / M7_03_AUTHORIZATION_REQUIRED
+MNT-M7 = ACTIVE / M7_12_COMPLETE / M7_13_NEXT
 MNT-M7-01 = COMPLETE / NO_ACTIVE_PREVIEW_CANDIDATE / EXISTING_RELEASE_EVIDENCE_REUSED
 MNT-M7-02 = COMPLETE / ACCEPTED_WITH_P2_RESIDUALS
+MNT-M7-03 = COMPLETE / ACCEPTED
+MNT-M7-04 = COMPLETE / ACCEPTED
+MNT-M7-05 = COMPLETE / ACCEPTED
+MNT-M7-06 = COMPLETE / ACCEPTED / P0_P1_GATE_PASS
+MNT-M7-07 = COMPLETE / ACCEPTED
+MNT-M7-08 = COMPLETE / ACCEPTED_BY_SUPERSESSION
+MNT-M7-09 = COMPLETE / ACCEPTED
+MNT-M7-10 = COMPLETE / ACCEPTED
+MNT-M7-11 = COMPLETE / ACCEPTED / PAID_MEDIA_FROZEN
+MNT-M7-12 = COMPLETE / ACCEPTED
+MNT-M7-13 = ACTIVE / AUTHORIZED_BY_SEQUENCE / PROVIDER_INTAKE_NEXT
 MNT-M6-01 = COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION
 MNT-M6-06 = COMPLETE / BUDGET_SPEND_POLICY_AUTHORIZED / PAID_MEDIA_FROZEN
 MNT-M5-01 = COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS
@@ -30,9 +41,9 @@ MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
 MNT-M5-10 = COMPLETE / ACCEPTED / CANDIDATE1_RETAINED / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE
 
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 1040
-REMAINING_FORECAST_HOURS = 200
-ACCEPTED_PERCENT = 83.87
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 1184
+REMAINING_FORECAST_HOURS = 56
+ACCEPTED_PERCENT = 95.48
 ```
 
 ## 2. M5-06 CTA/Form journey
@@ -1012,3 +1023,63 @@ runtime mutation = 0
 ```
 
 Live FECH.AI read-only discovery at `main@0e9573552cf96d4bad780f35d0517aefd6463d2c` found useful internal MesaCliente inventory structures but no proven public MoreNumTegra publication context. FECH.AI remains a candidate upstream only; direct browser access to internal FECH.AI tables is forbidden.
+
+
+## M7-03 through M7-12 closure
+
+Product Authority authorized continuation of the non-paid M7 sequence while M6-07/M6-08 remain frozen.
+
+Canonical evidence:
+
+- `docs/qa/MNT_M7_03_INDEPENDENT_MOBILE_QA_2026-09-23.md`
+- `docs/qa/MNT_M7_04_TRACKING_LEAD_E2E_QA_2026-09-23.md`
+- `docs/qa/MNT_M7_05_REGRESSION_SUITE_2026-09-23.md`
+- `docs/qa/MNT_M7_06_P0_P1_RELEASE_ADJUDICATION_2026-09-23.md`
+- `docs/qa/MNT_M7_07_VERCEL_PRODUCTION_HOMOLOGATION_2026-09-23.md`
+- `docs/qa/MNT_M7_08_GREEN_PUBLICATION_READJUDICATION_2026-09-23.md`
+- `docs/qa/MNT_M7_09_PRODUCTION_SMOKE_2026-09-23.md`
+- `docs/observability/MNT_M7_10_POST_RELEASE_MEASUREMENT_2026-09-23.md`
+- `docs/observability/MNT_M7_11_GSC_GA4_ADS_OBSERVATION_WINDOW_2026-09-23.md`
+- `docs/observability/MNT_M7_12_RESULT_PROVENANCE_REGISTRY_2026-09-23.md`
+
+Key receipts:
+
+```text
+Production runtime = 124b620855175a583c528733462d6d0f4f44cd41
+Production tree = b40b9afb5b834b0fc0abdd32d3486f82198d0e9e
+Production deployment = dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C / READY
+
+mobile touch QA = 27 PASS / 0 FAIL
+browsers = Chromium + Firefox + WebKit
+physical device = NOT_OBSERVED / explicit residual
+
+P0 = 0
+P1 = 0
+P2 = 2
+P3 = 0
+
+Vercel runtime errors / last 24h = none observed
+post-release Home traffic = observed after deployment READY
+GSC current available window = captured
+Google Ads target account last-7-day rows = 0 / paid media frozen
+```
+
+M7-08 was accepted by supersession, not by a synthetic Green web publication. ADR-006 makes Vercel Production the commercial web runtime and preserves Green/GDigital as Form46/CRM provider.
+
+Current program progress:
+
+```text
+accepted = 1184 / 1240h
+remaining = 56h
+progress = 95.48%
+```
+
+Remaining forecast:
+
+```text
+M7-13 = 16h / provider evidence intake / next
+M6-07 = 24h / deferred / paid media frozen
+M6-08 = 16h / deferred / depends on M6-07
+```
+
+No Ads mutation, spend, synthetic paid conversion or new runtime deployment was used to obtain these closures.

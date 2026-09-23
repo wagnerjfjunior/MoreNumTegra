@@ -388,3 +388,26 @@ Allowed now:
 - projectId/offerId crosswalk and parity validation.
 
 Current Home commercial truth must remain preserved until separately changed by Product Authority.
+
+
+## M7-13 provider intake gate — 2026-09-23
+
+Product Authority authorized continuing the non-paid RESF sequence.
+
+Allowed:
+
+- merge the MoreNumTegra M7-03..M7-12 evidence packet;
+- resolve the resulting consumer `main` SHA;
+- resolve the RESF provider live governance/main;
+- create a provenance-preserving provider evidence intake for M7-13;
+- return the canonical provider intake reference to MoreNumTegra.
+
+Blocked:
+
+- treating evidence intake as automatic RESF lifecycle promotion;
+- mutating provider patterns/contracts beyond the provider's own governance;
+- claiming M6-07/M6-08 complete;
+- creating/activating Google Ads or spend to force 100% completion;
+- manufacturing paid-conversion evidence.
+
+M6-08 may remain deferred without spend because its prerequisite M6-07 external implementation is intentionally frozen.

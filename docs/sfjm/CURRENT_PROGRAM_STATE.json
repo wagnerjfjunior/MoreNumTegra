@@ -3,18 +3,18 @@
   "project_id": "morenumtegra",
   "program_id": "MNT-RESF",
   "state_observed_at": "2026-09-22",
-  "program_state": "ACTIVE / M7_ACTIVE / PAID_MEDIA_FROZEN",
+  "program_state": "ACTIVE / M7_13_PROVIDER_INTAKE_NEXT / PAID_MEDIA_FROZEN",
   "current_execution": {
     "active_phase_id": "MNT-M7",
-    "active_task_id": "MNT-M7-03",
-    "state": "WAITING_M7_03_AUTHORIZATION / COMMERCIAL_DATA_PLANE_REENTRY_ACTIVE / PAID_MEDIA_FROZEN",
+    "active_task_id": "MNT-M7-13",
+    "state": "M7_12_COMPLETE / M7_13_AUTHORIZED_BY_SEQUENCE / PAID_MEDIA_FROZEN",
     "repository_head_sha": "124b620855175a583c528733462d6d0f4f44cd41",
     "latest_main_runtime_sha": "124b620855175a583c528733462d6d0f4f44cd41",
     "deployment_state": "PRODUCTION_READY / PAID_MEDIA_FROZEN / SPEND_ZERO",
     "last_verified_vercel_success_sha": "124b620855175a583c528733462d6d0f4f44cd41",
     "production_exact_sha": "124b620855175a583c528733462d6d0f4f44cd41 / dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C / READY",
-    "authority_record": "docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md",
-    "transition_record": "docs/qa/MNT_M7_02_PRODUCT_TRUTH_READJUDICATION_2026-09-22.md",
+    "authority_record": "docs/observability/MNT_M7_12_RESULT_PROVENANCE_REGISTRY_2026-09-23.md",
+    "transition_record": "docs/observability/MNT_M7_12_RESULT_PROVENANCE_REGISTRY_2026-09-23.md",
     "acceptance_summary": {
       "slice_01": "COMPLETE / BOUNDED_EXPERIMENT",
       "runtime_prs": [
@@ -224,14 +224,45 @@
       "commercial_data_plane_v3": "CANONICAL_CANDIDATE / PROVIDER_NEUTRAL / NO_RUNTIME_MUTATION",
       "commercial_snapshot_candidate": "21 PROJECTS / 25 OFFERS / 23 HOME CARDS / PRICE PARITY PASS",
       "commercial_provider": "NOT_SELECTED",
-      "fechai_publication_context": "NOT_PROVEN / DIRECT_INTERNAL_TABLE_ACCESS_FORBIDDEN"
+      "fechai_publication_context": "NOT_PROVEN / DIRECT_INTERNAL_TABLE_ACCESS_FORBIDDEN",
+      "m7_03": "COMPLETE / ACCEPTED / EXACT_RUNTIME_TREE / EMULATED_TOUCH_MULTI_BROWSER",
+      "m7_03_accepted_hours": 16,
+      "m7_03_mobile_pass": 27,
+      "m7_03_mobile_fail": 0,
+      "m7_03_physical_device": "NOT_OBSERVED / RESIDUAL",
+      "m7_04": "COMPLETE / ACCEPTED / COMPOSITE_CURRENT_EVIDENCE",
+      "m7_04_accepted_hours": 16,
+      "m7_04_live_ga4_generate_lead": "OBSERVED",
+      "m7_05": "COMPLETE / ACCEPTED / EXACT_TREE_AND_PRODUCTION_SMOKE",
+      "m7_05_accepted_hours": 16,
+      "m7_06": "COMPLETE / ACCEPTED / P0_P1_GATE_PASS",
+      "m7_06_accepted_hours": 8,
+      "m7_07": "COMPLETE / ACCEPTED / EXISTING_PRODUCTION_HOMOLOGATED",
+      "m7_07_accepted_hours": 8,
+      "m7_08": "COMPLETE / ACCEPTED_BY_SUPERSESSION / NO_GREEN_WEB_PUBLICATION_REQUIRED",
+      "m7_08_accepted_hours": 8,
+      "m7_09": "COMPLETE / ACCEPTED / PRODUCTION_SMOKE_PASS",
+      "m7_09_accepted_hours": 8,
+      "m7_10": "COMPLETE / ACCEPTED / TIMESTAMPED_OBSERVATION / NO_CAUSAL_CLAIM",
+      "m7_10_accepted_hours": 24,
+      "m7_11": "COMPLETE / ACCEPTED / CURRENT_AVAILABLE_WINDOW / PAID_MEDIA_FROZEN",
+      "m7_11_accepted_hours": 24,
+      "m7_12": "COMPLETE / ACCEPTED / PROVENANCE_REGISTERED",
+      "m7_12_accepted_hours": 16,
+      "m7_13": "AUTHORIZED_BY_SEQUENCE / PROVIDER_INTAKE_NEXT",
+      "release_p0": 0,
+      "release_p1": 0,
+      "release_p2": 2,
+      "release_p3": 0,
+      "m6_07": "DEFERRED / PAID_MEDIA_FROZEN",
+      "m6_08": "DEFERRED / DEPENDS_ON_M6_07"
     }
   },
   "progress": {
     "forecast_total_hours": 1240,
-    "accepted_scope_equivalent_hours": 1040,
-    "remaining_forecast_hours": 200,
-    "accepted_percent": 83.87
+    "accepted_scope_equivalent_hours": 1184,
+    "remaining_forecast_hours": 56,
+    "accepted_percent": 95.48
   },
   "completed": {
     "MNT-M4-05": {
@@ -412,6 +443,56 @@
         "P2 / CAPIITOLO_CLIENT_SIDE_EDITORIAL_COMPOSITION",
         "P2 / SEARCH_FAVICON_ELIGIBILITY_RESIDUAL"
       ]
+    },
+    "MNT-M7-03": {
+      "state": "COMPLETE / ACCEPTED",
+      "accepted_hours": 16,
+      "evidence": "docs/qa/MNT_M7_03_INDEPENDENT_MOBILE_QA_2026-09-23.md"
+    },
+    "MNT-M7-04": {
+      "state": "COMPLETE / ACCEPTED",
+      "accepted_hours": 16,
+      "evidence": "docs/qa/MNT_M7_04_TRACKING_LEAD_E2E_QA_2026-09-23.md"
+    },
+    "MNT-M7-05": {
+      "state": "COMPLETE / ACCEPTED",
+      "accepted_hours": 16,
+      "evidence": "docs/qa/MNT_M7_05_REGRESSION_SUITE_2026-09-23.md"
+    },
+    "MNT-M7-06": {
+      "state": "COMPLETE / ACCEPTED / P0_P1_GATE_PASS",
+      "accepted_hours": 8,
+      "evidence": "docs/qa/MNT_M7_06_P0_P1_RELEASE_ADJUDICATION_2026-09-23.md"
+    },
+    "MNT-M7-07": {
+      "state": "COMPLETE / ACCEPTED",
+      "accepted_hours": 8,
+      "evidence": "docs/qa/MNT_M7_07_VERCEL_PRODUCTION_HOMOLOGATION_2026-09-23.md"
+    },
+    "MNT-M7-08": {
+      "state": "COMPLETE / ACCEPTED_BY_SUPERSESSION",
+      "accepted_hours": 8,
+      "evidence": "docs/qa/MNT_M7_08_GREEN_PUBLICATION_READJUDICATION_2026-09-23.md"
+    },
+    "MNT-M7-09": {
+      "state": "COMPLETE / ACCEPTED",
+      "accepted_hours": 8,
+      "evidence": "docs/qa/MNT_M7_09_PRODUCTION_SMOKE_2026-09-23.md"
+    },
+    "MNT-M7-10": {
+      "state": "COMPLETE / ACCEPTED",
+      "accepted_hours": 24,
+      "evidence": "docs/observability/MNT_M7_10_POST_RELEASE_MEASUREMENT_2026-09-23.md"
+    },
+    "MNT-M7-11": {
+      "state": "COMPLETE / ACCEPTED",
+      "accepted_hours": 24,
+      "evidence": "docs/observability/MNT_M7_11_GSC_GA4_ADS_OBSERVATION_WINDOW_2026-09-23.md"
+    },
+    "MNT-M7-12": {
+      "state": "COMPLETE / ACCEPTED",
+      "accepted_hours": 16,
+      "evidence": "docs/observability/MNT_M7_12_RESULT_PROVENANCE_REGISTRY_2026-09-23.md"
     }
   },
   "recent_post_m4_events": {
@@ -549,9 +630,9 @@
     }
   },
   "next": {
-    "task_id": "MNT-M7-03",
-    "state": "AUTHORIZATION_REQUIRED",
-    "safe_action": "Commercial Data Plane provider/publication-owner selection is the Product Authority priority. Preserve current Home values; do not migrate runtime consumers until provider/public-read/admin-write/version/rollback contracts are proven. M7-03 remains a separate authorization gate."
+    "task_id": "MNT-M7-13",
+    "state": "AUTHORIZED_BY_SEQUENCE / PROVIDER_INTAKE_NEXT",
+    "safe_action": "Merge the consumer evidence packet, then perform RESF provider evidence intake against a live-resolved provider main. Paid-media tasks M6-07/M6-08 remain frozen."
   },
   "cross_project": {
     "commercial_catalog": {
