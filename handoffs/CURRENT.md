@@ -6,7 +6,7 @@ Atualizado em `2026-09-23`.
 
 Handoff detalhado vigente:
 
-`handoffs/HANDOFF-2026-09-23-RESF-CLOSED-PAID-MEDIA-DEFERRED.md`
+`handoffs/HANDOFF-2026-09-23-DASHBOARD-RECONCILED-CDP-BACKLOG.md`
 
 ## REPOSITORY_STATE
 
