@@ -1,6 +1,6 @@
 # Ações Bloqueadas — MoreNumTegra
 
-- Atualizado em: `2026-09-22`
+- Atualizado em: `2026-09-23`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
 - Functional baseline: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 - Technical baseline vigente após integração: `docs/baseline/TECHNICAL_BASELINE_V2_3.md`
@@ -422,3 +422,55 @@ Blocked without a new explicit Product Authority decision:
 - treating zero-row Ads observation as paid-conversion QA.
 
 A future reopening of M6-07/M6-08 is allowed only as a new paid-media decision and does not reopen the already completed M7 evidence chain automatically.
+
+
+## Estado atual de pendências — dashboard authority 2026-09-23
+
+Current dashboard/WBS reconciliation:
+
+`docs/sfjm/MNT_DASHBOARD_WBS_STATE_RECONCILIATION_2026-09-23.md`
+
+For current open/deferred visibility, this section supersedes older point-in-time residual/gate wording when the two conflict.
+
+### Deferred paid media
+
+```text
+MNT-M6-07 = DEFERRED / PAID_MEDIA_FROZEN / NOT_ACCEPTED / 24h
+MNT-M6-08 = DEFERRED / DEPENDS_ON_M6_07 / NOT_ACCEPTED / 16h
+```
+
+Blocked until a new explicit Product Authority paid-media decision.
+
+### Commercial Data Plane
+
+Current decomposition:
+
+```text
+MNT-CDP-01 = ACTIVE / provider selection
+MNT-CDP-02 = PLANNED / public-read + protected-admin-write proof
+MNT-CDP-03 = PLANNED / PENDING / spreadsheet-CSV value update path
+MNT-CDP-04 = PLANNED / approval-publish-version-rollback-audit
+MNT-CDP-05 = PLANNED / NOT_AUTHORIZED / runtime migration
+MNT-CDP-06 = PLANNED / E2E update-without-site-deploy + rollback proof
+```
+
+Blocked:
+
+- treating spreadsheet/CSV as a direct browser/runtime data source;
+- importing spreadsheet values without schema/business validation;
+- inventing missing commercial facts during import;
+- migrating the site before provider/read/write/version/rollback proof;
+- exposing admin/provider secrets in browser code;
+- publishing a candidate snapshot without approval/current-pointer semantics.
+
+### Current known residuals
+
+```text
+MNT-RES-01 = OPEN / P2 / CAPIITOLO client-side editorial composition
+MNT-RES-02 = OPEN / P2 / Search favicon eligibility
+MNT-RES-03 = NOT_OBSERVED / physical-device mobile QA
+MNT-RES-04 = NOT_OBSERVED / screen-reader validation
+MNT-RES-05 = NOT_OBSERVED / field CWV / field INP
+```
+
+No P0/P1 release blocker is currently open.

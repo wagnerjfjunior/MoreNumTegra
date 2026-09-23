@@ -29,21 +29,35 @@ The program forecast is a planning model, not a timesheet.
 - `CURRENT_PROGRAM_STATE.json` owns current lifecycle/progress;
 - `PROGRAM_TASK_GRAPH.json` owns hierarchy/planning hours.
 
-Historical planning-state snapshot retained from the 2026-09-10 planning baseline. **Do not use the State/Accepted columns below as current lifecycle truth; `docs/sfjm/CURRENT_PROGRAM_STATE.json` owns current lifecycle/progress.**
+## 2.1 Dashboard current-state summary
 
-| Phase | Name | State | Hours | Accepted |
-|---|---|---|---:|---:|
-| MNT-M0 | V1 Foundation & Commercial Production | COMPLETE | 160 | 160 |
-| MNT-M1 | RESF Adoption & Existing-State Reconciliation | COMPLETE | 96 | 96 |
-| MNT-M2 | Measurement Foundation & Consent | ACTIVE_WAITING_NEXT_TASK_AUTHORIZATION | 144 | 120 |
-| MNT-M3 | Intelligence, Product Truth & Search Contract | PLANNED | 144 | 0 |
-| MNT-M4 | IA, Content, Schema, GEO/AEO & Linking | PLANNED | 208 | 0 |
-| MNT-M5 | UX, Performance, Conversion, Lead & CRM | PLANNED | 168 | 0 |
-| MNT-M6 | Attribution & Paid Media Readiness | PLANNED | 128 | 0 |
-| MNT-M7 | QA, Release, Observability & Learning Loop | PLANNED | 192 | 0 |
-| **TOTAL** |  |  | **1240** | **376** |
+**This is the only phase-summary table that dashboard consumers should render as current lifecycle truth.**
 
-At that historical planning-state snapshot: accepted/completed scope-equivalent effort `376h`, remaining forecast `864h`, program progress `30.32%`. Current values are resolved only from `docs/sfjm/CURRENT_PROGRAM_STATE.json`.
+Current lifecycle/progress is reconciled from `CURRENT_PROGRAM_STATE.json` and `PROGRAM_TASK_GRAPH.json`.
+
+| Phase | Name | Current state | Hours | Accepted | Deferred |
+|---|---|---|---:|---:|---:|
+| MNT-M0 | V1 Foundation & Commercial Production | COMPLETE | 160 | 160 | 0 |
+| MNT-M1 | RESF Adoption & Existing-State Reconciliation | COMPLETE / ACCEPTED | 96 | 96 | 0 |
+| MNT-M2 | Measurement Foundation & Consent | COMPLETE / ACCEPTED | 144 | 144 | 0 |
+| MNT-M3 | Intelligence, Product Truth & Search Contract | COMPLETE / ACCEPTED | 144 | 144 | 0 |
+| MNT-M4 | IA, Content, Schema, GEO/AEO & Linking | COMPLETE / ACCEPTED | 208 | 208 | 0 |
+| MNT-M5 | UX, Performance, Conversion, Lead & CRM | COMPLETE / ACCEPTED | 168 | 168 | 0 |
+| MNT-M6 | Attribution & Paid Media Readiness | DEFERRED / PAID_MEDIA_FROZEN / 40H_UNACCEPTED | 128 | 88 | 40 |
+| MNT-M7 | QA, Release, Observability & Learning Loop | COMPLETE / ACCEPTED | 192 | 192 | 0 |
+| **TOTAL** |  | **CLOSED / COMPLETE_WITH_DEFERRED_PAID_MEDIA_SCOPE** | **1240** | **1200** | **40** |
+
+```text
+ACCEPTED_PERCENT = 96.77%
+DEFERRED_PERCENT = 3.23%
+DEFERRED_SCOPE = MNT-M6-07 24h + MNT-M6-08 16h
+```
+
+The historical 2026-09-10 planning snapshot has been moved to:
+
+`docs/roadmap/archive/MNT_RESF_PLANNING_BASELINE_2026-09-10.md`
+
+**ARCHIVE_ONLY != CURRENT_DASHBOARD_STATE**
 
 Program progress is not V1 product readiness. Commercial V1 remains operational.
 
@@ -176,31 +190,44 @@ PROPERTY PRICE != LEAD VALUE
 META NOT_PROVEN != META DOES_NOT_EXIST
 ```
 
-### MNT-M3 — Intelligence, Product Truth & Search Contract — 144h — PLANNED
+### MNT-M3 — Intelligence, Product Truth & Search Contract — 144h — COMPLETE / ACCEPTED
 
 | ID | Activity | Hours | State |
 |---|---|---:|---|
-| MNT-M3-01 | Market and Search demand research | 24 | PLANNED |
-| MNT-M3-02 | Extract and classify Search Console queries | 16 | PLANNED |
-| MNT-M3-03 | SERP, competitor and search-intent analysis | 16 | PLANNED |
-| MNT-M3-04 | Governed Product Fact & Claim Registry | 24 | PLANNED |
-| MNT-M3-05 | Search Intent / Query Ownership Contract | 24 | PLANNED |
-| MNT-M3-06 | Query-family to page-owner map | 24 | PLANNED |
-| MNT-M3-07 | KPI baseline and success criteria | 16 | PLANNED |
+| MNT-M3-01 | Market and Search demand research | 24 | COMPLETE / ACCEPTED |
+| MNT-M3-02 | Extract and classify Search Console queries | 16 | COMPLETE / ACCEPTED |
+| MNT-M3-03 | SERP, competitor and search-intent analysis | 16 | COMPLETE / ACCEPTED |
+| MNT-M3-04 | Governed Product Fact & Claim Registry | 24 | COMPLETE / ACCEPTED |
+| MNT-M3-05 | Search Intent / Query Ownership Contract | 24 | COMPLETE / ACCEPTED |
+| MNT-M3-06 | Query-family to page-owner map | 24 | COMPLETE / ACCEPTED |
+| MNT-M3-07 | KPI baseline and success criteria | 16 | COMPLETE / ACCEPTED |
 
-### MNT-M4 — IA, Content, Schema, GEO/AEO & Linking — 208h — PLANNED
+### MNT-M4 — IA, Content, Schema, GEO/AEO & Linking — 208h — COMPLETE / ACCEPTED
 
 | ID | Activity | Hours | State |
 |---|---|---:|---|
-| MNT-M4-01 | Information Architecture | 24 | PLANNED |
-| MNT-M4-02 | Page contracts and page types | 24 | PLANNED |
-| MNT-M4-03 | Decision-useful content architecture | 24 | PLANNED |
-| MNT-M4-04 | Entity graph and schema contract | 24 | PLANNED |
-| MNT-M4-05 | Factual JSON-LD expansion | 16 | PLANNED_NOT_AUTHORIZED |
-| MNT-M4-06 | GEO/AEO / answerability / AI discoverability readiness | 24 | PLANNED |
-| MNT-M4-07 | Semantic internal-linking contract | 16 | PLANNED |
-| MNT-M4-08 | Implement prioritized content/architecture | 32 | PLANNED_NOT_AUTHORIZED |
-| MNT-M4-09 | Resolve technical SEO residuals: sitemap/www/canonical where capability permits | 24 | PLANNED_NOT_AUTHORIZED |
+| MNT-M4-01 | Information Architecture | 24 | COMPLETE / ACCEPTED |
+| MNT-M4-02 | Page contracts and page types | 24 | COMPLETE / ACCEPTED |
+| MNT-M4-03 | Decision-useful content architecture | 24 | COMPLETE / ACCEPTED |
+| MNT-M4-04 | Entity graph and schema contract | 24 | COMPLETE / ACCEPTED |
+| MNT-M4-05 | Factual JSON-LD expansion | 16 | COMPLETE / ACCEPTED / CORRECTIVE_GATE_M4_05R |
+| MNT-M4-06 | GEO/AEO / answerability / AI discoverability readiness | 24 | COMPLETE / ACCEPTED |
+| MNT-M4-07 | Semantic internal-linking contract | 16 | COMPLETE / ACCEPTED |
+| MNT-M4-08 | Implement prioritized content/architecture | 32 | COMPLETE / ACCEPTED |
+| MNT-M4-09 | Resolve technical SEO residuals: sitemap/www/canonical where capability permits | 24 | COMPLETE / ACCEPTED |
+
+### M3/M4 lifecycle reconciliation
+
+The individual M3/M4 evidence files preserve their point-in-time candidate/authorized wording. Current lifecycle is later and is governed by the merged execution chain plus aggregate acceptance.
+
+Evidence anchors:
+
+- M3 execution PRs #56–#62 merged through `09405ae2c002b7e3b3298ca3a4fb434338b0ad3e`;
+- M4 execution PRs #65–#82 merged through `a5c3766d93aa4b8ae76acfd6d544f03b204b9b20`;
+- M4-05 corrective acceptance: `docs/sfjm/MNT_M4_05R_ACCEPTANCE_CLOSURE_2026-09-19.md`;
+- M5 final closure records aggregate accepted scope `920h`, which mathematically includes M0+M1+M2+M3+M4+M5 and therefore confirms M1/M3/M4 accepted scope in the integrated program state.
+
+Historical candidate labels inside task-specific evidence are not current dashboard lifecycle state.
 
 ### MNT-M5 — UX, Performance, Conversion, Lead & CRM — 168h — COMPLETE
 
@@ -365,6 +392,33 @@ Validation: 21 canonical projects / 25 offers / 23 Home cards / 23-of-23 runtime
 
 Final RESF accepted progress at closure: `1200 / 1240h = 96.77%`; deferred paid-media scope: `40h`.
 
+
+## Post-RESF operational backlog — dashboard-visible, outside RESF hours
+
+These items are **not part of the 1240h RESF denominator**. They remain visible because they are current operational work or explicit deferred scope.
+
+| ID | Work item | RESF hours | Current state | Dependency / boundary |
+|---|---|---:|---|---|
+| MNT-CDP-01 | Select Commercial Data Plane publication provider/owner | — | ACTIVE / NEXT_SAFE_ACTION | provider must satisfy public-read/admin-write/version/rollback/audit contract |
+| MNT-CDP-02 | Define/prove public read + protected admin-write publication contract | — | PLANNED / BLOCKED_BY_CDP_01 | no browser secret; atomic/current pointer; CORS/cache/freshness |
+| MNT-CDP-03 | **Planilha/CSV para atualização de valores**: import, normalize, validate and create candidate snapshot | — | PLANNED / PENDING | spreadsheet is operator input, not direct site source; no invented values |
+| MNT-CDP-04 | Approval, publish, version history, rollback and audit workflow | — | PLANNED | requires provider contract |
+| MNT-CDP-05 | Migrate Home/exact-project commercial consumers to snapshot v3 | — | PLANNED / NOT_AUTHORIZED | preserve current Home truth; fail closed to consult-only on invalid/unavailable feed |
+| MNT-CDP-06 | End-to-end first value-only update without MoreNumTegra runtime deploy + rollback proof | — | PLANNED | after consumer migration |
+| MNT-M6-07 | Google Ads external platform implementation | 24 | DEFERRED / PAID_MEDIA_FROZEN / NOT_ACCEPTED | reopen only by explicit Product Authority decision |
+| MNT-M6-08 | Paid conversion QA | 16 | DEFERRED / DEPENDS_ON_M6_07 / NOT_ACCEPTED | cannot be real until M6-07 exists |
+
+### Known residuals / observations — not P0/P1 blockers
+
+| ID | Residual | Current state | Release impact |
+|---|---|---|---|
+| MNT-RES-01 | CAPIITOLO body composed client-side through editorial fetch/document replacement | OPEN / P2 | accepted residual; future bounded remediation |
+| MNT-RES-02 | Google Search favicon eligibility for current WebP favicon | OPEN / P2 | accepted residual; do not claim SERP favicon fixed |
+| MNT-RES-03 | Physical-device mobile QA | NOT_OBSERVED / ACCEPTED_RESIDUAL | emulated touch multi-browser passed; physical device still not proven |
+| MNT-RES-04 | Screen-reader validation | NOT_OBSERVED / ACCEPTED_RESIDUAL | accessibility residual, not a hidden PASS |
+| MNT-RES-05 | Field CWV / field INP | NOT_OBSERVED / ACCEPTED_RESIDUAL | lab targets do not substitute for field data |
+
+Current Home commercial values remain governed by `PA-MNT-HOME-COMMERCIAL-TRUTH-2026-09-22` until the Commercial Data Plane is published and adopted.
 
 ## RESF final closure — 2026-09-23
 

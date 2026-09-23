@@ -2,85 +2,81 @@
 
 Atualizado em `2026-09-23`.
 
-```text
-MNT-M7 = COMPLETE / ACCEPTED / 192H
-MNT-M7-13 = COMPLETE / PROVIDER_INTAKE_MERGED
+## Estado atual
 
+```text
 MNT-RESF = CLOSED / COMPLETE_WITH_DEFERRED_PAID_MEDIA_SCOPE
-
-FORECAST_TOTAL = 1240h
-ACCEPTED = 1200h
+ACCEPTED = 1200 / 1240h = 96.77%
 DEFERRED = 40h
-ACCEPTED_PERCENT = 96.77%
 
+MNT-M7 = COMPLETE / ACCEPTED
 MNT-M6-07 = DEFERRED / PAID_MEDIA_FROZEN / NOT_ACCEPTED
-MNT-M6-08 = DEFERRED / DEPENDS_ON_M6-07 / NOT_ACCEPTED
+MNT-M6-08 = DEFERRED / DEPENDS_ON_M6_07 / NOT_ACCEPTED
 
-PAID_MEDIA = FROZEN
-ADS_SPEND_USED_FOR_CLOSURE = R$ 0
-
-LATEST_RUNTIME_SHA = 124b620855175a583c528733462d6d0f4f44cd41
-PRODUCTION_DEPLOYMENT = dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C
-PRODUCTION_STATE = READY
+COMMERCIAL_DATA_PLANE_REENTRY = ACTIVE / DECOMPOSED / OUTSIDE_RESF_ACCOUNTING
+CURRENT_CHILD = MNT-CDP-01
 ```
 
-## RESF closure
+Dashboard reconciliation:
 
-Canonical closure:
+`docs/sfjm/MNT_DASHBOARD_WBS_STATE_RECONCILIATION_2026-09-23.md`
 
-`docs/sfjm/MNT_RESF_PROGRAM_CLOSURE_2026-09-23.md`
+## Current post-RESF decomposition
 
-Provider evidence intake:
+| ID | Item | State |
+|---|---|---|
+| MNT-CDP-01 | Selecionar e provar provider/publication owner | **ACTIVE / NEXT** |
+| MNT-CDP-02 | Public read + protected admin write | PLANNED / BLOCKED_BY_CDP_01 |
+| MNT-CDP-03 | **Planilha/CSV para atualização de valores** → import/normalize/validate/candidate snapshot | PLANNED / PENDING |
+| MNT-CDP-04 | Approval/publish/version/rollback/audit | PLANNED |
+| MNT-CDP-05 | Migrar Home/páginas exatas para snapshot v3 | PLANNED / NOT_AUTHORIZED |
+| MNT-CDP-06 | Primeiro update de valor sem deploy + rollback E2E | PLANNED |
 
-```text
-provider = wagnerjfjunior/Blogs-sites-portais-seo
-PR = #15
-provider intake head = 6eb812f805bc1a6412f51dd1806b6699187b03dc
-provider merge = c8cf9c8f49982c30d641b6c590ddf53018802e52
-workflow = validate-agent-framework / run 35856574031 / success
-SES Documentation Auditor = PASS_WITH_RESIDUAL_RISK
-framework lifecycle promotion = NO
-framework registry mutation = NO
-```
-
-The deferred 40h are not failures and are not accepted work. They are intentionally excluded because the paid-media implementation remains frozen.
+The planilha/CSV is not the runtime source. It is an operator input that must pass the same schema/business validation before publication.
 
 ## Única próxima ação segura
 
-The active product-priority workstream is now outside RESF accounting:
+**MNT-CDP-01 — selecionar e provar o provider/publication owner.**
 
-**COMMERCIAL_DATA_PLANE_REENTRY**
+The provider must prove:
 
-Next gate:
+1. public HTTPS read;
+2. protected authenticated/admin write;
+3. versioned and atomic publication/current pointer;
+4. rollback;
+5. audit history;
+6. browser-safe CORS/cache/freshness;
+7. no browser secret;
+8. ability to publish a commercial update without MoreNumTegra runtime deployment.
 
-1. select the publication provider/owner;
-2. prove public HTTPS read;
-3. prove protected admin write;
-4. prove versioned/atomic publish;
-5. prove rollback and audit history;
-6. prove CORS/cache/freshness behavior;
-7. preserve current Home commercial truth during migration;
-8. only then authorize runtime consumer migration.
+No runtime consumer migration is authorized by this step.
 
-Canonical architecture:
-
-- `docs/architecture/MNT_COMMERCIAL_UPDATE_MEDIUM_REENTRY_2026-09-22.md`
-- `docs/architecture/MNT_COMMERCIAL_DATA_PLANE_V3.md`
-- `docs/architecture/MNT_COMMERCIAL_DATA_SCHEMA_V3.schema.json`
-
-## Paid-media reopening
-
-M6-07/M6-08 may be reopened later only by a new explicit Product Authority decision.
-
-Do not activate Google Ads or spend merely to change the RESF percentage from 96.77% to 100%.
-
-## Still deferred
+## Residuals still visible
 
 ```text
-Google Ads implementation/spend = FROZEN
-M6-07 = DEFERRED
-M6-08 = DEFERRED
+P0 = 0
+P1 = 0
+P2 = 2
+
+P2-01 = CAPIITOLO client-side editorial composition
+P2-02 = Search favicon eligibility
+
+physical-device QA = NOT_OBSERVED
+screen-reader validation = NOT_OBSERVED
+field CWV / field INP = NOT_OBSERVED
+```
+
+## Still frozen/deferred
+
+```text
+M6-07 Google Ads external implementation = DEFERRED / PAID_MEDIA_FROZEN
+M6-08 Paid conversion QA = DEFERRED / DEPENDS_ON_M6-07
+Search spend = R$ 0
 remarketing spend = R$ 0
 Meta paid media/CAPI = NOT_AUTHORIZED
 Looker Studio = DEFERRED
 ```
+
+Do not activate paid media merely to change the RESF percentage.
+
+Do not change current Home commercial values as part of architecture migration unless Product Authority separately changes them.

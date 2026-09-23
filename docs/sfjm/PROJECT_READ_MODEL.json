@@ -7,8 +7,8 @@
     "accepted_percent": 96.77
   },
   "current": {
-    "task_id": "COMMERCIAL_DATA_PLANE_REENTRY",
-    "task_state": "ACTIVE / OUTSIDE_RESF_ACCOUNTING / PROVIDER_NOT_SELECTED",
+    "task_id": "MNT-CDP-01",
+    "task_state": "ACTIVE / PROVIDER_SELECTION / OUTSIDE_RESF_ACCOUNTING",
     "pr": null,
     "repository_head_sha": "124b620855175a583c528733462d6d0f4f44cd41",
     "latest_main_runtime_sha": "124b620855175a583c528733462d6d0f4f44cd41",
@@ -16,8 +16,8 @@
     "last_verified_vercel_success_sha": "124b620855175a583c528733462d6d0f4f44cd41",
     "production_deployment_id": "dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C",
     "acceptance_run": null,
-    "next_task_id": "COMMERCIAL_DATA_PLANE_REENTRY",
-    "next_task_state": "ACTIVE / OUTSIDE_RESF_ACCOUNTING",
+    "next_task_id": "MNT-CDP-01",
+    "next_task_state": "ACTIVE / PROVIDER_SELECTION",
     "final_consent_ga4_proof_run": 35737706576,
     "evidence": "docs/sfjm/MNT_RESF_PROGRAM_CLOSURE_2026-09-23.md",
     "baseline_run": 35743393547,
@@ -41,15 +41,93 @@
     "resf_accepted_hours": 1200,
     "resf_deferred_hours": 40,
     "m7_state": "COMPLETE / ACCEPTED",
-    "m7_13_provider_merge": "c8cf9c8f49982c30d641b6c590ddf53018802e52"
+    "m7_13_provider_merge": "c8cf9c8f49982c30d641b6c590ddf53018802e52",
+    "dashboard_reconciliation": "docs/sfjm/MNT_DASHBOARD_WBS_STATE_RECONCILIATION_2026-09-23.md",
+    "wbs_current_state_source": "docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md",
+    "wbs_historical_archive": "docs/roadmap/archive/MNT_RESF_PLANNING_BASELINE_2026-09-10.md"
   },
   "current_state_overlay": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
   "cross_project_handoff": "docs/sfjm/MNT_FECHAI_COMMERCIAL_CATALOG_HANDOFF_2026-09-16.md",
   "last_reconciled_at": "2026-09-23",
   "priority_workstream": {
     "id": "COMMERCIAL_DATA_PLANE_REENTRY",
-    "state": "ACTIVE / DESIGN_ONLY",
+    "label": "Commercial Data Plane / atualização de valores",
+    "state": "ACTIVE / DECOMPOSED / OUTSIDE_RESF_ACCOUNTING",
     "architecture": "docs/architecture/MNT_COMMERCIAL_DATA_PLANE_V3.md",
-    "provider": "NOT_SELECTED"
-  }
+    "provider": "NOT_SELECTED",
+    "current_child": "MNT-CDP-01",
+    "tasks": [
+      {
+        "id": "MNT-CDP-01",
+        "label": "Selecionar e provar provider/publication owner",
+        "state": "ACTIVE / PROVIDER_SELECTION"
+      },
+      {
+        "id": "MNT-CDP-02",
+        "label": "Definir e provar public read + protected admin write",
+        "state": "PLANNED / BLOCKED_BY_CDP_01"
+      },
+      {
+        "id": "MNT-CDP-03",
+        "label": "Planilha/CSV para atualização de valores",
+        "state": "PLANNED / PENDING"
+      },
+      {
+        "id": "MNT-CDP-04",
+        "label": "Aprovação/publicação/versionamento/rollback/auditoria",
+        "state": "PLANNED"
+      },
+      {
+        "id": "MNT-CDP-05",
+        "label": "Migrar Home/páginas exatas para snapshot v3",
+        "state": "PLANNED / NOT_AUTHORIZED"
+      },
+      {
+        "id": "MNT-CDP-06",
+        "label": "QA E2E da primeira atualização sem deploy + rollback",
+        "state": "PLANNED"
+      }
+    ]
+  },
+  "deferred_work": [
+    {
+      "id": "MNT-M6-07",
+      "label": "Authorized external platform implementation",
+      "state": "DEFERRED / PAID_MEDIA_FROZEN / NOT_ACCEPTED",
+      "hours": 24
+    },
+    {
+      "id": "MNT-M6-08",
+      "label": "Paid conversion QA",
+      "state": "DEFERRED / DEPENDS_ON_M6_07 / NOT_ACCEPTED",
+      "hours": 16
+    }
+  ],
+  "open_residuals": [
+    {
+      "id": "MNT-RES-01",
+      "state": "OPEN / P2",
+      "label": "CAPIITOLO client-side editorial composition"
+    },
+    {
+      "id": "MNT-RES-02",
+      "state": "OPEN / P2",
+      "label": "Search favicon eligibility"
+    },
+    {
+      "id": "MNT-RES-03",
+      "state": "NOT_OBSERVED / ACCEPTED_RESIDUAL",
+      "label": "Physical-device mobile QA"
+    },
+    {
+      "id": "MNT-RES-04",
+      "state": "NOT_OBSERVED / ACCEPTED_RESIDUAL",
+      "label": "Screen-reader validation"
+    },
+    {
+      "id": "MNT-RES-05",
+      "state": "NOT_OBSERVED / ACCEPTED_RESIDUAL",
+      "label": "Field CWV / field INP"
+    }
+  ]
 }

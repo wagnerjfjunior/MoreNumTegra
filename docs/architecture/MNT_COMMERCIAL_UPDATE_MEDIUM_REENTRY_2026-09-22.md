@@ -23,13 +23,15 @@ docs/product/PA_MNT_HOME_COMMERCIAL_TRUTH_2026-09-22.md
 
 ## 2. Existing consumer-side architecture
 
-The existing Commercial Data Plane v2 contract remains the baseline:
+The current canonical candidate architecture is Commercial Data Plane v3:
 
-- docs/architecture/MNT_COMMERCIAL_DATA_PLANE_V2.md
-- docs/architecture/MNT_COMMERCIAL_DATA_SCHEMA_V2.schema.json
-- docs/architecture/MNT_COMMERCIAL_HARDCODE_INVENTORY_2026-09-16.md
+- `docs/architecture/MNT_COMMERCIAL_DATA_PLANE_V3.md`
+- `docs/architecture/MNT_COMMERCIAL_DATA_SCHEMA_V3.schema.json`
+- `docs/architecture/MNT_COMMERCIAL_HARDCODE_INVENTORY_2026-09-16.md`
 
-The current repository-local commercial-values.json is useful as a consumer prototype but is not the final update medium because updating it still belongs to the MoreNumTegra deployment tree.
+Commercial Data Plane v2 remains historical architecture evidence only; its single-commercial-record-per-project shape is superseded.
+
+The current repository-local `commercial-values.json` is useful as a legacy/reference consumer artifact but is not the final update medium because updating it still belongs to the MoreNumTegra deployment tree.
 
 ## 3. Live FECH.AI discovery
 
@@ -95,10 +97,16 @@ Required public payload characteristics:
 Future operator inputs may include:
 
 - structured admin UI;
-- CSV;
+- spreadsheet / CSV;
 - JSON;
 - TXT;
 - GPT-assisted candidate transformation.
+
+Current dashboard-visible task:
+
+`MNT-CDP-03 — Planilha/CSV para atualização de valores: importar, normalizar, validar e gerar candidate snapshot`.
+
+The spreadsheet/CSV is an operator input only. The browser never consumes the spreadsheet directly.
 
 Every input channel must produce the same canonical candidate snapshot and pass the same validator.
 
@@ -184,7 +192,22 @@ Before runtime migration:
 3. define admin-write authentication/authorization;
 4. prove versioning/rollback;
 5. prove cache/CORS/fail-closed behavior;
-6. snapshot the currently recertified Home state into schema v2 without changing values;
-7. only then migrate consumers.
+6. use the already validated v3 candidate snapshot/binding baseline and preserve current Home values;
+7. prove the spreadsheet/CSV operator path produces the same governed v3 candidate shape;
+8. only then authorize and migrate consumers.
 
 No Production change is authorized by this architecture re-entry document.
+
+
+## 11. Dashboard-visible implementation decomposition
+
+```text
+MNT-CDP-01 = ACTIVE / select and prove provider/publication owner
+MNT-CDP-02 = PLANNED / public read + protected admin write
+MNT-CDP-03 = PLANNED / PENDING / spreadsheet-CSV operator update path
+MNT-CDP-04 = PLANNED / approval-publish-version-rollback-audit
+MNT-CDP-05 = PLANNED / NOT_AUTHORIZED / runtime consumer migration
+MNT-CDP-06 = PLANNED / E2E value-only update without site deploy + rollback proof
+```
+
+These tasks are outside RESF accepted-hour accounting.
