@@ -150,7 +150,7 @@ Permanece bloqueado sem gate específico:
 
 ## 9. Residuals atuais que não devem ser apagados
 
-- `/favicon.ico` retornou 404 no HAR Pingdom pós-cutover;
+- HISTORICAL: `/favicon.ico` retornou 404 no HAR Pingdom pós-cutover; superseded by PR #241 (`/favicon.ico` now HTTP 200);
 - número exato da versão GTM publicada para o delta `www` não foi registrado;
 - status de submissão/processamento do sitemap no GSC deve ser evidenciado separadamente;
 - residual factual Mozae 45m² vs registry governado 46m²/73m² permanece sujeito ao gate Product Truth/Search;
@@ -467,7 +467,7 @@ Blocked:
 
 ```text
 MNT-RES-01 = OPEN / P2 / CAPIITOLO client-side editorial composition
-MNT-RES-02 = OPEN / P2 / Search favicon eligibility
+MNT-RES-02 = SITE_SIDE_FIXED / AWAITING_GOOGLE_RECRAWL / NOT_OBSERVED
 MNT-RES-03 = NOT_OBSERVED / physical-device mobile QA
 MNT-RES-04 = NOT_OBSERVED / screen-reader validation
 MNT-RES-05 = NOT_OBSERVED / field CWV / field INP
