@@ -499,3 +499,37 @@ Still open:
 - field CWV / field INP — not observed.
 
 Paid-media and Commercial Data Plane blocks remain unchanged.
+
+
+## MNT-PERF-01 remediation gate — 2026-09-23
+
+Authorized now:
+
+- read-only/live performance measurement;
+- cold/warm favicon request timing;
+- Lighthouse mobile batteries;
+- comparison with prior accepted evidence;
+- exact prior-deployment control if accessible;
+- evidence/adjudication.
+
+Not authorized automatically:
+
+- removing favicon declarations;
+- changing favicon files again;
+- adding/removing preload;
+- changing cache headers;
+- changing hero/media;
+- changing GTM/GA4;
+- changing Form46;
+- changing commercial data;
+- deploying a remediation candidate.
+
+Reason:
+
+```text
+favicon visual = WORKING / USER_CONFIRMED
+perceived delay = USER_REPORTED
+LCP regression = NOT_PROVEN
+```
+
+Any runtime remediation requires evidence from MNT-PERF-01 plus a separate Product Authority decision.

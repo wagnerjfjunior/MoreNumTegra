@@ -45,18 +45,18 @@
     "deferred_scope_equivalent_hours": 40
   },
   "current": {
-    "phase_id": "NONE / PROGRAM_CLOSED",
-    "phase_state": "CLOSED",
-    "work_package": "COMMERCIAL DATA PLANE / POST-RESF OPERATIONAL WORK",
-    "current_task_id": "MNT-CDP-01",
-    "current_task_state": "ACTIVE / PROVIDER_SELECTION",
-    "next_task_id": "MNT-CDP-01",
-    "next_task_state": "ACTIVE / PROVIDER_SELECTION",
-    "next_safe_action": "Select and prove the Commercial Data Plane publication provider/owner before runtime consumer migration. Keep paid-media deferred tasks visible.",
+    "phase_id": "POST_RESF / PUBLIC_PERFORMANCE_FOLLOWUP",
+    "phase_state": "ACTIVE / MEASUREMENT_ONLY",
+    "work_package": "Public performance follow-up / favicon load and LCP",
+    "current_task_id": "MNT-PERF-01",
+    "current_task_state": "ACTIVE / AUTHORIZED / MEASUREMENT_ONLY",
+    "next_task_id": "MNT-PERF-01",
+    "next_task_state": "ACTIVE / AUTHORIZED",
+    "next_safe_action": "Measure current favicon load timing and fresh Production LCP before any remediation.",
     "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md",
     "current_state_source": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
-    "task_id": "MNT-CDP-01",
-    "state": "ACTIVE / OUTSIDE_RESF_ACCOUNTING / PROVIDER_SELECTION"
+    "task_id": "MNT-PERF-01",
+    "state": "ACTIVE / OUTSIDE_RESF_ACCOUNTING / MEASUREMENT_ONLY"
   },
   "sources": {
     "bootstrap": "bootstrap/BOOTSTRAP_CANONICO.md",
@@ -851,89 +851,25 @@
     "show_observed_at": true
   },
   "priority_workstream": {
-    "id": "COMMERCIAL_DATA_PLANE_REENTRY",
-    "label": "Commercial Data Plane / atualização de valores",
+    "id": "PUBLIC_PERFORMANCE_FOLLOWUP",
+    "label": "Favicon load / LCP regression validation",
     "counted_in_resf_hours": false,
     "effort_status": "NOT_ESTIMATED / OUTSIDE_RESF_ACCOUNTING",
-    "state": "ACTIVE / DECOMPOSED / PROVIDER_NOT_SELECTED",
+    "state": "ACTIVE / MEASUREMENT_ONLY",
     "authority": "PRODUCT_AUTHORITY_2026_09_23",
-    "architecture": "docs/architecture/MNT_COMMERCIAL_DATA_PLANE_V3.md",
-    "completion_rule": "ALL_REQUIRED_CHILDREN_COMPLETE / PRODUCT_AUTHORITY_ACCEPTANCE",
+    "handoff": "handoffs/HANDOFF-2026-09-23-FAVICON-LCP-RECHECK-NEXT.md",
+    "completion_rule": "MEASUREMENT_COMPLETE / EVIDENCE_ADJUDICATED / REMEDIATION_SEPARATELY_GATED",
     "tasks": [
       {
-        "id": "MNT-CDP-01",
-        "label": "Selecionar e provar provider/publication owner",
-        "state": "ACTIVE / PROVIDER_SELECTION",
+        "id": "MNT-PERF-01",
+        "label": "Favicon load / LCP regression validation",
+        "state": "ACTIVE / AUTHORIZED / MEASUREMENT_ONLY",
         "sequence": 1,
         "dependencies": [],
         "blocked_by": [],
-        "evidence": "docs/architecture/MNT_COMMERCIAL_UPDATE_MEDIUM_REENTRY_2026-09-22.md",
-        "counted_in_resf_hours": false
-      },
-      {
-        "id": "MNT-CDP-02",
-        "label": "Definir e provar public read + protected admin write",
-        "state": "PLANNED / BLOCKED_BY_CDP_01",
-        "sequence": 2,
-        "dependencies": [
-          "MNT-CDP-01"
-        ],
-        "blocked_by": [
-          "MNT-CDP-01"
-        ],
-        "counted_in_resf_hours": false
-      },
-      {
-        "id": "MNT-CDP-03",
-        "label": "Planilha/CSV para atualização de valores: importar, normalizar, validar e gerar candidate snapshot",
-        "state": "PLANNED / PENDING",
-        "sequence": 3,
-        "dependencies": [
-          "MNT-CDP-01",
-          "MNT-CDP-02"
-        ],
-        "blocked_by": [
-          "MNT-CDP-01",
-          "MNT-CDP-02"
-        ],
-        "notes": "Spreadsheet/CSV is operator input only; browser does not consume it directly. Missing commercial facts must never be invented.",
-        "counted_in_resf_hours": false
-      },
-      {
-        "id": "MNT-CDP-04",
-        "label": "Fluxo de aprovação, publicação versionada, rollback e auditoria",
-        "state": "PLANNED",
-        "sequence": 4,
-        "dependencies": [
-          "MNT-CDP-01",
-          "MNT-CDP-02",
-          "MNT-CDP-03"
-        ],
-        "counted_in_resf_hours": false
-      },
-      {
-        "id": "MNT-CDP-05",
-        "label": "Migrar consumidores comerciais Home/páginas exatas para snapshot v3",
-        "state": "PLANNED / NOT_AUTHORIZED",
-        "sequence": 5,
-        "dependencies": [
-          "MNT-CDP-04"
-        ],
-        "blocked_by": [
-          "PRODUCT_AUTHORITY_RUNTIME_MIGRATION_GATE"
-        ],
-        "notes": "Preserve current Home commercial truth; invalid/unavailable feed must fail closed to consult-only.",
-        "counted_in_resf_hours": false
-      },
-      {
-        "id": "MNT-CDP-06",
-        "label": "QA E2E de atualização de valor sem deploy do site + prova de rollback",
-        "state": "PLANNED",
-        "sequence": 6,
-        "dependencies": [
-          "MNT-CDP-05"
-        ],
-        "counted_in_resf_hours": false
+        "counted_in_resf_hours": false,
+        "evidence": "handoffs/HANDOFF-2026-09-23-FAVICON-LCP-RECHECK-NEXT.md",
+        "notes": "User confirmed favicon visual works but reports perceptible loading delay. Measure before changing runtime."
       }
     ]
   },
@@ -986,5 +922,94 @@
     "favicon_state": "SITE_SIDE_FIXED / GOOGLE_RECRAWL_PENDING",
     "social_sharing_state": "LIVE_METADATA_VALIDATED",
     "capiitolo_variant_state": "IMPLEMENTED / SINGLE_CANONICAL_PAGE"
-  }
+  },
+  "queued_workstreams": [
+    {
+      "id": "COMMERCIAL_DATA_PLANE_REENTRY",
+      "label": "Commercial Data Plane / atualização de valores",
+      "counted_in_resf_hours": false,
+      "effort_status": "NOT_ESTIMATED / OUTSIDE_RESF_ACCOUNTING",
+      "state": "ACTIVE / DECOMPOSED / PROVIDER_NOT_SELECTED",
+      "authority": "PRODUCT_AUTHORITY_2026_09_23",
+      "architecture": "docs/architecture/MNT_COMMERCIAL_DATA_PLANE_V3.md",
+      "completion_rule": "ALL_REQUIRED_CHILDREN_COMPLETE / PRODUCT_AUTHORITY_ACCEPTANCE",
+      "tasks": [
+        {
+          "id": "MNT-CDP-01",
+          "label": "Selecionar e provar provider/publication owner",
+          "state": "ACTIVE / PROVIDER_SELECTION",
+          "sequence": 1,
+          "dependencies": [],
+          "blocked_by": [],
+          "evidence": "docs/architecture/MNT_COMMERCIAL_UPDATE_MEDIUM_REENTRY_2026-09-22.md",
+          "counted_in_resf_hours": false
+        },
+        {
+          "id": "MNT-CDP-02",
+          "label": "Definir e provar public read + protected admin write",
+          "state": "PLANNED / BLOCKED_BY_CDP_01",
+          "sequence": 2,
+          "dependencies": [
+            "MNT-CDP-01"
+          ],
+          "blocked_by": [
+            "MNT-CDP-01"
+          ],
+          "counted_in_resf_hours": false
+        },
+        {
+          "id": "MNT-CDP-03",
+          "label": "Planilha/CSV para atualização de valores: importar, normalizar, validar e gerar candidate snapshot",
+          "state": "PLANNED / PENDING",
+          "sequence": 3,
+          "dependencies": [
+            "MNT-CDP-01",
+            "MNT-CDP-02"
+          ],
+          "blocked_by": [
+            "MNT-CDP-01",
+            "MNT-CDP-02"
+          ],
+          "notes": "Spreadsheet/CSV is operator input only; browser does not consume it directly. Missing commercial facts must never be invented.",
+          "counted_in_resf_hours": false
+        },
+        {
+          "id": "MNT-CDP-04",
+          "label": "Fluxo de aprovação, publicação versionada, rollback e auditoria",
+          "state": "PLANNED",
+          "sequence": 4,
+          "dependencies": [
+            "MNT-CDP-01",
+            "MNT-CDP-02",
+            "MNT-CDP-03"
+          ],
+          "counted_in_resf_hours": false
+        },
+        {
+          "id": "MNT-CDP-05",
+          "label": "Migrar consumidores comerciais Home/páginas exatas para snapshot v3",
+          "state": "PLANNED / NOT_AUTHORIZED",
+          "sequence": 5,
+          "dependencies": [
+            "MNT-CDP-04"
+          ],
+          "blocked_by": [
+            "PRODUCT_AUTHORITY_RUNTIME_MIGRATION_GATE"
+          ],
+          "notes": "Preserve current Home commercial truth; invalid/unavailable feed must fail closed to consult-only.",
+          "counted_in_resf_hours": false
+        },
+        {
+          "id": "MNT-CDP-06",
+          "label": "QA E2E de atualização de valor sem deploy do site + prova de rollback",
+          "state": "PLANNED",
+          "sequence": 6,
+          "dependencies": [
+            "MNT-CDP-05"
+          ],
+          "counted_in_resf_hours": false
+        }
+      ]
+    }
+  ]
 }

@@ -7,8 +7,8 @@
     "accepted_percent": 96.77
   },
   "current": {
-    "task_id": "MNT-CDP-01",
-    "task_state": "ACTIVE / PROVIDER_SELECTION / OUTSIDE_RESF_ACCOUNTING",
+    "task_id": "MNT-PERF-01",
+    "task_state": "ACTIVE / AUTHORIZED / MEASUREMENT_ONLY / OUTSIDE_RESF_ACCOUNTING",
     "pr": null,
     "repository_head_sha": "c80a8e1d773d85af563d9630f6e460e7ad85ea02",
     "latest_main_runtime_sha": "c80a8e1d773d85af563d9630f6e460e7ad85ea02",
@@ -16,10 +16,10 @@
     "last_verified_vercel_success_sha": "c80a8e1d773d85af563d9630f6e460e7ad85ea02",
     "production_deployment_id": "dpl_4F8SF29FyNj7EcpyqM9zT57oYAoi",
     "acceptance_run": null,
-    "next_task_id": "MNT-CDP-01",
-    "next_task_state": "ACTIVE / PROVIDER_SELECTION",
+    "next_task_id": "MNT-PERF-01",
+    "next_task_state": "ACTIVE / AUTHORIZED / MEASUREMENT_ONLY",
     "final_consent_ga4_proof_run": 35737706576,
-    "evidence": "docs/sfjm/MNT_RESF_PROGRAM_CLOSURE_2026-09-23.md",
+    "evidence": "handoffs/HANDOFF-2026-09-23-FAVICON-LCP-RECHECK-NEXT.md",
     "baseline_run": 35743393547,
     "responsive_media_standard": "docs/performance/RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1.md",
     "audience_accumulation_state": "COMPLETE / MANUAL_CREATION / SCREENSHOT_OBSERVED",
@@ -52,42 +52,17 @@
   "cross_project_handoff": "docs/sfjm/MNT_FECHAI_COMMERCIAL_CATALOG_HANDOFF_2026-09-16.md",
   "last_reconciled_at": "2026-09-23",
   "priority_workstream": {
-    "id": "COMMERCIAL_DATA_PLANE_REENTRY",
-    "label": "Commercial Data Plane / atualização de valores",
-    "state": "ACTIVE / DECOMPOSED / OUTSIDE_RESF_ACCOUNTING",
-    "architecture": "docs/architecture/MNT_COMMERCIAL_DATA_PLANE_V3.md",
-    "provider": "NOT_SELECTED",
-    "current_child": "MNT-CDP-01",
+    "id": "PUBLIC_PERFORMANCE_FOLLOWUP",
+    "label": "Favicon load / LCP regression validation",
+    "state": "ACTIVE / MEASUREMENT_ONLY",
+    "current_child": "MNT-PERF-01",
+    "counted_in_resf_hours": false,
+    "handoff": "handoffs/HANDOFF-2026-09-23-FAVICON-LCP-RECHECK-NEXT.md",
     "tasks": [
       {
-        "id": "MNT-CDP-01",
-        "label": "Selecionar e provar provider/publication owner",
-        "state": "ACTIVE / PROVIDER_SELECTION"
-      },
-      {
-        "id": "MNT-CDP-02",
-        "label": "Definir e provar public read + protected admin write",
-        "state": "PLANNED / BLOCKED_BY_CDP_01"
-      },
-      {
-        "id": "MNT-CDP-03",
-        "label": "Planilha/CSV para atualização de valores",
-        "state": "PLANNED / PENDING"
-      },
-      {
-        "id": "MNT-CDP-04",
-        "label": "Aprovação/publicação/versionamento/rollback/auditoria",
-        "state": "PLANNED"
-      },
-      {
-        "id": "MNT-CDP-05",
-        "label": "Migrar Home/páginas exatas para snapshot v3",
-        "state": "PLANNED / NOT_AUTHORIZED"
-      },
-      {
-        "id": "MNT-CDP-06",
-        "label": "QA E2E da primeira atualização sem deploy + rollback",
-        "state": "PLANNED"
+        "id": "MNT-PERF-01",
+        "label": "Favicon load / LCP regression validation",
+        "state": "ACTIVE / AUTHORIZED / MEASUREMENT_ONLY"
       }
     ]
   },
@@ -137,5 +112,58 @@
     "favicon": "TEGRA_T_BROWSER_AND_SEARCH_PACKAGE / LIVE / USER_BROWSER_RECHECK_REQUIRED / GOOGLE_SERP_RECRAWL_PENDING",
     "social_sharing": "LIVE_METADATA_VALIDATED",
     "capiitolo_search_variant": "IMPLEMENTED"
+  },
+  "queued_workstreams": [
+    {
+      "id": "COMMERCIAL_DATA_PLANE_REENTRY",
+      "label": "Commercial Data Plane / atualização de valores",
+      "state": "ACTIVE / DECOMPOSED / OUTSIDE_RESF_ACCOUNTING",
+      "architecture": "docs/architecture/MNT_COMMERCIAL_DATA_PLANE_V3.md",
+      "provider": "NOT_SELECTED",
+      "current_child": "MNT-CDP-01",
+      "tasks": [
+        {
+          "id": "MNT-CDP-01",
+          "label": "Selecionar e provar provider/publication owner",
+          "state": "ACTIVE / PROVIDER_SELECTION"
+        },
+        {
+          "id": "MNT-CDP-02",
+          "label": "Definir e provar public read + protected admin write",
+          "state": "PLANNED / BLOCKED_BY_CDP_01"
+        },
+        {
+          "id": "MNT-CDP-03",
+          "label": "Planilha/CSV para atualização de valores",
+          "state": "PLANNED / PENDING"
+        },
+        {
+          "id": "MNT-CDP-04",
+          "label": "Aprovação/publicação/versionamento/rollback/auditoria",
+          "state": "PLANNED"
+        },
+        {
+          "id": "MNT-CDP-05",
+          "label": "Migrar Home/páginas exatas para snapshot v3",
+          "state": "PLANNED / NOT_AUTHORIZED"
+        },
+        {
+          "id": "MNT-CDP-06",
+          "label": "QA E2E da primeira atualização sem deploy + rollback",
+          "state": "PLANNED"
+        }
+      ]
+    }
+  ],
+  "performance_followup": {
+    "trigger": "USER_REPORTED_FAVICON_PERCEIVED_LOAD_DELAY",
+    "favicon_visual": "WORKING / USER_CONFIRMED",
+    "lcp_impact": "NOT_MEASURED / NOT_PROVEN",
+    "favicon_ico_bytes": 5428,
+    "favicon_png_16_bytes": 408,
+    "favicon_png_32_bytes": 587,
+    "favicon_png_48_bytes": 696,
+    "measurement_method": "5-run Lighthouse mobile on Home/CAPIITOLO/Elo Duo/Ária + cold/warm favicon request timing",
+    "remediation_authorized": false
   }
 }

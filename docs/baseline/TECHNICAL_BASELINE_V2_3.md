@@ -176,27 +176,40 @@ For new exact-project photographic hero/gallery implementations, responsive deri
 
 ## 10. Brand favicon standard
 
-Canonical browser favicon asset:
+Canonical browser/search favicon package is project-owned and source-derived from the Product Authority approved transparent Tegra yellow `T` PNG.
 
-`https://s3-gdigital.s3.amazonaws.com/gdigital/313/Favicon_Tegra_500x500_nobg.webp`
+Runtime assets:
 
-Every standalone HTML page with its own `<head>` under `src-greenn` or `experiments` must declare exactly one `rel="icon"` pointing to that asset. The horizontal Tegra logo is not a favicon and must never be reused as one.
+- `/favicon.ico` — 16x16 + 32x32 + 48x48 + 96x96 + 192x192;
+- `/favicon-16x16.png`;
+- `/favicon-32x32.png`;
+- `/favicon-48x48.png`;
+- `/apple-touch-icon.png`.
 
-This rule is enforced by:
+Standalone HTML declares explicit 48/32/16 PNG browser icons, `shortcut icon=/favicon.ico` and Apple Touch icon.
+
+Canonical contract:
 
 - `docs/brand/FAVICON_STANDARD.md`;
 - `scripts/validate-favicon-standard.mjs`;
 - `.github/workflows/favicon-standard.yml`.
 
-HTML fragments without their own `<head>` inherit the favicon from the containing page.
+Current effective Production runtime:
 
-Google Search favicon eligibility remains a separate validation concern because the supplied canonical asset is WebP and WebP is not currently listed among Google Search's supported favicon formats. Do not mark the SERP favicon fixed without a supported-format derivative and Google recrawl evidence.
+```text
+SHA = c80a8e1d773d85af563d9630f6e460e7ad85ea02
+deployment = dpl_4F8SF29FyNj7EcpyqM9zT57oYAoi / READY
+favicon visual = WORKING / USER_CONFIRMED
+Google SERP visual refresh = AWAITING_EXTERNAL_RECRAWL / NOT_OBSERVED
+```
+
+Product Authority reported a perceptible favicon loading delay after visual success. This is not evidence of LCP regression. `MNT-PERF-01` is the authorized measurement-only follow-up.
 
 ## 11. Current residuals and boundaries
 
 Known residuals do not silently become PASS:
 
-- browser favicon standard is canonicalized to the approved square Tegra WebP asset; Google Search favicon eligibility remains open because WebP is not listed as a supported Search favicon format;
+- browser favicon package is project-owned and live from the approved Tegra yellow T source; Google SERP visual refresh remains externally unobserved, and favicon/LCP performance impact is pending MNT-PERF-01 measurement;
 - exact published GTM version number for the `www` host cutover is not recorded in project evidence;
 - Search Console sitemap submission/processing status must be evidenced separately from sitemap deployment;
 - project/content factual residuals such as the governed Mozae metragem correction remain under their Search/Product Truth gates.

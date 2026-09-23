@@ -6,7 +6,7 @@ Atualizado em `2026-09-23`.
 
 Handoff detalhado vigente:
 
-`handoffs/HANDOFF-2026-09-23-PUBLIC-SURFACE-REMEDIATION-LIVE.md`
+`handoffs/HANDOFF-2026-09-23-FAVICON-LCP-RECHECK-NEXT.md`
 
 ## REPOSITORY_STATE
 
@@ -95,25 +95,36 @@ historical planning snapshot = ARCHIVE_ONLY
 
 ## CURRENT PRIORITY
 
-Commercial Data Plane v3 is now the active product-priority workstream outside RESF accounting.
+Immediate post-RESF priority:
 
 ```text
-COMMERCIAL_DATA_PLANE_REENTRY = ACTIVE / DECOMPOSED
-CURRENT_CHILD = MNT-CDP-01 / provider selection
-MNT-CDP-03 = PLANNED / PENDING / spreadsheet-CSV value update path
-provider/publication owner = NOT_SELECTED
-runtime migration = NOT_AUTHORIZED
-current Home commercial truth = PRESERVE
+MNT-PERF-01 = ACTIVE / AUTHORIZED / MEASUREMENT_ONLY
+trigger = USER_REPORTED favicon perceived load delay
+favicon visual = WORKING / USER_CONFIRMED
+LCP impact = NOT_MEASURED / NOT_PROVEN
+runtime mutation in measurement slice = FORBIDDEN
 ```
 
-The spreadsheet/CSV is an operator input channel, not a direct runtime data source.
+Detailed transition:
+
+`handoffs/HANDOFF-2026-09-23-FAVICON-LCP-RECHECK-NEXT.md`
+
+Queued after adjudication:
+
+```text
+MNT-CDP-01 = QUEUED / RESUME_AFTER_MNT_PERF_01
+MNT-CDP-03 = PLANNED / PENDING / spreadsheet-CSV value update path
+```
 
 ## NEXT SAFE ACTION
 
 Read `docs/NEXT_SAFE_ACTION.md`.
 
-Execute MNT-CDP-01: select and prove the Commercial Data Plane publication provider/owner. Keep M6-07/M6-08 and the pending MNT-CDP-03 spreadsheet/CSV path visible in the dashboard.
+Execute **MNT-PERF-01 — Favicon load / LCP regression validation**.
 
+Measure first. Do not change favicon/cache/hero/GTM/runtime during the measurement slice without separate Product Authority authorization.
+
+After adjudication, resume MNT-CDP-01.
 
 ## FINAL TEGRA T FAVICON
 
@@ -127,6 +138,7 @@ source SHA-256 = 0fd8e12cc711543f44a6b34581bdb09981e7e30570b783cb8b29057ff408caf
 /favicon-96x96.png = LIVE
 /favicon-192x192.png = LIVE
 /apple-touch-icon.png = LIVE / 180x180
-browser tab recheck = REQUIRED / site-side assets and declarations are LIVE
+browser tab visual = WORKING / USER_CONFIRMED
+favicon perceived load delay = USER_REPORTED / MNT-PERF-01 NEXT
 Google SERP refresh = AWAITING_EXTERNAL_RECRAWL / NOT_OBSERVED
 ```

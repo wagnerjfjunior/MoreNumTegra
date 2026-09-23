@@ -1330,3 +1330,45 @@ workflow gates = 11 / 11 SUCCESS
 ```
 
 The site-side browser-tab gap is remediated. A fresh browser/tab confirmation remains user-observed evidence; Google SERP refresh remains external.
+
+
+## MNT-PERF-01 — Favicon load / LCP regression validation
+
+Product Authority confirmed the current browser favicon is visually working and reported that it appears to take time to load.
+
+Classification:
+
+```text
+favicon visual = WORKING / USER_CONFIRMED
+perceived favicon delay = USER_REPORTED
+LCP impact = NOT_MEASURED / NOT_PROVEN
+task = AUTHORIZED / MEASUREMENT_ONLY
+counted in RESF hours = NO
+```
+
+Current effective Production:
+
+```text
+runtime = c80a8e1d773d85af563d9630f6e460e7ad85ea02
+deployment = dpl_4F8SF29FyNj7EcpyqM9zT57oYAoi
+state = READY
+```
+
+Current deterministic favicon payload:
+
+```text
+favicon.ico = 5,428 B
+favicon-16x16.png = 408 B
+favicon-32x32.png = 587 B
+favicon-48x48.png = 696 B
+```
+
+The payload sizes do not establish whether the favicon affected LCP.
+
+MNT-PERF-01 must run a fresh production performance battery before any new favicon/cache/hero/GTM remediation.
+
+Detailed session handoff:
+
+`handoffs/HANDOFF-2026-09-23-FAVICON-LCP-RECHECK-NEXT.md`
+
+After adjudication, resume `MNT-CDP-01`.
