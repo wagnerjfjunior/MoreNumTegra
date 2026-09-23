@@ -21,7 +21,7 @@ This source is the basis for the favicon package below.
 All standalone MoreNumTegra HTML pages declare:
 
 ```html
-<link rel="icon" type="image/x-icon" href="/favicon.ico?v=tegra-t-20260923" sizes="any">
+<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 ```
 
@@ -34,7 +34,7 @@ https://www.moretegra.com.br/favicon.ico
 ## Generated package
 
 ```text
-/favicon.ico             = 256x256 ICO with one valid embedded PNG frame
+/favicon.ico             = ICO with validated 48x48, 96x96 and 192x192 PNG frames
 /favicon-48x48.png       = 48x48 PNG
 /favicon-96x96.png       = 96x96 PNG
 /favicon-192x192.png     = 192x192 PNG
@@ -43,7 +43,7 @@ https://www.moretegra.com.br/favicon.ico
 
 All derivatives preserve transparency and the same Tegra mark.
 
-The single-frame ICO is deliberate: it avoids the corrupt multi-frame regression previously observed while remaining well above Google's favicon size recommendation.
+The final ICO uses only three validated PNG frames: 48×48, 96×96 and 192×192. The validator checks every frame boundary and PNG signature, preventing a repeat of the corrupt-frame regression.
 
 ## Google Search eligibility
 
@@ -94,8 +94,4 @@ Public asset URL remains:
 
 `https://www.moretegra.com.br/favicon.ico`
 
-HTML currently references the stable revisioned URL:
-
-`/favicon.ico?v=tegra-t-20260923`
-
-The query string exists only to force browsers that cached the former favicon to fetch the new Tegra “T” asset. The underlying canonical file remains `/favicon.ico`.
+HTML references the stable canonical URL `/favicon.ico`. Vercel sends `Cache-Control: public, max-age=0, must-revalidate` for this asset so browsers revalidate the file instead of retaining the former favicon indefinitely.
