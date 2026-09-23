@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const ROOT = process.cwd();
-const FOOTER_LOGO = "https://s3-gdigital.s3.amazonaws.com/gdigital/313/dkRxNEw3OY1mr3apBCmTbFFGpzD4PZnbGLWpJq1q.webp";
+const FOOTER_LOGO = "/assets/brand/tegra-vendas-256.webp";
 const P1 = "Página de atendimento comercial More em um Tegra. Informações de unidades, disponibilidade e condições devem ser confirmadas diretamente com a equipe Tegra Vendas. Imagens, perspectivas, preços e condições podem ser atualizados sem aviso prévio.";
 const P2 = "Os valores exibidos nesta página são referências comerciais vinculadas às unidades indicadas e podem sofrer alterações. Alguns empreendimentos podem apresentar condições promocionais específicas, sujeitas à disponibilidade da respectiva unidade. Preços, unidades, disponibilidade e condições comerciais devem ser confirmados com nossos corretores no atendimento.";
 const CONTACT = "Sabrina da Tegra · Corretora Tegra Vendas · CRECI-SP 209.905-F.";
