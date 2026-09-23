@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const CANONICAL_FAVICON = "/favicon.ico";
+const CANONICAL_FAVICON = "/favicon.ico?v=tegra-t-20260923";
 const APPLE_TOUCH_ICON = "/apple-touch-icon.png";
 const OLD_WEBP_FAVICON = "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Favicon_Tegra_500x500_nobg.webp";
 const OLD_HORIZONTAL_LOGO = "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp";
@@ -52,7 +52,7 @@ if (!fs.existsSync("favicon.ico") || fs.statSync("favicon.ico").size < 100) {
       const size = ico.readUInt32LE(offset + 8);
       const imageOffset = ico.readUInt32LE(offset + 12);
 
-      if (width === height && width >= 48) hasRecommendedSquare = true;
+      if (width === height && [48, 96, 192].includes(width)) hasRecommendedSquare = true;
       if (imageOffset + size > ico.length) {
         fail(`favicon.ico frame ${i} points outside the file`);
         continue;
@@ -63,7 +63,7 @@ if (!fs.existsSync("favicon.ico") || fs.statSync("favicon.ico").size < 100) {
       if (!isPng) fail(`favicon.ico frame ${i} is not a valid embedded PNG frame`);
     }
 
-    if (!hasRecommendedSquare) fail("favicon.ico must contain at least one square 48x48-or-larger image");
+    if (!hasRecommendedSquare) fail("favicon.ico must contain a recommended 48/96/192 square frame");
   }
 }
 
