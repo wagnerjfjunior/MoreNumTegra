@@ -961,7 +961,7 @@ P1:
 P2:
 
 1. CAPIITOLO critical body is composed client-side from the editorial source through fetch/DOMParser/document replacement.
-2. Google Search favicon eligibility residual remains open for the canonical WebP favicon.
+2. Historical M7-02 finding: Google Search favicon eligibility was unresolved for the former WebP favicon. Superseded by PR #241 on 2026-09-23.
 
 Canonical M7-02 evidence:
 
@@ -1207,7 +1207,7 @@ Still open/observable:
 
 ```text
 MNT-RES-01 = OPEN / P2 / CAPIITOLO client-side editorial composition
-MNT-RES-02 = OPEN / P2 / Search favicon eligibility
+MNT-RES-02 = SITE_SIDE_FIXED / AWAITING_GOOGLE_RECRAWL / NOT_OBSERVED
 MNT-RES-03 = NOT_OBSERVED / physical-device mobile QA
 MNT-RES-04 = NOT_OBSERVED / screen-reader validation
 MNT-RES-05 = NOT_OBSERVED / field CWV / field INP
@@ -1235,7 +1235,7 @@ Elo Duo = HTTP 200
 Not all residuals are eliminated:
 
 ```text
-/favicon.ico = HTTP 404 / residual still open
+/favicon.ico = HISTORICAL_HTTP_404 / SUPERSEDED_BY_PR_241
 CAPIITOLO client-side editorial composition = P2 / still open
 physical-device QA = NOT_OBSERVED
 screen-reader validation = NOT_OBSERVED
@@ -1253,3 +1253,38 @@ all known problems eliminated = NO
 ```
 
 The remaining items are explicitly visible in the dashboard/read-model backlog and do not invalidate the completed M7/RESF release gate.
+
+
+## Public surface remediation — PR #241
+
+Production:
+
+```text
+main = 1543bb2a16d2ecace4d697fa6f381f9353df7582
+deployment = dpl_GAKSbqFmB3xExV2wYhPMN1iErJfp
+state = READY
+runtime errors / post-deploy = NONE OBSERVED
+```
+
+Validated live:
+
+```text
+/favicon.ico = HTTP 200 / image/vnd.microsoft.icon
+Home = 200 / favicon=/favicon.ico / social image 1280x720
+CAPIITOLO = 200 / favicon=/favicon.ico / Capitolo variant metadata live
+Elo Duo = 200 / social metadata live
+Ária = 200 / social metadata live
+```
+
+CAPIITOLO search handling keeps one canonical page and supports `Capitolo Tegra` through visible clarification, FAQ, schema alternateName and redirect aliases.
+
+Current residual disposition:
+
+```text
+CAPIITOLO client-side editorial composition = OPEN / P2
+Search favicon site-side defect = CLOSED
+Google SERP favicon refresh = AWAITING_EXTERNAL_RECRAWL / NOT_OBSERVED
+physical-device QA = NOT_OBSERVED
+screen-reader validation = NOT_OBSERVED
+field CWV / field INP = NOT_OBSERVED
+```
