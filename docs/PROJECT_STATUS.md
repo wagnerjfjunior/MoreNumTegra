@@ -1214,3 +1214,42 @@ MNT-RES-05 = NOT_OBSERVED / field CWV / field INP
 ```
 
 These residuals are not hidden PASS conditions and remain dashboard-visible.
+
+
+## General live audit — 2026-09-23
+
+Live Production verification:
+
+```text
+deployment = dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C
+state = READY
+runtime SHA = 124b620855175a583c528733462d6d0f4f44cd41
+runtime errors / last 24h = NONE OBSERVED
+
+Home = HTTP 200
+CAPIITOLO = HTTP 200
+Elo Duo = HTTP 200
+Ária = HTTP 200
+```
+
+Not all residuals are eliminated:
+
+```text
+/favicon.ico = HTTP 404 / residual still open
+CAPIITOLO client-side editorial composition = P2 / still open
+physical-device QA = NOT_OBSERVED
+screen-reader validation = NOT_OBSERVED
+field CWV / field INP = NOT_OBSERVED
+```
+
+Therefore:
+
+```text
+P0 = 0
+P1 = 0
+P2 = 2
+critical release blockers = NONE
+all known problems eliminated = NO
+```
+
+The remaining items are explicitly visible in the dashboard/read-model backlog and do not invalidate the completed M7/RESF release gate.
