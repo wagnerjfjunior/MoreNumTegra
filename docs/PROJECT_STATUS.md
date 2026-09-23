@@ -11,9 +11,10 @@ CANONICAL_MAIN_RUNTIME = 124b620855175a583c528733462d6d0f4f44cd41
 PRODUCTION_DEPLOYMENT = dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C
 PRODUCTION_STATE = READY
 
+MNT-RESF = CLOSED / COMPLETE_WITH_DEFERRED_PAID_MEDIA_SCOPE
 MNT-M5 = COMPLETE / ACCEPTED
-MNT-M6 = ACTIVE / PAID_MEDIA_FROZEN / M6-07_DEFERRED
-MNT-M7 = ACTIVE / M7_12_COMPLETE / M7_13_NEXT
+MNT-M6 = DEFERRED / PAID_MEDIA_FROZEN / 40H_UNACCEPTED
+MNT-M7 = COMPLETE / ACCEPTED
 MNT-M7-01 = COMPLETE / NO_ACTIVE_PREVIEW_CANDIDATE / EXISTING_RELEASE_EVIDENCE_REUSED
 MNT-M7-02 = COMPLETE / ACCEPTED_WITH_P2_RESIDUALS
 MNT-M7-03 = COMPLETE / ACCEPTED
@@ -26,7 +27,7 @@ MNT-M7-09 = COMPLETE / ACCEPTED
 MNT-M7-10 = COMPLETE / ACCEPTED
 MNT-M7-11 = COMPLETE / ACCEPTED / PAID_MEDIA_FROZEN
 MNT-M7-12 = COMPLETE / ACCEPTED
-MNT-M7-13 = ACTIVE / AUTHORIZED_BY_SEQUENCE / PROVIDER_INTAKE_NEXT
+MNT-M7-13 = COMPLETE / PROVIDER_INTAKE_MERGED
 MNT-M6-01 = COMPLETE / DESIGN_CANONICALIZED / NO_RUNTIME_MUTATION
 MNT-M6-06 = COMPLETE / BUDGET_SPEND_POLICY_AUTHORIZED / PAID_MEDIA_FROZEN
 MNT-M5-01 = COMPLETE / ACCEPTED_WITH_EXPLICIT_RESIDUALS
@@ -41,9 +42,9 @@ MNT-M5-09 = COMPLETE / CONVERSION_QA_PASS / NO_RUNTIME_MUTATION
 MNT-M5-10 = COMPLETE / ACCEPTED / CANDIDATE1_RETAINED / TARGET_PASS / PERFORMANCE_DIRECTION_INCONCLUSIVE
 
 FORECAST_TOTAL_HOURS = 1240
-ACCEPTED_SCOPE_EQUIVALENT_HOURS = 1184
-REMAINING_FORECAST_HOURS = 56
-ACCEPTED_PERCENT = 95.48
+ACCEPTED_SCOPE_EQUIVALENT_HOURS = 1200
+REMAINING_FORECAST_HOURS = 40
+ACCEPTED_PERCENT = 96.77
 ```
 
 ## 2. M5-06 CTA/Form journey
@@ -1083,3 +1084,62 @@ M6-08 = 16h / deferred / depends on M6-07
 ```
 
 No Ads mutation, spend, synthetic paid conversion or new runtime deployment was used to obtain these closures.
+
+
+## M7-13 / RESF final closure
+
+Canonical closure:
+
+`docs/sfjm/MNT_RESF_PROGRAM_CLOSURE_2026-09-23.md`
+
+Provider evidence intake was merged:
+
+```text
+provider = wagnerjfjunior/Blogs-sites-portais-seo
+PR = #15
+consumer source = e6fc4fee3a375afc45988d456220891cbe11cb15
+provider intake head = 6eb812f805bc1a6412f51dd1806b6699187b03dc
+provider merge = c8cf9c8f49982c30d641b6c590ddf53018802e52
+provider main after merge = c8cf9c8f49982c30d641b6c590ddf53018802e52
+validate-agent-framework run = 35856574031 / success
+SES Documentation Auditor = PASS_WITH_RESIDUAL_RISK
+```
+
+The provider intake remained classification-only:
+
+```text
+RESF provider lifecycle = CANDIDATE
+framework lifecycle mutation = NO
+framework registry mutation = NO
+consumer mutation = NO
+```
+
+M7 final:
+
+```text
+MNT-M7 = COMPLETE / ACCEPTED
+accepted = 192 / 192h
+P0 = 0
+P1 = 0
+P2 = 2
+P3 = 0
+```
+
+Program closure:
+
+```text
+MNT-RESF = CLOSED / COMPLETE_WITH_DEFERRED_PAID_MEDIA_SCOPE
+forecast = 1240h
+accepted = 1200h
+deferred = 40h
+accepted percent = 96.77%
+```
+
+The 40h deferred scope is exactly:
+
+- M6-07 = 24h / Google Ads external implementation / PAID_MEDIA_FROZEN;
+- M6-08 = 16h / Paid conversion QA / DEPENDS_ON_M6-07.
+
+No paid-media mutation or spend was used to close RESF.
+
+The active priority after RESF closure is Commercial Data Plane v3 provider/publication-owner selection, outside RESF accepted-hour accounting.
