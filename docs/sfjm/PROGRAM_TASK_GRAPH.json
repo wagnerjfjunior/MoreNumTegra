@@ -20,7 +20,7 @@
     "framework": "RESF v1 — Search-to-Lead",
     "framework_provider": "wagnerjfjunior/Blogs-sites-portais-seo",
     "framework_provider_ref": "7a61aa036d677015ee4540ca8c5dc9a41f0165d4",
-    "state": "ACTIVE / M7_ACTIVE / PAID_MEDIA_FROZEN",
+    "state": "CLOSED / COMPLETE_WITH_DEFERRED_PAID_MEDIA_SCOPE",
     "planning_baseline_date": "2026-09-10",
     "wbs_source": "docs/roadmap/MNT_RESF_SEARCH_TO_LEAD_WBS.md"
   },
@@ -35,27 +35,28 @@
   },
   "progress": {
     "forecast_total_hours": 1240,
-    "accepted_scope_equivalent_hours": 1184,
-    "remaining_forecast_hours": 56,
-    "accepted_percent": 95.48,
-    "display_percent": 95.48,
+    "accepted_scope_equivalent_hours": 1200,
+    "remaining_forecast_hours": 40,
+    "accepted_percent": 96.77,
+    "display_percent": 96.77,
     "basis": "COMPLETE_TASK_HOURS_DIVIDED_BY_TOTAL_FORECAST_HOURS",
     "source": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
-    "warning": "Current lifecycle/progress is sourced from CURRENT_PROGRAM_STATE. This task graph remains structural authority for hierarchy/task IDs/planning hours; do not infer stale child state outside reconciled slices."
+    "warning": "Current lifecycle/progress is sourced from CURRENT_PROGRAM_STATE. This task graph remains structural authority for hierarchy/task IDs/planning hours; do not infer stale child state outside reconciled slices.",
+    "deferred_scope_equivalent_hours": 40
   },
   "current": {
-    "phase_id": "MNT-M7",
-    "phase_state": "ACTIVE",
-    "work_package": "QA, Release, Observability & Learning Loop",
-    "current_task_id": "MNT-M7-13",
-    "current_task_state": "AUTHORIZED_BY_SEQUENCE / PROVIDER_INTAKE_NEXT",
-    "next_task_id": "MNT-M7-13",
-    "next_task_state": "AUTHORIZED_BY_SEQUENCE",
-    "next_safe_action": "Perform RESF provider evidence intake after consumer evidence is canonical. Keep M6-07/M6-08 frozen.",
+    "phase_id": "NONE / PROGRAM_CLOSED",
+    "phase_state": "CLOSED",
+    "work_package": "RESF CLOSED / COMMERCIAL DATA PLANE PRIORITY OUTSIDE RESF",
+    "current_task_id": "COMMERCIAL_DATA_PLANE_REENTRY",
+    "current_task_state": "ACTIVE / OUTSIDE_RESF_ACCOUNTING / PROVIDER_NOT_SELECTED",
+    "next_task_id": "COMMERCIAL_DATA_PLANE_REENTRY",
+    "next_task_state": "ACTIVE / OUTSIDE_RESF_ACCOUNTING",
+    "next_safe_action": "Select and prove the Commercial Data Plane publication provider/owner. Paid media remains frozen and M6-07/M6-08 stay deferred.",
     "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md",
     "current_state_source": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
-    "task_id": "MNT-M7-13",
-    "state": "AUTHORIZED_BY_SEQUENCE / PROVIDER_INTAKE_NEXT"
+    "task_id": "COMMERCIAL_DATA_PLANE_REENTRY",
+    "state": "ACTIVE / OUTSIDE_RESF_ACCOUNTING / PROVIDER_NOT_SELECTED"
   },
   "sources": {
     "bootstrap": "bootstrap/BOOTSTRAP_CANONICO.md",
@@ -573,7 +574,7 @@
     {
       "id": "MNT-M6",
       "label": "Attribution & Paid Media Readiness",
-      "state": "ACTIVE / PAID_MEDIA_FROZEN / M6_07_DEFERRED",
+      "state": "DEFERRED / PAID_MEDIA_FROZEN / 40H_UNACCEPTED",
       "hours": 128,
       "accepted_hours": 88,
       "effort_class": "CONSUMER_PLANNING_ESTIMATE",
@@ -641,30 +642,30 @@
         {
           "id": "MNT-M6-07",
           "label": "Authorized external platform implementation",
-          "state": "DEFERRED / PAID_MEDIA_FROZEN / GA4_AUDIENCE_SETUP_COMPLETE",
+          "state": "DEFERRED / PAID_MEDIA_FROZEN / NOT_ACCEPTED",
           "hours": 24,
           "accepted_hours": 0,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "PAID_MEDIA_NOT_AUTHORIZED / GA4_AUDIENCE_MANUAL_SETUP_AUTHORIZED",
+          "authorization": "DEFERRED_BY_PRODUCT_AUTHORITY",
           "evidence": "docs/attribution/MNT_GA4_AUDIENCE_MANUAL_COMPLETION_2026-09-22.md"
         },
         {
           "id": "MNT-M6-08",
           "label": "Paid conversion QA",
-          "state": "DEFERRED / DEPENDS_ON_M6_07",
+          "state": "DEFERRED / DEPENDS_ON_M6_07 / NOT_ACCEPTED",
           "hours": 16,
           "accepted_hours": 0,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "NOT_AUTHORIZED"
+          "authorization": "DEFERRED_BY_PRODUCT_AUTHORITY"
         }
       ]
     },
     {
       "id": "MNT-M7",
       "label": "QA, Release, Observability & Learning Loop",
-      "state": "ACTIVE / M7_12_COMPLETE / M7_13_NEXT",
+      "state": "COMPLETE / ACCEPTED",
       "hours": 192,
-      "accepted_hours": 176,
+      "accepted_hours": 192,
       "effort_class": "CONSUMER_PLANNING_ESTIMATE",
       "tasks": [
         {
@@ -790,11 +791,12 @@
         {
           "id": "MNT-M7-13",
           "label": "RESF provider evidence intake / learning loop",
-          "state": "ACTIVE / AUTHORIZED_BY_SEQUENCE / PROVIDER_INTAKE_NEXT",
+          "state": "COMPLETE / PROVIDER_INTAKE_MERGED",
           "hours": 16,
-          "accepted_hours": 0,
+          "accepted_hours": 16,
           "effort_class": "CONSUMER_PLANNING_ESTIMATE",
-          "authorization": "AUTHORIZED_BY_PRODUCT_AUTHORITY_SEQUENCE"
+          "authorization": "CLOSED",
+          "evidence": "docs/sfjm/MNT_RESF_PROGRAM_CLOSURE_2026-09-23.md"
         }
       ]
     }
