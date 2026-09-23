@@ -13,15 +13,15 @@ Handoff detalhado vigente:
 ```text
 CANONICAL_REPOSITORY = wagnerjfjunior/MoreNumTegra
 CANONICAL_BRANCH = main
-LATEST_RUNTIME_SHA = 1543bb2a16d2ecace4d697fa6f381f9353df7582
+LATEST_RUNTIME_SHA = 847a2f4460894e1f0fdcc30501f6b6396ec67b75
 ```
 
 ## DEPLOYMENT_STATE / PRODUCTION_STATE
 
 ```text
 CANONICAL_HOST = www.moretegra.com.br
-PRODUCTION_DEPLOYMENT = dpl_GAKSbqFmB3xExV2wYhPMN1iErJfp
-PRODUCTION_SOURCE_SHA = 1543bb2a16d2ecace4d697fa6f381f9353df7582
+PRODUCTION_DEPLOYMENT = dpl_AeLHW8cj3w7kDgUdueLL56ezCeS7
+PRODUCTION_SOURCE_SHA = 847a2f4460894e1f0fdcc30501f6b6396ec67b75
 PRODUCTION_STATE = READY
 ```
 
@@ -113,3 +113,17 @@ The spreadsheet/CSV is an operator input channel, not a direct runtime data sour
 Read `docs/NEXT_SAFE_ACTION.md`.
 
 Execute MNT-CDP-01: select and prove the Commercial Data Plane publication provider/owner. Keep M6-07/M6-08 and the pending MNT-CDP-03 spreadsheet/CSV path visible in the dashboard.
+
+
+## FINAL TEGRA T FAVICON
+
+```text
+source = Product Authority PNG 500x500 / transparent
+source SHA-256 = 0fd8e12cc711543f44a6b34581bdb09981e7e30570b783cb8b29057ff408caf8
+/favicon.ico = LIVE / 48x48 + 96x96 + 192x192 / Tegra yellow T
+/favicon-48x48.png = LIVE
+/favicon-96x96.png = LIVE
+/favicon-192x192.png = LIVE
+/apple-touch-icon.png = LIVE / 180x180
+Google SERP refresh = AWAITING_EXTERNAL_RECRAWL / NOT_OBSERVED
+```
