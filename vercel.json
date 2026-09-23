@@ -28,6 +28,10 @@
     {
       "source": "/empreendimentos/aria-higienopolis/",
       "destination": "/src-greenn/empreendimentos/aria-higienopolis/index.html"
+    },
+    {
+      "source": "/empreendimentos/dsg-itaim/",
+      "destination": "/src-greenn/empreendimentos/dsg-itaim/index.html"
     }
   ],
   "headers": [
