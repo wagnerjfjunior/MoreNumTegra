@@ -219,7 +219,7 @@ META NOT_PROVEN != META DOES_NOT_EXIST
 
 Performance targets retained: LCP <= 2.5s, INP <= 200ms, CLS <= 0.1.
 
-### MNT-M6 — Attribution & Paid Media Readiness — 128h — ACTIVE / PAID_MEDIA_FROZEN
+### MNT-M6 — Attribution & Paid Media Readiness — 128h — DEFERRED / PAID_MEDIA_FROZEN / 40H_UNACCEPTED
 
 | ID | Activity | Hours | State |
 |---|---|---:|---|
@@ -229,8 +229,8 @@ Performance targets retained: LCP <= 2.5s, INP <= 200ms, CLS <= 0.1.
 | MNT-M6-04 | SEM campaign/query contract | 24 | COMPLETE / DESIGN_CANONICALIZED / INTERNAL_REGISTRY_ONLY / NO_EXTERNAL_MUTATION |
 | MNT-M6-05 | Landing-page/query mapping | 16 | COMPLETE / LANDING_QUERY_MAP_ACCEPTED / RUNTIME_REGRESSION_FIXED |
 | MNT-M6-06 | Budget/spend authorization gate | 8 | COMPLETE / BUDGET_SPEND_POLICY_AUTHORIZED / PAID_MEDIA_FROZEN |
-| MNT-M6-07 | Authorized external platform implementation | 24 | DEFERRED / PAID_MEDIA_FROZEN / GA4_AUDIENCE_MANUAL_SETUP_ALLOWED |
-| MNT-M6-08 | Paid conversion QA | 16 | DEFERRED / DEPENDS_ON_M6-07 |
+| MNT-M6-07 | Authorized external platform implementation | 24 | DEFERRED / PAID_MEDIA_FROZEN / NOT_ACCEPTED |
+| MNT-M6-08 | Paid conversion QA | 16 | DEFERRED / DEPENDS_ON_M6-07 / NOT_ACCEPTED |
 
 Accepted M6 scope-equivalent is `88h`: M6-01 through M6-06 are accepted. M6-07/M6-08 remain unaccepted while paid media is frozen.
 
@@ -255,7 +255,7 @@ Canonical closure evidence:
 - `docs/attribution/MNT_GA4_AUDIENCE_MANUAL_RUNBOOK_V1_2026-09-22.md`
 - `handoffs/HANDOFF-2026-09-22-M6-06-COMPLETE-PAID-MEDIA-FROZEN.md`
 
-### MNT-M7 — QA, Release, Observability & Learning Loop — 192h — ACTIVE / M7_12_COMPLETE / M7_13_NEXT
+### MNT-M7 — QA, Release, Observability & Learning Loop — 192h — COMPLETE / ACCEPTED
 
 | ID | Activity | Hours | State |
 |---|---|---:|---|
@@ -271,7 +271,7 @@ Canonical closure evidence:
 | MNT-M7-10 | Post-release measurement | 24 | COMPLETE / ACCEPTED |
 | MNT-M7-11 | GSC/GA4/Ads observation window | 24 | COMPLETE / ACCEPTED / PAID_MEDIA_FROZEN |
 | MNT-M7-12 | Result registration with provenance | 16 | COMPLETE / ACCEPTED |
-| MNT-M7-13 | RESF provider evidence intake / learning loop | 16 | ACTIVE / AUTHORIZED_BY_SEQUENCE / PROVIDER_INTAKE_NEXT |
+| MNT-M7-13 | RESF provider evidence intake / learning loop | 16 | COMPLETE / PROVIDER_INTAKE_MERGED |
 
 ## 4. Current journey position
 
@@ -293,9 +293,11 @@ MNT-M5 COMPLETE
 
 M5 is complete at 168h. M6-01 through M6-06 are complete; M6-07/M6-08 remain deferred while paid media is frozen. Manual GA4 audience setup is complete.
 
-M7-01 through M7-12 are complete/accepted under their recorded evidence. M7-08 was accepted by supersession because ADR-006 makes Vercel the canonical commercial web runtime and Green/GDigital the Form46/CRM provider; no artificial Green web publication was performed.
+M7-01 through M7-13 are complete/accepted under their recorded evidence. M7-08 was accepted by supersession because ADR-006 makes Vercel the canonical commercial web runtime and Green/GDigital the Form46/CRM provider; no artificial Green web publication was performed.
 
-M7 release severity is:
+M7-13 provider evidence intake was merged into `wagnerjfjunior/Blogs-sites-portais-seo` through PR #15, merge `c8cf9c8f49982c30d641b6c590ddf53018802e52`. The provider lifecycle remained CANDIDATE and no framework registry was promoted.
+
+M7 release severity remains:
 
 ```text
 P0 = 0
@@ -304,13 +306,19 @@ P2 = 2
 P3 = 0
 ```
 
-The retained P2 residuals are CAPIITOLO client-side editorial composition and Search favicon eligibility.
+M7 accepted scope-equivalent is `192 / 192h` and M7 is COMPLETE.
 
-M7 accepted scope-equivalent is `176 / 192h`. M7-13 provider evidence intake is the final M7 task and is authorized by Product Authority sequence.
+M6-07/M6-08 remain explicitly deferred while paid media is frozen; no Ads implementation, spend or paid conversion QA is manufactured.
 
-M6-07/M6-08 remain deferred while paid media is frozen; no Ads implementation, spend or paid conversion QA is manufactured.
+The MoreNumTegra RESF consumer program is closed as:
 
-Current accepted program progress is `1184 / 1240h = 95.48%`; remaining forecast is `56h` = M7-13 16h + frozen M6-07/M6-08 40h.
+```text
+CLOSED / COMPLETE_WITH_DEFERRED_PAID_MEDIA_SCOPE
+accepted = 1200 / 1240h = 96.77%
+deferred = 40h
+```
+
+The deferred 40h are exactly M6-07 (24h) + M6-08 (16h) and remain reopenable only by a future explicit paid-media decision.
 
 Consumers must use `CURRENT_PROGRAM_STATE.json` for current lifecycle/progress and this WBS for structure/planning hours.
 
@@ -355,4 +363,23 @@ Canonical artifacts:
 
 Validation: 21 canonical projects / 25 offers / 23 Home cards / 23-of-23 runtime primary-price parity / no runtime mutation.
 
-Current RESF accepted progress: `1184 / 1240h = 95.48%`.
+Final RESF accepted progress at closure: `1200 / 1240h = 96.77%`; deferred paid-media scope: `40h`.
+
+
+## RESF final closure — 2026-09-23
+
+Canonical closure:
+
+`docs/sfjm/MNT_RESF_PROGRAM_CLOSURE_2026-09-23.md`
+
+```text
+M7 = COMPLETE / 192h accepted
+M6 = 88h accepted / 40h deferred
+MNT-RESF = CLOSED / COMPLETE_WITH_DEFERRED_PAID_MEDIA_SCOPE
+accepted = 1200 / 1240h
+accepted percent = 96.77%
+deferred = 40h
+Ads spend used for closure = R$ 0
+```
+
+The program must not be rendered as 100% complete because M6-07/M6-08 were intentionally not executed.
