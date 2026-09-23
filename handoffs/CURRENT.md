@@ -6,22 +6,22 @@ Atualizado em `2026-09-23`.
 
 Handoff detalhado vigente:
 
-`handoffs/HANDOFF-2026-09-23-DASHBOARD-RECONCILED-CDP-BACKLOG.md`
+`handoffs/HANDOFF-2026-09-23-PUBLIC-SURFACE-REMEDIATION-LIVE.md`
 
 ## REPOSITORY_STATE
 
 ```text
 CANONICAL_REPOSITORY = wagnerjfjunior/MoreNumTegra
 CANONICAL_BRANCH = main
-LATEST_RUNTIME_SHA = 124b620855175a583c528733462d6d0f4f44cd41
+LATEST_RUNTIME_SHA = 1543bb2a16d2ecace4d697fa6f381f9353df7582
 ```
 
 ## DEPLOYMENT_STATE / PRODUCTION_STATE
 
 ```text
 CANONICAL_HOST = www.moretegra.com.br
-PRODUCTION_DEPLOYMENT = dpl_9xYzKZnnVM8qAKDEgnBNXCUvPv7C
-PRODUCTION_SOURCE_SHA = 124b620855175a583c528733462d6d0f4f44cd41
+PRODUCTION_DEPLOYMENT = dpl_GAKSbqFmB3xExV2wYhPMN1iErJfp
+PRODUCTION_SOURCE_SHA = 1543bb2a16d2ecace4d697fa6f381f9353df7582
 PRODUCTION_STATE = READY
 ```
 
@@ -61,10 +61,10 @@ P2 = 2
 P3 = 0
 ```
 
-P2 residuals:
+Current residuals:
 
-- CAPIITOLO client-side editorial composition;
-- Search favicon eligibility residual.
+- CAPIITOLO client-side editorial composition — OPEN / P2;
+- Google SERP favicon visual refresh — AWAITING_EXTERNAL_RECRAWL / NOT_OBSERVED.
 
 ## PAID MEDIA
 
