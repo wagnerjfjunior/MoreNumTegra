@@ -1,64 +1,72 @@
 # MoreNumTegra — Favicon Standard
 
-Status: `CANONICAL` when merged to `main`  
-Date: `2026-09-19`
+Status: `CANONICAL_CANDIDATE` until merged to `main`  
+Date: `2026-09-23`
 
-## Canonical brand asset
+## Canonical favicon
 
-All standalone MoreNumTegra HTML pages must declare exactly one favicon and use:
+All standalone MoreNumTegra HTML pages must declare exactly one favicon:
+
+```html
+<link rel="icon" href="/favicon.ico" sizes="any">
+```
+
+Canonical file:
+
+```text
+/favicon.ico
+```
+
+The file is a square multi-size ICO derivative of the approved Tegra favicon identity and is served from the canonical MoreNumTegra origin.
+
+## Why the WebP favicon was superseded
+
+The previous browser favicon used:
 
 ```text
 https://s3-gdigital.s3.amazonaws.com/gdigital/313/Favicon_Tegra_500x500_nobg.webp
 ```
 
-Required markup:
+That asset worked in browsers, but Google Search favicon documentation does not list WebP among its supported Search favicon formats.
 
-```html
-<link rel="icon" type="image/webp" href="https://s3-gdigital.s3.amazonaws.com/gdigital/313/Favicon_Tegra_500x500_nobg.webp">
-```
+Therefore the Search-facing canonical favicon is now ICO.
 
-The previous horizontal Tegra logo asset is not a favicon and must not be used in `rel="icon"`:
-
-```text
-https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp
-```
+The approved horizontal Tegra logo remains forbidden as `rel="icon"`.
 
 ## Scope
 
-The rule applies to:
-
-- portfolio/home page;
-- every exact-project page;
-- thank-you/standalone utility pages with their own `<head>`;
-- standalone experiment/source pages used to generate public pages;
-- every future standalone HTML page added to `src-greenn` or `experiments`.
-
-HTML fragments without a `<head>` do not declare favicon tags themselves; the containing document owns the favicon.
-
-## CI enforcement
-
-`scripts/validate-favicon-standard.mjs` scans standalone HTML under:
+The rule applies to every standalone HTML document under:
 
 - `src-greenn/**`;
 - `experiments/**`.
 
-Any future standalone HTML page that lacks the canonical favicon, has multiple favicon declarations, or reuses the horizontal logo as favicon must fail CI.
+HTML fragments without a `<head>` inherit the containing document favicon.
+
+## CI enforcement
+
+`scripts/validate-favicon-standard.mjs` verifies:
+
+- root `favicon.ico` exists;
+- each standalone HTML page has exactly one favicon declaration;
+- each standalone page points to `/favicon.ico`;
+- former WebP favicon is not still used;
+- horizontal Tegra logo is not misused as favicon.
 
 Workflow:
 
 `.github/workflows/favicon-standard.yml`
 
-## Search-engine compatibility note
+## Search-result expectation
 
-The supplied canonical asset is WebP. Current Google Search favicon documentation states that Search supports BMP, GIF, ICO, PNG, JPEG, PPM and TIFF for search-result favicons, and requires a square asset at least 8×8 (recommended larger than 48×48).
-
-Therefore:
+This change fixes the site-side technical eligibility problem:
 
 ```text
-BROWSER_SITE_FAVICON = CANONICAL_WEBP_ASSET
-GOOGLE_SEARCH_FAVICON_FORMAT_ELIGIBILITY = NOT_PROVEN / WEBP_NOT_LISTED_AS_SUPPORTED
+/favicon.ico = PRESENT
+supported Search favicon format = ICO
+square multi-size asset = YES
+canonical page favicon declaration = /favicon.ico
 ```
 
-Do not claim the Google SERP favicon is fixed merely because the browser favicon is fixed. A PNG/ICO/JPEG derivative of the same approved Tegra favicon should be introduced through a separate evidence-backed change if Google Search favicon eligibility is required.
+Google Search controls recrawl and SERP refresh timing. Merge/deploy therefore does not guarantee immediate visual replacement in search results.
 
-The canonical WebP URL must remain stable unless Product Authority explicitly approves a replacement.
+Do not claim the SERP favicon has updated until it is observed live.
