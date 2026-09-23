@@ -1,7 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const CANONICAL_FAVICON = "/favicon.ico";
+const REQUIRED_ICON_PNGS = [
+  ["/favicon-48x48.png", "48x48"],
+  ["/favicon-32x32.png", "32x32"],
+  ["/favicon-16x16.png", "16x16"]
+];
+const CANONICAL_ICO = "/favicon.ico";
 const APPLE_TOUCH_ICON = "/apple-touch-icon.png";
 const OLD_WEBP_FAVICON = "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Favicon_Tegra_500x500_nobg.webp";
 const OLD_HORIZONTAL_LOGO = "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp";
@@ -43,9 +48,8 @@ if (!fs.existsSync("favicon.ico") || fs.statSync("favicon.ico").size < 100) {
     fail("favicon.ico is not a valid ICO directory");
   } else {
     const pngSignature = [137, 80, 78, 71, 13, 10, 26, 10];
-    const requiredIcoSizes = new Set([48, 96, 192]);
+    const requiredIcoSizes = new Set([16, 32, 48, 96, 192]);
     const observedIcoSizes = new Set();
-    let hasRecommendedSquare = false;
 
     for (let i = 0; i < count; i += 1) {
       const offset = 6 + i * 16;
@@ -54,10 +58,7 @@ if (!fs.existsSync("favicon.ico") || fs.statSync("favicon.ico").size < 100) {
       const size = ico.readUInt32LE(offset + 8);
       const imageOffset = ico.readUInt32LE(offset + 12);
 
-      if (width === height && [48, 96, 192].includes(width)) {
-        hasRecommendedSquare = true;
-        observedIcoSizes.add(width);
-      }
+      if (width === height) observedIcoSizes.add(width);
       if (imageOffset + size > ico.length) {
         fail(`favicon.ico frame ${i} points outside the file`);
         continue;
@@ -68,13 +69,14 @@ if (!fs.existsSync("favicon.ico") || fs.statSync("favicon.ico").size < 100) {
       if (!isPng) fail(`favicon.ico frame ${i} is not a valid embedded PNG frame`);
     }
 
-    if (!hasRecommendedSquare) fail("favicon.ico must contain a recommended 48/96/192 square frame");
     for (const size of requiredIcoSizes) {
       if (!observedIcoSizes.has(size)) fail(`favicon.ico is missing required ${size}x${size} frame`);
     }
   }
 }
 
+validatePng("favicon-16x16.png", 16, 16);
+validatePng("favicon-32x32.png", 32, 32);
 validatePng("favicon-48x48.png", 48, 48);
 validatePng("favicon-96x96.png", 96, 96);
 validatePng("favicon-192x192.png", 192, 192);
@@ -102,12 +104,24 @@ for (const file of htmlFiles) {
   standaloneCount += 1;
 
   const iconLinks = [...html.matchAll(/<link[^>]+rel=["']icon["'][^>]*>/gi)].map((m) => m[0]);
+  const shortcutLinks = [...html.matchAll(/<link[^>]+rel=["']shortcut icon["'][^>]*>/gi)].map((m) => m[0]);
   const appleLinks = [...html.matchAll(/<link[^>]+rel=["']apple-touch-icon["'][^>]*>/gi)].map((m) => m[0]);
 
-  if (iconLinks.length !== 1) {
-    fail(`${file} must declare exactly one rel=icon; found ${iconLinks.length}`);
-  } else if (!iconLinks[0].includes(`href="${CANONICAL_FAVICON}"`) && !iconLinks[0].includes(`href='${CANONICAL_FAVICON}'`)) {
-    fail(`${file} must use canonical favicon ${CANONICAL_FAVICON}`);
+  for (const [href, size] of REQUIRED_ICON_PNGS) {
+    const match = iconLinks.find((link) => link.includes(`href="${href}"`) || link.includes(`href='${href}'`));
+    if (!match) {
+      fail(`${file} is missing rel=icon for ${href}`);
+      continue;
+    }
+    if (!match.includes(`sizes="${size}"`) && !match.includes(`sizes='${size}'`)) {
+      fail(`${file} must declare ${href} with sizes=${size}`);
+    }
+  }
+
+  if (shortcutLinks.length !== 1) {
+    fail(`${file} must declare exactly one rel="shortcut icon"; found ${shortcutLinks.length}`);
+  } else if (!shortcutLinks[0].includes(`href="${CANONICAL_ICO}"`) && !shortcutLinks[0].includes(`href='${CANONICAL_ICO}'`)) {
+    fail(`${file} must use canonical ICO ${CANONICAL_ICO}`);
   }
 
   if (appleLinks.length !== 1) {
@@ -117,8 +131,10 @@ for (const file of htmlFiles) {
   }
 
   if (html.includes(OLD_WEBP_FAVICON)) fail(`${file} still uses the former WebP favicon`);
-  if (iconLinks.some((link) => link.includes(OLD_HORIZONTAL_LOGO))) fail(`${file} still uses the horizontal Tegra logo as favicon`);
+  if ([...iconLinks, ...shortcutLinks].some((link) => link.includes(OLD_HORIZONTAL_LOGO))) {
+    fail(`${file} still uses the horizontal Tegra logo as favicon`);
+  }
 }
 
 if (failed) process.exit(1);
-console.log(`PASS: Tegra favicon package validated on ${standaloneCount} standalone HTML pages`);
+console.log(`PASS: browser + Search Tegra favicon package validated on ${standaloneCount} standalone HTML pages`);
