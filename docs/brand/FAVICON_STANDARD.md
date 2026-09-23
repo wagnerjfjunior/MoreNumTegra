@@ -1,37 +1,57 @@
 # MoreNumTegra — Favicon Standard
 
-Status: `CANONICAL` after production validation  
+Status: `CANDIDATE / GENERATED_FROM_PRODUCT_AUTHORITY_SOURCE`  
 Date: `2026-09-23`
 
-## Canonical favicon
+## Source asset
 
-All standalone MoreNumTegra HTML pages must declare exactly one favicon:
+Product Authority supplied one transparent square PNG:
+
+```text
+dimensions = 500x500
+format = PNG / RGBA / transparent background
+SHA-256 = 0fd8e12cc711543f44a6b34581bdb09981e7e30570b783cb8b29057ff408caf8
+visual = Tegra yellow T mark
+```
+
+This source is the basis for the favicon package below.
+
+## Canonical browser/Search favicon
+
+All standalone MoreNumTegra HTML pages declare:
 
 ```html
-<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 ```
 
-Canonical file:
+Canonical Search/browser URL remains stable:
 
 ```text
-/favicon.ico
+https://www.moretegra.com.br/favicon.ico
 ```
 
-The file is a square ICO using one validated 48×48 embedded PNG frame of the approved Tegra favicon identity and is served from the canonical MoreNumTegra origin.
-
-## Why the WebP favicon was superseded
-
-The previous browser favicon used:
+## Generated package
 
 ```text
-https://s3-gdigital.s3.amazonaws.com/gdigital/313/Favicon_Tegra_500x500_nobg.webp
+/favicon.ico             = ICO with validated 48x48, 96x96 and 192x192 PNG frames
+/favicon-48x48.png       = 48x48 PNG
+/favicon-96x96.png       = 96x96 PNG
+/favicon-192x192.png     = 192x192 PNG
+/apple-touch-icon.png    = 180x180 PNG
 ```
 
-That asset worked in browsers, but Google Search favicon documentation does not list WebP among its supported Search favicon formats.
+All derivatives preserve transparency and the same Tegra mark.
 
-Therefore the Search-facing canonical favicon is now ICO.
+The final ICO uses only three validated PNG frames: 48×48, 96×96 and 192×192. The validator checks every frame boundary and PNG signature, preventing a repeat of the corrupt-frame regression.
 
-The approved horizontal Tegra logo remains forbidden as `rel="icon"`.
+## Google Search eligibility
+
+Google Search requires a square favicon and recommends a size larger than 48x48. ICO and PNG are supported formats.
+
+The site keeps one stable Search favicon URL at `/favicon.ico`. Google controls recrawl/processing timing, so successful deployment does not imply immediate SERP visual refresh.
+
+Do not claim the Google result favicon has changed until observed live.
 
 ## Scope
 
@@ -46,37 +66,32 @@ HTML fragments without a `<head>` inherit the containing document favicon.
 
 `scripts/validate-favicon-standard.mjs` verifies:
 
-- root `favicon.ico` exists;
-- ICO directory and embedded frame boundaries are valid;
-- every embedded frame is a valid PNG frame;
-- at least one square frame is 48×48 or larger;
-- each standalone HTML page has exactly one favicon declaration;
-- each standalone page points to `/favicon.ico`;
-- former WebP favicon is not still used;
-- horizontal Tegra logo is not misused as favicon.
+- `favicon.ico` exists and has a valid ICO directory;
+- every embedded ICO frame stays inside file bounds;
+- every embedded ICO frame is a PNG frame;
+- at least one ICO frame is square and 48x48 or larger;
+- PNG derivative signatures and exact dimensions are valid;
+- every standalone page declares exactly one `rel="icon"`;
+- every standalone page declares exactly one `rel="apple-touch-icon"`;
+- the canonical paths are used;
+- the former WebP favicon is absent;
+- the horizontal Tegra logo is not misused as favicon.
 
 Workflow:
 
 `.github/workflows/favicon-standard.yml`
 
-## Search-result expectation
+## Historical regressions
 
-This change fixes the site-side technical eligibility problem:
+The former remote WebP favicon was replaced because Google Search documentation does not list WebP among supported Search favicon formats.
 
-```text
-/favicon.ico = PRESENT
-supported Search favicon format = ICO
-square validated 48x48 asset = YES
-canonical page favicon declaration = /favicon.ico
-```
-
-Google Search controls recrawl and SERP refresh timing. Merge/deploy therefore does not guarantee immediate visual replacement in search results.
-
-Do not claim the SERP favicon has updated until it is observed live.
+A later hand-built multi-frame ICO contained broken larger frames and could render as a blank square. That package is superseded by this source-derived package.
 
 
-## Corrupt multi-frame regression — 2026-09-23
+## Browser cache busting
 
-A prior 6-frame ICO passed the directory-level validator but contained broken larger embedded frames. Chrome could select a broken frame and render a blank square.
+Public asset URL remains:
 
-The replacement deliberately uses one validated 48×48 frame. The CI validator now checks every embedded frame boundary and PNG signature so the same defect cannot silently pass again.
+`https://www.moretegra.com.br/favicon.ico`
+
+HTML references the stable canonical URL `/favicon.ico`. Vercel sends `Cache-Control: public, max-age=0, must-revalidate` for this asset so browsers revalidate the file instead of retaining the former favicon indefinitely.
