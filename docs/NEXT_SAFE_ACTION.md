@@ -9,95 +9,78 @@ MNT-RESF = CLOSED / COMPLETE_WITH_DEFERRED_PAID_MEDIA_SCOPE
 ACCEPTED = 1200 / 1240h = 96.77%
 DEFERRED = 40h
 
-MNT-M7 = COMPLETE / ACCEPTED
-MNT-M6-07 = DEFERRED / PAID_MEDIA_FROZEN / NOT_ACCEPTED
-MNT-M6-08 = DEFERRED / DEPENDS_ON_M6_07 / NOT_ACCEPTED
+EFFECTIVE_PRODUCTION_RUNTIME = c80a8e1d773d85af563d9630f6e460e7ad85ea02
+PRODUCTION_DEPLOYMENT = dpl_4F8SF29FyNj7EcpyqM9zT57oYAoi
+PRODUCTION_STATE = READY
 
-COMMERCIAL_DATA_PLANE_REENTRY = ACTIVE / DECOMPOSED / OUTSIDE_RESF_ACCOUNTING
-CURRENT_CHILD = MNT-CDP-01
+FAVICON_VISUAL = WORKING / USER_CONFIRMED
+FAVICON_PERCEIVED_LOAD_DELAY = USER_REPORTED
+LCP_IMPACT = NOT_MEASURED / NOT_PROVEN
 ```
-
-Dashboard reconciliation:
-
-`docs/sfjm/MNT_DASHBOARD_WBS_STATE_RECONCILIATION_2026-09-23.md`
-
-## Current post-RESF decomposition
-
-| ID | Item | State |
-|---|---|---|
-| MNT-CDP-01 | Selecionar e provar provider/publication owner | **ACTIVE / NEXT** |
-| MNT-CDP-02 | Public read + protected admin write | PLANNED / BLOCKED_BY_CDP_01 |
-| MNT-CDP-03 | **Planilha/CSV para atualização de valores** → import/normalize/validate/candidate snapshot | PLANNED / PENDING |
-| MNT-CDP-04 | Approval/publish/version/rollback/audit | PLANNED |
-| MNT-CDP-05 | Migrar Home/páginas exatas para snapshot v3 | PLANNED / NOT_AUTHORIZED |
-| MNT-CDP-06 | Primeiro update de valor sem deploy + rollback E2E | PLANNED |
-
-The planilha/CSV is not the runtime source. It is an operator input that must pass the same schema/business validation before publication.
 
 ## Única próxima ação segura
 
-**MNT-CDP-01 — selecionar e provar o provider/publication owner.**
+**MNT-PERF-01 — Favicon load / LCP regression validation**
 
-The provider must prove:
+State:
 
-1. public HTTPS read;
-2. protected authenticated/admin write;
-3. versioned and atomic publication/current pointer;
-4. rollback;
-5. audit history;
-6. browser-safe CORS/cache/freshness;
-7. no browser secret;
-8. ability to publish a commercial update without MoreNumTegra runtime deployment.
+`ACTIVE / AUTHORIZED / MEASUREMENT_ONLY / OUTSIDE_RESF_ACCOUNTING`
 
-No runtime consumer migration is authorized by this step.
+Detailed handoff:
 
-## Residuals still visible
+`handoffs/HANDOFF-2026-09-23-FAVICON-LCP-RECHECK-NEXT.md`
+
+Required work:
+
+1. resolve live `main`, effective runtime and Production deployment;
+2. measure cold-load and warm-load favicon/icon request timing;
+3. record timing, transfer bytes, priority and cache behavior where observable;
+4. verify whether favicon/icon requests interact with the LCP critical path;
+5. run five Lighthouse mobile samples per canonical public route using the existing project methodology;
+6. calculate medians for LCP/FCP/CLS/TBT/transfer;
+7. compare against applicable accepted performance evidence as context;
+8. use an exact prior deployment as a same-method control if it remains accessible;
+9. do not claim causality without controlled evidence;
+10. stop before runtime remediation unless separately authorized.
+
+Targets remain:
 
 ```text
-P0 = 0
-P1 = 0
-CURRENT_CODE_OWNED_P2 = 1
-
-P2-01 = CAPIITOLO client-side editorial composition
-FAVICON = SITE_SIDE_FIXED / AWAITING_GOOGLE_RECRAWL / NOT_OBSERVED
-
-physical-device QA = NOT_OBSERVED
-screen-reader validation = NOT_OBSERVED
-field CWV / field INP = NOT_OBSERVED
+LCP <= 2500 ms
+INP <= 200 ms
+CLS <= 0.1
 ```
 
-## Still frozen/deferred
+Lighthouse TBT is not field INP.
+
+## Deterministic favicon payload context
 
 ```text
-M6-07 Google Ads external implementation = DEFERRED / PAID_MEDIA_FROZEN
-M6-08 Paid conversion QA = DEFERRED / DEPENDS_ON_M6-07
+/favicon.ico = 5,428 B
+/favicon-16x16.png = 408 B
+/favicon-32x32.png = 587 B
+/favicon-48x48.png = 696 B
+```
+
+The small payload does not by itself prove zero LCP impact.
+
+## After MNT-PERF-01
+
+Resume:
+
+`MNT-CDP-01 — select and prove Commercial Data Plane provider/publication owner`
+
+Pending value-update path remains:
+
+`MNT-CDP-03 — Planilha/CSV para atualização de valores`
+
+## Still frozen / deferred
+
+```text
+MNT-M6-07 = DEFERRED / PAID_MEDIA_FROZEN / NOT_ACCEPTED
+MNT-M6-08 = DEFERRED / DEPENDS_ON_M6_07 / NOT_ACCEPTED
 Search spend = R$ 0
 remarketing spend = R$ 0
 Meta paid media/CAPI = NOT_AUTHORIZED
 Looker Studio = DEFERRED
 ```
-
-Do not activate paid media merely to change the RESF percentage.
-
-Do not change current Home commercial values as part of architecture migration unless Product Authority separately changes them.
-
-
-## Public surface remediation completed — 2026-09-23
-
-```text
-PR = #241
-runtime SHA = 1543bb2a16d2ecace4d697fa6f381f9353df7582
-deployment = dpl_GAKSbqFmB3xExV2wYhPMN1iErJfp / READY
-
-/favicon.ico = HTTP 200
-favicon format = ICO
-favicon site-side issue = CLOSED
-Google SERP visual refresh = AWAITING_EXTERNAL_RECRAWL
-
-social sharing metadata = LIVE / VALIDATED
-Home share image = 1280x720
-CAPIITOLO/Capitolo variant strategy = LIVE / SINGLE_CANONICAL_PAGE
-runtime errors after deploy = NONE OBSERVED
-```
-
-Next safe action remains `MNT-CDP-01`.
