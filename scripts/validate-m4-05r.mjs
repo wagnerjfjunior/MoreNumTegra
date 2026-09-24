@@ -288,7 +288,8 @@ for (const stale of ['3647490', '3.647.490', 'Unidade 24', '17.369']) {
 
 const capiitoloRenderGuards = [
   'const schemaText=document.getElementById("mnt-capiitolo-schema")?.textContent||""',
-  "doc.head.querySelectorAll('#mnt-capiitolo-schema,#mnt-capiitolo-product-schema').forEach(node=>node.remove())",
+  "doc.head.querySelectorAll('#mnt-capiitolo-schema').forEach(node=>node.remove())",
+  "doc.head.querySelectorAll('#mnt-capiitolo-product-schema').forEach(node=>node.remove())",
   'schemaNode.id="mnt-capiitolo-schema"',
   'schemaNode.textContent=schemaText'
 ];
