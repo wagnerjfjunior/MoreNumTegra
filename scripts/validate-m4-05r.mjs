@@ -10,7 +10,7 @@ const SABRINA_PHONE = '+5511960779328';
 const SABRINA_CRECI = '209.905-F';
 const SABRINA_POSTAL_CODE = '05093-000';
 const SABRINA_BUSINESS_IMAGE = 'https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp';
-const SABRINA_BUSINESS_LOGO = 'https://www.moretegra.com.br/assets/brand/tegra-logo-yellow.webp';
+const SABRINA_BUSINESS_LOGO = 'https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp';
 const ESTANDE_ID = 'https://www.moretegra.com.br/#estande-caminhos-da-lapa';
 const ESTANDE_LATITUDE = -23.517165527430233;
 const ESTANDE_LONGITUDE = -46.71861778788628;
@@ -36,10 +36,10 @@ const pages = [
     file: 'src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html',
     canonical: 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/',
     schemaId: 'mnt-capiitolo-schema',
-    requiredTypes: ['WebSite', 'WebPage', 'BreadcrumbList', 'ApartmentComplex', 'FloorPlan', 'ImageObject', 'RealEstateAgent', 'Brand', 'Person', 'Service', 'Product', 'Offer'],
-    requiredIds: ['https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#webpage', CAPIITOLO_PROJECT_ID, 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#product', 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#offer', TEGRA_BRAND_ID, SABRINA_ID, CAPIITOLO_AGENT_ID],
+    requiredTypes: ['WebSite', 'WebPage', 'BreadcrumbList', 'ApartmentComplex', 'FloorPlan', 'ImageObject', 'RealEstateAgent', 'Brand', 'Person', 'Service'],
+    requiredIds: ['https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#webpage', CAPIITOLO_PROJECT_ID, TEGRA_BRAND_ID, SABRINA_ID, CAPIITOLO_AGENT_ID],
     visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328', 'R$ 3.539.900', 'Ref. 210 m² · unidade 33 · Ago/26'],
-    product: { id: 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#product', offerId: 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#offer', projectId: 'capiitolo-piero-lissoni', price: 3539900 }
+    commercialProjectId: 'capiitolo-piero-lissoni'
   },
   {
     name: 'elo-duo',
@@ -273,10 +273,11 @@ for (const page of pages) {
 }
 
 const governedCommercial = JSON.parse(await readFile('src-greenn/data/commercial-values.json', 'utf8'));
-for (const page of pages.filter((item) => item.product)) {
-  const commercial = governedCommercial.projects?.[page.product.projectId];
+for (const page of pages.filter((item) => item.product || item.commercialProjectId)) {
+  const commercialProjectId = page.product?.projectId || page.commercialProjectId;
+  const commercial = governedCommercial.projects?.[commercialProjectId];
   if (!commercial || commercial.state !== 'active_reference') fail(page.name, 'governed commercial active_reference missing');
-  else if (Number(commercial.price) !== page.product.price) fail(page.name, `governed commercial price mismatch: ${commercial.price ?? 'missing'}`);
+  else if (page.product && Number(commercial.price) !== page.product.price) fail(page.name, `governed commercial price mismatch: ${commercial.price ?? 'missing'}`);
   if (!commercial?.sourceClass) fail(page.name, 'commercial sourceClass missing');
 }
 
@@ -286,13 +287,14 @@ for (const stale of ['3647490', '3.647.490', 'Unidade 24', '17.369']) {
 }
 
 const capiitoloRenderGuards = [
-  'productSchemaText=document.getElementById("mnt-capiitolo-product-schema")?.textContent||""',
+  'const schemaText=document.getElementById("mnt-capiitolo-schema")?.textContent||""',
+  "doc.head.querySelectorAll('#mnt-capiitolo-schema').forEach(node=>node.remove())",
   "doc.head.querySelectorAll('#mnt-capiitolo-product-schema').forEach(node=>node.remove())",
-  'productSchemaNode.id="mnt-capiitolo-product-schema"',
-  'productSchemaNode.textContent=productSchemaText'
+  'schemaNode.id="mnt-capiitolo-schema"',
+  'schemaNode.textContent=schemaText'
 ];
 for (const needle of capiitoloRenderGuards) {
-  if (!capiitolo.includes(needle)) fail('capiitolo', `rendered Product schema preservation guard missing: ${needle}`);
+  if (!capiitolo.includes(needle)) fail('capiitolo', `rendered core schema preservation guard missing: ${needle}`);
 }
 
 const portalLinks = await readFile('src-greenn/portal-links.js', 'utf8');

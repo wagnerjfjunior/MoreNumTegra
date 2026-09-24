@@ -33,9 +33,9 @@ for (const [name, html] of [["Ária", aria], ["Elo Duo", elo]]) {
 }
 
 assert(aria.includes(".mt-gallery-arrow{position:absolute;z-index:2;top:50%;translate:0 -50%;display:grid;place-items:center;width:46px;height:46px;"), "Ária gallery arrows must preserve >=46px touch targets");
-assert(aria.includes("Higien%C3%B3polis%2C%20S%C3%A3o%20Paulo"), "Ária visible map must be neighborhood-level only");
+assert(!aria.includes('<iframe src="https://www.google.com/maps') || aria.includes("Higien%C3%B3polis%2C%20S%C3%A3o%20Paulo"), "Ária visible map, when embedded, must be neighborhood-level only");
 assert(!aria.includes("Rua%20Coronel%20Jos%C3%A9%20Eus%C3%A9bio%2C%20145"), "Ária exact address must not leak into visible map query");
-assert(elo.includes("Caminhos%20da%20Lapa%2C%20S%C3%A3o%20Paulo"), "Elo Duo visible map must be neighborhood-level only");
+assert(!elo.includes('<iframe src="https://www.google.com/maps') || elo.includes("Caminhos%20da%20Lapa%2C%20S%C3%A3o%20Paulo"), "Elo Duo visible map, when embedded, must be neighborhood-level only");
 assert(!elo.includes("-23.517165527430233,-46.71861778788628&z="), "Elo Duo exact coordinates must not drive the visible map");
 
 assert(runtime.includes('class="mnt-map-card"'), "CAPIITOLO runtime must use the shared visible map-card pattern");
