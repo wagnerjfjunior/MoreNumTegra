@@ -73,13 +73,13 @@
   <noscript><p style="padding:24px;background:#fff;color:#111">Para visualizar a experiência completa do DSG Itaim, habilite JavaScript. Você também pode voltar para <a href="/">More em um Tegra</a>.</p></noscript>
   <script>
   (()=>{"use strict";
-    const canonical="https://www.moretegra.com.br/empreendimentos/dsg-itaim-piero-lissoni/";
+    const canonical="https://www.moretegra.com.br/empreendimentos/dsg-itaim/";
     const source="/experiments/dsg-itaim-editorial-v3/index.html";
-    const schemaText=document.getElementById("mnt-dsg-itaim-schema")?.textContent||"";const productSchemaText=document.getElementById("mnt-dsg-itaim-product-schema")?.textContent||"";
+    const schemaText=document.getElementById("dsg-schema")?.textContent||"";
     const priceSection=`<section class="mnt-price-section" id="valores" aria-labelledby="mnt-price-title"><div class="wrap mnt-price-grid"><div><p class="mnt-price-label">A partir de</p><h2 id="mnt-price-title" class="mnt-price-amount" data-commercial-value aria-live="polite">R$ 412.500</h2></div><div data-commercial-key="dsg-itaim"><p class="mnt-price-label">Referência comercial</p><p class="mnt-price-reference">Ref. 32 m² · unidade 208 · Office · Ago/26 · pagamento à vista</p><p class="mnt-price-note">Unidade disponível na data de referência. Fonte: Tegra Incorporadora. Valor e condições podem mudar; confirme as condições vigentes antes da proposta.</p><a class="btn yellow" href="#formulario" data-form-intent="conditions">Receber condições <span>↓</span></a></div></div></section>`;
     fetch(source,{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.text()}).then(html=>{
       const doc=new DOMParser().parseFromString(html,"text/html");
-      doc.documentElement.dataset.mntRoute="/empreendimentos/dsg-itaim-piero-lissoni/";
+      doc.documentElement.dataset.mntRoute="/empreendimentos/dsg-itaim/";
       const robots=doc.head.querySelector('meta[name="robots"]')||doc.head.appendChild(doc.createElement("meta"));robots.setAttribute("name","robots");robots.setAttribute("content","index,follow,max-image-preview:large");
       let googlebot=doc.head.querySelector('meta[name="googlebot"]');if(!googlebot){googlebot=doc.createElement("meta");doc.head.appendChild(googlebot)}googlebot.setAttribute("name","googlebot");googlebot.setAttribute("content","index,follow,max-image-preview:large");
       doc.head.querySelectorAll('link[rel="canonical"]').forEach(node=>node.remove());
@@ -89,8 +89,8 @@
       Object.entries(social).forEach(([property,content])=>{let node=doc.head.querySelector(`meta[property="${property}"]`);if(!node){node=doc.createElement("meta");node.setAttribute("property",property);doc.head.appendChild(node)}node.setAttribute("content",content)});
       const twitter={"twitter:card":"summary_large_image","twitter:title":"DSG Itaim Tegra | Itaim Bibi · Últimas unidades","twitter:description":"DSG Itaim no Itaim Bibi: empreendimento entregue, últimas unidades, offices, studios e apartamentos.","twitter:image":"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/284/Imagem/395ce1a2-b602-4c40-aa3a-aad64e2de199.jpg","twitter:image:alt":"Fachada do DSG Itaim"};
       Object.entries(twitter).forEach(([name,content])=>{let node=doc.head.querySelector(`meta[name="${name}"]`);if(!node){node=doc.createElement("meta");node.setAttribute("name",name);doc.head.appendChild(node)}node.setAttribute("content",content)});
-      doc.head.querySelectorAll('#mnt-dsg-itaim-schema').forEach(node=>node.remove());doc.head.querySelectorAll('#mnt-dsg-itaim-product-schema').forEach(node=>node.remove());
-      const schemaNode=doc.createElement("script");schemaNode.type="application/ld+json";schemaNode.id="mnt-dsg-itaim-schema";schemaNode.textContent=schemaText;doc.head.appendChild(schemaNode);if(productSchemaText){const productSchemaNode=doc.createElement("script");productSchemaNode.type="application/ld+json";productSchemaNode.id="mnt-dsg-itaim-product-schema";productSchemaNode.textContent=productSchemaText;doc.head.appendChild(productSchemaNode);}
+      doc.head.querySelectorAll('#dsg-schema,#mnt-dsg-itaim-schema').forEach(node=>node.remove());
+      const schemaNode=doc.createElement("script");schemaNode.type="application/ld+json";schemaNode.id="dsg-schema";schemaNode.textContent=schemaText;doc.head.appendChild(schemaNode);
       const gtm=doc.createElement("script");gtm.textContent="(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PGCR4R47');";doc.head.appendChild(gtm);
       const ns=doc.createElement("noscript");ns.innerHTML='<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGCR4R47" height="0" width="0" style="display:none;visibility:hidden"></iframe>';doc.body.insertBefore(ns,doc.body.firstChild);
       const badge=doc.querySelector(".pilot");if(badge)badge.textContent="DSG Itaim · MoreTegra";
