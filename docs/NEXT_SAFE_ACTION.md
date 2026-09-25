@@ -5,7 +5,8 @@ Atualizado em `2026-09-25`.
 ## Estado atual
 
 ```text
-main = 95567db0d16e15d2c6971d8047ab7327d3171578
+repository main = RESOLVE_LIVE
+latest integrated runtime source = 95567db0d16e15d2c6971d8047ab7327d3171578
 Production = dpl_4r1JK6YPLsQC99dPumd8i7SCuwJW / READY
 runtime errors last 24h = NONE OBSERVED
 
