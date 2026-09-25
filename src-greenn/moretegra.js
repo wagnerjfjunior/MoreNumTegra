@@ -581,7 +581,7 @@
         event.preventDefault();
         play(true);
       }
-    }, {once: true});
+    });
   }
 
   function initRoot(root) {
