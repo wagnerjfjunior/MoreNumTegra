@@ -61,7 +61,7 @@ Four Sep-24 direct-to-main source-data commits are documented as process excepti
 ```text
 MNT-PERF-01 = EXECUTED / REMEDIATION_CHAIN_MERGED
 FINAL_POST_REMEDIATION_CURRENT_RUNTIME_MEASUREMENT_PACKET = NOT_CANONICALIZED
-MNT-PERF-02 = NEXT / MEASUREMENT_ONLY
+MNT-PERF-02 = COMPLETE / EVIDENCE_CANONICALIZED / NO_RUNTIME_MUTATION
 ```
 
 Do not invent final current-runtime LCP numbers.
@@ -119,3 +119,23 @@ Canonical evidence:
 Read `docs/NEXT_SAFE_ACTION.md`.
 
 The explicitly authorized GA4 audience-readiness exception is currently active and must be resolved before any audience archival. MNT-PERF-02 remains the default backlog next action outside this bounded exception.
+
+
+## MNT-PERF-02 closure — 2026-09-25
+
+Canonical evidence:
+
+`docs/performance/MNT_PERF_02_CURRENT_RUNTIME_VERIFICATION_2026-09-25.md`
+
+```text
+Home median LCP = 10.4 s
+DSG Itaim median LCP = 5.1 s
+CAPIITOLO median LCP = 5.1 s
+Elo Duo median LCP = 5.1 s
+Ária Higienópolis median LCP = 2.0 s
+field CWV / INP = NOT_PROVEN
+runtime mutation = NONE
+remediation backlog = ISSUE #266 / OPEN
+```
+
+Issue #266 records bounded remediation candidates only and does not authorize runtime mutation.
