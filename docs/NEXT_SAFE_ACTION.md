@@ -1,86 +1,81 @@
 # Próxima Ação Segura — MoreNumTegra
 
-Atualizado em `2026-09-23`.
+Atualizado em `2026-09-25`.
 
 ## Estado atual
 
 ```text
+main = 95567db0d16e15d2c6971d8047ab7327d3171578
+Production = dpl_4r1JK6YPLsQC99dPumd8i7SCuwJW / READY
+runtime errors last 24h = NONE OBSERVED
+
 MNT-RESF = CLOSED / COMPLETE_WITH_DEFERRED_PAID_MEDIA_SCOPE
-ACCEPTED = 1200 / 1240h = 96.77%
-DEFERRED = 40h
-
-EFFECTIVE_PRODUCTION_RUNTIME = c80a8e1d773d85af563d9630f6e460e7ad85ea02
-PRODUCTION_DEPLOYMENT = dpl_4F8SF29FyNj7EcpyqM9zT57oYAoi
-PRODUCTION_STATE = READY
-
-FAVICON_VISUAL = WORKING / USER_CONFIRMED
-FAVICON_PERCEIVED_LOAD_DELAY = USER_REPORTED
-LCP_IMPACT = NOT_MEASURED / NOT_PROVEN
+accepted = 1200 / 1240h = 96.77%
+deferred = 40h
 ```
+
+Traceability authority:
+
+`docs/governance/MNT_CHANGE_TRACEABILITY_STANDARD_V1.md`
+
+Current reconciliation:
+
+`docs/governance/MNT_TRACEABILITY_AUDIT_2026-09-25.md`
 
 ## Única próxima ação segura
 
-**MNT-PERF-01 — Favicon load / LCP regression validation**
+**MNT-PERF-02 — current-runtime performance verification**
 
 State:
 
-`ACTIVE / AUTHORIZED / MEASUREMENT_ONLY / OUTSIDE_RESF_ACCOUNTING`
+`ACTIVE_NEXT / AUTHORIZED_MEASUREMENT_ONLY / OUTSIDE_RESF_ACCOUNTING`
 
-Detailed handoff:
+Why:
 
-`handoffs/HANDOFF-2026-09-23-FAVICON-LCP-RECHECK-NEXT.md`
+- historical `MNT-PERF-01` progressed into remediation PRs #249-#253;
+- the final post-remediation measurement packet was not canonicalized;
+- runtime changed further through DSG PRs #254-#260;
+- current performance must therefore be measured against the current runtime, not inferred from older evidence.
 
-Required work:
+Required scope:
 
-1. resolve live `main`, effective runtime and Production deployment;
-2. measure cold-load and warm-load favicon/icon request timing;
-3. record timing, transfer bytes, priority and cache behavior where observable;
-4. verify whether favicon/icon requests interact with the LCP critical path;
-5. run five Lighthouse mobile samples per canonical public route using the existing project methodology;
-6. calculate medians for LCP/FCP/CLS/TBT/transfer;
-7. compare against applicable accepted performance evidence as context;
-8. use an exact prior deployment as a same-method control if it remains accessible;
-9. do not claim causality without controlled evidence;
-10. stop before runtime remediation unless separately authorized.
+1. resolve live `main` and Production deployment;
+2. use runtime `95567db...` only if still current;
+3. run the established Lighthouse mobile methodology on:
+   - Home;
+   - DSG Itaim;
+   - CAPIITOLO;
+   - Elo Duo;
+   - Ária Higienópolis;
+4. record five samples per route and medians for LCP/FCP/CLS/TBT/transfer;
+5. record favicon/icon request timing only as contextual evidence;
+6. compare with applicable historical evidence without treating historical runs as current controls;
+7. distinguish deterministic payload changes from lab variance;
+8. publish the result as a durable evidence packet;
+9. stop before runtime remediation unless Product Authority separately authorizes it.
 
 Targets remain:
 
 ```text
 LCP <= 2500 ms
-INP <= 200 ms
 CLS <= 0.1
+INP <= 200 ms
 ```
 
 Lighthouse TBT is not field INP.
 
-## Deterministic favicon payload context
+## After MNT-PERF-02
+
+Resume documented backlog unless Product Authority selects another task:
 
 ```text
-/favicon.ico = 5,428 B
-/favicon-16x16.png = 408 B
-/favicon-32x32.png = 587 B
-/favicon-48x48.png = 696 B
+MNT-CDP-01 = provider/publication-owner selection
+MNT-CDP-03 = spreadsheet/CSV value-update path
 ```
 
-The small payload does not by itself prove zero LCP impact.
-
-## After MNT-PERF-01
-
-Resume:
-
-`MNT-CDP-01 — select and prove Commercial Data Plane provider/publication owner`
-
-Pending value-update path remains:
-
-`MNT-CDP-03 — Planilha/CSV para atualização de valores`
-
-## Still frozen / deferred
+Paid media remains frozen:
 
 ```text
-MNT-M6-07 = DEFERRED / PAID_MEDIA_FROZEN / NOT_ACCEPTED
-MNT-M6-08 = DEFERRED / DEPENDS_ON_M6_07 / NOT_ACCEPTED
-Search spend = R$ 0
-remarketing spend = R$ 0
-Meta paid media/CAPI = NOT_AUTHORIZED
-Looker Studio = DEFERRED
+MNT-M6-07 = DEFERRED / PAID_MEDIA_FROZEN
+MNT-M6-08 = DEFERRED / DEPENDS_ON_M6_07
 ```
