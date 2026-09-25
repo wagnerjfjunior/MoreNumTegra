@@ -45,20 +45,16 @@ deferred_modules:
   - RESF-QA
   - RESF-OBSERVABILITY
 rejected_modules: []
-consumer_facts_source: 'MoreNumTegra canonical main: bootstrap/BOOTSTRAP_CANONICO.md; docs/baseline/FUNCTIONAL_BASELINE_V2.md; docs/baseline/TECHNICAL_BASELINE_V2_2.md; handoffs/CURRENT.md; docs/PROJECT_STATUS.md; docs/NEXT_SAFE_ACTION.md; docs/BLOCKED_ACTIONS.md; current governed evidence under docs/evidence/ and docs/measurement/'
+consumer_facts_source: 'MoreNumTegra canonical main: bootstrap/BOOTSTRAP_CANONICO.md; docs/baseline/FUNCTIONAL_BASELINE_V2.md; docs/baseline/TECHNICAL_BASELINE_V2_3.md; handoffs/CURRENT.md; docs/PROJECT_STATUS.md; docs/NEXT_SAFE_ACTION.md; docs/BLOCKED_ACTIONS.md; current governed evidence under docs/evidence/ and docs/measurement/'
 runtime_authority: CONSUMER
 known_gaps:
-  - Measurement foundation is partial rather than absent: GTM/Consent is published and validated; transport/dedup, canonical event taxonomy, conversion classification, GTM/GA4 governance ownership and Meta governance ownership are accepted when the MNT-M2-06 revision is integrated; full runtime implementation and end-to-end QA remain incomplete.
-  - GTM Consent Mode state handling is proven for default denied, Green Continuar granted, Green Cancelar denied and persistence; site-wide third-party telemetry gating, including any future Meta destination behavior, remains not fully proven.
-  - GTM container GTM-PGCR4R47 is the project governance target and sole project-owned browser dispatcher; its Google account/user-access roster is not recorded in canonical project evidence.
-  - GA4 governance owner is MoreNumTegra/Product Authority and target topology is one dedicated MoreNumTegra property with one production web stream for moretegra.com.br; exact GA4 property ID, stream ID and Measurement ID remain NOT_PROVEN and must not be invented.
-  - Meta Measurement governance owner is MoreNumTegra/Product Authority and target topology is one dedicated MoreNumTegra Dataset with one browser source relationship if browser collection is implemented through GTM-PGCR4R47; exact Dataset ID, Pixel/browser-source ID and their relationship remain NOT_PROVEN and must not be invented.
-  - Meta Conversions API remains an optional future capability and is not authorized by MNT-M2-06; dual browser/server transport requires an explicit architecture, consent boundary and destination-native deduplication proof.
-  - Website Meta Measurement ownership is distinct from any Facebook Page, Lead Ads or Green CRM integration; those surfaces do not prove Pixel/Dataset ownership.
-  - mnt_lead_success is the sole project primary conversion, but a stable non-invasive Green Form 46 success signal is not yet canonically proven; runtime primary-conversion implementation remains blocked until that signal is proven.
-  - Explicit secondary conversion semantics are limited to request_conditions, request_project_conditions, negotiate_scenario, schedule_visit and whatsapp_contact; project_interest, form_start and form_submit_attempt are non-conversions.
+  - Current Measurement is operational and canonically evidenced: GTM container GTM-PGCR4R47 is live; GA4 property 553742649, stream 15759638334 and Measurement ID G-57M2XR0CY2 are proven; project source mnt_lead_success maps to GA4 generate_lead.
+  - GTM Consent Mode state handling is proven for default denied and explicit granted/denied transitions; no later RESF adoption update waives destination-specific consent or advertising-personalization controls.
+  - GTM container GTM-PGCR4R47 remains the project governance target and sole project-owned browser dispatcher; its Google account/user-access roster is not recorded in canonical project evidence.
+  - MNT-M5-07 is complete with GTM Version 12 live; generate_lead receives controlled project_name and offer_name business metadata while visitor name, email, phone and raw/free-form texto-livre remain excluded from Measurement.
+  - Explicit secondary conversion semantics remain limited to request_conditions, request_project_conditions, negotiate_scenario, schedule_visit and whatsapp_contact; project_interest, form_start and form_submit_attempt are non-conversions.
   - No monetary lead conversion value is defined; property/offer prices must not be reused as conversion value.
-  - Runtime event/destination implementation remains MNT-M2-09 and end-to-end Measurement QA remains MNT-M2-10.
-  - Search technical residuals remain for static canonical capability, sitemap availability and www HTTP redirect semantics.
-  - GSC evidence volume at the 2026-09-10 T0 baseline is insufficient for statistically meaningful trend claims.
+  - GA4 audience manual setup is complete and screenshot-observed. The legacy MNT | Project visitors | 180d audience was created from a three-route allowlist and does not automatically include later exact-project pages such as DSG Itaim; replacement with a stable generic exact-project classifier is pending separate consumer execution and validation.
+  - Audience readiness does not equal audience creation, membership, activation or acquisition attribution. Paid media remains frozen and GA4 audience accumulation does not authorize Google Ads campaign creation, remarketing spend, Customer Match, CRM/PII upload or consent bypass.
+  - Meta Measurement remains separately governed; exact Meta Dataset/Pixel/browser-source identifiers and their relationship are not proven here, and Meta CAPI remains optional/future without separate authorization.
   - Deferred RESF modules require explicit later adoption/reconciliation before they govern implementation work.
