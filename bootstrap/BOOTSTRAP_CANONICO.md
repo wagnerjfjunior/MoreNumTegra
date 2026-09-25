@@ -30,6 +30,8 @@
 - Read model: `docs/sfjm/PROJECT_READ_MODEL.json`
 - Task graph: `docs/sfjm/PROGRAM_TASK_GRAPH.json`
 - Dashboard/WBS reconciliation: `docs/sfjm/MNT_DASHBOARD_WBS_STATE_RECONCILIATION_2026-09-23.md`
+- Change traceability standard: `docs/governance/MNT_CHANGE_TRACEABILITY_STANDARD_V1.md`
+- Latest traceability audit: `docs/governance/MNT_TRACEABILITY_AUDIT_2026-09-25.md`
 - Historical planning baseline archive: `docs/roadmap/archive/MNT_RESF_PLANNING_BASELINE_2026-09-10.md`
 - Data de referência desta revisão: `2026-09-23`
 
@@ -53,16 +55,17 @@ Em caso de divergência:
 ## 3. Ordem mínima de leitura
 
 1. `handoffs/CURRENT.md`
-2. `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
-3. `docs/baseline/TECHNICAL_BASELINE_V2_3.md`
-4. ADR-006 — produção Vercel / `www` canônico
-5. ADR-004 — deploy Git-driven filtrado
-6. ADR-005 — contrato Form 46 + Measurement
-7. `docs/PROJECT_STATUS.md`
-8. `docs/NEXT_SAFE_ACTION.md`
-9. `docs/BLOCKED_ACTIONS.md`
-10. `docs/sfjm/PROJECT_READ_MODEL.json` e `docs/sfjm/PROGRAM_TASK_GRAPH.json` quando programa/horas/progresso forem materiais
-11. evidências específicas referenciadas pela tarefa.
+2. `docs/governance/MNT_CHANGE_TRACEABILITY_STANDARD_V1.md`
+3. `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
+4. `docs/baseline/TECHNICAL_BASELINE_V2_3.md`
+5. ADR-006 — produção Vercel / `www` canônico
+6. ADR-004 — deploy Git-driven filtrado
+7. ADR-005 — contrato Form 46 + Measurement
+8. `docs/PROJECT_STATUS.md`
+9. `docs/NEXT_SAFE_ACTION.md`
+10. `docs/BLOCKED_ACTIONS.md`
+11. `docs/sfjm/PROJECT_READ_MODEL.json` e `docs/sfjm/PROGRAM_TASK_GRAPH.json` quando programa/horas/progresso forem materiais
+12. evidências específicas referenciadas pela tarefa.
 
 Historical baselines/ADRs remain valid as point-in-time evidence, but current production semantics are governed by V2.3 + ADR-006.
 
@@ -290,3 +293,29 @@ Exigem decisão própria:
 ## 15. Próxima ação segura
 
 Autoridade: `docs/NEXT_SAFE_ACTION.md`.
+
+
+## 16. Rastreabilidade obrigatória
+
+Contrato canônico:
+
+`docs/governance/MNT_CHANGE_TRACEABILITY_STANDARD_V1.md`
+
+Regra operacional:
+
+```text
+MATERIAL_CHANGE
+-> BRANCH
+-> PR
+-> EXACT-HEAD VALIDATION
+-> MERGE
+-> DEPLOYMENT RESOLUTION
+-> PRODUCTION VALIDATION
+-> CURRENT-STATE RECONCILIATION
+```
+
+Nenhuma conversa é fonte de verdade por si só.
+
+Mudança material não pode ficar documentada apenas no chat.
+
+Commit direto em `main` é exceção, não fluxo normal, e deve ser reconciliado no próximo PR de governança.

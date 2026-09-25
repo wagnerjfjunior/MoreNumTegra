@@ -395,12 +395,21 @@ Final RESF accepted progress at closure: `1200 / 1240h = 96.77%`; deferred paid-
 
 ## Post-RESF operational backlog — dashboard-visible, outside RESF hours
 
+Traceability standard for all post-RESF work:
+
+`docs/governance/MNT_CHANGE_TRACEABILITY_STANDARD_V1.md`
+
+Current reconciliation audit:
+
+`docs/governance/MNT_TRACEABILITY_AUDIT_2026-09-25.md`
+
 These items are **not part of the 1240h RESF denominator**. They remain visible because they are current operational work or explicit deferred scope.
 
 | ID | Work item | RESF hours | Current state | Dependency / boundary |
 |---|---|---:|---|---|
-| MNT-PERF-01 | **Favicon load / LCP regression validation** | — | **ACTIVE / NEXT_SAFE_ACTION / MEASUREMENT_ONLY** | user confirmed favicon works visually; perceived delay is USER_REPORTED; measure before remediation |
-| MNT-CDP-01 | Select Commercial Data Plane publication provider/owner | — | QUEUED / RESUME_AFTER_MNT_PERF_01 | provider must satisfy public-read/admin-write/version/rollback/audit contract |
+| MNT-PERF-01 | Favicon load / LCP regression validation | — | EXECUTED / REMEDIATION_CHAIN_MERGED / FINAL_PACKET_NOT_CANONICALIZED | #248 handoff; remediation followed in #249-#253; do not invent final LCP |
+| MNT-PERF-02 | **Current-runtime performance verification** | — | **ACTIVE_NEXT / MEASUREMENT_ONLY** | measure latest DSG-post-#260 Production runtime and publish durable evidence before remediation |
+| MNT-CDP-01 | Select Commercial Data Plane publication provider/owner | — | QUEUED / RESUME_AFTER_MNT_PERF_02 | provider must satisfy public-read/admin-write/version/rollback/audit contract |
 | MNT-CDP-02 | Define/prove public read + protected admin-write publication contract | — | PLANNED / BLOCKED_BY_CDP_01 | no browser secret; atomic/current pointer; CORS/cache/freshness |
 | MNT-CDP-03 | **Planilha/CSV para atualização de valores**: import, normalize, validate and create candidate snapshot | — | PLANNED / PENDING | spreadsheet is operator input, not direct site source; no invented values |
 | MNT-CDP-04 | Approval, publish, version history, rollback and audit workflow | — | PLANNED | requires provider contract |
