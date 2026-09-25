@@ -22,7 +22,26 @@ Current reconciliation:
 
 `docs/governance/MNT_TRACEABILITY_AUDIT_2026-09-25.md`
 
-## Única próxima ação segura
+## Explicitly authorized bounded exception — GA4 Audience Readiness
+
+Product Authority authorized the current GA4 audience-readiness correction after RESF Audience Readiness adoption.
+
+State:
+
+```text
+180d generic candidate = CREATED
+540d generic candidate = CREATED
+page_location contains /empreendimentos/ = SEMANTICALLY UNSAFE FOR QUERY-BEARING NEGATIVE CASE
+path-safe classifier live validation = NEXT
+legacy audience archival = NOT_AUTHORIZED
+paid media = FROZEN
+```
+
+Next bounded action:
+
+Validate in the live GA4 audience builder whether `Page path and screen class` with `begins with /empreendimentos/` is available and produces the intended audience estimate. Do not archive any existing audience and do not activate Google Ads.
+
+## Default backlog next action after the bounded exception
 
 **MNT-PERF-02 — current-runtime performance verification**
 
