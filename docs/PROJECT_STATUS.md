@@ -1476,12 +1476,15 @@ Therefore:
 ```text
 2C 180d creation = COMPLETE
 2C-540 540d creation = COMPLETE
-2D classifier semantic validation = REOPENED
-path-safe classifier validation = NEXT
+2D classifier semantic validation = COMPLETE_FOR_PATH_SAFE_RULE
+path-safe 180d = CREATED / SCREENSHOT_OBSERVED
+path-safe 540d = CREATED / SCREENSHOT_OBSERVED
+builder estimate for path-safe rule = 128 users / 64.6% (NOT membership proof)
 accumulation proof = PENDING
 legacy dependency/export check = PENDING
-legacy archival = NOT_AUTHORIZED
+canonical window policy = PENDING
+legacy / unsafe-candidate archival = NOT_AUTHORIZED
 paid media = FROZEN
 ```
 
-Preferred path-safe live-builder candidate: `Page path and screen class begins with /empreendimentos/`, subject to live UI validation before creating another replacement audience.
+Validated path-safe live-builder rule: `Page path and screen class begins with /empreendimentos/`. Both 180d and 540d path-safe variants were created and observed in the GA4 audience table.
