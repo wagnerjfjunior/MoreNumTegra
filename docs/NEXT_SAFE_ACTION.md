@@ -6,8 +6,8 @@ Atualizado em `2026-09-25`.
 
 ```text
 repository main = RESOLVE_LIVE
-latest integrated runtime source = 02feb3804a4a87c6d07bc12a5b9c7b983816b6ed
-Production = dpl_3HqSohk1Sq32vWm8cUMFpgqY8GfW / READY
+latest integrated runtime source = 43ca5ba30b738b32ef482a4b9864d4bce4d97474
+Production = dpl_JLfW5GLsE4xwTu1fVr88Pc1Ms2iU / READY
 runtime errors last 24h = NONE OBSERVED
 
 MNT-RESF = CLOSED / COMPLETE_WITH_DEFERRED_PAID_MEDIA_SCOPE
@@ -143,3 +143,19 @@ Boundary:
 - five-run Home Mobile battery before performance conclusion.
 
 Do not combine CSS, catalog DOM, project-page or other performance changes into MNT-PERF-03B.
+
+
+## Active bounded performance follow-up — MNT-PERF-03B
+
+The Home late-GTM runtime is merged and live.
+
+```text
+runtime SHA = 43ca5ba30b738b32ef482a4b9864d4bce4d97474
+Production = dpl_JLfW5GLsE4xwTu1fVr88Pc1Ms2iU / READY
+implementation = COMPLETE
+post-change performance measurement = NEXT
+```
+
+Next safe action:
+
+Run five Mobile PageSpeed/Lighthouse samples on the Home with the same method used for MNT-PERF-03A. Compare the new median primarily to 4.2 s. Do not start another runtime remediation before this battery is adjudicated.
