@@ -1488,3 +1488,31 @@ paid media = FROZEN
 ```
 
 Validated path-safe live-builder rule: `Page path and screen class begins with /empreendimentos/`. Both 180d and 540d path-safe variants were created and observed in the GA4 audience table.
+
+
+## MNT-PERF-02 current-runtime verification — CLOSED 2026-09-25
+
+Canonical evidence:
+
+`docs/performance/MNT_PERF_02_CURRENT_RUNTIME_VERIFICATION_2026-09-25.md`
+
+```text
+MNT-PERF-02 = COMPLETE / EVIDENCE_CANONICALIZED / NO_RUNTIME_MUTATION
+Home LCP median = 10.4 s / FAIL
+DSG Itaim LCP median = 5.1 s / FAIL
+CAPIITOLO LCP median = 5.1 s / FAIL
+Elo Duo LCP median = 5.1 s / FAIL
+Ária Higienópolis LCP median = 2.0 s / PASS
+all route CLS medians <= 0.1 = PASS
+field CWV / field INP = NOT_PROVEN
+```
+
+Deterministic findings:
+- Home has repeated high-LCP runs with material YouTube third-party payload/CPU contribution.
+- DSG/CAPIITOLO retain Azure media-delivery opportunities.
+- Elo Duo has small payload but render-delay/runtime variance; another media rewrite is not justified without isolation.
+- Ária median LCP passes, but full-size Azure gallery images create ~6.4 MiB total transfer and multi-MiB thumbnail waste.
+
+Remediation backlog: GitHub issue #266.
+
+Issue #266 is planning/backlog evidence only. Runtime remediation still requires a separately authorized bounded slice.
