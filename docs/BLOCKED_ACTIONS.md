@@ -556,10 +556,28 @@ Four Sep-24 direct-main source-data commits are historical process exceptions an
 
 ## Current performance gate
 
-`MNT-PERF-02` is measurement-only.
+`MNT-PERF-02` is COMPLETE / evidence canonicalized / no runtime mutation.
 
-Blocked until adjudication:
+Canonical evidence:
+`docs/performance/MNT_PERF_02_CURRENT_RUNTIME_VERIFICATION_2026-09-25.md`.
 
-- favicon/cache/hero/GTM remediation attributed to current LCP without evidence;
-- claiming current field INP from Lighthouse TBT;
-- reusing historical LCP values as if measured on the current DSG-post-#260 runtime.
+Remediation backlog:
+`GitHub issue #266`.
+
+Blocked until a separately authorized bounded remediation slice:
+
+- changing Home YouTube/hero behavior;
+- changing DSG or CAPIITOLO media/runtime;
+- further Elo asset/runtime mutation;
+- changing Ária gallery/thumb sources;
+- changing GTM/GA4 to chase lab TBT/LCP;
+- changing Form46, commercial data, SEO/canonical/schema or paid media as part of performance remediation;
+- treating Lighthouse TBT as field INP;
+- batching multiple route remediations into one unbounded change.
+
+Allowed without new runtime authorization:
+
+- read-only investigation;
+- source/dimension/byte accounting;
+- deterministic candidate design;
+- exact bounded remediation proposal for Product Authority decision.

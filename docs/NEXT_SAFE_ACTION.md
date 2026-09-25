@@ -5,7 +5,8 @@ Atualizado em `2026-09-25`.
 ## Estado atual
 
 ```text
-main = 95567db0d16e15d2c6971d8047ab7327d3171578
+repository main = RESOLVE_LIVE
+latest integrated runtime source = 95567db0d16e15d2c6971d8047ab7327d3171578
 Production = dpl_4r1JK6YPLsQC99dPumd8i7SCuwJW / READY
 runtime errors last 24h = NONE OBSERVED
 
@@ -46,49 +47,32 @@ Next bounded action:
 
 Observe initial accumulation for the path-safe audiences and check downstream dependency/export state before any archival. Do not archive any existing audience and do not activate Google Ads.
 
-## Default backlog next action after the bounded exception
+## MNT-PERF-02 closure
 
-**MNT-PERF-02 — current-runtime performance verification**
+`MNT-PERF-02 = COMPLETE / EVIDENCE_CANONICALIZED / NO_RUNTIME_MUTATION`
 
-State:
+Canonical evidence:
 
-`ACTIVE_NEXT / AUTHORIZED_MEASUREMENT_ONLY / OUTSIDE_RESF_ACCOUNTING`
+`docs/performance/MNT_PERF_02_CURRENT_RUNTIME_VERIFICATION_2026-09-25.md`
 
-Why:
+Remediation backlog:
 
-- historical `MNT-PERF-01` progressed into remediation PRs #249-#253;
-- the final post-remediation measurement packet was not canonicalized;
-- runtime changed further through DSG PRs #254-#260;
-- current performance must therefore be measured against the current runtime, not inferred from older evidence.
+`GitHub issue #266 — MNT-PERF-03 — current-runtime performance remediation planning`
 
-Required scope:
+Issue #266 does not authorize a runtime slice.
 
-1. resolve live `main` and Production deployment;
-2. use runtime `95567db...` only if still current;
-3. run the established Lighthouse mobile methodology on:
-   - Home;
-   - DSG Itaim;
-   - CAPIITOLO;
-   - Elo Duo;
-   - Ária Higienópolis;
-4. record five samples per route and medians for LCP/FCP/CLS/TBT/transfer;
-5. record favicon/icon request timing only as contextual evidence;
-6. compare with applicable historical evidence without treating historical runs as current controls;
-7. distinguish deterministic payload changes from lab variance;
-8. publish the result as a durable evidence packet;
-9. stop before runtime remediation unless Product Authority separately authorizes it.
+## Default backlog next action after the bounded GA4 exception
 
-Targets remain:
+Unless Product Authority explicitly selects and authorizes one bounded MNT-PERF-03 remediation slice, resume:
 
 ```text
-LCP <= 2500 ms
-CLS <= 0.1
-INP <= 200 ms
+MNT-CDP-01 = provider/publication-owner selection
+MNT-CDP-03 = spreadsheet/CSV value-update path
 ```
 
-Lighthouse TBT is not field INP.
+If Product Authority selects performance remediation, only the selected route/cause slice becomes authorized; do not batch Home, DSG, CAPIITOLO, Elo and Ária into one runtime change.
 
-## After MNT-PERF-02
+
 
 Resume documented backlog unless Product Authority selects another task:
 
