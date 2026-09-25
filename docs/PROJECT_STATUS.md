@@ -1455,3 +1455,33 @@ Google SERP favicon visual refresh = NOT_OBSERVED / external
 ```
 
 Earlier sections in this file remain historical execution evidence. When they conflict with this reconciliation, this section plus live provider resolution governs current state.
+
+
+## GA4 Audience Readiness — 2026-09-25
+
+Product Authority authorized a bounded audience-readiness correction after RESF provider/consumer reconciliation.
+
+Observed live GA4 state:
+
+```text
+MNT | All project visitors | 180d = CREATED / SCREENSHOT_OBSERVED
+MNT | All project visitors | 540d = CREATED / SCREENSHOT_OBSERVED
+initial predicate = page_view AND page_location contains /empreendimentos/
+```
+
+Exact-head review reopened semantic validation because `page_location` is the complete URL and a query string can contain `/empreendimentos/` on a non-project page.
+
+Therefore:
+
+```text
+2C 180d creation = COMPLETE
+2C-540 540d creation = COMPLETE
+2D classifier semantic validation = REOPENED
+path-safe classifier validation = NEXT
+accumulation proof = PENDING
+legacy dependency/export check = PENDING
+legacy archival = NOT_AUTHORIZED
+paid media = FROZEN
+```
+
+Preferred path-safe live-builder candidate: `Page path and screen class begins with /empreendimentos/`, subject to live UI validation before creating another replacement audience.
