@@ -1,6 +1,6 @@
 # Ações Bloqueadas — MoreNumTegra
 
-- Atualizado em: `2026-09-23`
+- Atualizado em: `2026-09-25`
 - Fonte canônica: `wagnerjfjunior/MoreNumTegra` / `main`
 - Functional baseline: `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 - Technical baseline vigente após integração: `docs/baseline/TECHNICAL_BASELINE_V2_3.md`
@@ -533,3 +533,33 @@ LCP regression = NOT_PROVEN
 ```
 
 Any runtime remediation requires evidence from MNT-PERF-01 plus a separate Product Authority decision.
+
+
+## Rastreabilidade / direct-main
+
+Governed by:
+
+`docs/governance/MNT_CHANGE_TRACEABILITY_STANDARD_V1.md`
+
+Blocked as normal workflow:
+
+- material direct-to-`main` commits without PR;
+- material mutation documented only in chat;
+- merge without exact-head validation where applicable;
+- production claims without deployment/source-SHA resolution;
+- declaring failed/superseded attempts as if they never occurred;
+- leaving `CURRENT`/status/read-model pointers stale after a material sequence.
+
+Four Sep-24 direct-main source-data commits are historical process exceptions and are reconciled in:
+
+`docs/governance/MNT_TRACEABILITY_AUDIT_2026-09-25.md`
+
+## Current performance gate
+
+`MNT-PERF-02` is measurement-only.
+
+Blocked until adjudication:
+
+- favicon/cache/hero/GTM remediation attributed to current LCP without evidence;
+- claiming current field INP from Lighthouse TBT;
+- reusing historical LCP values as if measured on the current DSG-post-#260 runtime.
