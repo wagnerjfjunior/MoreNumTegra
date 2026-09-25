@@ -22,7 +22,31 @@ Current reconciliation:
 
 `docs/governance/MNT_TRACEABILITY_AUDIT_2026-09-25.md`
 
-## Única próxima ação segura
+## Explicitly authorized bounded exception — GA4 Audience Readiness
+
+Product Authority authorized the current GA4 audience-readiness correction after RESF Audience Readiness adoption.
+
+State:
+
+```text
+180d full-URL candidate = CREATED
+540d full-URL candidate = CREATED
+180d path-safe = CREATED
+540d path-safe = CREATED
+path-safe rule = Page path and screen class begins with /empreendimentos/
+path-safe classifier validation = COMPLETE
+accumulation observation = NEXT
+legacy/export dependency check = PENDING
+canonical window policy = PENDING
+archival = NOT_AUTHORIZED
+paid media = FROZEN
+```
+
+Next bounded action:
+
+Observe initial accumulation for the path-safe audiences and check downstream dependency/export state before any archival. Do not archive any existing audience and do not activate Google Ads.
+
+## Default backlog next action after the bounded exception
 
 **MNT-PERF-02 — current-runtime performance verification**
 

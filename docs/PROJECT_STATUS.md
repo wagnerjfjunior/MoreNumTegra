@@ -1455,3 +1455,36 @@ Google SERP favicon visual refresh = NOT_OBSERVED / external
 ```
 
 Earlier sections in this file remain historical execution evidence. When they conflict with this reconciliation, this section plus live provider resolution governs current state.
+
+
+## GA4 Audience Readiness — 2026-09-25
+
+Product Authority authorized a bounded audience-readiness correction after RESF provider/consumer reconciliation.
+
+Observed live GA4 state:
+
+```text
+MNT | All project visitors | 180d = CREATED / SCREENSHOT_OBSERVED
+MNT | All project visitors | 540d = CREATED / SCREENSHOT_OBSERVED
+initial predicate = page_view AND page_location contains /empreendimentos/
+```
+
+Exact-head review reopened semantic validation because `page_location` is the complete URL and a query string can contain `/empreendimentos/` on a non-project page.
+
+Therefore:
+
+```text
+2C 180d creation = COMPLETE
+2C-540 540d creation = COMPLETE
+2D classifier semantic validation = COMPLETE_FOR_PATH_SAFE_RULE
+path-safe 180d = CREATED / SCREENSHOT_OBSERVED
+path-safe 540d = CREATED / SCREENSHOT_OBSERVED
+builder estimate for path-safe rule = 128 users / 64.6% (NOT membership proof)
+accumulation proof = PENDING
+legacy dependency/export check = PENDING
+canonical window policy = PENDING
+legacy / unsafe-candidate archival = NOT_AUTHORIZED
+paid media = FROZEN
+```
+
+Validated path-safe live-builder rule: `Page path and screen class begins with /empreendimentos/`. Both 180d and 540d path-safe variants were created and observed in the GA4 audience table.

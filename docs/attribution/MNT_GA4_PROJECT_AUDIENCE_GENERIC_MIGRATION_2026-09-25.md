@@ -1,6 +1,6 @@
 # MoreNumTegra — GA4 Generic Exact-Project Audience Migration — 2026-09-25
 
-Status: `DESIGN_CANONICALIZATION / DOCS_ONLY / GA4_MUTATION_PENDING`
+Status: `PATH_SAFE_REPLACEMENTS_CREATED / ACCUMULATION_PENDING`
 
 ## 1. Purpose
 
@@ -29,7 +29,7 @@ Governed exact-project namespace:
 
 `/empreendimentos/<project-slug>/`
 
-Candidate GA4 audience logic:
+Initial live candidate logic used:
 
 ```text
 event_name = page_view
@@ -37,9 +37,19 @@ AND
 page_location contains /empreendimentos/
 ```
 
-This syntax is consumer-specific GA4 configuration, not RESF doctrine.
+After live creation, exact-head review identified a false-positive class: Google defines `page_location` as the complete URL, including query strings. Therefore a non-project page whose query contains `/empreendimentos/` may match the predicate.
 
-The classifier is acceptable only while the `/empreendimentos/` namespace remains exclusively owned by exact-project pages. A future listing/index/utility page under that namespace must trigger revalidation before relying on the same broad condition.
+The path-safe preferred replacement is:
+
+```text
+Page path and screen class begins with /empreendimentos/
+```
+
+For web traffic, Google's documented Page path is the URL path after the domain and before the query string. This removes query-string contamination from the classifier.
+
+This syntax remains consumer-specific GA4 configuration, not RESF doctrine.
+
+The classifier remains acceptable only while the `/empreendimentos/` namespace is exclusively owned by exact-project pages. A future listing/index/utility page under that namespace requires revalidation.
 
 ## 4. Positive validation cases
 
@@ -86,13 +96,23 @@ property_id = 553742649
 measurement_id = G-57M2XR0CY2
 ```
 
-Audience:
+Initial candidate audiences created:
 
 ```text
-name = MNT | All project visitors | 180d
-include = event_name = page_view
-          AND page_location contains /empreendimentos/
-membership = 180 days
+MNT | All project visitors | 180d
+MNT | All project visitors | 540d
+condition = page_view AND page_location contains /empreendimentos/
+```
+
+These are evidence-bearing candidates, not yet the sole canonical replacement because query-bearing negative validation remains open.
+
+Path-safe target to validate in the live GA4 builder:
+
+```text
+dimension = Page path and screen class
+operator = begins with
+value = /empreendimentos/
+membership policy = pending final consumer decision (180d vs 540d)
 ```
 
 No visitor name, email, phone, Form 46 payload, CRM identity, hashed PII or fingerprint-derived identifier is required or permitted.
@@ -154,6 +174,6 @@ Also record:
 
 ## 10. Gate
 
-`DESIGN_READY_FOR_MANUAL_GA4_CREATION`
+`PATH_SAFE_CLASSIFIER_LIVE_VALIDATION_COMPLETE`
 
-Manual GA4 creation is the next separate execution step. The current connected analytics path has previously been evidenced as read-only for admin mutations, so no automated GA4 write is assumed.
+The live GA4 audience builder exposed the path-safe dimension/operator and Product Authority created both 180d and 540d path-safe variants. The next execution step is accumulation observation and downstream dependency/export review. No existing audience should be archived until those gates are complete and canonical window policy is decided.
