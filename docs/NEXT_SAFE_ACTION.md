@@ -110,3 +110,36 @@ Next safe action for this slice:
 6. adjudicate retain/rollback/further bounded Home remediation from evidence.
 
 Do not start DSG, CAPIITOLO, Elo or Ária remediation from the MNT-PERF-03A authorization.
+
+
+## MNT-PERF-03A measurement closure / next Home candidate
+
+The five-run post-change Home battery is complete.
+
+```text
+MNT-PERF-03A = RETAIN
+Home LCP median = 4.2 s
+target <= 2.5 s = NOT MET
+```
+
+Product Authority said "Vamos seguir" after the completed battery. Treat the next bounded action as:
+
+```text
+MNT-PERF-03B = Home late GTM network bootstrap only
+```
+
+Boundary:
+
+- reuse the accepted Elo Duo late-GTM pattern;
+- preserve `GTM-PGCR4R47`;
+- preserve the initial `gtm.js` dataLayer marker;
+- preserve queued MNT events and Consent events;
+- no event-name/parameter changes;
+- no GA4 audience/configuration mutation;
+- no Form46/commercial/SEO/project-page mutation;
+- load GTM network on window load or first user interaction, whichever comes first;
+- exact-head validation + browser smoke;
+- Production resolution;
+- five-run Home Mobile battery before performance conclusion.
+
+Do not combine CSS, catalog DOM, project-page or other performance changes into MNT-PERF-03B.

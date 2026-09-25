@@ -82,7 +82,7 @@ All returned HTTP 200 in the 2026-09-25 reconciliation smoke.
 ## PENDING / DEFERRED
 
 ```text
-MNT-PERF-03A = PRODUCTION_READY / POST_CHANGE_MEASUREMENT_PENDING
+MNT-PERF-03A = RETAIN / POST_CHANGE_MEASUREMENT_COMPLETE / LCP_MEDIAN_4.2S
 MNT-CDP-01 = PENDING
 MNT-CDP-03 = PENDING / spreadsheet-CSV value-update path
 MNT-M6-07 = DEFERRED / PAID_MEDIA_FROZEN
@@ -159,3 +159,21 @@ player load = USER_INTENT_ONLY
 post-change 5-run Lighthouse Mobile = PENDING
 performance improvement = NOT YET PROVEN
 ```
+
+
+## MNT-PERF-03A post-change validation — COMPLETE
+
+Evidence:
+`docs/performance/MNT_PERF_03A_POST_CHANGE_VALIDATION_2026-09-25.md`
+
+```text
+baseline Home LCP median = 10.4 s
+post-change Home LCP median = 4.2 s
+relative reduction = 59.6%
+target <= 2.5 s = NOT_MET
+retain PR #268 runtime = YES
+rollback = NOT_INDICATED
+field CWV / INP = NOT_PROVEN
+```
+
+Next bounded Home candidate: `MNT-PERF-03B — late GTM bootstrap`, reusing the accepted Elo Duo late-load pattern without changing event schema/container semantics.

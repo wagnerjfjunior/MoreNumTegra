@@ -1538,3 +1538,23 @@ post-change Lighthouse 5-run median = PENDING
 All final-head workflows passed and both review findings were resolved before merge. No GTM/GA4, Form46, commercial-data, project-page or paid-media mutation occurred.
 
 Do not claim Home LCP improvement until the post-change five-run Mobile battery is complete.
+
+
+## MNT-PERF-03A post-change measurement — COMPLETE 2026-09-25
+
+```text
+Home baseline LCP median = 10.4 s
+Home post-change LCP median = 4.2 s
+LCP reduction = 6.2 s / 59.6%
+FCP median = 1.0 s
+TBT median = 110 ms
+CLS median = 0
+Performance median = 84
+target LCP <= 2.5 s = NOT MET
+retain runtime = YES
+```
+
+Canonical evidence:
+`docs/performance/MNT_PERF_03A_POST_CHANGE_VALIDATION_2026-09-25.md`.
+
+Residual recurring PageSpeed signals include ~131–133 KiB unused JavaScript and ~370–500 ms render-blocking opportunity. Read-only source inspection identified the accepted Elo late-GTM bootstrap pattern as the next bounded Home candidate.
