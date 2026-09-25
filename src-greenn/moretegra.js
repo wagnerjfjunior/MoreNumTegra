@@ -533,12 +533,12 @@
     const id = frame.dataset.videoId;
     if (!id) return;
 
-    const mount = (autoplay = true) => {
+    const mount = () => {
       const existing = frame.querySelector("iframe");
       if (existing) return existing;
       const iframe = document.createElement("iframe");
       const params = new URLSearchParams({
-        autoplay: autoplay ? "1" : "0",
+        autoplay: "1",
         mute: "1",
         controls: "1",
         disablekb: "0",
@@ -560,41 +560,28 @@
       return iframe;
     };
 
-    const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches === true;
-    if (reduced) {
-      frame.setAttribute("role", "button");
-      frame.setAttribute("tabindex", "0");
-      frame.setAttribute("aria-label", "Reproduzir filme da campanha More em um Tegra");
-      const play = (focusPlayer = false) => {
-        frame.removeAttribute("role");
-        frame.removeAttribute("tabindex");
-        frame.removeAttribute("aria-label");
-        const iframe = mount(true);
-        if (focusPlayer && iframe) {
-          window.requestAnimationFrame(() => iframe.focus());
-        }
-      };
-      frame.addEventListener("click", () => play(false), {once: true});
-      frame.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          play(true);
-        }
-      }, {once: true});
-      return;
-    }
+    const play = (focusPlayer = false) => {
+      frame.removeAttribute("role");
+      frame.removeAttribute("tabindex");
+      frame.removeAttribute("aria-label");
+      delete frame.dataset.videoReady;
+      const iframe = mount();
+      if (focusPlayer && iframe) {
+        window.requestAnimationFrame(() => iframe.focus());
+      }
+    };
 
-    if ("IntersectionObserver" in window) {
-      const observer = new IntersectionObserver((entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          observer.disconnect();
-          window.setTimeout(() => mount(true), 350);
-        }
-      }, {rootMargin: "160px"});
-      observer.observe(frame);
-    } else {
-      window.setTimeout(() => mount(true), 500);
-    }
+    frame.dataset.videoReady = "true";
+    frame.setAttribute("role", "button");
+    frame.setAttribute("tabindex", "0");
+    frame.setAttribute("aria-label", "Reproduzir filme da campanha More em um Tegra");
+    frame.addEventListener("click", () => play(false), {once: true});
+    frame.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        play(true);
+      }
+    });
   }
 
   function initRoot(root) {

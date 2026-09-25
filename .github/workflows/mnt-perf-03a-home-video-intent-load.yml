@@ -1,0 +1,34 @@
+name: MNT-PERF-03A Home video intent-load validation
+
+on:
+  pull_request:
+    paths:
+      - "src-greenn/preview/index.html"
+      - "src-greenn/blocks/01-html-inicial.html"
+      - "src-greenn/moretegra.js"
+      - "src-greenn/moretegra.css"
+      - "scripts/validate-mnt-perf-03a-home-video-intent-load.mjs"
+      - ".github/workflows/mnt-perf-03a-home-video-intent-load.yml"
+  push:
+    branches: [main]
+    paths:
+      - "src-greenn/preview/index.html"
+      - "src-greenn/blocks/01-html-inicial.html"
+      - "src-greenn/moretegra.js"
+      - "src-greenn/moretegra.css"
+      - "scripts/validate-mnt-perf-03a-home-video-intent-load.mjs"
+      - ".github/workflows/mnt-perf-03a-home-video-intent-load.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check JavaScript syntax
+        run: node --check src-greenn/moretegra.js
+      - name: Validate Home video intent-load contract
+        run: node scripts/validate-mnt-perf-03a-home-video-intent-load.mjs
