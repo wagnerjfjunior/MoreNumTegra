@@ -1,0 +1,26 @@
+name: MNT-PERF-03B Home late GTM validation
+
+on:
+  pull_request:
+    paths:
+      - "src-greenn/preview/index.html"
+      - "scripts/validate-mnt-perf-03b-home-late-gtm.mjs"
+      - ".github/workflows/mnt-perf-03b-home-late-gtm.yml"
+  push:
+    branches: [main]
+    paths:
+      - "src-greenn/preview/index.html"
+      - "scripts/validate-mnt-perf-03b-home-late-gtm.mjs"
+      - ".github/workflows/mnt-perf-03b-home-late-gtm.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate Home late GTM contract
+        run: node scripts/validate-mnt-perf-03b-home-late-gtm.mjs
