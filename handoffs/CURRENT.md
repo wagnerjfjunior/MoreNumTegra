@@ -91,8 +91,28 @@ Google SERP favicon visual refresh = EXTERNAL / NOT_OBSERVED
 field CWV / INP = NOT_PROVEN
 ```
 
+## GA4 AUDIENCE READINESS — AUTHORIZED PARALLEL TASK
+
+Product Authority explicitly authorized a bounded GA4 audience-readiness task after the RESF provider/consumer reconciliation.
+
+Current observed state:
+
+```text
+MNT | All project visitors | 180d = CREATED / SCREENSHOT_OBSERVED
+MNT | All project visitors | 540d = CREATED / SCREENSHOT_OBSERVED
+initial condition = page_view AND page_location contains /empreendimentos/
+semantic validation = REOPENED
+reason = page_location is complete URL and can match query-string occurrences
+path-safe replacement validation = NEXT
+legacy archival = NOT_AUTHORIZED
+paid media = FROZEN
+```
+
+Canonical evidence:
+`docs/attribution/MNT_GA4_PROJECT_AUDIENCE_CREATION_EVIDENCE_2026-09-25.md`.
+
 ## NEXT SAFE ACTION
 
 Read `docs/NEXT_SAFE_ACTION.md`.
 
-Execute `MNT-PERF-02` as a measurement-only current-runtime performance verification. Stop before remediation unless separately authorized.
+The explicitly authorized GA4 audience-readiness exception is currently active and must be resolved before any audience archival. MNT-PERF-02 remains the default backlog next action outside this bounded exception.
