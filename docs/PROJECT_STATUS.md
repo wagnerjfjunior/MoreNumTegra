@@ -1516,3 +1516,25 @@ Deterministic findings:
 Remediation backlog: GitHub issue #266.
 
 Issue #266 is planning/backlog evidence only. Runtime remediation still requires a separately authorized bounded slice.
+
+
+## MNT-PERF-03A — Home YouTube intent-load remediation — PRODUCTION 2026-09-25
+
+Evidence:
+`docs/performance/MNT_PERF_03A_HOME_YOUTUBE_INTENT_LOAD_2026-09-25.md`
+
+```text
+authorization = BOUNDED HOME SLICE / PRODUCT AUTHORITY
+PR = #268
+initial failed head = 896d13710134e40a42f0b54f7d428bba3bf62d11
+final validated head = 22fc140823870f557bcbc8edcb779a916a8cca89
+merge/runtime SHA = 02feb3804a4a87c6d07bc12a5b9c7b983816b6ed
+Production deployment = dpl_3HqSohk1Sq32vWm8cUMFpgqY8GfW / READY
+production Home = HTTP 200
+runtime behavior = YouTube player loads only after explicit user intent
+post-change Lighthouse 5-run median = PENDING
+```
+
+All final-head workflows passed and both review findings were resolved before merge. No GTM/GA4, Form46, commercial-data, project-page or paid-media mutation occurred.
+
+Do not claim Home LCP improvement until the post-change five-run Mobile battery is complete.

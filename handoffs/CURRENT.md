@@ -21,15 +21,15 @@ Traceability audit:
 ```text
 CANONICAL_REPOSITORY = wagnerjfjunior/MoreNumTegra
 CANONICAL_BRANCH = main
-LATEST_INTEGRATED_RUNTIME_SHA = 95567db0d16e15d2c6971d8047ab7327d3171578
+LATEST_INTEGRATED_RUNTIME_SHA = 02feb3804a4a87c6d07bc12a5b9c7b983816b6ed
 ```
 
 ## DEPLOYMENT_STATE / PRODUCTION_STATE
 
 ```text
 CANONICAL_HOST = www.moretegra.com.br
-PRODUCTION_DEPLOYMENT = dpl_4r1JK6YPLsQC99dPumd8i7SCuwJW
-PRODUCTION_SOURCE_SHA = 95567db0d16e15d2c6971d8047ab7327d3171578
+PRODUCTION_DEPLOYMENT = dpl_3HqSohk1Sq32vWm8cUMFpgqY8GfW
+PRODUCTION_SOURCE_SHA = 02feb3804a4a87c6d07bc12a5b9c7b983816b6ed
 PRODUCTION_STATE = READY
 RUNTIME_ERRORS_LAST_24H = NONE_OBSERVED
 ```
@@ -82,7 +82,7 @@ All returned HTTP 200 in the 2026-09-25 reconciliation smoke.
 ## PENDING / DEFERRED
 
 ```text
-MNT-PERF-02 = NEXT / current-runtime performance verification
+MNT-PERF-03A = PRODUCTION_READY / POST_CHANGE_MEASUREMENT_PENDING
 MNT-CDP-01 = PENDING
 MNT-CDP-03 = PENDING / spreadsheet-CSV value-update path
 MNT-M6-07 = DEFERRED / PAID_MEDIA_FROZEN
@@ -139,3 +139,23 @@ remediation backlog = ISSUE #266 / OPEN
 ```
 
 Issue #266 records bounded remediation candidates only and does not authorize runtime mutation.
+
+
+## MNT-PERF-03A — Home YouTube intent-load remediation — 2026-09-25
+
+Canonical evidence:
+
+`docs/performance/MNT_PERF_03A_HOME_YOUTUBE_INTENT_LOAD_2026-09-25.md`
+
+```text
+PR = #268
+final exact head = 22fc140823870f557bcbc8edcb779a916a8cca89
+merge/runtime SHA = 02feb3804a4a87c6d07bc12a5b9c7b983816b6ed
+Production = dpl_3HqSohk1Sq32vWm8cUMFpgqY8GfW / READY
+Home = HTTP 200
+YouTube preconnect = REMOVED
+YouTube iframe initial auto-mount = REMOVED
+player load = USER_INTENT_ONLY
+post-change 5-run Lighthouse Mobile = PENDING
+performance improvement = NOT YET PROVEN
+```

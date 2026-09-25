@@ -6,8 +6,8 @@ Atualizado em `2026-09-25`.
 
 ```text
 repository main = RESOLVE_LIVE
-latest integrated runtime source = 95567db0d16e15d2c6971d8047ab7327d3171578
-Production = dpl_4r1JK6YPLsQC99dPumd8i7SCuwJW / READY
+latest integrated runtime source = 02feb3804a4a87c6d07bc12a5b9c7b983816b6ed
+Production = dpl_3HqSohk1Sq32vWm8cUMFpgqY8GfW / READY
 runtime errors last 24h = NONE OBSERVED
 
 MNT-RESF = CLOSED / COMPLETE_WITH_DEFERRED_PAID_MEDIA_SCOPE
@@ -87,3 +87,26 @@ Paid media remains frozen:
 MNT-M6-07 = DEFERRED / PAID_MEDIA_FROZEN
 MNT-M6-08 = DEFERRED / DEPENDS_ON_M6_07
 ```
+
+
+## Active bounded performance follow-up — MNT-PERF-03A
+
+The authorized Home remediation is merged and live.
+
+```text
+runtime SHA = 02feb3804a4a87c6d07bc12a5b9c7b983816b6ed
+Production = dpl_3HqSohk1Sq32vWm8cUMFpgqY8GfW / READY
+implementation = COMPLETE
+post-change performance measurement = NEXT
+```
+
+Next safe action for this slice:
+
+1. run five PageSpeed/Lighthouse Mobile samples on `https://www.moretegra.com.br/`;
+2. use the same MNT-PERF-02 method (Moto G Power emulation / slow 4G / initial load);
+3. record FCP/LCP/TBT/CLS/transfer and median;
+4. verify that initial-load YouTube embed transfer is absent;
+5. compare to MNT-PERF-02 Home median without treating TBT as INP;
+6. adjudicate retain/rollback/further bounded Home remediation from evidence.
+
+Do not start DSG, CAPIITOLO, Elo or Ária remediation from the MNT-PERF-03A authorization.
