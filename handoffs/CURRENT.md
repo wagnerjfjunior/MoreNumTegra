@@ -21,15 +21,15 @@ Traceability audit:
 ```text
 CANONICAL_REPOSITORY = wagnerjfjunior/MoreNumTegra
 CANONICAL_BRANCH = main
-LATEST_INTEGRATED_RUNTIME_SHA = 02feb3804a4a87c6d07bc12a5b9c7b983816b6ed
+LATEST_INTEGRATED_RUNTIME_SHA = 43ca5ba30b738b32ef482a4b9864d4bce4d97474
 ```
 
 ## DEPLOYMENT_STATE / PRODUCTION_STATE
 
 ```text
 CANONICAL_HOST = www.moretegra.com.br
-PRODUCTION_DEPLOYMENT = dpl_3HqSohk1Sq32vWm8cUMFpgqY8GfW
-PRODUCTION_SOURCE_SHA = 02feb3804a4a87c6d07bc12a5b9c7b983816b6ed
+PRODUCTION_DEPLOYMENT = dpl_JLfW5GLsE4xwTu1fVr88Pc1Ms2iU
+PRODUCTION_SOURCE_SHA = 43ca5ba30b738b32ef482a4b9864d4bce4d97474
 PRODUCTION_STATE = READY
 RUNTIME_ERRORS_LAST_24H = NONE_OBSERVED
 ```
@@ -177,3 +177,17 @@ field CWV / INP = NOT_PROVEN
 ```
 
 Next bounded Home candidate: `MNT-PERF-03B — late GTM bootstrap`, reusing the accepted Elo Duo late-load pattern without changing event schema/container semantics.
+
+
+## MNT-PERF-03B — Home late GTM bootstrap — PRODUCTION
+
+```text
+PR = #271
+exact head = 9c04027652cf3c54ed3613e8c74883424ae41611
+runtime SHA = 43ca5ba30b738b32ef482a4b9864d4bce4d97474
+Production = dpl_JLfW5GLsE4xwTu1fVr88Pc1Ms2iU / READY
+Home = HTTP 200
+late GTM bootstrap = LIVE
+post-change five-run Home battery = NEXT
+performance outcome = NOT_YET_PROVEN
+```
