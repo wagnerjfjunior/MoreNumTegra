@@ -1,14 +1,14 @@
 # Status do Projeto — MoreNumTegra
 
-Atualizado em `2026-09-23`.
+Atualizado em `2026-09-25`.
 
 Fonte canônica: GitHub `main`. Resolver estado live antes de qualquer mutação.
 
 ## 1. Estado integrado
 
 ```text
-CANONICAL_MAIN_RUNTIME = c80a8e1d773d85af563d9630f6e460e7ad85ea02
-PRODUCTION_DEPLOYMENT = dpl_4F8SF29FyNj7EcpyqM9zT57oYAoi
+CANONICAL_MAIN_RUNTIME = 95567db0d16e15d2c6971d8047ab7327d3171578
+PRODUCTION_DEPLOYMENT = dpl_4r1JK6YPLsQC99dPumd8i7SCuwJW
 PRODUCTION_STATE = READY
 
 MNT-RESF = CLOSED / COMPLETE_WITH_DEFERRED_PAID_MEDIA_SCOPE
@@ -93,7 +93,7 @@ No alias/duplicate route was introduced and the canonical remains:
 
 ```text
 CANONICAL_HOST = https://www.moretegra.com.br/
-PRODUCTION_SOURCE_SHA = c80a8e1d773d85af563d9630f6e460e7ad85ea02
+PRODUCTION_SOURCE_SHA = 95567db0d16e15d2c6971d8047ab7327d3171578
 PRODUCTION_DEPLOYMENT = dpl_4F8SF29FyNj7EcpyqM9zT57oYAoi
 PRODUCTION_STATE = READY
 ```
@@ -1372,3 +1372,86 @@ Detailed session handoff:
 `handoffs/HANDOFF-2026-09-23-FAVICON-LCP-RECHECK-NEXT.md`
 
 After adjudication, resume `MNT-CDP-01`.
+
+
+## Current-state reconciliation — 2026-09-25
+
+Canonical audit:
+
+`docs/governance/MNT_TRACEABILITY_AUDIT_2026-09-25.md`
+
+Mandatory traceability standard:
+
+`docs/governance/MNT_CHANGE_TRACEABILITY_STANDARD_V1.md`
+
+Live state:
+
+```text
+main = 95567db0d16e15d2c6971d8047ab7327d3171578
+Production deployment = dpl_4r1JK6YPLsQC99dPumd8i7SCuwJW
+Production state = READY
+runtime errors last 24h = NONE OBSERVED
+
+Home = HTTP 200
+DSG Itaim = HTTP 200
+CAPIITOLO = HTTP 200
+Elo Duo = HTTP 200
+Ária Higienópolis = HTTP 200
+favicon.ico = HTTP 200
+```
+
+Recent integrated runtime chain:
+
+```text
+#249-#253 = brand/performance/cache remediation
+#254-#260 = DSG Itaim publication and iterative correction
+#250 = CLOSED_UNMERGED / SUPERSEDED_BY_249
+```
+
+Four direct-to-main Sep-24 source-data commits are recorded as process exceptions in the traceability audit.
+
+### Performance follow-up
+
+Old current-state pointer:
+
+`MNT-PERF-01 = ACTIVE / MEASUREMENT_ONLY`
+
+is stale.
+
+Current truthful disposition:
+
+```text
+MNT-PERF-01 = EXECUTED / REMEDIATION_CHAIN_MERGED
+FINAL_POST_REMEDIATION_CURRENT_RUNTIME_MEASUREMENT_PACKET = NOT_CANONICALIZED
+MNT-PERF-02 = NEXT / MEASUREMENT_ONLY
+```
+
+No final current-runtime LCP number is inferred.
+
+### DSG current integrated state
+
+Published route:
+
+`https://www.moretegra.com.br/empreendimentos/dsg-itaim/`
+
+Integrated through PR #260 with:
+
+- CAPIITOLO-derived composition baseline;
+- JSON-LD/canonical preservation;
+- Home link + structured discovery integration;
+- RealEstateAgent image/geo;
+- gallery/typology visual corrections.
+
+### Remaining backlog
+
+```text
+MNT-PERF-02 = NEXT
+MNT-CDP-01 = PENDING
+MNT-CDP-03 = PENDING / spreadsheet-CSV value update path
+MNT-M6-07 = DEFERRED / PAID_MEDIA_FROZEN
+MNT-M6-08 = DEFERRED / DEPENDS_ON_M6_07
+field CWV / INP = NOT_PROVEN
+Google SERP favicon visual refresh = NOT_OBSERVED / external
+```
+
+Earlier sections in this file remain historical execution evidence. When they conflict with this reconciliation, this section plus live provider resolution governs current state.
