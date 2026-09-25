@@ -1,6 +1,6 @@
 # MoreNumTegra — GA4 Generic Exact-Project Audience Migration — 2026-09-25
 
-Status: `DESIGN_REVISED / LIVE_CANDIDATES_CREATED / PATH_SAFE_REPLACEMENT_PENDING`
+Status: `PATH_SAFE_REPLACEMENTS_CREATED / ACCUMULATION_PENDING`
 
 ## 1. Purpose
 
@@ -174,6 +174,6 @@ Also record:
 
 ## 10. Gate
 
-`PATH_SAFE_CLASSIFIER_LIVE_VALIDATION_REQUIRED`
+`PATH_SAFE_CLASSIFIER_LIVE_VALIDATION_COMPLETE`
 
-The next execution step is to prove that the live GA4 audience builder exposes the path-safe dimension/operator and that the positive/negative cases behave as intended. The existing 180d and 540d candidates must remain unarchived until this correction is resolved.
+The live GA4 audience builder exposed the path-safe dimension/operator and Product Authority created both 180d and 540d path-safe variants. The next execution step is accumulation observation and downstream dependency/export review. No existing audience should be archived until those gates are complete and canonical window policy is decided.
