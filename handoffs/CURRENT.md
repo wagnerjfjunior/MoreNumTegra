@@ -98,13 +98,16 @@ Product Authority explicitly authorized a bounded GA4 audience-readiness task af
 Current observed state:
 
 ```text
-MNT | All project visitors | 180d = CREATED / SCREENSHOT_OBSERVED
-MNT | All project visitors | 540d = CREATED / SCREENSHOT_OBSERVED
-initial condition = page_view AND page_location contains /empreendimentos/
-semantic validation = REOPENED
-reason = page_location is complete URL and can match query-string occurrences
-path-safe replacement validation = NEXT
-legacy archival = NOT_AUTHORIZED
+MNT | All project visitors | 180d = CREATED / INITIAL FULL-URL CANDIDATE
+MNT | All project visitors | 540d = CREATED / INITIAL FULL-URL CANDIDATE
+MNT | All project visitors path-safe | 180d = CREATED / SCREENSHOT_OBSERVED
+MNT | All project visitors path-safe | 540d = CREATED / SCREENSHOT_OBSERVED
+path-safe condition = Page path and screen class begins with /empreendimentos/
+semantic validation = COMPLETE_FOR_PATH_SAFE_RULE
+accumulation proof = PENDING
+legacy/export dependency check = PENDING
+canonical window policy = PENDING
+archival = NOT_AUTHORIZED
 paid media = FROZEN
 ```
 
