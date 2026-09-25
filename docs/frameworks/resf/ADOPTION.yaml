@@ -3,7 +3,7 @@ framework:
   version: 1
   lifecycle_at_adoption: CANDIDATE
   provider: wagnerjfjunior/Blogs-sites-portais-seo
-  provider_ref: 7a61aa036d677015ee4540ca8c5dc9a41f0165d4
+  provider_ref: c78bdad37c884a94a57a5ee39b4ca22e3f530438
 consumer:
   project_id: morenumtegra
   repository: wagnerjfjunior/MoreNumTegra
