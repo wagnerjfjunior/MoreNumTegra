@@ -33,6 +33,7 @@ const initVideo = initStart >= 0 && initEnd > initStart ? js.slice(initStart, in
 expect(initVideo.includes('frame.setAttribute("role", "button")'), "Video facade must expose button semantics.");
 expect(initVideo.includes('frame.setAttribute("tabindex", "0")'), "Video facade must be keyboard focusable.");
 expect(initVideo.includes('event.key === "Enter" || event.key === " "'), "Video facade must support Enter and Space.");
+expect(!initVideo.includes('}, {once: true});\\n  }'), "Keyboard handler must not be one-shot on unrelated keys.");
 expect(initVideo.includes('frame.addEventListener("click"'), "Video iframe must be activated from click intent.");
 expect(initVideo.includes("const iframe = mount();"), "Player mounting must occur inside explicit play flow.");
 expect(!initVideo.includes("IntersectionObserver"), "Video iframe must not mount from viewport intersection.");
