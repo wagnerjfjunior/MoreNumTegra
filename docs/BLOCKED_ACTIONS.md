@@ -581,3 +581,22 @@ Allowed without new runtime authorization:
 - source/dimension/byte accounting;
 - deterministic candidate design;
 - exact bounded remediation proposal for Product Authority decision.
+
+
+## MNT-PERF-03A post-production gate — 2026-09-25
+
+The Home YouTube intent-load runtime slice is authorized, merged and live at `02feb3804a4a87c6d07bc12a5b9c7b983816b6ed`.
+
+Allowed now:
+- five-run Mobile performance remeasurement of Home;
+- read-only validation of initial-load network behavior;
+- retain/rollback adjudication after measurement.
+
+Still blocked without a new bounded authorization:
+- further Home runtime remediation beyond PR #268;
+- DSG/CAPIITOLO/Elo/Ária runtime remediation;
+- GTM/GA4 changes;
+- Form46 changes;
+- commercial-data changes;
+- paid-media activation;
+- claiming LCP improvement before the post-change battery.
