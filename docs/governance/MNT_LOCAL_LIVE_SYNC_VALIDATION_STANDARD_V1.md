@@ -111,3 +111,29 @@ PRODUCTION_PROOF = NOT_CLAIMED
 - Local Live Sync does not authorize merge or deploy.
 - Product Authority still controls release.
 - A local PASS cannot be promoted to a Production PASS without Production evidence where the consumer contract requires it.
+
+
+## Session branch lock — mandatory operational rule
+
+A Local Live Sync process monitors a GitHub branch, never a ChatGPT conversation.
+
+To prevent stale or cross-conversation state:
+
+1. the branch must be supplied explicitly when the local session starts;
+2. no historical conversation, previous package default or mutable shared `config.json` may silently select the branch;
+3. an empty branch input must fail closed; there is no silent fallback to a prior branch;
+4. once the local server starts, the branch is locked for the lifetime of that process;
+5. changing branches requires stopping the process and starting a new session;
+6. each poll resolves the current HEAD of the locked branch;
+7. repository content must be downloaded/served from the immutable resolved HEAD SHA, not from an ambiguous moving archive without recording the SHA;
+8. the console must expose at minimum `repository + branch + head` after every successful synchronization;
+9. a local status endpoint or equivalent inspectable state should expose the currently served branch/head;
+10. an assistant must resolve the target branch live before instructing the user to inspect local output and must not infer the target branch from a previous conversation.
+
+Canonical evidence line:
+
+```text
+[SYNC] OK branch=<exact-branch> head=<immutable-sha>
+```
+
+If the assistant is working on another branch than the branch shown by the active Local Live Sync session, it must say so explicitly. It must not claim that the user's local browser contains the new work until the locked branch and exact served HEAD match the intended work.
