@@ -37,6 +37,17 @@ Source page:
 - visible attribution is included in the hero;
 - the file is externally hosted for this candidate; no copy is stored in GitHub.
 
+Second editorial image:
+`https://commons.wikimedia.org/wiki/Special:FilePath/Edif%C3%ADcio_Louveira%2C_Jo%C3%A3o_Batista_Vilanova_Artigas_e_Carlos_Cascaldi_%285877913511%29.jpg?width=1280`
+
+Source page:
+`https://commons.wikimedia.org/wiki/File:Edif%C3%ADcio_Louveira,_Jo%C3%A3o_Batista_Vilanova_Artigas_e_Carlos_Cascaldi_(5877913511).jpg`
+
+- subject: Edifício Louveira, Rua Piauí / Praça Vilaboim, Higienópolis;
+- photographer: André Deak / Arte Fora do Museu;
+- license: CC BY 2.0;
+- visible attribution is included with the image.
+
 ## Product truth
 
 - Ária product: `src-greenn/empreendimentos/aria-higienopolis/index.html`.
