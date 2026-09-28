@@ -17,3 +17,16 @@ Status: `BLOCKED_COMMERCIAL_IMPLEMENTATION_BY_PRODUCT_TRUTH_CONFLICT`
 - interiors: Silvia Aguiar
 - verified amenities include fitness, gourmet, coworking, pet place, barbecue, sauna, pool, SPA, beach tennis
 - required decision before commercial implementation: either (A) editorial/legacy project page with alternatives CTA, or (B) prove current resale/consumer inventory authority. Do not publish normal primary inventory conversion without that decision.
+
+
+## Release-mode decision
+
+Product Authority continuation on 2026-09-28 resolves the prior commercial implementation block as:
+
+`EDITORIAL_LEGACY_WITH_ALTERNATIVES_CTA`
+
+The exact-project page may preserve search/entity history and verified project facts, but must:
+- state the official current status `100% Vendido`;
+- publish no current inventory price or Offer availability;
+- use alternatives/specialist conversion rather than primary-project inventory conversion;
+- route current demand to available Caminhos da Lapa alternatives.
