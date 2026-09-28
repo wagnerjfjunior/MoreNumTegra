@@ -60,6 +60,10 @@
     {
       "source": "/empreendimentos/bueno-brandao-257/",
       "destination": "/src-greenn/empreendimentos/bueno-brandao-257/index.html"
+    },
+    {
+      "source": "/empreendimentos/chateau-jardin/",
+      "destination": "/src-greenn/empreendimentos/chateau-jardin/index.html"
     }
   ],
   "headers": [
