@@ -44,6 +44,10 @@
     {
       "source": "/empreendimentos/zahle-jardins/",
       "destination": "/src-greenn/empreendimentos/zahle-jardins/index.html"
+    },
+    {
+      "source": "/empreendimentos/ypy-alto-do-ipiranga/",
+      "destination": "/src-greenn/empreendimentos/ypy-alto-do-ipiranga/index.html"
     }
   ],
   "headers": [
