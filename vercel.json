@@ -40,6 +40,10 @@
     {
       "source": "/empreendimentos/soma-perdizes/",
       "destination": "/src-greenn/empreendimentos/soma-perdizes/index.html"
+    },
+    {
+      "source": "/empreendimentos/zahle-jardins/",
+      "destination": "/src-greenn/empreendimentos/zahle-jardins/index.html"
     }
   ],
   "headers": [
