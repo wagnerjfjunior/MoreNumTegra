@@ -10,6 +10,7 @@ on:
       - "src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html"
       - "src-greenn/empreendimentos/aria-higienopolis/index.html"
       - "src-greenn/empreendimentos/ledge-brooklin/index.html"
+      - "src-greenn/empreendimentos/soma-perdizes/index.html"
       - "experiments/capiitolo-editorial-v3/index.html"
       - "scripts/validate-m5-06-cta-form-journey.mjs"
       - ".github/diagnostics/m5-06-cta-form-smoke.mjs"
@@ -24,6 +25,7 @@ on:
       - "src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html"
       - "src-greenn/empreendimentos/aria-higienopolis/index.html"
       - "src-greenn/empreendimentos/ledge-brooklin/index.html"
+      - "src-greenn/empreendimentos/soma-perdizes/index.html"
       - "experiments/capiitolo-editorial-v3/index.html"
       - "scripts/validate-m5-06-cta-form-journey.mjs"
       - ".github/diagnostics/m5-06-cta-form-smoke.mjs"
@@ -61,6 +63,7 @@ jobs:
                       "/empreendimentos/caminhos-da-lapa-elo-duo/":"/src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html",
                       "/empreendimentos/aria-higienopolis/":"/src-greenn/empreendimentos/aria-higienopolis/index.html",
                       "/empreendimentos/ledge-brooklin/":"/src-greenn/empreendimentos/ledge-brooklin/index.html",
+                      "/empreendimentos/soma-perdizes/":"/src-greenn/empreendimentos/soma-perdizes/index.html",
                   }
                   self.path=mapping.get(route,self.path)
                   return super().do_GET()

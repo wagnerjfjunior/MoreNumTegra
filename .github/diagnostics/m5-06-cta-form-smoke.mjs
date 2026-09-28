@@ -9,6 +9,8 @@ const cases=[
   {name:"aria-payment",path:"/empreendimentos/aria-higienopolis/",cta:'a[data-project-intent="payment-simulation"][data-form-intent="payment_simulation"]',expected:"Simular forma de pagamento"},
   {name:"ledge-conditions",path:"/empreendimentos/ledge-brooklin/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"ledge-visit",path:"/empreendimentos/ledge-brooklin/",cta:'.tour-card a[data-form-intent="schedule_visit"]',expected:"Agendar visita"},
+  {name:"soma-conditions",path:"/empreendimentos/soma-perdizes/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
+  {name:"soma-floating-conditions",path:"/empreendimentos/soma-perdizes/",cta:'.mt-quick-lead[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"capiitolo-conditions",path:"/empreendimentos/capiitolo-piero-lissoni/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"capiitolo-visit",path:"/empreendimentos/capiitolo-piero-lissoni/",cta:'.tour-card a[data-form-intent="schedule_visit"]',expected:"Agendar visita"}
 ];

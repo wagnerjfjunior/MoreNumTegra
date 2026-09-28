@@ -138,8 +138,8 @@ Before merge:
 
 | Order | Project | Reference family | Current status |
 |---:|---|---|---|
-| 1 | Soma Perdizes | Standard | NEXT |
-| 2 | Zahle Jardins | Standard | QUEUED |
+| 1 | Soma Perdizes | Standard | IN_PROGRESS / PR #278 |
+| 2 | Zahle Jardins | Standard | NEXT_AFTER_SOMA |
 | 3 | YPY Alto do Ipiranga | Standard | QUEUED |
 | 4 | Bem Moema | Standard | QUEUED |
 | 5 | Mozae Higienópolis | Standard | QUEUED |
