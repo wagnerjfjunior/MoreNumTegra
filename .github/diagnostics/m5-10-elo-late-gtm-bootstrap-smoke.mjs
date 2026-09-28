@@ -105,7 +105,7 @@ async function runScenario(name, choiceBeforeLoad){
 
   const after=await page.evaluate(()=>({
     events:(window.dataLayer||[]).map(x=>x&&x.event||null),
-    saved:localStorage.getItem("mnt.consent.v1"),
+    saved:localStorage.getItem("mnt.consent.v2"),
     gtmStub:window.__mntGtmStub
   }));
 
