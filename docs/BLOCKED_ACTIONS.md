@@ -600,3 +600,10 @@ Still blocked without a new bounded authorization:
 - commercial-data changes;
 - paid-media activation;
 - claiming LCP improvement before the post-change battery.
+
+
+## 11. Local Live Sync validation — 2026-09-28
+
+`docs/governance/MNT_LOCAL_LIVE_SYNC_VALIDATION_STANDARD_V1.md` is an approved pre-merge validation option when hosted Preview is unavailable, prohibited, rate-limited or intentionally avoided.
+
+It does not authorize merge/deploy and does not replace Production-only evidence. A local PASS must never be reported as Preview or Production PASS.
