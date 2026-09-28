@@ -12,6 +12,7 @@ on:
       - "src-greenn/empreendimentos/ledge-brooklin/index.html"
       - "src-greenn/empreendimentos/soma-perdizes/index.html"
       - "src-greenn/empreendimentos/zahle-jardins/index.html"
+      - "src-greenn/empreendimentos/ypy-alto-do-ipiranga/index.html"
       - "experiments/capiitolo-editorial-v3/index.html"
       - "scripts/validate-m5-06-cta-form-journey.mjs"
       - ".github/diagnostics/m5-06-cta-form-smoke.mjs"
@@ -28,6 +29,7 @@ on:
       - "src-greenn/empreendimentos/ledge-brooklin/index.html"
       - "src-greenn/empreendimentos/soma-perdizes/index.html"
       - "src-greenn/empreendimentos/zahle-jardins/index.html"
+      - "src-greenn/empreendimentos/ypy-alto-do-ipiranga/index.html"
       - "experiments/capiitolo-editorial-v3/index.html"
       - "scripts/validate-m5-06-cta-form-journey.mjs"
       - ".github/diagnostics/m5-06-cta-form-smoke.mjs"
@@ -67,6 +69,7 @@ jobs:
                       "/empreendimentos/ledge-brooklin/":"/src-greenn/empreendimentos/ledge-brooklin/index.html",
                       "/empreendimentos/soma-perdizes/":"/src-greenn/empreendimentos/soma-perdizes/index.html",
                       "/empreendimentos/zahle-jardins/":"/src-greenn/empreendimentos/zahle-jardins/index.html",
+                      "/empreendimentos/ypy-alto-do-ipiranga/":"/src-greenn/empreendimentos/ypy-alto-do-ipiranga/index.html",
                   }
                   self.path=mapping.get(route,self.path)
                   return super().do_GET()
