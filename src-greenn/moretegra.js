@@ -500,7 +500,7 @@
   }
 
   function cardMarkup(project) {
-    const actionLabel = project.cta || (project.priceState === "soldout" ? "Ver alternativas" : "Negociar condições");
+    const actionLabel = "Negociar condições";
     const interestValue = project.interest || project.name;
     const detailUrl = detailUrlFor(project);
 
@@ -520,7 +520,7 @@
           <span class="mt-project-info">${escapeHtml(projectInfoForCard(project.info))}</span>
           ${project.award && project.award.tagline ? `<div class="mt-award-context" title="${escapeHtml(project.award.label)}">${escapeHtml(project.award.tagline)}</div>` : ""}
           ${priceMarkup(project)}
-          <div class="mt-project-actions" style="grid-template-columns:${detailUrl ? "1fr 1fr" : "1fr"}">
+          <div class="mt-project-actions">
             ${detailUrl ? `<a class="mt-interest" href="${escapeHtml(detailUrl)}" aria-label="Conhecer ${escapeHtml(project.projectName || project.name)}">Conhecer empreendimento</a>` : ""}
             <a class="mt-interest" href="#formulario" data-interest="${escapeHtml(interestValue)}" data-form-intent="${escapeHtml(project.formIntent || "conditions")}">${escapeHtml(actionLabel)}</a>
           </div>
