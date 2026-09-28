@@ -170,3 +170,9 @@ Canonical release evidence:
 
 This publication does not authorize another runtime slice. Resume the pre-existing backlog/gates below unless Product Authority explicitly selects a new bounded task.
 
+## Higienópolis regional v2 release closure — 2026-09-28
+
+PR #294 is merged and live at `c8f9de723f20f3bdbc84646aeb11144052aca5b7` / `dpl_8Po99EaQDHvFbievvzx9QvPcyTC4` / READY.
+
+This release does not authorize another runtime slice. Resume the existing backlog unless Product Authority selects a new bounded task.
+

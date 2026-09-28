@@ -211,3 +211,15 @@ GitHub Actions exact-head execution = NOT_AVAILABLE / RUNNER_ALLOCATION_FAILURE
 
 No Hosted Preview was created. No visual/browser acceptance, physical-device validation, real Form 46 submission, screen-reader proof or field CWV/INP proof is claimed by this release.
 
+## Higienópolis regional v2 — Production — 2026-09-28
+
+Canonical release record:
+`docs/governance/MNT_HIGIENOPOLIS_REGION_V2_PRODUCTION_RELEASE_2026-09-28.md`
+
+```text
+PR #294 = MERGED
+runtime SHA = c8f9de723f20f3bdbc84646aeb11144052aca5b7
+Production = dpl_8Po99EaQDHvFbievvzx9QvPcyTC4 / READY
+/regioes/higienopolis/ = HTTP 200
+```
+
