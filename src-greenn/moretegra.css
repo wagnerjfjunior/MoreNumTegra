@@ -92,8 +92,8 @@
 .mt-project-image{position:relative;display:block;aspect-ratio:828/743;overflow:hidden;background:#d7d2c8}
 .mt-project-image img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
 .mt-project-card:hover .mt-project-image img{transform:scale(1.025)}
-.mt-status,.mt-feature{position:absolute;z-index:2;top:14px;border-radius:999px;padding:8px 11px;color:#fff;font-size:10px;font-weight:850;box-shadow:0 6px 18px rgba(0,0,0,.18)}
-.mt-status{left:14px}.mt-feature{right:14px;max-width:55%;background:rgba(16,17,14,.78);text-align:right}
+.mt-status,.mt-feature{position:absolute;z-index:2;top:14px;display:inline-flex;align-items:center;min-height:28px;height:auto;border-radius:999px;padding:5px 10px;color:#fff;font-size:10px;line-height:1.15;font-weight:850;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.mt-status{left:14px;white-space:nowrap}.mt-feature{right:14px;max-width:55%;background:rgba(16,17,14,.78);text-align:right;justify-content:flex-end}
 .mt-status-lancamento{background:var(--mt-launch);color:var(--mt-ink)}.mt-status-construcao{background:var(--mt-build);color:var(--mt-ink)}.mt-status-entregue{background:var(--mt-ready);color:#fff}
 .mt-promo-ribbon{position:absolute;z-index:3;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-between;gap:10px;background:#EBB92E;color:#171813;padding:10px 14px;font-size:11px;font-weight:850;letter-spacing:.02em;box-shadow:0 -8px 22px rgba(0,0,0,.18)}
 .mt-promo-ribbon b{font-size:10px;letter-spacing:.13em}.mt-promo-ribbon span{text-align:right}
