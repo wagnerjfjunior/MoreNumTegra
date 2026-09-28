@@ -62,13 +62,18 @@ Decision for this candidate:
 
 ## 6. Price / availability boundary
 
-The Tegra source exposed an Aug/2026 commercial price reference. The new exact-project page deliberately does not hardcode that value.
+The exact-project page now intentionally mirrors the existing MoreNumTegra Home-card commercial reference after explicit Product Authority direction:
 
-Rules:
-- no price claim is published from a stale point-in-time reference;
+- displayed headline: `A partir de R$ 600.000`;
+- Home-card evidence: `Studio 0052 · R$ 16.666/m² · Valor a partir de R$ 600.000`;
+- secondary Home-card reference: `unidade 1223 · R$ 17.116/m² · R$ 1.199.000`.
+
+This is a point-in-time MoreNumTegra commercial reference, not a claim that the public Tegra source currently quotes the same starting value. The current Tegra page observed during this correction displays a different Aug/2026 reference for a 70 m² unit. Therefore:
+
+- the page labels the R$ 600.000 value as a commercial reference aligned to the Home card;
 - no unit availability is presumed;
-- availability and current conditions are routed to Tegra Vendas/Form 46;
-- future price publication must use the governed commercial data path.
+- the page instructs the visitor to confirm current availability and conditions;
+- a later commercial-data refresh may supersede this snapshot.
 
 ## 7. Address boundary
 
@@ -106,7 +111,7 @@ Candidate implements:
 - verified FloorPlan entities for 70/80/122 m²;
 - visible FAQ + FAQPage;
 - commercial RealEstateAgent context;
-- no Product/Offer price schema.
+- no Product/Offer price schema; the visible commercial reference is intentionally not converted into Offer schema.
 
 ## 10. Conversion / measurement
 
@@ -129,6 +134,7 @@ This candidate:
 - uses the relatively small official Tegra ImagemPrincipal as initial hero;
 - hero is in initial HTML, eager by default and fetchpriority=high;
 - below-the-fold media is lazy;
+- gallery uses six official Ledge/Tegra/Exto images;
 - heavy optional media does not block Form 46 or core content;
 - no hero video is introduced.
 
