@@ -31,6 +31,7 @@
 - Task graph: `docs/sfjm/PROGRAM_TASK_GRAPH.json`
 - Dashboard/WBS reconciliation: `docs/sfjm/MNT_DASHBOARD_WBS_STATE_RECONCILIATION_2026-09-23.md`
 - Change traceability standard: `docs/governance/MNT_CHANGE_TRACEABILITY_STANDARD_V1.md`
+- Local validation standard: `docs/governance/MNT_LOCAL_LIVE_SYNC_VALIDATION_STANDARD_V1.md`
 - Latest traceability audit: `docs/governance/MNT_TRACEABILITY_AUDIT_2026-09-25.md`
 - Historical planning baseline archive: `docs/roadmap/archive/MNT_RESF_PLANNING_BASELINE_2026-09-10.md`
 - Data de referência desta revisão: `2026-09-23`
@@ -56,6 +57,7 @@ Em caso de divergência:
 
 1. `handoffs/CURRENT.md`
 2. `docs/governance/MNT_CHANGE_TRACEABILITY_STANDARD_V1.md`
+2a. `docs/governance/MNT_LOCAL_LIVE_SYNC_VALIDATION_STANDARD_V1.md`
 3. `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 4. `docs/baseline/TECHNICAL_BASELINE_V2_3.md`
 5. ADR-006 — produção Vercel / `www` canônico
