@@ -16,6 +16,7 @@ const ypy=read("src-greenn/empreendimentos/ypy-alto-do-ipiranga/index.html");
 const bem=read("src-greenn/empreendimentos/bem-moema/index.html");
 const mozae=read("src-greenn/empreendimentos/mozae-higienopolis/index.html");
 const bueno=read("src-greenn/empreendimentos/bueno-brandao-257/index.html");
+const chateau=read("src-greenn/empreendimentos/chateau-jardin/index.html");
 const cap=read("src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html");
 const capSource=read("experiments/capiitolo-editorial-v3/index.html");
 
@@ -33,7 +34,7 @@ assert(runtime.includes('if (formIntentTarget) applyFormIntent(formIntentTarget.
 assert(runtime.includes('if (!value || !(intent instanceof HTMLSelectElement)) return false;'),"runtime fails closed for invalid mapping/select");
 assert(runtime.includes('if (![...intent.options].some((option) => option.value === value)) return false;'),"runtime refuses unmapped form values");
 
-for(const [name,text] of [["Home",home],["Elo Duo",elo],["Ária",aria],["Ledge",ledge],["Soma",soma],["Zahle",zahle],["YPY",ypy],["Bem Moema",bem],["Mozae",mozae],["Bueno",bueno],["CAPIITOLO source",capSource]]){
+for(const [name,text] of [["Home",home],["Elo Duo",elo],["Ária",aria],["Ledge",ledge],["Soma",soma],["Zahle",zahle],["YPY",ypy],["Bem Moema",bem],["Mozae",mozae],["Bueno",bueno],["Château",chateau],["CAPIITOLO source",capSource]]){
   assert(text.includes('value="Negociar meu cenário"'),`${name} exposes controlled Negociar meu cenário option`);
 }
 
@@ -67,6 +68,8 @@ assert(mozae.includes('data-form-intent="conditions">Receber condições ↓</a>
 assert(mozae.includes('data-project-intent="floating-conditions" data-form-intent="conditions"'),"Mozae floating CTA maps to conditions");
 assert(bueno.includes('data-form-intent="conditions">Receber condições ↓</a>'),"Bueno hero CTA maps to conditions");
 assert(bueno.includes('data-project-intent="floating-conditions" data-form-intent="conditions"'),"Bueno floating CTA maps to conditions");
+assert(chateau.includes('data-form-intent="conditions">Receber condições ↓</a>'),"Château hero CTA maps to conditions");
+assert(chateau.includes('data-project-intent="floating-conditions" data-form-intent="conditions"'),"Château floating CTA maps to conditions");
 
 assert(cap.includes("<title>CAPIITOLO Tegra Chácara Klabin | Piero Lissoni</title>"),"CAPIITOLO official title is preserved");
 assert(cap.includes("<h1>CAPIITOLO Tegra<br>Chácara Klabin</h1>"),"CAPIITOLO official fallback H1 is preserved");
@@ -78,7 +81,7 @@ assert(!capSource.includes("Receber condições e agendar visita"),"CAPIITOLO mi
 assert(capSource.includes('data-form-intent="schedule_visit">Agendar visita'),"CAPIITOLO retains separate visit CTA");
 assert(cap.includes('data-form-intent="conditions">Receber condições <span>↓</span></a>'),"CAPIITOLO inserted commercial CTA maps to conditions");
 
-const sourceFiles=[home,elo,aria,ledge,soma,zahle,ypy,bem,mozae,bueno,capSource];
+const sourceFiles=[home,elo,aria,ledge,soma,zahle,ypy,bem,mozae,bueno,chateau,capSource];
 const allowed=new Set(["conditions","schedule_visit","payment_simulation","specialist","negotiate_scenario"]);
 for(const [index,text] of sourceFiles.entries()){
   for(const match of text.matchAll(/data-form-intent="([^"]+)"/g)){
