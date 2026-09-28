@@ -18,6 +18,10 @@
       "destination": "/src-greenn/preview/obrigado.html"
     },
     {
+      "source": "/regioes/higienopolis/",
+      "destination": "/src-greenn/regioes/higienopolis/index.html"
+    },
+    {
       "source": "/empreendimentos/capiitolo-piero-lissoni/",
       "destination": "/src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html"
     },

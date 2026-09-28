@@ -105,11 +105,13 @@
       form.dataset.selectedProject ||
       form.dataset.projectName ||
       selectedInterest() ||
+      form.dataset.regionContext ||
       NO_PROJECT_CONTEXT
     ).trim();
   }
 
   function measurementProjectContext(form) {
+    if (form.dataset.regionContext && !form.dataset.selectedProject && !selectedInterest()) return {};
     const offerName = leadProjectContext(form);
     if (!offerName || offerName === NO_PROJECT_CONTEXT) return {};
     return {
