@@ -48,6 +48,10 @@
     {
       "source": "/empreendimentos/ypy-alto-do-ipiranga/",
       "destination": "/src-greenn/empreendimentos/ypy-alto-do-ipiranga/index.html"
+    },
+    {
+      "source": "/empreendimentos/bem-moema/",
+      "destination": "/src-greenn/empreendimentos/bem-moema/index.html"
     }
   ],
   "headers": [
