@@ -31,7 +31,7 @@ At candidate head before the test-gate extension, the Ledge runtime passed:
 - index/follow/max-image-preview;
 - exactly one H1;
 - Form 46 + tenant 313 contract present;
-- no project-page price claim;
+- visible commercial value now intentionally mirrors the Home card: R$ 600.000, with unit/reference disclaimer;
 - no Tegra corporate website URL in public runtime;
 - exact street address absent from visible body before footer;
 - exact address present in canonical commercial footer;
@@ -129,3 +129,16 @@ Pending:
 - numeric mobile performance validation appropriate to the release gate.
 
 Production was not mutated.
+
+
+## 9. Product Authority correction — 2026-09-27 late session
+
+Explicit corrections requested after first Preview review:
+- add persistent mobile quick actions for `Receber condições` and WhatsApp;
+- expand gallery to six official images;
+- make the location section explicit and scannable;
+- publish the same `R$ 600.000` commercial reference already shown on the MoreNumTegra Home card.
+
+Implementation commit: `af1ee10d10a51df211d5f8961fb523a6ebf6fd35`.
+
+Address-isolation rule remains intact: the exact street/number is not rendered in the body before the governed footer.
