@@ -23,6 +23,8 @@ const cases=[
   {name:"bueno-floating-conditions",path:"/empreendimentos/bueno-brandao-257/",cta:'.mt-quick-lead[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"chateau-conditions",path:"/empreendimentos/chateau-jardin/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"chateau-floating-conditions",path:"/empreendimentos/chateau-jardin/",cta:'.mt-quick-lead[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
+  {name:"reserva-alternatives",path:"/empreendimentos/reserva-caminhos-da-lapa/",cta:'.hero-cta[data-form-intent="specialist"]',expected:"Falar com especialista"},
+  {name:"reserva-floating-alternatives",path:"/empreendimentos/reserva-caminhos-da-lapa/",cta:'.mt-quick-lead[data-form-intent="specialist"]',expected:"Falar com especialista"},
   {name:"capiitolo-conditions",path:"/empreendimentos/capiitolo-piero-lissoni/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"capiitolo-visit",path:"/empreendimentos/capiitolo-piero-lissoni/",cta:'.tour-card a[data-form-intent="schedule_visit"]',expected:"Agendar visita"}
 ];
