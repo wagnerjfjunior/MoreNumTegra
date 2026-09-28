@@ -64,6 +64,10 @@
     {
       "source": "/empreendimentos/chateau-jardin/",
       "destination": "/src-greenn/empreendimentos/chateau-jardin/index.html"
+    },
+    {
+      "source": "/empreendimentos/reserva-caminhos-da-lapa/",
+      "destination": "/src-greenn/empreendimentos/reserva-caminhos-da-lapa/index.html"
     }
   ],
   "headers": [
