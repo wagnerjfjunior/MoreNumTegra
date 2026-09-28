@@ -9,7 +9,7 @@
   const FORM_TITLE = "MoreEmUmTegra";
   const LEAD_PENDING_KEY = "mnt.lead.pending.v2";
   const LEGACY_LEAD_PENDING_KEY = "mnt.lead.pending.v1";
-  const CONSENT_KEY = "mnt.consent.v1";
+  const CONSENT_KEY = "mnt.consent.v2";
   const REQUEST_TIMEOUT_MS = 15000;
   const CAPIITOLO_WHATSAPP = "5511960779328";
   const WHATSAPP_ICON = "https://s3-gdigital.s3.amazonaws.com/gdigital/313/whatsapp-removebg.webp";
