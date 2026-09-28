@@ -17,6 +17,8 @@ const cases=[
   {name:"ypy-floating-conditions",path:"/empreendimentos/ypy-alto-do-ipiranga/",cta:'.mt-quick-lead[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"bem-conditions",path:"/empreendimentos/bem-moema/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"bem-floating-conditions",path:"/empreendimentos/bem-moema/",cta:'.mt-quick-lead[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
+  {name:"mozae-conditions",path:"/empreendimentos/mozae-higienopolis/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
+  {name:"mozae-floating-conditions",path:"/empreendimentos/mozae-higienopolis/",cta:'.mt-quick-lead[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"capiitolo-conditions",path:"/empreendimentos/capiitolo-piero-lissoni/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"capiitolo-visit",path:"/empreendimentos/capiitolo-piero-lissoni/",cta:'.tour-card a[data-form-intent="schedule_visit"]',expected:"Agendar visita"}
 ];

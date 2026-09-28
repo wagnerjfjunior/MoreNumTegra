@@ -52,6 +52,10 @@
     {
       "source": "/empreendimentos/bem-moema/",
       "destination": "/src-greenn/empreendimentos/bem-moema/index.html"
+    },
+    {
+      "source": "/empreendimentos/mozae-higienopolis/",
+      "destination": "/src-greenn/empreendimentos/mozae-higienopolis/index.html"
     }
   ],
   "headers": [

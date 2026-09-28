@@ -14,6 +14,7 @@ on:
       - "src-greenn/empreendimentos/zahle-jardins/index.html"
       - "src-greenn/empreendimentos/ypy-alto-do-ipiranga/index.html"
       - "src-greenn/empreendimentos/bem-moema/index.html"
+      - "src-greenn/empreendimentos/mozae-higienopolis/index.html"
       - "experiments/capiitolo-editorial-v3/index.html"
       - "scripts/validate-m5-06-cta-form-journey.mjs"
       - ".github/diagnostics/m5-06-cta-form-smoke.mjs"
@@ -32,6 +33,7 @@ on:
       - "src-greenn/empreendimentos/zahle-jardins/index.html"
       - "src-greenn/empreendimentos/ypy-alto-do-ipiranga/index.html"
       - "src-greenn/empreendimentos/bem-moema/index.html"
+      - "src-greenn/empreendimentos/mozae-higienopolis/index.html"
       - "experiments/capiitolo-editorial-v3/index.html"
       - "scripts/validate-m5-06-cta-form-journey.mjs"
       - ".github/diagnostics/m5-06-cta-form-smoke.mjs"
@@ -73,6 +75,7 @@ jobs:
                       "/empreendimentos/zahle-jardins/":"/src-greenn/empreendimentos/zahle-jardins/index.html",
                       "/empreendimentos/ypy-alto-do-ipiranga/":"/src-greenn/empreendimentos/ypy-alto-do-ipiranga/index.html",
                       "/empreendimentos/bem-moema/":"/src-greenn/empreendimentos/bem-moema/index.html",
+                      "/empreendimentos/mozae-higienopolis/":"/src-greenn/empreendimentos/mozae-higienopolis/index.html",
                   }
                   self.path=mapping.get(route,self.path)
                   return super().do_GET()
