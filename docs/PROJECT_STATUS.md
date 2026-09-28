@@ -1577,3 +1577,16 @@ Production state = READY
 
 The recorded GitHub Actions failures for the release heads had `runner_id=0`, empty runner name and zero executed steps. They remain missing executed-test evidence, not PASS results and not code-test failure evidence.
 
+## Higienópolis regional editorial v2 — 2026-09-28
+
+```text
+PR #294 = MERGED
+runtime source = c8f9de723f20f3bdbc84646aeb11144052aca5b7
+Production deployment = dpl_8Po99EaQDHvFbievvzx9QvPcyTC4
+Production state = READY
+/regioes/higienopolis/ = HTTP 200
+```
+
+Traceability:
+`docs/governance/MNT_HIGIENOPOLIS_REGION_V2_PRODUCTION_RELEASE_2026-09-28.md`
+
