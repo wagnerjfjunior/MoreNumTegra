@@ -22,6 +22,42 @@
       "destination": "/src-greenn/regioes/higienopolis/index.html"
     },
     {
+      "source": "/regioes/cidade-jardim/",
+      "destination": "/src-greenn/regioes/cidade-jardim/index.html"
+    },
+    {
+      "source": "/regioes/brooklin/",
+      "destination": "/src-greenn/regioes/brooklin/index.html"
+    },
+    {
+      "source": "/regioes/perdizes/",
+      "destination": "/src-greenn/regioes/perdizes/index.html"
+    },
+    {
+      "source": "/regioes/moema/",
+      "destination": "/src-greenn/regioes/moema/index.html"
+    },
+    {
+      "source": "/regioes/vila-nova-conceicao/",
+      "destination": "/src-greenn/regioes/vila-nova-conceicao/index.html"
+    },
+    {
+      "source": "/regioes/jardins/",
+      "destination": "/src-greenn/regioes/jardins/index.html"
+    },
+    {
+      "source": "/regioes/itaim-bibi/",
+      "destination": "/src-greenn/regioes/itaim-bibi/index.html"
+    },
+    {
+      "source": "/regioes/chacara-klabin/",
+      "destination": "/src-greenn/regioes/chacara-klabin/index.html"
+    },
+    {
+      "source": "/regioes/alto-do-ipiranga/",
+      "destination": "/src-greenn/regioes/alto-do-ipiranga/index.html"
+    },
+    {
       "source": "/empreendimentos/capiitolo-piero-lissoni/",
       "destination": "/src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html"
     },
