@@ -3,7 +3,7 @@ framework:
   version: 1
   lifecycle_at_adoption: CANDIDATE
   provider: wagnerjfjunior/Blogs-sites-portais-seo
-  provider_ref: c78bdad37c884a94a57a5ee39b4ca22e3f530438
+  provider_ref: 59517d276c25c6529390ed67a0f68a9f914cb332
 consumer:
   project_id: morenumtegra
   repository: wagnerjfjunior/MoreNumTegra
@@ -25,13 +25,19 @@ adoption:
     - RESF-LEAD
     - RESF-CRM
     - RESF-CONSENT
-overrides:
+                overrides:
   - id: MNT-RESF-OVR-001
     scope: RESF-LEAD/RESF-CRM
     decision: Preserve Green Sales native Form 46 as the V1 lead capture and CRM handoff mechanism; do not replace or intercept its native submit lifecycle without a separate product decision.
   - id: MNT-RESF-OVR-002
     scope: RESF-UX/RESF-CONVERSION
     decision: Preserve the current MoreNumTegra mobile-first HTML/CSS/vanilla-JS architecture and the Green modular composition unless a separate consumer architecture decision supersedes it.
+  - id: MNT-RESF-OVR-003
+    scope: RESF-QA/C17
+    decision: For exact-project pages, use the consumer-owned reference family only for capability-parity and omission detection. Product facts, price, address, stage, media and structured facts must be independently governed per project.
+  - id: MNT-RESF-OVR-004
+    scope: RESF-PERFORMANCE
+    decision: Consumer target remains mobile LCP <= 2.5s and CLS <= 0.1 where applicable; one Lighthouse run is evidence but not a canonical median. Direct-render critical content is preferred when it reduces composition overhead without breaking portability.
 deferred_modules:
   - RESF-SEARCH-CONTRACT
   - RESF-SEO
