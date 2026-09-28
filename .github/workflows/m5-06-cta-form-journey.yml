@@ -18,6 +18,8 @@ on:
       - "src-greenn/empreendimentos/bueno-brandao-257/index.html"
       - "src-greenn/empreendimentos/chateau-jardin/index.html"
       - "src-greenn/empreendimentos/reserva-caminhos-da-lapa/index.html"
+      - "src-greenn/empreendimentos/garden-design/index.html"
+      - "src-greenn/empreendimentos/nova-vivere/index.html"
       - "experiments/capiitolo-editorial-v3/index.html"
       - "scripts/validate-m5-06-cta-form-journey.mjs"
       - ".github/diagnostics/m5-06-cta-form-smoke.mjs"
@@ -85,6 +87,8 @@ jobs:
                       "/empreendimentos/bueno-brandao-257/":"/src-greenn/empreendimentos/bueno-brandao-257/index.html",
                       "/empreendimentos/chateau-jardin/":"/src-greenn/empreendimentos/chateau-jardin/index.html",
                       "/empreendimentos/reserva-caminhos-da-lapa/":"/src-greenn/empreendimentos/reserva-caminhos-da-lapa/index.html",
+                      "/empreendimentos/nova-vivere/":"/src-greenn/empreendimentos/nova-vivere/index.html",
+                      "/empreendimentos/garden-design/":"/src-greenn/empreendimentos/garden-design/index.html",
                   }
                   self.path=mapping.get(route,self.path)
                   return super().do_GET()
