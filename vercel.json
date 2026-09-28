@@ -56,6 +56,10 @@
     {
       "source": "/empreendimentos/mozae-higienopolis/",
       "destination": "/src-greenn/empreendimentos/mozae-higienopolis/index.html"
+    },
+    {
+      "source": "/empreendimentos/bueno-brandao-257/",
+      "destination": "/src-greenn/empreendimentos/bueno-brandao-257/index.html"
     }
   ],
   "headers": [
