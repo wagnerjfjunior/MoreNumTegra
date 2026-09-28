@@ -14,6 +14,7 @@ Status: `READY_FOR_IMPLEMENTATION_WITH_PRICE_CONFLICT_RECORDED`
 - Home commercial truth: R$ 673.050 / unit 0112 / R$ 11.020/m²
 - conflict: official public starting reference differs from current MoreTegra Home commercial reference
 - verified themes: Private Park Residence, green/urban integration, pool, pool bar, gourmet, fitness, delivery, pet/bike/children spaces
-- postalCode/geo: `BLOCKED_BY_MISSING_GOVERNED_FACT`
+- postalCode: `05093-000` — corroborated by official partner Helbor current project page
+- geo: `BLOCKED_BY_MISSING_GOVERNED_FACT`
 - location policy: regional map only; exact location handoff by WhatsApp; exact street remains governed in schema/footer
 - first-candidate UX: real regional map, non-cropped gallery, strengthened hero contrast, Form 46, consent v2, connected schema, Home/card dual actions
