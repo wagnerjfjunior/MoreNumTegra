@@ -36,6 +36,10 @@
     {
       "source": "/empreendimentos/ledge-brooklin/",
       "destination": "/src-greenn/empreendimentos/ledge-brooklin/index.html"
+    },
+    {
+      "source": "/empreendimentos/soma-perdizes/",
+      "destination": "/src-greenn/empreendimentos/soma-perdizes/index.html"
     }
   ],
   "headers": [
