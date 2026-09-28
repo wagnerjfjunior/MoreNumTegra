@@ -20,7 +20,7 @@ Status: `READY_FOR_HIGH_END_IMPLEMENTATION`
 
 ## Current official cross-check — 2026-09-28
 Exto current official pages additionally resolve:
-- Harmonie: 185 m², 215 m², 248 m²;
+- Harmonie: 185 m², 213 m², 248 m²;
 - Lumière: 355 m²;
 - 3 or 4 suítes;
 - clay tennis court;
@@ -34,7 +34,7 @@ The official Tegra page also exposes garden and duplex typologies beyond the 185
 
 Tegra/Exto current sources resolve the residential program beyond the headline range:
 
-- Harmonie apartments: 185 m², 215 m², 248 m²;
+- Harmonie apartments: 185 m², 213 m², 248 m²;
 - Harmonie gardens: 258 m², 334 m²;
 - Harmonie duplex penthouses: 365 m², 427 m², 492 m²;
 - Lumière apartments: 355 m²;
@@ -43,7 +43,7 @@ Tegra/Exto current sources resolve the residential program beyond the headline r
 
 Official layout variants include:
 - 185 m²: 3 suítes; alternative with living, kitchen and terrace integrated;
-- 215 m²: 3 suítes with enlarged master suite/bath or 4 suítes;
+- 213 m²: 3 suítes with enlarged master suite/bath or 4 suítes;
 - 248 m²: 3 suítes with enlarged living or 4 suítes, including integrated living/kitchen/terrace variants;
 - 355 m²: 3 suítes + office + enlarged kitchen + integrated living/terrace or 4 suítes.
 
@@ -58,3 +58,15 @@ Ticker guidance:
 - paused on hover;
 - disabled under `prefers-reduced-motion`;
 - must not become an LCP dependency.
+
+
+## Governed plant-media evidence — 2026-09-28
+
+The consumer supplied Green/GDigital-hosted plant assets and authorized them as current visual product evidence for the page:
+
+- Harmonie 185 m² · 3 suítes · 2 vagas
+- Harmonie 213 m² · 3–4 suítes · 3 vagas
+- Harmonie 248 m² · 4 suítes · 3 vagas
+- Lumière 355 m² · 3–4 suítes · 4 vagas
+
+For the MoreNumTegra consumer page, 213 m² supersedes the previous 215 m² textual variant wherever that exact plant type is described. Preserve source-conflict traceability if an external publisher still exposes 215 m².
