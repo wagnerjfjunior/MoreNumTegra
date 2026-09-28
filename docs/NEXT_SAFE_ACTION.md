@@ -1,6 +1,6 @@
 # Próxima Ação Segura — MoreNumTegra
 
-Atualizado em `2026-09-25`.
+Atualizado em `2026-09-28`.
 
 ## Estado atual
 
@@ -159,3 +159,14 @@ post-change performance measurement = NEXT
 Next safe action:
 
 Run five Mobile PageSpeed/Lighthouse samples on the Home with the same method used for MNT-PERF-03A. Compare the new median primarily to 4.2 s. Do not start another runtime remediation before this battery is adjudicated.
+
+## Release reconciliation — 2026-09-28
+
+PR #289 and PR #290 are merged and Production-validated at runtime SHA `89de7ae56b91d91d969e2b14101c33492cdf2402` / deployment `dpl_DaqZM8bm1RhyKU7snS5GjFHTryjZ` / READY.
+
+Canonical release evidence:
+
+`docs/governance/MNT_PR289_PR290_PRODUCTION_RELEASE_2026-09-28.md`
+
+This publication does not authorize another runtime slice. Resume the pre-existing backlog/gates below unless Product Authority explicitly selects a new bounded task.
+
