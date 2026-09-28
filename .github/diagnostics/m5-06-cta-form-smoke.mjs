@@ -13,6 +13,8 @@ const cases=[
   {name:"soma-floating-conditions",path:"/empreendimentos/soma-perdizes/",cta:'.mt-quick-lead[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"zahle-conditions",path:"/empreendimentos/zahle-jardins/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"zahle-floating-conditions",path:"/empreendimentos/zahle-jardins/",cta:'.mt-quick-lead[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
+  {name:"ypy-conditions",path:"/empreendimentos/ypy-alto-do-ipiranga/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
+  {name:"ypy-floating-conditions",path:"/empreendimentos/ypy-alto-do-ipiranga/",cta:'.mt-quick-lead[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"capiitolo-conditions",path:"/empreendimentos/capiitolo-piero-lissoni/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"capiitolo-visit",path:"/empreendimentos/capiitolo-piero-lissoni/",cta:'.tour-card a[data-form-intent="schedule_visit"]',expected:"Agendar visita"}
 ];
