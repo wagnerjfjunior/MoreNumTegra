@@ -176,3 +176,14 @@ PR #294 is merged and live at `c8f9de723f20f3bdbc84646aeb11144052aca5b7` / `dpl_
 
 This release does not authorize another runtime slice. Resume the existing backlog unless Product Authority selects a new bounded task.
 
+## Product Authority selected next task — 2026-09-28
+
+`MNT-REGION-COVERAGE-AUDIT-01 = AUTHORIZED / READ_ONLY`
+
+Build the complete project-to-neighborhood coverage/grouping table before implementing another regional page.
+
+No runtime mutation is authorized by this audit alone.
+
+Handoff:
+`handoffs/HANDOFF-2026-09-28-NEIGHBORHOOD-PAGES-EXPANSION.md`
+
