@@ -68,6 +68,14 @@
     {
       "source": "/empreendimentos/reserva-caminhos-da-lapa/",
       "destination": "/src-greenn/empreendimentos/reserva-caminhos-da-lapa/index.html"
+    },
+    {
+      "source": "/empreendimentos/nova-vivere/",
+      "destination": "/src-greenn/empreendimentos/nova-vivere/index.html"
+    },
+    {
+      "source": "/empreendimentos/garden-design/",
+      "destination": "/src-greenn/empreendimentos/garden-design/index.html"
     }
   ],
   "headers": [
