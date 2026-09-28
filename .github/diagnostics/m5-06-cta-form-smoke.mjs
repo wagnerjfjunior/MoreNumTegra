@@ -25,6 +25,10 @@ const cases=[
   {name:"chateau-floating-conditions",path:"/empreendimentos/chateau-jardin/",cta:'.mt-quick-lead[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"reserva-alternatives",path:"/empreendimentos/reserva-caminhos-da-lapa/",cta:'.hero-cta[data-form-intent="specialist"]',expected:"Falar com especialista"},
   {name:"reserva-floating-alternatives",path:"/empreendimentos/reserva-caminhos-da-lapa/",cta:'.mt-quick-lead[data-form-intent="specialist"]',expected:"Falar com especialista"},
+  {name:"nova-conditions",path:"/empreendimentos/nova-vivere/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
+  {name:"nova-floating-conditions",path:"/empreendimentos/nova-vivere/",cta:'.mt-quick-lead[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
+  {name:"garden-conditions",path:"/empreendimentos/garden-design/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
+  {name:"garden-floating-conditions",path:"/empreendimentos/garden-design/",cta:'.mt-quick-lead[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"capiitolo-conditions",path:"/empreendimentos/capiitolo-piero-lissoni/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"capiitolo-visit",path:"/empreendimentos/capiitolo-piero-lissoni/",cta:'.tour-card a[data-form-intent="schedule_visit"]',expected:"Agendar visita"}
 ];

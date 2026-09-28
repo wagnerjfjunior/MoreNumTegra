@@ -21,6 +21,29 @@
     label: "Prêmio Master Imobiliário 2026 · Caminhos da Lapa — um bairro inteiro de opções · vencedor em Qualificação Urbana"
   });
 
+  const DETAIL_ROUTES = Object.freeze({
+    "CAPIITOLO by Piero Lissoni": "/empreendimentos/capiitolo-piero-lissoni/",
+    "Caminhos da Lapa Elo Duo": "/empreendimentos/caminhos-da-lapa-elo-duo/",
+    "Ária Higienópolis": "/empreendimentos/aria-higienopolis/",
+    "DSG Itaim": "/empreendimentos/dsg-itaim/",
+    "Ledge Brooklin": "/empreendimentos/ledge-brooklin/",
+    "Soma Perdizes": "/empreendimentos/soma-perdizes/",
+    "Zahle Jardins": "/empreendimentos/zahle-jardins/",
+    "YPY Alto do Ipiranga": "/empreendimentos/ypy-alto-do-ipiranga/",
+    "Bem Moema": "/empreendimentos/bem-moema/",
+    "Mozae Higienópolis": "/empreendimentos/mozae-higienopolis/",
+    "Bueno Brandão 257": "/empreendimentos/bueno-brandao-257/",
+    "Château Jardin": "/empreendimentos/chateau-jardin/",
+    "Reserva Caminhos da Lapa": "/empreendimentos/reserva-caminhos-da-lapa/",
+    "Nova Vivere": "/empreendimentos/nova-vivere/",
+    "Garden Design": "/empreendimentos/garden-design/"
+  });
+
+  function detailUrlFor(project) {
+    const key = project.projectName || project.name;
+    return project.detailUrl || DETAIL_ROUTES[key] || null;
+  }
+
   const PROJECTS = Object.freeze([
     {name:"Nova Vivere | 72 m²",projectName:"Nova Vivere",location:"Lapa · Zona Oeste",zone:"Zona Oeste",status:"Lançamento",statusKey:"lancamento",info:"72,82 m² · 2 ou 3 suítes · 1 ou 2 vagas",feature:"72 m² · entrada Nova Vivere",award:CAMINHOS_AWARD,image:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/363/ImagemPrincipal/Tegra-Incorporadora-Area-de-Lazer-Piscina-Empreendimento-Nova-Vivere-Caminhos-da-Lapa-Apartamentos-Sao-Paulo-SP-714x640-1770300546843.png",alt:"Nova Vivere de 72 m², empreendimento Tegra no Caminhos da Lapa, São Paulo",price:852586.08,priceState:"priced",priceLabel:"A partir de",priceNote:"Unidade 701 · 72,82 m² · R$ 11.708/m² · Valor a partir de R$ 852.586,08. Consulte a Tegra Vendas para confirmar disponibilidade e condições vigentes."},
     {name:"Château Jardin",detailUrl:"/empreendimentos/chateau-jardin/",location:"Cidade Jardim · Zona Sul",zone:"Zona Sul",status:"Lançamento",statusKey:"lancamento",info:"3 ou 4 suítes · 185m² a 355m² · 3 ou 4 vagas",feature:"Novo eixo Cidade Jardim",image:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/364/ImagemPrincipal/Tegra-Incorporadora-Fachada-Empreendimento-Chateau-Jardin-Apartamentos-Cidade-Jardim-Sao-Paulo-SP-714x640-1774666511357.jpg",alt:"Château Jardin, empreendimento Tegra em Cidade Jardim, São Paulo",price:3690361,priceState:"priced",priceNote:"Unidade 501 · 185 m² · R$ 19.947/m² · Valor a partir de R$ 3.690.361. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."},
@@ -479,6 +502,7 @@
   function cardMarkup(project) {
     const actionLabel = project.cta || (project.priceState === "soldout" ? "Ver alternativas" : "Negociar condições");
     const interestValue = project.interest || project.name;
+    const detailUrl = detailUrlFor(project);
 
     return `
       <article class="mt-project-card" data-status="${escapeHtml(project.statusKey)}" data-zone="${escapeHtml(project.zone)}" data-award="${project.award ? "true" : "false"}" data-promo="${project.promo ? "true" : "false"}" data-cash-offer="${project.cashOffer ? "true" : "false"}">
@@ -496,8 +520,8 @@
           <span class="mt-project-info">${escapeHtml(projectInfoForCard(project.info))}</span>
           ${project.award && project.award.tagline ? `<div class="mt-award-context" title="${escapeHtml(project.award.label)}">${escapeHtml(project.award.tagline)}</div>` : ""}
           ${priceMarkup(project)}
-          <div class="mt-project-actions" style="grid-template-columns:${project.detailUrl ? "1fr 1fr" : "1fr"}">
-            ${project.detailUrl ? `<a class="mt-interest" href="${escapeHtml(project.detailUrl)}" aria-label="Conhecer ${escapeHtml(project.name)}">Conhecer empreendimento</a>` : ""}
+          <div class="mt-project-actions" style="grid-template-columns:${detailUrl ? "1fr 1fr" : "1fr"}">
+            ${detailUrl ? `<a class="mt-interest" href="${escapeHtml(detailUrl)}" aria-label="Conhecer ${escapeHtml(project.projectName || project.name)}">Conhecer empreendimento</a>` : ""}
             <a class="mt-interest" href="#formulario" data-interest="${escapeHtml(interestValue)}" data-form-intent="${escapeHtml(project.formIntent || "conditions")}">${escapeHtml(actionLabel)}</a>
           </div>
         </div>

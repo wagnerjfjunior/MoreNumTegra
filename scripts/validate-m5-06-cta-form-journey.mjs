@@ -18,6 +18,8 @@ const mozae=read("src-greenn/empreendimentos/mozae-higienopolis/index.html");
 const bueno=read("src-greenn/empreendimentos/bueno-brandao-257/index.html");
 const chateau=read("src-greenn/empreendimentos/chateau-jardin/index.html");
 const reserva=read("src-greenn/empreendimentos/reserva-caminhos-da-lapa/index.html");
+const nova=read("src-greenn/empreendimentos/nova-vivere/index.html");
+const garden=read("src-greenn/empreendimentos/garden-design/index.html");
 const cap=read("src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html");
 const capSource=read("experiments/capiitolo-editorial-v3/index.html");
 
@@ -35,7 +37,7 @@ assert(runtime.includes('if (formIntentTarget) applyFormIntent(formIntentTarget.
 assert(runtime.includes('if (!value || !(intent instanceof HTMLSelectElement)) return false;'),"runtime fails closed for invalid mapping/select");
 assert(runtime.includes('if (![...intent.options].some((option) => option.value === value)) return false;'),"runtime refuses unmapped form values");
 
-for(const [name,text] of [["Home",home],["Elo Duo",elo],["Ária",aria],["Ledge",ledge],["Soma",soma],["Zahle",zahle],["YPY",ypy],["Bem Moema",bem],["Mozae",mozae],["Bueno",bueno],["Château",chateau],["Reserva",reserva],["CAPIITOLO source",capSource]]){
+for(const [name,text] of [["Home",home],["Elo Duo",elo],["Ária",aria],["Ledge",ledge],["Soma",soma],["Zahle",zahle],["YPY",ypy],["Bem Moema",bem],["Mozae",mozae],["Bueno",bueno],["Château",chateau],["Reserva",reserva],["Nova Vivere",nova],["Garden Design",garden],["CAPIITOLO source",capSource]]){
   assert(text.includes('value="Negociar meu cenário"'),`${name} exposes controlled Negociar meu cenário option`);
 }
 
@@ -73,6 +75,20 @@ assert(chateau.includes('data-form-intent="conditions">Receber condições ↓</
 assert(chateau.includes('data-project-intent="floating-conditions" data-form-intent="conditions"'),"Château floating CTA maps to conditions");
 assert(reserva.includes('data-form-intent="specialist">Ver alternativas atuais ↓</a>'),"Reserva hero CTA maps to specialist alternatives");
 assert(reserva.includes('data-project-intent="floating-alternatives" data-form-intent="specialist"'),"Reserva floating CTA maps to specialist alternatives");
+assert(nova.includes('data-form-intent="conditions">Receber condições ↓</a>'),"Nova Vivere hero CTA maps to conditions");
+assert(nova.includes('data-project-intent="floating-conditions" data-form-intent="conditions"'),"Nova Vivere floating CTA maps to conditions");
+assert(garden.includes('data-form-intent="conditions">Receber condições ↓</a>'),"Garden Design hero CTA maps to conditions");
+assert(garden.includes('data-project-intent="floating-conditions" data-form-intent="conditions"'),"Garden Design floating CTA maps to conditions");
+for(const [name,text] of [["Ledge",ledge],["Soma",soma],["Zahle",zahle],["YPY",ypy],["Bem",bem],["Mozae",mozae],["Bueno",bueno],["Château",chateau],["Reserva",reserva],["Nova Vivere",nova],["Garden Design",garden]]){
+  assert(text.includes('www.google.com/maps?q='),`${name} renders a real regional map`);
+  assert(!text.includes('class="mnt-map-placeholder"'),`${name} no longer renders a map placeholder`);
+  assert(text.includes('.gallery-stage img{width:100%;height:100%;object-fit:contain;'),`${name} preserves gallery framing`);
+}
+assert(homeJs.includes('"CAPIITOLO by Piero Lissoni": "/empreendimentos/capiitolo-piero-lissoni/"'),"Home canonical route resolver covers CAPIITOLO duplicate cards");
+assert(homeJs.includes('"Nova Vivere": "/empreendimentos/nova-vivere/"'),"Home canonical route resolver covers both Nova Vivere cards");
+assert(homeJs.includes('"Garden Design": "/empreendimentos/garden-design/"'),"Home canonical route resolver covers Garden Design");
+assert(homeJs.includes('const detailUrl = detailUrlFor(project);'),"Home cards resolve canonical detail route before rendering actions");
+
 
 assert(cap.includes("<title>CAPIITOLO Tegra Chácara Klabin | Piero Lissoni</title>"),"CAPIITOLO official title is preserved");
 assert(cap.includes("<h1>CAPIITOLO Tegra<br>Chácara Klabin</h1>"),"CAPIITOLO official fallback H1 is preserved");
@@ -84,7 +100,7 @@ assert(!capSource.includes("Receber condições e agendar visita"),"CAPIITOLO mi
 assert(capSource.includes('data-form-intent="schedule_visit">Agendar visita'),"CAPIITOLO retains separate visit CTA");
 assert(cap.includes('data-form-intent="conditions">Receber condições <span>↓</span></a>'),"CAPIITOLO inserted commercial CTA maps to conditions");
 
-const sourceFiles=[home,elo,aria,ledge,soma,zahle,ypy,bem,mozae,bueno,chateau,reserva,capSource];
+const sourceFiles=[home,elo,aria,ledge,soma,zahle,ypy,bem,mozae,bueno,chateau,reserva,nova,garden,capSource];
 const allowed=new Set(["conditions","schedule_visit","payment_simulation","specialist","negotiate_scenario"]);
 for(const [index,text] of sourceFiles.entries()){
   for(const match of text.matchAll(/data-form-intent="([^"]+)"/g)){
