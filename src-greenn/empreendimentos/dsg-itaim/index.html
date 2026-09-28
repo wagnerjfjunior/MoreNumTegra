@@ -54,6 +54,7 @@
 ]}
 ]}
 </script>
+<script>window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:"default_consent",ad_storage:"denied",analytics_storage:"denied",ad_user_data:"denied",ad_personalization:"denied"});</script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var loaded=false;function load(){if(loaded)return;loaded=true;var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f)}if(d.readyState==='complete')load();else w.addEventListener('load',load,{once:true});d.addEventListener('pointerdown',load,{once:true,capture:true,passive:true});d.addEventListener('keydown',load,{once:true,capture:true})})(window,document,'script','dataLayer','GTM-PGCR4R47');</script>
   <link rel="preconnect" href="https://stracctegra.blob.core.windows.net" crossorigin>
   <link rel="preload" as="image" href="https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/284/Imagem/395ce1a2-b602-4c40-aa3a-aad64e2de199.jpg" fetchpriority="high">
@@ -97,7 +98,7 @@
       Object.entries(twitter).forEach(([name,content])=>{let node=doc.head.querySelector(`meta[name="${name}"]`);if(!node){node=doc.createElement("meta");node.setAttribute("name",name);doc.head.appendChild(node)}node.setAttribute("content",content)});
       doc.head.querySelectorAll('#dsg-schema,#mnt-dsg-itaim-schema').forEach(node=>node.remove());
       const schemaNode=doc.createElement("script");schemaNode.type="application/ld+json";schemaNode.id="dsg-schema";schemaNode.textContent=schemaText;doc.head.appendChild(schemaNode);
-      const gtm=doc.createElement("script");gtm.textContent="(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PGCR4R47');";doc.head.appendChild(gtm);
+      const gtm=doc.createElement("script");gtm.textContent="(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var loaded=false;function load(){if(loaded)return;loaded=true;var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f)}if(d.readyState==='complete')load();else w.addEventListener('load',load,{once:true});d.addEventListener('pointerdown',load,{once:true,capture:true,passive:true});d.addEventListener('keydown',load,{once:true,capture:true})})(window,document,'script','dataLayer','GTM-PGCR4R47');";doc.head.appendChild(gtm);
       const ns=doc.createElement("noscript");ns.innerHTML='<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGCR4R47" height="0" width="0" style="display:none;visibility:hidden"></iframe>';doc.body.insertBefore(ns,doc.body.firstChild);
       const badge=doc.querySelector(".pilot");if(badge)badge.textContent="DSG Itaim · MoreTegra";
       const footer=doc.querySelector(".footer-in span");if(footer)footer.textContent="AGENDE SEU ATENDIMENTO no DSG Itaim · Rua Joaquim Floriano, 152 — Itaim Bibi · São Paulo/SP";
