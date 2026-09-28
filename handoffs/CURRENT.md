@@ -1,6 +1,6 @@
 # Handoff Atual — MoreNumTegra
 
-Atualizado em `2026-09-25`.
+Atualizado em `2026-09-28`.
 
 **GitHub `main` é a fonte canônica. Resolver live antes de qualquer conclusão ou mutação.**
 
@@ -191,3 +191,23 @@ late GTM bootstrap = LIVE
 post-change five-run Home battery = NEXT
 performance outcome = NOT_YET_PROVEN
 ```
+
+## PR #289 + PR #290 production release — 2026-09-28
+
+Canonical release record:
+
+`docs/governance/MNT_PR289_PR290_PRODUCTION_RELEASE_2026-09-28.md`
+
+```text
+PR #289 Château Jardin = MERGED
+PR #290 Higienópolis regional = MERGED
+runtime main = 89de7ae56b91d91d969e2b14101c33492cdf2402
+Production = dpl_DaqZM8bm1RhyKU7snS5GjFHTryjZ / READY
+Production source SHA = 89de7ae56b91d91d969e2b14101c33492cdf2402
+Higienópolis = HTTP 200
+Château Jardin = HTTP 200
+GitHub Actions exact-head execution = NOT_AVAILABLE / RUNNER_ALLOCATION_FAILURE
+```
+
+No Hosted Preview was created. No visual/browser acceptance, physical-device validation, real Form 46 submission, screen-reader proof or field CWV/INP proof is claimed by this release.
+

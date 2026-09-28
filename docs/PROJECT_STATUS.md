@@ -1,6 +1,6 @@
 # Status do Projeto — MoreNumTegra
 
-Atualizado em `2026-09-25`.
+Atualizado em `2026-09-28`.
 
 Fonte canônica: GitHub `main`. Resolver estado live antes de qualquer mutação.
 
@@ -1558,3 +1558,22 @@ Canonical evidence:
 `docs/performance/MNT_PERF_03A_POST_CHANGE_VALIDATION_2026-09-25.md`.
 
 Residual recurring PageSpeed signals include ~131–133 KiB unused JavaScript and ~370–500 ms render-blocking opportunity. Read-only source inspection identified the accepted Elo late-GTM bootstrap pattern as the next bounded Home candidate.
+
+## PR #289 / #290 publication — 2026-09-28
+
+Traceability:
+
+`docs/governance/MNT_PR289_PR290_PRODUCTION_RELEASE_2026-09-28.md`
+
+```text
+Château Jardin PR #289 = MERGED / LIVE
+Higienópolis regional PR #290 = MERGED / LIVE
+runtime source = 89de7ae56b91d91d969e2b14101c33492cdf2402
+Production deployment = dpl_DaqZM8bm1RhyKU7snS5GjFHTryjZ
+Production state = READY
+/regioes/higienopolis/ = HTTP 200
+/empreendimentos/chateau-jardin/ = HTTP 200
+```
+
+The recorded GitHub Actions failures for the release heads had `runner_id=0`, empty runner name and zero executed steps. They remain missing executed-test evidence, not PASS results and not code-test failure evidence.
+
