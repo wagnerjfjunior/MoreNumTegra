@@ -6,7 +6,7 @@ Atualizado em `2026-09-28`.
 
 Handoff detalhado vigente:
 
-`handoffs/HANDOFF-2026-09-25-TRACEABILITY-RECONCILED-CURRENT.md`
+`handoffs/HANDOFF-2026-09-28-NEIGHBORHOOD-PAGES-EXPANSION.md`
 
 Traceability standard:
 
@@ -222,4 +222,14 @@ runtime SHA = c8f9de723f20f3bdbc84646aeb11144052aca5b7
 Production = dpl_8Po99EaQDHvFbievvzx9QvPcyTC4 / READY
 /regioes/higienopolis/ = HTTP 200
 ```
+
+## Neighborhood pages expansion — 2026-09-28
+
+Higienópolis regional v2 is the reference pattern for future neighborhood pages.
+
+Immediate next task:
+`MNT-REGION-COVERAGE-AUDIT-01 = AUTHORIZED / READ_ONLY`
+
+See:
+`handoffs/HANDOFF-2026-09-28-NEIGHBORHOOD-PAGES-EXPANSION.md`
 
