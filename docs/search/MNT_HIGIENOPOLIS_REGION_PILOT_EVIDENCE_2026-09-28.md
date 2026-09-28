@@ -1,31 +1,104 @@
-# Higienópolis regional pilot — evidence and boundaries
+# Higienópolis regional page — evidence and boundaries
 
-Date: 2026-09-28. Base main: `41601a5440d76322e83e19ea5c4fabc9b83ff9ce`.
+Date: 2026-09-28.
+Current editorial refinement base: `ce231770a4546038fd1f2cc719815ebfa8c7d8ce`.
 
-## Search ownership
+## Search and page ownership
 
-- Primary intent: Tegra projects in Higienópolis / regional discovery.
-- Secondary: apartments in Higienópolis with a Tegra preference; compare Ária and Mozae at a factual level.
-- Exclusions: exact-project title queries, independent neighborhood guide, other developers, prices and availability.
-- Qualitative SERP inspection found both exact Tegra project pages and broader neighborhood/property listings. No reliable volume, CPC or keyword difficulty was asserted.
-- Title and H1 avoid ownership of the exact project phrases.
+- Primary intent: Higienópolis regional discovery with Tegra commercial continuation.
+- Secondary: understand the neighborhood before comparing Ária and Mozae.
+- Exact-project title intents remain owned by each project page.
+- No independent real-estate marketplace, other developers, prices, investment return or availability claims are introduced.
+- QuintoAndar and Pilar Homes were reviewed only as page-architecture references for the pattern `bairro/contexto -> facilidades -> imóveis`. No text, layout asset or photograph was copied from either source.
 
-## Factual sources
+## Governed neighborhood facts
 
-- Ária product: `src-greenn/empreendimentos/aria-higienopolis/index.html` at base SHA; official [Tegra Ária page](https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/higienopolis/aria). Delivered; studios 30 m² and apartments 53 m²; rooftop and pool.
-- Mozae product: `src-greenn/empreendimentos/mozae-higienopolis/index.html`; `docs/search/MNT_MOZAE_HIGIENOPOLIS_RESF_C17_FACT_PACK_2026-09-28.md`; official [Tegra Mozae page](https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/higienopolis/mozaehigienopolis). Construction; 46 and 73 m²; mural by Isabel Ruas. The conflicting commercial price references were excluded.
-- Parque Buenos Aires and its amenities: [Prefeitura de São Paulo](https://prefeitura.sp.gov.br/web/meio_ambiente/w/noticias/318425).
-- Higienópolis–Mackenzie station on Line 4: [Metrô de São Paulo](https://www.metro.sp.gov.br/sua-viagem/bilhetes-cartoes/cartao-fidelidade/).
-- FAAP in neighborhood history: [Prefeitura de São Paulo](https://prefeitura.sp.gov.br/web/meio_ambiente/w/parques/regiao_centrooeste/5732).
+- Parque Buenos Aires: Prefeitura de São Paulo, `https://prefeitura.sp.gov.br/web/meio_ambiente/w/parques/regiao_centrooeste/5732`.
+  - located on Avenida Angélica in Higienópolis;
+  - inaugurated in 1913;
+  - designed by French landscape architect Joseph-Antoine Bouvard;
+  - provides cultural-presentation area, picnic lawn, playground, reflecting pool, dog area, walking/rest spaces and accessible facilities;
+  - the same Prefeitura page records the neighborhood's late-19th-century planned-development history and Avenida Angélica as an early principal axis.
+- Higienópolis–Mackenzie station / Linha 4–Amarela: current Prefeitura Parque Buenos Aires access guidance names the station as the metro access for the park. No travel-time or distance claim is made.
+- FAAP: Prefeitura neighborhood-history material identifies FAAP in the regional historical/cultural context. No ranking or distance claim is made.
 
-Descriptions of choosing a project are editorial guidance, not commercial or investment claims. No distance or travel time is asserted.
+## Hero photograph
 
-## Conversion and measurement
+Regional hero asset:
+`https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/At_Parque_Buenos_Aires_2023_102.jpg/1280px-At_Parque_Buenos_Aires_2023_102.jpg`
 
-The existing Form 46 runtime is reused. A region-only lead carries `Higienópolis | São Paulo | Tegra` in the existing `texto-livre` context, with no fabricated project identity. Selecting either card sets the existing project context. The runtime extension returns an empty project context for region-only conversion markers; page identity and route identify the regional origin. No PII is sent to dataLayer. No new provider field, GTM container, GA4 stream, consent behavior, backend, or real preview submission is introduced.
+Source page:
+`https://commons.wikimedia.org/wiki/File:At_Parque_Buenos_Aires_2023_102.jpg`
 
-## Validation and residuals
+- author: Mike Peel;
+- date: 2023-11-23;
+- subject/location metadata: Avenida Angélica / Higienópolis, São Paulo;
+- license: CC BY-SA 4.0;
+- visible attribution is included in the hero;
+- the file is externally hosted for this candidate; no copy is stored in GitHub.
 
-Static HTML parser: no duplicate IDs or broken in-page fragments; both project links present. `vercel.json` parses and maps the intended route. Production sitemap intentionally unchanged.
+## Product truth
 
-The repository currently sets `git.deploymentEnabled["**"] = false` and `main = true`. Thus branch preview is unavailable under the current policy. Mobile browser, runtime Form 46, measurement, accessibility and performance acceptance remain pending. This candidate must not be marked Ready, merged or published until the preview gate is resolved and those checks pass.
+- Ária product: `src-greenn/empreendimentos/aria-higienopolis/index.html`.
+  - delivered;
+  - studios 30 m²;
+  - apartments 53 m²;
+  - rooftop and pool.
+- Mozae product: `src-greenn/empreendimentos/mozae-higienopolis/index.html` and `docs/search/MNT_MOZAE_HIGIENOPOLIS_RESF_C17_FACT_PACK_2026-09-28.md`.
+  - construction;
+  - 46 and 73 m²;
+  - 1 or 2 suites;
+  - rooftop;
+  - mural by Isabel Ruas.
+- Conflicting or ungoverned commercial prices remain excluded.
+
+## Editorial V2 change
+
+The regional page now follows:
+
+```text
+regional hero
+-> how Higienopolis works as a neighborhood
+-> factual facilities/context
+-> editorial image break
+-> two Tegra proposals
+-> factual comparison by stage/type
+-> Form 46
+-> FAQ
+```
+
+The project cards use equal media aspect ratios, fixed structural rows and bottom-anchored CTA groups so the image/content divider and buttons remain aligned when the cards sit side by side.
+
+Mobile keeps one project card per row.
+
+## Conversion and measurement boundaries
+
+The existing Form 46 runtime is unchanged:
+
+```text
+tenant_id = 313
+form_id = 46
+title = MoreEmUmTegra
+POST = https://back.gdigital.com.br/form/register
+```
+
+A region-only lead keeps `Higienópolis | São Paulo | Tegra` in the existing controlled regional context. Selecting a project sets project context. No new provider field, GTM container, GA4 stream, backend or PII-in-analytics behavior is introduced.
+
+## Validation boundary
+
+This branch is intended for the canonical Local Live Sync review.
+
+Required evidence before merge:
+
+```text
+VALIDATION_SURFACE = LOCAL_LIVE_SYNC
+REPOSITORY = wagnerjfjunior/MoreNumTegra
+BRANCH = feat/region-higienopolis-editorial-v2-20260928
+HEAD = <resolve live>
+ROUTE = /regioes/higienopolis/
+PRODUCTION_PROOF = NOT_CLAIMED
+```
+
+Static checks may validate structure, links, schema and contracts. They must not be called visual validation.
+
+No Hosted Preview is required or authorized for this candidate. Production merge/deploy remains gated on Product Authority approval after Local Live Sync review.
