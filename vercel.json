@@ -32,6 +32,10 @@
     {
       "source": "/empreendimentos/dsg-itaim/",
       "destination": "/src-greenn/empreendimentos/dsg-itaim/index.html"
+    },
+    {
+      "source": "/empreendimentos/ledge-brooklin/",
+      "destination": "/src-greenn/empreendimentos/ledge-brooklin/index.html"
     }
   ],
   "headers": [
