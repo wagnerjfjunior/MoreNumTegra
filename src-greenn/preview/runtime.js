@@ -163,25 +163,30 @@
     };
   }
 
+  function ensureConsentStyle() {
+    if (document.getElementById("mnt-runtime-consent-style")) return;
+    const style = document.createElement("style");
+    style.id = "mnt-runtime-consent-style";
+    style.textContent = `
+      .mnt-runtime-consent{position:fixed;z-index:9999;left:14px;right:14px;bottom:14px;max-width:780px;margin:0 auto;padding:16px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:#1b1c18;color:#fff;box-shadow:0 16px 50px rgba(0,0,0,.34);font-family:system-ui,sans-serif;display:grid;gap:14px}
+      .mnt-runtime-consent[hidden]{display:none!important}
+      .mnt-runtime-consent strong{color:#fff}.mnt-runtime-consent p{margin:4px 0 0;color:#ccc8bd;font-size:12px}
+      .mnt-runtime-consent-actions{display:flex;flex-wrap:wrap;gap:8px}
+      .mnt-runtime-consent button{min-height:46px;border-radius:999px;border:1px solid #777267;background:transparent;color:#fff;padding:9px 14px;font-weight:800;cursor:pointer}
+      .mnt-runtime-consent button.is-primary{background:#EBB92E;color:#171813;border-color:#EBB92E}
+      .mnt-runtime-consent button:focus-visible{outline:3px solid #EBB92E;outline-offset:3px}
+      .mnt-consent-manage{display:inline-flex;align-items:center;justify-content:center;min-height:40px;margin-top:10px;padding:8px 12px;border:1px solid currentColor;border-radius:999px;background:transparent;color:inherit;font:700 12px/1 system-ui,sans-serif;cursor:pointer}
+      .mnt-consent-manage[hidden]{display:none!important}
+      .mnt-consent-manage:focus-visible{outline:3px solid #EBB92E;outline-offset:3px}
+      @media(min-width:720px){.mnt-runtime-consent{left:auto;right:20px;max-width:520px;grid-template-columns:1fr auto;align-items:center}}
+    `;
+    document.head.append(style);
+  }
+
   function ensureConsentBanner() {
+    ensureConsentStyle();
     const existing = document.querySelector("[data-mnt-consent]");
     if (existing) return existing;
-
-    if (!document.getElementById("mnt-runtime-consent-style")) {
-      const style = document.createElement("style");
-      style.id = "mnt-runtime-consent-style";
-      style.textContent = `
-        .mnt-runtime-consent{position:fixed;z-index:9999;left:14px;right:14px;bottom:14px;max-width:780px;margin:0 auto;padding:16px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:#1b1c18;color:#fff;box-shadow:0 16px 50px rgba(0,0,0,.34);font-family:system-ui,sans-serif;display:grid;gap:14px}
-        .mnt-runtime-consent[hidden]{display:none!important}
-        .mnt-runtime-consent strong{color:#fff}.mnt-runtime-consent p{margin:4px 0 0;color:#ccc8bd;font-size:12px}
-        .mnt-runtime-consent-actions{display:flex;flex-wrap:wrap;gap:8px}
-        .mnt-runtime-consent button{min-height:46px;border-radius:999px;border:1px solid #777267;background:transparent;color:#fff;padding:9px 14px;font-weight:800;cursor:pointer}
-        .mnt-runtime-consent button.is-primary{background:#EBB92E;color:#171813;border-color:#EBB92E}
-        .mnt-runtime-consent button:focus-visible{outline:3px solid #EBB92E;outline-offset:3px}
-        @media(min-width:720px){.mnt-runtime-consent{left:auto;right:20px;max-width:520px;grid-template-columns:1fr auto;align-items:center}}
-      `;
-      document.head.append(style);
-    }
 
     const banner = document.createElement("aside");
     banner.className = "mnt-runtime-consent";
@@ -193,6 +198,22 @@
     return banner;
   }
 
+  function ensureConsentManageControl() {
+    ensureConsentStyle();
+    const existing = document.querySelector("[data-consent-manage]");
+    if (existing) return existing;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "mnt-consent-manage";
+    button.dataset.consentManage = "";
+    button.textContent = "Preferências de privacidade";
+    button.hidden = true;
+    button.setAttribute("aria-haspopup", "dialog");
+    const footer = document.querySelector("[data-mnt-commercial-footer] .mt-footer-standard, [data-mnt-commercial-footer] .footer-standard, [data-mnt-commercial-footer]");
+    (footer || document.body).append(button);
+    return button;
+  }
+
   function releaseConsentFocus(banner) {
     if (!banner.contains(document.activeElement)) return;
 
@@ -200,6 +221,7 @@
       ".mnt-contact-float",
       ".mt-quick-lead",
       "#mt-floating-dock .mt-floating-lead",
+      "[data-consent-manage]",
       "main a[href='#formulario']"
     ];
     const target = candidates
@@ -220,23 +242,55 @@
 
   function initConsent() {
     const banner = ensureConsentBanner();
+    const manage = ensureConsentManageControl();
     const syncOffset = () => {
       const open = !banner.hidden;
       const offset = open ? Math.ceil(banner.getBoundingClientRect().height + 28) : 14;
       document.documentElement.style.setProperty("--mt-consent-offset", `${offset}px`);
+      manage.setAttribute("aria-expanded", String(open));
+    };
+    const showBanner = () => {
+      banner.hidden = false;
+      syncOffset();
+      banner.querySelector("[data-consent-accept]")?.focus({preventScroll:true});
+    };
+    const hideBanner = () => {
+      banner.hidden = true;
+      syncOffset();
     };
     new MutationObserver(syncOffset).observe(banner, {attributes:true, attributeFilter:["hidden"]});
     if ("ResizeObserver" in window) new ResizeObserver(syncOffset).observe(banner);
     window.addEventListener("resize", syncOffset, {passive:true});
     if (!isLiveHost()) {
       banner.hidden = true;
+      manage.hidden = true;
       syncOffset();
       return;
     }
+    manage.hidden = false;
     const emitChoice = (choice) => {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({event: choice === "granted" ? "mnt_consent_accept" : "mnt_consent_reject"});
     };
+    if (banner.dataset.consentBound !== "true") {
+      banner.dataset.consentBound = "true";
+      banner.querySelector("[data-consent-accept]")?.addEventListener("click", () => {
+        try { window.localStorage.setItem(CONSENT_KEY, "granted"); } catch {}
+        emitChoice("granted");
+        hideBanner();
+        releaseConsentFocus(banner);
+      });
+      banner.querySelector("[data-consent-reject]")?.addEventListener("click", () => {
+        try { window.localStorage.setItem(CONSENT_KEY, "denied"); } catch {}
+        emitChoice("denied");
+        hideBanner();
+        releaseConsentFocus(banner);
+      });
+    }
+    if (manage.dataset.consentBound !== "true") {
+      manage.dataset.consentBound = "true";
+      manage.addEventListener("click", showBanner);
+    }
     let saved = "";
     try {
       saved = window.localStorage.getItem(CONSENT_KEY) || "";
@@ -244,27 +298,11 @@
       saved = "";
     }
     if (saved === "granted" || saved === "denied") {
-      banner.hidden = true;
-      syncOffset();
+      hideBanner();
       emitChoice(saved);
       return;
     }
-    banner.hidden = false;
-    syncOffset();
-    banner.querySelector("[data-consent-accept]")?.addEventListener("click", () => {
-      try { window.localStorage.setItem(CONSENT_KEY, "granted"); } catch {}
-      emitChoice("granted");
-      banner.hidden = true;
-      syncOffset();
-      releaseConsentFocus(banner);
-    });
-    banner.querySelector("[data-consent-reject]")?.addEventListener("click", () => {
-      try { window.localStorage.setItem(CONSENT_KEY, "denied"); } catch {}
-      emitChoice("denied");
-      banner.hidden = true;
-      syncOffset();
-      releaseConsentFocus(banner);
-    });
+    showBanner();
   }
 
   function whatsappUrl(message = "") {
