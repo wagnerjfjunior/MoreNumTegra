@@ -5,11 +5,54 @@ Current editorial refinement base: `ce231770a4546038fd1f2cc719815ebfa8c7d8ce`.
 
 ## Search and page ownership
 
-- Primary intent: Higienópolis regional discovery with Tegra commercial continuation.
-- Secondary: understand the neighborhood before comparing Ária and Mozae.
-- Exact-project title intents remain owned by each project page.
-- No independent real-estate marketplace, other developers, prices, investment return or availability claims are introduced.
-- QuintoAndar and Pilar Homes were reviewed only as page-architecture references for the pattern `bairro/contexto -> facilidades -> imóveis`. No text, layout asset or photograph was copied from either source.
+This refinement is explicitly grounded in the canonical M3 Search program:
+
+- `docs/search/MNT_M3_01_MARKET_SEARCH_DEMAND_RESEARCH_2026-09-13.md`;
+- `docs/search/MNT_M3_03_SERP_COMPETITOR_SEARCH_INTENT_ANALYSIS_2026-09-13.md`;
+- `docs/search/MNT_M3_05_SEARCH_INTENT_QUERY_OWNERSHIP_CONTRACT_2026-09-13.md`;
+- `docs/search/MNT_M3_06_QUERY_FAMILY_PAGE_OWNER_MAP_2026-09-13.md`;
+- `docs/search/data/MNT_M3_01_PLANNER_UNIVERSE_2026-09-13.csv`;
+- `docs/search/data/MNT_M3_05_QUERY_OWNERSHIP_MATRIX_2026-09-13.csv`;
+- `docs/search/data/MNT_M3_06_PAGE_OWNER_MAP_2026-09-13.csv`.
+
+Relevant observed demand from the canonical Planner universe:
+
+```text
+apartamentos higienopolis sao paulo = 170 avg monthly searches / Ads competition index 69
+apartamentos na planta em são paulo = 590 / 80
+apartamento em construção são paulo = 110 / 80
+apartamento pronto para morar são paulo = 20 / 89
+ária higienópolis = 1,900 / 31
+mozae higienopolis = 390 / 26
+```
+
+Interpretation boundary:
+
+- exact project-name intent remains owned by the exact project pages;
+- project modifiers such as metragem/planta/availability inherit the exact project owner;
+- stage families are valid Search dimensions and have their own governed stage-owner pattern;
+- broad generic city/neighborhood inventory remains support-secondary unless qualified by verified Tegra/project/stage/location context;
+- a verified multi-project location may use the `/regioes/<verified-location>/` owner pattern.
+
+For this page, Higienópolis now satisfies the verified project-set condition through Ária + Mozae. Therefore the regional page is positioned deliberately at **mid-funnel location discovery**, not bottom-funnel exact-project ownership.
+
+Primary semantic family:
+- apartamentos em Higienópolis;
+- apartamentos em Higienópolis São Paulo;
+- apartamentos Tegra em Higienópolis.
+
+Supporting mid-funnel stage/location semantics:
+- apartamento pronto para morar em Higienópolis;
+- apartamento na planta em Higienópolis;
+- apartamento em Higienópolis na planta;
+- apartamento em construção em Higienópolis.
+
+Anti-cannibalization:
+- `Ária Higienópolis` exact/project-detail intent remains on `/empreendimentos/aria-higienopolis/`;
+- `Mozae Higienópolis` exact/project-detail intent remains on `/empreendimentos/mozae-higienopolis/`;
+- the regional page must not become the primary owner for project-specific price, plant, metragem, availability or exact-project queries.
+
+QuintoAndar and Pilar Homes were reviewed only as information-architecture references for the pattern `bairro/contexto -> facilidades -> imóveis`. No text, layout asset or photograph was copied from either source.
 
 ## Governed neighborhood facts
 
@@ -64,6 +107,18 @@ Source page:
 - Conflicting or ungoverned commercial prices remain excluded.
 
 ## Editorial V2 change
+
+Product Authority correction on 2026-09-28:
+
+- remove internal/process-facing copy such as “Primeiro o bairro. Depois o imóvel.”;
+- use buyer-facing mid-funnel language;
+- represent Ária with the commercially meaningful stage phrase `apartamento pronto para morar em Higienópolis`;
+- represent Mozae with `apartamento na planta em Higienópolis` while preserving the factual current stage `em construção`;
+- strengthen the regional page for broader location/stage discovery without taking exact-project ownership from Ária/Mozae pages.
+
+The page title/H1/meta/section headings/FAQ/schema now support that corrected semantic architecture.
+
+
 
 The regional page now follows:
 
