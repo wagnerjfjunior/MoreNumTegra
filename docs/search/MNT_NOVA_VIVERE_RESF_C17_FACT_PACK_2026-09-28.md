@@ -16,6 +16,7 @@ Status: `READY_FOR_IMPLEMENTATION_WITH_PRICE_CONFLICT_RECORDED`
   - 105 m² / unit 708 / R$ 1.129.900 à vista
 - conflict: official public price/unit differs from current MoreTegra commercial references; page must preserve the consumer-owned card references and disclose that availability/conditions require confirmation
 - verified amenities: salão de festas, fitness, quadra, espaço gourmet, espaço kids, pet place, churrasqueira, family space, quadra poliesportiva, praça, quadra recreativa, playground, sauna, lounge, brinquedoteca, pilates
-- postalCode/geo: `BLOCKED_BY_MISSING_GOVERNED_FACT`
+- postalCode: `05093-000` — corroborated by official partner Helbor current project page
+- geo: `BLOCKED_BY_MISSING_GOVERNED_FACT`
 - location policy: regional map only; exact location handoff by WhatsApp; exact street remains governed in schema/footer
 - first-candidate UX: real regional map, non-cropped gallery, strengthened hero contrast, Form 46, consent v2, connected schema, Home/card dual actions
