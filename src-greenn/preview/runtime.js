@@ -312,36 +312,6 @@
     return message ? `${base}?text=${encodeURIComponent(message)}` : base;
   }
 
-  function initCapiitoloPortalLink() {
-    if (document.documentElement.dataset.mntPageIdentity === "capiitolo_piero_lissoni") return;
-    if (!document.getElementById("mnt-capiitolo-card-link-style")) {
-      const style = document.createElement("style");
-      style.id = "mnt-capiitolo-card-link-style";
-      style.textContent = `.mnt-capiitolo-details{display:inline-flex;align-items:center;justify-content:center;min-height:30px;padding:2px 8px;color:#171813;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.01em}.mnt-capiitolo-details:hover,.mnt-capiitolo-details:focus-visible{text-decoration:underline;text-underline-offset:3px}`;
-      document.head.append(style);
-    }
-    const enhance = () => {
-      document.querySelectorAll(".mt-project-card").forEach((card) => {
-        const title = card.querySelector("h3")?.textContent?.trim();
-        if (title !== "CAPIITOLO by Piero Lissoni") return;
-        const actions = card.querySelector(".mt-project-actions");
-        if (!actions || actions.querySelector("[data-capiitolo-project-link]")) return;
-        actions.style.gridTemplateColumns = "1fr";
-        actions.style.gap = "8px";
-        const link = document.createElement("a");
-        link.className = "mnt-capiitolo-details";
-        link.href = CAPIITOLO_ROUTE;
-        link.dataset.capiitoloProjectLink = "true";
-        link.textContent = "Ver empreendimento →";
-        actions.append(link);
-      });
-    };
-    enhance();
-    const observer = new MutationObserver(enhance);
-    observer.observe(document.documentElement, {subtree:true, childList:true});
-    window.setTimeout(() => observer.disconnect(), 15000);
-  }
-
   function injectCapiitoloStyles() {
     if (document.querySelector("#mnt-capiitolo-runtime-style")) return;
     const style = document.createElement("style");
@@ -626,7 +596,6 @@
 
   function start() {
     initConsent();
-    initCapiitoloPortalLink();
     initCapiitoloExperience();
     initForm();
   }
