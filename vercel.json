@@ -116,6 +116,54 @@
     {
       "source": "/empreendimentos/garden-design/",
       "destination": "/src-greenn/empreendimentos/garden-design/index.html"
+    },
+    {
+      "source": "/regioes/tatuape/",
+      "destination": "/src-greenn/regioes/tatuape/index.html"
+    },
+    {
+      "source": "/regioes/sacoma/",
+      "destination": "/src-greenn/regioes/sacoma/index.html"
+    },
+    {
+      "source": "/empreendimentos/ampere-brooklin/",
+      "destination": "/src-greenn/empreendimentos/ampere-brooklin/index.html"
+    },
+    {
+      "source": "/empreendimentos/bem-moema-studios-offices/",
+      "destination": "/src-greenn/empreendimentos/bem-moema-studios-offices/index.html"
+    },
+    {
+      "source": "/empreendimentos/ode-perdizes/",
+      "destination": "/src-greenn/empreendimentos/ode-perdizes/index.html"
+    },
+    {
+      "source": "/empreendimentos/tiel-vila-nova-conceicao/",
+      "destination": "/src-greenn/empreendimentos/tiel-vila-nova-conceicao/index.html"
+    },
+    {
+      "source": "/empreendimentos/universo-tatuape-orbita/",
+      "destination": "/src-greenn/empreendimentos/universo-tatuape-orbita/index.html"
+    },
+    {
+      "source": "/empreendimentos/teg-sacoma/",
+      "destination": "/src-greenn/empreendimentos/teg-sacoma/index.html"
+    },
+    {
+      "source": "/empreendimentos/chez-vous-moema/",
+      "destination": "/src-greenn/empreendimentos/chez-vous-moema/index.html"
+    },
+    {
+      "source": "/empreendimentos/key-moema/",
+      "destination": "/src-greenn/empreendimentos/key-moema/index.html"
+    },
+    {
+      "source": "/empreendimentos/ayla-moema-studio-office/",
+      "destination": "/src-greenn/empreendimentos/ayla-moema-studio-office/index.html"
+    },
+    {
+      "source": "/empreendimentos/viso-moema/",
+      "destination": "/src-greenn/empreendimentos/viso-moema/index.html"
     }
   ],
   "headers": [
