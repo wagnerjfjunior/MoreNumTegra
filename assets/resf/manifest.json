@@ -1,0 +1,242 @@
+{
+  "ampere-brooklin": {
+    "source": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/351/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Empreendimento-Ampere-Brooklin-Apartamentos-Brooklin-Sao-Paulo-SP-714x640-1718890023834.jpg",
+    "source_width": 714,
+    "source_height": 640,
+    "source_bytes": 154555,
+    "variants": [
+      {
+        "path": "assets/resf/ampere-brooklin/hero-mobile-640.webp",
+        "width": 640,
+        "height": 574,
+        "bytes": 64078,
+        "quality": 78,
+        "sha256": "a1ae473ff44923e4eaaa5d129a708038c8e1cbf07353d2fa32d389886e8404b1"
+      }
+    ]
+  },
+  "bem-moema": {
+    "source": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/336/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Apartamento-Bem-Moema-Sao-Paulo-SP-714x640-1715883122503.jpg",
+    "source_width": 714,
+    "source_height": 640,
+    "source_bytes": 160338,
+    "variants": [
+      {
+        "path": "assets/resf/bem-moema/hero-mobile-640.webp",
+        "width": 640,
+        "height": 574,
+        "bytes": 74082,
+        "quality": 78,
+        "sha256": "3db1b2cc6884c7a53a2b2b927062665de73e127f5a69ba9a69b4569992b538a4"
+      }
+    ]
+  },
+  "bem-moema-studios-offices": {
+    "source": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/343/ImagemPrincipal/Tegra-Incorporadora-Perspectiva-Ilustrada-Piscina-Lazer-Apartamentos-Studios-Salas-Comerciais-Bem-Moema-Studios-Offices-Sao-Paulo-SP714x640-1715882591212.jpg",
+    "source_width": 714,
+    "source_height": 640,
+    "source_bytes": 176374,
+    "variants": [
+      {
+        "path": "assets/resf/bem-moema-studios-offices/hero-mobile-640.webp",
+        "width": 640,
+        "height": 574,
+        "bytes": 36280,
+        "quality": 78,
+        "sha256": "4c35a78bd86e173b2146083c67998458ae21b33c9a2898bb9646b28c3643d2bb"
+      }
+    ]
+  },
+  "tiel-vila-nova-conceicao": {
+    "source": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/352/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Studios-Vila-Nova-Conceicao-Sao-Paulo-SP-714x640-1718129172867.jpg",
+    "source_width": 714,
+    "source_height": 640,
+    "source_bytes": 200078,
+    "variants": [
+      {
+        "path": "assets/resf/tiel-vila-nova-conceicao/hero-mobile-640.webp",
+        "width": 640,
+        "height": 574,
+        "bytes": 46392,
+        "quality": 78,
+        "sha256": "090ff6ceac7600bcbecc62ca193339c19b3cbfb32a29a8794845666e337cdadf"
+      }
+    ]
+  },
+  "universo-tatuape-orbita": {
+    "source": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/339/ImagemPrincipal/e56e585c-b5a8-44b5-95a6-c6227d8d18ea.jpg",
+    "source_width": 694,
+    "source_height": 930,
+    "source_bytes": 206364,
+    "variants": [
+      {
+        "path": "assets/resf/universo-tatuape-orbita/hero-mobile-640.webp",
+        "width": 640,
+        "height": 858,
+        "bytes": 97958,
+        "quality": 75,
+        "sha256": "0a0bce0fbccccc4653fc21d9af7e5fa0efad49024976ec3f57301d8aed05707d"
+      }
+    ]
+  },
+  "teg-sacoma": {
+    "source": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/281/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Area-Externa-Empreendimento-TEG-Sacoma-Apartamentos-Pronto-para-Morar-Zona-Sul-Sao-Paulo-SP-714x640-1716214964198.jpg",
+    "source_width": 714,
+    "source_height": 640,
+    "source_bytes": 215107,
+    "variants": [
+      {
+        "path": "assets/resf/teg-sacoma/hero-mobile-640.webp",
+        "width": 640,
+        "height": 574,
+        "bytes": 64046,
+        "quality": 78,
+        "sha256": "9495345ddbe8cd9ce53e67dbbac5224b0eba61bd14f58141f34a2fe1682455dd"
+      }
+    ]
+  },
+  "chez-vous-moema": {
+    "source": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/255/Imagem/f94dfcdc-fd02-4275-b5c3-de5953378f31.jpg",
+    "source_width": 2000,
+    "source_height": 1124,
+    "source_bytes": 339762,
+    "variants": [
+      {
+        "path": "assets/resf/chez-vous-moema/hero-mobile-640.webp",
+        "width": 640,
+        "height": 360,
+        "bytes": 47540,
+        "quality": 78,
+        "sha256": "18d1c29821d54bef555b26125d80459eb286f4b78be0fc7d997bc76ed98fb13a"
+      },
+      {
+        "path": "assets/resf/chez-vous-moema/hero-mobile-828.webp",
+        "width": 828,
+        "height": 465,
+        "bytes": 72116,
+        "quality": 78,
+        "sha256": "8b31f8bb807e9f1b41cb1052c1cadccb094d148553a0b88edf3d9402de65e279"
+      }
+    ]
+  },
+  "key-moema": {
+    "source": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/264/Imagem/f792b3c7-d80c-46b1-8625-dd9efaaac209.jpg",
+    "source_width": 1920,
+    "source_height": 1439,
+    "source_bytes": 498255,
+    "variants": [
+      {
+        "path": "assets/resf/key-moema/hero-mobile-640.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 57784,
+        "quality": 78,
+        "sha256": "4fb9ad722c641a2331280cd4ef0ba4ac701e63ba83a220d60a90b299562cce55"
+      },
+      {
+        "path": "assets/resf/key-moema/hero-mobile-828.webp",
+        "width": 828,
+        "height": 621,
+        "bytes": 91134,
+        "quality": 78,
+        "sha256": "28f8ca36b0f314c9af164c955ed85ecfc6b34023f3dccf0f9aeddb555b5fc134"
+      }
+    ]
+  },
+  "ayla-moema-studio-office": {
+    "source": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/274/Imagem/Tegra-Incorporadora-Area-de-Lazer-Empreendimento-Ayla-Moema-Studio-Office-Salas-Comerciais-Moema-Sao-Paulo-SP%20001-1715447190661.jpg",
+    "source_width": 1600,
+    "source_height": 900,
+    "source_bytes": 626797,
+    "variants": [
+      {
+        "path": "assets/resf/ayla-moema-studio-office/hero-mobile-640.webp",
+        "width": 640,
+        "height": 360,
+        "bytes": 66804,
+        "quality": 78,
+        "sha256": "5c026983c698f329aeead09dcdf3a3f310e1b03ce6dd4aa9bc0a497adffd3d2e"
+      },
+      {
+        "path": "assets/resf/ayla-moema-studio-office/hero-mobile-828.webp",
+        "width": 828,
+        "height": 466,
+        "bytes": 96986,
+        "quality": 75,
+        "sha256": "a4038145e10a6b0198807d7f31e7b0dbd278e76f041c54cb3d17696eab0fbac1"
+      }
+    ]
+  },
+  "viso-moema": {
+    "source": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/267/Imagem/1e3238f2-6784-4c56-bdc3-8acfee126976.jpg",
+    "source_width": 1350,
+    "source_height": 900,
+    "source_bytes": 265258,
+    "variants": [
+      {
+        "path": "assets/resf/viso-moema/hero-mobile-640.webp",
+        "width": 640,
+        "height": 427,
+        "bytes": 49084,
+        "quality": 78,
+        "sha256": "d3df96700df8d4d4da97e38871d6dd10823fe6f98ac5a8e24c2487eeb4eb3c8b"
+      },
+      {
+        "path": "assets/resf/viso-moema/hero-mobile-828.webp",
+        "width": 828,
+        "height": 552,
+        "bytes": 78628,
+        "quality": 78,
+        "sha256": "dcdb3825c68d8304a45ae72423ff83a673a218f3e0d6dbbb12e3af778640b56d"
+      }
+    ]
+  },
+  "region-brooklin": {
+    "source": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/341/ImagemPrincipal/6b04808c-fa4f-4bc9-bd24-e6052be1dda7.jpg",
+    "source_width": 694,
+    "source_height": 930,
+    "source_bytes": 78745,
+    "variants": [
+      {
+        "path": "assets/resf/region-brooklin/hero-mobile-640.webp",
+        "width": 640,
+        "height": 858,
+        "bytes": 55606,
+        "quality": 78,
+        "sha256": "388f7feb783ec11184478fdbd4e1bed3f46a6301e8a98f6d12cb277d7b280806"
+      }
+    ]
+  },
+  "region-perdizes": {
+    "source": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/314/ImagemPrincipal/Tegra-Incorporadora-Perspectiva-Ilustrada-Voo-Diurno-Fachada-Apartamentos-Studios-Salas-Comerciais-Soma-Perdizes-Sao-Paulo-SP-714x640-1715885527011.jpg",
+    "source_width": 714,
+    "source_height": 640,
+    "source_bytes": 185177,
+    "variants": [
+      {
+        "path": "assets/resf/region-perdizes/hero-mobile-640.webp",
+        "width": 640,
+        "height": 574,
+        "bytes": 88738,
+        "quality": 78,
+        "sha256": "40f8d3c8d0a1f33776f411940b822ca7760012bddc7ed525aa99d127646ccd98"
+      }
+    ]
+  },
+  "region-vila-nova-conceicao": {
+    "source": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/337/ImagemPrincipal/8e85cddc-003b-4b7a-bfd2-2e38275cb1b8.jpg",
+    "source_width": 694,
+    "source_height": 930,
+    "source_bytes": 173899,
+    "variants": [
+      {
+        "path": "assets/resf/region-vila-nova-conceicao/hero-mobile-640.webp",
+        "width": 640,
+        "height": 858,
+        "bytes": 74426,
+        "quality": 78,
+        "sha256": "9e05bcc5f972c96564ad4fe6bd8b2c9c40db05a0a43a02f169ad55ccec73ab38"
+      }
+    ]
+  }
+}
