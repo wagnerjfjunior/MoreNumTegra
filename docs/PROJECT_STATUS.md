@@ -1590,3 +1590,28 @@ Production state = READY
 Traceability:
 `docs/governance/MNT_HIGIENOPOLIS_REGION_V2_PRODUCTION_RELEASE_2026-09-28.md`
 
+
+
+## 2026-09-30 — PR #306 production reconciliation
+
+```text
+CANONICAL_MAIN_RUNTIME = 6c36cdc765d1bd6781ce099ff799bfa4db755f66
+PRODUCTION_DEPLOYMENT = dpl_GC3V5BCPPWgo2cEK2VaiTWKKJkJf
+PRODUCTION_STATE = READY
+PR_306 = MERGED
+PUBLIC_SMOKE = USER_CONFIRMED
+POST_RELEASE_RUNTIME_ERRORS = NONE_OBSERVED_IN_CHECKED_1H_WINDOW
+```
+
+Release scope:
+- RESF responsive media correction;
+- consultation-led sales copy retained for Chez Vous, Key, Ayla and Viso;
+- Moema regional copy corrected to avoid dead/archive framing;
+- favicon package retained in its validator-compliant multi-frame state.
+
+Known non-blocking debt preserved:
+- the current M5-06 CTA/Form journey workflow remains red because of pre-existing validator debt also present on main before PR #306; it is not recorded as a PR #306 regression.
+
+Performance:
+- no post-release LCP gain is claimed yet;
+- a fresh performance battery is required before any LCP conclusion.

@@ -39,3 +39,31 @@ Prioridade desta transição:
 4. validar no Local Live Sync;
 5. somente após aceite explícito, considerar merge/Production;
 6. medir performance pós-release antes de afirmar ganho de LCP.
+
+
+## PR #306 — RESF responsive media + Moema sales copy — CLOSED 2026-09-30
+
+```text
+PR = #306 / MERGED
+validated head = 247bc1b1b10dd837cb34f3f5a337abc113bca82f
+merge/runtime SHA = 6c36cdc765d1bd6781ce099ff799bfa4db755f66
+Production deployment = dpl_GC3V5BCPPWgo2cEK2VaiTWKKJkJf
+Production state = READY
+canonical host = https://www.moretegra.com.br/
+public smoke = USER_CONFIRMED / pages published and functioning
+runtime errors post-release = NONE OBSERVED in the checked 1h window
+```
+
+Scope retained:
+- RESF responsive hero/media delivery on the bounded project/regional set;
+- strong consultation-led commercial copy on Chez Vous, Key, Ayla and Viso;
+- Moema regional copy no longer frames those projects as dead/archive pages;
+- canonical multi-frame favicon retained because restoring the older main blob failed the current favicon validator.
+
+Validation note:
+- Favicon standard validation = PASS;
+- Commercial page standard validation = PASS;
+- Social sharing metadata validation = PASS;
+- M5-06 CTA/Form journey = RED due to pre-existing validator debt observed on main, not introduced by PR #306.
+
+Do not claim an LCP improvement from this release until a post-release performance battery is executed.
