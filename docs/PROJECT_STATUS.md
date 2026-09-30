@@ -1647,3 +1647,34 @@ current official master surface = caminhosdalapaoficial.com.br
 ```
 
 No redirect, DNS, canonical, sitemap, runtime, title/H1 or paid-media mutation is authorized by this study.
+
+
+## 2026-09-30 — Caminhos competitive SERP snapshot
+
+The reusable Search Intelligence layer was extended with a dated competitive surface snapshot:
+
+- `docs/search/data/search-intelligence/caminhos-lapa/serp_competitive_snapshot_2026-09-30.json`
+- `docs/search/data/search-intelligence/caminhos-lapa/serp_competitive_snapshot_2026-09-30.csv`
+
+Observed competitor classes now include:
+
+```text
+CURRENT_OFFICIAL_MASTER
+HISTORICAL_SEARCH_EQUITY_SPECIALIST
+OFFICIAL_DEVELOPER_PORTFOLIO
+INDEPENDENT_MASTER_SPECIALIST
+INDEPENDENT_PROJECT_SPECIALIST
+MARKETPLACE_PORTAL
+SECONDARY_MARKET_PORTAL
+PROJECT_PORTAL
+```
+
+New material finding:
+
+the Caminhos master-development SERP is not a two-domain contest. Multiple specialist properties compete alongside the official master surface and historical-equity domain.
+
+Methodological boundary:
+
+`SEARCH_ENGINE_RESULT_ORDER != VERIFIED_GOOGLE_POSITION`.
+
+No runtime or SEO mutation is authorized by this evidence extension.
