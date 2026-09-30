@@ -266,3 +266,18 @@ Before runtime mutation:
 2. define region-page copy boundaries so it does not duplicate the Caminhos master;
 3. preserve exact-project ownership for price, plants, availability and conversion;
 4. branch/PR + Local Live Sync + checks + Product Authority approval before merge.
+
+
+## 2026-09-30 — Post-PR #318 next safe action
+
+`MNT-REGION-LAPA-01` is complete and live.
+
+Next safe action:
+1. preserve `/regioes/lapa/` as geographic discovery owner;
+2. do not create `/caminhos-da-lapa/` in MoreNumTegra;
+3. do not expand exact-project copy by sequence alone;
+4. next bounded Search action should be selected from the governed backlog after resolving live state.
+
+Known validator debt remains separate:
+- M5-06 CTA/Form journey;
+- M4-05R legacy `portal-links.js` expectation.
