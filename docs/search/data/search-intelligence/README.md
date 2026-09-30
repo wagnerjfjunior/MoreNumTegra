@@ -60,3 +60,13 @@ The Caminhos master entity currently has two material first-party/public surface
 
 Therefore master-domain ownership is `GOVERNANCE_RECONCILIATION_REQUIRED`.
 No redirect, canonical-tag, DNS or destructive consolidation is authorized by this dataset.
+
+
+## Competitive snapshot layer
+
+Dated competitor snapshots live beside the normalized Caminhos dataset:
+
+- `caminhos-lapa/serp_competitive_snapshot_2026-09-30.json`
+- `caminhos-lapa/serp_competitive_snapshot_2026-09-30.csv`
+
+These snapshots record observed result surfaces and competitor classes. They must not be interpreted as exact Google organic rank unless a record explicitly identifies GSC or direct Google SERP evidence.
