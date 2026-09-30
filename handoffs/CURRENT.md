@@ -119,3 +119,31 @@ REGION → MASTER DEVELOPMENT → EXACT PROJECT
 `/caminhos-da-lapa/` remains reserved and must not be created.
 
 Next bounded task: `MNT-REGION-LAPA-01` — Lapa regional discovery page, with project membership and semantic-boundary validation before runtime implementation.
+
+
+## 2026-09-30 — PR #318 Lapa regional discovery page — CLOSED
+
+```text
+PR = #318 / MERGED
+validated head = 3108b8de3103f181dcd9f59e355850353086bc59
+merge/runtime SHA = d6dbc451554ca579d80ff7f16fee8c39e5a41da3
+Production deployment = dpl_9KTywaqRc5TL7PPsP8u5aq28hAiL
+Production state = READY
+local visual validation = USER_APPROVED
+route = https://www.moretegra.com.br/regioes/lapa/
+```
+
+Delivered:
+- regional owner page for Lapa / Zona Oeste;
+- approximately 1,431 visible words;
+- editorial balance measured at ~72% region / ~28% projects + decision;
+- projects linked: Elo Duo, Garden Design, Nova Vivere and Reserva;
+- JSON-LD valid with WebPage, BreadcrumbList, ItemList and FAQPage;
+- visible FAQ 6 / JSON-LD FAQ 6 / parity PASS;
+- Form 46 and GTM preserved;
+- Home discovery link, Vercel rewrite and sitemap entry added;
+- MoreNumTegra `/caminhos-da-lapa/` remains reserved / not created.
+
+Validation residuals:
+- M5-06 CTA/Form journey = RED / pre-existing validator debt;
+- M4-05R metadata validation = RED because the validator still expects legacy guarded MutationObserver logic in `src-greenn/portal-links.js`; current canonical file is intentionally a compatibility shim and PR #318 did not modify it.
