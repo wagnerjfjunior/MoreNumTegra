@@ -105,3 +105,17 @@ Search-gap reconciliation:
 - Nova Vivere commercial-truth revalidation = separate factual-data gate if price/reference changes are contemplated.
 
 Next safe action is governed by `docs/NEXT_SAFE_ACTION.md`.
+
+
+## 2026-09-30 — Search ownership handoff
+
+Caminhos/Lapa hierarchy is now resolved:
+
+```text
+REGION → MASTER DEVELOPMENT → EXACT PROJECT
+/regioes/lapa/ → dedicated Caminhos property → /empreendimentos/*
+```
+
+`/caminhos-da-lapa/` remains reserved and must not be created.
+
+Next bounded task: `MNT-REGION-LAPA-01` — Lapa regional discovery page, with project membership and semantic-boundary validation before runtime implementation.

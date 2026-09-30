@@ -1747,3 +1747,25 @@ Search-gap reconciliation:
 - Nova Vivere commercial-truth revalidation = separate factual-data gate if price/reference changes are contemplated.
 
 Next safe action is governed by `docs/NEXT_SAFE_ACTION.md`.
+
+
+## 2026-09-30 — Caminhos/Lapa ownership reconciliation
+
+Search architecture decision accepted:
+
+```text
+REGION = future /regioes/lapa/
+MASTER DEVELOPMENT = dedicated Caminhos property
+EXACT PROJECT = MoreNumTegra /empreendimentos/*
+/caminhos-da-lapa/ = RESERVED / DO NOT CREATE
+```
+
+Lifecycle rule retained:
+- permanent entity ownership and active commercial ownership are separate;
+- SOLD_OUT / DELIVERED do not automatically trigger redirect, canonical transfer, noindex or deletion.
+
+Residual:
+- dedicated Caminhos hostname/equity consolidation remains a separate governance/GSC/DNS gate.
+
+Next bounded candidate:
+`MNT-REGION-LAPA-01`.
