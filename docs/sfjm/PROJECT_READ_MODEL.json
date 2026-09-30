@@ -7,8 +7,8 @@
     "accepted_percent": 96.77
   },
   "current": {
-    "task_id": "MNT-SEARCH-CAMINHOS-POST-315",
-    "task_state": "NEXT / OWNERSHIP_OR_COMMERCIAL_TRUTH_GATE",
+    "task_id": "MNT-REGION-LAPA-01",
+    "task_state": "NEXT / REGION_PAGE_BOUNDED_IMPLEMENTATION",
     "pr": null,
     "repository_head_sha": "759a4bcf6d0b7220993c4d87918f85e1d4d5f5f1",
     "latest_main_runtime_sha": "759a4bcf6d0b7220993c4d87918f85e1d4d5f5f1",
@@ -16,10 +16,10 @@
     "last_verified_vercel_success_sha": "759a4bcf6d0b7220993c4d87918f85e1d4d5f5f1",
     "production_deployment_id": "dpl_5LLtx8L1XJys9JSrkpqbRUG9stWD",
     "acceptance_run": null,
-    "next_task_id": "MNT-SEARCH-CAMINHOS-POST-315",
-    "next_task_state": "NEXT / OWNERSHIP_OR_COMMERCIAL_TRUTH_GATE",
+    "next_task_id": "MNT-REGION-LAPA-01",
+    "next_task_state": "NEXT / FACT_SET_AND_SEMANTIC_BOUNDARY_GATE",
     "final_consent_ga4_proof_run": 35737706576,
-    "evidence": "docs/governance/MNT_PR315_PRODUCTION_RELEASE_2026-09-30.md",
+    "evidence": "docs/search/MNT_CAMINHOS_OWNERSHIP_RECONCILIATION_2026-09-30.md",
     "baseline_run": 35743393547,
     "responsive_media_standard": "docs/performance/RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1.md",
     "audience_accumulation_state": "COMPLETE / MANUAL_CREATION / SCREENSHOT_OBSERVED",
@@ -52,17 +52,17 @@
   "cross_project_handoff": "docs/sfjm/MNT_FECHAI_COMMERCIAL_CATALOG_HANDOFF_2026-09-16.md",
   "last_reconciled_at": "2026-09-30",
   "priority_workstream": {
-    "id": "SEARCH_CAMINHOS_POST_315",
-    "label": "Caminhos da Lapa post-exact-project reconciliation",
-    "state": "NEXT / DECISION_GATE",
-    "current_child": "MNT-SEARCH-CAMINHOS-POST-315",
+    "id": "SEARCH_REGION_LAPA",
+    "label": "Lapa regional discovery page",
+    "state": "NEXT / FACT_SET_AND_SEMANTIC_BOUNDARY_GATE",
+    "current_child": "MNT-REGION-LAPA-01",
     "counted_in_resf_hours": false,
     "handoff": "handoffs/CURRENT.md",
     "tasks": [
       {
-        "id": "MNT-SEARCH-CAMINHOS-POST-315",
-        "label": "Resolve commercial-truth revalidation vs master/region ownership reconciliation",
-        "state": "NEXT / DECISION_GATE"
+        "id": "MNT-REGION-LAPA-01",
+        "label": "Implement /regioes/lapa/ without duplicating Caminhos master intent",
+        "state": "NEXT / AUTHORIZED_BY_PRODUCT_DIRECTION"
       }
     ]
   },
