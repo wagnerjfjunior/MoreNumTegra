@@ -187,3 +187,25 @@ No runtime mutation is authorized by this audit alone.
 Handoff:
 `handoffs/HANDOFF-2026-09-28-NEIGHBORHOOD-PAGES-EXPANSION.md`
 
+
+
+## PR #306 closure — 2026-09-30
+
+The responsive-media / Moema sales-copy remediation is merged and live.
+
+```text
+main = 6c36cdc765d1bd6781ce099ff799bfa4db755f66
+PR #306 = MERGED
+Production = dpl_GC3V5BCPPWgo2cEK2VaiTWKKJkJf / READY
+public smoke = USER_CONFIRMED
+runtime errors in checked post-release 1h window = NONE OBSERVED
+```
+
+No further runtime mutation is authorized by this closure.
+
+Next safe action for this slice:
+1. if performance adjudication is desired, run a fresh post-release mobile battery before claiming LCP improvement;
+2. keep the pre-existing M5-06 validator debt separate from PR #306;
+3. otherwise resume the previously governed backlog selected by Product Authority.
+
+Do not reopen sold-out/archive-style commercial copy for Chez Vous, Key, Ayla or Viso without a new explicit content decision.
