@@ -1,0 +1,247 @@
+{
+  "schema_version": "1.0.0",
+  "analysis_id": "MNT_CAMINHOS_EXACT_PROJECT_SEO_GAP_2026_09_30",
+  "analyzed_main_sha": "c567f760d2139bd1ead5b64da8c90906d1a54b26",
+  "analyzed_at": "2026-09-30",
+  "scope": [
+    "GARDEN_DESIGN",
+    "NOVA_VIVERE",
+    "ELO_DUO",
+    "RESERVA"
+  ],
+  "rules": [
+    "No page mutation is authorized by this analysis.",
+    "Do not change a title/H1 that is already producing positive SERP evidence without a stronger reason.",
+    "Commercial prices/status must be revalidated against canonical commercial truth before mutation.",
+    "Portal secondary-market availability must not be represented as developer inventory.",
+    "Internal-link recommendations remain architecture-gated while Lapa regional/master ownership is unresolved."
+  ],
+  "pages": [
+    {
+      "entity": "GARDEN_DESIGN",
+      "moretegra_url": "https://www.moretegra.com.br/empreendimentos/garden-design/",
+      "title": "Garden Design Tegra Caminhos da Lapa | 61 a 78 m²",
+      "h1": "Garden Design Tegra Private Park Residence",
+      "faq_count": 4,
+      "faq_schema": true,
+      "internal_route_links": 0,
+      "word_count_approx": 644,
+      "strengths": [
+        "Exact project + Tegra + Caminhos da Lapa in title.",
+        "Project-name H1 and full Private Park Residence entity name.",
+        "Visible FAQ covering price, plants, location and stage.",
+        "Breadcrumb + ApartmentComplex + FloorPlan + FAQPage schema.",
+        "User-observed Google page-2 presence for 'caminhos da lapa garden design tegra'."
+      ],
+      "gaps": [
+        {
+          "id": "GD-01",
+          "severity": "MEDIUM",
+          "type": "LOCAL_ENTITY_COVERAGE",
+          "finding": "Current page has no explicit 'Vila Anastácio' lexical coverage; major portal competitors use Vila Anastácio prominently."
+        },
+        {
+          "id": "GD-02",
+          "severity": "MEDIUM",
+          "type": "LOCATION_CONTEXT",
+          "finding": "Current page does not materially cover Domingos de Moraes, Marginal Tietê, Bandeirantes, Anhanguera, Mercado da Lapa or Sesc Pompeia; official/portal competitors provide richer local context."
+        },
+        {
+          "id": "GD-03",
+          "severity": "MEDIUM",
+          "type": "AMENITY_BREADTH",
+          "finding": "Competitors expose a broader indexable amenity vocabulary including coworking, churrasqueira, brinquedoteca and salão de festas; current source has narrower visible lexical coverage."
+        },
+        {
+          "id": "GD-04",
+          "severity": "HIGH",
+          "type": "COMMERCIAL_TRUTH_REVALIDATION",
+          "finding": "MoreTegra page displays a commercial price reference different from current official Tegra/Caminhos observed reference. Do not change automatically; revalidate current canonical commercial truth first."
+        },
+        {
+          "id": "GD-05",
+          "severity": "MEDIUM",
+          "type": "INTERNAL_DISCOVERY",
+          "finding": "No internal route links beyond Home. Any Lapa/master link is architecture-gated because /regioes/lapa/ is not yet governed live and master-domain ownership is unresolved."
+        }
+      ],
+      "recommendation_state": "RETAIN_TITLE_H1 / ENRICH_BODY_ONLY_AFTER_FACT_REVALIDATION"
+    },
+    {
+      "entity": "NOVA_VIVERE",
+      "moretegra_url": "https://www.moretegra.com.br/empreendimentos/nova-vivere/",
+      "title": "Nova Vivere Tegra Caminhos da Lapa | 72 e 105 m²",
+      "h1": "Nova Vivere Tegra no Caminhos da Lapa",
+      "faq_count": 4,
+      "faq_schema": true,
+      "internal_route_links": 0,
+      "word_count_approx": 673,
+      "strengths": [
+        "Exact project + Tegra + Caminhos da Lapa in title and H1.",
+        "Strong plant/size targeting: 72 and 105 m².",
+        "Visible FAQ covering price, plants, location and stage.",
+        "Breadcrumb + ApartmentComplex + FloorPlan + FAQPage schema."
+      ],
+      "gaps": [
+        {
+          "id": "NV-01",
+          "severity": "MEDIUM",
+          "type": "LOCAL_ENTITY_COVERAGE",
+          "finding": "Current page does not explicitly use Vila Anastácio; Viva Real and other portal surfaces do."
+        },
+        {
+          "id": "NV-02",
+          "severity": "MEDIUM",
+          "type": "AMENITY_BREADTH",
+          "finding": "Viva Real exposes a broad feature set (spa, coworking, pet, sauna, brinquedoteca, churrasqueira and others) while current page has narrower indexable feature coverage."
+        },
+        {
+          "id": "NV-03",
+          "severity": "MEDIUM",
+          "type": "DELIVERY_LIFECYCLE_CONTEXT",
+          "finding": "Portal result exposes a delivery/prevision timeline; current page has no visible 'entrega'/'previsão' lexical coverage. Add only if verified by canonical source."
+        },
+        {
+          "id": "NV-04",
+          "severity": "HIGH",
+          "type": "COMMERCIAL_TRUTH_REVALIDATION",
+          "finding": "MoreTegra commercial price reference differs from current official observed reference. Revalidate before any content mutation."
+        },
+        {
+          "id": "NV-05",
+          "severity": "MEDIUM",
+          "type": "INTERNAL_DISCOVERY",
+          "finding": "No internal project/region route links beyond Home; regional/master destinations are architecture-gated."
+        }
+      ],
+      "recommendation_state": "RETAIN_TITLE_H1 / ENRICH_BODY_AND_FAQ_AFTER_FACT_REVALIDATION"
+    },
+    {
+      "entity": "ELO_DUO",
+      "moretegra_url": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/",
+      "title": "Elo Duo Tegra Caminhos da Lapa | Apartamento pronto na Lapa",
+      "h1": "Elo Duo Tegra — Caminhos da Lapa",
+      "faq_count": 0,
+      "faq_schema": false,
+      "internal_route_links": 0,
+      "word_count_approx": 1305,
+      "strengths": [
+        "Strongest semantic body depth of the four pages.",
+        "Title combines exact project, Tegra, Caminhos da Lapa and ready-to-move intent.",
+        "Body already covers Vila Anastácio, Domingos de Moraes, Marginal Tietê, Bandeirantes, Anhanguera and Sesc Pompeia.",
+        "Body includes ready-to-move and last-units vocabulary.",
+        "Structured data includes ApartmentComplex, FloorPlan, Product and Service."
+      ],
+      "gaps": [
+        {
+          "id": "ED-01",
+          "severity": "HIGH",
+          "type": "FAQ_ANSWERABILITY",
+          "finding": "No visible FAQ and no FAQPage schema, while competing project/portal pages answer status, plant, price, location and amenity questions directly."
+        },
+        {
+          "id": "ED-02",
+          "severity": "MEDIUM",
+          "type": "SECONDARY_MARKET_SEPARATION",
+          "finding": "ZAP exposes both new-development and condominium/resale surfaces for Elo/Elo Duo. MoreTegra should keep developer/current-commercial intent distinct from resale condominium intent."
+        },
+        {
+          "id": "ED-03",
+          "severity": "MEDIUM",
+          "type": "INTERNAL_DISCOVERY",
+          "finding": "No internal route links beyond Home despite deep body content; future contextual linking is architecture-gated."
+        }
+      ],
+      "recommendation_state": "RETAIN_TITLE_H1 / FAQ_IS_CLEANEST_ON_PAGE_GAP"
+    },
+    {
+      "entity": "RESERVA",
+      "moretegra_url": "https://www.moretegra.com.br/empreendimentos/reserva-caminhos-da-lapa/",
+      "title": "Reserva Caminhos da Lapa Tegra | 91, 127 e 157 m²",
+      "h1": "Reserva Caminhos da Lapa projeto Tegra entregue",
+      "faq_count": 4,
+      "faq_schema": true,
+      "internal_route_links": 0,
+      "word_count_approx": 660,
+      "strengths": [
+        "Exact project + Tegra + core plant sizes in title.",
+        "Visible FAQ and FAQPage schema.",
+        "Clear plant and amenity coverage including beach tennis.",
+        "Project authorship is represented."
+      ],
+      "gaps": [
+        {
+          "id": "RS-01",
+          "severity": "HIGH",
+          "type": "COMMERCIAL_INTENT_SUPPRESSION",
+          "finding": "The source repeats '100% vendido' multiple times and front-loads archive/alternative semantics. This narrows buyer intent while current SERPs show strong ready-to-move and secondary-market demand."
+        },
+        {
+          "id": "RS-02",
+          "severity": "HIGH",
+          "type": "POST_DELIVERY_QUERY_COVERAGE",
+          "finding": "QuintoAndar and Apto cover ready-to-move, condominium, local proximity, inventory and buyer-oriented attributes. MoreTegra covers the entity but under-serves post-delivery research intent."
+        },
+        {
+          "id": "RS-03",
+          "severity": "MEDIUM",
+          "type": "LOCAL_ENTITY_COVERAGE",
+          "finding": "Current page lacks Vila Anastácio and nearby transit/amenity lexical coverage that major portal competitors expose."
+        },
+        {
+          "id": "RS-04",
+          "severity": "MEDIUM",
+          "type": "FAQ_INTENT",
+          "finding": "FAQ leads with sold-out status and alternatives rather than broader entity/buyer questions such as condominium, location, plant differences and consultation availability."
+        },
+        {
+          "id": "RS-05",
+          "severity": "MEDIUM",
+          "type": "INTERNAL_DISCOVERY",
+          "finding": "No internal route links beyond Home; project-to-master/region linking remains governance-gated."
+        }
+      ],
+      "recommendation_state": "HIGHEST_CONTENT_REMEDIATION_CANDIDATE / DO_NOT_FAKE_DEVELOPER_INVENTORY"
+    }
+  ],
+  "prioritized_findings": [
+    {
+      "rank": 1,
+      "id": "RS-01",
+      "entity": "RESERVA",
+      "reason": "Current copy actively suppresses commercial/query breadth in a post-delivery SERP with proven marketplace demand."
+    },
+    {
+      "rank": 2,
+      "id": "ED-01",
+      "entity": "ELO_DUO",
+      "reason": "FAQ/answerability gap is bounded and does not require title/H1 changes."
+    },
+    {
+      "rank": 3,
+      "id": "GD-04",
+      "entity": "GARDEN_DESIGN",
+      "reason": "Commercial reference mismatch requires truth revalidation before SEO/content work."
+    },
+    {
+      "rank": 4,
+      "id": "NV-04",
+      "entity": "NOVA_VIVERE",
+      "reason": "Commercial reference mismatch requires truth revalidation before SEO/content work."
+    },
+    {
+      "rank": 5,
+      "id": "GD-01/NV-01",
+      "entity": "GARDEN_DESIGN/NOVA_VIVERE",
+      "reason": "Local entity coverage can be enriched without changing established titles if facts are validated."
+    }
+  ],
+  "no_change_recommendations": [
+    "Do not change Garden Design title or H1 now.",
+    "Do not change Nova Vivere title or H1 now.",
+    "Do not change Elo Duo title or H1 now.",
+    "Do not create a MoreTegra /caminhos-da-lapa/ route from this analysis.",
+    "Do not redirect historical Caminhos URLs.",
+    "Do not copy portal prices, inventory counts or delivery dates without canonical commercial verification."
+  ]
+}

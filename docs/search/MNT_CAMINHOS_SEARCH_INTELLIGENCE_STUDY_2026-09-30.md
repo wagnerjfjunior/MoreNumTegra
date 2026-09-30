@@ -309,3 +309,25 @@ MoreTegra should continue to differentiate through:
 - no duplicate full master-development route while master-domain ownership remains unresolved.
 
 No title/H1/canonical/redirect change is authorized by this snapshot alone.
+
+
+## 13. Exact-project SEO gap analysis
+
+Canonical read-only analysis:
+
+`docs/search/MNT_CAMINHOS_EXACT_PROJECT_SEO_GAP_ANALYSIS_2026-09-30.md`
+
+Machine-readable matrices:
+
+- `docs/search/data/search-intelligence/caminhos-lapa/exact_project_seo_gap_matrix_2026-09-30.json`
+- `docs/search/data/search-intelligence/caminhos-lapa/exact_project_seo_gap_matrix_2026-09-30.csv`
+
+Priority findings:
+
+1. Reserva = highest content/lifecycle remediation candidate;
+2. Elo Duo = cleanest bounded FAQ/answerability gap;
+3. Garden Design = commercial-truth revalidation before further enrichment;
+4. Nova Vivere = commercial-truth revalidation before further enrichment;
+5. Garden Design + Nova Vivere = local/entity and amenity enrichment after factual verification.
+
+No title/H1 rewrite is recommended for Garden Design, Nova Vivere or Elo Duo from current evidence.

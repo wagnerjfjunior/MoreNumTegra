@@ -1678,3 +1678,34 @@ Methodological boundary:
 `SEARCH_ENGINE_RESULT_ORDER != VERIFIED_GOOGLE_POSITION`.
 
 No runtime or SEO mutation is authorized by this evidence extension.
+
+
+## 2026-09-30 — Caminhos exact-project SEO gap analysis
+
+Read-only analysis completed for:
+
+- Garden Design;
+- Nova Vivere;
+- Elo Duo;
+- Reserva Caminhos da Lapa.
+
+Canonical study:
+
+`docs/search/MNT_CAMINHOS_EXACT_PROJECT_SEO_GAP_ANALYSIS_2026-09-30.md`
+
+Machine-readable evidence:
+
+- `docs/search/data/search-intelligence/caminhos-lapa/exact_project_seo_gap_matrix_2026-09-30.json`
+- `docs/search/data/search-intelligence/caminhos-lapa/exact_project_seo_gap_matrix_2026-09-30.csv`
+
+Current priority findings:
+
+```text
+P1 = Reserva commercial/entity lifecycle copy gap
+P2 = Elo Duo FAQ/answerability gap
+P3 = Garden Design commercial-truth revalidation
+P4 = Nova Vivere commercial-truth revalidation
+P5 = Garden/Nova local entity + amenity enrichment
+```
+
+No exact-project runtime/content mutation is authorized by this study alone.
