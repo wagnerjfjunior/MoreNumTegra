@@ -5,16 +5,16 @@
   "state_observed_at": "2026-09-30",
   "program_state": "CLOSED / COMPLETE_WITH_DEFERRED_PAID_MEDIA_SCOPE",
   "current_execution": {
-    "active_phase_id": "POST_RESF / SEARCH_CAMINHOS_RECONCILIATION",
-    "active_task_id": "MNT-SEARCH-CAMINHOS-POST-315",
-    "state": "PR315_MERGED / PRODUCTION_READY / NEXT_DECISION_GATE",
+    "active_phase_id": "POST_RESF / SEARCH_REGION_LAPA",
+    "active_task_id": "MNT-REGION-LAPA-01",
+    "state": "OWNERSHIP_RECONCILED / REGION_PAGE_NEXT",
     "repository_head_sha": "759a4bcf6d0b7220993c4d87918f85e1d4d5f5f1",
     "latest_main_runtime_sha": "759a4bcf6d0b7220993c4d87918f85e1d4d5f5f1",
     "deployment_state": "PRODUCTION_READY / DSG_POST_FIX / PAID_MEDIA_FROZEN",
     "last_verified_vercel_success_sha": "759a4bcf6d0b7220993c4d87918f85e1d4d5f5f1",
     "production_exact_sha": "759a4bcf6d0b7220993c4d87918f85e1d4d5f5f1 / dpl_5LLtx8L1XJys9JSrkpqbRUG9stWD / READY",
     "authority_record": "docs/sfjm/MNT_RESF_PROGRAM_CLOSURE_2026-09-23.md",
-    "transition_record": "docs/governance/MNT_PR315_PRODUCTION_RELEASE_2026-09-30.md",
+    "transition_record": "docs/search/MNT_CAMINHOS_OWNERSHIP_RECONCILIATION_2026-09-30.md",
     "acceptance_summary": {
       "slice_01": "COMPLETE / BOUNDED_EXPERIMENT",
       "runtime_prs": [
@@ -354,6 +354,15 @@
       "faq_parity": "PASS / 7_VISIBLE_AND_7_JSONLD_PER_PAGE",
       "preserved": "title,H1,canonical,Form46,GTM",
       "m5_06": "PRE_EXISTING_VALIDATOR_DEBT"
+    },
+    "caminhos_ownership": {
+      "hierarchy": "REGION -> MASTER DEVELOPMENT -> EXACT PROJECT",
+      "region_owner": "/regioes/lapa/ / FUTURE",
+      "master_owner": "DEDICATED_CAMINHOS_PROPERTY",
+      "exact_project_owner": "/empreendimentos/<project-slug>/",
+      "moretegra_master_route": "/caminhos-da-lapa/ / RESERVED_DO_NOT_CREATE",
+      "lifecycle_rule": "ENTITY_OWNER != ACTIVE_COMMERCIAL_OWNER",
+      "residual": "DEDICATED_HOSTNAME_GSC_DNS_RECONCILIATION"
     }
   },
   "progress": {
