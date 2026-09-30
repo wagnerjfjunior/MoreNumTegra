@@ -366,3 +366,19 @@ C = Garden/Nova commercial-truth revalidation only
 ```
 
 No implementation is authorized by this document alone.
+
+
+## Execution reconciliation — 2026-09-30
+
+The priority list above was a read-only planning snapshot. Subsequent authorized work has now executed part of it.
+
+```text
+P1 Reserva commercial/entity lifecycle copy gap = EXECUTED
+P2 Elo Duo FAQ/answerability gap = EXECUTED / PR #314 / merge 07cf3d7353046cd1f4d4c58dcee3552338834d45
+P5 Garden Design + Nova Vivere local entity/amenity enrichment = EXECUTED / PR #315
+PR #315 validated head = 7aa2e6db6d191ccea0e8943ed57f35170de37872
+PR #315 merge/runtime SHA = 759a4bcf6d0b7220993c4d87918f85e1d4d5f5f1
+PR #315 Production = dpl_5LLtx8L1XJys9JSrkpqbRUG9stWD / READY
+```
+
+P3/P4 commercial-truth revalidation remain separate factual-data gates. The semantic work in PR #315 does not itself certify current price/unit truth beyond the facts already used by the page.
