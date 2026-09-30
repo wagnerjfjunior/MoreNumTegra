@@ -10,7 +10,7 @@ Preserve search-market evidence outside chat so future MoreNumTegra work can reu
 ## Structure
 
 ```text
-data/search-intelligence/
+docs/search/data/search-intelligence/
 ├── raw/
 │   └── google-keyword-planner/
 │       └── 2026-09-29/
