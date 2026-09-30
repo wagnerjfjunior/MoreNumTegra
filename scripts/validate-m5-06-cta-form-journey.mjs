@@ -73,8 +73,8 @@ assert(bueno.includes('data-form-intent="conditions">Receber condições ↓</a>
 assert(bueno.includes('data-project-intent="floating-conditions" data-form-intent="conditions"'),"Bueno floating CTA maps to conditions");
 assert(chateau.includes('data-form-intent="conditions">Receber condições ↓</a>'),"Château hero CTA maps to conditions");
 assert(chateau.includes('data-project-intent="floating-conditions" data-form-intent="conditions"'),"Château floating CTA maps to conditions");
-assert(reserva.includes('data-form-intent="specialist">Ver alternativas atuais ↓</a>'),"Reserva hero CTA maps to specialist alternatives");
-assert(reserva.includes('data-project-intent="floating-alternatives" data-form-intent="specialist"'),"Reserva floating CTA maps to specialist alternatives");
+assert(reserva.includes('data-form-intent="conditions">Consultar disponibilidade ↓</a>'),"Reserva hero CTA maps to conditions");
+assert(reserva.includes('data-project-intent="floating-conditions" data-form-intent="conditions"'),"Reserva floating CTA maps to conditions");
 assert(nova.includes('data-form-intent="conditions">Receber condições ↓</a>'),"Nova Vivere hero CTA maps to conditions");
 assert(nova.includes('data-project-intent="floating-conditions" data-form-intent="conditions"'),"Nova Vivere floating CTA maps to conditions");
 assert(garden.includes('data-form-intent="conditions">Receber condições ↓</a>'),"Garden Design hero CTA maps to conditions");
