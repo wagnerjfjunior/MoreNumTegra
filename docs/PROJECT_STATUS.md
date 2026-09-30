@@ -1625,9 +1625,9 @@ Canonical study candidate:
 
 Reusable machine-readable dataset:
 
-- `data/search-intelligence/caminhos-lapa/search_intelligence_2026-09-30.json`
-- `data/search-intelligence/caminhos-lapa/search_intelligence_2026-09-30.csv`
-- raw 2026-09-29 Keyword Planner exports preserved under `data/search-intelligence/raw/google-keyword-planner/2026-09-29/`.
+- `docs/search/data/search-intelligence/caminhos-lapa/search_intelligence_2026-09-30.json`
+- `docs/search/data/search-intelligence/caminhos-lapa/search_intelligence_2026-09-30.csv`
+- raw 2026-09-29 Keyword Planner exports preserved under `docs/search/data/search-intelligence/raw/google-keyword-planner/2026-09-29/`.
 
 Evidence consolidated:
 
