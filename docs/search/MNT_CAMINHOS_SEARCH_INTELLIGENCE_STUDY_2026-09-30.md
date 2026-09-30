@@ -248,3 +248,64 @@ This study does **not** authorize:
 - changes to title/H1 based only on the Garden Design page-2 observation.
 
 Those require separate evidence and Product Authority gates.
+
+
+## 12. Competitive SERP snapshot — 2026-09-30
+
+Machine-readable snapshot:
+
+- `docs/search/data/search-intelligence/caminhos-lapa/serp_competitive_snapshot_2026-09-30.json`
+- `docs/search/data/search-intelligence/caminhos-lapa/serp_competitive_snapshot_2026-09-30.csv`
+
+Important methodological boundary:
+
+```text
+SEARCH_ENGINE_RESULT_ORDER != VERIFIED_GOOGLE_POSITION
+GSC_OR_DIRECT_GOOGLE_OBSERVATION = REQUIRED_FOR_GOOGLE_POSITION_CLAIM
+```
+
+The live research found a broader competitor set than the initial two-domain framing.
+
+### Master-development competitors
+
+Observed material surfaces:
+
+- `caminhosdalapaoficial.com.br` — current official master-development property;
+- `caminhosdalapategra.com.br` — historical specialist with proven GSC equity;
+- `caminhosdalapa.com` — independent specialist master surface;
+- `caminhosdalapa.site` — independent master + project specialist.
+
+Therefore the master-development Search environment is structurally competitive and exact-match/specialist domains are material.
+
+### Exact-project competitors
+
+Observed:
+
+- Garden Design: official Tegra/Caminhos plus broker/specialist surfaces;
+- Nova Vivere: official Caminhos/Tegra plus Viva Real;
+- Elo Duo: official Caminhos, historical specialist, independent Caminhos specialists and ZAP;
+- Reserva: official/historical surfaces plus QuintoAndar secondary-market inventory.
+
+### Lifecycle implication
+
+For delivered projects, Search intent can bifurcate:
+
+```text
+DEVELOPER / PROJECT ENTITY INTENT
+vs
+SECONDARY-MARKET INVENTORY INTENT
+```
+
+This is especially visible for Reserva, where marketplace inventory is a legitimate post-delivery competitor class rather than a direct substitute for current developer stock.
+
+### MoreTegra implication
+
+MoreTegra should continue to differentiate through:
+
+- exact-project factual/commercial ownership;
+- strong current availability consultation;
+- semantic relationship to Caminhos da Lapa;
+- internal linking from region/project discovery;
+- no duplicate full master-development route while master-domain ownership remains unresolved.
+
+No title/H1/canonical/redirect change is authorized by this snapshot alone.
