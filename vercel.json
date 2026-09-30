@@ -22,6 +22,10 @@
       "destination": "/src-greenn/regioes/higienopolis/index.html"
     },
     {
+      "source": "/regioes/lapa/",
+      "destination": "/src-greenn/regioes/lapa/index.html"
+    },
+    {
       "source": "/regioes/cidade-jardim/",
       "destination": "/src-greenn/regioes/cidade-jardim/index.html"
     },
