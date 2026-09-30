@@ -23,12 +23,12 @@ This study is an intelligence artifact. It does not authorize SEO/runtime mutati
 
 Machine-readable sources:
 
-- `data/search-intelligence/caminhos-lapa/search_intelligence_2026-09-30.json`
-- `data/search-intelligence/caminhos-lapa/search_intelligence_2026-09-30.csv`
+- `docs/search/data/search-intelligence/caminhos-lapa/search_intelligence_2026-09-30.json`
+- `docs/search/data/search-intelligence/caminhos-lapa/search_intelligence_2026-09-30.csv`
 
 Raw 2026-09-29 Planner exports:
 
-- `data/search-intelligence/raw/google-keyword-planner/2026-09-29/`
+- `docs/search/data/search-intelligence/raw/google-keyword-planner/2026-09-29/`
 
 Earlier canonical intelligence remains valid and is referenced rather than duplicated:
 
