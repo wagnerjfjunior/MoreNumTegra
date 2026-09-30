@@ -209,3 +209,32 @@ Next safe action for this slice:
 3. otherwise resume the previously governed backlog selected by Product Authority.
 
 Do not reopen sold-out/archive-style commercial copy for Chez Vous, Key, Ayla or Viso without a new explicit content decision.
+
+
+## 2026-09-30 — Post-PR #315 next safe action
+
+PR #315 is merged and Production is READY at:
+
+```text
+main/runtime SHA = 759a4bcf6d0b7220993c4d87918f85e1d4d5f5f1
+Production = dpl_5LLtx8L1XJys9JSrkpqbRUG9stWD / READY
+Garden Design semantic layer = COMPLETE
+Nova Vivere semantic layer = COMPLETE
+```
+
+The bounded exact-project sequence selected on 2026-09-30 is now substantially closed:
+- Reserva lifecycle/commercial-copy remediation = COMPLETE;
+- Elo Duo FAQ/answerability = COMPLETE;
+- Garden Design/Nova Vivere semantic enrichment = COMPLETE.
+
+### NEXT SAFE ACTION
+
+Return to unresolved Search architecture/data gates rather than continuing to add copy by sequence.
+
+Priority:
+1. perform Garden Design + Nova Vivere commercial-truth revalidation only if current price/unit/lifecycle facts are to be changed;
+2. otherwise resume Caminhos da Lapa master/region ownership reconciliation before creating a new Lapa/master route or internal-link architecture;
+3. keep MNT-CDP-01 / MNT-CDP-03 as the default non-Search backlog;
+4. keep paid media frozen.
+
+No additional exact-project SEO mutation is authorized merely because PR #315 closed.
