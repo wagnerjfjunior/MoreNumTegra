@@ -238,3 +238,31 @@ Priority:
 4. keep paid media frozen.
 
 No additional exact-project SEO mutation is authorized merely because PR #315 closed.
+
+
+## 2026-09-30 — Caminhos ownership reconciliation complete
+
+Canonical decision:
+
+`docs/search/MNT_CAMINHOS_OWNERSHIP_RECONCILIATION_2026-09-30.md`
+
+Resolved ownership:
+
+```text
+/regioes/lapa/ = REGION owner / future implementation
+dedicated Caminhos property = MASTER DEVELOPMENT owner
+/empreendimentos/* = EXACT PROJECT owners
+/caminhos-da-lapa/ = RESERVED / DO NOT CREATE
+```
+
+The master/property hostname consolidation remains a separate governance/GSC/DNS decision.
+
+### NEXT SAFE ACTION
+
+`MNT-REGION-LAPA-01` — implement the Lapa regional discovery page as a bounded region-owner slice, preserving the dedicated Caminhos master owner and the exact-project owners.
+
+Before runtime mutation:
+1. validate the exact Lapa project membership from current canonical data;
+2. define region-page copy boundaries so it does not duplicate the Caminhos master;
+3. preserve exact-project ownership for price, plants, availability and conversion;
+4. branch/PR + Local Live Sync + checks + Product Authority approval before merge.
