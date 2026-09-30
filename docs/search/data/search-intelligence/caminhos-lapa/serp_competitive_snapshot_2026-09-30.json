@@ -1,0 +1,204 @@
+{
+  "schema_version": "1.0.0",
+  "snapshot_id": "MNT_CAMINHOS_SERP_COMPETITIVE_SNAPSHOT_2026_09_30",
+  "observed_at": "2026-09-30",
+  "caveat": "Search-result surface observation. Result order from the research engine is not asserted as exact Google organic rank. Exact Google rank requires GSC or direct observed SERP evidence.",
+  "query_families": [
+    {
+      "query": "caminhos da lapa tegra",
+      "intent": "master_brand",
+      "observed_surfaces": [
+        {
+          "domain": "caminhosdalapaoficial.com.br",
+          "class": "OFFICIAL_MASTER",
+          "entity": "CAMINHOS_DA_LAPA"
+        },
+        {
+          "domain": "caminhosdalapategra.com.br",
+          "class": "HISTORICAL_SPECIALIST",
+          "entity": "CAMINHOS_DA_LAPA"
+        },
+        {
+          "domain": "caminhosdalapa.com",
+          "class": "INDEPENDENT_SPECIALIST",
+          "entity": "CAMINHOS_DA_LAPA"
+        },
+        {
+          "domain": "caminhosdalapa.site",
+          "class": "INDEPENDENT_SPECIALIST",
+          "entity": "CAMINHOS_DA_LAPA"
+        }
+      ]
+    },
+    {
+      "query": "garden design tegra / garden design caminhos da lapa",
+      "intent": "exact_project",
+      "observed_surfaces": [
+        {
+          "domain": "tegraincorporadora.com.br",
+          "class": "OFFICIAL_DEVELOPER",
+          "entity": "GARDEN_DESIGN"
+        },
+        {
+          "domain": "caminhosdalapaoficial.com.br",
+          "class": "OFFICIAL_MASTER",
+          "entity": "GARDEN_DESIGN"
+        },
+        {
+          "domain": "corretorkaiser.com.br",
+          "class": "BROKER_SPECIALIST",
+          "entity": "GARDEN_DESIGN"
+        },
+        {
+          "domain": "corretoron.com.br",
+          "class": "BROKER_SPECIALIST",
+          "entity": "GARDEN_DESIGN"
+        }
+      ],
+      "moretegra_owner": "https://www.moretegra.com.br/empreendimentos/garden-design/",
+      "user_google_observation": "MoreTegra Garden Design observed on Google page 2 for 'caminhos da lapa garden design tegra'."
+    },
+    {
+      "query": "nova vivere / nova vivere caminhos da lapa",
+      "intent": "exact_project",
+      "observed_surfaces": [
+        {
+          "domain": "caminhosdalapaoficial.com.br",
+          "class": "OFFICIAL_MASTER",
+          "entity": "NOVA_VIVERE"
+        },
+        {
+          "domain": "tegraincorporadora.com.br",
+          "class": "OFFICIAL_DEVELOPER",
+          "entity": "NOVA_VIVERE"
+        },
+        {
+          "domain": "vivareal.com.br",
+          "class": "MARKETPLACE_PORTAL",
+          "entity": "NOVA_VIVERE"
+        }
+      ],
+      "moretegra_owner": "https://www.moretegra.com.br/empreendimentos/nova-vivere/"
+    },
+    {
+      "query": "caminhos da lapa elo duo / elo duo caminhos da lapa",
+      "intent": "exact_project",
+      "observed_surfaces": [
+        {
+          "domain": "caminhosdalapaoficial.com.br",
+          "class": "OFFICIAL_MASTER",
+          "entity": "ELO_DUO"
+        },
+        {
+          "domain": "caminhosdalapategra.com.br",
+          "class": "HISTORICAL_SPECIALIST",
+          "entity": "ELO_DUO"
+        },
+        {
+          "domain": "caminhosdalapaimoveis.com",
+          "class": "INDEPENDENT_SPECIALIST",
+          "entity": "ELO_DUO"
+        },
+        {
+          "domain": "caminhosdalapa.site",
+          "class": "INDEPENDENT_SPECIALIST",
+          "entity": "ELO_DUO"
+        },
+        {
+          "domain": "zapimoveis.com.br",
+          "class": "MARKETPLACE_PORTAL",
+          "entity": "ELO_DUO"
+        }
+      ],
+      "moretegra_owner": "https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/"
+    },
+    {
+      "query": "reserva caminhos da lapa",
+      "intent": "exact_project_post_delivery",
+      "observed_surfaces": [
+        {
+          "domain": "tegraincorporadora.com.br",
+          "class": "OFFICIAL_DEVELOPER_ARCHIVE",
+          "entity": "RESERVA"
+        },
+        {
+          "domain": "caminhosdalapategra.com.br",
+          "class": "HISTORICAL_SPECIALIST",
+          "entity": "RESERVA"
+        },
+        {
+          "domain": "caminhosdalapa.site",
+          "class": "INDEPENDENT_SPECIALIST",
+          "entity": "RESERVA"
+        },
+        {
+          "domain": "quintoandar.com.br",
+          "class": "SECONDARY_MARKET_PORTAL",
+          "entity": "RESERVA"
+        }
+      ],
+      "moretegra_owner": "https://www.moretegra.com.br/empreendimentos/reserva-caminhos-da-lapa/",
+      "lifecycle_note": "Secondary-market inventory creates a different intent class from developer stock."
+    }
+  ],
+  "competitor_domains": [
+    {
+      "domain": "caminhosdalapaoficial.com.br",
+      "role": "CURRENT_OFFICIAL_MASTER",
+      "priority": "VERY_HIGH"
+    },
+    {
+      "domain": "caminhosdalapategra.com.br",
+      "role": "HISTORICAL_SEARCH_EQUITY_SPECIALIST",
+      "priority": "VERY_HIGH"
+    },
+    {
+      "domain": "tegraincorporadora.com.br",
+      "role": "OFFICIAL_DEVELOPER_PORTFOLIO",
+      "priority": "VERY_HIGH"
+    },
+    {
+      "domain": "caminhosdalapa.com",
+      "role": "INDEPENDENT_MASTER_SPECIALIST",
+      "priority": "HIGH"
+    },
+    {
+      "domain": "caminhosdalapa.site",
+      "role": "INDEPENDENT_MASTER_AND_PROJECT_SPECIALIST",
+      "priority": "HIGH"
+    },
+    {
+      "domain": "caminhosdalapaimoveis.com",
+      "role": "INDEPENDENT_PROJECT_SPECIALIST",
+      "priority": "MEDIUM_HIGH"
+    },
+    {
+      "domain": "zapimoveis.com.br",
+      "role": "MARKETPLACE_PORTAL",
+      "priority": "HIGH"
+    },
+    {
+      "domain": "vivareal.com.br",
+      "role": "MARKETPLACE_PORTAL",
+      "priority": "HIGH"
+    },
+    {
+      "domain": "quintoandar.com.br",
+      "role": "SECONDARY_MARKET_PORTAL",
+      "priority": "HIGH"
+    },
+    {
+      "domain": "apto.vc",
+      "role": "PROJECT_PORTAL",
+      "priority": "HIGH"
+    }
+  ],
+  "strategic_findings": [
+    "The master-development SERP is not a two-domain contest; multiple specialist domains exist.",
+    "Official authority, historical SEO equity, specialist exact-match domains and marketplaces compete in different intent layers.",
+    "MoreTegra should not attempt to duplicate the master-development entity while master-domain ownership is unresolved.",
+    "Exact-project pages remain the cleanest MoreTegra ownership layer.",
+    "Delivered projects can shift toward secondary-market intent, where marketplace portals become structurally relevant.",
+    "Direct Google position claims must remain sourced from GSC or user-observed Google SERP, not from this research-engine ordering."
+  ]
+}
