@@ -478,5 +478,12 @@
       "bid_high_brl": 6.09,
       "source": "planner_2026-09-29"
     }
-  ]
+  ],
+  "competitive_snapshot": {
+    "observed_at": "2026-09-30",
+    "json_path": "docs/search/data/search-intelligence/caminhos-lapa/serp_competitive_snapshot_2026-09-30.json",
+    "csv_path": "docs/search/data/search-intelligence/caminhos-lapa/serp_competitive_snapshot_2026-09-30.csv",
+    "competitor_domains_count": 10,
+    "key_finding": "Master-development competition includes official, historical-equity, independent specialist and marketplace/project surfaces; exact research-engine ordering is not asserted as Google rank."
+  }
 }
