@@ -1615,3 +1615,35 @@ Known non-blocking debt preserved:
 Performance:
 - no post-release LCP gain is claimed yet;
 - a fresh performance battery is required before any LCP conclusion.
+
+
+## 2026-09-30 — Caminhos da Lapa Search Intelligence dataset
+
+Canonical study candidate:
+
+`docs/search/MNT_CAMINHOS_SEARCH_INTELLIGENCE_STUDY_2026-09-30.md`
+
+Reusable machine-readable dataset:
+
+- `docs/search/data/search-intelligence/caminhos-lapa/search_intelligence_2026-09-30.json`
+- `docs/search/data/search-intelligence/caminhos-lapa/search_intelligence_2026-09-30.csv`
+- raw 2026-09-29 Keyword Planner exports preserved under `docs/search/data/search-intelligence/raw/google-keyword-planner/2026-09-29/`.
+
+Evidence consolidated:
+
+- existing canonical M3 Keyword Planner corpus;
+- six user-supplied Keyword Planner exports from 2026-09-29;
+- live Search Console observations for `sc-domain:caminhosdalapategra.com.br`;
+- current official Caminhos/Tegra surfaces;
+- current portal/marketplace competition;
+- query/entity ownership guidance.
+
+Material finding:
+
+```text
+CAMINHOS_MASTER_DOMAIN_OWNERSHIP = GOVERNANCE_RECONCILIATION_REQUIRED
+historical Search-equity surface = caminhosdalapategra.com.br
+current official master surface = caminhosdalapaoficial.com.br
+```
+
+No redirect, DNS, canonical, sitemap, runtime, title/H1 or paid-media mutation is authorized by this study.
