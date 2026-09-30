@@ -70,3 +70,21 @@ Dated competitor snapshots live beside the normalized Caminhos dataset:
 - `caminhos-lapa/serp_competitive_snapshot_2026-09-30.csv`
 
 These snapshots record observed result surfaces and competitor classes. They must not be interpreted as exact Google organic rank unless a record explicitly identifies GSC or direct Google SERP evidence.
+
+
+## Exact-project gap analysis layer
+
+Current bounded gap matrix:
+
+- `caminhos-lapa/exact_project_seo_gap_matrix_2026-09-30.json`
+- `caminhos-lapa/exact_project_seo_gap_matrix_2026-09-30.csv`
+
+The matrix compares MoreTegra exact-project pages against current official/project/portal surfaces and separates:
+
+- retained strengths;
+- factual/commercial revalidation needs;
+- on-page answerability gaps;
+- post-delivery intent gaps;
+- architecture-gated internal-link gaps.
+
+It does not authorize runtime changes.
