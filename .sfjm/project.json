@@ -8,7 +8,7 @@
   "local": {
     "preferredPort": 8080,
     "route": "/",
-    "root": "src-greenn/preview"
+    "root": "."
   },
   "runtime": {
     "mode": "auto"
