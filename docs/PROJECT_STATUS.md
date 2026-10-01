@@ -1797,3 +1797,31 @@ Delivered:
 Validation residuals:
 - M5-06 CTA/Form journey = RED / pre-existing validator debt;
 - M4-05R metadata validation = RED because the validator still expects legacy guarded MutationObserver logic in `src-greenn/portal-links.js`; current canonical file is intentionally a compatibility shim and PR #318 did not modify it.
+
+
+## 2026-10-01 — PR #323 Higienópolis cluster production reconciliation
+
+```text
+CANONICAL_MAIN_RUNTIME = b954992039895f238a72dd917beebd7cafe919d6
+PRODUCTION_DEPLOYMENT = dpl_CGZjq9iaznc7CYLJk8Ggq8NcgDeb
+PRODUCTION_STATE = READY
+PR_323 = MERGED
+ARIA_ROUTE = HTTP_200
+MOZAE_ROUTE = HTTP_200
+HIGIENOPOLIS_REGION_ROUTE = HTTP_200
+POST_RELEASE_RUNTIME_ERRORS_CHECKED_ROUTES = NONE_OBSERVED_IN_1H_WINDOW
+```
+
+Release scope:
+- Higienópolis regional + Ária + Mozae semantic cluster standardization;
+- exact-project/regional JSON-LD alignment by page ownership;
+- internal cluster linking;
+- factual apartment/dormitory/suite/stage query coverage;
+- Form 46 / GTM preserved.
+
+Known validator debt remains separate from this release:
+- M4-05R legacy `portal-links.js` expectation;
+- M5-06 and historical Ária workflows contain global legacy assertions outside the bounded PR #323 delta.
+
+Release evidence:
+`docs/governance/MNT_PR323_HIGIENOPOLIS_CLUSTER_PRODUCTION_RELEASE_2026-10-01.md`.
