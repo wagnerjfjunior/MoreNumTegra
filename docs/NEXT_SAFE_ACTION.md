@@ -281,3 +281,29 @@ Next safe action:
 Known validator debt remains separate:
 - M5-06 CTA/Form journey;
 - M4-05R legacy `portal-links.js` expectation.
+
+
+## 2026-10-01 — Post-PR #323 next safe action
+
+PR #323 is merged and Production-validated.
+
+```text
+main/runtime SHA = b954992039895f238a72dd917beebd7cafe919d6
+Production = dpl_CGZjq9iaznc7CYLJk8Ggq8NcgDeb / READY
+Higienópolis cluster = COMPLETE / LIVE
+```
+
+Preserve:
+1. `/regioes/higienopolis/` as the regional discovery owner;
+2. Ária and Mozae as exact-project owners for project-specific facts and conversion;
+3. visible content ↔ JSON-LD factual parity;
+4. Form 46 / GTM contracts.
+
+Next Search/AI candidate is read-only first:
+- validate OAI-SearchBot runtime accessibility;
+- audit answerability/entity graph of the live cluster;
+- inventory factual official videos before any VideoObject implementation.
+
+Do not add VideoObject without a visible, factual corresponding video.
+Do not add schema types merely to increase object count.
+No additional runtime mutation is authorized by PR #323 closure alone.
