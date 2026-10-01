@@ -147,3 +147,29 @@ Delivered:
 Validation residuals:
 - M5-06 CTA/Form journey = RED / pre-existing validator debt;
 - M4-05R metadata validation = RED because the validator still expects legacy guarded MutationObserver logic in `src-greenn/portal-links.js`; current canonical file is intentionally a compatibility shim and PR #318 did not modify it.
+
+
+## 2026-10-01 — PR #323 Higienópolis cluster Search release — CLOSED
+
+```text
+PR = #323 / MERGED
+validated head = 2f8c98e1c860e9da5437b9a0c1149e3e009e65e1
+merge/runtime SHA = b954992039895f238a72dd917beebd7cafe919d6
+Production deployment = dpl_CGZjq9iaznc7CYLJk8Ggq8NcgDeb
+Production state = READY
+canonical host = https://www.moretegra.com.br/
+```
+
+Delivered:
+- Ária + Mozae + Higienópolis region standardized as one Search cluster;
+- semantic vocabulary and internal ownership links aligned;
+- exact-project and regional JSON-LD balanced by page type;
+- FAQ visible/schema parity restored;
+- Form 46 and GTM preserved;
+- production smoke = HTTP 200 on all three routes;
+- post-release runtime errors on the three checked routes = NONE OBSERVED.
+
+Canonical release evidence:
+`docs/governance/MNT_PR323_HIGIENOPOLIS_CLUSTER_PRODUCTION_RELEASE_2026-10-01.md`.
+
+AI/Search follow-up is recorded but not automatically authorized as runtime mutation.
