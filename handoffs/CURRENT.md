@@ -194,3 +194,20 @@ Delivered:
 - runtime errors in checked post-release window = NONE OBSERVED.
 
 Next: re-run Google Rich Results Test to verify Merchant Listings no longer reports missing Product.image.
+
+
+## 2026-10-01 — Higienópolis Regional Search/AI Profile v1
+
+The published Higienópolis regional graph is now canonicalized as a **pilot profile for Higienópolis only**:
+
+`docs/search/MNT_HIGIENOPOLIS_REGIONAL_SEARCH_AI_PROFILE_V1_2026-10-01.md`
+
+```text
+PR #328 = MERGED
+runtime SHA = fb7304cc79717ea5e53a74c0aa536fa5287544fa
+Production = dpl_BXWj3PBkP1AKDa3BjDc7wQdar4Gj / READY
+HIGIENOPOLIS_PROFILE_V1 = CANONICAL_FOR_HIGIENOPOLIS
+REGIONAL_STANDARD_GENERAL = NOT_YET_APPROVED
+```
+
+Do not mechanically propagate this schema profile to other regional pages before observation and explicit promotion.
