@@ -307,3 +307,16 @@ Next Search/AI candidate is read-only first:
 Do not add VideoObject without a visible, factual corresponding video.
 Do not add schema types merely to increase object count.
 No additional runtime mutation is authorized by PR #323 closure alone.
+
+
+## 2026-10-01 — Post-PR #325 next safe action
+
+PR #325 is merged and live.
+
+Next bounded Search action:
+1. re-run Google Rich Results Test on Mozae production URL;
+2. verify Merchant Listings no longer has the missing `Product.image` critical error;
+3. treat review, aggregateRating and availability as optional and do not populate them without governed factual evidence;
+4. preserve the published CEP/address parity unless better canonical address evidence supersedes it.
+
+No additional runtime mutation is authorized by this closure alone.
