@@ -211,3 +211,17 @@ REGIONAL_STANDARD_GENERAL = NOT_YET_APPROVED
 ```
 
 Do not mechanically propagate this schema profile to other regional pages before observation and explicit promotion.
+
+
+## 2026-10-01 — Higienópolis cluster CLOSED
+
+Final Google validation is recorded in:
+`docs/search/MNT_HIGIENOPOLIS_CLUSTER_FINAL_CLOSURE_2026-10-01.md`
+
+```text
+HIGIENOPOLIS_CLUSTER = CLOSED
+HIGIENOPOLIS_PROFILE_V1 = VALIDATED_IN_GOOGLE
+REGIONAL_STANDARD_GENERAL = NOT_YET_APPROVED
+```
+
+Next comparison candidate: Lapa.
