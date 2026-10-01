@@ -1841,3 +1841,22 @@ POST_RELEASE_RUNTIME_ERRORS = NONE_OBSERVED_IN_CHECKED_1H_WINDOW
 
 Canonical release evidence:
 `docs/governance/MNT_PR325_MOZAE_RICH_RESULTS_PRODUCTION_RELEASE_2026-10-01.md`.
+
+
+## 2026-10-01 — Higienópolis regional entity-profile pilot
+
+Published profile:
+
+`docs/search/MNT_HIGIENOPOLIS_REGIONAL_SEARCH_AI_PROFILE_V1_2026-10-01.md`
+
+```text
+PR #328 = MERGED
+runtime SHA = fb7304cc79717ea5e53a74c0aa536fa5287544fa
+Production deployment = dpl_BXWj3PBkP1AKDa3BjDc7wQdar4Gj
+Production state = READY
+/regioes/higienopolis/ = HTTP 200
+Product/Offer = ABSENT_BY_DESIGN
+post-release runtime errors = NONE_OBSERVED_IN_CHECKED_WINDOW
+```
+
+This is a Higienópolis-specific pilot profile, not a general regional-page baseline.
