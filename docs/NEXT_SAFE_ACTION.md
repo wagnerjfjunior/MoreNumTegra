@@ -320,3 +320,17 @@ Next bounded Search action:
 4. preserve the published CEP/address parity unless better canonical address evidence supersedes it.
 
 No additional runtime mutation is authorized by this closure alone.
+
+
+## 2026-10-01 — Higienópolis regional profile observation gate
+
+`MNT_HIGIENOPOLIS_REGIONAL_SEARCH_AI_PROFILE_V1_2026-10-01.md` is canonical for Higienópolis only.
+
+Next safe Search action is observation/validation before generalization:
+1. run Google Rich Results / structured-data inspection for the regional URL;
+2. inspect GSC indexing/query behavior after recrawl;
+3. monitor regional-vs-exact-project ownership for Higienópolis/Ária/Mozae queries;
+4. collect AI/answer-engine observations when available;
+5. compare with at least one second regional candidate before proposing a general regional standard.
+
+Do not copy this profile to all regional pages yet.
