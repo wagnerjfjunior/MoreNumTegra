@@ -173,3 +173,24 @@ Canonical release evidence:
 `docs/governance/MNT_PR323_HIGIENOPOLIS_CLUSTER_PRODUCTION_RELEASE_2026-10-01.md`.
 
 AI/Search follow-up is recorded but not automatically authorized as runtime mutation.
+
+
+## 2026-10-01 — PR #325 Mozae Rich Results correction — CLOSED
+
+```text
+PR = #325 / MERGED
+validated head = 0489a5f439ae6d89dc7215ef549b8e3fdae280b4
+merge/runtime SHA = c96b5e0118414e579a4d89d4cf4e05b2468ea4e0
+Production deployment = dpl_BRDUZmji53c86zET1DpZQKvvts5Q
+Production state = READY
+route = https://www.moretegra.com.br/empreendimentos/mozae-higienopolis/
+```
+
+Delivered:
+- Product.image added for Mozae;
+- postalCode 01232-010 added to exact-address structured data;
+- CEP added to governed footer address;
+- canonical, Form 46 and GTM preserved;
+- runtime errors in checked post-release window = NONE OBSERVED.
+
+Next: re-run Google Rich Results Test to verify Merchant Listings no longer reports missing Product.image.
