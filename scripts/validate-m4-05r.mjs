@@ -48,8 +48,8 @@ const pages = [
     schemaId: 'mt-project-schema',
     requiredTypes: ['WebSite', 'WebPage', 'BreadcrumbList', 'ApartmentComplex', 'FloorPlan', 'ImageObject', 'RealEstateAgent', 'Brand', 'Person', 'Service', 'Product', 'Offer'],
     requiredIds: ['https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#webpage', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#project', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#product', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#offer', TEGRA_BRAND_ID, SABRINA_ID, SABRINA_AGENT_ID],
-    visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328', 'R$ 658.000', 'Ref. 68 m² (unidade 109) - Ago/26'],
-    product: { id: 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#product', offerId: 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#offer', projectId: 'caminhos-da-lapa-elo-duo', price: 658000 }
+    visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328', 'R$ 690.000', 'últimas 6 unidades', 'inclusive unidade 109'],
+    product: { id: 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#product', offerId: 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#offer', projectId: 'caminhos-da-lapa-elo-duo', price: 690000 }
   }
 ];
 
