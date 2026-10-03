@@ -5,20 +5,20 @@
   "projects": {
     "caminhos-da-lapa-elo-duo": {
       "state": "active_reference",
-      "inventoryLabel": "Últimas unidades",
-      "priceLabel": "A partir de",
-      "price": 658000,
-      "reference": "Ref. 68 m² (unidade 109) - Ago/26 | pagamento à vista",
+      "inventoryLabel": "Últimas 6 unidades",
+      "priceLabel": "Valor promocional",
+      "price": 690000,
+      "reference": "67 m² · últimas 6 unidades · valor único R$ 690.000 · inclusive unidade 109 · Out/26",
       "typologyAvailability": {
         "47": "sold_out",
         "55": "sold_out",
         "67": "last_units"
       },
-      "typologyAvailabilityObservedAt": "2026-09-15",
-      "typologyAvailabilitySourceClass": "PRODUCT_AUTHORITY_USER_REPORTED",
-      "sourceObservedAt": "2026-09-17",
-      "disclaimer": "Valor de referência comercial. Disponibilidade, unidade e condições podem mudar; confirme as condições vigentes no atendimento.",
-      "sourceClass": "GOVERNED_COMMERCIAL_REFERENCE"
+      "typologyAvailabilityObservedAt": "2026-10-03",
+      "typologyAvailabilitySourceClass": "PRODUCT_AUTHORITY_USER_PROVIDED_CAMPAIGN_ART",
+      "sourceObservedAt": "2026-10-03",
+      "disclaimer": "Valor promocional informado para as últimas 6 unidades de 67 m², inclusive a unidade 109. Disponibilidade e condições podem mudar; confirme a condição vigente no atendimento.",
+      "sourceClass": "PRODUCT_AUTHORITY_USER_PROVIDED_CAMPAIGN_ART"
     },
     "capiitolo-piero-lissoni": {
       "state": "active_reference",
