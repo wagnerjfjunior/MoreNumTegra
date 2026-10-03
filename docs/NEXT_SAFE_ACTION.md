@@ -334,3 +334,26 @@ Next safe Search action is observation/validation before generalization:
 5. compare with at least one second regional candidate before proposing a general regional standard.
 
 Do not copy this profile to all regional pages yet.
+
+
+## 2026-10-03 — Lapa exact-project page pattern selected
+
+Product Authority selected the user-approved Reserva page as the reference pattern for the next Lapa exact-project adaptations.
+
+Canonical pattern:
+`docs/search/MNT_LAPA_EXACT_PROJECT_PAGE_STANDARD_V1_2026-10-03.md`
+
+Next bounded action:
+`Garden Design`
+
+After Garden validation:
+`Nova Vivere`
+
+Rules:
+1. resolve live state before each page;
+2. preserve lifecycle-specific commercial truth;
+3. do not copy Reserva resale/non-Tegra-negotiation language into Garden or Nova;
+4. preserve Form 46, measurement and consent contracts;
+5. preserve visible FAQ ↔ FAQPage JSON-LD parity;
+6. validate locally and visually before merge;
+7. do not batch Garden + Nova into one unbounded runtime change.
