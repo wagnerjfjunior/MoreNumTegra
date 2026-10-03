@@ -225,3 +225,30 @@ REGIONAL_STANDARD_GENERAL = NOT_YET_APPROVED
 ```
 
 Next comparison candidate: Lapa.
+
+
+## 2026-10-03 — Reserva Caminhos da Lapa page-pattern closure
+
+```text
+PR #333 = MERGED
+runtime SHA = 87194553074db86f901a3c40352dbcced3dbff21
+Production = dpl_G6kP56utSR1apBpQYBZK27mJpGP4 / READY
+visual validation = USER_APPROVED
+JSON-LD = PASS
+visible FAQ = 10
+FAQPage = 10
+visible/schema parity = PASS
+```
+
+The Reserva page is the accepted reference implementation for the next Lapa exact-project content/layout adaptations.
+
+Canonical pattern:
+`docs/search/MNT_LAPA_EXACT_PROJECT_PAGE_STANDARD_V1_2026-10-03.md`
+
+Important:
+- reuse information architecture and visual rhythm, not lifecycle-specific copy;
+- Reserva remains resale/secondary-opportunity oriented;
+- Garden Design and Nova Vivere remain active commercial projects and must keep their own lifecycle truth;
+- next bounded adaptation = Garden Design;
+- following bounded adaptation = Nova Vivere;
+- do not bulk-apply both pages in one mutation.
