@@ -137,3 +137,45 @@ Canonical evidence line:
 ```
 
 If the assistant is working on another branch than the branch shown by the active Local Live Sync session, it must say so explicitly. It must not claim that the user's local browser contains the new work until the locked branch and exact served HEAD match the intended work.
+
+
+## Auto-refresh contract — 2026-10-03
+
+For MoreNumTegra, an active Local Live Sync session must not require a manual `git pull` after every remote commit on the locked feature branch.
+
+Required behavior:
+
+1. resolve the locked remote branch HEAD on a short poll interval;
+2. when remote HEAD changes, update the local checked-out branch using **fast-forward only**;
+3. never use `git reset --hard`;
+4. never use `git clean`;
+5. if the worktree is dirty, fail closed and do not overwrite local changes;
+6. after a successful new HEAD sync, invalidate HTTP cache and trigger browser reload automatically;
+7. preserve Vercel rewrite behavior locally for friendly routes;
+8. expose branch/head/worktree/sync policy in an inspectable status endpoint;
+9. branch remains immutable for the lifetime of the process;
+10. no push, merge or deploy may be performed by the local helper.
+
+Canonical project-local helper:
+
+`.sfjm/live-sync.mjs`
+
+Expected runtime evidence:
+
+```text
+[SESSION] repository=wagnerjfjunior/MoreNumTegra
+[SESSION] branch=<exact-branch>
+[POLICY] remote watch + safe fast-forward only; reset/clean forbidden
+[SYNC] OK branch=<exact-branch> head=<immutable-sha>
+[AUTO] remote-watch=4000ms ff-only browser-reload=ON
+```
+
+Status endpoint:
+
+`http://localhost:8080/__sfjm_status`
+
+Manual refresh endpoint, for diagnostics only:
+
+`http://localhost:8080/__sfjm_refresh`
+
+The normal path is automatic. A user should not need to run `git pull --ff-only` between content iterations while the same locked branch session is active.
