@@ -8,7 +8,17 @@
   "local": {
     "preferredPort": 8080,
     "route": "/",
-    "root": "."
+    "root": ".",
+    "liveSync": {
+      "engine": ".sfjm/live-sync.mjs",
+      "mode": "remote-watch-ff-only",
+      "pollMs": 4000,
+      "autoBrowserRefresh": true,
+      "requireExplicitBranch": true,
+      "dirtyWorktreePolicy": "fail-closed",
+      "allowResetHard": false,
+      "allowGitClean": false
+    }
   },
   "runtime": {
     "mode": "auto"
