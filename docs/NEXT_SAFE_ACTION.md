@@ -357,3 +357,27 @@ Rules:
 5. preserve visible FAQ ↔ FAQPage JSON-LD parity;
 6. validate locally and visually before merge;
 7. do not batch Garden + Nova into one unbounded runtime change.
+
+
+## 2026-10-04 — Post-PR #339 next safe action
+
+PR #339 is merged and the exact Git-driven production deployment is READY.
+
+```text
+main/runtime SHA = b872b637915ed5a27045754cf0511f5739dea8b1
+Production = dpl_BKhmeeUfdoGTTPRwVdBcBaorEdfw / READY
+Nova Vivere exact-project adaptation = COMPLETE
+local visual validation = USER_APPROVED
+```
+
+The bounded Lapa exact-project adaptation sequence is complete:
+- Reserva = reference implementation;
+- Garden Design = adapted;
+- Nova Vivere = adapted;
+- Elo Duo = preserve its current stronger pattern unless Product Authority selects a specific delta.
+
+### NEXT SAFE ACTION
+
+Do not mutate another exact-project page by sequence alone.
+
+Resolve live state, then Product Authority selects the next bounded cluster or Search task. Keep Nova Vivere commercial-truth revalidation, M5-06 validator debt, Caminhos master-property governance and other gated integrations as separate work.
