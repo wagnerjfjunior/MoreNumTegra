@@ -1,6 +1,6 @@
 # Handoff Atual — MoreNumTegra
 
-Atualizado em `2026-09-30`.
+Atualizado em `2026-10-04`.
 
 **GitHub `main` é a fonte canônica. Resolver live antes de qualquer conclusão ou mutação.**
 
@@ -252,3 +252,32 @@ Important:
 - next bounded adaptation = Garden Design;
 - following bounded adaptation = Nova Vivere;
 - do not bulk-apply both pages in one mutation.
+
+
+## 2026-10-04 — PR #339 Nova Vivere exact-project pattern — CLOSED
+
+```text
+PR = #339 / MERGED
+validated head = 77127d2e836e494869c396d7577a1b79b9fd2b4c
+merge/runtime SHA = b872b637915ed5a27045754cf0511f5739dea8b1
+Production deployment = dpl_BKhmeeUfdoGTTPRwVdBcBaorEdfw
+Production state = READY
+local visual validation = USER_APPROVED
+```
+
+Delivered:
+- Nova Vivere aligned to the canonical Lapa exact-project pattern;
+- Caminhos da Lapa / Rua Jardim and Morar na Lapa sections;
+- regional figures and softer visit/Sabrina/Form 46 closing;
+- gallery led by Family Space with concise editorial captions;
+- visible FAQ 10 / FAQPage 10 / parity PASS;
+- canonical, Form 46, measurement and consent preserved.
+
+Validation residual:
+- the broad `validate` job remains red because of pre-existing M5-06 legacy/global assertions; the Nova map assertion expects `www.google.com/maps?q=`, while canonical `main` already used the current `maps.google.com/maps?hl=...` regional embed before PR #339.
+
+Lapa exact-project bounded sequence:
+- Reserva = reference / COMPLETE;
+- Garden Design = COMPLETE;
+- Nova Vivere = COMPLETE;
+- Elo Duo = preserve unless a specific bounded delta is selected.
