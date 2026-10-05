@@ -302,3 +302,48 @@ Delivered:
 - one lazy-loaded Parque Buenos Aires visual with attribution;
 - visible FAQ expanded to 9 and kept in exact FAQPage parity;
 - regional canonical, Form 46, measurement/consent and no Product/Offer regional ownership preserved.
+
+
+## 2026-10-05 — Regional JSON-LD Standard v1 — CANONICAL
+
+Production experiments on Higienópolis and Lapa closed the regional structured-data design.
+
+```text
+canonical standard = docs/search/MNT_REGIONAL_PAGE_JSONLD_STANDARD_V1_2026-10-05.md
+SES review = CLOSED / PASS_WITH_RESIDUAL_RISK
+status = CANONICAL_FOR_REGIONAL_PAGES
+latest runtime main observed before docs reconciliation = c73382fa84843f2b9efa2938fbd24faee6324dca
+```
+
+Production evidence, user-observed in Google Rich Results Test on 2026-10-05:
+
+```text
+Higienópolis:
+6 valid items
+- location = 1
+- local businesses = 2
+- organization = 3
+- errors = 0 observed
+
+Lapa:
+10 valid items
+- location = 1
+- local businesses = 4
+- organization = 5
+- errors = 0 observed
+```
+
+Google Search Console user-observed:
+- both regional URLs indexed;
+- HTTPS valid;
+- current location indicators valid.
+
+Canonical regional rule:
+- one ApartmentComplex per verified project;
+- one project-scoped RealEstateAgent + one Service per project when in-person attendance/address is factual;
+- address + CEP must be governed facts;
+- Product/Offer stay on exact-project owners;
+- never fabricate LocalBusiness/address for the neighborhood.
+
+Lapa final CEP correction:
+- Reserva Caminhos da Lapa = Rua Fortunato Ferraz, 280 · CEP 05093-000.
