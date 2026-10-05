@@ -1876,3 +1876,18 @@ REGIONAL_STANDARD_GENERAL = NOT_YET_APPROVED
 
 Evidence:
 `docs/search/MNT_HIGIENOPOLIS_CLUSTER_FINAL_CLOSURE_2026-10-01.md`.
+
+
+## 2026-10-05 — Regional structured-data standard promoted
+
+`MNT_REGIONAL_PAGE_JSONLD_STANDARD_V1_2026-10-05.md` is now `CANONICAL_FOR_REGIONAL_PAGES`.
+
+Pilot production evidence:
+- Higienópolis: 6 valid Google Rich Results items / no observed errors;
+- Lapa: 10 valid Google Rich Results items / no observed errors;
+- both regional URLs user-observed as indexed in Search Console with valid HTTPS and current-location indicator.
+
+Canonical model:
+`Place + ItemList + ApartmentComplex[] + project-scoped RealEstateAgent[] + Service[] + shared site entities + FAQPage when visible`.
+
+Regional owners must not add Product/Offer merely to increase rich-result count.
