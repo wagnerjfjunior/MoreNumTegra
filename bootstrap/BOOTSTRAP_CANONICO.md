@@ -53,6 +53,32 @@ Em caso de divergência:
 9. informação ausente não é preenchida por inferência;
 10. conflito material usa a interpretação mais restritiva até reconciliação.
 
+## 2.1. Definição operacional de estado live
+
+`Estado live` é o estado real e atual do projeto, resolvido diretamente nas fontes canônicas no momento da ação. Ele não deve ser inferido de memória, de uma conversa anterior, de um handoff histórico ou de um SHA previamente observado.
+
+Antes de qualquer mudança material, resolver no mínimo:
+
+- SHA atual de `main`;
+- branches e PRs relevantes ao escopo;
+- relação da branch de trabalho com `main` (ahead/behind/mergeability quando aplicável);
+- checks do head exato quando houver PR;
+- deployment correspondente ao SHA aprovado quando a tarefa envolver release;
+- coerência entre `handoffs/CURRENT.md`, `docs/PROJECT_STATUS.md`, `docs/NEXT_SAFE_ACTION.md` e o estado real observado;
+- bloqueios ou mudanças de prioridade que tenham surgido desde a última reconciliação.
+
+Regra de interpretação:
+
+```text
+DOCUMENTED_STATE = fotografia histórica/reconciliada
+LIVE_STATE = estado atual observado diretamente nas fontes canônicas
+LIVE_STATE > memória de conversa
+LIVE_STATE > SHA histórico
+LIVE_STATE > suposição operacional
+```
+
+Se houver divergência entre documentação e estado live, não prosseguir por inferência: registrar a divergência, reconciliar a fonte canônica aplicável e só então continuar.
+
 ## 3. Ordem mínima de leitura
 
 1. `handoffs/CURRENT.md`
