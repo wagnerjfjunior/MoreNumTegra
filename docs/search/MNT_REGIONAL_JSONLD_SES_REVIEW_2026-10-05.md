@@ -1,8 +1,8 @@
 # SES — Regional JSON-LD Architecture Review — 2026-10-05
 
-Status: PASS_WITH_RESIDUAL_RISK  
-Mutation authorization in this review: DOCUMENTATION ONLY  
-Runtime mutation: NOT YET AUTHORIZED
+Status: CLOSED / PASS_WITH_RESIDUAL_RISK  
+Final adjudication: CANONICAL_FOR_REGIONAL_PAGES  
+Closed: 2026-10-05
 
 ## Scope
 
@@ -108,3 +108,58 @@ HIGIENOPOLIS_CONFORMANCE_REVIEW_AFTER_APPROVAL = YES
 4. Publish Lapa and observe Google processing.
 5. Recheck Higienópolis against the approved standard.
 6. If both pass, promote v1 to CANONICAL_FOR_REGIONAL_PAGES.
+
+
+## Final production adjudication — 2026-10-05
+
+The bounded production experiment completed successfully.
+
+### Higienópolis
+
+User-observed Google Rich Results Test:
+
+```text
+6 valid items
+- current location indicators = 1
+- local businesses = 2
+- organization = 3
+- errors = 0 observed
+```
+
+The two project-scoped RealEstateAgent nodes correspond to Ária Higienópolis and Mozae Higienópolis and use factual in-person addresses.
+
+### Lapa
+
+User-observed Google Rich Results Test after the final Reserva CEP correction:
+
+```text
+10 valid items
+- current location indicators = 1
+- local businesses = 4
+- organization = 5
+- errors = 0 observed
+```
+
+The four project-scoped RealEstateAgent nodes correspond to Elo Duo, Garden Design, Nova Vivere and Reserva Caminhos da Lapa.
+
+Google Search Console user-observed:
+- both regional URLs are indexed;
+- HTTPS is valid;
+- current location indicators are valid.
+
+### Final SES conclusion
+
+```text
+VERDICT = PASS_WITH_RESIDUAL_RISK
+PROMOTE_STANDARD = YES
+REGIONAL_PAGE_JSONLD_STANDARD_V1 = CANONICAL_FOR_REGIONAL_PAGES
+PRODUCT_OR_OFFER_ON_REGION = NO
+FAKE_LOCALBUSINESS = NO
+PROJECT_SCOPED_REALESTATEAGENT = YES, WHEN FACTUALLY SUPPORTED
+ADDRESS_AND_POSTAL_CODE = REQUIRED WHEN AGENT ADDRESS IS USED
+```
+
+Residual risk remains limited to external Google processing: valid structured data does not guarantee a fixed rich-result count on every future region.
+
+The canonical contract is now:
+`docs/search/MNT_REGIONAL_PAGE_JSONLD_STANDARD_V1_2026-10-05.md`.
