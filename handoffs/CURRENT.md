@@ -1,6 +1,6 @@
 # Handoff Atual — MoreNumTegra
 
-Atualizado em `2026-10-04`.
+Atualizado em `2026-10-05`.
 
 **GitHub `main` é a fonte canônica. Resolver live antes de qualquer conclusão ou mutação.**
 
@@ -281,3 +281,24 @@ Lapa exact-project bounded sequence:
 - Garden Design = COMPLETE;
 - Nova Vivere = COMPLETE;
 - Elo Duo = preserve unless a specific bounded delta is selected.
+
+
+## 2026-10-05 — PR #342 Higienópolis Escolha Tegra decision layer — CLOSED
+
+```text
+PR = #342 / MERGED
+validated head = 6753e72d626eb71a25f7585129f50cdbda331340
+merge/runtime SHA = d67470fc14138f3079ef0e8f40b06a6ddb0d6387
+Production deployment = dpl_3o2yx8rceC8iCLUtuknGK1VuAio8
+Production state = READY
+canonical alias = https://www.moretegra.com.br/
+local visual validation = USER_APPROVED
+```
+
+Delivered:
+- bounded Escolha Tegra · Higienópolis decision layer;
+- Ária vs Mozae comparison by stage and typology, with exact-project links;
+- concise O que fazer em Higienópolis section;
+- one lazy-loaded Parque Buenos Aires visual with attribution;
+- visible FAQ expanded to 9 and kept in exact FAQPage parity;
+- regional canonical, Form 46, measurement/consent and no Product/Offer regional ownership preserved.
