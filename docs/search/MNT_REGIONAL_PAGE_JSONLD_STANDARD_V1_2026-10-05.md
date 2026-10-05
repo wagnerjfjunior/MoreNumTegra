@@ -1,21 +1,21 @@
 # MoreNumTegra — Regional Page JSON-LD Standard v1
 
-Status: CANDIDATE_FOR_PRODUCT_AUTHORITY_APPROVAL  
-Date: 2026-10-05  
+Status: CANONICAL_FOR_REGIONAL_PAGES  
+Promoted: 2026-10-05  
 Scope: `/regioes/<verified-location>/`  
-Pilot pages: Higienópolis and Lapa
+Validated pilots: Higienópolis and Lapa
 
 ## 1. Purpose
 
-Define one reusable structured-data contract for neighborhood/region pages without turning regional discovery pages into exact-project product pages.
+Define the canonical structured-data contract for neighborhood/region pages without turning regional discovery pages into exact-project product pages.
 
 ```text
-SEMANTIC_GRAPH_COMPLETENESS != RICH_RESULTS_ITEM_COUNT
 REGIONAL_OWNER != EXACT_PROJECT_OWNER
+SEMANTIC_GRAPH_COMPLETENESS != RICH_RESULTS_ITEM_COUNT
 VALID_SCHEMA != GUARANTEED_GOOGLE_RICH_RESULT
 ```
 
-A regional page exists to explain a verified place, connect the user to verified projects in that place, support comparison/discovery intent, and route exact-project intent to the project pages.
+A regional page exists to explain a verified place, connect the user to verified projects in that place, support comparison/discovery intent and route exact-project intent to the project pages.
 
 ## 2. Ownership boundary
 
@@ -26,7 +26,7 @@ Regional page owns:
 - regional imagery;
 - factual visible FAQ;
 - project membership through ItemList;
-- commercial assistance for the region.
+- project-scoped in-person commercial assistance when factually supported.
 
 Exact-project pages own:
 - unit/reference price;
@@ -39,8 +39,6 @@ Exact-project pages own:
 
 ## 3. Canonical regional graph
 
-Required semantic graph:
-
 ```text
 WebSite
 └── WebPage
@@ -50,34 +48,39 @@ WebSite
     ├── ItemList
     │   └── ApartmentComplex[] / verified exact-project references
     ├── FAQPage (only when visible factual FAQ exists)
-    └── Service (when regional commercial assistance is visibly offered)
+    └── project-scoped commercial assistance
 
-Shared site entities, referenced with stable @id when present:
+Shared site entities:
 - Brand
 - Organization
 - ContactPoint
 - Person
+
+For each verified project with in-person attendance:
+- ApartmentComplex
+- RealEstateAgent
+- Service
 ```
 
 ### 3.1 Required page-local nodes
 
 #### WebPage
 Required:
-- `@id` = canonical URL + `#webpage`
-- `url`
-- `name`
-- `description`
-- `inLanguage`
-- `isPartOf` -> WebSite
-- `breadcrumb` -> BreadcrumbList
-- `primaryImageOfPage` -> ImageObject
-- `about` -> Place
-- `mainEntity` -> ItemList
-- `relatedLink` -> exact-project URLs when applicable
+- `@id` = canonical URL + `#webpage`;
+- `url`;
+- `name`;
+- `description`;
+- `inLanguage`;
+- `isPartOf` -> WebSite;
+- `breadcrumb` -> BreadcrumbList;
+- `primaryImageOfPage` -> ImageObject;
+- `about` -> Place;
+- `mainEntity` -> ItemList;
+- `relatedLink` -> exact-project URLs when applicable.
 
 Recommended:
-- `publisher` -> shared Organization when the page visibly identifies the publisher/provider
-- `mentions` -> verified project entities and commercial contact when relevant
+- `publisher` -> shared Organization;
+- `mentions` -> verified exact-project entities, Person and project-scoped RealEstateAgent nodes.
 
 #### BreadcrumbList
 Required:
@@ -91,8 +94,6 @@ Required:
 - `contentUrl`;
 - descriptive `caption`.
 
-Do not use a project image as the regional primary image unless the visible page itself uses it specifically as the regional hero and the caption remains truthful.
-
 #### Place
 Required:
 - `@id` = canonical regional URL + `#place`;
@@ -100,12 +101,7 @@ Required:
 - factual description;
 - `containedInPlace` = São Paulo when applicable.
 
-Optional only with governed evidence:
-- `geo`;
-- `sameAs`;
-- administrative identifiers.
-
-Do not invent a centroid, exact address, postal code, or street for a neighborhood.
+Do not invent centroid, street, address or postal code for the neighborhood itself.
 
 #### ItemList
 Required:
@@ -113,38 +109,71 @@ Required:
 - name;
 - `numberOfItems`;
 - one ListItem per verified project membership;
-- each ListItem links to the canonical exact-project page.
+- canonical exact-project URL;
+- item reference to the corresponding ApartmentComplex node.
 
 The regional ItemList is discovery/navigation, not inventory.
 
-#### ApartmentComplex references
+#### ApartmentComplex
 For each verified project:
 - stable exact-project `@id`;
 - `name`;
 - canonical `url`;
 - short factual description;
 - verified image when available;
-- `brand` reference when applicable.
+- `brand` reference;
+- factual project address;
+- `postalCode` when governed/verified.
 
-Do not add regional Offer, price, availability, or unit-level data.
+Do not add Offer, price or unit-level availability here.
+
+#### RealEstateAgent
+When in-person project attendance is factual, create one project-scoped RealEstateAgent node per project.
+
+Required:
+- unique regional `@id`;
+- project-specific attendance name;
+- factual description;
+- regional page URL;
+- public telephone;
+- factual in-person `address`;
+- `postalCode`;
+- `areaServed` -> regional Place;
+- `contactPoint`;
+- `parentOrganization`;
+- CRECI identifier;
+- factual image/profile link when governed.
+
+Pattern:
+
+```text
+1 verified project with in-person attendance
+= 1 ApartmentComplex
++ 1 RealEstateAgent
++ 1 Service
+```
+
+Never create a fake business address. If there is no governed in-person address, do not fabricate one to obtain a rich result.
+
+#### Service
+Create one Service per project-scoped RealEstateAgent.
+
+Required:
+- unique `@id`;
+- project-specific name;
+- `serviceType`;
+- `provider` -> matching RealEstateAgent;
+- `broker` -> Person when factual;
+- `areaServed` -> regional Place;
+- regional page URL.
 
 #### FAQPage
 Use only when:
-- FAQ is visible on the page;
-- every Question/Answer is factual;
-- visible text and JSON-LD are in exact semantic parity.
+- FAQ is visible;
+- each question/answer is factual;
+- visible text and JSON-LD maintain semantic parity.
 
-Google FAQ rich results are not a normal objective for MoreNumTegra regional pages; FAQPage remains a semantic/answerability node.
-
-#### Service
-Use when the page visibly offers regional commercial assistance.
-
-Recommended:
-- `serviceType`;
-- `provider` -> Organization;
-- `broker` -> Person when factual and visibly supported;
-- `areaServed` -> Place;
-- regional canonical `url`.
+FAQPage is an answerability node, not a guaranteed rich-result feature.
 
 ## 4. Shared entities
 
@@ -157,23 +186,23 @@ Stable site-level @id:
 `https://www.moretegra.com.br/#tegra-brand`
 
 ### Organization
-Use the stable site-level @id for the factual commercial organization.
+Stable site-level organization entity:
+`https://www.moretegra.com.br/#tegra-vendas`
 
 Rules:
-- Organization is a shared entity, not the primary subject of a neighborhood page.
-- Do not duplicate inconsistent organization data across regional pages.
-- Do not add unsupported address, logo, legal name, registration or business-location claims.
-- Google recommends Organization markup mainly on the home page or a single organization/about page; on regional pages it should be referenced only when it materially participates in the graph.
+- shared entity, not the primary subject of the neighborhood page;
+- keep organization facts consistent across regional pages;
+- do not invent legal/address claims.
 
 ### ContactPoint
-Use a stable shared @id and only governed public contact information.
+Stable shared contact entity using only governed public contact information.
 
 ### Person
-Use a stable shared @id for Sabrina only when the page visibly identifies Sabrina as the commercial contact and the factual profile remains valid.
+Stable Sabrina entity only when the page visibly identifies Sabrina as the commercial contact and factual profile data remains valid.
 
-## 5. Explicit exclusions on regional pages
+## 5. Explicit exclusions
 
-By default, prohibit:
+Regional pages must not add these merely to increase Rich Results count:
 
 ```text
 Product
@@ -182,32 +211,54 @@ AggregateOffer
 MerchantReturnPolicy
 Review
 AggregateRating
-LocalBusiness
-RealEstateAgent as a fake regional business location
 unit-level price
 unit-level availability
 invented geo/address/postalCode
 ```
 
-Any exception requires a separate factual and ownership gate.
+`LocalBusiness` is not used as a generic regional node. Google may classify valid project-scoped `RealEstateAgent` entities under "Empresas locais"; that does not authorize a fake neighborhood business entity.
 
-Reason:
-- Product/Offer belong to exact-project owners.
-- LocalBusiness represents a real business location, not a neighborhood.
-- rich-result count must never drive unsupported schema.
+## 6. Production validation baseline
 
-## 6. Rich Results expectations
+### Higienópolis
+Production Google Rich Results Test observed on 2026-10-05:
 
-Regional pages are not expected to match exact-project pages in Google Rich Results Test item count.
+```text
+TOTAL VALID ITEMS = 6
+Current location indicators = 1
+Local businesses = 2
+Organization = 3
+errors = 0 observed
+```
 
-Target:
-- zero critical structured-data errors;
-- valid breadcrumb/location semantics;
-- consistent entity graph;
-- no ownership leakage;
-- no unsupported rich-result bait.
+Regional composition:
+- 2 verified projects;
+- 2 project-scoped RealEstateAgent nodes;
+- 2 matching Service nodes.
 
-Do not use `RICH_RESULTS_ITEM_COUNT` as a quality score.
+### Lapa
+Production Google Rich Results Test observed on 2026-10-05 after final postal-code correction:
+
+```text
+TOTAL VALID ITEMS = 10
+Current location indicators = 1
+Local businesses = 4
+Organization = 5
+errors = 0 observed
+```
+
+Regional composition:
+- 4 verified projects;
+- 4 project-scoped RealEstateAgent nodes;
+- 4 matching Service nodes.
+
+Google Search Console user-observed on 2026-10-05:
+- Higienópolis URL = indexed;
+- Lapa URL = indexed;
+- HTTPS = valid;
+- current location indicators = valid.
+
+These counts are production evidence for the two pilots, not a universal target. Future regions may yield different Google counts according to their factual project membership and Google processing.
 
 ## 7. Validation matrix
 
@@ -219,10 +270,15 @@ canonical ↔ WebPage.url = PASS
 one regional Place = PASS
 primary ImageObject visible = PASS
 ItemList count ↔ visible project membership = PASS
+ApartmentComplex count ↔ governed project membership = PASS
 project URLs canonical = PASS
+project address/postalCode = governed fact
+RealEstateAgent count ↔ projects with factual in-person attendance = PASS
+Service count ↔ RealEstateAgent count = PASS
+Service.provider ↔ matching RealEstateAgent = PASS
+visible attendance/address copy ↔ schema = PASS
 visible FAQ ↔ FAQPage = PASS when FAQ exists
 Product/Offer absent = PASS
-LocalBusiness absent unless separately authorized = PASS
 Form 46 preserved = PASS
 Measurement/consent preserved = PASS
 one H1 = PASS
@@ -237,53 +293,32 @@ After Production:
 - query/page ownership observation;
 - no harmful cannibalization.
 
-## 8. Pilot conformance
+## 8. Canonical interpretation
 
-### Higienópolis
-Current strengths:
-- WebSite
-- WebPage
-- BreadcrumbList
-- ImageObject
-- Place
-- Brand
-- Organization
-- ContactPoint
-- Person
-- Service
-- ItemList
-- ApartmentComplex references
-- FAQPage
+```text
+RICH_RESULTS_ITEM_COUNT != QUALITY_SCORE
+PROJECT_COUNT MAY CHANGE DETECTED ENTITY COUNT
+FACTUAL ADDRESS + POSTAL CODE REQUIRED WHEN USED
+REGION OWNS DISCOVERY
+EXACT PROJECT OWNS PRODUCT/OFFER
+```
 
-Current status:
-`CLOSE_TO_STANDARD / REVIEW_SHARED_ORGANIZATION_USAGE`
+The successful pilots establish the reusable infrastructure pattern, not a promise that every future neighborhood will produce 6, 10 or any fixed number of Google items.
 
-### Lapa
-Current graph:
-- WebPage
-- BreadcrumbList
-- ItemList
-- FAQPage
+## 9. Promotion record
 
-Missing against candidate standard:
-- WebSite
-- ImageObject
-- Place
-- Service
-- shared entity references where applicable
-- explicit ApartmentComplex nodes referenced by ItemList
+Promotion gate completed on 2026-10-05:
 
-Current status:
-`BELOW_STANDARD / REMEDIATION_REQUIRED`
+1. SES Search/SEO review = PASS_WITH_RESIDUAL_RISK;
+2. Product Authority approved production testing;
+3. Higienópolis production validation = PASS;
+4. Lapa production validation = PASS;
+5. regional/exact-project ownership boundary preserved;
+6. no Product/Offer introduced into regional owners;
+7. Lapa postal-code warning resolved.
 
-## 9. Promotion gate
+Final state:
 
-This standard becomes canonical only after:
-1. SES Search/SEO review = PASS or PASS_WITH_RESIDUAL_RISK;
-2. Product Authority approval;
-3. Higienópolis conformance review;
-4. Lapa implementation + Google validation;
-5. evidence that no regional/exact-project ownership regression is introduced.
-
-Until then:
-`REGIONAL_PAGE_JSONLD_STANDARD_V1 = CANDIDATE`
+```text
+REGIONAL_PAGE_JSONLD_STANDARD_V1 = CANONICAL_FOR_REGIONAL_PAGES
+```
