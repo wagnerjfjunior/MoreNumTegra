@@ -194,13 +194,13 @@ Canonical contract:
 - `scripts/validate-favicon-standard.mjs`;
 - `.github/workflows/favicon-standard.yml`.
 
-Current effective Production runtime:
+Current effective Production runtime is resolved live. Latest reconciled runtime on 2026-10-06:
 
 ```text
-SHA = c80a8e1d773d85af563d9630f6e460e7ad85ea02
-deployment = dpl_4F8SF29FyNj7EcpyqM9zT57oYAoi / READY
+SHA = 1ec9cc1ad812d4e0b9f81b1713fe8d07560d502c
+deployment = dpl_6LJK4RRu41AGN8LwivL32det2rBN / READY
 favicon visual = WORKING / USER_CONFIRMED
-Google SERP visual refresh = AWAITING_EXTERNAL_RECRAWL / NOT_OBSERVED
+Google SERP/AI image state = QUERY_DEPENDENT / EXTERNAL_REPROCESSING
 ```
 
 Product Authority reported a perceptible favicon loading delay after visual success. This is not evidence of LCP regression. `MNT-PERF-01` is the authorized measurement-only follow-up.
