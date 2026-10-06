@@ -7,8 +7,8 @@
     "accepted_percent": 96.77
   },
   "current": {
-    "task_id": "MNT-REGION-LAPA-01",
-    "task_state": "COMPLETE / MERGED / PRODUCTION_READY / USER_APPROVED",
+    "task_id": "MNT-SEARCH-IMAGE-AUDIT-01",
+    "task_state": "NEXT / READ_ONLY",
     "pr": null,
     "repository_head_sha": "1ec9cc1ad812d4e0b9f81b1713fe8d07560d502c",
     "latest_main_runtime_sha": "1ec9cc1ad812d4e0b9f81b1713fe8d07560d502c",
@@ -16,8 +16,8 @@
     "last_verified_vercel_success_sha": "1ec9cc1ad812d4e0b9f81b1713fe8d07560d502c",
     "production_deployment_id": "dpl_6LJK4RRu41AGN8LwivL32det2rBN",
     "acceptance_run": null,
-    "next_task_id": "GOVERNED_BACKLOG_SELECTION",
-    "next_task_state": "NEXT / RESOLVE_LIVE",
+    "next_task_id": "MNT-SEARCH-IMAGE-AUDIT-01",
+    "next_task_state": "NEXT / READ_ONLY",
     "final_consent_ga4_proof_run": 35737706576,
     "evidence": "handoffs/HANDOFF-2026-10-06-SEARCH-IMAGE-FAVICON-HOME-GSC.md",
     "baseline_run": 35743393547,
@@ -52,17 +52,17 @@
   "cross_project_handoff": "docs/sfjm/MNT_FECHAI_COMMERCIAL_CATALOG_HANDOFF_2026-09-16.md",
   "last_reconciled_at": "2026-10-06",
   "priority_workstream": {
-    "id": "SEARCH_REGION_LAPA",
-    "label": "Lapa regional discovery page",
-    "state": "NEXT / FACT_SET_AND_SEMANTIC_BOUNDARY_GATE",
-    "current_child": "MNT-REGION-LAPA-01",
+    "id": "SEARCH_IMAGE_OWNERSHIP",
+    "label": "Search image ownership audit",
+    "state": "NEXT / READ_ONLY",
+    "current_child": "MNT-SEARCH-IMAGE-AUDIT-01",
     "counted_in_resf_hours": false,
-    "handoff": "handoffs/CURRENT.md",
+    "handoff": "handoffs/HANDOFF-2026-10-06-SEARCH-IMAGE-FAVICON-HOME-GSC.md",
     "tasks": [
       {
-        "id": "MNT-REGION-LAPA-01",
-        "label": "Implement /regioes/lapa/ without duplicating Caminhos master intent",
-        "state": "NEXT / AUTHORIZED_BY_PRODUCT_DIRECTION"
+        "id": "MNT-SEARCH-IMAGE-AUDIT-01",
+        "label": "Audit public routes for primary-image ownership and Sabrina competition",
+        "state": "NEXT / READ_ONLY"
       }
     ]
   },
