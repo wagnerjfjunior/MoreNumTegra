@@ -17,9 +17,9 @@ Canonical topology:
 ```text
 Registro.br
 -> Cloudflare authoritative DNS / DNS only
-   -> moretegra.com.br CNAME apex flattening -> Vercel -> HTTP 308 -> www.moretegra.com.br
-   -> www.moretegra.com.br CNAME -> Vercel Production
-   -> lp.moretegra.com.br -> Green/GDigital legacy/fallback surface
+   -> moretegra.com.br -> Vercel -> HTTP 308 -> www.moretegra.com.br
+   -> www.moretegra.com.br -> Vercel Production
+   -> lp.moretegra.com.br -> Vercel permanent 308 -> www.moretegra.com.br
 ```
 
 Cloudflare proxy/orange-cloud remains OFF. Zone-apex CNAME flattening is automatic in Cloudflare and does not require a per-record toggle.
@@ -130,7 +130,7 @@ CONSENT_ACCEPT = PASS
 CONSENT_REJECT = PASS
 GA4_GENERATE_LEAD_QA = PASS
 PII_IN_PROJECT_MEASUREMENT = NO
-LP_GREEN_FALLBACK = OBSERVED / NON_CANONICAL
+LP_REDIRECT_TO_WWW = PERMANENT_308 / NON_CANONICAL
 SITEMAP_DEPLOYED = PASS
 ROBOTS_SITEMAP_DISCOVERY = PASS
 CUTOVER = CERTIFIED
@@ -138,12 +138,16 @@ CUTOVER = CERTIFIED
 
 ## Residuals that do not reopen the cutover
 
-- `/favicon.ico` returned 404 in the supplied Pingdom HAR; minor asset residual.
+- the historical `/favicon.ico` 404 residual is superseded by the later project-owned favicon package; current favicon state must be resolved from the current baseline/handoff.
 - exact GTM published version number for the `www` host delta is `NOT_RECORDED`.
 - Search Console sitemap submission/processing status is separate from the fact that the sitemap is deployed.
 - any JSON-LD/rich-results gap belongs to the schema/Search implementation track.
 
 ## Supersession
+
+## 2026-10-06 migration addendum
+
+`lp.moretegra.com.br` no longer serves as a Green fallback. It is a permanent redirect surface to the canonical `www` host. Google Search Console Change of Address `lp -> www` was USER_CONFIRMED active with start date 2026-10-06. Do not revert `lp` to a content-serving fallback without a new migration decision.
 
 This accepted ADR supersedes:
 

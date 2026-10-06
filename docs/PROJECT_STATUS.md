@@ -1,3 +1,29 @@
+# 2026-10-06 — Current runtime/search-image reconciliation
+
+```text
+CANONICAL_RUNTIME_SHA = 1ec9cc1ad812d4e0b9f81b1713fe8d07560d502c
+PRODUCTION_DEPLOYMENT = dpl_6LJK4RRu41AGN8LwivL32det2rBN
+PRODUCTION_STATE = READY
+CANONICAL_HOST = https://www.moretegra.com.br/
+LP_HOST = permanent 308 -> www.moretegra.com.br
+GSC_LP_CHANGE_OF_ADDRESS = USER_CONFIRMED_ACTIVE / start 2026-10-06
+```
+
+Release sequence now integrated:
+- #352 favicon source/package;
+- #353 Mozae search-image ownership;
+- #354 Mozae one-band facts pattern + gallery order;
+- #355 Home 1200x630 primary image + delayed muted autoplay + mobile negotiation-block relocation.
+
+Durable evidence:
+`handoffs/HANDOFF-2026-10-06-SEARCH-IMAGE-FAVICON-HOME-GSC.md`
+
+Residuals:
+- Google SERP/AI thumbnails remain external, query-dependent and asynchronously reprocessed;
+- Home/Soma may still show Sabrina in some queries;
+- Mozae can already show a project image in product-specific/AI contexts;
+- no further Home image churn is justified until recrawl/observation evidence is collected.
+
 # Status do Projeto — MoreNumTegra
 
 Atualizado em `2026-09-28`.

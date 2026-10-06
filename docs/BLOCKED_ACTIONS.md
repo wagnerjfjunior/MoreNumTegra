@@ -1,3 +1,27 @@
+# 2026-10-06 — Search-image and lp migration guardrails
+
+Current topology supersedes older `lp` fallback wording:
+```text
+lp.moretegra.com.br = permanent 308 -> www.moretegra.com.br
+GSC Change of Address lp -> www = USER_CONFIRMED active from 2026-10-06
+```
+
+Blocked without a new explicit Product Authority decision:
+- reverting `lp` to Green/fallback hosting;
+- canceling the active GSC Change of Address as normal maintenance;
+- restoring Sabrina as direct `CollectionPage.mentions` on Home;
+- restoring the YouTube thumbnail as Home primary image;
+- eager-loading the YouTube iframe on initial Home HTML;
+- moving the long negotiation block back above the project catalog;
+- global robots/image suppression of Sabrina;
+- claiming all exact-project pages use the new Mozae facts pattern before migration evidence exists.
+
+Allowed:
+- read-only Search/AI/SERP observation;
+- GSC inspection/recrawl requests;
+- site-wide primary-image inventory;
+- bounded page-specific proposals.
+
 # Ações Bloqueadas — MoreNumTegra
 
 - Atualizado em: `2026-09-25`

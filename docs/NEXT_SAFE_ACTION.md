@@ -1,3 +1,36 @@
+# 2026-10-06 — Search image ownership observation gate
+
+PR #355 is merged and the exact production deployment is READY.
+
+```text
+runtime SHA = 1ec9cc1ad812d4e0b9f81b1713fe8d07560d502c
+Production = dpl_6LJK4RRu41AGN8LwivL32det2rBN / READY
+Home primary image contract = IMPLEMENTED
+Mozae primary image contract = IMPLEMENTED
+favicon package = IMPLEMENTED
+lp -> www migration redirect = ACTIVE
+GSC Change of Address lp -> www = USER_CONFIRMED ACTIVE
+```
+
+## NEXT SAFE ACTION
+
+`MNT-SEARCH-IMAGE-AUDIT-01 = READ_ONLY`
+
+Audit all public pages for search-image ownership before another runtime change.
+
+Required output:
+1. inventory public routes;
+2. identify each page's OG/Twitter/JSON-LD/visible primary image;
+3. identify pages where Sabrina still competes as a thumbnail candidate;
+4. classify: project/region image dominant / Sabrina competing / inadequate or missing primary image;
+5. propose bounded page-specific remediations only after evidence.
+
+Do not:
+- change Home again merely because Google has not refreshed;
+- globally block Sabrina's image;
+- remove factual Person/RealEstateAgent/Service entities;
+- bulk-rewrite all pages without route-specific evidence.
+
 # Próxima Ação Segura — MoreNumTegra
 
 Atualizado em `2026-09-28`.
