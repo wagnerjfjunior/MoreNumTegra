@@ -45,18 +45,18 @@
     "deferred_scope_equivalent_hours": 40
   },
   "current": {
-    "phase_id": "POST_RESF / CURRENT_RUNTIME_PERFORMANCE_VERIFICATION",
-    "phase_state": "ACTIVE_NEXT / MEASUREMENT_ONLY",
-    "work_package": "Current Production performance verification after favicon/brand/cache/DSG sequence",
-    "current_task_id": "MNT-PERF-02",
-    "current_task_state": "ACTIVE_NEXT / AUTHORIZED_MEASUREMENT_ONLY",
-    "next_task_id": "MNT-PERF-02",
-    "next_task_state": "ACTIVE_NEXT / AUTHORIZED",
-    "next_safe_action": "Measure current DSG-post-fix Production performance and publish durable evidence before any remediation.",
+    "phase_id": "POST_RESF / SEARCH_IMAGE_OWNERSHIP",
+    "phase_state": "ACTIVE_NEXT / READ_ONLY",
+    "work_package": "Search image ownership audit after favicon, Mozae and Home image releases",
+    "current_task_id": "MNT-SEARCH-IMAGE-AUDIT-01",
+    "current_task_state": "ACTIVE_NEXT / READ_ONLY",
+    "next_task_id": "MNT-SEARCH-IMAGE-AUDIT-01",
+    "next_task_state": "ACTIVE_NEXT / READ_ONLY",
+    "next_safe_action": "Audit public pages for primary-image ownership and Sabrina competition before any further runtime mutation.",
     "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md",
     "current_state_source": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
-    "task_id": "MNT-PERF-02",
-    "state": "ACTIVE_NEXT / OUTSIDE_RESF_ACCOUNTING / MEASUREMENT_ONLY"
+    "task_id": "MNT-SEARCH-IMAGE-AUDIT-01",
+    "state": "ACTIVE_NEXT / OUTSIDE_RESF_ACCOUNTING / READ_ONLY"
   },
   "sources": {
     "bootstrap": "bootstrap/BOOTSTRAP_CANONICO.md",
