@@ -612,6 +612,16 @@
         play(true);
       }
     });
+
+    const scheduleAutoplay = () => {
+      window.setTimeout(() => play(false), 2000);
+    };
+
+    if (document.readyState === "complete") {
+      scheduleAutoplay();
+    } else {
+      window.addEventListener("load", scheduleAutoplay, {once: true});
+    }
   }
 
   function initRoot(root) {
