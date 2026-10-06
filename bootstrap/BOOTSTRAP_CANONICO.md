@@ -118,7 +118,7 @@ Registro.br
 -> Cloudflare authoritative DNS / DNS only
    -> moretegra.com.br -> Vercel -> 308 -> www.moretegra.com.br
    -> www.moretegra.com.br -> Vercel Production
-   -> lp.moretegra.com.br -> Green/GDigital fallback/legacy
+   -> lp.moretegra.com.br -> Vercel permanent 308 -> www.moretegra.com.br
 ```
 
 Host comercial/canônico:
