@@ -29,7 +29,7 @@ Registro.br
 -> Cloudflare authoritative DNS / DNS only
    -> moretegra.com.br CNAME apex flattening -> Vercel -> 308 -> www.moretegra.com.br
    -> www.moretegra.com.br CNAME -> Vercel Production
-   -> lp.moretegra.com.br -> Green/GDigital legacy/fallback surface
+   -> lp.moretegra.com.br -> Vercel permanent 308 -> www.moretegra.com.br
 ```
 
 Canonical commercial/indexable host:
@@ -263,3 +263,15 @@ PROJECT_MAPS = NEIGHBORHOOD_LEVEL_VISUAL + WHATSAPP_ONLY_CLICK
 ```
 
 Exact street/number/postal-code content must not appear visibly outside the canonical commercial footer. Tegra corporate-site URLs and proxy dependencies must not ship in commercial HTML/JS. Structured data may retain governed exact addresses for entity consistency.
+
+
+## 2026-10-06 current-state addendum
+
+- Effective runtime: `1ec9cc1ad812d4e0b9f81b1713fe8d07560d502c` / `dpl_6LJK4RRu41AGN8LwivL32det2rBN` / READY.
+- `lp.moretegra.com.br` is a permanent redirect-only surface to `www`; older Green-fallback wording is historical.
+- Home primary image is the governed 1200x630 Caminhos da Lapa asset; OG, Twitter, CollectionPage image/primaryImageOfPage, ImageObject and initial poster converge on it.
+- Sabrina remains Person/RealEstateAgent/Service but is not direct Home CollectionPage.mentions.
+- Home YouTube iframe is injected after window.load + 2000 ms with muted autoplay and controls; no initial iframe.
+- Favicon package is the approved Tegra yellow T; audit found 40 `src-greenn` HTML files referencing `/favicon-48x48.png`.
+- Search/AI thumbnail selection remains query-dependent external state.
+- Evidence: `handoffs/HANDOFF-2026-10-06-SEARCH-IMAGE-FAVICON-HOME-GSC.md`.
