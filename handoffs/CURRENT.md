@@ -1,3 +1,29 @@
+# 2026-10-06 — SFJM current handoff reconciliation
+
+**GitHub `main` remains canonical; resolve live before mutation.**
+
+Current integrated runtime before this docs-only reconciliation:
+```text
+main/runtime = 1ec9cc1ad812d4e0b9f81b1713fe8d07560d502c
+Production = dpl_6LJK4RRu41AGN8LwivL32det2rBN / READY
+canonical host = https://www.moretegra.com.br/
+```
+
+Current detailed handoff:
+`handoffs/HANDOFF-2026-10-06-SEARCH-IMAGE-FAVICON-HOME-GSC.md`
+
+Latest material decisions:
+- PR #352 favicon package = MERGED / production READY;
+- PR #353 Mozae primary-image ownership = MERGED / production READY;
+- PR #354 Mozae facts/gallery normalization = MERGED / production READY;
+- PR #355 Home primary image + delayed muted autoplay + mobile content-flow change = MERGED / production READY;
+- `lp.moretegra.com.br` is now a permanent redirect to `www`, not a Green fallback;
+- GSC Change of Address `lp -> www` = USER_CONFIRMED active from 2026-10-06;
+- Google thumbnail/AI behavior remains query-dependent and partially stale during recrawl.
+
+NEXT SAFE ACTION:
+read-only site-wide image-ownership audit and recrawl observation before any further Home/Mozae runtime mutation.
+
 # Handoff Atual — MoreNumTegra
 
 Atualizado em `2026-10-05`.
