@@ -21,6 +21,10 @@
 <meta property="og:title" content="DSG Itaim Tegra | Itaim Bibi">
 <meta property="og:description" content="DSG Itaim no Itaim Bibi: empreendimento entregue, últimas unidades e atendimento para consultar offices, disponibilidade e condições atuais.">
 <meta property="og:image" content="https://s3-gdigital.s3.amazonaws.com/gdigital/313/More-Tegra-Foto-DSG-Itaim-Rua-Joaquim-Floriano-Vista-area-da-Fachada-e-Avenida.webp">
+<meta property="og:image:secure_url" content="https://s3-gdigital.s3.amazonaws.com/gdigital/313/More-Tegra-Foto-DSG-Itaim-Rua-Joaquim-Floriano-Vista-area-da-Fachada-e-Avenida.webp">
+<meta property="og:image:type" content="image/webp">
+<meta property="og:image:width" content="1169">
+<meta property="og:image:height" content="533">
 <meta property="og:image:alt" content="Vista aérea da fachada do DSG Itaim e da Rua Joaquim Floriano, no Itaim Bibi">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="DSG Itaim Tegra | Itaim Bibi">
@@ -91,7 +95,7 @@
       doc.head.querySelectorAll('link[rel="canonical"]').forEach(node=>node.remove());
       const link=doc.createElement("link");link.rel="canonical";link.href=canonical;doc.head.appendChild(link);
       let ogUrl=doc.head.querySelector('meta[property="og:url"]');if(!ogUrl){ogUrl=doc.createElement("meta");ogUrl.setAttribute("property","og:url");doc.head.appendChild(ogUrl)}ogUrl.setAttribute("content",canonical);
-      const social={"og:locale":"pt_BR","og:site_name":"More em um Tegra","og:image":"https://s3-gdigital.s3.amazonaws.com/gdigital/313/More-Tegra-Foto-DSG-Itaim-Rua-Joaquim-Floriano-Vista-area-da-Fachada-e-Avenida.webp","og:image:secure_url":"https://s3-gdigital.s3.amazonaws.com/gdigital/313/More-Tegra-Foto-DSG-Itaim-Rua-Joaquim-Floriano-Vista-area-da-Fachada-e-Avenida.webp","og:image:type":"image/webp","og:image:alt":"Vista aérea da fachada do DSG Itaim e da Rua Joaquim Floriano, no Itaim Bibi"};
+      const social={"og:locale":"pt_BR","og:site_name":"More em um Tegra","og:image":"https://s3-gdigital.s3.amazonaws.com/gdigital/313/More-Tegra-Foto-DSG-Itaim-Rua-Joaquim-Floriano-Vista-area-da-Fachada-e-Avenida.webp","og:image:secure_url":"https://s3-gdigital.s3.amazonaws.com/gdigital/313/More-Tegra-Foto-DSG-Itaim-Rua-Joaquim-Floriano-Vista-area-da-Fachada-e-Avenida.webp","og:image:type":"image/webp","og:image:width":"1169","og:image:height":"533","og:image:alt":"Vista aérea da fachada do DSG Itaim e da Rua Joaquim Floriano, no Itaim Bibi"};
       Object.entries(social).forEach(([property,content])=>{let node=doc.head.querySelector(`meta[property="${property}"]`);if(!node){node=doc.createElement("meta");node.setAttribute("property",property);doc.head.appendChild(node)}node.setAttribute("content",content)});
       const twitter={"twitter:card":"summary_large_image","twitter:title":"DSG Itaim Tegra | Itaim Bibi · Últimas unidades","twitter:description":"DSG Itaim no Itaim Bibi: empreendimento entregue, últimas unidades, offices, studios e apartamentos.","twitter:image":"https://s3-gdigital.s3.amazonaws.com/gdigital/313/More-Tegra-Foto-DSG-Itaim-Rua-Joaquim-Floriano-Vista-area-da-Fachada-e-Avenida.webp","twitter:image:alt":"Fachada do DSG Itaim"};
       Object.entries(twitter).forEach(([name,content])=>{let node=doc.head.querySelector(`meta[name="${name}"]`);if(!node){node=doc.createElement("meta");node.setAttribute("name",name);doc.head.appendChild(node)}node.setAttribute("content",content)});
