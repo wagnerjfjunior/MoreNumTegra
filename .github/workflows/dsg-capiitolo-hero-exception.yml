@@ -40,3 +40,9 @@ jobs:
             console.log('OK',response.status,response.headers.get('content-type'),response.headers.get('content-length'),url);
           }
           NODE
+      - name: Inspect real image dimensions
+        run: |
+          curl -fsSL --max-time 20 'https://s3-gdigital.s3.amazonaws.com/gdigital/313/Fachada_Capitolo.webp' -o /tmp/capiitolo-hero.webp
+          curl -fsSL --max-time 20 'https://s3-gdigital.s3.amazonaws.com/gdigital/313/More-Tegra-Foto-DSG-Itaim-Rua-Joaquim-Floriano-Vista-area-da-Fachada-e-Avenida.webp' -o /tmp/dsg-desktop.webp
+          curl -fsSL --max-time 20 'https://s3-gdigital.s3.amazonaws.com/gdigital/313/MoreTegra-Torre-Fechada-DSG-Itaim-9x16.webp' -o /tmp/dsg-mobile.webp
+          file /tmp/capiitolo-hero.webp /tmp/dsg-desktop.webp /tmp/dsg-mobile.webp
