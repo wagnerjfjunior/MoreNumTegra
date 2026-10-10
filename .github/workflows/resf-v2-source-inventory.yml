@@ -6,6 +6,7 @@ on:
       - 'scripts/audit-resf-v2-media.mjs'
       - 'scripts/audit-resf-v2-image-http.mjs'
       - 'scripts/audit-resf-v2-search-image-owner.mjs'
+      - 'scripts/validate-resf-v2-jsonld-freeze.mjs'
       - 'scripts/validate-resf-v2-approved-hero.mjs'
       - 'docs/resf-v2/data/APPROVED_HERO_IMAGES_2026-10-10.json'
       - '.github/workflows/resf-v2-source-inventory.yml'
@@ -40,6 +41,26 @@ jobs:
         run: |
           node --check scripts/validate-resf-v2-approved-hero.mjs
           node scripts/validate-resf-v2-approved-hero.mjs docs/resf-v2/data/APPROVED_HERO_IMAGES_2026-10-10.json /tmp/resf-v2-media.json
+      - name: Frozen JSON-LD contract — 16 approved image deltas
+        run: |
+          node --check scripts/validate-resf-v2-jsonld-freeze.mjs
+          node scripts/validate-resf-v2-jsonld-freeze.mjs \
+            src-greenn/empreendimentos/ampere-brooklin/index.html \
+            src-greenn/empreendimentos/ode-perdizes/index.html \
+            src-greenn/empreendimentos/teg-sacoma/index.html \
+            src-greenn/empreendimentos/tiel-vila-nova-conceicao/index.html \
+            src-greenn/empreendimentos/universo-tatuape-orbita/index.html \
+            src-greenn/regioes/alto-do-ipiranga/index.html \
+            src-greenn/regioes/brooklin/index.html \
+            src-greenn/regioes/chacara-klabin/index.html \
+            src-greenn/regioes/cidade-jardim/index.html \
+            src-greenn/regioes/itaim-bibi/index.html \
+            src-greenn/regioes/jardins/index.html \
+            src-greenn/regioes/moema/index.html \
+            src-greenn/regioes/perdizes/index.html \
+            src-greenn/regioes/sacoma/index.html \
+            src-greenn/regioes/tatuape/index.html \
+            src-greenn/regioes/vila-nova-conceicao/index.html
       - name: Audit search image ownership by JSON-LD graph
         run: |
           node --check scripts/audit-resf-v2-search-image-owner.mjs
