@@ -5,6 +5,8 @@ on:
       - 'scripts/audit-resf-v2-pages.mjs'
       - 'scripts/audit-resf-v2-media.mjs'
       - 'scripts/audit-resf-v2-image-http.mjs'
+      - 'scripts/validate-resf-v2-approved-hero.mjs'
+      - 'docs/resf-v2/data/APPROVED_HERO_IMAGES_2026-10-10.json'
       - '.github/workflows/resf-v2-source-inventory.yml'
       - 'src-greenn/**'
   workflow_dispatch:
@@ -33,6 +35,10 @@ jobs:
           node --check scripts/audit-resf-v2-media.mjs
           node scripts/audit-resf-v2-media.mjs /tmp/resf-v2-media.json /tmp/resf-v2-media.md
           node -e 'const r=require("/tmp/resf-v2-media.json");if (r.metrics.inScope!==36||r.metrics.excluded!==2) process.exit(1);console.log("Media audit totals:",JSON.stringify(r.metrics));for(const x of r.rows.filter(x=>x.scope==="IN_SCOPE")) console.log(x.route+" | hero="+(x.media.heroSrc||"REVIEW")+" | og="+(x.media.og||"MISSING")+" | twitter="+(x.media.twitter||"MISSING")+" | schema="+x.media.jsonLdPrimary.join(",")+" | signals="+x.signals.join(","));'
+      - name: Verify user-approved hero URL baseline
+        run: |
+          node --check scripts/validate-resf-v2-approved-hero.mjs
+          node scripts/validate-resf-v2-approved-hero.mjs docs/resf-v2/data/APPROVED_HERO_IMAGES_2026-10-10.json /tmp/resf-v2-media.json
       - name: Check media URL availability (non-mutating)
         run: |
           node --check scripts/audit-resf-v2-image-http.mjs
