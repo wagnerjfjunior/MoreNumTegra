@@ -43,6 +43,21 @@ Escopo: 23 rotas comerciais da lista de imagens homologadas. DSG e CAPIITOLO EXC
 - Reserva: `ApartmentComplex` com Rua Fortunato Ferraz, **280**, CEP 05093-000. CEP igual não é automaticamente incorreto, mas precisa de validação cadastral por endereço.
 - Alguns dígitos em nomes de arquivos/imagens podem parecer CEP, mas não são; o teste deve ler apenas `PostalAddress.postalCode`.
 
+## Verificação cruzada pública inicial (2026-10-10)
+As evidências abaixo ajudam a corroborar o valor da página, mas **não substituem a consulta oficial dos Correios ou documentação individual da incorporação**:
+
+| Empreendimento | Correspondência encontrada para rua+número+CEP | Fonte externa |
+|---|---|---|
+| Ária Higienópolis | Rua Coronel José Eusébio, 145 / 01239-030 | https://www.econodata.com.br/consulta-empresa/59375334000273-aria-higienopolis (complemento oficial endereço: https://www.tegraincorporadora.com.br/sp/sao-paulo/oeste/higienopolis/aria) |
+| Mozae Higienópolis | Rua Conselheiro Brotero, 832 / 01232-010 | https://www.econodata.com.br/consulta-empresa/33420014000202-tgsp74-empreendimentos-imobiliarios-ltda e https://site-vitrine-temp-bjape7gedadtb9h3.eastus2-01.azurewebsites.net/sp/sao-paulo/oeste/higienopolis/conselheirobrotero |
+| Château Jardin | Rua Ministro Nelson Hungria, 400 / 05690-050 | https://www.exto.com.br/empreendimentos/chateau-jardin-harmonie |
+| Ledge Brooklin | Avenida Nova Independência, 110 / 04570-000 | https://www.npiconsultoria.com.br/imovel-106109/ledge-brooklin |
+| Reserva Caminhos da Lapa | Rua Fortunato Ferraz, 280 / 05093-000 | https://cnpj.biz/57711600000185 e https://www.efirma.com.br/empresa/reserva-caminhos-lapa-sao-paulo |
+| Garden Design | Rua Fortunato Ferraz, 625 / 05093-000 | **PENDENTE** — o CEP da rua/estande não comprova sozinho o endereço específico do empreendimento |
+| Nova Vivere | Rua Fortunato Ferraz, 625 / 05093-000 | **PENDENTE** — confirmar a identidade da portaria/empreendimento versus estande |
+
+Cinco dos sete registros completos têm evidência externa nominal e correspondente; dois continuam pendentes de correspondência específica. Os 16 sem CEP no objeto `ApartmentComplex` também continuam sem validação cadastral completa.
+
 ## Regra de aceitação
 1. Confirmar externamente cada `streetAddress`/número + CEP em fonte confiável (ex.: consulta Correios ou documentação oficial do empreendimento), registrando URL, data, trecho e origem.
 2. Confirmar se a referência é **empreendimento**, **estande**, **escritório comercial**, **portaria** ou endereço de correspondência. Não misturar as entidades.
