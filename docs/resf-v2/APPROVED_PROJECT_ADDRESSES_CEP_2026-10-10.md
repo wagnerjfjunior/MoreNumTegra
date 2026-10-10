@@ -5,6 +5,14 @@ Approval source: user-uploaded `Tabela Endereço Empreeendimentos.csv` (23 rows,
 Baseline: canonical main `9c8bdc74cb83dc9c9566f87d9288daf25f10c051`.
 Status: CANDIDATE ONLY / NOT DEPLOYED / DRAFT PR.
 
+## Confirmação posterior — Tabela Endereços v2 (2026-10-10)
+
+A Product Authority confirmou que o **Elo Duo está entregue e seu endereço definitivo é Rua Fortunato Ferraz, 851**. **Garden Design e Nova Vivere usam Rua Fortunato Ferraz, 625 como showroom comercial provisório até a entrega dos respectivos empreendimentos.** Esta natureza provisória deve ser tratada como política de atualização futura, nunca como endereço de portaria/torre comprovada.
+
+A comparação literal entre o CSV inicial e o CSV **v2** anexado nesta conversa mostrou **nenhuma alteração nas 23 linhas de dados**: a segunda versão altera apenas os cabeçalhos de exportação. O campo de Elo Duo `Latitude (referência)` = `-23,5174876` e `Longitude (referência)` = `-46,7184721` continua igual à versão anterior e aos dois showrooms, com classificação `DIVERGENCIA_CEP_ESPECIAL` e observação `geo refere-se à rua`. Assim, **não há coordenada específica do Elo Duo validada pela v2**. Não publicar esses centroides como entrada/portaria nem introduzir `ApartmentComplex.geo` até confirmação das coordenadas específicas, de acordo com a autorização anterior.
+
+A PR #368 continua limitada a PostalAddress, e a mudança de endereço provisório para endereço definitivo em Garden/Nova deverá exigir nova evidência na ocasião da entrega e nova decisão de Product Authority.
+
 ## Exact scope
 
 Only update `ApartmentComplex.address.streetAddress` and `ApartmentComplex.address.postalCode`, adding `PostalAddress` to an existing `ApartmentComplex` where it was previously absent. Preserve all existing graph entity types, count, IDs, other commercial data, old `geo` values, and image signals. Never create `geo`, never use centroid coordinates or infer an entrance location. Never change `RealEstateAgent` / `Place` addresses as side effects.
