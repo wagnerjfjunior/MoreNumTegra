@@ -1,3 +1,5 @@
+> **PRÓXIMA AÇÃO SEGURA (2026-10-10; handoff em Draft):** revalidar `main`/Vercel/HEAD de PR #372; conferir sua integração de `Product`, `Offer`, `ImageObject` aprovado, plantas reais e gate dos 25 empreendimentos; obter autorização separada antes de merge/deploy e preparar rollback. `#371` layout Home e RESF imagens #364/#366/#367 permanecem separados. Detalhes, testes e prompt para nova conversa em `handoffs/HANDOFF-2026-10-10-SFJM-COVERAGE-SEO-RELEASES.md`. NÃO reabrir LCP adiado.
+
 # 2026-10-06 — Search image ownership observation gate
 
 PR #355 is merged and the exact production deployment is READY.
