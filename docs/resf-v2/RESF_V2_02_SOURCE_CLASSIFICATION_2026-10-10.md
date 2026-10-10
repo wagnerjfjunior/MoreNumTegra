@@ -39,3 +39,19 @@ Status: READ_ONLY_SOURCE_AUDIT / PR_CANDIDATE / NO_RUNTIME_CHANGE
 - Nenhuma aprovação para universalizar Higienópolis regional.
 - Nenhuma execução de migração, mudança de formulário, publicação ou merge nesta etapa.
 - Testes físicos mobile, Form46 E2E, LCP/INP/CLS e validação de negócio continuam necessários antes de qualquer release.
+
+## Investigation of the two flagged routes (2026-10-10, main source read)
+**CAPIITOLO**
+- `src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html` uses bootstrap `<main class="mnt-bootstrap">` and browser `fetch("/experiments/capiitolo-editorial-v3/index.html")`; a DOMParser flow replaces/adapts fetched markup.
+- Initial HTML includes title, canonical and some factual text, but full hero/facts/form presentation is client-dependent. The static selector alerts therefore do **not** demonstrate the final runtime lacks these sections.
+- SEO risk to examine: Google can render JS but depends on successful fetch/render; verify Google-selected canonical, actual rendered DOM, request dependency, network failure fallback, and source-vs-rendered structured data. Do not claim deindexing without GSC evidence.
+
+**DSG Itaim**
+- `src-greenn/empreendimentos/dsg-itaim/index.html` similarly fetches `/experiments/dsg-itaim-editorial-v3/index.html` and replaces/adapts the document.
+- Bootstrap preface says `PIERO LISSONI · SÃO PAULO · EM CONSTRUÇÃO`, while the **same initial HTML** describes DSG as `empreendimento entregue`. This is an internally inconsistent source statement and appears to include copy inherited from CAPIITOLO. Mark `P0_FACTUAL_COPY_REVIEW`; commercial authority must validate the correction before publication.
+- The initial DOM is a fallback, not a full equivalence to a static commercial page. Assess loss of images, Form46 and copy if the fetch fails.
+- These pages are potential **pilots for removing unnecessary runtime-fetch coupling**, but only after determining their existing production contracts and alternative static source. Do not rebuild wholesale or merge without tests.
+
+**Implication for RESF architecture**
+- Static build-time composition can eventually remove this client-fetch dependency while retaining identical output content, but it is only a proposed migration after a bounded proof.
+- Add classification `CLIENT_FETCH_COMPOSITION_REVIEW` to the audit contract (candidate future enhancement), never silently treating client-only content as absent or present.
