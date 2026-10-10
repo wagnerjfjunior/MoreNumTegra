@@ -6,6 +6,7 @@ on:
       - 'scripts/audit-resf-v2-media.mjs'
       - 'scripts/audit-resf-v2-image-http.mjs'
       - 'scripts/audit-resf-v2-search-image-owner.mjs'
+      - 'scripts/validate-resf-v2-jsonld-freeze.mjs'
       - 'scripts/validate-resf-v2-approved-hero.mjs'
       - 'docs/resf-v2/data/APPROVED_HERO_IMAGES_2026-10-10.json'
       - '.github/workflows/resf-v2-source-inventory.yml'
@@ -22,6 +23,8 @@ jobs:
     steps:
       - name: Checkout PR candidate
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Setup Node 22
         uses: actions/setup-node@v4
         with:
@@ -40,10 +43,31 @@ jobs:
         run: |
           node --check scripts/validate-resf-v2-approved-hero.mjs
           node scripts/validate-resf-v2-approved-hero.mjs docs/resf-v2/data/APPROVED_HERO_IMAGES_2026-10-10.json /tmp/resf-v2-media.json
+      - name: Frozen JSON-LD contract — 16 approved image deltas
+        run: |
+          node --check scripts/validate-resf-v2-jsonld-freeze.mjs
+          node scripts/validate-resf-v2-jsonld-freeze.mjs \
+            src-greenn/empreendimentos/ampere-brooklin/index.html \
+            src-greenn/empreendimentos/ode-perdizes/index.html \
+            src-greenn/empreendimentos/teg-sacoma/index.html \
+            src-greenn/empreendimentos/tiel-vila-nova-conceicao/index.html \
+            src-greenn/empreendimentos/universo-tatuape-orbita/index.html \
+            src-greenn/regioes/alto-do-ipiranga/index.html \
+            src-greenn/regioes/brooklin/index.html \
+            src-greenn/regioes/chacara-klabin/index.html \
+            src-greenn/regioes/cidade-jardim/index.html \
+            src-greenn/regioes/itaim-bibi/index.html \
+            src-greenn/regioes/jardins/index.html \
+            src-greenn/regioes/moema/index.html \
+            src-greenn/regioes/perdizes/index.html \
+            src-greenn/regioes/sacoma/index.html \
+            src-greenn/regioes/tatuape/index.html \
+            src-greenn/regioes/vila-nova-conceicao/index.html
       - name: Audit search image ownership by JSON-LD graph
         run: |
           node --check scripts/audit-resf-v2-search-image-owner.mjs
           node scripts/audit-resf-v2-search-image-owner.mjs /tmp/resf-v2-search-image-owner.json
+          node -e 'const r=require("/tmp/resf-v2-search-image-owner.json");const failed=r.rows.filter(x=>x.errors.length);if(r.totals.routes!==36||r.totals.clean!==35||failed.length!==1||failed[0].route!=="/empreendimentos/aria-higienopolis/"||r.totals.personImageAsPrimary!==0)process.exit(1);console.log("Search image rollout batch 01 PASS: 35/36 approved images aligned, Aria isolated; 0 person photos as primary");'
       - name: Check media URL availability (non-mutating)
         run: |
           node --check scripts/audit-resf-v2-image-http.mjs
