@@ -56,7 +56,7 @@ for(const approved of manifest.approved){
  if(page?.image&&pageImage!==approved.heroUrl)errors.push('WEBPAGE_IMAGE_NOT_APPROVED_URL');
  if(product&&productImage!==approved.heroUrl)errors.push('PRODUCT_IMAGE_NOT_APPROVED_URL');
  if(project&&projectImage!==approved.heroUrl)errors.push('APARTMENT_COMPLEX_IMAGE_NOT_APPROVED_URL');
- if(place&&placeImage!==approved.heroUrl)errors.push('PLACE_IMAGE_NOT_APPROVED_URL');
+ if(kind==='region'&&place&&placeImage!==approved.heroUrl)errors.push('PLACE_IMAGE_NOT_APPROVED_URL');
  if(heroSrc&&heroSrc!==approved.heroUrl)errors.push('HERO_IMAGE_NOT_APPROVED_URL');
  if(!heroSrc)errors.push('HERO_IMAGE_NOT_RECOGNIZED');
  if(!page)errors.push('WEBPAGE_MISSING');
