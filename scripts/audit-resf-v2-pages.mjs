@@ -71,9 +71,15 @@ const groups = {
   region: records.filter(x=>x.pageType==='region'),
   other: records.filter(x=>!['exact-project','region'].includes(x.pageType))
 };
+// Product Authority scope exclusion (2026-10-10): keep source visibility, no migration backlog.
+const excludedProjects = new Set([
+  'empreendimentos/dsg-itaim/index.html',
+  'empreendimentos/capiitolo-piero-lissoni/index.html'
+]);
 const findings = records.map(x=>{
   const commercialCandidate = ['exact-project','region'].includes(x.pageType);
   const review = [];
+  if (excludedProjects.has(x.source)) return {source:x.source,estimatedRoute:x.estimatedRoute,pageType:x.pageType,classification:'EXCLUDED_FROM_RESF_V2',signals:[],notes:'Product Authority 2026-10-10: no component, layout, hero, form, SEO or media migration in RESF V2'};
   if (!commercialCandidate) return {source:x.source,estimatedRoute:x.estimatedRoute,pageType:x.pageType,classification:'SUPPORT_OR_SPECIAL_REVIEW',signals:[],notes:'Not assumed to be a public commercial route'};
   if (!x.metadata.title) review.push('TITLE_MISSING_SOURCE');
   if (!x.metadata.description) review.push('DESCRIPTION_MISSING_SOURCE');
@@ -92,6 +98,8 @@ const findings = records.map(x=>{
     signals:review,notes:'Source-only heuristics; compare live route, contracts and approved exceptions before defect classification'};
 });
 const metrics={commercialCandidates:groups.exactProject.length+groups.region.length,
+  migrationScopePages:findings.filter(x=>['CANDIDATE_REVIEW','STATIC_BASELINE_PRESENT'].includes(x.classification)).length,
+  excludedFromMigration:findings.filter(x=>x.classification==='EXCLUDED_FROM_RESF_V2').length,
   exactProjects:groups.exactProject.length,regions:groups.region.length,supportOrSpecial:groups.other.length,
   commercialWithReview:findings.filter(x=>x.classification==='CANDIDATE_REVIEW').length,
   commercialStaticPresent:findings.filter(x=>x.classification==='STATIC_BASELINE_PRESENT').length};
