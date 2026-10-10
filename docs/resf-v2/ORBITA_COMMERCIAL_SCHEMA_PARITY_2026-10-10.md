@@ -25,6 +25,14 @@ Preservar integralmente `WebSite`, `BreadcrumbList`, `Brand`, `ApartmentComplex`
 - Não inventar `geo`, endereço próprio da corretora, `aggregateRating`, `review`, política de devolução ou dados de frete.
 - Nenhuma alteração de conteúdo visível, formulário, tracking, CSS, JavaScript, imagem ou SEO de outras páginas.
 
+## Mídia e plantas já presentes no site (extensão da PR)
+
+O inventário `docs/resf-v2/data/APPROVED_HERO_IMAGES_2026-10-10.json` na PR #364 confirma a imagem principal aprovada para o Órbita: `https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/339/ImagemPrincipal/e56e585c-b5a8-44b5-95a6-c6227d8d18ea.jpg`. Essa mesma URL já é usada em `og:image`, Twitter, hero e `ApartmentComplex.image` no HTML atual; esta PR **não troca o asset**. O `ImageObject` novo usa essa URL aprovada, com `WebPage.primaryImageOfPage` e `WebPage.image` apontando para ele.
+
+A página já apresenta três imagens oficiais de plantas de **1, 2 e 3 dormitórios**. Os nós `FloorPlan` representam essas três imagens exatamente como publicadas, sem atribuir-lhes metragem não comprovada. A página informa separadamente a unidade `AP0609` de **69 m²**, e há um quarto nó `FloorPlan` com `floorSize=69 MTK`, **sem imagem associada**, pois o HTML não especifica qual das três plantas visuais corresponde à unidade exata.
+
+O validador exige paridade entre os URLs das três imagens reais, o objeto primário aprovado e a unidade de 69 m². Quaisquer regras de legibilidade, posicionamento ou troca do hero permanecem fora de escopo.
+
 ## Gate
 
 Executar `node scripts/validate-orbita-commercial-schema-parity.mjs`, verificação de CI geral e homologação com Google Rich Results Test + Schema Markup Validator **após** Preview/publicação autorizados. Não integrar com PRs em Draft não aprovadas ou refatorar outras páginas por extrapolação. Falhas M4/M5 preexistentes devem ser analisadas separadamente.
