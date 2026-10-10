@@ -41,7 +41,7 @@
   .mt-field-country{grid-column:1/2}
   .mt-field-phone{grid-column:2/3}
   .mt-lead-form{padding:26px}
-  .mt-consent{grid-template-columns:1fr auto;align-items:center}
+  .mt-consent{left:0;right:0;bottom:0;width:auto;max-width:none;margin:0;border-radius:0;padding:16px max(24px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(24px,env(safe-area-inset-left));grid-template-columns:minmax(0,1fr) auto;align-items:center}
 }
 @media(min-width:900px){
   .mt-lead-shell{grid-template-columns:minmax(0,1fr) minmax(520px,1.08fr);gap:48px}
