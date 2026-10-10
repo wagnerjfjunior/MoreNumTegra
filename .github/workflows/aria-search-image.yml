@@ -13,6 +13,8 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -40,6 +42,31 @@ jobs:
           assert.equal(project.image?.['@id'],primary['@id']);
           assert(!html.includes('robots" content="noindex'));
           console.log('Aria image graph PASS; product/offers preserved:',offers.length);
+          NODE
+      - name: Freeze all non-image JSON-LD entity contracts
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFileSync} from 'node:fs';
+          import {execFileSync} from 'node:child_process';
+          import assert from 'node:assert/strict';
+          const path='src-greenn/empreendimentos/aria-higienopolis/index.html';
+          const baseline='9c8bdc74cb83dc9c9566f87d9288daf25f10c051';
+          const before=execFileSync('git',['show',baseline+':'+path],{encoding:'utf8'});
+          const after=readFileSync(path,'utf8');
+          const parse=html=>JSON.parse(html.match(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/)?.[1]??'null')['@graph'];
+          const oldNodes=parse(before),newNodes=parse(after);
+          assert.equal(oldNodes.length,newNodes.length,'Entity count must not change');
+          const strip=nodes=>nodes.map(n=>{
+            const x=structuredClone(n);
+            if(x['@type']==='ImageObject'&&x['@id']==='https://www.moretegra.com.br/empreendimentos/aria-higienopolis/#primary-image'){
+              delete x.contentUrl;delete x.caption;
+            }
+            return x;
+          });
+          assert.deepEqual(strip(newNodes),strip(oldNodes),'Previously approved non-image JSON-LD content changed');
+          const oldTypes=oldNodes.map(x=>x['@type']).sort(),newTypes=newNodes.map(x=>x['@type']).sort();
+          assert.deepEqual(newTypes,oldTypes,'Entity types changed');
+          console.log('JSONLD_FREEZE_PASS: original entity count/types and all non-image fields preserved');
           NODE
       - name: Verify image real dimensions
         run: |
