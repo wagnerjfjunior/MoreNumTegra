@@ -55,3 +55,11 @@ Status: READ_ONLY_SOURCE_AUDIT / PR_CANDIDATE / NO_RUNTIME_CHANGE
 **Implication for RESF architecture**
 - Static build-time composition can eventually remove this client-fetch dependency while retaining identical output content, but it is only a proposed migration after a bounded proof.
 - Add classification `CLIENT_FETCH_COMPOSITION_REVIEW` to the audit contract (candidate future enhancement), never silently treating client-only content as absent or present.
+
+## Product Authority scope decision — 2026-10-10
+- **CAPIITOLO** (`/empreendimentos/capiitolo-piero-lissoni/`) and **DSG Itaim** (`/empreendimentos/dsg-itaim/`) are explicitly **EXCLUDED_FROM_RESF_V2**.
+- Preserve existing published pages as-is; no hero, facts, form, CSS, copy, SEO/schema, image or architecture migration under this program.
+- Read-only inventory may count them to preserve traceability, but they must not be counted in the migration backlog, pilot selection, or noncompliance totals.
+- Existing observations about dynamic composition remain historical evidence only; they do not authorize changes.
+- Reintroduction requires a separate explicit Product Authority decision and new bounded scope.
+- Expected migration scope from the current source inventory: **36 candidate pages** (23 exact-project + 13 region), subject to sitemap/publication verification. Total 44 HTML source files remains unchanged.
