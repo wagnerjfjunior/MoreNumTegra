@@ -26,7 +26,7 @@ jobs:
           assert(html.includes('<meta property="og:image" content="'+image+'">'));
           assert(html.includes('<meta name="twitter:image" content="'+image+'">'));
           assert(html.includes('<img src="'+image+'"'));
-          const doc=JSON.parse(html.match(/<script[^>]*type="application\\/ld\\+json"[^>]*>([\\s\\S]*?)<\\/script>/)?.[1]??'null');
+          const doc=JSON.parse(html.match(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/)?.[1]??'null');
           const graph=doc['@graph'];
           const page=graph.find(x=>x['@type']==='WebPage');
           const primary=graph.find(x=>x['@type']==='ImageObject');
