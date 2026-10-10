@@ -1,3 +1,5 @@
+> **STATUS MAIS RECENTE DOCUMENTADO — 2026-10-10 (PR Draft de reconciliação SFJM).** Leia `handoffs/HANDOFF-2026-10-10-SFJM-COVERAGE-SEO-RELEASES.md` antes do histórico a seguir. Vercel produção `dpl_4K9i6b96UnCUvYbgWrB5LUa9v6k1` READY, fonte canônica `main 3acd0a9228ebaf4d368fba40052f1ff41c0cbca2`. PRs #368 (endereços 23) e #370 (consentimento desktop) integradas; #372 (SEO Órbita + cobertura 25 páginas) ainda Draft. Não interpretar snapshots abaixo de 06/10 como live.
+
 # 2026-10-06 — Current runtime/search-image reconciliation
 
 ```text
