@@ -44,6 +44,7 @@ jobs:
         run: |
           node --check scripts/audit-resf-v2-search-image-owner.mjs
           node scripts/audit-resf-v2-search-image-owner.mjs /tmp/resf-v2-search-image-owner.json
+          node -e 'const r=require("/tmp/resf-v2-search-image-owner.json");const failed=r.rows.filter(x=>x.errors.length);if(r.totals.routes!==36||r.totals.clean!==35||failed.length!==1||failed[0].route!=="/empreendimentos/aria-higienopolis/"||r.totals.personImageAsPrimary!==0)process.exit(1);console.log("Search image rollout batch 01 PASS: 35/36 approved images aligned, Aria isolated; 0 person photos as primary");'
       - name: Check media URL availability (non-mutating)
         run: |
           node --check scripts/audit-resf-v2-image-http.mjs
