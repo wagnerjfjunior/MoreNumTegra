@@ -36,7 +36,10 @@ function scrub(ds) {
   const x=structuredClone(d);
   const graph=x['@graph']||[x];
   for(const n of graph){
-   if(n['@type']==='ApartmentComplex')delete n.address;
+   if(n['@type']==='ApartmentComplex'){
+     delete n.address;
+     if(n['@id']==='https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#project')delete n.geo;
+   }
   }
   return x;
  });
@@ -72,9 +75,17 @@ for(const [slug,street,cep] of expected){
     if(!['streetAddress','postalCode'].includes(key))assert.deepEqual(addr[key],value,slug+': original PostalAddress property mutated: '+key);
   }
  }
- assert.deepEqual(current[0].geo,prior[0].geo,slug+': existing geo changed');
+ if(slug==='caminhos-da-lapa-elo-duo'){
+  assert.equal(prior[0].geo,undefined,'Elo Duo baseline unexpectedly has geo');
+  assert.deepEqual(current[0].geo,{
+   '@type':'GeoCoordinates',
+   latitude:-23.51768499139431,
+   longitude:-46.72021320439278
+  },'Elo Duo specific user-confirmed Google Maps coordinate mismatch');
+  // Other entities (including stand Place/RealEstateAgent) are unchanged by graph comparison.
+ }else assert.deepEqual(current[0].geo,prior[0].geo,slug+': existing geo changed');
  console.log('POSTAL_CONTRACT_PASS',slug,street,cep,wasComplete?'UNCHANGED':'UPDATED');
 }
 assert.equal(changed,16,'expected exactly 16 previously incomplete projects');
 assert.equal(completeUnchanged,7,'expected exactly 7 already-complete projects');
-console.log('POSTAL_CONTRACT_PASS: 23 checked, 16 updated, 7 unchanged, no new geo, JSON-LD entities preserved');
+console.log('POSTAL_CONTRACT_PASS: 23 checked, 16 updated, 7 unchanged, Elo Duo geo only, JSON-LD entities preserved');
