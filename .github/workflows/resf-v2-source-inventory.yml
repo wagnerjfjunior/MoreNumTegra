@@ -1,0 +1,34 @@
+name: RESF V2 source inventory
+on:
+  pull_request:
+    paths:
+      - 'scripts/audit-resf-v2-pages.mjs'
+      - '.github/workflows/resf-v2-source-inventory.yml'
+      - 'src-greenn/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout PR candidate
+        uses: actions/checkout@v4
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Inventory HTML source (read-only)
+        run: |
+          node --check scripts/audit-resf-v2-pages.mjs
+          node scripts/audit-resf-v2-pages.mjs /tmp/resf-v2-inventory.json
+          node -e 'const r=require("/tmp/resf-v2-inventory.json"); if (!r.totals.htmlFiles) process.exit(1); console.log("HTML source files:",r.totals.htmlFiles);console.log(JSON.stringify(r.totals,null,2));'
+      - name: Upload inventory for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: resf-v2-inventory
+          path: /tmp/resf-v2-inventory.json
+          retention-days: 30
