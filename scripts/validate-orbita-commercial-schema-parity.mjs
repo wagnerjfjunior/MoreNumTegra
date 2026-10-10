@@ -12,12 +12,31 @@ const a=get(prior),b=get(source);
 assert.equal(source.replace(b.raw,a.raw),prior,"Only one JSON-LD graph may change; no visible copy/runtime/forms/media changed");
 const oldGraph=a.json["@graph"],graph=b.json["@graph"],find=(type)=>graph.find(n=>n["@type"]===type);
 const types=["WebSite","WebPage","BreadcrumbList","Brand","ApartmentComplex","FAQPage"];
-for(const type of types){const before=oldGraph.find(n=>n["@type"]===type),after=find(type);assert(before&&after, "missing original "+type);if(type==="WebPage"){const copy={...after};delete copy.mentions;assert.deepEqual(copy,before,"WebPage identity must not change");}else assert.deepEqual(after,before,"Original "+type+" entity cannot be modified");}
+for(const type of types){const before=oldGraph.find(n=>n["@type"]===type),after=find(type);assert(before&&after, "missing original "+type);if(type==="WebPage"){const copy={...after};delete copy.mentions;delete copy.primaryImageOfPage;delete copy.image;assert.deepEqual(copy,before,"WebPage identity must not change");}else if(type==="ApartmentComplex"){const copy={...after};delete copy.accommodationFloorPlan;copy.image=before.image;assert.deepEqual(copy,before,"ApartmentComplex commercial, postal and descriptive facts frozen");}else assert.deepEqual(after,before,"Original "+type+" entity cannot be modified");}
 const expectedExtra=["Organization","ContactPoint","Person","RealEstateAgent","Service","Product","Offer"];
 for(const type of expectedExtra)assert.equal(graph.filter(n=>n["@type"]===type).length,1,"Required unique "+type);
 const ids=graph.map(n=>n["@id"]).filter(Boolean);
 assert.equal(new Set(ids).size,ids.length,"@id must be unique");
 const n=find("ApartmentComplex"),p=find("Product"),o=find("Offer"),agent=find("RealEstateAgent"),svc=find("Service"),contact=find("ContactPoint");
+const hero="https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/339/ImagemPrincipal/e56e585c-b5a8-44b5-95a6-c6227d8d18ea.jpg";
+const img=find("ImageObject"),floorplans=graph.filter(n=>n["@type"]==="FloorPlan");
+assert.equal(graph.filter(n=>n["@type"]==="ImageObject").length,1);
+assert.equal(img.contentUrl,hero,"Hero URL must equal approved RESF image inventory");
+assert.equal(n.image[0]["@id"],img["@id"]);
+assert.equal(find("WebPage").primaryImageOfPage["@id"],img["@id"]);
+assert.equal(find("WebPage").image["@id"],img["@id"]);
+assert.equal(floorplans.length,4);
+assert.equal(n.accommodationFloorPlan.length,4);
+assert(floorplans.every(x=>n.accommodationFloorPlan.some(y=>y["@id"]===x["@id"])));
+const plantUrls=[...source.matchAll(/\["(1 dormitório|2 dormitórios|3 dormitórios)","([^"]+)","([^"]+)","([^"]+)"\]/g)].map(x=>x[4]);
+assert.equal(plantUrls.length,3);
+for(const u of plantUrls)assert(floorplans.some(x=>x.image===u),"All visible official plans must use identical media");
+const plan69=floorplans.find(x=>x.floorSize?.value===69);
+assert(plan69 && plan69.floorSize.unitCode==="MTK");
+assert(!plan69.image,"Exact AP0609 blueprint was not mapped to a named plant in the HTML");
+assert.equal(p.image[0],hero);
+assert(source.includes('content="'+hero+'"'),"Approved OG image URL unchanged");
+
 assert.equal(n.address.streetAddress,"Avenida Celso Garcia, 5040");
 assert.equal(n.address.postalCode,"03064-000");
 assert.equal(p.offers["@id"],o["@id"]);
@@ -32,4 +51,4 @@ assert(!("availability" in o),"Do not claim confirmed stock");
 assert(!("address" in agent),"Do not present project address as the agent's office");
 assert(source.includes("Unidade AP0609 · 69 m² · R$ 8.865/m² · valor de referência R$ 611.685"),"Commercial data must be visible");
 assert(source.includes("CRECI-SP 209.905-F"),"Agent credentials must be visible");
-console.log("PASS: Orbita Product/Offer, Service and Agent grounded in visible page; existing FAQ/project/address frozen");
+console.log("PASS: Orbita commercial entities, approved primary ImageObject and official FloorPlans grounded; original address/FAQ and HTML frozen");
