@@ -32,13 +32,13 @@ for(const slug of slugs){
  if(hardGate)for(const required of enriched)assert(currentTypes.has(required),slug+': REQUIRED structured entity missing: '+required);
  for(const t of beforeTypes)assert(currentTypes.has(t),slug+': structured entity type regressed: '+t);
  const product=now.find(n=>type(n,'Product')),offer=now.find(n=>type(n,'Offer'));
- if(product||offer){
-   assert(product&&offer,slug+': Product and Offer must be paired');
+ if(product&&offer){
    assert(product.offers,slug+': Product.offers missing');
    const target=typeof product.offers==='object'?product.offers['@id']:null;
    assert(target===offer['@id']||typeof product.offers==='object'&&product.offers['@type']==='Offer',slug+': Product.offers must link Offer');
    assert(offer.priceCurrency==='BRL'||!offer.price,slug+': price currency must be BRL');
  }
+ if(hardGate)assert(product&&offer,slug+': commercially upgraded page must have paired Product + Offer');
  if(now.length<8||absent.length){
    issues.push({slug,entities:now.length,missing:absent.join(', '),legacy:!hardGate});
  }
