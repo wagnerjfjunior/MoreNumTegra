@@ -1,0 +1,48 @@
+name: Aria approved search image
+on:
+  pull_request:
+    paths:
+      - 'src-greenn/empreendimentos/aria-higienopolis/index.html'
+      - '.github/workflows/aria-search-image.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify Aria primary image and Product/Offer graph
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFileSync} from 'node:fs';
+          import assert from 'node:assert/strict';
+          const html=readFileSync('src-greenn/empreendimentos/aria-higienopolis/index.html','utf8');
+          const image='https://s3-gdigital.s3.amazonaws.com/gdigital/313/%C3%81ria%20Higien%C3%B3polis-Perspectiva%20ilustrada%20do%20acesso%20residencial..webp';
+          assert(html.includes('<meta property="og:image" content="'+image+'">'));
+          assert(html.includes('<meta name="twitter:image" content="'+image+'">'));
+          assert(html.includes('<img src="'+image+'"'));
+          const doc=JSON.parse(html.match(/<script[^>]*type="application\\/ld\\+json"[^>]*>([\\s\\S]*?)<\\/script>/)?.[1]??'null');
+          const graph=doc['@graph'];
+          const page=graph.find(x=>x['@type']==='WebPage');
+          const primary=graph.find(x=>x['@type']==='ImageObject');
+          const prod=graph.find(x=>x['@type']==='Product');
+          const project=graph.find(x=>x['@type']==='ApartmentComplex');
+          const offers=graph.filter(x=>x['@type']==='Offer');
+          assert(page && primary && prod && project && offers.length>0);
+          assert.equal(primary.contentUrl,image);
+          assert.equal(page.primaryImageOfPage?.['@id'],primary['@id']);
+          assert.equal(prod.image?.['@id'],primary['@id']);
+          assert.equal(project.image?.['@id'],primary['@id']);
+          assert(!html.includes('robots" content="noindex'));
+          console.log('Aria image graph PASS; product/offers preserved:',offers.length);
+          NODE
+      - name: Verify image real dimensions
+        run: |
+          curl -fsSL --max-time 20 'https://s3-gdigital.s3.amazonaws.com/gdigital/313/%C3%81ria%20Higien%C3%B3polis-Perspectiva%20ilustrada%20do%20acesso%20residencial..webp' -o /tmp/aria-primary.webp
+          file /tmp/aria-primary.webp
+          file /tmp/aria-primary.webp | grep -q '1600x853'
