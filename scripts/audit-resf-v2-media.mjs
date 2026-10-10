@@ -39,17 +39,32 @@ function urls(v,output=new Set(),depth=0){
 function scanSchema(html) {
   const blocks=[...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)];
   const primary=new Set(), imageNodes=new Set(), personImages=new Set(), errors=[];
+  const nodesById=new Map(), primaryRefs=[];
+  const objects=[];
   function explore(value,depth=0){
     if(depth>20 || !value || typeof value!=='object')return;
     if(Array.isArray(value)){value.forEach(x=>explore(x,depth+1));return;}
-    if(value.primaryImageOfPage)urls(value.primaryImageOfPage,primary);
-    const types=[value['@type']].flat().filter(Boolean);
-    if(types.includes('ImageObject'))urls(value,imageNodes);
-    if(types.includes('Person') || types.includes('RealEstateAgent'))urls(value.image,personImages);
+    objects.push(value);
+    if(typeof value['@id']==='string')nodesById.set(value['@id'],value);
     Object.values(value).forEach(x=>explore(x,depth+1));
   }
   for(const block of blocks)try{explore(JSON.parse(block[1]));}catch(e){errors.push('JSON_PARSE_FAILED');}
-  return {primary:[...primary],imageObjects:[...imageNodes],person:[...personImages],errors,blockCount:blocks.length};
+  for(const value of objects){
+    const types=[value['@type']].flat().filter(Boolean);
+    if(types.includes('ImageObject'))urls(value,imageNodes);
+    if(value.primaryImageOfPage)primaryRefs.push(value.primaryImageOfPage);
+    if(types.includes('Person') || types.includes('RealEstateAgent'))urls(value.image,personImages);
+  }
+  for(const ref of primaryRefs){
+    urls(ref,primary);
+    const refs=Array.isArray(ref)?ref:[ref];
+    for(const x of refs) {
+      const id=typeof x==='string'?x:x?.['@id'];
+      if(id&&nodesById.has(id))urls(nodesById.get(id),primary);
+    }
+  }
+  return {primary:[...primary],imageObjects:[...imageNodes],person:[...personImages],errors,blockCount:blocks.length,
+    primaryReferencesCount:primaryRefs.length};
 }
 function imageTags(html){
   return tags(html,'img').map(t=>({src:attribute(t,'src'),srcset:attribute(t,'srcset'),alt:attribute(t,'alt'),className:attribute(t,'class')||'',loading:attribute(t,'loading'),fetchpriority:attribute(t,'fetchpriority')}));
