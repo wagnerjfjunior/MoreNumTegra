@@ -5,6 +5,7 @@ on:
       - 'scripts/audit-resf-v2-pages.mjs'
       - 'scripts/audit-resf-v2-media.mjs'
       - 'scripts/audit-resf-v2-image-http.mjs'
+      - 'scripts/audit-resf-v2-search-image-owner.mjs'
       - 'scripts/validate-resf-v2-approved-hero.mjs'
       - 'docs/resf-v2/data/APPROVED_HERO_IMAGES_2026-10-10.json'
       - '.github/workflows/resf-v2-source-inventory.yml'
@@ -39,6 +40,10 @@ jobs:
         run: |
           node --check scripts/validate-resf-v2-approved-hero.mjs
           node scripts/validate-resf-v2-approved-hero.mjs docs/resf-v2/data/APPROVED_HERO_IMAGES_2026-10-10.json /tmp/resf-v2-media.json
+      - name: Audit search image ownership by JSON-LD graph
+        run: |
+          node --check scripts/audit-resf-v2-search-image-owner.mjs
+          node scripts/audit-resf-v2-search-image-owner.mjs /tmp/resf-v2-search-image-owner.json
       - name: Check media URL availability (non-mutating)
         run: |
           node --check scripts/audit-resf-v2-image-http.mjs
@@ -56,5 +61,6 @@ jobs:
             /tmp/resf-v2-media.json
             /tmp/resf-v2-media.md
             /tmp/resf-v2-image-http.json
+            /tmp/resf-v2-search-image-owner.json
             /tmp/resf-v2-hero-approval.csv
           retention-days: 30
