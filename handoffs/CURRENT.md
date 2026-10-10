@@ -1,3 +1,5 @@
+> **SFJM CURRENT — DELTA DE 2026-10-10 (candidato em PR Draft).** Handoff novo: `handoffs/HANDOFF-2026-10-10-SFJM-COVERAGE-SEO-RELEASES.md`. `main 3acd0a9228ebaf4d368fba40052f1ff41c0cbca2`, Vercel produção `dpl_4K9i6b96UnCUvYbgWrB5LUa9v6k1` READY; #368 e #370 MERGED; #372, #371, #369, #367, #366, #365 e #364 DRAFT. O cabeçalho de 06/10 a seguir é histórico, não status operacional vigente. Resolver live no início de cada sessão.
+
 # 2026-10-06 — SFJM current handoff reconciliation
 
 **GitHub `main` remains canonical; resolve live before mutation.**

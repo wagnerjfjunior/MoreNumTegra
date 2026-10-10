@@ -1,3 +1,5 @@
+> **RESTRIÇÕES ATUALIZADAS — 2026-10-10 (PR documental Draft):** até revisão/autorizações explícitas, é bloqueado: publicar #372/#371/#364/#366/#367/#365/#369 automaticamente; alterar fotos fora do inventário aprovado; inventar imagem específica AP0609 (não há mapeamento inequívoco da planta); forçar seis rich results; reativar LCP/performance adiado; mudar GTM/consentimento, Form 46, ads e GSC sem escopo aprovado. Estado canônico verificado e raciocínio em `handoffs/HANDOFF-2026-10-10-SFJM-COVERAGE-SEO-RELEASES.md`. Cabeçalhos de 06/10 a seguir são históricos.
+
 # 2026-10-06 — Search-image and lp migration guardrails
 
 Current topology supersedes older `lp` fallback wording:

@@ -1,3 +1,5 @@
+> **Atualização operacional (2026-10-10, documentação em PR Draft):** antes de usar qualquer SHA ou status histórico deste bootstrap, consulte `handoffs/HANDOFF-2026-10-10-SFJM-COVERAGE-SEO-RELEASES.md`. Produção live verificada no fechamento: `main 3acd0a9228ebaf4d368fba40052f1ff41c0cbca2` / Vercel `dpl_4K9i6b96UnCUvYbgWrB5LUa9v6k1` READY. PRs pendentes são separadas; a prioridade de retomada é #372 SEO Órbita. **Sempre revalidar live.**
+
 # Bootstrap Canônico — MoreNumTegra
 
 > Ponto de entrada operacional para iniciar ou retomar o projeto sem depender do histórico de uma conversa.

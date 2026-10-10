@@ -1,3 +1,5 @@
+> **Handoff SFJM de continuidade (2026-10-10, em PR Draft):** `handoffs/HANDOFF-2026-10-10-SFJM-COVERAGE-SEO-RELEASES.md`. Contém estado live, releases #368/#370, PR #372, governança de cobertura SEO 25 páginas, backlog e prompt de nova conversa. `docs/sfjm/CURRENT_PROGRAM_STATE.json` ainda registra snapshot 06/10 e não foi sobrescrito por este trabalho documental; revalidar live.
+
 # MoreNumTegra — SFJM Consumer Entrypoint
 
 Status: `CANONICAL_WHEN_MERGED_TO_MAIN`.

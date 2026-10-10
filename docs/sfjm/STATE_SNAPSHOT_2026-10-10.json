@@ -1,0 +1,90 @@
+{
+  "schema": "sfjm.morenumtegra-handoff-snapshot.v1",
+  "observed_date": "2026-10-10",
+  "repository": "wagnerjfjunior/MoreNumTegra",
+  "canonical_branch": "main",
+  "main_sha": "3acd0a9228ebaf4d368fba40052f1ff41c0cbca2",
+  "production": {
+    "provider": "Vercel",
+    "canonical_host": "https://www.moretegra.com.br/",
+    "deployment_id": "dpl_4K9i6b96UnCUvYbgWrB5LUa9v6k1",
+    "state": "READY",
+    "commit_sha": "3acd0a9228ebaf4d368fba40052f1ff41c0cbca2"
+  },
+  "last_verified_rollback": {
+    "deployment_id": "dpl_D6xLZzkvn5xuF1S7FB4U68ttGHdB",
+    "commit_sha": "f191a0b70a0fbd3a9a2632fd98418489646120cd",
+    "requires_live_recheck": true
+  },
+  "merged_releases": [
+    {
+      "pr": 370,
+      "sha": "f191a0b70a0fbd3a9a2632fd98418489646120cd",
+      "purpose": "desktop consent fullwidth"
+    },
+    {
+      "pr": 368,
+      "sha": "3acd0a9228ebaf4d368fba40052f1ff41c0cbca2",
+      "purpose": "23 validated PostalAddress records and Elo Duo geo"
+    }
+  ],
+  "open_drafts": [
+    {
+      "pr": 372,
+      "sha": "3408b702f9d1e56fee0608572e6c17fac306fee9",
+      "purpose": "Orbita commercial JSON-LD and 25-page coverage guard"
+    },
+    {
+      "pr": 371,
+      "sha": "0ef53645076ee0eebaa78f5ca4b3a46c8a925d33",
+      "purpose": "Home responsive cards and regions"
+    },
+    {
+      "pr": 369,
+      "sha": "ea0253085b6cc3e2f1800a04e78d7fb2eca0e77b",
+      "purpose": "M4-05R test-only"
+    },
+    {
+      "pr": 367,
+      "sha": "fa080b1fb6f5cc04fd15403011067859be4fcd8b",
+      "purpose": "Aria image ownership"
+    },
+    {
+      "pr": 366,
+      "sha": "71342d93d4ce25bb60084a52fd6f9a158dffa4cb",
+      "purpose": "16-image ownership, stacked on PR364"
+    },
+    {
+      "pr": 365,
+      "sha": "71f6a25d3481efdf17ba4d9fe97735062dd9d44b",
+      "purpose": "DSG and CAPIITOLO exception"
+    },
+    {
+      "pr": 364,
+      "sha": "0c9fe91d235a2e5394838549e42f549eecc6d927",
+      "purpose": "36 approved hero inventory"
+    },
+    {
+      "pr": 335,
+      "sha": "3764aee8af52911b12c800bf1014f45d0b10ff5a",
+      "purpose": "old SFJM LVR draft"
+    },
+    {
+      "pr": 141,
+      "sha": "d36b114641014425623887dc6f408d2de0259b52",
+      "purpose": "old QA draft"
+    }
+  ],
+  "coverage": {
+    "project_pages": 25,
+    "legacy_under_8_schema_nodes": 11,
+    "global_gate_in_pr": 372,
+    "reported_only_not_blocked_for_legacy": true
+  },
+  "deferred": [
+    "LCP/performance optimization",
+    "paid media without separate authorization"
+  ],
+  "handoff": "handoffs/HANDOFF-2026-10-10-SFJM-COVERAGE-SEO-RELEASES.md",
+  "note": "Observed snapshot only. Read current live GitHub/Vercel and compare before execution; not a mutation to docs/sfjm/CURRENT_PROGRAM_STATE.json."
+}
