@@ -50,7 +50,27 @@ for(const [slug,street,cep] of expected){
  const original=execFileSync('git',['show',BASE+':'+filename],{encoding:'utf8'});
  const candidate=readFileSync(filename,'utf8');
  const before=documents(original),after=documents(candidate);
- assert.deepEqual(scrub(after),scrub(before),slug+': non-address JSON-LD changed');
+ if(slug==='universo-tatuape-orbita'){
+   // The separately gated Órbita commercial parity PR adds approved ImageObject,
+   // actual FloorPlans and commercial entities; preserve all original entities.
+   const baseline=flat(before);
+   const enriched=flat(after);
+   const photo=enriched.find(n=>n['@type']==='ImageObject');
+   assert(photo&&photo.contentUrl,'Órbita approved image object missing');
+   const kept=enriched.filter(n=>baseline.some(x=>x['@id']===n['@id'])).map(n=>{
+     const x=structuredClone(n);
+     if(x['@type']==='WebPage'){delete x.mentions;delete x.image;delete x.primaryImageOfPage}
+     if(x['@type']==='ApartmentComplex'){
+       delete x.accommodationFloorPlan;
+       x.image=x.image.map(y=>y?.['@id']===photo['@id']?photo.contentUrl:y);
+     }
+     return x;
+   });
+   assert.deepEqual(scrub([{'@graph':kept}]),scrub([{'@graph':baseline}]),'Órbita: original schema entities must remain unchanged except approved new references');
+   const newTypes=enriched.filter(n=>!baseline.some(x=>x['@id']===n['@id'])).map(n=>n['@type']);
+   const allowed=['Organization','ContactPoint','Person','RealEstateAgent','Service','Product','Offer','ImageObject','FloorPlan','FloorPlan','FloorPlan','FloorPlan'];
+   assert.deepEqual(newTypes.slice().sort(),allowed.slice().sort(),'Órbita: only specifically approved commercial/image/plan types may be added');
+ }else assert.deepEqual(scrub(after),scrub(before),slug+': non-address JSON-LD changed');
  const prior=flat(before).filter(x=>x['@type']==='ApartmentComplex');
  const current=flat(after).filter(x=>x['@type']==='ApartmentComplex');
  assert.equal(prior.length,1,slug+': baseline must contain exactly one ApartmentComplex');
