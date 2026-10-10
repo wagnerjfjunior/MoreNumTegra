@@ -113,5 +113,5 @@ if (markdownOutput) {
     '- Full media ownership (hero, OG, Twitter, JSON-LD, Person) and live canonical verification remain separate gates.',
     '- Approximate word counts are descriptive, never an SEO minimum.',''];
   await mkdir(path.dirname(markdownOutput), {recursive:true});
-  await writeFile(markdownOutput, lines.join('\\n')+'\\n');
+  await writeFile(markdownOutput, lines.join('\n')+'\n');
 }
