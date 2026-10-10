@@ -46,3 +46,11 @@ Resolver novamente SHA de main e branches/PRs relevantes; confirmar contrato com
 
 ## Observações canônicas
 Mozae/Nova Vivere usam um desenho de hero/facts, enquanto Ária emprega estrutura mt-hero e CSS compartilhado. A uniformização visual é alvo futuro, não permissão para substituir a experiência existente. FAQPage só se FAQ visível e em paridade; páginas regionais não recebem Product/Offer por convenção generalizada sem aprovação.
+
+## Product Authority scope decision — 2026-10-10
+- **CAPIITOLO** (`/empreendimentos/capiitolo-piero-lissoni/`) and **DSG Itaim** (`/empreendimentos/dsg-itaim/`) are explicitly **EXCLUDED_FROM_RESF_V2**.
+- Preserve existing published pages as-is; no hero, facts, form, CSS, copy, SEO/schema, image or architecture migration under this program.
+- Read-only inventory may count them to preserve traceability, but they must not be counted in the migration backlog, pilot selection, or noncompliance totals.
+- Existing observations about dynamic composition remain historical evidence only; they do not authorize changes.
+- Reintroduction requires a separate explicit Product Authority decision and new bounded scope.
+- Expected migration scope from the current source inventory: **36 candidate pages** (23 exact-project + 13 region), subject to sitemap/publication verification. Total 44 HTML source files remains unchanged.
