@@ -36,3 +36,15 @@ O validador exige paridade entre os URLs das três imagens reais, o objeto prim�
 ## Gate
 
 Executar `node scripts/validate-orbita-commercial-schema-parity.mjs`, verificação de CI geral e homologação com Google Rich Results Test + Schema Markup Validator **após** Preview/publicação autorizados. Não integrar com PRs em Draft não aprovadas ou refatorar outras páginas por extrapolação. Falhas M4/M5 preexistentes devem ser analisadas separadamente.
+
+## Gate de cobertura para todos os 25 empreendimentos
+
+`scripts/validate-project-schema-coverage.mjs` audita os 25 arquivos `src-greenn/empreendimentos/*/index.html` e executa:
+
+1. **Hard fail** em perda de qualquer entidade canônica previamente existente (por `@id` e `@type`), ausência de `WebPage` ou `ApartmentComplex`, ou regressão de tipos que já existiam.
+2. **Hard fail** para Órbita enriquecido se faltar `BreadcrumbList`, `ImageObject`, `Organization`, `ContactPoint`, `RealEstateAgent`, `Service`, `Product` ou `Offer`. O teste próprio também exige `FloorPlan` e valores/URLs exatos.
+3. **Registro de débito técnico** nos demais empreendimentos com entidades comerciais ou visuais faltantes. Assim, a cobertura parcial legada fica visível e rastreável, mas sem fabricar preços nem quebrar de imediato CI do site inteiro por falta de informações confirmadas.
+
+Baseline: antes do enriquecimento do Órbita, **11 de 25 páginas** tinham menos de 8 nós JSON-LD (5 com 4 nós, 5 com 6 nós, 1 com 7 nós). Essa contagem apenas sinaliza auditoria: o tipo de entidade e a evidência disponível têm prioridade sobre a quantidade. 
+
+O guard global será ampliado gradualmente para contratos estritos por página conforme o inventário real de imagens, plantas, ofertas e atendimento for certificado. **Não use a contagem de rich results como meta artificial.**
