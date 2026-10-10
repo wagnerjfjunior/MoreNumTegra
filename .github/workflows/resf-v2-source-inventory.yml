@@ -4,6 +4,7 @@ on:
     paths:
       - 'scripts/audit-resf-v2-pages.mjs'
       - 'scripts/audit-resf-v2-media.mjs'
+      - 'scripts/audit-resf-v2-image-http.mjs'
       - '.github/workflows/resf-v2-source-inventory.yml'
       - 'src-greenn/**'
   workflow_dispatch:
@@ -32,6 +33,10 @@ jobs:
           node --check scripts/audit-resf-v2-media.mjs
           node scripts/audit-resf-v2-media.mjs /tmp/resf-v2-media.json /tmp/resf-v2-media.md
           node -e 'const r=require("/tmp/resf-v2-media.json");if (r.metrics.inScope!==36||r.metrics.excluded!==2) process.exit(1);console.log("Media audit totals:",JSON.stringify(r.metrics));for(const x of r.rows.filter(x=>x.scope==="IN_SCOPE")) console.log(x.route+" | hero="+(x.media.heroSrc||"REVIEW")+" | og="+(x.media.og||"MISSING")+" | twitter="+(x.media.twitter||"MISSING")+" | schema="+x.media.jsonLdPrimary.join(",")+" | signals="+x.signals.join(","));'
+      - name: Check media URL availability (non-mutating)
+        run: |
+          node --check scripts/audit-resf-v2-image-http.mjs
+          node scripts/audit-resf-v2-image-http.mjs /tmp/resf-v2-media.json /tmp/resf-v2-image-http.json
       - name: Upload inventory for review
         uses: actions/upload-artifact@v4
         with:
@@ -41,4 +46,5 @@ jobs:
             /tmp/resf-v2-matrix.md
             /tmp/resf-v2-media.json
             /tmp/resf-v2-media.md
+            /tmp/resf-v2-image-http.json
           retention-days: 30
