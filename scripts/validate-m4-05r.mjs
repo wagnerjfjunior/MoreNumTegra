@@ -300,8 +300,9 @@ for (const needle of capiitoloRenderGuards) {
 const portalLinks = await readFile('src-greenn/portal-links.js', 'utf8');
 if (portalLinks.includes('loadFloatingUi') || portalLinks.includes('floating-ui.js')) fail('home', 'floating consent overlay runtime must not be auto-loaded');
 if (portalLinks.includes('observer.observe(document.documentElement')) fail('home', 'portal-links observer must not watch the full document');
-if (!portalLinks.includes('observer.observe(grid, {subtree:true, childList:true})')) fail('home', 'portal-links observer must remain scoped and idempotent');
-if (!portalLinks.includes('if (link.textContent !== "Ver empreendimento →")')) fail('home', 'portal-links text mutation must remain guarded');
+// Compatibility shim must stay inert: moretegra.js now owns commercial card actions.
+if (!portalLinks.includes('This compatibility file intentionally does not append card actions.')) fail('home', 'portal-links must identify its inert compatibility role');
+if (/\\b(?:new\\s+MutationObserver|\\.observe\\s*\\(|\\.textContent\\s*=|\\.innerHTML\\s*=|\\.insertAdjacentHTML\\s*\\(|\\.appendChild\\s*\\()/.test(portalLinks)) fail('home', 'portal-links compatibility shim must not observe or mutate the DOM');
 
 const eloPage = await readFile('src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html', 'utf8');
 const projectPageCss = await readFile('src-greenn/project-page.css', 'utf8');
@@ -312,7 +313,10 @@ const staticHome = await readFile('src-greenn/preview/index.html', 'utf8');
 const staticHomeJs = await readFile('src-greenn/moretegra.js', 'utf8');
 if (staticHome.includes('const blocks = [') || staticHome.includes('fetch(url, {cache:"no-store"})')) fail('home', 'client-side primary block loader must not exist');
 if (staticHome.includes('id="mt-block-02"') || staticHome.includes('id="mt-block-03"') || staticHome.includes('data-moretegra-fallback')) fail('home', 'dynamic/fallback block placeholders remain in initial HTML');
-if (!staticHome.includes('src="/src-greenn/moretegra.js" defer')) fail('home', 'static moretegra.js include missing');
+// Permit cache-busting query strings while requiring a unique, deferred static script.
+const staticHomeScripts = [...staticHome.matchAll(/<script\\b[^>]*\\bsrc=["']([^"']+)["'][^>]*>/gi)]
+  .filter((match) => /^\\/src-greenn\\/moretegra\\.js(?:\\?[^#"'\\s<>]*)?$/.test(match[1]));
+if (staticHomeScripts.length !== 1 || !/\\bdefer(?:\\s|>|=)/i.test(staticHomeScripts[0][0])) fail('home', 'one deferred static moretegra.js include required; optional version query allowed');
 if ((staticHome.match(/id="formulario"/g) || []).length !== 1) fail('home', 'initial HTML must contain exactly one #formulario');
 if ((staticHome.match(/data-form-anchor/g) || []).length !== 1) fail('home', 'initial HTML must contain exactly one interest-context mount');
 if (staticHome.includes('id="formulario" class="mt-form-anchor"')) fail('home', 'interest-context mount must not reuse #formulario');
