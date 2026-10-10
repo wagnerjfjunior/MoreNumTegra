@@ -29,9 +29,12 @@ check(html.includes('/assets/aria-higienopolis/gallery1-mobile-640.webp 640w'),"
 check(html.includes('/assets/aria-higienopolis/gallery1-mobile-828.webp 828w'),"retained gallery 828w remains");
 check(html.includes('/assets/aria-higienopolis/gallery1-thumb-240.webp'),"retained gallery thumbnail remains");
 
-// SEO/social/schema intentionally remain governed by prior facade source.
+// Product Authority changed the Search image owner to the already-approved access hero on 2026-10-10.
 check(html.includes('<link rel="canonical" href="https://www.moretegra.com.br/empreendimentos/aria-higienopolis/">'),"canonical unchanged");
-check(html.includes('https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/312/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Apartamento-Studio-Salas-Comerciais-Aria-Higienopolis-Sao-Paulo-SP-1715881825537.jpg'),"governed social/schema facade source remains present");
+const chosen="https://s3-gdigital.s3.amazonaws.com/gdigital/313/%C3%81ria%20Higien%C3%B3polis-Perspectiva%20ilustrada%20do%20acesso%20residencial..webp";
+check(html.includes(`<meta property="og:image" content="${chosen}">`),"approved OG image preserved");
+check(html.includes(`<meta name="twitter:image" content="${chosen}">`),"approved Twitter image preserved");
+check(html.includes(`"contentUrl": "${chosen}"`),"approved ImageObject source preserved");
 
 check(html.includes("GTM-PGCR4R47"),"GTM container remains");
 check(html.includes("data-moretegra-lead-form"),"Form46 markup remains");
