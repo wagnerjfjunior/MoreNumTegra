@@ -43,7 +43,7 @@ assert.equal(p.offers["@id"],o["@id"]);
 assert.equal(o.itemOffered["@id"],p["@id"]);
 assert.equal(o.priceCurrency,"BRL");
 assert.equal(o.price,"611685.00");
-assert.equal(p.image[0],n.image[0]);
+assert.equal(p.image[0],img.contentUrl);
 assert.equal(contact.telephone,"+5511960779328");
 assert.equal(agent.identifier.value,"209.905-F");
 assert.equal(svc.provider["@id"],"https://www.moretegra.com.br/#tegra-vendas");
