@@ -1,0 +1,21 @@
+name: Home desktop consent width contract
+on:
+  pull_request:
+    paths:
+      - 'src-greenn/preview/runtime.css'
+      - 'scripts/validate-home-consent-desktop-width.mjs'
+      - '.github/workflows/home-desktop-consent-width.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Freeze consent logic and ensure desktop-only CSS change
+        run: node scripts/validate-home-consent-desktop-width.mjs
