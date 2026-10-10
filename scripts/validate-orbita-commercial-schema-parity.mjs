@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+import {readFileSync} from "node:fs";
+import {execFileSync} from "node:child_process";
+import assert from "node:assert/strict";
+const path="src-greenn/empreendimentos/universo-tatuape-orbita/index.html";
+const base="3acd0a9228ebaf4d368fba40052f1ff41c0cbca2";
+const source=readFileSync(path,"utf8");
+const prior=execFileSync("git",["show",base+":"+path],{encoding:"utf8"});
+const pattern=/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
+const get=(s)=>{const all=[...s.matchAll(pattern)];assert.equal(all.length,1);return {raw:all[0][1],json:JSON.parse(all[0][1])}};
+const a=get(prior),b=get(source);
+assert.equal(source.replace(b.raw,a.raw),prior,"Only one JSON-LD graph may change; no visible copy/runtime/forms/media changed");
+const oldGraph=a.json["@graph"],graph=b.json["@graph"],find=(type)=>graph.find(n=>n["@type"]===type);
+const types=["WebSite","WebPage","BreadcrumbList","Brand","ApartmentComplex","FAQPage"];
+for(const type of types){const before=oldGraph.find(n=>n["@type"]===type),after=find(type);assert(before&&after, "missing original "+type);if(type==="WebPage"){const copy={...after};delete copy.mentions;assert.deepEqual(copy,before,"WebPage identity must not change");}else assert.deepEqual(after,before,"Original "+type+" entity cannot be modified");}
+const expectedExtra=["Organization","ContactPoint","Person","RealEstateAgent","Service","Product","Offer"];
+for(const type of expectedExtra)assert.equal(graph.filter(n=>n["@type"]===type).length,1,"Required unique "+type);
+const ids=graph.map(n=>n["@id"]).filter(Boolean);
+assert.equal(new Set(ids).size,ids.length,"@id must be unique");
+const n=find("ApartmentComplex"),p=find("Product"),o=find("Offer"),agent=find("RealEstateAgent"),svc=find("Service"),contact=find("ContactPoint");
+assert.equal(n.address.streetAddress,"Avenida Celso Garcia, 5040");
+assert.equal(n.address.postalCode,"03064-000");
+assert.equal(p.offers["@id"],o["@id"]);
+assert.equal(o.itemOffered["@id"],p["@id"]);
+assert.equal(o.priceCurrency,"BRL");
+assert.equal(o.price,"611685.00");
+assert.equal(p.image[0],n.image[0]);
+assert.equal(contact.telephone,"+5511960779328");
+assert.equal(agent.identifier.value,"209.905-F");
+assert.equal(svc.provider["@id"],"https://www.moretegra.com.br/#tegra-vendas");
+assert(!("availability" in o),"Do not claim confirmed stock");
+assert(!("address" in agent),"Do not present project address as the agent's office");
+assert(source.includes("Unidade AP0609 · 69 m² · R$ 8.865/m² · valor de referência R$ 611.685"),"Commercial data must be visible");
+assert(source.includes("CRECI-SP 209.905-F"),"Agent credentials must be visible");
+console.log("PASS: Orbita Product/Offer, Service and Agent grounded in visible page; existing FAQ/project/address frozen");
