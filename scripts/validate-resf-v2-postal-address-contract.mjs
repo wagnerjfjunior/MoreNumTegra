@@ -44,6 +44,30 @@ function scrub(ds) {
   return x;
  });
 }
+const secondaryBatch=new Set(['ampere-brooklin','ode-perdizes','teg-sacoma','tiel-vila-nova-conceicao']);
+function stripSecondaryImageEntities(ds,slug,html){
+ const nodes=flat(ds);
+ const route='https://www.moretegra.com.br/empreendimentos/'+slug+'/';
+ const main=html.slice(html.indexOf('<main'),html.indexOf('</main>')+7);
+ const imgs=[...main.matchAll(/<img\b[^>]*>/gi)].slice(0,2).map(m=>({src:(m[0].match(/\bsrc=["']([^"']+)/)||[])[1],alt:(m[0].match(/\balt=["']([^"']*)/)||[])[1]}));
+ assert.equal(imgs.length,2,slug+': two visible images required');
+ assert(imgs[0].src!==imgs[1].src,slug+': secondary image duplicates hero');
+ const page=nodes.find(n=>n['@type']==='WebPage');
+ const [primary,secondary]=['#primary-image','#secondary-image'].map(hash=>nodes.find(n=>n['@id']===route+hash));
+ assert(primary&&secondary,slug+': primary/secondary image entities required');
+ for(const [node,img] of [[primary,imgs[0]],[secondary,imgs[1]]]){
+  assert.equal(node['@type'],'ImageObject');
+  assert.equal(node.contentUrl,img.src,slug+': image URL differs from visible page');
+  assert.equal(node.caption,img.alt,slug+': image caption differs from visible alt');
+ }
+ assert.equal(page.primaryImageOfPage?.['@id'],primary['@id'],slug+': primary owner changed');
+ assert.deepEqual(page.image,[{'@id':primary['@id']},{'@id':secondary['@id']}],slug+': image order changed');
+ return ds.map(doc=>{const out=structuredClone(doc);const graph=out['@graph']||[out];const kept=graph.filter(n=>n['@id']!==primary['@id']&&n['@id']!==secondary['@id']);
+  for(const n of kept)if(n['@type']==='WebPage'){delete n.primaryImageOfPage;delete n.image;}
+  if(out['@graph'])out['@graph']=kept;
+  return out;
+ });
+}
 let changed=0,completeUnchanged=0;
 for(const [slug,street,cep] of expected){
  const filename='src-greenn/empreendimentos/'+slug+'/index.html';
@@ -70,6 +94,9 @@ for(const [slug,street,cep] of expected){
    const newTypes=enriched.filter(n=>!baseline.some(x=>x['@id']===n['@id'])).map(n=>n['@type']);
    const allowed=['Organization','ContactPoint','Person','RealEstateAgent','Service','Product','Offer','ImageObject','ImageObject','FloorPlan','FloorPlan','FloorPlan','FloorPlan'];
    assert.deepEqual(newTypes.slice().sort(),allowed.slice().sort(),'Órbita: only specifically approved commercial/image/plan types may be added');
+ }else if(secondaryBatch.has(slug)){
+   const normalized=stripSecondaryImageEntities(after,slug,candidate);
+   assert.deepEqual(scrub(normalized),scrub(before),slug+': forbidden non-image/non-address schema change');
  }else assert.deepEqual(scrub(after),scrub(before),slug+': non-address JSON-LD changed');
  const prior=flat(before).filter(x=>x['@type']==='ApartmentComplex');
  const current=flat(after).filter(x=>x['@type']==='ApartmentComplex');
