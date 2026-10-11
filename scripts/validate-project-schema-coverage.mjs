@@ -20,7 +20,19 @@ for(const slug of slugs){
  for(const req of mustExist)assert(now.some(n=>type(n,req)),slug+': missing essential '+req);
  for(const old of base){
    if(!old['@id'])continue;
-   const newer=now.find(n=>n['@id']===old['@id']);
+   let newer=now.find(n=>n['@id']===old['@id']);
+   if(!newer&&slug==='caminhos-da-lapa-elo-duo'&&old['@type']==='RealEstateAgent'&&old['@id']==='https://www.moretegra.com.br/#sabrina-real-estate-agent'){
+     const id='https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#sabrina-atendimento';
+     newer=now.find(n=>n['@id']===id&&n['@type']==='RealEstateAgent');
+     assert(newer,'Elo Duo must replace global identity with exact local Realtor identity');
+     const project=now.find(n=>n['@type']==='ApartmentComplex');
+     assert.equal(newer.address?.streetAddress,project.address?.streetAddress,'Elo Duo on-site street mismatch');
+     assert.equal(newer.address?.postalCode,project.address?.postalCode,'Elo Duo on-site CEP mismatch');
+     assert.deepEqual(newer.geo,project.geo,'Elo Duo on-site verified coordinates mismatch');
+     assert.equal(newer.image,old.image,'Elo Duo Realtor image changed');
+     const restored={...newer,'@id':old['@id'],address:old.address,geo:old.geo};
+     assert.deepEqual(restored,old,'Elo Duo Realtor has unintended changes besides scoped identity/location');
+   }
    assert(newer,slug+': schema entity deleted: '+old['@type']+' '+old['@id']);
  }
  const beforeTypes=new Set(base.map(n=>n['@type']));
