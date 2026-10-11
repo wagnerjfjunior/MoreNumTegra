@@ -1,7 +1,7 @@
 # RESF — Exact Project Page Build Standard V1
 Date: 2026-10-11
 Repository: `wagnerjfjunior/MoreNumTegra`
-Status: PROPOSED_CANONICAL / DRAFT_PR; becomes consumer canonical only after review, approval and merge to main.
+Status: CANONICAL_FOR_NEW_EXACT_PROJECT_BUILDS; integrated via PR #390, merge SHA b9edb97d5a459e5773c8375678f692bd026d64d4. Existing pages require bounded adoption decisions; acceptance of this document does not certify Ampère post-release QA.
 Scope: exact-project pages under `/empreendimentos/<slug>/`.
 Runtime owner: MoreNumTegra main. This document does not supersede product facts, the functional/technical baselines, existing ADRs, the adopted RESF provider, or individual Product Authority gates.
 
