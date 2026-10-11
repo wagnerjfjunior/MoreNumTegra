@@ -44,6 +44,33 @@ function scrub(ds) {
   return x;
  });
 }
+function normalizeOnsiteAgent(ds,originalDs,slug) {
+ const copy=structuredClone(ds),current=flat(copy),baseline=flat(originalDs);
+ const agent=current.find(n=>n['@type']==='RealEstateAgent');
+ const prior=baseline.find(n=>n['@type']==='RealEstateAgent');
+ if(!agent){assert(!prior,slug+': legacy RealEstateAgent removed');return copy}
+ assert(prior,slug+': unexpected new RealEstateAgent');
+ const project=current.find(n=>n['@type']==='ApartmentComplex');
+ assert(project?.address?.streetAddress,slug+': project location missing');
+ const address=agent.address;
+ assert(address?.['@type']==='PostalAddress',slug+': onsite realtor address missing');
+ for(const k of ['streetAddress','addressLocality','addressRegion'])assert.equal(address[k],project.address[k],slug+': onsite address '+k+' mismatch');
+ assert.equal(typeof address.addressCountry==='string'?address.addressCountry:address.addressCountry?.name,
+ typeof project.address.addressCountry==='string'?project.address.addressCountry:project.address.addressCountry?.name,slug+': country mismatch');
+ if(project.address.postalCode)assert.equal(address.postalCode,project.address.postalCode,slug+': on-site postal code mismatch');
+ else if(prior.address?.postalCode)assert.equal(address.postalCode,prior.address.postalCode,slug+': existing postal code must remain');
+ assert.equal(agent.image,prior.image,slug+': commercial portrait must remain');
+ const originalId=prior['@id'];
+ if(slug==='caminhos-da-lapa-elo-duo'){
+  const siteId='https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#sabrina-atendimento';
+  assert.equal(agent['@id'],siteId,'Elo Duo must not reuse global Home RealEstateAgent @id for different on-site location');
+  assert.deepEqual(agent.geo,project.geo,'Elo Duo realtor geo must use user-confirmed project geo');
+  for(const node of current)if(node['@type']==='Service'&&node.provider?.['@id']===siteId)node.provider['@id']=originalId;
+ }else assert.equal(agent['@id'],originalId,slug+': agent entity identity changed');
+ const locationIndex=current.indexOf(agent);const restored=structuredClone(prior);current[locationIndex]=restored;
+ for(const doc of copy)if(doc['@graph']){const idx=doc['@graph'].findIndex(x=>x===agent);if(idx>=0)doc['@graph'][idx]=restored}
+ return copy;
+}
 function stripApprovedImages(ds,baselineDs,slug,html){
  const nodes=flat(ds),before=flat(baselineDs);
  const route='https://www.moretegra.com.br/empreendimentos/'+slug+'/';
@@ -109,7 +136,7 @@ for(const [slug,street,cep] of expected){
    const allowed=['Organization','ContactPoint','Person','RealEstateAgent','Service','Product','Offer','ImageObject','ImageObject','FloorPlan','FloorPlan','FloorPlan','FloorPlan'];
    assert.deepEqual(newTypes.slice().sort(),allowed.slice().sort(),'Órbita: only specifically approved commercial/image/plan types may be added');
  }else {
-   const normalized=stripApprovedImages(after,before,slug,candidate);
+   const normalized=normalizeOnsiteAgent(stripApprovedImages(after,before,slug,candidate),before,slug);
    assert.deepEqual(scrub(normalized),scrub(before),slug+': forbidden non-image/non-address schema change');
  }
  const prior=flat(before).filter(x=>x['@type']==='ApartmentComplex');
