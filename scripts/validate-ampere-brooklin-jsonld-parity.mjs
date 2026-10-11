@@ -53,4 +53,18 @@ assert(page.image?.every(x=>ids.has(x['@id'])),'page image references must resol
 for(const key of ['offers','isRelatedTo'])assert(ids.has(product[key]['@id']));
 for(const key of ['worksFor','workLocation'])assert(ids.has(person[key]['@id']));
 assert.equal(project.url,base);
+
+const faq=one('FAQPage');
+assert.equal(faq.mainEntity.length,12,'Ampère SEO FAQ must contain 12 verified answers');
+const section=html.match(/<section class="section residences" id="faq">([\s\S]*?)<\/section>/)?.[1];
+assert(section,'visible FAQ section missing');
+const pairs=[...section.matchAll(/<details><summary>(.*?)<\/summary><p>(.*?)<\/p><\/details>/g)].map(m=>[m[1],m[2]]);
+assert.equal(pairs.length,12,'12 FAQ entries must be visibly rendered');
+assert.deepEqual(faq.mainEntity.map(q=>[q.name,q.acceptedAnswer?.text]),pairs,'FAQPage questions and answers must match visible HTML in order');
+assert.equal(new Set(pairs.map(p=>p[0])).size,12,'questions must be unique');
+for(const [question,answer] of pairs){
+ assert(question.endsWith('?'),'FAQ must be a real question');
+ assert(answer.length>=40,'SEO FAQ answers must be useful and substantive');
+}
+assert(!faq.mainEntity.some(q=>/garantid|estoque dispon[ií]vel/i.test(q.acceptedAnswer?.text||'')),'Do not guarantee commercial availability');
 console.log('AMPERE_SCHEMA_PARITY_PASS nodes=18 plans=3 facts=GOVERNED brand=COMPATIBLE jsonld_only=true');
