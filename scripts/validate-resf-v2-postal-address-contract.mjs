@@ -227,7 +227,28 @@ for(const [slug,street,cep] of expected){
  const original=execFileSync('git',['show',BASE+':'+filename],{encoding:'utf8'});
  const candidate=readFileSync(filename,'utf8');
  const before=documents(original),after=documents(candidate);
- if(slug==='universo-tatuape-orbita'){
+ if(slug==='ampere-brooklin'){
+   // Schema-only PR #386: preserve all pre-existing entities except the bounded
+   // WebPage mentions, ApartmentComplex.brand removal and verified FloorPlan links.
+   // Compare against immediately preceding main instead of the 2026-09-xx address baseline.
+   const refFile=execFileSync('git',['show','7e5e2297c21eb6a01cad52c829a0533f5c1b7214:'+filename],{encoding:'utf8'});
+   const baseline=flat(documents(refFile)),current=flat(after),baselineIds=new Set(baseline.map(n=>n['@id']));
+   const retained=current.filter(n=>baselineIds.has(n['@id'])).map(n=>{
+     const x=structuredClone(n),prior=baseline.find(o=>o['@id']===n['@id']);
+     if(n['@type']==='WebPage')delete x.mentions;
+     if(n['@type']==='ApartmentComplex'){
+       delete x.accommodationFloorPlan;
+       x.brand=structuredClone(prior.brand);
+       assert(!Object.hasOwn(n,'brand'),'Ampere: ApartmentComplex.brand must be absent');
+     }
+     return x;
+   });
+   assert.deepEqual(retained,baseline,'Ampere: existing graph may only gain bounded relations and remove invalid brand');
+   const newTypes=current.filter(n=>!baselineIds.has(n['@id'])).map(n=>n['@type']).sort();
+   assert.deepEqual(newTypes,['Organization','ContactPoint','Person','RealEstateAgent','Service','Product','Offer','FloorPlan','FloorPlan','FloorPlan'].sort(),'Ampere: unexpected new entity type');
+   const outsideJsonld=x=>x.replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi,'JSONLD');
+   assert.equal(outsideJsonld(candidate),outsideJsonld(refFile),'Ampere visible HTML unchanged');
+ }else if(slug==='universo-tatuape-orbita'){
    // The separately gated Órbita commercial parity PR adds approved ImageObject,
    // actual FloorPlans and commercial entities; preserve all original entities.
    const baseline=flat(before);

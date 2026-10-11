@@ -34,6 +34,6 @@ for(const slug of slugs){
  console.log('ONSITE_AGENT_PASS',slug,a.address.streetAddress,a.address.postalCode);
 }
 assert.equal(pages,25,'Project scope changed');
-assert.equal(agents,16,'RealEstateAgent coverage changed; review contract deliberately');
-assert.equal(notApplicable,9,'Pages without Realtor entity changed; review scope deliberately');
-console.log('PASS: 16 project-scoped RealEstateAgents match local project addresses; 9 pages without separate RealEstateAgent unaffected');
+assert.equal(agents,17,'RealEstateAgent coverage changed; review contract deliberately');
+assert.equal(notApplicable,8,'Pages without Realtor entity changed; review scope deliberately');
+console.log('PASS: 17 project-scoped RealEstateAgents match local project addresses; 8 pages without separate RealEstateAgent unaffected');
