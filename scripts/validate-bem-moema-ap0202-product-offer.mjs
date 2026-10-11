@@ -22,7 +22,7 @@ const normalized=baseGraph.filter(n=>!additions.has(n['@type'])).map(n=>{
  const prev=oldGraph.find(x=>x['@type']===n['@type']&&(!x['@id']||x['@id']===n['@id']));
  assert(prev,'Missing previous entity '+n['@type']);
  const copy=structuredClone(n);
- const fields=n['@type']==='WebPage'?['@id','isPartOf','mainEntity','breadcrumb','inLanguage','mentions']:n['@type']==='ApartmentComplex'?['@id','brand','accommodationFloorPlan']:n['@type']==='Organization'?['url','brand','contactPoint']:[];
+ const fields=n['@type']==='WebPage'?['@id','isPartOf','mainEntity','breadcrumb','inLanguage','mentions']:n['@type']==='ApartmentComplex'?['@id','brand','accommodationFloorPlan','image']:n['@type']==='Organization'?['url','brand','contactPoint']:[];
  for(const k of fields)if(Object.hasOwn(prev,k))copy[k]=structuredClone(prev[k]);else delete copy[k];
  return copy;
 });
@@ -31,6 +31,7 @@ const ps=graph.filter(n=>n['@type']==='Product'),os=graph.filter(n=>n['@type']==
 assert.equal(ps.length,1);assert.equal(os.length,1);
 const product=ps[0],offer=os[0],route='https://www.moretegra.com.br/empreendimentos/bem-moema/';
 assert.equal(product['@id'],route+'#product-ap0202');
+assert.deepEqual(product.isRelatedTo,{'@id':route+'#project'},'AP0202 must link to same project');
 assert.equal(offer['@id'],route+'#offer-ap0202');
 assert.equal(product.offers['@id'],offer['@id']);
 assert.equal(offer.itemOffered['@id'],product['@id']);

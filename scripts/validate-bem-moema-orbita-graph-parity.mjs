@@ -20,6 +20,8 @@ assert.equal(p.mainEntity['@id'],route+'#project');
 assert.equal(p.breadcrumb['@id'],route+'#breadcrumb');
 assert.equal(p.isPartOf['@id'],one('WebSite')['@id']);
 assert.equal(project['@id'],route+'#project');
+assert.deepEqual(one('Product').isRelatedTo,{'@id':project['@id']},'AP0202 must link to its own project');
+assert.equal(new Set(project.image.map(x=>typeof x==='string'?x:JSON.stringify(x))).size,project.image.length,'Duplicate project image forbidden');
 assert.deepEqual(agent.address,project.address,'Agent serves in loco');
 assert.equal(one('Person').workLocation['@id'],project['@id']);
 assert.equal(one('Person').worksFor['@id'],one('Organization')['@id']);
@@ -39,7 +41,7 @@ for(const [sqm,url] of assets){const x=plans.find(n=>n['@id']===route+'#floorpla
 for(const oldNode of original){
  const curr=nodes.find(n=>n['@type']===oldNode['@type']&&(!oldNode['@id']||n['@id']===oldNode['@id']));
  assert(curr,'Old type missing '+oldNode['@type']);
- const allowed=oldNode['@type']==='WebPage'?['@id','isPartOf','mainEntity','breadcrumb','inLanguage','mentions']:oldNode['@type']==='ApartmentComplex'?['@id','brand','accommodationFloorPlan']:oldNode['@type']==='Organization'?['url','brand','contactPoint']:[];
+ const allowed=oldNode['@type']==='WebPage'?['@id','isPartOf','mainEntity','breadcrumb','inLanguage','mentions']:oldNode['@type']==='ApartmentComplex'?['@id','brand','accommodationFloorPlan','image']:oldNode['@type']==='Organization'?['url','brand','contactPoint']:oldNode['@type']==='Product'?['isRelatedTo']:[];
  const normalized=structuredClone(curr);
  for(const k of allowed){if(Object.hasOwn(oldNode,k))normalized[k]=structuredClone(oldNode[k]);else delete normalized[k];}
  assert.deepEqual(normalized,oldNode,'Unexpected delta in '+oldNode['@type']);

@@ -138,6 +138,10 @@ function stripBemMoemaRichEntities(ds,slug){
  assert.equal(offer.length,1,'Bem Moema AP0202: one Offer required');
  const unit=product[0],deal=offer[0];
  assert.equal(unit['@id'],route+'#product-ap0202');
+ assert.deepEqual(unit.isRelatedTo,{'@id':route+'#project'},'Bem Moema Product project ownership must match ApartmentComplex');
+ const imageBaseline=['https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/336/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Apartamento-Bem-Moema-Sao-Paulo-SP-714x640-1715883122503.jpg'];
+ assert.equal(project.image.filter(x=>x===imageBaseline[0]).length,1,'Bem Moema image duplicated');
+ assert.equal(project.image.length,6,'Bem Moema gallery cardinality must reflect one duplicate removal');
  assert.equal(deal['@id'],route+'#offer-ap0202');
  assert.equal(unit.name,'Bem Moema — apartamento unidade AP0202 de 80 m²');
  assert.equal(unit.url,route);assert.equal(deal.url,route);
@@ -193,10 +197,14 @@ function stripBemMoemaRichEntities(ds,slug){
  const baselineFile='src-greenn/empreendimentos/bem-moema/index.html';
  const approved=execFileSync('git',['show','b5da71bf80cacc115026466f5b37c79a7f98e13c:'+baselineFile],{encoding:'utf8'});
  const oldGraph=flat(documents(approved));
+ const oldProject=oldGraph.find(n=>n['@type']==='ApartmentComplex');
+ assert(oldProject?.image?.length===7,'Bem Moema source image inventory unexpectedly changed');
+ const expectedDedup=oldProject.image.filter((u,i,a)=>a.indexOf(u)===i);
+ assert.deepEqual(project.image,expectedDedup,'Only an exact duplicate image can be removed');
  for(const type of ['WebPage','ApartmentComplex','Organization']){
   const current=get(type)[0],previous=oldGraph.find(n=>n['@type']===type);
   assert(current&&previous,'Missing old/new '+type);
-  const permitted=type==='WebPage'?['@id','isPartOf','mainEntity','breadcrumb','inLanguage','mentions']:type==='ApartmentComplex'?['@id','brand','accommodationFloorPlan']:['url','brand','contactPoint'];
+  const permitted=type==='WebPage'?['@id','isPartOf','mainEntity','breadcrumb','inLanguage','mentions']:type==='ApartmentComplex'?['@id','brand','accommodationFloorPlan','image']:['url','brand','contactPoint'];
   const normalized=structuredClone(current);
   for(const k of permitted)if(Object.hasOwn(previous,k))normalized[k]=structuredClone(previous[k]);else delete normalized[k];
   assert.deepEqual(normalized,previous,'Bem Moema: forbidden existing entity delta '+type);
@@ -206,7 +214,7 @@ function stripBemMoemaRichEntities(ds,slug){
   d['@graph']=d['@graph'].filter(n=>!ids.has(n['@id']));
   for(const n of d['@graph'])if(['WebPage','ApartmentComplex','Organization'].includes(n['@type'])){
    const previous=oldGraph.find(x=>x['@type']===n['@type']);
-   const fields=n['@type']==='WebPage'?['@id','isPartOf','mainEntity','breadcrumb','inLanguage','mentions']:n['@type']==='ApartmentComplex'?['@id','brand','accommodationFloorPlan']:['url','brand','contactPoint'];
+   const fields=n['@type']==='WebPage'?['@id','isPartOf','mainEntity','breadcrumb','inLanguage','mentions']:n['@type']==='ApartmentComplex'?['@id','brand','accommodationFloorPlan','image']:['url','brand','contactPoint'];
    for(const k of fields)if(Object.hasOwn(previous,k))n[k]=structuredClone(previous[k]);else delete n[k];
   }
  }
