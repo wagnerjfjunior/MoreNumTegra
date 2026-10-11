@@ -151,8 +151,65 @@ function stripBemMoemaRichEntities(ds,slug){
  assert.deepEqual(unit.image,[photo?.contentUrl],'AP0202 must preserve exact approved primary photo');
  assert.equal(unit.additionalProperty?.value,'Unidade AP0202 · 80 m² · R$ 22.640/m² · valor de referência R$ 1.811.200');
  assert(deal.description.includes('sujeitos à confirmação'),'Reference offer must have clear qualification');
- const ids=new Set([breadcrumb,brand,org,contact,agent,unit,deal].map(n=>n['@id']));
- for(const d of out)if(d['@graph'])d['@graph']=d['@graph'].filter(n=>!ids.has(n['@id']));
+ const site=get('WebSite'),person=get('Person'),service=get('Service'),plans=get('FloorPlan');
+ assert.equal(site.length,1,'Bem Moema: exactly one WebSite');
+ assert.equal(person.length,1,'Bem Moema: exactly one Person');
+ assert.equal(service.length,1,'Bem Moema: exactly one Service');
+ assert.equal(plans.length,3,'Bem Moema: three verified FloorPlans');
+ const page=get('WebPage')[0];
+ assert.equal(page['@id'],route+'#webpage');
+ assert.equal(site[0]['@id'],'https://www.moretegra.com.br/#website');
+ assert.equal(site[0].url,'https://www.moretegra.com.br/');
+ assert.equal(page.isPartOf?.['@id'],site[0]['@id']);
+ assert.equal(page.mainEntity?.['@id'],route+'#project');
+ assert.equal(page.breadcrumb?.['@id'],breadcrumb['@id']);
+ assert.equal(page.inLanguage,'pt-BR');
+ assert.deepEqual(page.mentions,[{'@id':route+'#project'},{'@id':person[0]['@id']}]);
+ assert.equal(project['@id'],route+'#project');
+ assert.equal(project.brand?.['@id'],brand['@id']);
+ assert.equal(org.url,'https://www.moretegra.com.br/');
+ assert.equal(org.brand?.['@id'],brand['@id']);
+ assert.equal(org.contactPoint?.['@id'],contact['@id']);
+ assert.equal(person[0]['@id'],'https://www.moretegra.com.br/#sabrina-da-tegra');
+ assert.equal(person[0].identifier?.value,'209.905-F');
+ assert.equal(person[0].worksFor?.['@id'],org['@id']);
+ assert.equal(person[0].workLocation?.['@id'],project['@id']);
+ assert.equal(service[0]['@id'],route+'#atendimento');
+ assert.equal(service[0].provider?.['@id'],org['@id']);
+ assert.equal(service[0].broker?.['@id'],person[0]['@id']);
+ assert.equal(service[0].url,route);
+ const verified=[[80,'1715461967103'],[123,'1715462066241'],[148,'1715462148337']];
+ assert.deepEqual(project.accommodationFloorPlan,verified.map(([sqm])=>({'@id':route+'#floorplan-'+sqm})));
+ for(const [sqm,assetSuffix] of verified){
+   const plan=plans.find(x=>x['@id']===route+'#floorplan-'+sqm);
+   assert(plan,'Bem Moema: missing floorplan '+sqm);
+   assert.equal(plan.floorSize?.value,sqm);
+   assert.equal(plan.floorSize?.unitCode,'MTK');
+   assert(plan.image?.endsWith(assetSuffix+'.jpg'),'Bem Moema: plant image ownership changed '+sqm);
+ }
+ // Compare against the last approved Bem Moema baseline, then remove only
+ // the exact nodes/relationships that this PR added. This preserves all
+ // other commercial and media claims.
+ const baselineFile='src-greenn/empreendimentos/bem-moema/index.html';
+ const approved=execFileSync('git',['show','b5da71bf80cacc115026466f5b37c79a7f98e13c:'+baselineFile],{encoding:'utf8'});
+ const oldGraph=flat(documents(approved));
+ for(const type of ['WebPage','ApartmentComplex','Organization']){
+  const current=get(type)[0],previous=oldGraph.find(n=>n['@type']===type);
+  assert(current&&previous,'Missing old/new '+type);
+  const permitted=type==='WebPage'?['@id','isPartOf','mainEntity','breadcrumb','inLanguage','mentions']:type==='ApartmentComplex'?['@id','brand','accommodationFloorPlan']:['url','brand','contactPoint'];
+  const normalized=structuredClone(current);
+  for(const k of permitted)if(Object.hasOwn(previous,k))normalized[k]=structuredClone(previous[k]);else delete normalized[k];
+  assert.deepEqual(normalized,previous,'Bem Moema: forbidden existing entity delta '+type);
+ }
+ const ids=new Set([breadcrumb,brand,org,contact,agent,unit,deal,site[0],person[0],service[0],...plans].map(n=>n['@id']));
+ for(const d of out)if(d['@graph']){
+  d['@graph']=d['@graph'].filter(n=>!ids.has(n['@id']));
+  for(const n of d['@graph'])if(['WebPage','ApartmentComplex','Organization'].includes(n['@type'])){
+   const previous=oldGraph.find(x=>x['@type']===n['@type']);
+   const fields=n['@type']==='WebPage'?['@id','isPartOf','mainEntity','breadcrumb','inLanguage','mentions']:n['@type']==='ApartmentComplex'?['@id','brand','accommodationFloorPlan']:['url','brand','contactPoint'];
+   for(const k of fields)if(Object.hasOwn(previous,k))n[k]=structuredClone(previous[k]);else delete n[k];
+  }
+ }
  return out;
 }
 let changed=0,completeUnchanged=0;
