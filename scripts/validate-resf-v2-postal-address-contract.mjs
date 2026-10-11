@@ -133,7 +133,25 @@ function stripBemMoemaRichEntities(ds,slug){
  assert.equal(agent.identifier?.value,'209.905-F');
  assert.equal(agent.url,route);
  assert.equal(agent.parentOrganization?.['@id'],org['@id']);
- const ids=new Set([breadcrumb,brand,org,contact,agent].map(n=>n['@id']));
+ const product=get('Product'),offer=get('Offer');
+ assert.equal(product.length,1,'Bem Moema AP0202: one Product required');
+ assert.equal(offer.length,1,'Bem Moema AP0202: one Offer required');
+ const unit=product[0],deal=offer[0];
+ assert.equal(unit['@id'],route+'#product-ap0202');
+ assert.equal(deal['@id'],route+'#offer-ap0202');
+ assert.equal(unit.name,'Bem Moema — apartamento unidade AP0202 de 80 m²');
+ assert.equal(unit.url,route);assert.equal(deal.url,route);
+ assert.equal(unit.brand?.['@id'],brand['@id']);
+ assert.equal(unit.offers?.['@id'],deal['@id']);
+ assert.equal(deal.itemOffered?.['@id'],unit['@id']);
+ assert.equal(deal.price,'1811200.00');assert.equal(deal.priceCurrency,'BRL');
+ assert(!('availability' in deal),'Unverified availability cannot be claimed');
+ assert(!('aggregateRating' in unit)&&!('review' in unit),'No manufactured ratings');
+ const photo=get('ImageObject').find(n=>n['@id']===route+'#primary-image');
+ assert.deepEqual(unit.image,[photo?.contentUrl],'AP0202 must preserve exact approved primary photo');
+ assert.equal(unit.additionalProperty?.value,'Unidade AP0202 · 80 m² · R$ 22.640/m² · valor de referência R$ 1.811.200');
+ assert(deal.description.includes('sujeitos à confirmação'),'Reference offer must have clear qualification');
+ const ids=new Set([breadcrumb,brand,org,contact,agent,unit,deal].map(n=>n['@id']));
  for(const d of out)if(d['@graph'])d['@graph']=d['@graph'].filter(n=>!ids.has(n['@id']));
  return out;
 }
