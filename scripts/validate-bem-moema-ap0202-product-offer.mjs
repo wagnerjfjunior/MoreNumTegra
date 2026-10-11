@@ -42,6 +42,7 @@ assert(html.includes(visible),'Commercial offer must be visible in human-readabl
 assert(html.includes('Consulte disponibilidade e condições vigentes.'),'Availability caveat required');
 assert.equal(product.additionalProperty?.value,visible);
 assert.equal(product.name,'Bem Moema — apartamento unidade AP0202 de 80 m²');
+assert(!Object.hasOwn(graph.find(n=>n['@type']==='ApartmentComplex'),'brand'),'ApartmentComplex has no brand property');
 const primary=graph.find(n=>n['@id']===route+'#primary-image');
 assert.deepEqual(product.image,[primary.contentUrl]);
 assert(!('availability' in offer),'Must not claim live inventory');
