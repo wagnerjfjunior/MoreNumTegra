@@ -1,0 +1,18 @@
+name: Ampere form footer Aria UX parity
+on:
+  pull_request:
+    paths:
+      - 'src-greenn/empreendimentos/ampere-brooklin/index.html'
+      - 'src-greenn/empreendimentos/aria-higienopolis/index.html'
+      - 'scripts/validate-ampere-form-footer-aria-ux.mjs'
+      - '.github/workflows/ampere-form-footer-aria-ux.yml'
+  workflow_dispatch:
+jobs:
+  ux-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/validate-ampere-form-footer-aria-ux.mjs
