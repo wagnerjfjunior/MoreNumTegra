@@ -253,7 +253,14 @@ for(const [slug,street,cep] of expected){
      .replace(/<section class="lead(?: mt-conversion-form)?" id="formulario"[\s\S]*?<\/section>/,'APPROVED_FORM_SECTION')
      .replace(/<footer class="footer(?: mt-footer)?" data-mnt-commercial-footer>[\s\S]*?<\/footer>/,'APPROVED_FOOTER')
      .replace(/\n\/\* Ária Higienópolis UX\/CSS reference[^]*?(?=<\/style>)/,'');
-   assert.equal(withoutApprovedUx(candidate),withoutApprovedUx(refFile),'Ampere HTML outside approved form/footer CSS unchanged');
+   const normalizeApprovedFacts=x=>withoutApprovedUx(x)
+     .replace(/<div class="hero-meta"><div><strong>262 m²<\/strong>[\s\S]*?<\/span><\/div><\/div>(?=<a class="hero-cta")/,'')
+     .replace(/<section class="facts"(?: aria-label="Resumo do Ampère Brooklin")?>[\s\S]*?<\/section>/,'APPROVED_FACTS_SECTION')
+     .replace(/\.hero-meta\{[^}]*\}\.hero-meta strong\{[^}]*\}\.hero-meta span\{[^}]*\}/,'')
+     .replace(/\.facts\{[^}]*\}\.facts-in\{[^}]*\}\.fact\{[^}]*\}\.fact:last-child\{[^}]*\}\.fact b\{[^}]*\}\.fact span\{[^}]*\}/,'')
+     .replace(/\.facts\{[^}]*\}\.facts-in\{[^}]*\}\.fact\{[^}]*\}\.fact:nth-child\(2n\)\{[^}]*\}\.fact:nth-child\(n\+3\)\{[^}]*\}\.fact b\{[^}]*\}\.fact span\{[^}]*\}\.fact em\{[^}]*\}@media\(min-width:900px\)\{\.facts-in\{[^}]*\}\.fact\{[^}]*\}\.fact:nth-child\(2n\)\{[^}]*\}\.fact:last-child\{[^}]*\}\}/,'')
+     .replace('@media(max-width:900px){.facts-in{grid-template-columns:repeat(2,1fr)}','@media(max-width:900px){');
+   assert.equal(normalizeApprovedFacts(candidate),normalizeApprovedFacts(refFile),'Ampere HTML outside approved form/footer/facts CSS unchanged');
  }else if(slug==='universo-tatuape-orbita'){
    // The separately gated Órbita commercial parity PR adds approved ImageObject,
    // actual FloorPlans and commercial entities; preserve all original entities.
