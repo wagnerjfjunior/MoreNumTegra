@@ -236,6 +236,11 @@ for(const [slug,street,cep] of expected){
    const retained=current.filter(n=>baselineIds.has(n['@id'])).map(n=>{
      const x=structuredClone(n),prior=baseline.find(o=>o['@id']===n['@id']);
      if(n['@type']==='WebPage')delete x.mentions;
+     if(n['@type']==='FAQPage'){
+       assert.equal(n.mainEntity.length,12,'Ampere: 12 FAQ questions must be present');
+       assert.deepEqual(n.mainEntity.slice(0,6),prior.mainEntity,'Ampere: six previously validated questions must stay intact');
+       x.mainEntity=structuredClone(prior.mainEntity);
+     }
      if(n['@type']==='ApartmentComplex'){
        delete x.accommodationFloorPlan;
        x.brand=structuredClone(prior.brand);
