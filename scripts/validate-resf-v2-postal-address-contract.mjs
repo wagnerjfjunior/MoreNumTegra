@@ -170,6 +170,7 @@ function stripBemMoemaRichEntities(ds,slug){
  assert.equal(page.inLanguage,'pt-BR');
  assert.deepEqual(page.mentions,[{'@id':route+'#project'},{'@id':person[0]['@id']}]);
  assert.equal(project['@id'],route+'#project');
+ assert(!Object.hasOwn(project,'brand'),'Schema.org ApartmentComplex cannot carry brand; Product and Organization retain it');
  assert.equal(project.brand?.['@id'],brand['@id']);
  assert.equal(org.url,'https://www.moretegra.com.br/');
  assert.equal(org.brand?.['@id'],brand['@id']);
