@@ -109,6 +109,34 @@ function stripApprovedImages(ds,baselineDs,slug,html){
   return out;
  });
 }
+function stripBemMoemaRichEntities(ds,slug){
+ if(slug!=='bem-moema')return ds;
+ const out=structuredClone(ds),nodes=flat(out);
+ const route='https://www.moretegra.com.br/empreendimentos/bem-moema/';
+ const list=['BreadcrumbList','Brand','Organization','ContactPoint','RealEstateAgent'];
+ const get=t=>nodes.filter(n=>n['@type']===t);
+ for(const t of list)assert.equal(get(t).length,1,'Bem Moema: expected exactly one '+t);
+ const breadcrumb=get('BreadcrumbList')[0];
+ assert.equal(breadcrumb['@id'],route+'#breadcrumb');
+ assert.deepEqual(breadcrumb.itemListElement,[{'@type':'ListItem',position:1,name:'More em um Tegra',item:'https://www.moretegra.com.br/'},{'@type':'ListItem',position:2,name:'Bem Moema',item:route}]);
+ const brand=get('Brand')[0],org=get('Organization')[0],contact=get('ContactPoint')[0],agent=get('RealEstateAgent')[0],project=get('ApartmentComplex')[0];
+ assert.equal(brand['@id'],'https://www.moretegra.com.br/#tegra-brand');
+ assert.equal(brand.name,'Tegra');
+ assert.equal(org['@id'],'https://www.moretegra.com.br/#tegra-vendas');
+ assert.equal(org.name,'Tegra Vendas');
+ assert.equal(contact['@id'],'https://www.moretegra.com.br/#sabrina-contato');
+ assert.equal(contact.telephone,'+5511960779328');
+ assert.equal(agent['@id'],route+'#sabrina-atendimento');
+ assert.deepEqual(agent.address,project.address,'Bem Moema: agent location must equal project');
+ assert.equal(agent.image,'https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp');
+ assert.equal(agent.telephone,'+5511960779328');
+ assert.equal(agent.identifier?.value,'209.905-F');
+ assert.equal(agent.url,route);
+ assert.equal(agent.parentOrganization?.['@id'],org['@id']);
+ const ids=new Set([breadcrumb,brand,org,contact,agent].map(n=>n['@id']));
+ for(const d of out)if(d['@graph'])d['@graph']=d['@graph'].filter(n=>!ids.has(n['@id']));
+ return out;
+}
 let changed=0,completeUnchanged=0;
 for(const [slug,street,cep] of expected){
  const filename='src-greenn/empreendimentos/'+slug+'/index.html';
@@ -136,7 +164,7 @@ for(const [slug,street,cep] of expected){
    const allowed=['Organization','ContactPoint','Person','RealEstateAgent','Service','Product','Offer','ImageObject','ImageObject','FloorPlan','FloorPlan','FloorPlan','FloorPlan'];
    assert.deepEqual(newTypes.slice().sort(),allowed.slice().sort(),'Órbita: only specifically approved commercial/image/plan types may be added');
  }else {
-   const normalized=normalizeOnsiteAgent(stripApprovedImages(after,before,slug,candidate),before,slug);
+   const normalized=normalizeOnsiteAgent(stripApprovedImages(stripBemMoemaRichEntities(after,slug),before,slug,candidate),before,slug);
    assert.deepEqual(scrub(normalized),scrub(before),slug+': forbidden non-image/non-address schema change');
  }
  const prior=flat(before).filter(x=>x['@type']==='ApartmentComplex');
