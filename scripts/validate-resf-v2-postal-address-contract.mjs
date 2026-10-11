@@ -247,7 +247,13 @@ for(const [slug,street,cep] of expected){
    const newTypes=current.filter(n=>!baselineIds.has(n['@id'])).map(n=>n['@type']).sort();
    assert.deepEqual(newTypes,['Organization','ContactPoint','Person','RealEstateAgent','Service','Product','Offer','FloorPlan','FloorPlan','FloorPlan'].sort(),'Ampere: unexpected new entity type');
    const outsideJsonld=x=>x.replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi,'JSONLD');
-   assert.equal(outsideJsonld(candidate),outsideJsonld(refFile),'Ampere visible HTML unchanged');
+   // PR #388 permits only the scoped visual change to the conversion section,
+   // its footer and the extra CSS block; everything else must stay immutable.
+   const withoutApprovedUx=x=>outsideJsonld(x)
+     .replace(/<section class="lead(?: mt-conversion-form)?" id="formulario"[\s\S]*?<\/section>/,'APPROVED_FORM_SECTION')
+     .replace(/<footer class="footer(?: mt-footer)?" data-mnt-commercial-footer>[\s\S]*?<\/footer>/,'APPROVED_FOOTER')
+     .replace(/\n\/\* Ária Higienópolis UX\/CSS reference[^]*?(?=<\/style>)/,'');
+   assert.equal(withoutApprovedUx(candidate),withoutApprovedUx(refFile),'Ampere HTML outside approved form/footer CSS unchanged');
  }else if(slug==='universo-tatuape-orbita'){
    // The separately gated Órbita commercial parity PR adds approved ImageObject,
    // actual FloorPlans and commercial entities; preserve all original entities.
