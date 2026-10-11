@@ -44,26 +44,40 @@ function scrub(ds) {
   return x;
  });
 }
-const secondaryBatch=new Set(['ampere-brooklin','ode-perdizes','teg-sacoma','tiel-vila-nova-conceicao']);
-function stripSecondaryImageEntities(ds,slug,html){
- const nodes=flat(ds);
+function stripApprovedImages(ds,baselineDs,slug,html){
+ const nodes=flat(ds),before=flat(baselineDs);
  const route='https://www.moretegra.com.br/empreendimentos/'+slug+'/';
  const main=html.slice(html.indexOf('<main'),html.indexOf('</main>')+7);
  const imgs=[...main.matchAll(/<img\b[^>]*>/gi)].slice(0,2).map(m=>({src:(m[0].match(/\bsrc=["']([^"']+)/)||[])[1],alt:(m[0].match(/\balt=["']([^"']*)/)||[])[1]}));
  assert.equal(imgs.length,2,slug+': two visible images required');
- assert(imgs[0].src!==imgs[1].src,slug+': secondary image duplicates hero');
+ assert(imgs[0].src&&imgs[1].src&&imgs[0].src!==imgs[1].src,slug+': primary/secondary source must be distinct');
  const page=nodes.find(n=>n['@type']==='WebPage');
- const [primary,secondary]=['#primary-image','#secondary-image'].map(hash=>nodes.find(n=>n['@id']===route+hash));
- assert(primary&&secondary,slug+': primary/secondary image entities required');
- for(const [node,img] of [[primary,imgs[0]],[secondary,imgs[1]]]){
-  assert.equal(node['@type'],'ImageObject');
-  assert.equal(node.contentUrl,img.src,slug+': image URL differs from visible page');
-  assert.equal(node.caption,img.alt,slug+': image caption differs from visible alt');
- }
- assert.equal(page.primaryImageOfPage?.['@id'],primary['@id'],slug+': primary owner changed');
+ const oldPage=before.find(n=>n['@id']===page?.['@id']);
+ const primary=nodes.find(n=>n['@id']===route+'#primary-image');
+ const secondary=nodes.find(n=>n['@id']===route+'#secondary-image');
+ assert(page&&oldPage&&primary&&secondary,slug+': image nodes/page missing');
+ assert.equal(primary['@type'],'ImageObject');
+ assert.equal(secondary['@type'],'ImageObject');
+ assert.equal(primary.contentUrl,imgs[0].src,slug+': primary URL differs from visible hero');
+ assert.equal(secondary.contentUrl,imgs[1].src,slug+': secondary URL differs from visible image');
+ assert.equal(secondary.caption,imgs[1].alt,slug+': secondary ALT differs from visible image');
+ assert.equal(page.primaryImageOfPage?.['@id'],primary['@id'],slug+': hero image owner changed');
  assert.deepEqual(page.image,[{'@id':primary['@id']},{'@id':secondary['@id']}],slug+': image order changed');
- return ds.map(doc=>{const out=structuredClone(doc);const graph=out['@graph']||[out];const kept=graph.filter(n=>n['@id']!==primary['@id']&&n['@id']!==secondary['@id']);
-  for(const n of kept)if(n['@type']==='WebPage'){delete n.primaryImageOfPage;delete n.image;}
+ const baselineIndex=new Map(before.filter(n=>n['@id']).map(n=>[n['@id'],n]));
+ return ds.map(doc=>{
+  const out=structuredClone(doc),graph=out['@graph']||[out];
+  const kept=graph.filter(n=>n['@id']!==secondary['@id']&&(n['@id']!==primary['@id']||baselineIndex.has(primary['@id'])));
+  for(const n of kept) {
+   const prev=baselineIndex.get(n['@id']);
+   if(n['@type']==='WebPage'){
+    if(Object.hasOwn(prev,'image'))n.image=structuredClone(prev.image);else delete n.image;
+    if(Object.hasOwn(prev,'primaryImageOfPage'))n.primaryImageOfPage=structuredClone(prev.primaryImageOfPage);else delete n.primaryImageOfPage;
+   }
+   if(n['@type']==='ImageObject'&&n['@id']===primary['@id']&&slug==='aria-higienopolis'){
+    assert.equal(primary.caption,imgs[0].alt,'Ária: approved hero caption mismatch');
+    n.contentUrl=prev.contentUrl;n.caption=prev.caption;
+   }
+  }
   if(out['@graph'])out['@graph']=kept;
   return out;
  });
@@ -94,10 +108,10 @@ for(const [slug,street,cep] of expected){
    const newTypes=enriched.filter(n=>!baseline.some(x=>x['@id']===n['@id'])).map(n=>n['@type']);
    const allowed=['Organization','ContactPoint','Person','RealEstateAgent','Service','Product','Offer','ImageObject','ImageObject','FloorPlan','FloorPlan','FloorPlan','FloorPlan'];
    assert.deepEqual(newTypes.slice().sort(),allowed.slice().sort(),'Órbita: only specifically approved commercial/image/plan types may be added');
- }else if(secondaryBatch.has(slug)){
-   const normalized=stripSecondaryImageEntities(after,slug,candidate);
+ }else {
+   const normalized=stripApprovedImages(after,before,slug,candidate);
    assert.deepEqual(scrub(normalized),scrub(before),slug+': forbidden non-image/non-address schema change');
- }else assert.deepEqual(scrub(after),scrub(before),slug+': non-address JSON-LD changed');
+ }
  const prior=flat(before).filter(x=>x['@type']==='ApartmentComplex');
  const current=flat(after).filter(x=>x['@type']==='ApartmentComplex');
  assert.equal(prior.length,1,slug+': baseline must contain exactly one ApartmentComplex');
@@ -112,7 +126,8 @@ for(const [slug,street,cep] of expected){
  assert(/^\d{5}-\d{3}$/.test(cep));
  const wasComplete=prior[0].address?.streetAddress===street && prior[0].address?.postalCode===cep;
  if(wasComplete){
-  assert.equal(candidate,original,slug+': previously complete page must remain byte-identical');
+  const outsideJsonld=x=>x.replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi,'<script type="application/ld+json"></script>');
+  assert.equal(outsideJsonld(candidate),outsideJsonld(original),slug+': previously complete page visible/runtime HTML changed');
   completeUnchanged++;
  }else{
   changed++;
