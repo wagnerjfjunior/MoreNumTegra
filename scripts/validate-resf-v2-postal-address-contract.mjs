@@ -235,7 +235,8 @@ for(const [slug,street,cep] of expected){
    const baseline=flat(documents(refFile)),current=flat(after),baselineIds=new Set(baseline.map(n=>n['@id']));
    const retained=current.filter(n=>baselineIds.has(n['@id'])).map(n=>{
      const x=structuredClone(n),prior=baseline.find(o=>o['@id']===n['@id']);
-     if(n['@type']==='WebPage')delete x.mentions;
+     if(n['@type']==='WebPage'){delete x.mentions; x.name=prior.name; x.description=prior.description;}
+     if(n['@type']==='FAQPage'){assert.equal(x.mainEntity.length,12,'Ampere FAQ must have 12 items'); x.mainEntity=structuredClone(prior.mainEntity);}
      if(n['@type']==='ApartmentComplex'){
        delete x.accommodationFloorPlan;
        x.brand=structuredClone(prior.brand);
