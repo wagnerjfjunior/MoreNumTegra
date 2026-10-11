@@ -68,7 +68,7 @@ function stripApprovedImages(ds,baselineDs,slug,html){
   const out=structuredClone(doc),graph=out['@graph']||[out];
   const kept=graph.filter(n=>n['@id']!==secondary['@id']&&(n['@id']!==primary['@id']||baselineIndex.has(primary['@id'])));
   for(const n of kept) {
-   const prev=baselineIndex.get(n['@id']);
+   const prev=baselineIndex.get(n['@id']) || (n['@type']==='WebPage' ? oldPage : undefined);
    if(n['@type']==='WebPage'){
     if(Object.hasOwn(prev,'image'))n.image=structuredClone(prev.image);else delete n.image;
     if(Object.hasOwn(prev,'primaryImageOfPage'))n.primaryImageOfPage=structuredClone(prev.primaryImageOfPage);else delete n.primaryImageOfPage;
