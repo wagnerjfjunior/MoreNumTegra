@@ -49,7 +49,7 @@ function stripSecondaryImageEntities(ds,slug,html){
  const nodes=flat(ds);
  const route='https://www.moretegra.com.br/empreendimentos/'+slug+'/';
  const main=html.slice(html.indexOf('<main'),html.indexOf('</main>')+7);
- const imgs=[...main.matchAll(/<img\\b[^>]*>/gi)].slice(0,2).map(m=>({src:(m[0].match(/\\bsrc=["']([^"']+)/)||[])[1],alt:(m[0].match(/\\balt=["']([^"']*)/)||[])[1]}));
+ const imgs=[...main.matchAll(/<img\b[^>]*>/gi)].slice(0,2).map(m=>({src:(m[0].match(/\bsrc=["']([^"']+)/)||[])[1],alt:(m[0].match(/\balt=["']([^"']*)/)||[])[1]}));
  assert.equal(imgs.length,2,slug+': two visible images required');
  assert(imgs[0].src!==imgs[1].src,slug+': secondary image duplicates hero');
  const page=nodes.find(n=>n['@type']==='WebPage');
