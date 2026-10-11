@@ -23,7 +23,7 @@ assert(amp.includes('/src-greenn/preview/measurement-core.js'),'do not remove or
 
 // One canonical visible facts band: no duplicate hero-meta.
 assert(!amp.includes('class="hero-meta"'),'hero-meta must be removed from Ampère hero');
-const facts=section(amp,/<section class="facts" aria-label="Resumo do Ampère Brooklin">[\s\S]*?<\/section>/,'Ampère canonical facts').replaceAll('\','\');
+const facts=section(amp,/<section class="facts" aria-label="Resumo do Ampère Brooklin">[\s\S]*?<\/section>/,'Ampère canonical facts');
 assert.equal((facts.match(/class="fact"/g)||[]).length,4,'facts has exactly four cards');
 for(const item of ['Área privativa','262 m²','Vagas','4 vagas','Região e diferencial','Brooklin','Living Double View','Estágio','Em construção'])assert(facts.includes(item),'missing verified fact '+item);
 assert(amp.includes('.facts-in{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}'),'mobile facts must use 2 columns');
