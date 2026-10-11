@@ -260,7 +260,24 @@ for(const [slug,street,cep] of expected){
      .replace(/\.facts\{[^}]*\}\.facts-in\{[^}]*\}\.fact\{[^}]*\}\.fact:last-child\{[^}]*\}\.fact b\{[^}]*\}\.fact span\{[^}]*\}/,'')
      .replace(/\.facts\{[^}]*\}\.facts-in\{[^}]*\}\.fact\{[^}]*\}\.fact:nth-child\(2n\)\{[^}]*\}\.fact:nth-child\(n\+3\)\{[^}]*\}\.fact b\{[^}]*\}\.fact span\{[^}]*\}\.fact em\{[^}]*\}@media\(min-width:900px\)\{\.facts-in\{[^}]*\}\.fact\{[^}]*\}\.fact:nth-child\(2n\)\{[^}]*\}\.fact:last-child\{[^}]*\}\}/,'')
      .replace('@media(max-width:900px){.facts-in{grid-template-columns:repeat(2,1fr)}','@media(max-width:900px){');
-   assert.equal(normalizeApprovedFacts(candidate),normalizeApprovedFacts(refFile),'Ampere HTML outside approved form/footer/facts CSS unchanged');
+   // PR #389: approved marketing-copy nodes only; HTML tags, attributes, media,
+   // form, schema, and tracking are still compared by the underlying HTML gate.
+   const normalizeApprovedSeo=x=>normalizeApprovedFacts(x)
+     .replace(/<a class="pilot" href="\/regioes\/brooklin\/">Brooklin<\/a>/,'')
+     .replace(/<h1 id="title" class="display">[\s\S]*?<\/h1>(?:<p|<h2) class="hero-lead">[\s\S]*?<\/(?:p|h2)>/,'APPROVED_HERO_COPY')
+     .replace(/\.hero-lead\{[^}]*\}/,'APPROVED_HERO_LEAD_CSS')
+     .replace(/<h2 class="display">[^<]*<\/h2>/g,'APPROVED_SECTION_HEADING')
+     .replace(/<p class="intro-copy">[\s\S]*?<\/p>/g,'APPROVED_INTRO_COPY')
+     .replace(/<p class="fine">[\s\S]*?<\/p>/g,'APPROVED_FINE_COPY')
+     .replace(/<p>O projeto reúne piscinas,[\s\S]*?<\/p>/g,'APPROVED_SIGNATURE_COPY')
+     .replace(/<p>Com o Living Double View,[\s\S]*?<\/p>/g,'APPROVED_SIGNATURE_COPY')
+     .replace(/<p>Galeria ampliada com imagens oficiais do empreendimento\.[\s\S]*?<\/p>/,'APPROVED_GALLERY_COPY')
+     .replace(/<p>Explore a piscina, o fitness,[\s\S]*?<\/p>/,'APPROVED_GALLERY_COPY')
+     .replace(/<p>Plantas oficiais do material do empreendimento\.[\s\S]*?<\/p>/,'APPROVED_PLANT_COPY')
+     .replace(/<p>Compare a planta padrão e as alternativas[\s\S]*?<\/p>/,'APPROVED_PLANT_COPY')
+     .replace(/<small>Mapa de contexto da região\.[\s\S]*?<\/small>/,'APPROVED_MAP_COPY')
+     .replace(/<small>Quer chegar ao endereço certo\?[\s\S]*?<\/small>/,'APPROVED_MAP_COPY');
+   assert.equal(normalizeApprovedSeo(candidate),normalizeApprovedSeo(refFile),'Ampere non-editorial HTML invariant after SEO copy update');
  }else if(slug==='universo-tatuape-orbita'){
    // The separately gated Órbita commercial parity PR adds approved ImageObject,
    // actual FloorPlans and commercial entities; preserve all original entities.
