@@ -68,7 +68,7 @@ for(const [slug,street,cep] of expected){
    });
    assert.deepEqual(scrub([{'@graph':kept}]),scrub([{'@graph':baseline}]),'Órbita: original schema entities must remain unchanged except approved new references');
    const newTypes=enriched.filter(n=>!baseline.some(x=>x['@id']===n['@id'])).map(n=>n['@type']);
-   const allowed=['Organization','ContactPoint','Person','RealEstateAgent','Service','Product','Offer','ImageObject','FloorPlan','FloorPlan','FloorPlan','FloorPlan'];
+   const allowed=['Organization','ContactPoint','Person','RealEstateAgent','Service','Product','Offer','ImageObject','ImageObject','FloorPlan','FloorPlan','FloorPlan','FloorPlan'];
    assert.deepEqual(newTypes.slice().sort(),allowed.slice().sort(),'Órbita: only specifically approved commercial/image/plan types may be added');
  }else assert.deepEqual(scrub(after),scrub(before),slug+': non-address JSON-LD changed');
  const prior=flat(before).filter(x=>x['@type']==='ApartmentComplex');
