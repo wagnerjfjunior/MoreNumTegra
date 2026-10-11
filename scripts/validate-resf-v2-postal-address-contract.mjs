@@ -252,7 +252,9 @@ for(const [slug,street,cep] of expected){
    const newTypes=current.filter(n=>!baselineIds.has(n['@id'])).map(n=>n['@type']).sort();
    assert.deepEqual(newTypes,['Organization','ContactPoint','Person','RealEstateAgent','Service','Product','Offer','FloorPlan','FloorPlan','FloorPlan'].sort(),'Ampere: unexpected new entity type');
    const outsideJsonld=x=>x.replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi,'JSONLD');
-   assert.equal(outsideJsonld(candidate),outsideJsonld(refFile),'Ampere visible HTML unchanged');
+   // PR #387 only adds six SEO FAQ pairs to the visible FAQ; other HTML is frozen.
+   const outsideApprovedFaq=x=>outsideJsonld(x).replace(/<section class="section residences" id="faq">[\s\S]*?<\/section>/,'FAQ_SECTION');
+   assert.equal(outsideApprovedFaq(candidate),outsideApprovedFaq(refFile),'Ampere HTML outside approved FAQ must remain unchanged');
  }else if(slug==='universo-tatuape-orbita'){
    // The separately gated Órbita commercial parity PR adds approved ImageObject,
    // actual FloorPlans and commercial entities; preserve all original entities.
