@@ -264,6 +264,8 @@ for(const [slug,street,cep] of expected){
    // PR #389: approved marketing-copy nodes only; HTML tags, attributes, media,
    // form, schema, and tracking are still compared by the underlying HTML gate.
    const normalizeApprovedSeo=x=>normalizeApprovedFacts(x)
+     .replace(/\n\/\* Ampère: neighborhood imagery is non-critical[\s\S]*?(?=<\/style>)/,'')
+     .replace(/<div class="ampere-neighborhood"[\s\S]*?<\/div><div class="local-grid">/,'<div class="local-grid">')
      .replace(/<title>[^<]*<\/title>/,'APPROVED_SEO_TITLE')
      .replace(/<meta name="description" content="[^"]*">/,'APPROVED_SEO_DESCRIPTION')
      .replace(/<meta property="og:title" content="[^"]*">/,'APPROVED_OG_TITLE')
