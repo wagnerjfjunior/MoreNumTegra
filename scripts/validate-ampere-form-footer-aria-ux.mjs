@@ -20,4 +20,13 @@ assert(amp.includes('@media(min-width:720px){.mt-conversion-form .mt-form-grid')
 assert(amp.includes('.mt-conversion-form .mt-form-message[hidden]{display:none}'),'error/success status semantics');
 assert(amp.includes('/src-greenn/preview/measurement-form.js'),'do not remove original form submit/runtime');
 assert(amp.includes('/src-greenn/preview/measurement-core.js'),'do not remove original measurement contract');
+
+// One canonical visible facts band: no duplicate hero-meta.
+assert(!amp.includes('class="hero-meta"'),'hero-meta must be removed from Ampère hero');
+const facts=section(amp,/<section class="facts" aria-label="Resumo do Ampère Brooklin">[\s\S]*?<\/section>/,'Ampère canonical facts').replaceAll('\','\');
+assert.equal((facts.match(/class="fact"/g)||[]).length,4,'facts has exactly four cards');
+for(const item of ['Área privativa','262 m²','Vagas','4 vagas','Região e diferencial','Brooklin','Living Double View','Estágio','Em construção'])assert(facts.includes(item),'missing verified fact '+item);
+assert(amp.includes('.facts-in{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}'),'mobile facts must use 2 columns');
+assert(amp.includes('@media(min-width:900px){.facts-in{grid-template-columns:repeat(4,minmax(0,1fr))}'),'wide-screen facts must use 4 columns');
+assert(amp.includes('Apartamentos de 262 m² privativos, 4 suítes e 4 vagas'),'suite detail preserved in hero copy');
 console.log('AMPERE_FORM_FOOTER_ARIA_UX_PASS');
