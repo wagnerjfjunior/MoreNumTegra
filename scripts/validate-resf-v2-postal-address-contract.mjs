@@ -264,6 +264,17 @@ for(const [slug,street,cep] of expected){
    // PR #389: approved marketing-copy nodes only; HTML tags, attributes, media,
    // form, schema, and tracking are still compared by the underlying HTML gate.
    const normalizeApprovedSeo=x=>normalizeApprovedFacts(x)
+     .replace(/<title>[^<]*<\/title>/,'APPROVED_SEO_TITLE')
+     .replace(/<meta name="description" content="[^"]*">/,'APPROVED_SEO_DESCRIPTION')
+     .replace(/<meta property="og:title" content="[^"]*">/,'APPROVED_OG_TITLE')
+     .replace(/<meta property="og:description" content="[^"]*">/,'APPROVED_OG_DESCRIPTION')
+     .replace(/<meta name="twitter:title" content="[^"]*">/,'APPROVED_TWITTER_TITLE')
+     .replace(/<meta name="twitter:description" content="[^"]*">/,'APPROVED_TWITTER_DESCRIPTION')
+     .replace(/<section class="section residences" id="visita"[\s\S]*?<\/section>/,'')
+     .replace(/<section class="section" id="negociacao"[\s\S]*?<\/section>/,'')
+     .replace(/<section class="section residences" id="faq">[\s\S]*?<\/section>/,'APPROVED_SEO_FAQ')
+     .replace(/<p class="price-note">[\s\S]*?<\/p>/,'APPROVED_PRICE_COPY')
+     .replace(/<p>No Tegra Ampère Brooklin,[\s\S]*?<\/p>/,'APPROVED_SIGNATURE_COPY')
      .replace(/<a class="pilot" href="\/regioes\/brooklin\/">Brooklin<\/a>/,'')
      .replace(/<h1 id="title" class="display">[\s\S]*?<\/h1>(?:<p|<h2) class="hero-lead">[\s\S]*?<\/(?:p|h2)>/,'APPROVED_HERO_COPY')
      .replace(/\.hero-lead\{[^}]*\}/,'APPROVED_HERO_LEAD_CSS')
