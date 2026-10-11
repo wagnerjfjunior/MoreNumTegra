@@ -57,7 +57,16 @@ assert.equal(contact.telephone,"+5511960779328");
 assert.equal(agent.identifier.value,"209.905-F");
 assert.equal(svc.provider["@id"],"https://www.moretegra.com.br/#tegra-vendas");
 assert(!("availability" in o),"Do not claim confirmed stock");
-assert(!("address" in agent),"Do not present project address as the agent's office");
+assert.deepEqual(agent.address,{
+ "@type":"PostalAddress",
+ "streetAddress":"Rua Fortunato Ferraz, 625",
+ "addressLocality":"São Paulo",
+ "addressRegion":"SP",
+ "addressCountry":"BR",
+ "postalCode":"05093-000"
+},"RealEstateAgent must use verified business office address, not Orbita street");
+assert.equal(agent.image,"https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp","RealEstateAgent photo must match approved Home business profile");
+assert.notEqual(agent.address.streetAddress,n.address.streetAddress,"Project street must not be misrepresented as agent office");
 assert(source.includes("Unidade AP0609 · 69 m² · R$ 8.865/m² · valor de referência R$ 611.685"),"Commercial data must be visible");
 assert(source.includes("CRECI-SP 209.905-F"),"Agent credentials must be visible");
 console.log("PASS: Orbita commercial entities, approved primary ImageObject and official FloorPlans grounded; original address/FAQ and HTML frozen");
