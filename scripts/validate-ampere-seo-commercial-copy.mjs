@@ -31,8 +31,8 @@ const ld=JSON.parse(html.match(/<script\b[^>]*type="application\/ld\+json"[^>]*>
 assert.equal(ld['@graph'].length,18,'approved graph must not change');
 assert.equal((html.match(/<details><summary>/g)||[]).length,12,'12 visible FAQ questions');
 const node=ld['@graph'].find(x=>x['@type']==='FAQPage');
-const fqSection=html.match(/<section class="section residences" id="faq">([\\s\\S]*?)<\\/section>/)?.[1];
-const visible=[...fqSection.matchAll(/<details><summary>(.*?)<\\/summary><p>(.*?)<\\/p><\\/details>/g)].map(x=>[x[1],x[2]]);
+const fqSection=html.match(/<section class="section residences" id="faq">([\s\S]*?)<\/section>/)?.[1];
+const visible=[...fqSection.matchAll(/<details><summary>(.*?)<\/summary><p>(.*?)<\/p><\/details>/g)].map(x=>[x[1],x[2]]);
 assert.deepEqual(node.mainEntity.map(x=>[x.name,x.acceptedAnswer?.text]),visible,'visible/JSON-LD FAQ parity');
 for(const term of ['Tegra Ampère Brooklin','Apartamento de 262 m² no Brooklin','Apartamentos no Brooklin','id="visita"','id="negociacao"'])assert(html.includes(term),'Missing editorial or conversion coverage: '+term);
 console.log('AMPERE_SEO_COMMERCIAL_COPY_PASS');
