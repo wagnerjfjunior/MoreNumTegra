@@ -39,8 +39,7 @@
   <link rel="stylesheet" href="/src-greenn/preview/runtime.css">
   <style>html,body{margin:0;padding:0;background:#f4f1e9}#mt-preview-error{display:none;padding:24px;font:600 14px system-ui;color:#8b1e16;background:#fff0ee}</style>
 
-  <script id="mt-search-schema" type="application/ld+json">
-{
+  <script id="mt-search-schema" type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -65,9 +64,14 @@
       "primaryImageOfPage": {
         "@id": "https://www.moretegra.com.br/#home-image"
       },
-      "image": {
-        "@id": "https://www.moretegra.com.br/#home-image"
-      },
+      "image": [
+        {
+          "@id": "https://www.moretegra.com.br/#home-image"
+        },
+        {
+          "@id": "https://www.moretegra.com.br/#secondary-image"
+        }
+      ],
       "video": {
         "@id": "https://www.moretegra.com.br/#campaign-video"
       },
@@ -207,6 +211,12 @@
       "width": 1200,
       "height": 630,
       "caption": "Perspectiva ilustrada do Caminhos da Lapa, empreendimento Tegra em São Paulo"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://www.moretegra.com.br/#secondary-image",
+      "contentUrl": "https://helbor.com.br/storage/development/gallery/2026/03/13/Vista_aerea_Rua_Jardim_Vivas_a39ff60521.jpg",
+      "caption": "Vista aérea da Rua Jardim e do entorno residencial na Lapa, Zona Oeste de São Paulo"
     },
     {
       "@type": "Brand",
@@ -413,8 +423,7 @@
       "url": "https://www.moretegra.com.br/empreendimentos/garden-design/"
     }
   ]
-}
-  </script>
+}</script>
 
   <script id="mt-localbusiness-schema" type="application/ld+json">
 {
@@ -569,6 +578,8 @@
           </article>
         </div>
       </section>
+
+      <figure class="mt-secondary-figure" aria-label="Caminhos da Lapa e Rua Jardim"><img loading="lazy" decoding="async" src="https://helbor.com.br/storage/development/gallery/2026/03/13/Vista_aerea_Rua_Jardim_Vivas_a39ff60521.jpg" alt="Vista aérea da Rua Jardim e do entorno residencial na Lapa, Zona Oeste de São Paulo"><figcaption>Caminhos da Lapa — a Rua Jardim e seu entorno residencial.</figcaption></figure>
 
       <section class="mt-moments" aria-labelledby="mt-moments-title">
         <div>
