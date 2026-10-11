@@ -35,4 +35,21 @@ const fqSection=html.match(/<section class="section residences" id="faq">([\s\S]
 const visible=[...fqSection.matchAll(/<details><summary>(.*?)<\/summary><p>(.*?)<\/p><\/details>/g)].map(x=>[x[1],x[2]]);
 assert.deepEqual(node.mainEntity.map(x=>[x.name,x.acceptedAnswer?.text]),visible,'visible/JSON-LD FAQ parity');
 for(const term of ['Tegra Ampère Brooklin','Apartamento de 262 m² no Brooklin','Apartamentos no Brooklin','id="visita"','id="negociacao"'])assert(html.includes(term),'Missing editorial or conversion coverage: '+term);
+
+const gallery=html.match(/<div class="ampere-neighborhood"[\s\S]*?<div class="local-grid">/)?.[0];
+assert(gallery,'Brooklin neighborhood block must remain in locality');
+assert.equal((gallery.match(/<figure class="ampere-neighborhood-card">/g)||[]).length,3,'three verified Tegra neighborhood images');
+for(const filename of [
+ 'Tegra-Incorporadora-Localizacao-Ponte-Estaiada-Apartamentos-Ampere-Brooklin-Sao-Paulo-SP-1400x1400-1722438997006.jpg',
+ 'Tegra-Incorporadora-Localizacao-Bairro-Brooklin-Apartamentos-Ampere-Brooklin-Sao-Paulo-SP-1400x1400-1722438997006.jpg',
+ 'Tegra-Incorporadora-Localizacao-Bairro-Brooklin-Marginal-Pinheiros-Apartamentos-Ampere-Brooklin-Sao-Paulo-SP-1400x1400-1722438997006.jpg'
+])assert(gallery.includes('https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/351/Imagem/'+filename),'Missing approved asset');
+assert.equal((gallery.match(/loading="lazy"/g)||[]).length,3,'noncritical neighborhood images must be lazy-loaded');
+assert.equal((gallery.match(/width="1400" height="1400"/g)||[]).length,3,'media dimensions prevent CLS');
+assert.equal((gallery.match(/alt="[^"]+"/g)||[]).length,3,'all neighborhood images require meaningful alt');
+assert(gallery.includes('href="/regioes/brooklin/"'),'region link must be contextual');
+assert(!gallery.includes('tegraincorporadora.com.br/_next/image'),'no corporate optimizer proxy dependency');
+assert(html.includes('.ampere-neighborhood-grid{display:grid;grid-template-columns:1fr;gap:12px}'),'mobile gallery one column');
+assert(html.includes('.ampere-neighborhood-grid{grid-template-columns:repeat(3,minmax(0,1fr))}'),'desktop three image grid');
+
 console.log('AMPERE_SEO_COMMERCIAL_COPY_PASS');
