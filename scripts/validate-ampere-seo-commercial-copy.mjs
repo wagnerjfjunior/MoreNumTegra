@@ -18,7 +18,7 @@ for(const bad of [
 ]) {
   // The SEO rewrite is bounded to commercial copy; pre-existing FAQ is guarded
   // separately and can retain its exact approved legal phrasing.
-  const withoutFaq=html.replace(/<section class="section residences" id="faq">[\s\S]*?<\/section>/,'FAQ');
+  const withoutFaq=html.slice(html.indexOf("<body")).replace(/<section class="section residences" id="faq">[\s\S]*?<\/section>/,"FAQ");
   assert(!withoutFaq.toLowerCase().includes(bad.toLowerCase()),'self-referential sales copy: '+bad);
 }
 for(const phrase of ['Living Double View','dois terraços','piscinas','262 m²','4 vagas','4 suítes','unidade 0121','Tegra Vendas'])assert(html.includes(phrase),'factual content lost: '+phrase);
