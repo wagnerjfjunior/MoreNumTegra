@@ -28,5 +28,5 @@ assert.equal((facts.match(/class="fact"/g)||[]).length,4,'facts has exactly four
 for(const item of ['Área privativa','262 m²','Vagas','4 vagas','Região e diferencial','Brooklin','Living Double View','Estágio','Em construção'])assert(facts.includes(item),'missing verified fact '+item);
 assert(amp.includes('.facts-in{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}'),'mobile facts must use 2 columns');
 assert(amp.includes('@media(min-width:900px){.facts-in{grid-template-columns:repeat(4,minmax(0,1fr))}'),'wide-screen facts must use 4 columns');
-assert(amp.includes('Apartamentos de 262 m² privativos, 4 suítes e 4 vagas'),'suite detail preserved in hero copy');
+assert(amp.includes('Apartamentos no Brooklin de 262 m² privativos, com 4 suítes, 4 vagas e dois terraços em torre única.'),'search-intent hero heading and suite details preserved');
 console.log('AMPERE_FORM_FOOTER_ARIA_UX_PASS');
