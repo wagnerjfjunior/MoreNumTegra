@@ -1,0 +1,22 @@
+name: SEO two distinct images - 39 URLs
+on:
+  pull_request:
+    paths:
+      - 'src-greenn/**'
+      - 'experiments/**'
+      - 'scripts/validate-two-images-39-pages.mjs'
+      - 'sitemap.xml'
+      - 'vercel.json'
+      - '.github/workflows/two-images-39-pages.yml'
+  workflow_dispatch:
+jobs:
+  images:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/validate-two-images-39-pages.mjs
