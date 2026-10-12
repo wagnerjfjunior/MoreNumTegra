@@ -1,3 +1,11 @@
+## 2026-10-12 — Próxima ação segura após fechamento RESF V1
+
+**O desenho do padrão está fechado:** `docs/frameworks/resf/v1/EXACT_PROJECT_PAGE_BUILD_STANDARD_V1_2026-10-11.md` §10; recibo `docs/frameworks/resf/v1/RESF_TIEL_RELEASE_EVIDENCE_AND_SCALE_HANDOFF_2026-10-12.md`. PRs Tièl #395/#396 concluídas e publicadas. Não reiniciar discussão de copy, facts, WhatsApp, galeria, bairro ou tipografia do padrão a cada página, salvo conflito com fontes/produto/UX comprovado.
+
+**Próxima execução (READ_ONLY):** descobrir e listar URLs reais das páginas de empreendimento na main; quantificar precisamente o escopo estimado de aproximadamente 30 rotas; por rota levantar fact pack/estágio, title/H1/H2, bairros, fotos internas/entorno, facts, plantas, WhatsApp, formulário 46, FAQ/JSON-LD, mídia/performance, tracking, status de QA e pendências. Priorizar por cluster e severidade comercial, sem tocar no runtime. Depois selecionar lotes pequenos ou páginas e solicitar autorização específica de implementação e publicação, com testes e aprovação visual próprios. Documento canônico de execução é o recibo indicado acima.
+
+**Não confundir:** Tièl user-confirmed lead/galeria e Vercel READY não certificam Lighthouse, smoke HTTP externo completo ou indexação. Não bloquear o inventário esperando eventos do GSC. Entrada 2026-10-11 abaixo permanece registro histórico.
+
 ## 2026-10-11 — NEXT SAFE ACTION after RESF V1 documentary closure
 
 RESF V1 is canonical for **new exact-project builds** via PRs #390/#391. This does not certify all published pages and does not authorize a bulk rewrite.
