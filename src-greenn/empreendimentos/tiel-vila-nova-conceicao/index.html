@@ -126,7 +126,7 @@
       <img id="plant-image" loading="lazy" src="https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/352/Planta/Tegra-Incorporadora-Planta-01-Boutique-Apartments-Studios-Alto-Padrao-Tiel-Vila-Nova-Conceicao-Sao-Paulo-SP-1727979241534.jpg" alt="Planta tipo Boutique Apartment do Tièl Vila Nova Conceição">
       <button class="plant-arrow prev" type="button" data-plant-prev aria-label="Planta anterior">‹</button>
       <button class="plant-arrow next" type="button" data-plant-next aria-label="Próxima planta">›</button>
-      <div class="plant-copy"><p class="eyebrow" id="plant-family">Boutique Apartment</p><h3 id="plant-title">19 m²</h3><p id="plant-description">Sugestão de decoração publicada no material oficial.</p><div class="plant-meta" id="plant-meta"><span>Planta oficial</span><span>19 m²</span></div></div>
+      <div class="plant-copy"><p class="eyebrow" id="plant-family">Boutique Apartment</p><h3 id="plant-title">19 m²</h3><p id="plant-description">Sugestão de decoração de 19 m² para referência visual.</p><div class="plant-meta" id="plant-meta"><span>Planta oficial</span><span>19 m²</span></div></div>
     </div>
   </div>
   <div style="margin-top:26px"><a class="btn yellow" href="#formulario" data-form-intent="conditions">Receber disponibilidade por planta <span>↓</span></a></div>
@@ -212,8 +212,8 @@ scenes.forEach((scene,i)=>{const b=document.createElement("button");b.type="butt
 document.querySelector("[data-gallery-prev]")?.addEventListener("click",()=>showScene(sceneIndex-1));document.querySelector("[data-gallery-next]")?.addEventListener("click",()=>showScene(sceneIndex+1));syncScene(0);
 
 const plants=[
-{family:"Boutique Apartment",title:"19 m² · planta 01",desc:"Sugestão de decoração publicada no material oficial.",meta:["Planta oficial","19 m²"],src:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/352/Planta/Tegra-Incorporadora-Planta-01-Boutique-Apartments-Studios-Alto-Padrao-Tiel-Vila-Nova-Conceicao-Sao-Paulo-SP-1727979241534.jpg"},
-{family:"Boutique Apartment",title:"19 m² · planta 02",desc:"Segunda sugestão de decoração publicada no material oficial.",meta:["Planta oficial","19 m²"],src:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/352/Planta/Tegra-Incorporadora-Planta-02-Boutique-Apartments-Studios-Alto-Padrao-Tiel-Vila-Nova-Conceicao-Sao-Paulo-SP-1727979247259.jpg"}
+{family:"Boutique Apartment",title:"19 m² · planta 01",desc:"Sugestão de decoração de 19 m² para referência visual.",meta:["Planta oficial","19 m²"],src:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/352/Planta/Tegra-Incorporadora-Planta-01-Boutique-Apartments-Studios-Alto-Padrao-Tiel-Vila-Nova-Conceicao-Sao-Paulo-SP-1727979241534.jpg"},
+{family:"Boutique Apartment",title:"19 m² · planta 02",desc:"Outra sugestão de decoração de 19 m² para referência visual.",meta:["Planta oficial","19 m²"],src:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/352/Planta/Tegra-Incorporadora-Planta-02-Boutique-Apartments-Studios-Alto-Padrao-Tiel-Vila-Nova-Conceicao-Sao-Paulo-SP-1727979247259.jpg"}
 ];
 const pTabs=document.querySelector("[data-plant-tabs]"),pImg=document.querySelector("#plant-image"),pFamily=document.querySelector("#plant-family"),pTitle=document.querySelector("#plant-title"),pDesc=document.querySelector("#plant-description"),pMeta=document.querySelector("#plant-meta");let plantIndex=0;
 function showPlant(i){plantIndex=(i+plants.length)%plants.length;const p=plants[plantIndex];pTabs.querySelectorAll('[role="tab"]').forEach((b,n)=>{const active=n===plantIndex;b.setAttribute("aria-selected",String(active));b.tabIndex=active?0:-1});pImg.src=p.src;pImg.alt=p.title+" do Tièl Vila Nova Conceição";pFamily.textContent=p.family;pTitle.textContent=p.title;pDesc.textContent=p.desc;pMeta.innerHTML=p.meta.map(v=>"<span>"+v+"</span>").join("");}
