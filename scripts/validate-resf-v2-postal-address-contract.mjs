@@ -317,6 +317,11 @@ for(const [slug,street,cep] of expected){
          else delete n.brand;
        }
        if(n['@type']==='WebPage'){
+         // Tièl PR #395: only governed search-intent editorial metadata may change.
+         assert.equal(n.name,'Tièl Vila Nova Conceição | Apartamentos Tegra prontos para morar');
+         assert.equal(n.description,'Conheça o Tièl Vila Nova Conceição: apartamentos Tegra prontos para morar, piscina e bar no rooftop, fitness e plantas oficiais. Consulte unidades e condições.');
+         n.name=structuredClone(old.name);
+         n.description=structuredClone(old.description);
          if(Object.hasOwn(old,'mentions'))n.mentions=structuredClone(old.mentions);
          else delete n.mentions;
        }
