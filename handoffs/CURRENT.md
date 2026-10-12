@@ -1,3 +1,13 @@
+## 2026-10-11 — RESF V1 canonical handoff (latest documentary state)
+
+- GitHub main at latest observed pre-reconciliation checkpoint: `40946fed2d7dcc3729361f391a9f9a80b997ae78`; PR #390 (build standard) and PR #391 (status correction) MERGED.
+- Canonical new exact-project build contract: `docs/frameworks/resf/v1/EXACT_PROJECT_PAGE_BUILD_STANDARD_V1_2026-10-11.md`.
+- Companion release evidence: `docs/frameworks/resf/v1/RESF_EXACT_PROJECT_RELEASE_CLOSURE_2026-10-11.md`.
+- Latest verified READY web runtime: Ampère PR #389 `b6497954e45d77cf37dd639dbea3c18bd29a4040`, Vercel `dpl_6QQCpeSGVrpVJsFkap9o99Zbbw3M`. Docs-only #390/#391 Vercel deployments CANCELED; do not infer runtime breakage or redeploy necessity from that status.
+- RESF STANDARD = CANONICAL_FOR_NEW_EXACT_PROJECT_BUILDS. AMPERE_POST_RELEASE_QA = OPEN (mobile, form behavior, public smoke, external rich results/performance remain unverified in this pass).
+- Next safe action is read-only Ampère public/regression QA and governed existing-page conformance inventory. Do not select another page or mass migrate by sequence; retain separate gates for RESF V2, ads, CRM, commercial truth, and the documented M5-06/M4-05R validator debt.
+- This dated section supersedes only stale current-state pointers below, not historical evidence.
+
 # 2026-10-06 — SFJM current handoff reconciliation
 
 **GitHub `main` remains canonical; resolve live before mutation.**

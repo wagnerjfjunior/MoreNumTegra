@@ -1,3 +1,20 @@
+## 2026-10-11 — RESF V1 closure reconciliation (current documentary status)
+
+```text
+RESF_V1_EXACT_PROJECT_BUILD_STANDARD = CANONICAL_FOR_NEW_EXACT_PROJECT_BUILDS
+PR_390 = MERGED
+PR_391 = MERGED
+GITHUB_MAIN_OBSERVED_BEFORE_POINTER_RECONCILIATION = 40946fed2d7dcc3729361f391a9f9a80b997ae78
+LATEST_READY_WEB_RUNTIME = b6497954e45d77cf37dd639dbea3c18bd29a4040
+LATEST_READY_PRODUCTION_DEPLOYMENT = dpl_6QQCpeSGVrpVJsFkap9o99Zbbw3M
+DOCS_ONLY_DEPLOYMENTS_390_391 = CANCELED
+AMPERE_POST_RELEASE_FUNCTIONAL_QA = OPEN
+```
+
+Build standard: `docs/frameworks/resf/v1/EXACT_PROJECT_PAGE_BUILD_STANDARD_V1_2026-10-11.md`.
+Release closure evidence: `docs/frameworks/resf/v1/RESF_EXACT_PROJECT_RELEASE_CLOSURE_2026-10-11.md`.
+GitHub merged docs are canonical independently of a Vercel docs-only build. Do not label Ampère live mobile/form/performance/Google checks PASS without new evidence. Subsequent exact-project work uses independent scoped Product Authority gate; RESF V2 drafts are not automatically promoted.
+
 # 2026-10-06 — Current runtime/search-image reconciliation
 
 ```text

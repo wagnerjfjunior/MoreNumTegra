@@ -1,3 +1,13 @@
+## 2026-10-11 — NEXT SAFE ACTION after RESF V1 documentary closure
+
+RESF V1 is canonical for **new exact-project builds** via PRs #390/#391. This does not certify all published pages and does not authorize a bulk rewrite.
+
+**Next bounded action (READ_ONLY):** validate Ampère Brooklin post-release on canonical production host against the actual PR #389 runtime and the new standard: public HTTP/canonical/robots, rendered mobile and desktop hierarchy, neighborhood assets and Brooklin link, visible FAQ vs JSON-LD, CTA/WhatsApp and non-submitting Form 46 validation, consent/measurement wiring, plus separate external Google Rich Results evidence. Record observed methods/results; unavailable test channels are UNKNOWN, not PASS. Run comparable mobile Lighthouse battery before making an LCP claim. Make no real lead and no runtime edit without a separate authorization.
+
+Then perform a **read-only conformance inventory** of existing exact-project pages and rank bounded deltas. Product Authority separately selects the next page/slice; do not transfer approval from Ampère or standard documentation to another runtime change. M5-06/M4-05R validator debt remains separated. RESF V2 pending PRs and paid media remain independently gated.
+
+Reference: `docs/frameworks/resf/v1/EXACT_PROJECT_PAGE_BUILD_STANDARD_V1_2026-10-11.md` and `docs/frameworks/resf/v1/RESF_EXACT_PROJECT_RELEASE_CLOSURE_2026-10-11.md`.
+
 # 2026-10-06 — Search image ownership observation gate
 
 PR #355 is merged and the exact production deployment is READY.
