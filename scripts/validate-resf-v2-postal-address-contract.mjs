@@ -292,6 +292,39 @@ for(const [slug,street,cep] of expected){
      .replace(/<small>Mapa de contexto da região\.[\s\S]*?<\/small>/,'APPROVED_MAP_COPY')
      .replace(/<small>Quer chegar ao endereço certo\?[\s\S]*?<\/small>/,'APPROVED_MAP_COPY');
    assert.equal(normalizeApprovedSeo(candidate),normalizeApprovedSeo(refFile),'Ampere non-editorial HTML invariant after SEO copy update');
+ }else if(slug==='tiel-vila-nova-conceicao'){
+   // RESF Tièl specific, source-verified commercial expansion. The separate
+   // Tièl quality test verifies factual Product/Offer, two plans, FAQ pairs and
+   // agent address. Here normalize only these approved changes against the
+   // historical postal baseline; keep the baseline's project address contract.
+   const prior=flat(before),current=flat(after);
+   const oldById=new Map(prior.filter(n=>n['@id']).map(n=>[n['@id'],n]));
+   const permitted=['Organization','ContactPoint','Person','RealEstateAgent','Service','Product','Offer','FloorPlan','FloorPlan'];
+   const added=current.filter(n=>!oldById.has(n['@id']));
+   const unowned=added.filter(n=>!['ImageObject',...permitted].includes(n['@type']));
+   assert.deepEqual(unowned.map(n=>n['@type']),[],'Tièl: unexpected new entity types');
+   const semanticAdded=added.filter(n=>n['@type']!=='ImageObject').map(n=>n['@type']);
+   assert.deepEqual(semanticAdded.slice().sort(),permitted.slice().sort(),'Tièl: semantic addition allowlist changed');
+   const copy=structuredClone(after);
+   for(const doc of copy)if(doc['@graph']){
+     doc['@graph']=doc['@graph'].filter(n=>!added.some(newNode=>newNode['@id']===n['@id'] && newNode['@type']!=='ImageObject'));
+     for(const n of doc['@graph']){
+       const old=oldById.get(n['@id']);
+       assert(old,'Tièl: prior node disappeared from controlled baseline');
+       if(n['@type']==='ApartmentComplex'){
+         delete n.accommodationFloorPlan;
+         if(Object.hasOwn(old,'brand'))n.brand=structuredClone(old.brand);
+         else delete n.brand;
+       }
+       if(n['@type']==='WebPage'){
+         if(Object.hasOwn(old,'mentions'))n.mentions=structuredClone(old.mentions);
+         else delete n.mentions;
+       }
+       if(n['@type']==='FAQPage')n.mainEntity=structuredClone(old.mainEntity);
+     }
+   }
+   const normalized=stripApprovedImages(copy,before,slug,candidate);
+   assert.deepEqual(scrub(normalized),scrub(before),'Tièl: only approved semantic and responsive image deltas permitted');
  }else if(slug==='universo-tatuape-orbita'){
    // The separately gated Órbita commercial parity PR adds approved ImageObject,
    // actual FloorPlans and commercial entities; preserve all original entities.
