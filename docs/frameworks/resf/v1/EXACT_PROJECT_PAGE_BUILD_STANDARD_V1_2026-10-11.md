@@ -65,3 +65,33 @@ Apply `docs/performance/RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1.md`. Hero discover
 
 ## 9. Criteria to promote this document
 Product Authority reviews the specification and residuals; documentation PR passes its relevant checks and is explicitly merged. Document version then becomes `CANONICAL_FOR_NEW_EXACT_PROJECT_BUILDS`. Existing published pages are grandfathered; deviations must be audited and prioritized, not overwritten en masse. Publishing this standard does not assert Ampère's post-release mobile, form or Google results without actual smoke evidence.
+
+## 10. 2026-10-12 — Adendo operacional de escala, derivado de Tièl (aprovado para uso por página)
+
+**Estado do padrão:** V1 permanece canônico para construção de páginas exatas. Este adendo fixa critérios de qualidade reutilizáveis para auditoria e adaptação de páginas existentes, sem autorizar um *bulk rewrite*. Não equivale a certificação retroativa das demais URLs. Referência documental da aplicação no Tièl: `docs/frameworks/resf/v1/RESF_TIEL_RELEASE_EVIDENCE_AND_SCALE_HANDOFF_2026-10-12.md`.
+
+### 10.1 Copy de compra, SEO e hierarquia tipográfica
+- Produto primeiro: H1 único com nome exato, proposta de compra, estágio e marca Tegra quando sustentados; H2/H3 devem responder intenções distintas (produto, tipologia, plantas, lazer, bairro, preço, visita). Não criar H2 genérico ou repetir o mesmo atributo em múltiplos títulos. Copy deve levar a consulta real, nunca declarar indisponibilidade sem fundamento comercial.
+- Distribuir naturalmente termos singulares/plurais e sinônimos legítimos: apartamento/apartamentos; studio/studios apenas para tipologias verificadas ou como linguagem de busca explicitamente contextualizada. Demanda Planner observada não é ranking nem prova de tráfego; respeitar a matriz M3-05/M3-06 de propriedade de query. Página do empreendimento é proprietária da intenção exata e modificadores preço/planta/disponibilidade; a regional é dona da descoberta genérica do bairro.
+- Adotar escala visual consistente por componente (hero H1; H2/H3; parágrafos, facts e CTAs), com família, peso, entrelinha e espaçamento coerentes em desktop/mobile. Usar Ampère/Tièl como referência visual e escolher valores adaptados à densidade real de cada página. Um teste de renderização é obrigatório: título não pode extrapolar a viewport, ocupar proporção desnecessária da dobra ou diminuir legibilidade.
+- Não impor mínimo/máximo de palavras universal. Comparar páginas-irmãs por conteúdo **útil**, verificável e orientado à decisão; remover redundância e texto só para preencher densidade.
+
+### 10.2 Facts, plantas e galeria com paridade factual
+- Manter a faixa de quatro facts conforme §3.C e o gate de exceção do projeto. Quando forem publicadas plantas ilustrativas de 19 m² e referência comercial de unidade de 21 m², **não apresentar ambas como a mesma tipologia/unidade**: identificar precisamente os escopos e registrar exceção dos fatos no contrato, se necessário.
+- Galeria deve mostrar também os ambientes internos/apartamentos quando houver fontes autorizadas, em vez de conter apenas amenities. Legendas distinguem foto real, perspectiva ilustrada e planta. Não inventar unidade decorada ou foto interna se apenas existirem perspectivas.
+- Evitar imagens repetidas, URLs sem confirmação e mudança do hero sem gate. Preservar o catálogo de URLs de mídia e os ALT específicos por cena.
+
+### 10.3 Bairro, navegação e crédito de imagens
+- Link contextual para a página regional somente no bloco de localização/descoberta, sem competir no topo com CTA comercial. Bloco de bairro pode usar **três fotografias** como referência testada no Ampère e Tièl, mas três **não é quota universal**; usar a quantidade adequada de imagens genuínas, legalmente reutilizáveis, com relevância, dimensões e carregamento lazy. Não confundir fotografias do entorno com fotos do empreendimento.
+- Créditos e licenças exigidos devem permanecer conformes à origem. Links externos em créditos não fazem parte da navegação comercial; preferir texto discreto quando os termos da licença permitirem, caso contrário cumprir o vínculo obrigatório ou substituir a imagem. Nunca suprimir atribuição legal exigida apenas para limpeza visual.
+
+### 10.4 CTAs/WhatsApp/Form46
+- No topo, usar navegação comercial que não desvie o comprador para a regional; CTA de condições/visita deve ter destino real. Fixos de conversão devem respeitar mobile, áreas seguras e compensação da barra de consentimento.
+- WhatsApp é CTA identificável, em identidade visual consistente com o padrão aprovado para a página, adequado ao toque, sem cobrir conteúdo e sem competir indevidamente com "Receber condições"; checar `wa.me`, texto e acessibilidade. Preservar o fluxo Form 46 e instrumentação existentes.
+- Não inferir sucesso do formulário de CI estático. Somente apontar `LEAD_RUNTIME_USER_CONFIRMED` mediante evidência do CRM e sem divulgar dados pessoais do lead.
+
+### 10.5 Escala para aproximadamente 30 páginas
+- Aplicar **inventário antes de mutação**: URL, estágio/comercial, hierarquia, facts (incluindo exceções), imagens, CTA, Form46, SEO, dados estruturados, FAQs, performance e cobertura no GSC. A contagem "30" é planejamento informado pelo usuário, **não número auditado de rotas pendentes**.
+- Abrir lotes pequenos por família/risco, com PR e QA identificáveis por página; nenhuma página recebe preço, endereço, metragem, tipologia, fotos ou agentes de outra. Registrar aprovação comercial específica e evidência. Se o produto não possui fonte, classificar `BLOCKED_BY_PRODUCT_TRUTH`, nunca inventar.
+- Critério operacional de página concluída: checks apropriados + aprovação visual mobile/desktop + validação de CTA/Form46 conforme escopo + merge aprovado + Vercel READY no SHA correto + smoke público e documentação dos UNKNOWNs. Indexação/posicionamento futuro permanece monitoramento externo, não evidência de release.
+- Para controle de execução, usar a matriz e o recebimento de evidências em `docs/frameworks/resf/v1/RESF_TIEL_RELEASE_EVIDENCE_AND_SCALE_HANDOFF_2026-10-12.md`; não transformar o Tièl em template literal ou proclamar as ~30 páginas publicadas/conformes.
