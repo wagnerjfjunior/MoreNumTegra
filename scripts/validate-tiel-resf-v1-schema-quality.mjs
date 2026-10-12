@@ -41,7 +41,7 @@ assert(facts.includes('Plantas ilustrativas de 19 m²'));
 assert(html.includes('grid-template-columns:repeat(2,minmax(0,1fr))'),'Mobile facts must stay 2 columns');
 assert(html.includes('@media(min-width:900px){.facts-in{grid-template-columns:repeat(4,minmax(0,1fr))}'),'Desktop facts must stay 4 columns');
 assert(!html.includes('.facts-in,.amenity-grid,.local-grid{grid-template-columns:1fr}'),'No mobile one-column override');
-assert(html.includes('<a href="/regioes/vila-nova-conceicao/">Vila Nova Conceição</a>'));
+assert(html.includes('<a href="/regioes/vila-nova-conceicao/">apartamentos e empreendimentos na Vila Nova Conceição</a>'),'Neighborhood link must remain visible and contextual');
 assert(!html.includes('A página regional concentra'),'No meta-editorial page talk');
 
 const graph=JSON.parse(match[1])['@graph'];
