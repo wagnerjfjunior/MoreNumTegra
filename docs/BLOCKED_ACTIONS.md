@@ -1,3 +1,10 @@
+## 2026-10-12 — Guardrails do RESF V1 fechado para escala
+
+- **Padrão fechado não significa 30 páginas finalizadas** nem autorização para edição/migração em massa; ~30 é estimativa fornecida pelo usuário até inventário por rota.
+- Aplicações a páginas já existentes requerem fact packs, conflitos comerciais resolvidos, gate de fotos/licenças, QA mobile/lead/SEO/schema, aprovação e merge/release específicos. Uma PR não transfere autorização a outras páginas.
+- Não substituir indiscriminadamente fotos/hero, preços, plantas, metragem, disponibilidade, tipologias, agentes ou dados JSON-LD; não inventar fatos. `FACTS_DATA_GAP` exige exceção governada. Crédito de imagem somente pode perder hyperlink se a licença realmente permitir; manter atribuição necessária.
+- Não confundir o sucesso do teste de lead em Tièl, confirmado pelo usuário, com garantia de envio de todas as próximas páginas, nem CI com medição Lighthouse, HTTP público ou indexação. As demais proibições existentes abaixo continuam ativas.
+
 ## 2026-10-11 — RESF V1 closure guardrails (active)
 
 - RESF exact-project build standard V1 is canonical for **new builds** after PRs #390/#391; no automatic existing-page retrofit, rollout, code mutation, index request, campaign or redeploy is authorized by standard adoption alone.
