@@ -17,7 +17,7 @@ assert.equal(captureSection(html,'formulario'),captureSection(baseline,'formular
 for(const selector of ['hero','facts','galeria','residencias','localizacao','faq']){
  assert(html.includes(selector==='hero'?'<section class="hero"':selector==='facts'?'<section class="facts">':'id="'+selector+'"'), 'Missing RESF section '+selector);
 }
-const collectAssets=text=>[...text.matchAll(/<(?:img|iframe)\\b[^>]*>/g)].map(m=>m[0].match(/\\b(?:src|srcset)="([^"]+)/)?.[1]||'').sort();
+const collectAssets=text=>[...text.matchAll(/<(?:img|iframe)\b[^>]*>/g)].map(m=>m[0].match(/\b(?:src|srcset)="([^"]+)/)?.[1]||'').sort();
 assert.deepEqual(collectAssets(html),collectAssets(baseline),'Media src and iframe must not change');
 assert(html.includes('<h1 id="title" class="display">Tièl Vila Nova Conceição<br>Boutique Apartments</h1>'));
 assert(html.includes('<div class="fact"><b>Pronto</b><span>para morar</span></div>'));
