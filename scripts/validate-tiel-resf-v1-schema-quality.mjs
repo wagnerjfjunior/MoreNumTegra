@@ -10,14 +10,14 @@ const rx=/<script type="application\/ld\+json">([\s\S]*?)<\/script>/;
 const match=html.match(rx),prior=baseline.match(rx);
 assert(match&&prior,'Missing JSON-LD');
 const stripSchema = text=>text.replace(rx,'SCHEMA_ONLY');
-const stripMain = text=>stripSchema(text).replace(/<main id="conteudo">[\\s\\S]*?<\\/main>/,'<main id="conteudo">APPROVED_RESF_EDITORIAL_CONTENT</main>');
+const stripMain = text=>stripSchema(text).replace(/<main id="conteudo">[\s\S]*?<\/main>/,'<main id="conteudo">APPROVED_RESF_EDITORIAL_CONTENT</main>');
 const stripApprovedEditorialHead = text => text
  .replace(/<title>[^<]*<\/title>/,'<title>EDITORIAL_TITLE</title>')
  .replace(/<meta name="description" content="[^"]*">/,'<meta name="description" content="EDITORIAL_DESCRIPTION">')
  .replace(/<meta property="og:title" content="[^"]*">/,'<meta property="og:title" content="EDITORIAL_OG_TITLE">')
  .replace(/<meta name="twitter:title" content="[^"]*">/,'<meta name="twitter:title" content="EDITORIAL_TWITTER_TITLE">');
 const stripApprovedTielUx = text => text
- .replace(/\/\* Tièl RESF — escala editorial e fotos do bairro \*\/[\s\S]*?(?=<\/style>)/,'')
+ .replace(/\n\/\* Tièl RESF — escala editorial e fotos do bairro \*\/[\s\S]*?(?=<\/style>)/,'')
  .replace('.quick .quick-wa{background:#25d366;color:#0c3420;border:1px solid #178744}','.quick .quick-wa{background:#fff;color:#111}')
  .replace('<a class="pilot" href="#formulario">Consultar unidades</a>','<a class="pilot" href="/regioes/vila-nova-conceicao/">Vila Nova Conceição</a>')
  .replace(' rel="noopener noreferrer" aria-label="Falar pelo WhatsApp sobre o Tièl">WhatsApp</a>',' rel="noopener noreferrer">WhatsApp</a>')
@@ -40,7 +40,7 @@ for(const selector of ['hero','facts','galeria','residencias','localizacao','faq
  assert(html.includes(selector==='hero'?'<section class="hero"':selector==='facts'?'<section class="facts"':'id="'+selector+'"'), 'Missing RESF section '+selector);
 }
 const collectAssets=text=>[...text.matchAll(/<(?:img|iframe)\b[^>]*>/g)].map(m=>m[0].match(/\b(?:src|srcset)="([^"]+)/)?.[1]||'').sort();
-const newNeighborhood=[...html.matchAll(/<figure class="neighborhood-card">[\\s\\S]*?<\\/figure>/g)];
+const newNeighborhood=[...html.matchAll(/<figure class="neighborhood-card">[\s\S]*?<\/figure>/g)];
 assert.equal(newNeighborhood.length,3,'Three sourced neighborhood photos required');
 assert(newNeighborhood.every(m=>m[0].includes('loading="lazy"')&&m[0].includes('<small>Foto:')),'Lazy loading and attribution required');
 const allowedNeighborhood=newNeighborhood.map(m=>m[0].match(/<img[^>]*src="([^"]+)"/)[1]);
@@ -49,8 +49,8 @@ const newMainImage=html.match(/<img id="scene-image"[^>]*src="([^"]+)"/)?.[1];
 assert(newMainImage&&newMainImage.includes('Perspectiva-01-Boutique-Apartments'),'Gallery should open with an official interior');
 const sortedExpected=collectAssets(baseline).filter(x=>x!==oldMainImage).concat([newMainImage,...allowedNeighborhood]).sort();
 assert.deepEqual(collectAssets(html),sortedExpected,'Only approved gallery lead and three neighborhood images may change');
-const script=html.match(/<script>\\(\\(\\)=>\\{"use strict";([\\s\\S]*?)<\\/script>/)?.[1]||'';
-assert((script.match(/\\["Boutique Apartment ·/g)||[]).length===3,'Three distinct official interior scenes required');
+const script=html.match(/<script>\(\(\)=>\{"use strict";([\s\S]*?)<\/script>/)?.[1]||'';
+assert((script.match(/\["Boutique Apartment ·/g)||[]).length===3,'Three distinct official interior scenes required');
 assert(script.includes('const plants=['),'Plant navigation must remain');
 assert(html.includes('<h1 id="title" class="display">Tièl Vila Nova Conceição<br>Apartamentos Tegra prontos para morar</h1>'));
 const facts=html.match(/<section class="facts"[^>]*>[\s\S]*?<\/section>/)?.[0] || '';
