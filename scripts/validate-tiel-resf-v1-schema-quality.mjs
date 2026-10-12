@@ -11,6 +11,11 @@ const match=html.match(rx),prior=baseline.match(rx);
 assert(match&&prior,'Missing JSON-LD');
 const stripSchema = text=>text.replace(rx,'SCHEMA_ONLY');
 const stripMain = text=>stripSchema(text).replace(/<main id="conteudo">[\s\S]*?<\/main>/,'<main id="conteudo">APPROVED_RESF_EDITORIAL_CONTENT</main>');
+const stripApprovedEditorialHead = text => text
+ .replace(/<title>[^<]*<\/title>/,'<title>EDITORIAL_TITLE</title>')
+ .replace(/<meta name="description" content="[^"]*">/,'<meta name="description" content="EDITORIAL_DESCRIPTION">')
+ .replace(/<meta property="og:title" content="[^"]*">/,'<meta property="og:title" content="EDITORIAL_OG_TITLE">')
+ .replace(/<meta name="twitter:title" content="[^"]*">/,'<meta name="twitter:title" content="EDITORIAL_TWITTER_TITLE">');
 const stripRetiredHeroMetaCss = text => text.replace(/\.hero-meta(?: strong| span)?\{[^}]*\}/g,'');
 // Facts CSS is an approved scoped RESF change alongside the retired hero-meta CSS.
 const stripConversionCss = text => text.replace(/\/\* RESF V1: conversao clara e premium; contrato Form 46 e seletores JS preservados\. \*\/[\s\S]*?(?=\.faq-list details\{)/,'');
@@ -18,7 +23,7 @@ const stripFactsCss = text => text
  .replace(/\.facts\{background:var\(--ink\);color:#fff\}[\s\S]*?(?=\.ticker\{overflow:hidden;)/,'FACTS_CSS_APPROVED\n')
  .replace(/\.facts-in\{grid-template-columns:repeat\((?:2|1),1fr\)\}/g,'')
  .replace(/\.facts-in,(?=\.amenity-grid,\.local-grid\{grid-template-columns:1fr\})/g,'');
-assert.equal(stripFactsCss(stripConversionCss(stripMain(html))),stripFactsCss(stripRetiredHeroMetaCss(stripMain(baseline))),'Only approved facts/hero-meta CSS changes may differ outside main');
+assert.equal(stripApprovedEditorialHead(stripFactsCss(stripConversionCss(stripMain(html)))),stripApprovedEditorialHead(stripFactsCss(stripRetiredHeroMetaCss(stripMain(baseline)))),'Only approved editorial metadata, facts/hero-meta CSS may differ outside main');
 assert(!html.includes('hero-meta'),'Legacy hero-meta must be fully removed');
 const captureSection=(text,id)=>text.match(new RegExp('<section[^>]*id="'+id+'"[\\s\\S]*?<\\/section>'))?.[0];
 const captureForm=text=>text.match(/<form id="moretegra-lead-form"[\s\S]*?<\/form>/)?.[0];
@@ -30,7 +35,7 @@ for(const selector of ['hero','facts','galeria','residencias','localizacao','faq
 }
 const collectAssets=text=>[...text.matchAll(/<(?:img|iframe)\b[^>]*>/g)].map(m=>m[0].match(/\b(?:src|srcset)="([^"]+)/)?.[1]||'').sort();
 assert.deepEqual(collectAssets(html),collectAssets(baseline),'Media src and iframe must not change');
-assert(html.includes('<h1 id="title" class="display">Tièl Vila Nova Conceição<br>Boutique Apartments</h1>'));
+assert(html.includes('<h1 id="title" class="display">Tièl Vila Nova Conceição<br>Apartamentos Tegra prontos para morar</h1>'));
 const facts=html.match(/<section class="facts"[^>]*>[\s\S]*?<\/section>/)?.[0] || '';
 assert.equal((facts.match(/class="fact"/g)||[]).length,4,'Four commercial facts required');
 for(const label of ['Área de referência','Tipologia','Região e diferencial','Estágio'])assert(facts.includes('<span>'+label+'</span>'),'Missing fact label '+label);
