@@ -26,7 +26,8 @@ const facts=html.match(/<section class="facts"[^>]*>[\s\S]*?<\/section>/)?.[0] |
 assert.equal((facts.match(/class="fact"/g)||[]).length,4,'Four commercial facts required');
 for(const label of ['Área de referência','Tipologia','Região e diferencial','Estágio'])assert(facts.includes('<span>'+label+'</span>'),'Missing fact label '+label);
 assert(facts.includes('<span>Estágio</span><b>Pronto para morar</b>'));
-assert(facts.includes('<b>21 m²</b><em>Unidade 914</em>'));
+assert(facts.includes('<span>Área de referência</span><b>21 m²</b>'));
+assert(!facts.includes('Unidade 914'),'Commercial unit identifier must not appear in facts');
 assert(facts.includes('Plantas ilustrativas de 19 m²'));
 assert(html.includes('grid-template-columns:repeat(2,minmax(0,1fr))'),'Mobile facts must stay 2 columns');
 assert(html.includes('@media(min-width:900px){.facts-in{grid-template-columns:repeat(4,minmax(0,1fr))}'),'Desktop facts must stay 4 columns');
