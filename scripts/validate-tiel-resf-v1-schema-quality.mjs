@@ -9,7 +9,21 @@ const baseline = execFileSync('git',['show',baselineSha+':'+file],{encoding:'utf
 const rx=/<script type="application\/ld\+json">([\s\S]*?)<\/script>/;
 const match=html.match(rx),prior=baseline.match(rx);
 assert(match&&prior,'Missing JSON-LD');
-assert.equal(html.replace(rx,'SCHEMA_ONLY'),baseline.replace(rx,'SCHEMA_ONLY'),'Tièl HTML outside JSON-LD must stay byte-for-byte unchanged in bounded schema slice');
+const stripSchema = text=>text.replace(rx,'SCHEMA_ONLY');
+const stripMain = text=>stripSchema(text).replace(/<main id="conteudo">[\s\S]*?<\/main>/,'<main id="conteudo">APPROVED_RESF_EDITORIAL_CONTENT</main>');
+assert.equal(stripMain(html),stripMain(baseline),'No head, footer, JS, form assets or metadata outside main may change');
+const captureSection=(text,id)=>text.match(new RegExp('<section[^>]*id="'+id+'"[\\s\\S]*?<\\/section>'))?.[0];
+assert.equal(captureSection(html,'formulario'),captureSection(baseline,'formulario'),'Form 46 and all visible form fields must remain identical');
+for(const selector of ['hero','facts','galeria','residencias','localizacao','faq']){
+ assert(html.includes(selector==='hero'?'<section class="hero"':selector==='facts'?'<section class="facts">':'id="'+selector+'"'), 'Missing RESF section '+selector);
+}
+const collectAssets=text=>[...text.matchAll(/<(?:img|iframe)\\b[^>]*>/g)].map(m=>m[0].match(/\\b(?:src|srcset)="([^"]+)/)?.[1]||'').sort();
+assert.deepEqual(collectAssets(html),collectAssets(baseline),'Media src and iframe must not change');
+assert(html.includes('<h1 id="title" class="display">Tièl Vila Nova Conceição<br>Boutique Apartments</h1>'));
+assert(html.includes('<div class="fact"><b>Pronto</b><span>para morar</span></div>'));
+assert(html.includes('<a href="/regioes/vila-nova-conceicao/">Vila Nova Conceição</a>'));
+assert(!html.includes('A página regional concentra'),'No meta-editorial page talk');
+
 const graph=JSON.parse(match[1])['@graph'];
 assert.equal(graph.length,17,'Expected governed 17-node Tièl graph');
 const one=t=>{const nodes=graph.filter(n=>n['@type']===t);assert.equal(nodes.length,1,'Expected one '+t);return nodes[0]};
@@ -51,7 +65,8 @@ assert.equal(deref(person.worksFor),one('Organization'));
 assert.equal(deref(service.provider),one('Organization'));
 assert.equal(deref(service.broker),person);
 assert.equal(agent.address.addressLocality,'São Paulo');
-assert(!Object.hasOwn(agent.address,'streetAddress'),'Agent office/attendance street unverified');
+assert.equal(agent.address.streetAddress,project.address.streetAddress,'Agent location must match governed on-site project reference');
+assert.equal(agent.address.postalCode,project.address.postalCode,'Agent postal reference must match project');
 const visible=[...html.matchAll(/<details><summary>(.*?)<\/summary><p>(.*?)<\/p><\/details>/gs)].map(m=>[m[1],m[2]]);
 const questions=one('FAQPage').mainEntity.map(q=>[q.name,q.acceptedAnswer?.text]);
 assert.equal(visible.length,6);
