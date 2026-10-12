@@ -17,7 +17,7 @@ assert(!html.includes('hero-meta'),'Legacy hero-meta must be fully removed');
 const captureSection=(text,id)=>text.match(new RegExp('<section[^>]*id="'+id+'"[\\s\\S]*?<\\/section>'))?.[0];
 assert.equal(captureSection(html,'formulario'),captureSection(baseline,'formulario'),'Form 46 and all visible form fields must remain identical');
 for(const selector of ['hero','facts','galeria','residencias','localizacao','faq']){
- assert(html.includes(selector==='hero'?'<section class="hero"':selector==='facts'?'<section class="facts">':'id="'+selector+'"'), 'Missing RESF section '+selector);
+ assert(html.includes(selector==='hero'?'<section class="hero"':selector==='facts'?'<section class="facts"':'id="'+selector+'"'), 'Missing RESF section '+selector);
 }
 const collectAssets=text=>[...text.matchAll(/<(?:img|iframe)\b[^>]*>/g)].map(m=>m[0].match(/\b(?:src|srcset)="([^"]+)/)?.[1]||'').sort();
 assert.deepEqual(collectAssets(html),collectAssets(baseline),'Media src and iframe must not change');
