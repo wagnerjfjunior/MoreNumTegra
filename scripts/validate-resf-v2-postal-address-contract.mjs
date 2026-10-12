@@ -310,7 +310,7 @@ for(const [slug,street,cep] of expected){
      doc['@graph']=doc['@graph'].filter(n=>!added.some(newNode=>newNode['@id']===n['@id'] && newNode['@type']!=='ImageObject'));
      for(const n of doc['@graph']){
        const old=oldById.get(n['@id']);
-       assert(old,'Tièl: prior node disappeared from controlled baseline');
+       if(!old){assert.equal(n['@type'],'ImageObject','Tièl: only historic-unowned ImageObject allowed here');continue;}
        if(n['@type']==='ApartmentComplex'){
          delete n.accommodationFloorPlan;
          if(Object.hasOwn(old,'brand'))n.brand=structuredClone(old.brand);
