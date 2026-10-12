@@ -1,3 +1,11 @@
+## 2026-10-11 — RESF V1 closure guardrails (active)
+
+- RESF exact-project build standard V1 is canonical for **new builds** after PRs #390/#391; no automatic existing-page retrofit, rollout, code mutation, index request, campaign or redeploy is authorized by standard adoption alone.
+- Ampère Brooklin PR #389 deployed READY, but post-release public/mobile/form/Google/performance QA was not independently verified during documentary closure. Never convert UNKNOWN into PASS or claim a performance/rank/conversion improvement.
+- No mass rewriting of existing project prices, layout, FAQ counts, graph sizes, footer addresses or hero imagery based on Ampère, Reserva or Ária examples. Each page requires its own governed facts and bounded gate.
+- Keep RESF V2 drafts, schema/image/address changes and validator debt gated and reconcile overlaps by live PR state. `DOCS_ONLY_DEPLOYMENT_CANCELED` does not imply `WEB_PRODUCTION_FAILED`.
+- Existing blocks, including paid media, CRM integrations, identity, consent, DNS and Form 46, remain effective; this section adds safeguards without removing older restrictions.
+
 # 2026-10-06 — Search-image and lp migration guardrails
 
 Current topology supersedes older `lp` fallback wording:
