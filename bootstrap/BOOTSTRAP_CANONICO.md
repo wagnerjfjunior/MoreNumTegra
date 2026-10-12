@@ -1,5 +1,9 @@
 # Bootstrap Canônico — MoreNumTegra
 
+> **SFJM live reconciliation — 2026-10-11:** RESF Exact Project Page Build Standard V1 is canonical for new exact-project pages after PR #390 and #391. Standard: `docs/frameworks/resf/v1/EXACT_PROJECT_PAGE_BUILD_STANDARD_V1_2026-10-11.md`; documentary closure: `docs/frameworks/resf/v1/RESF_EXACT_PROJECT_RELEASE_CLOSURE_2026-10-11.md`. Current observed GitHub main before this pointer PR: `40946fed2d7dcc3729361f391a9f9a80b997ae78`. Latest independently observed READY runtime deployment is Ampère PR #389 at `b6497954e45d77cf37dd639dbea3c18bd29a4040` / `dpl_6QQCpeSGVrpVJsFkap9o99Zbbw3M`; docs-only #390/#391 deployments were CANCELED, so GitHub HEAD and deployed runtime SHA intentionally differ. Re-resolve live before any mutation. Ampère post-release functional QA remains OPEN, and adopting the standard does not automatically authorize changing existing pages.
+
+
+
 > Ponto de entrada operacional para iniciar ou retomar o projeto sem depender do histórico de uma conversa.
 
 ## 1. Identificação
