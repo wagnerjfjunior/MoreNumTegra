@@ -22,7 +22,15 @@ for(const selector of ['hero','facts','galeria','residencias','localizacao','faq
 const collectAssets=text=>[...text.matchAll(/<(?:img|iframe)\b[^>]*>/g)].map(m=>m[0].match(/\b(?:src|srcset)="([^"]+)/)?.[1]||'').sort();
 assert.deepEqual(collectAssets(html),collectAssets(baseline),'Media src and iframe must not change');
 assert(html.includes('<h1 id="title" class="display">Tièl Vila Nova Conceição<br>Boutique Apartments</h1>'));
-assert(html.includes('<div class="fact"><b>Pronto</b><span>para morar</span></div>'));
+const facts=html.match(/<section class="facts"[^>]*>[\s\S]*?<\/section>/)?.[0] || '';
+assert.equal((facts.match(/class="fact"/g)||[]).length,4,'Four commercial facts required');
+for(const label of ['Área de referência','Tipologia','Região e diferencial','Estágio'])assert(facts.includes('<span>'+label+'</span>'),'Missing fact label '+label);
+assert(facts.includes('<span>Estágio</span><b>Pronto para morar</b>'));
+assert(facts.includes('<b>21 m²</b><em>Unidade 914</em>'));
+assert(facts.includes('Plantas ilustrativas de 19 m²'));
+assert(html.includes('grid-template-columns:repeat(2,minmax(0,1fr))'),'Mobile facts must stay 2 columns');
+assert(html.includes('@media(min-width:900px){.facts-in{grid-template-columns:repeat(4,minmax(0,1fr))}'),'Desktop facts must stay 4 columns');
+assert(!html.includes('.facts-in,.amenity-grid,.local-grid{grid-template-columns:1fr}'),'No mobile one-column override');
 assert(html.includes('<a href="/regioes/vila-nova-conceicao/">Vila Nova Conceição</a>'));
 assert(!html.includes('A página regional concentra'),'No meta-editorial page talk');
 
