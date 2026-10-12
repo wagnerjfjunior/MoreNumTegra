@@ -1,3 +1,22 @@
+## 2026-10-12 — RESF V1 fechamento operacional para reutilização
+
+```text
+RESF_V1_STANDARD = CANONICAL_AND_SCALE_READY
+RESF_V1_CONSUMER_STANDARD = docs/frameworks/resf/v1/EXACT_PROJECT_PAGE_BUILD_STANDARD_V1_2026-10-11.md (inclui adendo §10)
+RESF_TIEL_RECEIPT = docs/frameworks/resf/v1/RESF_TIEL_RELEASE_EVIDENCE_AND_SCALE_HANDOFF_2026-10-12.md
+TIEL_PR_395 = MERGED / 57970a878b08b0dde577b3af00a323ab91684cae
+TIEL_PR_396 = MERGED / b2e02ace0d1391f6570f14fa7c056e9defb41b8b
+TIEL_VERCEL_PRODUCTION = READY / dpl_HSMTSZnARCDKwDDVei6YDUGZT7EF / SHA b2e02ace0d1391f6570f14fa7c056e9defb41b8b
+TIEL_LEAD_AND_VISUAL = USER_CONFIRMED
+TIEL_PR_395_396_CI = 8_OF_8_SUCCESS_PER_HEAD
+TIEL_EXTERNAL_HTTP_AND_LIGHTHOUSE = NOT_INDEPENDENTLY_VERIFIED
+TIEL_EFFECTIVE_GOOGLE_INDEXATION = NOT_YET_CONFIRMED
+APPROX_30_PAGES_TO_REVIEW = USER_REPORTED / UNINVENTORIED
+BULK_MIGRATION = NOT_AUTHORIZED
+```
+
+RESF specification is now the baseline for future *bounded*, fact-governed exact-project updates. This documentation closes the standard; it does not mark all pages completed or implicitly waive gates for individual commercial claims, images, mobile QA, Form 46, consent, search metadata, or production acceptance. Older checkpoints below are historical.
+
 ## 2026-10-11 — RESF V1 closure reconciliation (current documentary status)
 
 ```text
