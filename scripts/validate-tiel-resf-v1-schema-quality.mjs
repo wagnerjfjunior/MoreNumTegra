@@ -69,6 +69,6 @@ assert.equal(agent.address.streetAddress,project.address.streetAddress,'Agent lo
 assert.equal(agent.address.postalCode,project.address.postalCode,'Agent postal reference must match project');
 const visible=[...html.matchAll(/<details><summary>(.*?)<\/summary><p>(.*?)<\/p><\/details>/gs)].map(m=>[m[1],m[2]]);
 const questions=one('FAQPage').mainEntity.map(q=>[q.name,q.acceptedAnswer?.text]);
-assert.equal(visible.length,6);
+assert.equal(visible.length,8);
 assert.deepEqual(questions,visible,'Visible FAQ and schema answers must match exactly and in order');
 console.log('TIEL_RESF_V1_SCHEMA_QUALITY_GATE_PASS');
