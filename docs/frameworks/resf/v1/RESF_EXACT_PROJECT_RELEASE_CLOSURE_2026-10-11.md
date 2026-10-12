@@ -1,3 +1,5 @@
+> **Adendo de estado 2026-10-12:** este recibo preserva a conclusão documental de 11/10/2026 e a dívida de QA Ampère daquela data. O fechamento operacional do RESF V1 para aplicação por página, as PRs Tièl #395/#396, as provas de produção e a regra para o inventário das ~30 páginas foram documentados posteriormente em `docs/frameworks/resf/v1/RESF_TIEL_RELEASE_EVIDENCE_AND_SCALE_HANDOFF_2026-10-12.md` e no §10 do padrão canônico. Não ler os SHAs/deployments abaixo como o estado live atual, nem inferir fechamento retroativo do QA Ampère.
+
 # RESF Exact Project Release Closure — 2026-10-11
 Status: DOCUMENTARY_CLOSURE_MERGED / AMPERE_POST_RELEASE_QA_OPEN. PR #390 integrated the standard and this receipt at merge SHA b9edb97d5a459e5773c8375678f692bd026d64d4; this is not Ampère functional QA acceptance.
 Repository: wagnerjfjunior/MoreNumTegra

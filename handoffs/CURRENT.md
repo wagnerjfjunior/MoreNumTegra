@@ -1,3 +1,12 @@
+## 2026-10-12 — RESF V1 pronto para escala; Tièl entregue, próximas páginas ainda não auditadas
+
+- **Fonte canônica:** GitHub main. O padrão RESF V1 foi complementado com o adendo operacional §10 em `docs/frameworks/resf/v1/EXACT_PROJECT_PAGE_BUILD_STANDARD_V1_2026-10-11.md`. `RESF_V1_STANDARD = CANONICAL_AND_SCALE_READY` não equivale a certificação das páginas existentes.
+- **Recibo:** `docs/frameworks/resf/v1/RESF_TIEL_RELEASE_EVIDENCE_AND_SCALE_HANDOFF_2026-10-12.md` registra o caso Tièl, métricas observadas e processo de aplicação nas aproximadamente 30 páginas informadas pelo usuário (quantidade não auditada).
+- Tièl PR #395 MERGED `57970a878b08b0dde577b3af00a323ab91684cae`; PR #396 MERGED `b2e02ace0d1391f6570f14fa7c056e9defb41b8b`. Vercel Production READY `dpl_HSMTSZnARCDKwDDVei6YDUGZT7EF` (SHA #396) com alias www.moretegra.com.br na checagem.
+- QA visual e comportamento do lead Green Sales: **USER_CONFIRMED**; CI de PRs #395/#396 8/8 success. Teste HTTP autônomo, Lighthouse 5x, Core Web Vitals de campo e indexação efetiva: não comprovados neste fechamento. Schema.org e Rich Results tiveram evidência confirmada pelo usuário em etapa anterior; não inferir novo rastreamento após #396.
+- **Próxima ação segura:** inventário real das páginas exatas com fatos comerciais, agrupamento por cluster/risco e correções por página com aprovação separada, sem rediscutir o RESF e sem reescrever genericamente as rotas.
+- Este bloco substitui somente os ponteiros operacionais desatualizados abaixo; decisões e bloqueios históricos continuam válidos.
+
 ## 2026-10-11 — RESF V1 canonical handoff (latest documentary state)
 
 - GitHub main at latest observed pre-reconciliation checkpoint: `40946fed2d7dcc3729361f391a9f9a80b997ae78`; PR #390 (build standard) and PR #391 (status correction) MERGED.
