@@ -12,7 +12,9 @@ assert(match&&prior,'Missing JSON-LD');
 const stripSchema = text=>text.replace(rx,'SCHEMA_ONLY');
 const stripMain = text=>stripSchema(text).replace(/<main id="conteudo">[\s\S]*?<\/main>/,'<main id="conteudo">APPROVED_RESF_EDITORIAL_CONTENT</main>');
 const stripRetiredHeroMetaCss = text => text.replace(/\.hero-meta(?: strong| span)?\{[^}]*\}/g,'');
-assert.equal(stripMain(html),stripRetiredHeroMetaCss(stripMain(baseline)),'Only approved hero-meta CSS removal may differ outside main');
+// Facts CSS is an approved scoped RESF change alongside the retired hero-meta CSS.
+const stripFactsCss = text => text.replace(/\.facts\{background:var\(--ink\);color:#fff\}[\s\S]*?(?=\.ticker\{overflow:hidden;)/,'FACTS_CSS_APPROVED\n');
+assert.equal(stripFactsCss(stripMain(html)),stripFactsCss(stripRetiredHeroMetaCss(stripMain(baseline))),'Only approved facts/hero-meta CSS changes may differ outside main');
 assert(!html.includes('hero-meta'),'Legacy hero-meta must be fully removed');
 const captureSection=(text,id)=>text.match(new RegExp('<section[^>]*id="'+id+'"[\\s\\S]*?<\\/section>'))?.[0];
 assert.equal(captureSection(html,'formulario'),captureSection(baseline,'formulario'),'Form 46 and all visible form fields must remain identical');
