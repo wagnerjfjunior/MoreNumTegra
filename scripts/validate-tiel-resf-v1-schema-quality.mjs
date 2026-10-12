@@ -13,14 +13,18 @@ const stripSchema = text=>text.replace(rx,'SCHEMA_ONLY');
 const stripMain = text=>stripSchema(text).replace(/<main id="conteudo">[\s\S]*?<\/main>/,'<main id="conteudo">APPROVED_RESF_EDITORIAL_CONTENT</main>');
 const stripRetiredHeroMetaCss = text => text.replace(/\.hero-meta(?: strong| span)?\{[^}]*\}/g,'');
 // Facts CSS is an approved scoped RESF change alongside the retired hero-meta CSS.
+const stripConversionCss = text => text.replace(/\/\* RESF V1: conversao clara e premium; contrato Form 46 e seletores JS preservados\. \*\/[\s\S]*?(?=\.faq-list details\{)/,'');
 const stripFactsCss = text => text
  .replace(/\.facts\{background:var\(--ink\);color:#fff\}[\s\S]*?(?=\.ticker\{overflow:hidden;)/,'FACTS_CSS_APPROVED\n')
  .replace(/\.facts-in\{grid-template-columns:repeat\((?:2|1),1fr\)\}/g,'')
  .replace(/\.facts-in,(?=\.amenity-grid,\.local-grid\{grid-template-columns:1fr\})/g,'');
-assert.equal(stripFactsCss(stripMain(html)),stripFactsCss(stripRetiredHeroMetaCss(stripMain(baseline))),'Only approved facts/hero-meta CSS changes may differ outside main');
+assert.equal(stripFactsCss(stripConversionCss(stripMain(html))),stripFactsCss(stripRetiredHeroMetaCss(stripMain(baseline))),'Only approved facts/hero-meta CSS changes may differ outside main');
 assert(!html.includes('hero-meta'),'Legacy hero-meta must be fully removed');
 const captureSection=(text,id)=>text.match(new RegExp('<section[^>]*id="'+id+'"[\\s\\S]*?<\\/section>'))?.[0];
-assert.equal(captureSection(html,'formulario'),captureSection(baseline,'formulario'),'Form 46 and all visible form fields must remain identical');
+const captureForm=text=>text.match(/<form id="moretegra-lead-form"[\s\S]*?<\/form>/)?.[0];
+assert.equal(captureForm(html),captureForm(baseline),'Form 46 fields, provider contract and submission markup must remain identical');
+assert(html.includes('<section class="lead mt-conversion-form" id="formulario"'),'Modern conversion card must be present');
+assert(html.includes('apartamentos e empreendimentos na Vila Nova Conceição</a>'),'Visible neighborhood link must be present');
 for(const selector of ['hero','facts','galeria','residencias','localizacao','faq']){
  assert(html.includes(selector==='hero'?'<section class="hero"':selector==='facts'?'<section class="facts"':'id="'+selector+'"'), 'Missing RESF section '+selector);
 }
