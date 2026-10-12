@@ -36,3 +36,12 @@ F) STATUS — every facet PASS / FAIL / NEEDS_REVALIDATION / NOT_TESTED; no sing
 
 ## 5. Release gate
 Candidate PR only. No merge and no production publish until: exact-head tests/CI, reconciliation against PRs #364/#366/#368/#376 overlaps, factual review, mobile Preview/local acceptance as appropriate, and separate Product Authority merge authorization. Google Rich Results/Schema.org 0 errors/warnings and detected-category outcomes are to be observed and recorded only after actual external test. Do not promise Google eligibility, indexation, six enhancements or visibility.
+
+## 6. Actual exact-head CI observations (PR #393)
+At candidate head `7af361c9ecd2108d0c1f2e12584415f291ac8d91`, the Tièl-specific semantic gate, commercial page standard, favicon, social sharing, primary/secondary image and project structured-data coverage checks completed SUCCESS. Two pre-existing cross-project guard workflows completed FAILURE because this candidate introduces a previously absent Tièl `RealEstateAgent`:
+- `RESF V2 approved project postal addresses`: `tiel-vila-nova-conceicao: unexpected new RealEstateAgent` at `normalizeOnsiteAgent`. The workflow freezes legacy schema entities and has no Tièl commercial addition allowance.
+- `RealEstateAgent onsite location validation`: `tiel-vila-nova-conceicao: onsite agent address mismatch streetAddress`, expecting the project's governed Rua Jacques Félix, 309, while the candidate correctly refrains from asserting an unproven physical brokerage/onsite address.
+
+**BLOCKED / NO MERGE:** The existing onsite validation standard requires agent's address to equal project address, and counts all new agents as onsite. Product Authority must validate that Sabrina's Tièl attendance is in-person at that project before asserting that address, or explicitly approve a separately modeled non-onsite RealEstateAgent with a scoped validator-contract revision. Do not invent a physical office or silently bypass contract gates. Preserve the source project address/CEP and CTA unchanged.
+
+Live Google Rich Results and Schema.org tests, mobile visual QA, commercial truth freshness and host QA remain NOT_TESTED on this candidate. This status is evidence-based, not an assertion that Google will find more enhancements.
