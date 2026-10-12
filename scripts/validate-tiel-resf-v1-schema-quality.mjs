@@ -11,7 +11,9 @@ const match=html.match(rx),prior=baseline.match(rx);
 assert(match&&prior,'Missing JSON-LD');
 const stripSchema = text=>text.replace(rx,'SCHEMA_ONLY');
 const stripMain = text=>stripSchema(text).replace(/<main id="conteudo">[\s\S]*?<\/main>/,'<main id="conteudo">APPROVED_RESF_EDITORIAL_CONTENT</main>');
-assert.equal(stripMain(html),stripMain(baseline),'No head, footer, JS, form assets or metadata outside main may change');
+const stripRetiredHeroMetaCss = text => text.replace(/\.hero-meta(?: strong| span)?\{[^}]*\}/g,'');
+assert.equal(stripMain(html),stripRetiredHeroMetaCss(stripMain(baseline)),'Only approved hero-meta CSS removal may differ outside main');
+assert(!html.includes('hero-meta'),'Legacy hero-meta must be fully removed');
 const captureSection=(text,id)=>text.match(new RegExp('<section[^>]*id="'+id+'"[\\s\\S]*?<\\/section>'))?.[0];
 assert.equal(captureSection(html,'formulario'),captureSection(baseline,'formulario'),'Form 46 and all visible form fields must remain identical');
 for(const selector of ['hero','facts','galeria','residencias','localizacao','faq']){
