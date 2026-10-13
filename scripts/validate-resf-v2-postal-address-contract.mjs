@@ -408,9 +408,9 @@ for(const [slug,street,cep] of expected){
  if(wasComplete){
   const outsideJsonld=x=>x.replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi,'<script type="application/ld+json"></script>');
   if(slug==='bem-moema-studios-offices'){
-    const form=x=>x.match(/<form id="moretegra-lead-form"[\\s\\S]*?<\\/form>/)?.[0];
-    const sources=x=>[...x.matchAll(/<(?:img|iframe)\\b[^>]*>/g)].map(m=>(m[0].match(/\\bsrc="([^"]+)"/)||[])[1]);
-    const code=x=>[...x.matchAll(/<script\\b[^>]*>([\\s\\S]*?)<\\/script>/g)].filter(m=>!m[0].includes('application/ld+json')).map(m=>m[0]);
+    const form=x=>x.match(/<form id="moretegra-lead-form"[\s\S]*?<\/form>/)?.[0];
+    const sources=x=>[...x.matchAll(/<(?:img|iframe)\b[^>]*>/g)].map(m=>(m[0].match(/\bsrc="([^"]+)"/)||[])[1]);
+    const code=x=>[...x.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)].filter(m=>!m[0].includes('application/ld+json')).map(m=>m[0]);
     assert.equal(form(candidate),form(original),'Bem Moema Studios Offices: Form 46 changed');
     assert.deepEqual(sources(candidate),sources(original),'Bem Moema Studios Offices: media sources changed');
     assert.deepEqual(code(candidate),code(original),'Bem Moema Studios Offices: functional scripts changed');
