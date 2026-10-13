@@ -336,7 +336,12 @@ for(const [slug,street,cep] of expected){
    const baseline=flat(before),current=flat(after);
    const oldById=new Map(baseline.filter(n=>n['@id']).map(n=>[n['@id'],n]));
    const newNodes=current.filter(n=>!oldById.has(n['@id']));
-   const allowedTypes=['Organization','ContactPoint','Person','RealEstateAgent','Service','Product','Offer','FloorPlan','FloorPlan'];
+   const allowedTypes=['Organization','ContactPoint','Person','RealEstateAgent','Service','Product','Offer','FloorPlan','FloorPlan','ImageObject'];
+   const addedImage=newNodes.find(n=>n['@type']==='ImageObject');
+   assert.equal(addedImage?.['@id'],'https://www.moretegra.com.br/empreendimentos/bem-moema-studios-offices/#secondary-image','Bem Moema Studios Offices: only the approved secondary image addition is allowed');
+   const mainImgs=[...candidate.slice(candidate.indexOf('<main'),candidate.indexOf('</main>')).matchAll(/<img\b[^>]*>/g)];
+   const secondSrc=mainImgs[1]?.[0].match(/\bsrc="([^"]+)"/)?.[1];
+   assert.equal(addedImage?.contentUrl,secondSrc,'Bem Moema Studios Offices: second image URL must match visible secondary media');
    assert.deepEqual(newNodes.map(n=>n['@type']).sort(),allowedTypes.slice().sort(),'Bem Moema Studios Offices: unexpected entity addition');
    const project=current.find(n=>n['@type']==='ApartmentComplex');
    const agent=current.find(n=>n['@type']==='RealEstateAgent');
