@@ -1,3 +1,11 @@
+# Crawling for search is permitted. AI foundation-model training is not authorized.
+# OAI-SearchBot (search) and GPTBot (training) are separate OpenAI crawlers.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Disallow: /
+
 User-agent: *
 Allow: /
 
