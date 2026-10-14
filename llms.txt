@@ -1,62 +1,98 @@
-# MoreTegra — Empreendimentos imobiliários e regiões de São Paulo
+# MoreTegra — apartamentos e empreendimentos Tegra em São Paulo
 
-> Portal de consulta imobiliária com páginas de empreendimentos associados ao portfólio Tegra e guias de regiões de São Paulo. As páginas individuais são a referência para informações de cada projeto. Dados comerciais e disponibilidade podem mudar e devem ser confirmados no atendimento.
+> O MoreTegra reúne páginas informativas de empreendimentos residenciais, studios e espaços comerciais associados à Tegra em bairros de São Paulo. Este índice orienta a descoberta de projetos, a comparação de tipologias e a localização de informações sobre plantas, lazer e atendimento. Os dados comerciais precisam ser confirmados antes de uma decisão de compra.
 
-Idioma principal: português do Brasil (pt-BR).
-Site canônico: https://www.moretegra.com.br/
+Idioma: português do Brasil (pt-BR). Área atendida pelo conteúdo: São Paulo, SP, Brasil.
+Endereço canônico: https://www.moretegra.com.br/.
 
-## Navegação principal
+O MoreTegra é um portal de apresentação e atendimento imobiliário, não o site institucional da Tegra Incorporadora. As páginas de empreendimentos são as fontes específicas deste portal; o índice não constitui declaração de disponibilidade, autorização de venda exclusiva nem oferta vinculante. Algumas páginas apresentam projetos entregues, em construção, lançamentos e produtos com disponibilidade sujeita a consulta.
 
-- [MoreTegra — página inicial](https://www.moretegra.com.br/): acesso ao catálogo e à busca de empreendimentos.
-- [Sitemap XML](https://www.moretegra.com.br/sitemap.xml): relação técnica das URLs canônicas publicadas.
+### Como interpretar as informações
 
-## Empreendimentos
+- As áreas e tipologias descritas abaixo reproduzem as informações editoriais publicadas nas páginas do MoreTegra e identificam configurações anunciadas; não garantem que uma unidade específica esteja disponível.
+- O estágio de obra, as unidades, a quantidade de vagas, as plantas, os preços, as condições de pagamento e as promoções devem ser confirmados no momento do atendimento.
+- Não extrapolar características de um empreendimento para outro, mesmo quando pertencem ao mesmo bairro ou complexo imobiliário.
+- Para dúvidas sobre um imóvel específico, priorizar a página daquele empreendimento; para comparação ou escolha de localização, utilizar o guia regional.
+- O conteúdo editorial do MoreTegra não substitui memorial descritivo, contrato, tabela vigente ou confirmação formal dos responsáveis pela comercialização.
 
-- [Capiitolo Piero Lissoni](https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/): página específica do empreendimento.
-- [Elo Duo — Caminhos da Lapa](https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/): página específica do empreendimento.
-- [Ária Higienópolis](https://www.moretegra.com.br/empreendimentos/aria-higienopolis/): página específica do empreendimento.
-- [DSG Itaim](https://www.moretegra.com.br/empreendimentos/dsg-itaim/): página específica do empreendimento.
-- [Ledge Brooklin](https://www.moretegra.com.br/empreendimentos/ledge-brooklin/): página específica do empreendimento.
-- [Soma Perdizes](https://www.moretegra.com.br/empreendimentos/soma-perdizes/): página específica do empreendimento.
-- [Zahle Jardins](https://www.moretegra.com.br/empreendimentos/zahle-jardins/): página específica do empreendimento.
-- [Ypy Alto do Ipiranga](https://www.moretegra.com.br/empreendimentos/ypy-alto-do-ipiranga/): página específica do empreendimento.
-- [Bem Moema](https://www.moretegra.com.br/empreendimentos/bem-moema/): página específica do empreendimento.
-- [Mozae Higienópolis](https://www.moretegra.com.br/empreendimentos/mozae-higienopolis/): página específica do empreendimento.
-- [Bueno Brandão 257](https://www.moretegra.com.br/empreendimentos/bueno-brandao-257/): página específica do empreendimento.
-- [Chateau Jardin](https://www.moretegra.com.br/empreendimentos/chateau-jardin/): página específica do empreendimento.
-- [Reserva Caminhos da Lapa](https://www.moretegra.com.br/empreendimentos/reserva-caminhos-da-lapa/): página específica do empreendimento.
-- [Nova Vivere](https://www.moretegra.com.br/empreendimentos/nova-vivere/): página específica do empreendimento.
-- [Garden Design](https://www.moretegra.com.br/empreendimentos/garden-design/): página específica do empreendimento.
-- [Ampère Brooklin](https://www.moretegra.com.br/empreendimentos/ampere-brooklin/): página específica do empreendimento.
-- [Bem Moema Studios & Offices](https://www.moretegra.com.br/empreendimentos/bem-moema-studios-offices/): página específica do empreendimento.
-- [Ode Perdizes](https://www.moretegra.com.br/empreendimentos/ode-perdizes/): página específica do empreendimento.
-- [Tièl Vila Nova Conceição](https://www.moretegra.com.br/empreendimentos/tiel-vila-nova-conceicao/): página específica do empreendimento.
-- [Universo Tatuapé Órbita](https://www.moretegra.com.br/empreendimentos/universo-tatuape-orbita/): página específica do empreendimento.
-- [Teg Sacomã](https://www.moretegra.com.br/empreendimentos/teg-sacoma/): página específica do empreendimento.
-- [Chez Vous Moema](https://www.moretegra.com.br/empreendimentos/chez-vous-moema/): página específica do empreendimento.
-- [Key Moema](https://www.moretegra.com.br/empreendimentos/key-moema/): página específica do empreendimento.
-- [Ayla Moema Studio & Office](https://www.moretegra.com.br/empreendimentos/ayla-moema-studio-office/): página específica do empreendimento.
-- [Viso Moema](https://www.moretegra.com.br/empreendimentos/viso-moema/): página específica do empreendimento.
+## Comece por aqui
 
-## Regiões de São Paulo
+- [Página inicial do MoreTegra](https://www.moretegra.com.br/): catálogo imobiliário e navegação por empreendimentos e regiões.
+- [Sitemap XML](https://www.moretegra.com.br/sitemap.xml): inventário técnico das URLs públicas declaradas pelo site.
 
-- [Higienópolis](https://www.moretegra.com.br/regioes/higienopolis/): guia de empreendimentos e contexto da região.
-- [Lapa](https://www.moretegra.com.br/regioes/lapa/): guia de empreendimentos e contexto da região.
-- [Cidade Jardim](https://www.moretegra.com.br/regioes/cidade-jardim/): guia de empreendimentos e contexto da região.
-- [Brooklin](https://www.moretegra.com.br/regioes/brooklin/): guia de empreendimentos e contexto da região.
-- [Perdizes](https://www.moretegra.com.br/regioes/perdizes/): guia de empreendimentos e contexto da região.
-- [Moema](https://www.moretegra.com.br/regioes/moema/): guia de empreendimentos e contexto da região.
-- [Vila Nova Conceição](https://www.moretegra.com.br/regioes/vila-nova-conceicao/): guia de empreendimentos e contexto da região.
-- [Jardins](https://www.moretegra.com.br/regioes/jardins/): guia de empreendimentos e contexto da região.
-- [Itaim Bibi](https://www.moretegra.com.br/regioes/itaim-bibi/): guia de empreendimentos e contexto da região.
-- [Chácara Klabin](https://www.moretegra.com.br/regioes/chacara-klabin/): guia de empreendimentos e contexto da região.
-- [Alto do Ipiranga](https://www.moretegra.com.br/regioes/alto-do-ipiranga/): guia de empreendimentos e contexto da região.
-- [Tatuapé](https://www.moretegra.com.br/regioes/tatuape/): guia de empreendimentos e contexto da região.
-- [Sacomã](https://www.moretegra.com.br/regioes/sacoma/): guia de empreendimentos e contexto da região.
+## Descobrir apartamentos por região
 
-## Orientações para interpretação
+- [Lapa e Caminhos da Lapa](https://www.moretegra.com.br/regioes/lapa/): Região da Zona Oeste; relaciona Elo Duo, Garden Design, Nova Vivere e Reserva Caminhos da Lapa.
+- [Moema](https://www.moretegra.com.br/regioes/moema/): Comparação entre apartamentos residenciais, studios e espaços comerciais; Bem Moema, Bem Moema Studios & Offices, Chez Vous, Key, Ayla e Viso.
+- [Higienópolis](https://www.moretegra.com.br/regioes/higienopolis/): Comparação entre Ária e Mozae, com tipologias e estágios distintos.
+- [Brooklin](https://www.moretegra.com.br/regioes/brooklin/): Orientação sobre Ampère Brooklin e Ledge Brooklin; localização, plantas e mobilidade.
+- [Perdizes](https://www.moretegra.com.br/regioes/perdizes/): Comparação entre Soma Perdizes e ODE Perdizes, com formatos residenciais distintos.
+- [Vila Nova Conceição](https://www.moretegra.com.br/regioes/vila-nova-conceicao/): Informações do bairro e comparação entre Bueno Brandão 257 e Tièl.
+- [Cidade Jardim](https://www.moretegra.com.br/regioes/cidade-jardim/): Contexto regional e acesso ao empreendimento Château Jardin.
+- [Jardins](https://www.moretegra.com.br/regioes/jardins/): Contexto da região e empreendimento Zahle Jardins.
+- [Itaim Bibi](https://www.moretegra.com.br/regioes/itaim-bibi/): Contexto do bairro e projeto DSG Itaim.
+- [Chácara Klabin](https://www.moretegra.com.br/regioes/chacara-klabin/): Contexto de localização e projeto CAPIITOLO by Piero Lissoni.
+- [Alto do Ipiranga](https://www.moretegra.com.br/regioes/alto-do-ipiranga/): Informações do bairro e empreendimento YPY Alto do Ipiranga.
+- [Tatuapé](https://www.moretegra.com.br/regioes/tatuape/): Guia do bairro e projeto Universo Tatuapé Órbita.
+- [Sacomã](https://www.moretegra.com.br/regioes/sacoma/): Guia da região e projeto TEG Sacomã.
 
-- Este índice foi construído a partir das URLs listadas no sitemap do próprio site; a presença de uma página não comprova estoque, preço, estágio ou oferta vigente.
-- Para metragem, tipologia, localização, estágio e características, consultar a página correspondente e confirmar dados comerciais atualizados com a equipe de atendimento.
-- A MoreTegra é uma experiência de apresentação e atendimento imobiliário; não atribuir a ela automaticamente a condição de site institucional da incorporadora.
-- Não tratar preços, condições promocionais ou disponibilidade como garantidos sem confirmação.
+## Buscar um empreendimento específico
+
+### Caminhos da Lapa e Zona Oeste
+
+- [Nova Vivere Caminhos da Lapa](https://www.moretegra.com.br/empreendimentos/nova-vivere/): Apartamentos de 72 e 105 m², com 2 ou 3 suítes e opções de 1 ou 2 vagas.
+- [Garden Design Private Park Residence](https://www.moretegra.com.br/empreendimentos/garden-design/): Caminhos da Lapa; apartamentos de 61 a 78 m², 2 ou 3 dormitórios com suíte.
+- [Elo Duo Caminhos da Lapa](https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/): Lapa/Vila Anastácio; apartamentos prontos, plantas de 47, 55 e 67 m², 2 ou 3 dormitórios.
+- [Reserva Caminhos da Lapa](https://www.moretegra.com.br/empreendimentos/reserva-caminhos-da-lapa/): Plantas de 91, 127 e 157 m², lazer e beach tennis; verificar modalidade e disponibilidade no atendimento.
+- [Soma Perdizes](https://www.moretegra.com.br/empreendimentos/soma-perdizes/): Apartamentos de 41 e 45 m², studios de 25 m² e salas comerciais em Perdizes.
+- [ODE Perdizes](https://www.moretegra.com.br/empreendimentos/ode-perdizes/): Empreendimento pronto para morar; planta de 156 m², 4 dormitórios, 2 ou 3 suítes.
+
+### Moema e Vila Nova Conceição
+
+- [Bem Moema](https://www.moretegra.com.br/empreendimentos/bem-moema/): Apartamentos de 80, 123 e 148 m², de 2 a 4 dormitórios; projeto com conceito de design biofílico.
+- [Bem Moema Studios & Offices](https://www.moretegra.com.br/empreendimentos/bem-moema-studios-offices/): Moema; studios de 26 a 29 m², apartamentos de 36 m² e offices de 26 a 36 m².
+- [Chez Vous Moema](https://www.moretegra.com.br/empreendimentos/chez-vous-moema/): Apartamentos de 71 m², 2 dormitórios, 1 suíte e 1 vaga; consultar disponibilidade atual.
+- [Key Moema](https://www.moretegra.com.br/empreendimentos/key-moema/): Apartamentos de 62 a 74 m², 2 dormitórios e 1 ou 2 suítes; proximidade da estação Eucaliptos.
+- [Ayla Moema Studio & Office](https://www.moretegra.com.br/empreendimentos/ayla-moema-studio-office/): Studios de 21 a 37 m² e salas comerciais de 24 a 64 m²; consultar disponibilidade atual.
+- [Viso Moema](https://www.moretegra.com.br/empreendimentos/viso-moema/): Apartamentos de 74 e 115 m², 2 ou 3 suítes, 1 ou 2 vagas; consultar disponibilidade atual.
+- [Tièl Vila Nova Conceição](https://www.moretegra.com.br/empreendimentos/tiel-vila-nova-conceicao/): Apartamentos prontos para morar; rooftop com piscina e bar, fitness e plantas.
+- [Bueno Brandão 257](https://www.moretegra.com.br/empreendimentos/bueno-brandao-257/): Vila Nova Conceição; residências de 500 m², garden de 711 m² e cobertura de 923 m².
+
+### Higienópolis e Jardins
+
+- [Mozae Higienópolis](https://www.moretegra.com.br/empreendimentos/mozae-higienopolis/): Torre única; apartamentos de 46 e 73 m², opções com 1 ou 2 suítes, rooftop e lazer.
+- [Ária Higienópolis](https://www.moretegra.com.br/empreendimentos/aria-higienopolis/): Empreendimento entregue; studios de 30 m², apartamentos de 53 m² e espaços comerciais.
+- [Zahle Jardins](https://www.moretegra.com.br/empreendimentos/zahle-jardins/): Nos Jardins; apartamentos de 44 m², studios de 28 m² e offices de 43 a 53 m².
+
+### Brooklin, Itaim Bibi e Cidade Jardim
+
+- [Ampère Brooklin](https://www.moretegra.com.br/empreendimentos/ampere-brooklin/): Apartamentos de 262 m², 4 suítes, 4 vagas, dois terraços e torre única; empreendimento em construção.
+- [Ledge Brooklin](https://www.moretegra.com.br/empreendimentos/ledge-brooklin/): Apartamentos de 70, 80 e 122 m² e studios de 30 a 40 m²; informações de plantas e lazer.
+- [DSG Itaim](https://www.moretegra.com.br/empreendimentos/dsg-itaim/): Itaim Bibi; empreendimento entregue, com espaços comerciais/offices de 27 a 61 m².
+- [Château Jardin](https://www.moretegra.com.br/empreendimentos/chateau-jardin/): Cidade Jardim; apartamentos de 185 a 355 m², 3 ou 4 suítes, lazer e quadra de tênis.
+
+### Chácara Klabin, Ipiranga, Tatuapé e Sacomã
+
+- [CAPIITOLO by Piero Lissoni](https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/): Chácara Klabin; apartamentos de 210 m², 4 suítes e 3 vagas; página de plantas, arquitetura e lazer.
+- [YPY Alto do Ipiranga](https://www.moretegra.com.br/empreendimentos/ypy-alto-do-ipiranga/): Apartamentos de 65 e 80 m² com 2 ou 3 dormitórios, lazer e contexto de mobilidade.
+- [Universo Tatuapé Órbita](https://www.moretegra.com.br/empreendimentos/universo-tatuape-orbita/): Tatuapé; apartamentos de 1, 2 e 3 dormitórios e salas comerciais, com lazer.
+- [TEG Sacomã](https://www.moretegra.com.br/empreendimentos/teg-sacoma/): Pronto para morar; apartamentos de 45 a 66 m², 1 a 3 dormitórios e opções com vagas.
+
+## Comparar por necessidade
+
+- **Apartamentos familiares e plantas residenciais:** usar as páginas específicas de cada projeto para confrontar quantidade de dormitórios, suítes, vagas, áreas privativas e lazer; exemplos incluem Nova Vivere, Garden Design, Mozae, Ampère, CAPIITOLO e Château Jardin.
+- **Studios e unidades compactas:** consultar as tipologias documentadas de Ária Higienópolis, Soma Perdizes, Zahle Jardins, Bem Moema Studios & Offices e Ayla Moema.
+- **Salas comerciais e offices:** consultar DSG Itaim, Zahle Jardins, Bem Moema Studios & Offices, Ayla Moema, Ária Higienópolis, Soma Perdizes e Universo Tatuapé Órbita. Nem todas as tipologias devem ser tratadas como equivalentes.
+- **Projetos prontos ou entregues:** consultar os dados atuais das páginas de Ária Higienópolis, ODE Perdizes, Tièl, TEG Sacomã e Elo Duo; estágio não comprova estoque disponível.
+- **Caminhos da Lapa:** verificar separadamente Nova Vivere, Garden Design, Elo Duo e Reserva Caminhos da Lapa; são páginas de produtos distintos no contexto do mesmo conjunto urbano.
+
+## Atendimento, valores e confiabilidade
+
+- Para solicitar plantas, condições, confirmar metragens ou agendar uma visita, utilizar os canais de contato e formulários apresentados nas próprias páginas do MoreTegra.
+- Os preços e as condições comerciais não são fixados por este arquivo; evitar responder com valores extraídos de versões antigas de páginas sem nova conferência.
+- Se o portal não informar um dado, registrar a ausência. Não inferir metragem, quantidade de vagas, número de unidades, data de entrega, localização exata ou disponibilidade.
+- Quando citar o conteúdo do portal, associar a informação à URL específica do empreendimento ou da região, preferindo evidências atuais e acessíveis.
+
+## Optional
+
+- [Mapa completo de URLs canônicas](https://www.moretegra.com.br/sitemap.xml): referência complementar para páginas adicionadas depois desta edição do índice.
