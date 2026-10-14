@@ -1,0 +1,122 @@
+# RESF — PR #405 — Reconciliação CI Mozae — 2026-10-14
+
+## Escopo e fonte
+- Repositório canônico `wagnerjfjunior/MoreNumTegra`.
+- Branch `fix/mozae-sabrina-stand-intent-20261014`, PR #405.
+- Mudança visível exclusiva no bloco de atendimento da página `src-greenn/empreendimentos/mozae-higienopolis/index.html`: solicitação explícita de atendimento Sabrina da Tegra no estande e link WhatsApp +55 11 96077-9328 para agendamento.
+- Sem alterações nos preços, Form 46, JSON-LD, imagens, tracking ou outras páginas.
+
+## Proteção `postal` reconciliada
+A regra antiga, em `scripts/validate-resf-v2-postal-address-contract.mjs:436`, comparava rigidamente todo o HTML não-JSON-LD e reprovava até a frase autorizada no bloco de atendimento.
+
+Exceção explícita e estritamente delimitada ao slug `mozae-higienopolis`:
+1. Exige exatamente uma ocorrência do HTML autorizado com nome e link WhatsApp.
+2. Exige que a frase não estivesse presente na referência histórica.
+3. Remove exclusivamente esse fragmento para a comparação e exige igualdade integral de todo o HTML restante com o congelamento original.
+4. Os mesmos validadores continuam aplicados a todas as outras páginas. Não desativar a proteção nem atualizar baselines globais.
+
+**Evidência:** check `postal` do commit `93d9e13a21702f1227aaa286670481a1cd52359f` = `success`.
+
+## Falhas `validate` anteriores à PR
+Comparamos o log da workflow **M5-06 CTA/Form journey**, `main`, run `38142650445`, job `114479494798`, **2026-10-11**, com o check `validate` da PR #405, job `115999903448`, **2026-10-14**. Ambos reportaram exatamente as mesmas **16 falhas**, sem novas falhas:
+- 5 itens de CTAs e opção controlada: Bem Moema (3), Reserva (1), Garden Design (1).
+- 11 itens de mapa regional: Ledge, Soma, Zahle, YPY, Bem, Mozae, Bueno, Château, Reserva, Nova Vivere, Garden Design.
+
+**Classificação:** `PRE_EXISTING_VALIDATOR_DEBT`, NÃO `PASS`. Esta PR não resolve nem oculta o débito transversal de mapas e CTAs; requer gate próprio, já documentado no SFJM, para qualquer alteração nesses itens.
+
+## Testes da PR #405 (commit 93d9e13a...)
+- `postal`: PASS.
+- `Validate commercial page standard`: PASS.
+- `onsite-address`: PASS.
+- `coverage`: PASS.
+- `images`: PASS.
+- `Validate canonical favicon`: PASS.
+- `Validate Open Graph and Twitter metadata`: PASS.
+- `validate`: FAIL, 16 falhas preexistentes idênticas ao log de main 2026-10-11.
+- `Mermaid Diagram Sync Assistant`: SKIPPED.
+
+## Gates de release ainda necessários
+- Inspeção visual mobile e desktop do texto/CTA, teste do deep-link WhatsApp com número correto.
+- Conferir funcionamento do Form 46 sem gerar lead de teste desnecessário, e ausência de regressões de conversão.
+- Aprovação de merge pela Product Authority segundo contrato SFJM. Não alegar Preview visual ou teste live não executado.
+- Após merge, verificar SHA de produção Vercel, HTTP/HTML real, CTA e registrar evidência/rollback.
+- `validate` permanece falhando no repositório, apesar da ausência comprovada de regressão provocada pela PR.
+
+## Decisão
+**Correção de código e proteção concluída na branch; publicação ainda não certificada.** Não falsificar green CI, não efetuar merge automático enquanto faltarem os gates acima.
+
+## 2026-10-14 — complementação RESF de localização e Form46 (autorização direta)
+
+O operador constatou duas faltas materiais que a PR #405 anterior não cobriu: **três fotografias reais do bairro de Higienópolis** sob o título "Higienópolis, entre tradição e mobilidade" e **formulário claro** (o card ainda estava preto). A correção foi implementada na própria branch #405, sem alterar IDs, valores ocultos, endpoints ou lógica de formulário.
+
+### Alterações aprovadas delimitadas
+1. Galeria contextual antes do mapa da região, três imagens de locais verificáveis em Higienópolis, `loading="lazy"`, dimensões, legendas e crédito de direitos, sem apresentá-las como instalações do empreendimento:
+   - Parque Buenos Aires: `Parque Buenos Aires 01.JPG`, Dornicke, CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Parque_Buenos_Aires_01.JPG
+   - Praça Vilaboim: `Praça Vilaboim - São Paulo - 20240914153652.jpg`, TamiresAnsanelo, CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Pra%C3%A7a_Vilaboim_-_S%C3%A3o_Paulo_-_20240914153652.jpg
+   - Arquitetura da Avenida Angélica: `Imóvel à Avenida Angélica, nº 1647 - São Paulo - 20240914160011.jpg`, TamiresAnsanelo, CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Im%C3%B3vel_%C3%A0_Avenida_Ang%C3%A9lica%2C_n%C2%BA_1647_-_S%C3%A3o_Paulo_-_20240914160011.jpg
+2. `<section class="lead mt-conversion-form" id="formulario">` e CSS escopado: seção clara `#f4f1e9`, card branco `#fff`, campos claros, estados de foco/erro, duas colunas responsivas e CTA amarelo; preservado `#moretegra-lead-form`, `tenant_id=313`, `form_id=46`, `title=MoreEmUmTegra`.
+3. `scripts/validate-resf-v2-postal-address-contract.mjs` nesta PR valida a presença exata e única dos fragmentos comerciais/fotográficos/CSS aprovados e igualdade integral do HTML restante com baseline histórico. A futura PR #406 já separa HTML de PostalAddress e foi sincronizada para reconhecer tanto a versão legada quanto o pacote completo, nunca estado parcial. Os dois PRs permanecem independentes até decisão de integração.
+
+### Validação e limites
+- `postal` passou no commit `2645cbd8cea4bec4b2941315f7113e6739105b96` depois de correção de um caractere de newline na inserção de CSS.
+- `validate` ainda apresenta as 16 falhas históricas de mapas/CTA vistas também em `main` antes desta PR; não declarar como PASS.
+- QA mobile/desktop de renderização, carregamento efetivo dos três arquivos pela origem Wikimedia, contraste real, funcionamento WhatsApp/Form46 e deployment production **não certificados nesta etapa**.
+- Não realizar merge sem avaliação da Product Authority e evidência dos gates aplicáveis.
+
+## 2026-10-14 — dois logotipos fornecidos pela Product Authority
+
+Foram recebidas URLs de mídia hospedadas no diretório GDigital tenant 313, aprovadas pelo operador para as assinaturas institucionais:
+- **LE Arquitetos** (Arquitetura): `https://s3-gdigital.s3.amazonaws.com/gdigital/313/MoreTegra-Mozae-Arquitetura-Logo_Le_Arquitetos.webp`
+- **Cardim Arquitetura Paisagística** (Paisagismo): `https://s3-gdigital.s3.amazonaws.com/gdigital/313/MoreTEgra-Mozae-Paisagismo-Cardim.webp`
+
+Integradas somente aos respectivos créditos na seção de autoria, com texto institucional preservado, imagens lazy, alt descritivo e CSS escopado. Os outros dois créditos (Suíte Arquitetos; mural de Isabel Ruas) permanecem textuais até entrega de ativos específicos. Sem incorporação de imagens de outros projetos.
+
+Foi acrescentada exceção **literal e limitada a esses dois arquivos e CSS** na proteção de HTML do branch #405 e sincronizada no validador de regressão separado da PR #406. Mudanças adicionais permanecem proibidas.
+
+**Evidência HTTP dos assets:** a checagem externa automática não conseguiu confirmar status/content-type desta origem nesta sessão. O QA visual e a disponibilidade real dos arquivos devem ser verificados no Local Live Sync antes do release. Não registrar `ASSET_HTTP_PASS` sem prova.
+
+## 2026-10-14 — Autoria arquitetônica RESF: teste visual solicitado
+
+Após QA do operador em screenshots desktop/mobile, os créditos sem texto e com logomarcas ilegíveis foram reestruturados numa seção editorial responsiva. A nova versão foi implementada e liberada **apenas na branch de teste**, sem merge ou publicação.
+
+- Título: `Arquitetura e design do Mozae Higienópolis`; introdução para compradores, quatro cards e descrições de atribuições verificadas.
+- LE Arquitetos: logo fornecido pelo operador, sem repetir nome em título no card; papel `Arquitetura`.
+- Suíte Arquitetos: novo logo fornecido `https://s3-gdigital.s3.amazonaws.com/gdigital/313/Suite-Arquitetos-SemFundo.webp`; `Interiores`.
+- Cardim: logo fornecido anteriormente `https://s3-gdigital.s3.amazonaws.com/gdigital/313/MoreTEgra-Mozae-Paisagismo-Cardim.webp` sobre placa clara para preservar contraste do texto escuro; `Paisagismo`.
+- Isabel Ruas: `https://s3-gdigital.s3.amazonaws.com/gdigital/313/Mural-Isabel-Ruas.webp`, com `object-fit:cover` e atribuição de mural exclusivo. A associação específica da imagem ao mural do projeto e o carregamento HTTP ainda dependem de QA de mídia.
+- Layout: cards em duas colunas no desktop e uma no mobile; H2 fluido e limitado no mobile, texto legível, imagens lazy e dimensão declarada.
+- Exceções nos testes de regressão da PR #405 e #406 são literais para o bloco e CSS novos, com comparação integral do HTML restante ao baseline.
+- Evidência em commit `6b4eb0e29a438a2cf229597de1bc1e92ff601775`: 7 checks PASS (postal, commercial standard, canonical favicon, Open Graph/Twitter, onsite-address, images e coverage). O `validate` geral mantém FAIL histórico (16 ocorrências).
+- PR #406 commit `6e6b3e2c31e0ee1ac2112139ada3a4bfe11bd019`: `postal` PASS e `regression` PASS.
+- Gate pendente: operador conferir Live Sync desktop/mobile, verificação de carregamento real e contraste de logos no navegador, WhatsApp/Form46, e aprovação explícita de merge.
+
+
+## 2026-10-14 — Correção visual pontual de logos (teste Live Sync)
+
+A Product Authority forneceu nova mídia Cardim `https://s3-gdigital.s3.amazonaws.com/gdigital/313/MoreTEgra-Mozae-Paisagismo-Cardim-removebg-preview.webp` e solicitou **branco puro `#FFFFFF` nas áreas de imagem dos cards Suíte e Cardim**. Implementado em `/empreendimentos/mozae-higienopolis/`: Suíte também usa `authorship-pale`, e o estilo existente `.signature .authorship-pale .authorship-media` passa para `background:#fff`. Outros cards, conteúdo editorial, Greenn Form46 e JavaScript preservados. Proteções literais da PR #405 e PR #406 sincronizadas para aceitar precisamente esses deltas. Publicação/merge permanecem pendentes de QA visual do operador.
+
+## 2026-10-14 — Tipologias 46/73 m² consolidadas (revisão UX do operador)
+
+A Product Authority identificou duplicação editorial e visual entre `#residencias` ("46 e 73 m²" em fonte excessiva + duas plantas) e `#escolha-mozae` (mesmas tipologias novamente em três cards). Autorizada reorganização no fluxo de homologação.
+
+- Uma única seção `#residencias`, heading `Qual planta do Mozae combina com você?` com escala fluida contida no desktop e mobile.
+- Duas plantas oficiais originais preservadas e vinculadas diretamente à explicação da tipologia 46 m²/1 suíte ou 73 m²/2 suítes.
+- Status `Em construção`, 1 vaga divulgada, referência AP0301, ressalva de prazo/disponibilidade/condições e textos úteis sobre análise das tipologias mantidos sem criar números não verificados.
+- Conteúdo `Rotina e lazer` integralmente preservado imediatamente após as plantas.
+- Eliminação apenas dos blocos repetidos. Sem alterar galeria principal, FAQs, dados estruturados, Form 46, tracking, preços ou outras áreas.
+- `postal` PASS, imagens PASS, padrões comerciais e SEO PASS no head `a9720af32eace67a2056c3d3ec4e109b2ef0eb7b`; `validate` geral continua em FAIL por dívida histórica.
+- O teste guardião do HTML no ramo #405 e o `regression` da PR #406 preservam comparação estrita do HTML restante; atualização delimitada somente para bloco consolidado e CSS, ambos por fragmentos literais.
+- QA visual mobile/desktop e aprovação final de release ainda dependem do operador. Sem merge/deploy.
+
+## 2026-10-14 — M5-06: reconciliação de mapa e CTAs após QA do operador
+
+O operador testou no SFJM Live Sync: cinco CTAs funcionais (3 Bem Moema, 1 Reserva, 1 Garden); dez mapas regionais funcionais com solicitação de localização exata por WhatsApp (Ledge, Soma, Zahle, YPY, Mozae, Bueno, Château, Reserva, Nova Vivere, Garden Design). O mapa do Bem Moema funcionava ao toque, mas direcionava para /regioes/moema/, divergente do padrão de solicitação comercial; alteração expressamente autorizada.
+
+Implementação delimitada:
+- `src-greenn/empreendimentos/bem-moema/index.html`: mapa regional Google preservado; clique na superfície e CTA inferior agora apontam para `https://wa.me/5511960779328?text=Por%20favor%20me%20envie%20a%20localiza%C3%A7%C3%A3o%20exata%20do%20Bem%20Moema.`; link regional `/regioes/moema/` preservado no texto contextual;
+- Dois CTAs de `#formulario` passaram a explicitar `data-form-intent="conditions"`, mantendo o texto e UX previamente homologados;
+- O `select#mt-lead-intent` passou a conter `<option value="Negociar meu cenário">Negociar meu cenário</option>`; esta opção havia sido aprovada funcionalmente pelo operador mas estava ausente no HTML da branch, motivo para correção factual do contrato.
+- `scripts/validate-m5-06-cta-form-journey.mjs`: assertions de Bem, Reserva e Garden alinhadas às intenções verdadeiras e atributos exatos; para mapas, verificação de embed regional carregado lazy, hyperlink sobreposto com WhatsApp de Sabrina e nome exato do produto, atributo de nova janela e não-placeholder. Não foram desativadas verificações.
+- `scripts/validate-bem-moema-orbita-graph-parity.mjs` e `scripts/validate-bem-moema-ap0202-product-offer.mjs`: baseline congelado rigorosamente, com normalização de somente 4 deltas textuais exatos aprovados (mapa, CTA hero, CTA flutuante e nova opção); comparações de schema/preços/inventário inalteradas.
+
+Evidência intermediária commit `431514ba9720d1f754bce4389780d71390ec1824`: `schema-parity`, `factual-offer`, `postal`, `images`, `coverage`, `onsite-address`, `Validate commercial page standard`, `Validate Open Graph and Twitter metadata` e `Validate canonical favicon` PASS. O resultado `validate` deve ser consultado no check do último commit; sem tratar sucesso intermediário como liberação final. Live Sync do Bem Moema ainda precisa QA pós-correção, em desktop/mobile, com conferência do WhatsApp e do Form 46. Sem merge, release ou publicação nesta etapa.
