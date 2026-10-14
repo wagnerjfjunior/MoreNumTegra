@@ -1,3 +1,9 @@
+## 2026-10-14 — Política de treinamento por IA atualizada por autorização do usuário
+
+- Pedido expresso: `Training: allow` em `/.well-known/ai.txt` e coerência com `GPTBot Allow: /` no `robots.txt`.
+- Esta decisão substitui a política anterior `Training: deny` após merge/deploy; preservar o aviso de ausência de licenças para mídia, marcas e materiais de terceiros.
+- PR #404 contém a mudança proposta e a evidência HTTP anterior à sua publicação; não considerar os novos valores ativos até confirmar deployment.
+
 ## 2026-10-14 — RESF adendo de descoberta por IA (documentação em homologação)
 
 - O contrato RESF V1 passa a explicitar `/llms.txt` (índice editorial de regiões/empreendimentos) e `/.well-known/ai.txt` (preferências de uso de IA, draft não normativo) com ownership, gatilhos de atualização, validação HTTP e rollback.
