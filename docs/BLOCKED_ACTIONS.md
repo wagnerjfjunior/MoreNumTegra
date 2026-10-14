@@ -1,3 +1,11 @@
+## 2026-10-14 — Restrições adicionais do contrato RESF de IA
+
+- Não remover nem substituir sem autorização a identificação de Sabrina da Tegra, WhatsApp +55 11 96077-9328 e orientação de solicitação de atendimento no estande das superfícies de descoberta/comercial afetadas.
+- Não inferir licenças de terceiros, garantir uso por bots ou afirmar melhora de ranking/visibilidade apenas por publicar `llms.txt` ou `ai.txt`.
+- Não alterar políticas Training/Scraping/Indexing/Caching no `/.well-known/ai.txt` sem autorização específica.
+- Não marcar HTTP público PASS com base apenas em merge GitHub ou deployment Vercel READY.
+- Não transplantar fatos comerciais do `llms.txt` para páginas sem fonte exata nem fazer reescrita geral do catálogo por causa deste adendo.
+
 ## 2026-10-12 — Guardrails do RESF V1 fechado para escala
 
 - **Padrão fechado não significa 30 páginas finalizadas** nem autorização para edição/migração em massa; ~30 é estimativa fornecida pelo usuário até inventário por rota.
