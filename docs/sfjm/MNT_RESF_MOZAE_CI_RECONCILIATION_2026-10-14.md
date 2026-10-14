@@ -107,3 +107,16 @@ A Product Authority identificou duplicação editorial e visual entre `#residenc
 - `postal` PASS, imagens PASS, padrões comerciais e SEO PASS no head `a9720af32eace67a2056c3d3ec4e109b2ef0eb7b`; `validate` geral continua em FAIL por dívida histórica.
 - O teste guardião do HTML no ramo #405 e o `regression` da PR #406 preservam comparação estrita do HTML restante; atualização delimitada somente para bloco consolidado e CSS, ambos por fragmentos literais.
 - QA visual mobile/desktop e aprovação final de release ainda dependem do operador. Sem merge/deploy.
+
+## 2026-10-14 — M5-06: reconciliação de mapa e CTAs após QA do operador
+
+O operador testou no SFJM Live Sync: cinco CTAs funcionais (3 Bem Moema, 1 Reserva, 1 Garden); dez mapas regionais funcionais com solicitação de localização exata por WhatsApp (Ledge, Soma, Zahle, YPY, Mozae, Bueno, Château, Reserva, Nova Vivere, Garden Design). O mapa do Bem Moema funcionava ao toque, mas direcionava para /regioes/moema/, divergente do padrão de solicitação comercial; alteração expressamente autorizada.
+
+Implementação delimitada:
+- `src-greenn/empreendimentos/bem-moema/index.html`: mapa regional Google preservado; clique na superfície e CTA inferior agora apontam para `https://wa.me/5511960779328?text=Por%20favor%20me%20envie%20a%20localiza%C3%A7%C3%A3o%20exata%20do%20Bem%20Moema.`; link regional `/regioes/moema/` preservado no texto contextual;
+- Dois CTAs de `#formulario` passaram a explicitar `data-form-intent="conditions"`, mantendo o texto e UX previamente homologados;
+- O `select#mt-lead-intent` passou a conter `<option value="Negociar meu cenário">Negociar meu cenário</option>`; esta opção havia sido aprovada funcionalmente pelo operador mas estava ausente no HTML da branch, motivo para correção factual do contrato.
+- `scripts/validate-m5-06-cta-form-journey.mjs`: assertions de Bem, Reserva e Garden alinhadas às intenções verdadeiras e atributos exatos; para mapas, verificação de embed regional carregado lazy, hyperlink sobreposto com WhatsApp de Sabrina e nome exato do produto, atributo de nova janela e não-placeholder. Não foram desativadas verificações.
+- `scripts/validate-bem-moema-orbita-graph-parity.mjs` e `scripts/validate-bem-moema-ap0202-product-offer.mjs`: baseline congelado rigorosamente, com normalização de somente 4 deltas textuais exatos aprovados (mapa, CTA hero, CTA flutuante e nova opção); comparações de schema/preços/inventário inalteradas.
+
+Evidência intermediária commit `431514ba9720d1f754bce4389780d71390ec1824`: `schema-parity`, `factual-offer`, `postal`, `images`, `coverage`, `onsite-address`, `Validate commercial page standard`, `Validate Open Graph and Twitter metadata` e `Validate canonical favicon` PASS. O resultado `validate` deve ser consultado no check do último commit; sem tratar sucesso intermediário como liberação final. Live Sync do Bem Moema ainda precisa QA pós-correção, em desktop/mobile, com conferência do WhatsApp e do Form 46. Sem merge, release ou publicação nesta etapa.
