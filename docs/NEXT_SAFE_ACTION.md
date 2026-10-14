@@ -1,3 +1,10 @@
+## 2026-10-14 — PR #405 Mozae — pós-reconciliação do teste postal
+
+- A frase de atendimento no estande e o WhatsApp de Sabrina foram adicionados de forma delimitada; o teste `postal` agora aceita somente esse fragmento mantendo comparação integral do restante do HTML congelado.
+- O check `postal` passou no commit `93d9e13a21702f1227aaa286670481a1cd52359f`. As 16 falhas do check geral `validate` são idênticas às do job de `main` de 2026-10-11, caracterizadas como débito técnico preexistente, não como PASS.
+- Evidência: `docs/sfjm/MNT_RESF_MOZAE_CI_RECONCILIATION_2026-10-14.md`.
+- Próxima ação segura: confirmar checks do último head e QA visual mobile/desktop + link WhatsApp + Form46; obter aprovação explícita de merge, publicar e certificar SHA/HTTP/funcionamento em produção. Não alterar controles globais para encobrir falhas.
+
 ## 2026-10-14 — Próximo gate RESF para arquivos de IA
 
 Após incorporar o adendo §11 ao padrão RESF V1, executar em READ_ONLY o smoke HTTP de `/llms.txt` e `/.well-known/ai.txt` no domínio canônico (status, content-type, body, codificação), verificar que o SHA de production corresponde ao merge dos arquivos e conferir consistência da identidade Sabrina em um inventário de páginas. Registrar NÃO VERIFICADO quando não houver evidência. Corrigir eventuais divergências em PRs delimitadas; não autorizar migração em massa de páginas. A validação de Page/Form46/SEO permanece independente.
