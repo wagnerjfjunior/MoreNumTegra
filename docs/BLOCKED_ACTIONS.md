@@ -1,3 +1,8 @@
+## 2026-10-14 — Decisão específica sobre treinamento por IA
+
+- O operador autorizou explicitamente `Training: allow` em `/.well-known/ai.txt`, acompanhado de `GPTBot Allow: /` no `robots.txt`; esta autorização substitui o valor anterior `deny` somente após merge e publicação governados.
+- A decisão de permitir rastreamento não concede licenças de imagens, plantas, logos e outros materiais de terceiros. Não declarar direitos inexistentes nem prometer cumprimento por plataformas de IA.
+
 ## 2026-10-14 — Restrições adicionais do contrato RESF de IA
 
 - Não remover nem substituir sem autorização a identificação de Sabrina da Tegra, WhatsApp +55 11 96077-9328 e orientação de solicitação de atendimento no estande das superfícies de descoberta/comercial afetadas.
