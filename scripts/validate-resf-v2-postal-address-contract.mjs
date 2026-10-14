@@ -433,6 +433,15 @@ for(const [slug,street,cep] of expected){
     assert(!candidate.includes('.hero-meta{'),'Bem Moema Studios Offices: retired hero-meta CSS remains');
     assert(candidate.includes('href="/regioes/moema/"'),'Bem Moema Studios Offices: missing contextual regional link');
     assert(candidate.includes('id="moretegra-lead-form"'),'Bem Moema Studios Offices: Form46 missing');
+   }else if(slug==='mozae-higienopolis'){
+    // Bounded, operator-approved visit-guidance exception. Compare the ENTIRE remaining
+    // visible/runtime HTML with the frozen baseline; reject additional modifications.
+    const approved='<p>Ao chegar ao estande de vendas do Mozae Higienópolis, solicite atendimento por <strong>Sabrina da Tegra</strong>. Para agendar sua visita, fale pelo <a href="https://wa.me/5511960779328?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20visita%20ao%20Mozae%20Higien%C3%B3polis%20com%20Sabrina%20da%20Tegra." target="_blank" rel="noopener noreferrer">WhatsApp (11) 96077-9328</a>.</p>';
+    assert.equal(candidate.split(approved).length,2,'Mozae: approved stand-guidance snippet absent or duplicated');
+    assert(!outsideJsonld(original).includes(approved),'Mozae: approved snippet unexpectedly already in baseline');
+    const restored=candidate.replace(approved,'');
+    assert.equal(outsideJsonld(restored),outsideJsonld(original),
+      slug+': changes outside approved Sabrina stand-guidance are forbidden');
    }else assert.equal(outsideJsonld(candidate),outsideJsonld(original),slug+': previously complete page visible/runtime HTML changed');
   completeUnchanged++;
  }else{
