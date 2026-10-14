@@ -13,7 +13,7 @@ const removeLegacyHeroMeta = html => html.replace(/\.hero-meta\{[^}]*\}\.hero-me
 assert(!source.includes("hero-meta"),"RESF V1 forbids duplicated legacy hero-meta");
 assert(source.includes('data-plant-groups'),"Grouped floorplan controls must exist");
 assert(source.includes('data-plant-group="Residencial"')&&source.includes('data-plant-group="Comercial"')&&source.includes('data-plant-group="Implantação"'),"All three categories required");
-assert(source.includes('class="tour-grid"')&&source.includes('class="tour-image"'),"Editorial 360 tour requires two-column media/text");
+assert(source.includes('class="wrap tour-grid"')&&source.includes('class="tour-image"'),"Editorial 360 tour requires two-column media/text");
 assert.equal((source.match(/<div class="neighborhood-gallery"/g)||[]).length,1,"Three-photo neighborhood editorial block required");
 assert.equal((source.match(/<figure><img loading="lazy" decoding="async"/g)||[]).length,3,"Three lazy-loaded neighborhood images required");
 assert(source.includes('<form id="moretegra-lead-form"')&&source.includes('data-form-id="46"'),"Form 46 contract preserved");
