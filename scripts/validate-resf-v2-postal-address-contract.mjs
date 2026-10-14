@@ -330,6 +330,49 @@ for(const [slug,street,cep] of expected){
    }
    const normalized=stripApprovedImages(copy,before,slug,candidate);
    assert.deepEqual(scrub(normalized),scrub(before),'Tièl: only approved semantic and responsive image deltas permitted');
+ }else if(slug==='bem-moema-studios-offices'){
+   // RESF V1 bounded copy/semantic adoption; preserve the existing governed
+   // ApartmentComplex PostalAddress and restore only specifically approved schema deltas.
+   const baseline=flat(before),current=flat(after);
+   const oldById=new Map(baseline.filter(n=>n['@id']).map(n=>[n['@id'],n]));
+   const newNodes=current.filter(n=>!oldById.has(n['@id']));
+   const allowedTypes=['Organization','ContactPoint','Person','RealEstateAgent','Service','Product','Offer','FloorPlan','FloorPlan','ImageObject'];
+   const addedImage=newNodes.find(n=>n['@type']==='ImageObject');
+   assert.equal(addedImage?.['@id'],'https://www.moretegra.com.br/empreendimentos/bem-moema-studios-offices/#secondary-image','Bem Moema Studios Offices: only the approved secondary image addition is allowed');
+   const mainImgs=[...candidate.slice(candidate.indexOf('<main'),candidate.indexOf('</main>')).matchAll(/<img\b[^>]*>/g)];
+   const secondSrc=mainImgs[1]?.[0].match(/\bsrc="([^"]+)"/)?.[1];
+   assert.equal(addedImage?.contentUrl,secondSrc,'Bem Moema Studios Offices: second image URL must match visible secondary media');
+   assert.deepEqual(newNodes.map(n=>n['@type']).sort(),allowedTypes.slice().sort(),'Bem Moema Studios Offices: unexpected entity addition');
+   const project=current.find(n=>n['@type']==='ApartmentComplex');
+   const agent=current.find(n=>n['@type']==='RealEstateAgent');
+   const product=current.find(n=>n['@type']==='Product');
+   const offer=current.find(n=>n['@type']==='Offer');
+   const plans=current.filter(n=>n['@type']==='FloorPlan');
+   const route='https://www.moretegra.com.br/empreendimentos/bem-moema-studios-offices/';
+   assert.deepEqual(agent?.address,project?.address,'Bem Moema Studios Offices: local realtor address mismatch');
+   assert.equal(agent?.image,'https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp');
+   assert.equal(product?.['@id'],route+'#product-studio-1702');
+   assert.equal(offer?.['@id'],route+'#offer-studio-1702');
+   assert.equal(offer?.price,'509600.00');
+   assert.equal(offer?.priceCurrency,'BRL');
+   assert(!Object.hasOwn(offer,'availability'),'Bem Moema Studios Offices: no invented availability');
+   assert.equal(product?.isRelatedTo?.['@id'],route+'#project');
+   assert.deepEqual(plans.map(p=>p.floorSize?.value).sort((a,b)=>a-b),[26,26]);
+   assert.deepEqual(project.accommodationFloorPlan,[{'@id':route+'#floorplan-studio-26'},{'@id':route+'#floorplan-office-26'}]);
+   assert(!Object.hasOwn(project,'brand'),'Bem Moema Studios Offices: remove incompatible ApartmentComplex.brand');
+   const normalized=structuredClone(after);
+   for(const doc of normalized)if(doc['@graph']){
+     doc['@graph']=doc['@graph'].filter(n=>!newNodes.some(a=>a['@id']===n['@id']));
+     for(let i=0;i<doc['@graph'].length;i++){
+       const node=doc['@graph'][i];
+       if(['WebPage','ApartmentComplex'].includes(node['@type'])){
+         const old=oldById.get(node['@id']);
+         assert(old,'Bem Moema Studios Offices: pre-existing ID changed');
+         doc['@graph'][i]=structuredClone(old);
+       }
+     }
+   }
+   assert.deepEqual(scrub(normalized),scrub(before),'Bem Moema Studios Offices: unauthorized changes to historical semantic nodes');
  }else if(slug==='universo-tatuape-orbita'){
    // The separately gated Órbita commercial parity PR adds approved ImageObject,
    // actual FloorPlans and commercial entities; preserve all original entities.
@@ -369,7 +412,28 @@ for(const [slug,street,cep] of expected){
  const wasComplete=prior[0].address?.streetAddress===street && prior[0].address?.postalCode===cep;
  if(wasComplete){
   const outsideJsonld=x=>x.replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi,'<script type="application/ld+json"></script>');
-  assert.equal(outsideJsonld(candidate),outsideJsonld(original),slug+': previously complete page visible/runtime HTML changed');
+  if(slug==='bem-moema-studios-offices'){
+    const form=x=>x.match(/<form id="moretegra-lead-form"[\s\S]*?<\/form>/)?.[0];
+    const sources=x=>[...x.matchAll(/<(?:img|iframe)\b[^>]*>/g)].map(m=>(m[0].match(/\bsrc="([^"]+)"/)||[])[1]);
+    const code=x=>[...x.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)].filter(m=>!m[0].includes('application/ld+json')).map(m=>m[0]);
+    assert.equal(form(candidate),form(original),'Bem Moema Studios Offices: Form 46 changed');
+    const approvedNeighborhood=[...candidate.matchAll(/<figure class="neighborhood-card">[\s\S]*?<\/figure>/g)].map(m=>m[0]);
+    assert.equal(approvedNeighborhood.length,3,'Bem Moema Studios Offices: RESF requires three sourced Moema photographs');
+    const approvedSources=approvedNeighborhood.map(card=>card.match(/<img\b[^>]*src="([^"]+)"/)?.[1]);
+    assert(approvedSources.every(Boolean)&&new Set(approvedSources).size===3,'Bem Moema Studios Offices: unique neighborhood sources required');
+    assert(approvedSources.every(src=>src.startsWith('https://commons.wikimedia.org/wiki/Special:FilePath/')),'Bem Moema Studios Offices: disallowed photo origin');
+    assert(approvedNeighborhood.every(card=>card.includes('loading="lazy"')&&card.includes('decoding="async"')&&card.includes('<figcaption>')),'Bem Moema Studios Offices: neighborhood lazy load/caption absent');
+    assert.deepEqual(sources(candidate).filter(src=>!approvedSources.includes(src)),sources(original),'Bem Moema Studios Offices: original media sources changed');
+    assert(candidate.includes('class="neighborhood-credits"'),'Bem Moema Studios Offices: license/credit references missing');
+    assert(candidate.includes('<section class="lead mt-conversion-form" id="formulario"'),'Bem Moema Studios Offices: approved light conversion section absent');
+    assert(candidate.includes('.mt-conversion-form .form{background:#fff;color:#171813'),'Bem Moema Studios Offices: approved white form card absent');
+    assert(candidate.includes('.mt-conversion-form .field input,.mt-conversion-form .field select{width:100%;min-height:50px'),'Bem Moema Studios Offices: light form inputs absent');
+    assert.deepEqual(code(candidate),code(original),'Bem Moema Studios Offices: functional scripts changed');
+    assert(candidate.includes('grid-template-columns:repeat(2,minmax(0,1fr))'),'Bem Moema Studios Offices: mobile facts 2x2 absent');
+    assert(!candidate.includes('.hero-meta{'),'Bem Moema Studios Offices: retired hero-meta CSS remains');
+    assert(candidate.includes('href="/regioes/moema/"'),'Bem Moema Studios Offices: missing contextual regional link');
+    assert(candidate.includes('id="moretegra-lead-form"'),'Bem Moema Studios Offices: Form46 missing');
+   }else assert.equal(outsideJsonld(candidate),outsideJsonld(original),slug+': previously complete page visible/runtime HTML changed');
   completeUnchanged++;
  }else{
   changed++;
