@@ -417,7 +417,17 @@ for(const [slug,street,cep] of expected){
     const sources=x=>[...x.matchAll(/<(?:img|iframe)\b[^>]*>/g)].map(m=>(m[0].match(/\bsrc="([^"]+)"/)||[])[1]);
     const code=x=>[...x.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)].filter(m=>!m[0].includes('application/ld+json')).map(m=>m[0]);
     assert.equal(form(candidate),form(original),'Bem Moema Studios Offices: Form 46 changed');
-    assert.deepEqual(sources(candidate),sources(original),'Bem Moema Studios Offices: media sources changed');
+    const approvedNeighborhood=[...candidate.matchAll(/<figure class="neighborhood-card">[\s\S]*?<\/figure>/g)].map(m=>m[0]);
+    assert.equal(approvedNeighborhood.length,3,'Bem Moema Studios Offices: RESF requires three sourced Moema photographs');
+    const approvedSources=approvedNeighborhood.map(card=>card.match(/<img\b[^>]*src="([^"]+)"/)?.[1]);
+    assert(approvedSources.every(Boolean)&&new Set(approvedSources).size===3,'Bem Moema Studios Offices: unique neighborhood sources required');
+    assert(approvedSources.every(src=>src.startsWith('https://commons.wikimedia.org/wiki/Special:FilePath/')),'Bem Moema Studios Offices: disallowed photo origin');
+    assert(approvedNeighborhood.every(card=>card.includes('loading="lazy"')&&card.includes('decoding="async"')&&card.includes('<figcaption>')),'Bem Moema Studios Offices: neighborhood lazy load/caption absent');
+    assert.deepEqual(sources(candidate).filter(src=>!approvedSources.includes(src)),sources(original),'Bem Moema Studios Offices: original media sources changed');
+    assert(candidate.includes('class="neighborhood-credits"'),'Bem Moema Studios Offices: license/credit references missing');
+    assert(candidate.includes('<section class="lead mt-conversion-form" id="formulario"'),'Bem Moema Studios Offices: approved light conversion section absent');
+    assert(candidate.includes('.mt-conversion-form .form{background:#fff;color:#171813'),'Bem Moema Studios Offices: approved white form card absent');
+    assert(candidate.includes('.mt-conversion-form .field input,.mt-conversion-form .field select{width:100%;min-height:50px'),'Bem Moema Studios Offices: light form inputs absent');
     assert.deepEqual(code(candidate),code(original),'Bem Moema Studios Offices: functional scripts changed');
     assert(candidate.includes('grid-template-columns:repeat(2,minmax(0,1fr))'),'Bem Moema Studios Offices: mobile facts 2x2 absent');
     assert(!candidate.includes('.hero-meta{'),'Bem Moema Studios Offices: retired hero-meta CSS remains');
