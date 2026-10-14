@@ -4,6 +4,7 @@ on:
     paths:
       - 'src-greenn/empreendimentos/**/index.html'
       - 'scripts/validate-resf-v2-postal-address-contract.mjs'
+      - 'scripts/validate-resf-html-regression.mjs'
       - '.github/workflows/resf-v2-postal-address-contract.yml'
   workflow_dispatch:
 permissions:
@@ -23,3 +24,17 @@ jobs:
         run: |
           node --check scripts/validate-resf-v2-postal-address-contract.mjs
           node scripts/validate-resf-v2-postal-address-contract.mjs
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate historically frozen HTML and bounded editorial exceptions
+        run: |
+          node --check scripts/validate-resf-html-regression.mjs
+          node scripts/validate-resf-html-regression.mjs
