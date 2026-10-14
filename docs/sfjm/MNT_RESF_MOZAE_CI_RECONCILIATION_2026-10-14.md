@@ -44,3 +44,21 @@ Comparamos o log da workflow **M5-06 CTA/Form journey**, `main`, run `3814265044
 
 ## Decisão
 **Correção de código e proteção concluída na branch; publicação ainda não certificada.** Não falsificar green CI, não efetuar merge automático enquanto faltarem os gates acima.
+
+## 2026-10-14 — complementação RESF de localização e Form46 (autorização direta)
+
+O operador constatou duas faltas materiais que a PR #405 anterior não cobriu: **três fotografias reais do bairro de Higienópolis** sob o título "Higienópolis, entre tradição e mobilidade" e **formulário claro** (o card ainda estava preto). A correção foi implementada na própria branch #405, sem alterar IDs, valores ocultos, endpoints ou lógica de formulário.
+
+### Alterações aprovadas delimitadas
+1. Galeria contextual antes do mapa da região, três imagens de locais verificáveis em Higienópolis, `loading="lazy"`, dimensões, legendas e crédito de direitos, sem apresentá-las como instalações do empreendimento:
+   - Parque Buenos Aires: `Parque Buenos Aires 01.JPG`, Dornicke, CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Parque_Buenos_Aires_01.JPG
+   - Praça Vilaboim: `Praça Vilaboim - São Paulo - 20240914153652.jpg`, TamiresAnsanelo, CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Pra%C3%A7a_Vilaboim_-_S%C3%A3o_Paulo_-_20240914153652.jpg
+   - Arquitetura da Avenida Angélica: `Imóvel à Avenida Angélica, nº 1647 - São Paulo - 20240914160011.jpg`, TamiresAnsanelo, CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Im%C3%B3vel_%C3%A0_Avenida_Ang%C3%A9lica%2C_n%C2%BA_1647_-_S%C3%A3o_Paulo_-_20240914160011.jpg
+2. `<section class="lead mt-conversion-form" id="formulario">` e CSS escopado: seção clara `#f4f1e9`, card branco `#fff`, campos claros, estados de foco/erro, duas colunas responsivas e CTA amarelo; preservado `#moretegra-lead-form`, `tenant_id=313`, `form_id=46`, `title=MoreEmUmTegra`.
+3. `scripts/validate-resf-v2-postal-address-contract.mjs` nesta PR valida a presença exata e única dos fragmentos comerciais/fotográficos/CSS aprovados e igualdade integral do HTML restante com baseline histórico. A futura PR #406 já separa HTML de PostalAddress e foi sincronizada para reconhecer tanto a versão legada quanto o pacote completo, nunca estado parcial. Os dois PRs permanecem independentes até decisão de integração.
+
+### Validação e limites
+- `postal` passou no commit `2645cbd8cea4bec4b2941315f7113e6739105b96` depois de correção de um caractere de newline na inserção de CSS.
+- `validate` ainda apresenta as 16 falhas históricas de mapas/CTA vistas também em `main` antes desta PR; não declarar como PASS.
+- QA mobile/desktop de renderização, carregamento efetivo dos três arquivos pela origem Wikimedia, contraste real, funcionamento WhatsApp/Form46 e deployment production **não certificados nesta etapa**.
+- Não realizar merge sem avaliação da Product Authority e evidência dos gates aplicáveis.
