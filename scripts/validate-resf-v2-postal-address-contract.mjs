@@ -378,7 +378,7 @@ for(const [slug,street,cep] of expected){
    const faqCurrent=current.find(n=>n['@type']==='FAQPage');
    const faqBaseline=baseline.find(n=>n['@type']==='FAQPage');
    assert(faqCurrent&&faqBaseline,'Bem Moema Studios Offices: FAQ missing');
-   const visibleFAQ=[...candidate.matchAll(/<details><summary>([\s\\S]*?)<\/summary><p>([\s\\S]*?)<\/p><\/details>/g)].map(m=>({question:m[1].replaceAll('&amp;','&'),answer:m[2].replaceAll('&amp;','&')}));
+   const visibleFAQ=[...candidate.matchAll(/<details><summary>([\s\S]*?)<\/summary><p>([\s\S]*?)<\/p><\/details>/g)].map(m=>({question:m[1].replaceAll('&amp;','&'),answer:m[2].replaceAll('&amp;','&')}));
    assert.equal(visibleFAQ.length,6,'Bem Moema Studios Offices: six visible FAQ items required');
    assert.equal(faqCurrent.mainEntity.length,visibleFAQ.length,'Bem Moema Studios Offices: FAQ schema cardinality mismatch');
    for(let i=0;i<visibleFAQ.length;i++){
