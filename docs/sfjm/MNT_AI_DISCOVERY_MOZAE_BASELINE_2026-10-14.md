@@ -11,7 +11,7 @@ Source of truth: GitHub main and deployed production SHA. Do not present expecte
 - A single anonymous chat is one qualitative observation, not a stable visibility rate or a proof of crawl/indexing failure.
 
 ## Read-only repository audit
-- Root `robots.txt` before PR #404: `User-agent: *; Allow: /` with sitemap URL. All bots permitted, including OpenAI's training crawler (broad-purpose permission inconsistent with preferred training policy).
+- Root `robots.txt` before PR #404: `User-agent: *; Allow: /` with sitemap URL. All bots permitted, including OpenAI's training crawler (the ai.txt policy at the time still stated Training: deny).
 - `/.well-known/ai.txt`: `Training: deny`, `Scraping: allow`, `Indexing: allow`, and Sabrina identity in comments. Internet-Draft, not an established cross-provider standard.
 - `/llms.txt`: index with Sabrina name, CRECI, phone and stand guidance.
 - `/sitemap.xml`: Mozae route found; files `ai.txt` and `llms.txt` omitted as non-landing-page files.
@@ -21,7 +21,7 @@ Source of truth: GitHub main and deployed production SHA. Do not present expecte
 
 ## PR scopes
 - #403: RESF §11 governance integrated before this audit.
-- #404: narrow `robots.txt` intent differentiation: OAI-SearchBot allow /, GPTBot disallow /, fallback user agent allow / (preserve general search discovery). No guarantees on behavior of other AI crawlers.
+- #404: updated by explicit user authorization to `Training: allow` in ai.txt and OAI-SearchBot allow /, GPTBot allow /, fallback user agent allow / in robots.txt. No licenses for third-party assets or guarantees about AI systems. The earlier GPTBot disallow proposal was superseded **before merge**.
 - #405: Mozae-specific visible stand guidance + WhatsApp visit CTA; prices, Form 46, JSON-LD and media preserved.
 - Deploy happens on merged main. Do not merge #405 with unfinished CI or without approved visual/mobile/form validation as required by RESF.
 
