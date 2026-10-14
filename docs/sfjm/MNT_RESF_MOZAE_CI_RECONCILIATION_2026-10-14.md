@@ -94,3 +94,16 @@ Após QA do operador em screenshots desktop/mobile, os créditos sem texto e com
 ## 2026-10-14 — Correção visual pontual de logos (teste Live Sync)
 
 A Product Authority forneceu nova mídia Cardim `https://s3-gdigital.s3.amazonaws.com/gdigital/313/MoreTEgra-Mozae-Paisagismo-Cardim-removebg-preview.webp` e solicitou **branco puro `#FFFFFF` nas áreas de imagem dos cards Suíte e Cardim**. Implementado em `/empreendimentos/mozae-higienopolis/`: Suíte também usa `authorship-pale`, e o estilo existente `.signature .authorship-pale .authorship-media` passa para `background:#fff`. Outros cards, conteúdo editorial, Greenn Form46 e JavaScript preservados. Proteções literais da PR #405 e PR #406 sincronizadas para aceitar precisamente esses deltas. Publicação/merge permanecem pendentes de QA visual do operador.
+
+## 2026-10-14 — Tipologias 46/73 m² consolidadas (revisão UX do operador)
+
+A Product Authority identificou duplicação editorial e visual entre `#residencias` ("46 e 73 m²" em fonte excessiva + duas plantas) e `#escolha-mozae` (mesmas tipologias novamente em três cards). Autorizada reorganização no fluxo de homologação.
+
+- Uma única seção `#residencias`, heading `Qual planta do Mozae combina com você?` com escala fluida contida no desktop e mobile.
+- Duas plantas oficiais originais preservadas e vinculadas diretamente à explicação da tipologia 46 m²/1 suíte ou 73 m²/2 suítes.
+- Status `Em construção`, 1 vaga divulgada, referência AP0301, ressalva de prazo/disponibilidade/condições e textos úteis sobre análise das tipologias mantidos sem criar números não verificados.
+- Conteúdo `Rotina e lazer` integralmente preservado imediatamente após as plantas.
+- Eliminação apenas dos blocos repetidos. Sem alterar galeria principal, FAQs, dados estruturados, Form 46, tracking, preços ou outras áreas.
+- `postal` PASS, imagens PASS, padrões comerciais e SEO PASS no head `a9720af32eace67a2056c3d3ec4e109b2ef0eb7b`; `validate` geral continua em FAIL por dívida histórica.
+- O teste guardião do HTML no ramo #405 e o `regression` da PR #406 preservam comparação estrita do HTML restante; atualização delimitada somente para bloco consolidado e CSS, ambos por fragmentos literais.
+- QA visual mobile/desktop e aprovação final de release ainda dependem do operador. Sem merge/deploy.
