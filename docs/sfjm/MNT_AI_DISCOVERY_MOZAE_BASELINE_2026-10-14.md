@@ -48,3 +48,18 @@ Review PR #404, #405 checks and mobile visual gate; merge only with appropriate 
 - FAIL: `postal` at `scripts/validate-resf-v2-postal-address-contract.mjs:436` with `mozae-higienopolis: previously complete page visible/runtime HTML changed`; intentional edited lead paragraph is detected by immutable-page comparison. Do not bypass test or silently refresh baseline; requires governed targeted exception or snapshot update.
 - FAIL: `validate` emitted errors for multiple other routes including Bem Moema CTA and regional maps, plus Mozae real map; cannot attribute all to the appended Sabrina paragraph. Determine whether pre-existing on main before accepting as waiver.
 - PR #405 remains unmerged pending required CI resolution and visual/form acceptance. PR #404 must not be used to conceal this block.
+
+## Operator HTTP smoke evidence — 2026-10-14 (PowerShell, USER_REPORTED)
+
+Source: user-provided Windows PowerShell output, following `Invoke-WebRequest -Method Get` with final URL and Content-Type displayed. These are externally observed by the user, not independently executed by the assistant.
+
+| URL | HTTP | Content-Type | Final URL |
+| --- | --- | --- | --- |
+| `https://www.moretegra.com.br/` | 200 | `text/html; charset=utf-8` | Same |
+| `https://www.moretegra.com.br/robots.txt` | 200 | `text/plain; charset=utf-8` | Same |
+| `https://www.moretegra.com.br/llms.txt` | 200 | `text/plain; charset=utf-8` | Same |
+| `https://www.moretegra.com.br/.well-known/ai.txt` | 200 | `text/plain; charset=utf-8` | Same |
+| `https://www.moretegra.com.br/sitemap.xml` | 200 | `application/xml` | Same |
+| `https://www.moretegra.com.br/empreendimentos/mozae-higienopolis/` | 200 | `text/html; charset=utf-8` | Same |
+
+Disposition: `PUBLIC_HTTP_STATUS_AND_MIME = USER_CONFIRMED_PASS_6_OF_6`. DNS connectivity works from the user's machine; assistant-side DNS failure must not be reported as evidence of site outage. Exact body comparison, AI file contents, bot crawling, 200 vs soft-404 body, and indexing **not yet certified**. Published `robots.txt` is the pre-PR #404 version unless a subsequent merge/deploy is observed; this test does not validate #404 bot rules. `PR #405` still requires CI and visual/mobile/form gates.
