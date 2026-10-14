@@ -74,3 +74,19 @@ Integradas somente aos respectivos créditos na seção de autoria, com texto in
 Foi acrescentada exceção **literal e limitada a esses dois arquivos e CSS** na proteção de HTML do branch #405 e sincronizada no validador de regressão separado da PR #406. Mudanças adicionais permanecem proibidas.
 
 **Evidência HTTP dos assets:** a checagem externa automática não conseguiu confirmar status/content-type desta origem nesta sessão. O QA visual e a disponibilidade real dos arquivos devem ser verificados no Local Live Sync antes do release. Não registrar `ASSET_HTTP_PASS` sem prova.
+
+## 2026-10-14 — Autoria arquitetônica RESF: teste visual solicitado
+
+Após QA do operador em screenshots desktop/mobile, os créditos sem texto e com logomarcas ilegíveis foram reestruturados numa seção editorial responsiva. A nova versão foi implementada e liberada **apenas na branch de teste**, sem merge ou publicação.
+
+- Título: `Arquitetura e design do Mozae Higienópolis`; introdução para compradores, quatro cards e descrições de atribuições verificadas.
+- LE Arquitetos: logo fornecido pelo operador, sem repetir nome em título no card; papel `Arquitetura`.
+- Suíte Arquitetos: novo logo fornecido `https://s3-gdigital.s3.amazonaws.com/gdigital/313/Suite-Arquitetos-SemFundo.webp`; `Interiores`.
+- Cardim: logo fornecido anteriormente `https://s3-gdigital.s3.amazonaws.com/gdigital/313/MoreTEgra-Mozae-Paisagismo-Cardim.webp` sobre placa clara para preservar contraste do texto escuro; `Paisagismo`.
+- Isabel Ruas: `https://s3-gdigital.s3.amazonaws.com/gdigital/313/Mural-Isabel-Ruas.webp`, com `object-fit:cover` e atribuição de mural exclusivo. A associação específica da imagem ao mural do projeto e o carregamento HTTP ainda dependem de QA de mídia.
+- Layout: cards em duas colunas no desktop e uma no mobile; H2 fluido e limitado no mobile, texto legível, imagens lazy e dimensão declarada.
+- Exceções nos testes de regressão da PR #405 e #406 são literais para o bloco e CSS novos, com comparação integral do HTML restante ao baseline.
+- Evidência em commit `6b4eb0e29a438a2cf229597de1bc1e92ff601775`: 7 checks PASS (postal, commercial standard, canonical favicon, Open Graph/Twitter, onsite-address, images e coverage). O `validate` geral mantém FAIL histórico (16 ocorrências).
+- PR #406 commit `6e6b3e2c31e0ee1ac2112139ada3a4bfe11bd019`: `postal` PASS e `regression` PASS.
+- Gate pendente: operador conferir Live Sync desktop/mobile, verificação de carregamento real e contraste de logos no navegador, WhatsApp/Form46, e aprovação explícita de merge.
+
