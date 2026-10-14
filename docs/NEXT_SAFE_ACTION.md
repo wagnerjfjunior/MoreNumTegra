@@ -1,3 +1,7 @@
+## 2026-10-14 — Próximo gate RESF para arquivos de IA
+
+Após incorporar o adendo §11 ao padrão RESF V1, executar em READ_ONLY o smoke HTTP de `/llms.txt` e `/.well-known/ai.txt` no domínio canônico (status, content-type, body, codificação), verificar que o SHA de production corresponde ao merge dos arquivos e conferir consistência da identidade Sabrina em um inventário de páginas. Registrar NÃO VERIFICADO quando não houver evidência. Corrigir eventuais divergências em PRs delimitadas; não autorizar migração em massa de páginas. A validação de Page/Form46/SEO permanece independente.
+
 ## 2026-10-12 — Próxima ação segura após fechamento RESF V1
 
 **O desenho do padrão está fechado:** `docs/frameworks/resf/v1/EXACT_PROJECT_PAGE_BUILD_STANDARD_V1_2026-10-11.md` §10; recibo `docs/frameworks/resf/v1/RESF_TIEL_RELEASE_EVIDENCE_AND_SCALE_HANDOFF_2026-10-12.md`. PRs Tièl #395/#396 concluídas e publicadas. Não reiniciar discussão de copy, facts, WhatsApp, galeria, bairro ou tipografia do padrão a cada página, salvo conflito com fontes/produto/UX comprovado.
