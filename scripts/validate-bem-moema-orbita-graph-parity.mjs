@@ -2,13 +2,22 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
+function restoreApprovedBemMoemaSurface(html){
+  // Four exact, operator-approved M5-06 changes; everything else remains frozen.
+  const changes=[["<div class=\"map-card\"><div class=\"map-visual\"><iframe class=\"map-frame\" title=\"Mapa da região de Moema\" loading=\"lazy\" src=\"https://maps.google.com/maps?hl=pt-BR&output=embed&q=Moema%2C%20S%C3%A3o%20Paulo%2C%20SP&z=14\" tabindex=\"-1\" aria-hidden=\"true\"></iframe><a class=\"map-hit\" href=\"https://wa.me/5511960779328?text=Por%20favor%20me%20envie%20a%20localiza%C3%A7%C3%A3o%20exata%20do%20Bem%20Moema.\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Solicitar localização exata do Bem Moema pelo WhatsApp\"></a></div><div class=\"map-actions\"><span><strong>Região do Bem Moema</strong><small>Toque no mapa ou use o botão para solicitar a localização exata pelo WhatsApp. Conheça também nosso <a href=\"/regioes/moema/\">guia de Moema</a>.</small></span><a class=\"map-whatsapp\" href=\"https://wa.me/5511960779328?text=Por%20favor%20me%20envie%20a%20localiza%C3%A7%C3%A3o%20exata%20do%20Bem%20Moema.\" target=\"_blank\" rel=\"noopener noreferrer\">Solicitar localização</a></div></div>","<div class=\"map-card\"><div class=\"map-visual\"><iframe class=\"map-frame\" title=\"Mapa da região de Moema\" loading=\"lazy\" src=\"https://maps.google.com/maps?hl=pt-BR&output=embed&q=Moema%2C%20S%C3%A3o%20Paulo%2C%20SP&z=14\" tabindex=\"-1\" aria-hidden=\"true\"></iframe><a class=\"map-hit\" href=\"/regioes/moema/\" aria-label=\"Ver página de Moema\"></a></div><div class=\"map-actions\"><span><strong>Veja também a página de Moema</strong><small>Compare as oportunidades Tegra da região.</small></span><a class=\"map-whatsapp\" href=\"/regioes/moema/\">Ver Moema</a></div></div>"],["<a class=\"btn yellow\" href=\"#formulario\" data-form-intent=\"conditions\">Receber condições →</a>","<a class=\"btn yellow\" href=\"#formulario\">Receber condições →</a>"],["<a class=\"quick-lead\" href=\"#formulario\" data-form-intent=\"conditions\">Receber condições</a>","<a class=\"quick-lead\" href=\"#formulario\">Receber condições</a>"],["<option value=\"Negociar meu cenário\">Negociar meu cenário</option>",""]];
+  for(const [current,previous] of changes){
+    assert.equal(html.split(current).length,2,'Approved Bem Moema delta missing/duplicated');
+    html=html.replace(current,previous);
+  }
+  return html;
+}
 const path='src-greenn/empreendimentos/bem-moema/index.html';
 const baseline='b5da71bf80cacc115026466f5b37c79a7f98e13c';
 const before=execFileSync('git',['show',baseline+':'+path],{encoding:'utf8'});
 const after=readFileSync(path,'utf8'),rx=/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/i;
 const old=before.match(rx),now=after.match(rx);
 assert(old&&now);
-assert.equal(after.replace(now[1],old[1]),before,'Visible HTML/JS, form, metadata and media must not change');
+assert.equal(restoreApprovedBemMoemaSurface(after.replace(now[1],old[1])),before,'Visible HTML/JS, form, metadata and media must not change outside approved M5-06 deltas');
 const original=JSON.parse(old[1])['@graph'],nodes=JSON.parse(now[1])['@graph'];
 const get=t=>nodes.filter(x=>x['@type']===t),one=t=>{assert.equal(get(t).length,1,t+' count');return get(t)[0]};
 const p=one('WebPage'),project=one('ApartmentComplex'),agent=one('RealEstateAgent');
