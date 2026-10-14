@@ -47,3 +47,15 @@ Prior textual extraction evidence `docs/product/MNT_MEMORIAL_FACT_AUDIT_2026-09-
 **ADDRESS_CONFLICT / STOP:** Current HTML footer/JSON-LD and separately approved postal registry use **Avenida Celso Garcia, 5040**, CEP **03064-000**. Do not silently change 5040 to 5000 based on a general memorial without confirming the correct address role (residential access vs offices/lojas vs administrative site or stand). Postal validator and commercial schema frozen contracts must be reconciled explicitly before runtime mutation.
 
 **PARKING_FACT_OPEN:** The three PDFs are appropriate primary sources to research unit and visitor parking, but the historical fact extraction does NOT confirm the number of spaces for each advertised typology. The parking slot remains BLOCKED_BY_PRODUCT_TRUTH until an exact citation from the original memorial and applicability to the specific apartment configuration are recorded. Commercial availability/price are not determined by descriptive memorials.
+
+## Customer presentation — plant gallery and virtual tour (2026-10-14)
+
+Official Tegra source: https://www.tegraincorporadora.com.br/sp/sao-paulo/leste/tatuape/universoorbita
+
+- Before: only 3 selectable residential type floorplans.
+- Candidate: 15 official illustration assets: 2 x 1BR, 2 x 2BR, 3 x 3BR, 2 x commercial room, 1 x shop and 5 x ground/leisure/shop implantation images.
+- All image paths are direct `stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/339/Planta/`, transcribed from the links on the official project page. External origin availability was not independently HTTP verified; live mobile/desktop rendering must be checked.
+- Virtual-tour external CTA: `https://arquivos.tegraincorporadora.com.br/tour360/orbita/` — opens in a new tab, no auto-loaded iframe or third-party embed.
+- Room sizes are named only where the official image names explicitly prove them (28 m² commercial room and 60 m² shop). Do not conflate variants with currently eligible inventory.
+- Existing JSON-LD and current three original type image nodes remain unchanged; follow-up commercial semantic coverage should model additional floorplans only after page QA and explicit gate.
+- Exact HTML-change regression normalization PASS on candidate as inspected through GitHub; CI and image HTTP results remain unverified.
