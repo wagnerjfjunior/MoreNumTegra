@@ -1,0 +1,10 @@
+# MoreTegra AI usage preferences
+Spec-Version: 1.0
+Site-Name: More em um Tegra
+Site-URL: https://www.moretegra.com.br/
+Training: deny
+Scraping: allow
+Indexing: allow
+Caching: allow
+Attribution: recommended
+AI-Disclosure: recommended
