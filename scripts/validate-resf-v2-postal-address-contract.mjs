@@ -372,6 +372,24 @@ for(const [slug,street,cep] of expected){
        }
      }
    }
+   // 2026-10-14 editorial update: permit FAQ answer wording only when all
+   // questions, order and text exactly match the rendered FAQ. Other schema
+   // remains locked to the address/media baseline.
+   const faqCurrent=current.find(n=>n['@type']==='FAQPage');
+   const faqBaseline=baseline.find(n=>n['@type']==='FAQPage');
+   assert(faqCurrent&&faqBaseline,'Bem Moema Studios Offices: FAQ missing');
+   const visibleFAQ=[...candidate.matchAll(/<details><summary>([\s\\S]*?)<\/summary><p>([\s\\S]*?)<\/p><\/details>/g)].map(m=>({question:m[1].replaceAll('&amp;','&'),answer:m[2].replaceAll('&amp;','&')}));
+   assert.equal(visibleFAQ.length,6,'Bem Moema Studios Offices: six visible FAQ items required');
+   assert.equal(faqCurrent.mainEntity.length,visibleFAQ.length,'Bem Moema Studios Offices: FAQ schema cardinality mismatch');
+   for(let i=0;i<visibleFAQ.length;i++){
+     const currentItem=faqCurrent.mainEntity[i],oldItem=faqBaseline.mainEntity[i];
+     assert.equal(currentItem.name,oldItem.name,'Bem Moema Studios Offices: FAQ question changed without authorization');
+     assert.equal(currentItem.name,visibleFAQ[i].question,'Bem Moema Studios Offices: FAQ visible question differs from schema');
+     assert.equal(currentItem.acceptedAnswer?.text,visibleFAQ[i].answer,'Bem Moema Studios Offices: FAQ visible answer differs from schema');
+   }
+   const normalizedFAQ=flat(normalized).find(n=>n['@type']==='FAQPage');
+   assert(normalizedFAQ,'Bem Moema Studios Offices: normalized FAQ missing');
+   normalizedFAQ.mainEntity=structuredClone(faqBaseline.mainEntity);
    assert.deepEqual(scrub(normalized),scrub(before),'Bem Moema Studios Offices: unauthorized changes to historical semantic nodes');
  }else if(slug==='universo-tatuape-orbita'){
    // The separately gated Órbita commercial parity PR adds approved ImageObject,
