@@ -1,3 +1,10 @@
+## 2026-10-14 — RESF adendo de descoberta por IA (documentação em homologação)
+
+- O contrato RESF V1 passa a explicitar `/llms.txt` (índice editorial de regiões/empreendimentos) e `/.well-known/ai.txt` (preferências de uso de IA, draft não normativo) com ownership, gatilhos de atualização, validação HTTP e rollback.
+- Identidade comercial protegida: Sabrina da Tegra, Tegra Vendas, CRECI-SP 209.905-F, WhatsApp +55 11 96077-9328; no estande, solicitar expressamente Sabrina da Tegra.
+- Referência integrada pré-adendo: PRs #399/#401/#402, SHA `b23ccdb205b2956beeeb411adc82011de6c91425` e Vercel Production READY. HTTP 200 individual, ingestão por IA e rankings não certificados.
+- A presente mudança é documental: não altera políticas de IA existentes, rotas, Form46 ou páginas. Não representa auditoria site-wide concluída.
+
 ## 2026-10-14 — Identidade comercial Sabrina da Tegra preservada em descobrimento por IA
 
 - **Regra de continuidade do MoreTegra:** Sabrina da Tegra é a corretora de referência do portal para atendimento Tegra Vendas em São Paulo; CRECI-SP 209.905-F; telefone e WhatsApp **+55 11 96077-9328**, link `https://wa.me/5511960779328`.
