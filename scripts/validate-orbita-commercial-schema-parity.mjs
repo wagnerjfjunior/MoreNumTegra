@@ -11,7 +11,8 @@ const get=(s)=>{const all=[...s.matchAll(pattern)];assert.equal(all.length,1);re
 const a=get(prior),b=get(source);
 const removeLegacyHeroMeta = html => html.replace(/\.hero-meta\{[^}]*\}\.hero-meta strong\{[^}]*\}\.hero-meta span\{[^}]*\}/,"").replace(/<div class="hero-meta">[\s\S]*?<\/div><a class="hero-cta"/,'<a class="hero-cta"');
 assert(!source.includes("hero-meta"),"RESF V1 forbids duplicated legacy hero-meta");
-assert.equal(source.replace(b.raw,a.raw),removeLegacyHeroMeta(prior),"Only approved RESF hero-meta removal and JSON-LD may differ from frozen baseline");
+const clean = h => h.replace(/<section class="section" id="tour-virtual"[\\s\\S]*?<\\/section>\\n/,"").replace(/const plants=\\[[\\s\\S]*?\\];const pTabs=/,'const plants=BASELINE_PLANTS;const pTabs=').replace('pImg.alt=x[0]+" — Universo Tatuapé Órbita"','pImg.alt=x[0]+" de Universo Tatuapé Órbita"').replace('<span>Material oficial Tegra</span><span>"+x[2]+"','<span>Planta oficial</span><span>"+x[2]+"').replace("Plantas residenciais, versões decoradas, salas comerciais, loja e implantações do material oficial. Use as abas ou setas para navegar. As plantas são ilustrativas e não comprovam disponibilidade da unidade.","Plantas oficiais do material do empreendimento. Use as abas ou setas para alternar a visualização.");
+assert.equal(clean(source.replace(b.raw,a.raw)),clean(removeLegacyHeroMeta(prior)),"Only approved hero, plants and tour changes are allowed outside JSON-LD");
 const oldGraph=a.json["@graph"],graph=b.json["@graph"],find=(type)=>graph.find(n=>n["@type"]===type);
 const types=["WebSite","WebPage","BreadcrumbList","Brand","ApartmentComplex","FAQPage"];
 for(const type of types){const before=oldGraph.find(n=>n["@type"]===type),after=find(type);assert(before&&after, "missing original "+type);if(type==="WebPage"){const copy={...after};delete copy.mentions;delete copy.primaryImageOfPage;delete copy.image;assert.deepEqual(copy,before,"WebPage identity must not change");}else if(type==="ApartmentComplex"){const copy={...after};delete copy.accommodationFloorPlan;copy.image=before.image;assert.deepEqual(copy,before,"ApartmentComplex commercial, postal and descriptive facts frozen");}else assert.deepEqual(after,before,"Original "+type+" entity cannot be modified");}
@@ -39,9 +40,13 @@ assert.equal(find("WebPage").primaryImageOfPage["@id"],img["@id"],"Primary image
 assert.equal(floorplans.length,4);
 assert.equal(n.accommodationFloorPlan.length,4);
 assert(floorplans.every(x=>n.accommodationFloorPlan.some(y=>y["@id"]===x["@id"])));
-const plantUrls=[...source.matchAll(/\["(1 dormitório|2 dormitórios|3 dormitórios)","([^"]+)","([^"]+)","([^"]+)"\]/g)].map(x=>x[4]);
-assert.equal(plantUrls.length,3);
-for(const u of plantUrls)assert(floorplans.some(x=>x.image===u),"All visible official plans must use identical media");
+const plantsMatch=source.match(/const plants=(\\[[\\s\\S]*?\\]);const pTabs=/);
+assert(plantsMatch,"Plants data must exist");
+const displayedPlants=JSON.parse(plantsMatch[1]);
+assert.equal(displayedPlants.length,15,"All fifteen official floorplan/implantation views required");
+assert(displayedPlants.every(p=>p.length===4&&p[3].startsWith("https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/339/Planta/")));
+for(const u of floorplans.filter(p=>p.image).map(p=>p.image))assert(displayedPlants.some(p=>p[3]===u),"Original modeled plan must remain visible");
+assert(source.includes('https://arquivos.tegraincorporadora.com.br/tour360/orbita/'),"Tour must point to official 360");
 const plan69=floorplans.find(x=>x.floorSize?.value===69);
 assert(plan69 && plan69.floorSize.unitCode==="MTK");
 assert(!plan69.image,"Exact AP0609 blueprint was not mapped to a named plant in the HTML");
