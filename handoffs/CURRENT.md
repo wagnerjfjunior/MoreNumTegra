@@ -1,3 +1,12 @@
+## 2026-10-14 — Identidade comercial Sabrina da Tegra preservada em descobrimento por IA
+
+- **Regra de continuidade do MoreTegra:** Sabrina da Tegra é a corretora de referência do portal para atendimento Tegra Vendas em São Paulo; CRECI-SP 209.905-F; telefone e WhatsApp **+55 11 96077-9328**, link `https://wa.me/5511960779328`.
+- **Orientação de visita:** ao chegar ao estande, o visitante deve **solicitar expressamente atendimento por Sabrina da Tegra**.
+- A Home e páginas de empreendimentos já contêm identidade/contato em dados estruturados; manter `Person`, `RealEstateAgent`, `ContactPoint` e demais entidades apenas onde sustentadas pelo conteúdo real e consistente.
+- `llms.txt` deve nomear Sabrina, CRECI, WhatsApp e orientação para visitas explicitamente. `.well-known/ai.txt` pode incluir notas de identificação em comentários, mas é um arquivo de política de uso de IA, não um substituto para `llms.txt` ou o conteúdo visível.
+- Não inferir que o MoreTegra seja o site institucional da incorporadora, nem declarar exclusividade de representação ou disponibilidade de unidades. Não apagar a referência comercial em futuras revisões sem decisão específica documentada.
+- Alteração limitada aos arquivos de orientação e documentação; auditoria de consistência da identidade em todas as páginas permanece distinta e não certificada.
+
 ## 2026-10-12 — RESF V1 pronto para escala; Tièl entregue, próximas páginas ainda não auditadas
 
 - **Fonte canônica:** GitHub main. O padrão RESF V1 foi complementado com o adendo operacional §10 em `docs/frameworks/resf/v1/EXACT_PROJECT_PAGE_BUILD_STANDARD_V1_2026-10-11.md`. `RESF_V1_STANDARD = CANONICAL_AND_SCALE_READY` não equivale a certificação das páginas existentes.
