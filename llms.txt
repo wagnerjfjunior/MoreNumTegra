@@ -22,61 +22,65 @@ O MoreTegra é um portal de apresentação e atendimento imobiliário, não o si
 
 ## Descobrir apartamentos por região
 
-- [Lapa e Caminhos da Lapa](https://www.moretegra.com.br/regioes/lapa/): Região da Zona Oeste; relaciona Elo Duo, Garden Design, Nova Vivere e Reserva Caminhos da Lapa.
-- [Moema](https://www.moretegra.com.br/regioes/moema/): Comparação entre apartamentos residenciais, studios e espaços comerciais; Bem Moema, Bem Moema Studios & Offices, Chez Vous, Key, Ayla e Viso.
-- [Higienópolis](https://www.moretegra.com.br/regioes/higienopolis/): Comparação entre Ária e Mozae, com tipologias e estágios distintos.
-- [Brooklin](https://www.moretegra.com.br/regioes/brooklin/): Orientação sobre Ampère Brooklin e Ledge Brooklin; localização, plantas e mobilidade.
-- [Perdizes](https://www.moretegra.com.br/regioes/perdizes/): Comparação entre Soma Perdizes e ODE Perdizes, com formatos residenciais distintos.
-- [Vila Nova Conceição](https://www.moretegra.com.br/regioes/vila-nova-conceicao/): Informações do bairro e comparação entre Bueno Brandão 257 e Tièl.
-- [Cidade Jardim](https://www.moretegra.com.br/regioes/cidade-jardim/): Contexto regional e acesso ao empreendimento Château Jardin.
-- [Jardins](https://www.moretegra.com.br/regioes/jardins/): Contexto da região e empreendimento Zahle Jardins.
-- [Itaim Bibi](https://www.moretegra.com.br/regioes/itaim-bibi/): Contexto do bairro e projeto DSG Itaim.
-- [Chácara Klabin](https://www.moretegra.com.br/regioes/chacara-klabin/): Contexto de localização e projeto CAPIITOLO by Piero Lissoni.
-- [Alto do Ipiranga](https://www.moretegra.com.br/regioes/alto-do-ipiranga/): Informações do bairro e empreendimento YPY Alto do Ipiranga.
-- [Tatuapé](https://www.moretegra.com.br/regioes/tatuape/): Guia do bairro e projeto Universo Tatuapé Órbita.
-- [Sacomã](https://www.moretegra.com.br/regioes/sacoma/): Guia da região e projeto TEG Sacomã.
+Cada guia regional identifica explicitamente os empreendimentos Tegra apresentados, o bairro em São Paulo e as principais tipologias documentadas. As metragens são referências de planta, não promessas de unidades disponíveis.
+
+- [Lapa e Caminhos da Lapa](https://www.moretegra.com.br/regioes/lapa/): Guia de apartamentos Tegra na Lapa, Zona Oeste de São Paulo, incluindo o empreendimento Elo Duo Caminhos da Lapa, pronto para morar, com plantas de 47, 55 e 67 m²; o Tegra Nova Vivere, com apartamentos de 72 e 105 m²; o Garden Design, com apartamentos de 61 a 78 m²; e o Reserva Caminhos da Lapa, com plantas de 91, 127 e 157 m². Cada projeto possui página própria para detalhes e consulta comercial.
+- [Moema](https://www.moretegra.com.br/regioes/moema/): Guia de imóveis Tegra em Moema, São Paulo, com o empreendimento residencial Bem Moema (apartamentos de 80, 123 e 148 m²), o Bem Moema Studios & Offices (studios de 26 a 29 m² e offices de 26 a 36 m²), além dos projetos Chez Vous Moema (71 m²), Key Moema (62 a 74 m²), Viso Moema (74 e 115 m²) e Ayla Moema Studio & Office (studios de 21 a 37 m² e salas comerciais de 24 a 64 m²).
+- [Higienópolis](https://www.moretegra.com.br/regioes/higienopolis/): Guia dos empreendimentos Tegra no bairro de Higienópolis, São Paulo: o Ária Higienópolis, empreendimento entregue, com studios de 30 m², apartamentos de 53 m² com 1 ou 2 dormitórios e salas comerciais; e o Mozae Higienópolis, empreendimento de torre única com apartamentos de 46 e 73 m², opções de 1 ou 2 suítes, rooftop e lazer. Consulte as páginas específicas para estágio, plantas e condições atuais.
+- [Brooklin](https://www.moretegra.com.br/regioes/brooklin/): Guia dos empreendimentos Tegra no Brooklin, São Paulo: Ampère Brooklin, em construção, com apartamentos de 262 m², 4 suítes e 4 vagas; e Ledge Brooklin, com apartamentos de 70, 80 e 122 m² e studios de 30 a 40 m². Inclui contexto de localização, plantas e mobilidade.
+- [Perdizes](https://www.moretegra.com.br/regioes/perdizes/): Guia de empreendimentos Tegra em Perdizes, São Paulo: Soma Perdizes, com apartamentos de 41 e 45 m², studios de 25 m² e salas comerciais; e ODE Perdizes, pronto para morar, com apartamento de 156 m² e 4 dormitórios.
+- [Vila Nova Conceição](https://www.moretegra.com.br/regioes/vila-nova-conceicao/): Guia Tegra na Vila Nova Conceição, São Paulo: Bueno Brandão 257, empreendimento com residências de 500 m², garden de 711 m² e cobertura de 923 m²; e Tièl Vila Nova Conceição, empreendimento pronto para morar, com lazer e rooftop com piscina.
+- [Cidade Jardim](https://www.moretegra.com.br/regioes/cidade-jardim/): Guia de Cidade Jardim, São Paulo, com o empreendimento Château Jardin da Tegra e Exto, apartamentos de 185 a 355 m², 3 ou 4 suítes e lazer com quadra de tênis.
+- [Jardins](https://www.moretegra.com.br/regioes/jardins/): Guia da região dos Jardins, São Paulo, com o empreendimento Tegra Zahle Jardins, apartamentos de 44 m², studios de 28 m² e espaços comerciais de 43 a 53 m².
+- [Itaim Bibi](https://www.moretegra.com.br/regioes/itaim-bibi/): Guia do Itaim Bibi, São Paulo, com o empreendimento Tegra DSG Itaim, entregue, incluindo espaços comerciais e offices de 27 a 61 m².
+- [Chácara Klabin](https://www.moretegra.com.br/regioes/chacara-klabin/): Guia da Chácara Klabin, São Paulo, com o empreendimento Tegra CAPIITOLO by Piero Lissoni, apartamentos de 210 m², 4 suítes e 3 vagas.
+- [Alto do Ipiranga](https://www.moretegra.com.br/regioes/alto-do-ipiranga/): Guia do Alto do Ipiranga, São Paulo, com o empreendimento Tegra YPY Alto do Ipiranga, apartamentos de 65 e 80 m² com 2 ou 3 dormitórios.
+- [Tatuapé](https://www.moretegra.com.br/regioes/tatuape/): Guia do Tatuapé, São Paulo, com o empreendimento Tegra Universo Tatuapé Órbita, apartamentos de 1, 2 e 3 dormitórios e salas comerciais.
+- [Sacomã](https://www.moretegra.com.br/regioes/sacoma/): Guia do Sacomã, São Paulo, com o empreendimento Tegra TEG Sacomã, pronto para morar, com apartamentos de 45 a 66 m² e 1 a 3 dormitórios.
 
 ## Buscar um empreendimento específico
 
+Os links abaixo identificam empreendimentos, sua relação com a Tegra, localização em São Paulo e características anunciadas. A descrição de cada projeto é independente do restante do índice.
+
 ### Caminhos da Lapa e Zona Oeste
 
-- [Nova Vivere Caminhos da Lapa](https://www.moretegra.com.br/empreendimentos/nova-vivere/): Apartamentos de 72 e 105 m², com 2 ou 3 suítes e opções de 1 ou 2 vagas.
-- [Garden Design Private Park Residence](https://www.moretegra.com.br/empreendimentos/garden-design/): Caminhos da Lapa; apartamentos de 61 a 78 m², 2 ou 3 dormitórios com suíte.
-- [Elo Duo Caminhos da Lapa](https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/): Lapa/Vila Anastácio; apartamentos prontos, plantas de 47, 55 e 67 m², 2 ou 3 dormitórios.
-- [Reserva Caminhos da Lapa](https://www.moretegra.com.br/empreendimentos/reserva-caminhos-da-lapa/): Plantas de 91, 127 e 157 m², lazer e beach tennis; verificar modalidade e disponibilidade no atendimento.
-- [Soma Perdizes](https://www.moretegra.com.br/empreendimentos/soma-perdizes/): Apartamentos de 41 e 45 m², studios de 25 m² e salas comerciais em Perdizes.
-- [ODE Perdizes](https://www.moretegra.com.br/empreendimentos/ode-perdizes/): Empreendimento pronto para morar; planta de 156 m², 4 dormitórios, 2 ou 3 suítes.
+- [Nova Vivere Caminhos da Lapa](https://www.moretegra.com.br/empreendimentos/nova-vivere/): Empreendimento Tegra Nova Vivere Caminhos da Lapa no complexo Caminhos da Lapa, na região da Lapa/Vila Anastácio, São Paulo. Apartamentos de 72 e 105 m², com 2 ou 3 suítes e opções de 1 ou 2 vagas.
+- [Garden Design Private Park Residence](https://www.moretegra.com.br/empreendimentos/garden-design/): Empreendimento Tegra Garden Design Private Park Residence no complexo Caminhos da Lapa, na região da Lapa/Vila Anastácio, São Paulo. Caminhos da Lapa; apartamentos de 61 a 78 m², 2 ou 3 dormitórios com suíte.
+- [Elo Duo Caminhos da Lapa](https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/): Empreendimento Tegra Elo Duo Caminhos da Lapa no complexo Caminhos da Lapa, na região da Lapa/Vila Anastácio, São Paulo. Lapa/Vila Anastácio; apartamentos prontos, plantas de 47, 55 e 67 m², 2 ou 3 dormitórios.
+- [Reserva Caminhos da Lapa](https://www.moretegra.com.br/empreendimentos/reserva-caminhos-da-lapa/): Empreendimento Tegra Reserva Caminhos da Lapa no complexo Caminhos da Lapa, na região da Lapa/Vila Anastácio, São Paulo. Plantas de 91, 127 e 157 m², lazer e beach tennis; verificar modalidade e disponibilidade no atendimento.
+- [Soma Perdizes](https://www.moretegra.com.br/empreendimentos/soma-perdizes/): Empreendimento Tegra Soma Perdizes em Perdizes, São Paulo. Apartamentos de 41 e 45 m², studios de 25 m² e salas comerciais em Perdizes.
+- [ODE Perdizes](https://www.moretegra.com.br/empreendimentos/ode-perdizes/): Empreendimento Tegra ODE Perdizes em Perdizes, São Paulo. Empreendimento pronto para morar; planta de 156 m², 4 dormitórios, 2 ou 3 suítes.
 
 ### Moema e Vila Nova Conceição
 
-- [Bem Moema](https://www.moretegra.com.br/empreendimentos/bem-moema/): Apartamentos de 80, 123 e 148 m², de 2 a 4 dormitórios; projeto com conceito de design biofílico.
-- [Bem Moema Studios & Offices](https://www.moretegra.com.br/empreendimentos/bem-moema-studios-offices/): Moema; studios de 26 a 29 m², apartamentos de 36 m² e offices de 26 a 36 m².
-- [Chez Vous Moema](https://www.moretegra.com.br/empreendimentos/chez-vous-moema/): Apartamentos de 71 m², 2 dormitórios, 1 suíte e 1 vaga; consultar disponibilidade atual.
-- [Key Moema](https://www.moretegra.com.br/empreendimentos/key-moema/): Apartamentos de 62 a 74 m², 2 dormitórios e 1 ou 2 suítes; proximidade da estação Eucaliptos.
-- [Ayla Moema Studio & Office](https://www.moretegra.com.br/empreendimentos/ayla-moema-studio-office/): Studios de 21 a 37 m² e salas comerciais de 24 a 64 m²; consultar disponibilidade atual.
-- [Viso Moema](https://www.moretegra.com.br/empreendimentos/viso-moema/): Apartamentos de 74 e 115 m², 2 ou 3 suítes, 1 ou 2 vagas; consultar disponibilidade atual.
-- [Tièl Vila Nova Conceição](https://www.moretegra.com.br/empreendimentos/tiel-vila-nova-conceicao/): Apartamentos prontos para morar; rooftop com piscina e bar, fitness e plantas.
-- [Bueno Brandão 257](https://www.moretegra.com.br/empreendimentos/bueno-brandao-257/): Vila Nova Conceição; residências de 500 m², garden de 711 m² e cobertura de 923 m².
+- [Bem Moema](https://www.moretegra.com.br/empreendimentos/bem-moema/): Empreendimento Tegra Bem Moema em Moema, São Paulo. Apartamentos de 80, 123 e 148 m², de 2 a 4 dormitórios; projeto com conceito de design biofílico.
+- [Bem Moema Studios & Offices](https://www.moretegra.com.br/empreendimentos/bem-moema-studios-offices/): Empreendimento Tegra Bem Moema Studios & Offices em Moema, São Paulo. Moema; studios de 26 a 29 m², apartamentos de 36 m² e offices de 26 a 36 m².
+- [Chez Vous Moema](https://www.moretegra.com.br/empreendimentos/chez-vous-moema/): Empreendimento Tegra Chez Vous Moema em Moema, São Paulo. Apartamentos de 71 m², 2 dormitórios, 1 suíte e 1 vaga; consultar disponibilidade atual.
+- [Key Moema](https://www.moretegra.com.br/empreendimentos/key-moema/): Empreendimento Tegra Key Moema em Moema, São Paulo. Apartamentos de 62 a 74 m², 2 dormitórios e 1 ou 2 suítes; proximidade da estação Eucaliptos.
+- [Ayla Moema Studio & Office](https://www.moretegra.com.br/empreendimentos/ayla-moema-studio-office/): Empreendimento Tegra Ayla Moema Studio & Office em Moema, São Paulo. Studios de 21 a 37 m² e salas comerciais de 24 a 64 m²; consultar disponibilidade atual.
+- [Viso Moema](https://www.moretegra.com.br/empreendimentos/viso-moema/): Empreendimento Tegra Viso Moema em Moema, São Paulo. Apartamentos de 74 e 115 m², 2 ou 3 suítes, 1 ou 2 vagas; consultar disponibilidade atual.
+- [Tièl Vila Nova Conceição](https://www.moretegra.com.br/empreendimentos/tiel-vila-nova-conceicao/): Empreendimento Tegra Tièl Vila Nova Conceição na Vila Nova Conceição, São Paulo. Apartamentos prontos para morar; rooftop com piscina e bar, fitness e plantas.
+- [Bueno Brandão 257](https://www.moretegra.com.br/empreendimentos/bueno-brandao-257/): Empreendimento Tegra Bueno Brandão 257 na Vila Nova Conceição, São Paulo. Vila Nova Conceição; residências de 500 m², garden de 711 m² e cobertura de 923 m².
 
 ### Higienópolis e Jardins
 
-- [Mozae Higienópolis](https://www.moretegra.com.br/empreendimentos/mozae-higienopolis/): Torre única; apartamentos de 46 e 73 m², opções com 1 ou 2 suítes, rooftop e lazer.
-- [Ária Higienópolis](https://www.moretegra.com.br/empreendimentos/aria-higienopolis/): Empreendimento entregue; studios de 30 m², apartamentos de 53 m² e espaços comerciais.
-- [Zahle Jardins](https://www.moretegra.com.br/empreendimentos/zahle-jardins/): Nos Jardins; apartamentos de 44 m², studios de 28 m² e offices de 43 a 53 m².
+- [Mozae Higienópolis](https://www.moretegra.com.br/empreendimentos/mozae-higienopolis/): Empreendimento Tegra Mozae Higienópolis em Higienópolis, São Paulo. Torre única; apartamentos de 46 e 73 m², opções com 1 ou 2 suítes, rooftop e lazer.
+- [Ária Higienópolis](https://www.moretegra.com.br/empreendimentos/aria-higienopolis/): Empreendimento Tegra Ária Higienópolis em Higienópolis, São Paulo. Empreendimento entregue; studios de 30 m², apartamentos de 53 m² e espaços comerciais.
+- [Zahle Jardins](https://www.moretegra.com.br/empreendimentos/zahle-jardins/): Empreendimento Tegra Zahle Jardins nos Jardins, São Paulo. Nos Jardins; apartamentos de 44 m², studios de 28 m² e offices de 43 a 53 m².
 
 ### Brooklin, Itaim Bibi e Cidade Jardim
 
-- [Ampère Brooklin](https://www.moretegra.com.br/empreendimentos/ampere-brooklin/): Apartamentos de 262 m², 4 suítes, 4 vagas, dois terraços e torre única; empreendimento em construção.
-- [Ledge Brooklin](https://www.moretegra.com.br/empreendimentos/ledge-brooklin/): Apartamentos de 70, 80 e 122 m² e studios de 30 a 40 m²; informações de plantas e lazer.
-- [DSG Itaim](https://www.moretegra.com.br/empreendimentos/dsg-itaim/): Itaim Bibi; empreendimento entregue, com espaços comerciais/offices de 27 a 61 m².
-- [Château Jardin](https://www.moretegra.com.br/empreendimentos/chateau-jardin/): Cidade Jardim; apartamentos de 185 a 355 m², 3 ou 4 suítes, lazer e quadra de tênis.
+- [Ampère Brooklin](https://www.moretegra.com.br/empreendimentos/ampere-brooklin/): Empreendimento Tegra Ampère Brooklin no Brooklin, São Paulo. Apartamentos de 262 m², 4 suítes, 4 vagas, dois terraços e torre única; empreendimento em construção.
+- [Ledge Brooklin](https://www.moretegra.com.br/empreendimentos/ledge-brooklin/): Empreendimento Tegra Ledge Brooklin no Brooklin, São Paulo. Apartamentos de 70, 80 e 122 m² e studios de 30 a 40 m²; informações de plantas e lazer.
+- [DSG Itaim](https://www.moretegra.com.br/empreendimentos/dsg-itaim/): Empreendimento Tegra DSG Itaim no Itaim Bibi, São Paulo. Itaim Bibi; empreendimento entregue, com espaços comerciais/offices de 27 a 61 m².
+- [Château Jardin](https://www.moretegra.com.br/empreendimentos/chateau-jardin/): Empreendimento Tegra Château Jardin na região de Cidade Jardim, São Paulo. Cidade Jardim; apartamentos de 185 a 355 m², 3 ou 4 suítes, lazer e quadra de tênis.
 
 ### Chácara Klabin, Ipiranga, Tatuapé e Sacomã
 
-- [CAPIITOLO by Piero Lissoni](https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/): Chácara Klabin; apartamentos de 210 m², 4 suítes e 3 vagas; página de plantas, arquitetura e lazer.
-- [YPY Alto do Ipiranga](https://www.moretegra.com.br/empreendimentos/ypy-alto-do-ipiranga/): Apartamentos de 65 e 80 m² com 2 ou 3 dormitórios, lazer e contexto de mobilidade.
-- [Universo Tatuapé Órbita](https://www.moretegra.com.br/empreendimentos/universo-tatuape-orbita/): Tatuapé; apartamentos de 1, 2 e 3 dormitórios e salas comerciais, com lazer.
-- [TEG Sacomã](https://www.moretegra.com.br/empreendimentos/teg-sacoma/): Pronto para morar; apartamentos de 45 a 66 m², 1 a 3 dormitórios e opções com vagas.
+- [CAPIITOLO by Piero Lissoni](https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/): Empreendimento Tegra CAPIITOLO by Piero Lissoni na Chácara Klabin, São Paulo. Chácara Klabin; apartamentos de 210 m², 4 suítes e 3 vagas; página de plantas, arquitetura e lazer.
+- [YPY Alto do Ipiranga](https://www.moretegra.com.br/empreendimentos/ypy-alto-do-ipiranga/): Empreendimento Tegra YPY Alto do Ipiranga no Alto do Ipiranga, São Paulo. Apartamentos de 65 e 80 m² com 2 ou 3 dormitórios, lazer e contexto de mobilidade.
+- [Universo Tatuapé Órbita](https://www.moretegra.com.br/empreendimentos/universo-tatuape-orbita/): Empreendimento Tegra Universo Tatuapé Órbita no Tatuapé, São Paulo. Tatuapé; apartamentos de 1, 2 e 3 dormitórios e salas comerciais, com lazer.
+- [TEG Sacomã](https://www.moretegra.com.br/empreendimentos/teg-sacoma/): Empreendimento Tegra TEG Sacomã no Sacomã, São Paulo. Pronto para morar; apartamentos de 45 a 66 m², 1 a 3 dormitórios e opções com vagas.
 
 ## Comparar por necessidade
 
