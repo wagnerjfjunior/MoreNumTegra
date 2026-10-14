@@ -1,0 +1,20 @@
+# ai.txt — More em um Tegra
+# Based on draft-car-ai-txt-wellknown-00 (Internet-Draft; not an adopted standard).
+# This file expresses preferences and does not grant licenses to third-party content.
+
+Spec-Version: 1.0
+Site-Name: More em um Tegra
+Site-URL: https://www.moretegra.com.br/
+Description: Portal de apresentacao de empreendimentos imobiliarios Tegra e guias de regioes de Sao Paulo, Brasil.
+
+# Permit discovery and retrieval while reserving content against AI model training.
+Training: deny
+Scraping: allow
+Indexing: allow
+Caching: allow
+Attribution: recommended
+AI-Disclosure: recommended
+
+# No Training-License or Training-Fee is declared.
+# Third-party trademarks, logos, media, and plans are not relicensed here.
+# Pricing, construction stages, and availability require current confirmation.
