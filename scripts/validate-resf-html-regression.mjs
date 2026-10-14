@@ -72,7 +72,12 @@ for(const [slug,street,cep] of pages){
    assert.equal(candidate.split(sabrina).length,2,'Mozae: Sabrina guidance missing or duplicated');
    assert.equal(candidate.split(acceptedCSS).length,2,'Mozae: approved RESF CSS missing or modified');
    assert.equal(candidate.split(acceptedGallery).length,2,'Mozae: approved neighborhood gallery missing or modified');
-   const restored=candidate.replace(sabrina,'').replace(acceptedGallery,'').replace(acceptedCSS,'').replace('<section class="lead mt-conversion-form" id="formulario"','<section class="lead" id="formulario"');
+   const approvedLogos=["<img class=\"credit-logo\" src=\"https://s3-gdigital.s3.amazonaws.com/gdigital/313/MoreTegra-Mozae-Arquitetura-Logo_Le_Arquitetos.webp\" alt=\"Logotipo LE Arquitetos\" loading=\"lazy\" decoding=\"async\" width=\"240\" height=\"96\" onerror=\"this.hidden=true\">","<img class=\"credit-logo\" src=\"https://s3-gdigital.s3.amazonaws.com/gdigital/313/MoreTEgra-Mozae-Paisagismo-Cardim.webp\" alt=\"Identidade visual Cardim Arquitetura Paisagística\" loading=\"lazy\" decoding=\"async\" width=\"240\" height=\"96\" onerror=\"this.hidden=true\">"];
+   const approvedLogoCSS=".credit-logo{display:block;max-width:min(240px,100%);width:auto;height:auto;max-height:96px;object-fit:contain;object-position:left center;margin:0 0 14px}.credit-logo[hidden]{display:none}";
+   for(const tag of approvedLogos)assert.equal(candidate.split(tag).length,2,'Mozae: approved studio logo missing or duplicated');
+   assert.equal(candidate.split(approvedLogoCSS).length,2,'Mozae: logo CSS missing or modified');
+   let restored=candidate.replace(sabrina,'').replace(acceptedGallery,'').replace(acceptedCSS,'').replace(approvedLogoCSS,'').replace('<section class="lead mt-conversion-form" id="formulario"','<section class="lead" id="formulario"');
+   for(const tag of approvedLogos)restored=restored.replace(tag,'');
    assert.equal(withoutJsonLd(restored),withoutJsonLd(original),'Mozae: changes outside approved RESF deltas forbidden');
    }else assert.equal(withoutJsonLd(candidate),withoutJsonLd(original),'Mozae: unexpected legacy HTML delta');
  }else{
