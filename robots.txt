@@ -1,3 +1,12 @@
+# Search crawling and GPTBot training crawling are allowed by the site operator.
+# Training permission does not license third-party materials or override applicable rights.
+# OAI-SearchBot (search) and GPTBot (training) are separate OpenAI crawlers.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
 User-agent: *
 Allow: /
 

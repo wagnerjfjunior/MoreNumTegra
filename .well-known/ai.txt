@@ -12,8 +12,9 @@ Description: Portal de apresentacao de empreendimentos imobiliarios Tegra e guia
 # Identidade profissional: https://corretor.tegravendas.com.br/sabrina/sp
 # Estas linhas identificam o atendimento do portal; nao representam licenca de uso de marca ou exclusividade da incorporadora.
 
-# Permit discovery and retrieval while reserving content against AI model training.
-Training: deny
+# Site operator opts in to AI model training only for content it owns or is authorized to license.
+# Third-party images, brand assets and developer materials are not licensed by this declaration.
+Training: allow
 Scraping: allow
 Indexing: allow
 Caching: allow
