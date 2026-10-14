@@ -62,3 +62,15 @@ O operador constatou duas faltas materiais que a PR #405 anterior não cobriu: *
 - `validate` ainda apresenta as 16 falhas históricas de mapas/CTA vistas também em `main` antes desta PR; não declarar como PASS.
 - QA mobile/desktop de renderização, carregamento efetivo dos três arquivos pela origem Wikimedia, contraste real, funcionamento WhatsApp/Form46 e deployment production **não certificados nesta etapa**.
 - Não realizar merge sem avaliação da Product Authority e evidência dos gates aplicáveis.
+
+## 2026-10-14 — dois logotipos fornecidos pela Product Authority
+
+Foram recebidas URLs de mídia hospedadas no diretório GDigital tenant 313, aprovadas pelo operador para as assinaturas institucionais:
+- **LE Arquitetos** (Arquitetura): `https://s3-gdigital.s3.amazonaws.com/gdigital/313/MoreTegra-Mozae-Arquitetura-Logo_Le_Arquitetos.webp`
+- **Cardim Arquitetura Paisagística** (Paisagismo): `https://s3-gdigital.s3.amazonaws.com/gdigital/313/MoreTEgra-Mozae-Paisagismo-Cardim.webp`
+
+Integradas somente aos respectivos créditos na seção de autoria, com texto institucional preservado, imagens lazy, alt descritivo e CSS escopado. Os outros dois créditos (Suíte Arquitetos; mural de Isabel Ruas) permanecem textuais até entrega de ativos específicos. Sem incorporação de imagens de outros projetos.
+
+Foi acrescentada exceção **literal e limitada a esses dois arquivos e CSS** na proteção de HTML do branch #405 e sincronizada no validador de regressão separado da PR #406. Mudanças adicionais permanecem proibidas.
+
+**Evidência HTTP dos assets:** a checagem externa automática não conseguiu confirmar status/content-type desta origem nesta sessão. O QA visual e a disponibilidade real dos arquivos devem ser verificados no Local Live Sync antes do release. Não registrar `ASSET_HTTP_PASS` sem prova.
