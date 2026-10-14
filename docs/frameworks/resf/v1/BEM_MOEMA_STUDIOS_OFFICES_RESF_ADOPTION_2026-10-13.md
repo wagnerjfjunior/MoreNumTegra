@@ -20,15 +20,17 @@ User evidence 2026-10-13: GSC URL Inspection indicates URL indexed, HTTPS served
 - Buyer-first H1 and lead for distinct studios, apartments and offices; richer project differentiation and buyer-decision text.
 - Four canonical facts positions with area+typology; second Vagas explicitly UNKNOWN/sob consulta, neighborhood+mixed use; delivered stage. Legacy hero-meta CSS retired and 2x2 mobile facts kept.
 - Move external Moema link from header to contextual location prose; header CTA now drives to consultation form.
-- Locality editorial expanded, map remains context only, no inferred commute time or address claim.
+- Locality editorial expanded with three sourced contextual neighborhood images, legally traceable credits, preserved contextual map, no inferred commute time or address claim.
 - Gallery label and caption distinguish official perspectives/illustration, preserve scene sources; floor plan text explicitly distinguishes Studio 1702 from illustrative 26m² plans.
 - Readable H1/H2 and mobile typography; accessible/consistent WhatsApp badge.
+- Approved light conversion card adapted from Tièl RESF: cream background, white form with premium field styling, readable labels, responsive layout. Form46 markup/fields/runtime remain byte-for-byte unchanged.
+- CI completeness guard fails when one of the three photos or the light form styles is removed; checked on the exact PR head.
 - JSON-LD expanded from 8 to 17 entities: add organization/contact/agent/service, Studio 1702 Product+Offer, two verified 26m² FloorPlans, with project links. No offer availability, shipping/ratings. Avoid invalid ApartmentComplex.brand.
 - SEO description and WebPage.description synchronized. FAQs remain parity-stable.
 
 ## Open Product Authority gates
 1. `FACTS_DATA_GAP`: parking count/availability not verified for this offer. Second fact displays explicitly "Sob consulta". Formal approval of this exception or verified project-specific source is required before declaring fully compliant.
-2. `NEIGHBORHOOD_MEDIA_GAP`: no approved, verifiable street/neighborhood photo URLs identified in canonical sources. Do not insert Wikimedia links or unrelated project photos as "Moema". Product Authority may supply authorized media; three photographs are a reference precedent, not a hard quota.
+2. `NEIGHBORHOOD_MEDIA_QA_PENDING`: three sourced contextual photos were added for Moema, Estação Moema and the Ibirapuera-area cultural landmark. Sources are Wikimedia Commons, with a collapsed credits/licenses section instead of outgoing links on individual photo cards. Check live image loading and crop on mobile/desktop and the exact third image reuse permissions before approval; no claims of development-specific views or walking times.
 3. `SCHEMA_WARNING_OPEN`: Schema.org screenshot shows one WebPage warning. Need expand warning details on branch/production; no blanket PASS claim. New schema must be tested in validator, Google Rich Results, and visible FAQ parity before release.
 4. `QA_REQUIRED`: mobile/desktop SFJM Local Live Sync, gallery/touch/image crop, all four facts, CTA/WhatsApp, lead without duplicate submission; independent public smoke and Lighthouse when possible.
 5. `NOT_PROVEN_STOCK`: reference price/unit is prior governed copy. Revalidate current commercial offer/stock at release if changed.
