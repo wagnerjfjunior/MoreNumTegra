@@ -65,24 +65,34 @@ assert(zahle.includes('data-form-intent="conditions">Receber condições ↓</a>
 assert(zahle.includes('data-project-intent="floating-conditions" data-form-intent="conditions"'),"Zahle floating CTA maps to conditions");
 assert(ypy.includes('data-form-intent="conditions">Receber condições ↓</a>'),"YPY hero CTA maps to conditions");
 assert(ypy.includes('data-project-intent="floating-conditions" data-form-intent="conditions"'),"YPY floating CTA maps to conditions");
-assert(bem.includes('data-form-intent="conditions">Receber condições ↓</a>'),"Bem Moema hero CTA maps to conditions");
-assert(bem.includes('data-project-intent="floating-conditions" data-form-intent="conditions"'),"Bem Moema floating CTA maps to conditions");
+assert(/<a\b(?=[^>]*class="btn yellow")(?=[^>]*href="#formulario")(?=[^>]*data-form-intent="conditions")[^>]*>Receber condições →<\/a>/.test(bem),"Bem Moema hero CTA maps to conditions");
+assert(/<a\b(?=[^>]*class="quick-lead")(?=[^>]*href="#formulario")(?=[^>]*data-form-intent="conditions")[^>]*>Receber condições<\/a>/.test(bem),"Bem Moema floating CTA maps to conditions");
 assert(mozae.includes('data-form-intent="conditions">Receber condições ↓</a>'),"Mozae hero CTA maps to conditions");
 assert(mozae.includes('data-project-intent="floating-conditions" data-form-intent="conditions"'),"Mozae floating CTA maps to conditions");
 assert(bueno.includes('data-form-intent="conditions">Receber condições ↓</a>'),"Bueno hero CTA maps to conditions");
 assert(bueno.includes('data-project-intent="floating-conditions" data-form-intent="conditions"'),"Bueno floating CTA maps to conditions");
 assert(chateau.includes('data-form-intent="conditions">Receber condições ↓</a>'),"Château hero CTA maps to conditions");
 assert(chateau.includes('data-project-intent="floating-conditions" data-form-intent="conditions"'),"Château floating CTA maps to conditions");
-assert(reserva.includes('data-form-intent="conditions">Consultar disponibilidade ↓</a>'),"Reserva hero CTA maps to conditions");
+assert(/<a\b(?=[^>]*class="hero-cta")(?=[^>]*href="#formulario")(?=[^>]*data-form-intent="schedule_visit")[^>]*>Agende sua visita e conheça as oportunidades disponíveis ↓<\/a>/.test(reserva),"Reserva hero CTA maps to schedule_visit");
 assert(reserva.includes('data-project-intent="floating-conditions" data-form-intent="conditions"'),"Reserva floating CTA maps to conditions");
 assert(nova.includes('data-form-intent="conditions">Receber condições ↓</a>'),"Nova Vivere hero CTA maps to conditions");
 assert(nova.includes('data-project-intent="floating-conditions" data-form-intent="conditions"'),"Nova Vivere floating CTA maps to conditions");
-assert(garden.includes('data-form-intent="conditions">Receber condições ↓</a>'),"Garden Design hero CTA maps to conditions");
+assert(/<a\b(?=[^>]*class="hero-cta")(?=[^>]*href="#formulario")(?=[^>]*data-form-intent="conditions")[^>]*>Receba condições e agende sua visita ↓<\/a>/.test(garden),"Garden Design hero CTA maps to conditions");
 assert(garden.includes('data-project-intent="floating-conditions" data-form-intent="conditions"'),"Garden Design floating CTA maps to conditions");
-for(const [name,text] of [["Ledge",ledge],["Soma",soma],["Zahle",zahle],["YPY",ypy],["Bem",bem],["Mozae",mozae],["Bueno",bueno],["Château",chateau],["Reserva",reserva],["Nova Vivere",nova],["Garden Design",garden]]){
-  assert(text.includes('www.google.com/maps?q='),`${name} renders a real regional map`);
-  assert(!text.includes('class="mnt-map-placeholder"'),`${name} no longer renders a map placeholder`);
-  assert(text.includes('.gallery-stage img{width:100%;height:100%;object-fit:contain;'),`${name} preserves gallery framing`);
+// M5-06: verify the real regional embed AND the lead-generating click contract.
+// No invented exact pin, no static placeholder, and no dependency on one Google Maps hostname.
+const mapProjects=[["Ledge",ledge,"Ledge%20Brooklin"],["Soma",soma,"Soma%20Perdizes"],["Zahle",zahle,"Zahle%20Jardins"],["YPY",ypy,"YPY%20Alto%20do%20Ipiranga"],["Bem",bem,"Bem%20Moema"],["Mozae",mozae,"Mozae%20Higien%C3%B3polis"],["Bueno",bueno,"Bueno%20Brand%C3%A3o%20257"],["Château",chateau,"Ch%C3%A2teau%20Jardin"],["Reserva",reserva,"Reserva%20Caminhos%20da%20Lapa"],["Nova Vivere",nova,"Nova%20Vivere"],["Garden Design",garden,"Garden%20Design"]];
+for(const [name,html,project] of mapProjects){
+  const region=html.match(/<iframe\b[^>]*title="Mapa da região[^"]*"[^>]*>/i)?.[0]||"";
+  const url=region.match(/\bsrc="([^"]+)"/)?.[1]||"";
+  assert(/^https:\/\/(?:maps\.google\.com\/maps|www\.google\.com\/maps\?)/.test(url)&&url.includes("output=embed")&&url.includes("q="),`${name} renders a real regional map`);
+  assert(/\bloading="lazy"/.test(region)&&/\baria-hidden="true"/.test(region),`${name} map is lazy-loaded and non-interactive behind the CTA overlay`);
+  const hit=html.match(/<a\b[^>]*class="(?:mnt-)?map-hit"[^>]*><\/a>/)?.[0]||"";
+  const destination=hit.match(/\bhref="([^"]+)"/)?.[1]||"";
+  assert(destination.startsWith("https://wa.me/5511960779328?text=")&&destination.includes(project)&&hit.includes('target="_blank"')&&hit.includes('rel="noopener noreferrer"'),`${name} map click requests exact location through Sabrina's WhatsApp`);
+  assert(/\.map-(?:visual|frame)|\.mnt-map-visual/.test(html)&&/pointer-events:none/.test(html),`${name} embedded map does not intercept touch`);
+  assert(!html.includes('class="mnt-map-placeholder"'),`${name} no longer renders a map placeholder`);
+  assert(html.includes('.gallery-stage img{width:100%;height:100%;object-fit:contain;'),`${name} preserves gallery framing`);
 }
 assert(homeJs.includes('"CAPIITOLO by Piero Lissoni": "/empreendimentos/capiitolo-piero-lissoni/"'),"Home canonical route resolver covers CAPIITOLO duplicate cards");
 assert(homeJs.includes('"Nova Vivere": "/empreendimentos/nova-vivere/"'),"Home canonical route resolver covers both Nova Vivere cards");
