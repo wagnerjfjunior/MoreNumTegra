@@ -9,7 +9,7 @@ const prior=execFileSync("git",["show",base+":"+path],{encoding:"utf8"});
 const pattern=/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
 const get=(s)=>{const all=[...s.matchAll(pattern)];assert.equal(all.length,1);return {raw:all[0][1],json:JSON.parse(all[0][1])}};
 const a=get(prior),b=get(source);
-const removeLegacyHeroMeta = html => html.replace(/\.hero-meta\{[^}]*\}\.hero-meta strong\{[^}]*\}\.hero-meta span\{[^}]*\}/,"").replace(/<div class="hero-meta">[\\s\\S]*?<\\/div><a class="hero-cta"/,"<a class=\"hero-cta\"");
+const removeLegacyHeroMeta = html => html.replace(/\.hero-meta\{[^}]*\}\.hero-meta strong\{[^}]*\}\.hero-meta span\{[^}]*\}/,"").replace(/<div class="hero-meta">[\s\S]*?<\/div><a class="hero-cta"/,'<a class="hero-cta"');
 assert(!source.includes("hero-meta"),"RESF V1 forbids duplicated legacy hero-meta");
 assert.equal(source.replace(b.raw,a.raw),removeLegacyHeroMeta(prior),"Only approved RESF hero-meta removal and JSON-LD may differ from frozen baseline");
 const oldGraph=a.json["@graph"],graph=b.json["@graph"],find=(type)=>graph.find(n=>n["@type"]===type);
