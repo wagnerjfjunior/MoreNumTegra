@@ -90,3 +90,7 @@ Após QA do operador em screenshots desktop/mobile, os créditos sem texto e com
 - PR #406 commit `6e6b3e2c31e0ee1ac2112139ada3a4bfe11bd019`: `postal` PASS e `regression` PASS.
 - Gate pendente: operador conferir Live Sync desktop/mobile, verificação de carregamento real e contraste de logos no navegador, WhatsApp/Form46, e aprovação explícita de merge.
 
+
+## 2026-10-14 — Correção visual pontual de logos (teste Live Sync)
+
+A Product Authority forneceu nova mídia Cardim `https://s3-gdigital.s3.amazonaws.com/gdigital/313/MoreTEgra-Mozae-Paisagismo-Cardim-removebg-preview.webp` e solicitou **branco puro `#FFFFFF` nas áreas de imagem dos cards Suíte e Cardim**. Implementado em `/empreendimentos/mozae-higienopolis/`: Suíte também usa `authorship-pale`, e o estilo existente `.signature .authorship-pale .authorship-media` passa para `background:#fff`. Outros cards, conteúdo editorial, Greenn Form46 e JavaScript preservados. Proteções literais da PR #405 e PR #406 sincronizadas para aceitar precisamente esses deltas. Publicação/merge permanecem pendentes de QA visual do operador.
