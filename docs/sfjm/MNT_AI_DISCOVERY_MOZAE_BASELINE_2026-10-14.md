@@ -41,3 +41,10 @@ Source of truth: GitHub main and deployed production SHA. Do not present expecte
 
 ## Next safe action
 Review PR #404, #405 checks and mobile visual gate; merge only with appropriate approval. Then verify production SHA, HTTP headers and crawl access. Any new commercial contradiction must be validated by source before modification.
+
+## PR #405 CI evidence (observed after first execution)
+
+- PASS: Validate commercial page standard, onsite-address, coverage, images, canonical favicon, Open Graph/Twitter metadata.
+- FAIL: `postal` at `scripts/validate-resf-v2-postal-address-contract.mjs:436` with `mozae-higienopolis: previously complete page visible/runtime HTML changed`; intentional edited lead paragraph is detected by immutable-page comparison. Do not bypass test or silently refresh baseline; requires governed targeted exception or snapshot update.
+- FAIL: `validate` emitted errors for multiple other routes including Bem Moema CTA and regional maps, plus Mozae real map; cannot attribute all to the appended Sabrina paragraph. Determine whether pre-existing on main before accepting as waiver.
+- PR #405 remains unmerged pending required CI resolution and visual/form acceptance. PR #404 must not be used to conceal this block.
