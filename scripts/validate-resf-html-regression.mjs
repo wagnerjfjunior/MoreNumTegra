@@ -78,8 +78,8 @@ for(const [slug,street,cep] of pages){
    assert(originalAuthorship,'Mozae: source signature section missing');
    assert.equal(candidate.split(authorshipSection).length,2,'Mozae: exact authored signature must occur once');
    assert.equal(candidate.split(authorshipCSS).length,2,'Mozae: signature responsive CSS missing or modified');
-   let restored=candidate.replace(sabrina,'').replace(acceptedGallery,'').replace(acceptedCSS,'').replace(authorshipCSS,'').replace(authorshipSection,originalAuthorship).replace('<section class="lead mt-conversion-form" id="formulario"','<section class="lead" id="formulario"');
-   restored=restored.replace(approvedLogoCSS,'');
+   let restored=candidate.replace(sabrina,'').replace(acceptedGallery,'').replace(acceptedCSS,'').replace('\n'+authorshipCSS,'').replace(authorshipSection,originalAuthorship).replace('<section class="lead mt-conversion-form" id="formulario"','<section class="lead" id="formulario"');
+   restored=restored.replace('.credit-logo{display:block;max-width:min(240px,100%);width:auto;height:auto;max-height:96px;object-fit:contain;object-position:left center;margin:0 0 14px}.credit-logo[hidden]{display:none}','');
 assert.equal(withoutJsonLd(restored),withoutJsonLd(original),'Mozae: changes outside approved RESF deltas forbidden');
    }else assert.equal(withoutJsonLd(candidate),withoutJsonLd(original),'Mozae: unexpected legacy HTML delta');
  }else{
