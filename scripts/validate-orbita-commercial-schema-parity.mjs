@@ -20,7 +20,14 @@ assert(source.includes('<form id="moretegra-lead-form"')&&source.includes('data-
 assert(source.includes('https://wa.me/5511960779328'),"WhatsApp contact preserved");
 const oldGraph=a.json["@graph"],graph=b.json["@graph"],find=(type)=>graph.find(n=>n["@type"]===type);
 const types=["WebSite","WebPage","BreadcrumbList","Brand","ApartmentComplex","FAQPage"];
-for(const type of types){const before=oldGraph.find(n=>n["@type"]===type),after=find(type);assert(before&&after, "missing original "+type);if(type==="WebPage"){const copy={...after};delete copy.mentions;delete copy.primaryImageOfPage;delete copy.image;assert.deepEqual(copy,before,"WebPage identity must not change");}else if(type==="ApartmentComplex"){const copy={...after};delete copy.accommodationFloorPlan;copy.image=before.image;assert.deepEqual(copy,before,"ApartmentComplex commercial, postal and descriptive facts frozen");}else assert.deepEqual(after,before,"Original "+type+" entity cannot be modified");}
+for(const type of types){const before=oldGraph.find(n=>n["@type"]===type),after=find(type);assert(before&&after,"missing "+type);if(type==="WebPage"){const copy={...after};delete copy.mentions;delete copy.primaryImageOfPage;delete copy.image;assert.deepEqual(copy,before);}else if(type==="ApartmentComplex"){const copy={...after};delete copy.accommodationFloorPlan;copy.image=before.image;assert.deepEqual(copy,before);}else if(type==="FAQPage"){assert.equal(after.mainEntity.length,12);assert.deepEqual(after.mainEntity.slice(0,6),before.mainEntity,"Previous six FAQ questions must be preserved");}else assert.deepEqual(after,before);}
+const faqSection=(source.match(/<section class="section residences" id="faq">([\\s\\S]*?)<\\/section>/)||[])[1]||"";
+const displayed=[...faqSection.matchAll(/<details><summary>([\\s\\S]*?)<\\/summary><p>([\\s\\S]*?)<\\/p><\\/details>/g)].map(x=>[x[1],x[2]]);
+assert.equal(displayed.length,12);
+assert.deepEqual(displayed,find("FAQPage").mainEntity.map(q=>[q.name,q.acceptedAnswer.text]),"Visible FAQ and JSON-LD parity");
+assert.equal((source.match(/<section class="facts">/g)||[]).length,1);
+assert(source.includes("Vagas por tipologia · confirmar"));
+assert(source.includes("#moretegra-lead-form.form{background:#f9f7f1"));
 const expectedExtra=["Organization","ContactPoint","Person","RealEstateAgent","Service","Product","Offer"];
 for(const type of expectedExtra)assert.equal(graph.filter(n=>n["@type"]===type).length,1,"Required unique "+type);
 const ids=graph.map(n=>n["@id"]).filter(Boolean);
