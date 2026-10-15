@@ -52,7 +52,7 @@ assert.equal(find("WebPage").primaryImageOfPage["@id"],img["@id"],"Primary image
 assert.equal(floorplans.length,4);
 assert.equal(n.accommodationFloorPlan.length,4);
 assert(floorplans.every(x=>n.accommodationFloorPlan.some(y=>y["@id"]===x["@id"])));
-const plantsMatch=source.match(/const plants=(\\[[\\s\\S]*?\\]);const pTabs=/);
+const plantsMatch=source.match(/const plants=(\[[\s\S]*?\]);const pTabs=/);
 assert(plantsMatch,"Plants data must exist");
 const displayedPlants=JSON.parse(plantsMatch[1]);
 assert.equal(displayedPlants.length,15,"All fifteen official floorplan/implantation views required");
