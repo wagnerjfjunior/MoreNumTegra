@@ -96,7 +96,12 @@ if(fs.existsSync(projectsDir)){
     if(!footer.includes('href="tel:+5511960779328"')) fail(`${rel}: future-page canonical phone link missing`);
     if(!footer.includes(PROFILE)) fail(`${rel}: future-page official Sabrina profile missing`);
     validateNeutralFooterAddress(rel, html, footer);
-    if(TEGRA_CORPORATE_HOST.test(html)) fail(`${rel}: future-page Tegra corporate-site URL is forbidden`);
+    // Exact Órbita 360-degree tour is an explicit visual-media exception.
+    // Strip only this official tour destination; all other corporate URLs remain prohibited.
+    const corporateCheckHtml=dir.name==='universo-tatuape-orbita'
+      ?html.replace('https://arquivos.tegraincorporadora.com.br/tour360/orbita/','')
+      :html;
+    if(TEGRA_CORPORATE_HOST.test(corporateCheckHtml)) fail(`${rel}: future-page Tegra corporate-site URL is forbidden`);
     const address=getFooterAddress(footer);
     const ownStreet=extractStreetAndNumber(address);
     const visibleOutsideFooter=stripNonVisibleAddressZones(html);
