@@ -59,3 +59,13 @@ Official Tegra source: https://www.tegraincorporadora.com.br/sp/sao-paulo/leste/
 - Room sizes are named only where the official image names explicitly prove them (28 m² commercial room and 60 m² shop). Do not conflate variants with currently eligible inventory.
 - Existing JSON-LD and current three original type image nodes remain unchanged; follow-up commercial semantic coverage should model additional floorplans only after page QA and explicit gate.
 - Exact HTML-change regression normalization PASS on candidate as inspected through GitHub; CI and image HTTP results remain unverified.
+
+## 2026-10-14 — RESF V1 controlled release and rollback preparation
+
+- Current candidate branch: `feat/resf-universo-tatuape-orbita-20261014`; approved scope is exclusively `/empreendimentos/universo-tatuape-orbita/` plus its page-specific validator and this handoff.
+- **Frozen pre-change/main commit from live compare:** `4ef1a2a789571ef05f5f75870f4d8896edda0b84`. Its page file can be restored individually through a revert PR if rollback is necessary. Preserve all unrelated commits reaching main after this baseline.
+- **Rollback strategy (safe Git-driven):** revert only the Orbita runtime change(s) introduced by PR #408 using a new PR; do not reset or force-push main. Confirm Form46/measurement and live canonical URL after rollback. A Vercel deployment promotion/rollback requires identifying the exact authorized production deployment first.
+- **Latest RESF candidate changes:** grouped plant selector 7 residential / 3 commercial / 5 implantation; tour 360 with secondary project illustration, 3 Wikimedia neighborhood sources; off-white Form46 card; 4-slot facts (parking marked subject to confirmation, NOT a verified unit fact); 12 FAQs with one-to-one JSON-LD parity.
+- **Residual gates:** individual HTTP checks of all 15 plan URLs, third-party photograph rights/credits and visual correctness, confirmation of commercial 38/39 m² diagram, project parking facts, postal 5000-versus-5040 discrepancy, commercial unit/Offer validity, mobile browser QA, Form46 success in production if expressly supervised, external structured-data checks, production READY exact deployment evidence.
+- **Important:** four facts are an editorial fallback, not yet strict RESF §3.C acceptance because the second parking slot remains a FACTS_DATA_GAP; this cannot be certified without verified parking data or an approved exception. Do not claim full RESF acceptance from CI alone.
+- **Release invariant:** do not merge unless relevant CI checks finish and there are no newly introduced failures. After an authorized merge, verify deployment READY with exact commit and HTTP/functional QA on https://www.moretegra.com.br/empreendimentos/universo-tatuape-orbita/ .
