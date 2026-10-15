@@ -407,6 +407,14 @@ for(const [slug,street,cep] of expected){
      }
      return x;
    });
+   // Specific RESF V1 FAQ extension: visible/schema parity and original FAQ prefix
+   // are separately enforced by validate-orbita-commercial-schema-parity.mjs.
+   const approvedFaq=enriched.find(n=>n['@type']==='FAQPage');
+   const priorFaq=baseline.find(n=>n['@type']==='FAQPage');
+   assert.equal(approvedFaq?.mainEntity?.length,12,'Órbita: require 12 grounded questions');
+   assert.deepEqual(approvedFaq.mainEntity.slice(0,6),priorFaq.mainEntity,'Órbita: original FAQ cannot change');
+   const normalizedFaq=kept.find(n=>n['@type']==='FAQPage');
+   normalizedFaq.mainEntity=structuredClone(priorFaq.mainEntity);
    assert.deepEqual(scrub([{'@graph':kept}]),scrub([{'@graph':baseline}]),'Órbita: original schema entities must remain unchanged except approved new references');
    const newTypes=enriched.filter(n=>!baseline.some(x=>x['@id']===n['@id'])).map(n=>n['@type']);
    const allowed=['Organization','ContactPoint','Person','RealEstateAgent','Service','Product','Offer','ImageObject','ImageObject','FloorPlan','FloorPlan','FloorPlan','FloorPlan'];
