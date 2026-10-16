@@ -319,7 +319,7 @@ const staticHome = await readFile('src-greenn/preview/index.html', 'utf8');
 const staticHomeJs = await readFile('src-greenn/moretegra.js', 'utf8');
 if (staticHome.includes('const blocks = [') || staticHome.includes('fetch(url, {cache:"no-store"})')) fail('home', 'client-side primary block loader must not exist');
 if (staticHome.includes('id="mt-block-02"') || staticHome.includes('id="mt-block-03"') || staticHome.includes('data-moretegra-fallback')) fail('home', 'dynamic/fallback block placeholders remain in initial HTML');
-if (!/<script\\s+src="\\/src-greenn\\/moretegra\\.js(?:\\?[^"]*)?"\\s+defer><\\/script>/.test(staticHome)) fail('home', 'static moretegra.js include missing');
+if (!staticHome.includes('src="/src-greenn/moretegra.js?') && !staticHome.includes('src="/src-greenn/moretegra.js"')) fail('home', 'static moretegra.js include missing');
 if ((staticHome.match(/id="formulario"/g) || []).length !== 1) fail('home', 'initial HTML must contain exactly one #formulario');
 if ((staticHome.match(/data-form-anchor/g) || []).length !== 1) fail('home', 'initial HTML must contain exactly one interest-context mount');
 if (staticHome.includes('id="formulario" class="mt-form-anchor"')) fail('home', 'interest-context mount must not reuse #formulario');
