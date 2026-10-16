@@ -1004,6 +1004,19 @@
           "counted_in_resf_hours": false
         }
       ]
+    },
+    {
+      "id": "SEARCH_IMAGE_OWNERSHIP",
+      "state": "QUEUED / NOT_COMPLETED / DISPLACED_BY_ORBITA_QA",
+      "current_child": "MNT-SEARCH-IMAGE-AUDIT-01",
+      "tasks": [
+        {
+          "id": "MNT-SEARCH-IMAGE-AUDIT-01",
+          "state": "QUEUED / READ_ONLY / NOT_COMPLETED",
+          "label": "Audit public routes for primary-image ownership and Sabrina competition",
+          "evidence": "handoffs/HANDOFF-2026-10-06-SEARCH-IMAGE-FAVICON-HOME-GSC.md"
+        }
+      ]
     }
   ],
   "traceability": {
