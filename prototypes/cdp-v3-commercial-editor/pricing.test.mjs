@@ -1,0 +1,14 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { parseCommercialNumber, calculateCommercialPrice } from './pricing.mjs';
+const calc=(mode,amount,percent,area)=>calculateCommercialPrice({mode,amount,percent,area});
+test('Bueno direct: 21.75m / 500',()=>assert.deepEqual(calc('direct','21750000','','500'),{price:21750000,pricePerSqm:43500,discountAmount:null,tablePrice:null,commercialDiscountPercent:null,areaSqm:500}));
+test('illustrative VPL 13%',()=>assert.equal(calc('vpl','25000000','13','500').price,21750000));
+test('no second discount on direct',()=>assert.equal(calc('direct','21750000','13','500').price,21750000));
+test('decimal comma',()=>assert.equal(calc('vpl','1000,50','10','100').price,900.45));
+test('reject thousands separator',()=>assert.ok(Number.isNaN(parseCommercialNumber('25.000.000'))));
+test('reject invalid discount',()=>{for(const v of ['-1','100','101','abc'])assert.throws(()=>calc('vpl','25000000',v,'500'))});
+test('reject zero area or final price',()=>{assert.throws(()=>calc('vpl','25000000','100','500'));assert.throws(()=>calc('direct','100','','0'))});
+test('reject huge values',()=>assert.throws(()=>calc('direct','99999999999999999','','500')));
+test('reject unknown mode',()=>assert.throws(()=>calc('cash','100','','500')));
+test('round final price before per-sqm calculation',()=>assert.equal(calc('vpl','1000','12.345','10').price,876.55));
