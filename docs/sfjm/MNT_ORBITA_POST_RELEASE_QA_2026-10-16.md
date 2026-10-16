@@ -22,7 +22,7 @@ User requested resumption from SFJM and pending mobile, Form 46 and SEO/HTTP tes
 | 1305 direct link and alternating 2408/1305 | PASS | Visible unit/price and aria-pressed updated; default intent value tracked selected unit |
 | 2408 direct link | PASS | At 360x800, selected 2408 / R$ 540.000 |
 | CTA to form | PASS (bounded) | Conditions link targets #formulario and was operable |
-| Empty form validation | PASS | Visible “Informe seu nome.”; focus mt-lead-name; name/email/phone aria-invalid=true |
+| Empty form validation | PARTIAL / FIRST_CLICK_UNRESOLVED | Visible “Informe seu nome.”; focus mt-lead-name; name/email/phone aria-invalid=true |
 | Other intent retains unit | FAIL | With 1305 selected, selecting Agendar atendimento changed texto-livre to Agendar visita, without unit |
 | WhatsApp destination | PASS (DOM only) | Approved wa.me/5511960779328; location and project messages inspected, no message sent; unit not included in generic message |
 | Commercial schema validator | PASS | node scripts/validate-orbita-commercial-schema-parity.mjs after fetching required historical baseline |
