@@ -38,3 +38,9 @@ Branch isolada `feat/cdp-v3-commercial-editor-ui-20261015`, base `dedd52efe5d39b
 ## Testes executados em 2026-10-15
 
 Node.js v22.16.0: 8 testes aritmeticos PASS, 0 FAIL. Os testes sao independentes do codigo da interface e nao certificam a integracao DOM. QA visual/mobile permanece pendente. A transferencia do HTML exato do GitHub ao navegador local foi impedida por indisponibilidade de DNS. Proximo gate: teste integrado usando a mesma logica do frontend, verificacao da exportacao JSON e aprovacao antes de merge.
+
+## 2026-10-15 — Shared pricing module and local verification
+- Frontend imports `./pricing.mjs` via native ES module; `pricing.test.mjs` imports the exact same API. This eliminates the previously duplicated arithmetic logic.
+- Local Node v22.16.0 execution on a reconstructed copy of module/test source: **10 PASS / 0 FAIL**. This is not a GitHub CI receipt and does not certify exact deployed bytes or browser integration.
+- Direct mode ignores VPL; VPL is a commercial percentage, not financial present value. Percentage 100% is rejected because resulting published price would be zero. Monetary inputs prohibit thousands separators. Price and price/m² are rounded to cents.
+- Next gate: check PR head and CI, browser QA with mobile viewport, checkbox selection, input validation, JSON export, and schema-mapping of draft to canonical v3 candidate. No public consumer mutation, admin credentials or publication authorized.
