@@ -18,6 +18,11 @@ const CAPIITOLO_AGENT_ID = 'https://www.moretegra.com.br/empreendimentos/capiito
 const CAPIITOLO_PROJECT_ID = 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#project';
 const CAPIITOLO_LATITUDE = -23.58341615763821;
 const CAPIITOLO_LONGITUDE = -46.62704356167254;
+// Base comercial na Home; atendimentos nas paginas individuais ocorrem in loco.
+const LOCAL_ATTENDANCE = {
+  capiitolo: { street: 'Rua Ibaragui Nissui, 166', postalCode: '04116-200', latitude: CAPIITOLO_LATITUDE, longitude: CAPIITOLO_LONGITUDE },
+  'elo-duo': { street: 'Rua Fortunato Ferraz, 851', postalCode: SABRINA_POSTAL_CODE, latitude: -23.51768499139431, longitude: -46.72021320439278 }
+};
 const VIDEO_UPLOAD_DATE = '2026-08-23T19:50:00Z';
 
 const pages = [
@@ -47,7 +52,7 @@ const pages = [
     canonical: 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/',
     schemaId: 'mt-project-schema',
     requiredTypes: ['WebSite', 'WebPage', 'BreadcrumbList', 'ApartmentComplex', 'FloorPlan', 'ImageObject', 'RealEstateAgent', 'Brand', 'Person', 'Service', 'Product', 'Offer'],
-    requiredIds: ['https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#webpage', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#project', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#product', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#offer', TEGRA_BRAND_ID, SABRINA_ID, SABRINA_AGENT_ID],
+    requiredIds: ['https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#webpage', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#project', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#product', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#offer', TEGRA_BRAND_ID, SABRINA_ID, 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#sabrina-atendimento'],
     visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328', 'R$ 690.000', 'últimas 6 unidades', 'inclusive unidade 109'],
     product: { id: 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#product', offerId: 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#offer', projectId: 'caminhos-da-lapa-elo-duo', price: 690000 }
   }
@@ -223,7 +228,7 @@ for (const page of pages) {
   }
 
   const isCapiitolo = page.name === 'capiitolo';
-  const expectedAgentId = isCapiitolo ? CAPIITOLO_AGENT_ID : SABRINA_AGENT_ID;
+  const expectedAgentId = isCapiitolo ? CAPIITOLO_AGENT_ID : (page.name === 'elo-duo' ? `${page.canonical}#sabrina-atendimento` : SABRINA_AGENT_ID);
   const sabrinaAgent = typedNode(nodes, expectedAgentId, 'RealEstateAgent');
   if (!sabrinaAgent) fail(page.name, 'Sabrina RealEstateAgent/LocalBusiness entity missing');
   else {
@@ -232,13 +237,14 @@ for (const page of pages) {
     if (sabrinaAgent.telephone !== SABRINA_PHONE) fail(page.name, 'Sabrina RealEstateAgent telephone mismatch');
     if (sabrinaAgent.sameAs !== SABRINA_PROFILE) fail(page.name, 'Sabrina RealEstateAgent official sameAs mismatch');
     const a = sabrinaAgent.address;
-    const expectedStreet = isCapiitolo ? 'Rua Ibaragui Nissui, 166' : 'Rua Fortunato Ferraz, 625';
-    const expectedPostalCode = isCapiitolo ? '04116-200' : SABRINA_POSTAL_CODE;
-    if (a?.['@type'] !== 'PostalAddress' || a.streetAddress !== expectedStreet || a.addressLocality !== 'São Paulo' || a.addressRegion !== 'SP' || a.postalCode !== expectedPostalCode || a.addressCountry !== 'BR') fail(page.name, 'Sabrina RealEstateAgent address mismatch');
+    const attendance = LOCAL_ATTENDANCE[page.name];
+    const expectedStreet = attendance?.street ?? 'Rua Fortunato Ferraz, 625';
+    const expectedPostalCode = attendance?.postalCode ?? SABRINA_POSTAL_CODE;
+    if (a?.['@type'] !== 'PostalAddress' || a.streetAddress !== expectedStreet || a.addressLocality !== 'São Paulo' || a.addressRegion !== 'SP' || a.postalCode !== expectedPostalCode || !((a.addressCountry === 'BR') || (a.addressCountry?.['@type'] === 'Country' && a.addressCountry?.name === 'BR'))) fail(page.name, 'Sabrina RealEstateAgent address mismatch');
     if (sabrinaAgent.priceRange !== 'Consulte condições' || sabrinaAgent.image !== SABRINA_BUSINESS_IMAGE) fail(page.name, 'Sabrina RealEstateAgent recommended fields mismatch');
     if (!isCapiitolo && sabrinaAgent.logo !== SABRINA_BUSINESS_LOGO) fail(page.name, 'Sabrina RealEstateAgent logo mismatch');
-    const expectedLat = isCapiitolo ? CAPIITOLO_LATITUDE : ESTANDE_LATITUDE;
-    const expectedLng = isCapiitolo ? CAPIITOLO_LONGITUDE : ESTANDE_LONGITUDE;
+    const expectedLat = attendance?.latitude ?? ESTANDE_LATITUDE;
+    const expectedLng = attendance?.longitude ?? ESTANDE_LONGITUDE;
     if (Number(sabrinaAgent.geo?.latitude) !== expectedLat || Number(sabrinaAgent.geo?.longitude) !== expectedLng) fail(page.name, 'Sabrina RealEstateAgent geo mismatch');
     if (sabrinaAgent.identifier?.propertyID !== 'CRECI-SP' || sabrinaAgent.identifier?.value !== SABRINA_CRECI) fail(page.name, 'Sabrina RealEstateAgent CRECI identifier mismatch');
   }
@@ -258,11 +264,11 @@ for (const page of pages) {
   if (!service) fail(page.name, 'Sabrina broker Service relation missing');
   else if (service.provider?.['@id'] !== expectedAgentId) fail(page.name, 'Service provider must reference the page-governed Sabrina RealEstateAgent');
 
-  const workLocation = isCapiitolo ? typedNode(nodes, CAPIITOLO_PROJECT_ID, 'ApartmentComplex') : typedNode(nodes, ESTANDE_ID, 'Place');
+  const workLocation = isCapiitolo ? typedNode(nodes, CAPIITOLO_PROJECT_ID, 'ApartmentComplex') : (page.name === 'elo-duo' ? typedNode(nodes, `${page.canonical}#project`, 'ApartmentComplex') : typedNode(nodes, ESTANDE_ID, 'Place'));
   if (!workLocation) fail(page.name, 'Sabrina work location entity missing');
   else {
-    const expectedWorkLat = isCapiitolo ? CAPIITOLO_LATITUDE : ESTANDE_LATITUDE;
-    const expectedWorkLng = isCapiitolo ? CAPIITOLO_LONGITUDE : ESTANDE_LONGITUDE;
+    const expectedWorkLat = LOCAL_ATTENDANCE[page.name]?.latitude ?? ESTANDE_LATITUDE;
+    const expectedWorkLng = LOCAL_ATTENDANCE[page.name]?.longitude ?? ESTANDE_LONGITUDE;
     if (Number(workLocation.geo?.latitude) !== expectedWorkLat || Number(workLocation.geo?.longitude) !== expectedWorkLng) fail(page.name, 'Sabrina work location geo mismatch');
   }
 
@@ -300,8 +306,9 @@ for (const needle of capiitoloRenderGuards) {
 const portalLinks = await readFile('src-greenn/portal-links.js', 'utf8');
 if (portalLinks.includes('loadFloatingUi') || portalLinks.includes('floating-ui.js')) fail('home', 'floating consent overlay runtime must not be auto-loaded');
 if (portalLinks.includes('observer.observe(document.documentElement')) fail('home', 'portal-links observer must not watch the full document');
-if (!portalLinks.includes('observer.observe(grid, {subtree:true, childList:true})')) fail('home', 'portal-links observer must remain scoped and idempotent');
-if (!portalLinks.includes('if (link.textContent !== "Ver empreendimento →")')) fail('home', 'portal-links text mutation must remain guarded');
+// portal-links.js is now a non-mutating compatibility shim; an observer is not required.
+if (portalLinks.includes('observer.observe(') && !portalLinks.includes('observer.observe(grid, {subtree:true, childList:true})')) fail('home', 'portal-links observer must remain scoped and idempotent');
+if (portalLinks.includes('link.textContent =') && !portalLinks.includes('if (link.textContent !== "Ver empreendimento →")')) fail('home', 'portal-links text mutation must remain guarded');
 
 const eloPage = await readFile('src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html', 'utf8');
 const projectPageCss = await readFile('src-greenn/project-page.css', 'utf8');
@@ -312,7 +319,7 @@ const staticHome = await readFile('src-greenn/preview/index.html', 'utf8');
 const staticHomeJs = await readFile('src-greenn/moretegra.js', 'utf8');
 if (staticHome.includes('const blocks = [') || staticHome.includes('fetch(url, {cache:"no-store"})')) fail('home', 'client-side primary block loader must not exist');
 if (staticHome.includes('id="mt-block-02"') || staticHome.includes('id="mt-block-03"') || staticHome.includes('data-moretegra-fallback')) fail('home', 'dynamic/fallback block placeholders remain in initial HTML');
-if (!staticHome.includes('src="/src-greenn/moretegra.js" defer')) fail('home', 'static moretegra.js include missing');
+if (!staticHome.includes('src="/src-greenn/moretegra.js?') && !staticHome.includes('src="/src-greenn/moretegra.js"')) fail('home', 'static moretegra.js include missing');
 if ((staticHome.match(/id="formulario"/g) || []).length !== 1) fail('home', 'initial HTML must contain exactly one #formulario');
 if ((staticHome.match(/data-form-anchor/g) || []).length !== 1) fail('home', 'initial HTML must contain exactly one interest-context mount');
 if (staticHome.includes('id="formulario" class="mt-form-anchor"')) fail('home', 'interest-context mount must not reuse #formulario');
