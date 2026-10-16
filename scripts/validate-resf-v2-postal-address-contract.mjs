@@ -407,6 +407,18 @@ for(const [slug,street,cep] of expected){
      }
      return x;
    });
+   // October/2026 Órbita changes only the commercial Product/Offer, not the
+   // original ApartmentComplex identity, address, images or FAQ baseline.
+   // Normalize legacy baseline shape explicitly; the approved RESF entity
+   // already models developer via additionalProperty and the full postal address.
+   const oldComplex=baseline.find(n=>n['@type']==='ApartmentComplex');
+   const currentComplex=kept.find(n=>n['@type']==='ApartmentComplex');
+   assert(oldComplex&&currentComplex,'Órbita: ApartmentComplex missing');
+   assert.deepEqual(currentComplex.address, enriched.find(n=>n['@type']==='RealEstateAgent')?.address,'Órbita: on-site agent and project address must match');
+   assert.equal(currentComplex.additionalProperty?.value,'Tegra','Órbita: developer attribution must remain Tegra');
+   currentComplex.brand=structuredClone(oldComplex.brand);
+   delete currentComplex.additionalProperty;
+   delete currentComplex.address;
    // Specific RESF V1 FAQ extension: visible/schema parity and original FAQ prefix
    // are separately enforced by validate-orbita-commercial-schema-parity.mjs.
    const approvedFaq=enriched.find(n=>n['@type']==='FAQPage');
