@@ -34,3 +34,7 @@ Branch isolada `feat/cdp-v3-commercial-editor-ui-20261015`, base `dedd52efe5d39b
 - Arquivo de regressão: `prototypes/cdp-v3-commercial-editor/pricing.test.mjs`, execução prevista com `node --test prototypes/cdp-v3-commercial-editor/pricing.test.mjs`.
 - Cenários: Bueno direto, VPL 13%, prevenção de desconto duplo, vírgula decimal, formatos ambíguos, desconto inválido, área/valor zero, limite numérico.
 - Status dos testes: **NÃO EXECUTADOS / NÃO CERTIFICADOS** nesta etapa; script de teste é independente e não exercita DOM/browser. QA visual/mobile, acessibilidade, consistência de arredondamento e integração CDP V3 seguem pendentes.
+
+## Testes executados em 2026-10-15
+
+Node.js v22.16.0: 8 testes aritmeticos PASS, 0 FAIL. Os testes sao independentes do codigo da interface e nao certificam a integracao DOM. QA visual/mobile permanece pendente. A transferencia do HTML exato do GitHub ao navegador local foi impedida por indisponibilidade de DNS. Proximo gate: teste integrado usando a mesma logica do frontend, verificacao da exportacao JSON e aprovacao antes de merge.
