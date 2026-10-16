@@ -4,6 +4,8 @@ on:
     paths:
       - 'src-greenn/empreendimentos/universo-tatuape-orbita/index.html'
       - 'scripts/validate-orbita-commercial-schema-parity.mjs'
+      - 'scripts/validate-orbita-unit-form-context.mjs'
+      - 'src-greenn/preview/runtime.js'
       - '.github/workflows/orbita-commercial-schema-parity.yml'
 permissions:
   contents: read
@@ -18,3 +20,4 @@ jobs:
         with:
           node-version: '22'
       - run: node scripts/validate-orbita-commercial-schema-parity.mjs
+      - run: node scripts/validate-orbita-unit-form-context.mjs
