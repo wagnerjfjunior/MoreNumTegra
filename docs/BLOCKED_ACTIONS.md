@@ -1,3 +1,9 @@
+## 2026-10-16 — Guardrails pós-Órbita PR #418
+
+- O aceite visual desktop das unidades 2408/1305 não autoriza marcar Form46, mobile, HTTP/SEO externo, Core Web Vitals ou indexação como PASS.
+- Não alterar preços, dados de unidade ou schema comercial por inferência. Não publicar outras páginas por extensão da aprovação da PR #418.
+- Reversão do merge `6bffd089ee3cf7b5da6ea5cee8013e2f26567fa8` somente por PR rastreável e análise de impacto; sem force-push/reset de main.
+
 ## 2026-10-14 — Decisão específica sobre treinamento por IA
 
 - O operador autorizou explicitamente `Training: allow` em `/.well-known/ai.txt`, acompanhado de `GPTBot Allow: /` no `robots.txt`; esta autorização substitui o valor anterior `deny` somente após merge e publicação governados.
