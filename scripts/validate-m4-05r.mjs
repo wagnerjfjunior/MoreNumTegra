@@ -9,6 +9,11 @@ const SABRINA_PROFILE = 'https://corretor.tegravendas.com.br/sabrina/sp';
 const SABRINA_PHONE = '+5511960779328';
 const SABRINA_CRECI = '209.905-F';
 const SABRINA_POSTAL_CODE = '05093-000';
+// Base comercial na Home; atendimentos nas paginas individuais ocorrem in loco.
+const LOCAL_ATTENDANCE = {
+  capiitolo: { street: 'Rua Ibaragui Nissui, 166', postalCode: '04116-200', latitude: CAPIITOLO_LATITUDE, longitude: CAPIITOLO_LONGITUDE },
+  'elo-duo': { street: 'Rua Fortunato Ferraz, 851', postalCode: SABRINA_POSTAL_CODE, latitude: -23.51768499139431, longitude: -46.72021320439278 }
+};
 const SABRINA_BUSINESS_IMAGE = 'https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp';
 const SABRINA_BUSINESS_LOGO = 'https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp';
 const ESTANDE_ID = 'https://www.moretegra.com.br/#estande-caminhos-da-lapa';
@@ -47,7 +52,7 @@ const pages = [
     canonical: 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/',
     schemaId: 'mt-project-schema',
     requiredTypes: ['WebSite', 'WebPage', 'BreadcrumbList', 'ApartmentComplex', 'FloorPlan', 'ImageObject', 'RealEstateAgent', 'Brand', 'Person', 'Service', 'Product', 'Offer'],
-    requiredIds: ['https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#webpage', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#project', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#product', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#offer', TEGRA_BRAND_ID, SABRINA_ID, SABRINA_AGENT_ID],
+    requiredIds: ['https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#webpage', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#project', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#product', 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#offer', TEGRA_BRAND_ID, SABRINA_ID, 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#sabrina-atendimento'],
     visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328', 'R$ 690.000', 'últimas 6 unidades', 'inclusive unidade 109'],
     product: { id: 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#product', offerId: 'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#offer', projectId: 'caminhos-da-lapa-elo-duo', price: 690000 }
   }
@@ -223,7 +228,7 @@ for (const page of pages) {
   }
 
   const isCapiitolo = page.name === 'capiitolo';
-  const expectedAgentId = isCapiitolo ? CAPIITOLO_AGENT_ID : SABRINA_AGENT_ID;
+  const expectedAgentId = isCapiitolo ? CAPIITOLO_AGENT_ID : (page.name === 'elo-duo' ? `${page.canonical}#sabrina-atendimento` : SABRINA_AGENT_ID);
   const sabrinaAgent = typedNode(nodes, expectedAgentId, 'RealEstateAgent');
   if (!sabrinaAgent) fail(page.name, 'Sabrina RealEstateAgent/LocalBusiness entity missing');
   else {
@@ -232,13 +237,14 @@ for (const page of pages) {
     if (sabrinaAgent.telephone !== SABRINA_PHONE) fail(page.name, 'Sabrina RealEstateAgent telephone mismatch');
     if (sabrinaAgent.sameAs !== SABRINA_PROFILE) fail(page.name, 'Sabrina RealEstateAgent official sameAs mismatch');
     const a = sabrinaAgent.address;
-    const expectedStreet = isCapiitolo ? 'Rua Ibaragui Nissui, 166' : 'Rua Fortunato Ferraz, 625';
-    const expectedPostalCode = isCapiitolo ? '04116-200' : SABRINA_POSTAL_CODE;
-    if (a?.['@type'] !== 'PostalAddress' || a.streetAddress !== expectedStreet || a.addressLocality !== 'São Paulo' || a.addressRegion !== 'SP' || a.postalCode !== expectedPostalCode || a.addressCountry !== 'BR') fail(page.name, 'Sabrina RealEstateAgent address mismatch');
+    const attendance = LOCAL_ATTENDANCE[page.name];
+    const expectedStreet = attendance?.street ?? 'Rua Fortunato Ferraz, 625';
+    const expectedPostalCode = attendance?.postalCode ?? SABRINA_POSTAL_CODE;
+    if (a?.['@type'] !== 'PostalAddress' || a.streetAddress !== expectedStreet || a.addressLocality !== 'São Paulo' || a.addressRegion !== 'SP' || a.postalCode !== expectedPostalCode || !((a.addressCountry === 'BR') || (a.addressCountry?.['@type'] === 'Country' && a.addressCountry?.name === 'BR'))) fail(page.name, 'Sabrina RealEstateAgent address mismatch');
     if (sabrinaAgent.priceRange !== 'Consulte condições' || sabrinaAgent.image !== SABRINA_BUSINESS_IMAGE) fail(page.name, 'Sabrina RealEstateAgent recommended fields mismatch');
     if (!isCapiitolo && sabrinaAgent.logo !== SABRINA_BUSINESS_LOGO) fail(page.name, 'Sabrina RealEstateAgent logo mismatch');
-    const expectedLat = isCapiitolo ? CAPIITOLO_LATITUDE : ESTANDE_LATITUDE;
-    const expectedLng = isCapiitolo ? CAPIITOLO_LONGITUDE : ESTANDE_LONGITUDE;
+    const expectedLat = attendance?.latitude ?? ESTANDE_LATITUDE;
+    const expectedLng = attendance?.longitude ?? ESTANDE_LONGITUDE;
     if (Number(sabrinaAgent.geo?.latitude) !== expectedLat || Number(sabrinaAgent.geo?.longitude) !== expectedLng) fail(page.name, 'Sabrina RealEstateAgent geo mismatch');
     if (sabrinaAgent.identifier?.propertyID !== 'CRECI-SP' || sabrinaAgent.identifier?.value !== SABRINA_CRECI) fail(page.name, 'Sabrina RealEstateAgent CRECI identifier mismatch');
   }
@@ -250,7 +256,7 @@ for (const page of pages) {
     if (sabrina.sameAs !== SABRINA_PROFILE && ![].concat(sabrina.sameAs ?? []).includes(SABRINA_PROFILE)) fail(page.name, 'Sabrina official Tegra Vendas sameAs missing');
     if (sabrina.identifier?.value !== SABRINA_CRECI) fail(page.name, 'Sabrina CRECI mismatch');
     if (sabrina.image !== SABRINA_BUSINESS_IMAGE) fail(page.name, 'Sabrina Person image mismatch');
-    const expectedWorkLocation = isCapiitolo ? CAPIITOLO_PROJECT_ID : ESTANDE_ID;
+    const expectedWorkLocation = isCapiitolo ? CAPIITOLO_PROJECT_ID : (page.name === 'elo-duo' ? `${page.canonical}#project` : ESTANDE_ID);
     if (sabrina.workLocation?.['@id'] !== expectedWorkLocation) fail(page.name, 'Sabrina workLocation mismatch');
   }
 
@@ -258,11 +264,11 @@ for (const page of pages) {
   if (!service) fail(page.name, 'Sabrina broker Service relation missing');
   else if (service.provider?.['@id'] !== expectedAgentId) fail(page.name, 'Service provider must reference the page-governed Sabrina RealEstateAgent');
 
-  const workLocation = isCapiitolo ? typedNode(nodes, CAPIITOLO_PROJECT_ID, 'ApartmentComplex') : typedNode(nodes, ESTANDE_ID, 'Place');
+  const workLocation = isCapiitolo ? typedNode(nodes, CAPIITOLO_PROJECT_ID, 'ApartmentComplex') : (page.name === 'elo-duo' ? typedNode(nodes, `${page.canonical}#project`, 'ApartmentComplex') : typedNode(nodes, ESTANDE_ID, 'Place'));
   if (!workLocation) fail(page.name, 'Sabrina work location entity missing');
   else {
-    const expectedWorkLat = isCapiitolo ? CAPIITOLO_LATITUDE : ESTANDE_LATITUDE;
-    const expectedWorkLng = isCapiitolo ? CAPIITOLO_LONGITUDE : ESTANDE_LONGITUDE;
+    const expectedWorkLat = LOCAL_ATTENDANCE[page.name]?.latitude ?? ESTANDE_LATITUDE;
+    const expectedWorkLng = LOCAL_ATTENDANCE[page.name]?.longitude ?? ESTANDE_LONGITUDE;
     if (Number(workLocation.geo?.latitude) !== expectedWorkLat || Number(workLocation.geo?.longitude) !== expectedWorkLng) fail(page.name, 'Sabrina work location geo mismatch');
   }
 
