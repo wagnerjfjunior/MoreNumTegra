@@ -1,3 +1,11 @@
+## 2026-10-16 — Órbita QA independente e reconciliação SFJM
+
+- Live main observado: `577c87641c71765d43d501da1944ba77444cc948` (#419 documental); production #418 `6bffd089ee3cf7b5da6ea5cee8013e2f26567fa8`, deployment `dpl_33MEpNw9UHJ9xQCaG5nFuXR5eefx` READY.
+- HTTP/SEO básico PASS; seletor em Chrome 360/390 PASS delimitado; formulário vazio PARTIAL (primeiro clique sem resposta, segundo com validação correta). Evidências/limites: `docs/sfjm/MNT_ORBITA_POST_RELEASE_QA_2026-10-16.md`.
+- **FAIL confirmado:** unidade selecionada se perde em texto-livre ao escolher Agendar atendimento; runtime compõe projeto + finalidade sem unidade nesse caminho. Sem envio real ao CRM.
+- Próxima ação: correção delimitada do contexto de unidade para todas as finalidades, por PR e gates próprios; continuar testes restantes. Não declarar mobile físico, entrega Form46, CWV ou indexação certificados.
+- Ponteiros JSON reconciliados; histórico, RESF, preços, layout aprovado e rollback de #418 preservados. Este slice é documental, sem mudança runtime.
+
 ## 2026-10-16 — Órbita PR #418: merge e aceite visual de produção (handoff atual)
 
 - PR [#418](https://github.com/wagnerjfjunior/MoreNumTegra/pull/418) **MERGED** na main, squash SHA `6bffd089ee3cf7b5da6ea5cee8013e2f26567fa8`; head validado `63d596a29f063a3c261a8af7e8e4ceb5e509d789`; **12/12 GitHub checks SUCCESS** no head da PR.

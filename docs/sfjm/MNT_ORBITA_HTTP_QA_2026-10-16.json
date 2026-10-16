@@ -1,0 +1,85 @@
+[
+  {
+    "url": "https://www.moretegra.com.br/",
+    "status": 200,
+    "final": "https://www.moretegra.com.br/",
+    "content_type": "text/html; charset=utf-8",
+    "x_robots": null
+  },
+  {
+    "url": "https://www.moretegra.com.br/empreendimentos/universo-tatuape-orbita/",
+    "status": 200,
+    "final": "https://www.moretegra.com.br/empreendimentos/universo-tatuape-orbita/",
+    "content_type": "text/html; charset=utf-8",
+    "x_robots": null,
+    "canonical": "https://www.moretegra.com.br/empreendimentos/universo-tatuape-orbita/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": 1,
+    "faq": 12,
+    "schema_faq": 12,
+    "offer": "540000.00",
+    "faq_parity": true,
+    "source_matches_main": true
+  },
+  {
+    "url": "https://www.moretegra.com.br/empreendimentos/universo-tatuape-orbita/?unidade=2408&utm_source=chatgpt.com",
+    "status": 200,
+    "final": "https://www.moretegra.com.br/empreendimentos/universo-tatuape-orbita/?unidade=2408&utm_source=chatgpt.com",
+    "content_type": "text/html; charset=utf-8",
+    "x_robots": null,
+    "canonical": "https://www.moretegra.com.br/empreendimentos/universo-tatuape-orbita/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": 1,
+    "faq": 12,
+    "schema_faq": 12,
+    "offer": "540000.00",
+    "faq_parity": true,
+    "source_matches_main": true
+  },
+  {
+    "url": "https://www.moretegra.com.br/empreendimentos/universo-tatuape-orbita/?unidade=1305&utm_source=chatgpt.com",
+    "status": 200,
+    "final": "https://www.moretegra.com.br/empreendimentos/universo-tatuape-orbita/?unidade=1305&utm_source=chatgpt.com",
+    "content_type": "text/html; charset=utf-8",
+    "x_robots": null,
+    "canonical": "https://www.moretegra.com.br/empreendimentos/universo-tatuape-orbita/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": 1,
+    "faq": 12,
+    "schema_faq": 12,
+    "offer": "540000.00",
+    "faq_parity": true,
+    "source_matches_main": true
+  },
+  {
+    "url": "https://www.moretegra.com.br/robots.txt",
+    "status": 200,
+    "final": "https://www.moretegra.com.br/robots.txt",
+    "content_type": "text/plain; charset=utf-8",
+    "x_robots": null,
+    "body": "# Search crawling and GPTBot training crawling are allowed by the site operator.\n# Training permission does not license third-party materials or override applicable rights.\n# OAI-SearchBot (search) and GPTBot (training) are separate OpenAI crawlers.\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: *\nAllow: /\n\nSitemap: https://www.moretegra.com.br/sitemap.xml\n"
+  },
+  {
+    "url": "https://www.moretegra.com.br/sitemap.xml",
+    "status": 200,
+    "final": "https://www.moretegra.com.br/sitemap.xml",
+    "content_type": "application/xml",
+    "x_robots": null,
+    "orbita_present": true
+  },
+  {
+    "url": "https://moretegra.com.br/empreendimentos/universo-tatuape-orbita/?unidade=1305",
+    "status": 200,
+    "final": "https://www.moretegra.com.br/empreendimentos/universo-tatuape-orbita/?unidade=1305",
+    "content_type": "text/html; charset=utf-8",
+    "x_robots": null,
+    "canonical": "https://www.moretegra.com.br/empreendimentos/universo-tatuape-orbita/",
+    "robots": "index,follow,max-image-preview:large",
+    "h1": 1,
+    "faq": 12,
+    "schema_faq": 12,
+    "offer": "540000.00",
+    "faq_parity": true,
+    "source_matches_main": true
+  }
+]

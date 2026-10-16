@@ -1,3 +1,7 @@
+## 2026-10-16 — Órbita QA residual
+
+- Não declarar transporte de unidade Form46 PASS para todas as finalidades: perda confirmada em Agendar atendimento. Ver `docs/sfjm/MNT_ORBITA_POST_RELEASE_QA_2026-10-16.md`. Nenhum envio real executado. Layout e preços aprovados permanecem preservados; correção e release exigem PR/gates próprios.
+
 ## 2026-10-16 — Guardrails pós-Órbita PR #418
 
 - O aceite visual desktop das unidades 2408/1305 não autoriza marcar Form46, mobile, HTTP/SEO externo, Core Web Vitals ou indexação como PASS.
