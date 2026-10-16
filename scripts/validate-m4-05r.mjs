@@ -307,8 +307,8 @@ const portalLinks = await readFile('src-greenn/portal-links.js', 'utf8');
 if (portalLinks.includes('loadFloatingUi') || portalLinks.includes('floating-ui.js')) fail('home', 'floating consent overlay runtime must not be auto-loaded');
 if (portalLinks.includes('observer.observe(document.documentElement')) fail('home', 'portal-links observer must not watch the full document');
 // portal-links.js is now a non-mutating compatibility shim; an observer is not required.
-if (/\\bobserver\\.observe\\s*\\(/.test(portalLinks) && !portalLinks.includes('observer.observe(grid, {subtree:true, childList:true})')) fail('home', 'portal-links observer must remain scoped and idempotent');
-if (/link\\.textContent\\s*=/.test(portalLinks) && !portalLinks.includes('if (link.textContent !== "Ver empreendimento →")')) fail('home', 'portal-links text mutation must remain guarded');
+if (portalLinks.includes('observer.observe(') && !portalLinks.includes('observer.observe(grid, {subtree:true, childList:true})')) fail('home', 'portal-links observer must remain scoped and idempotent');
+if (portalLinks.includes('link.textContent =') && !portalLinks.includes('if (link.textContent !== "Ver empreendimento →")')) fail('home', 'portal-links text mutation must remain guarded');
 
 const eloPage = await readFile('src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html', 'utf8');
 const projectPageCss = await readFile('src-greenn/project-page.css', 'utf8');
