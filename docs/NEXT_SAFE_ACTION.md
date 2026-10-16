@@ -1,3 +1,14 @@
+## 2026-10-16 — Órbita PR #418: merge e aceite visual de produção (handoff atual)
+
+- PR [#418](https://github.com/wagnerjfjunior/MoreNumTegra/pull/418) **MERGED** na main, squash SHA `6bffd089ee3cf7b5da6ea5cee8013e2f26567fa8`; head validado `63d596a29f063a3c261a8af7e8e4ceb5e509d789`; **12/12 GitHub checks SUCCESS** no head da PR.
+- Vercel Production deployment `dpl_33MEpNw9UHJ9xQCaG5nFuXR5eefx` **READY**, SHA do deployment igual ao merge. Host canônico: `https://www.moretegra.com.br/`.
+- Alterações: dois cards comerciais do Universo Tatuapé Órbita na Home e seletor na página exata por `?unidade=2408#valores` e `?unidade=1305#valores`; schema Product/Offer de referência 2408 alinhado e validators `verify`/`postal` reconciliados.
+- **USER_CONFIRMED**: usuário testou Home e ambas URLs públicas, inclusive com `utm_source=chatgpt.com`, e confirmou funcionamento; capturas mostram 2408 (51 m², 2 dormitórios, vaga, R$ 540.000) e 1305 (69 m², 3 dormitórios, vaga, R$ 655.000), seleção visual correta. Isso é aceite **visual/funcional do seletor em desktop**, não certificação de todos os fluxos.
+- **OPEN/NOT_VERIFIED**: submissão real e contexto de unidade no Green Sales Form 46, mobile touch/responsividade, métricas Lighthouse/CWV, inspeção independente de HTTP/SEO e indexação. Não marcar esses gates PASS sem evidência.
+- Rollback rastreável: reverter o squash commit `6bffd089ee3cf7b5da6ea5cee8013e2f26567fa8` por PR governada após análise de impacto, sem reset forçado da main.
+- **NEXT SAFE ACTION (Órbita):** QA mobile + Form 46 (preferir validação sem lead real; envio real apenas com consentimento/teste autorizado), e inspeção SEO/HTTP; registrar evidências e encerrar o slice. Outras páginas exigem gate próprio.
+- Recibo detalhado: `docs/sfjm/MNT_ORBITA_PR418_PRODUCTION_ACCEPTANCE_2026-10-16.md`.
+
 ## 2026-10-14 — PR #405 Mozae — pós-reconciliação do teste postal
 
 - A frase de atendimento no estande e o WhatsApp de Sabrina foram adicionados de forma delimitada; o teste `postal` agora aceita somente esse fragmento mantendo comparação integral do restante do HTML congelado.
