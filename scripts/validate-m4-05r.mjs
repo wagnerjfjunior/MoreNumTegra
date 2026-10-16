@@ -256,7 +256,7 @@ for (const page of pages) {
     if (sabrina.sameAs !== SABRINA_PROFILE && ![].concat(sabrina.sameAs ?? []).includes(SABRINA_PROFILE)) fail(page.name, 'Sabrina official Tegra Vendas sameAs missing');
     if (sabrina.identifier?.value !== SABRINA_CRECI) fail(page.name, 'Sabrina CRECI mismatch');
     if (sabrina.image !== SABRINA_BUSINESS_IMAGE) fail(page.name, 'Sabrina Person image mismatch');
-    const expectedWorkLocation = isCapiitolo ? CAPIITOLO_PROJECT_ID : (page.name === 'elo-duo' ? `${page.canonical}#project` : ESTANDE_ID);
+    const expectedWorkLocation = isCapiitolo ? CAPIITOLO_PROJECT_ID : ESTANDE_ID;
     if (sabrina.workLocation?.['@id'] !== expectedWorkLocation) fail(page.name, 'Sabrina workLocation mismatch');
   }
 
