@@ -18,20 +18,25 @@
 <div class="choice"><input type="checkbox" id="reviewed"><label for="reviewed">Conferi os dados e solicito revisão. Isto não autoriza publicação.</label></div>
 <button type="button" id="export" disabled>Exportar proposta JSON (rascunho)</button>
 <p class="muted small">A proposta não contém credenciais, não atualiza o snapshot e não representa aprovação ou confirmação de disponibilidade.</p></section></main>
-<script>
+<script type="module">
+import { calculateCommercialPrice } from './pricing.mjs';
 (()=>{'use strict';const $=id=>document.getElementById(id),currency=n=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(n);
-const parse=v=>{const s=v.trim().replace(/\s/g,'');if(!s||!/^\d+(?:[.,]\d+)?$/.test(s))return NaN;return Number(s.replace(',','.'))};
 let mode='direct',proposal=null;
 function select(m){mode=m;$('direct').checked=m==='direct';$('vpl').checked=m==='vpl';$('directFields').hidden=m!=='direct';$('vplFields').hidden=m!=='vpl';calculate()}
 $('direct').addEventListener('change',()=>select('direct'));$('vpl').addEventListener('change',()=>select('vpl'));
-function calculate(){const area=parse($('area').value),amount=mode==='direct'?parse($('final').value):parse($('table').value),pct=mode==='vpl'?parse($('percent').value):null;
-const issues=[];if(!$('project').value.trim()||!$('offer').value.trim()||!$('unit').value.trim())issues.push('Informe projeto, oferta e unidade.');if(!Number.isFinite(area)||area<=0)issues.push('Área deve ser positiva.');if(!Number.isFinite(amount)||amount<=0)issues.push('Valor deve ser positivo.');if(mode==='vpl'&&(!Number.isFinite(pct)||pct<0||pct>100))issues.push('VPL deve estar entre 0% e 100%.');
+function calculate(){
+const issues=[];
+if(!$('project').value.trim()||!$('offer').value.trim()||!$('unit').value.trim())issues.push('Informe projeto, oferta e unidade.');
+if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test($('project').value.trim())||!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test($('offer').value.trim()))issues.push('IDs devem usar letras minúsculas, números e hífens.');
 if(!$('source').value.trim()||!$('reason').value.trim())issues.push('Informe fonte e justificativa.');
-const price=mode==='direct'?amount:amount*(1-pct/100);if(!Number.isFinite(price)||price<=0)issues.push('Valor final deve ser positivo.');if(Number.isFinite(price)&&price>Number.MAX_SAFE_INTEGER)issues.push('Valor acima do limite numérico seguro.');
-$('computed').textContent=issues.some(s=>!s.startsWith('Informe fonte'))? '—':currency(price);
-$('perSqm').textContent=Number.isFinite(price)&&price>0&&area>0?'Preço por m²: '+currency(price/area):'';
-$('discountAmount').textContent=mode==='vpl'&&Number.isFinite(price)&&price>0?'Desconto: '+currency(amount-price):'';
-$('error').textContent=issues.join(' ');proposal=issues.length?null:{schemaContext:'CDP_V3_COMMERCIAL_UPDATE_DRAFT',status:'candidate_unapproved',projectId:$('project').value.trim(),offerId:$('offer').value.trim(),unit:$('unit').value.trim(),areaSqm:area,pricingMode:mode,tablePrice:mode==='vpl'?amount:null,commercialDiscountPercent:pct,price:Math.round((price+Number.EPSILON)*100)/100,pricePerSqm:Math.round(price/area*100)/100,sourceRef:$('source').value.trim(),reason:$('reason').value.trim(),publicationAuthorized:false};$('export').disabled=!proposal||!$('reviewed').checked}
+let result=null;try{result=calculateCommercialPrice({mode,amount:mode==='direct'?$('final').value:$('table').value,percent:$('percent').value,area:$('area').value})}catch(e){issues.push(e.message)}
+$('computed').textContent=result?currency(result.price):'—';
+$('perSqm').textContent=result?'Preço por m²: '+currency(result.pricePerSqm):'';
+$('discountAmount').textContent=result&&mode==='vpl'?'Desconto: '+currency(result.discountAmount):'';
+$('error').textContent=issues.join(' ');
+proposal=issues.length?null:{schemaContext:'CDP_V3_COMMERCIAL_UPDATE_DRAFT',status:'candidate_unapproved',projectId:$('project').value.trim(),offerId:$('offer').value.trim(),unit:$('unit').value.trim(),areaSqm:result.areaSqm,pricingMode:mode,tablePrice:result.tablePrice,commercialDiscountPercent:result.commercialDiscountPercent,price:result.price,pricePerSqm:result.pricePerSqm,sourceRef:$('source').value.trim(),reason:$('reason').value.trim(),publicationAuthorized:false};
+$('export').disabled=!proposal||!$('reviewed').checked
+}
 document.querySelectorAll('input,textarea').forEach(el=>el.addEventListener('input',calculate));$('reviewed').addEventListener('change',calculate);
 $('export').addEventListener('click',()=>{calculate();if(!proposal)return;const blob=new Blob([JSON.stringify(proposal,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='cdp-v3-proposta-comercial.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});calculate();
 })();
