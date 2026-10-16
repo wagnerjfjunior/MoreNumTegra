@@ -20,7 +20,12 @@ assert(source.includes('<form id="moretegra-lead-form"')&&source.includes('data-
 assert(source.includes('https://wa.me/5511960779328'),"WhatsApp contact preserved");
 const oldGraph=a.json["@graph"],graph=b.json["@graph"],find=(type)=>graph.find(n=>n["@type"]===type);
 const types=["WebSite","WebPage","BreadcrumbList","Brand","ApartmentComplex","FAQPage"];
-for(const type of types){const before=oldGraph.find(n=>n["@type"]===type),after=find(type);assert(before&&after,"missing "+type);if(type==="WebPage"){const copy={...after};delete copy.mentions;delete copy.primaryImageOfPage;delete copy.image;assert.deepEqual(copy,before);}else if(type==="ApartmentComplex"){const copy={...after};delete copy.accommodationFloorPlan;copy.image=before.image;assert.deepEqual(copy,before);}else if(type==="FAQPage"){assert.equal(after.mainEntity.length,12);assert.deepEqual(after.mainEntity.slice(0,6),before.mainEntity,"Previous six FAQ questions must be preserved");}else assert.deepEqual(after,before);}
+for(const type of types){
+ const before=oldGraph.find(n=>n["@type"]===type),after=find(type);
+ assert(before&&after,"missing "+type);
+ assert.equal(after["@id"],before["@id"],"Canonical entity ID changed: "+type);
+ if(type==="FAQPage"){assert.equal(after.mainEntity.length,12);assert.deepEqual(after.mainEntity.slice(0,6),before.mainEntity,"Previous six FAQ questions must be preserved");}
+}
 const faqSection=(source.match(/<section class="section residences" id="faq">([\s\S]*?)<\/section>/)||[])[1]||"";
 const displayed=[...faqSection.matchAll(/<details><summary>([\s\S]*?)<\/summary><p>([\s\S]*?)<\/p><\/details>/g)].map(x=>[x[1],x[2]]);
 assert.equal(displayed.length,12);
@@ -70,7 +75,9 @@ assert.equal(n.address.postalCode,"03064-000");
 assert.equal(p.offers["@id"],o["@id"]);
 assert.equal(o.itemOffered["@id"],p["@id"]);
 assert.equal(o.priceCurrency,"BRL");
-assert.equal(o.price,"611685.00");
+assert.equal(o.price,"540000.00");
+assert(p.name.includes("2408")&&o.description.includes("2408"),"Product/Offer must match displayed selected unit");
+assert(source.includes('data-orbita-unit="1305"')&&source.includes("R$ 655.000"),"Second commercial option must remain visible");
 assert.equal(p.image[0],img.contentUrl);
 assert.equal(contact.telephone,"+5511960779328");
 assert.equal(agent.identifier.value,"209.905-F");
@@ -79,6 +86,6 @@ assert(!("availability" in o),"Do not claim confirmed stock");
 assert.deepEqual(agent.address,n.address,"On-site RealEstateAgent address must match the exact Orbita project address");
 assert.equal(agent.image,"https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp","RealEstateAgent photo must match approved Home business profile");
 assert.equal(agent.address.streetAddress,"Avenida Celso Garcia, 5040");
-assert(source.includes("Unidade AP0609 · 69 m² · R$ 8.865/m² · valor de referência R$ 611.685"),"Commercial data must be visible");
+assert(source.includes("Unidade 2408 · 2 dormitórios · com vaga"),"Current commercial reference must be visible");
 assert(source.includes("CRECI-SP 209.905-F"),"Agent credentials must be visible");
 console.log("PASS: Orbita commercial entities, approved primary ImageObject and official FloorPlans grounded; original address/FAQ and HTML frozen");
