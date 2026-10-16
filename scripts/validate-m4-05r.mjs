@@ -9,11 +9,6 @@ const SABRINA_PROFILE = 'https://corretor.tegravendas.com.br/sabrina/sp';
 const SABRINA_PHONE = '+5511960779328';
 const SABRINA_CRECI = '209.905-F';
 const SABRINA_POSTAL_CODE = '05093-000';
-// Base comercial na Home; atendimentos nas paginas individuais ocorrem in loco.
-const LOCAL_ATTENDANCE = {
-  capiitolo: { street: 'Rua Ibaragui Nissui, 166', postalCode: '04116-200', latitude: CAPIITOLO_LATITUDE, longitude: CAPIITOLO_LONGITUDE },
-  'elo-duo': { street: 'Rua Fortunato Ferraz, 851', postalCode: SABRINA_POSTAL_CODE, latitude: -23.51768499139431, longitude: -46.72021320439278 }
-};
 const SABRINA_BUSINESS_IMAGE = 'https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp';
 const SABRINA_BUSINESS_LOGO = 'https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp';
 const ESTANDE_ID = 'https://www.moretegra.com.br/#estande-caminhos-da-lapa';
@@ -23,6 +18,11 @@ const CAPIITOLO_AGENT_ID = 'https://www.moretegra.com.br/empreendimentos/capiito
 const CAPIITOLO_PROJECT_ID = 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#project';
 const CAPIITOLO_LATITUDE = -23.58341615763821;
 const CAPIITOLO_LONGITUDE = -46.62704356167254;
+// Base comercial na Home; atendimentos nas paginas individuais ocorrem in loco.
+const LOCAL_ATTENDANCE = {
+  capiitolo: { street: 'Rua Ibaragui Nissui, 166', postalCode: '04116-200', latitude: CAPIITOLO_LATITUDE, longitude: CAPIITOLO_LONGITUDE },
+  'elo-duo': { street: 'Rua Fortunato Ferraz, 851', postalCode: SABRINA_POSTAL_CODE, latitude: -23.51768499139431, longitude: -46.72021320439278 }
+};
 const VIDEO_UPLOAD_DATE = '2026-08-23T19:50:00Z';
 
 const pages = [
