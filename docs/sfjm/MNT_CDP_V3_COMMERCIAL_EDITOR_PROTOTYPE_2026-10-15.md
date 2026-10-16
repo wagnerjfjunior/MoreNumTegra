@@ -44,3 +44,7 @@ Node.js v22.16.0: 8 testes aritmeticos PASS, 0 FAIL. Os testes sao independentes
 - Local Node v22.16.0 execution on a reconstructed copy of module/test source: **10 PASS / 0 FAIL**. This is not a GitHub CI receipt and does not certify exact deployed bytes or browser integration.
 - Direct mode ignores VPL; VPL is a commercial percentage, not financial present value. Percentage 100% is rejected because resulting published price would be zero. Monetary inputs prohibit thousands separators. Price and price/m² are rounded to cents.
 - Next gate: check PR head and CI, browser QA with mobile viewport, checkbox selection, input validation, JSON export, and schema-mapping of draft to canonical v3 candidate. No public consumer mutation, admin credentials or publication authorized.
+
+## Browser QA reproducivel
+
+O arquivo `prototypes/cdp-v3-commercial-editor/browser_qa.py` automatiza verificacao em Chromium nas larguras 390 e 1280 px, incluindo modo direto, VPL, exportacao JSON, rejeicao de desconto invalido, overflow e erros JS. Exige Playwright Python/Chromium no ambiente de QA. Status: SCRIPT CRIADO, EXECUCAO DO HTML EXATO DA PR NAO CERTIFICADA. Sem autorizacao para merge ou publicacao. O CDP V3 continua sem provedor de escrita/leitura selecionado e sem consumidores integrados.
