@@ -28,3 +28,9 @@ Exemplo comercial **aprovado como referência da página**: Bueno Brandão 257, 
 
 ## Rollback
 Branch isolada `feat/cdp-v3-commercial-editor-ui-20261015`, base `dedd52efe5d39b48abfeda866a7da9e87eb3f690`. Sem alterações em runtime; descartar a branch/PR reverte integralmente o protótipo.
+
+## 2026-10-15 — Hardening e testes propostos
+- Entrada monetária: somente números sem separadores de milhar; vírgula ou ponto são decimais. `25.000.000` é rejeitado; utilizar `25000000`. Bloqueio de valor final acima de `Number.MAX_SAFE_INTEGER`.
+- Arquivo de regressão: `prototypes/cdp-v3-commercial-editor/pricing.test.mjs`, execução prevista com `node --test prototypes/cdp-v3-commercial-editor/pricing.test.mjs`.
+- Cenários: Bueno direto, VPL 13%, prevenção de desconto duplo, vírgula decimal, formatos ambíguos, desconto inválido, área/valor zero, limite numérico.
+- Status dos testes: **NÃO EXECUTADOS / NÃO CERTIFICADOS** nesta etapa; script de teste é independente e não exercita DOM/browser. QA visual/mobile, acessibilidade, consistência de arredondamento e integração CDP V3 seguem pendentes.
