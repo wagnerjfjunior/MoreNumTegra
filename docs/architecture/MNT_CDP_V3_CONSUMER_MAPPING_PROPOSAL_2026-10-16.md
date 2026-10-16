@@ -43,3 +43,26 @@ Os exemplos acima são leitura do código da Home e **não** confirmação de di
 ## Bloqueios
 
 Não alterar valores comerciais, não inferir identidade de oferta por nome, não atualizar Home ou páginas exatas em massa, não declarar CDP operacional e não publicar a partir do protótipo sem gate de aprovação.
+
+## Adendo — cardinalidade de cards, ofertas e páginas (2026-10-16)
+
+**Regra:** um `projectId` pode ter N ofertas, N cards e N páginas comerciais. A identidade da página não é a identidade da oferta, e nenhum `detailUrl` deve ser derivado automaticamente apenas do nome do empreendimento.
+
+Modelo de apresentação proposto (fora do schema de preços v3, que permanece a fonte comercial):
+
+- `projectId`: identidade canônica única do empreendimento.
+- `offerId`: identidade estável de cada oferta **dentro** de `projectId`; não é preço nem rota.
+- `cardId`: identidade estável da instância de card; vincula-se explicitamente a `projectId`, `offerId` e a um destino.
+- `pageId`: identidade estável da página editorial/comercial; resolve para URL canônica real e pode apresentar uma ou várias ofertas.
+- `cardDestination`: referência explícita a `pageId`, opcionalmente com `selectedOfferId` para pré-seleção visual. Uma oferta pode aparecer em vários cards e páginas; uma página pode apresentar múltiplas ofertas.
+
+Exemplos de topologias permitidas:
+
+1. Dois cards → duas ofertas → **uma página** (CAPIITOLO padrão e à vista, como cenário conhecido).
+2. Dois cards → duas ofertas → **duas páginas distintas**, ambas do mesmo `projectId` (cenário informado pela Product Authority, sem presumir rotas existentes).
+3. Dois cards → mesma oferta → páginas distintas, quando houver justificativa editorial/campanha e política SEO aprovada.
+4. Uma página → múltiplas ofertas do mesmo empreendimento, com seleção inequívoca e CTA contextual.
+
+**SEO:** URLs canônicas são decisões editoriais por página; páginas realmente distintas podem ter canonicals próprios se possuírem conteúdo e intenção próprios. Não criar automaticamente páginas quase duplicadas, nem apontar canonicals divergentes sem revisão. `?oferta=...` pode selecionar estado de interface, mas não cria por si uma nova página indexável. A oferta visível, o CTA e eventual JSON-LD devem ser coerentes com o conteúdo renderizado e a autoridade comercial.
+
+**Migração:** construir inventário separado de cards, páginas, ofertas e suas relações. Não substituir o atual `DETAIL_ROUTES` por mapeamento unívoco por projeto: esse mapa não representa múltiplos destinos. Nenhum preço, URL, canonical ou publicação muda com este adendo.
