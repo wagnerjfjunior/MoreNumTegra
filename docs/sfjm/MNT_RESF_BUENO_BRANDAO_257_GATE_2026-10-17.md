@@ -87,3 +87,12 @@ Há mapa regional e CTA WhatsApp que solicita localização exata. O material de
 5. QA em 390 px e desktop da galeria/plantas, touch, foco, CLS/LCP; Form46 e seletor 500/923 aprovados pelo usuário não devem ser alterados por auditoria de mídia.
 
 **Conclusão:** RESF mídia/plantas = **PARCIAL, NOT ACCEPTED**. Mudanças da auditoria são somente documentação; a página candidata não foi publicada.
+
+## Plantas integradas a partir do site de apresentação — 17/10/2026
+- O usuário indicou `https://buenobrandao257.com.br/` como fonte oficial. O navegador conectado identificou os nomes reais, e as quatro URLs diretas de `/images/plantas/optimized/` foram abertas por leitura web externa, cada uma exibindo a planta correspondente.
+- Tipo 500 m²: `BUEN_07_RESID_PLA_Tipo_P3-opt-1920.WEBP`.
+- Garden 711 m²: `BUEN_08_RESID_PLA_Garden_P3-opt-1920.WEBP`.
+- Cobertura 923 m²: `BUEN_09_RESID_PLA_Duplex%20Inferior_P3-opt-1920.WEBP` e `BUEN_10_RESID_PLA_Duplex%20Superior_P4-opt-1920.WEBP`.
+- Implementação: visualizador de quatro escolhas com conteúdo inicial em HTML, ALT específicos, legenda, carregamento lazy, preload na troca, falha de imagem e grade mobile; a cobertura tem dois pavimentos da mesma unidade/tipologia.
+- Sem alteração do seletor comercial 500/923, preços, facts homologados, Form 46 ou schema comercial. A planta do Garden tem finalidade informativa; não há preço/estoque presumido.
+- **Validação pendente:** evidência visual real no SFJM Live Sync desktop e mobile, verificação de direitos/uso comercial de imagens do site de apresentação e checks do head exato. Não mergear sem aceite.
