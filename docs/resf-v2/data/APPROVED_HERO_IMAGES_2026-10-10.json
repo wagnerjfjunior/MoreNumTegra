@@ -1,0 +1,271 @@
+{
+  "schema": "resf-v2-approved-hero-v1",
+  "decisionDate": "2026-10-10",
+  "approvalOrigin": "Product Authority explicitly approved all 36 image URLs shown in conversation table",
+  "scope": "HERO_IMAGE_URL_ONLY",
+  "notes": [
+    "Approval applies to existing primary/hero picture URL and corresponding display-page mapping; current alt descriptions are recorded as observed, not separately approved SEO rewrites.",
+    "Do not infer authorization for OG/Twitter/JSON-LD changes, crop changes, media replacement or production publication.",
+    "DSG Itaim and CAPIITOLO are excluded from RESF V2; neither is among the 36 entries.",
+    "Changes require a new explicit Product Authority media decision. Existing approved URLs must be retained."
+  ],
+  "excludedRoutes": [
+    "/empreendimentos/dsg-itaim/",
+    "/empreendimentos/capiitolo-piero-lissoni/"
+  ],
+  "source": "GitHub Actions run 38068782952; 36 HERO_APPROVAL_ROW values extracted from candidate source, individually presented for approval",
+  "approved": [
+    {
+      "route": "/empreendimentos/ampere-brooklin/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/351/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Empreendimento-Ampere-Brooklin-Apartamentos-Brooklin-Sao-Paulo-SP-714x640-1718890023834.jpg",
+      "existingAlt": "Ampère Brooklin em Brooklin",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/empreendimentos/aria-higienopolis/",
+      "heroUrl": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/%C3%81ria%20Higien%C3%B3polis-Perspectiva%20ilustrada%20do%20acesso%20residencial..webp",
+      "existingAlt": "Perspectiva ilustrada do acesso residencial do Ária Higienópolis",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/empreendimentos/ayla-moema-studio-office/",
+      "heroUrl": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Tegra-Incorporadora-Sala-Comercial-Decorado-na-Torre-Empreendimento-Ayla-Moema-Studio-Office-Moema-Sao-Paulo-SP-1920x1080-1715891085441.webp",
+      "existingAlt": "Sala comercial decorada do Ayla Moema Studio &amp; Office em Moema",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/empreendimentos/bem-moema-studios-offices/",
+      "heroUrl": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Tegra-Incorporadora-Detalhe-da-Fachada-Apartamento-Bem-Moema-Sao-Paulo-SP-714x640-1715883122503.webp",
+      "existingAlt": "Fachada do Bem Moema Studios &amp; Offices em Moema",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/empreendimentos/bem-moema/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/336/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Apartamento-Bem-Moema-Sao-Paulo-SP-714x640-1715883122503.jpg",
+      "existingAlt": "Bem Moema Tegra em Moema",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/empreendimentos/bueno-brandao-257/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/337/ImagemPrincipal/8e85cddc-003b-4b7a-bfd2-2e38275cb1b8.jpg",
+      "existingAlt": "Perspectiva ilustrada do Bueno Brandão 257",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/empreendimentos/caminhos-da-lapa-elo-duo/",
+      "heroUrl": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Compac%20-%20Caminhos%20da%20lapa%20-%20Elo%20Duo%20-%201350x1090%20-%20Fachada.webp",
+      "existingAlt": "Elo Duo Caminhos da Lapa, apartamento pronto para morar na Lapa",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/empreendimentos/chateau-jardin/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/364/ImagemPrincipal/Tegra-Incorporadora-Fachada-Empreendimento-Chateau-Jardin-Apartamentos-Cidade-Jardim-Sao-Paulo-SP-714x640-1774666511357.jpg",
+      "existingAlt": "Perspectiva ilustrada da fachada do Château Jardin",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/empreendimentos/chez-vous-moema/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/255/Imagem/f94dfcdc-fd02-4275-b5c3-de5953378f31.jpg",
+      "existingAlt": "Chez Vous Moema em Moema",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/empreendimentos/garden-design/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/361/ImagemPrincipal/Tegra-Incorporadora-Area-de-Lazer-Piscina-Empreendimento-Garden-Design-Private-Park-Residence-Apartamentos-Lapa-Sao-Paulo-SP-714x640-1758223113158.jpg",
+      "existingAlt": "Perspectiva ilustrada do Garden Design Private Park Residence",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/empreendimentos/key-moema/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/264/Imagem/f792b3c7-d80c-46b1-8625-dd9efaaac209.jpg",
+      "existingAlt": "Key Moema em Moema",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/empreendimentos/ledge-brooklin/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/341/ImagemPrincipal/6b04808c-fa4f-4bc9-bd24-e6052be1dda7.jpg",
+      "existingAlt": "Perspectiva ilustrada do Ledge Brooklin",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/empreendimentos/mozae-higienopolis/",
+      "heroUrl": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Tegra-Incorporadora-Perspectiva-Ilustrada-Area-de-Lazer-Lounge-Festas-Externo-Rooftop-Apartamento-Mozae-Higienopolis-Sao-Paulo-SP-1400x1400-1731541249479.webp",
+      "existingAlt": "Perspectiva ilustrada da área de lazer e lounge externo do Mozae Higienópolis",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/empreendimentos/nova-vivere/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/363/ImagemPrincipal/Tegra-Incorporadora-Area-de-Lazer-Piscina-Empreendimento-Nova-Vivere-Caminhos-da-Lapa-Apartamentos-Sao-Paulo-SP-714x640-1770300546843.png",
+      "existingAlt": "Perspectiva ilustrada do Nova Vivere Caminhos da Lapa",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/empreendimentos/ode-perdizes/",
+      "heroUrl": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/ODE%20Perspectiva%20ilustrada%20da%20fachada.webp",
+      "existingAlt": "ODE Perdizes em Perdizes",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/empreendimentos/reserva-caminhos-da-lapa/",
+      "heroUrl": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/OJvCwqOQER0mcGGVjBoPxE8xALtGs2KXW1MhcviW.webp",
+      "existingAlt": "Reserva Caminhos da Lapa",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/empreendimentos/soma-perdizes/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/314/ImagemPrincipal/Tegra-Incorporadora-Perspectiva-Ilustrada-Voo-Diurno-Fachada-Apartamentos-Studios-Salas-Comerciais-Soma-Perdizes-Sao-Paulo-SP-714x640-1715885527011.jpg",
+      "existingAlt": "Perspectiva ilustrada do Soma Perdizes",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/empreendimentos/teg-sacoma/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/281/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Area-Externa-Empreendimento-TEG-Sacoma-Apartamentos-Pronto-para-Morar-Zona-Sul-Sao-Paulo-SP-714x640-1716214964198.jpg",
+      "existingAlt": "TEG Sacomã em Sacomã",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/empreendimentos/tiel-vila-nova-conceicao/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/352/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Studios-Vila-Nova-Conceicao-Sao-Paulo-SP-714x640-1718129172867.jpg",
+      "existingAlt": "Fachada do Tièl Vila Nova Conceição",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/empreendimentos/universo-tatuape-orbita/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/339/ImagemPrincipal/e56e585c-b5a8-44b5-95a6-c6227d8d18ea.jpg",
+      "existingAlt": "Universo Tatuapé Órbita em Tatuapé",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/empreendimentos/viso-moema/",
+      "heroUrl": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/More-Tegra-Viso-Moema-Fachada-moderna-com-paisagismo-urbano.webp",
+      "existingAlt": "Fachada do Viso Moema em Moema",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/empreendimentos/ypy-alto-do-ipiranga/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/346/ImagemPrincipal/f473a9c8-e222-46f5-887e-c06efa82aaff-1715887075276.jpg",
+      "existingAlt": "Perspectiva ilustrada do YPY Alto do Ipiranga",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/empreendimentos/zahle-jardins/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/276/ImagemPrincipal/trega_zahle-76-tratada-714x640-1715886658470.jpg",
+      "existingAlt": "Perspectiva ilustrada do Zahle Jardins",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/regioes/alto-do-ipiranga/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/346/ImagemPrincipal/f473a9c8-e222-46f5-887e-c06efa82aaff-1715887075276.jpg",
+      "existingAlt": "YPY Alto do Ipiranga, empreendimento Tegra em Alto do Ipiranga",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/regioes/brooklin/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/341/ImagemPrincipal/6b04808c-fa4f-4bc9-bd24-e6052be1dda7.jpg",
+      "existingAlt": "Ledge Brooklin, empreendimento Tegra em Brooklin",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/regioes/chacara-klabin/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/349/ImagemPrincipal/Tegra-Incorporadora-Detalhe-Fachada-CAPITOLO-by-Piero-Lissoni-Apartamentos-210-Metros-Chacara-Klabin-Sao-Paulo-SP-714x640-1736369712708.jpg",
+      "existingAlt": "CAPIITOLO by Piero Lissoni, empreendimento Tegra em Chácara Klabin",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/regioes/cidade-jardim/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/364/ImagemPrincipal/Tegra-Incorporadora-Fachada-Empreendimento-Chateau-Jardin-Apartamentos-Cidade-Jardim-Sao-Paulo-SP-714x640-1774666511357.jpg",
+      "existingAlt": "Château Jardin, empreendimento Tegra em Cidade Jardim",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/regioes/higienopolis/",
+      "heroUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/At_Parque_Buenos_Aires_2023_102.jpg/1280px-At_Parque_Buenos_Aires_2023_102.jpg",
+      "existingAlt": "Parque Buenos Aires e edifícios no entorno de Higienópolis, São Paulo",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/regioes/itaim-bibi/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/284/Imagem/395ce1a2-b602-4c40-aa3a-aad64e2de199.jpg",
+      "existingAlt": "DSG Itaim, empreendimento Tegra em Itaim Bibi",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/regioes/jardins/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/276/ImagemPrincipal/trega_zahle-76-tratada-714x640-1715886658470.jpg",
+      "existingAlt": "Zahle Jardins, empreendimento Tegra em Jardins",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/regioes/lapa/",
+      "heroUrl": "https://helbor.com.br/storage/development/gallery/2026/03/13/Vista_aerea_Rua_Jardim_Vivas_a39ff60521.jpg",
+      "existingAlt": "Vista aérea da Rua Jardim e do entorno residencial na Lapa, Zona Oeste de São Paulo",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/regioes/moema/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/336/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Apartamento-Bem-Moema-Sao-Paulo-SP-714x640-1715883122503.jpg",
+      "existingAlt": "Bem Moema, empreendimento Tegra em Moema",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/regioes/perdizes/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/314/ImagemPrincipal/Tegra-Incorporadora-Perspectiva-Ilustrada-Voo-Diurno-Fachada-Apartamentos-Studios-Salas-Comerciais-Soma-Perdizes-Sao-Paulo-SP-714x640-1715885527011.jpg",
+      "existingAlt": "Soma Perdizes, empreendimento Tegra em Perdizes",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/regioes/sacoma/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/281/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Area-Externa-Empreendimento-TEG-Sacoma-Apartamentos-Pronto-para-Morar-Zona-Sul-Sao-Paulo-SP-714x640-1716214964198.jpg",
+      "existingAlt": "TEG Sacomã, empreendimento Tegra em Sacomã",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/regioes/tatuape/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/339/ImagemPrincipal/e56e585c-b5a8-44b5-95a6-c6227d8d18ea.jpg",
+      "existingAlt": "Universo Tatuapé Órbita, empreendimento Tegra em Tatuapé",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    },
+    {
+      "route": "/regioes/vila-nova-conceicao/",
+      "heroUrl": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/337/ImagemPrincipal/8e85cddc-003b-4b7a-bfd2-2e38275cb1b8.jpg",
+      "existingAlt": "Bueno Brandão 257, empreendimento Tegra em Vila Nova Conceição",
+      "status": "USER_APPROVED",
+      "approvedOn": "2026-10-10"
+    }
+  ]
+}

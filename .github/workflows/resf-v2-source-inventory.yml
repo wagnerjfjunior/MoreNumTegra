@@ -1,0 +1,66 @@
+name: RESF V2 source inventory
+on:
+  pull_request:
+    paths:
+      - 'scripts/audit-resf-v2-pages.mjs'
+      - 'scripts/audit-resf-v2-media.mjs'
+      - 'scripts/audit-resf-v2-image-http.mjs'
+      - 'scripts/audit-resf-v2-search-image-owner.mjs'
+      - 'scripts/validate-resf-v2-approved-hero.mjs'
+      - 'docs/resf-v2/data/APPROVED_HERO_IMAGES_2026-10-10.json'
+      - '.github/workflows/resf-v2-source-inventory.yml'
+      - 'src-greenn/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout PR candidate
+        uses: actions/checkout@v4
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Inventory HTML source (read-only)
+        run: |
+          node --check scripts/audit-resf-v2-pages.mjs
+          node scripts/audit-resf-v2-pages.mjs /tmp/resf-v2-inventory.json /tmp/resf-v2-matrix.md
+          node -e 'const r=require("/tmp/resf-v2-inventory.json"); if (!r.totals.htmlFiles) process.exit(1); console.log("HTML source files:",r.totals.htmlFiles);console.log(JSON.stringify(r.totals,null,2));console.log(JSON.stringify(r.metrics,null,2));console.log(r.findings.filter(x=>x.classification==="CANDIDATE_REVIEW").map(x=>x.source+": "+x.signals.join(", ")).join("\\n"));'
+      - name: Media ownership audit (read-only)
+        run: |
+          node --check scripts/audit-resf-v2-media.mjs
+          node scripts/audit-resf-v2-media.mjs /tmp/resf-v2-media.json /tmp/resf-v2-media.md
+          node -e 'const r=require("/tmp/resf-v2-media.json");if (r.metrics.inScope!==36||r.metrics.excluded!==2) process.exit(1);console.log("Media audit totals:",JSON.stringify(r.metrics));for(const x of r.rows.filter(x=>x.scope==="IN_SCOPE")) console.log(x.route+" | hero="+(x.media.heroSrc||"REVIEW")+" | og="+(x.media.og||"MISSING")+" | twitter="+(x.media.twitter||"MISSING")+" | schema="+x.media.jsonLdPrimary.join(",")+" | signals="+x.signals.join(","));'
+      - name: Verify user-approved hero URL baseline
+        run: |
+          node --check scripts/validate-resf-v2-approved-hero.mjs
+          node scripts/validate-resf-v2-approved-hero.mjs docs/resf-v2/data/APPROVED_HERO_IMAGES_2026-10-10.json /tmp/resf-v2-media.json
+      - name: Audit search image ownership by JSON-LD graph
+        run: |
+          node --check scripts/audit-resf-v2-search-image-owner.mjs
+          node scripts/audit-resf-v2-search-image-owner.mjs /tmp/resf-v2-search-image-owner.json
+      - name: Check media URL availability (non-mutating)
+        run: |
+          node --check scripts/audit-resf-v2-image-http.mjs
+          node scripts/audit-resf-v2-image-http.mjs /tmp/resf-v2-media.json /tmp/resf-v2-image-http.json
+      - name: Export human approval table for hero images
+        run: |
+          node -e 'const fs=require("fs");const r=require("/tmp/resf-v2-media.json");const items=r.rows.filter(x=>x.scope==="IN_SCOPE").map(x=>({name:x.route.split("/").filter(Boolean).at(-1).replace(/-/g," "),page:x.route,image:x.media.heroSrc||"",description:x.media.heroImages.find(i=>i.src===x.media.heroSrc)?.alt||"",status:"PENDENTE_DE_VALIDACAO"}));const q=v=>"\""+String(v??"").replaceAll("\"","\"\"")+"\"";fs.writeFileSync("/tmp/resf-v2-hero-approval.csv","Nome da pagina,Pagina,URL da imagem,Descricao existente,Status da validacao\\n"+items.map(x=>[x.name,x.page,x.image,x.description,x.status].map(q).join(",")).join("\\n")+"\\n");for(const x of items) console.log("HERO_APPROVAL_ROW "+JSON.stringify(x));console.log("HERO_APPROVAL_TOTAL "+items.length);'
+      - name: Upload inventory for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: resf-v2-inventory
+          path: |
+            /tmp/resf-v2-inventory.json
+            /tmp/resf-v2-matrix.md
+            /tmp/resf-v2-media.json
+            /tmp/resf-v2-media.md
+            /tmp/resf-v2-image-http.json
+            /tmp/resf-v2-search-image-owner.json
+            /tmp/resf-v2-hero-approval.csv
+          retention-days: 30
