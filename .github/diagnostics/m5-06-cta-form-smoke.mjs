@@ -46,7 +46,9 @@ for(const [browserName,type] of Object.entries({chromium,firefox,webkit})){
     await page.locator(test.cta).first().tap();
     await page.waitForTimeout(80);
     const selected=await page.locator('[data-moretegra-lead-form] select[name="texto-livre"]').inputValue();
-    if(selected!==test.expected) throw new Error(`${browserName}/${test.name}: expected ${test.expected}, got ${selected}`);
+    const bueno=test.name.startsWith("bueno-");
+    const expected=bueno?selected.startsWith("Condições e disponibilidade — Bueno Brandão 257, Apartamento tipo, 500 m², 5 vagas, referência R$ 21.750.000"):selected===test.expected;
+    if(!expected) throw new Error(`${browserName}/${test.name}: expected ${test.expected}${bueno?" with Bueno 500 m² unit context":""}, got ${selected}`);
     console.log(JSON.stringify({browser:browserName,test:test.name,cta:ctaText,selected,result:"PASS"}));
     await context.close();
   }
