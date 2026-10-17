@@ -229,10 +229,10 @@ function normalizeBuenoEditorial(ds,baselineDs,slug,html){
  const page=nodes.find(n=>n['@type']==='WebPage'),priorPage=old.find(n=>n['@id']===page?.['@id']);
  const faq=nodes.find(n=>n['@type']==='FAQPage'),priorFaq=old.find(n=>n['@id']===faq?.['@id']);
  assert(page&&priorPage&&faq&&priorFaq,'Bueno editorial graph nodes missing');
- const title=(html.match(/<title>([^<]+)<\\/title>/)||[])[1];
+ const title=(html.match(/<title>([^<]+)<\/title>/)||[])[1];
  assert.equal(page.name,title,'Bueno WebPage name must match title');
  assert.equal(faq.mainEntity.length,10,'Bueno RESF editorial FAQ count changed unexpectedly');
- const visible=[...html.matchAll(/<details><summary>([^<]+)<\\/summary><p>([^<]+)<\\/p><\\/details>/g)];
+ const visible=[...html.matchAll(/<details><summary>([^<]+)<\/summary><p>([^<]+)<\/p><\/details>/g)];
  assert.equal(visible.length,10,'Bueno visible FAQ count changed');
  faq.mainEntity.forEach((q,i)=>{assert.equal(q.name,visible[i][1]);assert.equal(q.acceptedAnswer?.text,visible[i][2])});
  page.name=priorPage.name;
