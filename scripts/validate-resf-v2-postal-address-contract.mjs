@@ -221,6 +221,24 @@ function stripBemMoemaRichEntities(ds,slug){
  }
  return out;
 }
+// Bueno Brandão 257: bounded RESF editorial FAQ/title amendment.
+// All other project/schema nodes remain under the frozen postal baseline check.
+function normalizeBuenoEditorial(ds,baselineDs,slug,html){
+ if(slug!=='bueno-brandao-257')return ds;
+ const out=structuredClone(ds),nodes=flat(out),old=flat(baselineDs);
+ const page=nodes.find(n=>n['@type']==='WebPage'),priorPage=old.find(n=>n['@id']===page?.['@id']);
+ const faq=nodes.find(n=>n['@type']==='FAQPage'),priorFaq=old.find(n=>n['@id']===faq?.['@id']);
+ assert(page&&priorPage&&faq&&priorFaq,'Bueno editorial graph nodes missing');
+ const title=(html.match(/<title>([^<]+)<\\/title>/)||[])[1];
+ assert.equal(page.name,title,'Bueno WebPage name must match title');
+ assert.equal(faq.mainEntity.length,10,'Bueno RESF editorial FAQ count changed unexpectedly');
+ const visible=[...html.matchAll(/<details><summary>([^<]+)<\\/summary><p>([^<]+)<\\/p><\\/details>/g)];
+ assert.equal(visible.length,10,'Bueno visible FAQ count changed');
+ faq.mainEntity.forEach((q,i)=>{assert.equal(q.name,visible[i][1]);assert.equal(q.acceptedAnswer?.text,visible[i][2])});
+ page.name=priorPage.name;
+ faq.mainEntity=structuredClone(priorFaq.mainEntity);
+ return out;
+}
 let changed=0,completeUnchanged=0;
 for(const [slug,street,cep] of expected){
  const filename='src-greenn/empreendimentos/'+slug+'/index.html';
@@ -433,7 +451,7 @@ for(const [slug,street,cep] of expected){
    assert.deepEqual(newTypes.slice().sort(),allowed.slice().sort(),'Órbita: only specifically approved commercial/image/plan types may be added');
  }else {
    const normalized=normalizeOnsiteAgent(stripApprovedImages(stripBemMoemaRichEntities(after,slug),before,slug,candidate),before,slug);
-   assert.deepEqual(scrub(normalized),scrub(before),slug+': forbidden non-image/non-address schema change');
+   assert.deepEqual(scrub(normalizeBuenoEditorial(normalized,before,slug,candidate)),scrub(before),slug+': forbidden non-image/non-address schema change');
  }
  const prior=flat(before).filter(x=>x['@type']==='ApartmentComplex');
  const current=flat(after).filter(x=>x['@type']==='ApartmentComplex');
