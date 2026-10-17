@@ -35,3 +35,10 @@ Status: CANDIDATE / NOT RELEASED. Escopo desta PR: somente `src-greenn/empreendi
 
 ## Critério
 A PR permanece Draft, sem merge automático. Aceite do operador e evidências dos gates são necessários para certificar o RESF da página.
+
+## Correção após revisão do operador — 17/10
+- Removido integralmente o link regional adicionado dentro do hero; §10.4 RESF não admite desviar a jornada comercial no topo. Permanece somente o link contextual na seção de localização (§10.3).
+- Removida a segunda faixa de características `hero-meta` no hero; o conjunto de quatro facts existente fora do hero é preservado.
+- Formulário ajustado ao padrão visual claro do Tièl, com CSS escopado a `.mt-conversion-form`, campos em branco, borda, raio, contraste, foco e botão amarelo. Form 46 e atributos de campos permanecem intactos.
+- Texto da área de conversão contextualizado ao Bueno Brandão 257, preservando a ressalva sobre referência comercial e confirmação de unidade.
+- Status do candidato: **ainda Draft / não publicado**. CSS copiado do padrão aprovado exige QA visual em mobile e desktop antes do merge.
