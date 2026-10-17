@@ -42,3 +42,9 @@ A PR permanece Draft, sem merge automático. Aceite do operador e evidências do
 - Formulário ajustado ao padrão visual claro do Tièl, com CSS escopado a `.mt-conversion-form`, campos em branco, borda, raio, contraste, foco e botão amarelo. Form 46 e atributos de campos permanecem intactos.
 - Texto da área de conversão contextualizado ao Bueno Brandão 257, preservando a ressalva sobre referência comercial e confirmação de unidade.
 - Status do candidato: **ainda Draft / não publicado**. CSS copiado do padrão aprovado exige QA visual em mobile e desktop antes do merge.
+
+## Correção canônica dos fatos — 17/10/2026
+- Contrato RESF §3.C: posições fixas 1) área/configuração, 2) vagas, 3) diferenciais + bairro, 4) estágio. A faixa anterior (500, 711, 923, bairro) não atendia à ordem obrigatória.
+- Candidato agora apresenta: 500 m² e 5 suítes (tipo, com 711 m² Garden e 923 m² cobertura contextualizados); 5 a 7 vagas conforme tipologia (5 tipo/Garden, 7 cobertura); Vila Nova Conceição + arquitetura/paisagismo; pronto para morar.
+- Referências públicas verificadas em 17/10: https://buenobrandao257.com/ (microsite de apresentação do produto: 500/711/923, 5 suítes, 5 ou 7 vagas), https://www.tabhouse.com.br/empreendimentos/bueno-brandao-257 (mesmas vagas/tipologias) e https://www.npiconsultoria.com.br/imovel-106092/bueno-brandao-257 (estágio pronto, 500 m², 5 vagas). Fontes não substituem a confirmação comercial de estoque, preço e tabela com a autoridade do produto. Há divergências em outros sites, portanto a verificação da fonte oficial vigente continua gate aberto.
+- Removidas regras CSS residuais `.hero-meta`, inclusive mobile; somente uma faixa `.facts` no HTML. Desktop com 4 colunas e mobile 2×2 continuam previstos pelo CSS existente. Sem screenshot mobile verificado, não declarar QA visual PASS.
