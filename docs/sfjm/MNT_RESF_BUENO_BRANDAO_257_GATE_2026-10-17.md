@@ -54,3 +54,36 @@ A PR permanece Draft, sem merge automático. Aceite do operador e evidências do
 - O seletor no bloco `#valores` usa `?unidade=500` ou `?unidade=923`; atualiza visualmente valor, tipologia e os facts 1 e 2, com contexto da opção de condições do Form 46. Sem alteração de preço no schema Offer/Product (inexistente para estas referências na página).
 - FAQ visível e JSON-LD sincronizados para as duas referências. Oferta/estoque/preço precisam de validação comercial antes do release; não inventar ID de unidade, data de tabela ou disponibilidade da cobertura.
 - QA restante: testar seleção nos dois parâmetros, retorno ao padrão, toque mobile, foco e leitura dinâmica, coleta real de contexto CRM com consentimento, e verificar que o runtime Form 46 recebe a opção escolhida. Rollback pela PR.
+
+## Auditoria de mídia, plantas e bairro — 17/10/2026
+
+**Método:** leitura do HTML candidato na branch e consulta ao material de apresentação em `https://buenobrandao257.com.br/`. Acesso via web ao arquivo individual foi bem-sucedido apenas para algumas cenas; tentativas de acesso a outras URLs foram inconclusivas. Não há medição Lighthouse, licença de redistribuição comprovada nem validação de todas as imagens HTTP em browser real.
+
+### Galeria dinâmica existente
+A página tem seis `scenes` em JavaScript e apenas uma imagem de palco no DOM estático (não confundir com ausência das cenas):
+
+| Cena | Origem existente | Evidência da auditoria |
+|---|---|---|
+| Detalhe da fachada | `BUEN_07_RESID_EXT_Detalhe%20Fachada%202_EF-opt-1920.WEBP` | presente no código; HTTP isolado não certificado |
+| Lobby | `BUEN_21_RESID_INT_Lobby_EF-opt-1920.WEBP` | imagem recuperada e visualizada |
+| Salão de festas | `BUEN_25_RESID_INT_Festas_EF-opt-1920.WEBP` | imagem recuperada e visualizada |
+| Fitness | `BUEN_29_RESID_INT_Fitness_EF-opt-1920.WEBP` | presente no código; leitura externa inconclusiva |
+| Piscina coberta | `BUEN_31_RESID_INT_Piscina%20Coberta_EF-opt-1920.WEBP` | presente no código; leitura externa inconclusiva |
+| Living decorado 500 m² | `BUEN_44_RESID_APT_Living%20Decorado%20500_EF_v1-opt-1920.WEBP` | imagem recuperada e visualizada |
+
+Material de origem também enumera cenas de suíte, banho master, Garden e outras; não significa que haja autorização comercial ou necessidade de replicação total. As perspectivas ilustrativas devem ser descritas como tal, sem tratá-las como fotografias de imóvel entregue.
+
+### Plantas — lacuna funcional confirmada
+Seção `#residencias` do MoreTegra descreve 500 m² (tipo), 711 m² (Garden) e 923 m² (cobertura), mas **não apresenta imagem de planta**. O material de apresentação oferece quatro estados de seleção: planta tipo 500 m²; Garden 711 m²; cobertura 923 m² pavimento inferior; cobertura 923 m² pavimento superior. **Gate aberto: resolver as quatro URLs exatas dos arquivos, origem/licença e título/ALT por cena antes de implementar visualizador**; não supor URL por padrão de nomes.
+
+### Entorno e localização
+Há mapa regional e CTA WhatsApp que solicita localização exata. O material de origem exibe Praça Pereira Coutinho e Parque Ibirapuera como contexto do bairro e informa Rua Bueno Brandão, 257. Preservar mapa/CTA e introduzir somente imagens de entorno com URL direta testada, crédito e licenciamento; não duplicar o mapa. Link para regional permanece apenas no bloco de localização.
+
+### Prioridades e impedimentos
+1. Resolver URLs exatas e direito de uso das quatro plantas; em seguida implementar visualizador agrupado com duas vistas de cobertura, sem confundir com duas unidades.
+2. Verificar HTTP, dimensões, MIME, origem e créditos de todas as seis cenas; aplicar fallback não crítico quando necessário, sem quebrar galeria.
+3. Avaliar hero e OG existentes por enquadramento mobile, adequação visual e direitos; **não substituir sem aceite**.
+4. Selecionar contexto do bairro com procedência, créditos e ALT verdadeiros.
+5. QA em 390 px e desktop da galeria/plantas, touch, foco, CLS/LCP; Form46 e seletor 500/923 aprovados pelo usuário não devem ser alterados por auditoria de mídia.
+
+**Conclusão:** RESF mídia/plantas = **PARCIAL, NOT ACCEPTED**. Mudanças da auditoria são somente documentação; a página candidata não foi publicada.
