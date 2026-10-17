@@ -96,3 +96,9 @@ Há mapa regional e CTA WhatsApp que solicita localização exata. O material de
 - Implementação: visualizador de quatro escolhas com conteúdo inicial em HTML, ALT específicos, legenda, carregamento lazy, preload na troca, falha de imagem e grade mobile; a cobertura tem dois pavimentos da mesma unidade/tipologia.
 - Sem alteração do seletor comercial 500/923, preços, facts homologados, Form 46 ou schema comercial. A planta do Garden tem finalidade informativa; não há preço/estoque presumido.
 - **Validação pendente:** evidência visual real no SFJM Live Sync desktop e mobile, verificação de direitos/uso comercial de imagens do site de apresentação e checks do head exato. Não mergear sem aceite.
+
+## Vídeos — implementação na PR #425 (17/10/2026)
+- Cinco vídeos publicados na seção de vídeos do site de apresentação `https://buenobrandao257.com.br/` foram associados pelos identificadores das respectivas miniaturas do YouTube: `hq6MTFhsArE` (fachada), `M0Zx3H-c5Po` (paisagismo), `gksJjyBbyvo` (wellness), `hwHzlKsqxKE` (interiores Roberto Migotto), `UnH_--4h6Gk` (curadoria de arte).
+- Seção `#videos` depois da galeria e antes das plantas. Cinco cards com título editorial, breve resumo, thumbnail lazy, link externo direto para o vídeo, botão que insere iframe `youtube-nocookie.com` somente por toque/clique; sem player ou scripts de terceiros no carregamento inicial.
+- Players/thumbnail são externos e ainda demandam smoke visual, disponibilidade pública de reprodução, aprovação de uso das miniaturas e revisão do comportamento de consentimento de mídia com a política aplicável. Player pode definir cookies/contatos de terceiro após clique; isso deve constar do gate de privacidade.
+- Facts e seletor comercial homologados, formulário Form46, mapa, referências comerciais e hero foram preservados. Não publicar sem QA e aceite do operador.
