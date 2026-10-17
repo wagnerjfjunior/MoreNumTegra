@@ -235,6 +235,37 @@ function normalizeBuenoEditorial(ds,baselineDs,slug,html){
  const visible=[...html.matchAll(/<details><summary>([^<]+)<\/summary><p>([^<]+)<\/p><\/details>/g)];
  assert.equal(visible.length,10,'Bueno visible FAQ count changed');
  faq.mainEntity.forEach((q,i)=>{assert.equal(q.name,visible[i][1]);assert.equal(q.acceptedAnswer?.text,visible[i][2])});
+ const route='https://www.moretegra.com.br/empreendimentos/bueno-brandao-257/';
+ const extraTypes=['Person','Service','Product','Offer','Product','Offer'];
+ const added=nodes.filter(n=>!old.some(x=>x['@id']===n['@id']));
+ assert.deepEqual(added.map(x=>x['@type']).sort(),extraTypes.sort(),'Bueno: unapproved schema entities');
+ const byId=id=>nodes.find(n=>n['@id']===route+'#'+id);
+ const p500=byId('product-500'),o500=byId('offer-500'),p923=byId('product-923'),o923=byId('offer-923');
+ assert(p500&&o500&&p923&&o923,'Bueno two commercial pairs absent');
+ assert.equal(o500.price,'21750000.00');assert.equal(o923.price,'50000000.00');
+ for(const [product,offer,code] of [[p500,o500,'500'],[p923,o923,'923']]){
+  assert.equal(offer.priceCurrency,'BRL');
+  assert.equal(offer.itemOffered?.['@id'],product['@id']);
+  assert.equal(product.offers?.['@id'],offer['@id']);
+  assert.equal(product.isRelatedTo?.['@id'],route+'#project');
+  assert.equal(product.url,route+'?unidade='+code+'#valores');
+  assert.equal(offer.url,product.url);
+  assert(!Object.hasOwn(offer,'availability'),'Bueno unverified availability forbidden');
+  assert(html.includes(code==='500'?'R$ 21.750.000':'R$ 50.000.000'),'Bueno price not visible');
+ }
+ assert(p500.name.includes('unidade 31'),'Bueno unit 31 missing');
+ assert(!p923.name.includes('unidade 31'),'Bueno coverage identity conflated');
+ const agent=nodes.find(n=>n['@type']==='Person'),service=byId('atendimento');
+ assert(agent&&service,'Bueno agent/service missing');
+ assert.equal(service.broker?.['@id'],agent['@id']);
+ assert.equal(service.provider?.['@id'],'https://www.moretegra.com.br/#tegra-vendas');
+ assert.deepEqual(page.mentions,[
+  {'@id':route+'#project'},
+  {'@id':'https://www.moretegra.com.br/#sabrina-da-tegra'},
+  {'@id':p500['@id']},{'@id':p923['@id']}
+ ]);
+ for(const doc of out)if(doc['@graph'])doc['@graph']=doc['@graph'].filter(n=>!added.some(a=>a['@id']===n['@id']));
+ page.mentions=structuredClone(priorPage.mentions);
  page.name=priorPage.name;
  faq.mainEntity=structuredClone(priorFaq.mainEntity);
  return out;
