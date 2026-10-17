@@ -8,7 +8,9 @@
   const ROOT_SELECTOR = "[data-moretegra-thank-you]";
   const LEAD_PENDING_KEY = "mnt.lead.pending.v2";
   const LEGACY_LEAD_PENDING_KEY = "mnt.lead.pending.v1";
-  const CONSENT_KEY = "mnt.consent.v1";
+  // Use the same choice as the page bootstrap and Form46 runtime. Never
+  // restore an older V1 grant over a current V2 rejection.
+  const CONSENT_KEY = "mnt.consent.v2";
   const LEAD_MAX_AGE_MS = 10 * 60 * 1000;
   const EVENT_VERSION = 1;
   const RUN_MARKER = Symbol.for("morenumtegra.vercel.lead_success.v1");
