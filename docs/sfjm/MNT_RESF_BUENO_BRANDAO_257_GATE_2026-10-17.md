@@ -50,7 +50,7 @@ A PR permanece Draft, sem merge automático. Aceite do operador e evidências do
 - Removidas regras CSS residuais `.hero-meta`, inclusive mobile; somente uma faixa `.facts` no HTML. Desktop com 4 colunas e mobile 2×2 continuam previstos pelo CSS existente. Sem screenshot mobile verificado, não declarar QA visual PASS.
 
 ## Seletor comercial tipo/cobertura — solicitação do operador (17/10)
-- Referências comerciais **USER_PROVIDED**, ainda não validadas contra tabela assinada/estoque: tipo **500 m²**, **5 vagas**, **R$ 21.750.000** (unidade 31 já presente); cobertura **923 m²**, **7 vagas**, **R$ 40.150.500** (número de unidade não fornecido). A tipologia Garden 711 m² segue descrita na página, mas não foi cadastrada como oferta no seletor.
+- Referências comerciais **USER_PROVIDED**, ainda não validadas contra tabela assinada/estoque: tipo **500 m²**, **5 vagas**, **R$ 21.750.000** (unidade 31 já presente); cobertura **923 m²**, **7 vagas**, **R$ 50.000.000** (número de unidade não fornecido). A tipologia Garden 711 m² segue descrita na página, mas não foi cadastrada como oferta no seletor.
 - O seletor no bloco `#valores` usa `?unidade=500` ou `?unidade=923`; atualiza visualmente valor, tipologia e os facts 1 e 2, com contexto da opção de condições do Form 46. Sem alteração de preço no schema Offer/Product (inexistente para estas referências na página).
 - FAQ visível e JSON-LD sincronizados para as duas referências. Oferta/estoque/preço precisam de validação comercial antes do release; não inventar ID de unidade, data de tabela ou disponibilidade da cobertura.
 - QA restante: testar seleção nos dois parâmetros, retorno ao padrão, toque mobile, foco e leitura dinâmica, coleta real de contexto CRM com consentimento, e verificar que o runtime Form 46 recebe a opção escolhida. Rollback pela PR.
@@ -113,8 +113,13 @@ Há mapa regional e CTA WhatsApp que solicita localização exata. O material de
 
 ## SEO/GEO — cruzamento SES e implementação (17/10/2026)
 - Referência: `docs/search/MNT_SES_SEO_GEO_OPINION_AND_VALIDATION_2026-10-17.md`. SEO proprietário da página exata Bueno: buscas por nome/produto/plantas/preços; região VNC é discovery, Tièl atende compacto, Bueno atende grandes residências. GSC de 29/08 a 14/10, 0 cliques / 8 impressões / posição média 19,88: amostra pequena, não representa incremento garantido.
-- Criado comparativo editorial estático entre tipo 500 m² (5 suítes/5 vagas, unidade 31, R$ 21.750.000), Garden 711 m² (5 suítes, sem preço/estoque publicado) e cobertura duplex 923 m² (5 suítes/7 vagas, R$ 40.150.500, sem ID da unidade). Conteúdo indexável independente do JS do seletor; imagens e facts previamente homologados preservados.
+- Criado comparativo editorial estático entre tipo 500 m² (5 suítes/5 vagas, unidade 31, R$ 21.750.000), Garden 711 m² (5 suítes, sem preço/estoque publicado) e cobertura duplex 923 m² (5 suítes/7 vagas, R$ 50.000.000, sem ID da unidade). Conteúdo indexável independente do JS do seletor; imagens e facts previamente homologados preservados.
 - FAQ passou de 8 para 10 perguntas com duas respostas relacionadas a diferenças de tipologias e disponibilidade do Garden. Perguntas/respostas visíveis idênticas ao `FAQPage.mainEntity`, JSON-LD parseável em auditoria estática.
 - Meta title atualizado para `Bueno Brandão 257: Plantas e Preços | Vila Nova Conceição`; meta description inclui os três perfis de planta. H2 plantas orientado à tipologia; `WebPage.name` sincronizado ao title. H1 do empreendimento, canonical e demais dados estruturados preservados.
 - Auditoria JSON-LD: `WebSite`, `WebPage`, `BreadcrumbList`, 2 `ImageObject`, `Brand`, `ApartmentComplex`, 3 `FloorPlan`, `Organization`, `ContactPoint`, `RealEstateAgent` e `FAQPage`. Não existem `Product`/`Offer`; não forçar sem tabela comercial e identificador/validade da unidade da cobertura. Verificação externa de compatibilidade Schema.org e Google Rich Results ainda pendente; simples parse não certifica RESF §4.
 - Gates abertos: homologação visual comparativo em 390 px e desktop, tests de interação e Form46, rich results externo, CI exato, conferência comercial de data/estoque e imagens. Não mergear.
+
+## Correção comercial expressa — 17/10/2026
+- Operador corrigiu preço de referência da **cobertura 923 m² / 7 vagas** para **R$ 50.000.000**. Referência anterior R$ 40.150.500 está **revogada** e não deve ser reutilizada.
+- Novo valor é USER_PROVIDED; disponibilidade, número de unidade e validade de tabela continuam não verificados. Apartamento tipo 500 m² / R$ 21.750.000 permanece sem alteração.
+- Corrigidas todas as ocorrências no HTML candidato, inclusive seletor, comparação e FAQ visível/JSON-LD. Produção não alterada.
