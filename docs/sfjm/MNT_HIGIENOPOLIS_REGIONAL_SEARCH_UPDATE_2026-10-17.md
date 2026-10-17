@@ -48,3 +48,19 @@ Review this exact branch/head through Local Live Sync at `/regioes/higienopolis/
 No changes to global SFJM task pointers while Órbita reconciliation #420/#421 remains open. This receipt records the new user-selected bounded slice without claiming to close those tasks.
 
 Rollback before merge: abandon/revert this branch. After authorized merge: revert only the eventual squash/merge commit through a new PR; preserve unrelated releases. Merge SHA, deployment ID and production acceptance remain NOT_APPLICABLE until release.
+
+## User visual review follow-up — four illustrated neighborhood cards
+
+User confirmed exact Local Live Sync head f69af54d206cb633acb0b7f88c8208604751825d, then reported repeated park content across two groups of four cards. Authorized consolidation into four illustrated cards on the same branch. This amendment supersedes the earlier image-preservation statement only for the neighborhood blocks. Hero, project cards, comparison, form, scripts, schema, FAQ and commercial facts remain byte-identical to the preceding candidate.
+
+Replaced both four-card groups and the separate Louveira band with one neighborhood grid: Parque Buenos Aires, Higienópolis–Mackenzie, FAAP/MAB and Edifício Louveira. Desktop at >=760 px uses two columns; narrower viewports use one. Maintains the existing o-que-fazer-higienopolis section and heading IDs. Removed repeated standalone neighborhood illustrations. All four photos have ALT, intrinsic dimensions, lazy loading and visible credits; CSS uses adapted framing.
+
+Image evidence checked 2026-10-17 on individual Commons file/license pages:
+- Parque_Buenos_Aires_01.JPG: Dornicke, CC BY-SA 3.0; original 800x600.
+- Estação Higienópolis-Mackenzie • entrada na esquina Rua da Consolação com Piauí (a).jpg: Geogast, CC BY 4.0; published 960px thumbnail selected.
+- MAB-FAAP_1.jpg: Dornicke, public-domain dedication; original 625x419.
+- Edifício Louveira, João Batista Vilanova Artigas e Carlos Cascaldi (5877913511).jpg: André Deak / Arte Fora do Museu, CC BY 2.0; published 960px thumbnail selected.
+
+Sources and licence links are included in each figure caption. Original/thumbnail resources were resolved through the Commons file pages; thumbnails use thumb.wikimedia.org rather than guessing upload.wikimedia.org endpoints (the latter could not be retrieved). No fabricated neighborhood image or upscale derivative was created. Photo dates are historical; no assertion of current physical condition or travel time.
+
+PASS static preservation checks: hero, project/comparison sections, form, scripts including complete JSON-LD, and FAQ unchanged. Four neighborhood article elements; no legacy feature-card articles or standalone editorial band. PASS 39-route primary/secondary image contract and git diff check. Browser/rendered image loading, crop quality and desktop/mobile acceptance remain to be verified in Local Live Sync on the new remote head. No merge/release.
