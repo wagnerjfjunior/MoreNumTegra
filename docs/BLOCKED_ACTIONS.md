@@ -1,3 +1,10 @@
+## 2026-10-18 — Guardrails do handoff Vila Nova Conceição
+
+- Proibido declarar cluster Vila Nova Conceição CLOSED: somente Bueno Brandão 257 recebeu aprovação de usuário neste ciclo. Tièl e página regional seguem sem aceite final.
+- Não reintroduzir documentação de memorial, datas da ficha técnica ou justificativas na copy do Bueno; dúvidas via Sabrina da Tegra. Não modificar preço, unidade ou estoque sem evidência comercial.
+- Não presumir testes externos JSON-LD, GSC, Form46 real, mobile ou Core Web Vitals apenas por CI e deploy READY.
+- Não publicar nem alterar outras páginas sem PR, validação, autorização e plano de rollback. Referência: `docs/sfjm/MNT_VNC_CLUSTER_HANDOFF_2026-10-18.md`.
+
 ## 2026-10-16 — Guardrails pós-Órbita PR #418
 
 - O aceite visual desktop das unidades 2408/1305 não autoriza marcar Form46, mobile, HTTP/SEO externo, Core Web Vitals ou indexação como PASS.
