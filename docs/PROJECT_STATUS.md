@@ -1,3 +1,9 @@
+## 2026-10-18 — Vila Nova Conceição: Bueno Brandão aprovado; cluster ativo
+
+- Bueno: PR #428 MERGED, CI 8/8 PASS; production READY `dpl_2iru2kNyo13qK2NQpSAjdDz4oMvR` no merge SHA `44e44c370d1c53a45a7f12d52c157cc12be4b4ef`; USER_APPROVED. Preservar fatos e textos comerciais.
+- Tièl e página da região: existentes, ainda não auditadas neste ciclo; cluster `IN_PROGRESS`, não marcar CLOSED.
+- Evidências e plano: `docs/sfjm/MNT_VNC_CLUSTER_HANDOFF_2026-10-18.md`.
+
 ## 2026-10-16 — Órbita PR #418: merge e aceite visual de produção (handoff atual)
 
 - PR [#418](https://github.com/wagnerjfjunior/MoreNumTegra/pull/418) **MERGED** na main, squash SHA `6bffd089ee3cf7b5da6ea5cee8013e2f26567fa8`; head validado `63d596a29f063a3c261a8af7e8e4ceb5e509d789`; **12/12 GitHub checks SUCCESS** no head da PR.
