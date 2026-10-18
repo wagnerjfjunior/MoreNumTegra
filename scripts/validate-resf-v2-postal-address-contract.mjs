@@ -265,6 +265,14 @@ function normalizeBuenoEditorial(ds,baselineDs,slug,html){
   {'@id':p500['@id']},{'@id':p923['@id']}
  ]);
  for(const doc of out)if(doc['@graph'])doc['@graph']=doc['@graph'].filter(n=>!added.some(a=>a['@id']===n['@id']));
+ const complex=nodes.find(n=>n['@type']==='ApartmentComplex');
+ const priorComplex=old.find(n=>n['@id']===complex?.['@id']);
+ assert(complex&&priorComplex,'Bueno ApartmentComplex missing');
+ assert(!Object.hasOwn(complex,'brand'),'Bueno ApartmentComplex must not declare unsupported brand');
+ assert.deepEqual(priorComplex.brand,{'@id':'https://www.moretegra.com.br/#tegra-brand'},'Bueno baseline brand contract changed');
+ // Restore the historical baseline property only in the comparison copy.
+ // The published schema correctly omits unsupported ApartmentComplex.brand.
+ complex.brand=structuredClone(priorComplex.brand);
  page.mentions=structuredClone(priorPage.mentions);
  page.name=priorPage.name;
  faq.mainEntity=structuredClone(priorFaq.mainEntity);
