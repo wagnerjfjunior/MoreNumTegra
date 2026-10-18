@@ -1,3 +1,7 @@
+## 2026-10-18 — CURRENT OVERRIDE: Bueno concluído; cluster Vila Nova Conceição em auditoria
+
+Bueno Brandão 257 **USER_APPROVED**: PR #428 merged `44e44c370d1c53a45a7f12d52c157cc12be4b4ef`, CI 8/8, Vercel READY `dpl_2iru2kNyo13qK2NQpSAjdDz4oMvR`. **Cluster NÃO fechado**: Tièl e `/regioes/vila-nova-conceicao/` requerem auditoria RESF/SEO/GEO, navegação/mobile/Form46 com evidência. Leia `docs/sfjm/MNT_VNC_CLUSTER_HANDOFF_2026-10-18.md` antes de alterar.
+
 ## 2026-10-16 — Órbita PR #418: merge e aceite visual de produção (handoff atual)
 
 - PR [#418](https://github.com/wagnerjfjunior/MoreNumTegra/pull/418) **MERGED** na main, squash SHA `6bffd089ee3cf7b5da6ea5cee8013e2f26567fa8`; head validado `63d596a29f063a3c261a8af7e8e4ceb5e509d789`; **12/12 GitHub checks SUCCESS** no head da PR.
