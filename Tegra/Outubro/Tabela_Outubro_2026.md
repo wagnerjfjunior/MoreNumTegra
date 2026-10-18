@@ -29,7 +29,7 @@ Mozae Higienópolis - Prêmio 2% - unidade 306 - 73m² - Tabela Antes: R$ 18.830
 Reserva Caminhos da Lapa - 100% Vendido - Preço sob sonsulta
 ODE Perdizes - unidade 22 - 2º andar - R$ 2.090.000
 
-Tiel Vila Nova Conceição - AP510 - 18,80m² - de R$ 551.739 (R$ 29.347m²)  --> por R$ 448.800 - (R$ 26.000m²)
+Tiel Vila Nova Conceição - AP510 - 18,80m² - de R$ 551.739 (R$ 29.347m²)  --> por R$ 488.800 - (R$ 26.000m²)
 Tiel Vila Nova Conceição - AP511 - 18,80m² - de R$ 551.739 (R$ 29.347m²)  --> por R$ 448.800 - (R$ 26.000m²)
 
 Tiel Vila Nova Conceição - AP512 - 19m² - de R$ 559.369 (R$ 29.347m²)  --> por R$ 495.560 - (R$ 26.000m²)

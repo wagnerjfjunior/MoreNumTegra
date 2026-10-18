@@ -52,14 +52,14 @@ assert.deepEqual(collectAssets(html),sortedExpected,'Only approved gallery lead 
 const script=html.match(/<script>\(\(\)=>\{"use strict";([\s\S]*?)<\/script>/)?.[1]||'';
 assert((script.match(/\["Boutique Apartment ·/g)||[]).length===3,'Three distinct official interior scenes required');
 assert(script.includes('const plants=['),'Plant navigation must remain');
-assert(html.includes('<h1 id="title" class="display">Tièl Vila Nova Conceição<br>Apartamentos Tegra prontos para morar</h1>'));
+assert(html.includes('<h1 id="title" class="display">Tièl Vila Nova Conceição<br>Studios de 18 m² prontos para morar</h1>'));
 const facts=html.match(/<section class="facts"[^>]*>[\s\S]*?<\/section>/)?.[0] || '';
 assert.equal((facts.match(/class="fact"/g)||[]).length,4,'Four commercial facts required');
-for(const label of ['Plantas oficiais','Tipologia','Região e diferencial','Estágio'])assert(facts.includes('<span>'+label+'</span>'),'Missing fact label '+label);
+for(const label of ['Studio de referência','Tipologia','Região e diferencial','Estágio'])assert(facts.includes('<span>'+label+'</span>'),'Missing fact label '+label);
 assert(facts.includes('<span>Estágio</span><b>Pronto para morar</b>'));
-assert(facts.includes('<span>Plantas oficiais</span><b>19 m²</b>'));
-assert(facts.includes('Unidade de 21 m² na referência comercial abaixo'));
-assert(!facts.includes('Unidade 914'),'Commercial unit identifier must not appear in facts');
+assert(facts.includes('<span>Studio de referência</span><b>18 m²</b>'));
+assert(facts.includes('AP510 · área exata de 18,80 m²'));
+assert(facts.includes('AP510 · área exata de 18,80 m²'),'Exact unit area must accompany rounded-down hero');
 assert(facts.includes('Studios compactos'));
 assert(html.includes('grid-template-columns:repeat(2,minmax(0,1fr))'),'Mobile facts must stay 2 columns');
 assert(html.includes('@media(min-width:900px){.facts-in{grid-template-columns:repeat(4,minmax(0,1fr))}'),'Desktop facts must stay 4 columns');
@@ -88,10 +88,10 @@ assert.equal(deref(offer.itemOffered),product);
 assert.equal(deref(product.brand),one('Brand'));
 assert.equal(deref(product.isRelatedTo),project);
 assert.equal(offer.priceCurrency,'BRL');
-assert.equal(offer.price,'598500.00');
+assert.equal(offer.price,'488800.00');
 assert(!Object.hasOwn(offer,'availability'),'Do not invent unit availability');
 for(const invalid of ['aggregateRating','review','shippingDetails','hasMerchantReturnPolicy'])assert(!Object.hasOwn(product,invalid));
-assert(html.includes('Unidade 914 · 21 m² · R$ 28.500/m² · valor de referência R$ 598.500'),'Commercial reference must be visible');
+assert(html.includes('Unidade AP510 · 18,80 m² · R$ 26.000/m² · valor de referência R$ 488.800'),'Commercial reference must be visible');
 assert.equal(project.accommodationFloorPlan.length,2);
 for(const [i,ref] of project.accommodationFloorPlan.entries()){
  const p=deref(ref);
@@ -99,7 +99,7 @@ for(const [i,ref] of project.accommodationFloorPlan.entries()){
  assert.equal(p.floorSize.value,19);
  assert.equal(p.floorSize.unitCode,'MTK');
  assert(html.includes(p.image),'FloorPlan URL must be published in page HTML');
- assert(p.name.includes('sugestão de decoração'),'FloorPlan must not imply 21 m² reference unit uses the 19 m² floorplan');
+ assert(p.name.includes('sugestão de decoração'),'FloorPlan must not imply 18,80 m² reference unit uses the 19 m² floorplan');
 }
 assert(html.includes(agent.telephone));
 assert(html.includes('209.905-F'));
