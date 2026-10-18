@@ -253,8 +253,12 @@ function normalizeBuenoEditorial(ds,baselineDs,slug,html){
   assert(!Object.hasOwn(offer,'availability'),'Bueno unverified availability forbidden');
   assert(html.includes(code==='500'?'R$ 21.750.000':'R$ 50.000.000'),'Bueno price not visible');
  }
- assert(p500.name.includes('unidade 31'),'Bueno unit 31 missing');
- assert(!p923.name.includes('unidade 31'),'Bueno coverage identity conflated');
+ assert(p500.name.includes('AP0031'),'Bueno AP0031 absent');
+ assert(p923.name.includes('AP0251')&&p923.name.includes('923,58'),'Bueno AP0251 absent');
+ assert(!p923.name.includes('AP0031'),'Bueno coverage identity conflated');
+ assert(o923.description.includes('AP0251'),'Bueno coverage offer not tied to AP0251');
+ const fp=nodes.filter(n=>n['@type']==='FloorPlan');
+ assert(fp.some(n=>n.name.includes('AP0031'))&&fp.some(n=>n.name.includes('AP0021'))&&fp.some(n=>n.name.includes('AP0251')),'Bueno floorplan identities missing');
  const agent=nodes.find(n=>n['@type']==='Person'),service=byId('atendimento');
  assert(agent&&service,'Bueno agent/service missing');
  assert.equal(service.broker?.['@id'],agent['@id']);
@@ -270,6 +274,19 @@ function normalizeBuenoEditorial(ds,baselineDs,slug,html){
  assert(complex&&priorComplex,'Bueno ApartmentComplex missing');
  assert(!Object.hasOwn(complex,'brand'),'Bueno ApartmentComplex must not declare unsupported brand');
  assert.deepEqual(priorComplex.brand,{'@id':'https://www.moretegra.com.br/#tegra-brand'},'Bueno baseline brand contract changed');
+ // Bounded factual evolution: October 2026 Tegra sales mirror + 2022 memorial.
+ assert(complex.description.includes('raia de 25 m'),'Bueno memorial detail absent');
+ complex.description=priorComplex.description;
+ for(const name of ['floorplan-500','floorplan-711','floorplan-923']){
+  const node=byId(name),prev=old.find(n=>n['@id']===node?.['@id']);
+  assert(node&&prev,'Bueno floorplan missing: '+name);
+  node.name=prev.name;
+ }
+ for(const name of ['product-500','product-923','offer-500','offer-923']){
+  const node=byId(name),prev=old.find(n=>n['@id']===node?.['@id']);
+  assert(node&&prev,'Bueno commercial entity missing: '+name);
+  for(const k of ['name','description'])if(Object.hasOwn(prev,k))node[k]=structuredClone(prev[k]);
+ }
  // Restore the historical baseline property only in the comparison copy.
  // The published schema correctly omits unsupported ApartmentComplex.brand.
  complex.brand=structuredClone(priorComplex.brand);
