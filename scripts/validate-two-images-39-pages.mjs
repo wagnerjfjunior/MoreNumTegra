@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Canonical 39 URL contract: visible first hero and distinct second illustration.
+// Canonical 40 URL contract (including regional hub): visible first hero and distinct second illustration.
 // Read-only source audit. Dynamic DSG/CAPIITOLO content is loaded from experiments.
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
@@ -7,7 +7,7 @@ const sitemap=fs.readFileSync('sitemap.xml','utf8');
 const urls=[...sitemap.matchAll(/<loc>\s*(https:\/\/www\.moretegra\.com\.br\/[^<]*)\s*<\/loc>/g)].map(x=>x[1]);
 const paths=urls.map(u=>new URL(u).pathname);
 const rewrite=JSON.parse(fs.readFileSync('vercel.json','utf8')).rewrites;
-assert.equal(paths.length,39,'Expected 39 canonical URLs; update inventory explicitly if scope changes');
+assert.equal(paths.length,40,'Expected 40 canonical URLs; update inventory explicitly if scope changes');
 assert.equal(new Set(paths).size,paths.length,'Duplicate sitemap URLs');
 const exp=new Map([
  ['/empreendimentos/dsg-itaim/','experiments/dsg-itaim-editorial-v3/index.html'],
@@ -51,5 +51,5 @@ for(const path of paths){
  else throw Error('Unknown sitemap path '+path);
  console.log('TWO_IMAGES_PASS',path,visualFile?'DYNAMIC_EDITORIAL':'SOURCE_STATIC');
 }
-assert.deepEqual({home,regions,projects},{home:1,regions:13,projects:25});
-console.log('PASS: 39/39 exact canonical routes have visible, distinct primary and secondary images with matching JSON-LD');
+assert.deepEqual({home,regions,projects},{home:1,regions:14,projects:25});
+console.log('PASS: 40/40 exact canonical routes have visible, distinct primary and secondary images with matching JSON-LD');
