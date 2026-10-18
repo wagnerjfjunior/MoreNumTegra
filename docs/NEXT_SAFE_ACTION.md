@@ -1,3 +1,9 @@
+## 2026-10-18 — NEXT SAFE: auditar e finalizar cluster Vila Nova Conceição
+
+1. Resolver GitHub/Vercel live e ler `docs/sfjm/MNT_VNC_CLUSTER_HANDOFF_2026-10-18.md` e baselines.
+2. Auditar `/empreendimentos/tiel-vila-nova-conceicao/`, `/regioes/vila-nova-conceicao/` e navegação com Bueno homologado: mobile, formulário, SEO/GEO, JSON-LD, links, mídia e critérios RESF. Só corrigir diferenças comprovadas.
+3. Reconciliar GSC/citações com evidências próprias; registrar testes pendentes, manter rollback; aprovação antes de publicar. Não fechar cluster enquanto Tièl/região pendentes.
+
 ## 2026-10-16 — Órbita PR #418: merge e aceite visual de produção (handoff atual)
 
 - PR [#418](https://github.com/wagnerjfjunior/MoreNumTegra/pull/418) **MERGED** na main, squash SHA `6bffd089ee3cf7b5da6ea5cee8013e2f26567fa8`; head validado `63d596a29f063a3c261a8af7e8e4ceb5e509d789`; **12/12 GitHub checks SUCCESS** no head da PR.
