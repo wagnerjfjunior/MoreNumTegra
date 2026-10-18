@@ -58,8 +58,8 @@ assert.equal((facts.match(/class="fact"/g)||[]).length,4,'Four commercial facts 
 for(const label of ['Plantas oficiais','Tipologia','Região e diferencial','Estágio'])assert(facts.includes('<span>'+label+'</span>'),'Missing fact label '+label);
 assert(facts.includes('<span>Estágio</span><b>Pronto para morar</b>'));
 assert(facts.includes('<span>Plantas oficiais</span><b>19 m²</b>'));
-assert(facts.includes('Unidade de 21 m² na referência comercial abaixo'));
-assert(!facts.includes('Unidade 914'),'Commercial unit identifier must not appear in facts');
+assert(facts.includes('Unidade de 18,80 m² na referência comercial abaixo'));
+assert(!facts.includes('Unidade AP510'),'Commercial unit identifier must not appear in facts');
 assert(facts.includes('Studios compactos'));
 assert(html.includes('grid-template-columns:repeat(2,minmax(0,1fr))'),'Mobile facts must stay 2 columns');
 assert(html.includes('@media(min-width:900px){.facts-in{grid-template-columns:repeat(4,minmax(0,1fr))}'),'Desktop facts must stay 4 columns');
@@ -88,10 +88,10 @@ assert.equal(deref(offer.itemOffered),product);
 assert.equal(deref(product.brand),one('Brand'));
 assert.equal(deref(product.isRelatedTo),project);
 assert.equal(offer.priceCurrency,'BRL');
-assert.equal(offer.price,'598500.00');
+assert.equal(offer.price,'488800.00');
 assert(!Object.hasOwn(offer,'availability'),'Do not invent unit availability');
 for(const invalid of ['aggregateRating','review','shippingDetails','hasMerchantReturnPolicy'])assert(!Object.hasOwn(product,invalid));
-assert(html.includes('Unidade 914 · 21 m² · R$ 28.500/m² · valor de referência R$ 598.500'),'Commercial reference must be visible');
+assert(html.includes('Unidade AP510 · 18,80 m² · R$ 26.000/m² · valor de referência R$ 488.800'),'Commercial reference must be visible');
 assert.equal(project.accommodationFloorPlan.length,2);
 for(const [i,ref] of project.accommodationFloorPlan.entries()){
  const p=deref(ref);
@@ -99,7 +99,7 @@ for(const [i,ref] of project.accommodationFloorPlan.entries()){
  assert.equal(p.floorSize.value,19);
  assert.equal(p.floorSize.unitCode,'MTK');
  assert(html.includes(p.image),'FloorPlan URL must be published in page HTML');
- assert(p.name.includes('sugestão de decoração'),'FloorPlan must not imply 21 m² reference unit uses the 19 m² floorplan');
+ assert(p.name.includes('sugestão de decoração'),'FloorPlan must not imply 18,80 m² reference unit uses the 19 m² floorplan');
 }
 assert(html.includes(agent.telephone));
 assert(html.includes('209.905-F'));
