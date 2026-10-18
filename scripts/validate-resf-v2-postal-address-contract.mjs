@@ -282,11 +282,7 @@ function normalizeBuenoEditorial(ds,baselineDs,slug,html){
   assert(node&&prev,'Bueno floorplan missing: '+name);
   node.name=prev.name;
  }
- for(const name of ['product-500','product-923','offer-500','offer-923']){
-  const node=byId(name),prev=old.find(n=>n['@id']===node?.['@id']);
-  assert(node&&prev,'Bueno commercial entity missing: '+name);
-  for(const k of ['name','description'])if(Object.hasOwn(prev,k))node[k]=structuredClone(prev[k]);
- }
+
  // Restore the historical baseline property only in the comparison copy.
  // The published schema correctly omits unsupported ApartmentComplex.brand.
  complex.brand=structuredClone(priorComplex.brand);
