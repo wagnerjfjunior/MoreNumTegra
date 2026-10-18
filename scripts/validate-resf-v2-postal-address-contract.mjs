@@ -253,6 +253,10 @@ function normalizeBuenoEditorial(ds,baselineDs,slug,html){
   assert(!Object.hasOwn(offer,'availability'),'Bueno unverified availability forbidden');
   assert(html.includes(code==='500'?'R$ 21.750.000':'R$ 50.000.000'),'Bueno price not visible');
  }
+ // Commercial precision exception approved 2026-10-18: exact identifiers and areas.
+ // Compare historic schema only after asserting the precise new facts.
+ assert.equal(p500.additionalProperty?.value,'Unidade AP0031 · 500 m² · 5 suítes · 5 vagas');
+ assert.equal(p923.additionalProperty?.value,'Cobertura duplex AP0251 · 923,58 m² · 5 suítes · 7 vagas');
  assert(p500.name.includes('AP0031'),'Bueno AP0031 absent');
  assert(p923.name.includes('AP0251')&&p923.name.includes('923,58'),'Bueno AP0251 absent');
  assert(!p923.name.includes('AP0031'),'Bueno coverage identity conflated');
@@ -281,6 +285,12 @@ function normalizeBuenoEditorial(ds,baselineDs,slug,html){
   const node=byId(name),prev=old.find(n=>n['@id']===node?.['@id']);
   assert(node&&prev,'Bueno floorplan missing: '+name);
   node.name=prev.name;
+  if(name==='floorplan-711'||name==='floorplan-923'){
+   const exact=name==='floorplan-711'?711.67:923.58;
+   assert.equal(node.floorSize?.value,exact,'Bueno: exact governed floor area changed '+name);
+   assert.equal(node.floorSize?.unitCode,'MTK','Bueno: floor area unit must remain square meters');
+   node.floorSize.value=prev.floorSize.value; // historical postal baseline comparison only
+  }
  }
 
  // Restore the historical baseline property only in the comparison copy.
