@@ -28,3 +28,12 @@ Capitolo by Piero Lissoni - Prêmio 2% - unidade 24 - 210m² - Tabela Antes: R$ 
 Mozae Higienópolis - Prêmio 2% - unidade 306 - 73m² - Tabela Antes: R$ 18.830/m² --> Tabela atual: R$ 15.350/m² - 33 unidades de 46m² com 1 suítes e 61 unidades de 73m² e 1 vaga;
 Reserva Caminhos da Lapa - 100% Vendido - Preço sob sonsulta
 ODE Perdizes - unidade 22 - 2º andar - R$ 2.090.000
+
+Tiel Vila Nova Conceição - AP510 - 18m² - de R$ 551.739 (R$ 29.347m²)  --> por R$ 448.800 - (R$ 26.000m²)
+Tiel Vila Nova Conceição - AP511 - 18m² - de R$ 551.739 (R$ 29.347m²)  --> por R$ 448.800 - (R$ 26.000m²)
+
+Tiel Vila Nova Conceição - AP512 - 19m² - de R$ 559.369 (R$ 29.347m²)  --> por R$ 495.560 - (R$ 26.000m²)
+
+Tiel Vila Nova Conceição - AP513 - 20m² - de R$ 594.293 (R$ 29.347m²)  --> por R$ 526.500 - (R$ 26.000m²)
+
+Tiel Vila Nova Conceição - AP514 - 20m² - de R$ 594.293 (R$ 29.347m²)  --> por R$ 540.280 - (R$ 26.000m²)
