@@ -5,7 +5,16 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 const sitemap=fs.readFileSync('sitemap.xml','utf8');
 const urls=[...sitemap.matchAll(/<loc>\s*(https:\/\/www\.moretegra\.com\.br\/[^<]*)\s*<\/loc>/g)].map(x=>x[1]);
-const paths=urls.map(u=>new URL(u).pathname);
+const allPaths=urls.map(u=>new URL(u).pathname);
+// The two editorial blog URLs are governed by BlogPosting/SEO checks, not RESF's
+// two-image contract for exact commercial and regional pages.
+const blogPaths=allPaths.filter(p=>p.startsWith('/blog/'));
+assert.deepEqual(blogPaths,[
+ '/blog/',
+ '/blog/bairros-sao-paulo/lapa-vila-anastacio-como-escolher/'
+],'Blog sitemap additions must remain explicitly scoped');
+const paths=allPaths.filter(p=>!p.startsWith('/blog/'));
+assert.equal(new Set(allPaths).size,allPaths.length,'Duplicate sitemap URLs');
 const rewrite=JSON.parse(fs.readFileSync('vercel.json','utf8')).rewrites;
 assert.equal(paths.length,40,'Expected 40 canonical URLs; update inventory explicitly if scope changes');
 assert.equal(new Set(paths).size,paths.length,'Duplicate sitemap URLs');
