@@ -1,5 +1,9 @@
 name: IndexNow
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/search/INDEXNOW_LAPA_ONE_SHOT_2026-10-19.md'
   pull_request:
     paths:
       - 'scripts/submit-indexnow.mjs'
@@ -37,8 +41,11 @@ jobs:
           const result = spawnSync(process.execPath, args, { stdio: "inherit" });
           process.exit(result.status ?? 1);
           '
+      - name: Submit Lapa article only on marker push
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: node scripts/submit-indexnow.mjs --urls https://www.moretegra.com.br/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/
       - uses: actions/upload-artifact@v4
-        if: always() && github.event_name == 'workflow_dispatch'
+        if: always() && (github.event_name == 'workflow_dispatch' || github.event_name == 'push')
         with:
           name: indexnow-receipt
           path: indexnow-receipt.json
