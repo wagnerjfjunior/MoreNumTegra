@@ -11,7 +11,8 @@ const allPaths=urls.map(u=>new URL(u).pathname);
 const blogPaths=allPaths.filter(p=>p.startsWith('/blog/'));
 assert.deepEqual(blogPaths,[
  '/blog/',
- '/blog/bairros-sao-paulo/lapa-vila-anastacio-como-escolher/'
+ '/blog/bairros-sao-paulo/lapa-vila-anastacio-como-escolher/',
+ '/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/'
 ],'Blog sitemap additions must remain explicitly scoped');
 const paths=allPaths.filter(p=>!p.startsWith('/blog/'));
 assert.equal(new Set(allPaths).size,allPaths.length,'Duplicate sitemap URLs');
