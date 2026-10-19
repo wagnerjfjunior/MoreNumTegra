@@ -78,7 +78,7 @@
     {name:"Chez Vous Moema",detailUrl:"/empreendimentos/chez-vous-moema/",cta:"Consultar disponibilidade",formIntent:"specialist",interest:"Chez Vous Moema",location:"Moema · Zona Sul",zone:"Zona Sul",status:"Consultar disponibilidade",statusKey:"consulta",info:"Apartamentos de 71 m² · 2 dormitórios · 1 suíte · 1 vaga",feature:"SUCESSO DE VENDAS · CONSULTE DISPONIBILIDADE",image:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/255/Imagem/f94dfcdc-fd02-4275-b5c3-de5953378f31.jpg",alt:"Chez Vous Moema, empreendimento Tegra em Moema, São Paulo",price:null,priceState:"consult",priceNote:"Sucesso de vendas. Consulte a Tegra Vendas para verificar eventual disponibilidade e condições atuais."},
     {name:"Key Moema",detailUrl:"/empreendimentos/key-moema/",cta:"Consultar disponibilidade",formIntent:"specialist",interest:"Key Moema",location:"Moema · Zona Sul",zone:"Zona Sul",status:"Consultar disponibilidade",statusKey:"consulta",info:"Apartamentos de 62 a 74 m² · 2 dormitórios · 1 a 2 suítes",feature:"SUCESSO DE VENDAS · CONSULTE DISPONIBILIDADE",image:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/264/Imagem/f792b3c7-d80c-46b1-8625-dd9efaaac209.jpg",alt:"Key Moema, empreendimento Tegra em Moema, São Paulo",price:null,priceState:"consult",priceNote:"Sucesso de vendas. Consulte a Tegra Vendas para verificar eventual disponibilidade e condições atuais."},
     {name:"Viso Moema",detailUrl:"/empreendimentos/viso-moema/",cta:"Consultar disponibilidade",formIntent:"specialist",interest:"Viso Moema",location:"Moema · Zona Sul",zone:"Zona Sul",status:"Consultar disponibilidade",statusKey:"consulta",info:"Apartamentos de 74 e 115 m² · 2 ou 3 suítes · 1 a 2 vagas",feature:"SUCESSO DE VENDAS · CONSULTE DISPONIBILIDADE",image:"https://s3-gdigital.s3.amazonaws.com/gdigital/313/More-Tegra-Viso-Moema-Fachada-moderna-com-paisagismo-urbano.webp",alt:"Viso Moema, empreendimento Tegra em Moema, São Paulo",price:null,priceState:"consult",priceNote:"Sucesso de vendas. Consulte a Tegra Vendas para verificar eventual disponibilidade e condições atuais."},
-    {name:"Reserva Caminhos da Lapa",detailUrl:"/empreendimentos/reserva-caminhos-da-lapa/",award:CAMINHOS_AWARD,commercialState:"soldout",cta:"Consultar disponibilidade",formIntent:"specialist",interest:"Reserva Caminhos da Lapa",location:"Lapa · Zona Oeste",zone:"Zona Oeste",status:"Pronto para morar",statusKey:"entregue",info:"3 a 4 dorms. · 1 a 3 suítes · 91m², 127m² e 157m² · 2 a 3 vagas",feature:"SUCESSO DE VENDAS · 100% VENDIDO",image:"https://s3-gdigital.s3.amazonaws.com/gdigital/313/OJvCwqOQER0mcGGVjBoPxE8xALtGs2KXW1MhcviW.webp",alt:"Reserva Caminhos da Lapa, empreendimento Tegra pronto para morar na Lapa, São Paulo",price:null,priceState:"soldout",priceNote:"Sucesso de vendas: empreendimento entregue e 100% vendido na fonte oficial Tegra. Em caso de interesse, consulte a Tegra Vendas para verificar eventual disponibilidade ou novas oportunidades."}
+    {name:"Reserva Caminhos da Lapa",detailUrl:"/empreendimentos/reserva-caminhos-da-lapa/",award:CAMINHOS_AWARD,commercialState:"consultation",cta:"Consulte disponibilidade",formIntent:"specialist",interest:"Reserva Caminhos da Lapa",location:"Lapa · Zona Oeste",zone:"Zona Oeste",status:"Pronto para morar",statusKey:"entregue",info:"3 a 4 dorms. · 1 a 3 suítes · 91m², 127m² e 157m² · 2 a 3 vagas",feature:"CONSULTE DISPONIBILIDADE",image:"https://s3-gdigital.s3.amazonaws.com/gdigital/313/OJvCwqOQER0mcGGVjBoPxE8xALtGs2KXW1MhcviW.webp",alt:"Reserva Caminhos da Lapa, empreendimento Tegra pronto para morar na Lapa, São Paulo",price:null,priceState:"consultation",priceNote:"Consulte a Sabrina da Tegra para verificar oportunidades e condições."}
   ]);
 
   // INTEREST_GALLERY_SOURCE_2026_08_26:
@@ -473,7 +473,11 @@
     let label = "Valor";
     let accent = "#6d6b63";
 
-    if (project.priceState === "soldout") {
+    if (project.priceState === "consultation" && project.name === "Reserva Caminhos da Lapa") {
+      headline = "Consulte disponibilidade";
+      label = "Disponibilidade";
+      accent = "#6d6b63";
+    } else if (project.priceState === "soldout") {
       headline = "Esgotado";
       label = "Disponibilidade";
       accent = "#8b1e16";
@@ -530,10 +534,10 @@
           <p class="mt-project-search-lead">${escapeHtml(projectSearchLead(project))}</p>
           <span class="mt-project-info">${escapeHtml(projectInfoForCard(project.info))}</span>
           ${project.award && project.award.tagline ? `<div class="mt-award-context" title="${escapeHtml(project.award.label)}">${escapeHtml(project.award.tagline)}</div>` : ""}
-          ${priceMarkup(project)}
+          ${project.name === "Reserva Caminhos da Lapa" ? `<a href="https://wa.me/5511960779328?text=Quero%20saber%20mais%20sobre%20o%20Reserva%20Caminhos%20da%20Lapa." target="_blank" rel="noopener noreferrer" aria-label="Consulte disponibilidade do Reserva Caminhos da Lapa pelo WhatsApp da Sabrina">${priceMarkup(project)}</a>` : priceMarkup(project)}
           <div class="mt-project-actions">
             ${detailUrl ? `<a class="mt-interest" href="${escapeHtml(detailUrl)}" aria-label="Conhecer ${escapeHtml(project.projectName || project.name)}">Conhecer empreendimento</a>` : ""}
-            <a class="mt-interest" href="#formulario" data-interest="${escapeHtml(interestValue)}" data-form-intent="${escapeHtml(project.formIntent || "conditions")}">${escapeHtml(actionLabel)}</a>
+            ${project.name === "Reserva Caminhos da Lapa" ? `<a class="mt-interest" href="https://wa.me/5511960779328?text=Quero%20saber%20mais%20sobre%20o%20Reserva%20Caminhos%20da%20Lapa." target="_blank" rel="noopener noreferrer">Consulte disponibilidade</a>` : `<a class="mt-interest" href="#formulario" data-interest="${escapeHtml(interestValue)}" data-form-intent="${escapeHtml(project.formIntent || "conditions")}">${escapeHtml(actionLabel)}</a>`}
           </div>
         </div>
       </article>`;
