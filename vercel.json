@@ -18,6 +18,14 @@
       "destination": "/src-greenn/regioes/index.html"
     },
     {
+      "source": "/blog/",
+      "destination": "/src-greenn/blog/index.html"
+    },
+    {
+      "source": "/blog/bairros-sao-paulo/lapa-vila-anastacio-como-escolher/",
+      "destination": "/src-greenn/blog/bairros-sao-paulo/lapa-vila-anastacio-como-escolher/index.html"
+    },
+    {
       "source": "/obrigado/",
       "destination": "/src-greenn/preview/obrigado.html"
     },
