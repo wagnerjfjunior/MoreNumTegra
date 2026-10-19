@@ -180,6 +180,214 @@
     {
       "source": "/empreendimentos/viso-moema/",
       "destination": "/src-greenn/empreendimentos/viso-moema/index.html"
+    },
+    {
+      "source": "/blog/mercado/",
+      "destination": "/src-greenn/blog/mercado/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/",
+      "destination": "/src-greenn/blog/dicasedecor/index.html"
+    },
+    {
+      "source": "/blog/lifestyle/",
+      "destination": "/src-greenn/blog/lifestyle/index.html"
+    },
+    {
+      "source": "/blog/tegra/",
+      "destination": "/src-greenn/blog/tegra/index.html"
+    },
+    {
+      "source": "/blog/lifestyle/tenis-qualidade-de-vida-e-bem-estar-a-conexao-da-tegra-com-o-esporte/",
+      "destination": "/src-greenn/blog/lifestyle/tenis-qualidade-de-vida-e-bem-estar-a-conexao-da-tegra-com-o-esporte/index.html"
+    },
+    {
+      "source": "/blog/mercado/3-fatores-que-garantem-a-valorizacao-de-imoveis-de-luxo-no-longo-prazo/",
+      "destination": "/src-greenn/blog/mercado/3-fatores-que-garantem-a-valorizacao-de-imoveis-de-luxo-no-longo-prazo/index.html"
+    },
+    {
+      "source": "/blog/mercado/mooca-e-tatuape-tradicao-modernidade-e-infraestrutura-na-zona-leste/",
+      "destination": "/src-greenn/blog/mercado/mooca-e-tatuape-tradicao-modernidade-e-infraestrutura-na-zona-leste/index.html"
+    },
+    {
+      "source": "/blog/mercado/gentileza-urbana-o-papel-dos-empreendimentos-na-valorizacao-do-bairro/",
+      "destination": "/src-greenn/blog/mercado/gentileza-urbana-o-papel-dos-empreendimentos-na-valorizacao-do-bairro/index.html"
+    },
+    {
+      "source": "/blog/mercado/esg-na-construcao-civil-como-predio-sustentavel-valorizam-patrimonio/",
+      "destination": "/src-greenn/blog/mercado/esg-na-construcao-civil-como-predio-sustentavel-valorizam-patrimonio/index.html"
+    },
+    {
+      "source": "/blog/mercado/iptu-saiba-tudo-sobre-o-imposto-anual-e-planeje-seu-pagamento/",
+      "destination": "/src-greenn/blog/mercado/iptu-saiba-tudo-sobre-o-imposto-anual-e-planeje-seu-pagamento/index.html"
+    },
+    {
+      "source": "/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/",
+      "destination": "/src-greenn/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/index.html"
+    },
+    {
+      "source": "/blog/mercado/investimento-a-longo-prazo-comprar-um-imovel/",
+      "destination": "/src-greenn/blog/mercado/investimento-a-longo-prazo-comprar-um-imovel/index.html"
+    },
+    {
+      "source": "/blog/mercado/fiis-vs-imovel-fisico-qual-a-melhor-estrategia-para-investir/",
+      "destination": "/src-greenn/blog/mercado/fiis-vs-imovel-fisico-qual-a-melhor-estrategia-para-investir/index.html"
+    },
+    {
+      "source": "/blog/mercado/a-orla-da-barra-da-tijuca-luxo-no-rio-de-janeiro/",
+      "destination": "/src-greenn/blog/mercado/a-orla-da-barra-da-tijuca-luxo-no-rio-de-janeiro/index.html"
+    },
+    {
+      "source": "/blog/mercado/imoveis-de-luxo-por-que-investir-no-mercado-de-alto-padrao/",
+      "destination": "/src-greenn/blog/mercado/imoveis-de-luxo-por-que-investir-no-mercado-de-alto-padrao/index.html"
+    },
+    {
+      "source": "/blog/mercado/guia-do-itaim-bibi-por-que-o-bairro-e-simbolo-de-luxo-e-negocios/",
+      "destination": "/src-greenn/blog/mercado/guia-do-itaim-bibi-por-que-o-bairro-e-simbolo-de-luxo-e-negocios/index.html"
+    },
+    {
+      "source": "/blog/mercado/inventario-de-imovel-o-que-e-como-funciona-e-quanto-custa/",
+      "destination": "/src-greenn/blog/mercado/inventario-de-imovel-o-que-e-como-funciona-e-quanto-custa/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/saloes-de-festas-e-espacos-gourmet-novo-padrao-em-condominios-de-luxo/",
+      "destination": "/src-greenn/blog/dicasedecor/saloes-de-festas-e-espacos-gourmet-novo-padrao-em-condominios-de-luxo/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/garagem-premium-evolucao-em-condominios-de-alto-padrao/",
+      "destination": "/src-greenn/blog/dicasedecor/garagem-premium-evolucao-em-condominios-de-alto-padrao/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/projeto-luminotecnico-como-a-iluminacao-transforma-os-ambientes/",
+      "destination": "/src-greenn/blog/dicasedecor/projeto-luminotecnico-como-a-iluminacao-transforma-os-ambientes/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/espaco-kids-e-brinquedotecas-design-ludico-que-estimula-criancas/",
+      "destination": "/src-greenn/blog/dicasedecor/espaco-kids-e-brinquedotecas-design-ludico-que-estimula-criancas/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/dicas-para-apartamento-pet-friendly-decoracao-seguranca-e-bem-estar/",
+      "destination": "/src-greenn/blog/dicasedecor/dicas-para-apartamento-pet-friendly-decoracao-seguranca-e-bem-estar/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/do-tenis-ao-beach-tennis-quadras-valorizam-condominios/",
+      "destination": "/src-greenn/blog/dicasedecor/do-tenis-ao-beach-tennis-quadras-valorizam-condominios/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/carro-eletrico-e-condominio-predios-com-infraestrutura-de-recarga/",
+      "destination": "/src-greenn/blog/dicasedecor/carro-eletrico-e-condominio-predios-com-infraestrutura-de-recarga/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/cozinhas-modernas-tendencias-de-layout-e-decoracao-para-2026/",
+      "destination": "/src-greenn/blog/dicasedecor/cozinhas-modernas-tendencias-de-layout-e-decoracao-para-2026/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/condominio-de-casas-entenda-e-conheca-o-claris-casa-clube/",
+      "destination": "/src-greenn/blog/dicasedecor/condominio-de-casas-entenda-e-conheca-o-claris-casa-clube/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/como-escolher-o-piso-ideal-para-o-seu-apartamento/",
+      "destination": "/src-greenn/blog/dicasedecor/como-escolher-o-piso-ideal-para-o-seu-apartamento/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/iluminacao-natural-faz-bem-para-a-saude-e-para-o-seu-projeto/",
+      "destination": "/src-greenn/blog/dicasedecor/iluminacao-natural-faz-bem-para-a-saude-e-para-o-seu-projeto/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/cor-do-ano-2026-tendencia-para-o-seu-tegra/",
+      "destination": "/src-greenn/blog/dicasedecor/cor-do-ano-2026-tendencia-para-o-seu-tegra/index.html"
+    },
+    {
+      "source": "/blog/lifestyle/tenis-e-longevidade-como-o-esporte-transforma-a-saude-e-a-mente/",
+      "destination": "/src-greenn/blog/lifestyle/tenis-e-longevidade-como-o-esporte-transforma-a-saude-e-a-mente/index.html"
+    },
+    {
+      "source": "/blog/lifestyle/volta-ao-mundo-em-casa-destinos-que-inspiram-a-arquitetura-tegra/",
+      "destination": "/src-greenn/blog/lifestyle/volta-ao-mundo-em-casa-destinos-que-inspiram-a-arquitetura-tegra/index.html"
+    },
+    {
+      "source": "/blog/lifestyle/esportes-de-raquete-beach-tennis-e-tenis-no-universo-wellness/",
+      "destination": "/src-greenn/blog/lifestyle/esportes-de-raquete-beach-tennis-e-tenis-no-universo-wellness/index.html"
+    },
+    {
+      "source": "/blog/lifestyle/kronos-by-tegra-a-primeira-blue-zone-urbana-do-rio/",
+      "destination": "/src-greenn/blog/lifestyle/kronos-by-tegra-a-primeira-blue-zone-urbana-do-rio/index.html"
+    },
+    {
+      "source": "/blog/lifestyle/viver-na-abm-e-o-novo-significado-de-conveniencia-na-barra-da-tijuca/",
+      "destination": "/src-greenn/blog/lifestyle/viver-na-abm-e-o-novo-significado-de-conveniencia-na-barra-da-tijuca/index.html"
+    },
+    {
+      "source": "/blog/lifestyle/pied-a-terre-em-sp-e-no-rio-novo-padrao-para-executivos/",
+      "destination": "/src-greenn/blog/lifestyle/pied-a-terre-em-sp-e-no-rio-novo-padrao-para-executivos/index.html"
+    },
+    {
+      "source": "/blog/lifestyle/moradias-suspensas-o-luxo-em-plantas-de-185-m-a-355-m/",
+      "destination": "/src-greenn/blog/lifestyle/moradias-suspensas-o-luxo-em-plantas-de-185-m-a-355-m/index.html"
+    },
+    {
+      "source": "/blog/lifestyle/o-minimalismo-do-riio-by-piero-lissoni-redefine-o-luxo-carioca/",
+      "destination": "/src-greenn/blog/lifestyle/o-minimalismo-do-riio-by-piero-lissoni-redefine-o-luxo-carioca/index.html"
+    },
+    {
+      "source": "/blog/lifestyle/2-ou-3-suites-encontre-a-planta-ideal-no-nova-vivere/",
+      "destination": "/src-greenn/blog/lifestyle/2-ou-3-suites-encontre-a-planta-ideal-no-nova-vivere/index.html"
+    },
+    {
+      "source": "/blog/lifestyle/a-ultima-reserva-urbana-da-zona-oeste-tem-um-nome-garden-design/",
+      "destination": "/src-greenn/blog/lifestyle/a-ultima-reserva-urbana-da-zona-oeste-tem-um-nome-garden-design/index.html"
+    },
+    {
+      "source": "/blog/lifestyle/claris-casa-clube-refugio-de-alto-padrao-na-barra-da-tijuca/",
+      "destination": "/src-greenn/blog/lifestyle/claris-casa-clube-refugio-de-alto-padrao-na-barra-da-tijuca/index.html"
+    },
+    {
+      "source": "/blog/tegra/bueno-brandao-diferenciais-de-um-novo-morar/",
+      "destination": "/src-greenn/blog/tegra/bueno-brandao-diferenciais-de-um-novo-morar/index.html"
+    },
+    {
+      "source": "/blog/tegra/bueno-brandao-a-forca-das-assinaturas-que-definem-o-projeto/",
+      "destination": "/src-greenn/blog/tegra/bueno-brandao-a-forca-das-assinaturas-que-definem-o-projeto/index.html"
+    },
+    {
+      "source": "/blog/tegra/bueno-brandao-tipologias-pensadas-para-o-seu-estilo-de-vida/",
+      "destination": "/src-greenn/blog/tegra/bueno-brandao-tipologias-pensadas-para-o-seu-estilo-de-vida/index.html"
+    },
+    {
+      "source": "/blog/tegra/bueno-brandao-o-melhor-do-ibirapuera-e-vila-nova-conceicao/",
+      "destination": "/src-greenn/blog/tegra/bueno-brandao-o-melhor-do-ibirapuera-e-vila-nova-conceicao/index.html"
+    },
+    {
+      "source": "/blog/tegra/bueno-brandao-arte-sofisticacao-e-um-novo-olhar-sobre-o-morar/",
+      "destination": "/src-greenn/blog/tegra/bueno-brandao-arte-sofisticacao-e-um-novo-olhar-sobre-o-morar/index.html"
+    },
+    {
+      "source": "/blog/tegra/bueno-brandao-tecnologia-e-sustentabilidade-a-servico-do-conforto/",
+      "destination": "/src-greenn/blog/tegra/bueno-brandao-tecnologia-e-sustentabilidade-a-servico-do-conforto/index.html"
+    },
+    {
+      "source": "/blog/tegra/bueno-brandao-natureza-cidade-e-o-equilibrio-de-viver-bem/",
+      "destination": "/src-greenn/blog/tegra/bueno-brandao-natureza-cidade-e-o-equilibrio-de-viver-bem/index.html"
+    },
+    {
+      "source": "/blog/tegra/bueno-brandao-bem-estar-elevado-a-um-novo-padrao/",
+      "destination": "/src-greenn/blog/tegra/bueno-brandao-bem-estar-elevado-a-um-novo-padrao/index.html"
+    },
+    {
+      "source": "/blog/tegra/bueno-brandao-quando-o-morar-se-revela-nos-detalhes/",
+      "destination": "/src-greenn/blog/tegra/bueno-brandao-quando-o-morar-se-revela-nos-detalhes/index.html"
+    },
+    {
+      "source": "/blog/tegra/relatorio-integrado-tegra-2023/",
+      "destination": "/src-greenn/blog/tegra/relatorio-integrado-tegra-2023/index.html"
+    },
+    {
+      "source": "/blog/tegra/ape-perfeito-da-tegra-incorporadora/",
+      "destination": "/src-greenn/blog/tegra/ape-perfeito-da-tegra-incorporadora/index.html"
+    },
+    {
+      "source": "/blog/tegra/tegra-e-sustentabilidade-relatorio-integrado-2022/",
+      "destination": "/src-greenn/blog/tegra/tegra-e-sustentabilidade-relatorio-integrado-2022/index.html"
     }
   ],
   "headers": [
