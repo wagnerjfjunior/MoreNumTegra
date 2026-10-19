@@ -9,3 +9,13 @@
 .mnt-project-group .mnt-project-specs li>span{color:#6e7067;font-size:.72rem;flex-basis:100%}
 .mnt-project-group .mnt-project-specs li>strong{color:#252821;font-size:.81rem;font-weight:750;overflow-wrap:anywhere}
 @media(max-width:760px){.mnt-project-group .mnt-project-card>a{grid-template-columns:minmax(100px,33%) minmax(0,1fr)}.mnt-project-group .mnt-project-card img{height:100%;min-height:280px}.mnt-project-group .mnt-project-body{padding:13px}.mnt-project-group .mnt-project-specs{gap:5px;margin:6px 0 9px;padding:8px 0}.mnt-project-group .mnt-project-specs li>strong{font-size:.78rem}.mnt-project-group .mnt-project-specs li>span{font-size:.69rem}}
+
+/* RESF: CTA fixo de condições + badge com o logo real do WhatsApp. */
+body{padding-bottom:calc(80px + env(safe-area-inset-bottom,0px))}
+.mt-quick-actions{position:fixed;z-index:60;left:max(12px,env(safe-area-inset-left,0px));right:max(12px,env(safe-area-inset-right,0px));bottom:calc(var(--mt-consent-offset,14px) + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:minmax(0,1fr) 54px;gap:8px;transition:bottom .2s ease}
+.mt-quick-actions a{display:flex;align-items:center;justify-content:center;min-height:54px;border-radius:999px;text-decoration:none;font-size:13px;font-weight:900;line-height:1.15;box-shadow:0 10px 28px rgba(0,0,0,.22)}
+.mt-quick-lead{grid-column:1;grid-row:1;padding:0 18px;background:#EBB92E;color:#171813}
+.mt-quick-whatsapp{grid-column:2;width:54px;height:54px;padding:0;background:#25d366;color:#071b0e}
+.mt-quick-whatsapp img{width:32px;height:32px;object-fit:contain;display:block}
+.mt-quick-actions a:focus-visible{outline:3px solid #171813;outline-offset:2px}
+@media(min-width:760px){.mt-quick-actions{left:auto;right:20px;width:min(380px,calc(100% - 40px))}}
