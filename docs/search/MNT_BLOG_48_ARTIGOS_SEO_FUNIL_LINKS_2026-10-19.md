@@ -5,6 +5,68 @@
 **Main canônica consultada:** `24264f8a6afbfec71180ca22ac7c4eb84ed468fc`  
 **Fontes canônicas:** `src-greenn/blog/catalogo-tegra-referencia.json` (48 títulos e slugs, sem conteúdo integral); `sitemap.xml` (destinos existentes); `docs/BLOCKED_ACTIONS.md`; RESF regional, e baseline Search Console documentado no dossiê da PR #442. Classificações abaixo são **hipóteses editoriais e comerciais**, não dados de volume de busca, conversão ou SERP validada.  
 
+## 0. Fontes de demanda — GSC + Keyword Planner + site Tegra como semente editorial
+
+**Adendo 2026-10-19 — solicitação do Product Authority:** integrar explicitamente os dados do **Google Keyword Planner** e a pesquisa de ideias derivadas do próprio site `www.tegraincorporadora.com.br` à matriz do blog, em conjunto com o Search Console. Não confundir proveniência de sementes com propriedade dos dados, desempenho orgânico ou posicionamento.
+
+### 0.1 Inventário e proveniência
+
+| Camada | Fonte canônica | Medida suportada | Limite |
+|---|---|---|---|
+| **GSC MoreTegra** | `sc-domain:moretegra.com.br` + exports de 2026-10-19 em conversa / M3-02 | Impressões, cliques, CTR, posição da nossa propriedade | Não mede o mercado inteiro nem revela consultas suprimidas |
+| **GSC Caminhos (domínio irmão)** | `docs/search/MNT_M3_02_CAMINHOS_GSC_SIBLING_EVIDENCE_2026-09-13.md`, estudo Caminhos 30/09 | Comportamento histórico e intenções observadas no domínio irmão | **Não** comprova ranking do MoreTegra |
+| **Keyword Planner canônico M3** | `docs/search/data/MNT_M3_01_PLANNER_UNIVERSE_2026-09-13.csv`; `docs/search/MNT_M3_01_MARKET_SEARCH_DEMAND_RESEARCH_2026-09-13.md` | Média mensal estimada e competição **de Google Ads** por termo | Cobertura Brasil/Português/Google Search; não é dificuldade orgânica |
+| **Corpus integral Planner fornecido** | `docs/search/MNT_M3_USER_RESEARCH_INPUT_AUDIT_2026-09-13.md` | **9 CSV**, **8.321 registros brutos**, **3.859 termos únicos**, 4.462 repetições entre arquivos; jan-ago indisponíveis para sazonalidade mensal | Deduplicar; volumes em **faixas do Planner**, não soma de demanda |
+| **Planner atualização Caminhos** | `docs/search/data/search-intelligence/raw/google-keyword-planner/2026-09-29/`, `docs/search/MNT_CAMINHOS_SEARCH_INTELLIGENCE_STUDY_2026-09-30.md` | Seis CSV com janela 2025-09-01 a 2026-08-31, termos mestre/projeto e métricas | Alguns valores diferem do universo antigo e **não** o substituem silenciosamente |
+| **Site Tegra como fonte de temas / possível URL-seed Planner** | Snapshot da home do Blog Tegra fornecido em 19/10 e `src-greenn/blog/catalogo-tegra-referencia.json`; 48 cartões visíveis | Editorias, temas, títulos de referência, entidades | **Não foi encontrado export individual com metadata que comprove que o campo "Começar com um site" recebeu `https://www.tegraincorporadora.com.br/`.** Trata-se de semente/benchmark editorial até comprovação desse relatório; não atribuir automaticamente o corpus M3 ao URL-seed Tegra. |
+
+Não há comprovação de acesso a uma conta GSC da própria Tegra, nem de que uma pessoa externa consiga observar seu tráfego orgânico individual. O Google Keyword Planner pode estimar demanda por palavras-chave relacionadas a um site-semente; isso **não** é tráfego do domínio Tegra.
+
+### 0.2 Palavras com dados de volume já registrados
+
+Valores abaixo são **médias mensais estimadas do Keyword Planner**, não cliques do MoreTegra. Fonte M3-01, salvo coluna explicitamente marcada "refresh 29/09". A lista é ilustrativa, não exaure o universo de 3.859 termos.
+
+| Consulta exata no estudo | Média mensal | Proprietário/uso recomendado |
+|---|---:|---|
+| `lapa apartamentos` | 1.000 | Região `/regioes/lapa/`; artigo de valorização dá apoio, não compete pelo head term |
+| `cidade jardim apartamentos` | 1.300 | Região/projetos conforme intenção, sem inventar produto |
+| `apartamentos perdizes` | 1.300 | Região `/regioes/perdizes/` |
+| `apartamentos vila nova conceição` | 720 | Região `/regioes/vila-nova-conceicao/`, cluster VNC ainda em andamento |
+| `apartamentos jardins sao paulo` | 590 | Região `/regioes/jardins/` |
+| `apartamentos brooklin sao paulo` | 320 | Região `/regioes/brooklin/` |
+| `apartamentos higienopolis sao paulo` | 170 | Região `/regioes/higienopolis/` |
+| `dsg itaim` | 1.900 | Página exata DSG |
+| `bueno brandão 257` | 1.300 | Página exata Bueno Brandão; evitar 9 artigos redundantes |
+| `caminhos da lapa reserva` | 880 | Página exata Reserva, com condição comercial revisada |
+| `reserva caminhos da lapa` | 720 | Página exata Reserva |
+| `caminhos da lapa elo duo` | 110 | Página exata Elo Duo |
+| `nova vivere` | 110 | Página exata Nova Vivere |
+| `garden design tegra` | 50 | Página exata Garden Design |
+| `reserva caminhos da lapa preço` | 20 | Fundo de funil — facts atuais, sem exibir estoque presumido |
+| `reserva caminhos da lapa planta` | 10 | Fundo de funil — plantas validadas |
+| `apartamento caminhos da lapa` | 50 (refresh 29/09) | Master Caminhos; propriedade entre domínios ainda sob reconciliação |
+| `apartamento a venda caminhos da lapa` | 50 (refresh 29/09) | Master Caminhos; não sequestrar para artigo informativo |
+| `caminhos da lapa preço` | 50 (refresh 29/09) | Master/comercial, com governança |
+| `caminhos da lapa tegra` | 50 (refresh 29/09) | Master Caminhos; identidade da fonte distinta da marca MoreTegra |
+
+### 0.3 Caudas longas de pesquisa derivadas do site e do artigo: dados NÃO comprovados
+
+`valorização imobiliária na Lapa`; `infraestrutura da Lapa São Paulo`; `ponte Pirituba Lapa Vila Anastácio`; `nova ponte Pirituba Lapa apartamentos`; `como escolher apartamento na Lapa`.
+
+São **hipóteses editoriais** ou variações de intenção local. Não atribuir-lhes volume, posição, concorrência SEO ou conversão até buscar a linha exata em export de Planner/GSC, identificar janela e geografia e reconciliar SERP. Não somar variantes como tráfego incremental.
+
+### 0.4 Processo para incorporar o Planner por domínio da Tegra (quando export existir)
+
+No Google Ads > Planejador de palavras-chave > Descobrir novas palavras-chave > Começar com um site, usar explicitamente `https://www.tegraincorporadora.com.br/` como semente, distinguindo **site inteiro** e **página específica** (por exemplo `/blog/`, categoria ou empreendimento). Registrar: URL-semente exata, escolha de escopo, período, localidade, idioma, rede, data da extração e CSV original. Não pressupor que a ferramenta separa sozinho SP/RJ; filtrar Rio, locação, casas e serviços fora de escopo. Cruzar com corpus histórico deduplicado e GSC; classificar `OBSERVED_PLANNER_SITE_SEED` somente **quando houver o export demonstrando a origem**, `OBSERVED_PLANNER` para corpus antigo e `EDITORIAL_HYPOTHESIS` para sugestões novas.
+
+Acesso ao conector Google Ads de relatórios não equivale a capacidade comprovada de gerar ideias novas no Keyword Planner com URL-semente. Não gerar volume simulado a partir dos títulos do site.
+
+### 0.5 Critério de prioridade por artigo
+
+Priorizar **adequação à intenção, evidência da família de busca, página proprietária e conversão verificável**. Volumes nominais altos de projeto devem favorecer a landing exata; artigos TOFU/MOFU são auxiliares e não devem canibalizar o hub regional ou master Caminhos. Use GSC para avaliar impressões/CTR por URL após indexação e GA4/Form46 para evolução de contato, com atribuição prudente.
+
+---
+
 ## 1. Princípio
 
 Cada artigo responde a uma pergunta real, tem **uma URL principal de aprofundamento** e no máximo uma segunda saída contextual; links adicionais só se sustentados pelo texto. Não colocar três CTAs equivalentes em todos os parágrafos nem mandar o leitor indistintamente para a Home.
