@@ -20,10 +20,10 @@ if (!urls.length || urls.length > 10000) throw new Error('Expected 1–10000 URL
 for (const value of urls) {
   const u = new URL(value);
   if (u.origin !== origin || u.username || u.password || u.search || u.hash ||
-      !(u.pathname === '/' || /^\/(empreendimentos|regioes|estagios)\/[^/]+\/$/.test(u.pathname)))
+      !(u.pathname === '/' || /^\/(empreendimentos|regioes|estagios)\/[^/]+\/$/.test(u.pathname) || /^\/blog\/[a-z0-9-]+\/[a-z0-9-]+\/$/.test(u.pathname)))
     throw new Error('URL outside canonical public page scope: ' + value);
 }
-if (mode === '--sitemap') {
+{
   for (const url of urls) {
     const r = await request(url);
     if (r.status !== 200) throw new Error('Sitemap page not HTTP 200: ' + url);
