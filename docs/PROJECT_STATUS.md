@@ -1,3 +1,9 @@
+## 2026-10-19 — Hub regional SEO/RESF, PR #440 em produção
+
+- PR #440 MERGED via squash `f9960079cd43aad3ee880b0ce17e71888a31d40f`; Vercel Production READY `dpl_2J3Wz6khzVc8LzPQ5PYUNnvTviHF` no mesmo SHA. Dois workflows observados SUCCESS (favicon e duas imagens). Usuário confirmou aceite visual.
+- `/regioes/`: indicadores regionais informativos, compra na planta, financiamento, atendimento consultivo Sabrina antes do FAQ; três CTAs (Formulário, Ligar, Mensagem WhatsApp) por guia, Sabrina e FAQ, rodapé RESF. PR #439 encerrada sem merge como redundante.
+- Não declarar PASS para HTTP independente, mobile real, Form46/CRM, GA4/GSC ou ranking. Cluster VNC permanece IN_PROGRESS. Recibo: `docs/sfjm/MNT_REGIOES_PR440_RELEASE_ACCEPTANCE_2026-10-19.md`.
+
 ## 2026-10-18 — Vila Nova Conceição: Bueno Brandão aprovado; cluster ativo
 
 - Bueno: PR #428 MERGED, CI 8/8 PASS; production READY `dpl_2iru2kNyo13qK2NQpSAjdDz4oMvR` no merge SHA `44e44c370d1c53a45a7f12d52c157cc12be4b4ef`; USER_APPROVED. Preservar fatos e textos comerciais.

@@ -1,3 +1,7 @@
+## 2026-10-19 — RELEASE REGIONAL HUB #440 (SFJM / RESF)
+
+O hub `/regioes/` foi atualizado na `main` por squash PR #440: `f9960079cd43aad3ee880b0ce17e71888a31d40f`, Vercel Production READY `dpl_2J3Wz6khzVc8LzPQ5PYUNnvTviHF` no mesmo SHA. O usuário confirmou aceite visual («ficou ótimo»); QA de formulário real/mobile/SEO/GSC não foi independentemente certificado. PR #439 CLOSED sem merge, incorporada na #440. Novos guias SEO e CTAs (Formulário/Ligar/Mensagem), Sabrina consultiva antes do FAQ, seção sem base/endereço/mapa, footer RESF preservado. Fonte detalhada: `docs/sfjm/MNT_REGIOES_PR440_RELEASE_ACCEPTANCE_2026-10-19.md`. **Este release não altera a situação IN_PROGRESS do cluster Vila Nova Conceição.**
+
 ## 2026-10-18 — CURRENT OVERRIDE: Bueno concluído; cluster Vila Nova Conceição em auditoria
 
 Bueno Brandão 257 **USER_APPROVED**: PR #428 merged `44e44c370d1c53a45a7f12d52c157cc12be4b4ef`, CI 8/8, Vercel READY `dpl_2iru2kNyo13qK2NQpSAjdDz4oMvR`. **Cluster NÃO fechado**: Tièl e `/regioes/vila-nova-conceicao/` requerem auditoria RESF/SEO/GEO, navegação/mobile/Form46 com evidência. Leia `docs/sfjm/MNT_VNC_CLUSTER_HANDOFF_2026-10-18.md` antes de alterar.

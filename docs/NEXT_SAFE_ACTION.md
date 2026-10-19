@@ -1,3 +1,10 @@
+## 2026-10-19 — Verificação pós-release do hub de bairros (#440)
+
+1. Reconciliar live `main` + Vercel + HTTP servido em `/regioes/` e comparar com release `f9960079cd43aad3ee880b0ce17e71888a31d40f`, deployment `dpl_2J3Wz6khzVc8LzPQ5PYUNnvTviHF`.
+2. QA mobile/desktop dos cinco conjuntos de CTAs, âncoras de formulário, `tel:` e WhatsApp; preservar Form46 sem envios reais não autorizados.
+3. Validar rastreamento de cliques com consentimento e estabelecer linha de base GSC por URL; avaliações SEO em 30/60/90 dias, sem atribuir resultados antes da medição.
+4. **Não substitui** a próxima ação existente do cluster Vila Nova Conceição, ainda IN_PROGRESS; consultar `docs/sfjm/MNT_REGIOES_PR440_RELEASE_ACCEPTANCE_2026-10-19.md`.
+
 ## 2026-10-18 — NEXT SAFE: auditar e finalizar cluster Vila Nova Conceição
 
 1. Resolver GitHub/Vercel live e ler `docs/sfjm/MNT_VNC_CLUSTER_HANDOFF_2026-10-18.md` e baselines.
