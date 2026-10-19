@@ -1,0 +1,19 @@
+name: Blog Vila Anastacio Six Cards
+on:
+  pull_request:
+    paths:
+      - 'src-greenn/blog/bairros-sao-paulo/lapa-vila-anastacio-como-escolher/index.html'
+      - 'src-greenn/blog/vila-anastacio-cards.css'
+      - 'scripts/validate-blog-vila-anastacio-cards.mjs'
+      - '.github/workflows/blog-vila-anastacio-cards.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/validate-blog-vila-anastacio-cards.mjs
