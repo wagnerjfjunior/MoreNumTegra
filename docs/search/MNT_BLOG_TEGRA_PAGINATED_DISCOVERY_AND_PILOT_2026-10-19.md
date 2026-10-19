@@ -34,6 +34,16 @@ A navegação ainda mostrava controle de carregamento em P3. **139 não é total
 
 As inferências são hipóteses com base em títulos e distribuição editorial, NÃO dados do tráfego ou palavras-chave internas Tegra. Nenhuma matéria ou foto foi copiada.
 
+## 2026-10-19 — Escopo ampliado: catálogo por matéria (sem cópia de conteúdo)
+
+Após esclarecimento do usuário, o objetivo deixou de ser somente o artigo piloto: a branch agora contém **as 48 matérias visíveis do HTML enviado como inventário navegável**, organizadas em quatro categorias (12 cada). O arquivo `src-greenn/blog/catalogo-tegra-referencia.json` contém somente título/slug/categoria/URL de origem/status, não textos ou imagens. Também foram criados:
+- `src-greenn/blog/<categoria>/index.html` (quatro categorias com listagens);
+- `src-greenn/blog/<categoria>/<slug>/index.html` (48 páginas de pauta, com `robots=noindex,follow` e mensagem clara de revisão pendente);
+- `vercel.json`: 54 rewrites blog, contando home, artigo autoral piloto, quatro categorias e 48 pautas;
+- Home mostra as quatro editorias, e o sitemap continua limitado a home e artigo autoral, **sem indexar as páginas de pauta**.
+
+A existência de cada um dos 48 HTMLs foi verificada pela leitura da branch (16+16+16); isto **não certifica HTTP local nem publicação**. O Live Sync exige selecionar explicitamente `feat/blog-home-artigo-lapa-piloto-20261019` e conferir o HEAD atual. Não publicar placeholders como artigos prontos; seguir a pauta com textos próprios, direitos verificados e revisão SEO por página. Os 91 cartões adicionais vistos na paginação ainda não foram convertidos em páginas ou catálogo neste ciclo. O acervo completo não foi esgotado.
+
 ## Arquitetura piloto proposta e concretizada na branch
 
 - `/blog/` → `src-greenn/blog/index.html`.
