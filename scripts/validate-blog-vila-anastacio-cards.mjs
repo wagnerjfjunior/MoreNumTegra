@@ -1,0 +1,30 @@
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+const html=readFileSync("src-greenn/blog/bairros-sao-paulo/lapa-vila-anastacio-como-escolher/index.html","utf8");
+const css=readFileSync("src-greenn/blog/vila-anastacio-cards.css","utf8");
+const expected=["Nova Vivere","Garden Design","Caminhos da Lapa Elo Duo","Reserva Caminhos da Lapa","Jerivás Caminhos da Lapa","Home Club Caminhos da Lapa"];
+const cards=[...html.matchAll(/<article class="mnt-project-card">([\s\S]*?)<\/article>/g)];
+assert.equal(cards.length,6,"six complete development cards");
+for(const name of expected)assert.equal(cards.filter(x=>x[1].includes("<h3>"+name+"</h3>")).length,1,"missing or duplicate card: "+name);
+for(let i=0;i<6;i++){
+ const c=cards[i][1];
+ assert.ok(/<img[^>]+src="https:\/\/[^"]+"[^>]+alt="[^"]+"[^>]+loading="lazy"/.test(c),"image src alt lazy expected");
+ assert.ok(c.includes("mnt-project-stage")&&c.includes("mnt-project-specs")&&c.includes("mnt-project-cta"),"stage specs CTA missing");
+ assert.equal((c.match(/<li>/g)||[]).length,3,"three specs for each card");
+}
+assert.ok(html.includes('href="/src-greenn/blog/vila-anastacio-cards.css"'));
+assert.ok(html.includes('class="mnt-urban-hero-photo"'));
+assert.ok(html.includes('fetchpriority="high"')&&!/class="mnt-urban-hero-photo"[^>]*loading="lazy"/.test(html));
+assert.equal((html.match(/class="mnt-urban-hero-photo"/g)||[]).length,1);
+assert.ok(html.includes("id=\"empreendimentos-caminhos\""));
+assert.ok(!html.includes("Lapa ou Vila Anastácio"));
+assert.equal((html.match(/<h1\b/g)||[]).length,1);
+assert.ok(html.includes("https://wa.me/5511960779328?text=Quero%20saber%20mais%20sobre%20o%20Jeriv"));
+assert.ok(html.includes("https://wa.me/5511960779328?text=Quero%20saber%20mais%20sobre%20o%20Home"));
+assert.ok(css.includes("@media(max-width:680px)")&&css.includes("grid-template-columns:1fr"));
+const json=html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+assert.ok(json);
+const schema=JSON.parse(json[1]);
+assert.ok(schema["@graph"].some(x=>x["@type"]==="BlogPosting"));
+assert.ok(schema["@graph"].some(x=>x["@type"]==="BreadcrumbList"));
+console.log(JSON.stringify({ok:true,cards:cards.length,hero:true,cssMobile:true,canonical:html.match(/rel="canonical" href="([^"]+)"/)?.[1]}));
