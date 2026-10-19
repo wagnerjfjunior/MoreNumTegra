@@ -30,6 +30,6 @@ assert.ok(links.includes("/empreendimentos/nova-vivere/"));
 assert.ok(links.includes("/empreendimentos/garden-design/"));
 assert.ok(links.includes("/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/"));
 for(const icon of ["/favicon.ico","/favicon-48x48.png","/favicon-32x32.png","/favicon-16x16.png","/apple-touch-icon.png"]) assert.ok(main.includes(`href="${icon}"`));
-assert.equal((main.match(/<article\b/g)||[]).length, 1);
-assert.equal((main.match(/<\/article>/g)||[]).length, 1);
+assert.equal((main.match(/<article\b/g)||[]).length, 7, "one editorial article plus six product cards");
+assert.equal((main.match(/<\/article>/g)||[]).length, 7, "all editorial/card articles must close");
 console.log(JSON.stringify({valid:true,canonical,title:article.headline,links:links.length,schemas:graph.map(x=>x["@type"])}));
