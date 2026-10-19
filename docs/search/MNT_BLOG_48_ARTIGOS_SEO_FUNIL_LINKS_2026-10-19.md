@@ -9,6 +9,24 @@
 
 **Adendo 2026-10-19 — solicitação do Product Authority:** integrar explicitamente os dados do **Google Keyword Planner** e a pesquisa de ideias derivadas do próprio site `www.tegraincorporadora.com.br` à matriz do blog, em conjunto com o Search Console. Não confundir proveniência de sementes com propriedade dos dados, desempenho orgânico ou posicionamento.
 
+### 0.0 Correção de alcance — estudo SES completo de 17/10 (prioritário)
+
+O dossiê **`docs/search/MNT_SES_SEO_GEO_OPINION_AND_VALIDATION_2026-10-17.md`**, seção **2, evidências E01–E08**, já reconcilia o pacote mais completo fornecido ao especialista SES. A síntese abaixo **corrige a impressão de que o estudo estaria restrito às 3.859 keywords únicas de 13/09**:
+
+| Conjunto | Evidência integral do dossiê | Limite |
+|---|---|---|
+| M3 / Planner 13/09 | **9 CSV, 8.321 registros brutos, 3.859 termos únicos**; auditoria específica M3 | Original de setembro de 13/09 não está entre os arquivos do dossiê SES; resgate indireto por auditoria versionada |
+| Planner atualização 29/09 | **6 CSV originais, 16.257 registros, 13.686 keywords literais** recalculados no pacote SES; período set/2025–ago/2026 | Não concatenar com M3 como volume incremental; os próprios seis arquivos não são necessariamente uma base de keywords exclusivas |
+| AnswerThePublic 16/10 | **4 CSV, 657 linhas, 372 expressões distintas somadas por arquivo** | Duplicatas, ruído e conflitos; não é demanda medida do Google |
+| GSC MoreTegra em 16/10 | **52 cliques e 1.199 impressões** no gráfico entre 29/08–14/10 (47 datas) | Páginas/consultas dimensionais não fecham diretamente com gráfico; não somar componentes |
+| Site Tegra como input ao Planejador | URLs oficiais e conteúdo editorial são insumos possíveis e há pesquisa Planner ampla no GitHub | O parecer SES **não identifica explicitamente o URL-seed exato/seleção "Começar com um site"** para os seis brutos; não etiquetar como export Tegra-site-seed confirmado sem essa metadata |
+
+O parecer SES foi realizado com inspeção de **114 itens do manifesto** e extração completa dos seis brutos Planner e quatro CSV AnswerThePublic. O parecer afirma que os nove CSVs M3 originais não estavam no pacote de 17/10: os dois universos precisam permanecer separados por fonte e data, sem reportar deduplicação entre universos como já feita.  
+
+**Decisão SEO do estudo SES (17/10):** concentração em conversão de URLs existentes, Higienópolis como primeiro experimento e arquitetura onde MoreTegra centraliza escolha/contato, enquanto a presença Caminhos preserva contexto do complexo. Isso é a recomendação e governança histórica do parecer, não autorização automática para expansão em massa do blog.
+
+**Observação operacional:** a PR #446 é documentação. Não gera novas pesquisas no Google Ads, não acessa GSC da Tegra e não altera páginas. Para afirmar com precisão que determinado termo deriva da semente `tegraincorporadora.com.br`, seria necessária a metadata da execução específica do Planner, não apenas a presença das palavras no estudo.
+
 ### 0.1 Inventário e proveniência
 
 | Camada | Fonte canônica | Medida suportada | Limite |
@@ -16,8 +34,8 @@
 | **GSC MoreTegra** | `sc-domain:moretegra.com.br` + exports de 2026-10-19 em conversa / M3-02 | Impressões, cliques, CTR, posição da nossa propriedade | Não mede o mercado inteiro nem revela consultas suprimidas |
 | **GSC Caminhos (domínio irmão)** | `docs/search/MNT_M3_02_CAMINHOS_GSC_SIBLING_EVIDENCE_2026-09-13.md`, estudo Caminhos 30/09 | Comportamento histórico e intenções observadas no domínio irmão | **Não** comprova ranking do MoreTegra |
 | **Keyword Planner canônico M3** | `docs/search/data/MNT_M3_01_PLANNER_UNIVERSE_2026-09-13.csv`; `docs/search/MNT_M3_01_MARKET_SEARCH_DEMAND_RESEARCH_2026-09-13.md` | Média mensal estimada e competição **de Google Ads** por termo | Cobertura Brasil/Português/Google Search; não é dificuldade orgânica |
-| **Corpus integral Planner fornecido** | `docs/search/MNT_M3_USER_RESEARCH_INPUT_AUDIT_2026-09-13.md` | **9 CSV**, **8.321 registros brutos**, **3.859 termos únicos**, 4.462 repetições entre arquivos; jan-ago indisponíveis para sazonalidade mensal | Deduplicar; volumes em **faixas do Planner**, não soma de demanda |
-| **Planner atualização Caminhos** | `docs/search/data/search-intelligence/raw/google-keyword-planner/2026-09-29/`, `docs/search/MNT_CAMINHOS_SEARCH_INTELLIGENCE_STUDY_2026-09-30.md` | Seis CSV com janela 2025-09-01 a 2026-08-31, termos mestre/projeto e métricas | Alguns valores diferem do universo antigo e **não** o substituem silenciosamente |
+| **Corpus integral Planner fornecido** | `docs/search/MNT_M3_USER_RESEARCH_INPUT_AUDIT_2026-09-13.md` | **9 CSV**, **8.321 registros brutos**, **3.859 termos únicos**, 4.462 repetições entre arquivos; histórico M3 distinto da atualização de seis CSV de 29/09 | Deduplicar; volumes em **faixas do Planner**, não soma de demanda |
+| **Planner atualização Caminhos** | `docs/search/data/search-intelligence/raw/google-keyword-planner/2026-09-29/`, `docs/search/MNT_CAMINHOS_SEARCH_INTELLIGENCE_STUDY_2026-09-30.md` | Seis CSV com janela 2025-09-01 a 2026-08-31; conforme parecer SES: 16.257 registros e 13.686 keywords literais; termos mestre/projeto e métricas | Alguns valores diferem do universo antigo e **não** o substituem silenciosamente |
 | **Site Tegra como fonte de temas / possível URL-seed Planner** | Snapshot da home do Blog Tegra fornecido em 19/10 e `src-greenn/blog/catalogo-tegra-referencia.json`; 48 cartões visíveis | Editorias, temas, títulos de referência, entidades | **Não foi encontrado export individual com metadata que comprove que o campo "Começar com um site" recebeu `https://www.tegraincorporadora.com.br/`.** Trata-se de semente/benchmark editorial até comprovação desse relatório; não atribuir automaticamente o corpus M3 ao URL-seed Tegra. |
 
 Não há comprovação de acesso a uma conta GSC da própria Tegra, nem de que uma pessoa externa consiga observar seu tráfego orgânico individual. O Google Keyword Planner pode estimar demanda por palavras-chave relacionadas a um site-semente; isso **não** é tráfego do domínio Tegra.
