@@ -30,10 +30,15 @@ for(const slug of slugs){
   const service=nodes.find(n=>n['@type']==='Service');
   assert.equal(service?.provider?.['@id'],a['@id'],'Elo Duo service provider must reference local agent');
  }
+ if(slug==='jerivas-caminhos-da-lapa'){
+  assert.equal(p.streetAddress,'Rua Fortunato Ferraz, 250','Jerivás official condominium street drift');
+  assert.equal(p.postalCode,'05093-000','Jerivás condominium CEP drift');
+  assert.equal(a.image,'https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp','Jerivás Sabrina image drift');
+ }
  agents++;
  console.log('ONSITE_AGENT_PASS',slug,a.address.streetAddress,a.address.postalCode);
 }
-assert.equal(pages,25,'Project scope changed');
-assert.equal(agents,19,'RealEstateAgent coverage changed; review contract deliberately');
+assert.equal(pages,26,'Expected 26 audited project pages including Jerivás');
+assert.equal(agents,20,'Expected 20 project-scoped RealEstateAgents including Jerivás');
 assert.equal(notApplicable,6,'Pages without Realtor entity changed; review scope deliberately');
-console.log('PASS: 19 project-scoped RealEstateAgents match local project addresses; 6 pages without separate RealEstateAgent unaffected');
+console.log('PASS: 20 project-scoped RealEstateAgents match local project addresses; 6 pages without separate RealEstateAgent unaffected');
