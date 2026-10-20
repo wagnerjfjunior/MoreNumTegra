@@ -1,0 +1,41 @@
+import assert from "node:assert/strict";
+import {readFileSync} from "node:fs";
+const read=p=>readFileSync(p,"utf8");
+const source=JSON.parse(read("src-greenn/blog/catalogo-tegra-referencia.json"));
+const audit=JSON.parse(read("docs/search/MNT_BLOG_48_PAUTAS_REARQUITETURA_ORIGINAL_2026-10-20.json"));
+const sitemap=read("sitemap.xml");
+const routes=JSON.parse(read("vercel.json"));
+assert.equal(source.items.length,48);
+assert.equal(audit.items.length,48);
+const proposed=new Set();
+const published=[];
+let pending=0;
+for(let i=0;i<48;i++){
+ const item=audit.items[i],sourceItem=source.items[i];
+ assert.equal(item.category,sourceItem.category);
+ assert.equal(item.slug,sourceItem.slug);
+ assert.equal(item.title,sourceItem.title);
+ assert.ok(item.proposed_h1 && item.angle && item.proposed_slug);
+ assert.ok(item.proposed_slug!==item.slug,"Legacy corporate slug reused: "+item.slug);
+ const id=item.category+"/"+item.proposed_slug;
+ assert.ok(!proposed.has(id),"Collision: "+id);
+ proposed.add(id);
+ if(item.state==="PUBLISHED_ORIGINAL_REPLACEMENT"){published.push(item);continue}
+ pending++;
+ assert.equal(item.state,"BRIEF_ONLY_NO_ARTICLE");
+ const path="src-greenn/blog/"+item.category+"/"+item.slug+"/index.html";
+ const page=read(path);
+ assert.ok(page.includes('name="robots" content="noindex,follow"'),"Legacy scaffold must not be indexed: "+path);
+ assert.ok(!sitemap.includes("https://www.moretegra.com.br/blog/"+item.category+"/"+item.slug+"/"),"Legacy draft must not be in sitemap: "+id);
+ assert.ok(!routes.redirects?.some(x=>x.source==="/blog/"+item.category+"/"+item.slug+"/"),"Do not redirect a placeholder before a verified replacement is published");
+}
+assert.equal(pending,47);
+assert.equal(published.length,1);
+assert.equal(published[0].category,"mercado");
+assert.equal(published[0].proposed_slug,"valorizacao-imobiliaria-lapa-sao-paulo");
+const newPath="src-greenn/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/index.html";
+const html=read(newPath);
+assert.ok(html.includes('rel="canonical" href="https://www.moretegra.com.br/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/"'));
+assert.ok(sitemap.includes("https://www.moretegra.com.br/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/"));
+assert.ok(routes.redirects.some(x=>x.source==="/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/"&&x.destination==="/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/"&&x.permanent===true));
+console.log(JSON.stringify({pass:true,referenceTopics:48,pendingNoindex:pending,publishedOriginal:1,duplicateProposedSlug:0}));
