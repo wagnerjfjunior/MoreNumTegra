@@ -102,6 +102,10 @@
       "destination": "/src-greenn/empreendimentos/ledge-brooklin/index.html"
     },
     {
+      "source": "/empreendimentos/studios-berrini/",
+      "destination": "/src-greenn/empreendimentos/studios-berrini/index.html"
+    },
+    {
       "source": "/empreendimentos/soma-perdizes/",
       "destination": "/src-greenn/empreendimentos/soma-perdizes/index.html"
     },
