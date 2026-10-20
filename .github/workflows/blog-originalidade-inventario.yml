@@ -1,0 +1,21 @@
+name: Blog 48 editorial originality inventory
+on:
+  pull_request:
+    paths:
+      - 'src-greenn/blog/**'
+      - 'docs/search/MNT_BLOG_48_PAUTAS_REARQUITETURA_ORIGINAL_2026-10-20.json'
+      - 'scripts/validate-blog-originalidade-inventario.mjs'
+      - '.github/workflows/blog-originalidade-inventario.yml'
+      - 'sitemap.xml'
+      - 'vercel.json'
+permissions:
+  contents: read
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/validate-blog-originalidade-inventario.mjs
