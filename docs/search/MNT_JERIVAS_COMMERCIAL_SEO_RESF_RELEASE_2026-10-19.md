@@ -19,6 +19,17 @@ Usuário aprovou a divisão de intenção SEO: `caminhosdalapategra.com.br` assu
 - Form46 embutido com `tenant_id=313`, `form_id=46`, `title=MoreEmUmTegra`, campos nome/email/telefone, o tratamento de rede/consentimento e métricas do runtime existente (nenhum envio real automatizado para não criar lead fictício).
 - Novo rewrite exato `/empreendimentos/jerivas-caminhos-da-lapa/` e URL no `sitemap.xml`.
 
+## Endereço comprovado e rebaselining estrito
+
+- **Condomínio Jerivás = Rua Fortunato Ferraz, 250, Vila Anastácio, São Paulo, CEP 05093-000**, conforme laudo técnico de manejo arbóreo publicado no Diário Oficial da Prefeitura de São Paulo em 24/04/2024 (interessado Caminhos da Lapa Condomínio Jerivas, CNPJ 41.238.935/0001-98): https://diariooficial.prefeitura.sp.gov.br/md_epubli_visualizar.php?zCE7RPo4AyB_vo-jvyCeOMWDFlexddP8Ws8Q2cJhXtKzJRz0RW66FizkL7sNUsuf019KAVLYzdLpwLhtRbHlmWV98EEc5DmSbjuMo4Yq0uEaZcCUbY1IA_VUcZok-2aS=
+- O **estande** comercial na Rua Fortunato Ferraz, 625 é outro local. Não usar 625 como endereço do condomínio. O endereço do condomínio aparece no JSON-LD `ApartmentComplex.address`, no `RealEstateAgent.address` da página comercial on-site e no rodapé governado (não repetido em copy acima).
+- Foto da Sabrina para o `RealEstateAgent` reutilizada de URL S3 já publicada em página MoreTegra.
+- Validador `validate-onsite-realtor-project-address.mjs` passa de 25 para 26 páginas; 19 para 20 agentes; mantém 6 páginas sem entidade separada. Exige endereço específico e foto neste novo projeto.
+- Validador `validate-project-schema-coverage.mjs` passa para 26 páginas, com requisitos estritos de entidades essenciais no Jerivás e proibição de `Offer` não confirmado.
+- Validador `validate-two-images-39-pages.mjs` passa de 40 para 41 URLs de Home + Regiões + Empreendimentos, sem reduzir exigência de imagem principal e segunda imagem distinta; `WebPage.image` referencia `ImageObject` principal e secundário com captions idênticas aos alt HTML.
+- O guard `validate-resf-html-regression.mjs` mantém a comparação estrita das sete páginas historicamente protegidas; para Reserva, a referência exata foi atualizada ao commit main aceito antes deste PR, pois sua versão já havia sido aprovada e alterada após o baseline de outubro. Não autoriza alterações de Reserva nesta PR.
+- O rodapé comercial Jerivás usa os dois avisos canônicos padronizados, Sabrina e endereço neutro com `data-mnt-footer-address`.
+
 ## Testes e limitações
 - `scripts/validate-jerivas-commercial.mjs` e workflow `.github/workflows/jerivas-commercial.yml`: SEO, six schema types, 5 FAQ visíveis, dados reais do projeto, Form46, 2 links editoriais, favicon, LCP image priority e layout CSS mobile.
 - Gates herdados do repositório: favicon, duas imagens SEO, validators de blog.
