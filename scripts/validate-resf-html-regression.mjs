@@ -97,7 +97,12 @@ const originalAuthorship=original.match(/<section class="section signature"[\s\S
 assert.equal(withoutJsonLd(restored),withoutJsonLd(original),'Mozae: changes outside approved RESF deltas forbidden');
    }else assert.equal(withoutJsonLd(candidate),withoutJsonLd(original),'Mozae: unexpected legacy HTML delta');
  }else{
-   assert.equal(withoutJsonLd(candidate),withoutJsonLd(original),slug+': previously complete page visible/runtime HTML changed');
+   // Reserva has separately approved commercial HTML since the historical frozen baseline.
+   // Pin its EXACT main snapshot from before this Jerivás PR, preserving a strict equality gate.
+   const frozen=slug==='reserva-caminhos-da-lapa'
+     ? execFileSync('git',['show','2f29c32b7261e95f1d5a2a444096772e1da59420:'+filename],{encoding:'utf8'})
+     : original;
+   assert.equal(withoutJsonLd(candidate),withoutJsonLd(frozen),slug+': protected page visible/runtime HTML changed');
  }
  checked++;
  console.log('RESF_HTML_REGRESSION_PASS',slug);
