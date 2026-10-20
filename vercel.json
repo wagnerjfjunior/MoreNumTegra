@@ -18,6 +18,10 @@
       "destination": "/src-greenn/regioes/index.html"
     },
     {
+      "source": "/investimentos/studios-e-salas-comerciais/",
+      "destination": "/src-greenn/investimentos/studios-e-salas-comerciais/index.html"
+    },
+    {
       "source": "/blog/",
       "destination": "/src-greenn/blog/index.html"
     },
