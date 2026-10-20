@@ -1,3 +1,11 @@
+## 2026-10-20 — Próxima ação editorial do blog: inventário e matriz de originalidade
+
+1. Reconciliar live `main`, Vercel, URLs públicas, `sitemap.xml`, `vercel.json` e `src-greenn/blog/catalogo-tegra-referencia.json`, além de governança e baselines.
+2. Listar integralmente rotas/blog pages e distinguir `EXISTENTE_INDEXAVEL`, `EDITORIAL_PENDING_NOINDEX`, `INEXISTENTE`, `REDIRECT`. O snapshot de 48 cartões de referência não comprova 48 artigos duplicados.
+3. Auditar comparação factual com referências Tegra e produzir matriz de título/H1/slug/intenção/conteúdo autorais, priorizando páginas indexáveis já publicadas.
+4. Apresentar plano de PRs por lote para aprovação do usuário; só então implementar 301 para migrações de URLs efetivamente públicas, com SEO/schema/sitemap/CI/rollback.
+5. Manter fora de escopo páginas comerciais e clusters RESF aprovados. Documento: `docs/sfjm/MNT_BLOG_ORIGINALIDADE_INTEGRAL_HANDOFF_2026-10-20.md`.
+
 ## 2026-10-19 — Verificação pós-release do hub de bairros (#440)
 
 1. Reconciliar live `main` + Vercel + HTTP servido em `/regioes/` e comparar com release `f9960079cd43aad3ee880b0ce17e71888a31d40f`, deployment `dpl_2J3Wz6khzVc8LzPQ5PYUNnvTviHF`.

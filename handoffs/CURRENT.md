@@ -1,3 +1,7 @@
+## 2026-10-20 — PRIORIDADE EDITORIAL: ORIGINALIDADE INTEGRAL DO BLOG (DECISÃO DO PROPRIETÁRIO)
+
+O proprietário determinou auditoria e reformulação de todos os artigos/slugs herdados das referências Tegra para entregar títulos, H1, URL quando justificado e conteúdo realmente autorais do MoreTegra, usando como paradigma a PR #462 (Lapa). **Primeiro fazer inventário live e matriz editorial, não migrar em massa sem aprovação.** O catálogo `src-greenn/blog/catalogo-tegra-referencia.json` contém **48 referências, 12 por categoria**, com status `EDITORIAL_PENDING/noindex`; a contagem não confirma 48 páginas públicas/indexadas. Handoff obrigatório: `docs/sfjm/MNT_BLOG_ORIGINALIDADE_INTEGRAL_HANDOFF_2026-10-20.md`. Esta atualização é apenas documental e não altera produção.
+
 ## 2026-10-19 — RELEASE REGIONAL HUB #440 (SFJM / RESF)
 
 O hub `/regioes/` foi atualizado na `main` por squash PR #440: `f9960079cd43aad3ee880b0ce17e71888a31d40f`, Vercel Production READY `dpl_2J3Wz6khzVc8LzPQ5PYUNnvTviHF` no mesmo SHA. O usuário confirmou aceite visual («ficou ótimo»); QA de formulário real/mobile/SEO/GSC não foi independentemente certificado. PR #439 CLOSED sem merge, incorporada na #440. Novos guias SEO e CTAs (Formulário/Ligar/Mensagem), Sabrina consultiva antes do FAQ, seção sem base/endereço/mapa, footer RESF preservado. Fonte detalhada: `docs/sfjm/MNT_REGIOES_PR440_RELEASE_ACCEPTANCE_2026-10-19.md`. **Este release não altera a situação IN_PROGRESS do cluster Vila Nova Conceição.**

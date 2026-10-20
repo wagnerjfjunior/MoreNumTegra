@@ -1,3 +1,11 @@
+## 2026-10-20 — Gates de proteção: auditoria editorial do Blog MoreTegra
+
+- BLOQUEADO publicar em massa, renomear todas as 48 slugs ou criar redirects 301 sem inventário de páginas publicadas, mapeamento atual→destino, evidência SEO e aprovação por lote.
+- BLOQUEADO copiar ou parafrasear superficialmente títulos, H1, estrutura e corpo dos artigos originais Tegra. Conteúdo deve ser substantivamente original do MoreTegra, com fontes e intenção próprias.
+- BLOQUEADO afirmar que os 48 cartões de `catalogo-tegra-referencia.json` são 48 artigos indexados/duplicados; verificar status de cada rota e HTML.
+- BLOQUEADO tocar em páginas `/regioes/`, `/empreendimentos/`, CRM/Form 46, WhatsApp, consentimento ou RESF sem aprovação específica.
+- Documento: `docs/sfjm/MNT_BLOG_ORIGINALIDADE_INTEGRAL_HANDOFF_2026-10-20.md`.
+
 ## 2026-10-18 — Guardrails do handoff Vila Nova Conceição
 
 - Proibido declarar cluster Vila Nova Conceição CLOSED: somente Bueno Brandão 257 recebeu aprovação de usuário neste ciclo. Tièl e página regional seguem sem aceite final.
