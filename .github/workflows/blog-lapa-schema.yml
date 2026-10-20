@@ -2,13 +2,13 @@ name: Blog Lapa SEO Schema
 on:
   pull_request:
     paths:
-      - 'src-greenn/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/index.html'
+      - 'src-greenn/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/index.html'
       - 'scripts/validate-blog-lapa-schema.mjs'
       - '.github/workflows/blog-lapa-schema.yml'
   push:
     branches: [main]
     paths:
-      - 'src-greenn/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/index.html'
+      - 'src-greenn/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/index.html'
       - 'scripts/validate-blog-lapa-schema.mjs'
 permissions:
   contents: read
