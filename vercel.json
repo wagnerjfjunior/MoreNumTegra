@@ -18,6 +18,10 @@
       "destination": "/src-greenn/regioes/index.html"
     },
     {
+      "source": "/investimentos/studios-e-salas-comerciais/",
+      "destination": "/src-greenn/investimentos/studios-e-salas-comerciais/index.html"
+    },
+    {
       "source": "/blog/",
       "destination": "/src-greenn/blog/index.html"
     },
@@ -96,6 +100,10 @@
     {
       "source": "/empreendimentos/ledge-brooklin/",
       "destination": "/src-greenn/empreendimentos/ledge-brooklin/index.html"
+    },
+    {
+      "source": "/empreendimentos/studios-berrini/",
+      "destination": "/src-greenn/empreendimentos/studios-berrini/index.html"
     },
     {
       "source": "/empreendimentos/soma-perdizes/",
