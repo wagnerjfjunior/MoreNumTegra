@@ -2,7 +2,7 @@ name: Blog Lapa Originalidade e Analise SEO
 on:
   pull_request:
     paths:
-      - 'src-greenn/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/index.html'
+      - 'src-greenn/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/index.html'
       - 'src-greenn/blog/lapa-artigo.css'
       - 'scripts/validate-blog-lapa-originalidade.mjs'
       - '.github/workflows/blog-lapa-originalidade.yml'
