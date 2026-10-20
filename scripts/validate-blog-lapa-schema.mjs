@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 
-const html = readFileSync("src-greenn/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/index.html","utf8");
-const canonical = "https://www.moretegra.com.br/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/";
+const html = readFileSync("src-greenn/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/index.html","utf8");
+const canonical = "https://www.moretegra.com.br/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/";
 const graphRaw = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
 assert.ok(graphRaw,"JSON-LD must exist");
 const data=JSON.parse(graphRaw[1]);

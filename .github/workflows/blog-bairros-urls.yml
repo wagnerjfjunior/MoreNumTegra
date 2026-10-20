@@ -1,0 +1,20 @@
+name: Blog Bairros hub and Lapa URL migration
+on:
+  pull_request:
+    paths:
+      - 'src-greenn/blog/**'
+      - 'sitemap.xml'
+      - 'vercel.json'
+      - 'scripts/validate-blog-bairros-urls.mjs'
+      - '.github/workflows/blog-bairros-urls.yml'
+permissions:
+  contents: read
+jobs:
+  structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/validate-blog-bairros-urls.mjs

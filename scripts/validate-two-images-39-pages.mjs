@@ -6,13 +6,14 @@ import assert from 'node:assert/strict';
 const sitemap=fs.readFileSync('sitemap.xml','utf8');
 const urls=[...sitemap.matchAll(/<loc>\s*(https:\/\/www\.moretegra\.com\.br\/[^<]*)\s*<\/loc>/g)].map(x=>x[1]);
 const allPaths=urls.map(u=>new URL(u).pathname);
-// The two editorial blog URLs are governed by BlogPosting/SEO checks, not RESF's
+// The blog hub, Bairros collection and two authorial articles have independent SEO checks, not RESF's
 // two-image contract for exact commercial and regional pages.
 const blogPaths=allPaths.filter(p=>p.startsWith('/blog/'));
 assert.deepEqual(blogPaths,[
  '/blog/',
+ '/blog/bairros-sao-paulo/',
  '/blog/bairros-sao-paulo/lapa-vila-anastacio-como-escolher/',
- '/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/'
+ '/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/'
 ],'Blog sitemap additions must remain explicitly scoped');
 const paths=allPaths.filter(p=>!p.startsWith('/blog/'));
 assert.equal(new Set(allPaths).size,allPaths.length,'Duplicate sitemap URLs');

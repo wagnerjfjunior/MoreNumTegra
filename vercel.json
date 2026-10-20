@@ -22,6 +22,10 @@
       "destination": "/src-greenn/blog/index.html"
     },
     {
+      "source": "/blog/bairros-sao-paulo/",
+      "destination": "/src-greenn/blog/bairros-sao-paulo/index.html"
+    },
+    {
       "source": "/blog/bairros-sao-paulo/lapa-vila-anastacio-como-escolher/",
       "destination": "/src-greenn/blog/bairros-sao-paulo/lapa-vila-anastacio-como-escolher/index.html"
     },
@@ -226,8 +230,8 @@
       "destination": "/src-greenn/blog/mercado/iptu-saiba-tudo-sobre-o-imposto-anual-e-planeje-seu-pagamento/index.html"
     },
     {
-      "source": "/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/",
-      "destination": "/src-greenn/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/index.html"
+      "source": "/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/",
+      "destination": "/src-greenn/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/index.html"
     },
     {
       "source": "/blog/mercado/investimento-a-longo-prazo-comprar-um-imovel/",
@@ -477,6 +481,11 @@
     {
       "source": "/empreendimentos/capitolo-tegra/",
       "destination": "/empreendimentos/capiitolo-piero-lissoni/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/",
+      "destination": "/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/",
       "permanent": true
     }
   ]

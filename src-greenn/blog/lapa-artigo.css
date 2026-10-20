@@ -19,3 +19,15 @@ body{padding-bottom:calc(80px + env(safe-area-inset-bottom,0px))}
 .mt-quick-whatsapp img{width:32px;height:32px;object-fit:contain;display:block}
 .mt-quick-actions a:focus-visible{outline:3px solid #171813;outline-offset:2px}
 @media(min-width:760px){.mt-quick-actions{left:auto;right:20px;width:min(380px,calc(100% - 40px))}}
+
+/* Guia de valorização Lapa: leitura analítica autoral, sem competição com landing pages. */
+.mnt-editorial-article .article-body>section{margin-top:36px}
+.mnt-editorial-article .article-body>section>p{line-height:1.82}
+.mnt-editorial-article .article-body>section>h3{font-size:1.18rem;margin:22px 0 10px}
+.mnt-editorial-article .article-body>section ul{padding-left:24px;line-height:1.75;margin:18px 0 26px}
+.mnt-editorial-article .article-body>section li+li{margin-top:10px}
+.mnt-checklist{counter-reset:lapa;list-style:none;margin:26px 0;padding:0;display:grid;gap:12px}
+.mnt-checklist li{counter-increment:lapa;position:relative;padding:19px 20px 19px 61px;border:1px solid #d9d1bf;border-radius:10px;background:#fff;line-height:1.63}
+.mnt-checklist li:before{content:counter(lapa,decimal-leading-zero);position:absolute;left:19px;top:19px;font-weight:800;color:#84621e}
+.mnt-editorial-article .note{border-left:4px solid #ebb92e;background:#fff8e5;padding:20px 23px;margin:24px 0;line-height:1.68}
+@media(max-width:600px){.mnt-checklist li{padding:16px 15px 16px 50px}.mnt-checklist li:before{left:15px;top:16px}.mnt-editorial-article .note{padding:16px}}

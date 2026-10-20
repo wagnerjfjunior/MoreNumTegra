@@ -4,7 +4,7 @@ on:
     paths:
       - 'src-greenn/empreendimentos/jerivas-caminhos-da-lapa/**'
       - 'src-greenn/blog/bairros-sao-paulo/lapa-vila-anastacio-como-escolher/index.html'
-      - 'src-greenn/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/index.html'
+      - 'src-greenn/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/index.html'
       - 'vercel.json'
       - 'sitemap.xml'
       - 'scripts/validate-jerivas-commercial.mjs'

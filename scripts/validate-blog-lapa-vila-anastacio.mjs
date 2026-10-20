@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 const main = readFileSync("src-greenn/blog/bairros-sao-paulo/lapa-vila-anastacio-como-escolher/index.html", "utf8");
-const sibling = readFileSync("src-greenn/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/index.html", "utf8");
+const sibling = readFileSync("src-greenn/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/index.html", "utf8");
 const canonical = "https://www.moretegra.com.br/blog/bairros-sao-paulo/lapa-vila-anastacio-como-escolher/";
 const json = main.match(/<script type="application\/ld\+json">([\s\S]+?)<\/script>/);
 assert.ok(json, "JSON-LD missing");
@@ -28,7 +28,7 @@ const links=[...main.matchAll(/href="(\/[^"#?]+\/)"?/g)].map(x=>x[1]);
 assert.ok(links.includes("/regioes/lapa/"));
 assert.ok(links.includes("/empreendimentos/nova-vivere/"));
 assert.ok(links.includes("/empreendimentos/garden-design/"));
-assert.ok(links.includes("/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/"));
+assert.ok(links.includes("/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/"));
 for(const icon of ["/favicon.ico","/favicon-48x48.png","/favicon-32x32.png","/favicon-16x16.png","/apple-touch-icon.png"]) assert.ok(main.includes(`href="${icon}"`));
 assert.equal((main.match(/<article\b/g)||[]).length, 7, "one editorial article plus six product cards");
 assert.equal((main.match(/<\/article>/g)||[]).length, 7, "all editorial/card articles must close");
