@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
-const page="src-greenn/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/index.html";
+const page="src-greenn/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/index.html";
 const html=readFileSync(page,"utf8");
 const css=readFileSync("src-greenn/blog/lapa-artigo.css","utf8");
-const canonical="https://www.moretegra.com.br/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/";
+const canonical="https://www.moretegra.com.br/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/";
 const headline="Imóveis na Lapa valorizam? Como analisar preços e potencial em São Paulo";
 assert.equal((html.match(/<h1\b/g)||[]).length,1);
 assert.ok(html.includes("<h1>"+headline+"</h1>"));
