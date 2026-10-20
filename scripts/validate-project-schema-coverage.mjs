@@ -35,6 +35,14 @@ for(const slug of slugs){
    }
    assert(newer,slug+': schema entity deleted: '+old['@type']+' '+old['@id']);
  }
+ if(slug==='jerivas-caminhos-da-lapa'){
+  for(const t of ['WebPage','ApartmentComplex','BreadcrumbList','ImageObject','ContactPoint','RealEstateAgent','FAQPage'])assert(now.some(n=>type(n,t)),slug+': required new commercial schema missing '+t);
+  const apartment=now.find(n=>type(n,'ApartmentComplex'));
+  const agent=now.find(n=>type(n,'RealEstateAgent'));
+  assert.equal(apartment.address?.streetAddress,'Rua Fortunato Ferraz, 250','Jerivás condominium address unverified/drift');
+  assert.equal(agent?.address?.streetAddress,apartment.address.streetAddress,'Jerivás on-site identity mismatch');
+  assert(!now.some(n=>type(n,'Offer')),'Jerivás cannot declare unsourced active offers');
+ }
  const beforeTypes=new Set(base.map(n=>n['@type']));
  const currentTypes=new Set(now.map(n=>n['@type']));
  // Count alone is never the Google rich-result count. This detects concrete
@@ -59,5 +67,5 @@ for(const slug of slugs){
 console.log('\nLEGACY COVERAGE AUDIT (missing types are NOT fabricated):');
 for(const x of issues.filter(x=>x.legacy))console.log('DEBT',x.slug,'nodes='+x.entities,'missing='+x.missing);
 console.log('DEBT_SUMMARY',JSON.stringify({projectPages:slugs.length,pagesWithLessThanEightEntities:slugs.filter(slug=>issues.some(x=>x.slug===slug&&x.entities<8)).length,legacyCoverageFindings:issues.filter(x=>x.legacy).length}));
-assert.equal(slugs.length,25,'Expected 25 project pages; catalog expansion requires updating the audited scope');
-console.log('PASS: no schema removals/regressions in 25 project pages, Orbita commercial coverage strict, legacy shortfalls reported');
+assert.equal(slugs.length,26,'Expected 26 audited project pages including Jerivás');
+console.log('PASS: no schema removals/regressions in 26 project pages, Orbita commercial coverage strict, Jerivás commercial schema checked, legacy shortfalls reported');
