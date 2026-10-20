@@ -7,7 +7,7 @@ const html=read("src-greenn/empreendimentos/jerivas-caminhos-da-lapa/index.html"
 const css=read("src-greenn/empreendimentos/jerivas-caminhos-da-lapa/jerivas.css");
 const config=JSON.parse(read("vercel.json"));
 const sitemap=read("sitemap.xml");
-const blog=read("src-greenn/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/index.html");
+const blog=read("src-greenn/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/index.html");
 const urban=read("src-greenn/blog/bairros-sao-paulo/lapa-vila-anastacio-como-escolher/index.html");
 assert.deepEqual(config.rewrites.filter(x=>x.source===route),[{source:route,destination:"/src-greenn/empreendimentos/jerivas-caminhos-da-lapa/index.html"}]);
 assert.ok(sitemap.includes("<loc>"+url+"</loc>"));
