@@ -1,0 +1,22 @@
+name: Jerivas Commercial SEO and Form46
+on:
+  pull_request:
+    paths:
+      - 'src-greenn/empreendimentos/jerivas-caminhos-da-lapa/**'
+      - 'src-greenn/blog/bairros-sao-paulo/lapa-vila-anastacio-como-escolher/index.html'
+      - 'src-greenn/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/index.html'
+      - 'vercel.json'
+      - 'sitemap.xml'
+      - 'scripts/validate-jerivas-commercial.mjs'
+      - '.github/workflows/jerivas-commercial.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/validate-jerivas-commercial.mjs

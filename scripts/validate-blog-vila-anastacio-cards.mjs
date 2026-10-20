@@ -19,7 +19,7 @@ assert.equal((html.match(/class="mnt-urban-hero-photo"/g)||[]).length,1);
 assert.ok(html.includes("id=\"empreendimentos-caminhos\""));
 assert.ok(!html.includes("Lapa ou Vila Anastácio"));
 assert.equal((html.match(/<h1\b/g)||[]).length,1);
-assert.ok(html.includes("https://wa.me/5511960779328?text=Quero%20saber%20mais%20sobre%20o%20Jeriv"));
+assert.ok(html.includes('href="/empreendimentos/jerivas-caminhos-da-lapa/"'),"Jerivás commercial destination must stay on MoreTegra");
 assert.ok(html.includes("https://wa.me/5511960779328?text=Quero%20saber%20mais%20sobre%20o%20Home"));
 assert.ok(css.includes("@media(max-width:680px)")&&css.includes("grid-template-columns:1fr"));
 const json=html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
