@@ -49,4 +49,27 @@ assert.ok(html.includes('data-mnt-page-identity="jerivas_caminhos_da_lapa_projec
 assert.ok(html.includes('href="https://www.caminhosdalapategra.com.br/jerivas/"'),"history owner linked");
 for(const page of [blog,urban])assert.ok(page.includes('href="'+route+'"'),"blog commercial link missing");
 assert.ok(css.includes("grid-template-columns:1fr")&&css.includes(".floating"));
+
+const galleryJs=read("src-greenn/empreendimentos/jerivas-caminhos-da-lapa/jerivas-gallery.js");
+assert.ok(html.includes('<strong>Entregue</strong><span>Sob consulta</span>'),"fourth fact must display Entregue / Sob consulta");
+assert.ok(!html.includes('<strong>Entregue</strong><span>Venda original encerrada</span>'),"old fact label forbidden");
+assert.ok(html.includes('id="sabrina"')&&html.includes('id="jerivas-sabrina-title"'),"dedicated Sabrina section");
+assert.ok(html.includes('class="sabrina-photo"')&&html.includes('CRECI-SP 209.905-F'),"Sabrina portrait and professional identity");
+assert.ok(html.includes('class="section contact contact-light"'),"light RESF lead section");
+assert.ok(css.includes('.contact-light .form')&&css.includes('background:#fff'),"light form styling");
+assert.ok(html.includes('id="galeria"')&&html.includes('data-jerivas-gallery'),"functional scene gallery");
+assert.equal((html.match(/data-gallery-index="/g)||[]).length,6,"six gallery scene controls");
+assert.ok(html.includes('data-gallery-prev')&&html.includes('data-gallery-next'),"gallery previous and next");
+assert.ok(galleryJs.includes("touchstart")&&galleryJs.includes("touchend")&&galleryJs.includes("ArrowRight")&&galleryJs.includes("ArrowLeft"),"touch and keyboard gallery");
+assert.ok(html.includes('id="plantas"')&&html.includes('data-jerivas-plans'),"RESF plans section");
+assert.equal((html.match(/data-plan-index="/g)||[]).length,3,"implantation plus two plant variants");
+for(const token of ["202ea214-2bbe-411b-b821-bc6f1824360a.jpg","e3256c7d-f305-4e61-bf17-222d0d7a6c33.jpg","216cf6ad-0064-4b18-972f-09f1a4714b30.jpg"])assert.ok(galleryJs.includes(token),"official Jerivás plan missing "+token);
+assert.ok(html.includes('id="localizacao"')&&html.includes('class="map-visual"'),"RESF location and map");
+assert.ok(html.includes('class="map-hit"')&&html.includes('class="map-actions"'),"map must offer WhatsApp location CTA");
+assert.ok(css.includes('pointer-events:none')&&css.includes('.map-hit'),"non-interactive iframe and fully clickable WhatsApp overlay");
+assert.equal((html.match(/<figure><img src="https:\/\/stracctegra.blob.core.windows.net\/assets\/EmpreendimentoVitrine\/317\//g)||[]).length,3,"three Lapa neighborhood images");
+assert.ok(html.includes('/src-greenn/empreendimentos/jerivas-caminhos-da-lapa/jerivas-gallery.js'),"gallery JS deferred");
+assert.ok(html.includes('loading="lazy"'),"images below the fold lazy loaded");
+assert.ok(html.indexOf('id="galeria"')<html.indexOf('id="plantas"'),"gallery must precede floorplan selector for primary and secondary SEO image alignment");
+assert.ok(galleryJs.includes('aria-pressed'),"selector state must update");
 console.log(JSON.stringify({pass:true,page:url,schemaNodes:graph.length,faq:5,pics:pics.length,formId:46,commercialLinks:2}));
