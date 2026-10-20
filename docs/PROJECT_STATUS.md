@@ -1,3 +1,10 @@
+## 2026-10-20 — Blog: nova diretriz editorial de originalidade integral
+
+- Proprietário identificou risco de slugs, H1 e conteúdo excessivamente parecidos com o blog Tegra. A revisão de Lapa (#462) estabelece o padrão autoral para o **inventário inteiro**.
+- Catálogo de referência: 48 cartões (12 Mercado, 12 Dicas & Decoração, 12 Lifestyle, 12 Tegra+), sem inferir 48 páginas efetivamente indexadas; marcadores `EDITORIAL_PENDING/noindex` requerem inspeção do HTML e da rota.
+- Próximo gate: matriz auditável URL/status/slug/H1/title/intent/conteúdo vs referências Tegra, plano de migração por lotes e aceitação do usuário. Sem autorização de substituição ou merge em massa.
+- Documento canônico: `docs/sfjm/MNT_BLOG_ORIGINALIDADE_INTEGRAL_HANDOFF_2026-10-20.md`. Esta entrada registra decisão e não declara artigos revisados ou publicados.
+
 ## 2026-10-19 — Hub regional SEO/RESF, PR #440 em produção
 
 - PR #440 MERGED via squash `f9960079cd43aad3ee880b0ce17e71888a31d40f`; Vercel Production READY `dpl_2J3Wz6khzVc8LzPQ5PYUNnvTviHF` no mesmo SHA. Dois workflows observados SUCCESS (favicon e duas imagens). Usuário confirmou aceite visual.
