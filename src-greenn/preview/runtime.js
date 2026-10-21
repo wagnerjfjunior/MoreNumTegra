@@ -123,7 +123,8 @@
   function composeLeadContext(form) {
     const project = leadProjectContext(form);
     const intent = String(form.elements["texto-livre"]?.value || "").trim();
-    return intent ? `${project} | ${intent}` : project;
+    const unit = String(form.dataset.leadUnit || "").trim();
+    return [project, unit ? `Unidade ${unit}` : "", intent].filter(Boolean).join(" | ");
   }
 
   function validate(form, countrySelect) {
