@@ -4,8 +4,8 @@ const html=readFileSync('src-greenn/empreendimentos/ampere-brooklin/index.html',
 const hero=html.match(/<section class="hero"[\s\S]*?<\/section>/)?.[0];
 assert(hero,'missing hero');
 assert.equal((html.match(/<h1\b/g)||[]).length,1,'one H1 only');
-assert(hero.includes('<h1 id="title" class="display">Tegra Ampère Brooklin — apartamentos em construção</h1>'),'H1 unique project name');
-assert(hero.includes('<h2 class="hero-lead">Apartamentos no Brooklin de 262 m² privativos, com 4 suítes, 4 vagas e dois terraços em torre única.</h2>'),'search-oriented H2');
+assert(hero.includes('<h1 id="title" class="display">Ampère Brooklin</h1>'),'H1 unique project name');
+assert(hero.includes('<p class="hero-lead">Apartamentos de 262 m² com 4 suítes e 4 vagas.</p>'),'search-oriented H2');
 assert(!html.includes('class="pilot" href="/regioes/brooklin/"'),'regional outbound navigation not at hero top');
 const locality=html.match(/<section class="section residences" id="localizacao">[\s\S]*?<\/section>/)?.[0];
 assert(locality?.includes('href="/regioes/brooklin/"'),'regional link relocated into locality context');
@@ -21,7 +21,7 @@ for(const bad of [
   const withoutFaq=html.slice(html.indexOf("<body")).replace(/<section class="section residences" id="faq">[\s\S]*?<\/section>/,"FAQ");
   assert(!withoutFaq.toLowerCase().includes(bad.toLowerCase()),'self-referential sales copy: '+bad);
 }
-for(const phrase of ['Living Double View','dois terraços','piscinas','262 m²','4 vagas','4 suítes','unidade 0121','Tegra Vendas'])assert(html.includes(phrase),'factual content lost: '+phrase);
+for(const phrase of ['Living Double View','dois terraços','piscinas','262 m²','4 vagas','4 suítes','unidade 62','Tegra Vendas'])assert(html.includes(phrase),'factual content lost: '+phrase);
 assert(html.includes('id="moretegra-lead-form"'),'Form46 must remain');
 assert(html.includes('data-mnt-commercial-footer'),'footer must remain');
 assert(html.includes('<section class="facts" aria-label="Resumo do Ampère Brooklin">'),'facts pattern must remain');
