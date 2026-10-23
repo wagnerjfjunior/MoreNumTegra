@@ -53,3 +53,11 @@ Executar testes e corrigir os validadores de forma isolada, documentando falhas 
 ## Atualização de aceite — 2026-10-23
 - O proprietário confirmou literalmente “Hero corrigido!!!” e depois “facts ok” no Live Sync da candidata. Marcar HERO e FACTS 2×2 como USER_ACCEPTED; não reabrir nem alterar essas áreas durante o saneamento de CI sem regressão comprovada.
 - HEAD de CI anterior à atualização documental: 13 workflows concluídos, 2 SUCCESS (social sharing metadata; Home video intent-load) e 11 FAILURE. Não declarar release liberado; a correção de hero/FACTS foi aprovada visualmente, não certificada pelo conjunto do CI.
+
+## Saneamento de CI — lote 1, 2026-10-23
+- `b6fd98aedf363490b2a781d2d0fffd15765528de`: validador SEO do Ampère passou a exigir H1/lead realmente homologados e referência à unidade 62, preservando demais invariantes SEO/FAQ/galeria.
+- `96c68e8c0f14989ec6a44a264d3b70fa0e9d57e3`: validador da paridade visual/formulário Ampère passou a exigir o hero homologado (H1, lead, Living Double View) sem remover gates Form46, FACTS, footer ou responsive.
+- `1358ac87c6bfe3490d47369afe7badae956478d6`: validador JSON-LD exige Offer R$ 3.990.700 e IDs Product/Offer da unidade 62, paridade com conteúdo visível e disponibilidade do seletor à vista R$ 3.791.165.
+- Somente arquivos `scripts/validate-ampere-*.mjs` alterados neste lote. Nenhuma alteração no HTML/JS ou baseline comercial aprovada.
+- O último HEAD acima ainda não retornou workflows no endpoint de runs no momento da leitura. STATUS = NOT_VERIFIED; não declarar 3 PASS até CI efetivamente executar.
+- Demais falhas (M4-05R CAPIITOLO, Studios Berrini, favicon, inventários, postal, Reserva CTA) continuam abertas, com separação da origem em relação à main ainda pendente.
