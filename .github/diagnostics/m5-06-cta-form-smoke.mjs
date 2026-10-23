@@ -29,7 +29,7 @@ const cases=[
   {name:"nova-floating-conditions",path:"/empreendimentos/nova-vivere/",cta:'.mt-quick-lead[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"garden-conditions",path:"/empreendimentos/garden-design/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"garden-floating-conditions",path:"/empreendimentos/garden-design/",cta:'.mt-quick-lead[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
-  {name:"capiitolo-conditions",path:"/empreendimentos/capiitolo-piero-lissoni/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
+  {name:"capiitolo-conditions",path:"/empreendimentos/capiitolo-piero-lissoni/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade — CAPIITOLO, unidade 33, promocional"},
   {name:"capiitolo-visit",path:"/empreendimentos/capiitolo-piero-lissoni/",cta:'.tour-card a[data-form-intent="schedule_visit"]',expected:"Agendar visita"}
 ];
 
