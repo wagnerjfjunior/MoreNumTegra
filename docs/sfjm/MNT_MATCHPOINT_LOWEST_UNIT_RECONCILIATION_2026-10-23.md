@@ -90,3 +90,8 @@ Toda alteração efetiva de unidade/preço deve ser reconciliada em TODAS as sup
 - A Home utiliza padrão já existente `cashOffer:true`, `priceLabel:"À vista"`, CTA e deep link `?unidade=412#valores` para destacar AP0412.
 - Página Mozae: seletor `301/807/412`; AP0412 mostra preço à vista e comparativo de tabela. Form 46 preservado e intenção vinculada à unidade no seletor. JSON-LD Product/Offer alterado para AP0412; AP809 não é mais oferta publicada nesta candidata.
 - CI/QA do último commit ainda requer conclusão; não publicar em produção antes dos gates. A fonte comercial é informação diretamente fornecida pelo proprietário; não afirmar vigência ou disponibilidade automática.
+
+## Ajuste de Home — 2026-10-23
+- Proprietário determinou apagar apenas o card Home Mozae genérico da AP0301 (46 m², R$ 721.510).
+- Home passa a apresentar **2 cards Mozae**: AP807/72 m²/R$ 1.015.840 e AP0412/44,85 m²/R$ 606.000 à vista. Código alterado em `src-greenn/moretegra.js` commit `82b63b4ac0c175ec9b899e4b6589d5f6c2fa3293`.
+- A página exata do Mozae e o seletor AP0301 permanecem sem alteração nesta solicitação; ocultação do card na Home não significa revogação da oferta em outras superfícies. PR segue Draft e produção preservada.
