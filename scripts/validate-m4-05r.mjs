@@ -43,7 +43,7 @@ const pages = [
     schemaId: 'mnt-capiitolo-schema',
     requiredTypes: ['WebSite', 'WebPage', 'BreadcrumbList', 'ApartmentComplex', 'FloorPlan', 'ImageObject', 'RealEstateAgent', 'Brand', 'Person', 'Service'],
     requiredIds: ['https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#webpage', CAPIITOLO_PROJECT_ID, TEGRA_BRAND_ID, SABRINA_ID, CAPIITOLO_AGENT_ID],
-    visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328', 'R$ 3.539.900', 'Ref. 210 m² · unidade 33 · Ago/26'],
+    visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328', 'R$ 3.350.000', 'Unidade 33'],
     commercialProjectId: 'capiitolo-piero-lissoni'
   },
   {
