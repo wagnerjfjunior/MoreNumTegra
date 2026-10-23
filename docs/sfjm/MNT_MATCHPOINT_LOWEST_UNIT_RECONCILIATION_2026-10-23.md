@@ -66,3 +66,20 @@ Toda alteração efetiva de unidade/preço deve ser reconciliada em TODAS as sup
 
 ## Confirmação do proprietário — 2026-10-23 17:36 BRT
 - **Bem Moema residencial, unidade correta: AP202.** Não AP0202. Confirmação explícita nesta conversa. Atualizar referência de Home, página exata, JSON-LD IDs Product/Offer, preço R$ 1.550.000, validadores e toda superfície de publicação que use a mesma oferta. A numeração AP0202 é somente histórico para comparar snapshots e nunca deve permanecer no runtime candidato.
+
+## Adendo comercial solicitado pelo proprietário — 2026-10-23
+1. **YPY Alto do Ipiranga:** AP0207, R$ 727.650 no MoreTegra; menor valor no material Match Point para AP1507 (65 m²) é R$ 740.000. Manter oferta publicada; não trocar uma oferta mais barata por uma mais cara.
+2. **Copy do consumidor:** remover menção explícita “(Match Point, outubro/2026)” de cards da Home, Ária e Órbita. O documento permanece citado neste handoff apenas como evidência interna.
+3. **Bem Moema Studios & Offices:** decisão expressa nesta conversa: trocar referência da unidade Studio 1702/R$ 509.600 pela unidade AP1102/26 m²/R$ 418.500, inclusive Home, página exata e coleção de studios. Identidade do empreendimento foi escolhida pelo proprietário; revisão histórica de vínculo documental não deve ser confundida com validação live de estoque.
+4. **Ária Higienópolis:** adicional à referência AP1812/30 m²/R$ 455.100, Home ganhou card de apartamento AP2102/53 m²/R$ 856.480, com link `?unidade=2102#valores`. Página exata ganhou seletor AP1812/AP2102 com contexto de Form46; não presumir disponibilidade.
+5. **Mozae Higienópolis:** manter referência existente AP0301/46 m²/R$ 721.510 e criar Home cards AP807/72 m²/R$ 1.015.840 e AP809/73 m²/R$ 1.027.180, com deep links e seletor na página exata; Product/Offer individuais para cada referência. O Match Point associa AP807/AP808 a 72 m² e AP809/AP810 a 73 m², **não comprova que as unidades sejam 2 e 3 dormitórios**. Não publicar alegação de 3 dormitórios sem fonte técnica.
+6. **Garden Design:** mídia de campanha JPEG fornecida pelo proprietário nesta conversa identifica unidade **101 de 61 m² por R$ 695.600**, obra iniciada, e demonstra sugestão de fluxo: sinal 50 mil, 32 mensais de 2.800, 3 anuais de 12 mil, uma única de 50 mil e financiamento de 470 mil. Soma exata do fluxo = R$ 695.600. Home/página individual atualizados para unidade 101 e preço R$ 695.600. A mídia ainda não foi publicada em origem/CDN autorizada; **imagem é evidência fornecida, não um arquivo acessível por URL pública**. Não utilizar endereço do estande Rua Fortunato Ferraz, 625 como endereço do empreendimento.
+7. **Caminhos da Lapa:** páginas no repositório `wagnerjfjunior/CaminhosdaLapaTegra` verificadas na main não publicam preços destas novas ofertas; Home aponta para ofertas de Nova Vivere e Garden Design no MoreTegra. Nenhuma mudança de preço nesse repo nesta rodada.
+
+### Gates pendentes
+- CI completo da PR #474 e inventário de validações congeladas; alterações novas podem exigir atualização explícita de invariantes comerciais sem enfraquecer segurança/layout/SEO/FAQ.
+- QA mobile touch dos seletores Ária e Mozae e comportamento de formulário por unidade; não enviar lead real sem autorização.
+- Garantir que `ItemList` da coleção de investimentos mantém o mesmo número de cards e SEO estruturado.
+- Verificar JSON-LD Offer/Product do Garden Design e Ária para ofertas adicionais, e ausência de claims contraditórias.
+- Confrontar referências internas/canônicas de oferta (snapshots CDP) antes de publicação.
+- PR permanece Draft, sem autorização implícita para merge/deploy desta rodada.
