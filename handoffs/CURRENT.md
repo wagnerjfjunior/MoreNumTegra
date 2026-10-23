@@ -1,3 +1,7 @@
+## 2026-10-23 — RELEASE AMPÈRE + CAPIITOLO PR #472
+
+- PR #472 MERGED, squash `6d20e9102659c3288f7da18ac20871138904b2a2`; 13/13 checks PASS no HEAD `d9c9ce3`; Vercel Production `dpl_AfKcdWavJxVEskWGSwUkMBpGZYH9` READY no mesmo SHA de release. Usuário aprovou via Live Sync os quatro cards/seletores, hero Ampère, FACTS 2×2 e badge WhatsApp RESF. HTTP/browser público pós-release, Form46 real/CRM, Lighthouse e indexação continuam NOT_VERIFIED. Recibo: `docs/sfjm/MNT_AMPERE_CAPIITOLO_PR472_PRODUCTION_RELEASE_RECEIPT_2026-10-23.md`. Este cabeçalho substitui o status antigo "#470/#471 sem merge" exclusivamente para o release consolidado; prioridades editoriais e clusters continuam independentes.
+
 ## 2026-10-22 — HANDOFF ATIVO: CAPIITOLO / AMPÈRE — PRs #470 e #471
 
 Retomada comercial prioritária. **Documento obrigatório:** `docs/sfjm/MNT_AMPERE_CAPIITOLO_PR470_471_HANDOFF_2026-10-22.md` (branch `sfjm/capiitolo-ampere-home-price-cards-20261022`, PR #471). Quatro valores e copy concisa dos cards aprovados; falta fazer os dois cards de cada empreendimento abrirem a página individual com seletor de condição (`?condicao=promocional` / `?condicao=avista`) análogo ao Órbita. Não reescrever cards com justificativas; respeitar adendo RESF. PR #470 hero Ampère independente. **Sem merge nem publicação comprovada; resolver estado live, finalizar seletor, testar e só depois liberar produção e reindexação.**
