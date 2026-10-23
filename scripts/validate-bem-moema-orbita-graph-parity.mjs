@@ -64,6 +64,11 @@ for(const oldNode of original){
  for(const k of allowed){if(Object.hasOwn(oldNode,k))normalized[k]=structuredClone(oldNode[k]);else delete normalized[k];}
  if(oldNode['@type']==='Product'){assert.equal(curr.additionalProperty?.value,'Unidade AP202 · 80 m² · R$ 19.300/m² (referência do Match Point) · valor de referência R$ 1.550.000');normalized.additionalProperty=structuredClone(oldNode.additionalProperty);normalized['@id']=oldNode['@id'];normalized.name=oldNode.name;normalized.description=oldNode.description;normalized.offers=structuredClone(oldNode.offers);}
  if(oldNode['@type']==='Offer'){assert.equal(curr.price,'1550000.00');normalized.price=oldNode.price;normalized.description=oldNode.description;normalized['@id']=oldNode['@id'];normalized.itemOffered=structuredClone(oldNode.itemOffered);}
+ if(oldNode['@type']==='FAQPage'){
+  assert.equal(curr.mainEntity.length,oldNode.mainEntity.length,'FAQ cardinality changed');
+  assert.equal(curr.mainEntity[0].acceptedAnswer?.text,'A referência comercial do MoreTegra é a partir de R$ 1.550.000 para a unidade AP202 de 80 m². Preço e disponibilidade devem ser confirmados no atendimento.','AP202 FAQ offer drift');
+  normalized.mainEntity[0].acceptedAnswer.text=oldNode.mainEntity[0].acceptedAnswer.text;
+ }
  assert.deepEqual(normalized,oldNode,'Unexpected delta in '+oldNode['@type']);
 }
 assert.equal(one('Offer').price,'1550000.00');
