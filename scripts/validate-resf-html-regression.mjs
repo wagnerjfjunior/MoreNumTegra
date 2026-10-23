@@ -47,7 +47,7 @@ for(const [slug,street,cep] of pages){
   // Project postal address / CEP / municipality checks continue outside this branch.
   const approved=execFileSync('git',['show','f1324ef2fbee1e33179385ec1f189c1dd5bb98cf:'+filename],{encoding:'utf8'});
   assert.equal(candidate,approved,slug+': approved commercial runtime HTML/schema has drifted');
- }elseif(slug==='bem-moema-studios-offices'){
+ }else if(slug==='bem-moema-studios-offices'){
     const form=x=>x.match(/<form id="moretegra-lead-form"[\s\S]*?<\/form>/)?.[0];
     const sources=x=>[...x.matchAll(/<(?:img|iframe)\b[^>]*>/g)].map(m=>(m[0].match(/\bsrc="([^"]+)"/)||[])[1]);
     const code=x=>[...x.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)].filter(m=>!m[0].includes('application/ld+json')).map(m=>m[0]);
