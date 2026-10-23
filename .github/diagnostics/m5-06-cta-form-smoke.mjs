@@ -44,7 +44,7 @@ for(const [browserName,type] of Object.entries({chromium,firefox,webkit})){
     await page.waitForSelector(test.cta,{state:"attached",timeout:20000});
     if(test.kind==="external-whatsapp"){
       const cta=page.locator(test.cta).first();
-      const label=(await cta.innerText()).replace(/\\s+/g," ").trim();
+      const label=(await cta.innerText()).replace(/\s+/g," ").trim();
       const href=await cta.getAttribute("href");
       if(label!=="Consulte disponibilidade"||href!==test.expectedHref)
         throw new Error(`${browserName}/${test.name}: availability WhatsApp label or approved URL drift: ${label} / ${href}`);
