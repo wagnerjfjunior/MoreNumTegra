@@ -17,7 +17,15 @@ for(const slug of slugs){
  const path=root+'/'+slug+'/index.html';
  const now=graph(readFileSync(path,'utf8'));
  let base;try{base=graph(execFileSync('git',['show',BASE+':'+path],{encoding:'utf8',stdio:['ignore','pipe','ignore']}))}catch{base=[]}
- for(const req of mustExist)assert(now.some(n=>type(n,req)),slug+': missing essential '+req);
+ const requiredCore=slug==='studios-berrini'?['WebPage','Place']:mustExist;
+ for(const req of requiredCore)assert(now.some(n=>type(n,req)),slug+': missing essential '+req);
+ if(slug==='studios-berrini'){
+   assert(!now.some(n=>type(n,'ApartmentComplex')),'NR commercial project cannot fabricate residential ApartmentComplex');
+   const place=now.find(n=>type(n,'Place')&&n['@id']==='https://www.moretegra.com.br/empreendimentos/studios-berrini/#project');
+   assert(place?.address?.streetAddress==='Rua Arandu, 150','Studios Berrini verified street must remain');
+   assert(place.address.addressLocality==='São Paulo'&&place.address.addressRegion==='SP','Studios Berrini locality must remain');
+   assert(now.some(n=>type(n,'RealEstateAgent')),'Studios Berrini commercial contact missing');
+ }
  for(const old of base){
    if(!old['@id'])continue;
    let newer=now.find(n=>n['@id']===old['@id']);
@@ -67,5 +75,5 @@ for(const slug of slugs){
 console.log('\nLEGACY COVERAGE AUDIT (missing types are NOT fabricated):');
 for(const x of issues.filter(x=>x.legacy))console.log('DEBT',x.slug,'nodes='+x.entities,'missing='+x.missing);
 console.log('DEBT_SUMMARY',JSON.stringify({projectPages:slugs.length,pagesWithLessThanEightEntities:slugs.filter(slug=>issues.some(x=>x.slug===slug&&x.entities<8)).length,legacyCoverageFindings:issues.filter(x=>x.legacy).length}));
-assert.equal(slugs.length,26,'Expected 26 audited project pages including Jerivás');
-console.log('PASS: no schema removals/regressions in 26 project pages, Orbita commercial coverage strict, Jerivás commercial schema checked, legacy shortfalls reported');
+assert.equal(slugs.length,27,'Expected 27 audited project pages including NR Studios Berrini and Jerivás');
+console.log('PASS: no schema removals/regressions in 27 project pages, Orbita commercial coverage strict, Jerivás commercial schema checked, legacy shortfalls reported');

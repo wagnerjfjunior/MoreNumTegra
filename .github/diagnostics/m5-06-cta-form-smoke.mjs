@@ -24,12 +24,12 @@ const cases=[
   {name:"chateau-conditions",path:"/empreendimentos/chateau-jardin/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"chateau-floating-conditions",path:"/empreendimentos/chateau-jardin/",cta:'.mt-quick-lead[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"reserva-visit",path:"/empreendimentos/reserva-caminhos-da-lapa/",cta:'.hero-cta[data-form-intent="schedule_visit"]',expected:"Agendar visita"},
-  {name:"reserva-floating-conditions",path:"/empreendimentos/reserva-caminhos-da-lapa/",cta:'.mt-quick-lead[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
+  {name:"reserva-floating-whatsapp",path:"/empreendimentos/reserva-caminhos-da-lapa/",cta:'.mt-quick-lead[data-project-intent="floating-conditions"]',kind:"external-whatsapp",expectedHref:"https://wa.me/5511960779328?text=Quero%20saber%20mais%20sobre%20o%20Reserva%20Caminhos%20da%20Lapa."},
   {name:"nova-conditions",path:"/empreendimentos/nova-vivere/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"nova-floating-conditions",path:"/empreendimentos/nova-vivere/",cta:'.mt-quick-lead[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"garden-conditions",path:"/empreendimentos/garden-design/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"garden-floating-conditions",path:"/empreendimentos/garden-design/",cta:'.mt-quick-lead[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
-  {name:"capiitolo-conditions",path:"/empreendimentos/capiitolo-piero-lissoni/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
+  {name:"capiitolo-conditions",path:"/empreendimentos/capiitolo-piero-lissoni/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade — CAPIITOLO, unidade 33, promocional"},
   {name:"capiitolo-visit",path:"/empreendimentos/capiitolo-piero-lissoni/",cta:'.tour-card a[data-form-intent="schedule_visit"]',expected:"Agendar visita"}
 ];
 
@@ -42,6 +42,20 @@ for(const [browserName,type] of Object.entries({chromium,firefox,webkit})){
     if(!response?.ok()) throw new Error(`${browserName}/${test.name}: HTTP ${response?.status()}`);
     await page.waitForSelector('[data-moretegra-lead-form] select[name="texto-livre"]',{state:"attached",timeout:20000});
     await page.waitForSelector(test.cta,{state:"attached",timeout:20000});
+    if(test.kind==="external-whatsapp"){
+      const cta=page.locator(test.cta).first();
+      const label=(await cta.innerText()).replace(/\s+/g," ").trim();
+      const href=await cta.getAttribute("href");
+      if(label!=="Consulte disponibilidade"||href!==test.expectedHref)
+        throw new Error(`${browserName}/${test.name}: availability WhatsApp label or approved URL drift: ${label} / ${href}`);
+      if(await cta.getAttribute("target")!=="_blank" || !(await cta.getAttribute("rel"))?.includes("noopener"))
+        throw new Error(`${browserName}/${test.name}: secure external target lost`);
+      if(await cta.getAttribute("data-form-intent"))
+        throw new Error(`${browserName}/${test.name}: external consultation must not masquerade as Form46 intent`);
+      console.log(JSON.stringify({browser:browserName,test:test.name,cta:label,href,result:"PASS"}));
+      await context.close();
+      continue;
+    }
     const ctaText=(await page.locator(test.cta).first().innerText()).replace(/\s+/g," ").trim();
     await page.locator(test.cta).first().tap();
     await page.waitForTimeout(80);

@@ -74,7 +74,7 @@ assert(bueno.includes('data-project-intent="floating-conditions" data-form-inten
 assert(chateau.includes('data-form-intent="conditions">Receber condições ↓</a>'),"Château hero CTA maps to conditions");
 assert(chateau.includes('data-project-intent="floating-conditions" data-form-intent="conditions"'),"Château floating CTA maps to conditions");
 assert(/<a\b(?=[^>]*class="hero-cta")(?=[^>]*href="#formulario")(?=[^>]*data-form-intent="schedule_visit")[^>]*>Agende sua visita e conheça as oportunidades disponíveis ↓<\/a>/.test(reserva),"Reserva hero CTA maps to schedule_visit");
-assert(reserva.includes('data-project-intent="floating-conditions" data-form-intent="conditions"'),"Reserva floating CTA maps to conditions");
+assert(/<a\b(?=[^>]*class="mt-quick-lead")(?=[^>]*data-project-intent="floating-conditions")(?=[^>]*href="https:\/\/wa\.me\/5511960779328\?text=[^"]+")[^>]*>Consulte disponibilidade<\/a>/.test(reserva),"Reserva floating CTA must preserve approved WhatsApp availability consultation");
 assert(nova.includes('data-form-intent="conditions">Receber condições ↓</a>'),"Nova Vivere hero CTA maps to conditions");
 assert(nova.includes('data-project-intent="floating-conditions" data-form-intent="conditions"'),"Nova Vivere floating CTA maps to conditions");
 assert(/<a\b(?=[^>]*class="hero-cta")(?=[^>]*href="#formulario")(?=[^>]*data-form-intent="conditions")[^>]*>Receba condições e agende sua visita ↓<\/a>/.test(garden),"Garden Design hero CTA maps to conditions");
