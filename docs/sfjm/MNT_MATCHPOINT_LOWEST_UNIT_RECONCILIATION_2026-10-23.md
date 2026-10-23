@@ -36,3 +36,30 @@ Fonte da campanha: `Match Point - São Paulo 1.pdf`, documento fornecido pelo pr
 - [ ] Não enviar lead real ao CRM, GSC reindex ou campanha paga nesta revisão.
 
 A branch é **candidata**, não há publicação. O aceite do release #472 não autoriza automaticamente a publicação deste novo pacote comercial.
+
+## Abrangência comercial obrigatória — decisão do proprietário (23/10/2026)
+Toda alteração efetiva de unidade/preço deve ser reconciliada em TODAS as superfícies existentes que anunciam a MESMA oferta, jamais apenas na Home:
+1. `src-greenn/moretegra.js` (Home, filtros, cards e deep links).
+2. `src-greenn/investimentos/studios-e-salas-comerciais/index.html` (cards de studio/comercial, JSON-LD ItemList e filtragem, SOMENTE quando existir oferta correspondente e mesma identidade de projeto).
+3. `src-greenn/empreendimentos/<slug>/index.html` (texto visível, unidade, tipologia, metragens, FAQ/JSON-LD Product/Offer, CTA e parâmetros de URL).
+4. `wagnerjfjunior/CaminhosdaLapaTegra`, domínio `https://www.caminhosdalapategra.com.br/`, nas páginas que efetivamente exibirem valores da MESMA oportunidade; preservar as páginas institucionais sem preço e os links para a página comercial proprietária. Não misturar a superfície `caminhosdalapaoficial.com.br` (outro domínio/owner).
+5. Demais superfícies comerciais indexáveis e objetos de dados/fixtures que tragam preço concreto: localizar e separar `source-of-truth`, referência histórica, validação e conteúdo publicado antes de qualquer alteração.
+
+### Auditoria de superfícies neste slice
+| Superfície | Constatação live read-only | Próxima ação |
+|---|---|---|
+| MoreTegra Home | Home atual substituída na candidata para AP1812 Ária, Bem Moema AP0202 e Órbita AP1814/AP1305 | QA/CI aberto |
+| MoreTegra Ária exata | Oferta AP1812 R$455.100 candidata | QA/CI aberto |
+| MoreTegra Bem Moema residencial | AP0202 R$1.550.000 candidata; identificação AP202 versus AP0202 exige verificação | QA/CI aberto |
+| MoreTegra Órbita exata | AP1814 R$343.900 e AP1305 R$645.800 candidatas, preservar seletores/CTAs | QA/CI aberto |
+| MoreTegra investimentos/studios | Card Ária **já** traz AP1812, R$455.100 em HTML e data-price=455100; não reescrever | PASS STATIC quanto ao preço da oferta |
+| MoreTegra investimentos/studios | Cards Órbita na coleção são salas/lojas COMERCIAIS; oferta AP1814 é apartamento residencial de 1 dormitório, não studio formal | **NÃO** transplantar preço residencial a esses cards |
+| MoreTegra Bem Moema Studios & Offices | Página individual para outro projeto, oferta Studio 1702 R$509.600 | Sem fonte que vincule a unidade AP1102 do PDF ao projeto Studios & Offices; preservar |
+| Caminhos Home | `index.html` sem preço `R$`; links para ELO Duo interno, Nova Vivere/Garden Design no MoreTegra | Sem edição de valor a fazer; garantir links corretos |
+| Caminhos ELO Duo | `eloduo/index.html` sem preço `R$` no código atual | Não introduzir preço artificial |
+| Caminhos ELO | `elo/index.html` sem preço `R$` | Não introduzir preço artificial |
+| Caminhos Reserva | `reserva/index.html` sem preço `R$` | Preservar `Consulte disponibilidade` |
+| Caminhos Jerivás | `jerivas/index.html` sem preço `R$` | Preservar sob consulta |
+| Caminhos Nova Vivere/Garden Design | Não há rotas exatas locais homônimas; Home aponta para exatas MoreTegra | Não duplicar páginas comerciais |
+
+**NOTA:** estas verificações são de código GitHub canônico; não certificam HTTP de produção ou vigência/estoque do Match Point. PR de release só poderá sair de Draft após revalidar CI, catálogo/rotas, tipologia e governança comercial e obter aceite de publicação específico. Os dados de `commercial-values.json` incluem referências históricas de outro momento e devem ser reconciliados antes de declarar ausência total de divergências.
