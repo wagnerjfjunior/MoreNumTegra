@@ -40,10 +40,16 @@ Em `ec0fe0a3...`, 13 workflows observados: 3 PASS e 10 FAIL. Classificação de 
 - [x] Branch congelada de baseline aprovada.
 - [x] Hero + CSS FACTS trazidos da #470 de forma delimitada.
 - [ ] Comparar checks do HEAD desta candidata e classificar falhas contra main no mesmo conjunto de validators.
-- [ ] LVR Live Sync: mobile 320/360/390/430 + desktop, verificar hero/FACTS 2×2, badge WhatsApp, navegação, as 4 ofertas e Form 46 sem envio real.
+- [x] USER_CONFIRMED no LVR Live Sync: hero Ampère corrigido e FACTS 2×2 aprovados em 2026-10-23. Aceite visual do usuário; não equivale a medição independente em todas as larguras.
+- [x] USER_CONFIRMED anteriormente no LVR Live Sync: condições comerciais, seletores e badge oficial WhatsApp RESF.
+- [ ] QA técnico independente nos tamanhos mobile 320/360/390/430 + desktop; testes de Form 46 sem submissão real e regressões restantes.
 - [ ] Conferir imagem hero 1920x1080 HTTP e fallback; FAQ/schema, GTM consent, canonical e CTA.
 - [ ] Resolver bloqueios CI introduzidos ou testes obsoletos com provas, sem diminuir as garantias do validador.
 - [ ] Aprovação específica de merge, confirmação Production READY no SHA aprovado e smoke HTTP/SEO antes da indexação.
 
 ## Próxima ação segura
 Executar testes e corrigir os validadores de forma isolada, documentando falhas já presentes na main. Não fazer merge da PR candidata até que gates estejam atendidos e que o proprietário aprove o release consolidado.
+
+## Atualização de aceite — 2026-10-23
+- O proprietário confirmou literalmente “Hero corrigido!!!” e depois “facts ok” no Live Sync da candidata. Marcar HERO e FACTS 2×2 como USER_ACCEPTED; não reabrir nem alterar essas áreas durante o saneamento de CI sem regressão comprovada.
+- HEAD de CI anterior à atualização documental: 13 workflows concluídos, 2 SUCCESS (social sharing metadata; Home video intent-load) e 11 FAILURE. Não declarar release liberado; a correção de hero/FACTS foi aprovada visualmente, não certificada pelo conjunto do CI.
