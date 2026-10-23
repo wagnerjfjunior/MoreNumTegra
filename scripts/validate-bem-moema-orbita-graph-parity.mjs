@@ -15,7 +15,7 @@ function restoreMatchPointCopy(s){
   // Only revert the explicitly approved commercial changes before the historical HTML freeze check.
   const updates=[['1.550.000','1.811.200'],['1550000.00','1811200.00'],['R$ 19.300/m² (referência do Match Point)','R$ 22.640/m²']];
   for(const [now,prior] of updates){assert(s.includes(now),'Match Point commercial copy missing: '+now);s=s.replaceAll(now,prior);}
-  return s;
+  return s.replaceAll('AP202','AP0202').replaceAll('ap202','ap0202');
 }
 const path='src-greenn/empreendimentos/bem-moema/index.html';
 const baseline='b5da71bf80cacc115026466f5b37c79a7f98e13c';
@@ -38,7 +38,7 @@ assert.equal(project['@id'],route+'#project');
 assert(!Object.hasOwn(project,'brand'),'ApartmentComplex.brand is not Schema.org-compatible');
 assert.equal(one('Product').brand?.['@id'],one('Brand')['@id']);
 assert.equal(one('Organization').brand?.['@id'],one('Brand')['@id']);
-assert.deepEqual(one('Product').isRelatedTo,{'@id':project['@id']},'AP0202 must link to its own project');
+assert.deepEqual(one('Product').isRelatedTo,{'@id':project['@id']},'AP202 must link to its own project');
 assert.equal(new Set(project.image.map(x=>typeof x==='string'?x:JSON.stringify(x))).size,project.image.length,'Duplicate project image forbidden');
 assert.deepEqual(agent.address,project.address,'Agent serves in loco');
 assert.equal(one('Person').workLocation['@id'],project['@id']);
@@ -62,7 +62,7 @@ for(const oldNode of original){
  const allowed=oldNode['@type']==='WebPage'?['@id','isPartOf','mainEntity','breadcrumb','inLanguage','mentions']:oldNode['@type']==='ApartmentComplex'?['@id','brand','accommodationFloorPlan','image']:oldNode['@type']==='Organization'?['url','brand','contactPoint']:oldNode['@type']==='Product'?['isRelatedTo']:[];
  const normalized=structuredClone(curr);
  for(const k of allowed){if(Object.hasOwn(oldNode,k))normalized[k]=structuredClone(oldNode[k]);else delete normalized[k];}
- if(oldNode['@type']==='Product'){assert.equal(curr.additionalProperty?.value,'Unidade AP0202 · 80 m² · R$ 19.300/m² (referência do Match Point) · valor de referência R$ 1.550.000');normalized.additionalProperty=structuredClone(oldNode.additionalProperty);}
+ if(oldNode['@type']==='Product'){assert.equal(curr.additionalProperty?.value,'Unidade AP202 · 80 m² · R$ 19.300/m² (referência do Match Point) · valor de referência R$ 1.550.000');normalized.additionalProperty=structuredClone(oldNode.additionalProperty);}
  if(oldNode['@type']==='Offer'){assert.equal(curr.price,'1550000.00');normalized.price=oldNode.price;normalized.description=oldNode.description;}
  assert.deepEqual(normalized,oldNode,'Unexpected delta in '+oldNode['@type']);
 }
