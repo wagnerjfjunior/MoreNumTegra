@@ -41,7 +41,13 @@ const normalized=baseGraph.filter(n=>!additions.has(n['@type'])).map(n=>{
  for(const k of fields)if(Object.hasOwn(prev,k))copy[k]=structuredClone(prev[k]);else delete copy[k];
  return copy;
 });
-assert.deepEqual(normalized,oldGraph,'Existing commercial/schema entities changed outside approved parity links');
+// Owner-approved AP202 campaign changes only the first FAQ price answer.
+const faqNew=normalized.find(n=>n['@type']==='FAQPage'),faqOld=oldGraph.find(n=>n['@type']==='FAQPage');
+assert(faqNew&&faqOld,'FAQ must be present');
+assert.equal(faqNew.mainEntity.length,faqOld.mainEntity.length,'FAQ count drift');
+assert.equal(faqNew.mainEntity[0].acceptedAnswer.text,'A referência comercial do MoreTegra é a partir de R$ 1.550.000 para a unidade AP202 de 80 m². Preço e disponibilidade devem ser confirmados no atendimento.');
+faqNew.mainEntity[0].acceptedAnswer.text=faqOld.mainEntity[0].acceptedAnswer.text;
+assert.deepEqual(normalized,oldGraph,'Existing commercial/schema entities changed outside approved AP202 price and FAQ parity');
 const ps=graph.filter(n=>n['@type']==='Product'),os=graph.filter(n=>n['@type']==='Offer');
 assert.equal(ps.length,1);assert.equal(os.length,1);
 const product=ps[0],offer=os[0],route='https://www.moretegra.com.br/empreendimentos/bem-moema/';
