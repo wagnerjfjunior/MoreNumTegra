@@ -52,7 +52,7 @@
       <h1>CAPIITOLO Tegra<br>Chácara Klabin</h1>
       <p>210 m² · 4 suítes · 3 vagas de garagem · Giardino (Garden) 281 m² · Duplex 363 m².</p>
       <p>Se você pesquisou por <strong>Capitolo Tegra</strong> ou <strong>Capitolo by Piero Lissoni</strong>, esta é a página do <strong>CAPIITOLO by Piero Lissoni</strong>, nome oficial atual do empreendimento.</p>
-      <p><strong>A partir de R$ 3.135.000,00.</strong> Ref. 210 m² · unidade 33 · Match Point · condição à vista. Fonte comercial: Match Point. Valor, unidade e disponibilidade podem mudar e devem ser confirmados no atendimento.</p>
+      <p><strong>Preço a partir de R$ 3.350.000.</strong> Unidade 33 · condição promocional de referência R$ 3.350.000. Consulte a Tegra Vendas para confirmar a vigência, valores promocionais e disponibilidade.</p>
       <p><strong>Sabrina da Tegra</strong> · Corretora Tegra Vendas · CRECI-SP 209.905-F · <a href="tel:+5511960779328">(11) 96077-9328</a> · Na recepção, solicite <strong>Sabrina da Tegra</strong>.</p>
       <p>Carregando experiência completa…</p>
     </div>
@@ -94,7 +94,7 @@
       document.open();document.write("<!doctype html>"+doc.documentElement.outerHTML);document.close();
       const conditions={promocional:{label:"Preço a partir de",price:"R$ 3.350.000",note:"Unidade 33 · condição promocional de referência R$ 3.350.000. Consulte a Tegra Vendas para confirmar a vigência, valores promocionais e disponibilidade."},avista:{label:"À vista",price:"R$ 3.135.000 à vista*",note:"*Unidade 33 · condição à vista de R$ 3.135.000. Consulte a Tegra Vendas para confirmar a vigência, valores promocionais e disponibilidade."}};
       function chooseCondition(id){const data=conditions[id];if(!data)return;document.querySelectorAll("[data-mnt-condition]").forEach(x=>x.setAttribute("aria-pressed",String(x.dataset.mntCondition===id)));const label=document.getElementById("mnt-condition-label"),price=document.getElementById("mnt-price-title"),note=document.getElementById("mnt-condition-note");if(label)label.textContent=data.label;if(price)price.textContent=data.price;if(note)note.textContent=data.note;const intent=document.getElementById("mt-lead-intent");if(intent){const option=intent.querySelector('option[value^="Condições e disponibilidade"]');if(option){option.value="Condições e disponibilidade — CAPIITOLO, unidade 33, "+(id==="avista"?"à vista":"promocional");if(intent.selectedIndex===0)intent.value=option.value;}}}
-      document.querySelectorAll("[data-mnt-condition]").forEach(x=>x.addEventListener("click",()=>chooseCondition(x.dataset.mntCondition)));
+      document.querySelectorAll("[data-mnt-condition]").forEach(x=>x.addEventListener("click",()=>{chooseCondition(x.dataset.mntCondition);const url=new URL(location.href);url.searchParams.set("condicao",x.dataset.mntCondition);history.replaceState(history.state,"",url.pathname+url.search+url.hash)}));
       const selected=new URLSearchParams(location.search).get("condicao");chooseCondition(Object.hasOwn(conditions,selected)?selected:"promocional");
     }).catch(err=>{console.error("CAPIITOLO bootstrap failed",err);const node=document.querySelector("#mnt-capiitolo-bootstrap p:last-child");if(node)node.textContent="Não foi possível carregar a experiência completa agora. Atualize a página para tentar novamente."});
   })();
