@@ -371,7 +371,12 @@ for(const [slug,street,cep] of expected){
      .replace(/<p>Compare a planta padrão e as alternativas[\s\S]*?<\/p>/,'APPROVED_PLANT_COPY')
      .replace(/<small>Mapa de contexto da região\.[\s\S]*?<\/small>/,'APPROVED_MAP_COPY')
      .replace(/<small>Quer chegar ao endereço certo\?[\s\S]*?<\/small>/,'APPROVED_MAP_COPY');
-   assert.equal(normalizeApprovedSeo(candidate),normalizeApprovedSeo(refFile),'Ampere non-editorial HTML invariant after SEO copy update');
+   // The Sep/Oct historical normalization predates owner-approved commercial
+    // conditions, hero/FACTS and WhatsApp. Pin the FULL approved integrated
+    // HTML as the new immutable runtime snapshot; the postal/schema invariants
+    // above still check historical facts independently.
+    const approvedHtml=execFileSync('git',['show','ffe7dd2183e51360c8ecf6a217f61605b8ca652a:'+filename],{encoding:'utf8'});
+    assert.equal(candidate,approvedHtml,'Ampere full HTML drifted from USER_ACCEPTED integrated release baseline');
  }else if(slug==='tiel-vila-nova-conceicao'){
    // RESF Tièl specific, source-verified commercial expansion. The separate
    // Tièl quality test verifies factual Product/Offer, two plans, FAQ pairs and
