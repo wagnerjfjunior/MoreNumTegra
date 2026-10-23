@@ -61,3 +61,15 @@ Executar testes e corrigir os validadores de forma isolada, documentando falhas 
 - Somente arquivos `scripts/validate-ampere-*.mjs` alterados neste lote. Nenhuma alteração no HTML/JS ou baseline comercial aprovada.
 - O último HEAD acima ainda não retornou workflows no endpoint de runs no momento da leitura. STATUS = NOT_VERIFIED; não declarar 3 PASS até CI efetivamente executar.
 - Demais falhas (M4-05R CAPIITOLO, Studios Berrini, favicon, inventários, postal, Reserva CTA) continuam abertas, com separação da origem em relação à main ainda pendente.
+
+## Saneamento de CI — lote 2 (2026-10-23), candidato ainda em homologação
+- M4-05R: alinhado o texto visível aprovado do CAPIITOLO unidade 33; workflow confirmado SUCCESS.
+- Favicons: adicionadas declarações canônicas nas páginas Studios Berrini NR e coleção de investimentos; workflow confirmado SUCCESS.
+- M5-06 CTA/Form: validador reconciliado com o comportamento aprovado do Reserva (CTA "Consulte disponibilidade" e WhatsApp da Sabrina). Teste Playwright estava IN_PROGRESS na consulta de 2026-10-23; não promover para PASS sem resultado final.
+- Studios Berrini NR: `ApartmentComplex` residencial não é aplicado a empreendimento NR; os validadores agora exigem `Place`, endereço Rua Arandu, 150, cidade/estado e contato de consulta remota Sabrina, sem inventar postal code ou endereço presencial no `RealEstateAgent`. Workflows de coverage/onsite confirmados SUCCESS.
+- Imagens e sitemap: colecao `/investimentos/studios-e-salas-comerciais/` ganhou verificação específica de duas imagens distintas, CollectionPage/ItemList e Open Graph; contrato rígido RESF das 41 rotas restantes foi mantido. Workflow confirmado SUCCESS.
+- Studios Berrini: rodapé atualizado para o disclaimer canônico e identificação Sabrina Tegra Vendas; validador mantém a proibição de endereço fora do footer para todos os demais empreendimentos e exige paridade com Place/footer no caso público documentado deste NR. Workflow confirmado SUCCESS no HEAD `16903b27dc5adf4d442db12b30b60157eca5ba7a`.
+- Ampère: invariantes históricos de endereço/JSON-LD preservados; comparação estrita do HTML completo passou a usar o snapshot USER_ACCEPTED `ffe7dd2183e51360c8ecf6a217f61605b8ca652a`. Workflow postal confirmado SUCCESS.
+- HEAD pré-recibo `16903b27dc5adf4d442db12b30b60157eca5ba7a`: 12 SUCCESS / 0 FAILURE / 1 IN_PROGRESS (M5-06 Playwright). NUNCA registrar esse estado como aprovação integral.
+- Não reabrir o hero, os FACTS, quatro condições comerciais, seletor e badge WhatsApp aceitos pelo proprietário. A autorização antecipada para Ready/merge/pós-merge existe, **condicionada** à conclusão positiva dos gates técnicos, comparação de SHAs e confirmação de Vercel Production READY no merge.
+- Rollback: manter commit `ec0fe0a3a7925e712932589c0cbeeb94315af08b` de baseline comercial e `ffe7dd2183e51360c8ecf6a217f61605b8ca652a` de HTML Ampère integrado, além do SHA de squash a registrar após merge. Reversão apenas por PR; não force-push da main.
