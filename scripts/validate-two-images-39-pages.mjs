@@ -15,7 +15,9 @@ assert.deepEqual(blogPaths,[
  '/blog/bairros-sao-paulo/lapa-vila-anastacio-como-escolher/',
  '/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/'
 ],'Blog sitemap additions must remain explicitly scoped');
-const paths=allPaths.filter(p=>!p.startsWith('/blog/'));
+const investmentPaths=allPaths.filter(p=>p.startsWith('/investimentos/'));
+assert.deepEqual(investmentPaths,['/investimentos/studios-e-salas-comerciais/'],'New investment collection routes need an explicit own-image audit');
+const paths=allPaths.filter(p=>!p.startsWith('/blog/')&&!p.startsWith('/investimentos/'));
 assert.equal(new Set(allPaths).size,allPaths.length,'Duplicate sitemap URLs');
 const rewrite=JSON.parse(fs.readFileSync('vercel.json','utf8')).rewrites;
 assert.equal(paths.length,41,'Expected 41 canonical URLs including Jerivás; update inventory explicitly if scope changes');
@@ -35,6 +37,16 @@ const mainImages=s=>{
   alt:(m[0].match(/\balt=["']([^"']*)["']/i)||[])[1]
  })).filter(x=>x.url);
 };
+// Investment collection is not an RESF exact-project/regional page; validate its own source contract.
+const investmentHtml=fs.readFileSync('src-greenn/investimentos/studios-e-salas-comerciais/index.html','utf8');
+const investmentImages=mainImages(investmentHtml);
+assert(investmentImages.length>=2,'Investment hub must render at least two visible images');
+assert(investmentImages[0].url!==investmentImages[1].url,'Investment hub must have independent hero/secondary images');
+assert(investmentHtml.includes('<meta property="og:image"'),'Investment hub requires share image');
+const investmentGraph=extract(investmentHtml);
+assert(investmentGraph.some(n=>n['@type']==='CollectionPage'&&n.url==='https://www.moretegra.com.br/investimentos/studios-e-salas-comerciais/'),'Investment collection schema missing');
+assert(investmentGraph.some(n=>n['@type']==='ItemList'&&n.numberOfItems===15),'Investment list must preserve 15 selected projects');
+console.log('INVESTMENT_HUB_IMAGES_PASS /investimentos/studios-e-salas-comerciais/');
 let projects=0,regions=0,home=0;
 for(const path of paths){
  const target=rewrite.find(x=>x.source===path);
