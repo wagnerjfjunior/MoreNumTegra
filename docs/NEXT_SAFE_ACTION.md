@@ -1,3 +1,9 @@
+## 2026-10-23 — Pós-release PR #474 Match Point
+
+- Em READ_ONLY, conferir Home e páginas/deep links comerciais de YPY (1507/906), Mozae (807/412), Ária (1812/2102), Órbita (1814/1305), Bem Moema e Garden Design. Confirmar seleção mobile/desktop, tabela versus promoção, 2 cards Mozae, JSON-LD e Form46 sem envio real.
+- Release já publicado: `89bf0182d4e190fcc47a09fa7e157c0856579894` e Vercel `dpl_qcM2JvYTUF2TsFMsPiHMkUcQcyFe` READY. Não reabrir preço, unidade ou layout aprovado sem evidência de regressão.
+- Recibo: `docs/sfjm/MNT_PR474_MATCHPOINT_PRODUCTION_RELEASE_RECEIPT_2026-10-23.md`.
+
 ## 2026-10-23 — Pós-release controlado Ampère/CAPIITOLO (#472)
 
 - Em READ_ONLY, executar smoke HTTP/browser da Home e das quatro URLs com `?condicao=` em `www.moretegra.com.br`, confirmando preços, seleção, botão WhatsApp, canonical/JSON-LD, mídia e consentimento. Se ferramenta não conseguir acessar, registrar UNKNOWN e solicitar apenas evidência observável, sem repetir alteração aprovada.

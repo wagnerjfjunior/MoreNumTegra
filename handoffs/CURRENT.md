@@ -1,3 +1,7 @@
+## 2026-10-23 — RELEASE COMERCIAL MATCH POINT #474
+
+- USER_APPROVED. PR #474 MERGED, squash `89bf0182d4e190fcc47a09fa7e157c0856579894`. HEAD validado `f16a7af52432451454373fd8cc51bb774e369af4` com 17/17 PASS. Vercel Production `dpl_qcM2JvYTUF2TsFMsPiHMkUcQcyFe` READY no SHA do merge. Home, páginas exatas e coleção de studios reconciliadas para YPY (AP1507/AP906), Mozae (AP807/AP0412 à vista), Ária (AP1812/AP2102), Órbita, Bem Moema, Bem Moema Studios & Offices e Garden Design. HTTP/browser independente e CRM real NOT_VERIFIED. Recibo: `docs/sfjm/MNT_PR474_MATCHPOINT_PRODUCTION_RELEASE_RECEIPT_2026-10-23.md`.
+
 ## 2026-10-23 — RELEASE AMPÈRE + CAPIITOLO PR #472
 
 - PR #472 MERGED, squash `6d20e9102659c3288f7da18ac20871138904b2a2`; 13/13 checks PASS no HEAD `d9c9ce3`; Vercel Production `dpl_AfKcdWavJxVEskWGSwUkMBpGZYH9` READY no mesmo SHA de release. Usuário aprovou via Live Sync os quatro cards/seletores, hero Ampère, FACTS 2×2 e badge WhatsApp RESF. HTTP/browser público pós-release, Form46 real/CRM, Lighthouse e indexação continuam NOT_VERIFIED. Recibo: `docs/sfjm/MNT_AMPERE_CAPIITOLO_PR472_PRODUCTION_RELEASE_RECEIPT_2026-10-23.md`. Este cabeçalho substitui o status antigo "#470/#471 sem merge" exclusivamente para o release consolidado; prioridades editoriais e clusters continuam independentes.

@@ -1,3 +1,7 @@
+## 2026-10-23 — Release comercial Match Point PR #474
+
+- USER_APPROVED, CI 17/17 PASS, merge squash `89bf0182d4e190fcc47a09fa7e157c0856579894`, Vercel Production READY `dpl_qcM2JvYTUF2TsFMsPiHMkUcQcyFe` com SHA idêntico. Atualização de Home, studios e páginas exatas em condições YPY, Mozae, Ária, Órbita, Bem Moema e Garden Design. Fonte: `docs/sfjm/MNT_PR474_MATCHPOINT_PRODUCTION_RELEASE_RECEIPT_2026-10-23.md`. Não inferir HTTP/browser externo, lead real ou vigência de campanha apenas do CI.
+
 ## 2026-10-23 — Ampère + CAPIITOLO: release PR #472
 
 - USER_APPROVED em LVR Live Sync: condições comerciais, seletor, WhatsApp RESF, hero e FACTS 2×2 mobile. PR #472 13/13 CI PASS no HEAD `d9c9ce3`; squash na main `6d20e9102659c3288f7da18ac20871138904b2a2`. Vercel Production READY deployment `dpl_AfKcdWavJxVEskWGSwUkMBpGZYH9` com SHA de runtime idêntico.
