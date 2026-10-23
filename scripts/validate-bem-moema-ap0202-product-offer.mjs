@@ -12,6 +12,12 @@ function restoreApprovedBemMoemaSurface(html){
   }
   return html;
 }
+function restoreMatchPointCopy(s){
+  // Only revert the explicitly approved commercial changes before the historical HTML freeze check.
+  const updates=[['1.550.000','1.811.200'],['1550000.00','1811200.00'],['R$ 19.300/m² (referência do Match Point)','R$ 22.640/m²']];
+  for(const [now,prior] of updates){assert(s.includes(now),'Match Point commercial copy missing: '+now);s=s.replaceAll(now,prior);}
+  return s;
+}
 const path='src-greenn/empreendimentos/bem-moema/index.html';
 const baseline='08e727aa879ab2f4afa996dfbbe40aade85c3c72';
 const html=readFileSync(path,'utf8');
@@ -19,7 +25,7 @@ const original=execFileSync('git',['show',baseline+':'+path],{encoding:'utf8'});
 const pat=/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/i;
 const oldBlock=original.match(pat),newBlock=html.match(pat);
 assert(oldBlock&&newBlock,'Expected exactly one schema block');
-assert.equal(restoreApprovedBemMoemaSurface(html.replace(newBlock[1],oldBlock[1])),original,'Changes outside JSON-LD and the approved M5-06 map/form deltas are prohibited');
+assert.equal(restoreApprovedBemMoemaSurface(restoreMatchPointCopy(html.replace(newBlock[1],oldBlock[1]))),original,'Changes outside JSON-LD and the approved M5-06 map/form deltas are prohibited');
 const oldGraph=JSON.parse(oldBlock[1])['@graph'];
 const graph=JSON.parse(newBlock[1])['@graph'];
 const baseGraph=graph.filter(n=>!['Product','Offer'].includes(n['@type']));
@@ -45,8 +51,8 @@ assert.equal(offer['@id'],route+'#offer-ap0202');
 assert.equal(product.offers['@id'],offer['@id']);
 assert.equal(offer.itemOffered['@id'],product['@id']);
 assert.equal(offer.priceCurrency,'BRL');
-assert.equal(offer.price,'1811200.00');
-const visible='Unidade AP0202 · 80 m² · R$ 22.640/m² · valor de referência R$ 1.811.200';
+assert.equal(offer.price,'1550000.00');
+const visible='Unidade AP0202 · 80 m² · R$ 19.300/m² (referência do Match Point) · valor de referência R$ 1.550.000';
 assert(html.includes(visible),'Commercial offer must be visible in human-readable page');
 assert(html.includes('Consulte disponibilidade e condições vigentes.'),'Availability caveat required');
 assert.equal(product.additionalProperty?.value,visible);
