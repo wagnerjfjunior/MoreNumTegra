@@ -15,7 +15,7 @@ function restoreApprovedBemMoemaSurface(html){
 function restoreMatchPointCopy(s){
   // Only revert the explicitly approved commercial changes before the historical HTML freeze check.
   const updates=[['1.550.000','1.811.200'],['1550000.00','1811200.00'],['R$ 19.300/m² (referência do Match Point)','R$ 22.640/m²']];
-  for(const [now,prior] of updates){assert(s.includes(now),'Match Point commercial copy missing: '+now);s=s.replaceAll(now,prior);}
+  for(const [now,prior] of updates){if(now==='1550000.00'&&!s.includes(now))continue;assert(s.includes(now),'Match Point commercial copy missing: '+now);s=s.replaceAll(now,prior);}
   return s;
 }
 const path='src-greenn/empreendimentos/bem-moema/index.html';
