@@ -16,7 +16,7 @@ function restoreMatchPointCopy(s){
   // Only revert the explicitly approved commercial changes before the historical HTML freeze check.
   const updates=[['1.550.000','1.811.200'],['1550000.00','1811200.00'],['R$ 19.300/m² (referência do Match Point)','R$ 22.640/m²']];
   for(const [now,prior] of updates){if(now==='1550000.00'&&!s.includes(now))continue;assert(s.includes(now),'Match Point commercial copy missing: '+now);s=s.replaceAll(now,prior);}
-  return s;
+  return s.replaceAll('AP202','AP0202').replaceAll('ap202','ap0202');
 }
 const path='src-greenn/empreendimentos/bem-moema/index.html';
 const baseline='08e727aa879ab2f4afa996dfbbe40aade85c3c72';
@@ -45,22 +45,22 @@ assert.deepEqual(normalized,oldGraph,'Existing commercial/schema entities change
 const ps=graph.filter(n=>n['@type']==='Product'),os=graph.filter(n=>n['@type']==='Offer');
 assert.equal(ps.length,1);assert.equal(os.length,1);
 const product=ps[0],offer=os[0],route='https://www.moretegra.com.br/empreendimentos/bem-moema/';
-assert.equal(product['@id'],route+'#product-ap0202');
-assert.deepEqual(product.isRelatedTo,{'@id':route+'#project'},'AP0202 must link to same project');
-assert.equal(offer['@id'],route+'#offer-ap0202');
+assert.equal(product['@id'],route+'#product-ap202');
+assert.deepEqual(product.isRelatedTo,{'@id':route+'#project'},'AP202 must link to same project');
+assert.equal(offer['@id'],route+'#offer-ap202');
 assert.equal(product.offers['@id'],offer['@id']);
 assert.equal(offer.itemOffered['@id'],product['@id']);
 assert.equal(offer.priceCurrency,'BRL');
 assert.equal(offer.price,'1550000.00');
-const visible='Unidade AP0202 · 80 m² · R$ 19.300/m² (referência do Match Point) · valor de referência R$ 1.550.000';
+const visible='Unidade AP202 · 80 m² · R$ 19.300/m² (referência do Match Point) · valor de referência R$ 1.550.000';
 assert(html.includes(visible),'Commercial offer must be visible in human-readable page');
 assert(html.includes('Consulte disponibilidade e condições vigentes.'),'Availability caveat required');
 assert.equal(product.additionalProperty?.value,visible);
-assert.equal(product.name,'Bem Moema — apartamento unidade AP0202 de 80 m²');
+assert.equal(product.name,'Bem Moema — apartamento unidade AP202 de 80 m²');
 assert(!Object.hasOwn(graph.find(n=>n['@type']==='ApartmentComplex'),'brand'),'ApartmentComplex has no brand property');
 const primary=graph.find(n=>n['@id']===route+'#primary-image');
 assert.deepEqual(product.image,[primary.contentUrl]);
 assert(!('availability' in offer),'Must not claim live inventory');
 assert(!('priceValidUntil' in offer),'Must not fabricate expiration date');
 assert(!('review' in product)&&!('aggregateRating' in product),'Must not fabricate reviews');
-console.log('PASS: Bem Moema AP0202 visible 80m² unit and reference BRL Offer; schema-only change; no inventory/review assertions');
+console.log('PASS: Bem Moema AP202 visible 80m² unit and reference BRL Offer; schema-only change; no inventory/review assertions');
