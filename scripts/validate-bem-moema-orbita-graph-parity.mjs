@@ -57,13 +57,13 @@ assert.equal(plans.length,3);
 assert.deepEqual(project.accommodationFloorPlan,assets.map(([sqm])=>({'@id':route+'#floorplan-'+sqm})));
 for(const [sqm,url] of assets){const x=plans.find(n=>n['@id']===route+'#floorplan-'+sqm);assert(x);assert.equal(x.image,url);assert.equal(x.floorSize?.value,sqm);assert.equal(x.floorSize?.unitCode,'MTK');}
 for(const oldNode of original){
- const curr=nodes.find(n=>n['@type']===oldNode['@type']&&(!oldNode['@id']||n['@id']===oldNode['@id']));
+ const curr=nodes.find(n=>n['@type']===oldNode['@type']&&(['Product','Offer'].includes(oldNode['@type'])||!oldNode['@id']||n['@id']===oldNode['@id']));
  assert(curr,'Old type missing '+oldNode['@type']);
  const allowed=oldNode['@type']==='WebPage'?['@id','isPartOf','mainEntity','breadcrumb','inLanguage','mentions']:oldNode['@type']==='ApartmentComplex'?['@id','brand','accommodationFloorPlan','image']:oldNode['@type']==='Organization'?['url','brand','contactPoint']:oldNode['@type']==='Product'?['isRelatedTo']:[];
  const normalized=structuredClone(curr);
  for(const k of allowed){if(Object.hasOwn(oldNode,k))normalized[k]=structuredClone(oldNode[k]);else delete normalized[k];}
- if(oldNode['@type']==='Product'){assert.equal(curr.additionalProperty?.value,'Unidade AP202 · 80 m² · R$ 19.300/m² (referência do Match Point) · valor de referência R$ 1.550.000');normalized.additionalProperty=structuredClone(oldNode.additionalProperty);}
- if(oldNode['@type']==='Offer'){assert.equal(curr.price,'1550000.00');normalized.price=oldNode.price;normalized.description=oldNode.description;}
+ if(oldNode['@type']==='Product'){assert.equal(curr.additionalProperty?.value,'Unidade AP202 · 80 m² · R$ 19.300/m² (referência do Match Point) · valor de referência R$ 1.550.000');normalized.additionalProperty=structuredClone(oldNode.additionalProperty);normalized['@id']=oldNode['@id'];normalized.name=oldNode.name;normalized.description=oldNode.description;normalized.offers=structuredClone(oldNode.offers);}
+ if(oldNode['@type']==='Offer'){assert.equal(curr.price,'1550000.00');normalized.price=oldNode.price;normalized.description=oldNode.description;normalized['@id']=oldNode['@id'];normalized.itemOffered=structuredClone(oldNode.itemOffered);}
  assert.deepEqual(normalized,oldNode,'Unexpected delta in '+oldNode['@type']);
 }
 assert.equal(one('Offer').price,'1550000.00');
