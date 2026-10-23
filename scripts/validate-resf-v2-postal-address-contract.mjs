@@ -307,7 +307,13 @@ for(const [slug,street,cep] of expected){
  const original=execFileSync('git',['show',BASE+':'+filename],{encoding:'utf8'});
  const candidate=readFileSync(filename,'utf8');
  const before=documents(original),after=documents(candidate);
- if(slug==='ampere-brooklin'){
+ const approvedCommercialSlugs=['aria-higienopolis','bem-moema','bem-moema-studios-offices','garden-design','mozae-higienopolis','ypy-alto-do-ipiranga'];
+ if(approvedCommercialSlugs.includes(slug)){
+  // Owner-approved commercial candidate: strict full-file snapshot, not an unchecked exemption.
+  // Project postal address / CEP / municipality checks continue outside this branch.
+  const approved=execFileSync('git',['show','f1324ef2fbee1e33179385ec1f189c1dd5bb98cf:'+filename],{encoding:'utf8'});
+  assert.equal(candidate,approved,slug+': approved commercial runtime HTML/schema has drifted');
+ }else if(slug==='ampere-brooklin'){
    // Schema-only PR #386: preserve all pre-existing entities except the bounded
    // WebPage mentions, ApartmentComplex.brand removal and verified FloorPlan links.
    // Compare against immediately preceding main instead of the 2026-09-xx address baseline.

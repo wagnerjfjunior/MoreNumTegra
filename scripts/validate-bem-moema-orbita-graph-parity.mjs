@@ -11,13 +11,19 @@ function restoreApprovedBemMoemaSurface(html){
   }
   return html;
 }
+function restoreMatchPointCopy(s){
+  // Only revert the explicitly approved commercial changes before the historical HTML freeze check.
+  const updates=[['1.550.000','1.811.200'],['1550000.00','1811200.00'],['R$ 19.300/m² (referência do Match Point)','R$ 22.640/m²']];
+  for(const [now,prior] of updates){if(now==='1550000.00'&&!s.includes(now))continue;assert(s.includes(now),'Match Point commercial copy missing: '+now);s=s.replaceAll(now,prior);}
+  return s.replaceAll('AP202','AP0202').replaceAll('ap202','ap0202');
+}
 const path='src-greenn/empreendimentos/bem-moema/index.html';
 const baseline='b5da71bf80cacc115026466f5b37c79a7f98e13c';
 const before=execFileSync('git',['show',baseline+':'+path],{encoding:'utf8'});
 const after=readFileSync(path,'utf8'),rx=/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/i;
 const old=before.match(rx),now=after.match(rx);
 assert(old&&now);
-assert.equal(restoreApprovedBemMoemaSurface(after.replace(now[1],old[1])),before,'Visible HTML/JS, form, metadata and media must not change outside approved M5-06 deltas');
+assert.equal(restoreApprovedBemMoemaSurface(restoreMatchPointCopy(after.replace(now[1],old[1]))),before,'Visible HTML/JS, form, metadata and media must not change outside approved M5-06 deltas');
 const original=JSON.parse(old[1])['@graph'],nodes=JSON.parse(now[1])['@graph'];
 const get=t=>nodes.filter(x=>x['@type']===t),one=t=>{assert.equal(get(t).length,1,t+' count');return get(t)[0]};
 const p=one('WebPage'),project=one('ApartmentComplex'),agent=one('RealEstateAgent');
@@ -32,7 +38,7 @@ assert.equal(project['@id'],route+'#project');
 assert(!Object.hasOwn(project,'brand'),'ApartmentComplex.brand is not Schema.org-compatible');
 assert.equal(one('Product').brand?.['@id'],one('Brand')['@id']);
 assert.equal(one('Organization').brand?.['@id'],one('Brand')['@id']);
-assert.deepEqual(one('Product').isRelatedTo,{'@id':project['@id']},'AP0202 must link to its own project');
+assert.deepEqual(one('Product').isRelatedTo,{'@id':project['@id']},'AP202 must link to its own project');
 assert.equal(new Set(project.image.map(x=>typeof x==='string'?x:JSON.stringify(x))).size,project.image.length,'Duplicate project image forbidden');
 assert.deepEqual(agent.address,project.address,'Agent serves in loco');
 assert.equal(one('Person').workLocation['@id'],project['@id']);
@@ -51,13 +57,20 @@ assert.equal(plans.length,3);
 assert.deepEqual(project.accommodationFloorPlan,assets.map(([sqm])=>({'@id':route+'#floorplan-'+sqm})));
 for(const [sqm,url] of assets){const x=plans.find(n=>n['@id']===route+'#floorplan-'+sqm);assert(x);assert.equal(x.image,url);assert.equal(x.floorSize?.value,sqm);assert.equal(x.floorSize?.unitCode,'MTK');}
 for(const oldNode of original){
- const curr=nodes.find(n=>n['@type']===oldNode['@type']&&(!oldNode['@id']||n['@id']===oldNode['@id']));
+ const curr=nodes.find(n=>n['@type']===oldNode['@type']&&(['Product','Offer'].includes(oldNode['@type'])||!oldNode['@id']||n['@id']===oldNode['@id']));
  assert(curr,'Old type missing '+oldNode['@type']);
  const allowed=oldNode['@type']==='WebPage'?['@id','isPartOf','mainEntity','breadcrumb','inLanguage','mentions']:oldNode['@type']==='ApartmentComplex'?['@id','brand','accommodationFloorPlan','image']:oldNode['@type']==='Organization'?['url','brand','contactPoint']:oldNode['@type']==='Product'?['isRelatedTo']:[];
  const normalized=structuredClone(curr);
  for(const k of allowed){if(Object.hasOwn(oldNode,k))normalized[k]=structuredClone(oldNode[k]);else delete normalized[k];}
+ if(oldNode['@type']==='Product'){assert.equal(curr.additionalProperty?.value,'Unidade AP202 · 80 m² · R$ 19.300/m² (referência do Match Point) · valor de referência R$ 1.550.000');normalized.additionalProperty=structuredClone(oldNode.additionalProperty);normalized['@id']=oldNode['@id'];normalized.name=oldNode.name;normalized.description=oldNode.description;normalized.offers=structuredClone(oldNode.offers);}
+ if(oldNode['@type']==='Offer'){assert.equal(curr.price,'1550000.00');normalized.price=oldNode.price;normalized.description=oldNode.description;normalized['@id']=oldNode['@id'];normalized.itemOffered=structuredClone(oldNode.itemOffered);}
+ if(oldNode['@type']==='FAQPage'){
+  assert.equal(curr.mainEntity.length,oldNode.mainEntity.length,'FAQ cardinality changed');
+  assert.equal(curr.mainEntity[0].acceptedAnswer?.text,'A referência comercial do MoreTegra é a partir de R$ 1.550.000 para a unidade AP202 de 80 m². Preço e disponibilidade devem ser confirmados no atendimento.','AP202 FAQ offer drift');
+  normalized.mainEntity[0].acceptedAnswer.text=oldNode.mainEntity[0].acceptedAnswer.text;
+ }
  assert.deepEqual(normalized,oldNode,'Unexpected delta in '+oldNode['@type']);
 }
-assert.equal(one('Offer').price,'1811200.00');
+assert.equal(one('Offer').price,'1550000.00');
 assert(!('availability' in one('Offer')));
 console.log('PASS Bem Moema 18-node factual Orbita-pattern parity: 3 source-backed plans; unchanged media, forms, price, and onsite agent');
