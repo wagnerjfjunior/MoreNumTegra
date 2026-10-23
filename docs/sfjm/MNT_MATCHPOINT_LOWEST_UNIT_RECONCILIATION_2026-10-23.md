@@ -95,3 +95,10 @@ Toda alteração efetiva de unidade/preço deve ser reconciliada em TODAS as sup
 - Proprietário determinou apagar apenas o card Home Mozae genérico da AP0301 (46 m², R$ 721.510).
 - Home passa a apresentar **2 cards Mozae**: AP807/72 m²/R$ 1.015.840 e AP0412/44,85 m²/R$ 606.000 à vista. Código alterado em `src-greenn/moretegra.js` commit `82b63b4ac0c175ec9b899e4b6589d5f6c2fa3293`.
 - A página exata do Mozae e o seletor AP0301 permanecem sem alteração nesta solicitação; ocultação do card na Home não significa revogação da oferta em outras superfícies. PR segue Draft e produção preservada.
+
+## Decisão YPY Alto do Ipiranga — 2026-10-23
+- O proprietário determinou substituir a oferta AP0207 de R$ 727.650 pelo conjunto do documento Match Point, ainda que o novo valor de entrada seja maior.
+- Fonte Match Point, página 7: AP1507, 65 m², tabela R$ 798.600, por R$ 740.000; AP906, 80 m², tabela R$ 940.000, por R$ 871.800.
+- Home: 2 cards exatos com unidade, metragem e valor promocional. Deep links `?unidade=1507#valores` e `?unidade=906#valores`.
+- Página individual: seletor por toque, comparação tabela/promocional, FAQ visível e FAQPage coerentes, contexto de intenção do Form46, JSON-LD Product/Offer por unidade, sem alegar estoque confirmado.
+- Histórico AP0207/R$727.650 não deve aparecer no runtime candidato do YPY. Ajustes executados somente na branch PR #474, sem merge ou produção. Validar CI/Live Sync antes da promoção.
