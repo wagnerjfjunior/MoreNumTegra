@@ -313,7 +313,7 @@ for(const [slug,street,cep] of expected){
   // Project postal address / CEP / municipality checks continue outside this branch.
   const approved=execFileSync('git',['show','f1324ef2fbee1e33179385ec1f189c1dd5bb98cf:'+filename],{encoding:'utf8'});
   assert.equal(candidate,approved,slug+': approved commercial runtime HTML/schema has drifted');
- }elseif(slug==='ampere-brooklin'){
+ }else if(slug==='ampere-brooklin'){
    // Schema-only PR #386: preserve all pre-existing entities except the bounded
    // WebPage mentions, ApartmentComplex.brand removal and verified FloorPlan links.
    // Compare against immediately preceding main instead of the 2026-09-xx address baseline.
