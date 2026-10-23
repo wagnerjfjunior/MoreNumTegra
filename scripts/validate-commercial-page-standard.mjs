@@ -105,7 +105,18 @@ if(fs.existsSync(projectsDir)){
     const address=getFooterAddress(footer);
     const ownStreet=extractStreetAndNumber(address);
     const visibleOutsideFooter=stripNonVisibleAddressZones(html);
-    if(ownStreet && visibleOutsideFooter.includes(ownStreet)) fail(`${rel}: future-page exact address leaked outside footer: ${ownStreet}`);
+    if(ownStreet && visibleOutsideFooter.includes(ownStreet)){
+      if(dir.name==='studios-berrini'){
+        // NR Studio public location is part of its product description. Require the
+        // same official street on site, in footer, and in structured data; never
+        // apply this exception to other project pages.
+        const graphMatch=html.match(/<script\\b[^>]*type="application\\/ld\\+json"[^>]*>([\\s\\S]*?)<\\/script>/);
+        const graph=graphMatch?JSON.parse(graphMatch[1])['@graph']:[];
+        const project=graph.find(n=>n['@type']==='Place'&&n['@id']==='https://www.moretegra.com.br/empreendimentos/studios-berrini/#project');
+        if(ownStreet!=='Rua Arandu, 150'||project?.address?.streetAddress!==ownStreet)
+          fail(`${rel}: NR public street must match verified Place and canonical footer`);
+      } else fail(`${rel}: future-page exact address leaked outside footer: ${ownStreet}`);
+    }
   }
 }
 
