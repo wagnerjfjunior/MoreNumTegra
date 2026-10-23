@@ -1,3 +1,7 @@
+## 2026-10-22 — HANDOFF ATIVO: CAPIITOLO / AMPÈRE — PRs #470 e #471
+
+Retomada comercial prioritária. **Documento obrigatório:** `docs/sfjm/MNT_AMPERE_CAPIITOLO_PR470_471_HANDOFF_2026-10-22.md` (branch `sfjm/capiitolo-ampere-home-price-cards-20261022`, PR #471). Quatro valores e copy concisa dos cards aprovados; falta fazer os dois cards de cada empreendimento abrirem a página individual com seletor de condição (`?condicao=promocional` / `?condicao=avista`) análogo ao Órbita. Não reescrever cards com justificativas; respeitar adendo RESF. PR #470 hero Ampère independente. **Sem merge nem publicação comprovada; resolver estado live, finalizar seletor, testar e só depois liberar produção e reindexação.**
+
 ## 2026-10-20 — PRIORIDADE EDITORIAL: ORIGINALIDADE INTEGRAL DO BLOG (DECISÃO DO PROPRIETÁRIO)
 
 O proprietário determinou auditoria e reformulação de todos os artigos/slugs herdados das referências Tegra para entregar títulos, H1, URL quando justificado e conteúdo realmente autorais do MoreTegra, usando como paradigma a PR #462 (Lapa). **Primeiro fazer inventário live e matriz editorial, não migrar em massa sem aprovação.** O catálogo `src-greenn/blog/catalogo-tegra-referencia.json` contém **48 referências, 12 por categoria**, com status `EDITORIAL_PENDING/noindex`; a contagem não confirma 48 páginas públicas/indexadas. Handoff obrigatório: `docs/sfjm/MNT_BLOG_ORIGINALIDADE_INTEGRAL_HANDOFF_2026-10-20.md`. Esta atualização é apenas documental e não altera produção.

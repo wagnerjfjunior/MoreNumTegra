@@ -124,3 +124,22 @@ Em toda revisão RESF envolvendo descoberta, páginas de empreendimento, convers
 **Decisão posterior de 2026-10-14:** por autorização expressa do operador, `Training` foi alterado de `deny` para `allow`, em conjunto com permissão de rastreamento `GPTBot` em `robots.txt`, sem concessão de direitos sobre ativos de terceiros. O estado de cada release depende da PR e do deployment publicado. Não confundir permissão de rastreamento com licença legal para material de terceiros.
 
 **Estado histórico de referência ao incorporar este adendo:** `llms.txt` integrado via PR #399 (merge `05cb781e7a775888d0cfafe8578816f699e15391`), `ai.txt` via PR #401 (merge `70eb190686598d3e099db5f84c599255aa309338`), identidade restaurada via PR #402 (merge `b23ccdb205b2956beeeb411adc82011de6c91425`). Deployment Production READY desse SHA foi observado; smoke HTTP individual não está certificado por essa evidência. Este adendo não certifica retroativamente páginas existentes.
+
+
+## Adendo — 2026-10-22: redação comercial dos cards (decisão do proprietário)
+
+**Regra obrigatória de conteúdo visível nos cards de preço:** comunicação objetiva e orientada ao comprador. Usar apenas rótulo comercial, valor, unidade e aviso curto de confirmação, conforme copy aprovada. **Não inserir** no texto público: nomes de documentos internos (Match Point), referências de validação, explicações de cálculo/desconto, preço por m² não solicitado, atribuições ao proprietário ou à coordenação, termos técnicos, justificativas sobre origem dos dados ou ressalvas improvisadas. Evidências e memória de decisão ficam exclusivamente no repositório/documentação de governança, não na UI.
+
+**Padrão aprovado (card regular):**
+
+- Preço a partir de
+- R$ {preço}
+- Unidade {número} · condição promocional de referência R$ {preço}. Consulte a Tegra Vendas para confirmar a vigência, valores promocionais e disponibilidade.
+
+**Padrão aprovado (card à vista):**
+
+- À vista
+- R$ {preço} à vista*
+- *Unidade {número} · condição à vista de R$ {preço}. Consulte a Tegra Vendas para confirmar a vigência, valores promocionais e disponibilidade.
+
+Asterisco único na composição do preço; evitar rótulos duplicados de “à vista”. Preservar o componente de destaque `cashOffer` e `cashSuffixSmall`, acessibilidade e os dados estruturados consistentes. Revisões da redação comercial exigem alinhamento explícito prévio com o proprietário; **não enriquecer a copy por iniciativa própria**. A manutenção de evidências internas, confirmação de preço/disponibilidade e gates de QA/release permanece obrigatória, sem poluir o conteúdo comercial exibido ao comprador.
