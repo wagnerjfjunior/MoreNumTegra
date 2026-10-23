@@ -1,3 +1,10 @@
+## 2026-10-23 — Pós-release controlado Ampère/CAPIITOLO (#472)
+
+- Em READ_ONLY, executar smoke HTTP/browser da Home e das quatro URLs com `?condicao=` em `www.moretegra.com.br`, confirmando preços, seleção, botão WhatsApp, canonical/JSON-LD, mídia e consentimento. Se ferramenta não conseguir acessar, registrar UNKNOWN e solicitar apenas evidência observável, sem repetir alteração aprovada.
+- Não enviar lead de teste real nem acionar CRM sem autorização específica. Não alterar preços, hero, FACTS ou badge WhatsApp sem regressão demonstrada.
+- Release canônico já merged `6d20e910...`, Vercel READY `dpl_AfKcdWavJxVEskWGSwUkMBpGZYH9`. O saneamento histórico de CI está fechado para a PR #472 (13/13 PASS); demais prioridades seguem seus próprios handoffs.
+- Recibo: `docs/sfjm/MNT_AMPERE_CAPIITOLO_PR472_PRODUCTION_RELEASE_RECEIPT_2026-10-23.md`.
+
 ## 2026-10-20 — Próxima ação editorial do blog: inventário e matriz de originalidade
 
 1. Reconciliar live `main`, Vercel, URLs públicas, `sitemap.xml`, `vercel.json` e `src-greenn/blog/catalogo-tegra-referencia.json`, além de governança e baselines.
