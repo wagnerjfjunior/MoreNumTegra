@@ -1,3 +1,9 @@
+## 2026-10-23 — Ampère + CAPIITOLO: release PR #472
+
+- USER_APPROVED em LVR Live Sync: condições comerciais, seletor, WhatsApp RESF, hero e FACTS 2×2 mobile. PR #472 13/13 CI PASS no HEAD `d9c9ce3`; squash na main `6d20e9102659c3288f7da18ac20871138904b2a2`. Vercel Production READY deployment `dpl_AfKcdWavJxVEskWGSwUkMBpGZYH9` com SHA de runtime idêntico.
+- Limites: HTTP/browser público pós-release, Form46 real/CRM, GA4, CWV e indexação NOT_VERIFIED; não inferir esses resultados de CI/READY. Dados aprovados: Ampère unidade 62 R$ 3.990.700/R$ 3.791.165; CAPIITOLO unidade 33 R$ 3.350.000/R$ 3.135.000.
+- Recibo: `docs/sfjm/MNT_AMPERE_CAPIITOLO_PR472_PRODUCTION_RELEASE_RECEIPT_2026-10-23.md`.
+
 ## 2026-10-20 — Blog: nova diretriz editorial de originalidade integral
 
 - Proprietário identificou risco de slugs, H1 e conteúdo excessivamente parecidos com o blog Tegra. A revisão de Lapa (#462) estabelece o padrão autoral para o **inventário inteiro**.
