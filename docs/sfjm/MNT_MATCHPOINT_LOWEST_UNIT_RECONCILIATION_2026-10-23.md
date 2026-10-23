@@ -83,3 +83,10 @@ Toda alteração efetiva de unidade/preço deve ser reconciliada em TODAS as sup
 - Verificar JSON-LD Offer/Product do Garden Design e Ária para ofertas adicionais, e ausência de claims contraditórias.
 - Confrontar referências internas/canônicas de oferta (snapshots CDP) antes de publicação.
 - PR permanece Draft, sem autorização implícita para merge/deploy desta rodada.
+
+## Correção emergencial do Mozae — 2026-10-23
+- Evidência direta do proprietário: AP0412, 44,85 m², preço de tabela R$ 686.754,45; **condição à vista R$ 606.000**.
+- Home Mozae: exatamente três cards nesta candidata — AP0301 (46 m², R$ 721.510), AP807 (72 m², R$ 1.015.840), AP0412 (44,85 m², à vista R$ 606.000). Card AP809 (73 m², R$ 1.027.180) retirado por solicitação expressa.
+- A Home utiliza padrão já existente `cashOffer:true`, `priceLabel:"À vista"`, CTA e deep link `?unidade=412#valores` para destacar AP0412.
+- Página Mozae: seletor `301/807/412`; AP0412 mostra preço à vista e comparativo de tabela. Form 46 preservado e intenção vinculada à unidade no seletor. JSON-LD Product/Offer alterado para AP0412; AP809 não é mais oferta publicada nesta candidata.
+- CI/QA do último commit ainda requer conclusão; não publicar em produção antes dos gates. A fonte comercial é informação diretamente fornecida pelo proprietário; não afirmar vigência ou disponibilidade automática.
