@@ -12,7 +12,7 @@ Fonte da campanha: `Match Point - São Paulo 1.pdf`, documento fornecido pelo pr
 | Empreendimento | Home original | Match Point por unidade | Nova Home candidata | URL individual |
 | --- | --- | --- | --- | --- |
 | Ária Higienópolis, studios | 1510, 30 m², R$ 501.000 | AP1812, cerca 30 m², tabela R$ 504.497, por R$ 455.100 — p.10 | AP1812, R$ 455.100 | mesma unidade e preço, FAQ/schema |
-| Bem Moema, apartamento residencial | AP0202, 80 m², R$ 1.811.200 | AP202, 80 m², tabela R$ 1.819.500, por R$ 1.550.000 — p.12 | AP0202 (normalização 0202/202), R$ 1.550.000 | Offer, FAQ e conteúdo atualizados; normalização de ID deve ser validada |
+| Bem Moema, apartamento residencial | AP0202, 80 m², R$ 1.811.200 | AP202, 80 m², tabela R$ 1.819.500, por R$ 1.550.000 — p.12 | AP202 (USER_CONFIRMED; substituir AP0202), R$ 1.550.000 | Offer, FAQ e conteúdo atualizados; unidade AP202 confirmada pelo proprietário em 2026-10-23 |
 | Universo Tatuapé Órbita, 1 dormitório | 2408, 51 m², R$ 540.000 | AP1814, 38 m², tabela R$ 378.600, por R$ 343.900 — p.8 | AP1814, 38 m², R$ 343.900 | seletor `?unidade=1814`, Product/Offer e formulário contexto |
 | Universo Tatuapé Órbita, 3 dormitórios | AP1305, 69 m², R$ 655.000 | AP1305, tabela R$ 711.100, por R$ 645.800 — p.8 | AP1305, R$ 645.800 | seletor `?unidade=1305` |
 | Bem Moema Studios & Offices | Studio 1702, R$ 509.600 | Match Point p.11 identifica somente `BEM MOEMA - STUDIO` AP1102 R$ 418.500 | NÃO ALTERAR | empreendimento distinto explicitamente no RESF: a unidade de p.11 não está vinculada com segurança ao Studios & Offices |
@@ -50,7 +50,7 @@ Toda alteração efetiva de unidade/preço deve ser reconciliada em TODAS as sup
 |---|---|---|
 | MoreTegra Home | Home atual substituída na candidata para AP1812 Ária, Bem Moema AP0202 e Órbita AP1814/AP1305 | QA/CI aberto |
 | MoreTegra Ária exata | Oferta AP1812 R$455.100 candidata | QA/CI aberto |
-| MoreTegra Bem Moema residencial | AP0202 R$1.550.000 candidata; identificação AP202 versus AP0202 exige verificação | QA/CI aberto |
+| MoreTegra Bem Moema residencial | AP0202 R$1.550.000 candidata; AP202 USER_CONFIRMED; revisão de preço, unit ID e schema em CI | QA/CI aberto |
 | MoreTegra Órbita exata | AP1814 R$343.900 e AP1305 R$645.800 candidatas, preservar seletores/CTAs | QA/CI aberto |
 | MoreTegra investimentos/studios | Card Ária **já** traz AP1812, R$455.100 em HTML e data-price=455100; não reescrever | PASS STATIC quanto ao preço da oferta |
 | MoreTegra investimentos/studios | Cards Órbita na coleção são salas/lojas COMERCIAIS; oferta AP1814 é apartamento residencial de 1 dormitório, não studio formal | **NÃO** transplantar preço residencial a esses cards |
@@ -63,3 +63,6 @@ Toda alteração efetiva de unidade/preço deve ser reconciliada em TODAS as sup
 | Caminhos Nova Vivere/Garden Design | Não há rotas exatas locais homônimas; Home aponta para exatas MoreTegra | Não duplicar páginas comerciais |
 
 **NOTA:** estas verificações são de código GitHub canônico; não certificam HTTP de produção ou vigência/estoque do Match Point. PR de release só poderá sair de Draft após revalidar CI, catálogo/rotas, tipologia e governança comercial e obter aceite de publicação específico. Os dados de `commercial-values.json` incluem referências históricas de outro momento e devem ser reconciliados antes de declarar ausência total de divergências.
+
+## Confirmação do proprietário — 2026-10-23 17:36 BRT
+- **Bem Moema residencial, unidade correta: AP202.** Não AP0202. Confirmação explícita nesta conversa. Atualizar referência de Home, página exata, JSON-LD IDs Product/Offer, preço R$ 1.550.000, validadores e toda superfície de publicação que use a mesma oferta. A numeração AP0202 é somente histórico para comparar snapshots e nunca deve permanecer no runtime candidato.
