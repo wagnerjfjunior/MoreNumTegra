@@ -11,6 +11,17 @@ for(const slug of slugs){
  let html;try{html=readFileSync(path,'utf8')}catch{continue}
  pages++;
  const nodes=[...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)].flatMap(m=>{const v=JSON.parse(m[1]);return v['@graph']||[v]});
+ if(slug==='studios-berrini'){
+  const place=nodes.find(n=>n['@type']==='Place'&&n['@id']==='https://www.moretegra.com.br/empreendimentos/studios-berrini/#project');
+  const agent=nodes.find(n=>n['@type']==='RealEstateAgent');
+  assert(place?.address?.streetAddress==='Rua Arandu, 150','NR Studios Berrini Place street missing');
+  assert(place.address.addressLocality==='São Paulo'&&place.address.addressRegion==='SP','NR project city/state missing');
+  assert(agent?.telephone==='+5511960779328'&&agent.employee?.['@id']==='https://www.moretegra.com.br/#sabrina-da-tegra','NR offsite consultation contact missing');
+  assert(!agent.address,'NR remote consultation must not fabricate an onsite postal address');
+  notApplicable++;
+  console.log('NR_REMOTE_CONSULTATION_PASS',slug);
+  continue;
+ }
  const project=nodes.find(n=>n['@type']==='ApartmentComplex');
  const current=nodes.filter(n=>n['@type']==='RealEstateAgent');
  assert(project?.address?.streetAddress,slug+': project postal address missing');
@@ -38,7 +49,7 @@ for(const slug of slugs){
  agents++;
  console.log('ONSITE_AGENT_PASS',slug,a.address.streetAddress,a.address.postalCode);
 }
-assert.equal(pages,26,'Expected 26 audited project pages including Jerivás');
+assert.equal(pages,27,'Expected 27 audited pages including NR Studios Berrini and Jerivás');
 assert.equal(agents,20,'Expected 20 project-scoped RealEstateAgents including Jerivás');
-assert.equal(notApplicable,6,'Pages without Realtor entity changed; review scope deliberately');
-console.log('PASS: 20 project-scoped RealEstateAgents match local project addresses; 6 pages without separate RealEstateAgent unaffected');
+assert.equal(notApplicable,7,'Expected 6 without Realtor plus 1 NR remote consultant');
+console.log('PASS: 20 project-scoped RealEstateAgents match local project addresses; 6 pages without Realtor plus 1 NR remote consultation');
