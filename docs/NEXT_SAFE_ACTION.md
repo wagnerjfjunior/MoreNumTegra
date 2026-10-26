@@ -1,3 +1,7 @@
+## 2026-10-26 — Próxima ação editorial segura (padrão Blog V1)
+
+- Aplicar `docs/sfjm/MNT_BLOG_PADRAO_EDITORIAL_V1_2026-10-26.md` ao próximo artigo da fila: resolver inventário/slug/SEO live, produzir brief original e imagens autorizadas, manter Sabrina/WhatsApp e cards quando pertinentes, validar JSON-LD e mobile, obter aprovação de release individual; liberar `noindex` somente para a URL aprovada. Não executar republicação em lote. Nenhuma mudança de código autorizada por esta nota documental.
+
 ## 2026-10-26 — Handoff Bing / IndexNow / proteção de originalidade (DOCUMENTATION_ONLY)
 
 - **LEITURA OBRIGATÓRIA antes de retomar SEO/Bing/IndexNow:** `docs/sfjm/MNT_BING_INDEXNOW_EDITORIAL_CONTINUITY_2026-10-26.md` em conjunto com `docs/sfjm/MNT_BLOG_ORIGINALIDADE_INTEGRAL_HANDOFF_2026-10-20.md`. Preservar decisões comerciais #472/#474, handoffs anteriores e proteção `EDITORIAL_PENDING/noindex`. Investigação do Bing confirmou `noindex,follow` **em um artigo específico**; não extrapolar para os outros 19 avisos. 46 URLs MoreTegra + 6 Caminhos enviadas ao IndexNow; submissão não é indexação. Nenhuma alteração runtime autorizada nesta atualização documental.
