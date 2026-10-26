@@ -1,3 +1,7 @@
+## 2026-10-26 — Handoff Bing / IndexNow / proteção de originalidade (DOCUMENTATION_ONLY)
+
+- **LEITURA OBRIGATÓRIA antes de retomar SEO/Bing/IndexNow:** `docs/sfjm/MNT_BING_INDEXNOW_EDITORIAL_CONTINUITY_2026-10-26.md` em conjunto com `docs/sfjm/MNT_BLOG_ORIGINALIDADE_INTEGRAL_HANDOFF_2026-10-20.md`. Preservar decisões comerciais #472/#474, handoffs anteriores e proteção `EDITORIAL_PENDING/noindex`. Investigação do Bing confirmou `noindex,follow` **em um artigo específico**; não extrapolar para os outros 19 avisos. 46 URLs MoreTegra + 6 Caminhos enviadas ao IndexNow; submissão não é indexação. Nenhuma alteração runtime autorizada nesta atualização documental.
+
 ## 2026-10-23 — Pós-release PR #474 Match Point
 
 - Em READ_ONLY, conferir Home e páginas/deep links comerciais de YPY (1507/906), Mozae (807/412), Ária (1812/2102), Órbita (1814/1305), Bem Moema e Garden Design. Confirmar seleção mobile/desktop, tabela versus promoção, 2 cards Mozae, JSON-LD e Form46 sem envio real.
