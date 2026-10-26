@@ -1,3 +1,7 @@
+## 2026-10-26 — Handoff Bing / IndexNow / proteção de originalidade (DOCUMENTATION_ONLY)
+
+- **LEITURA OBRIGATÓRIA antes de retomar SEO/Bing/IndexNow:** `docs/sfjm/MNT_BING_INDEXNOW_EDITORIAL_CONTINUITY_2026-10-26.md` em conjunto com `docs/sfjm/MNT_BLOG_ORIGINALIDADE_INTEGRAL_HANDOFF_2026-10-20.md`. Preservar decisões comerciais #472/#474, handoffs anteriores e proteção `EDITORIAL_PENDING/noindex`. Investigação do Bing confirmou `noindex,follow` **em um artigo específico**; não extrapolar para os outros 19 avisos. 46 URLs MoreTegra + 6 Caminhos enviadas ao IndexNow; submissão não é indexação. Nenhuma alteração runtime autorizada nesta atualização documental.
+
 ## 2026-10-23 — Release comercial Match Point PR #474
 
 - USER_APPROVED, CI 17/17 PASS, merge squash `89bf0182d4e190fcc47a09fa7e157c0856579894`, Vercel Production READY `dpl_qcM2JvYTUF2TsFMsPiHMkUcQcyFe` com SHA idêntico. Atualização de Home, studios e páginas exatas em condições YPY, Mozae, Ária, Órbita, Bem Moema e Garden Design. Fonte: `docs/sfjm/MNT_PR474_MATCHPOINT_PRODUCTION_RELEASE_RECEIPT_2026-10-23.md`. Não inferir HTTP/browser externo, lead real ou vigência de campanha apenas do CI.
