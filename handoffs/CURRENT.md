@@ -1,3 +1,7 @@
+## 2026-10-26 — Adendo aprovado: cards contextuais nos artigos do Blog MoreTegra (DOCUMENTATION_ONLY)
+
+- Padrão atualizado em `docs/sfjm/MNT_BLOG_PADRAO_EDITORIAL_V1_2026-10-26.md` §5A. Incluir cards horizontais de empreendimentos **quando houver correspondência comprovada entre tema, empreendimento, imagem autorizada e URL canônica**, seguindo o modelo do artigo de iluminação natural (PR #483) que referencia Nova Vivere e Garden Design. A seleção é editorial, não obrigatória; links internos descritivos, desempenho mobile e SEO devem ser verificados. Preservar narrativa original, Sabrina, FAQ útil e cards finais; não inventar atributos nem usar conteúdo provisório da Tegra. Prática aprovada após PR #484 (liberação de indexação do artigo 2). Mudança atual somente documental, sem alteração de produção.
+
 ## 2026-10-26 — Padrão editorial Blog MoreTegra V1 (USER_APPROVED / DOCUMENTATION_ONLY)
 
 - O proprietário aprovou a experiência do artigo **Cozinha de apartamento** como padrão para os próximos artigos. Norma integral: `docs/sfjm/MNT_BLOG_PADRAO_EDITORIAL_V1_2026-10-26.md`; preservar a exigência de originalidade da PR #462 e handoff de 20/10, sem copiar textos nem liberar indexação em lote. O padrão abrange hero premium autorizado, imagens úteis, SEO/JSON-LD, FAQ contextual, Sabrina com foto/WhatsApp e três cards finais, com gates próprios por URL. Esta atualização só documenta a decisão; não publica outros artigos.
