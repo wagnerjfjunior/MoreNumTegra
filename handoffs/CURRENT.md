@@ -1,3 +1,7 @@
+## 2026-10-26 — Padrão editorial Blog MoreTegra V1 (USER_APPROVED / DOCUMENTATION_ONLY)
+
+- O proprietário aprovou a experiência do artigo **Cozinha de apartamento** como padrão para os próximos artigos. Norma integral: `docs/sfjm/MNT_BLOG_PADRAO_EDITORIAL_V1_2026-10-26.md`; preservar a exigência de originalidade da PR #462 e handoff de 20/10, sem copiar textos nem liberar indexação em lote. O padrão abrange hero premium autorizado, imagens úteis, SEO/JSON-LD, FAQ contextual, Sabrina com foto/WhatsApp e três cards finais, com gates próprios por URL. Esta atualização só documenta a decisão; não publica outros artigos.
+
 ## 2026-10-26 — Handoff Bing / IndexNow / proteção de originalidade (DOCUMENTATION_ONLY)
 
 - **LEITURA OBRIGATÓRIA antes de retomar SEO/Bing/IndexNow:** `docs/sfjm/MNT_BING_INDEXNOW_EDITORIAL_CONTINUITY_2026-10-26.md` em conjunto com `docs/sfjm/MNT_BLOG_ORIGINALIDADE_INTEGRAL_HANDOFF_2026-10-20.md`. Preservar decisões comerciais #472/#474, handoffs anteriores e proteção `EDITORIAL_PENDING/noindex`. Investigação do Bing confirmou `noindex,follow` **em um artigo específico**; não extrapolar para os outros 19 avisos. 46 URLs MoreTegra + 6 Caminhos enviadas ao IndexNow; submissão não é indexação. Nenhuma alteração runtime autorizada nesta atualização documental.
