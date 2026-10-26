@@ -1,3 +1,7 @@
+## 2026-10-26 — Próxima pauta Dicas & Decoração: aplicar cards somente se pertinentes
+
+- A partir do padrão `docs/sfjm/MNT_BLOG_PADRAO_EDITORIAL_V1_2026-10-26.md` §5A, ler o arquivo completo de pesquisa do tema, escrever artigo autoral, checar canibalização e fatos; levantar **candidatos de empreendimentos** pelo catálogo canônico com imagem, URL, atributo e contexto comprovados. Se um projeto atender aos critérios, produzir cards horizontais rastreáveis, acessíveis e mobile-first; se não, omitir. Manter Sabrina e cards finais, validar SEO/JSON-LD. Seguir PR e aceite de release por artigo; esta ação não altera runtime.
+
 ## 2026-10-26 — Próxima ação editorial segura (padrão Blog V1)
 
 - Aplicar `docs/sfjm/MNT_BLOG_PADRAO_EDITORIAL_V1_2026-10-26.md` ao próximo artigo da fila: resolver inventário/slug/SEO live, produzir brief original e imagens autorizadas, manter Sabrina/WhatsApp e cards quando pertinentes, validar JSON-LD e mobile, obter aprovação de release individual; liberar `noindex` somente para a URL aprovada. Não executar republicação em lote. Nenhuma mudança de código autorizada por esta nota documental.
