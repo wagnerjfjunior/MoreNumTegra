@@ -1,3 +1,7 @@
+## 2026-10-26 — Blog: modelo editorial ampliado com cards de empreendimentos (USER_APPROVED)
+
+- Após publicação do Artigo 2 de iluminação natural (PR #483, merge `d18c2ccb0ce8f4e249b25f6b7de9fcf06298cd3f`; indexação PR #484, merge `419431cfa5e092d55c5cc059094b1d29f6b4a6e0`), proprietário aprovou adendo ao padrão do Blog V1: cards horizontais de empreendimentos pertinentes ao assunto, com relação factual verificável e links canônicos, sem obrigatoriedade em toda pauta. Regras e QA SEO/mobile em `docs/sfjm/MNT_BLOG_PADRAO_EDITORIAL_V1_2026-10-26.md` §5A. Atualização documental; produção inalterada.
+
 ## 2026-10-26 — Blog MoreTegra: padrão editorial V1 aprovado
 
 - Primeira página autoral (cozinha de apartamento) publicada via PRs #478–#481; proprietário aprovou reutilizar seu padrão **visual, editorial e operacional**, não o texto nem a indexação automática. Padrão: `docs/sfjm/MNT_BLOG_PADRAO_EDITORIAL_V1_2026-10-26.md`. Continuidade: segundo artigo com brief original, DE/PARA, PR individual, QA, merge e gate separado para indexação. Esta atualização é documental, sem alteração de runtime.
