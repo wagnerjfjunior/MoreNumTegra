@@ -412,6 +412,10 @@
     {
       "source": "/blog/tegra/tegra-e-sustentabilidade-relatorio-integrado-2022/",
       "destination": "/src-greenn/blog/tegra/tegra-e-sustentabilidade-relatorio-integrado-2022/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/apartamento-com-pets-layout-materiais/",
+      "destination": "/src-greenn/blog/dicasedecor/apartamento-com-pets-layout-materiais/index.html"
     }
   ],
   "headers": [
