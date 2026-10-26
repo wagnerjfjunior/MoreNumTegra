@@ -1,3 +1,7 @@
+## 2026-10-26 — Blog MoreTegra: padrão editorial V1 aprovado
+
+- Primeira página autoral (cozinha de apartamento) publicada via PRs #478–#481; proprietário aprovou reutilizar seu padrão **visual, editorial e operacional**, não o texto nem a indexação automática. Padrão: `docs/sfjm/MNT_BLOG_PADRAO_EDITORIAL_V1_2026-10-26.md`. Continuidade: segundo artigo com brief original, DE/PARA, PR individual, QA, merge e gate separado para indexação. Esta atualização é documental, sem alteração de runtime.
+
 ## 2026-10-26 — Handoff Bing / IndexNow / proteção de originalidade (DOCUMENTATION_ONLY)
 
 - **LEITURA OBRIGATÓRIA antes de retomar SEO/Bing/IndexNow:** `docs/sfjm/MNT_BING_INDEXNOW_EDITORIAL_CONTINUITY_2026-10-26.md` em conjunto com `docs/sfjm/MNT_BLOG_ORIGINALIDADE_INTEGRAL_HANDOFF_2026-10-20.md`. Preservar decisões comerciais #472/#474, handoffs anteriores e proteção `EDITORIAL_PENDING/noindex`. Investigação do Bing confirmou `noindex,follow` **em um artigo específico**; não extrapolar para os outros 19 avisos. 46 URLs MoreTegra + 6 Caminhos enviadas ao IndexNow; submissão não é indexação. Nenhuma alteração runtime autorizada nesta atualização documental.
