@@ -1,3 +1,7 @@
+## 2026-10-26 — Handoff Bing / IndexNow / proteção de originalidade (DOCUMENTATION_ONLY)
+
+- **LEITURA OBRIGATÓRIA antes de retomar SEO/Bing/IndexNow:** `docs/sfjm/MNT_BING_INDEXNOW_EDITORIAL_CONTINUITY_2026-10-26.md` em conjunto com `docs/sfjm/MNT_BLOG_ORIGINALIDADE_INTEGRAL_HANDOFF_2026-10-20.md`. Preservar decisões comerciais #472/#474, handoffs anteriores e proteção `EDITORIAL_PENDING/noindex`. Investigação do Bing confirmou `noindex,follow` **em um artigo específico**; não extrapolar para os outros 19 avisos. 46 URLs MoreTegra + 6 Caminhos enviadas ao IndexNow; submissão não é indexação. Nenhuma alteração runtime autorizada nesta atualização documental.
+
 ## 2026-10-23 — RELEASE COMERCIAL MATCH POINT #474
 
 - USER_APPROVED. PR #474 MERGED, squash `89bf0182d4e190fcc47a09fa7e157c0856579894`. HEAD validado `f16a7af52432451454373fd8cc51bb774e369af4` com 17/17 PASS. Vercel Production `dpl_qcM2JvYTUF2TsFMsPiHMkUcQcyFe` READY no SHA do merge. Home, páginas exatas e coleção de studios reconciliadas para YPY (AP1507/AP906), Mozae (AP807/AP0412 à vista), Ária (AP1812/AP2102), Órbita, Bem Moema, Bem Moema Studios & Offices e Garden Design. HTTP/browser independente e CRM real NOT_VERIFIED. Recibo: `docs/sfjm/MNT_PR474_MATCHPOINT_PRODUCTION_RELEASE_RECEIPT_2026-10-23.md`.
