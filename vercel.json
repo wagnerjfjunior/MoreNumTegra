@@ -412,6 +412,10 @@
     {
       "source": "/blog/tegra/tegra-e-sustentabilidade-relatorio-integrado-2022/",
       "destination": "/src-greenn/blog/tegra/tegra-e-sustentabilidade-relatorio-integrado-2022/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/vaga-garagem-apartamento-acesso-manobra/",
+      "destination": "/src-greenn/blog/dicasedecor/vaga-garagem-apartamento-acesso-manobra/index.html"
     }
   ],
   "headers": [
