@@ -266,10 +266,6 @@
       "destination": "/src-greenn/blog/mercado/inventario-de-imovel-o-que-e-como-funciona-e-quanto-custa/index.html"
     },
     {
-      "source": "/blog/dicasedecor/do-tenis-ao-beach-tennis-quadras-valorizam-condominios/",
-      "destination": "/src-greenn/blog/dicasedecor/do-tenis-ao-beach-tennis-quadras-valorizam-condominios/index.html"
-    },
-    {
       "source": "/blog/dicasedecor/carro-eletrico-e-condominio-predios-com-infraestrutura-de-recarga/",
       "destination": "/src-greenn/blog/dicasedecor/carro-eletrico-e-condominio-predios-com-infraestrutura-de-recarga/index.html"
     },
@@ -412,6 +408,10 @@
     {
       "source": "/blog/dicasedecor/apartamento-com-pets-layout-materiais/",
       "destination": "/src-greenn/blog/dicasedecor/apartamento-com-pets-layout-materiais/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/quadras-condominio-tenis-beach-tennis/",
+      "destination": "/src-greenn/blog/dicasedecor/quadras-condominio-tenis-beach-tennis/index.html"
     }
   ],
   "headers": [
@@ -527,6 +527,11 @@
     {
       "source": "/blog/dicasedecor/dicas-para-apartamento-pet-friendly-decoracao-seguranca-e-bem-estar/",
       "destination": "/blog/dicasedecor/apartamento-com-pets-layout-materiais/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dicasedecor/do-tenis-ao-beach-tennis-quadras-valorizam-condominios/",
+      "destination": "/blog/dicasedecor/quadras-condominio-tenis-beach-tennis/",
       "statusCode": 301
     }
   ]
