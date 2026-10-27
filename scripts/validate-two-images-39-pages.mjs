@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Canonical 41 URL contract (including regional hub): visible first hero and distinct second illustration.
+// Canonical 42 URL contract (excluding investment hub): visible first hero and distinct second illustration.
 // Read-only source audit. Dynamic DSG/CAPIITOLO content is loaded from experiments.
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
@@ -36,7 +36,7 @@ assert.deepEqual(investmentPaths,['/investimentos/studios-e-salas-comerciais/'],
 const paths=allPaths.filter(p=>!p.startsWith('/blog/')&&!p.startsWith('/investimentos/'));
 assert.equal(new Set(allPaths).size,allPaths.length,'Duplicate sitemap URLs');
 const rewrite=JSON.parse(fs.readFileSync('vercel.json','utf8')).rewrites;
-assert.equal(paths.length,41,'Expected 41 canonical URLs including Jerivás; update inventory explicitly if scope changes');
+assert.equal(paths.length,42,'Expected 42 canonical home/region/project URLs, including Jerivás and Studios Berrini');
 assert.equal(new Set(paths).size,paths.length,'Duplicate sitemap URLs');
 const exp=new Map([
  ['/empreendimentos/dsg-itaim/','experiments/dsg-itaim-editorial-v3/index.html'],
@@ -90,6 +90,17 @@ for(const path of paths){
  const [hero,secondary]=images;
  assert(hero.url!==secondary.url,path+': secondary duplicates hero');
  const graph=extract(html);
+ // Studios Berrini is indexable and has a documented gallery, but it has not adopted
+ // the RESF two-ImageObject graph. Preserve a bounded, explicit source gate instead
+ // of pretending that its schema is identical to all other exact-project pages.
+ if(path==='/empreendimentos/studios-berrini/'){
+  assert(html.includes('<link rel="canonical" href="https://www.moretegra.com.br/empreendimentos/studios-berrini/">'),'Studios Berrini requires its exact self-canonical URL');
+  assert(!/<meta[^>]*noindex/i.test(html),'Studios Berrini must not be noindex');
+  assert(graph.some(n=>['WebPage','CollectionPage'].includes(n['@type'])&&n.url==='https://www.moretegra.com.br'+path),'Studios Berrini requires WebPage in JSON-LD');
+  projects++;
+  console.log('PROJECT_GALLERY_AND_CANONICAL_PASS',path,'RESF_SECONDARY_IMAGE_SCHEMA_NOT_ADOPTED');
+  continue;
+ }
  const page=graph.find(n=>['WebPage','CollectionPage'].includes(n['@type'])&&n.url==='https://www.moretegra.com.br'+path);
  assert(page,path+': page JSON-LD not found');
  const main=graph.find(n=>n['@id']===page.primaryImageOfPage?.['@id']);
@@ -105,5 +116,5 @@ for(const path of paths){
  else throw Error('Unknown sitemap path '+path);
  console.log('TWO_IMAGES_PASS',path,visualFile?'DYNAMIC_EDITORIAL':'SOURCE_STATIC');
 }
-assert.deepEqual({home,regions,projects},{home:1,regions:14,projects:26});
-console.log('PASS: 41/41 exact canonical routes have visible, distinct primary and secondary images with matching JSON-LD');
+assert.deepEqual({home,regions,projects},{home:1,regions:14,projects:27});
+console.log('PASS: 41 RESF routes with distinct primary/secondary ImageObjects; Studios Berrini separately validated for distinct gallery images, canonical and WebPage JSON-LD');
