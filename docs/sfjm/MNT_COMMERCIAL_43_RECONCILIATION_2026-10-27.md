@@ -8,7 +8,7 @@ Escopo exclusivo: 43 URLs comerciais (27 empreendimentos, 14 regiões, home e in
 - Bing Webmaster: painel conectado Site Explorer mostra 37 URLs no nó sem www, com 3 indexed, 33 warning, 1 excluded; NÃO representa cobertura individual das 43 URLs com www nem total global do domínio.
 - Sitemap antes: 57 total, 42 comerciais. Esta proposta inclui Studios Berrini: 58 total, 43 comerciais. Blog preservado.
 - Dados individualizados de GSC Coverage e Bing Indexed não foram disponibilizados pelos conectores; a matriz conserva NOT_VERIFIED_PER_URL sem inferir status.
-- Canonical e redirecionamento não-www: padronização esperada `https://www.moretegra.com.br/`, mas não declarar 43 testes por URL nem resposta HTTP de rede até obter evidência. Rotas presentes no vercel.json não provam canonical HTML. Evidência anterior SFJM: amostras 308/301 e alguns dois saltos.
+- Canonical: **43/43 self-canonical www PASS na leitura do HTML-fonte do GitHub** (primeiras 130 linhas das 43 rotas Vercel). Redirecionamento não-www permanece sem teste HTTP individual: padronização esperada `https://www.moretegra.com.br/`, mas não declarar 43 testes por URL nem resposta HTTP de rede até obter evidência. Rotas presentes no vercel.json não provam canonical HTML. Evidência anterior SFJM: amostras 308/301 e alguns dois saltos.
 - Falta testar GSC inspeção Jerivás e exportar Bing Site Explorer por URL; manter pendências abertas.
 
 Arquivo estruturado: `docs/sfjm/MNT_COMMERCIAL_43_RECONCILIATION_2026-10-27.csv`.
