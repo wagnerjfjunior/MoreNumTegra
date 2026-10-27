@@ -1,0 +1,701 @@
+{
+  "checked_at_utc": "2026-10-27T00:33:50.423328+00:00",
+  "articles": [
+    {
+      "n": 1,
+      "url": "https://www.moretegra.com.br/blog/dicasedecor/salao-festas-espaco-gourmet-como-avaliar/",
+      "status": 200,
+      "checks": {
+        "http_200": true,
+        "canonical": true,
+        "one_h1": true,
+        "indexable_meta": true,
+        "indexable_header": true,
+        "schema_types": true,
+        "published_source_matches": true,
+        "old_301": true,
+        "redirect_target": true
+      },
+      "pass": true,
+      "old_url": "https://www.moretegra.com.br/blog/dicasedecor/saloes-de-festas-e-espacos-gourmet-novo-padrao-em-condominios-de-luxo/",
+      "redirect_status": 301,
+      "location": "/blog/dicasedecor/salao-festas-espaco-gourmet-como-avaliar/",
+      "types": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "RealEstateAgent"
+      ],
+      "html_sha256": "85742e14c021289ab11951b3cb6944ed3f2d26c98605e4be3482b24e7c44184e",
+      "bytes": 27427,
+      "resources": [
+        "/assets/brand/tegra-vendas-256.webp",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/361/Imagem/Tegra-Incorporadora-Area-de-Lazer-Espaco-Gourmet-Empreendimento-Garden-Design-Private-Park-Residence-Apartamentos-Lapa-Sao-Paulo-SP-1400x1400-1758225901080.jpg",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/361/Imagem/Tegra-Incorporadora-Area-de-Lazer-Espaco-Gourmet-Empreendimento-Garden-Design-Private-Park-Residence-Apartamentos-Lapa-Sao-Paulo-SP-1400x1400-1758225901080.jpg",
+        "https://s3-gdigital.s3.amazonaws.com/gdigital/313/%C3%81ria%20Higien%C3%B3polis-Perspectiva%20ilustrada%20do%20acesso%20residencial..webp",
+        "https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp",
+        "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Tegra-Incorporadora-Perspectiva-Ilustrada-Caminhos-da-Lapa-Rua-Fortunato-Ferraz-1200x630.webp",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/337/ImagemPrincipal/8e85cddc-003b-4b7a-bfd2-2e38275cb1b8.jpg",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/312/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Apartamento-Studio-Salas-Comerciais-Aria-Higienopolis-Sao-Paulo-SP-1715881825537.jpg",
+        "/assets/brand/tegra-vendas-256.webp"
+      ],
+      "internal_links": [
+        "/",
+        "/blog/",
+        "/blog/dicasedecor/",
+        "/regioes/",
+        "/",
+        "/blog/",
+        "/blog/dicasedecor/",
+        "/empreendimentos/garden-design/",
+        "/empreendimentos/aria-higienopolis/",
+        "/regioes/",
+        "/",
+        "/investimentos/studios-e-salas-comerciais/",
+        "/blog/dicasedecor/",
+        "/regioes/#formulario"
+      ]
+    },
+    {
+      "n": 2,
+      "url": "https://www.moretegra.com.br/blog/dicasedecor/vaga-garagem-apartamento-acesso-manobra/",
+      "status": 200,
+      "checks": {
+        "http_200": true,
+        "canonical": true,
+        "one_h1": true,
+        "indexable_meta": true,
+        "indexable_header": true,
+        "schema_types": true,
+        "published_source_matches": true,
+        "old_301": true,
+        "redirect_target": true
+      },
+      "pass": true,
+      "old_url": "https://www.moretegra.com.br/blog/dicasedecor/garagem-premium-evolucao-em-condominios-de-alto-padrao/",
+      "redirect_status": 301,
+      "location": "/blog/dicasedecor/vaga-garagem-apartamento-acesso-manobra/",
+      "types": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "RealEstateAgent"
+      ],
+      "html_sha256": "55021ead8fb93a6ed97f0d115d2a26d77ad5e09cee33b0b80103f8bc574f668a",
+      "bytes": 24883,
+      "resources": [
+        "/assets/brand/tegra-vendas-256.webp",
+        "/assets/blog/decor/garagem-conceitual.webp",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/337/ImagemPrincipal/8e85cddc-003b-4b7a-bfd2-2e38275cb1b8.jpg",
+        "https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp",
+        "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Tegra-Incorporadora-Perspectiva-Ilustrada-Caminhos-da-Lapa-Rua-Fortunato-Ferraz-1200x630.webp",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/337/ImagemPrincipal/8e85cddc-003b-4b7a-bfd2-2e38275cb1b8.jpg",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/312/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Apartamento-Studio-Salas-Comerciais-Aria-Higienopolis-Sao-Paulo-SP-1715881825537.jpg",
+        "/assets/brand/tegra-vendas-256.webp"
+      ],
+      "internal_links": [
+        "/",
+        "/blog/",
+        "/blog/dicasedecor/",
+        "/regioes/",
+        "/",
+        "/blog/",
+        "/blog/dicasedecor/",
+        "/empreendimentos/bueno-brandao-257/",
+        "/regioes/",
+        "/",
+        "/investimentos/studios-e-salas-comerciais/",
+        "/blog/dicasedecor/",
+        "/regioes/#formulario"
+      ]
+    },
+    {
+      "n": 3,
+      "url": "https://www.moretegra.com.br/blog/dicasedecor/iluminacao-apartamento-camadas-circuitos/",
+      "status": 200,
+      "checks": {
+        "http_200": true,
+        "canonical": true,
+        "one_h1": true,
+        "indexable_meta": true,
+        "indexable_header": true,
+        "schema_types": true,
+        "published_source_matches": true,
+        "old_301": true,
+        "redirect_target": true
+      },
+      "pass": true,
+      "old_url": "https://www.moretegra.com.br/blog/dicasedecor/projeto-luminotecnico-como-a-iluminacao-transforma-os-ambientes/",
+      "redirect_status": 301,
+      "location": "/blog/dicasedecor/iluminacao-apartamento-camadas-circuitos/",
+      "types": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "RealEstateAgent"
+      ],
+      "html_sha256": "03bb0615a38889e8b302af33ef58cf31e68f3c73a17f9f5577df5920c088366b",
+      "bytes": 25226,
+      "resources": [
+        "/assets/brand/tegra-vendas-256.webp",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/361/Imagem/Tegra-Incorporadora-Living-62-Metros-Empreendimento-Garden-Design-Private-Park-Residence-Apartamentos-Lapa-Sao-Paulo-SP-1400x1400-1758230055670.jpg",
+        "https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp",
+        "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Tegra-Incorporadora-Perspectiva-Ilustrada-Caminhos-da-Lapa-Rua-Fortunato-Ferraz-1200x630.webp",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/337/ImagemPrincipal/8e85cddc-003b-4b7a-bfd2-2e38275cb1b8.jpg",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/312/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Apartamento-Studio-Salas-Comerciais-Aria-Higienopolis-Sao-Paulo-SP-1715881825537.jpg",
+        "/assets/brand/tegra-vendas-256.webp"
+      ],
+      "internal_links": [
+        "/",
+        "/blog/",
+        "/blog/dicasedecor/",
+        "/regioes/",
+        "/",
+        "/blog/",
+        "/blog/dicasedecor/",
+        "/blog/dicasedecor/iluminacao-natural-apartamento-orientacao-solar/",
+        "/regioes/",
+        "/",
+        "/investimentos/studios-e-salas-comerciais/",
+        "/blog/dicasedecor/",
+        "/regioes/#formulario"
+      ]
+    },
+    {
+      "n": 4,
+      "url": "https://www.moretegra.com.br/blog/dicasedecor/brinquedoteca-condominio-uso-seguranca/",
+      "status": 200,
+      "checks": {
+        "http_200": true,
+        "canonical": true,
+        "one_h1": true,
+        "indexable_meta": true,
+        "indexable_header": true,
+        "schema_types": true,
+        "published_source_matches": true,
+        "old_301": true,
+        "redirect_target": true
+      },
+      "pass": true,
+      "old_url": "https://www.moretegra.com.br/blog/dicasedecor/espaco-kids-e-brinquedotecas-design-ludico-que-estimula-criancas/",
+      "redirect_status": 301,
+      "location": "/blog/dicasedecor/brinquedoteca-condominio-uso-seguranca/",
+      "types": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "RealEstateAgent"
+      ],
+      "html_sha256": "f81fd9ca1c6494a2d4acc4743af3646da76e84561e1ec596c112c6fc2ff54739",
+      "bytes": 25616,
+      "resources": [
+        "/assets/brand/tegra-vendas-256.webp",
+        "/assets/blog/decor/brinquedoteca-conceitual.webp",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/346/ImagemPrincipal/f473a9c8-e222-46f5-887e-c06efa82aaff-1715887075276.jpg",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/361/ImagemPrincipal/Tegra-Incorporadora-Area-de-Lazer-Piscina-Empreendimento-Garden-Design-Private-Park-Residence-Apartamentos-Lapa-Sao-Paulo-SP-714x640-1758223113158.jpg",
+        "https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp",
+        "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Tegra-Incorporadora-Perspectiva-Ilustrada-Caminhos-da-Lapa-Rua-Fortunato-Ferraz-1200x630.webp",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/337/ImagemPrincipal/8e85cddc-003b-4b7a-bfd2-2e38275cb1b8.jpg",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/312/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Apartamento-Studio-Salas-Comerciais-Aria-Higienopolis-Sao-Paulo-SP-1715881825537.jpg",
+        "/assets/brand/tegra-vendas-256.webp"
+      ],
+      "internal_links": [
+        "/",
+        "/blog/",
+        "/blog/dicasedecor/",
+        "/regioes/",
+        "/",
+        "/blog/",
+        "/blog/dicasedecor/",
+        "/empreendimentos/ypy-alto-do-ipiranga/",
+        "/empreendimentos/garden-design/",
+        "/regioes/",
+        "/",
+        "/investimentos/studios-e-salas-comerciais/",
+        "/blog/dicasedecor/",
+        "/regioes/#formulario"
+      ]
+    },
+    {
+      "n": 5,
+      "url": "https://www.moretegra.com.br/blog/dicasedecor/apartamento-com-pets-layout-materiais/",
+      "status": 200,
+      "checks": {
+        "http_200": true,
+        "canonical": true,
+        "one_h1": true,
+        "indexable_meta": true,
+        "indexable_header": true,
+        "schema_types": true,
+        "published_source_matches": true,
+        "old_301": true,
+        "redirect_target": true
+      },
+      "pass": true,
+      "old_url": "https://www.moretegra.com.br/blog/dicasedecor/dicas-para-apartamento-pet-friendly-decoracao-seguranca-e-bem-estar/",
+      "redirect_status": 301,
+      "location": "/blog/dicasedecor/apartamento-com-pets-layout-materiais/",
+      "types": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "RealEstateAgent"
+      ],
+      "html_sha256": "8e8a2bcd3034408dc6886456332ed8c81f2fb4e70ce74aae50995fd4bf5414ed",
+      "bytes": 25676,
+      "resources": [
+        "/assets/brand/tegra-vendas-256.webp",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/361/Imagem/Tegra-Incorporadora-Living-62-Metros-Empreendimento-Garden-Design-Private-Park-Residence-Apartamentos-Lapa-Sao-Paulo-SP-1400x1400-1758230055670.jpg",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/361/ImagemPrincipal/Tegra-Incorporadora-Area-de-Lazer-Piscina-Empreendimento-Garden-Design-Private-Park-Residence-Apartamentos-Lapa-Sao-Paulo-SP-714x640-1758223113158.jpg",
+        "https://s3-gdigital.s3.amazonaws.com/gdigital/313/%C3%81ria%20Higien%C3%B3polis-Perspectiva%20ilustrada%20do%20acesso%20residencial..webp",
+        "https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp",
+        "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Tegra-Incorporadora-Perspectiva-Ilustrada-Caminhos-da-Lapa-Rua-Fortunato-Ferraz-1200x630.webp",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/337/ImagemPrincipal/8e85cddc-003b-4b7a-bfd2-2e38275cb1b8.jpg",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/312/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Apartamento-Studio-Salas-Comerciais-Aria-Higienopolis-Sao-Paulo-SP-1715881825537.jpg",
+        "/assets/brand/tegra-vendas-256.webp"
+      ],
+      "internal_links": [
+        "/",
+        "/blog/",
+        "/blog/dicasedecor/",
+        "/regioes/",
+        "/",
+        "/blog/",
+        "/blog/dicasedecor/",
+        "/empreendimentos/garden-design/",
+        "/empreendimentos/aria-higienopolis/",
+        "/regioes/",
+        "/",
+        "/investimentos/studios-e-salas-comerciais/",
+        "/blog/dicasedecor/",
+        "/regioes/#formulario"
+      ]
+    },
+    {
+      "n": 6,
+      "url": "https://www.moretegra.com.br/blog/dicasedecor/quadras-condominio-tenis-beach-tennis/",
+      "status": 200,
+      "checks": {
+        "http_200": true,
+        "canonical": true,
+        "one_h1": true,
+        "indexable_meta": true,
+        "indexable_header": true,
+        "schema_types": true,
+        "published_source_matches": true,
+        "old_301": true,
+        "redirect_target": true
+      },
+      "pass": true,
+      "old_url": "https://www.moretegra.com.br/blog/dicasedecor/do-tenis-ao-beach-tennis-quadras-valorizam-condominios/",
+      "redirect_status": 301,
+      "location": "/blog/dicasedecor/quadras-condominio-tenis-beach-tennis/",
+      "types": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "RealEstateAgent"
+      ],
+      "html_sha256": "503678f9e4c4e18a62f7478d363e69d706a37b4310b1fcde1f8b5bb136f98631",
+      "bytes": 23350,
+      "resources": [
+        "/assets/brand/tegra-vendas-256.webp",
+        "/assets/blog/decor/quadra-conceitual.webp",
+        "https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp",
+        "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Tegra-Incorporadora-Perspectiva-Ilustrada-Caminhos-da-Lapa-Rua-Fortunato-Ferraz-1200x630.webp",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/337/ImagemPrincipal/8e85cddc-003b-4b7a-bfd2-2e38275cb1b8.jpg",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/312/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Apartamento-Studio-Salas-Comerciais-Aria-Higienopolis-Sao-Paulo-SP-1715881825537.jpg",
+        "/assets/brand/tegra-vendas-256.webp"
+      ],
+      "internal_links": [
+        "/",
+        "/blog/",
+        "/blog/dicasedecor/",
+        "/regioes/",
+        "/",
+        "/blog/",
+        "/blog/dicasedecor/",
+        "/regioes/",
+        "/",
+        "/investimentos/studios-e-salas-comerciais/",
+        "/blog/dicasedecor/",
+        "/regioes/#formulario"
+      ]
+    },
+    {
+      "n": 7,
+      "url": "https://www.moretegra.com.br/blog/dicasedecor/recarga-carro-eletrico-condominio-infraestrutura/",
+      "status": 200,
+      "checks": {
+        "http_200": true,
+        "canonical": true,
+        "one_h1": true,
+        "indexable_meta": true,
+        "indexable_header": true,
+        "schema_types": true,
+        "published_source_matches": true,
+        "old_301": true,
+        "redirect_target": true
+      },
+      "pass": true,
+      "old_url": "https://www.moretegra.com.br/blog/dicasedecor/carro-eletrico-e-condominio-predios-com-infraestrutura-de-recarga/",
+      "redirect_status": 301,
+      "location": "/blog/dicasedecor/recarga-carro-eletrico-condominio-infraestrutura/",
+      "types": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "RealEstateAgent"
+      ],
+      "html_sha256": "3d35553a0ff80482caf1bd634a11e90a4e2cf9f64578ee784c5b252fb7a4540e",
+      "bytes": 23818,
+      "resources": [
+        "/assets/brand/tegra-vendas-256.webp",
+        "/assets/blog/decor/recarga-conceitual.webp",
+        "https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp",
+        "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Tegra-Incorporadora-Perspectiva-Ilustrada-Caminhos-da-Lapa-Rua-Fortunato-Ferraz-1200x630.webp",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/337/ImagemPrincipal/8e85cddc-003b-4b7a-bfd2-2e38275cb1b8.jpg",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/312/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Apartamento-Studio-Salas-Comerciais-Aria-Higienopolis-Sao-Paulo-SP-1715881825537.jpg",
+        "/assets/brand/tegra-vendas-256.webp"
+      ],
+      "internal_links": [
+        "/",
+        "/blog/",
+        "/blog/dicasedecor/",
+        "/regioes/",
+        "/",
+        "/blog/",
+        "/blog/dicasedecor/",
+        "/regioes/",
+        "/",
+        "/investimentos/studios-e-salas-comerciais/",
+        "/blog/dicasedecor/",
+        "/regioes/#formulario"
+      ]
+    },
+    {
+      "n": 8,
+      "url": "https://www.moretegra.com.br/blog/dicasedecor/casa-condominio-layout-claris-barra/",
+      "status": 200,
+      "checks": {
+        "http_200": true,
+        "canonical": true,
+        "one_h1": true,
+        "indexable_meta": true,
+        "indexable_header": true,
+        "schema_types": true,
+        "published_source_matches": true,
+        "old_301": true,
+        "redirect_target": true
+      },
+      "pass": true,
+      "old_url": "https://www.moretegra.com.br/blog/dicasedecor/condominio-de-casas-entenda-e-conheca-o-claris-casa-clube/",
+      "redirect_status": 301,
+      "location": "/blog/dicasedecor/casa-condominio-layout-claris-barra/",
+      "types": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "RealEstateAgent"
+      ],
+      "html_sha256": "89119e0f6cc806f097acce4e08bca1c7ecc2640a8ecfb208630b995ce6d2ae6d",
+      "bytes": 24080,
+      "resources": [
+        "/assets/brand/tegra-vendas-256.webp",
+        "/assets/blog/decor/casas-conceitual.webp",
+        "https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp",
+        "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Tegra-Incorporadora-Perspectiva-Ilustrada-Caminhos-da-Lapa-Rua-Fortunato-Ferraz-1200x630.webp",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/337/ImagemPrincipal/8e85cddc-003b-4b7a-bfd2-2e38275cb1b8.jpg",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/312/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Apartamento-Studio-Salas-Comerciais-Aria-Higienopolis-Sao-Paulo-SP-1715881825537.jpg",
+        "/assets/brand/tegra-vendas-256.webp"
+      ],
+      "internal_links": [
+        "/",
+        "/blog/",
+        "/blog/dicasedecor/",
+        "/regioes/",
+        "/",
+        "/blog/",
+        "/blog/dicasedecor/",
+        "/regioes/",
+        "/",
+        "/investimentos/studios-e-salas-comerciais/",
+        "/blog/dicasedecor/",
+        "/regioes/#formulario"
+      ]
+    },
+    {
+      "n": 9,
+      "url": "https://www.moretegra.com.br/blog/dicasedecor/piso-apartamento-materiais-acustica-umidade/",
+      "status": 200,
+      "checks": {
+        "http_200": true,
+        "canonical": true,
+        "one_h1": true,
+        "indexable_meta": true,
+        "indexable_header": true,
+        "schema_types": true,
+        "published_source_matches": true,
+        "old_301": true,
+        "redirect_target": true
+      },
+      "pass": true,
+      "old_url": "https://www.moretegra.com.br/blog/dicasedecor/como-escolher-o-piso-ideal-para-o-seu-apartamento/",
+      "redirect_status": 301,
+      "location": "/blog/dicasedecor/piso-apartamento-materiais-acustica-umidade/",
+      "types": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "RealEstateAgent"
+      ],
+      "html_sha256": "748c0abf4e29d395c565bb72a1eb8549f7896d058e364d66403a361476280057",
+      "bytes": 24965,
+      "resources": [
+        "/assets/brand/tegra-vendas-256.webp",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/361/Imagem/Tegra-Incorporadora-Living-62-Metros-Empreendimento-Garden-Design-Private-Park-Residence-Apartamentos-Lapa-Sao-Paulo-SP-1400x1400-1758230055670.jpg",
+        "https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp",
+        "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Tegra-Incorporadora-Perspectiva-Ilustrada-Caminhos-da-Lapa-Rua-Fortunato-Ferraz-1200x630.webp",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/337/ImagemPrincipal/8e85cddc-003b-4b7a-bfd2-2e38275cb1b8.jpg",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/312/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Apartamento-Studio-Salas-Comerciais-Aria-Higienopolis-Sao-Paulo-SP-1715881825537.jpg",
+        "/assets/brand/tegra-vendas-256.webp"
+      ],
+      "internal_links": [
+        "/",
+        "/blog/",
+        "/blog/dicasedecor/",
+        "/regioes/",
+        "/",
+        "/blog/",
+        "/blog/dicasedecor/",
+        "/regioes/",
+        "/",
+        "/investimentos/studios-e-salas-comerciais/",
+        "/blog/dicasedecor/",
+        "/regioes/#formulario"
+      ]
+    },
+    {
+      "n": 10,
+      "url": "https://www.moretegra.com.br/blog/dicasedecor/cores-decoracao-2026-paleta-apartamento/",
+      "status": 200,
+      "checks": {
+        "http_200": true,
+        "canonical": true,
+        "one_h1": true,
+        "indexable_meta": true,
+        "indexable_header": true,
+        "schema_types": true,
+        "published_source_matches": true,
+        "old_301": true,
+        "redirect_target": true
+      },
+      "pass": true,
+      "old_url": "https://www.moretegra.com.br/blog/dicasedecor/cor-do-ano-2026-tendencia-para-o-seu-tegra/",
+      "redirect_status": 301,
+      "location": "/blog/dicasedecor/cores-decoracao-2026-paleta-apartamento/",
+      "types": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "RealEstateAgent"
+      ],
+      "html_sha256": "a1bfb59bdaa673d6572ccf624f9db98d0e00a12163f5e24f11e0d4e1df0e30df",
+      "bytes": 25054,
+      "resources": [
+        "/assets/brand/tegra-vendas-256.webp",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/361/Imagem/Tegra-Incorporadora-Living-62-Metros-Empreendimento-Garden-Design-Private-Park-Residence-Apartamentos-Lapa-Sao-Paulo-SP-1400x1400-1758230055670.jpg",
+        "https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp",
+        "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Tegra-Incorporadora-Perspectiva-Ilustrada-Caminhos-da-Lapa-Rua-Fortunato-Ferraz-1200x630.webp",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/337/ImagemPrincipal/8e85cddc-003b-4b7a-bfd2-2e38275cb1b8.jpg",
+        "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/312/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Apartamento-Studio-Salas-Comerciais-Aria-Higienopolis-Sao-Paulo-SP-1715881825537.jpg",
+        "/assets/brand/tegra-vendas-256.webp"
+      ],
+      "internal_links": [
+        "/",
+        "/blog/",
+        "/blog/dicasedecor/",
+        "/regioes/",
+        "/",
+        "/blog/",
+        "/blog/dicasedecor/",
+        "/blog/dicasedecor/iluminacao-natural-apartamento-orientacao-solar/",
+        "/regioes/",
+        "/",
+        "/investimentos/studios-e-salas-comerciais/",
+        "/blog/dicasedecor/",
+        "/regioes/#formulario"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "url": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/%C3%81ria%20Higien%C3%B3polis-Perspectiva%20ilustrada%20do%20acesso%20residencial..webp",
+      "status": 200,
+      "bytes": 219786,
+      "error": null
+    },
+    {
+      "url": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Tegra-Incorporadora-Perspectiva-Ilustrada-Caminhos-da-Lapa-Rua-Fortunato-Ferraz-1200x630.webp",
+      "status": 200,
+      "bytes": 69180,
+      "error": null
+    },
+    {
+      "url": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp",
+      "status": 200,
+      "bytes": 67642,
+      "error": null
+    },
+    {
+      "url": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/312/ImagemPrincipal/Tegra-Incorporadora-Detalhe-da-Fachada-Apartamento-Studio-Salas-Comerciais-Aria-Higienopolis-Sao-Paulo-SP-1715881825537.jpg",
+      "status": 200,
+      "bytes": 221132,
+      "error": null
+    },
+    {
+      "url": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/337/ImagemPrincipal/8e85cddc-003b-4b7a-bfd2-2e38275cb1b8.jpg",
+      "status": 200,
+      "bytes": 173899,
+      "error": null
+    },
+    {
+      "url": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/346/ImagemPrincipal/f473a9c8-e222-46f5-887e-c06efa82aaff-1715887075276.jpg",
+      "status": 200,
+      "bytes": 184169,
+      "error": null
+    },
+    {
+      "url": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/361/Imagem/Tegra-Incorporadora-Area-de-Lazer-Espaco-Gourmet-Empreendimento-Garden-Design-Private-Park-Residence-Apartamentos-Lapa-Sao-Paulo-SP-1400x1400-1758225901080.jpg",
+      "status": 200,
+      "bytes": 341033,
+      "error": null
+    },
+    {
+      "url": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/361/Imagem/Tegra-Incorporadora-Living-62-Metros-Empreendimento-Garden-Design-Private-Park-Residence-Apartamentos-Lapa-Sao-Paulo-SP-1400x1400-1758230055670.jpg",
+      "status": 200,
+      "bytes": 599454,
+      "error": null
+    },
+    {
+      "url": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/361/ImagemPrincipal/Tegra-Incorporadora-Area-de-Lazer-Piscina-Empreendimento-Garden-Design-Private-Park-Residence-Apartamentos-Lapa-Sao-Paulo-SP-714x640-1758223113158.jpg",
+      "status": 200,
+      "bytes": 199254,
+      "error": null
+    },
+    {
+      "url": "https://www.moretegra.com.br/",
+      "status": 200,
+      "bytes": 49756,
+      "error": null
+    },
+    {
+      "url": "https://www.moretegra.com.br/assets/blog/decor/brinquedoteca-conceitual.webp",
+      "status": 200,
+      "bytes": 72710,
+      "error": null
+    },
+    {
+      "url": "https://www.moretegra.com.br/assets/blog/decor/casas-conceitual.webp",
+      "status": 200,
+      "bytes": 139316,
+      "error": null
+    },
+    {
+      "url": "https://www.moretegra.com.br/assets/blog/decor/garagem-conceitual.webp",
+      "status": 200,
+      "bytes": 38020,
+      "error": null
+    },
+    {
+      "url": "https://www.moretegra.com.br/assets/blog/decor/quadra-conceitual.webp",
+      "status": 200,
+      "bytes": 135000,
+      "error": null
+    },
+    {
+      "url": "https://www.moretegra.com.br/assets/blog/decor/recarga-conceitual.webp",
+      "status": 200,
+      "bytes": 42500,
+      "error": null
+    },
+    {
+      "url": "https://www.moretegra.com.br/assets/brand/tegra-vendas-256.webp",
+      "status": 200,
+      "bytes": 2652,
+      "error": null
+    },
+    {
+      "url": "https://www.moretegra.com.br/blog/",
+      "status": 200,
+      "bytes": 28111,
+      "error": null
+    },
+    {
+      "url": "https://www.moretegra.com.br/blog/dicasedecor/",
+      "status": 200,
+      "bytes": 3835,
+      "error": null
+    },
+    {
+      "url": "https://www.moretegra.com.br/blog/dicasedecor/iluminacao-natural-apartamento-orientacao-solar/",
+      "status": 200,
+      "bytes": 40142,
+      "error": null
+    },
+    {
+      "url": "https://www.moretegra.com.br/empreendimentos/aria-higienopolis/",
+      "status": 200,
+      "bytes": 56707,
+      "error": null
+    },
+    {
+      "url": "https://www.moretegra.com.br/empreendimentos/bueno-brandao-257/",
+      "status": 200,
+      "bytes": 67764,
+      "error": null
+    },
+    {
+      "url": "https://www.moretegra.com.br/empreendimentos/garden-design/",
+      "status": 200,
+      "bytes": 56175,
+      "error": null
+    },
+    {
+      "url": "https://www.moretegra.com.br/empreendimentos/ypy-alto-do-ipiranga/",
+      "status": 200,
+      "bytes": 48295,
+      "error": null
+    },
+    {
+      "url": "https://www.moretegra.com.br/investimentos/studios-e-salas-comerciais/",
+      "status": 200,
+      "bytes": 75460,
+      "error": null
+    },
+    {
+      "url": "https://www.moretegra.com.br/regioes/",
+      "status": 200,
+      "bytes": 75179,
+      "error": null
+    },
+    {
+      "url": "https://www.moretegra.com.br/regioes/#formulario",
+      "status": 200,
+      "bytes": 75179,
+      "error": null
+    },
+    {
+      "url": "https://www.moretegra.com.br/sitemap.xml",
+      "status": 200,
+      "bytes": 5445,
+      "error": null
+    }
+  ],
+  "sitemap_all_ten": true,
+  "category_links_all_ten": true,
+  "official_schema": "NOT_EXECUTED_CAPTCHA",
+  "mobile_render": "NOT_EXECUTED",
+  "performance": "NOT_MEASURED",
+  "pass": true
+}

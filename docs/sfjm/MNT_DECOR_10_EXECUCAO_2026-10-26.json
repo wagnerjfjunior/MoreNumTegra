@@ -15,17 +15,17 @@
     "url": "https://www.moretegra.com.br/blog/dicasedecor/salao-festas-espaco-gourmet-como-avaliar/",
     "intent": "Informacional: comparar critérios de uso antes da compra",
     "cluster": "Dicas & Decoração",
-    "status": "DRAFT_STATIC_QA",
+    "status": "PUBLISHED_PRODUCTION",
     "hero": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/361/Imagem/Tegra-Incorporadora-Area-de-Lazer-Espaco-Gourmet-Empreendimento-Garden-Design-Private-Park-Residence-Apartamentos-Lapa-Sao-Paulo-SP-1400x1400-1758225901080.jpg",
     "cards": [
       "Garden Design",
       "Ária Higienópolis"
     ],
     "word_count": 1122,
-    "old_status": "HTTP_200_NOINDEX_SCAFFOLD",
-    "redirect": "PROPOSTO_301_NO_RELEASE; NÃO_IMPLEMENTADO",
+    "old_status": "HTTP_301",
+    "redirect": "301_VERIFICADO",
     "canonical": "https://www.moretegra.com.br/blog/dicasedecor/salao-festas-espaco-gourmet-como-avaliar/",
-    "robots": "noindex,follow",
+    "robots": "index,follow",
     "risk": "Intenção informacional distinta das páginas de empreendimento; sobreposição com placeholders preservada sem indexação. Claris e esportes também têm pautas Lifestyle noindex: manter separação de foco ao revisá-las.",
     "secondary_terms": "capacidade, cozinha de apoio, circulação, regras de reserva",
     "inbound": "/blog/dicasedecor/",
@@ -39,12 +39,12 @@
     ],
     "source_authors": "Tegra: artigo Salões (06/05/2026); Moura Dubeux: Espaço gourmet (27/07/2025).",
     "research_review": "Aproveitados: relação entre preparo e convivência, circulação, apoio, integração e privacidade. Corrigidos: limpeza pós-evento não é automaticamente incluída; exclusividade, equipamentos e valorização não são universais. Garden e Ária comprovados na main.",
-    "result": "BLOQUEADO_PARA_RELEASE",
+    "result": "PUBLICADO_HTTP_200",
     "qa": {
       "n": 1,
       "static": "PASS",
       "canonical": "https://www.moretegra.com.br/blog/dicasedecor/salao-festas-espaco-gourmet-como-avaliar/",
-      "robots": "noindex,follow",
+      "robots": "index,follow",
       "types": [
         "BlogPosting",
         "BreadcrumbList",
@@ -53,66 +53,83 @@
       ],
       "words": 1122,
       "hero": "PRESENTE",
-      "official_schema": "NÃO_EXECUTADO_AUTOREVIEW",
-      "google_rich_results": "NÃO_EXECUTADO",
-      "visual_mobile": "BLOQUEADO_AUTOREVIEW",
+      "official_schema": "NÃO_EXECUTADO_CAPTCHA",
+      "google_rich_results": "NÃO_EXECUTADO_CAPTCHA",
+      "visual_mobile": "NÃO_EXECUTADO",
       "performance": "NÃO_MEDIDO",
-      "public_url": "NÃO_PUBLICADA",
-      "indexing": "NÃO_SUBMETIDA"
+      "public_url": "HTTP_200_SOURCE_MATCH",
+      "indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED",
+      "production_checks": {
+        "http_200": true,
+        "canonical": true,
+        "one_h1": true,
+        "indexable_meta": true,
+        "indexable_header": true,
+        "schema_types": true,
+        "published_source_matches": true,
+        "old_301": true,
+        "redirect_target": true
+      }
     },
     "github": {
       "n": 1,
       "pr": 486,
-      "url": "https://github.com/wagnerjfjunior/MoreNumTegra/pull/486",
-      "head": "92a5faa09f17d7e22724d71c09a7e0ff86ca3d1b",
+      "url": "https://www.moretegra.com.br/blog/dicasedecor/salao-festas-espaco-gourmet-como-avaliar/",
+      "head": "6c25438fe6b695ebac4b70405fa8193b076f3238",
       "branch": "blog/decor-01-salao-gourmet-20261026",
       "ci": [
         {
-          "id": 40422169584,
-          "name": "Favicon standard validation",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 833,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422169584/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422169584/logs",
-          "workflow_id": 362117359
-        },
-        {
-          "id": 40422169614,
-          "name": "SEO two distinct images - 39 URLs",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 486,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422169614/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422169614/logs",
-          "workflow_id": 380968663
-        },
-        {
-          "id": 40422169725,
-          "name": "Blog Bairros hub and Lapa URL migration",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 48,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422169725/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422169725/logs",
-          "workflow_id": 390493903
-        },
-        {
-          "id": 40422169615,
+          "id": 40426754455,
           "name": "Jerivas Commercial SEO and Form46",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 75,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422169615/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422169615/logs",
+          "run_number": 110,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426754455/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426754455/logs",
           "workflow_id": 390069855
+        },
+        {
+          "id": 40426754404,
+          "name": "SEO two distinct images - 39 URLs",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 521,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426754404/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426754404/logs",
+          "workflow_id": 380968663
+        },
+        {
+          "id": 40426754480,
+          "name": "Favicon standard validation",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 868,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426754480/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426754480/logs",
+          "workflow_id": 362117359
+        },
+        {
+          "id": 40426754397,
+          "name": "Blog Bairros hub and Lapa URL migration",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 83,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426754397/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426754397/logs",
+          "workflow_id": 390493903
         }
-      ]
+      ],
+      "merged": true
     },
-    "merge_sha": null,
-    "vercel_deploy": null,
-    "google": "NÃO_SUBMETIDO/NÃO_PUBLICADO",
-    "bing": "NÃO_SUBMETIDO/NÃO_PUBLICADO"
+    "merge_sha": "dac009434bdb44506c7a040a60fe45adc8175c42",
+    "vercel_deploy": {
+      "id": "dpl_EbqLXnC4bpz6YnVMD3m9rBPLDP25",
+      "state": "READY",
+      "source_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
+      "alias": "www.moretegra.com.br"
+    },
+    "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
+    "bing": "INDEXNOW_SUBMITTED_21_URLS"
   },
   {
     "n": 2,
@@ -130,16 +147,16 @@
     "url": "https://www.moretegra.com.br/blog/dicasedecor/vaga-garagem-apartamento-acesso-manobra/",
     "intent": "Informacional: comparar critérios de uso antes da compra",
     "cluster": "Dicas & Decoração",
-    "status": "DRAFT_STATIC_QA",
+    "status": "PUBLISHED_PRODUCTION",
     "hero": "https://www.moretegra.com.br/assets/blog/decor/garagem-conceitual.webp",
     "cards": [
       "Bueno Brandão 257"
     ],
     "word_count": 1022,
-    "old_status": "HTTP_200_NOINDEX_SCAFFOLD",
-    "redirect": "PROPOSTO_301_NO_RELEASE; NÃO_IMPLEMENTADO",
+    "old_status": "HTTP_301",
+    "redirect": "301_VERIFICADO",
     "canonical": "https://www.moretegra.com.br/blog/dicasedecor/vaga-garagem-apartamento-acesso-manobra/",
-    "robots": "noindex,follow",
+    "robots": "index,follow",
     "risk": "Intenção informacional distinta das páginas de empreendimento; sobreposição com placeholders preservada sem indexação. Claris e esportes também têm pautas Lifestyle noindex: manter separação de foco ao revisá-las.",
     "secondary_terms": "garagem, planta, uso, manutenção",
     "inbound": "/blog/dicasedecor/",
@@ -152,12 +169,12 @@
     ],
     "source_authors": "Tegra: Garagem (04/05/2026); Norden Imóveis (10/07/2026); perfil anabrumcorretora.",
     "research_review": "Aproveitados: múltiplos veículos, manobra e circulação. Rejeitados: recarga rápida universal, rentabilidade superior à renda fixa, liquidez e proteção patrimonial garantidas, estatísticas financeiras sem fonte. Card Bueno limitado a 500 m²/5 vagas confirmado na main, sem inferir dimensões.",
-    "result": "BLOQUEADO_PARA_RELEASE",
+    "result": "PUBLICADO_HTTP_200",
     "qa": {
       "n": 2,
       "static": "PASS",
       "canonical": "https://www.moretegra.com.br/blog/dicasedecor/vaga-garagem-apartamento-acesso-manobra/",
-      "robots": "noindex,follow",
+      "robots": "index,follow",
       "types": [
         "BlogPosting",
         "BreadcrumbList",
@@ -166,66 +183,83 @@
       ],
       "words": 1022,
       "hero": "ILUSTRAÇÃO_CONCEITUAL_IA_ADICIONADA",
-      "official_schema": "NÃO_EXECUTADO_CAPTCHA_PERSISTENTE_APÓS_AUTORIZAÇÃO",
-      "google_rich_results": "NÃO_EXECUTADO",
-      "visual_mobile": "BLOQUEADO_AUTOREVIEW",
+      "official_schema": "NÃO_EXECUTADO_CAPTCHA",
+      "google_rich_results": "NÃO_EXECUTADO_CAPTCHA",
+      "visual_mobile": "NÃO_EXECUTADO",
       "performance": "NÃO_MEDIDO",
-      "public_url": "NÃO_PUBLICADA",
-      "indexing": "NÃO_SUBMETIDA"
+      "public_url": "HTTP_200_SOURCE_MATCH",
+      "indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED",
+      "production_checks": {
+        "http_200": true,
+        "canonical": true,
+        "one_h1": true,
+        "indexable_meta": true,
+        "indexable_header": true,
+        "schema_types": true,
+        "published_source_matches": true,
+        "old_301": true,
+        "redirect_target": true
+      }
     },
     "github": {
       "n": 2,
       "pr": 487,
-      "url": "https://github.com/wagnerjfjunior/MoreNumTegra/pull/487",
-      "head": "ac9805b8d5604ad080722c69589ec66623f25274",
+      "url": "https://www.moretegra.com.br/blog/dicasedecor/vaga-garagem-apartamento-acesso-manobra/",
+      "head": "3b64ae1313a6e725bc4abfa5ac5ac4cf8756087b",
       "branch": "blog/decor-02-vaga-garagem-apartamento-ace-20261026",
       "ci": [
         {
-          "id": 40425205762,
-          "name": "SEO two distinct images - 39 URLs",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 496,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425205762/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425205762/logs",
-          "workflow_id": 380968663
-        },
-        {
-          "id": 40425205582,
-          "name": "Favicon standard validation",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 843,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425205582/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425205582/logs",
-          "workflow_id": 362117359
-        },
-        {
-          "id": 40425205610,
+          "id": 40426760190,
           "name": "Blog Bairros hub and Lapa URL migration",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 58,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425205610/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425205610/logs",
+          "run_number": 84,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426760190/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426760190/logs",
           "workflow_id": 390493903
         },
         {
-          "id": 40425205509,
+          "id": 40426760181,
+          "name": "Favicon standard validation",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 869,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426760181/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426760181/logs",
+          "workflow_id": 362117359
+        },
+        {
+          "id": 40426760205,
+          "name": "SEO two distinct images - 39 URLs",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 522,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426760205/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426760205/logs",
+          "workflow_id": 380968663
+        },
+        {
+          "id": 40426760153,
           "name": "Jerivas Commercial SEO and Form46",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 85,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425205509/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425205509/logs",
+          "run_number": 111,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426760153/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426760153/logs",
           "workflow_id": 390069855
         }
-      ]
+      ],
+      "merged": true
     },
-    "merge_sha": null,
-    "vercel_deploy": null,
-    "google": "NÃO_SUBMETIDO/NÃO_PUBLICADO",
-    "bing": "NÃO_SUBMETIDO/NÃO_PUBLICADO"
+    "merge_sha": "309fef73d34474a82c667084aeee035bafcc3b58",
+    "vercel_deploy": {
+      "id": "dpl_EbqLXnC4bpz6YnVMD3m9rBPLDP25",
+      "state": "READY",
+      "source_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
+      "alias": "www.moretegra.com.br"
+    },
+    "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
+    "bing": "INDEXNOW_SUBMITTED_21_URLS"
   },
   {
     "n": 3,
@@ -243,14 +277,14 @@
     "url": "https://www.moretegra.com.br/blog/dicasedecor/iluminacao-apartamento-camadas-circuitos/",
     "intent": "Informacional: comparar critérios de uso antes da compra",
     "cluster": "Dicas & Decoração",
-    "status": "DRAFT_STATIC_QA",
+    "status": "PUBLISHED_PRODUCTION",
     "hero": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/361/Imagem/Tegra-Incorporadora-Living-62-Metros-Empreendimento-Garden-Design-Private-Park-Residence-Apartamentos-Lapa-Sao-Paulo-SP-1400x1400-1758230055670.jpg",
     "cards": [],
     "word_count": 1027,
-    "old_status": "HTTP_200_NOINDEX_SCAFFOLD",
-    "redirect": "PROPOSTO_301_NO_RELEASE; NÃO_IMPLEMENTADO",
+    "old_status": "HTTP_301",
+    "redirect": "301_VERIFICADO",
     "canonical": "https://www.moretegra.com.br/blog/dicasedecor/iluminacao-apartamento-camadas-circuitos/",
-    "robots": "noindex,follow",
+    "robots": "index,follow",
     "risk": "Intenção informacional distinta das páginas de empreendimento; sobreposição com placeholders preservada sem indexação. Claris e esportes também têm pautas Lifestyle noindex: manter separação de foco ao revisá-las.",
     "secondary_terms": "iluminação artificial, planta, uso, manutenção",
     "inbound": "/blog/dicasedecor/",
@@ -263,12 +297,12 @@
     ],
     "source_authors": "Tegra: Projeto luminotécnico (08/04/2026); 4ED/Redação (09/07/2026); Sandra Solda/Spuma (02/07/2026); apêndices sobre brinquedotecas Tegra/Afetto.",
     "research_review": "Aproveitados: briefing, camadas, ofuscamento, especificações e comandos. Corrigidos: kelvin não mede intensidade; luz fria não é requisito universal para cozinha/concentração; LED não implica qualquer compatibilidade com dimmer. Apêndices infantis reconhecidos e separados da pauta. Sem prometer personalização de todos os projetos.",
-    "result": "BLOQUEADO_PARA_RELEASE",
+    "result": "PUBLICADO_HTTP_200",
     "qa": {
       "n": 3,
       "static": "PASS",
       "canonical": "https://www.moretegra.com.br/blog/dicasedecor/iluminacao-apartamento-camadas-circuitos/",
-      "robots": "noindex,follow",
+      "robots": "index,follow",
       "types": [
         "BlogPosting",
         "BreadcrumbList",
@@ -277,66 +311,83 @@
       ],
       "words": 1027,
       "hero": "PRESENTE",
-      "official_schema": "NÃO_EXECUTADO_AUTOREVIEW",
-      "google_rich_results": "NÃO_EXECUTADO",
-      "visual_mobile": "BLOQUEADO_AUTOREVIEW",
+      "official_schema": "NÃO_EXECUTADO_CAPTCHA",
+      "google_rich_results": "NÃO_EXECUTADO_CAPTCHA",
+      "visual_mobile": "NÃO_EXECUTADO",
       "performance": "NÃO_MEDIDO",
-      "public_url": "NÃO_PUBLICADA",
-      "indexing": "NÃO_SUBMETIDA"
+      "public_url": "HTTP_200_SOURCE_MATCH",
+      "indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED",
+      "production_checks": {
+        "http_200": true,
+        "canonical": true,
+        "one_h1": true,
+        "indexable_meta": true,
+        "indexable_header": true,
+        "schema_types": true,
+        "published_source_matches": true,
+        "old_301": true,
+        "redirect_target": true
+      }
     },
     "github": {
       "n": 3,
       "pr": 488,
-      "url": "https://github.com/wagnerjfjunior/MoreNumTegra/pull/488",
-      "head": "73b5a4fab82d71942a85dfd406d42dcc11b4c9a3",
+      "url": "https://www.moretegra.com.br/blog/dicasedecor/iluminacao-apartamento-camadas-circuitos/",
+      "head": "f0799d4ba8ce08a064ec93466af1992af5c5a27f",
       "branch": "blog/decor-03-iluminacao-apartamento-camad-20261026",
       "ci": [
         {
-          "id": 40422214553,
-          "name": "Favicon standard validation",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 835,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422214553/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422214553/logs",
-          "workflow_id": 362117359
-        },
-        {
-          "id": 40422214600,
-          "name": "SEO two distinct images - 39 URLs",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 488,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422214600/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422214600/logs",
-          "workflow_id": 380968663
-        },
-        {
-          "id": 40422214825,
+          "id": 40426764887,
           "name": "Jerivas Commercial SEO and Form46",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 77,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422214825/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422214825/logs",
+          "run_number": 112,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426764887/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426764887/logs",
           "workflow_id": 390069855
         },
         {
-          "id": 40422214554,
+          "id": 40426764880,
+          "name": "SEO two distinct images - 39 URLs",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 523,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426764880/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426764880/logs",
+          "workflow_id": 380968663
+        },
+        {
+          "id": 40426764826,
+          "name": "Favicon standard validation",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 870,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426764826/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426764826/logs",
+          "workflow_id": 362117359
+        },
+        {
+          "id": 40426764896,
           "name": "Blog Bairros hub and Lapa URL migration",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 50,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422214554/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422214554/logs",
+          "run_number": 85,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426764896/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426764896/logs",
           "workflow_id": 390493903
         }
-      ]
+      ],
+      "merged": true
     },
-    "merge_sha": null,
-    "vercel_deploy": null,
-    "google": "NÃO_SUBMETIDO/NÃO_PUBLICADO",
-    "bing": "NÃO_SUBMETIDO/NÃO_PUBLICADO"
+    "merge_sha": "cf44e3c445b85bcfc1f9a99f886742899bfec5de",
+    "vercel_deploy": {
+      "id": "dpl_EbqLXnC4bpz6YnVMD3m9rBPLDP25",
+      "state": "READY",
+      "source_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
+      "alias": "www.moretegra.com.br"
+    },
+    "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
+    "bing": "INDEXNOW_SUBMITTED_21_URLS"
   },
   {
     "n": 4,
@@ -354,17 +405,17 @@
     "url": "https://www.moretegra.com.br/blog/dicasedecor/brinquedoteca-condominio-uso-seguranca/",
     "intent": "Informacional: comparar critérios de uso antes da compra",
     "cluster": "Dicas & Decoração",
-    "status": "DRAFT_STATIC_QA",
+    "status": "PUBLISHED_PRODUCTION",
     "hero": "https://www.moretegra.com.br/assets/blog/decor/brinquedoteca-conceitual.webp",
     "cards": [
       "YPY Alto do Ipiranga",
       "Garden Design"
     ],
     "word_count": 988,
-    "old_status": "HTTP_200_NOINDEX_SCAFFOLD",
-    "redirect": "PROPOSTO_301_NO_RELEASE; NÃO_IMPLEMENTADO",
+    "old_status": "HTTP_301",
+    "redirect": "301_VERIFICADO",
     "canonical": "https://www.moretegra.com.br/blog/dicasedecor/brinquedoteca-condominio-uso-seguranca/",
-    "robots": "noindex,follow",
+    "robots": "index,follow",
     "risk": "Intenção informacional distinta das páginas de empreendimento; sobreposição com placeholders preservada sem indexação. Claris e esportes também têm pautas Lifestyle noindex: manter separação de foco ao revisá-las.",
     "secondary_terms": "brinquedoteca, planta, uso, manutenção",
     "inbound": "/blog/dicasedecor/",
@@ -378,12 +429,12 @@
     ],
     "source_authors": "Tegra: Espaço kids (07/04/2026); Giovanna Jarandilha/CASACOR (31/10/2019), com autores e fotógrafos dos sete ambientes; Afetto (20/10/2025).",
     "research_review": "Aproveitados: zonas de atividades, materiais acessíveis, evolução etária e convivência. Corrigidos: piso emborrachado não comprova proteção para qualquer queda; madeira não é automaticamente sustentável; brinquedoteca não inclui monitoria nem garante desenvolvimento individual. Cards YPY/Garden comprovados na main.",
-    "result": "BLOQUEADO_PARA_RELEASE",
+    "result": "PUBLICADO_HTTP_200",
     "qa": {
       "n": 4,
       "static": "PASS",
       "canonical": "https://www.moretegra.com.br/blog/dicasedecor/brinquedoteca-condominio-uso-seguranca/",
-      "robots": "noindex,follow",
+      "robots": "index,follow",
       "types": [
         "BlogPosting",
         "BreadcrumbList",
@@ -392,66 +443,83 @@
       ],
       "words": 988,
       "hero": "ILUSTRAÇÃO_CONCEITUAL_IA_ADICIONADA",
-      "official_schema": "NÃO_EXECUTADO_CAPTCHA_PERSISTENTE_APÓS_AUTORIZAÇÃO",
-      "google_rich_results": "NÃO_EXECUTADO",
-      "visual_mobile": "BLOQUEADO_AUTOREVIEW",
+      "official_schema": "NÃO_EXECUTADO_CAPTCHA",
+      "google_rich_results": "NÃO_EXECUTADO_CAPTCHA",
+      "visual_mobile": "NÃO_EXECUTADO",
       "performance": "NÃO_MEDIDO",
-      "public_url": "NÃO_PUBLICADA",
-      "indexing": "NÃO_SUBMETIDA"
+      "public_url": "HTTP_200_SOURCE_MATCH",
+      "indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED",
+      "production_checks": {
+        "http_200": true,
+        "canonical": true,
+        "one_h1": true,
+        "indexable_meta": true,
+        "indexable_header": true,
+        "schema_types": true,
+        "published_source_matches": true,
+        "old_301": true,
+        "redirect_target": true
+      }
     },
     "github": {
       "n": 4,
       "pr": 489,
-      "url": "https://github.com/wagnerjfjunior/MoreNumTegra/pull/489",
-      "head": "33c7b2d498acd9d69005cbc14bcb89f3be19b21d",
+      "url": "https://www.moretegra.com.br/blog/dicasedecor/brinquedoteca-condominio-uso-seguranca/",
+      "head": "7a84999d8b0e4cf63c873be9e406b20b8309064b",
       "branch": "blog/decor-04-brinquedoteca-condominio-uso-20261026",
       "ci": [
         {
-          "id": 40425216757,
+          "id": 40426769478,
           "name": "Blog Bairros hub and Lapa URL migration",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 59,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425216757/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425216757/logs",
+          "run_number": 86,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426769478/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426769478/logs",
           "workflow_id": 390493903
         },
         {
-          "id": 40425216839,
-          "name": "SEO two distinct images - 39 URLs",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 497,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425216839/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425216839/logs",
-          "workflow_id": 380968663
-        },
-        {
-          "id": 40425216899,
+          "id": 40426769480,
           "name": "Favicon standard validation",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 844,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425216899/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425216899/logs",
+          "run_number": 871,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426769480/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426769480/logs",
           "workflow_id": 362117359
         },
         {
-          "id": 40425216745,
+          "id": 40426769502,
+          "name": "SEO two distinct images - 39 URLs",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 524,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426769502/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426769502/logs",
+          "workflow_id": 380968663
+        },
+        {
+          "id": 40426769589,
           "name": "Jerivas Commercial SEO and Form46",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 86,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425216745/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425216745/logs",
+          "run_number": 113,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426769589/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426769589/logs",
           "workflow_id": 390069855
         }
-      ]
+      ],
+      "merged": true
     },
-    "merge_sha": null,
-    "vercel_deploy": null,
-    "google": "NÃO_SUBMETIDO/NÃO_PUBLICADO",
-    "bing": "NÃO_SUBMETIDO/NÃO_PUBLICADO"
+    "merge_sha": "bd881370030fcb093cef74178ae8930d55ed22df",
+    "vercel_deploy": {
+      "id": "dpl_EbqLXnC4bpz6YnVMD3m9rBPLDP25",
+      "state": "READY",
+      "source_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
+      "alias": "www.moretegra.com.br"
+    },
+    "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
+    "bing": "INDEXNOW_SUBMITTED_21_URLS"
   },
   {
     "n": 5,
@@ -469,17 +537,17 @@
     "url": "https://www.moretegra.com.br/blog/dicasedecor/apartamento-com-pets-layout-materiais/",
     "intent": "Informacional: comparar critérios de uso antes da compra",
     "cluster": "Dicas & Decoração",
-    "status": "DRAFT_STATIC_QA",
+    "status": "PUBLISHED_PRODUCTION",
     "hero": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/361/Imagem/Tegra-Incorporadora-Living-62-Metros-Empreendimento-Garden-Design-Private-Park-Residence-Apartamentos-Lapa-Sao-Paulo-SP-1400x1400-1758230055670.jpg",
     "cards": [
       "Garden Design",
       "Ária Higienópolis"
     ],
     "word_count": 930,
-    "old_status": "HTTP_200_NOINDEX_SCAFFOLD",
-    "redirect": "PROPOSTO_301_NO_RELEASE; NÃO_IMPLEMENTADO",
+    "old_status": "HTTP_301",
+    "redirect": "301_VERIFICADO",
     "canonical": "https://www.moretegra.com.br/blog/dicasedecor/apartamento-com-pets-layout-materiais/",
-    "robots": "noindex,follow",
+    "robots": "index,follow",
     "risk": "Intenção informacional distinta das páginas de empreendimento; sobreposição com placeholders preservada sem indexação. Claris e esportes também têm pautas Lifestyle noindex: manter separação de foco ao revisá-las.",
     "secondary_terms": "apartamento com pets, planta, uso, manutenção",
     "inbound": "/blog/dicasedecor/",
@@ -493,12 +561,12 @@
     ],
     "source_authors": "Tegra: Pet friendly (20/03/2026); MART: Decoração pet friendly; CASACOR Publisher, edição Yeska Coelho (20/03/2025).",
     "research_review": "Aproveitados: circulação, descanso, higiene, tecidos e estabilidade. Rejeitados: listas universais de pisos que não riscam e plantas seguras por nome popular. Sem prescrição veterinária. Cards Garden/Ária sustentados por pet place na main; foto de living não representa um pet place.",
-    "result": "BLOQUEADO_PARA_RELEASE",
+    "result": "PUBLICADO_HTTP_200",
     "qa": {
       "n": 5,
       "static": "PASS",
       "canonical": "https://www.moretegra.com.br/blog/dicasedecor/apartamento-com-pets-layout-materiais/",
-      "robots": "noindex,follow",
+      "robots": "index,follow",
       "types": [
         "BlogPosting",
         "BreadcrumbList",
@@ -507,66 +575,83 @@
       ],
       "words": 930,
       "hero": "PRESENTE",
-      "official_schema": "NÃO_EXECUTADO_AUTOREVIEW",
-      "google_rich_results": "NÃO_EXECUTADO",
-      "visual_mobile": "BLOQUEADO_AUTOREVIEW",
+      "official_schema": "NÃO_EXECUTADO_CAPTCHA",
+      "google_rich_results": "NÃO_EXECUTADO_CAPTCHA",
+      "visual_mobile": "NÃO_EXECUTADO",
       "performance": "NÃO_MEDIDO",
-      "public_url": "NÃO_PUBLICADA",
-      "indexing": "NÃO_SUBMETIDA"
+      "public_url": "HTTP_200_SOURCE_MATCH",
+      "indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED",
+      "production_checks": {
+        "http_200": true,
+        "canonical": true,
+        "one_h1": true,
+        "indexable_meta": true,
+        "indexable_header": true,
+        "schema_types": true,
+        "published_source_matches": true,
+        "old_301": true,
+        "redirect_target": true
+      }
     },
     "github": {
       "n": 5,
       "pr": 490,
-      "url": "https://github.com/wagnerjfjunior/MoreNumTegra/pull/490",
-      "head": "ffd01988376dbd8452a59f456f79afbdacf4244e",
+      "url": "https://www.moretegra.com.br/blog/dicasedecor/apartamento-com-pets-layout-materiais/",
+      "head": "1e321e09b0384d7dd6d5fcbea74e3f538942f7c7",
       "branch": "blog/decor-05-apartamento-com-pets-layout--20261026",
       "ci": [
         {
-          "id": 40422251267,
-          "name": "Jerivas Commercial SEO and Form46",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 79,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422251267/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422251267/logs",
-          "workflow_id": 390069855
-        },
-        {
-          "id": 40422251363,
-          "name": "Favicon standard validation",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 837,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422251363/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422251363/logs",
-          "workflow_id": 362117359
-        },
-        {
-          "id": 40422251369,
+          "id": 40426771908,
           "name": "Blog Bairros hub and Lapa URL migration",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 52,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422251369/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422251369/logs",
+          "run_number": 87,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426771908/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426771908/logs",
           "workflow_id": 390493903
         },
         {
-          "id": 40422251352,
+          "id": 40426771926,
+          "name": "Jerivas Commercial SEO and Form46",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 114,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426771926/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426771926/logs",
+          "workflow_id": 390069855
+        },
+        {
+          "id": 40426771915,
           "name": "SEO two distinct images - 39 URLs",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 490,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422251352/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422251352/logs",
+          "run_number": 525,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426771915/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426771915/logs",
           "workflow_id": 380968663
+        },
+        {
+          "id": 40426772020,
+          "name": "Favicon standard validation",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 872,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426772020/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426772020/logs",
+          "workflow_id": 362117359
         }
-      ]
+      ],
+      "merged": true
     },
-    "merge_sha": null,
-    "vercel_deploy": null,
-    "google": "NÃO_SUBMETIDO/NÃO_PUBLICADO",
-    "bing": "NÃO_SUBMETIDO/NÃO_PUBLICADO"
+    "merge_sha": "a8eaed8080f2d8ce235ba5096033d281353d1078",
+    "vercel_deploy": {
+      "id": "dpl_EbqLXnC4bpz6YnVMD3m9rBPLDP25",
+      "state": "READY",
+      "source_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
+      "alias": "www.moretegra.com.br"
+    },
+    "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
+    "bing": "INDEXNOW_SUBMITTED_21_URLS"
   },
   {
     "n": 6,
@@ -584,14 +669,14 @@
     "url": "https://www.moretegra.com.br/blog/dicasedecor/quadras-condominio-tenis-beach-tennis/",
     "intent": "Informacional: comparar critérios de uso antes da compra",
     "cluster": "Dicas & Decoração",
-    "status": "DRAFT_STATIC_QA",
+    "status": "PUBLISHED_PRODUCTION",
     "hero": "https://www.moretegra.com.br/assets/blog/decor/quadra-conceitual.webp",
     "cards": [],
     "word_count": 919,
-    "old_status": "HTTP_200_NOINDEX_SCAFFOLD",
-    "redirect": "PROPOSTO_301_NO_RELEASE; NÃO_IMPLEMENTADO",
+    "old_status": "HTTP_301",
+    "redirect": "301_VERIFICADO",
     "canonical": "https://www.moretegra.com.br/blog/dicasedecor/quadras-condominio-tenis-beach-tennis/",
-    "robots": "noindex,follow",
+    "robots": "index,follow",
     "risk": "Intenção informacional distinta das páginas de empreendimento; sobreposição com placeholders preservada sem indexação. Claris e esportes também têm pautas Lifestyle noindex: manter separação de foco ao revisá-las.",
     "secondary_terms": "quadras esportivas, planta, uso, manutenção",
     "inbound": "/blog/dicasedecor/",
@@ -603,12 +688,12 @@
     ],
     "source_authors": "Tegra: Do tênis ao beach tennis (19/03/2026); Imóveis de Valor/Valor, trecho de identificação (25/03/2022); Vivali (30/09/2026).",
     "research_review": "Aproveitados: modalidade, conservação, reserva, iluminação e entorno. Medidas checadas nas regras oficiais ITF 2026. Não reproduzido conteúdo Valor. Rejeitadas valorização automática e atribuição de tênis/beach tennis a quadra recreativa de SP. Pauta Lifestyle sobre esporte continua noindex e deve ter foco distinto na revisão futura.",
-    "result": "BLOQUEADO_PARA_RELEASE",
+    "result": "PUBLICADO_HTTP_200",
     "qa": {
       "n": 6,
       "static": "PASS",
       "canonical": "https://www.moretegra.com.br/blog/dicasedecor/quadras-condominio-tenis-beach-tennis/",
-      "robots": "noindex,follow",
+      "robots": "index,follow",
       "types": [
         "BlogPosting",
         "BreadcrumbList",
@@ -617,66 +702,83 @@
       ],
       "words": 919,
       "hero": "ILUSTRAÇÃO_CONCEITUAL_IA_ADICIONADA",
-      "official_schema": "NÃO_EXECUTADO_CAPTCHA_PERSISTENTE_APÓS_AUTORIZAÇÃO",
-      "google_rich_results": "NÃO_EXECUTADO",
-      "visual_mobile": "BLOQUEADO_AUTOREVIEW",
+      "official_schema": "NÃO_EXECUTADO_CAPTCHA",
+      "google_rich_results": "NÃO_EXECUTADO_CAPTCHA",
+      "visual_mobile": "NÃO_EXECUTADO",
       "performance": "NÃO_MEDIDO",
-      "public_url": "NÃO_PUBLICADA",
-      "indexing": "NÃO_SUBMETIDA"
+      "public_url": "HTTP_200_SOURCE_MATCH",
+      "indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED",
+      "production_checks": {
+        "http_200": true,
+        "canonical": true,
+        "one_h1": true,
+        "indexable_meta": true,
+        "indexable_header": true,
+        "schema_types": true,
+        "published_source_matches": true,
+        "old_301": true,
+        "redirect_target": true
+      }
     },
     "github": {
       "n": 6,
       "pr": 491,
-      "url": "https://github.com/wagnerjfjunior/MoreNumTegra/pull/491",
-      "head": "d4a50d4704a826e3dfc4406af291ec17d6268675",
+      "url": "https://www.moretegra.com.br/blog/dicasedecor/quadras-condominio-tenis-beach-tennis/",
+      "head": "309253c5c1e2c7162ea1862030bf0278f4cea48f",
       "branch": "blog/decor-06-quadras-condominio-tenis-bea-20261026",
       "ci": [
         {
-          "id": 40425224712,
-          "name": "SEO two distinct images - 39 URLs",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 498,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425224712/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425224712/logs",
-          "workflow_id": 380968663
-        },
-        {
-          "id": 40425224654,
+          "id": 40426775318,
           "name": "Favicon standard validation",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 845,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425224654/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425224654/logs",
+          "run_number": 873,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426775318/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426775318/logs",
           "workflow_id": 362117359
         },
         {
-          "id": 40425224905,
-          "name": "Blog Bairros hub and Lapa URL migration",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 60,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425224905/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425224905/logs",
-          "workflow_id": 390493903
-        },
-        {
-          "id": 40425224616,
+          "id": 40426775339,
           "name": "Jerivas Commercial SEO and Form46",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 87,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425224616/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425224616/logs",
+          "run_number": 115,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426775339/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426775339/logs",
           "workflow_id": 390069855
+        },
+        {
+          "id": 40426775358,
+          "name": "Blog Bairros hub and Lapa URL migration",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 88,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426775358/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426775358/logs",
+          "workflow_id": 390493903
+        },
+        {
+          "id": 40426775347,
+          "name": "SEO two distinct images - 39 URLs",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 526,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426775347/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426775347/logs",
+          "workflow_id": 380968663
         }
-      ]
+      ],
+      "merged": true
     },
-    "merge_sha": null,
-    "vercel_deploy": null,
-    "google": "NÃO_SUBMETIDO/NÃO_PUBLICADO",
-    "bing": "NÃO_SUBMETIDO/NÃO_PUBLICADO"
+    "merge_sha": "d942e7d33c5b7ffdaeee00827c4f754703118d33",
+    "vercel_deploy": {
+      "id": "dpl_EbqLXnC4bpz6YnVMD3m9rBPLDP25",
+      "state": "READY",
+      "source_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
+      "alias": "www.moretegra.com.br"
+    },
+    "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
+    "bing": "INDEXNOW_SUBMITTED_21_URLS"
   },
   {
     "n": 7,
@@ -694,14 +796,14 @@
     "url": "https://www.moretegra.com.br/blog/dicasedecor/recarga-carro-eletrico-condominio-infraestrutura/",
     "intent": "Informacional: comparar critérios de uso antes da compra",
     "cluster": "Dicas & Decoração",
-    "status": "DRAFT_STATIC_QA",
+    "status": "PUBLISHED_PRODUCTION",
     "hero": "https://www.moretegra.com.br/assets/blog/decor/recarga-conceitual.webp",
     "cards": [],
     "word_count": 927,
-    "old_status": "HTTP_200_NOINDEX_SCAFFOLD",
-    "redirect": "PROPOSTO_301_NO_RELEASE; NÃO_IMPLEMENTADO",
+    "old_status": "HTTP_301",
+    "redirect": "301_VERIFICADO",
     "canonical": "https://www.moretegra.com.br/blog/dicasedecor/recarga-carro-eletrico-condominio-infraestrutura/",
-    "robots": "noindex,follow",
+    "robots": "index,follow",
     "risk": "Intenção informacional distinta das páginas de empreendimento; sobreposição com placeholders preservada sem indexação. Claris e esportes também têm pautas Lifestyle noindex: manter separação de foco ao revisá-las.",
     "secondary_terms": "recarga elétrica, planta, uso, manutenção",
     "inbound": "/blog/dicasedecor/",
@@ -713,12 +815,12 @@
     ],
     "source_authors": "Tegra: Carro elétrico (18/03/2026); Agência SP (19/02/2026); Redomo; Fantástico (17/08/2026).",
     "research_review": "Aproveitados: escopo de infraestrutura, capacidade, medição e responsabilidades. Lei 18.403/2026 conferida no texto oficial Alesp. Rejeitados: vaga verde implica medição individual automática, todos híbridos recarregam, custos coletivos obrigatoriamente de todos, valorização/economia garantidas. Sem atribuir capacidade elétrica específica a YPY ou outro projeto.",
-    "result": "BLOQUEADO_PARA_RELEASE",
+    "result": "PUBLICADO_HTTP_200",
     "qa": {
       "n": 7,
       "static": "PASS",
       "canonical": "https://www.moretegra.com.br/blog/dicasedecor/recarga-carro-eletrico-condominio-infraestrutura/",
-      "robots": "noindex,follow",
+      "robots": "index,follow",
       "types": [
         "BlogPosting",
         "BreadcrumbList",
@@ -727,66 +829,83 @@
       ],
       "words": 927,
       "hero": "ILUSTRAÇÃO_CONCEITUAL_IA_ADICIONADA",
-      "official_schema": "NÃO_EXECUTADO_CAPTCHA_PERSISTENTE_APÓS_AUTORIZAÇÃO",
-      "google_rich_results": "NÃO_EXECUTADO",
-      "visual_mobile": "BLOQUEADO_AUTOREVIEW",
+      "official_schema": "NÃO_EXECUTADO_CAPTCHA",
+      "google_rich_results": "NÃO_EXECUTADO_CAPTCHA",
+      "visual_mobile": "NÃO_EXECUTADO",
       "performance": "NÃO_MEDIDO",
-      "public_url": "NÃO_PUBLICADA",
-      "indexing": "NÃO_SUBMETIDA"
+      "public_url": "HTTP_200_SOURCE_MATCH",
+      "indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED",
+      "production_checks": {
+        "http_200": true,
+        "canonical": true,
+        "one_h1": true,
+        "indexable_meta": true,
+        "indexable_header": true,
+        "schema_types": true,
+        "published_source_matches": true,
+        "old_301": true,
+        "redirect_target": true
+      }
     },
     "github": {
       "n": 7,
       "pr": 492,
-      "url": "https://github.com/wagnerjfjunior/MoreNumTegra/pull/492",
-      "head": "495ad3c5a31c8406c6ad271a9573075e187930d1",
+      "url": "https://www.moretegra.com.br/blog/dicasedecor/recarga-carro-eletrico-condominio-infraestrutura/",
+      "head": "e2963e4c60bb0a8cbe722ea6fd8e891f62522b8b",
       "branch": "blog/decor-07-recarga-carro-eletrico-condo-20261026",
       "ci": [
         {
-          "id": 40425236949,
+          "id": 40426780997,
           "name": "SEO two distinct images - 39 URLs",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 499,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425236949/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425236949/logs",
+          "run_number": 527,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426780997/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426780997/logs",
           "workflow_id": 380968663
         },
         {
-          "id": 40425236865,
+          "id": 40426780884,
           "name": "Favicon standard validation",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 846,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425236865/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425236865/logs",
+          "run_number": 874,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426780884/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426780884/logs",
           "workflow_id": 362117359
         },
         {
-          "id": 40425236882,
+          "id": 40426781096,
           "name": "Jerivas Commercial SEO and Form46",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 88,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425236882/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425236882/logs",
+          "run_number": 116,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426781096/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426781096/logs",
           "workflow_id": 390069855
         },
         {
-          "id": 40425236885,
+          "id": 40426781168,
           "name": "Blog Bairros hub and Lapa URL migration",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 61,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425236885/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425236885/logs",
+          "run_number": 89,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426781168/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426781168/logs",
           "workflow_id": 390493903
         }
-      ]
+      ],
+      "merged": true
     },
-    "merge_sha": null,
-    "vercel_deploy": null,
-    "google": "NÃO_SUBMETIDO/NÃO_PUBLICADO",
-    "bing": "NÃO_SUBMETIDO/NÃO_PUBLICADO"
+    "merge_sha": "fd2c163348317b92da1de934dda3af3992889b91",
+    "vercel_deploy": {
+      "id": "dpl_EbqLXnC4bpz6YnVMD3m9rBPLDP25",
+      "state": "READY",
+      "source_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
+      "alias": "www.moretegra.com.br"
+    },
+    "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
+    "bing": "INDEXNOW_SUBMITTED_21_URLS"
   },
   {
     "n": 8,
@@ -804,14 +923,14 @@
     "url": "https://www.moretegra.com.br/blog/dicasedecor/casa-condominio-layout-claris-barra/",
     "intent": "Informacional: comparar critérios de uso antes da compra",
     "cluster": "Dicas & Decoração",
-    "status": "DRAFT_STATIC_QA",
+    "status": "PUBLISHED_PRODUCTION",
     "hero": "https://www.moretegra.com.br/assets/blog/decor/casas-conceitual.webp",
     "cards": [],
     "word_count": 991,
-    "old_status": "HTTP_200_NOINDEX_SCAFFOLD",
-    "redirect": "PROPOSTO_301_NO_RELEASE; NÃO_IMPLEMENTADO",
+    "old_status": "HTTP_301",
+    "redirect": "301_VERIFICADO",
     "canonical": "https://www.moretegra.com.br/blog/dicasedecor/casa-condominio-layout-claris-barra/",
-    "robots": "noindex,follow",
+    "robots": "index,follow",
     "risk": "Intenção informacional distinta das páginas de empreendimento; sobreposição com placeholders preservada sem indexação. Claris e esportes também têm pautas Lifestyle noindex: manter separação de foco ao revisá-las.",
     "secondary_terms": "casas em condomínio, planta, uso, manutenção",
     "inbound": "/blog/dicasedecor/",
@@ -823,12 +942,12 @@
     ],
     "source_authors": "Tegra: Condomínio de casas (13/03/2026); Casas Contemporâneas Barra e Recreio, texto e anúncio completos, incluindo publicidade, benefícios e termos.",
     "research_review": "Aproveitados: organização de pavimentos, quintal, acesso e lazer compartilhado. Ficha oficial Tegra distingue Claris Marapendi/Claris Rosas. Não usados: datas de entrega históricas, ônibus/balsas sem confirmação, valores de condomínio de 2024, cashback de terceiro e garantias jurídicas/financeiras. Sem inventar atendimento Sabrina no RJ ou página comercial Claris no MoreTegra. Pauta Lifestyle Claris continua noindex.",
-    "result": "BLOQUEADO_PARA_RELEASE",
+    "result": "PUBLICADO_HTTP_200",
     "qa": {
       "n": 8,
       "static": "PASS",
       "canonical": "https://www.moretegra.com.br/blog/dicasedecor/casa-condominio-layout-claris-barra/",
-      "robots": "noindex,follow",
+      "robots": "index,follow",
       "types": [
         "BlogPosting",
         "BreadcrumbList",
@@ -837,66 +956,83 @@
       ],
       "words": 991,
       "hero": "ILUSTRAÇÃO_CONCEITUAL_IA_ADICIONADA",
-      "official_schema": "NÃO_EXECUTADO_CAPTCHA_PERSISTENTE_APÓS_AUTORIZAÇÃO",
-      "google_rich_results": "NÃO_EXECUTADO",
-      "visual_mobile": "BLOQUEADO_AUTOREVIEW",
+      "official_schema": "NÃO_EXECUTADO_CAPTCHA",
+      "google_rich_results": "NÃO_EXECUTADO_CAPTCHA",
+      "visual_mobile": "NÃO_EXECUTADO",
       "performance": "NÃO_MEDIDO",
-      "public_url": "NÃO_PUBLICADA",
-      "indexing": "NÃO_SUBMETIDA"
+      "public_url": "HTTP_200_SOURCE_MATCH",
+      "indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED",
+      "production_checks": {
+        "http_200": true,
+        "canonical": true,
+        "one_h1": true,
+        "indexable_meta": true,
+        "indexable_header": true,
+        "schema_types": true,
+        "published_source_matches": true,
+        "old_301": true,
+        "redirect_target": true
+      }
     },
     "github": {
       "n": 8,
       "pr": 493,
-      "url": "https://github.com/wagnerjfjunior/MoreNumTegra/pull/493",
-      "head": "fd5f70380eea0d629e7391859bc9a3748d78f920",
+      "url": "https://www.moretegra.com.br/blog/dicasedecor/casa-condominio-layout-claris-barra/",
+      "head": "236dd47a11d7188b5445a103319b6de87fe8534c",
       "branch": "blog/decor-08-casa-condominio-layout-clari-20261026",
       "ci": [
         {
-          "id": 40425247823,
-          "name": "Favicon standard validation",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 847,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425247823/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425247823/logs",
-          "workflow_id": 362117359
-        },
-        {
-          "id": 40425248002,
-          "name": "Blog Bairros hub and Lapa URL migration",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 62,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425248002/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425248002/logs",
-          "workflow_id": 390493903
-        },
-        {
-          "id": 40425247793,
+          "id": 40426787164,
           "name": "SEO two distinct images - 39 URLs",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 500,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425247793/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425247793/logs",
+          "run_number": 528,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426787164/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426787164/logs",
           "workflow_id": 380968663
         },
         {
-          "id": 40425247666,
+          "id": 40426786840,
+          "name": "Favicon standard validation",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 875,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426786840/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426786840/logs",
+          "workflow_id": 362117359
+        },
+        {
+          "id": 40426786858,
+          "name": "Blog Bairros hub and Lapa URL migration",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 90,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426786858/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426786858/logs",
+          "workflow_id": 390493903
+        },
+        {
+          "id": 40426786872,
           "name": "Jerivas Commercial SEO and Form46",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 89,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425247666/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425247666/logs",
+          "run_number": 117,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426786872/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426786872/logs",
           "workflow_id": 390069855
         }
-      ]
+      ],
+      "merged": true
     },
-    "merge_sha": null,
-    "vercel_deploy": null,
-    "google": "NÃO_SUBMETIDO/NÃO_PUBLICADO",
-    "bing": "NÃO_SUBMETIDO/NÃO_PUBLICADO"
+    "merge_sha": "4767ef489e390fd15129b56a7cf15ce7410a30e2",
+    "vercel_deploy": {
+      "id": "dpl_EbqLXnC4bpz6YnVMD3m9rBPLDP25",
+      "state": "READY",
+      "source_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
+      "alias": "www.moretegra.com.br"
+    },
+    "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
+    "bing": "INDEXNOW_SUBMITTED_21_URLS"
   },
   {
     "n": 9,
@@ -914,14 +1050,14 @@
     "url": "https://www.moretegra.com.br/blog/dicasedecor/piso-apartamento-materiais-acustica-umidade/",
     "intent": "Informacional: comparar critérios de uso antes da compra",
     "cluster": "Dicas & Decoração",
-    "status": "DRAFT_STATIC_QA",
+    "status": "PUBLISHED_PRODUCTION",
     "hero": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/361/Imagem/Tegra-Incorporadora-Living-62-Metros-Empreendimento-Garden-Design-Private-Park-Residence-Apartamentos-Lapa-Sao-Paulo-SP-1400x1400-1758230055670.jpg",
     "cards": [],
     "word_count": 988,
-    "old_status": "HTTP_200_NOINDEX_SCAFFOLD",
-    "redirect": "PROPOSTO_301_NO_RELEASE; NÃO_IMPLEMENTADO",
+    "old_status": "HTTP_301",
+    "redirect": "301_VERIFICADO",
     "canonical": "https://www.moretegra.com.br/blog/dicasedecor/piso-apartamento-materiais-acustica-umidade/",
-    "robots": "noindex,follow",
+    "robots": "index,follow",
     "risk": "Intenção informacional distinta das páginas de empreendimento; sobreposição com placeholders preservada sem indexação. Claris e esportes também têm pautas Lifestyle noindex: manter separação de foco ao revisá-las.",
     "secondary_terms": "pisos, planta, uso, manutenção",
     "inbound": "/blog/dicasedecor/",
@@ -933,12 +1069,12 @@
     ],
     "source_authors": "Tegra: Pisos (12/03/2026); Agrottha: Qual o melhor piso para apartamento, guia 2026.",
     "research_review": "Aproveitados: uso por ambiente, contrapiso, transições e manutenção. Corrigidos: vinílico universalmente melhor/impermeável, manta obrigatória em todo sistema, isolamento garantido pela superfície. Tarkett suporte oficial distingue limpeza e submersão. Não atribuídos kits Tegra ID a projetos específicos sem documentação.",
-    "result": "BLOQUEADO_PARA_RELEASE",
+    "result": "PUBLICADO_HTTP_200",
     "qa": {
       "n": 9,
       "static": "PASS",
       "canonical": "https://www.moretegra.com.br/blog/dicasedecor/piso-apartamento-materiais-acustica-umidade/",
-      "robots": "noindex,follow",
+      "robots": "index,follow",
       "types": [
         "BlogPosting",
         "BreadcrumbList",
@@ -947,66 +1083,83 @@
       ],
       "words": 988,
       "hero": "PRESENTE",
-      "official_schema": "NÃO_EXECUTADO_AUTOREVIEW",
-      "google_rich_results": "NÃO_EXECUTADO",
-      "visual_mobile": "BLOQUEADO_AUTOREVIEW",
+      "official_schema": "NÃO_EXECUTADO_CAPTCHA",
+      "google_rich_results": "NÃO_EXECUTADO_CAPTCHA",
+      "visual_mobile": "NÃO_EXECUTADO",
       "performance": "NÃO_MEDIDO",
-      "public_url": "NÃO_PUBLICADA",
-      "indexing": "NÃO_SUBMETIDA"
+      "public_url": "HTTP_200_SOURCE_MATCH",
+      "indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED",
+      "production_checks": {
+        "http_200": true,
+        "canonical": true,
+        "one_h1": true,
+        "indexable_meta": true,
+        "indexable_header": true,
+        "schema_types": true,
+        "published_source_matches": true,
+        "old_301": true,
+        "redirect_target": true
+      }
     },
     "github": {
       "n": 9,
       "pr": 494,
-      "url": "https://github.com/wagnerjfjunior/MoreNumTegra/pull/494",
-      "head": "d03b70184f7e1c4217727adbb1ede4ec2dcd96a3",
+      "url": "https://www.moretegra.com.br/blog/dicasedecor/piso-apartamento-materiais-acustica-umidade/",
+      "head": "df6e7f4c31da539917429bf5a598810476938bf8",
       "branch": "blog/decor-09-piso-apartamento-materiais-a-20261026",
       "ci": [
         {
-          "id": 40422302520,
-          "name": "SEO two distinct images - 39 URLs",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 494,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422302520/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422302520/logs",
-          "workflow_id": 380968663
-        },
-        {
-          "id": 40422302497,
+          "id": 40426790761,
           "name": "Blog Bairros hub and Lapa URL migration",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 56,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422302497/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422302497/logs",
+          "run_number": 91,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426790761/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426790761/logs",
           "workflow_id": 390493903
         },
         {
-          "id": 40422302359,
-          "name": "Jerivas Commercial SEO and Form46",
+          "id": 40426790677,
+          "name": "SEO two distinct images - 39 URLs",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 83,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422302359/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422302359/logs",
-          "workflow_id": 390069855
+          "run_number": 529,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426790677/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426790677/logs",
+          "workflow_id": 380968663
         },
         {
-          "id": 40422302387,
+          "id": 40426790784,
           "name": "Favicon standard validation",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 841,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422302387/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422302387/logs",
+          "run_number": 876,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426790784/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426790784/logs",
           "workflow_id": 362117359
+        },
+        {
+          "id": 40426790931,
+          "name": "Jerivas Commercial SEO and Form46",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 118,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426790931/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426790931/logs",
+          "workflow_id": 390069855
         }
-      ]
+      ],
+      "merged": true
     },
-    "merge_sha": null,
-    "vercel_deploy": null,
-    "google": "NÃO_SUBMETIDO/NÃO_PUBLICADO",
-    "bing": "NÃO_SUBMETIDO/NÃO_PUBLICADO"
+    "merge_sha": "0d177b9545d255ae87f3e3ce2ad457e2c5c1465b",
+    "vercel_deploy": {
+      "id": "dpl_EbqLXnC4bpz6YnVMD3m9rBPLDP25",
+      "state": "READY",
+      "source_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
+      "alias": "www.moretegra.com.br"
+    },
+    "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
+    "bing": "INDEXNOW_SUBMITTED_21_URLS"
   },
   {
     "n": 10,
@@ -1024,14 +1177,14 @@
     "url": "https://www.moretegra.com.br/blog/dicasedecor/cores-decoracao-2026-paleta-apartamento/",
     "intent": "Informacional: comparar critérios de uso antes da compra",
     "cluster": "Dicas & Decoração",
-    "status": "DRAFT_STATIC_QA",
+    "status": "PUBLISHED_PRODUCTION",
     "hero": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/361/Imagem/Tegra-Incorporadora-Living-62-Metros-Empreendimento-Garden-Design-Private-Park-Residence-Apartamentos-Lapa-Sao-Paulo-SP-1400x1400-1758230055670.jpg",
     "cards": [],
     "word_count": 1021,
-    "old_status": "HTTP_200_NOINDEX_SCAFFOLD",
-    "redirect": "PROPOSTO_301_NO_RELEASE; NÃO_IMPLEMENTADO",
+    "old_status": "HTTP_301",
+    "redirect": "301_VERIFICADO",
     "canonical": "https://www.moretegra.com.br/blog/dicasedecor/cores-decoracao-2026-paleta-apartamento/",
-    "robots": "noindex,follow",
+    "robots": "index,follow",
     "risk": "Intenção informacional distinta das páginas de empreendimento; sobreposição com placeholders preservada sem indexação. Claris e esportes também têm pautas Lifestyle noindex: manter separação de foco ao revisá-las.",
     "secondary_terms": "cores e paletas, planta, uso, manutenção",
     "inbound": "/blog/dicasedecor/",
@@ -1044,12 +1197,12 @@
     ],
     "source_authors": "Tegra: Cor do Ano (10/03/2026); Equipe de Marketing Finger; Larissa Santiago/Meio & Mensagem (05/01/2026), com Bianca Dramali, Taise Kodama e Amanda Oliveira.",
     "research_review": "Aproveitados: pluralidade das referências, amostras, luz e materialidade. Pantone 11-4201 Cloud Dancer e escolhas Suvinil confirmados em fontes oficiais. Corrigida descrição divergente de Tempestade para rosa acinzentado. Sem inventar equivalência de tinta ou atribuir Pantone ao living usado; sem efeitos de saúde garantidos. Erro interno Finger ao trocar terroso/neutro por rosa/verde na passagem Eucatex não aproveitado.",
-    "result": "BLOQUEADO_PARA_RELEASE",
+    "result": "PUBLICADO_HTTP_200",
     "qa": {
       "n": 10,
       "static": "PASS",
       "canonical": "https://www.moretegra.com.br/blog/dicasedecor/cores-decoracao-2026-paleta-apartamento/",
-      "robots": "noindex,follow",
+      "robots": "index,follow",
       "types": [
         "BlogPosting",
         "BreadcrumbList",
@@ -1058,65 +1211,82 @@
       ],
       "words": 1021,
       "hero": "PRESENTE",
-      "official_schema": "NÃO_EXECUTADO_AUTOREVIEW",
-      "google_rich_results": "NÃO_EXECUTADO",
-      "visual_mobile": "BLOQUEADO_AUTOREVIEW",
+      "official_schema": "NÃO_EXECUTADO_CAPTCHA",
+      "google_rich_results": "NÃO_EXECUTADO_CAPTCHA",
+      "visual_mobile": "NÃO_EXECUTADO",
       "performance": "NÃO_MEDIDO",
-      "public_url": "NÃO_PUBLICADA",
-      "indexing": "NÃO_SUBMETIDA"
+      "public_url": "HTTP_200_SOURCE_MATCH",
+      "indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED",
+      "production_checks": {
+        "http_200": true,
+        "canonical": true,
+        "one_h1": true,
+        "indexable_meta": true,
+        "indexable_header": true,
+        "schema_types": true,
+        "published_source_matches": true,
+        "old_301": true,
+        "redirect_target": true
+      }
     },
     "github": {
       "n": 10,
       "pr": 495,
-      "url": "https://github.com/wagnerjfjunior/MoreNumTegra/pull/495",
-      "head": "0fadb8bcbe76cfa7d1b3a47775dfaf122f11dba6",
+      "url": "https://www.moretegra.com.br/blog/dicasedecor/cores-decoracao-2026-paleta-apartamento/",
+      "head": "e504cfebf85ee24b570994890f09402b32eac358",
       "branch": "blog/decor-10-cores-decoracao-2026-paleta--20261026",
       "ci": [
         {
-          "id": 40422310070,
-          "name": "Blog Bairros hub and Lapa URL migration",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 57,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422310070/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422310070/logs",
-          "workflow_id": 390493903
-        },
-        {
-          "id": 40422310015,
-          "name": "Favicon standard validation",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 842,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422310015/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422310015/logs",
-          "workflow_id": 362117359
-        },
-        {
-          "id": 40422310058,
-          "name": "SEO two distinct images - 39 URLs",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 495,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422310058/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422310058/logs",
-          "workflow_id": 380968663
-        },
-        {
-          "id": 40422310095,
+          "id": 40426800762,
           "name": "Jerivas Commercial SEO and Form46",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 84,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422310095/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422310095/logs",
+          "run_number": 119,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426800762/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426800762/logs",
           "workflow_id": 390069855
+        },
+        {
+          "id": 40426800642,
+          "name": "Favicon standard validation",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 877,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426800642/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426800642/logs",
+          "workflow_id": 362117359
+        },
+        {
+          "id": 40426800486,
+          "name": "SEO two distinct images - 39 URLs",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 530,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426800486/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426800486/logs",
+          "workflow_id": 380968663
+        },
+        {
+          "id": 40426800502,
+          "name": "Blog Bairros hub and Lapa URL migration",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 92,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426800502/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40426800502/logs",
+          "workflow_id": 390493903
         }
-      ]
+      ],
+      "merged": true
     },
-    "merge_sha": null,
-    "vercel_deploy": null,
-    "google": "NÃO_SUBMETIDO/NÃO_PUBLICADO",
-    "bing": "NÃO_SUBMETIDO/NÃO_PUBLICADO"
+    "merge_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
+    "vercel_deploy": {
+      "id": "dpl_EbqLXnC4bpz6YnVMD3m9rBPLDP25",
+      "state": "READY",
+      "source_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
+      "alias": "www.moretegra.com.br"
+    },
+    "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
+    "bing": "INDEXNOW_SUBMITTED_21_URLS"
   }
 ]
