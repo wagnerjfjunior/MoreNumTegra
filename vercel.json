@@ -278,10 +278,6 @@
       "destination": "/src-greenn/blog/dicasedecor/cozinhas-modernas-tendencias-de-layout-e-decoracao-para-2026/index.html"
     },
     {
-      "source": "/blog/dicasedecor/condominio-de-casas-entenda-e-conheca-o-claris-casa-clube/",
-      "destination": "/src-greenn/blog/dicasedecor/condominio-de-casas-entenda-e-conheca-o-claris-casa-clube/index.html"
-    },
-    {
       "source": "/blog/dicasedecor/como-escolher-o-piso-ideal-para-o-seu-apartamento/",
       "destination": "/src-greenn/blog/dicasedecor/como-escolher-o-piso-ideal-para-o-seu-apartamento/index.html"
     },
@@ -412,6 +408,10 @@
     {
       "source": "/blog/dicasedecor/recarga-carro-eletrico-condominio-infraestrutura/",
       "destination": "/src-greenn/blog/dicasedecor/recarga-carro-eletrico-condominio-infraestrutura/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/casa-condominio-layout-claris-barra/",
+      "destination": "/src-greenn/blog/dicasedecor/casa-condominio-layout-claris-barra/index.html"
     }
   ],
   "headers": [
@@ -537,6 +537,11 @@
     {
       "source": "/blog/dicasedecor/carro-eletrico-e-condominio-predios-com-infraestrutura-de-recarga/",
       "destination": "/blog/dicasedecor/recarga-carro-eletrico-condominio-infraestrutura/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dicasedecor/condominio-de-casas-entenda-e-conheca-o-claris-casa-clube/",
+      "destination": "/blog/dicasedecor/casa-condominio-layout-claris-barra/",
       "statusCode": 301
     }
   ]
