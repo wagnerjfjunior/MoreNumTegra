@@ -18,7 +18,9 @@ const decorArticlePaths=[
   "/blog/dicasedecor/recarga-carro-eletrico-condominio-infraestrutura/",
   "/blog/dicasedecor/casa-condominio-layout-claris-barra/",
   "/blog/dicasedecor/piso-apartamento-materiais-acustica-umidade/",
-  "/blog/dicasedecor/cores-decoracao-2026-paleta-apartamento/"
+  "/blog/dicasedecor/cores-decoracao-2026-paleta-apartamento/",
+  "/blog/dicasedecor/cozinha-apartamento-layout-uso-diario/",
+  "/blog/dicasedecor/iluminacao-natural-apartamento-orientacao-solar/"
 ];
 const releasedDecor=decorArticlePaths.filter(p=>allPaths.includes(p));
 const decorCategory=allPaths.includes('/blog/dicasedecor/')?['/blog/dicasedecor/']:[];
