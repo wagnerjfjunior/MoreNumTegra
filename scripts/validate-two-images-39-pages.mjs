@@ -67,10 +67,10 @@ console.log('INVESTMENT_HUB_IMAGES_PASS /investimentos/studios-e-salas-comerciai
 for(const path of releasedDecor){
  const target=rewrite.find(x=>x.source===path);
  assert(target,path+': missing article rewrite');
- const html=fs.readFileSync(target.destination.replace(/^\\//,''),'utf8');
+ const html=fs.readFileSync(target.destination.replace(/^\//,''),'utf8');
  assert(!/noindex/i.test(html),path+': article must be indexable');
- assert.equal((html.match(/<h1\\b/gi)||[]).length,1,path+': expected one H1');
- const canonical=html.match(/<link\\b(?=[^>]*rel=["']canonical["'])(?=[^>]*href=["']([^"']+)["'])[^>]*>/i);
+ assert.equal((html.match(/<h1\b/gi)||[]).length,1,path+': expected one H1');
+ const canonical=html.match(/<link\b(?=[^>]*rel=["']canonical["'])(?=[^>]*href=["']([^"']+)["'])[^>]*>/i);
  assert.equal(canonical?.[1],'https://www.moretegra.com.br'+path,path+': wrong canonical');
  const graph=extract(html);
  for(const type of ['BlogPosting','BreadcrumbList','Person','RealEstateAgent'])assert(graph.some(x=>x['@type']===type),path+': missing '+type);
