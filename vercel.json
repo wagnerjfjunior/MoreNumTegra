@@ -266,10 +266,6 @@
       "destination": "/src-greenn/blog/mercado/inventario-de-imovel-o-que-e-como-funciona-e-quanto-custa/index.html"
     },
     {
-      "source": "/blog/dicasedecor/dicas-para-apartamento-pet-friendly-decoracao-seguranca-e-bem-estar/",
-      "destination": "/src-greenn/blog/dicasedecor/dicas-para-apartamento-pet-friendly-decoracao-seguranca-e-bem-estar/index.html"
-    },
-    {
       "source": "/blog/dicasedecor/do-tenis-ao-beach-tennis-quadras-valorizam-condominios/",
       "destination": "/src-greenn/blog/dicasedecor/do-tenis-ao-beach-tennis-quadras-valorizam-condominios/index.html"
     },
@@ -412,6 +408,10 @@
     {
       "source": "/blog/dicasedecor/brinquedoteca-condominio-uso-seguranca/",
       "destination": "/src-greenn/blog/dicasedecor/brinquedoteca-condominio-uso-seguranca/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/apartamento-com-pets-layout-materiais/",
+      "destination": "/src-greenn/blog/dicasedecor/apartamento-com-pets-layout-materiais/index.html"
     }
   ],
   "headers": [
@@ -522,6 +522,11 @@
     {
       "source": "/blog/dicasedecor/espaco-kids-e-brinquedotecas-design-ludico-que-estimula-criancas/",
       "destination": "/blog/dicasedecor/brinquedoteca-condominio-uso-seguranca/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dicasedecor/dicas-para-apartamento-pet-friendly-decoracao-seguranca-e-bem-estar/",
+      "destination": "/blog/dicasedecor/apartamento-com-pets-layout-materiais/",
       "statusCode": 301
     }
   ]
