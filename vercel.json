@@ -266,10 +266,6 @@
       "destination": "/src-greenn/blog/mercado/inventario-de-imovel-o-que-e-como-funciona-e-quanto-custa/index.html"
     },
     {
-      "source": "/blog/dicasedecor/saloes-de-festas-e-espacos-gourmet-novo-padrao-em-condominios-de-luxo/",
-      "destination": "/src-greenn/blog/dicasedecor/saloes-de-festas-e-espacos-gourmet-novo-padrao-em-condominios-de-luxo/index.html"
-    },
-    {
       "source": "/blog/dicasedecor/garagem-premium-evolucao-em-condominios-de-alto-padrao/",
       "destination": "/src-greenn/blog/dicasedecor/garagem-premium-evolucao-em-condominios-de-alto-padrao/index.html"
     },
@@ -412,6 +408,10 @@
     {
       "source": "/blog/tegra/tegra-e-sustentabilidade-relatorio-integrado-2022/",
       "destination": "/src-greenn/blog/tegra/tegra-e-sustentabilidade-relatorio-integrado-2022/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/salao-festas-espaco-gourmet-como-avaliar/",
+      "destination": "/src-greenn/blog/dicasedecor/salao-festas-espaco-gourmet-como-avaliar/index.html"
     }
   ],
   "headers": [
@@ -503,6 +503,11 @@
       "source": "/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/",
       "destination": "/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/",
       "permanent": true
+    },
+    {
+      "source": "/blog/dicasedecor/saloes-de-festas-e-espacos-gourmet-novo-padrao-em-condominios-de-luxo/",
+      "destination": "/blog/dicasedecor/salao-festas-espaco-gourmet-como-avaliar/",
+      "statusCode": 301
     }
   ]
 }

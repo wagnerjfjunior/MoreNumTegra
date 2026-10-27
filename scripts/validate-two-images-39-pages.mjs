@@ -8,12 +8,28 @@ const urls=[...sitemap.matchAll(/<loc>\s*(https:\/\/www\.moretegra\.com\.br\/[^<
 const allPaths=urls.map(u=>new URL(u).pathname);
 // The blog hub, Bairros collection and two authorial articles have independent SEO checks, not RESF's
 // two-image contract for exact commercial and regional pages.
+const decorArticlePaths=[
+  "/blog/dicasedecor/salao-festas-espaco-gourmet-como-avaliar/",
+  "/blog/dicasedecor/vaga-garagem-apartamento-acesso-manobra/",
+  "/blog/dicasedecor/iluminacao-apartamento-camadas-circuitos/",
+  "/blog/dicasedecor/brinquedoteca-condominio-uso-seguranca/",
+  "/blog/dicasedecor/apartamento-com-pets-layout-materiais/",
+  "/blog/dicasedecor/quadras-condominio-tenis-beach-tennis/",
+  "/blog/dicasedecor/recarga-carro-eletrico-condominio-infraestrutura/",
+  "/blog/dicasedecor/casa-condominio-layout-claris-barra/",
+  "/blog/dicasedecor/piso-apartamento-materiais-acustica-umidade/",
+  "/blog/dicasedecor/cores-decoracao-2026-paleta-apartamento/"
+];
+const releasedDecor=decorArticlePaths.filter(p=>allPaths.includes(p));
+const decorCategory=allPaths.includes('/blog/dicasedecor/')?['/blog/dicasedecor/']:[];
 const blogPaths=allPaths.filter(p=>p.startsWith('/blog/'));
 assert.deepEqual(blogPaths,[
  '/blog/',
  '/blog/bairros-sao-paulo/',
  '/blog/bairros-sao-paulo/lapa-vila-anastacio-como-escolher/',
- '/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/'
+ '/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/',
+ ...releasedDecor,
+ ...decorCategory
 ],'Blog sitemap additions must remain explicitly scoped');
 const investmentPaths=allPaths.filter(p=>p.startsWith('/investimentos/'));
 assert.deepEqual(investmentPaths,['/investimentos/studios-e-salas-comerciais/'],'New investment collection routes need an explicit own-image audit');
@@ -47,6 +63,21 @@ const investmentGraph=extract(investmentHtml);
 assert(investmentGraph.some(n=>n['@type']==='CollectionPage'&&n.url==='https://www.moretegra.com.br/investimentos/studios-e-salas-comerciais/'),'Investment collection schema missing');
 assert(investmentGraph.some(n=>n['@type']==='ItemList'&&n.numberOfItems===15),'Investment list must preserve 15 selected projects');
 console.log('INVESTMENT_HUB_IMAGES_PASS /investimentos/studios-e-salas-comerciais/');
+// Published decoration articles have an editorial contract independent of RESF.
+for(const path of releasedDecor){
+ const target=rewrite.find(x=>x.source===path);
+ assert(target,path+': missing article rewrite');
+ const html=fs.readFileSync(target.destination.replace(/^\//,''),'utf8');
+ assert(!/noindex/i.test(html),path+': article must be indexable');
+ assert.equal((html.match(/<h1\b/gi)||[]).length,1,path+': expected one H1');
+ const canonical=html.match(/<link\b(?=[^>]*rel=["']canonical["'])(?=[^>]*href=["']([^"']+)["'])[^>]*>/i);
+ assert.equal(canonical?.[1],'https://www.moretegra.com.br'+path,path+': wrong canonical');
+ const graph=extract(html);
+ for(const type of ['BlogPosting','BreadcrumbList','Person','RealEstateAgent'])assert(graph.some(x=>x['@type']===type),path+': missing '+type);
+ assert.equal(graph.find(x=>x['@type']==='BlogPosting').mainEntityOfPage['@id'],'https://www.moretegra.com.br'+path);
+ assert(mainImages(html).length>=2,path+': missing editorial/closing imagery');
+}
+console.log('DECOR_EDITORIAL_SOURCE_PASS',releasedDecor.length);
 let projects=0,regions=0,home=0;
 for(const path of paths){
  const target=rewrite.find(x=>x.source===path);
