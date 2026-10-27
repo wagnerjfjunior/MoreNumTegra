@@ -278,10 +278,6 @@
       "destination": "/src-greenn/blog/dicasedecor/cozinhas-modernas-tendencias-de-layout-e-decoracao-para-2026/index.html"
     },
     {
-      "source": "/blog/dicasedecor/como-escolher-o-piso-ideal-para-o-seu-apartamento/",
-      "destination": "/src-greenn/blog/dicasedecor/como-escolher-o-piso-ideal-para-o-seu-apartamento/index.html"
-    },
-    {
       "source": "/blog/dicasedecor/iluminacao-natural-faz-bem-para-a-saude-e-para-o-seu-projeto/",
       "destination": "/src-greenn/blog/dicasedecor/iluminacao-natural-faz-bem-para-a-saude-e-para-o-seu-projeto/index.html"
     },
@@ -412,6 +408,10 @@
     {
       "source": "/blog/dicasedecor/casa-condominio-layout-claris-barra/",
       "destination": "/src-greenn/blog/dicasedecor/casa-condominio-layout-claris-barra/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/piso-apartamento-materiais-acustica-umidade/",
+      "destination": "/src-greenn/blog/dicasedecor/piso-apartamento-materiais-acustica-umidade/index.html"
     }
   ],
   "headers": [
@@ -542,6 +542,11 @@
     {
       "source": "/blog/dicasedecor/condominio-de-casas-entenda-e-conheca-o-claris-casa-clube/",
       "destination": "/blog/dicasedecor/casa-condominio-layout-claris-barra/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dicasedecor/como-escolher-o-piso-ideal-para-o-seu-apartamento/",
+      "destination": "/blog/dicasedecor/piso-apartamento-materiais-acustica-umidade/",
       "statusCode": 301
     }
   ]
