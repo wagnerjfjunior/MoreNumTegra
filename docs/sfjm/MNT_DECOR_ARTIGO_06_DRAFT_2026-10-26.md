@@ -1,3 +1,5 @@
+> ATUALIZAÇÃO DE RELEASE — 26/10/2026: publicação expressamente reiterada pelo usuário. Rascunho liberado para indexação, sitemap e redirecionamento HTTP 301. Os bloqueios e pendências abaixo descrevem o histórico anterior e ficam superados como condição de release. Testes oficiais Schema.org/Google, render mobile e performance não executados permanecem registrados sem alegação de aprovação. Static QA e CI devem passar no head de release; confirmação de deploy/HTTP será registrada no recibo consolidado.
+
 # Artigo 06 — Quadras esportivas — proposta editorial
 
 Base: `28e3a25be1d2b629b073705f8484145ae8cb3f46` (main observada).
