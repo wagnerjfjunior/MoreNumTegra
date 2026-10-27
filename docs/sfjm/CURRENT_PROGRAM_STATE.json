@@ -2,19 +2,19 @@
   "schema_version": "sfjm.project-current-state.v1",
   "project_id": "morenumtegra",
   "program_id": "MNT-RESF",
-  "state_observed_at": "2026-10-06",
+  "state_observed_at": "2026-10-27",
   "program_state": "CLOSED / COMPLETE_WITH_DEFERRED_PAID_MEDIA_SCOPE",
   "current_execution": {
-    "active_phase_id": "POST_RESF / SEARCH_IMAGE_OWNERSHIP",
-    "active_task_id": "MNT-SEARCH-IMAGE-AUDIT-01",
-    "state": "NEXT / READ_ONLY",
-    "repository_head_sha": "1ec9cc1ad812d4e0b9f81b1713fe8d07560d502c",
-    "latest_main_runtime_sha": "1ec9cc1ad812d4e0b9f81b1713fe8d07560d502c",
-    "deployment_state": "PRODUCTION_READY / DSG_POST_FIX / PAID_MEDIA_FROZEN",
-    "last_verified_vercel_success_sha": "1ec9cc1ad812d4e0b9f81b1713fe8d07560d502c",
-    "production_exact_sha": "1ec9cc1ad812d4e0b9f81b1713fe8d07560d502c / dpl_6LJK4RRu41AGN8LwivL32det2rBN / READY",
-    "authority_record": "docs/sfjm/MNT_RESF_PROGRAM_CLOSURE_2026-09-23.md",
-    "transition_record": "handoffs/HANDOFF-2026-10-06-SEARCH-IMAGE-FAVICON-HOME-GSC.md",
+    "active_phase_id": "POST_RESF / SEO_ORGANIC_GROWTH",
+    "active_task_id": "MNT-SEO-CLICKS-20261027",
+    "state": "ACTIVE / READ_ONLY_DIAGNOSIS_AND_PROPOSAL",
+    "repository_head_sha": "10682d1a0da22223a4997ee0a1dad2ecd812d229",
+    "latest_main_runtime_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
+    "deployment_state": "PRODUCTION_READY / DOCS_ONLY_UPDATE / PAID_MEDIA_UNCHANGED",
+    "last_verified_vercel_success_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
+    "production_exact_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a / dpl_EbqLXnC4bpz6YnVMD3m9rBPLDP25 / READY",
+    "authority_record": "docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md",
+    "transition_record": "docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md",
     "acceptance_summary": {
       "slice_01": "COMPLETE / BOUNDED_EXPERIMENT",
       "runtime_prs": [
@@ -363,7 +363,8 @@
       "moretegra_master_route": "/caminhos-da-lapa/ / RESERVED_DO_NOT_CREATE",
       "lifecycle_rule": "ENTITY_OWNER != ACTIVE_COMMERCIAL_OWNER",
       "residual": "DEDICATED_HOSTNAME_GSC_DNS_RECONCILIATION"
-    }
+    },
+    "repository_sha_semantics": "Observed base before this docs-only PR; resolve live head on resume"
   },
   "progress": {
     "forecast_total_hours": 1240,
@@ -761,9 +762,10 @@
     }
   },
   "next": {
-    "task_id": "MNT-PERF-02",
-    "state": "ACTIVE_NEXT / AUTHORIZED_MEASUREMENT_ONLY",
-    "safe_action": "Measure and canonicalize current-runtime performance on the latest DSG-post-fix Production runtime. Do not mutate runtime during measurement."
+    "task_id": "MNT-SEO-CLICKS-20261027",
+    "state": "ACTIVE / READ_ONLY",
+    "safe_action": "Reuse GSC and completed audits; investigate Ampère/Mozae query/page opportunities, preserve Ária, validate Caminhos measurement; prepare bounded proposal before runtime changes.",
+    "evidence": "docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md"
   },
   "cross_project": {
     "commercial_catalog": {
@@ -859,20 +861,39 @@
     }
   },
   "priority_workstream": {
-    "id": "PUBLIC_PERFORMANCE_FOLLOWUP",
-    "state": "ACTIVE_NEXT / MEASUREMENT_ONLY / OUTSIDE_RESF_ACCOUNTING",
-    "current_child": "MNT-PERF-02",
+    "id": "SEO_ORGANIC_CLICKS_20261027",
+    "label": "Cliques qualificados: MoreTegra e Caminhos",
+    "state": "ACTIVE / READ_ONLY_DIAGNOSIS_AND_BOUNDED_PROPOSAL",
+    "current_child": "MNT-SEO-CLICKS-20261027",
     "counted_in_resf_hours": false,
-    "handoff": "handoffs/HANDOFF-2026-09-25-TRACEABILITY-RECONCILED-CURRENT.md",
-    "traceability_standard": "docs/governance/MNT_CHANGE_TRACEABILITY_STANDARD_V1.md",
+    "handoff": "docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md",
     "tasks": [
       {
-        "id": "MNT-PERF-02",
-        "label": "Current-runtime performance verification",
-        "state": "ACTIVE_NEXT / AUTHORIZED_MEASUREMENT_ONLY",
-        "counted_in_resf_hours": false,
-        "runtime_scope": "95567db0d16e15d2c6971d8047ab7327d3171578",
-        "notes": "Publish durable five-run mobile performance evidence for current Home, DSG, CAPIITOLO, Elo and Aria; stop before remediation."
+        "id": "MNT-SEO-CLICKS-20261027",
+        "label": "Investigar Ampère/Mozae por consulta, preservar Ária e validar mensuração Caminhos",
+        "state": "ACTIVE / NO_RUNTIME_CHANGE_YET"
+      },
+      {
+        "id": "MNT-BING-FAVICON-20261027",
+        "label": "Aguardar resposta ao chamado aberto pelo usuário",
+        "state": "SUPPORT_OPEN_USER_CONFIRMED",
+        "ticket_id": null
+      },
+      {
+        "id": "MNT-BING-COVERAGE-20261027",
+        "label": "Reconciliar 3 Indexed no agrupamento com a cobertura WWW",
+        "state": "PENDING_REAL_PANEL_ACCESS",
+        "csv_exports_read": 9
+      },
+      {
+        "id": "MNT-BLOG-MIGRATION-2-20261027",
+        "label": "Propor correção de links, sitemap e dois legados cozinha/luz natural",
+        "state": "OBSERVED_NOT_IMPLEMENTED"
+      },
+      {
+        "id": "MNT-MERCADO-DEPTH-20261027",
+        "label": "Aprofundar fontes dos próximos artigos Mercado",
+        "state": "PENDING / SYNTHESES_INSUFFICIENT_FOR_2000_WORD_ARTICLES"
       }
     ]
   },
@@ -959,5 +980,68 @@
         }
       ]
     }
-  ]
+  ],
+  "continuity_2026_10_27": {
+    "evidence": "docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md",
+    "base_repository_sha": "10682d1a0da22223a4997ee0a1dad2ecd812d229",
+    "production_source_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
+    "production_deployment": "dpl_EbqLXnC4bpz6YnVMD3m9rBPLDP25",
+    "state": "DOCUMENTATION_ONLY",
+    "previous_current_state_snapshot": {
+      "current": {
+        "active_phase_id": "POST_RESF / SEARCH_IMAGE_OWNERSHIP",
+        "active_task_id": "MNT-SEARCH-IMAGE-AUDIT-01",
+        "state": "NEXT / READ_ONLY",
+        "repository_head_sha": "1ec9cc1ad812d4e0b9f81b1713fe8d07560d502c",
+        "latest_main_runtime_sha": "1ec9cc1ad812d4e0b9f81b1713fe8d07560d502c",
+        "deployment_state": "PRODUCTION_READY / DSG_POST_FIX / PAID_MEDIA_FROZEN",
+        "last_verified_vercel_success_sha": "1ec9cc1ad812d4e0b9f81b1713fe8d07560d502c",
+        "production_exact_sha": "1ec9cc1ad812d4e0b9f81b1713fe8d07560d502c / dpl_6LJK4RRu41AGN8LwivL32det2rBN / READY",
+        "authority_record": "docs/sfjm/MNT_RESF_PROGRAM_CLOSURE_2026-09-23.md",
+        "transition_record": "handoffs/HANDOFF-2026-10-06-SEARCH-IMAGE-FAVICON-HOME-GSC.md",
+        "acceptance_summary": "Preserved in current_execution.acceptance_summary as historical evidence; not revalidated here",
+        "pr315": {
+          "state": "MERGED / PRODUCTION_READY / USER_VISUAL_APPROVED",
+          "head": "7aa2e6db6d191ccea0e8943ed57f35170de37872",
+          "merge_sha": "759a4bcf6d0b7220993c4d87918f85e1d4d5f5f1",
+          "deployment": "dpl_5LLtx8L1XJys9JSrkpqbRUG9stWD / READY",
+          "garden_visible_words_approx": 1083,
+          "nova_vivere_visible_words_approx": 1130,
+          "faq_parity": "PASS / 7_VISIBLE_AND_7_JSONLD_PER_PAGE",
+          "preserved": "title,H1,canonical,Form46,GTM",
+          "m5_06": "PRE_EXISTING_VALIDATOR_DEBT"
+        },
+        "caminhos_ownership": {
+          "hierarchy": "REGION -> MASTER DEVELOPMENT -> EXACT PROJECT",
+          "region_owner": "/regioes/lapa/ / FUTURE",
+          "master_owner": "DEDICATED_CAMINHOS_PROPERTY",
+          "exact_project_owner": "/empreendimentos/<project-slug>/",
+          "moretegra_master_route": "/caminhos-da-lapa/ / RESERVED_DO_NOT_CREATE",
+          "lifecycle_rule": "ENTITY_OWNER != ACTIVE_COMMERCIAL_OWNER",
+          "residual": "DEDICATED_HOSTNAME_GSC_DNS_RECONCILIATION"
+        }
+      },
+      "priority_workstream": {
+        "id": "PUBLIC_PERFORMANCE_FOLLOWUP",
+        "state": "ACTIVE_NEXT / MEASUREMENT_ONLY / OUTSIDE_RESF_ACCOUNTING",
+        "current_child": "MNT-PERF-02",
+        "counted_in_resf_hours": false,
+        "handoff": "handoffs/HANDOFF-2026-09-25-TRACEABILITY-RECONCILED-CURRENT.md",
+        "traceability_standard": "docs/governance/MNT_CHANGE_TRACEABILITY_STANDARD_V1.md",
+        "tasks": [
+          {
+            "id": "MNT-PERF-02",
+            "label": "Current-runtime performance verification",
+            "state": "ACTIVE_NEXT / AUTHORIZED_MEASUREMENT_ONLY",
+            "counted_in_resf_hours": false,
+            "runtime_scope": "95567db0d16e15d2c6971d8047ab7327d3171578",
+            "notes": "Publish durable five-run mobile performance evidence for current Home, DSG, CAPIITOLO, Elo and Aria; stop before remediation."
+          }
+        ]
+      }
+    },
+    "google_decor": "12_ARTICLES_INDEXED_USER_CONFIRMED",
+    "bing_favicon": "SUPPORT_OPEN_USER_CONFIRMED_NO_TICKET_ID",
+    "bing_www_global_indexed_count": "UNCONFIRMED"
+  }
 }

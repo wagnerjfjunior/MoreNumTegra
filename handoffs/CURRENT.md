@@ -1,3 +1,17 @@
+## 27/10/2026 — Continuidade integral: SEO, cliques, Blog e Bing
+
+Leitura obrigatória, na íntegra: `docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md` e seu JSON de evidências. O histórico abaixo foi preservado.
+
+- Dicas: **12 artigos indexados no Google, USER_CONFIRMED em 27/10**. Dez releases #486–#495 já publicados; não reiniciar redação, publicação ou aprovação. IndexNow aceitou 13 URLs com www. Indexação do hub no Google não confirmada.
+- Prioridade: cliques qualificados. GSC de 27/09 a 24/10: More 37 cliques/1.563 impressões (20 linhas diárias), Caminhos 5/370. Investigar Ampère/Mozae, preservar Ária, conferir mensuração Caminhos. Auditorias OpenSEO concluídas; links e dados no handoff.
+- Bing: chamado de favicon aberto pelo usuário, sem protocolo; redirects 308/301 funcionam nas amostras, com alguns dois saltos; painel mostra 3 Indexed/33 Warning/0 Error/1 Excluded, total 37, no nó exibido sem www. Total global www não confirmado. Novo Quadras indexado conforme print.
+- Nove CSVs de 26/10 lidos integralmente e preservados: 21 URLs únicas More/10 Caminhos, sem coluna de status de indexação. Não pedir reenvio. OpenSEO Key pages remove www automaticamente; canonical do site e IndexNow permanecem com www.
+- Pendências: dois links legados, sitemap e migração de cozinha/iluminação natural; Mercado com 11 reservados e Lapa publicado, fichas insuficientes para 2.000 palavras; QA externo/mobile/performance não certificado.
+- Live na base deste pacote: main `10682d1a0da22223a4997ee0a1dad2ecd812d229` (documental), runtime `35c157f03f2a7477dde9fae5f0fc35a304c29e3a`, deployment `dpl_EbqLXnC4bpz6YnVMD3m9rBPLDP25` READY. Resolver live novamente. Três JSONs correntes com drift de 06/10 foram reconciliados.
+- Prompt: `handoffs/PROMPT_RETOMADA_SEO_BLOG_BING_2026-10-27.md`. Atualização DOCUMENTATION_ONLY.
+
+---
+
 ## Atualização — 26/10/2026 — dez artigos Dicas & Decoração PUBLICADOS
 
 PRs #486–#495 integrados individualmente. Produção Vercel READY, deploy `dpl_EbqLXnC4bpz6YnVMD3m9rBPLDP25`, source `35c157f03f2a7477dde9fae5f0fc35a304c29e3a`. Dez URLs HTTP 200, canonical/robots/source conferidos; dez URLs antigas HTTP 301; sitemap/catálogo atualizados. 40/40 workflows SUCCESS. 27 recursos/destinos HTTP 200. IndexNow aceitou 21 URLs. GSC ainda informa que não reconhece as dez URLs novas; sem indexação ou solicitação individual Google alegadas.
