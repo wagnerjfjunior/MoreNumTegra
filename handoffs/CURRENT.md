@@ -1,3 +1,12 @@
+## 27/10/2026 — Atualização pontual GSC: Jerivás indexada (USER_CONFIRMED)
+
+- A URL `https://www.moretegra.com.br/empreendimentos/jerivas-caminhos-da-lapa/` foi confirmada **indexada no Google Search Console pelo usuário** em 27/10/2026.
+- Não confundir com a linha ausente no relatório de performance GSC de 24/07–24/10; o histórico não foi reescrito.
+- Matriz comercial de 43 URLs atualizada: `docs/sfjm/MNT_COMMERCIAL_43_RECONCILIATION_2026-10-27.csv`, relatório MD homônimo; Bing e redirects per URL ainda pendentes.
+- PR #500 já merged, produção READY no commit `4cab1b3e3fb96cad364923ebc69647df9e6f4915`; esta atualização é documental e não altera runtime.
+
+---
+
 ## 27/10/2026 — Continuidade integral: SEO, cliques, Blog e Bing
 
 Leitura obrigatória, na íntegra: `docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md` e seu JSON de evidências. O histórico abaixo foi preservado.
