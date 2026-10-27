@@ -1,3 +1,13 @@
+## 27/10/2026 — GSC: 47 URLs indexadas no relatório apresentado; cobertura comercial reconciliada
+
+- Proprietário apresentou lista de 47 exemplos indexados no Google: 42 URLs comerciais canônicas, 4 URLs `/blog/` (inclui slug legado da Lapa) e `https://lp.moretegra.com.br/`.
+- Jerivás ausente dessa lista, mas **USER_CONFIRMED INDEXED** no GSC nesta data; a combinação representa evidência de indexação para as **43 URLs comerciais**, não um snapshot sincronizado de inspeções individuais.
+- Matriz CSV atualizada: 42 `INDEXED_USER_SUPPLIED_GSC_EXAMPLES_2026-10-27` e 1 `INDEXED_USER_CONFIRMED_2026-10-27`. Preserve 47 como contador observado, sem projetar 48.
+- Bing por URL e redirects sem `www` ainda não certificados; `/blog` permanece cluster distinto.
+- Evidência: `docs/sfjm/MNT_COMMERCIAL_43_RECONCILIATION_2026-10-27.md` e `.csv`.
+
+---
+
 ## 27/10/2026 — Atualização pontual GSC: Jerivás indexada (USER_CONFIRMED)
 
 - A URL `https://www.moretegra.com.br/empreendimentos/jerivas-caminhos-da-lapa/` foi confirmada **indexada no Google Search Console pelo usuário** em 27/10/2026.
