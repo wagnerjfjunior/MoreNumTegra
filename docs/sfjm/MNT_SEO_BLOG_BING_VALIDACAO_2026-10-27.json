@@ -26,11 +26,24 @@
   },
   "runtime_changed": false,
   "external_google_schema_tests": "NOT_EXECUTED_HISTORICAL_LIMIT_PRESERVED",
-  "github_exact_head_ci": "RESOLVE_FROM_PR_WORKFLOW_RUNS_BEFORE_MERGE",
+  "github_exact_head_ci": "NO_WORKFLOW_RUNS / runtime workflows path filters exclude docs-only changes; not reported as CI PASS",
   "production": {
     "id": "dpl_EbqLXnC4bpz6YnVMD3m9rBPLDP25",
     "source_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
     "state": "READY",
     "observed_on": "2026-10-27"
+  },
+  "github": {
+    "pr": 499,
+    "initial_head": "09ba9006e23dbda51c61e792043287716c161058",
+    "checked_workflows": [
+      "favicon-standard.yml",
+      "blog-bairros-urls.yml",
+      "jerivas-commercial.yml",
+      "two-images-39-pages.yml"
+    ],
+    "workflow_runs_returned": 0,
+    "combined_statuses_returned": 0,
+    "final_head": "Resolve PR head; this receipt does not embed its own commit SHA"
   }
 }
