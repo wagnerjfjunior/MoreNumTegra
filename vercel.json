@@ -266,34 +266,6 @@
       "destination": "/src-greenn/blog/mercado/inventario-de-imovel-o-que-e-como-funciona-e-quanto-custa/index.html"
     },
     {
-      "source": "/blog/dicasedecor/saloes-de-festas-e-espacos-gourmet-novo-padrao-em-condominios-de-luxo/",
-      "destination": "/src-greenn/blog/dicasedecor/saloes-de-festas-e-espacos-gourmet-novo-padrao-em-condominios-de-luxo/index.html"
-    },
-    {
-      "source": "/blog/dicasedecor/garagem-premium-evolucao-em-condominios-de-alto-padrao/",
-      "destination": "/src-greenn/blog/dicasedecor/garagem-premium-evolucao-em-condominios-de-alto-padrao/index.html"
-    },
-    {
-      "source": "/blog/dicasedecor/projeto-luminotecnico-como-a-iluminacao-transforma-os-ambientes/",
-      "destination": "/src-greenn/blog/dicasedecor/projeto-luminotecnico-como-a-iluminacao-transforma-os-ambientes/index.html"
-    },
-    {
-      "source": "/blog/dicasedecor/espaco-kids-e-brinquedotecas-design-ludico-que-estimula-criancas/",
-      "destination": "/src-greenn/blog/dicasedecor/espaco-kids-e-brinquedotecas-design-ludico-que-estimula-criancas/index.html"
-    },
-    {
-      "source": "/blog/dicasedecor/dicas-para-apartamento-pet-friendly-decoracao-seguranca-e-bem-estar/",
-      "destination": "/src-greenn/blog/dicasedecor/dicas-para-apartamento-pet-friendly-decoracao-seguranca-e-bem-estar/index.html"
-    },
-    {
-      "source": "/blog/dicasedecor/do-tenis-ao-beach-tennis-quadras-valorizam-condominios/",
-      "destination": "/src-greenn/blog/dicasedecor/do-tenis-ao-beach-tennis-quadras-valorizam-condominios/index.html"
-    },
-    {
-      "source": "/blog/dicasedecor/carro-eletrico-e-condominio-predios-com-infraestrutura-de-recarga/",
-      "destination": "/src-greenn/blog/dicasedecor/carro-eletrico-e-condominio-predios-com-infraestrutura-de-recarga/index.html"
-    },
-    {
       "source": "/blog/dicasedecor/cozinha-apartamento-layout-uso-diario/",
       "destination": "/src-greenn/blog/dicasedecor/cozinha-apartamento-layout-uso-diario/index.html"
     },
@@ -304,14 +276,6 @@
     {
       "source": "/blog/dicasedecor/cozinhas-modernas-tendencias-de-layout-e-decoracao-para-2026/",
       "destination": "/src-greenn/blog/dicasedecor/cozinhas-modernas-tendencias-de-layout-e-decoracao-para-2026/index.html"
-    },
-    {
-      "source": "/blog/dicasedecor/condominio-de-casas-entenda-e-conheca-o-claris-casa-clube/",
-      "destination": "/src-greenn/blog/dicasedecor/condominio-de-casas-entenda-e-conheca-o-claris-casa-clube/index.html"
-    },
-    {
-      "source": "/blog/dicasedecor/como-escolher-o-piso-ideal-para-o-seu-apartamento/",
-      "destination": "/src-greenn/blog/dicasedecor/como-escolher-o-piso-ideal-para-o-seu-apartamento/index.html"
     },
     {
       "source": "/blog/dicasedecor/iluminacao-natural-faz-bem-para-a-saude-e-para-o-seu-projeto/",
@@ -414,6 +378,38 @@
       "destination": "/src-greenn/blog/tegra/tegra-e-sustentabilidade-relatorio-integrado-2022/index.html"
     },
     {
+      "source": "/blog/dicasedecor/salao-festas-espaco-gourmet-como-avaliar/",
+      "destination": "/src-greenn/blog/dicasedecor/salao-festas-espaco-gourmet-como-avaliar/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/vaga-garagem-apartamento-acesso-manobra/",
+      "destination": "/src-greenn/blog/dicasedecor/vaga-garagem-apartamento-acesso-manobra/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/iluminacao-apartamento-camadas-circuitos/",
+      "destination": "/src-greenn/blog/dicasedecor/iluminacao-apartamento-camadas-circuitos/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/brinquedoteca-condominio-uso-seguranca/",
+      "destination": "/src-greenn/blog/dicasedecor/brinquedoteca-condominio-uso-seguranca/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/apartamento-com-pets-layout-materiais/",
+      "destination": "/src-greenn/blog/dicasedecor/apartamento-com-pets-layout-materiais/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/quadras-condominio-tenis-beach-tennis/",
+      "destination": "/src-greenn/blog/dicasedecor/quadras-condominio-tenis-beach-tennis/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/recarga-carro-eletrico-condominio-infraestrutura/",
+      "destination": "/src-greenn/blog/dicasedecor/recarga-carro-eletrico-condominio-infraestrutura/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/casa-condominio-layout-claris-barra/",
+      "destination": "/src-greenn/blog/dicasedecor/casa-condominio-layout-claris-barra/index.html"
+    },
+    {
       "source": "/blog/dicasedecor/piso-apartamento-materiais-acustica-umidade/",
       "destination": "/src-greenn/blog/dicasedecor/piso-apartamento-materiais-acustica-umidade/index.html"
     }
@@ -507,6 +503,51 @@
       "source": "/blog/mercado/lapa-o-novo-polo-de-valorizacao-na-zona-oeste-de-sao-paulo/",
       "destination": "/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/",
       "permanent": true
+    },
+    {
+      "source": "/blog/dicasedecor/saloes-de-festas-e-espacos-gourmet-novo-padrao-em-condominios-de-luxo/",
+      "destination": "/blog/dicasedecor/salao-festas-espaco-gourmet-como-avaliar/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dicasedecor/garagem-premium-evolucao-em-condominios-de-alto-padrao/",
+      "destination": "/blog/dicasedecor/vaga-garagem-apartamento-acesso-manobra/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dicasedecor/projeto-luminotecnico-como-a-iluminacao-transforma-os-ambientes/",
+      "destination": "/blog/dicasedecor/iluminacao-apartamento-camadas-circuitos/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dicasedecor/espaco-kids-e-brinquedotecas-design-ludico-que-estimula-criancas/",
+      "destination": "/blog/dicasedecor/brinquedoteca-condominio-uso-seguranca/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dicasedecor/dicas-para-apartamento-pet-friendly-decoracao-seguranca-e-bem-estar/",
+      "destination": "/blog/dicasedecor/apartamento-com-pets-layout-materiais/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dicasedecor/do-tenis-ao-beach-tennis-quadras-valorizam-condominios/",
+      "destination": "/blog/dicasedecor/quadras-condominio-tenis-beach-tennis/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dicasedecor/carro-eletrico-e-condominio-predios-com-infraestrutura-de-recarga/",
+      "destination": "/blog/dicasedecor/recarga-carro-eletrico-condominio-infraestrutura/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dicasedecor/condominio-de-casas-entenda-e-conheca-o-claris-casa-clube/",
+      "destination": "/blog/dicasedecor/casa-condominio-layout-claris-barra/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dicasedecor/como-escolher-o-piso-ideal-para-o-seu-apartamento/",
+      "destination": "/blog/dicasedecor/piso-apartamento-materiais-acustica-umidade/",
+      "statusCode": 301
     }
   ]
 }
