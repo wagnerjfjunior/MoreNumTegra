@@ -58,7 +58,7 @@
       "visual_mobile": "NÃO_EXECUTADO",
       "performance": "NÃO_MEDIDO",
       "public_url": "HTTP_200_SOURCE_MATCH",
-      "indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED",
+      "indexing": "GOOGLE_INDEXED_USER_CONFIRMED_2026-10-27; INDEXNOW_SUBMITTED_NOT_BING_INDEXATION",
       "production_checks": {
         "http_200": true,
         "canonical": true,
@@ -128,8 +128,14 @@
       "source_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
       "alias": "www.moretegra.com.br"
     },
-    "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
-    "bing": "INDEXNOW_SUBMITTED_21_URLS"
+    "google": "GOOGLE_INDEXED_USER_CONFIRMED_2026-10-27 / no independent final reinspection claimed",
+    "bing": "INDEXNOW_SUBMITTED_2026-10-26_AND_2026-10-27 / BING_INDEX_STATUS_NOT_INFERRED",
+    "indexing_history_2026_10_26": {
+      "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
+      "bing": "INDEXNOW_SUBMITTED_21_URLS",
+      "qa_indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED"
+    },
+    "current_indexing_evidence": "docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md"
   },
   {
     "n": 2,
@@ -188,7 +194,7 @@
       "visual_mobile": "NÃO_EXECUTADO",
       "performance": "NÃO_MEDIDO",
       "public_url": "HTTP_200_SOURCE_MATCH",
-      "indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED",
+      "indexing": "GOOGLE_INDEXED_USER_CONFIRMED_2026-10-27; INDEXNOW_SUBMITTED_NOT_BING_INDEXATION",
       "production_checks": {
         "http_200": true,
         "canonical": true,
@@ -258,8 +264,14 @@
       "source_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
       "alias": "www.moretegra.com.br"
     },
-    "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
-    "bing": "INDEXNOW_SUBMITTED_21_URLS"
+    "google": "GOOGLE_INDEXED_USER_CONFIRMED_2026-10-27 / no independent final reinspection claimed",
+    "bing": "INDEXNOW_SUBMITTED_2026-10-26_AND_2026-10-27 / BING_INDEX_STATUS_NOT_INFERRED",
+    "indexing_history_2026_10_26": {
+      "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
+      "bing": "INDEXNOW_SUBMITTED_21_URLS",
+      "qa_indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED"
+    },
+    "current_indexing_evidence": "docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md"
   },
   {
     "n": 3,
@@ -316,7 +328,7 @@
       "visual_mobile": "NÃO_EXECUTADO",
       "performance": "NÃO_MEDIDO",
       "public_url": "HTTP_200_SOURCE_MATCH",
-      "indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED",
+      "indexing": "GOOGLE_INDEXED_USER_CONFIRMED_2026-10-27; INDEXNOW_SUBMITTED_NOT_BING_INDEXATION",
       "production_checks": {
         "http_200": true,
         "canonical": true,
@@ -386,8 +398,14 @@
       "source_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
       "alias": "www.moretegra.com.br"
     },
-    "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
-    "bing": "INDEXNOW_SUBMITTED_21_URLS"
+    "google": "GOOGLE_INDEXED_USER_CONFIRMED_2026-10-27 / no independent final reinspection claimed",
+    "bing": "INDEXNOW_SUBMITTED_2026-10-26_AND_2026-10-27 / BING_INDEX_STATUS_NOT_INFERRED",
+    "indexing_history_2026_10_26": {
+      "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
+      "bing": "INDEXNOW_SUBMITTED_21_URLS",
+      "qa_indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED"
+    },
+    "current_indexing_evidence": "docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md"
   },
   {
     "n": 4,
@@ -448,7 +466,7 @@
       "visual_mobile": "NÃO_EXECUTADO",
       "performance": "NÃO_MEDIDO",
       "public_url": "HTTP_200_SOURCE_MATCH",
-      "indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED",
+      "indexing": "GOOGLE_INDEXED_USER_CONFIRMED_2026-10-27; INDEXNOW_SUBMITTED_NOT_BING_INDEXATION",
       "production_checks": {
         "http_200": true,
         "canonical": true,
@@ -518,8 +536,14 @@
       "source_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
       "alias": "www.moretegra.com.br"
     },
-    "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
-    "bing": "INDEXNOW_SUBMITTED_21_URLS"
+    "google": "GOOGLE_INDEXED_USER_CONFIRMED_2026-10-27 / no independent final reinspection claimed",
+    "bing": "INDEXNOW_SUBMITTED_2026-10-26_AND_2026-10-27 / BING_INDEX_STATUS_NOT_INFERRED",
+    "indexing_history_2026_10_26": {
+      "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
+      "bing": "INDEXNOW_SUBMITTED_21_URLS",
+      "qa_indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED"
+    },
+    "current_indexing_evidence": "docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md"
   },
   {
     "n": 5,
@@ -580,7 +604,7 @@
       "visual_mobile": "NÃO_EXECUTADO",
       "performance": "NÃO_MEDIDO",
       "public_url": "HTTP_200_SOURCE_MATCH",
-      "indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED",
+      "indexing": "GOOGLE_INDEXED_USER_CONFIRMED_2026-10-27; INDEXNOW_SUBMITTED_NOT_BING_INDEXATION",
       "production_checks": {
         "http_200": true,
         "canonical": true,
@@ -650,8 +674,14 @@
       "source_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
       "alias": "www.moretegra.com.br"
     },
-    "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
-    "bing": "INDEXNOW_SUBMITTED_21_URLS"
+    "google": "GOOGLE_INDEXED_USER_CONFIRMED_2026-10-27 / no independent final reinspection claimed",
+    "bing": "INDEXNOW_SUBMITTED_2026-10-26_AND_2026-10-27 / BING_INDEX_STATUS_NOT_INFERRED",
+    "indexing_history_2026_10_26": {
+      "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
+      "bing": "INDEXNOW_SUBMITTED_21_URLS",
+      "qa_indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED"
+    },
+    "current_indexing_evidence": "docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md"
   },
   {
     "n": 6,
@@ -707,7 +737,7 @@
       "visual_mobile": "NÃO_EXECUTADO",
       "performance": "NÃO_MEDIDO",
       "public_url": "HTTP_200_SOURCE_MATCH",
-      "indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED",
+      "indexing": "GOOGLE_INDEXED_USER_CONFIRMED_2026-10-27; INDEXNOW_SUBMITTED_NOT_BING_INDEXATION",
       "production_checks": {
         "http_200": true,
         "canonical": true,
@@ -777,8 +807,14 @@
       "source_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
       "alias": "www.moretegra.com.br"
     },
-    "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
-    "bing": "INDEXNOW_SUBMITTED_21_URLS"
+    "google": "GOOGLE_INDEXED_USER_CONFIRMED_2026-10-27 / no independent final reinspection claimed",
+    "bing": "INDEXNOW_SUBMITTED_2026-10-26_AND_2026-10-27 / BING_INDEX_STATUS_NOT_INFERRED",
+    "indexing_history_2026_10_26": {
+      "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
+      "bing": "INDEXNOW_SUBMITTED_21_URLS",
+      "qa_indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED"
+    },
+    "current_indexing_evidence": "docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md"
   },
   {
     "n": 7,
@@ -834,7 +870,7 @@
       "visual_mobile": "NÃO_EXECUTADO",
       "performance": "NÃO_MEDIDO",
       "public_url": "HTTP_200_SOURCE_MATCH",
-      "indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED",
+      "indexing": "GOOGLE_INDEXED_USER_CONFIRMED_2026-10-27; INDEXNOW_SUBMITTED_NOT_BING_INDEXATION",
       "production_checks": {
         "http_200": true,
         "canonical": true,
@@ -904,8 +940,14 @@
       "source_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
       "alias": "www.moretegra.com.br"
     },
-    "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
-    "bing": "INDEXNOW_SUBMITTED_21_URLS"
+    "google": "GOOGLE_INDEXED_USER_CONFIRMED_2026-10-27 / no independent final reinspection claimed",
+    "bing": "INDEXNOW_SUBMITTED_2026-10-26_AND_2026-10-27 / BING_INDEX_STATUS_NOT_INFERRED",
+    "indexing_history_2026_10_26": {
+      "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
+      "bing": "INDEXNOW_SUBMITTED_21_URLS",
+      "qa_indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED"
+    },
+    "current_indexing_evidence": "docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md"
   },
   {
     "n": 8,
@@ -961,7 +1003,7 @@
       "visual_mobile": "NÃO_EXECUTADO",
       "performance": "NÃO_MEDIDO",
       "public_url": "HTTP_200_SOURCE_MATCH",
-      "indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED",
+      "indexing": "GOOGLE_INDEXED_USER_CONFIRMED_2026-10-27; INDEXNOW_SUBMITTED_NOT_BING_INDEXATION",
       "production_checks": {
         "http_200": true,
         "canonical": true,
@@ -1031,8 +1073,14 @@
       "source_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
       "alias": "www.moretegra.com.br"
     },
-    "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
-    "bing": "INDEXNOW_SUBMITTED_21_URLS"
+    "google": "GOOGLE_INDEXED_USER_CONFIRMED_2026-10-27 / no independent final reinspection claimed",
+    "bing": "INDEXNOW_SUBMITTED_2026-10-26_AND_2026-10-27 / BING_INDEX_STATUS_NOT_INFERRED",
+    "indexing_history_2026_10_26": {
+      "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
+      "bing": "INDEXNOW_SUBMITTED_21_URLS",
+      "qa_indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED"
+    },
+    "current_indexing_evidence": "docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md"
   },
   {
     "n": 9,
@@ -1088,7 +1136,7 @@
       "visual_mobile": "NÃO_EXECUTADO",
       "performance": "NÃO_MEDIDO",
       "public_url": "HTTP_200_SOURCE_MATCH",
-      "indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED",
+      "indexing": "GOOGLE_INDEXED_USER_CONFIRMED_2026-10-27; INDEXNOW_SUBMITTED_NOT_BING_INDEXATION",
       "production_checks": {
         "http_200": true,
         "canonical": true,
@@ -1158,8 +1206,14 @@
       "source_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
       "alias": "www.moretegra.com.br"
     },
-    "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
-    "bing": "INDEXNOW_SUBMITTED_21_URLS"
+    "google": "GOOGLE_INDEXED_USER_CONFIRMED_2026-10-27 / no independent final reinspection claimed",
+    "bing": "INDEXNOW_SUBMITTED_2026-10-26_AND_2026-10-27 / BING_INDEX_STATUS_NOT_INFERRED",
+    "indexing_history_2026_10_26": {
+      "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
+      "bing": "INDEXNOW_SUBMITTED_21_URLS",
+      "qa_indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED"
+    },
+    "current_indexing_evidence": "docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md"
   },
   {
     "n": 10,
@@ -1216,7 +1270,7 @@
       "visual_mobile": "NÃO_EXECUTADO",
       "performance": "NÃO_MEDIDO",
       "public_url": "HTTP_200_SOURCE_MATCH",
-      "indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED",
+      "indexing": "GOOGLE_INDEXED_USER_CONFIRMED_2026-10-27; INDEXNOW_SUBMITTED_NOT_BING_INDEXATION",
       "production_checks": {
         "http_200": true,
         "canonical": true,
@@ -1286,7 +1340,13 @@
       "source_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
       "alias": "www.moretegra.com.br"
     },
-    "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
-    "bing": "INDEXNOW_SUBMITTED_21_URLS"
+    "google": "GOOGLE_INDEXED_USER_CONFIRMED_2026-10-27 / no independent final reinspection claimed",
+    "bing": "INDEXNOW_SUBMITTED_2026-10-26_AND_2026-10-27 / BING_INDEX_STATUS_NOT_INFERRED",
+    "indexing_history_2026_10_26": {
+      "google": "INSPEÇÃO_GSC: O Google não reconhece o URL; solicitação individual não disponível no conector; sem alegação de submissão/indexação",
+      "bing": "INDEXNOW_SUBMITTED_21_URLS",
+      "qa_indexing": "INDEXNOW_SUBMITTED_GOOGLE_NOT_INDEXED"
+    },
+    "current_indexing_evidence": "docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md"
   }
 ]
