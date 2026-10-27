@@ -1,3 +1,13 @@
+## Atualização — 26/10/2026 — dez artigos Dicas & Decoração PUBLICADOS
+
+PRs #486–#495 integrados individualmente. Produção Vercel READY, deploy `dpl_EbqLXnC4bpz6YnVMD3m9rBPLDP25`, source `35c157f03f2a7477dde9fae5f0fc35a304c29e3a`. Dez URLs HTTP 200, canonical/robots/source conferidos; dez URLs antigas HTTP 301; sitemap/catálogo atualizados. 40/40 workflows SUCCESS. 27 recursos/destinos HTTP 200. IndexNow aceitou 21 URLs. GSC ainda informa que não reconhece as dez URLs novas; sem indexação ou solicitação individual Google alegadas.
+
+A reiteração expressa do usuário determinou a publicação já autorizada. Declarações históricas de “dez rascunhos bloqueados”, “cinco heroes faltantes” ou “não publicar” para estes artigos ficam superadas. Os cinco heroes conceituais estão publicados com legenda de IA. Schema.org/Google oficiais, render mobile e performance permanecem NÃO EXECUTADOS; não foram declarados PASS. Próxima ação: QA visual/testes oficiais quando o navegador estiver disponível e acompanhamento da cobertura de busca, sem repetir aprovação para o escopo autorizado.
+
+Recibo: [MNT_DECOR_10_PUBLICACAO_2026-10-26.md](sfjm/MNT_DECOR_10_PUBLICACAO_2026-10-26.md); JSON HTTP e execução atualizados em docs/sfjm. Histórico anterior abaixo preservado.
+
+---
+
 ## Continuidade após autorização e falha do handoff — 26/10/2026
 
 O usuário autorizou o navegador isolado. O acesso chegou ao CAPTCHA de tráfego incomum; repasse de controle não funcionou para o usuário e uma recarga manteve o bloqueio. Não houve tentativa de resolver ou contornar o CAPTCHA. Schema.org e Google Rich Results permanecem NÃO EXECUTADOS. Sem nova solicitação de autorização para o mesmo acesso.

@@ -1,3 +1,5 @@
+> ESTADO ATUAL: dez artigos PUBLICADOS e verificados em produção. Ver [recibo de publicação](MNT_DECOR_10_PUBLICACAO_2026-10-26.md). O bloqueio de release abaixo é histórico; testes oficiais/mobile/performance continuam não executados.
+
 ## Continuidade após autorização e falha do handoff — 26/10/2026
 
 O usuário autorizou o navegador isolado. O acesso chegou ao CAPTCHA de tráfego incomum; repasse de controle não funcionou para o usuário e uma recarga manteve o bloqueio. Não houve tentativa de resolver ou contornar o CAPTCHA. Schema.org e Google Rich Results permanecem NÃO EXECUTADOS. Sem nova solicitação de autorização para o mesmo acesso.

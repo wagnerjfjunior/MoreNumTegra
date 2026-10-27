@@ -1,3 +1,13 @@
+## Atualização — 26/10/2026 — dez artigos Dicas & Decoração PUBLICADOS
+
+PRs #486–#495 integrados individualmente. Produção Vercel READY, deploy `dpl_EbqLXnC4bpz6YnVMD3m9rBPLDP25`, source `35c157f03f2a7477dde9fae5f0fc35a304c29e3a`. Dez URLs HTTP 200, canonical/robots/source conferidos; dez URLs antigas HTTP 301; sitemap/catálogo atualizados. 40/40 workflows SUCCESS. 27 recursos/destinos HTTP 200. IndexNow aceitou 21 URLs. GSC ainda informa que não reconhece as dez URLs novas; sem indexação ou solicitação individual Google alegadas.
+
+A reiteração expressa do usuário determinou a publicação já autorizada. Declarações históricas de “dez rascunhos bloqueados”, “cinco heroes faltantes” ou “não publicar” para estes artigos ficam superadas. Os cinco heroes conceituais estão publicados com legenda de IA. Schema.org/Google oficiais, render mobile e performance permanecem NÃO EXECUTADOS; não foram declarados PASS. Próxima ação: QA visual/testes oficiais quando o navegador estiver disponível e acompanhamento da cobertura de busca, sem repetir aprovação para o escopo autorizado.
+
+Recibo: [MNT_DECOR_10_PUBLICACAO_2026-10-26.md](sfjm/MNT_DECOR_10_PUBLICACAO_2026-10-26.md); JSON HTTP e execução atualizados em docs/sfjm. Histórico anterior abaixo preservado.
+
+---
+
 ## 2026-10-26 — Dez artigos Dicas & Decoração preparados; release bloqueado por QA
 
 - Prompt mestre autoriza os dez releases individualmente após gates, sem novas aprovações editoriais repetidas. Dez pesquisas lidas integralmente e dez textos autorais implementados em PRs Draft **#486–#495**; quatro workflows por head, **40/40 SUCCESS**. JSON-LD/SEO estruturais verificados; isso não comprova render mobile, testes oficiais ou indexação.

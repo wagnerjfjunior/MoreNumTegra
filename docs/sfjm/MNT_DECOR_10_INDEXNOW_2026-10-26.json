@@ -1,0 +1,17 @@
+{
+  "key": "09128e68c40340f0afb5ef697e165917",
+  "keyCreated": false,
+  "hosts": [
+    {
+      "host": "www.moretegra.com.br",
+      "urlCount": 21,
+      "status": "submitted",
+      "message": "Submitted 21 URLs."
+    }
+  ],
+  "skipped": [],
+  "meta": {
+    "projectId": "a071ab48-dda6-4b7c-bf71-2e3e3d40694d",
+    "url": "https://app.openseo.so/p/a071ab48-dda6-4b7c-bf71-2e3e3d40694d/settings/integrations#indexnow"
+  }
+}
