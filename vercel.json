@@ -266,10 +266,6 @@
       "destination": "/src-greenn/blog/mercado/inventario-de-imovel-o-que-e-como-funciona-e-quanto-custa/index.html"
     },
     {
-      "source": "/blog/dicasedecor/garagem-premium-evolucao-em-condominios-de-alto-padrao/",
-      "destination": "/src-greenn/blog/dicasedecor/garagem-premium-evolucao-em-condominios-de-alto-padrao/index.html"
-    },
-    {
       "source": "/blog/dicasedecor/projeto-luminotecnico-como-a-iluminacao-transforma-os-ambientes/",
       "destination": "/src-greenn/blog/dicasedecor/projeto-luminotecnico-como-a-iluminacao-transforma-os-ambientes/index.html"
     },
@@ -412,6 +408,10 @@
     {
       "source": "/blog/dicasedecor/salao-festas-espaco-gourmet-como-avaliar/",
       "destination": "/src-greenn/blog/dicasedecor/salao-festas-espaco-gourmet-como-avaliar/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/vaga-garagem-apartamento-acesso-manobra/",
+      "destination": "/src-greenn/blog/dicasedecor/vaga-garagem-apartamento-acesso-manobra/index.html"
     }
   ],
   "headers": [
@@ -507,6 +507,11 @@
     {
       "source": "/blog/dicasedecor/saloes-de-festas-e-espacos-gourmet-novo-padrao-em-condominios-de-luxo/",
       "destination": "/blog/dicasedecor/salao-festas-espaco-gourmet-como-avaliar/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dicasedecor/garagem-premium-evolucao-em-condominios-de-alto-padrao/",
+      "destination": "/blog/dicasedecor/vaga-garagem-apartamento-acesso-manobra/",
       "statusCode": 301
     }
   ]
