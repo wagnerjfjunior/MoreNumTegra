@@ -1,3 +1,13 @@
+## 27/10/2026 — GSC cobertura e Dicas & Decoração (PR de correção)
+
+- GSC conectado: relatório atualizado 22/10 exibiu **47 indexadas e 6 não indexadas**: 3 com redirecionamento (home sem www em HTTP e HTTPS; Elo Duo sem barra final), 1 404 legado `https://moretegra.com.br/_next/image`, 2 descobertas sem indexação (hub `/blog/` e Jerivás). **Jerivás indexada em 27/10/2026 por confirmação do usuário, posterior ao snapshot; não alterar o dado histórico.**
+- GSC URL Inspection Elo Duo `/empreendimentos/caminhos-da-lapa-elo-duo` sem barra: classificado redirect com último rastreamento 21/09. Teste ao vivo da URL canônica com barra em 27/10 mostrou **HTTP 200, indexação permitida e canonical self-www**. Não confundir a variante com a página indexada.
+- Correção editorial específica: acrescentar **Cozinha de apartamento** e **Iluminação natural em apartamentos** ao sitemap (58→60 URLs, 43 comerciais preservadas); tornar permanentes (301) as antigas URLs de revisão `cozinhas-modernas-tendencias-de-layout-e-decoracao-para-2026` e `iluminacao-natural-faz-bem-para-a-saude-e-para-o-seu-projeto` para seus respectivos artigos autorais publicados. Não publicar as páginas de revisão nem tocar em outros artigos.
+- O GSC não certificou os 12 artigos como indexados no snapshot; manter **12 indexados USER_CONFIRMED** de evidência anterior separada. Hub blog ainda precisa de recrawl/indexação.
+- Validações restantes: CI PR exact-head, Vercel READY SHA, GET HTTP dos dois novos destinos e dos 301; testes de resultado aprimorado não certificados neste gate. Bing é frente distinta.
+
+---
+
 ## 27/10/2026 — GSC: 47 URLs indexadas no relatório apresentado; cobertura comercial reconciliada
 
 - Proprietário apresentou lista de 47 exemplos indexados no Google: 42 URLs comerciais canônicas, 4 URLs `/blog/` (inclui slug legado da Lapa) e `https://lp.moretegra.com.br/`.
