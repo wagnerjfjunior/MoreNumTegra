@@ -266,10 +266,6 @@
       "destination": "/src-greenn/blog/mercado/inventario-de-imovel-o-que-e-como-funciona-e-quanto-custa/index.html"
     },
     {
-      "source": "/blog/dicasedecor/espaco-kids-e-brinquedotecas-design-ludico-que-estimula-criancas/",
-      "destination": "/src-greenn/blog/dicasedecor/espaco-kids-e-brinquedotecas-design-ludico-que-estimula-criancas/index.html"
-    },
-    {
       "source": "/blog/dicasedecor/dicas-para-apartamento-pet-friendly-decoracao-seguranca-e-bem-estar/",
       "destination": "/src-greenn/blog/dicasedecor/dicas-para-apartamento-pet-friendly-decoracao-seguranca-e-bem-estar/index.html"
     },
@@ -412,6 +408,10 @@
     {
       "source": "/blog/dicasedecor/iluminacao-apartamento-camadas-circuitos/",
       "destination": "/src-greenn/blog/dicasedecor/iluminacao-apartamento-camadas-circuitos/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/brinquedoteca-condominio-uso-seguranca/",
+      "destination": "/src-greenn/blog/dicasedecor/brinquedoteca-condominio-uso-seguranca/index.html"
     }
   ],
   "headers": [
@@ -517,6 +517,11 @@
     {
       "source": "/blog/dicasedecor/projeto-luminotecnico-como-a-iluminacao-transforma-os-ambientes/",
       "destination": "/blog/dicasedecor/iluminacao-apartamento-camadas-circuitos/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dicasedecor/espaco-kids-e-brinquedotecas-design-ludico-que-estimula-criancas/",
+      "destination": "/blog/dicasedecor/brinquedoteca-condominio-uso-seguranca/",
       "statusCode": 301
     }
   ]
