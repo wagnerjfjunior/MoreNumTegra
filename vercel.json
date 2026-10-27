@@ -266,10 +266,6 @@
       "destination": "/src-greenn/blog/mercado/inventario-de-imovel-o-que-e-como-funciona-e-quanto-custa/index.html"
     },
     {
-      "source": "/blog/dicasedecor/carro-eletrico-e-condominio-predios-com-infraestrutura-de-recarga/",
-      "destination": "/src-greenn/blog/dicasedecor/carro-eletrico-e-condominio-predios-com-infraestrutura-de-recarga/index.html"
-    },
-    {
       "source": "/blog/dicasedecor/cozinha-apartamento-layout-uso-diario/",
       "destination": "/src-greenn/blog/dicasedecor/cozinha-apartamento-layout-uso-diario/index.html"
     },
@@ -412,6 +408,10 @@
     {
       "source": "/blog/dicasedecor/quadras-condominio-tenis-beach-tennis/",
       "destination": "/src-greenn/blog/dicasedecor/quadras-condominio-tenis-beach-tennis/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/recarga-carro-eletrico-condominio-infraestrutura/",
+      "destination": "/src-greenn/blog/dicasedecor/recarga-carro-eletrico-condominio-infraestrutura/index.html"
     }
   ],
   "headers": [
@@ -532,6 +532,11 @@
     {
       "source": "/blog/dicasedecor/do-tenis-ao-beach-tennis-quadras-valorizam-condominios/",
       "destination": "/blog/dicasedecor/quadras-condominio-tenis-beach-tennis/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dicasedecor/carro-eletrico-e-condominio-predios-com-infraestrutura-de-recarga/",
+      "destination": "/blog/dicasedecor/recarga-carro-eletrico-condominio-infraestrutura/",
       "statusCode": 301
     }
   ]
