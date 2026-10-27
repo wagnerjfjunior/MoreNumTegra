@@ -282,10 +282,6 @@
       "destination": "/src-greenn/blog/dicasedecor/iluminacao-natural-faz-bem-para-a-saude-e-para-o-seu-projeto/index.html"
     },
     {
-      "source": "/blog/dicasedecor/cor-do-ano-2026-tendencia-para-o-seu-tegra/",
-      "destination": "/src-greenn/blog/dicasedecor/cor-do-ano-2026-tendencia-para-o-seu-tegra/index.html"
-    },
-    {
       "source": "/blog/lifestyle/tenis-e-longevidade-como-o-esporte-transforma-a-saude-e-a-mente/",
       "destination": "/src-greenn/blog/lifestyle/tenis-e-longevidade-como-o-esporte-transforma-a-saude-e-a-mente/index.html"
     },
@@ -412,6 +408,10 @@
     {
       "source": "/blog/dicasedecor/piso-apartamento-materiais-acustica-umidade/",
       "destination": "/src-greenn/blog/dicasedecor/piso-apartamento-materiais-acustica-umidade/index.html"
+    },
+    {
+      "source": "/blog/dicasedecor/cores-decoracao-2026-paleta-apartamento/",
+      "destination": "/src-greenn/blog/dicasedecor/cores-decoracao-2026-paleta-apartamento/index.html"
     }
   ],
   "headers": [
@@ -547,6 +547,11 @@
     {
       "source": "/blog/dicasedecor/como-escolher-o-piso-ideal-para-o-seu-apartamento/",
       "destination": "/blog/dicasedecor/piso-apartamento-materiais-acustica-umidade/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dicasedecor/cor-do-ano-2026-tendencia-para-o-seu-tegra/",
+      "destination": "/blog/dicasedecor/cores-decoracao-2026-paleta-apartamento/",
       "statusCode": 301
     }
   ]
