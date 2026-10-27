@@ -1,3 +1,10 @@
+## 2026-10-26 — Dez artigos Dicas & Decoração preparados; release bloqueado por QA
+
+- Prompt mestre autoriza os dez releases individualmente após gates, sem novas aprovações editoriais repetidas. Dez pesquisas lidas integralmente e dez textos autorais implementados em PRs Draft **#486–#495**; quatro workflows por head, **40/40 SUCCESS**. JSON-LD/SEO estruturais verificados; isso não comprova render mobile, testes oficiais ou indexação.
+- **0 novos artigos publicados/submetidos.** Robots noindex, sitemap e origens preservados. Schema.org/browser e instalação de navegador local bloqueados pela revisão automática; render mobile/performance não executados. Faltam heroes para garagem, brinquedoteca, quadras, recarga e Claris; demais mídias exigem revisão visual.
+- Recibo e DE/PARA completos: `docs/sfjm/MNT_DECOR_10_EXECUCAO_2026-10-26.md` + JSON homônimo. Preservar arquivos de pesquisa/hashes e recibos individuais nas PRs. Retomar do código pronto, sem reiniciar a redação ou pedir reenvio das fontes já localizadas.
+- Próximo: resolver bloqueio de validação/mídias, reconciliar cada branch com main (categoria/vercel compartilhados), validar e publicar sequencialmente conforme autorização. Nunca marcar CI como teste Google/mobile e nunca submeter noindex.
+
 ## 2026-10-26 — Handoff Bing / IndexNow / proteção de originalidade (DOCUMENTATION_ONLY)
 
 - **LEITURA OBRIGATÓRIA antes de retomar SEO/Bing/IndexNow:** `docs/sfjm/MNT_BING_INDEXNOW_EDITORIAL_CONTINUITY_2026-10-26.md` em conjunto com `docs/sfjm/MNT_BLOG_ORIGINALIDADE_INTEGRAL_HANDOFF_2026-10-20.md`. Preservar decisões comerciais #472/#474, handoffs anteriores e proteção `EDITORIAL_PENDING/noindex`. Investigação do Bing confirmou `noindex,follow` **em um artigo específico**; não extrapolar para os outros 19 avisos. 46 URLs MoreTegra + 6 Caminhos enviadas ao IndexNow; submissão não é indexação. Nenhuma alteração runtime autorizada nesta atualização documental.
