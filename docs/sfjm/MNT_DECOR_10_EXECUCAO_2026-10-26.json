@@ -131,7 +131,7 @@
     "intent": "Informacional: comparar critérios de uso antes da compra",
     "cluster": "Dicas & Decoração",
     "status": "DRAFT_STATIC_QA",
-    "hero": null,
+    "hero": "https://www.moretegra.com.br/assets/blog/decor/garagem-conceitual.webp",
     "cards": [
       "Bueno Brandão 257"
     ],
@@ -165,8 +165,8 @@
         "RealEstateAgent"
       ],
       "words": 1022,
-      "hero": "PENDENTE",
-      "official_schema": "NÃO_EXECUTADO_AUTOREVIEW",
+      "hero": "ILUSTRAÇÃO_CONCEITUAL_IA_ADICIONADA",
+      "official_schema": "NÃO_EXECUTADO_CAPTCHA_PERSISTENTE_APÓS_AUTORIZAÇÃO",
       "google_rich_results": "NÃO_EXECUTADO",
       "visual_mobile": "BLOQUEADO_AUTOREVIEW",
       "performance": "NÃO_MEDIDO",
@@ -177,47 +177,47 @@
       "n": 2,
       "pr": 487,
       "url": "https://github.com/wagnerjfjunior/MoreNumTegra/pull/487",
-      "head": "3f4efa906fa3bd5756132c0de96ef81da664c48b",
+      "head": "ac9805b8d5604ad080722c69589ec66623f25274",
       "branch": "blog/decor-02-vaga-garagem-apartamento-ace-20261026",
       "ci": [
         {
-          "id": 40422204257,
-          "name": "Favicon standard validation",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 834,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422204257/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422204257/logs",
-          "workflow_id": 362117359
-        },
-        {
-          "id": 40422204250,
-          "name": "Blog Bairros hub and Lapa URL migration",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 49,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422204250/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422204250/logs",
-          "workflow_id": 390493903
-        },
-        {
-          "id": 40422204309,
+          "id": 40425205762,
           "name": "SEO two distinct images - 39 URLs",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 487,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422204309/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422204309/logs",
+          "run_number": 496,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425205762/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425205762/logs",
           "workflow_id": 380968663
         },
         {
-          "id": 40422204230,
+          "id": 40425205582,
+          "name": "Favicon standard validation",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 843,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425205582/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425205582/logs",
+          "workflow_id": 362117359
+        },
+        {
+          "id": 40425205610,
+          "name": "Blog Bairros hub and Lapa URL migration",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 58,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425205610/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425205610/logs",
+          "workflow_id": 390493903
+        },
+        {
+          "id": 40425205509,
           "name": "Jerivas Commercial SEO and Form46",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 76,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422204230/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422204230/logs",
+          "run_number": 85,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425205509/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425205509/logs",
           "workflow_id": 390069855
         }
       ]
@@ -355,7 +355,7 @@
     "intent": "Informacional: comparar critérios de uso antes da compra",
     "cluster": "Dicas & Decoração",
     "status": "DRAFT_STATIC_QA",
-    "hero": null,
+    "hero": "https://www.moretegra.com.br/assets/blog/decor/brinquedoteca-conceitual.webp",
     "cards": [
       "YPY Alto do Ipiranga",
       "Garden Design"
@@ -391,8 +391,8 @@
         "RealEstateAgent"
       ],
       "words": 988,
-      "hero": "PENDENTE",
-      "official_schema": "NÃO_EXECUTADO_AUTOREVIEW",
+      "hero": "ILUSTRAÇÃO_CONCEITUAL_IA_ADICIONADA",
+      "official_schema": "NÃO_EXECUTADO_CAPTCHA_PERSISTENTE_APÓS_AUTORIZAÇÃO",
       "google_rich_results": "NÃO_EXECUTADO",
       "visual_mobile": "BLOQUEADO_AUTOREVIEW",
       "performance": "NÃO_MEDIDO",
@@ -403,48 +403,48 @@
       "n": 4,
       "pr": 489,
       "url": "https://github.com/wagnerjfjunior/MoreNumTegra/pull/489",
-      "head": "e6ce85069a61678430dd1c45abb251d68080cc84",
+      "head": "33c7b2d498acd9d69005cbc14bcb89f3be19b21d",
       "branch": "blog/decor-04-brinquedoteca-condominio-uso-20261026",
       "ci": [
         {
-          "id": 40422224063,
-          "name": "Jerivas Commercial SEO and Form46",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 78,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422224063/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422224063/logs",
-          "workflow_id": 390069855
-        },
-        {
-          "id": 40422224060,
-          "name": "Favicon standard validation",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 836,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422224060/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422224060/logs",
-          "workflow_id": 362117359
-        },
-        {
-          "id": 40422225372,
+          "id": 40425216757,
           "name": "Blog Bairros hub and Lapa URL migration",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 51,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422225372/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422225372/logs",
+          "run_number": 59,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425216757/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425216757/logs",
           "workflow_id": 390493903
         },
         {
-          "id": 40422224220,
+          "id": 40425216839,
           "name": "SEO two distinct images - 39 URLs",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 489,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422224220/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422224220/logs",
+          "run_number": 497,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425216839/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425216839/logs",
           "workflow_id": 380968663
+        },
+        {
+          "id": 40425216899,
+          "name": "Favicon standard validation",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 844,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425216899/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425216899/logs",
+          "workflow_id": 362117359
+        },
+        {
+          "id": 40425216745,
+          "name": "Jerivas Commercial SEO and Form46",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 86,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425216745/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425216745/logs",
+          "workflow_id": 390069855
         }
       ]
     },
@@ -585,7 +585,7 @@
     "intent": "Informacional: comparar critérios de uso antes da compra",
     "cluster": "Dicas & Decoração",
     "status": "DRAFT_STATIC_QA",
-    "hero": null,
+    "hero": "https://www.moretegra.com.br/assets/blog/decor/quadra-conceitual.webp",
     "cards": [],
     "word_count": 919,
     "old_status": "HTTP_200_NOINDEX_SCAFFOLD",
@@ -616,8 +616,8 @@
         "RealEstateAgent"
       ],
       "words": 919,
-      "hero": "PENDENTE",
-      "official_schema": "NÃO_EXECUTADO_AUTOREVIEW",
+      "hero": "ILUSTRAÇÃO_CONCEITUAL_IA_ADICIONADA",
+      "official_schema": "NÃO_EXECUTADO_CAPTCHA_PERSISTENTE_APÓS_AUTORIZAÇÃO",
       "google_rich_results": "NÃO_EXECUTADO",
       "visual_mobile": "BLOQUEADO_AUTOREVIEW",
       "performance": "NÃO_MEDIDO",
@@ -628,48 +628,48 @@
       "n": 6,
       "pr": 491,
       "url": "https://github.com/wagnerjfjunior/MoreNumTegra/pull/491",
-      "head": "6ddb4e0c89fc8bb39bd25cbe78c1e89b3028f984",
+      "head": "d4a50d4704a826e3dfc4406af291ec17d6268675",
       "branch": "blog/decor-06-quadras-condominio-tenis-bea-20261026",
       "ci": [
         {
-          "id": 40422259325,
-          "name": "Jerivas Commercial SEO and Form46",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 80,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422259325/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422259325/logs",
-          "workflow_id": 390069855
-        },
-        {
-          "id": 40422259392,
-          "name": "Blog Bairros hub and Lapa URL migration",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 53,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422259392/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422259392/logs",
-          "workflow_id": 390493903
-        },
-        {
-          "id": 40422259377,
+          "id": 40425224712,
           "name": "SEO two distinct images - 39 URLs",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 491,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422259377/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422259377/logs",
+          "run_number": 498,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425224712/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425224712/logs",
           "workflow_id": 380968663
         },
         {
-          "id": 40422259329,
+          "id": 40425224654,
           "name": "Favicon standard validation",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 838,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422259329/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422259329/logs",
+          "run_number": 845,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425224654/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425224654/logs",
           "workflow_id": 362117359
+        },
+        {
+          "id": 40425224905,
+          "name": "Blog Bairros hub and Lapa URL migration",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 60,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425224905/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425224905/logs",
+          "workflow_id": 390493903
+        },
+        {
+          "id": 40425224616,
+          "name": "Jerivas Commercial SEO and Form46",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 87,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425224616/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425224616/logs",
+          "workflow_id": 390069855
         }
       ]
     },
@@ -695,7 +695,7 @@
     "intent": "Informacional: comparar critérios de uso antes da compra",
     "cluster": "Dicas & Decoração",
     "status": "DRAFT_STATIC_QA",
-    "hero": null,
+    "hero": "https://www.moretegra.com.br/assets/blog/decor/recarga-conceitual.webp",
     "cards": [],
     "word_count": 927,
     "old_status": "HTTP_200_NOINDEX_SCAFFOLD",
@@ -726,8 +726,8 @@
         "RealEstateAgent"
       ],
       "words": 927,
-      "hero": "PENDENTE",
-      "official_schema": "NÃO_EXECUTADO_AUTOREVIEW",
+      "hero": "ILUSTRAÇÃO_CONCEITUAL_IA_ADICIONADA",
+      "official_schema": "NÃO_EXECUTADO_CAPTCHA_PERSISTENTE_APÓS_AUTORIZAÇÃO",
       "google_rich_results": "NÃO_EXECUTADO",
       "visual_mobile": "BLOQUEADO_AUTOREVIEW",
       "performance": "NÃO_MEDIDO",
@@ -738,48 +738,48 @@
       "n": 7,
       "pr": 492,
       "url": "https://github.com/wagnerjfjunior/MoreNumTegra/pull/492",
-      "head": "8fa7dae4f71f32fa4bd19e481f4ffd8653836d00",
+      "head": "495ad3c5a31c8406c6ad271a9573075e187930d1",
       "branch": "blog/decor-07-recarga-carro-eletrico-condo-20261026",
       "ci": [
         {
-          "id": 40422268333,
-          "name": "Jerivas Commercial SEO and Form46",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 81,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422268333/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422268333/logs",
-          "workflow_id": 390069855
-        },
-        {
-          "id": 40422268331,
-          "name": "Blog Bairros hub and Lapa URL migration",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 54,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422268331/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422268331/logs",
-          "workflow_id": 390493903
-        },
-        {
-          "id": 40422268338,
+          "id": 40425236949,
           "name": "SEO two distinct images - 39 URLs",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 492,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422268338/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422268338/logs",
+          "run_number": 499,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425236949/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425236949/logs",
           "workflow_id": 380968663
         },
         {
-          "id": 40422268150,
+          "id": 40425236865,
           "name": "Favicon standard validation",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 839,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422268150/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422268150/logs",
+          "run_number": 846,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425236865/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425236865/logs",
           "workflow_id": 362117359
+        },
+        {
+          "id": 40425236882,
+          "name": "Jerivas Commercial SEO and Form46",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 88,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425236882/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425236882/logs",
+          "workflow_id": 390069855
+        },
+        {
+          "id": 40425236885,
+          "name": "Blog Bairros hub and Lapa URL migration",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 61,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425236885/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425236885/logs",
+          "workflow_id": 390493903
         }
       ]
     },
@@ -805,7 +805,7 @@
     "intent": "Informacional: comparar critérios de uso antes da compra",
     "cluster": "Dicas & Decoração",
     "status": "DRAFT_STATIC_QA",
-    "hero": null,
+    "hero": "https://www.moretegra.com.br/assets/blog/decor/casas-conceitual.webp",
     "cards": [],
     "word_count": 991,
     "old_status": "HTTP_200_NOINDEX_SCAFFOLD",
@@ -836,8 +836,8 @@
         "RealEstateAgent"
       ],
       "words": 991,
-      "hero": "PENDENTE",
-      "official_schema": "NÃO_EXECUTADO_AUTOREVIEW",
+      "hero": "ILUSTRAÇÃO_CONCEITUAL_IA_ADICIONADA",
+      "official_schema": "NÃO_EXECUTADO_CAPTCHA_PERSISTENTE_APÓS_AUTORIZAÇÃO",
       "google_rich_results": "NÃO_EXECUTADO",
       "visual_mobile": "BLOQUEADO_AUTOREVIEW",
       "performance": "NÃO_MEDIDO",
@@ -848,48 +848,48 @@
       "n": 8,
       "pr": 493,
       "url": "https://github.com/wagnerjfjunior/MoreNumTegra/pull/493",
-      "head": "b18a6a164807614e5c0bdd814ed7e3d834541055",
+      "head": "fd5f70380eea0d629e7391859bc9a3748d78f920",
       "branch": "blog/decor-08-casa-condominio-layout-clari-20261026",
       "ci": [
         {
-          "id": 40422294541,
-          "name": "SEO two distinct images - 39 URLs",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 493,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422294541/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422294541/logs",
-          "workflow_id": 380968663
-        },
-        {
-          "id": 40422294455,
-          "name": "Jerivas Commercial SEO and Form46",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 82,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422294455/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422294455/logs",
-          "workflow_id": 390069855
-        },
-        {
-          "id": 40422294567,
-          "name": "Blog Bairros hub and Lapa URL migration",
-          "status": "completed",
-          "conclusion": "success",
-          "run_number": 55,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422294567/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422294567/logs",
-          "workflow_id": 390493903
-        },
-        {
-          "id": 40422294579,
+          "id": 40425247823,
           "name": "Favicon standard validation",
           "status": "completed",
           "conclusion": "success",
-          "run_number": 840,
-          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422294579/jobs",
-          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40422294579/logs",
+          "run_number": 847,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425247823/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425247823/logs",
           "workflow_id": 362117359
+        },
+        {
+          "id": 40425248002,
+          "name": "Blog Bairros hub and Lapa URL migration",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 62,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425248002/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425248002/logs",
+          "workflow_id": 390493903
+        },
+        {
+          "id": 40425247793,
+          "name": "SEO two distinct images - 39 URLs",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 500,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425247793/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425247793/logs",
+          "workflow_id": 380968663
+        },
+        {
+          "id": 40425247666,
+          "name": "Jerivas Commercial SEO and Form46",
+          "status": "completed",
+          "conclusion": "success",
+          "run_number": 89,
+          "jobs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425247666/jobs",
+          "logs_url": "https://api.github.com/repos/wagnerjfjunior/MoreNumTegra/actions/runs/40425247666/logs",
+          "workflow_id": 390069855
         }
       ]
     },
