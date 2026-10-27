@@ -1,3 +1,16 @@
+## Continuidade após autorização e falha do handoff — 26/10/2026
+
+O usuário autorizou o navegador isolado. O acesso chegou ao CAPTCHA de tráfego incomum; repasse de controle não funcionou para o usuário e uma recarga manteve o bloqueio. Não houve tentativa de resolver ou contornar o CAPTCHA. Schema.org e Google Rich Results permanecem NÃO EXECUTADOS. Sem nova solicitação de autorização para o mesmo acesso.
+
+As cinco imagens de abertura antes pendentes foram substituídas por ilustrações editoriais conceituais geradas com IA, explicitamente identificadas, sem retratar/atribuir características a empreendimentos Tegra. WebP 1200px, de 38.020 a 139.316 bytes. PRs #487/#489/#491/#492/#493 atualizadas; 20/20 workflows SUCCESS nos novos heads. As demais PRs preservam os heads anteriores. As dez continuam Draft/noindex; nenhuma publicação ou submissão. QA visual mobile/desktop e performance continuam pendentes. Este adendo supera somente a pendência de mídia e os SHAs anteriores dessas cinco PRs; não transforma CI em teste visual.
+
+## 2026-10-26 — Dez artigos Dicas & Decoração preparados; release bloqueado por QA
+
+- Prompt mestre autoriza os dez releases individualmente após gates, sem novas aprovações editoriais repetidas. Dez pesquisas lidas integralmente e dez textos autorais implementados em PRs Draft **#486–#495**; quatro workflows por head, **40/40 SUCCESS**. JSON-LD/SEO estruturais verificados; isso não comprova render mobile, testes oficiais ou indexação.
+- **0 novos artigos publicados/submetidos.** Robots noindex, sitemap e origens preservados. Schema.org/browser e instalação de navegador local bloqueados pela revisão automática; render mobile/performance não executados. Faltam heroes para garagem, brinquedoteca, quadras, recarga e Claris; demais mídias exigem revisão visual.
+- Recibo e DE/PARA completos: `docs/sfjm/MNT_DECOR_10_EXECUCAO_2026-10-26.md` + JSON homônimo. Preservar arquivos de pesquisa/hashes e recibos individuais nas PRs. Retomar do código pronto, sem reiniciar a redação ou pedir reenvio das fontes já localizadas.
+- Próximo: resolver bloqueio de validação/mídias, reconciliar cada branch com main (categoria/vercel compartilhados), validar e publicar sequencialmente conforme autorização. Nunca marcar CI como teste Google/mobile e nunca submeter noindex.
+
 ## 2026-10-26 — Blog: modelo editorial ampliado com cards de empreendimentos (USER_APPROVED)
 
 - Após publicação do Artigo 2 de iluminação natural (PR #483, merge `d18c2ccb0ce8f4e249b25f6b7de9fcf06298cd3f`; indexação PR #484, merge `419431cfa5e092d55c5cc059094b1d29f6b4a6e0`), proprietário aprovou adendo ao padrão do Blog V1: cards horizontais de empreendimentos pertinentes ao assunto, com relação factual verificável e links canônicos, sem obrigatoriedade em toda pauta. Regras e QA SEO/mobile em `docs/sfjm/MNT_BLOG_PADRAO_EDITORIAL_V1_2026-10-26.md` §5A. Atualização documental; produção inalterada.
