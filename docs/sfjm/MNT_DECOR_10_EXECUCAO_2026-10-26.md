@@ -1,3 +1,9 @@
+## Continuidade após autorização e falha do handoff — 26/10/2026
+
+O usuário autorizou o navegador isolado. O acesso chegou ao CAPTCHA de tráfego incomum; repasse de controle não funcionou para o usuário e uma recarga manteve o bloqueio. Não houve tentativa de resolver ou contornar o CAPTCHA. Schema.org e Google Rich Results permanecem NÃO EXECUTADOS. Sem nova solicitação de autorização para o mesmo acesso.
+
+As cinco imagens de abertura antes pendentes foram substituídas por ilustrações editoriais conceituais geradas com IA, explicitamente identificadas, sem retratar/atribuir características a empreendimentos Tegra. WebP 1200px, de 38.020 a 139.316 bytes. PRs #487/#489/#491/#492/#493 atualizadas; 20/20 workflows SUCCESS nos novos heads. As demais PRs preservam os heads anteriores. As dez continuam Draft/noindex; nenhuma publicação ou submissão. QA visual mobile/desktop e performance continuam pendentes. Este adendo supera somente a pendência de mídia e os SHAs anteriores dessas cinco PRs; não transforma CI em teste visual.
+
 # MoreTegra — dez artigos Dicas & Decoração: execução e continuidade
 
 Data: 26/10/2026. **Entrega parcial: dez artigos redigidos e implementados em PRs Draft; zero novos artigos publicados ou submetidos para indexação.**
