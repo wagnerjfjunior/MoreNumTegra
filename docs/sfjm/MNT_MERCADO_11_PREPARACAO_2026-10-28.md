@@ -6,7 +6,9 @@ Autoridade: prompt mestre anexado e autorização expressa do proprietário para
 
 BASE_SHA: bbe59c7a0b7b8a597826d56f6bc01d5291d9dfa5.
 BRANCH: editorial/mercado-11-preparacao-20261028.
-PR/HEAD: resolver no GitHub; recibo remoto será acrescentado após abertura.
+PR: https://github.com/wagnerjfjunior/MoreNumTegra/pull/507 · OPEN / DRAFT / NOT_MERGED.
+CODE_HEAD: ce1eddd341f06a2e3bfd7899d46e2f50eb6b3929.
+CODE_TREE: 358d9f611445b926d7d3e23579f4e5a551437198, idêntica ao conteúdo local validado.
 
 Produção observada antes da preparação: dpl_iTarC8LY4vvXq44mGGf9ekCg3fCi / READY / mesmo SHA da base. Lote não chegou a main ou Production. Não há merge/deployment do candidato alegado.
 
@@ -39,3 +41,19 @@ Next safe action deste candidato: revisão editorial/visual e conferência das f
 Rollback da preparação: descartar/fechar a branch e PR sem merge não altera produção. Após futuro release, rollback por revert da alteração aprovada e verificação do deployment real, nunca reset forçado de main.
 
 Não foram atribuídas horas aceitas ao programa nem alterados modelos de progresso. A produção e seus históricos permanecem governados pelos ponteiros integrados de main.
+
+
+## Recibo remoto e continuidade
+
+Cinco workflows GitHub Actions concluídos com SUCCESS no CODE_HEAD acima:
+- Favicon: 40630802511.
+- Jerivás: 40630802475.
+- Mercado editorial 11 draft gates: 40630802525.
+- Duas imagens / 39 URLs: 40630802474.
+- Blog Bairros/Lapa: 40630802632.
+
+Um complemento documental ajusta o template do relatório, registra este recibo e preserva as observações SERP complementares. O head final e seus checks são observáveis na PR #507; não confundir o head de código validado com o commit documental posterior.
+
+Relatório OpenSEO salvo, privado no workspace: https://app.openseo.so/p/a071ab48-dda6-4b7c-bf71-2e3e3d40694d/reports/435d32f7-68da-4cd2-806d-04bfec6c3ed0.
+
+A tentativa de git push pelo shell não tinha credencial disponível; a branch foi criada e gravada pelo conector GitHub autorizado. A igualdade da tree local/remota foi conferida antes da abertura. Nenhum segredo foi solicitado ou exposto. Os commits locais preparatórios não são o head canônico remoto.

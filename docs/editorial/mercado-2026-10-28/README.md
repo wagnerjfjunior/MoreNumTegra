@@ -56,3 +56,10 @@ Revisão visual mobile/desktop, toque/teclado em navegador, performance e testes
 Não foi enviado formulário ou mensagem WhatsApp. O lote aponta ao Form 46 existente por `/regioes/#formulario`; não cria nova captação. Entrega CRM, contexto de lead e conversão real não foram certificados. Revisão jurídica/tributária editorial de inventário/IPTU/FIIs deve confirmar regras imediatamente antes de publicar; assistência do artigo não substitui análise individual.
 
 O lote precisa de avaliação editorial e visual antes de release. Uma única PR de preparação permite revisão de cada arquivo; publicação, migração e indexação seguem gates separados por página. CI e head remoto serão registrados no recibo SFJM, sem confundir checks locais com GitHub Actions.
+
+
+## Revisão remota
+
+PR Draft [#507](https://github.com/wagnerjfjunior/MoreNumTegra/pull/507), sem merge. Cinco workflows passaram no head de código `ce1eddd341f06a2e3bfd7899d46e2f50eb6b3929`; recibo e limites em `docs/sfjm/MNT_MERCADO_11_PREPARACAO_2026-10-28.md`. A contagem considera texto editorial visível, sem URLs, marcação Markdown, separadores de tabela ou blocos comerciais: 19.958 palavras ao todo, de 1.801 a 1.829 por página.
+
+[Relatório OpenSEO](https://app.openseo.so/p/a071ab48-dda6-4b7c-bf71-2e3e3d40694d/reports/435d32f7-68da-4cd2-806d-04bfec6c3ed0). Não houve publicação pública do relatório ou dos artigos.
