@@ -1,0 +1,71 @@
+{
+  "surface": "LOCAL_REWRITE_SIMULATION_NOT_VERCEL",
+  "results": [
+    {
+      "url": "/blog/mercado/alto-padrao-criterios-valor-compra/",
+      "status": 200,
+      "h1_found": true,
+      "noindex": true
+    },
+    {
+      "url": "/blog/mercado/mooca-ou-tatuape-rotina-mobilidade/",
+      "status": 200,
+      "h1_found": true,
+      "noindex": true
+    },
+    {
+      "url": "/blog/mercado/infraestrutura-entorno-escolha-imovel/",
+      "status": 200,
+      "h1_found": true,
+      "noindex": true
+    },
+    {
+      "url": "/blog/mercado/condominio-sustentavel-solucoes-custos/",
+      "status": 200,
+      "h1_found": true,
+      "noindex": true
+    },
+    {
+      "url": "/blog/mercado/iptu-apartamento-sp-consulta-orcamento/",
+      "status": 200,
+      "h1_found": true,
+      "noindex": true
+    },
+    {
+      "url": "/blog/mercado/compra-imovel-investimento-longo-prazo/",
+      "status": 200,
+      "h1_found": true,
+      "noindex": true
+    },
+    {
+      "url": "/blog/mercado/fii-ou-imovel-fisico-comparacao/",
+      "status": 200,
+      "h1_found": true,
+      "noindex": true
+    },
+    {
+      "url": "/blog/mercado/orla-barra-tijuca-localizacao-conservacao/",
+      "status": 200,
+      "h1_found": true,
+      "noindex": true
+    },
+    {
+      "url": "/blog/mercado/imoveis-luxo-renda-custos-liquidez/",
+      "status": 200,
+      "h1_found": true,
+      "noindex": true
+    },
+    {
+      "url": "/blog/mercado/morar-itaim-bibi-rotina-custo/",
+      "status": 200,
+      "h1_found": true,
+      "noindex": true
+    },
+    {
+      "url": "/blog/mercado/imovel-herdado-inventario-documentos-etapas/",
+      "status": 200,
+      "h1_found": true,
+      "noindex": true
+    }
+  ]
+}

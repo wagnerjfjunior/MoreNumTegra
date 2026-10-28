@@ -1,0 +1,24 @@
+name: Mercado editorial 11 draft gates
+on:
+  pull_request:
+    paths:
+      - 'docs/editorial/mercado-2026-10-28/**'
+      - 'src-greenn/blog/mercado/**'
+      - 'src-greenn/blog/mercado-editorial.*'
+      - 'assets/blog/mercado-2026/**'
+      - 'vercel.json'
+      - 'scripts/validate-mercado-editorial-20261028.mjs'
+      - '.github/workflows/mercado-editorial-20261028.yml'
+permissions:
+  contents: read
+jobs:
+  draft-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/validate-mercado-editorial-20261028.mjs
