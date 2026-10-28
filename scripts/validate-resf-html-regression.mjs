@@ -45,7 +45,9 @@ for(const [slug,street,cep] of pages){
  if(approvedCommercialSlugs.includes(slug)){
   // Owner-approved commercial candidate: strict full-file snapshot, not an unchecked exemption.
   // Project postal address / CEP / municipality checks continue outside this branch.
-  const approved=execFileSync('git',['show','f1324ef2fbee1e33179385ec1f189c1dd5bb98cf:'+filename],{encoding:'utf8'});
+  const approvedSnapshot=slug==='mozae-higienopolis'?'8b8877d24a823e8f1c29b68c18722786ca6d8f9e':'f1324ef2fbee1e33179385ec1f189c1dd5bb98cf';
+  // Mozae: owner-authorized market-intelligence editorial snapshot; still strict full-file parity.
+  const approved=execFileSync('git',['show',approvedSnapshot+':'+filename],{encoding:'utf8'});
   assert.equal(candidate,approved,slug+': approved commercial runtime HTML/schema has drifted');
  }else if(slug==='bem-moema-studios-offices'){
     const form=x=>x.match(/<form id="moretegra-lead-form"[\s\S]*?<\/form>/)?.[0];
