@@ -1,0 +1,112 @@
+[
+  {
+    "id": "riio-planta-07",
+    "media": "riio-planta-07",
+    "area": "261,97 / 261,99",
+    "buildings": "Acqua · coluna 03; Luce · colunas 02 e 03",
+    "suites": 4,
+    "parking": 3,
+    "family": "Apartamento",
+    "floor": "1º ao 5º pavimento"
+  },
+  {
+    "id": "riio-planta-08",
+    "media": "riio-planta-08",
+    "area": "262,99",
+    "buildings": "Acqua · coluna 04; Luce · colunas 01 e 04",
+    "suites": 4,
+    "parking": 3,
+    "family": "Apartamento",
+    "floor": "1º ao 5º pavimento"
+  },
+  {
+    "id": "riio-planta-11",
+    "media": "riio-planta-11",
+    "area": "305,30 / 305,26",
+    "buildings": "Acqua · coluna 02; Alba · colunas 02 e 03",
+    "suites": 4,
+    "parking": 4,
+    "family": "Apartamento",
+    "floor": "1º ao 5º pavimento"
+  },
+  {
+    "id": "riio-planta-05",
+    "media": "riio-planta-05",
+    "area": "319,49",
+    "buildings": "Freschezza · colunas 01 e 02; Acqua · coluna 01; Alba · colunas 01 e 04",
+    "suites": 4,
+    "parking": 4,
+    "family": "Apartamento",
+    "floor": "1º ao 5º pavimento"
+  },
+  {
+    "id": "riio-planta-06",
+    "media": "riio-planta-06",
+    "area": "411,18",
+    "buildings": "Brezza, Aria e Orlo · colunas 01 e 02",
+    "suites": 4,
+    "parking": 4,
+    "family": "Apartamento",
+    "floor": "1º ao 5º pavimento"
+  },
+  {
+    "id": "riio-planta-01",
+    "media": "riio-planta-01",
+    "area": "506,81",
+    "buildings": "Sole e Mare · colunas 01 e 02",
+    "suites": 5,
+    "parking": 5,
+    "family": "Apartamento",
+    "floor": "1º ao 5º pavimento"
+  },
+  {
+    "id": "riio-planta-09",
+    "media": "riio-planta-09",
+    "area": "524,38 / 524,73",
+    "buildings": "Luce · penthouses 01 e 02; Acqua · penthouse 02",
+    "suites": 5,
+    "parking": 4,
+    "family": "Penthouse",
+    "floor": "6º pavimento"
+  },
+  {
+    "id": "riio-planta-10",
+    "media": "riio-planta-10",
+    "area": "635,01 / 635,07",
+    "buildings": "Alba · penthouses 01 e 02; Acqua · penthouse 01",
+    "suites": 5,
+    "parking": 4,
+    "family": "Penthouse",
+    "floor": "6º pavimento"
+  },
+  {
+    "id": "riio-planta-03",
+    "media": "riio-planta-03",
+    "area": "660,38",
+    "buildings": "Freschezza · penthouse 01",
+    "suites": 5,
+    "parking": 5,
+    "family": "Penthouse",
+    "floor": "6º pavimento"
+  },
+  {
+    "id": "riio-planta-04",
+    "media": "riio-planta-04",
+    "area": "830,25",
+    "buildings": "Brezza, Aria e Orlo · penthouse 01",
+    "suites": 5,
+    "parking": 5,
+    "family": "Penthouse",
+    "floor": "6º pavimento"
+  },
+  {
+    "id": "riio-planta-02",
+    "media": "riio-planta-02",
+    "area": "1.042,09",
+    "buildings": "Sole e Mare · penthouse 01",
+    "suites": 6,
+    "parking": 6,
+    "family": "Penthouse",
+    "floor": "6º pavimento"
+  }
+]

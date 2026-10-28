@@ -412,6 +412,54 @@
     {
       "source": "/blog/dicasedecor/cores-decoracao-2026-paleta-apartamento/",
       "destination": "/src-greenn/blog/dicasedecor/cores-decoracao-2026-paleta-apartamento/index.html"
+    },
+    {
+      "source": "/blog/mercado/alto-padrao-criterios-valor-compra/",
+      "destination": "/src-greenn/blog/mercado/alto-padrao-criterios-valor-compra/index.html"
+    },
+    {
+      "source": "/blog/mercado/mooca-ou-tatuape-rotina-mobilidade/",
+      "destination": "/src-greenn/blog/mercado/mooca-ou-tatuape-rotina-mobilidade/index.html"
+    },
+    {
+      "source": "/blog/mercado/infraestrutura-entorno-escolha-imovel/",
+      "destination": "/src-greenn/blog/mercado/infraestrutura-entorno-escolha-imovel/index.html"
+    },
+    {
+      "source": "/blog/mercado/condominio-sustentavel-solucoes-custos/",
+      "destination": "/src-greenn/blog/mercado/condominio-sustentavel-solucoes-custos/index.html"
+    },
+    {
+      "source": "/blog/mercado/iptu-apartamento-sp-consulta-orcamento/",
+      "destination": "/src-greenn/blog/mercado/iptu-apartamento-sp-consulta-orcamento/index.html"
+    },
+    {
+      "source": "/blog/mercado/compra-imovel-investimento-longo-prazo/",
+      "destination": "/src-greenn/blog/mercado/compra-imovel-investimento-longo-prazo/index.html"
+    },
+    {
+      "source": "/blog/mercado/fii-ou-imovel-fisico-comparacao/",
+      "destination": "/src-greenn/blog/mercado/fii-ou-imovel-fisico-comparacao/index.html"
+    },
+    {
+      "source": "/blog/mercado/orla-barra-tijuca-localizacao-conservacao/",
+      "destination": "/src-greenn/blog/mercado/orla-barra-tijuca-localizacao-conservacao/index.html"
+    },
+    {
+      "source": "/blog/mercado/imoveis-luxo-renda-custos-liquidez/",
+      "destination": "/src-greenn/blog/mercado/imoveis-luxo-renda-custos-liquidez/index.html"
+    },
+    {
+      "source": "/blog/mercado/morar-itaim-bibi-rotina-custo/",
+      "destination": "/src-greenn/blog/mercado/morar-itaim-bibi-rotina-custo/index.html"
+    },
+    {
+      "source": "/blog/mercado/imovel-herdado-inventario-documentos-etapas/",
+      "destination": "/src-greenn/blog/mercado/imovel-herdado-inventario-documentos-etapas/index.html"
+    },
+    {
+      "source": "/empreendimentos/riio-by-piero-lissoni/",
+      "destination": "/src-greenn/empreendimentos/riio-by-piero-lissoni/index.html"
     }
   ],
   "headers": [

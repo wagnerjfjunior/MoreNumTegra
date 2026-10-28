@@ -1,0 +1,47 @@
+// DOM interaction checks; these do not replace real mobile/desktop rendering.
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {pathToFileURL} from 'node:url';
+const dependency=process.env.RIIO_JSDOM_MODULE;
+if(!dependency)throw Error('Set RIIO_JSDOM_MODULE to the test-only jsdom/lib/api.js module');
+const {JSDOM}=await import(pathToFileURL(dependency));
+const path='src-greenn/empreendimentos/riio-by-piero-lissoni/';
+const dom=new JSDOM(readFileSync(path+'index.html','utf8'),{url:'http://localhost:8080/empreendimentos/riio-by-piero-lissoni/',runScripts:'outside-only',pretendToBeVisual:true});
+const {window:w}=dom,d=w.document,dialog=d.querySelector('dialog');
+// Native dialog APIs are browser-owned. Shim only open/close for controller tests.
+dialog.showModal=()=>dialog.setAttribute('open','');
+dialog.close=()=>{dialog.removeAttribute('open');dialog.dispatchEvent(new w.Event('close'));};
+const failures=[];w.addEventListener('error',event=>failures.push(event.message));
+w.eval(readFileSync(path+'riio-gallery.js','utf8'));
+const photos=d.querySelector('[data-riio-gallery="ambientes"]'),plans=d.querySelector('[data-riio-gallery="plantas"]');
+const click=(root,selector)=>root.querySelector(selector).click();
+const current=root=>root.querySelector('[data-main-image]').getAttribute('src');
+const key=(target,value)=>target.dispatchEvent(new w.KeyboardEvent('keydown',{key:value,bubbles:true,cancelable:true}));
+const counter=root=>root.querySelector('[data-counter]').textContent;
+assert.equal(d.querySelectorAll('[data-ready="true"]').length,2);
+const firstPhoto=current(photos),firstPlan=current(plans);
+click(photos,'[data-next]');assert.notEqual(current(photos),firstPhoto);assert.match(photos.querySelector('[data-caption-title]').textContent,/Varanda/);
+assert.equal(current(plans),firstPlan,'Viewers must remain independent');
+click(photos,'[data-filter="Interiores"]');assert.equal(counter(photos),'1 / 3');
+key(photos.querySelector('.riio-stage'),'End');assert.match(photos.querySelector('[data-caption-title]').textContent,/Suíte master/);
+key(photos.querySelector('.riio-stage'),'Home');assert.match(photos.querySelector('[data-caption-title]').textContent,/Varanda/);
+click(photos,'[data-filter="Todos"]');click(photos,'[data-select="0"]');click(photos,'[data-prev]');assert.equal(counter(photos),'10 / 10');click(photos,'[data-next]');assert.equal(current(photos),firstPhoto,'Previous/next must wrap');
+click(plans,'[data-filter="Penthouse"]');assert.equal(counter(plans),'1 / 5');assert.match(plans.querySelector('[data-caption-title]').textContent,/524/);
+assert.equal(plans.querySelectorAll('[data-select]:not([hidden])').length,5);
+click(plans,'[data-next]');assert.match(plans.querySelector('[data-caption-title]').textContent,/635/);
+const activePlan=current(plans),opener=plans.querySelector('.riio-viewer-caption [data-open-image]');
+opener.click();assert(dialog.open);assert.equal(dialog.querySelector('[data-dialog-image]').getAttribute('src'),activePlan);
+click(dialog,'[data-zoom-in]');assert.equal(dialog.querySelector('[data-dialog-image]').style.width,'150%');
+key(dialog,'ArrowRight');assert.equal(current(plans),activePlan,'At zoomed size arrows retain scrolling');
+click(dialog,'[data-zoom-reset]');key(dialog,'ArrowRight');assert.match(plans.querySelector('[data-caption-title]').textContent,/660/);
+assert.equal(dialog.querySelector('[data-dialog-image]').getAttribute('src'),current(plans));
+click(dialog,'[data-close-dialog]');assert(!dialog.open);assert.equal(d.activeElement,opener,'Closing returns focus to the opener');assert(!d.documentElement.classList.contains('riio-modal-open'));
+click(plans,'[data-filter="Apartamento"]');assert.equal(plans.querySelectorAll('[data-select]:not([hidden])').length,6);
+const thumb=plans.querySelector('[data-select="0"]');thumb.focus();key(thumb,'ArrowRight');assert.equal(d.activeElement.getAttribute('aria-current'),'true','Keyboard selection keeps focus with the selected thumbnail');
+const previousPhoto=current(photos),stage=photos.querySelector('.riio-stage');
+function pointer(type,x,y){const ev=new w.Event(type,{bubbles:true});Object.assign(ev,{pointerType:'touch',pointerId:1,clientX:x,clientY:y});stage.dispatchEvent(ev);}
+pointer('pointerdown',230,100);pointer('pointerup',50,105);assert.notEqual(current(photos),previousPhoto,'Horizontal swipe advances the photo');click(photos,'.riio-main-link');assert(!dialog.open,'Swipe does not also open the enlargement');
+const picture=plans.querySelector('[data-main-image]');picture.dispatchEvent(new w.Event('error'));assert.equal(plans.querySelector('.riio-media-error').hidden,false);picture.dispatchEvent(new w.Event('load'));assert.equal(plans.querySelector('.riio-media-error').hidden,true);
+assert.deepEqual(failures,[]);
+console.log('PASS: independent galleries, photo/plan filters, thumbnails, arrows, wrap, keyboard focus, enlargement, zoom, return focus, swipe and media errors (DOM simulation).');
+dom.window.close();

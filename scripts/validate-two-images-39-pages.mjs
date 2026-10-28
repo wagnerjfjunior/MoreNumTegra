@@ -31,14 +31,26 @@ assert.deepEqual(blogPaths,[
  '/blog/bairros-sao-paulo/lapa-vila-anastacio-como-escolher/',
  '/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/',
  ...releasedDecor,
- ...decorCategory
+ ...decorCategory,
+ "/blog/mercado/",
+ "/blog/mercado/alto-padrao-criterios-valor-compra/",
+ "/blog/mercado/mooca-ou-tatuape-rotina-mobilidade/",
+ "/blog/mercado/infraestrutura-entorno-escolha-imovel/",
+ "/blog/mercado/condominio-sustentavel-solucoes-custos/",
+ "/blog/mercado/iptu-apartamento-sp-consulta-orcamento/",
+ "/blog/mercado/compra-imovel-investimento-longo-prazo/",
+ "/blog/mercado/fii-ou-imovel-fisico-comparacao/",
+ "/blog/mercado/orla-barra-tijuca-localizacao-conservacao/",
+ "/blog/mercado/imoveis-luxo-renda-custos-liquidez/",
+ "/blog/mercado/morar-itaim-bibi-rotina-custo/",
+ "/blog/mercado/imovel-herdado-inventario-documentos-etapas/"
 ],'Blog sitemap additions must remain explicitly scoped');
 const investmentPaths=allPaths.filter(p=>p.startsWith('/investimentos/'));
 assert.deepEqual(investmentPaths,['/investimentos/studios-e-salas-comerciais/'],'New investment collection routes need an explicit own-image audit');
 const paths=allPaths.filter(p=>!p.startsWith('/blog/')&&!p.startsWith('/investimentos/'));
 assert.equal(new Set(allPaths).size,allPaths.length,'Duplicate sitemap URLs');
 const rewrite=JSON.parse(fs.readFileSync('vercel.json','utf8')).rewrites;
-assert.equal(paths.length,42,'Expected 42 canonical home/region/project URLs, including Jerivás and Studios Berrini');
+assert.equal(paths.length,43,'Expected 42 canonical home/region/project URLs, including Jerivás and Studios Berrini');
 assert.equal(new Set(paths).size,paths.length,'Duplicate sitemap URLs');
 const exp=new Map([
  ['/empreendimentos/dsg-itaim/','experiments/dsg-itaim-editorial-v3/index.html'],
@@ -109,8 +121,8 @@ for(const path of paths){
  const second=graph.find(n=>n['@id']==='https://www.moretegra.com.br'+path+'#secondary-image');
  assert(main&&main['@type']==='ImageObject',path+': missing primary ImageObject');
  assert(second&&second['@type']==='ImageObject',path+': missing secondary ImageObject');
- assert.equal(main.contentUrl,hero.url,path+': primary not equal visible hero');
- assert.equal(second.contentUrl,secondary.url,path+': secondary not equal second illustration');
+ assert.equal(new URL(main.contentUrl,"https://www.moretegra.com.br").href,new URL(hero.url,"https://www.moretegra.com.br").href,path+': primary not equal visible hero');
+ assert.equal(new URL(second.contentUrl,"https://www.moretegra.com.br").href,new URL(secondary.url,"https://www.moretegra.com.br").href,path+': secondary not equal second illustration');
  assert.equal(second.caption,secondary.alt,path+': secondary caption not equal visible alt');
  assert.deepEqual(page.image,[{'@id':main['@id']},{'@id':second['@id']}],path+': primary/secondary order invalid');
  assert.equal(graph.filter(n=>n['@id']===second['@id']).length,1,path+': secondary id duplicated');
@@ -118,5 +130,5 @@ for(const path of paths){
  else throw Error('Unknown sitemap path '+path);
  console.log('TWO_IMAGES_PASS',path,visualFile?'DYNAMIC_EDITORIAL':'SOURCE_STATIC');
 }
-assert.deepEqual({home,regions,projects},{home:1,regions:14,projects:27});
+assert.deepEqual({home,regions,projects},{home:1,regions:14,projects:28});
 console.log('PASS: 41 RESF routes with distinct primary/secondary ImageObjects; Studios Berrini separately validated for distinct gallery images, canonical and WebPage JSON-LD');

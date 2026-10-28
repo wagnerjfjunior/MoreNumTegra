@@ -1,3 +1,15 @@
+## 28/10/2026 — Revisão solicitada no LVR, PR507
+
+Correções de cards/badges RESF, IPTU atemporal, hero de Inventário e primeira página RJ **RIIO by Piero Lissoni**, escolhida pelo usuário. Dossiê: `docs/editorial/mercado-2026-10-28/revisao-usuario-2026-10-28.md`. Mesma branch de preparação; noindex, sem merge/publicação. Após atualizar LVR, revisar novas telas e fluxo inicial RJ. A leitura da aba do usuário ainda mostrou o hero/dock anteriores; não confundir isso com QA dos novos arquivos.
+
+---
+
+## 28/10/2026 — Candidato Mercado: onze artigos preparados, sem publicação
+
+Somente nesta branch de preparação: `editorial/mercado-11-preparacao-20261028`. Onze textos/HTML noindex e matriz de 61 termos preparados para avaliação; nenhuma publicação ou alteração da produção. Recibo: `docs/sfjm/MNT_MERCADO_11_PREPARACAO_2026-10-28.md`; pacote: `docs/editorial/mercado-2026-10-28/README.md`. Revisão editorial/visual e testes oficiais continuam pendentes; merge/indexação requerem autorização individual. Esta nota não promove o candidato a estado integrado nem substitui históricos de release abaixo.
+
+---
+
 ## 27/10/2026 — Continuidade integral: SEO, cliques, Blog e Bing
 
 Leitura obrigatória, na íntegra: `docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md` e seu JSON de evidências. O histórico abaixo foi preservado.

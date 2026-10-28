@@ -1,0 +1,90 @@
+{
+  "orbita": {
+    "name": "Universo Tatuapé Órbita",
+    "url": "/empreendimentos/universo-tatuape-orbita/",
+    "media": "orbita",
+    "alt": "Piscina e paisagismo do Universo Tatuapé Órbita",
+    "copy": "Compare as informações do projeto no Tatuapé e consulte as opções para sua rotina.",
+    "action": "Conhecer o empreendimento"
+  },
+  "tiel": {
+    "name": "Tièl Vila Nova Conceição",
+    "url": "/empreendimentos/tiel-vila-nova-conceicao/",
+    "media": "tiel",
+    "alt": "Fachada do Tièl Vila Nova Conceição",
+    "copy": "Conheça a proposta de studios na Vila Nova Conceição e consulte as informações de cada unidade.",
+    "action": "Conhecer o Tièl"
+  },
+  "dsg": {
+    "name": "DSG Itaim",
+    "url": "/empreendimentos/dsg-itaim/",
+    "media": "dsg",
+    "alt": "Fachada do DSG Itaim",
+    "copy": "Explore o projeto no Itaim Bibi, suas características e opções de planta.",
+    "action": "Conhecer o DSG"
+  },
+  "bueno": {
+    "name": "Bueno Brandão 257",
+    "url": "/empreendimentos/bueno-brandao-257/",
+    "media": "bueno",
+    "alt": "Perspectiva ilustrada do Bueno Brandão 257",
+    "copy": "Arquitetura, interiores e paisagismo na Vila Nova Conceição: explore a proposta residencial do Bueno Brandão.",
+    "action": "Conhecer o Bueno Brandão"
+  },
+  "capiitolo": {
+    "name": "CAPIITOLO by Piero Lissoni",
+    "url": "/empreendimentos/capiitolo-piero-lissoni/",
+    "media": "capiitolo",
+    "alt": "Fachada do CAPIITOLO by Piero Lissoni na Chácara Klabin",
+    "copy": "Conheça o empreendimento Tegra na Chácara Klabin e a assinatura de Piero Lissoni.",
+    "action": "Conhecer o CAPIITOLO"
+  },
+  "studios": {
+    "name": "Investimento em studios e salas comerciais",
+    "url": "/investimentos/studios-e-salas-comerciais/",
+    "media": "aria",
+    "alt": "Fachada do Ária Higienópolis, projeto com studios e salas comerciais",
+    "copy": "Compare projetos, plantas e possibilidades de uso para aprofundar sua análise de aquisição.",
+    "action": "Explorar studios e salas"
+  },
+  "caminhos": {
+    "name": "Caminhos da Lapa",
+    "url": "https://www.caminhosdalapategra.com.br/",
+    "media": "rua",
+    "alt": "Perspectiva ilustrada de Caminhos da Lapa",
+    "copy": "Conheça a Rua Jardim, os condomínios e as fases residenciais do complexo na Vila Anastácio.",
+    "action": "Conhecer Caminhos da Lapa"
+  },
+  "bairros": {
+    "name": "Guia de bairros",
+    "url": "/regioes/",
+    "media": "rua",
+    "alt": "Perspectiva ilustrada de Caminhos da Lapa",
+    "copy": "Explore as regiões de São Paulo e compare os endereços que fazem sentido para sua rotina.",
+    "action": "Explorar os bairros"
+  },
+  "tatuape": {
+    "name": "Tatuapé",
+    "url": "/regioes/tatuape/",
+    "media": "orbita",
+    "alt": "Piscina e paisagismo do Universo Tatuapé Órbita",
+    "copy": "Conheça a região e os empreendimentos apresentados no Tatuapé.",
+    "action": "Explorar o Tatuapé"
+  },
+  "itaim": {
+    "name": "Itaim Bibi",
+    "url": "/regioes/itaim-bibi/",
+    "media": "dsg",
+    "alt": "Fachada do DSG Itaim",
+    "copy": "Explore a região do Itaim Bibi e encontre as páginas dos empreendimentos.",
+    "action": "Explorar o Itaim"
+  },
+  "riio": {
+    "name": "RIIO by Piero Lissoni",
+    "url": "/empreendimentos/riio-by-piero-lissoni/",
+    "media": "riio-varanda",
+    "alt": "Perspectiva ilustrada da varanda do RIIO by Piero Lissoni",
+    "copy": "Arquitetura, interiores e paisagismo Lissoni & Partners na Barra da Tijuca, Rio de Janeiro.",
+    "action": "Conhecer o RIIO"
+  }
+}

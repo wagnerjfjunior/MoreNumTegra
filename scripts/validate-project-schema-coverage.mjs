@@ -51,6 +51,17 @@ for(const slug of slugs){
   assert.equal(agent?.address?.streetAddress,apartment.address.streetAddress,'Jerivás on-site identity mismatch');
   assert(!now.some(n=>type(n,'Offer')),'Jerivás cannot declare unsourced active offers');
  }
+ if(slug==='riio-by-piero-lissoni'){
+  for(const t of ['BreadcrumbList','ImageObject','Organization','ContactPoint','Person','RealEstateAgent','Service','FloorPlan','FAQPage'])assert(now.some(n=>type(n,t)),'RIIO: missing evidenced entity '+t);
+  const p=now.find(n=>type(n,'ApartmentComplex'));
+  assert.equal(p.address?.streetAddress,'Avenida Lúcio Costa, 4900');
+  assert.equal(p.address?.addressRegion,'RJ');
+  const plans=JSON.parse(readFileSync('docs/editorial/mercado-2026-10-28/riio-plantas.json','utf8'));
+  assert.equal(p.accommodationFloorPlan.length,plans.reduce((n,x)=>n+x.area.split(' / ').length,0),'All precise RIIO plan variants must remain linked');
+  const floorplans=now.filter(n=>type(n,'FloorPlan'));
+  assert.equal(new Set(floorplans.map(n=>n.image)).size,plans.length,'RIIO must represent all sourced plan plates');
+  assert(!now.some(n=>type(n,'Offer')||type(n,'Product')),'RIIO has no governed unit offer');
+ }
  const beforeTypes=new Set(base.map(n=>n['@type']));
  const currentTypes=new Set(now.map(n=>n['@type']));
  // Count alone is never the Google rich-result count. This detects concrete
@@ -75,5 +86,5 @@ for(const slug of slugs){
 console.log('\nLEGACY COVERAGE AUDIT (missing types are NOT fabricated):');
 for(const x of issues.filter(x=>x.legacy))console.log('DEBT',x.slug,'nodes='+x.entities,'missing='+x.missing);
 console.log('DEBT_SUMMARY',JSON.stringify({projectPages:slugs.length,pagesWithLessThanEightEntities:slugs.filter(slug=>issues.some(x=>x.slug===slug&&x.entities<8)).length,legacyCoverageFindings:issues.filter(x=>x.legacy).length}));
-assert.equal(slugs.length,27,'Expected 27 audited project pages including NR Studios Berrini and Jerivás');
-console.log('PASS: no schema removals/regressions in 27 project pages, Orbita commercial coverage strict, Jerivás commercial schema checked, legacy shortfalls reported');
+assert.equal(slugs.length,28,'Expected 28 audited project pages including RIIO preparation');
+console.log('PASS: no schema removals/regressions in 28 project pages; Orbita, Jerivás and RIIO facts checked; legacy shortfalls reported');

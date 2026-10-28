@@ -1,0 +1,731 @@
+{
+  "results": [
+    {
+      "keyword": "valorização de imóveis de alto padrão",
+      "ok": false,
+      "error": "Internal SE Server Error. The data provider is temporarily unavailable; this is not a problem with the request."
+    },
+    {
+      "keyword": "Mooca ou Tatuapé",
+      "ok": true,
+      "items": [
+        {
+          "type": "ai_overview",
+          "rank": 1,
+          "organicRank": null,
+          "title": null,
+          "url": null,
+          "domain": null
+        },
+        {
+          "type": "organic",
+          "rank": 2,
+          "organicRank": 1,
+          "title": "Mooca",
+          "url": "https://google.com/goto?url=CAESgQEB6zswFScBL-4HJ9p6ppRKgg3EhaGd6n1eFYynqrOitI_JYRTA0NLwDeIeY0gTMGPUO8LyHn_n4wGwuNd7-tLUWganZ2DKhWACN0KB5LQQ-kuHUNwdt0jew_oIuwSA1ziG3Ux6MeUGHTGv06yOAwCn7hF1r5nE3KZrHlfW-d6QLIM",
+          "domain": "google.com"
+        },
+        {
+          "type": "organic",
+          "rank": 3,
+          "organicRank": 2,
+          "title": "Por que o Tatuapé e a Mooca são os queridinhos para ...",
+          "url": "https://www.wmzimoveis.com.br/blog/por-que-o-tatuape-e-a-mooca-sao-os-queridinhos-para-comprar-apartamento-em-2025-7620/7620",
+          "domain": "www.wmzimoveis.com.br"
+        },
+        {
+          "type": "people_also_ask",
+          "rank": 4,
+          "organicRank": null,
+          "title": null,
+          "url": null,
+          "domain": null
+        },
+        {
+          "type": "organic",
+          "rank": 5,
+          "organicRank": 3,
+          "title": "Morar no Tatuapé: o guia completo do bairro em 2026",
+          "url": "https://google.com/goto?url=CAESeQHrOzAVw1xQ7oELuKQoRJJZetD2eE_4nZeNVbI4HezYm22nPaLs6hNA5Pqjy7J5sn-RKU8COVVIuH01Jp4L1RdezkXk7kxrild6xr4YG8PLU7m2_FZQ4fjXy0vcloLcvVXXOsXAuaaASaJwg6zuR6lLmwiHN1NiXzA",
+          "domain": "google.com"
+        },
+        {
+          "type": "organic",
+          "rank": 6,
+          "organicRank": 4,
+          "title": "Perguntamos pros nossos corretores qual bairro eles preferem ...",
+          "url": "https://www.facebook.com/dallasimoveiseconsultoria/videos/perguntamos-pros-nossos-corretores-qual-bairro-eles-preferem-entre-mooca-e-tatua/1077311818032758/",
+          "domain": "www.facebook.com"
+        },
+        {
+          "type": "organic",
+          "rank": 7,
+          "organicRank": 5,
+          "title": "Onde morar no Tatuapé? : r/saopaulo",
+          "url": "https://google.com/goto?url=CAESiQEB6zswFRy_Yq-4UucDdGwUxj3ZlvlORMykn62gStg4D4NlwRGqEV5oBowQlbG9uNWJJQVj9cGih1sZCOFgsbdrLqkXrwSs7NoVtFVr8qOBttzNu_878Ak3qkTNFgBHnI4jAi2R4oyMscpwXkDijBpDsXayJ5LIptPsUYzaGKlqgDVsZG2R3Tvi-Q",
+          "domain": "google.com"
+        },
+        {
+          "type": "organic",
+          "rank": 8,
+          "organicRank": 6,
+          "title": "Os bairros da #Mooca e do #Tatuapé, na Zona Leste de São ...",
+          "url": "https://google.com/goto?url=CAESZgHrOzAV9anvGaSfnO59ajIDetJdenKl97aR1_Uh0eCcxvwN3P6ymCutl5d64LFCWbokFCiDRWBHaLM4TOa6XZT07Jja2OyuCazNBSPixlvv9CUO5GnYcFLPptUgVF_A9wbK4Tp3oQ",
+          "domain": "google.com"
+        },
+        {
+          "type": "organic",
+          "rank": 9,
+          "organicRank": 7,
+          "title": "Mooca e Tatuapé figuram no top 3 dos bairros mais ...",
+          "url": "https://google.com/goto?url=CAESmQEB6zswFcEAuZQGYdHRH1qlWz0uIMsfNeUI7y9OuUd52u9WwcnTvbqQ1Vtr27Ed0q6BzQX1bsoWUOJEZKbjWvCnvo-icTtkPpOeK533inEv30FtfjBW3ytY9mJ5wAiKaccwiXIAG-Dk3ichmAZl6awpOAXkJIDYw6PQTfb8Ad1HXdz-cyJ5X4x22AOeM9ZbVh1nN2Qs83LtfOs",
+          "domain": "google.com"
+        },
+        {
+          "type": "organic",
+          "rank": 10,
+          "organicRank": 8,
+          "title": "Morar no Tatuapé: Guia Completo para Viver Bem em um ...",
+          "url": "https://google.com/goto?url=CAESvAEB6zswFemzNN94TfrJ2CJcrkpQJSvGvr0dFgJfAermyvOPHcpoCeYm0LcLKXO5UTB8syyT4zdk-VU0Lcg4UMGM0UjJReZX9YaHi1wfypq3ji9iwbW8iEaAW5KNTvU3oMwEP0xflRlbw3zlj2Bemy_sy9Q93M0syynJ0rW-LEeCiDtzhYo-gKlIMpREGOSB5z_zZwkukxcEySiLa9kkQtH8D7yNkDJuKDnPahTU_b-lSeWe3T44DUEnWUF_Wg",
+          "domain": "google.com"
+        }
+      ],
+      "locationCode": 2076,
+      "languageCode": "pt",
+      "device": "desktop"
+    },
+    {
+      "keyword": "infraestrutura urbana e valorização imobiliária",
+      "ok": true,
+      "items": [
+        {
+          "type": "ai_overview",
+          "rank": 1,
+          "organicRank": null,
+          "title": null,
+          "url": null,
+          "domain": null
+        },
+        {
+          "type": "organic",
+          "rank": 2,
+          "organicRank": 1,
+          "title": "Infraestrutura urbana e mercado imobiliário devem andar ...",
+          "url": "https://aesbe.org.br/opiniao-infraestrutura-urbana-e-mercado-imobiliario-devem-andar-lado-a-lado/",
+          "domain": "aesbe.org.br"
+        },
+        {
+          "type": "organic",
+          "rank": 3,
+          "organicRank": 2,
+          "title": "Obras de infraestrutura e valorização de imóveis: valem a ...",
+          "url": "https://megaempreendimentos.com/artigo/9239/obras-de-infraestrutura-e-valorizacao-de-imoveis-valem-a-pena-para-ganhar-mais",
+          "domain": "megaempreendimentos.com"
+        },
+        {
+          "type": "organic",
+          "rank": 4,
+          "organicRank": 3,
+          "title": "Infraestrutura urbana: por que ela valoriza seu imóvel?",
+          "url": "https://www.rivaincorporadora.com.br/blog/infraestrutura-urbana/",
+          "domain": "www.rivaincorporadora.com.br"
+        },
+        {
+          "type": "organic",
+          "rank": 5,
+          "organicRank": 4,
+          "title": "Como a Urbanização Influencia o Mercado Imobiliário",
+          "url": "https://www.multiimob.com.br/blog/como-a-urbanizacao-influencia-o-mercado-imobiliario/",
+          "domain": "www.multiimob.com.br"
+        },
+        {
+          "type": "people_also_ask",
+          "rank": 6,
+          "organicRank": null,
+          "title": null,
+          "url": null,
+          "domain": null
+        },
+        {
+          "type": "organic",
+          "rank": 7,
+          "organicRank": 5,
+          "title": "A infraestrutura na produção da cidade:",
+          "url": "https://repositorio.usp.br/directbitstream/4970f1f6-2846-4d94-af9e-4a4edbf9ed4f/003321351.pdf",
+          "domain": "repositorio.usp.br"
+        },
+        {
+          "type": "organic",
+          "rank": 8,
+          "organicRank": 6,
+          "title": "Recuperação da valorização imobiliária para ...",
+          "url": "https://repositorio.ipea.gov.br/items/3378878e-c2af-45f7-85af-a494337142b7",
+          "domain": "repositorio.ipea.gov.br"
+        },
+        {
+          "type": "organic",
+          "rank": 9,
+          "organicRank": 7,
+          "title": "Como o Desenvolvimento Urbano Impulsiona a Valorização ...",
+          "url": "https://www.blogtorresdemeloneto.com.br/como-o-desenvolvimento-urbano-impulsiona-a-valorizacao-de-imoveis/",
+          "domain": "www.blogtorresdemeloneto.com.br"
+        },
+        {
+          "type": "organic",
+          "rank": 10,
+          "organicRank": 8,
+          "title": "Como a infraestrutura de um bairro pode influenciar no ...",
+          "url": "https://fioriempreendimentos.com.br/como-a-infraestrutura-de-um-bairro-pode-influenciar-no-valor-do-imovel/",
+          "domain": "fioriempreendimentos.com.br"
+        }
+      ],
+      "locationCode": 2076,
+      "languageCode": "pt",
+      "device": "desktop"
+    },
+    {
+      "keyword": "sustentabilidade em condomínios",
+      "ok": true,
+      "items": [
+        {
+          "type": "ai_overview",
+          "rank": 1,
+          "organicRank": null,
+          "title": null,
+          "url": null,
+          "domain": null
+        },
+        {
+          "type": "organic",
+          "rank": 2,
+          "organicRank": 1,
+          "title": "Como tornar o seu condomínio mais sustentável?",
+          "url": "https://zangari.com.br/blog/condominio-mais-sustentavel/",
+          "domain": "zangari.com.br"
+        },
+        {
+          "type": "organic",
+          "rank": 3,
+          "organicRank": 2,
+          "title": "Condomínio sustentável: cinco práticas ecofriendly",
+          "url": "https://grupodiamond.com.br/condominio-sustentavel/",
+          "domain": "grupodiamond.com.br"
+        },
+        {
+          "type": "organic",
+          "rank": 4,
+          "organicRank": 3,
+          "title": "PROPOSTAS DE SUSTENTABILIDADE PARA UM ...",
+          "url": "https://www.ibeas.org.br/conresol/conresol2019/I-098.pdf",
+          "domain": "www.ibeas.org.br"
+        },
+        {
+          "type": "organic",
+          "rank": 5,
+          "organicRank": 4,
+          "title": "ESG Como implantar em seu condomínio",
+          "url": "https://uniondata.com.br/wp-content/uploads/2023/03/UnionData-ESG-Como-implantar-em-seu-condominio.pdf",
+          "domain": "uniondata.com.br"
+        },
+        {
+          "type": "organic",
+          "rank": 6,
+          "organicRank": 5,
+          "title": "Um estudo na região metropolitana de Campinas",
+          "url": "https://search.proquest.com/openview/196190ddb2b4ca2f4125f814e97a6afc/1?pq-origsite=gscholar&cbl=2035835",
+          "domain": "search.proquest.com"
+        },
+        {
+          "type": "organic",
+          "rank": 7,
+          "organicRank": 6,
+          "title": "Como Transformar Condomínios em Ambientes Sustentáveis",
+          "url": "https://www.sindiconet.com.br/informese/transformando-condominios-ambientes-sustentaveis-colunistas-odirley-da-rocha",
+          "domain": "www.sindiconet.com.br"
+        },
+        {
+          "type": "organic",
+          "rank": 8,
+          "organicRank": 7,
+          "title": "ESG em condomínios: lista de práticas para um ambiente ...",
+          "url": "https://www.creditoreal.com.br/blog/esg-em-condominios-lista-de-praticas-para-um-ambiente-harmonioso",
+          "domain": "www.creditoreal.com.br"
+        },
+        {
+          "type": "organic",
+          "rank": 9,
+          "organicRank": 8,
+          "title": "Sustentabilidade no condomínio: Agregando valor a gestão",
+          "url": "https://www.trisul-sa.com.br/blog/sustentabilidade-no-condominio-agregando-valor-a-gestao/",
+          "domain": "www.trisul-sa.com.br"
+        },
+        {
+          "type": "video",
+          "rank": 1,
+          "organicRank": null,
+          "title": null,
+          "url": null,
+          "domain": null
+        }
+      ],
+      "locationCode": 2076,
+      "languageCode": "pt",
+      "device": "desktop"
+    },
+    {
+      "keyword": "IPTU apartamento São Paulo",
+      "ok": true,
+      "items": [
+        {
+          "type": "ai_overview",
+          "rank": 1,
+          "organicRank": null,
+          "title": null,
+          "url": null,
+          "domain": null
+        },
+        {
+          "type": "organic",
+          "rank": 2,
+          "organicRank": 1,
+          "title": "Sem título",
+          "url": "https://duc.prefeitura.sp.gov.br/iptu",
+          "domain": "duc.prefeitura.sp.gov.br"
+        },
+        {
+          "type": "organic",
+          "rank": 3,
+          "organicRank": 2,
+          "title": "Em dia com a sua dívida: parcele seu IPTU atrasado",
+          "url": "https://prefeitura.sp.gov.br/w/noticia/em-dia-com-a-sua-divida-parcele-seu-iptu-atrasado",
+          "domain": "prefeitura.sp.gov.br"
+        },
+        {
+          "type": "organic",
+          "rank": 4,
+          "organicRank": 3,
+          "title": "Como consultar o IPTU SP em 2026, emitir e pagar?",
+          "url": "https://www.creditas.com/exponencial/iptu-sp/",
+          "domain": "www.creditas.com"
+        },
+        {
+          "type": "organic",
+          "rank": 5,
+          "organicRank": 4,
+          "title": "IPTU para São Paulo - SP 2026 - Calculadora gratuita",
+          "url": "https://www.boaconta.com.br/iptu/sao-paulo/",
+          "domain": "www.boaconta.com.br"
+        },
+        {
+          "type": "organic",
+          "rank": 6,
+          "organicRank": 5,
+          "title": "Imposto Predial e Territorial Urbano (IPTU) Pagamento",
+          "url": "https://prefeitura.sp.gov.br/web/fazenda/w/servicos/iptu/2463",
+          "domain": "prefeitura.sp.gov.br"
+        },
+        {
+          "type": "people_also_ask",
+          "rank": 7,
+          "organicRank": null,
+          "title": null,
+          "url": null,
+          "domain": null
+        },
+        {
+          "type": "organic",
+          "rank": 8,
+          "organicRank": 6,
+          "title": "Valor do IPTU de 2022 de SP já está disponível para ...",
+          "url": "https://imoveis.estadao.com.br/noticias/valor-do-iptu-de-2022-de-sp-ja-esta-disponivel-para-consulta-saiba-qual-opcao-e-mais-vantajosa/",
+          "domain": "imoveis.estadao.com.br"
+        },
+        {
+          "type": "organic",
+          "rank": 9,
+          "organicRank": 7,
+          "title": "IPTU de São Paulo (2025): Guia Completo",
+          "url": "https://www.zimoveis.com.br/blog/dicas/iptu-sao-paulo/",
+          "domain": "www.zimoveis.com.br"
+        },
+        {
+          "type": "organic",
+          "rank": 10,
+          "organicRank": 8,
+          "title": "IPTU – Serviços Disponíveis via SAV <i>(Solução do ...",
+          "url": "https://prefeitura.sp.gov.br/web/fazenda/w/33647",
+          "domain": "prefeitura.sp.gov.br"
+        }
+      ],
+      "locationCode": 2076,
+      "languageCode": "pt",
+      "device": "desktop"
+    },
+    {
+      "keyword": "comprar imóvel como investimento",
+      "ok": true,
+      "items": [
+        {
+          "type": "ai_overview",
+          "rank": 1,
+          "organicRank": null,
+          "title": null,
+          "url": null,
+          "domain": null
+        },
+        {
+          "type": "organic",
+          "rank": 2,
+          "organicRank": 1,
+          "title": "POR QUE VOCÊ DEVERIA INVESTIR EM IMÓVEIS | Vale a ...",
+          "url": "https://www.youtube.com/watch?v=k4xJ0VdT5W0",
+          "domain": "www.youtube.com"
+        },
+        {
+          "type": "organic",
+          "rank": 3,
+          "organicRank": 2,
+          "title": "Como investir em imóveis: Guia completo para iniciantes",
+          "url": "https://vitacon.com.br/conteudo/investimento-imobiliario/como-investir-em-imoveis-guia-completo/",
+          "domain": "vitacon.com.br"
+        },
+        {
+          "type": "video",
+          "rank": 4,
+          "organicRank": null,
+          "title": null,
+          "url": null,
+          "domain": null
+        },
+        {
+          "type": "organic",
+          "rank": 5,
+          "organicRank": 3,
+          "title": "Imóvel como investimento: vale a pena?",
+          "url": "https://www.trisul-sa.com.br/blog/imovel-como-investimento-vale-a-pena-comprar-um-apartamento-de-luxo-para-alugar/",
+          "domain": "www.trisul-sa.com.br"
+        },
+        {
+          "type": "organic",
+          "rank": 6,
+          "organicRank": 4,
+          "title": "Investir em imóveis - QuintoAndar Guias",
+          "url": "https://www.quintoandar.com.br/guias/investimento/",
+          "domain": "www.quintoandar.com.br"
+        },
+        {
+          "type": "organic",
+          "rank": 7,
+          "organicRank": 5,
+          "title": "É melhor comprar um imóvel ou deixar o dinheiro aplicado?",
+          "url": "https://www.alude.com.br/blog/e-melhor-comprar-um-imovel-ou-deixar-o-dinheiro-aplicado",
+          "domain": "www.alude.com.br"
+        },
+        {
+          "type": "people_also_ask",
+          "rank": 8,
+          "organicRank": null,
+          "title": null,
+          "url": null,
+          "domain": null
+        },
+        {
+          "type": "organic",
+          "rank": 9,
+          "organicRank": 6,
+          "title": "Investir ou Comprar Imóvel: Qual a Melhor Opção para ...",
+          "url": "https://blog.sofisadireto.com.br/investir-ou-comprar-imovel-melhor-opcao",
+          "domain": "blog.sofisadireto.com.br"
+        },
+        {
+          "type": "organic",
+          "rank": 10,
+          "organicRank": 7,
+          "title": "Comprar para morar ou para investir - Olímpia",
+          "url": "https://imobiliariarossi.com.br/blog/casa/casa-para-morar-ou-investir",
+          "domain": "imobiliariarossi.com.br"
+        }
+      ],
+      "locationCode": 2076,
+      "languageCode": "pt",
+      "device": "desktop"
+    },
+    {
+      "keyword": "fundo imobiliário ou imóvel físico",
+      "ok": true,
+      "items": [
+        {
+          "type": "ai_overview",
+          "rank": 1,
+          "organicRank": null,
+          "title": null,
+          "url": null,
+          "domain": null
+        },
+        {
+          "type": "organic",
+          "rank": 2,
+          "organicRank": 1,
+          "title": "Comprar imóvel ou investir em FIIs: qual a melhor opção?",
+          "url": "https://blog.daycoval.com.br/comprar-imovel-ou-investir-em-fundo-imobiliario/",
+          "domain": "blog.daycoval.com.br"
+        },
+        {
+          "type": "organic",
+          "rank": 3,
+          "organicRank": 2,
+          "title": "Comprar um imóvel físico ou um fundo imobiliário ?",
+          "url": "https://conecta.suno.com.br/pergunta/comprar-um-imovel-fisico-ou-um-fundo-imobiliario/",
+          "domain": "conecta.suno.com.br"
+        },
+        {
+          "type": "video",
+          "rank": 4,
+          "organicRank": null,
+          "title": null,
+          "url": null,
+          "domain": null
+        },
+        {
+          "type": "people_also_ask",
+          "rank": 5,
+          "organicRank": null,
+          "title": null,
+          "url": null,
+          "domain": null
+        },
+        {
+          "type": "organic",
+          "rank": 6,
+          "organicRank": 3,
+          "title": "Conheça os tipos de fundos imobiliários e escolha o ...",
+          "url": "https://www.nordinvestimentos.com.br/blog/tipos-de-fundos-imobiliarios/",
+          "domain": "www.nordinvestimentos.com.br"
+        },
+        {
+          "type": "organic",
+          "rank": 7,
+          "organicRank": 4,
+          "title": "ALUGAR UM IMÓVEL OU INVESTIR EM FUNDOS ...",
+          "url": "https://www.youtube.com/watch?v=7cIDi1azSTU",
+          "domain": "www.youtube.com"
+        },
+        {
+          "type": "organic",
+          "rank": 8,
+          "organicRank": 5,
+          "title": "Imóvel físico x fundos imobiliários: o que rende mais em ...",
+          "url": "https://stayluvi.com/blog/imovel-fisico-x-fundos-imobiliarios-o-que-rende-mais",
+          "domain": "stayluvi.com"
+        },
+        {
+          "type": "organic",
+          "rank": 9,
+          "organicRank": 6,
+          "title": "FII ou Imóveis físicos: o que é mais rentável?",
+          "url": "https://imoveis.estadao.com.br/investir-imoveis/fii-ou-imoveis-fisicos-o-que-e-mais-rentavel/",
+          "domain": "imoveis.estadao.com.br"
+        },
+        {
+          "type": "organic",
+          "rank": 10,
+          "organicRank": 7,
+          "title": "Comprar imóvel ou investir em fundos imobiliários?",
+          "url": "https://monefica.com.br/comprar-imovel-ou-investir-em-fundos-imobiliarios/",
+          "domain": "monefica.com.br"
+        }
+      ],
+      "locationCode": 2076,
+      "languageCode": "pt",
+      "device": "desktop"
+    },
+    {
+      "keyword": "imóveis na orla da Barra da Tijuca",
+      "ok": true,
+      "items": [
+        {
+          "type": "organic",
+          "rank": 1,
+          "organicRank": 1,
+          "title": "Encontre o melhor imóvel para você - Lista completa",
+          "url": "https://www.rioorla.com.br/imobiliaria/imoveis",
+          "domain": "www.rioorla.com.br"
+        },
+        {
+          "type": "organic",
+          "rank": 2,
+          "organicRank": 2,
+          "title": "Imóveis à venda em Barra da Tijuca, Rio de Janeiro - RJ",
+          "url": "https://www.quintalcarioca.com/imoveis/rj/rio-de-janeiro/barra-da-tijuca",
+          "domain": "www.quintalcarioca.com"
+        },
+        {
+          "type": "organic",
+          "rank": 3,
+          "organicRank": 3,
+          "title": "Apartamento à venda na Praia da Barra da Tijuca",
+          "url": "https://www.youtube.com/watch?v=ZkOc9TKxSGY",
+          "domain": "www.youtube.com"
+        },
+        {
+          "type": "organic",
+          "rank": 4,
+          "organicRank": 4,
+          "title": "Imóveis à Venda na Barra da Tijuca",
+          "url": "https://reallerimoveis.com.br/comprar/barra-da-tijuca",
+          "domain": "reallerimoveis.com.br"
+        },
+        {
+          "type": "organic",
+          "rank": 5,
+          "organicRank": 5,
+          "title": "Apartamentos com Frente Para o Mar para venda - Rio de ...",
+          "url": "https://www.zapimoveis.com.br/venda/apartamentos/rj+rio-de-janeiro/frente-para-o-mar/",
+          "domain": "www.zapimoveis.com.br"
+        },
+        {
+          "type": "people_also_search",
+          "rank": 6,
+          "organicRank": null,
+          "title": "Encontre produtos e serviços relacionados",
+          "url": null,
+          "domain": null
+        },
+        {
+          "type": "organic",
+          "rank": 7,
+          "organicRank": 6,
+          "title": "13 Apartamentos de luxo à venda em Rio de Janeiro, Barra ...",
+          "url": "https://www.arianyimoveis.com.br/imoveis/a-venda/apartamento-de-luxo/rio-de-janeiro/barra-da-tijuca",
+          "domain": "www.arianyimoveis.com.br"
+        },
+        {
+          "type": "organic",
+          "rank": 8,
+          "organicRank": 7,
+          "title": "OCEANFRONT PENTHOUSE FOR SALE ON BARRA DA ...",
+          "url": "https://www.youtube.com/watch?v=iBKQhC0UNq4",
+          "domain": "www.youtube.com"
+        },
+        {
+          "type": "local_pack",
+          "rank": 9,
+          "organicRank": null,
+          "title": "Imobiliária na Barra da Tijuca - Real Imóveis RJ",
+          "url": "https://www.realimoveisrj.com.br/",
+          "domain": "www.realimoveisrj.com.br"
+        },
+        {
+          "type": "local_pack",
+          "rank": 10,
+          "organicRank": null,
+          "title": "Imobiliária Barra da Tijuca",
+          "url": "https://www.imobiliariabarradatijuca.com.br/",
+          "domain": "www.imobiliariabarradatijuca.com.br"
+        }
+      ],
+      "locationCode": 2076,
+      "languageCode": "pt",
+      "device": "desktop"
+    },
+    {
+      "keyword": "investir em imóveis de luxo",
+      "ok": false,
+      "error": "Internal SE Server Error. The data provider is temporarily unavailable; this is not a problem with the request."
+    },
+    {
+      "keyword": "morar no Itaim Bibi",
+      "ok": true,
+      "items": [
+        {
+          "type": "ai_overview",
+          "rank": 1,
+          "organicRank": null,
+          "title": null,
+          "url": null,
+          "domain": null
+        },
+        {
+          "type": "organic",
+          "rank": 2,
+          "organicRank": 1,
+          "title": "Itaim Bibi: um dos melhores bairros para viver ...",
+          "url": "https://zangari.com.br/blog/itaim-bibi-melhores-bairros-de-sp/",
+          "domain": "zangari.com.br"
+        },
+        {
+          "type": "video",
+          "rank": 3,
+          "organicRank": null,
+          "title": null,
+          "url": null,
+          "domain": null
+        },
+        {
+          "type": "short_videos",
+          "rank": 4,
+          "organicRank": null,
+          "title": "Vídeos curtos",
+          "url": null,
+          "domain": null
+        },
+        {
+          "type": "organic",
+          "rank": 5,
+          "organicRank": 2,
+          "title": "O Itaim Bibi é um dos bairros mais vibrantes e caminháveis de ...",
+          "url": "https://www.instagram.com/reel/DD0HQq4y1mm/",
+          "domain": "www.instagram.com"
+        },
+        {
+          "type": "organic",
+          "rank": 6,
+          "organicRank": 3,
+          "title": "Itaim Bibi ou Vila Olímpia: qual bairro escolher para alugar?",
+          "url": "https://www.pdnegociosimobiliarios.com.br/blog/itaim-bibi-ou-vila-olimpia-qual-bairro-escolher-para-alugar.html",
+          "domain": "www.pdnegociosimobiliarios.com.br"
+        },
+        {
+          "type": "organic",
+          "rank": 7,
+          "organicRank": 4,
+          "title": "Veja Como é Morar no Itaim Bibi em São Paulo - Blog Yuca",
+          "url": "https://blog.yuca.live/sobre-morar/itaim-bibi/",
+          "domain": "blog.yuca.live"
+        },
+        {
+          "type": "organic",
+          "rank": 8,
+          "organicRank": 5,
+          "title": "Itaim Bibi: Conheça o bairro e região",
+          "url": "https://jardins-co.com.br/bairro/itaim-bibi/",
+          "domain": "jardins-co.com.br"
+        },
+        {
+          "type": "people_also_ask",
+          "rank": 9,
+          "organicRank": null,
+          "title": null,
+          "url": null,
+          "domain": null
+        },
+        {
+          "type": "organic",
+          "rank": 10,
+          "organicRank": 6,
+          "title": "Galera, quanto de renda precisa pra morar no Itaim?",
+          "url": "https://www.reddit.com/r/saopaulo/comments/1fp2arp/galera_quanto_de_renda_precisa_pra_morar_no_itaim/",
+          "domain": "www.reddit.com"
+        }
+      ],
+      "locationCode": 2076,
+      "languageCode": "pt",
+      "device": "desktop"
+    }
+  ],
+  "meta": {
+    "projectId": "a071ab48-dda6-4b7c-bf71-2e3e3d40694d",
+    "url": "https://app.openseo.so/p/a071ab48-dda6-4b7c-bf71-2e3e3d40694d/keywords"
+  },
+  "resultId": "7c81ba1d-9248-41b6-b6d0-903ba3d6e057"
+}

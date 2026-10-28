@@ -18,43 +18,48 @@
     },
     {
       "category": "mercado",
-      "slug": "3-fatores-que-garantem-a-valorizacao-de-imoveis-de-luxo-no-longo-prazo",
-      "title": "3 fatores que garantem a valorização de imóveis de luxo no longo prazo",
+      "slug": "alto-padrao-criterios-valor-compra",
+      "title": "Valorização de imóveis de alto padrão: o que avaliar antes de comprar?",
       "original_url": "https://www.tegraincorporadora.com.br/blog/mercado/3-fatores-que-garantem-a-valorizacao-de-imoveis-de-luxo-no-longo-prazo",
-      "status": "EDITORIAL_PENDING",
-      "indexable": false
+      "status": "PUBLISHED",
+      "indexable": true,
+      "url": "/blog/mercado/alto-padrao-criterios-valor-compra/"
     },
     {
       "category": "mercado",
-      "slug": "mooca-e-tatuape-tradicao-modernidade-e-infraestrutura-na-zona-leste",
-      "title": "Mooca e Tatuapé: tradição, modernidade e infraestrutura na Zona Leste",
+      "slug": "mooca-ou-tatuape-rotina-mobilidade",
+      "title": "Mooca ou Tatuapé: compare rotina, mobilidade e custo de moradia",
       "original_url": "https://www.tegraincorporadora.com.br/blog/mercado/mooca-e-tatuape-tradicao-modernidade-e-infraestrutura-na-zona-leste",
-      "status": "EDITORIAL_PENDING",
-      "indexable": false
+      "status": "PUBLISHED",
+      "indexable": true,
+      "url": "/blog/mercado/mooca-ou-tatuape-rotina-mobilidade/"
     },
     {
       "category": "mercado",
-      "slug": "gentileza-urbana-o-papel-dos-empreendimentos-na-valorizacao-do-bairro",
-      "title": "Gentileza urbana: o papel dos empreendimentos na valorização do bairro",
+      "slug": "infraestrutura-entorno-escolha-imovel",
+      "title": "Infraestrutura urbana: como avaliar o entorno antes de comprar um imóvel",
       "original_url": "https://www.tegraincorporadora.com.br/blog/mercado/gentileza-urbana-o-papel-dos-empreendimentos-na-valorizacao-do-bairro",
-      "status": "EDITORIAL_PENDING",
-      "indexable": false
+      "status": "PUBLISHED",
+      "indexable": true,
+      "url": "/blog/mercado/infraestrutura-entorno-escolha-imovel/"
     },
     {
       "category": "mercado",
-      "slug": "esg-na-construcao-civil-como-predio-sustentavel-valorizam-patrimonio",
-      "title": "ESG na construção civil: sustentabilidade e patrimônio",
+      "slug": "condominio-sustentavel-solucoes-custos",
+      "title": "Sustentabilidade em condomínios: soluções, manutenção e custos reais",
       "original_url": "https://www.tegraincorporadora.com.br/blog/mercado/esg-na-construcao-civil-como-predio-sustentavel-valorizam-patrimonio",
-      "status": "EDITORIAL_PENDING",
-      "indexable": false
+      "status": "PUBLISHED",
+      "indexable": true,
+      "url": "/blog/mercado/condominio-sustentavel-solucoes-custos/"
     },
     {
       "category": "mercado",
-      "slug": "iptu-saiba-tudo-sobre-o-imposto-anual-e-planeje-seu-pagamento",
-      "title": "IPTU: saiba tudo sobre o imposto anual e planeje seu pagamento",
+      "slug": "iptu-apartamento-sp-consulta-orcamento",
+      "title": "IPTU de apartamento em São Paulo: consulta, valor venal e orçamento",
       "original_url": "https://www.tegraincorporadora.com.br/blog/mercado/iptu-saiba-tudo-sobre-o-imposto-anual-e-planeje-seu-pagamento",
-      "status": "EDITORIAL_PENDING",
-      "indexable": false
+      "status": "PUBLISHED",
+      "indexable": true,
+      "url": "/blog/mercado/iptu-apartamento-sp-consulta-orcamento/"
     },
     {
       "category": "mercado",
@@ -66,51 +71,57 @@
     },
     {
       "category": "mercado",
-      "slug": "investimento-a-longo-prazo-comprar-um-imovel",
-      "title": "Investimento a longo prazo: por que comprar um imóvel é uma estratégia",
+      "slug": "compra-imovel-investimento-longo-prazo",
+      "title": "Comprar imóvel para investir no longo prazo: custos, riscos e critérios",
       "original_url": "https://www.tegraincorporadora.com.br/blog/mercado/investimento-a-longo-prazo-comprar-um-imovel",
-      "status": "EDITORIAL_PENDING",
-      "indexable": false
+      "status": "PUBLISHED",
+      "indexable": true,
+      "url": "/blog/mercado/compra-imovel-investimento-longo-prazo/"
     },
     {
       "category": "mercado",
-      "slug": "fiis-vs-imovel-fisico-qual-a-melhor-estrategia-para-investir",
-      "title": "FIIs vs imóvel físico: qual a melhor estratégia para investir?",
+      "slug": "fii-ou-imovel-fisico-comparacao",
+      "title": "Fundos imobiliários ou imóvel físico: compare uso, gestão, custos e riscos",
       "original_url": "https://www.tegraincorporadora.com.br/blog/mercado/fiis-vs-imovel-fisico-qual-a-melhor-estrategia-para-investir",
-      "status": "EDITORIAL_PENDING",
-      "indexable": false
+      "status": "PUBLISHED",
+      "indexable": true,
+      "url": "/blog/mercado/fii-ou-imovel-fisico-comparacao/"
     },
     {
       "category": "mercado",
-      "slug": "a-orla-da-barra-da-tijuca-luxo-no-rio-de-janeiro",
-      "title": "A Orla da Barra da Tijuca: o novo cenário do luxo no Rio de Janeiro",
+      "slug": "orla-barra-tijuca-localizacao-conservacao",
+      "title": "Imóveis na orla da Barra da Tijuca: localização, conservação e escolha",
       "original_url": "https://www.tegraincorporadora.com.br/blog/mercado/a-orla-da-barra-da-tijuca-luxo-no-rio-de-janeiro",
-      "status": "EDITORIAL_PENDING",
-      "indexable": false
+      "status": "PUBLISHED",
+      "indexable": true,
+      "url": "/blog/mercado/orla-barra-tijuca-localizacao-conservacao/"
     },
     {
       "category": "mercado",
-      "slug": "imoveis-de-luxo-por-que-investir-no-mercado-de-alto-padrao",
-      "title": "Imóveis de luxo: por que investir no mercado de alto padrão?",
+      "slug": "imoveis-luxo-renda-custos-liquidez",
+      "title": "Investir em imóveis de luxo: teste renda, custos e liquidez",
       "original_url": "https://www.tegraincorporadora.com.br/blog/mercado/imoveis-de-luxo-por-que-investir-no-mercado-de-alto-padrao",
-      "status": "EDITORIAL_PENDING",
-      "indexable": false
+      "status": "PUBLISHED",
+      "indexable": true,
+      "url": "/blog/mercado/imoveis-luxo-renda-custos-liquidez/"
     },
     {
       "category": "mercado",
-      "slug": "guia-do-itaim-bibi-por-que-o-bairro-e-simbolo-de-luxo-e-negocios",
-      "title": "Guia do Itaim Bibi: por que o bairro é símbolo de luxo e negócios",
+      "slug": "morar-itaim-bibi-rotina-custo",
+      "title": "Morar no Itaim Bibi: mobilidade, serviços e custo da rotina",
       "original_url": "https://www.tegraincorporadora.com.br/blog/mercado/guia-do-itaim-bibi-por-que-o-bairro-e-simbolo-de-luxo-e-negocios",
-      "status": "EDITORIAL_PENDING",
-      "indexable": false
+      "status": "PUBLISHED",
+      "indexable": true,
+      "url": "/blog/mercado/morar-itaim-bibi-rotina-custo/"
     },
     {
       "category": "mercado",
-      "slug": "inventario-de-imovel-o-que-e-como-funciona-e-quanto-custa",
-      "title": "Inventário de imóvel: o que é, como funciona e quanto custa",
+      "slug": "imovel-herdado-inventario-documentos-etapas",
+      "title": "Inventário de imóvel herdado: documentos, etapas, impostos e registro",
       "original_url": "https://www.tegraincorporadora.com.br/blog/mercado/inventario-de-imovel-o-que-e-como-funciona-e-quanto-custa",
-      "status": "EDITORIAL_PENDING",
-      "indexable": false
+      "status": "PUBLISHED",
+      "indexable": true,
+      "url": "/blog/mercado/imovel-herdado-inventario-documentos-etapas/"
     },
     {
       "category": "dicasedecor",

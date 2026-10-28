@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-28",
+  "market": "Brasil / português / desktop / profundidade 10",
+  "method": "Resumo próprio de resultados retornados nesta sessão; sem reproduzir descrições de terceiros.",
+  "runs": [
+    {
+      "resultId": "c9bb5b98-9e0d-462f-bc8c-51a5fdf51219",
+      "queries": [
+        {"keyword": "valorização de imóveis de alto padrão", "result": "SUCCESS", "observation": "Predomínio de conteúdo explicativo/comercial; referência metodológica Fipe entre os resultados."},
+        {"keyword": "investir em imóveis de luxo", "result": "PROVIDER_ERROR", "observation": "Falha de disponibilidade do provedor; não interpretar como SERP vazia."},
+        {"keyword": "inventário de imóvel", "result": "SUCCESS", "observation": "Guias explicativos e fonte estadual Sefaz-SP entre os resultados; diferenciar o roteiro documental de promessa de custo universal."},
+        {"keyword": "como escolher apartamento na orla Barra Tijuca", "result": "SUCCESS", "observation": "Ofertas e guias de compra; recorte informativo de conservação mantém risco de desalinhamento com consulta ampla transacional."}
+      ]
+    },
+    {
+      "resultId": "5f2be991-c7f5-4aba-ba47-6cc0ea2639e9",
+      "queries": [
+        {"keyword": "investimento imóveis luxo riscos renda liquidez", "result": "SUCCESS", "observation": "Conteúdo de investimento e risco; evidência complementar, sem substituir a confirmação da consulta exata de luxo."}
+      ]
+    }
+  ]
+}

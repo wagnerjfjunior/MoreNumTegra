@@ -1,0 +1,14 @@
+{
+  "baseline": "bbe59c7a0b7b8a597826d56f6bc01d5291d9dfa5",
+  "existing_articles": 13,
+  "matrix_terms": 61,
+  "planner_raw_rows_read": 16257,
+  "planner_unique_normalized": 12635,
+  "planner_m3_summary_rows": 65,
+  "original_3859_rows_available": false,
+  "gsc_rows": 142,
+  "matrix_rows_with_gsc": 4,
+  "editorial_primary_terms_with_gsc": 0,
+  "multi_url_queries": 29,
+  "method": "Case/accent/whitespace normalized phrase boundaries; H1 + editorial text, no metadata or Sabrina/cards. Frequency is not intent coverage. No suppressed GSC query is inferred."
+}

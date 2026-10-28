@@ -1,0 +1,74 @@
+[
+  {
+    "file": "bootstrap/BOOTSTRAP_CANONICO.md",
+    "sha256": "44d05dca19230ac5aad12094d0a245d682385c4164940d085d4f001051d573f7"
+  },
+  {
+    "file": "handoffs/CURRENT.md",
+    "sha256": "8756da48cfb7901c288678c7e4af0618c4ed0a22a8a193785425f51d34658a64"
+  },
+  {
+    "file": "docs/PROJECT_STATUS.md",
+    "sha256": "cdfde94c2e5629bdf9f5898134f4ffbe195f27f4195f57dd2ef7ab0a53741c97"
+  },
+  {
+    "file": "docs/NEXT_SAFE_ACTION.md",
+    "sha256": "93891504d8961658b9d63d255948ab2bd2b973c5b62591571dfd7f6692cf7133"
+  },
+  {
+    "file": "docs/BLOCKED_ACTIONS.md",
+    "sha256": "405f6f36e201ccf95db3fbfad43a8beab30417d320fd1e20d5e86e4535b03fa3"
+  },
+  {
+    "file": "docs/search/MNT_MERCADO_REFERENCIAS_MAPA_2026-10-27.md",
+    "sha256": "ec996ca1b5fffd13aae2129afc876cfff17ea4f6fdac19c547b097a8390d75d2"
+  },
+  {
+    "file": "docs/sfjm/MNT_BLOG_PADRAO_EDITORIAL_V1_2026-10-26.md",
+    "sha256": "fb800c383619546a83f6c7e8cf672b5d5071b4a944b6d8fc3b001cdfd64bc485"
+  },
+  {
+    "file": "docs/sfjm/MNT_BLOG_ORIGINALIDADE_INTEGRAL_HANDOFF_2026-10-20.md",
+    "sha256": "448ffe4d00a344f1fb6f1a0d32e3221e6d9dde30909f55b09b7214d9acfed9a6"
+  },
+  {
+    "file": "docs/search/MNT_M3_USER_RESEARCH_INPUT_AUDIT_2026-09-13.md",
+    "sha256": "d82955630b64bea39249569c46aac7e09bc90076e94b601fdf07ee66db5c93d6"
+  },
+  {
+    "file": "docs/search/MNT_M3_01_MARKET_SEARCH_DEMAND_RESEARCH_2026-09-13.md",
+    "sha256": "4724a3b3cf7e8fa88dcc3e265f979b727231e07437d36e2e1eab5525948339d9"
+  },
+  {
+    "file": "docs/search/MNT_M3_03_SERP_COMPETITOR_SEARCH_INTENT_ANALYSIS_2026-09-13.md",
+    "sha256": "abedf0e2b7724d7953c6865693244e62ea9e959d64818aa16f2edf130163360b"
+  },
+  {
+    "file": "docs/search/MNT_SES_SEO_GEO_OPINION_AND_VALIDATION_2026-10-17.md",
+    "sha256": "d87ad8b4c86877d2e93d1718de5e95e84f83c5a38e2bc84654bd56b7eb5ca9c2"
+  },
+  {
+    "file": "docs/search/data/search-intelligence/raw/google-keyword-planner/2026-09-29/Keyword_Stats_2026-09-29_at_14_57_08.csv",
+    "sha256": "3c5011437e93da2acfd4b2f6c83373ad1b94f7eebfa5b49d419bc60e1bf85d1a"
+  },
+  {
+    "file": "docs/search/data/search-intelligence/raw/google-keyword-planner/2026-09-29/Keyword_Stats_2026-09-29_at_14_53_23.csv",
+    "sha256": "082c405bb55c185574b402866e443e0951077795873ca12e502f2dd7293c9c13"
+  },
+  {
+    "file": "docs/search/data/search-intelligence/raw/google-keyword-planner/2026-09-29/Keyword_Stats_2026-09-29_at_14_58_26.csv",
+    "sha256": "877bc5ee948195dbe1d04ca1ff0f8eabc4dde7dfcb87eabf7474c3155fc9455c"
+  },
+  {
+    "file": "docs/search/data/search-intelligence/raw/google-keyword-planner/2026-09-29/Keyword_Stats_2026-09-29_at_14_54_37.csv",
+    "sha256": "4e3dcee05d70853cfea57bcd6a1a726f5340d80e8dc139452fbaba1a01556fed"
+  },
+  {
+    "file": "docs/search/data/search-intelligence/raw/google-keyword-planner/2026-09-29/Keyword_Stats_2026-09-29_at_14_54_13.csv",
+    "sha256": "d8a4c33477bcaae620e5deb9c29f55a298a8e128c997a24debd6342b780bfb49"
+  },
+  {
+    "file": "docs/search/data/search-intelligence/raw/google-keyword-planner/2026-09-29/Keyword_Stats_2026-09-29_at_14_50_49.csv",
+    "sha256": "81ecaaede6fdbe6670e82092e9c2e2c40c9047dddcbaf3d757f15684163509e4"
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "approved_by": "Usuário em 28/10/2026: hero e facts OK",
+  "reference_commit": "d1821555694353879b2ffd41d90ecc193465ace8",
+  "sha256": {
+    "hero": "4be7a5701dee2ba114e59abfc3fd254c1104b2fb6300b27818bd39b70b1c5cf8",
+    "facts": "08551f611e98311c0705c74c7909bd2c9383e60d187e336edd29d5fc0103639f",
+    "form46": "e6f49018779542bcbe0ad96f283dd99217611200f81a2994ab90dd4ad185bc00"
+  }
+}
