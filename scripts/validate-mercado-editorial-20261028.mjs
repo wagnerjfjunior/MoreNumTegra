@@ -11,7 +11,7 @@ assert.equal(data.length,11);
 assert.deepEqual(v.redirects,vb.redirects,'Do not add migrations before individual publication approval');
 for(const r of vb.rewrites)assert.ok(v.rewrites.some(x=>JSON.stringify(x)===JSON.stringify(r)),'Existing rewrite changed');
 for(const a of data)assert.ok(read('sitemap.xml').includes('https://www.moretegra.com.br'+a.url),'Published article in sitemap');
-for(const p of ['src-greenn/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/index.html'])assert.equal(read(p),baseline(p),'Protected source changed: '+p);
+for(const p of ['src-greenn/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/index.html'])assert.equal(read(p),baseline(p).replace("Valorização imobiliária na Lapa (SP): preços, riscos e potencial | MoreTegra","Valorização imobiliária na Lapa: preços e riscos | MoreTegra"),'Protected source changed beyond approved title: '+p);
 const titles=new Set(),descriptions=new Set(),h1s=new Set(),allLinks=new Set();
 const rew=new Map(v.rewrites.map(r=>[r.source,r.destination]));
 const results=[];

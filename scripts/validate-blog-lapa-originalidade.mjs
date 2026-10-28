@@ -7,7 +7,7 @@ const canonical="https://www.moretegra.com.br/blog/mercado/valorizacao-imobiliar
 const headline="Imóveis na Lapa valorizam? Como analisar preços e potencial em São Paulo";
 assert.equal((html.match(/<h1\b/g)||[]).length,1);
 assert.ok(html.includes("<h1>"+headline+"</h1>"));
-assert.ok(html.includes('<title>Valorização imobiliária na Lapa (SP): preços, riscos e potencial | MoreTegra</title>'));
+assert.ok(html.includes('<title>Valorização imobiliária na Lapa: preços e riscos | MoreTegra</title>'));
 assert.ok(html.includes('rel="canonical" href="'+canonical+'"'));
 assert.ok(html.includes('name="robots" content="index,follow,max-image-preview:large"'));
 assert.ok(html.includes('content="Valorização imobiliária na Lapa (SP): aprenda a comparar preço por m²'));

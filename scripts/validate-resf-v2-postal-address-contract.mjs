@@ -314,7 +314,9 @@ for(const [slug,street,cep] of expected){
   const approvedSnapshot=slug==='mozae-higienopolis'?'bdf2f66b74a89a1a6b0fb2fddcc7ad5245fad862':'f1324ef2fbee1e33179385ec1f189c1dd5bb98cf';
   // Mozae: owner-authorized market-intelligence editorial snapshot; still strict full-file parity.
   const approved=execFileSync('git',['show',approvedSnapshot+':'+filename],{encoding:'utf8'});
-  assert.equal(candidate,approved,slug+': approved commercial runtime HTML/schema has drifted');
+  // Accept only the seven descriptive thumbnail alts copied from the approved data-alt.
+  const approvedWithThumbAlts=slug==='aria-higienopolis'?approved.replace(/(<button\b[^>]*class="mt-gallery-thumb"[^>]*data-alt="([^"]+)"[^>]*>)(<img\b[^>]*>)/g,(m,button,alt,img)=>button+img.replace('alt=""','alt="'+alt+'"')):approved;
+  assert.equal(candidate,approvedWithThumbAlts,slug+': approved commercial runtime HTML/schema has drifted');
  }else if(slug==='ampere-brooklin'){
    // Schema-only PR #386: preserve all pre-existing entities except the bounded
    // WebPage mentions, ApartmentComplex.brand removal and verified FloorPlan links.
