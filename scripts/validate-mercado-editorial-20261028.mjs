@@ -10,8 +10,8 @@ const v=JSON.parse(read('vercel.json')),vb=JSON.parse(baseline('vercel.json'));
 assert.equal(data.length,11);
 assert.deepEqual(v.redirects,vb.redirects,'Do not add migrations before individual publication approval');
 for(const r of vb.rewrites)assert.ok(v.rewrites.some(x=>JSON.stringify(x)===JSON.stringify(r)),'Existing rewrite changed');
-assert.equal(read('sitemap.xml'),baseline('sitemap.xml'),'No drafts in sitemap');
-for(const p of ['src-greenn/blog/mercado/index.html','src-greenn/blog/index.html','src-greenn/blog/catalogo-tegra-referencia.json','src-greenn/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/index.html'])assert.equal(read(p),baseline(p),'Protected source changed: '+p);
+for(const a of data)assert.ok(read('sitemap.xml').includes('https://www.moretegra.com.br'+a.url),'Published article in sitemap');
+for(const p of ['src-greenn/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/index.html'])assert.equal(read(p),baseline(p),'Protected source changed: '+p);
 const titles=new Set(),descriptions=new Set(),h1s=new Set(),allLinks=new Set();
 const rew=new Map(v.rewrites.map(r=>[r.source,r.destination]));
 const results=[];
@@ -20,7 +20,7 @@ for(const a of data){
  assert.notEqual(a.url,a.legacy);assert.ok(!h1s.has(a.h1));h1s.add(a.h1);
  assert.ok(!titles.has(a.title));titles.add(a.title);assert.ok(!descriptions.has(a.description));descriptions.add(a.description);
  assert.equal((html.match(/<h1\b/g)||[]).length,1);assert.ok(html.includes('<h1>'+a.h1+'</h1>'));
- assert.ok(html.includes('name="robots" content="noindex,follow"'));
+ assert.ok(html.includes('name="robots" content="index,follow,max-image-preview:large"'));
  assert.ok(html.includes('rel="canonical" href="'+url+'"'));
  assert.ok(html.includes('property="og:url" content="'+url+'"'));
  for(const field of ['og:image','og:title','og:description','twitter:image','twitter:title','twitter:description'])assert.ok(html.includes('"'+field+'"'));
@@ -70,7 +70,7 @@ assert.notEqual(data.find(x=>x.id===11).media,'rua','Inventory hero replaced');
 
 const riio=read('src-greenn/empreendimentos/riio-by-piero-lissoni/index.html');
 assert.equal((riio.match(/<h1\b/g)||[]).length,1);
-assert.ok(riio.includes('name="robots" content="noindex,follow"'));
+assert.ok(riio.includes('name="robots" content="index,follow,max-image-preview:large"'));
 assert.ok(riio.includes('href="https://www.moretegra.com.br/empreendimentos/riio-by-piero-lissoni/"'));
 assert.equal((riio.match(/class="facts"/g)||[]).length,1);
 assert.equal((riio.match(/class="fact"/g)||[]).length,4);
@@ -90,4 +90,4 @@ for(const script of ['runtime.js','measurement-core.js','measurement-form.js']){
 }
 for(const [,src] of riio.matchAll(/<img[^>]+src="(\/[^\"]+)"/g))assert.ok(existsSync(src.slice(1)),'RIIO image '+src);
 assert.equal(rew.get('/empreendimentos/riio-by-piero-lissoni/'),'/src-greenn/empreendimentos/riio-by-piero-lissoni/index.html');
-console.log(JSON.stringify({pass:true,articles:results,unique_internal_links:allLinks.size,sitemap_unchanged:true,production_unchanged:true,visual_browser_qa:'NOT_EXECUTED',official_schema_tests:'NOT_EXECUTED'},null,2));
+console.log(JSON.stringify({pass:true,articles:results,unique_internal_links:allLinks.size,published:true,visual_browser_qa:'NOT_EXECUTED',official_schema_tests:'NOT_EXECUTED'},null,2));

@@ -39,7 +39,7 @@ assert(neighborhood.includes('riio-map-visual')&&neighborhood.includes('https://
 assert(!neighborhood.includes('google.com/maps/search'),'Use contextual map with WhatsApp route request');
 assert(html.includes('id="riio-image-dialog"')&&html.includes('data-zoom-in')&&html.includes('data-close-dialog'));
 assert.equal((html.match(/riio-gallery\.js"/g)||[]).length,1);
-assert(html.includes('name="robots" content="noindex,follow"'));
+assert(html.includes('name="robots" content="index,follow,max-image-preview:large"'));
 const ids=[...html.matchAll(/\bid="([^\"]+)"/g)].map(x=>x[1]);assert.equal(ids.length,new Set(ids).size,'Unique HTML IDs');
 // Only the governed address/anchor differs from the approved exact-project footer.
 const footer=html.match(/<footer\b[\s\S]*?<\/footer>/)[0];
