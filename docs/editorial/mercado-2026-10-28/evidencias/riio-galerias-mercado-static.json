@@ -1,0 +1,98 @@
+{
+  "pass": true,
+  "articles": [
+    {
+      "id": 1,
+      "url": "/blog/mercado/alto-padrao-criterios-valor-compra/",
+      "words": 1940,
+      "images": 12,
+      "source_links": 3,
+      "status": "STATIC_PASS"
+    },
+    {
+      "id": 2,
+      "url": "/blog/mercado/mooca-ou-tatuape-rotina-mobilidade/",
+      "words": 1807,
+      "images": 10,
+      "source_links": 3,
+      "status": "STATIC_PASS"
+    },
+    {
+      "id": 3,
+      "url": "/blog/mercado/infraestrutura-entorno-escolha-imovel/",
+      "words": 1848,
+      "images": 10,
+      "source_links": 4,
+      "status": "STATIC_PASS"
+    },
+    {
+      "id": 4,
+      "url": "/blog/mercado/condominio-sustentavel-solucoes-custos/",
+      "words": 1829,
+      "images": 8,
+      "source_links": 3,
+      "status": "STATIC_PASS"
+    },
+    {
+      "id": 5,
+      "url": "/blog/mercado/iptu-apartamento-sp-consulta-orcamento/",
+      "words": 1810,
+      "images": 8,
+      "source_links": 3,
+      "status": "STATIC_PASS"
+    },
+    {
+      "id": 6,
+      "url": "/blog/mercado/compra-imovel-investimento-longo-prazo/",
+      "words": 1801,
+      "images": 9,
+      "source_links": 2,
+      "status": "STATIC_PASS"
+    },
+    {
+      "id": 7,
+      "url": "/blog/mercado/fii-ou-imovel-fisico-comparacao/",
+      "words": 1801,
+      "images": 9,
+      "source_links": 10,
+      "status": "STATIC_PASS"
+    },
+    {
+      "id": 8,
+      "url": "/blog/mercado/orla-barra-tijuca-localizacao-conservacao/",
+      "words": 1935,
+      "images": 9,
+      "source_links": 2,
+      "status": "STATIC_PASS"
+    },
+    {
+      "id": 9,
+      "url": "/blog/mercado/imoveis-luxo-renda-custos-liquidez/",
+      "words": 1857,
+      "images": 10,
+      "source_links": 3,
+      "status": "STATIC_PASS"
+    },
+    {
+      "id": 10,
+      "url": "/blog/mercado/morar-itaim-bibi-rotina-custo/",
+      "words": 1821,
+      "images": 10,
+      "source_links": 2,
+      "status": "STATIC_PASS"
+    },
+    {
+      "id": 11,
+      "url": "/blog/mercado/imovel-herdado-inventario-documentos-etapas/",
+      "words": 1814,
+      "images": 8,
+      "source_links": 5,
+      "status": "STATIC_PASS"
+    }
+  ],
+  "unique_internal_links": 36,
+  "sitemap_unchanged": true,
+  "production_unchanged": true,
+  "visual_browser_qa": "NOT_EXECUTED",
+  "official_schema_tests": "NOT_EXECUTED"
+}

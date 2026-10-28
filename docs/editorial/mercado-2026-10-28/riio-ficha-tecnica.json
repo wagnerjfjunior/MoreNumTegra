@@ -1,0 +1,17 @@
+{
+  "source": "Ficha técnica fornecida pelo usuário em 28/10/2026; mesma referência de projeto do PDF Tegra + Lissoni",
+  "terrain_m2": 30003.73,
+  "terrain_label": "30.003,73 m²",
+  "addresses": ["Avenida Lúcio Costa, 4900", "Avenida Peregrino Junior, 133"],
+  "buildings": [
+    {"name":"Sole","rows":[{"quantity":10,"type":"Apartamentos","suites":5,"areas":[506],"parking":5},{"quantity":1,"type":"Penthouse","suites":6,"areas":[1042],"parking":6}]},
+    {"name":"Mare","rows":[{"quantity":10,"type":"Apartamentos","suites":5,"areas":[506],"parking":5},{"quantity":1,"type":"Penthouse","suites":6,"areas":[1042],"parking":6}]},
+    {"name":"Brezza","rows":[{"quantity":10,"type":"Apartamentos","suites":4,"areas":[411],"parking":4},{"quantity":1,"type":"Penthouse","suites":5,"areas":[830],"parking":5}]},
+    {"name":"Freschezza","rows":[{"quantity":10,"type":"Apartamentos","suites":4,"areas":[319],"parking":4},{"quantity":1,"type":"Penthouse","suites":5,"areas":[660],"parking":5}]},
+    {"name":"Aria","rows":[{"quantity":10,"type":"Apartamentos","suites":4,"areas":[411],"parking":4},{"quantity":1,"type":"Penthouse","suites":5,"areas":[830],"parking":5}]},
+    {"name":"Acqua","rows":[{"quantity":10,"type":"Apartamentos","suites":4,"areas":[305,319],"parking":4},{"quantity":10,"type":"Apartamentos","suites":4,"areas":[262],"parking":3},{"quantity":1,"type":"Penthouse","suites":5,"areas":[635],"parking":4},{"quantity":1,"type":"Penthouse","suites":5,"areas":[524],"parking":4}]},
+    {"name":"Alba","rows":[{"quantity":20,"type":"Apartamentos","suites":4,"areas":[305,319],"parking":4},{"quantity":2,"type":"Penthouses","suites":5,"areas":[635],"parking":4}]},
+    {"name":"Luce","rows":[{"quantity":20,"type":"Apartamentos","suites":4,"areas":[262],"parking":3},{"quantity":2,"type":"Penthouses","suites":5,"areas":[524],"parking":4}]},
+    {"name":"Orlo","rows":[{"quantity":10,"type":"Apartamentos","suites":4,"areas":[411],"parking":4},{"quantity":1,"type":"Penthouse","suites":5,"areas":[830],"parking":5}]}
+  ]
+}

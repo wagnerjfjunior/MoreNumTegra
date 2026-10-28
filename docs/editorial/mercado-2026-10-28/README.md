@@ -1,3 +1,5 @@
+> **Segunda revisão do RIIO:** ficha completa incorporada por edifício, galerias de 10 ambientes e 11 plantas, seção do bairro com três fotos e mapa contextual. Hero/facts aprovados e Form46 preservados. [Dossiê da revisão](riio-revisao-galerias-2026-10-28.md).
+
 > **Revisão de 28/10 após teste do usuário:** cards contextuais, badges RESF nos 11 artigos, IPTU atemporal, novo hero de Inventário e página RIIO preparada. Total atual: 20.263 palavras. [Detalhes e limites](revisao-usuario-2026-10-28.md). O texto abaixo registra a preparação original; a revisão supera o antigo escopo apenas SP do artigo Barra e as contagens anteriores. Sem publicação.
 
 # Mercado Imobiliário — lote de 11 artigos para avaliação

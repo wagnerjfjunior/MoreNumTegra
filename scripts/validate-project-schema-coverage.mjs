@@ -56,7 +56,10 @@ for(const slug of slugs){
   const p=now.find(n=>type(n,'ApartmentComplex'));
   assert.equal(p.address?.streetAddress,'Avenida Lúcio Costa, 4900');
   assert.equal(p.address?.addressRegion,'RJ');
-  assert.equal(p.accommodationFloorPlan.length,4,'RIIO typology examples must remain linked');
+  const plans=JSON.parse(readFileSync('docs/editorial/mercado-2026-10-28/riio-plantas.json','utf8'));
+  assert.equal(p.accommodationFloorPlan.length,plans.reduce((n,x)=>n+x.area.split(' / ').length,0),'All precise RIIO plan variants must remain linked');
+  const floorplans=now.filter(n=>type(n,'FloorPlan'));
+  assert.equal(new Set(floorplans.map(n=>n.image)).size,plans.length,'RIIO must represent all sourced plan plates');
   assert(!now.some(n=>type(n,'Offer')||type(n,'Product')),'RIIO has no governed unit offer');
  }
  const beforeTypes=new Set(base.map(n=>n['@type']));

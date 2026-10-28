@@ -69,35 +69,50 @@
     "height": 462,
     "origin": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/362/Imagem/TRA_99_BL1-Varanda-Decorado_REV_04_00-1765206772784.jpg",
     "bytes": 60476,
-    "srcset": "/assets/blog/mercado-2026/riio-varanda.webp 1200w, /assets/blog/mercado-2026/riio-varanda-640.webp 640w"
+    "srcset": "/assets/blog/mercado-2026/riio-varanda.webp 1200w, /assets/blog/mercado-2026/riio-varanda-640.webp 640w",
+    "thumb": "/assets/riio/riio-varanda-thumb.webp",
+    "thumbWidth": 240,
+    "thumbHeight": 92
   },
   "riio-lobby": {
     "src": "/assets/blog/mercado-2026/riio-lobby.webp",
     "width": 1200,
     "height": 518,
     "origin": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/362/Imagem/TRA_50_BL1-Lobby-Welcome-Space_REV_03_03a-1765206771419.jpg",
-    "bytes": 50180
+    "bytes": 50180,
+    "thumb": "/assets/riio/riio-lobby-thumb.webp",
+    "thumbWidth": 240,
+    "thumbHeight": 104
   },
   "riio-piscina": {
     "src": "/assets/blog/mercado-2026/riio-piscina.webp",
     "width": 1200,
     "height": 580,
     "origin": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/362/Imagem/TRA_72_BL5-Piscina-Indoor-1_REV_04_00a-1765206771277.jpg",
-    "bytes": 34178
+    "bytes": 34178,
+    "thumb": "/assets/riio/riio-piscina-thumb.webp",
+    "thumbWidth": 240,
+    "thumbHeight": 116
   },
   "riio-gourmet": {
     "src": "/assets/blog/mercado-2026/riio-gourmet.webp",
     "width": 1200,
     "height": 631,
     "origin": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/362/Imagem/TRA_65_BL9-Gourmet_REV_02_01-1765206772135.jpg",
-    "bytes": 66650
+    "bytes": 66650,
+    "thumb": "/assets/riio/riio-gourmet-thumb.webp",
+    "thumbWidth": 240,
+    "thumbHeight": 126
   },
   "riio-academia": {
     "src": "/assets/blog/mercado-2026/riio-academia.webp",
     "width": 1200,
     "height": 338,
     "origin": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/362/Imagem/TRA_86_BL7-Academia---Sal%C3%A3o-Equipamentos-1_REV_02_01-1765206771111.jpg",
-    "bytes": 53054
+    "bytes": 53054,
+    "thumb": "/assets/riio/riio-academia-thumb.webp",
+    "thumbWidth": 240,
+    "thumbHeight": 68
   },
   "riio-bairro": {
     "src": "/assets/blog/mercado-2026/riio-bairro.webp",
@@ -105,5 +120,201 @@
     "height": 800,
     "origin": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/362/Imagem/shutterstock_2230272851-1768512814278.jpg",
     "bytes": 166918
+  },
+  "riio-fachada": {
+    "src": "/assets/riio/riio-fachada.webp",
+    "width": 1600,
+    "height": 917,
+    "origin": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/362/Imagem/TRA_02_Fachada-Lateral-Vista-Praia_REV_02a_01-1765206774265.jpg",
+    "bytes": 206954,
+    "thumb": "/assets/riio/riio-fachada-thumb.webp",
+    "thumbWidth": 240,
+    "thumbHeight": 138
+  },
+  "riio-externa": {
+    "src": "/assets/riio/riio-externa.webp",
+    "width": 1600,
+    "height": 630,
+    "origin": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/362/Imagem/TRA_24_Panor%C3%A2mica-Piscina_REV_02_01-1765206774434.jpg",
+    "bytes": 328116,
+    "thumb": "/assets/riio/riio-externa-thumb.webp",
+    "thumbWidth": 240,
+    "thumbHeight": 95
+  },
+  "riio-living": {
+    "src": "/assets/riio/riio-living.webp",
+    "width": 1600,
+    "height": 889,
+    "origin": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/362/Imagem/TRA_96_BL1-Sala-Decorado-1_REV_04_00-1765206773003.jpg",
+    "bytes": 129336,
+    "thumb": "/assets/riio/riio-living-thumb.webp",
+    "thumbWidth": 240,
+    "thumbHeight": 133
+  },
+  "riio-suite": {
+    "src": "/assets/riio/riio-suite.webp",
+    "width": 1600,
+    "height": 727,
+    "origin": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/362/Imagem/TRA_101_BL1-Su%C3%ADte%C2%A0Master%C2%A0Decorado_REV_04_01-1765206772165.jpg",
+    "bytes": 113358,
+    "thumb": "/assets/riio/riio-suite-thumb.webp",
+    "thumbWidth": 240,
+    "thumbHeight": 109
+  },
+  "riio-wine": {
+    "src": "/assets/riio/riio-wine.webp",
+    "width": 1600,
+    "height": 534,
+    "origin": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/362/Imagem/TRA_59_BL3-Wine-Bar_REV_03_00-1765206773507.jpg",
+    "bytes": 66582,
+    "thumb": "/assets/riio/riio-wine-thumb.webp",
+    "thumbWidth": 240,
+    "thumbHeight": 80
+  },
+  "riio-bairro-orla": {
+    "src": "/assets/riio/riio-bairro-orla.webp",
+    "width": 960,
+    "height": 640,
+    "origin": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/362/Imagem/shutterstock_2625048973-1768512814718.jpg",
+    "bytes": 46530
+  },
+  "riio-bairro-urbano": {
+    "src": "/assets/riio/riio-bairro-urbano.webp",
+    "width": 960,
+    "height": 640,
+    "origin": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/362/Imagem/shutterstock_758637682-1768512814580.jpg",
+    "bytes": 122036
+  },
+  "riio-planta-07": {
+    "src": "/assets/riio/riio-planta-07.webp",
+    "width": 1591,
+    "height": 1126,
+    "thumb": "/assets/riio/riio-planta-07-thumb.webp",
+    "origin": "https://evandroimoveisrj.com.br/wp-content/uploads/2026/10/riio-lissoni-planta-07.webp",
+    "bytes": 122672,
+    "sha256": "18a46a33b42ef800ca3294e0e5a68937f470dd9469278975beae41067fd86c21",
+    "provenance": "Prancha Tegra + Lissoni disponibilizada publicamente por distribuidor; arte e legendas preservadas, sem usar texto comercial do distribuidor.",
+    "thumbWidth": 240,
+    "thumbHeight": 170
+  },
+  "riio-planta-08": {
+    "src": "/assets/riio/riio-planta-08.webp",
+    "width": 1591,
+    "height": 1126,
+    "thumb": "/assets/riio/riio-planta-08-thumb.webp",
+    "origin": "https://evandroimoveisrj.com.br/wp-content/uploads/2026/10/riio-lissoni-planta-08.webp",
+    "bytes": 124650,
+    "sha256": "774c8c5f2f8dac168deb19f7c5c1e38484392d26877d860e1ec294a32cc51d1e",
+    "provenance": "Prancha Tegra + Lissoni disponibilizada publicamente por distribuidor; arte e legendas preservadas, sem usar texto comercial do distribuidor.",
+    "thumbWidth": 240,
+    "thumbHeight": 170
+  },
+  "riio-planta-11": {
+    "src": "/assets/riio/riio-planta-11.webp",
+    "width": 1591,
+    "height": 1125,
+    "thumb": "/assets/riio/riio-planta-11-thumb.webp",
+    "origin": "https://evandroimoveisrj.com.br/wp-content/uploads/2026/10/riio-lissoni-planta-11.webp",
+    "bytes": 126978,
+    "sha256": "2f27cab98e35eefa1ecaa8b7da16e13e3f098ffa0ce6ad9deb56a12910b04161",
+    "provenance": "Prancha Tegra + Lissoni disponibilizada publicamente por distribuidor; arte e legendas preservadas, sem usar texto comercial do distribuidor.",
+    "thumbWidth": 240,
+    "thumbHeight": 170
+  },
+  "riio-planta-05": {
+    "src": "/assets/riio/riio-planta-05.webp",
+    "width": 1587,
+    "height": 1128,
+    "thumb": "/assets/riio/riio-planta-05-thumb.webp",
+    "origin": "https://evandroimoveisrj.com.br/wp-content/uploads/2026/10/riio-lissoni-planta-05.webp",
+    "bytes": 140662,
+    "sha256": "44a53162ab8f9dd79cf346cf307e8d806ef0495d7526566981fab132f1570b9a",
+    "provenance": "Prancha Tegra + Lissoni disponibilizada publicamente por distribuidor; arte e legendas preservadas, sem usar texto comercial do distribuidor.",
+    "thumbWidth": 239,
+    "thumbHeight": 170
+  },
+  "riio-planta-06": {
+    "src": "/assets/riio/riio-planta-06.webp",
+    "width": 1588,
+    "height": 1126,
+    "thumb": "/assets/riio/riio-planta-06-thumb.webp",
+    "origin": "https://evandroimoveisrj.com.br/wp-content/uploads/2026/10/riio-lissoni-planta-06.webp",
+    "bytes": 146810,
+    "sha256": "36261c0620391d79f5f9586eaef8c0f32b2991ea0e6ed78e09b3a5f04deb286e",
+    "provenance": "Prancha Tegra + Lissoni disponibilizada publicamente por distribuidor; arte e legendas preservadas, sem usar texto comercial do distribuidor.",
+    "thumbWidth": 240,
+    "thumbHeight": 170
+  },
+  "riio-planta-01": {
+    "src": "/assets/riio/riio-planta-01.webp",
+    "width": 1587,
+    "height": 1126,
+    "thumb": "/assets/riio/riio-planta-01-thumb.webp",
+    "origin": "https://evandroimoveisrj.com.br/wp-content/uploads/2026/10/riio-lissoni-planta-01.webp",
+    "bytes": 179516,
+    "sha256": "70815b817bf7c12c13475462d02f5914e92ac2432149818678d89f419bf15af5",
+    "provenance": "Prancha Tegra + Lissoni disponibilizada publicamente por distribuidor; arte e legendas preservadas, sem usar texto comercial do distribuidor.",
+    "thumbWidth": 240,
+    "thumbHeight": 170
+  },
+  "riio-planta-09": {
+    "src": "/assets/riio/riio-planta-09.webp",
+    "width": 1591,
+    "height": 1125,
+    "thumb": "/assets/riio/riio-planta-09-thumb.webp",
+    "origin": "https://evandroimoveisrj.com.br/wp-content/uploads/2026/10/riio-lissoni-planta-09.webp",
+    "bytes": 140480,
+    "sha256": "e89c7ec6e94f1f72cb9cceaf393ec25337c207aceeb02177622a70c48822f6ff",
+    "provenance": "Prancha Tegra + Lissoni disponibilizada publicamente por distribuidor; arte e legendas preservadas, sem usar texto comercial do distribuidor.",
+    "thumbWidth": 240,
+    "thumbHeight": 170
+  },
+  "riio-planta-10": {
+    "src": "/assets/riio/riio-planta-10.webp",
+    "width": 1590,
+    "height": 1125,
+    "thumb": "/assets/riio/riio-planta-10-thumb.webp",
+    "origin": "https://evandroimoveisrj.com.br/wp-content/uploads/2026/10/riio-lissoni-planta-10.webp",
+    "bytes": 151160,
+    "sha256": "b505e251a685de240605be74bf0cbc0e23d0aa3fc0c53766750aac74b7a8d2be",
+    "provenance": "Prancha Tegra + Lissoni disponibilizada publicamente por distribuidor; arte e legendas preservadas, sem usar texto comercial do distribuidor.",
+    "thumbWidth": 240,
+    "thumbHeight": 170
+  },
+  "riio-planta-03": {
+    "src": "/assets/riio/riio-planta-03.webp",
+    "width": 1591,
+    "height": 1125,
+    "thumb": "/assets/riio/riio-planta-03-thumb.webp",
+    "origin": "https://evandroimoveisrj.com.br/wp-content/uploads/2026/10/riio-lissoni-planta-03.webp",
+    "bytes": 152810,
+    "sha256": "9f61b99aa6b06dab86cb4eac3cebd72a5f68810206cc9d16f92785717d8c839b",
+    "provenance": "Prancha Tegra + Lissoni disponibilizada publicamente por distribuidor; arte e legendas preservadas, sem usar texto comercial do distribuidor.",
+    "thumbWidth": 240,
+    "thumbHeight": 170
+  },
+  "riio-planta-04": {
+    "src": "/assets/riio/riio-planta-04.webp",
+    "width": 1593,
+    "height": 1127,
+    "thumb": "/assets/riio/riio-planta-04-thumb.webp",
+    "origin": "https://evandroimoveisrj.com.br/wp-content/uploads/2026/10/riio-lissoni-planta-04.webp",
+    "bytes": 161812,
+    "sha256": "2cd863081c397c490e27d036b85bac0be2776bd0a435c5f91a5051e4c29b1d1c",
+    "provenance": "Prancha Tegra + Lissoni disponibilizada publicamente por distribuidor; arte e legendas preservadas, sem usar texto comercial do distribuidor.",
+    "thumbWidth": 240,
+    "thumbHeight": 170
+  },
+  "riio-planta-02": {
+    "src": "/assets/riio/riio-planta-02.webp",
+    "width": 1589,
+    "height": 1123,
+    "thumb": "/assets/riio/riio-planta-02-thumb.webp",
+    "origin": "https://evandroimoveisrj.com.br/wp-content/uploads/2026/10/riio-lissoni-planta-02.webp",
+    "bytes": 193046,
+    "sha256": "2b838dc02cdf74826cbee81b2366e911669157899b7c4c2912c463a00890b03d",
+    "provenance": "Prancha Tegra + Lissoni disponibilizada publicamente por distribuidor; arte e legendas preservadas, sem usar texto comercial do distribuidor.",
+    "thumbWidth": 240,
+    "thumbHeight": 170
   }
 }

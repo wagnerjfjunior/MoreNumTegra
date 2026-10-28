@@ -9,6 +9,7 @@ on:
       - 'assets/blog/mercado-2026/**'
       - 'vercel.json'
       - 'scripts/validate-mercado-editorial-20261028.mjs'
+      - 'scripts/*riio*'
       - '.github/workflows/mercado-editorial-20261028.yml'
 permissions:
   contents: read
@@ -23,3 +24,10 @@ jobs:
         with:
           node-version: '22'
       - run: node scripts/validate-mercado-editorial-20261028.mjs
+      - run: node scripts/validate-riio-editorial-review-20261028.mjs
+      - name: Install test-only DOM environment
+        run: npm install --prefix "$RUNNER_TEMP/riio-dom" --no-audit --no-fund jsdom@26.1.0
+      - name: Verify gallery interactions
+        env:
+          RIIO_JSDOM_MODULE: ${{ runner.temp }}/riio-dom/node_modules/jsdom/lib/api.js
+        run: node scripts/test-riio-gallery-20261028.mjs
