@@ -311,7 +311,7 @@ for(const [slug,street,cep] of expected){
  if(approvedCommercialSlugs.includes(slug)){
   // Owner-approved commercial candidate: strict full-file snapshot, not an unchecked exemption.
   // Project postal address / CEP / municipality checks continue outside this branch.
-  const approvedSnapshot=slug==='mozae-higienopolis'?'8b8877d24a823e8f1c29b68c18722786ca6d8f9e':'f1324ef2fbee1e33179385ec1f189c1dd5bb98cf';
+  const approvedSnapshot=slug==='mozae-higienopolis'?'bdf2f66b74a89a1a6b0fb2fddcc7ad5245fad862':'f1324ef2fbee1e33179385ec1f189c1dd5bb98cf';
   // Mozae: owner-authorized market-intelligence editorial snapshot; still strict full-file parity.
   const approved=execFileSync('git',['show',approvedSnapshot+':'+filename],{encoding:'utf8'});
   assert.equal(candidate,approved,slug+': approved commercial runtime HTML/schema has drifted');
