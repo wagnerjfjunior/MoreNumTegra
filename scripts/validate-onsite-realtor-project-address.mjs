@@ -22,6 +22,26 @@ for(const slug of slugs){
   console.log('NR_REMOTE_CONSULTATION_PASS',slug);
   continue;
  }
+ if(slug==='riio-by-piero-lissoni'){
+  // First RJ intake is explicitly remote; the project address is not an office.
+  const project=nodes.find(n=>n['@type']==='ApartmentComplex');
+  const agent=nodes.find(n=>n['@type']==='RealEstateAgent');
+  const service=nodes.find(n=>n['@type']==='Service');
+  assert.equal(project?.address?.streetAddress,'Avenida Lúcio Costa, 4900');
+  assert.equal(project.address.addressLocality,'Rio de Janeiro');
+  assert.equal(project.address.addressRegion,'RJ');
+  assert.equal(agent?.employee?.['@id'],'https://www.moretegra.com.br/#sabrina-da-tegra');
+  assert.equal(agent.telephone,'+5511960779328');
+  assert.equal(agent['@id'],'https://www.moretegra.com.br/empreendimentos/riio-by-piero-lissoni/#atendimento');
+  assert.equal(service?.provider?.['@id'],agent['@id']);
+  assert(!agent.address&&!agent.geo,'Remote RIIO intake must not fabricate on-site office/address');
+  assert(html.includes('CRECI-SP 209.905-F')&&html.includes('atendimento inicial'));
+  assert(!/CRECI-RJ|CRECI RJ/.test(html),'Do not invent RJ credential');
+  assert(html.includes('content="noindex,follow"'),'RIIO remains a preparation candidate');
+  notApplicable++;
+  console.log('RIIO_REMOTE_INTAKE_PASS',slug);
+  continue;
+ }
  const project=nodes.find(n=>n['@type']==='ApartmentComplex');
  const current=nodes.filter(n=>n['@type']==='RealEstateAgent');
  assert(project?.address?.streetAddress,slug+': project postal address missing');
@@ -49,7 +69,7 @@ for(const slug of slugs){
  agents++;
  console.log('ONSITE_AGENT_PASS',slug,a.address.streetAddress,a.address.postalCode);
 }
-assert.equal(pages,27,'Expected 27 audited pages including NR Studios Berrini and Jerivás');
+assert.equal(pages,28,'Expected 28 audited pages including RIIO preparation');
 assert.equal(agents,20,'Expected 20 project-scoped RealEstateAgents including Jerivás');
-assert.equal(notApplicable,7,'Expected 6 without Realtor plus 1 NR remote consultant');
-console.log('PASS: 20 project-scoped RealEstateAgents match local project addresses; 6 pages without Realtor plus 1 NR remote consultation');
+assert.equal(notApplicable,8,'Expected 6 without Realtor plus NR and RIIO remote contacts');
+console.log('PASS: 20 on-site agents retain project addresses; 6 pages without Realtor, NR and RIIO remote intake checked separately');

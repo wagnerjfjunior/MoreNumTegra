@@ -32,7 +32,8 @@
     "credential": "CRECI-SP 209.905-F",
     "whatsapp": "+5511960779328",
     "scope": "Atendimento inicial para solicitar materiais e encaminhar consulta; sem alegação de credencial RJ, equipe ou escritório local.",
-    "form": "Green Sales Form46, tenant313, title MoreEmUmTegra; reutilizar runtime atual e bloqueio de envio fora de www.moretegra.com.br. Nenhum lead de teste."
+    "form": "Green Sales Form46, tenant313, title MoreEmUmTegra; reutilizar runtime atual e bloqueio de envio fora de www.moretegra.com.br. Nenhum lead de teste.",
+    "schema_and_gate": "RealEstateAgent remoto, employee aponta à Person de Sabrina; Service vinculado, sem address/geo local. Gate específico mantém 20 agentes on-site sem alterações e verifica separadamente RIIO e NR."
   },
   "release_residuals": [
     "Revisão comercial da expansão e do fluxo de atendimento RJ; manter credencial SP identificada corretamente",
