@@ -37,7 +37,7 @@ for(const slug of slugs){
   assert(!agent.address&&!agent.geo,'Remote RIIO intake must not fabricate on-site office/address');
   assert(html.includes('CRECI-SP 209.905-F')&&html.includes('atendimento inicial'));
   assert(!/CRECI-RJ|CRECI RJ/.test(html),'Do not invent RJ credential');
-  assert(html.includes('content="noindex,follow"'),'RIIO remains a preparation candidate');
+  assert(html.includes('content="index,follow,max-image-preview:large"'),'RIIO publication is indexable');
   notApplicable++;
   console.log('RIIO_REMOTE_INTAKE_PASS',slug);
   continue;
