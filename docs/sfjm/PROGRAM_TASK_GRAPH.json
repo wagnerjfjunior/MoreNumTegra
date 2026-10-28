@@ -52,21 +52,21 @@
     "current_task_state": "ACTIVE / READ_ONLY",
     "next_task_id": "MNT-SEO-CLICKS-20261027",
     "next_task_state": "ACTIVE / READ_ONLY",
-    "next_safe_action": "Reuse GSC/audits and prepare bounded commercial SEO improvements; keep favicon, redirects and Bing coverage distinct.",
+    "next_safe_action": "Resolve live, perform read-only post-release QA/indexing inspection; then reuse SEO research for qualified clicks.",
     "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md",
     "current_state_source": "docs/sfjm/CURRENT_PROGRAM_STATE.json",
     "task_id": "MNT-SEO-CLICKS-20261027",
     "state": "ACTIVE / READ_ONLY",
     "task_state": "ACTIVE / READ_ONLY_DIAGNOSIS_AND_PROPOSAL",
-    "repository_head_sha": "10682d1a0da22223a4997ee0a1dad2ecd812d229",
-    "repository_sha_semantics": "Observed base before docs-only reconciliation",
-    "latest_main_runtime_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
-    "runtime_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
-    "last_verified_vercel_success_sha": "35c157f03f2a7477dde9fae5f0fc35a304c29e3a",
-    "production_deployment_id": "dpl_EbqLXnC4bpz6YnVMD3m9rBPLDP25",
-    "production_deployment": "dpl_EbqLXnC4bpz6YnVMD3m9rBPLDP25 / READY",
-    "deployment_state": "PRODUCTION_READY / DOCUMENTATION_ONLY",
-    "evidence": "docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md"
+    "repository_head_sha": "0b1de5b1218fb1c4c83c2683366bdfe11ad60d44",
+    "repository_sha_semantics": "Observed main before this docs-only continuity PR; resolve live on reentry",
+    "latest_main_runtime_sha": "0b1de5b1218fb1c4c83c2683366bdfe11ad60d44",
+    "runtime_sha": "0b1de5b1218fb1c4c83c2683366bdfe11ad60d44",
+    "last_verified_vercel_success_sha": "0b1de5b1218fb1c4c83c2683366bdfe11ad60d44",
+    "production_deployment_id": "dpl_8iiXm3RtVDbMhNSbHdpaJBq6KjjG",
+    "production_deployment": "dpl_8iiXm3RtVDbMhNSbHdpaJBq6KjjG / READY",
+    "deployment_state": "PRODUCTION_READY / DOCUMENTATION_ONLY_CONTINUITY_UPDATE",
+    "evidence": "docs/sfjm/MNT_MERCADO_RIIO_PRODUCAO_CONTINUIDADE_2026-10-28.md"
   },
   "sources": {
     "bootstrap": "bootstrap/BOOTSTRAP_CANONICO.md",
@@ -79,7 +79,8 @@
     "resf_adoption": "docs/frameworks/resf/ADOPTION.yaml",
     "resf_reconciliation": "docs/frameworks/resf/ADOPTION_BASELINE.md",
     "gsc_t0": "docs/evidence/search/GSC_BASELINE_2026-09-10.md",
-    "continuity_2026_10_27": "docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md"
+    "continuity_2026_10_27": "docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md",
+    "continuity_2026_10_28": "docs/sfjm/MNT_MERCADO_RIIO_PRODUCAO_CONTINUIDADE_2026-10-28.md"
   },
   "milestones": [
     {
@@ -867,7 +868,7 @@
     "state": "ACTIVE / READ_ONLY_DIAGNOSIS_AND_BOUNDED_PROPOSAL",
     "current_child": "MNT-SEO-CLICKS-20261027",
     "counted_in_resf_hours": false,
-    "handoff": "docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md",
+    "handoff": "docs/sfjm/MNT_MERCADO_RIIO_PRODUCAO_CONTINUIDADE_2026-10-28.md",
     "tasks": [
       {
         "id": "MNT-SEO-CLICKS-20261027",
@@ -893,8 +894,9 @@
       },
       {
         "id": "MNT-MERCADO-DEPTH-20261027",
-        "label": "Aprofundar fontes dos próximos artigos Mercado",
-        "state": "PENDING / SYNTHESES_INSUFFICIENT_FOR_2000_WORD_ARTICLES"
+        "label": "Onze artigos Mercado e RIIO publicados; acompanhar QA e cobertura",
+        "state": "RELEASED / PR507 / INDEXING_UNKNOWN",
+        "evidence": "docs/sfjm/MNT_MERCADO_RIIO_PRODUCAO_CONTINUIDADE_2026-10-28.md"
       }
     ]
   },
@@ -1041,8 +1043,8 @@
     "standard": "docs/governance/MNT_CHANGE_TRACEABILITY_STANDARD_V1.md",
     "latest_audit": "docs/governance/MNT_TRACEABILITY_AUDIT_2026-09-25.md",
     "direct_main_process_exceptions": 4,
-    "current_state_reconciled_at": "2026-10-27",
-    "current_reconciliation": "docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md",
+    "current_state_reconciled_at": "2026-10-28",
+    "current_reconciliation": "docs/sfjm/MNT_MERCADO_RIIO_PRODUCAO_CONTINUIDADE_2026-10-28.md",
     "status": "RECONCILED_2026_10_27"
   },
   "continuity_2026_10_27": {
@@ -1093,5 +1095,16 @@
     "google_decor": "12_ARTICLES_INDEXED_USER_CONFIRMED",
     "bing_favicon": "SUPPORT_OPEN_USER_CONFIRMED_NO_TICKET_ID",
     "bing_www_global_indexed_count": "UNCONFIRMED"
+  },
+  "continuity_2026_10_28": {
+    "handoff": "docs/sfjm/MNT_MERCADO_RIIO_PRODUCAO_CONTINUIDADE_2026-10-28.md",
+    "evidence": "docs/sfjm/MNT_MERCADO_RIIO_PRODUCAO_CONTINUIDADE_2026-10-28.json",
+    "prompt": "handoffs/PROMPT_RETOMADA_MERCADO_RIIO_2026-10-28.md",
+    "state": "RELEASED / INDEXABLE / EXTERNAL_INDEXING_UNKNOWN",
+    "release_pr": 507,
+    "runtime_sha": "0b1de5b1218fb1c4c83c2683366bdfe11ad60d44",
+    "deployment": "dpl_8iiXm3RtVDbMhNSbHdpaJBq6KjjG",
+    "supersedes_preparation_state": true,
+    "historical_resf_accounting_unchanged": true
   }
 }

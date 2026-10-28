@@ -1,3 +1,11 @@
+## 28/10/2026 — ESTADO VIGENTE: Mercado e RIIO em produção (PR #507)
+
+**Supera os avisos históricos de preparação/noindex abaixo para estas 12 páginas.** PR #507 MERGED; head final `99ff6710b1d792468d43a8cca3f38c1fc1b7b3e8` com 10/10 checks SUCCESS; merge/runtime `0b1de5b1218fb1c4c83c2683366bdfe11ad60d44`; Vercel Production READY `dpl_8iiXm3RtVDbMhNSbHdpaJBq6KjjG`. Onze artigos Mercado + RIIO HTTP200, indexáveis, canonical www e JSON-LD sintaticamente válido; hub/Blog/catálogo/sitemap atualizados (73 URLs no sitemap). Isso não comprova indexação Google/Bing.
+
+Ler integralmente `docs/sfjm/MNT_MERCADO_RIIO_PRODUCAO_CONTINUIDADE_2026-10-28.md` e JSON homônimo. Preservar cards/badges/rodapé RESF, IPTU atemporal, novo hero Inventário, ficha integral/galerias/bairro do RIIO e atendimento inicial remoto sem credencial RJ inventada. QA visual independente, testes oficiais schema/performance e entrega CRM do lote seguem pendentes. Não reabrir redação/publicação do lote. Próxima ação: resolver live e QA pós-release em leitura; prioridade de negócio continua cliques qualificados. Este pedido atualiza documentação, sem novo runtime/Core/CRM/campanhas. Prompt: `handoffs/PROMPT_RETOMADA_MERCADO_RIIO_2026-10-28.md`.
+
+---
+
 > **Segunda revisão do RIIO:** ficha completa incorporada por edifício, galerias de 10 ambientes e 11 plantas, seção do bairro com três fotos e mapa contextual. Hero/facts aprovados e Form46 preservados. [Dossiê da revisão](riio-revisao-galerias-2026-10-28.md).
 
 > **Revisão de 28/10 após teste do usuário:** cards contextuais, badges RESF nos 11 artigos, IPTU atemporal, novo hero de Inventário e página RIIO preparada. Total atual: 20.263 palavras. [Detalhes e limites](revisao-usuario-2026-10-28.md). O texto abaixo registra a preparação original; a revisão supera o antigo escopo apenas SP do artigo Barra e as contagens anteriores. Sem publicação.
