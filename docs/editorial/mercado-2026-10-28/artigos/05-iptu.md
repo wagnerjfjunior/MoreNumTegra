@@ -1,6 +1,6 @@
 Para avaliar o IPTU de um apartamento em São Paulo, consulte a notificação de lançamento da unidade, confira o cadastro e organize o valor anual dentro do custo de moradia. O preço de compra e o imposto são informações diferentes: não é seguro estimar a cobrança aplicando um percentual genérico ao valor anunciado.
 
-Este guia se refere ao município de São Paulo. As condições de pagamento de 2026 foram consultadas em 28 de outubro de 2026 e não devem ser transportadas automaticamente para exercícios posteriores. Para uma unidade específica, prevalecem os documentos e os canais oficiais correspondentes.
+Este guia se refere ao município de São Paulo. Regras de cálculo, benefícios e condições de pagamento devem ser conferidos no exercício correspondente ao lançamento. Para uma unidade específica, prevalecem os documentos e os canais oficiais correspondentes.
 
 ## O que conferir antes de comparar apartamentos
 
@@ -12,7 +12,7 @@ Também pergunte se existem outros documentos fiscais ligados à aquisição. O 
 
 ## Valor venal e preço de mercado não são a mesma coisa
 
-O valor venal utilizado na tributação segue critérios municipais. O preço de mercado depende da negociação e das características do bem. A [Prefeitura explica o cálculo e as regras aplicáveis a partir de 2026](https://prefeitura.sp.gov.br/web/fazenda/w/servicos/iptu/2456), incluindo benefícios e limites sujeitos a condições.
+O valor venal utilizado na tributação segue critérios municipais. O preço de mercado depende da negociação e das características do bem. A [Prefeitura explica o cálculo e as regras do IPTU](https://prefeitura.sp.gov.br/web/fazenda/w/servicos/iptu/2456), incluindo benefícios e limites sujeitos a condições.
 
 Por isso, não conclua que um apartamento está barato ou caro comparando apenas o anúncio com o valor venal. Tampouco estime a valorização anual pela mudança desse cadastro. São medidas com finalidades distintas e que precisam ser interpretadas em seus próprios contextos.
 
@@ -32,13 +32,13 @@ Tenha em mãos os dados solicitados pelo serviço. Se o documento não estiver d
 
 Guarde o documento emitido e os comprovantes relevantes. Uma guia gerada não comprova pagamento; uma parcela quitada não comprova inexistência de outros débitos. Cada evidência responde a uma pergunta diferente sobre a situação fiscal.
 
-## Pagamento de 2026: condições com data definida
+## Pagamento: confira as condições do exercício
 
-Na consulta oficial realizada para este artigo, a Prefeitura informa desconto de 3% para cota única paga até o vencimento da primeira parcela e parcelamento em até dez vezes, respeitado o mínimo de R$ 50 por parcela. A orientação também informa que, depois da primeira, as parcelas de 2026 devem ser emitidas no portal, sem o envio do carnê completo.
+Consulte o calendário e as modalidades disponíveis no portal oficial da Prefeitura para o exercício da cobrança. Verifique se há opção de cota única com desconto, quais são as regras de parcelamento e se existe valor mínimo por parcela. Registre as condições que efetivamente aparecem no lançamento da unidade.
 
-Essas condições não significam que o desconto ainda esteja disponível em outubro para uma cobrança cujo prazo já passou. Confira o vencimento da sua notificação e a situação de cada guia. A informação anual serve para explicar o regime daquele exercício, não para criar um benefício fora do prazo.
+Os benefícios de pagamento podem depender do vencimento e das condições definidas para cada exercício. Não aplique automaticamente uma regra de anos anteriores nem presuma que gerar uma nova guia reabre um prazo encerrado. Confira também como obter as parcelas seguintes e quais formas de pagamento são aceitas no serviço municipal.
 
-Se o pagamento estiver atrasado, consulte a emissão atualizada e os encargos no serviço municipal. Não reutilize um valor antigo para calcular uma quitação. Quando houver inscrição em dívida ativa, o encaminhamento pode ser diferente do utilizado para parcelas correntes.
+Se o pagamento estiver atrasado, consulte a emissão atualizada e os encargos no serviço municipal. Não reutilize um valor antigo para calcular uma quitação. Quando houver inscrição em dívida ativa, o encaminhamento pode ser diferente do utilizado para parcelas correntes. Guarde a guia correta e o comprovante de pagamento, identificando o cadastro e o período a que se referem.
 
 ### À vista ou parcelado: organize o caixa
 
@@ -110,9 +110,9 @@ Não presuma essa continuidade. Verifique o exercício, o cadastro e os benefíc
 
 Não. O comprovante corresponde à obrigação nele identificada. A análise deve considerar os documentos e consultas necessários para os demais períodos e situações relevantes.
 
-### O desconto de 2026 vale para qualquer data?
+### O desconto da cota única vale para qualquer vencimento?
 
-Não. A condição divulgada está vinculada ao prazo da cota única, relacionado ao vencimento da primeira parcela. Consulte o documento e o portal para a situação atual da cobrança.
+Não. O benefício, quando previsto, depende das condições e dos prazos definidos para o exercício. Consulte o lançamento e o portal oficial para saber o que se aplica à cobrança da unidade.
 
 ### Como comparar imóveis quando um deles só tem estimativa?
 

@@ -1,3 +1,5 @@
+> **Revisão de 28/10 após teste do usuário:** cards contextuais, badges RESF nos 11 artigos, IPTU atemporal, novo hero de Inventário e página RIIO preparada. Total atual: 20.263 palavras. [Detalhes e limites](revisao-usuario-2026-10-28.md). O texto abaixo registra a preparação original; a revisão supera o antigo escopo apenas SP do artigo Barra e as contagens anteriores. Sem publicação.
+
 # Mercado Imobiliário — lote de 11 artigos para avaliação
 
 Data: 28/10/2026 · MoreNumTegra · preparação editorial e técnica, sem publicação.

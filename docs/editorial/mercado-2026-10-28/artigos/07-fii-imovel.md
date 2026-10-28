@@ -99,6 +99,8 @@ A conclusão também deve registrar quais benefícios ficaram fora da conta. Uso
 
 Se utilizar uma planilha, identifique a fonte em cada linha e preserve versões. Uma atualização de rendimento ou despesa precisa mostrar a qual período se refere. Assim, a comparação poderá ser refeita sem depender de uma captura de tela ou de uma lembrança do valor observado inicialmente.
 
+<!-- CARD:studios -->
+
 ## Perguntas frequentes
 
 ### Comprar cotas permite morar em um imóvel do fundo?

@@ -76,6 +76,14 @@ Uma segunda residência utilizada pela família também pode ter disponibilidade
 
 A [análise de compra para investimento de longo prazo](/blog/mercado/compra-imovel-investimento-longo-prazo/) organiza o fluxo de caixa e os cenários. Para um imóvel costeiro, acrescente as despesas e tarefas específicas identificadas na documentação e na avaliação técnica.
 
+## RIIO by Piero Lissoni na Barra da Tijuca
+
+Na Avenida Lúcio Costa, o RIIO by Piero Lissoni é o primeiro empreendimento do Rio de Janeiro apresentado nesta expansão do MoreTegra. O projeto Tegra tem concepção de arquitetura, interiores e paisagismo de Lissoni & Partners. Conhecer essa proposta permite levar os critérios de localização, uso e conservação a uma análise concreta, sem presumir a disponibilidade de determinada unidade.
+
+<!-- CARD:riio -->
+
+A página do empreendimento reúne suas tipologias de referência e imagens oficiais. Compare a configuração da unidade de interesse com os documentos pertinentes; a imagem ilustrativa de uma varanda não comprova a vista de todos os apartamentos nem substitui a verificação de andar e posição.
+
 ## Compare o custo de possuir e utilizar
 
 Monte uma conta anual com despesas da unidade, do condomínio e de deslocamento, além de manutenção e serviços necessários. Use valores documentados e classifique as estimativas. Uma despesa que ainda não foi orçada deve permanecer como pendência, e não desaparecer da comparação.
@@ -116,9 +124,9 @@ Não. Verifique a posição da unidade, a planta e o que pode ser observado em c
 
 Um anúncio mostra uma oferta, não o recebimento anual do proprietário. A conta precisa considerar disponibilidade, ocupação, despesas, regras e tributação, com hipóteses explícitas.
 
-### O MoreTegra apresenta ofertas na Barra neste guia?
+### Qual empreendimento da Barra posso conhecer no MoreTegra?
 
-Não há oferta comercial ou estoque do Rio neste artigo. O conteúdo organiza critérios de escolha. O catálogo e o atendimento MoreTegra apresentados no portal têm seu escopo comercial próprio em São Paulo.
+O RIIO by Piero Lissoni inicia a apresentação de empreendimentos do Rio de Janeiro no portal. Consulte o card acima para conhecer a proposta e solicitar informações. Uma unidade só deve ser considerada disponível após confirmação específica.
 
 ## Avalie a paisagem junto com a conservação
 

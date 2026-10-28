@@ -48,6 +48,14 @@ Autoria arquitetônica pode ser relevante para a identidade do projeto e para su
 
 Para materiais especiais, investigue manutenção, assistência e reposição. Uma solução agradável no lançamento pode exigir fornecedor especializado ou cuidados que a administração precisará sustentar. O diferencial merece ser avaliado durante todo o ciclo de uso, e não apenas no dia da visita.
 
+O CAPIITOLO by Piero Lissoni, na Chácara Klabin, permite conhecer um exemplo de assinatura internacional no catálogo Tegra. Compare os ambientes e o escopo apresentado no projeto com as prioridades da sua família.
+
+<!-- CARD:capiitolo -->
+
+Na Vila Nova Conceição, o Bueno Brandão 257 reúne arquitetura de Königsberger Vannucchi, interiores de Roberto Migotto e paisagismo de EDSA e Cardim. São contribuições distintas: avalie a função de cada uma na experiência de morar e na conservação do edifício.
+
+<!-- CARD:bueno -->
+
 ## Condomínio e conservação fazem parte do preço
 
 O orçamento da compra não termina na parcela ou na escritura. Considere despesas ordinárias, fundo de reserva, manutenção preventiva e possíveis intervenções. Em um edifício existente, atas, orçamento e histórico de obras ajudam a perceber o que está sendo pago hoje e o que pode exigir desembolso adiante.
@@ -95,6 +103,14 @@ Também observe a diferença entre ausência de confirmação e demonstração d
 Antes da proposta, organize as questões materiais em uma lista curta e estabeleça como serão esclarecidas. Uma dúvida sobre acabamento pode ter peso diferente de uma restrição de uso ou de uma intervenção necessária. Essa triagem ajuda a dedicar atenção ao que pode alterar a decisão e evita que pequenos detalhes de apresentação consumam o tempo da análise principal.
 
 Ao registrar a decisão, guarde também as alternativas descartadas e o motivo. Essa referência ajuda a revisar a escolha se preço, documentação ou necessidades da família mudarem antes da assinatura.
+
+## Projetos para aprofundar a comparação
+
+O Tièl Vila Nova Conceição e a seleção de studios e salas comerciais permitem examinar propostas de uso diferentes. Consulte as características específicas, compare o custo total e verifique a adequação ao seu objetivo antes de decidir.
+
+<!-- CARD:tiel -->
+
+<!-- CARD:studios -->
 
 ## Perguntas frequentes
 

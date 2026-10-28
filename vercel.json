@@ -456,6 +456,10 @@
     {
       "source": "/blog/mercado/imovel-herdado-inventario-documentos-etapas/",
       "destination": "/src-greenn/blog/mercado/imovel-herdado-inventario-documentos-etapas/index.html"
+    },
+    {
+      "source": "/empreendimentos/riio-by-piero-lissoni/",
+      "destination": "/src-greenn/empreendimentos/riio-by-piero-lissoni/index.html"
     }
   ],
   "headers": [

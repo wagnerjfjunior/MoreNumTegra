@@ -95,6 +95,10 @@ Essa disciplina também facilita revisar a decisão. Se o cronograma mudar, voc�
 
 Se uma informação municipal parecer incompatível com o endereço observado, registre a divergência e procure o canal responsável. Não ajuste a interpretação apenas para que a expectativa inicial da compra permaneça favorável.
 
+Caminhos da Lapa é uma referência para observar a relação entre projetos residenciais e entorno urbano. Explore os empreendimentos e teste os percursos do endereço considerado; o card não substitui a verificação local.
+
+<!-- CARD:caminhos -->
+
 ## Perguntas frequentes
 
 ### Uma estação nova garante valorização?

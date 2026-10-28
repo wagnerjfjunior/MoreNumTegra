@@ -41,5 +41,69 @@
     "bytes": 137310,
     "origin": "IMAGEGEN_2026-10-28",
     "srcset": "/assets/blog/mercado-2026/orla-conceitual-640.webp 640w, /assets/blog/mercado-2026/orla-conceitual-1200.webp 1200w"
+  },
+  "bueno": {
+    "src": "/assets/blog/mercado-2026/bueno.webp",
+    "width": 694,
+    "height": 930,
+    "origin": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/337/ImagemPrincipal/8e85cddc-003b-4b7a-bfd2-2e38275cb1b8.jpg",
+    "bytes": 104658
+  },
+  "capiitolo": {
+    "src": "/assets/blog/mercado-2026/capiitolo.webp",
+    "width": 714,
+    "height": 640,
+    "origin": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/349/ImagemPrincipal/Tegra-Incorporadora-Detalhe-Fachada-CAPITOLO-by-Piero-Lissoni-Apartamentos-210-Metros-Chacara-Klabin-Sao-Paulo-SP-714x640-1736369712708.jpg",
+    "bytes": 114144
+  },
+  "inventario": {
+    "src": "/assets/blog/mercado-2026/inventario.webp",
+    "width": 750,
+    "height": 1000,
+    "origin": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/349/Imagem/Tegra-Incorporadora-Fachada-Noturna-CAPITOLO-by-Piero-Lissoni-Apartamentos-210-Metros-Chacara-Klabin-Sao-Paulo-SP-1400x1400-1736373382006.jpg",
+    "bytes": 123868
+  },
+  "riio-varanda": {
+    "src": "/assets/blog/mercado-2026/riio-varanda.webp",
+    "width": 1200,
+    "height": 462,
+    "origin": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/362/Imagem/TRA_99_BL1-Varanda-Decorado_REV_04_00-1765206772784.jpg",
+    "bytes": 60476,
+    "srcset": "/assets/blog/mercado-2026/riio-varanda.webp 1200w, /assets/blog/mercado-2026/riio-varanda-640.webp 640w"
+  },
+  "riio-lobby": {
+    "src": "/assets/blog/mercado-2026/riio-lobby.webp",
+    "width": 1200,
+    "height": 518,
+    "origin": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/362/Imagem/TRA_50_BL1-Lobby-Welcome-Space_REV_03_03a-1765206771419.jpg",
+    "bytes": 50180
+  },
+  "riio-piscina": {
+    "src": "/assets/blog/mercado-2026/riio-piscina.webp",
+    "width": 1200,
+    "height": 580,
+    "origin": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/362/Imagem/TRA_72_BL5-Piscina-Indoor-1_REV_04_00a-1765206771277.jpg",
+    "bytes": 34178
+  },
+  "riio-gourmet": {
+    "src": "/assets/blog/mercado-2026/riio-gourmet.webp",
+    "width": 1200,
+    "height": 631,
+    "origin": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/362/Imagem/TRA_65_BL9-Gourmet_REV_02_01-1765206772135.jpg",
+    "bytes": 66650
+  },
+  "riio-academia": {
+    "src": "/assets/blog/mercado-2026/riio-academia.webp",
+    "width": 1200,
+    "height": 338,
+    "origin": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/362/Imagem/TRA_86_BL7-Academia---Sal%C3%A3o-Equipamentos-1_REV_02_01-1765206771111.jpg",
+    "bytes": 53054
+  },
+  "riio-bairro": {
+    "src": "/assets/blog/mercado-2026/riio-bairro.webp",
+    "width": 1200,
+    "height": 800,
+    "origin": "https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/362/Imagem/shutterstock_2230272851-1768512814278.jpg",
+    "bytes": 166918
   }
 }

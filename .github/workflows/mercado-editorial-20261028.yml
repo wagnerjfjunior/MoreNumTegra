@@ -5,6 +5,7 @@ on:
       - 'docs/editorial/mercado-2026-10-28/**'
       - 'src-greenn/blog/mercado/**'
       - 'src-greenn/blog/mercado-editorial.*'
+      - 'src-greenn/empreendimentos/riio-by-piero-lissoni/**'
       - 'assets/blog/mercado-2026/**'
       - 'vercel.json'
       - 'scripts/validate-mercado-editorial-20261028.mjs'

@@ -1,0 +1,44 @@
+{
+  "review_date": "2026-10-28",
+  "status": "DRAFT_NOINDEX_FOR_LOCAL_REVIEW",
+  "scope": "Usuário escolheu RIIO by Piero Lissoni como primeiro empreendimento RJ no artigo da Barra; preparação da página e card, sem release.",
+  "route": "/empreendimentos/riio-by-piero-lissoni/",
+  "name": "RIIO by Piero Lissoni",
+  "sources": {
+    "project": "https://www.tegraincorporadora.com.br/rj/rio-de-janeiro/oeste/barra-da-tijuca/transamerica",
+    "microsite": "https://www.tegralissoni.com.br/rio",
+    "technical_sheet": "https://www.tegralissoni.com.br/media/transamerica/Ficha_Tecnica.pdf",
+    "architect": "https://www.lissoniandpartners.com/en/architecture/residential/americas/ongoing/tegra-lissoni-riio/1704"
+  },
+  "verified": {
+    "stage": "Em construção (portal oficial e microsite vivo: Obras Iniciadas; pesquisa indexada antiga dizia Lançamento)",
+    "address": "Avenida Lúcio Costa, 4900, Barra da Tijuca, Rio de Janeiro/RJ; ficha técnica também cita Avenida Peregrino Junior, 133. CEP e geolocalização não verificados, omitidos.",
+    "apartments": "262, 305, 319 e 411 m² com 4 suítes; 506 m² com 5 suítes",
+    "penthouses": "524, 635, 660 e 830 m² com 5 suítes; 1.042 m² com 6 suítes",
+    "parking": "3 a 6 vagas pela ficha técnica, associadas à tipologia; portal informa faixa genérica 2 a 6. Não anunciar 2 vagas para planta sem comprovação específica.",
+    "architecture_interiors_landscape": "Lissoni & Partners — fonte do próprio escritório e microsite oficial",
+    "developer_brand": "Tegra",
+    "media": "Perspectivas oficiais publicadas na galeria da incorporadora; cenas conferidas em contact sheet. Foto do bairro é contextual, não vista de unidade. Derivados e fontes em midia.json. Sem mídia do portfólio Lissoni, que exige autorização própria."
+  },
+  "not_published": {
+    "price": "Portal/microsite vivo mostram a partir de R$8.212.000, tabela outubro/2026; índice antigo mostrava R$7.900.000 maio/2026. Sem unidade identificada, tabela e validação comercial do usuário, preço não transplantado ao site.",
+    "unit_inventory": "UNKNOWN — sem Offer, Product, disponibilidade ou promessa de estoque",
+    "delivery_date": "UNKNOWN",
+    "postal_code_geo": "UNKNOWN — endereço da SPE não é endereço do projeto",
+    "actual_floorplan_images": "UNKNOWN — quadro de tipologias e ficha técnica real, sem usar perspectiva como planta"
+  },
+  "contact": {
+    "name": "Sabrina da Tegra",
+    "credential": "CRECI-SP 209.905-F",
+    "whatsapp": "+5511960779328",
+    "scope": "Atendimento inicial para solicitar materiais e encaminhar consulta; sem alegação de credencial RJ, equipe ou escritório local.",
+    "form": "Green Sales Form46, tenant313, title MoreEmUmTegra; reutilizar runtime atual e bloqueio de envio fora de www.moretegra.com.br. Nenhum lead de teste."
+  },
+  "release_residuals": [
+    "Revisão comercial da expansão e do fluxo de atendimento RJ; manter credencial SP identificada corretamente",
+    "Aprovação visual mobile/desktop e crop de imagens",
+    "Plantas de unidade, estoque, preço, CEP/geo e cronograma não confirmados",
+    "Testes oficiais Schema.org/Google, performance e CRM não executados",
+    "Sem nova regional RJ, alteração de Home, sitemap, hubs, indexação ou merge"
+  ]
+}

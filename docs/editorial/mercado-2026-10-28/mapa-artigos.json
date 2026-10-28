@@ -23,12 +23,16 @@
     "status": "DRAFT_NOINDEX_REVIEW_REQUIRED",
     "cta": "A Sabrina pode ajudar você a comparar plantas e informações de empreendimentos Tegra em São Paulo, de acordo com o que procura para morar.",
     "breadcrumb": "Valorização de imóveis de alto padrão",
-    "words": 1824,
+    "words": 1940,
     "internalLinks": [
       "/blog/mercado/infraestrutura-entorno-escolha-imovel/",
       "/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/",
       "/blog/dicasedecor/iluminacao-natural-apartamento-orientacao-solar/",
+      "/empreendimentos/capiitolo-piero-lissoni/",
+      "/empreendimentos/bueno-brandao-257/",
       "/blog/mercado/condominio-sustentavel-solucoes-custos/",
+      "/empreendimentos/tiel-vila-nova-conceicao/",
+      "/investimentos/studios-e-salas-comerciais/",
       "/blog/mercado/imoveis-luxo-renda-custos-liquidez/"
     ],
     "sources": [
@@ -67,7 +71,6 @@
       "/blog/mercado/iptu-apartamento-sp-consulta-orcamento/",
       "/blog/dicasedecor/cozinha-apartamento-layout-uso-diario/",
       "/regioes/tatuape/",
-      "/empreendimentos/universo-tatuape-orbita/",
       "/empreendimentos/universo-tatuape-orbita/"
     ],
     "sources": [
@@ -100,7 +103,7 @@
     "status": "DRAFT_NOINDEX_REVIEW_REQUIRED",
     "cta": "A Sabrina pode ajudar você a comparar plantas e informações de empreendimentos Tegra em São Paulo, de acordo com o que procura para morar.",
     "breadcrumb": "Infraestrutura urbana",
-    "words": 1815,
+    "words": 1848,
     "internalLinks": [
       "/blog/mercado/mooca-ou-tatuape-rotina-mobilidade/",
       "/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/",
@@ -173,7 +176,7 @@
     "status": "DRAFT_NOINDEX_REVIEW_REQUIRED",
     "cta": "A Sabrina pode ajudar você a comparar plantas e informações de empreendimentos Tegra em São Paulo, de acordo com o que procura para morar.",
     "breadcrumb": "IPTU de apartamento em São Paulo",
-    "words": 1807,
+    "words": 1810,
     "internalLinks": [
       "/blog/mercado/compra-imovel-investimento-longo-prazo/"
     ],
@@ -210,7 +213,8 @@
     "words": 1801,
     "internalLinks": [
       "/blog/mercado/infraestrutura-entorno-escolha-imovel/",
-      "/blog/mercado/fii-ou-imovel-fisico-comparacao/"
+      "/blog/mercado/fii-ou-imovel-fisico-comparacao/",
+      "/investimentos/studios-e-salas-comerciais/"
     ],
     "sources": [
       "https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/pagamento/ganhos-de-capital",
@@ -281,12 +285,13 @@
     "url": "/blog/mercado/orla-barra-tijuca-localizacao-conservacao/",
     "legacy": "/blog/mercado/a-orla-da-barra-da-tijuca-luxo-no-rio-de-janeiro/",
     "status": "DRAFT_NOINDEX_REVIEW_REQUIRED",
-    "cta": "Se sua busca também inclui São Paulo, a Sabrina pode apresentar os empreendimentos Tegra do catálogo MoreTegra. Este atendimento não apresenta ofertas na Barra da Tijuca.",
+    "cta": "Converse com Sabrina para solicitar os materiais do RIIO by Piero Lissoni e esclarecer os próximos passos da sua pesquisa de compra na Barra da Tijuca.",
     "breadcrumb": "Imóveis na orla da Barra da Tijuca",
-    "words": 1820,
+    "words": 1935,
     "internalLinks": [
       "/blog/dicasedecor/iluminacao-natural-apartamento-orientacao-solar/",
-      "/blog/mercado/compra-imovel-investimento-longo-prazo/"
+      "/blog/mercado/compra-imovel-investimento-longo-prazo/",
+      "/empreendimentos/riio-by-piero-lissoni/"
     ],
     "sources": [
       "https://abcp.org.br/cuidados-ao-construir-em-areas-litoraneas/",
@@ -317,13 +322,13 @@
     "status": "DRAFT_NOINDEX_REVIEW_REQUIRED",
     "cta": "A Sabrina pode ajudar você a comparar plantas e informações de empreendimentos Tegra em São Paulo, de acordo com o que procura para morar.",
     "breadcrumb": "Investir em imóveis de luxo",
-    "words": 1819,
+    "words": 1857,
     "internalLinks": [
       "/blog/mercado/alto-padrao-criterios-valor-compra/",
       "/blog/mercado/condominio-sustentavel-solucoes-custos/",
       "/blog/mercado/compra-imovel-investimento-longo-prazo/",
       "/empreendimentos/tiel-vila-nova-conceicao/",
-      "/empreendimentos/tiel-vila-nova-conceicao/"
+      "/empreendimentos/bueno-brandao-257/"
     ],
     "sources": [
       "https://www.gov.br/investidor/pt-br/investir/antes-de-investir/entenda-as-caracteristicas-dos-investimentos/liquidez",
@@ -360,9 +365,7 @@
       "/regioes/itaim-bibi/",
       "/blog/dicasedecor/cozinha-apartamento-layout-uso-diario/",
       "/blog/dicasedecor/salao-festas-espaco-gourmet-como-avaliar/",
-      "/empreendimentos/dsg-itaim/",
-      "/empreendimentos/dsg-itaim/",
-      "/regioes/itaim-bibi/"
+      "/empreendimentos/dsg-itaim/"
     ],
     "sources": [
       "https://www.metro.sp.gov.br/sua-viagem/linhas-estacoes/",
@@ -383,9 +386,9 @@
       "ITCMD São Paulo"
     ],
     "priority": "P2",
-    "media": "rua",
-    "caption": "Perspectiva ilustrada de Caminhos da Lapa · Acervo MoreTegra",
-    "alt": "Perspectiva ilustrada de edificações residenciais em Caminhos da Lapa",
+    "media": "inventario",
+    "caption": "Perspectiva ilustrada da fachada noturna do CAPIITOLO by Piero Lissoni · Acervo Tegra",
+    "alt": "Fachada noturna do CAPIITOLO by Piero Lissoni, com iluminação das varandas",
     "intent": "Organização documental da sucessão; não prestar solução jurídica individual.",
     "cannibalization": "Revisão jurídica do caso e atualização normativa antes de liberar publicação.",
     "url": "/blog/mercado/imovel-herdado-inventario-documentos-etapas/",

@@ -94,6 +94,8 @@ Registre também o que seria necessário para mudar de finalidade. Um apartament
 
 Ao revisar a estratégia, mantenha separados os recursos pessoais e as contas do imóvel. Essa organização permite reconhecer quanto capital adicional foi aplicado e qual renda foi efetivamente disponibilizada, evitando uma percepção de resultado construída apenas pelo saldo momentâneo da conta bancária.
 
+<!-- CARD:studios -->
+
 ## Perguntas frequentes
 
 ### Imóvel é sempre uma proteção contra a inflação?

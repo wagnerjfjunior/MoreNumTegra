@@ -30,6 +30,15 @@ for(const a of data){
  const crumbs=graph.find(x=>x['@type']==='BreadcrumbList');assert.equal(crumbs.itemListElement.at(-1).item,url);
  assert.ok(html.includes('CRECI-SP 209.905-F'));assert.ok(html.includes('href="/regioes/#formulario"'));
  assert.ok(html.includes('https://wa.me/5511960779328?text='));
+ assert.equal((html.match(/id="mt-floating-dock"/g)||[]).length,1,'One approved RESF dock');
+ assert.ok(!html.includes('mnt-market-dock'),'Retired nonstandard dock must not return');
+ const dock=html.match(/<nav id="mt-floating-dock"[\s\S]*?<\/nav>/)[0];
+ assert.ok(dock.includes('mt-floating mt-floating-lead'));
+ assert.ok(dock.includes('mt-floating mt-floating-whatsapp'));
+ assert.ok(dock.includes('whatsapp-removebg.webp'),'Official WhatsApp logo');
+ assert.ok(html.includes('var(--mt-consent-offset,14px)'),'Dock respects consent offset');
+ const copy=html.match(/<div class="mnt-market-copy">([\s\S]*?)<\/div><section class="mnt-sabrina-card"/)[1];
+ assert.ok(!/<p>[^]*?<a href="\//.test(copy.replace(/<aside\b[\s\S]*?<\/aside>/g,'')),'Internal editorial links must use cards');
  assert.ok(!html.includes('FAQPage'));assert.ok(!html.includes('<!-- CARD:'));assert.ok(!html.includes('localhost'));
  const ids=[...html.matchAll(/\bid="([^\"]+)"/g)].map(x=>x[1]);assert.equal(new Set(ids).size,ids.length,'Duplicate HTML id '+a.id);
  let imgCount=0;
@@ -48,4 +57,37 @@ for(const a of data){
  assert.ok(a.sources.length>=2);assert.equal(rew.get(a.url),'/'+file);
  results.push({id:a.id,url:a.url,words:a.words,images:imgCount,source_links:a.sources.length,status:'STATIC_PASS'});
 }
+// Product-authority review regressions: check cards in editorial copy, not footer duplicates.
+const cards=JSON.parse(read(root+'/cards.json'));
+for(const [id,keys] of [[1,['tiel','studios','capiitolo','bueno']],[3,['caminhos']],[6,['studios']],[7,['studios']],[8,['riio']],[9,['bueno','tiel']]]){
+ const a=data.find(x=>x.id===id),html=read('src-greenn'+a.url+'index.html');
+ const cardLinks=[...html.matchAll(/<aside class="mnt-project"><a href="([^\"]+)"/g)].map(x=>x[1]);
+ for(const key of keys)assert.ok(cardLinks.includes(cards[key].url),'Missing contextual card '+id+':'+key);
+}
+assert.equal(cards.caminhos.url,'https://www.caminhosdalapategra.com.br/','Master development has its own owner');
+assert.ok(!/2026|3%|R\$\s*50|até dez vezes/.test(read(root+'/artigos/05-iptu.md')),'IPTU must not bake annual payment terms into evergreen copy');
+assert.notEqual(data.find(x=>x.id===11).media,'rua','Inventory hero replaced');
+
+const riio=read('src-greenn/empreendimentos/riio-by-piero-lissoni/index.html');
+assert.equal((riio.match(/<h1\b/g)||[]).length,1);
+assert.ok(riio.includes('name="robots" content="noindex,follow"'));
+assert.ok(riio.includes('href="https://www.moretegra.com.br/empreendimentos/riio-by-piero-lissoni/"'));
+assert.equal((riio.match(/class="facts"/g)||[]).length,1);
+assert.equal((riio.match(/class="fact"/g)||[]).length,4);
+assert.ok(!riio.includes('hero-meta'));
+assert.ok(riio.includes('<b>3 a 6 vagas</b>')&&riio.includes('<b>Em construção</b>'));
+const rg=JSON.parse(riio.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
+assert.ok(!rg.some(x=>['Product','Offer'].includes(x['@type'])),'No unverified unit offer');
+assert.ok(!riio.includes('R$')&&!riio.includes('postalCode'),'No inherited price or invented CEP');
+const questions=[...riio.matchAll(/<details><summary>([\s\S]*?)<\/summary><p>([\s\S]*?)<\/p><\/details>/g)].map(x=>[x[1].replaceAll('&amp;','&'),x[2].replaceAll('&amp;','&')]);
+assert.deepEqual(rg.find(x=>x['@type']==='FAQPage').mainEntity.map(x=>[x.name,x.acceptedAnswer.text]),questions,'RIIO FAQ parity');
+const form=riio.match(/<form id="moretegra-lead-form"[\s\S]*?<\/form>/)[0];
+const reference=read('src-greenn/empreendimentos/jerivas-caminhos-da-lapa/index.html').match(/<form id="moretegra-lead-form"[\s\S]*?<\/form>/)[0].replaceAll('Jerivás Caminhos da Lapa','RIIO by Piero Lissoni').replaceAll('Jerivás','RIIO by Piero Lissoni');
+assert.equal(form,reference,'Preserve native Form46, adjusting only project context');
+for(const script of ['runtime.js','measurement-core.js','measurement-form.js']){
+ assert.ok(riio.includes('/src-greenn/preview/'+script));
+ assert.equal(read('src-greenn/preview/'+script),baseline('src-greenn/preview/'+script));
+}
+for(const [,src] of riio.matchAll(/<img[^>]+src="(\/[^\"]+)"/g))assert.ok(existsSync(src.slice(1)),'RIIO image '+src);
+assert.equal(rew.get('/empreendimentos/riio-by-piero-lissoni/'),'/src-greenn/empreendimentos/riio-by-piero-lissoni/index.html');
 console.log(JSON.stringify({pass:true,articles:results,unique_internal_links:allLinks.size,sitemap_unchanged:true,production_unchanged:true,visual_browser_qa:'NOT_EXECUTED',official_schema_tests:'NOT_EXECUTED'},null,2));

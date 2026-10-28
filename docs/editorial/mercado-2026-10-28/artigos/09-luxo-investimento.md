@@ -92,6 +92,10 @@ As páginas dos projetos são os destinos para conferir características e docum
 
 <!-- CARD:tiel -->
 
+O Bueno Brandão 257, na Vila Nova Conceição, apresenta outra proposta residencial. Examine a planta, o padrão de uso e as despesas esperadas para a unidade, mantendo os dados do projeto separados das hipóteses de aluguel ou revenda.
+
+<!-- CARD:bueno -->
+
 Peça informações da unidade pretendida e desenvolva a simulação com esses dados. Não utilize condições históricas ou de outra tipologia como se estivessem vigentes para toda a oferta. A comparação financeira deve acompanhar o objeto real da proposta.
 
 ## Crie critérios de revisão antes de entrar
