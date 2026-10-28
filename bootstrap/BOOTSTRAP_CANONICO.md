@@ -1,3 +1,11 @@
+## 28/10/2026 — ESTADO VIGENTE: Mercado e RIIO em produção (PR #507)
+
+**Supera os avisos históricos de preparação/noindex abaixo para estas 12 páginas.** PR #507 MERGED; head final `99ff6710b1d792468d43a8cca3f38c1fc1b7b3e8` com 10/10 checks SUCCESS; merge/runtime `0b1de5b1218fb1c4c83c2683366bdfe11ad60d44`; Vercel Production READY `dpl_8iiXm3RtVDbMhNSbHdpaJBq6KjjG`. Onze artigos Mercado + RIIO HTTP200, indexáveis, canonical www e JSON-LD sintaticamente válido; hub/Blog/catálogo/sitemap atualizados (73 URLs no sitemap). Isso não comprova indexação Google/Bing.
+
+Ler integralmente `docs/sfjm/MNT_MERCADO_RIIO_PRODUCAO_CONTINUIDADE_2026-10-28.md` e JSON homônimo. Preservar cards/badges/rodapé RESF, IPTU atemporal, novo hero Inventário, ficha integral/galerias/bairro do RIIO e atendimento inicial remoto sem credencial RJ inventada. QA visual independente, testes oficiais schema/performance e entrega CRM do lote seguem pendentes. Não reabrir redação/publicação do lote. Próxima ação: resolver live e QA pós-release em leitura; prioridade de negócio continua cliques qualificados. Este pedido atualiza documentação, sem novo runtime/Core/CRM/campanhas. Prompt: `handoffs/PROMPT_RETOMADA_MERCADO_RIIO_2026-10-28.md`.
+
+---
+
 > **27/10/2026 — Retomada integral SEO/Blog/Bing:** leia `docs/sfjm/MNT_SEO_BLOG_BING_CONTINUIDADE_INTEGRAL_2026-10-27.md` e seu JSON de evidências. Doze artigos Dicas indexados no Google por confirmação do usuário; prioridade atual é gerar cliques qualificados. Favicon com chamado aberto; redirects e cobertura Bing são frentes distintas. Três modelos SFJM reconciliados após drift de 06/10. Prompt: `handoffs/PROMPT_RETOMADA_SEO_BLOG_BING_2026-10-27.md`. Resolver GitHub/Vercel live; preservar todos os históricos abaixo.
 
 > **2026-10-18 — Handoff Vila Nova Conceição:** Bueno Brandão 257 USER_APPROVED após PR #428 merged (`44e44c370d1c53a45a7f12d52c157cc12be4b4ef`, CI 8/8, Vercel READY `dpl_2iru2kNyo13qK2NQpSAjdDz4oMvR`). Cluster VNC **IN_PROGRESS**: Tièl e região pendentes. Fonte: `docs/sfjm/MNT_VNC_CLUSTER_HANDOFF_2026-10-18.md`. Nenhuma confirmação automática de teste externo.

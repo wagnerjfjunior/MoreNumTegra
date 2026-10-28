@@ -1,0 +1,108 @@
+{
+  "observed_date": "2026-10-28",
+  "timezone": "America/Sao_Paulo",
+  "classification": "CONFIRMED_TOOL",
+  "scope": "DOCUMENTATION_ONLY_CONTINUITY_UPDATE",
+  "repository": "wagnerjfjunior/MoreNumTegra",
+  "observed_main_before_docs": "0b1de5b1218fb1c4c83c2683366bdfe11ad60d44",
+  "runtime_sha": "0b1de5b1218fb1c4c83c2683366bdfe11ad60d44",
+  "production_deployment": "dpl_8iiXm3RtVDbMhNSbHdpaJBq6KjjG",
+  "production_state": "READY",
+  "release_pr": 507,
+  "release_head": "99ff6710b1d792468d43a8cca3f38c1fc1b7b3e8",
+  "release_checks": "10/10 SUCCESS",
+  "authorization_quote": "otimo vamos mergear e colocar em produçao todas as pagias",
+  "pages": [
+    {
+      "title": "Valorização de imóveis de alto padrão: o que avaliar antes de comprar?",
+      "url": "https://www.moretegra.com.br/blog/mercado/alto-padrao-criterios-valor-compra/",
+      "legacy": "/blog/mercado/3-fatores-que-garantem-a-valorizacao-de-imoveis-de-luxo-no-longo-prazo/",
+      "status": "PUBLISHED_HTTP_200_INDEXABLE_CANONICAL_VERIFIED"
+    },
+    {
+      "title": "Mooca ou Tatuapé: compare rotina, mobilidade e custo de moradia",
+      "url": "https://www.moretegra.com.br/blog/mercado/mooca-ou-tatuape-rotina-mobilidade/",
+      "legacy": "/blog/mercado/mooca-e-tatuape-tradicao-modernidade-e-infraestrutura-na-zona-leste/",
+      "status": "PUBLISHED_HTTP_200_INDEXABLE_CANONICAL_VERIFIED"
+    },
+    {
+      "title": "Infraestrutura urbana: como avaliar o entorno antes de comprar um imóvel",
+      "url": "https://www.moretegra.com.br/blog/mercado/infraestrutura-entorno-escolha-imovel/",
+      "legacy": "/blog/mercado/gentileza-urbana-o-papel-dos-empreendimentos-na-valorizacao-do-bairro/",
+      "status": "PUBLISHED_HTTP_200_INDEXABLE_CANONICAL_VERIFIED"
+    },
+    {
+      "title": "Sustentabilidade em condomínios: soluções, manutenção e custos reais",
+      "url": "https://www.moretegra.com.br/blog/mercado/condominio-sustentavel-solucoes-custos/",
+      "legacy": "/blog/mercado/esg-na-construcao-civil-como-predio-sustentavel-valorizam-patrimonio/",
+      "status": "PUBLISHED_HTTP_200_INDEXABLE_CANONICAL_VERIFIED"
+    },
+    {
+      "title": "IPTU de apartamento em São Paulo: consulta, valor venal e orçamento",
+      "url": "https://www.moretegra.com.br/blog/mercado/iptu-apartamento-sp-consulta-orcamento/",
+      "legacy": "/blog/mercado/iptu-saiba-tudo-sobre-o-imposto-anual-e-planeje-seu-pagamento/",
+      "status": "PUBLISHED_HTTP_200_INDEXABLE_CANONICAL_VERIFIED"
+    },
+    {
+      "title": "Comprar imóvel para investir no longo prazo: custos, riscos e critérios",
+      "url": "https://www.moretegra.com.br/blog/mercado/compra-imovel-investimento-longo-prazo/",
+      "legacy": "/blog/mercado/investimento-a-longo-prazo-comprar-um-imovel/",
+      "status": "PUBLISHED_HTTP_200_INDEXABLE_CANONICAL_VERIFIED"
+    },
+    {
+      "title": "Fundos imobiliários ou imóvel físico: compare uso, gestão, custos e riscos",
+      "url": "https://www.moretegra.com.br/blog/mercado/fii-ou-imovel-fisico-comparacao/",
+      "legacy": "/blog/mercado/fiis-vs-imovel-fisico-qual-a-melhor-estrategia-para-investir/",
+      "status": "PUBLISHED_HTTP_200_INDEXABLE_CANONICAL_VERIFIED"
+    },
+    {
+      "title": "Imóveis na orla da Barra da Tijuca: localização, conservação e escolha",
+      "url": "https://www.moretegra.com.br/blog/mercado/orla-barra-tijuca-localizacao-conservacao/",
+      "legacy": "/blog/mercado/a-orla-da-barra-da-tijuca-luxo-no-rio-de-janeiro/",
+      "status": "PUBLISHED_HTTP_200_INDEXABLE_CANONICAL_VERIFIED"
+    },
+    {
+      "title": "Investir em imóveis de luxo: teste renda, custos e liquidez",
+      "url": "https://www.moretegra.com.br/blog/mercado/imoveis-luxo-renda-custos-liquidez/",
+      "legacy": "/blog/mercado/imoveis-de-luxo-por-que-investir-no-mercado-de-alto-padrao/",
+      "status": "PUBLISHED_HTTP_200_INDEXABLE_CANONICAL_VERIFIED"
+    },
+    {
+      "title": "Morar no Itaim Bibi: mobilidade, serviços e custo da rotina",
+      "url": "https://www.moretegra.com.br/blog/mercado/morar-itaim-bibi-rotina-custo/",
+      "legacy": "/blog/mercado/guia-do-itaim-bibi-por-que-o-bairro-e-simbolo-de-luxo-e-negocios/",
+      "status": "PUBLISHED_HTTP_200_INDEXABLE_CANONICAL_VERIFIED"
+    },
+    {
+      "title": "Inventário de imóvel herdado: documentos, etapas, impostos e registro",
+      "url": "https://www.moretegra.com.br/blog/mercado/imovel-herdado-inventario-documentos-etapas/",
+      "legacy": "/blog/mercado/inventario-de-imovel-o-que-e-como-funciona-e-quanto-custa/",
+      "status": "PUBLISHED_HTTP_200_INDEXABLE_CANONICAL_VERIFIED"
+    },
+    {
+      "title": "RIIO by Piero Lissoni",
+      "url": "https://www.moretegra.com.br/empreendimentos/riio-by-piero-lissoni/",
+      "status": "PUBLISHED_HTTP_200_INDEXABLE_CANONICAL_VERIFIED"
+    }
+  ],
+  "sitemap_urls": 73,
+  "live_validation": {
+    "pages_http_200": 12,
+    "indexable_robots": 12,
+    "self_canonical_www": 12,
+    "jsonld_syntax_valid": 12,
+    "sitemap_missing_released_pages": 0,
+    "blog_new_links_present": 11
+  },
+  "not_executed_or_unknown": [
+    "Independent full mobile/desktop browser rendering",
+    "Official Schema.org and Google Rich Results tests",
+    "Lighthouse/Core Web Vitals for this batch",
+    "Real Form46 CRM delivery and lead attribution for RIIO",
+    "Google/Bing indexing for these 12 URLs",
+    "IndexNow submission for this release"
+  ],
+  "previous_runtime_sha": "bbe59c7a0b7b8a597826d56f6bc01d5291d9dfa5",
+  "previous_deployment": "dpl_iTarC8LY4vvXq44mGGf9ekCg3fCi",
+  "next_action": "Resolve live GitHub/Vercel, then read-only post-release QA and indexing inspection; do not republish or rewrite the batch."
+}

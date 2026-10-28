@@ -1,0 +1,7 @@
+# Prompt de retomada — MoreNumTegra / SFJM — 28/10/2026
+
+Retome o projeto MoreNumTegra sem reiniciar o trabalho. Resolva main, PRs e Vercel live. Leia integralmente bootstrap/BOOTSTRAP_CANONICO.md, handoffs/CURRENT.md, docs/PROJECT_STATUS.md, docs/NEXT_SAFE_ACTION.md, docs/BLOCKED_ACTIONS.md, os três modelos docs/sfjm/PROJECT_READ_MODEL.json, CURRENT_PROGRAM_STATE.json e PROGRAM_TASK_GRAPH.json, e principalmente docs/sfjm/MNT_MERCADO_RIIO_PRODUCAO_CONTINUIDADE_2026-10-28.md e seu JSON.
+
+A PR507 já foi mergeada: 11 artigos Mercado + RIIO publicados/indexáveis, runtime 0b1de5b1218fb1c4c83c2683366bdfe11ad60d44, Vercel READY dpl_8iiXm3RtVDbMhNSbHdpaJBq6KjjG; 10/10 checks no head final. As12 URLs e todas as correções do usuário estão no handoff. Não reapresentar como rascunho nem pedir nova autorização para o release concluído. Publicação não comprova indexação. Preservar padrão RESF, Form46 e atendimento remoto RJ factual.
+
+Comece com síntese breve do estado confirmado e dos limites. Próxima ação segura é QA pós-release/inspeção em leitura, depois análise de cliques qualificados com dados atuais e estudos OpenSEO/GSC existentes. QA visual, testes oficiais schema/performance e CRM do lote não estão certificados. Não executar novo runtime, publicação, redirects, envio de leads/mensagens, GTM/GA4, DNS, campanhas ou FECH.AI sem escopo específico. Preserve os históricos e as1200h aceitas/40h diferidas do RESF. Não pedir reenvio de pesquisas já registradas.
