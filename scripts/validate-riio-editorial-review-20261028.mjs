@@ -41,4 +41,9 @@ assert(html.includes('id="riio-image-dialog"')&&html.includes('data-zoom-in')&&h
 assert.equal((html.match(/riio-gallery\.js"/g)||[]).length,1);
 assert(html.includes('name="robots" content="noindex,follow"'));
 const ids=[...html.matchAll(/\bid="([^\"]+)"/g)].map(x=>x[1]);assert.equal(ids.length,new Set(ids).size,'Unique HTML IDs');
+// Only the governed address/anchor differs from the approved exact-project footer.
+const footer=html.match(/<footer\b[\s\S]*?<\/footer>/)[0];
+const referenceFooter=read('src-greenn/empreendimentos/tiel-vila-nova-conceicao/index.html').match(/<footer\b[\s\S]*?<\/footer>/)[0];
+const normalizeFooter=s=>s.replace(/<span data-mnt-footer-address[^>]*>[\s\S]*?<\/span>/,'<span data-mnt-footer-address>PROJECT_ADDRESS</span>');
+assert.equal(normalizeFooter(footer),normalizeFooter(referenceFooter),'RIIO must follow the approved RESF footer without extra navigation');
 console.log('PASS: approved hero/facts/Form46 unchanged; complete 9-building ficha, 132 residences, 10 gallery scenes, 11 plan plates with precise linked areas, 3 neighborhood photos and WhatsApp context map. Static evidence only.');
