@@ -11,26 +11,80 @@
       "topic": "Tênis, convivência e rotina residencial",
       "legacy_slug": "tenis-qualidade-de-vida-e-bem-estar-a-conexao-da-tegra-com-o-esporte",
       "source_url": "https://www.tegraincorporadora.com.br/blog/lifestyle/tenis-qualidade-de-vida-e-bem-estar-a-conexao-da-tegra-com-o-esporte",
-      "source_access": "PAGE_BLOCKED",
-      "evidence_summary": "Página original retornou HTTP 403 na consulta; título e descrição introdutória identificados no índice da categoria.",
-      "verification_gaps": "Não afirmar patrocínio, infraestrutura de projeto ou benefício clínico sem fonte adicional.",
+      "source_access": "BODY_READ_USER",
+      "evidence_summary": "A Tegra apresenta o tênis como prática de lazer e convivência, declara apoiar iniciativas esportivas e relaciona áreas verdes e lazer residencial à sua visão de morar.",
+      "verification_gaps": "Apoio institucional é declaração da Tegra, sem prova de patrocínio específico. Benefícios de saúde não foram verificados cientificamente nesta ficha; a menção genérica a quadras não comprova infraestrutura de qualquer projeto.",
       "editorial_angle_proposal": "Diferenciar rotina de esporte e convivência do artigo técnico Dicas sobre quadras.",
       "priority": "P2",
       "draft_ready": false,
-      "source_image_authorized": false
+      "source_image_authorized": false,
+      "previous_source_access": "PAGE_BLOCKED",
+      "source_date_as_supplied": "2026-07-21",
+      "source_provenance": {
+        "channel": "user_supplied_transcription",
+        "conversation_id": "6ae0e8de-e3dc-83e9-8bfa-4e75e3ff64be",
+        "message_id": "4d727195-7262-49fa-98b5-e12c51c203c2",
+        "retrieved_on": "2026-10-29",
+        "original_html_verified": false
+      },
+      "coverage": "Texto recebido com abertura, desenvolvimento e fechamento; íntegra aparente, sem cotejo com HTML original.",
+      "reading_notes": [
+        {
+          "locator": "Abertura e seção sobre aproximação entre pessoas",
+          "source_statement": "A incorporadora declara incentivar ações ligadas ao tênis para conectar moradores e praticantes; não identifica evento, contrato ou patrocinado.",
+          "classification": "USER_SUPPLIED_SOURCE_STATEMENT"
+        },
+        {
+          "locator": "Seção de benefícios",
+          "source_statement": "O texto enumera bem-estar físico, coordenação, reflexos, fortalecimento muscular, redução de estresse e socialização como benefícios atribuídos à modalidade.",
+          "classification": "USER_SUPPLIED_SOURCE_STATEMENT"
+        },
+        {
+          "locator": "Seções sobre espaços esportivos e fechamento",
+          "source_statement": "Quadras, ambientes ao ar livre e áreas verdes são apresentados como facilitadores da rotina ativa e dos encontros; nenhum empreendimento é nomeado.",
+          "classification": "USER_SUPPLIED_SOURCE_STATEMENT"
+        }
+      ]
     },
     {
       "id": "02",
       "topic": "Tênis e longevidade: evidências e limites",
       "legacy_slug": "tenis-e-longevidade-como-o-esporte-transforma-a-saude-e-a-mente",
       "source_url": "https://www.tegraincorporadora.com.br/blog/lifestyle/tenis-e-longevidade-como-o-esporte-transforma-a-saude-e-a-mente",
-      "source_access": "BODY_READ_WEB",
-      "evidence_summary": "Texto identificado com data 09/10/2026; cita associação observacional de até 9,7 anos no Copenhagen City Heart Study; associa raquetes a atividade física e socialização.",
-      "verification_gaps": "Buscar estudo primário, delineamento e fatores de confusão; proibir inferência causal 'tênis dá 9,7 anos de vida'.",
+      "source_access": "BODY_READ_USER",
+      "evidence_summary": "O artigo associa tênis a longevidade, condicionamento, decisões rápidas e convivência; cita associação de até 9,7 anos no Copenhagen City Heart Study e usa Kronos como exemplo residencial.",
+      "verification_gaps": "Estudo primário, desenho, amostra e confundidores ainda não verificados. Associação não demonstra causalidade nem ganho individual de 9,7 anos. Não transformar cuidados descritos em prescrição médica; referência ao Kronos não substitui memorial/ficha vigente.",
       "editorial_angle_proposal": "Revisão científica acessível, não repetição de matéria da Tegra nem conselho médico individual.",
       "priority": "P2",
       "draft_ready": false,
-      "source_image_authorized": false
+      "source_image_authorized": false,
+      "previous_source_access": "BODY_READ_WEB",
+      "source_date_as_supplied": "2026-10-09",
+      "source_provenance": {
+        "channel": "user_supplied_transcription",
+        "conversation_id": "6ae0e8de-e3dc-83e9-8bfa-4e75e3ff64be",
+        "message_id": "4d727195-7262-49fa-98b5-e12c51c203c2",
+        "retrieved_on": "2026-10-29",
+        "original_html_verified": false
+      },
+      "coverage": "Texto recebido até o fechamento após a referência ao Kronos; íntegra aparente, sem cotejo com HTML original.",
+      "reading_notes": [
+        {
+          "locator": "Abertura, parágrafo do estudo",
+          "source_statement": "O texto atribui ao Copenhagen City Heart Study uma associação de até 9,7 anos de diferença na expectativa de vida; o link oferecido leva a uma matéria Blue Studio/Estadão, não ao artigo científico.",
+          "classification": "USER_SUPPLIED_SOURCE_STATEMENT"
+        },
+        {
+          "locator": "Seções sobre corpo, mente e continuidade da prática",
+          "source_statement": "Alternância de esforço e pausa, agilidade, coordenação e decisões durante o jogo sustentam a narrativa; o texto condiciona controle de peso a hábitos equilibrados e adequação individual.",
+          "classification": "USER_SUPPLIED_SOURCE_STATEMENT"
+        },
+        {
+          "locator": "Seção final de infraestrutura",
+          "source_statement": "Kronos é citado e vinculado a https://kronosbarratijuca.com.br/ como exemplo de integração entre esporte e lazer residencial.",
+          "classification": "USER_SUPPLIED_SOURCE_STATEMENT"
+        }
+      ]
     },
     {
       "id": "03",
@@ -50,13 +104,45 @@
       "topic": "Esportes de raquete e vida no condomínio",
       "legacy_slug": "esportes-de-raquete-beach-tennis-e-tenis-no-universo-wellness",
       "source_url": "https://www.tegraincorporadora.com.br/blog/lifestyle/esportes-de-raquete-beach-tennis-e-tenis-no-universo-wellness",
-      "source_access": "BODY_READ_WEB",
-      "evidence_summary": "Fonte da Tegra publicada em 02/09/2026 discute raquetes, sociabilidade e lazer residencial.",
-      "verification_gaps": "Popularidade e impacto em valorização exigem dados externos; infraestrutura de cada projeto precisa ficha técnica.",
+      "source_access": "BODY_READ_USER",
+      "evidence_summary": "A narrativa enquadra beach tennis e tênis no conceito home resort, relacionando acesso ao lazer, convivência familiar e prática ao ar livre; apresenta Gaea Home Resort e Claris Casa & Clube como exemplos.",
+      "verification_gaps": "Crescimento, popularidade, gasto energético e valorização são alegações da fonte sem validação independente nesta ficha. Não inferir que cada projeto citado contém todas as modalidades/superfícies descritas. Confirmar equipamentos e medidas no memorial; evitar duplicar intenção do artigo Dicas sobre quadras.",
       "editorial_angle_proposal": "Focar experiências de uso, horários, convivência e acesso; artigo Dicas existente é dono da intenção 'avaliar quadras'.",
       "priority": "P2",
       "draft_ready": false,
-      "source_image_authorized": false
+      "source_image_authorized": false,
+      "previous_source_access": "BODY_READ_WEB",
+      "source_date_as_supplied": "2026-09-02",
+      "source_provenance": {
+        "channel": "user_supplied_transcription",
+        "conversation_id": "6ae0e8de-e3dc-83e9-8bfa-4e75e3ff64be",
+        "message_id": "4d727195-7262-49fa-98b5-e12c51c203c2",
+        "retrieved_on": "2026-10-29",
+        "original_html_verified": false
+      },
+      "coverage": "Texto recebido até o fechamento após Gaea Home Resort e Claris Casa & Clube; íntegra aparente, sem cotejo com HTML original.",
+      "reading_notes": [
+        {
+          "locator": "Abertura e seção de adesão ao beach tennis",
+          "source_statement": "A fonte afirma expansão das quadras de areia em condomínios de alto padrão e descreve a proximidade da prática como conveniência cotidiana.",
+          "classification": "USER_SUPPLIED_SOURCE_STATEMENT"
+        },
+        {
+          "locator": "Seções de benefícios e quadra oficial",
+          "source_statement": "Atribui à prática resistência, coordenação, equilíbrio e agilidade; menciona medidas oficiais e saibro, mas não fornece dimensões numéricas.",
+          "classification": "USER_SUPPLIED_SOURCE_STATEMENT"
+        },
+        {
+          "locator": "Seção de patrimônio",
+          "source_statement": "A Tegra alega maior atratividade e potencial de valorização a partir da infraestrutura esportiva; não apresenta série de preços ou método de avaliação.",
+          "classification": "USER_SUPPLIED_SOURCE_STATEMENT"
+        },
+        {
+          "locator": "Fechamento e links de produto",
+          "source_statement": "Cita Gaea Home Resort e Claris Casa & Clube; os links recebidos apontam às páginas Tegra /gaeahomeresort e /claris na Barra da Tijuca.",
+          "classification": "USER_SUPPLIED_SOURCE_STATEMENT"
+        }
+      ]
     },
     {
       "id": "05",
@@ -102,13 +188,45 @@
       "topic": "Moradias suspensas: área, tipologia e uso",
       "legacy_slug": "moradias-suspensas-o-luxo-em-plantas-de-185-m-a-355-m",
       "source_url": "https://www.tegraincorporadora.com.br/blog/lifestyle/moradias-suspensas-o-luxo-em-plantas-de-185-m-a-355-m",
-      "source_access": "PAGE_BLOCKED",
-      "evidence_summary": "Fonte original não foi acessível integralmente; índice confirma título. Página oficial Château Jardin cita 185–355 m², 3–4 suítes, 3–4 vagas.",
-      "verification_gaps": "Não presumir que o artigo analisa exclusivamente Château Jardin antes de ler a íntegra. Verificar plantas e dados do empreendimento.",
+      "source_access": "BODY_PARTIAL_USER",
+      "evidence_summary": "O trecho descreve apartamentos amplos com integração social, varanda, separação da área íntima e paisagismo; o título informa 185–355 m² e o corpo menciona plantas de 3 e 4 suítes.",
+      "verification_gaps": "Não completar o final ausente. Não atribuir o artigo exclusivamente ao Château Jardin: esse nome e o número de vagas não aparecem no trecho recebido. A referência institucional anterior ao Château é evidência separada, não conteúdo lido deste artigo. Confirmar plantas, especificações acústicas e autoria por fonte técnica vigente.",
       "editorial_angle_proposal": "Comparar planta, privacidade e circulação somente com desenhos e fichas reais.",
       "priority": "P2",
       "draft_ready": false,
-      "source_image_authorized": false
+      "source_image_authorized": false,
+      "previous_source_access": "PAGE_BLOCKED",
+      "source_date_as_supplied": "2026-07-31",
+      "source_provenance": {
+        "channel": "user_supplied_transcription",
+        "conversation_id": "6ae0e8de-e3dc-83e9-8bfa-4e75e3ff64be",
+        "message_id": "4d727195-7262-49fa-98b5-e12c51c203c2",
+        "retrieved_on": "2026-10-29",
+        "original_html_verified": false
+      },
+      "coverage": "Trecho recebido termina em “paisagismo em parte da arquitetura”. Possível truncamento informado pelo usuário; íntegra não confirmada.",
+      "reading_notes": [
+        {
+          "locator": "Título e abertura",
+          "source_statement": "Faixa de 185–355 m² aparece no título; a abertura caracteriza o conceito por amplitude, vista e condomínio de luxo.",
+          "classification": "USER_SUPPLIED_SOURCE_STATEMENT"
+        },
+        {
+          "locator": "Seções de conceito e integração",
+          "source_statement": "O texto discute luz natural, janelas do piso ao teto, circulação e conexão entre living, jantar, cozinha e varanda, além de receber convidados em casa.",
+          "classification": "USER_SUPPLIED_SOURCE_STATEMENT"
+        },
+        {
+          "locator": "Seção de privacidade",
+          "source_statement": "Menciona plantas de 3 e 4 suítes e separação entre espaços sociais e íntimos; isolamento acústico é apresentado como atributo desejável, sem ensaio ou especificação técnica.",
+          "classification": "USER_SUPPLIED_SOURCE_STATEMENT"
+        },
+        {
+          "locator": "Última seção recebida",
+          "source_statement": "Paisagismo e escritórios internacionais aparecem de modo genérico; o trecho disponível não identifica escritório nem empreendimento.",
+          "classification": "USER_SUPPLIED_SOURCE_STATEMENT"
+        }
+      ]
     },
     {
       "id": "09",
@@ -141,13 +259,40 @@
       "topic": "Garden Design: paisagismo e uso das áreas externas",
       "legacy_slug": "a-ultima-reserva-urbana-da-zona-oeste-tem-um-nome-garden-design",
       "source_url": "https://www.tegraincorporadora.com.br/blog/lifestyle/a-ultima-reserva-urbana-da-zona-oeste-tem-um-nome-garden-design",
-      "source_access": "PAGE_BLOCKED",
-      "evidence_summary": "Página do artigo não ficou acessível; catálogo confirma título. Página oficial da Tegra confirma conceito paisagístico, 61–78 m² e empreendimento em construção no snapshot consultado.",
-      "verification_gaps": "Conferir situação atual, faixa de tipologias e preços somente em ficha comercial vigente do MoreTegra; título 'última reserva' é alegação publicitária não verificada.",
+      "source_access": "BODY_PARTIAL_USER",
+      "evidence_summary": "O trecho posiciona Garden Design como reserva urbana na Zona Oeste e associa paisagismo, convivência ao ar livre, relaxamento e lazer à experiência residencial.",
+      "verification_gaps": "“Última reserva”, raridade, valorização e tranquilidade são alegações não verificadas. O trecho não fornece área de terreno, percentual verde, certificação, preço ou tipologias. Os 61–78 m² e estágio do registro anterior vieram de fonte institucional separada e histórica; não atribuí-los ao trecho nem atualizar oferta por ele.",
       "editorial_angle_proposal": "Explicar como avaliar espaços verdes e manutenção, sem copiar branding 'última reserva'.",
       "priority": "P1",
       "draft_ready": false,
-      "source_image_authorized": false
+      "source_image_authorized": false,
+      "previous_source_access": "PAGE_BLOCKED",
+      "source_date_as_supplied": "2026-06-24",
+      "source_provenance": {
+        "channel": "user_supplied_transcription",
+        "conversation_id": "6ae0e8de-e3dc-83e9-8bfa-4e75e3ff64be",
+        "message_id": "4d727195-7262-49fa-98b5-e12c51c203c2",
+        "retrieved_on": "2026-10-29",
+        "original_html_verified": false
+      },
+      "coverage": "Recuperação da mensagem marcada truncated:true; último item disponível é “Paisagismo contemporâneo”. Não é possível distinguir corte do envio original de corte da ferramenta; íntegra não confirmada.",
+      "reading_notes": [
+        {
+          "locator": "Abertura e seção de reserva urbana",
+          "source_statement": "Garden Design é identificado como o empreendimento da matéria. Reserva urbana é enquadramento publicitário ligado a verde e conveniência, sem categoria ambiental comprovada.",
+          "classification": "USER_SUPPLIED_SOURCE_STATEMENT"
+        },
+        {
+          "locator": "Seção de Zona Oeste",
+          "source_statement": "A fonte descreve infraestrutura, serviços, parques e mobilidade em termos regionais, sem endereços, distâncias ou tempos de percurso.",
+          "classification": "USER_SUPPLIED_SOURCE_STATEMENT"
+        },
+        {
+          "locator": "Seção de natureza e lista final recuperada",
+          "source_statement": "Paisagismo integrado, convivência externa, relaxamento e lazer são os eixos concretos do trecho; a lista termina em paisagismo contemporâneo.",
+          "classification": "USER_SUPPLIED_SOURCE_STATEMENT"
+        }
+      ]
     },
     {
       "id": "12",
@@ -162,5 +307,17 @@
       "draft_ready": false,
       "source_image_authorized": false
     }
-  ]
+  ],
+  "access_status_definitions": {
+    "BODY_READ_WEB": "Consulta web anterior, não reexecutada nesta atualização.",
+    "BODY_READ_USER": "Transcrição do usuário lida até fechamento aparente; completude frente ao original não autenticada.",
+    "BODY_PARTIAL_USER": "Trecho fornecido/recuperado parcialmente; sem inferência de conclusão.",
+    "PAGE_BLOCKED": "Estado histórico da recuperação web, não indisponibilidade absoluta da fonte."
+  },
+  "access_counts": {
+    "BODY_READ_WEB": 7,
+    "BODY_READ_USER": 3,
+    "BODY_PARTIAL_USER": 2,
+    "PAGE_BLOCKED": 0
+  }
 }
