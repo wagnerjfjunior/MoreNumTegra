@@ -2,11 +2,32 @@
 
 Data: 29/10/2026. Estado: **EDITORIAL_DRAFT / REVIEW_REQUIRED / NÃO PUBLICAR**. Branch exclusiva derivada da `main` `c2043e9f33b3cba34cd01e94323988b32d5912b0`; dossiê de fontes paralelo na PR #510 permanece independente. Este é texto autoral para revisão, não página HTML, rota publicada ou autorização para criar placeholder.
 
+## Diretriz complementar — descoberta não-marcada (29/10/2026)
+
+**Decisão estratégica:** captar compradores que ainda não conhecem Tegra nem Nova Vivere. A resposta deve partir da necessidade do comprador; empresa, produto e marca são introduzidos somente quando oferecem exemplo verificável e alternativa comercial coerente. Não transformar um artigo informacional em doorway de oferta.
+
+**Cluster de intenção (hipóteses, NÃO volume de busca validado):**
+
+| Nível | Exemplos de consulta sem marca | Página proprietária | Conversão |
+| --- | --- | --- | --- |
+| Informação e comparação | "apartamento 2 ou 3 suítes", "como escolher planta de apartamento", "planta de apartamento para família", "apartamento com home office" | Este artigo Lifestyle, sujeito à checagem de conflito com Dicas | Critérios → plantas reais e orientação Sabrina |
+| Exploração geográfica | "apartamentos na Lapa São Paulo", "apartamento 3 suítes zona oeste SP", "onde morar na Lapa" | `/regioes/lapa/` e outras regionais vigentes | Descoberta de imóveis no bairro |
+| Produto e transação | "Nova Vivere 105 m²", "preço Nova Vivere", "Tegra Nova Vivere" | `/empreendimentos/nova-vivere/` | Disponibilidade, condições, visitas |
+| Investimento | "vale a pena investir em studio", "studio para investir em São Paulo" | `/investimentos/studios-e-salas-comerciais/` se essa for a URL vigente e compatível com a consulta | Descoberta de studios; não desviar automaticamente para Nova Vivere |
+
+**Título/H1 propostos para teste de SERP e canibalização:** H1 "Apartamento de 2 ou 3 suítes: como escolher a planta ideal para sua família?" e SEO title "Apartamento de 2 ou 3 suítes: como escolher a planta | MoreTegra". O H1 genérico substitui o H1 de trabalho anterior nesta proposta; a menção a Nova Vivere segue no estudo de caso e nos cards. Verificar concorrência de H1/títulos nas páginas Dicas e no GSC antes de consolidar.
+
+**Sem marca no início não significa esconder marca:** manter identidade visual Tegra, autoria, credenciais e identificação comercial transparentes. A intenção primária não deve conter Tegra ou Nova Vivere, mas é correto apresentá-los como exemplos comerciais depois da parte útil.
+
+**Gate de dados antes da página:** exportar queries + URLs de destino no GSC, separar branded/non-branded e classificá-las por intenção; registrar cliques, impressões, CTR, posição, página atual proprietária e sobreposição. Adicionar pesquisa SERP para verificar se a intenção é informacional, localização ou transacional. Não alegar volume, ranking ou oportunidade quantitativa sem dados.
+
+**Governança:** não publicar nem alterar rotas/canonical para testar títulos. Adaptar os demais 11 artigos à mesma regra de intenção não-marcada quando houver correspondência verdadeira com imóveis atendidos; evitar repetir keywords/títulos para criar páginas redundantes.
+
 ## Estratégia de intenção e propriedade das URLs
 
 - Intenção primária do artigo: **comparação prática de plantas residenciais por rotina e planos de vida**, sem disputa direta pelas consultas comerciais de Nova Vivere.
-- H1 proposto: **Como escolher a planta do apartamento para sua rotina e seus planos**.
-- SEO title candidato: **Como escolher a planta do apartamento: critérios para decidir | MoreTegra**.
+- H1 proposto (revisado para intenção sem marca): **Apartamento de 2 ou 3 suítes: como escolher a planta ideal para sua família?**. A redação abaixo preserva H1 anterior até revisão editorial final.
+- SEO title candidato revisado: **Apartamento de 2 ou 3 suítes: como escolher a planta | MoreTegra**.
 - Meta description candidata: **Entenda como avaliar dormitórios, suítes, home office, circulação, varanda e vagas antes de escolher uma planta. Compare opções do Nova Vivere na Lapa.**
 - URL candidata (NÃO CRIAR sem auditoria de rotas): `/blog/lifestyle/como-escolher-planta-apartamento-rotina/`.
 - Página comercial proprietária de preços, ofertas, estágio e detalhes de tipologia: `/empreendimentos/nova-vivere/`.
