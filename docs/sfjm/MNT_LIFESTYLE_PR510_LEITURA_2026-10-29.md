@@ -36,3 +36,7 @@ Bootstrap, CURRENT, PROJECT_STATUS, NEXT_SAFE_ACTION, BLOCKED_ACTIONS, baselines
 ## Próxima ação segura
 
 Revisar as fichas na PR; completar as duas leituras parciais e validar fontes técnicas/científicas/comerciais para a pauta escolhida. Só depois preparar brief/narrativa autorais e gates individuais. A PR continua rascunho, sem autorização de release. SHA final e checks são os do commit/PR live, evitando registrar um SHA autorreferente neste arquivo.
+
+## Adendo — reenvio integral disponível na conversa (29/10/2026)
+
+O usuário reenviou arquivo de transcrição com cinco artigos. Garden Design agora alcança o fechamento aparente após a seção de lazer, valorização e conclusão; seu registro passa a BODY_READ_USER e documenta instalações alegadas pela fonte, ainda sujeitas a memorial vigente. Moradias suspensas encerra após paisagismo com frase completa, mas a completude do artigo original continua não confirmada. Distribuição revista: 7 BODY_READ_WEB históricos, 4 BODY_READ_USER, 1 BODY_PARTIAL_USER. Todos os 12 continuam draft_ready=false e imagens sem autorização presumida. Atualização exclusivamente documental nesta PR, sem merge/runtime/publicação.
