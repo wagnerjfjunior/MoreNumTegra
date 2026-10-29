@@ -4,7 +4,7 @@
 
 **Estado live observado:** `wagnerjfjunior/MoreNumTegra` main `c2043e9f33b3cba34cd01e94323988b32d5912b0`; Vercel Production READY no mesmo SHA. Hub `src-greenn/blog/lifestyle/index.html` conserva `noindex,follow`. Nenhuma alteração de runtime, sitemap, redirects ou imagens.
 
-**Atualização de leitura:** cinco transcrições do usuário recuperadas da conversa `6ae0e8de-e3dc-83e9-8bfa-4e75e3ff64be`, mensagem `4d727195-7262-49fa-98b5-e12c51c203c2`. Fichas e limites: [FICHAS_DE_LEITURA.md](FICHAS_DE_LEITURA.md). O bloqueio web anterior continua histórico; não significa ausência de texto recebido.
+**Atualização de leitura:** cinco transcrições do usuário recuperadas inicialmente da conversa, complementadas por reenvio em arquivo em 29/10/2026 `6ae0e8de-e3dc-83e9-8bfa-4e75e3ff64be`, mensagem `4d727195-7262-49fa-98b5-e12c51c203c2`. Fichas e limites: [FICHAS_DE_LEITURA.md](FICHAS_DE_LEITURA.md). O bloqueio web anterior continua histórico; não significa ausência de texto recebido.
 
 ## Política anti-invenção
 1. `BODY_READ_WEB` = texto consultado em indexação/consulta web; NÃO equivale a dump autenticado do HTML original e não concede autorização para copiar obra/imagem.
@@ -118,9 +118,9 @@
 ### 11. Garden Design: paisagismo e uso das áreas externas — P1
 
 - **Fonte original:** https://www.tegraincorporadora.com.br/blog/lifestyle/a-ultima-reserva-urbana-da-zona-oeste-tem-um-nome-garden-design
-- **Acesso ao corpo da referência:** `BODY_PARTIAL_USER` — Recuperação da mensagem marcada truncated:true; último item disponível é “Paisagismo contemporâneo”. Não é possível distinguir corte do envio original de corte da ferramenta; íntegra não confirmada.
-- **Constatações rastreáveis:** O trecho posiciona Garden Design como reserva urbana na Zona Oeste e associa paisagismo, convivência ao ar livre, relaxamento e lazer à experiência residencial.
-- **Pontos pendentes / alegações a não reproduzir automaticamente:** “Última reserva”, raridade, valorização e tranquilidade são alegações não verificadas. O trecho não fornece área de terreno, percentual verde, certificação, preço ou tipologias. Os 61–78 m² e estágio do registro anterior vieram de fonte institucional separada e histórica; não atribuí-los ao trecho nem atualizar oferta por ele.
+- **Acesso ao corpo da referência:** `BODY_READ_USER` — Reenvio do usuário com fechamento aparente até “Garden Design: uma oportunidade rara em São Paulo”; sem autenticação do HTML original.
+- **Constatações rastreáveis:** Transcrição atribui ao Garden Design paisagismo e espaços externos; enumera piscinas, fitness, quadra poliesportiva, festas/gourmet, kids/brinquedoteca, jogos, work/coliving, pet place, bicicletário e bar. Contém argumento promocional de valorização, sem dados quantitativos.
+- **Pontos pendentes / alegações a não reproduzir automaticamente:** Validar cada instalação no memorial vigente. “Última reserva”, raridade, sustentabilidade, valorização e tranquilidade são alegações promocionais sem comprovação independente. Não há área de terreno, percentual verde, certificação, preço, tipologia ou valorização medida no texto. Os 61–78 m² e o estágio anterior vêm de fonte institucional separada.
 - **Diferenciação MoreTegra proposta (ainda não é texto final):** Explicar como avaliar espaços verdes e manutenção, sem copiar branding 'última reserva'.
 - **Próximo gate:** fontes complementares independentes, fact pack do projeto (se aplicável), matriz GSC/SEO por intenção, bibliografia e aprovação editorial.
 
@@ -135,8 +135,8 @@
 
 ## Situação consolidada e sequência segura
 
-- **7 fontes** mantêm a consulta web anterior; **3** têm transcrição lida com fechamento aparente (01, 02, 04); **2** têm leitura parcial (08, 11). Os três `PAGE_BLOCKED` anteriores foram substituídos pelo estado da transcrição, sem apagar o histórico nem alegar sucesso web. Todos os 12 registros continuam `draft_ready: false`.
+- **7 fontes** mantêm a consulta web anterior; **4** têm transcrição com fechamento aparente (01, 02, 04, 11); **1** tem completude não confirmada (08). Os três `PAGE_BLOCKED` anteriores foram substituídos pelo estado da transcrição, sem apagar o histórico nem alegar sucesso web. Todos os 12 registros continuam `draft_ready: false`.
 - **12/12 títulos e URLs** do inventário vinculados à fonte original, sem reutilização de redação ou imagem.
 - As notas são **dossiês de evidência**, não artigos ou conteúdos de SEO prontos. Citações e dados comerciais exigem confirmação de atualidade.
-- **Primeiro lote sugerido:** Nova Vivere, RIIO, pied-à-terre e ABM; Garden Design continua condicionado à recuperação do restante da matéria e à validação factual; o trecho recebido já permite documentar seus eixos temáticos.
+- **Primeiro lote sugerido:** Nova Vivere, RIIO, pied-à-terre e ABM; Garden Design tem texto reenviado com fechamento aparente, mas permanece condicionado à validação factual, sobretudo equipamentos de lazer; Moradias suspensas permanece sem garantia de completude.
 - **QA futuro:** link original acessível, fonte primária, cruzamento jurídico/técnico, evitar canibalização com Dicas e Mercado, metadados autorais, validação HTML/JSON-LD/mobile, cards reais, formulário Form46, CI e rollback. Não remover `noindex` ou atualizar sitemap antes de autorização.
