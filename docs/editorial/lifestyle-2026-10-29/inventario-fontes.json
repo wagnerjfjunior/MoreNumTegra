@@ -204,7 +204,7 @@
         "retrieved_on": "2026-10-29",
         "original_html_verified": false
       },
-      "coverage": "Trecho recebido termina em “paisagismo em parte da arquitetura”. Possível truncamento informado pelo usuário; íntegra não confirmada.",
+      "coverage": "Nova transcrição de 29/10/2026 reproduz encerramento após seção de paisagismo biofílico com frase final completa; não confirmado ser o fim do artigo original.",
       "reading_notes": [
         {
           "locator": "Título e abertura",
@@ -259,9 +259,9 @@
       "topic": "Garden Design: paisagismo e uso das áreas externas",
       "legacy_slug": "a-ultima-reserva-urbana-da-zona-oeste-tem-um-nome-garden-design",
       "source_url": "https://www.tegraincorporadora.com.br/blog/lifestyle/a-ultima-reserva-urbana-da-zona-oeste-tem-um-nome-garden-design",
-      "source_access": "BODY_PARTIAL_USER",
-      "evidence_summary": "O trecho posiciona Garden Design como reserva urbana na Zona Oeste e associa paisagismo, convivência ao ar livre, relaxamento e lazer à experiência residencial.",
-      "verification_gaps": "“Última reserva”, raridade, valorização e tranquilidade são alegações não verificadas. O trecho não fornece área de terreno, percentual verde, certificação, preço ou tipologias. Os 61–78 m² e estágio do registro anterior vieram de fonte institucional separada e histórica; não atribuí-los ao trecho nem atualizar oferta por ele.",
+      "source_access": "BODY_READ_USER",
+      "evidence_summary": "Texto apresenta paisagismo, convivência e lazer do Garden Design, com lista declarada de piscinas, fitness, quadra poliesportiva, festas/gourmet, brinquedoteca/kids, jogos, work/coliving, pet place, bicicletário e bar; argumenta potencial de valorização sem método quantitativo.",
+      "verification_gaps": "Validar lista de instalações e condições no memorial atual. Reserva urbana, raridade, valorização e sustentabilidade são alegações não verificadas. Sem números de terreno, áreas verdes, certificação, preço, tipologias ou estoque.",
       "editorial_angle_proposal": "Explicar como avaliar espaços verdes e manutenção, sem copiar branding 'última reserva'.",
       "priority": "P1",
       "draft_ready": false,
@@ -275,21 +275,26 @@
         "retrieved_on": "2026-10-29",
         "original_html_verified": false
       },
-      "coverage": "Recuperação da mensagem marcada truncated:true; último item disponível é “Paisagismo contemporâneo”. Não é possível distinguir corte do envio original de corte da ferramenta; íntegra não confirmada.",
+      "coverage": "Nova transcrição enviada em 29/10/2026 até a seção final Garden Design: uma oportunidade rara em São Paulo; fechamento aparente, HTML original não autenticado.",
       "reading_notes": [
         {
-          "locator": "Abertura e seção de reserva urbana",
-          "source_statement": "Garden Design é identificado como o empreendimento da matéria. Reserva urbana é enquadramento publicitário ligado a verde e conveniência, sem categoria ambiental comprovada.",
+          "locator": "Abertura e reserva urbana",
+          "source_statement": "Posicionamento de reserva urbana e contato com verde, sem designação ambiental formal comprovada.",
           "classification": "USER_SUPPLIED_SOURCE_STATEMENT"
         },
         {
-          "locator": "Seção de Zona Oeste",
-          "source_statement": "A fonte descreve infraestrutura, serviços, parques e mobilidade em termos regionais, sem endereços, distâncias ou tempos de percurso.",
+          "locator": "Natureza integrada ao projeto",
+          "source_statement": "Paisagismo, áreas externas, relaxamento e convivência são apresentados como proposta residencial.",
           "classification": "USER_SUPPLIED_SOURCE_STATEMENT"
         },
         {
-          "locator": "Seção de natureza e lista final recuperada",
-          "source_statement": "Paisagismo integrado, convivência externa, relaxamento e lazer são os eixos concretos do trecho; a lista termina em paisagismo contemporâneo.",
+          "locator": "Um novo conceito de lazer e bem-estar",
+          "source_statement": "Lista piscinas adulto e infantil, fitness, quadra poliesportiva, festas/gourmet, kids/brinquedoteca, jogos, work/coliving, pet place, bicicletário e bar.",
+          "classification": "USER_SUPPLIED_SOURCE_STATEMENT"
+        },
+        {
+          "locator": "Valorização e encerramento",
+          "source_statement": "Atribui potencial de valorização e exclusividade ao projeto sem dados ou método verificável.",
           "classification": "USER_SUPPLIED_SOURCE_STATEMENT"
         }
       ]
