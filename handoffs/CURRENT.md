@@ -1,3 +1,9 @@
+## 29/10/2026 — Lifestyle: atualização documental proposta na PR #510
+
+Branch `research/lifestyle-fontes-tegra-20261029`, sem merge/publicação. Cinco transcrições do usuário fundamentam fichas em `docs/editorial/lifestyle-2026-10-29/FICHAS_DE_LEITURA.md`; inventário e dossiê reconciliados. Três leituras com fechamento aparente e duas parciais (Moradias suspensas e Garden Design); completude não autenticada. Os bloqueios web anteriores são históricos, não ausência de material recebido. Recibo: `docs/sfjm/MNT_LIFESTYLE_PR510_LEITURA_2026-10-29.md`. Esta proposta não altera o estado integrado, horas/WBS, produção ou autorizações anteriores. Próxima ação deste escopo: revisar as fichas e completar leituras/validações pendentes antes de redação autoral; nenhuma autorização de release.
+
+---
+
 ## 28/10/2026 — ESTADO VIGENTE: Mercado e RIIO em produção (PR #507)
 
 **Supera os avisos históricos de preparação/noindex abaixo para estas 12 páginas.** PR #507 MERGED; head final `99ff6710b1d792468d43a8cca3f38c1fc1b7b3e8` com 10/10 checks SUCCESS; merge/runtime `0b1de5b1218fb1c4c83c2683366bdfe11ad60d44`; Vercel Production READY `dpl_8iiXm3RtVDbMhNSbHdpaJBq6KjjG`. Onze artigos Mercado + RIIO HTTP200, indexáveis, canonical www e JSON-LD sintaticamente válido; hub/Blog/catálogo/sitemap atualizados (73 URLs no sitemap). Isso não comprova indexação Google/Bing.
