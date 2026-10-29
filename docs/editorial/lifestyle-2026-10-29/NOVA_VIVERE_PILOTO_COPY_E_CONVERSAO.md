@@ -23,6 +23,51 @@ Data: 29/10/2026. Estado: **EDITORIAL_DRAFT / REVIEW_REQUIRED / NÃO PUBLICAR**.
 
 **Governança:** não publicar nem alterar rotas/canonical para testar títulos. Adaptar os demais 11 artigos à mesma regra de intenção não-marcada quando houver correspondência verdadeira com imóveis atendidos; evitar repetir keywords/títulos para criar páginas redundantes.
 
+## Adendo de estratégia persuasiva — Big Idea, oferta e CTA (29/10/2026)
+
+**Diagnóstico:** um conteúdo útil não converte só por conter botão. Precisamos apresentar uma tensão legítima do comprador, demonstrar um critério de decisão e oferecer assistência comercial relevante. A persuasão permanece subordinada a fatos verificáveis: não inventar desconto, economia, risco financeiro inevitável, exclusividade, escassez, dados científicos ou urgência.
+
+### Big Idea do piloto
+
+- **Público:** famílias/casais que pesquisam apartamento de 2 ou 3 suítes sem conhecer a marca.
+- **Problema / antagonista conceitual:** a comparação simplista por metragem, número de quartos ou estética do decorado (não atribuir má-fé a corretores/incorporadoras).
+- **Tensão:** comprar metragem adicional não garante uma distribuição que resolva rotina, home office, privacidade e convivência.
+- **Mecanismo demonstrável:** checklist de usos simultâneos, circulação, mobiliário, dormitórios, vagas e custo total, confrontado com plantas oficiais.
+- **Tese:** "O erro não é necessariamente comprar um apartamento pequeno. É escolher uma planta que não acompanha a vida que você pretende levar."
+- **Prova específica:** apresentar critérios reproduzíveis e as plantas oficiais do Nova Vivere como estudo de caso, sem prometer que uma tipologia vencerá para todos.
+- **Oferta realista:** orientação de Sabrina para comparar plantas e consultar unidades/condições vigentes. Não chamar de avaliação técnica individual, diagnóstico profissional de arquitetura ou serviço gratuito garantido sem confirmação.
+
+### Hero candidato à revisão editorial
+
+**H1 persuasivo de trabalho:** "Mais metros quadrados não garantem mais conforto para sua família."
+
+**Lead:** "Está escolhendo entre apartamentos de duas ou três suítes? Antes de investir em uma planta maior, descubra detalhes que influenciam o uso diário — e nem sempre ficam evidentes no decorado."
+
+**CTA primário:** "Comparar plantas com Sabrina" (WhatsApp contextual).
+
+**CTA secundário:** "Conhecer as plantas do Nova Vivere" (link HTML para landing comercial).
+
+**SEO:** preservar intenção informacional *sem marca* no title/H1 final e evitar título com afirmação universal; conferir SERP/GSC, canibalização com Dicas e largura mobile antes de fixar. O H1 acima é alternativa a testar, não uma segunda tag H1 a publicar junto com os títulos anteriores.
+
+### Hierarquia dos CTAs na página
+
+1. **Hero — descoberta:** "Comparar plantas com Sabrina" → WhatsApp contextual. Mostrar benefício e expectativa da interação; o CTA não exige que o visitante já conheça Nova Vivere.
+2. **Após checklist/estudo de caso — avaliação:** card HTML clicável "Ver plantas e detalhes do Nova Vivere" → /empreendimentos/nova-vivere/.
+3. **Seção Sabrina — assistência:** "Receber orientação sobre apartamentos de 2 ou 3 suítes" → WhatsApp com mensagem predefinida. Não obrigar o usuário a recontar o artigo.
+4. **Final — intenção comercial:** "Consultar unidades e condições disponíveis" → WhatsApp, sem assumir estoque, benefício financeiro ou prazo especial.
+5. **Badges móveis:** manter ícone WhatsApp oficial e badge "Condições"; rótulos acessíveis, sem colidir com conteúdo ou consentimento.
+6. **Form46 condicional:** somente com layout e contrato de consentimento/mensuração já validados; CTA comunica o que acontecerá após envio, sem simular confirmação de disponibilidade.
+
+**Mensagem WhatsApp sugerida:** "Olá, Sabrina! Estou comparando apartamentos de 2 e 3 suítes. Li o guia do MoreTegra e quero entender quais plantas do Nova Vivere podem atender à minha rotina e consultar as condições atuais."
+
+### Regra de credibilidade e medição
+
+- Não criar falsa escassez ("últimas unidades"), redução de preço, valorização certa, "condição exclusiva" ou garantia de resposta/tempo.
+- Não afirmar que uma planta é inadequada sem avaliar unidade e necessidade. A Big Idea é enquadramento de decisão, não diagnóstico individual.
+- Mapear cliques para hero, card, seção Sabrina, badge e Form46 por posição, respeitando consentimento e taxonomia mnt_* já governada; evento de CTA **não** é lead confirmado.
+- Medir: CTR orgânico não-marcado; taxa de clique do artigo para landing/WhatsApp; leads confirmados; qualidade do atendimento. A/B só com tráfego e desenho experimental suficientes; não alegar melhoria de conversão antecipadamente.
+- Aplicar o método nos 12 artigos, mas cada um deve ter antagonista conceitual e benefício comercial específicos; não copiar as mesmas frases e ofertas.
+
 ## Estratégia de intenção e propriedade das URLs
 
 - Intenção primária do artigo: **comparação prática de plantas residenciais por rotina e planos de vida**, sem disputa direta pelas consultas comerciais de Nova Vivere.
