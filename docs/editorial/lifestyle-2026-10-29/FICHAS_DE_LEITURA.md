@@ -4,7 +4,7 @@ Data: 29/10/2026. Escopo documental da PR #510; nenhum artigo, placeholder, míd
 
 ## Proveniência e critério
 
-Fonte imediata: mensagem do usuário `4d727195-7262-49fa-98b5-e12c51c203c2`, conversa [Auditoria do sitemap](chatgpt-conversation://6ae0e8de-e3dc-83e9-8bfa-4e75e3ff64be), recuperada por `read_thread`. Datas e atribuições abaixo são as da transcrição, sem autenticação do HTML original. A recuperação limita cada mensagem a 20.000 caracteres e informou `truncated: true`; os três primeiros artigos têm fechamento aparente antes do corte, Moradias tem possível truncamento próprio, e Garden chega apenas à lista indicada abaixo. Não atribuir o corte da ferramenta ao autor original.
+Fonte imediata: mensagem do usuário `4d727195-7262-49fa-98b5-e12c51c203c2`, conversa [Auditoria do sitemap](chatgpt-conversation://6ae0e8de-e3dc-83e9-8bfa-4e75e3ff64be), recuperada por `read_thread`. Datas e atribuições abaixo são as da transcrição, sem autenticação do HTML original. A recuperação limita cada mensagem a 20.000 caracteres e informou `truncated: true`; os três primeiros artigos têm fechamento aparente antes do corte, Moradias tem possível truncamento próprio, e Garden foi posteriormente reenviado até um fechamento aparente. Não atribuir o corte da ferramenta ao autor original.
 
 As fichas são sínteses analíticas, não reprodução integral, novo outline editorial ou licença de uso. Cada localizador identifica onde a declaração aparece no material recebido. `USER_SUPPLIED_SOURCE_STATEMENT` confirma apenas o que o texto atribuído à Tegra declara, não a verdade independente de benefícios ou fatos comerciais. Novas pesquisas científicas/comerciais não foram executadas neste escopo.
 
@@ -16,7 +16,7 @@ As fichas são sínteses analíticas, não reprodução integral, novo outline e
 | 02 | BODY_READ_WEB | BODY_READ_USER | Fechamento aparente |
 | 04 | BODY_READ_WEB | BODY_READ_USER | Fechamento aparente |
 | 08 | PAGE_BLOCKED | BODY_PARTIAL_USER | Possível truncamento em paisagismo |
-| 11 | PAGE_BLOCKED | BODY_PARTIAL_USER | Recuperação da mensagem truncada |
+| 11 | PAGE_BLOCKED | BODY_READ_USER | Nova transcrição com fechamento aparente; HTML não autenticado |
 
 Os bloqueios anteriores descreviam a ferramenta de acesso web, não a inacessibilidade universal das páginas. O envio do usuário resolve a ausência de material de leitura na extensão recebida; não autentica a íntegra nem libera redação/publicação. As sete outras fontes não foram relidas nesta atualização.
 
@@ -79,7 +79,7 @@ Fonte: [artigo original](https://www.tegraincorporadora.com.br/blog/lifestyle/es
 
 Fonte: [artigo original](https://www.tegraincorporadora.com.br/blog/lifestyle/moradias-suspensas-o-luxo-em-plantas-de-185-m-a-355-m). Data declarada: 2026-07-31. Estado: `BODY_PARTIAL_USER`.
 
-**Cobertura:** Trecho recebido termina em “paisagismo em parte da arquitetura”. Possível truncamento informado pelo usuário; íntegra não confirmada.
+**Cobertura:** Nova transcrição de 29/10/2026 confirma o mesmo encerramento após a seção de paisagismo biofílico, com última frase completa. Não há comprovação de que seja o último parágrafo do HTML original; classificar como completude não confirmada.
 
 **Síntese:** O trecho descreve apartamentos amplos com integração social, varanda, separação da área íntima e paisagismo; o título informa 185–355 m² e o corpo menciona plantas de 3 e 4 suítes.
 
@@ -94,24 +94,26 @@ Fonte: [artigo original](https://www.tegraincorporadora.com.br/blog/lifestyle/mo
 
 **Uso possível na pesquisa MoreTegra:** Comparar planta, privacidade e circulação somente com desenhos e fichas reais. Não reutilizar estrutura, títulos ou redação da fonte.
 
-## 11. Garden Design: paisagismo e uso das áreas externas
+## 11. Garden Design: paisagismo, lazer e uso das áreas externas
 
-Fonte: [artigo original](https://www.tegraincorporadora.com.br/blog/lifestyle/a-ultima-reserva-urbana-da-zona-oeste-tem-um-nome-garden-design). Data declarada: 2026-06-24. Estado: `BODY_PARTIAL_USER`.
+Fonte: [artigo original](https://www.tegraincorporadora.com.br/blog/lifestyle/a-ultima-reserva-urbana-da-zona-oeste-tem-um-nome-garden-design). Data declarada: 2026-06-24. Estado: `BODY_READ_USER`.
 
-**Cobertura:** Recuperação da mensagem marcada truncated:true; último item disponível é “Paisagismo contemporâneo”. Não é possível distinguir corte do envio original de corte da ferramenta; íntegra não confirmada.
+**Cobertura:** Nova transcrição enviada pelo usuário em 29/10/2026, com conclusão aparente na seção “Garden Design: uma oportunidade rara em São Paulo”. O texto anterior terminava na lista “Paisagismo contemporâneo”. Não houve cotejo com HTML original.
 
-**Síntese:** O trecho posiciona Garden Design como reserva urbana na Zona Oeste e associa paisagismo, convivência ao ar livre, relaxamento e lazer à experiência residencial.
+**Síntese:** O artigo posiciona o Garden Design como uma “reserva urbana” na Zona Oeste, desenvolve os temas de paisagismo e convivência, enumera espaços de lazer/conveniência e apresenta potencial de valorização como argumento promocional, sem dados quantitativos de mercado.
 
 **Declarações localizadas — USER_SUPPLIED_SOURCE_STATEMENT:**
 
-- **Abertura e seção de reserva urbana:** Garden Design é identificado como o empreendimento da matéria. Reserva urbana é enquadramento publicitário ligado a verde e conveniência, sem categoria ambiental comprovada.
-- **Seção de Zona Oeste:** A fonte descreve infraestrutura, serviços, parques e mobilidade em termos regionais, sem endereços, distâncias ou tempos de percurso.
-- **Seção de natureza e lista final recuperada:** Paisagismo integrado, convivência externa, relaxamento e lazer são os eixos concretos do trecho; a lista termina em paisagismo contemporâneo.
+- **Abertura e “O que significa viver em uma reserva urbana?”:** Utiliza “reserva urbana” como enquadramento de marketing; menciona vegetação, áreas abertas e conveniência, sem comprovar proteção ambiental formal.
+- **“O privilégio da Zona Oeste de São Paulo”:** Descreve parques, comércio, serviços, gastronomia e mobilidade regional, sem especificar trajetos, distâncias ou equipamentos nominalmente.
+- **“Garden Design: natureza integrada ao projeto”:** Relaciona paisagismo à experiência residencial e enumera ambientes externos de convivência e relaxamento.
+- **“Um novo conceito de lazer e bem-estar”:** Declara piscinas adulto/infantil, fitness, quadra poliesportiva, salão de festas e gourmet, kids/brinquedoteca, salão de jogos, work/coliving, pet place, bicicletário, bar/convivência e “uso sustentável dos espaços comuns”. É uma lista declarada pela fonte, ainda não verificada no memorial vigente.
+- **“Por que imóveis com áreas verdes estão mais valorizados?” e fechamento:** Alega maior interesse, exclusividade e potencial de valorização no longo prazo, sem série de preços, amostra ou método; tais alegações não são conclusões independentes do dossiê.
 
-**Ressalvas e verificação pendente:** “Última reserva”, raridade, valorização e tranquilidade são alegações não verificadas. O trecho não fornece área de terreno, percentual verde, certificação, preço ou tipologias. Os 61–78 m² e estágio do registro anterior vieram de fonte institucional separada e histórica; não atribuí-los ao trecho nem atualizar oferta por ele.
+**Ressalvas e verificação pendente:** “Última reserva”, raridade, tranquilidade, sustentabilidade e valorização não foram demonstradas de modo independente. Confirmar instalações e condições de uso no memorial/ficha vigente; ausência de área verde percentual, certificação, preço, tipologias, estoque e números de valorização no texto recebido. Não atribuir à nova transcrição os 61–78 m² do registro institucional histórico.
 
-**Uso possível na pesquisa MoreTegra:** Explicar como avaliar espaços verdes e manutenção, sem copiar branding 'última reserva'. Não reutilizar estrutura, títulos ou redação da fonte.
+**Uso possível na pesquisa MoreTegra:** Explicar critérios objetivos para avaliar paisagismo, manutenção, acesso e infraestrutura de lazer, com ficha técnica verificável. Não copiar o posicionamento promocional, título, slug, estrutura ou redação da fonte.
 
 ## Próximo gate
 
-Completar as duas leituras parciais; verificar estudo primário e claims técnicos/comerciais apenas quando a pauta for selecionada; confrontar intenção com Dicas, Mercado e páginas de produto. Depois preparar brief e narrativa originais sob o padrão Blog V1/§5A. Nenhuma ficha está pronta para publicação, e imagens permanecem sem autorização presumida. Não alterar noindex, sitemap, redirects, cards, Form46 ou produção por força desta pesquisa.
+Esclarecer a completude de Moradias suspensas; verificar estudo primário e claims técnicos/comerciais apenas quando a pauta for selecionada; confrontar intenção com Dicas, Mercado e páginas de produto. Depois preparar brief e narrativa originais sob o padrão Blog V1/§5A. Nenhuma ficha está pronta para publicação, e imagens permanecem sem autorização presumida. Não alterar noindex, sitemap, redirects, cards, Form46 ou produção por força desta pesquisa.
