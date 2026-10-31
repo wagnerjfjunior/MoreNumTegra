@@ -11,6 +11,17 @@ for(const slug of slugs){
  let html;try{html=readFileSync(path,'utf8')}catch{continue}
  pages++;
  const nodes=[...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)].flatMap(m=>{const v=JSON.parse(m[1]);return v['@graph']||[v]});
+ if(new Set(['kronos-by-tegra','claris-casa-e-clube','claris-rosas','gran-thai-leisure-residence','singular-private-residence','gaea-home-resort']).has(slug)){
+  const project=nodes.find(n=>n['@type']==='ApartmentComplex');
+  assert(project?.address?.addressLocality==='Rio de Janeiro'&&project.address.addressRegion==='RJ',slug+': project city/state missing');
+  assert(!nodes.some(n=>n['@type']==='RealEstateAgent'&&n.address),slug+': remote contact must not claim an onsite brokerage office');
+  assert(html.includes('name="robots" content="noindex,follow"'),slug+': page must remain noindex pending acceptance');
+  assert(html.includes('CRECI-SP 209.905-F')&&html.includes('atendimento inicial'),slug+': remote consultation identity missing');
+  assert(!/CRECI-RJ|CRECI RJ/.test(html),slug+': never invent RJ CRECI');
+  notApplicable++;
+  console.log('RIO_REMOTE_STAGING_PASS',slug);
+  continue;
+ }
  if(slug==='studios-berrini'){
   const place=nodes.find(n=>n['@type']==='Place'&&n['@id']==='https://www.moretegra.com.br/empreendimentos/studios-berrini/#project');
   const agent=nodes.find(n=>n['@type']==='RealEstateAgent');
@@ -69,7 +80,7 @@ for(const slug of slugs){
  agents++;
  console.log('ONSITE_AGENT_PASS',slug,a.address.streetAddress,a.address.postalCode);
 }
-assert.equal(pages,28,'Expected 28 audited pages including RIIO preparation');
+assert.equal(pages,34,'Expected 28 existing plus six Rio staged project pages');
 assert.equal(agents,20,'Expected 20 project-scoped RealEstateAgents including Jerivás');
-assert.equal(notApplicable,8,'Expected 6 without Realtor plus NR and RIIO remote contacts');
-console.log('PASS: 20 on-site agents retain project addresses; 6 pages without Realtor, NR and RIIO remote intake checked separately');
+assert.equal(notApplicable,14,'Expected 8 existing remote/non-applicable plus six Rio remote staging pages');
+console.log('PASS: 20 on-site agents retain project addresses; 6 legacy non-agent projects, NR and RIIO plus six Rio remote staging pages checked separately');
