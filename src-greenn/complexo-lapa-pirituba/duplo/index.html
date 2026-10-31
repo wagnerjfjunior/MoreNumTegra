@@ -118,11 +118,11 @@ function separateSharedSegments(first,second){
       }
       return total/weightSum;
     });
-    // Deslocamento para a direita de cada direção. Como as direções são
+    // Direita do deslocamento no sistema de coordenadas da imagem (eixo Y para baixo). Como as direções são
     // opostas, os dois trajetos se afastam entre si no trecho compartilhado.
     return source.map((p,i)=>({
-      x:p.x+p.ty*SEPARATION_PX*weights[i],
-      y:p.y-p.tx*SEPARATION_PX*weights[i]
+      x:p.x-p.ty*SEPARATION_PX*weights[i],
+      y:p.y+p.tx*SEPARATION_PX*weights[i]
     }));
   }
   return [apply(first,second),apply(second,first)];
