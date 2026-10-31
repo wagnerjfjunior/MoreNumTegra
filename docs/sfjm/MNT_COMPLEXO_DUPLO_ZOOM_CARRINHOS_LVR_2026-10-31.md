@@ -34,3 +34,12 @@
 - Traçados divergentes permanecem sem offset. O deslocamento é visual, não correção de infraestrutura.
 - Aceite pendente: usuário verificar no LVR se os carrinhos aparecem lado a lado nas seções compartilhadas e se não há saltos nas entradas e saídas, inclusive a 3×.
 - Não alterar produção nem certificar geométricas como verificadas apenas com esta atualização.
+
+## Consolidação do catálogo — 16 entradas no seletor
+
+- Solicitado pelo usuário após aceite visual do duplo: substituir as entradas 1 e 2 independentes por uma entrada inicial `Lapa ↔ Pirituba`.
+- `src-greenn/complexo-lapa-pirituba/index.html` preserva os outros 15 mapas, que passam a ser exibidos com índices 2–16, mas continuam associados a páginas 21–35 do PDF.
+- Simulador duplo encaixado na área do mapa por iframe de mesma origem com `?embed=1`, modo que oculta cabeçalho e apresentação duplicados e mostra os dois carrinhos, filtros e zoom.
+- O mapa original `rota-20.jpg` continua no GitHub para referência, mas deixou de ser uma opção própria do seletor. Não apagar fonte primária.
+- Nenhum arquivo da produção foi alterado; aguarda sincronização e aceite visual no LVR antes de eventual merge.
+- QA pendente: verificar contador 1–16, ações Anterior/Próximo, iframe sem barras internas excessivas no mobile, zoom, pause, seleção de ida/volta e todos os 15 mapas remanescentes.
