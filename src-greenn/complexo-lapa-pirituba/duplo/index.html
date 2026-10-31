@@ -43,6 +43,23 @@ html.embedded .mapcard{border:0;box-shadow:none}
 html.embedded .viewer{width:100%}
 html.embedded .panel{margin:0 10px 12px;box-shadow:none}
 html.embedded .mapbar{padding:9px 12px}
+/* Aparência editorial do mapa: nenhuma modificação na geometria, SVG ou animação. */
+.mapbar{background:linear-gradient(110deg,#fffaf0 0%,#edf5f5 100%);border-bottom:1px solid #ddd6c8}
+.mapbar strong{letter-spacing:.01em;color:#293c40}
+.viewer{background:#e3ede8}
+.zoomlayer>img{filter:saturate(1.18) contrast(1.07) brightness(1.035); }
+.zoomlayer::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(130deg,rgba(226,245,239,.10),transparent 48%,rgba(239,221,179,.09));mix-blend-mode:multiply;z-index:1}
+.zoomlayer>svg{z-index:2}
+.map-keys{display:flex;gap:9px;flex-wrap:wrap;align-items:center;padding:12px 15px;border-top:1px solid #e3ddd0;background:linear-gradient(100deg,#fffefb,#f7f8f5)}
+.map-keys .leadkey{font-weight:800;color:#45515a;font-size:12px;letter-spacing:.03em;text-transform:uppercase;margin-right:3px}
+.map-keys .chip{display:inline-flex;gap:6px;align-items:center;border:1px solid #d7dfd9;background:#fff;border-radius:999px;padding:5px 10px;font-weight:650;font-size:12px;color:#3b5557}
+.map-keys .chip::before{content:"";width:6px;height:6px;border-radius:50%;background:#85a79e;flex:none}
+.map-keys .hint{flex-basis:100%;font-size:11px;color:#69716b;margin-top:0}
+.map-legend{display:flex;gap:14px;flex-wrap:wrap;align-items:center;padding:11px 15px;background:#fbfaf6;border-top:1px solid #e7e4da;font-size:12px;font-weight:750;color:#46515a}
+.map-legend .legenditem{display:inline-flex;align-items:center;gap:7px}
+.map-legend .legendline{display:block;width:32px;height:5px;border-radius:4px}
+.map-legend .legendline.orange{background:#ed8917}.map-legend .legendline.blue{background:#147cf1}
+@media(max-width:520px){.map-keys{gap:6px;padding:10px}.map-keys .chip{font-size:11px;padding:4px 8px}.map-legend{gap:8px;padding:10px;font-size:11px}}
 </style><script>if(new URLSearchParams(location.search).get("embed")==="1")document.documentElement.classList.add("embedded");</script></head><body>
 <header><div class="wrap nav"><img alt="Tegra" src="https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp"><a href="/">More em um Tegra</a><a class="back" href="/complexo-lapa-pirituba/">← Página original</a></div></header>
 <main class="wrap"><section class="intro"><div class="eyebrow">SFJM / LVR • experimento visual • documento 2019</div>
@@ -58,7 +75,8 @@ html.embedded .mapbar{padding:9px 12px}
 <g id="blueRoute"><path id="blueHalo" class="route-halo"/><path id="bluePath" class="route-line blue"/><g id="blueCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#156cda"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
 </svg></div>
 <div class="zoombuttons" aria-label="Zoom do mapa"><button class="zoomchip" id="zoomIn" aria-label="Ampliar">+</button><span class="zoomread" id="zoomRead">1,0×</span><button class="zoomchip" id="zoomOut" aria-label="Reduzir">−</button><button class="zoomchip" id="zoomReset" aria-label="Voltar à vista completa" title="Centralizar mapa">⌂</button></div>
-</div><div class="source">Base geográfica: SPObras (2019). As linhas coloridas e carrinhos são recursos explicativos, não rotas operacionais. A base permanece na resolução JPG do PDF; zoom não acrescenta nomes de ruas.</div></div>
+</div><div class="map-legend" aria-label="Legenda das duas direções"><span class="legenditem"><i class="legendline orange"></i>Lapa → Pirituba</span><span class="legenditem"><i class="legendline blue"></i>Pirituba → Lapa</span></div>
+<div class="map-keys" aria-label="Referências da região, sem marcação geográfica no desenho"><span class="leadkey">Referências da região</span><span class="chip">Lapa</span><span class="chip">Piqueri</span><span class="chip">Pirituba</span><span class="chip">Marginal Tietê</span><span class="hint">Referências contextuais: não são pinos georreferenciados nem representam paradas no trajeto.</span></div><div class="source">Base geográfica: SPObras (2019). As linhas coloridas e carrinhos são recursos explicativos, não rotas operacionais. A base permanece na resolução JPG do PDF; zoom não acrescenta nomes de ruas.</div></div>
 <aside class="panel"><h2>Controle da circulação</h2><div class="toggles">
 <label class="toggle"><input type="checkbox" id="showOrange" checked><span class="swatch orange"></span><span>Lapa → Pirituba</span></label>
 <label class="toggle"><input type="checkbox" id="showBlue" checked><span class="swatch blue"></span><span>Pirituba → Lapa</span></label></div>
