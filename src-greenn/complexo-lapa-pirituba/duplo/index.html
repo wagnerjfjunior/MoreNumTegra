@@ -33,7 +33,17 @@ button.secondary{background:#f0ece3;border:1px solid #dbd4c5;border-radius:10px;
 :focus-visible{outline:3px solid #aa8016;outline-offset:3px}
 @media(max-width:880px){.layout{grid-template-columns:1fr}.panel{order:-1}.panel .toggles{display:flex;gap:22px;flex-wrap:wrap}.toggle{border:0;padding:5px 0}.controls{display:flex;flex-wrap:wrap}.controls button{flex:1;min-width:150px}}
 @media(max-width:520px){.nav .back{font-size:12px}.viewer{aspect-ratio:1200 / 849}.mapbar{padding:10px}.panel{padding:13px}.zoomchip{min-height:40px;min-width:41px}.zoombuttons{bottom:8px;right:8px}}
-</style></head><body>
+</style><style>
+html.embedded,html.embedded body{background:transparent}
+html.embedded header,html.embedded .intro{display:none}
+html.embedded .wrap{width:100%;max-width:none}
+html.embedded .layout{margin:0;grid-template-columns:1fr;gap:10px}
+html.embedded .panel{order:2}
+html.embedded .mapcard{border:0;box-shadow:none}
+html.embedded .viewer{width:100%}
+html.embedded .panel{margin:0 10px 12px;box-shadow:none}
+html.embedded .mapbar{padding:9px 12px}
+</style><script>if(new URLSearchParams(location.search).get("embed")==="1")document.documentElement.classList.add("embedded");</script></head><body>
 <header><div class="wrap nav"><img alt="Tegra" src="https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp"><a href="/">More em um Tegra</a><a class="back" href="/complexo-lapa-pirituba/">← Página original</a></div></header>
 <main class="wrap"><section class="intro"><div class="eyebrow">SFJM / LVR • experimento visual • documento 2019</div>
 <h1>Complexo Lapa–Pirituba: os dois sentidos, em movimento</h1>
