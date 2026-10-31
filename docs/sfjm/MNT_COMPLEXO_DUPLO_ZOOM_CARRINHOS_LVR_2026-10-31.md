@@ -26,3 +26,11 @@
 - A imagem aprovada inclui título e legenda dentro do próprio bitmap e proporção diferente: para integrá-la em interatividade é necessário ajustar offsets e transformações SVG, evitando duplicar linhas visuais.
 - Os dois paths existentes são candidatos; ajustes finos de posicionamento precisam de aceite no LVR.
 - Não mergear nem promover a produção sem autorização.
+
+## Ajuste incremental — separar linhas coincidentes
+- No simulador isolado, os percursos continuam vindos do mesmo `routes-verified.json`, que não foi modificado.
+- No carregamento são amostradas as curvas de ida/volta; segmentos com proximidade até 24 unidades SVG e tangentes em sentidos opostos recebem deslocamento lateral suave (até 8 unidades para cada sentido).
+- A mesma geometria exibida alimenta a animação de cada carro; zoom e pinça não mudam o alinhamento relativo.
+- Traçados divergentes permanecem sem offset. O deslocamento é visual, não correção de infraestrutura.
+- Aceite pendente: usuário verificar no LVR se os carrinhos aparecem lado a lado nas seções compartilhadas e se não há saltos nas entradas e saídas, inclusive a 3×.
+- Não alterar produção nem certificar geométricas como verificadas apenas com esta atualização.
