@@ -69,7 +69,7 @@ html.embedded .mapbar{padding:9px 12px}
 <div class="mapbar"><strong>Mapa comparativo · dois sentidos</strong><small>Zoom de 1× a 3× • arraste ou use dois dedos</small></div>
 <div class="viewer" id="viewer" aria-label="Mapa ilustrativo com duas rotas e carrinhos animados" tabindex="0">
 <div class="zoomlayer" id="layer">
-<img src="/src-greenn/complexo-lapa-pirituba/assets/rota-19.jpg" id="mapImage" width="1200" height="849" alt="Base oficial do mapa SPObras, página 19; sobreposta com os dois trajetos coloridos">
+<img src="/src-greenn/complexo-lapa-pirituba/assets/Complexo_Lapa_Pirituba_trajeto1.webp" id="mapImage" width="1200" height="849" alt="Base oficial do mapa SPObras, página 19; sobreposta com os dois trajetos coloridos">
 <svg id="svgmap" viewBox="0 0 1200 849" preserveAspectRatio="none" aria-hidden="true">
 <g id="orangeRoute"><path id="orangeHalo" class="route-halo"/><path id="orangePath" class="route-line orange"/><g id="orangeCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#e98311"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
 <g id="blueRoute"><path id="blueHalo" class="route-halo"/><path id="bluePath" class="route-line blue"/><g id="blueCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#156cda"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
@@ -88,7 +88,7 @@ html.embedded .mapbar{padding:9px 12px}
 "use strict";
 const root="/src-greenn/complexo-lapa-pirituba/";
 const bg=document.getElementById("mapImage");
-bg.addEventListener("error",()=>{const label=document.getElementById("status");label.textContent="ERRO: JPG do mapa não carregou. URL: "+bg.src;console.error("Mapa SPObras indisponível",bg.src);});
+bg.addEventListener("error",()=>{if(!bg.dataset.fallback){bg.dataset.fallback="1";bg.src="/src-greenn/complexo-lapa-pirituba/assets/rota-19.jpg";return;}const label=document.getElementById("status");label.textContent="ERRO: mapa indisponível. URL: "+bg.src;console.error("Mapa SPObras indisponível",bg.src);});
 bg.addEventListener("load",()=>{const label=document.getElementById("status");if(label.textContent.startsWith("ERRO: JPG"))label.textContent="Imagem oficial carregada.";});
 const $=id=>document.getElementById(id),viewer=$("viewer"),layer=$("layer");
 let mapScale=1,offsetX=0,offsetY=0,paused=matchMedia("(prefers-reduced-motion: reduce)").matches,started=performance.now(),progressAtPause=0,pathsReady=false,raf=0;
