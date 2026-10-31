@@ -51,7 +51,19 @@
     return project.detailUrl || DETAIL_ROUTES[key] || null;
   }
 
-  const PROJECTS = Object.freeze([
+  // Rio: tipologias/estágios verificados na listagem oficial da Tegra em 31/10/2026.
+  // Valores promocionais anteriores não são publicados como ofertas vigentes na Home.
+  const RJ_PROJECTS = Object.freeze([
+    {name:"Kronos by Tegra",city:"Rio de Janeiro",location:"Barra da Tijuca · Rio de Janeiro",zone:"Rio de Janeiro",status:"Lançamento",statusKey:"lancamento",info:"2 a 4 suítes · 77 a 301 m²",feature:"Barra da Tijuca · Lançamento",image:"",alt:"",detailUrl:"/rio-de-janeiro/#projeto-1",price:null,priceState:"consult",priceNote:"Condições e disponibilidade sob consulta. O hub Rio de Janeiro reúne valores históricos de referência com suas fontes; confirme a tabela vigente."},
+    {name:"Claris Casa & Clube",city:"Rio de Janeiro",location:"Barra da Tijuca · Rio de Janeiro",zone:"Rio de Janeiro",status:"Em construção",statusKey:"construcao",info:"Casas · 3 e 4 suítes · 318 a 580 m²",feature:"Casas no Parque das Rosas",image:"https://www.carvalhohosken.com.br/media/images/claris-casa-clube-3/gallery/AKX_09_Perspectiva_Ilustrada_da_Fachada_Violeta_REV_0_4efTMNi.jpg",alt:"Perspectiva ilustrada do Claris Casa & Clube na Barra da Tijuca, Rio de Janeiro",detailUrl:"/rio-de-janeiro/#projeto-2",price:null,priceState:"consult",priceNote:"Condições e disponibilidade sob consulta. O hub Rio de Janeiro reúne valores históricos de referência com suas fontes; confirme a tabela vigente."},
+    {name:"Claris Rosas",city:"Rio de Janeiro",location:"Barra da Tijuca · Rio de Janeiro",zone:"Rio de Janeiro",status:"Em construção",statusKey:"construcao",info:"Casas · 3 e 4 suítes · 318 a 580 m²",feature:"Claris · Parque das Rosas",image:"",alt:"",detailUrl:"/rio-de-janeiro/#projeto-3",price:null,priceState:"consult",priceNote:"Condições e disponibilidade sob consulta. O hub Rio de Janeiro reúne valores históricos de referência com suas fontes; confirme a tabela vigente."},
+    {name:"Gran Thai Leisure Residence",city:"Rio de Janeiro",location:"Barra da Tijuca · Rio de Janeiro",zone:"Rio de Janeiro",status:"Em construção",statusKey:"construcao",info:"3 ou 4 suítes · 125 a 210 m²",feature:"Península · Barra da Tijuca",image:"https://stracctegra.blob.core.windows.net/assets/peninsula/gran-thai/galeria/PEN_01_Geral_Vista_Parque_REV_01.jpg",alt:"Perspectiva ilustrada do Gran Thai Leisure Residence na Barra da Tijuca, Rio de Janeiro",detailUrl:"/rio-de-janeiro/#projeto-4",price:null,priceState:"consult",priceNote:"Condições e disponibilidade sob consulta. O hub Rio de Janeiro reúne valores históricos de referência com suas fontes; confirme a tabela vigente."},
+    {name:"Singular Private Residence",city:"Rio de Janeiro",location:"Barra da Tijuca · Rio de Janeiro",zone:"Rio de Janeiro",status:"Em construção",statusKey:"construcao",info:"4 suítes · 221,48 a 452 m²",feature:"Península · Barra da Tijuca",image:"https://stracctegra.blob.core.windows.net/assets/BannerHome/2/Imagem/8ab1bdd7-26eb-407f-a69a-33d8b9236c46-1758650907188.jpg",alt:"Perspectiva ilustrada do Singular Private Residence na Barra da Tijuca, Rio de Janeiro",detailUrl:"/rio-de-janeiro/#projeto-5",price:null,priceState:"consult",priceNote:"Condições e disponibilidade sob consulta. O hub Rio de Janeiro reúne valores históricos de referência com suas fontes; confirme a tabela vigente."},
+    {name:"Gaea Home Resort",city:"Rio de Janeiro",location:"Barra da Tijuca · Rio de Janeiro",zone:"Rio de Janeiro",status:"Em construção",statusKey:"construcao",info:"3 e 4 suítes · 125 e 170 m²",feature:"Barra da Tijuca · Home Resort",image:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/347/ImagemPrincipal/com-1715867555810.jpg",alt:"Perspectiva ilustrada do Gaea Home Resort na Barra da Tijuca, Rio de Janeiro",detailUrl:"/rio-de-janeiro/#projeto-6",price:null,priceState:"consult",priceNote:"Condições e disponibilidade sob consulta. O hub Rio de Janeiro reúne valores históricos de referência com suas fontes; confirme a tabela vigente."},
+    {name:"RIIO by Piero Lissoni",city:"Rio de Janeiro",location:"Barra da Tijuca · Rio de Janeiro",zone:"Rio de Janeiro",status:"Em construção",statusKey:"construcao",info:"4 a 6 suítes · 262 a 1.042 m²",feature:"Tegra + Lissoni",image:"/assets/blog/mercado-2026/riio-varanda.webp",alt:"Perspectiva ilustrada do RIIO by Piero Lissoni na Barra da Tijuca, Rio de Janeiro",detailUrl:"/empreendimentos/riio-by-piero-lissoni/",price:null,priceState:"consult",priceNote:"Condições e disponibilidade sob consulta. O hub Rio de Janeiro reúne valores históricos de referência com suas fontes; confirme a tabela vigente."}
+  ]);
+
+  const SP_PROJECTS = Object.freeze([
     {name:"Nova Vivere | 72 m²",projectName:"Nova Vivere",location:"Lapa · Zona Oeste",zone:"Zona Oeste",status:"Lançamento",statusKey:"lancamento",info:"72,82 m² · 2 ou 3 suítes · 1 ou 2 vagas",feature:"72 m² · entrada Nova Vivere",award:CAMINHOS_AWARD,image:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/363/ImagemPrincipal/Tegra-Incorporadora-Area-de-Lazer-Piscina-Empreendimento-Nova-Vivere-Caminhos-da-Lapa-Apartamentos-Sao-Paulo-SP-714x640-1770300546843.png",alt:"Nova Vivere de 72 m², empreendimento Tegra no Caminhos da Lapa, São Paulo",price:852586.08,priceState:"priced",priceLabel:"A partir de",priceNote:"Unidade 701 · 72,82 m² · R$ 11.708/m² · Valor a partir de R$ 852.586,08. Consulte a Tegra Vendas para confirmar disponibilidade e condições vigentes."},
     {name:"Château Jardin",detailUrl:"/empreendimentos/chateau-jardin/",location:"Cidade Jardim · Zona Sul",zone:"Zona Sul",status:"Lançamento",statusKey:"lancamento",info:"3 ou 4 suítes · 185m² a 355m² · 3 ou 4 vagas",feature:"Novo eixo Cidade Jardim",image:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/364/ImagemPrincipal/Tegra-Incorporadora-Fachada-Empreendimento-Chateau-Jardin-Apartamentos-Cidade-Jardim-Sao-Paulo-SP-714x640-1774666511357.jpg",alt:"Château Jardin, empreendimento Tegra em Cidade Jardim, São Paulo",price:3690361,priceState:"priced",priceNote:"Unidade 501 · 185 m² · R$ 19.947/m² · Valor a partir de R$ 3.690.361. Consulte a Tegra Vendas para confirmar disponibilidade desta unidade e condições vigentes."},
     {name:"Caminhos da Lapa Elo Duo",award:CAMINHOS_AWARD,location:"Lapa · Zona Oeste",zone:"Zona Oeste",status:"Pronto para morar",statusKey:"entregue",info:"2 ou 3 dorms. · 47m², 55m² e 67m² · até 1 vaga",feature:"Visite o decorado",image:"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/317/ImagemPrincipal/8d3d8839-e0b7-4f21-9d0e-99c363c8f6bc.jpg",alt:"Caminhos da Lapa Elo Duo, empreendimento Tegra em Lapa, São Paulo",price:690000,priceState:"priced",priceLabel:"Valor promocional",priceNote:"Pronto para morar · últimas 6 unidades de 67 m² · valor único de R$ 690.000, inclusive unidade 109. Promoção por tempo limitado.",promo:{unit:"67 m² · últimas 6 unidades",oldPrice:793500,price:690000,urgency:"Valor único para as últimas 6 unidades · inclusive unidade 109 · promoção por tempo limitado"}},
@@ -86,6 +98,7 @@
     {name:"Viso Moema",detailUrl:"/empreendimentos/viso-moema/",cta:"Consultar disponibilidade",formIntent:"specialist",interest:"Viso Moema",location:"Moema · Zona Sul",zone:"Zona Sul",status:"Consultar disponibilidade",statusKey:"consulta",info:"Apartamentos de 74 e 115 m² · 2 ou 3 suítes · 1 a 2 vagas",feature:"SUCESSO DE VENDAS · CONSULTE DISPONIBILIDADE",image:"https://s3-gdigital.s3.amazonaws.com/gdigital/313/More-Tegra-Viso-Moema-Fachada-moderna-com-paisagismo-urbano.webp",alt:"Viso Moema, empreendimento Tegra em Moema, São Paulo",price:null,priceState:"consult",priceNote:"Sucesso de vendas. Consulte a Tegra Vendas para verificar eventual disponibilidade e condições atuais."},
     {name:"Reserva Caminhos da Lapa",detailUrl:"/empreendimentos/reserva-caminhos-da-lapa/",award:CAMINHOS_AWARD,commercialState:"consultation",cta:"Consulte disponibilidade",formIntent:"specialist",interest:"Reserva Caminhos da Lapa",location:"Lapa · Zona Oeste",zone:"Zona Oeste",status:"Pronto para morar",statusKey:"entregue",info:"3 a 4 dorms. · 1 a 3 suítes · 91m², 127m² e 157m² · 2 a 3 vagas",feature:"CONSULTE DISPONIBILIDADE",image:"https://s3-gdigital.s3.amazonaws.com/gdigital/313/OJvCwqOQER0mcGGVjBoPxE8xALtGs2KXW1MhcviW.webp",alt:"Reserva Caminhos da Lapa, empreendimento Tegra pronto para morar na Lapa, São Paulo",price:null,priceState:"consultation",priceNote:"Consulte a Sabrina da Tegra para verificar oportunidades e condições."}
   ]);
+  const PROJECTS = Object.freeze([...SP_PROJECTS, ...RJ_PROJECTS]);
 
   // INTEREST_GALLERY_SOURCE_2026_08_26:
   // mídias adicionais obtidas das galerias oficiais Tegra; Bueno Brandão usa o microsite oficial.
@@ -455,7 +468,8 @@
     "Chácara Klabin": "na Chácara Klabin",
     "Itaim Bibi": "no Itaim Bibi",
     "Sacomã": "no Sacomã",
-    "Alto do Ipiranga": "no Alto do Ipiranga"
+    "Alto do Ipiranga": "no Alto do Ipiranga",
+    "Barra da Tijuca": "na Barra da Tijuca, Rio de Janeiro"
   });
 
   function projectInfoForCard(info) {
@@ -471,7 +485,8 @@
     const neighborhood = String(project?.location || "").split("·")[0].trim();
     const location = PROJECT_LOCATION_COPY[neighborhood] || (neighborhood ? `em ${neighborhood}` : "em São Paulo");
     const hasStudios = /\bstudios?\b/i.test(String(project?.info || ""));
-    return `${hasStudios ? "Studios e apartamentos Tegra" : "Apartamentos Tegra"} ${location}.`;
+    const homes = /\bcasas\b/i.test(String(project?.info || ""));
+    return `${homes ? "Casas Tegra" : hasStudios ? "Studios e apartamentos Tegra" : "Apartamentos Tegra"} ${location}.`;
   }
 
   function priceMarkup(project) {
@@ -526,9 +541,9 @@
     const detailUrl = detailUrlFor(project);
 
     return `
-      <article class="mt-project-card" data-status="${escapeHtml(project.statusKey)}" data-zone="${escapeHtml(project.zone)}" data-award="${project.award ? "true" : "false"}" data-promo="${project.promo ? "true" : "false"}" data-cash-offer="${project.cashOffer ? "true" : "false"}">
+      <article class="mt-project-card" data-city="${escapeHtml(project.city || "São Paulo")}" data-status="${escapeHtml(project.statusKey)}" data-zone="${escapeHtml(project.zone)}" data-award="${project.award ? "true" : "false"}" data-promo="${project.promo ? "true" : "false"}" data-cash-offer="${project.cashOffer ? "true" : "false"}">
         <div class="mt-project-image">
-          <img data-project-image src="${escapeHtml(mediaUrl(project.image))}" alt="${escapeHtml(project.alt || project.name)}" width="828" height="743" loading="lazy" decoding="async">
+          ${project.image ? `<img data-project-image src="${escapeHtml(mediaUrl(project.image))}" alt="${escapeHtml(project.alt || project.name)}" width="828" height="743" loading="lazy" decoding="async">` : `<div class="mt-rio-image-fallback" role="img" aria-label="Imagem do empreendimento ${escapeHtml(project.name)} indisponível"><span>TEGRA · RIO DE JANEIRO</span><strong>${escapeHtml(project.name)}</strong></div>`}
           ${project.award ? `<span class="mt-award-seal" title="${escapeHtml(project.award.label)}" aria-label="${escapeHtml(project.award.label)}"><b>PRÊMIO MASTER</b><small>IMOBILIÁRIO 2026</small></span>` : ""}
           <span class="mt-status ${statusClass[project.statusKey] || ""}">${escapeHtml(project.status)}</span>
           ${project.feature ? `<span class="mt-feature">${escapeHtml(project.feature)}</span>` : ""}
@@ -651,17 +666,21 @@
     const emptyClear = root.querySelector("[data-empty-clear]");
     const search = root.querySelector("[data-project-search]");
     const zone = root.querySelector("[data-zone-filter]");
+    const city = root.querySelector("[data-city-filter]");
+    const zoneQuickField = root.querySelector("[data-zone-quick-group]");
     const price = root.querySelector("[data-price-filter]");
     const mobileStatus = root.querySelector("[data-status-mobile]");
     const statusButtons = [...root.querySelectorAll("[data-filter-status]")];
     const quickZones = [...root.querySelectorAll("[data-quick-zone]")];
     const zoneField = zone?.closest("label") || null;
     const mobileZoneQuery = window.matchMedia?.("(max-width: 759px)") || null;
-    const state = {status: "todos", zone: "todas", price: "todos", query: ""};
+    const state = {status: "todos", city: "São Paulo", zone: "todas", price: "todos", query: ""};
 
     const syncZoneControls = () => {
+      if (zoneQuickField) { zoneQuickField.hidden = state.city !== "São Paulo"; zoneQuickField.style.display = state.city !== "São Paulo" ? "none" : ""; }
+      if (zone) zone.disabled = state.city !== "São Paulo";
       if (!zoneField) return;
-      if (mobileZoneQuery?.matches) zoneField.style.display = "none";
+      if (state.city !== "São Paulo" || mobileZoneQuery?.matches) zoneField.style.display = "none";
       else zoneField.style.removeProperty("display");
     };
 
@@ -677,12 +696,13 @@
       if (!grid) return;
       const query = normalize(state.query);
       const filtered = PROJECTS.filter((project) => {
+        const cityOk = state.city === "todas" || (project.city || "São Paulo") === state.city;
         const statusOk = state.status === "todos" || project.statusKey === state.status;
         const zoneOk = state.zone === "todas" || project.zone === state.zone;
         const priceOk = priceMatches(project, state.price);
         const haystack = normalize(`${project.name} ${project.location} ${project.zone} ${project.info} ${project.feature} ${project.priceNote}`);
         const queryOk = !query || haystack.includes(query);
-        return statusOk && zoneOk && priceOk && queryOk;
+        return cityOk && statusOk && zoneOk && priceOk && queryOk;
       });
 
       grid.innerHTML = filtered.map(cardMarkup).join("");
@@ -690,7 +710,7 @@
       if (count) count.textContent = String(filtered.length);
       if (label) label.textContent = filtered.length === 1 ? "oportunidade encontrada" : "oportunidades encontradas";
       if (empty) empty.hidden = filtered.length !== 0;
-      if (clear) clear.hidden = state.status === "todos" && state.zone === "todas" && state.price === "todos" && !state.query;
+      if (clear) clear.hidden = state.status === "todos" && state.city === "São Paulo" && state.zone === "todas" && state.price === "todos" && !state.query;
 
       root.querySelectorAll("[data-interest]").forEach((link) => {
         link.addEventListener("click", (event) => {
@@ -717,7 +737,9 @@
     };
 
     const setZone = (value) => {
+      if (state.city !== "São Paulo") { state.city = "São Paulo"; if (city) city.value = state.city; }
       state.zone = value || "todas";
+      syncZoneControls();
       if (zone) zone.value = state.zone;
       updateQuickZones();
       render();
@@ -726,7 +748,10 @@
     const reset = () => {
       state.status = "todos";
       state.zone = "todas";
+      state.city = "São Paulo";
       state.price = "todos";
+      if (city) city.value = "São Paulo";
+      syncZoneControls();
       state.query = "";
       if (zone) zone.value = "todas";
       if (price) price.value = "todos";
@@ -742,6 +767,14 @@
       button.addEventListener("click", () => setZone(button.dataset.quickZone))
     );
     mobileStatus?.addEventListener("change", (event) => setStatus(event.target.value));
+    city?.addEventListener("change", (event) => {
+      state.city = event.target.value || "São Paulo";
+      state.zone = "todas";
+      if (zone) zone.value = "todas";
+      updateQuickZones();
+      syncZoneControls();
+      render();
+    });
     zone?.addEventListener("change", (event) => {
       state.zone = event.target.value;
       updateQuickZones();
