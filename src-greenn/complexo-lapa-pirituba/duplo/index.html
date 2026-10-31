@@ -60,6 +60,17 @@ html.embedded .mapbar{padding:9px 12px}
 .map-legend .legendline{display:block;width:32px;height:5px;border-radius:4px}
 .map-legend .legendline.orange{background:#ed8917}.map-legend .legendline.blue{background:#147cf1}
 @media(max-width:520px){.map-keys{gap:6px;padding:10px}.map-keys .chip{font-size:11px;padding:4px 8px}.map-legend{gap:8px;padding:10px;font-size:11px}}
+
+/* Camada independente e não georreferenciada: paradas previstas na prancha SPObras. */
+.stop-layer[hidden]{display:none!important}
+.stop-layer{position:absolute;z-index:5;top:12px;left:12px;width:min(264px,48%);max-height:calc(100% - 28px);overflow:auto;pointer-events:auto;background:rgba(255,255,255,.94);backdrop-filter:blur(7px);border:1px solid #c3d1cf;border-radius:12px;box-shadow:0 4px 18px #092f3740;padding:10px 11px;color:#193842}
+.stop-layer strong{font-size:12px;letter-spacing:.02em;display:flex;gap:7px;align-items:center}
+.stop-layer .stop-line{display:flex;align-items:center;gap:8px;border-top:1px solid #e4e9e6;margin-top:6px;padding-top:6px;font-size:11px;line-height:1.3}
+.stop-layer .stop-line b{font-size:12px;color:#167e91;background:#e1f3f3;min-width:23px;height:23px;display:grid;place-items:center;border-radius:7px}
+.stop-layer .stop-note{font-size:10px;line-height:1.3;margin:9px 0 0;color:#596c6f}
+.stop-toggle{display:flex;align-items:center;gap:9px;padding:13px 0;border-top:1px solid #eee9df;font-weight:650;font-size:14px}
+.stop-toggle input{accent-color:#168b9e;width:21px;height:21px;flex:none}
+@media(max-width:520px){.stop-layer{top:6px;left:6px;width:min(223px,65%);padding:8px}.stop-layer .stop-line{font-size:10px}.stop-layer .stop-note{font-size:9px}}
 </style><script>if(new URLSearchParams(location.search).get("embed")==="1")document.documentElement.classList.add("embedded");</script></head><body>
 <header><div class="wrap nav"><img alt="Tegra" src="https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp"><a href="/">More em um Tegra</a><a class="back" href="/complexo-lapa-pirituba/">← Página original</a></div></header>
 <main class="wrap"><section class="intro"><div class="eyebrow">SFJM / LVR • experimento visual • documento 2019</div>
@@ -74,13 +85,21 @@ html.embedded .mapbar{padding:9px 12px}
 <g id="orangeRoute"><path id="orangeHalo" class="route-halo"/><path id="orangePath" class="route-line orange"/><g id="orangeCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#e98311"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
 <g id="blueRoute"><path id="blueHalo" class="route-halo"/><path id="bluePath" class="route-line blue"/><g id="blueCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#156cda"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
 </svg></div>
+<div id="stopLayer" class="stop-layer" role="note" aria-label="Camada de paradas de ônibus previstas no projeto" hidden>
+<strong><span aria-hidden="true">🚏</span> Paradas previstas · SPObras 2019</strong>
+<div class="stop-line"><b>2</b><span>Rua John Harrison · reformas</span></div>
+<div class="stop-line"><b>1</b><span>Rua Martin Tenório · reforma</span></div>
+<div class="stop-line"><b>1</b><span>Rua Carlos Bertini · nova parada</span></div>
+<div class="stop-line"><b>2</b><span>Av. Raimundo Pereira de Magalhães · canteiro central</span></div>
+<p class="stop-note">Camada informativa, sem pinos geográficos: as posições exatas não foram transpostas da prancha do binário para esta base.</p>
+</div>
 <div class="zoombuttons" aria-label="Zoom do mapa"><button class="zoomchip" id="zoomIn" aria-label="Ampliar">+</button><span class="zoomread" id="zoomRead">1,0×</span><button class="zoomchip" id="zoomOut" aria-label="Reduzir">−</button><button class="zoomchip" id="zoomReset" aria-label="Voltar à vista completa" title="Centralizar mapa">⌂</button></div>
 </div><div class="map-legend" aria-label="Legenda das duas direções"><span class="legenditem"><i class="legendline orange"></i>Lapa → Pirituba</span><span class="legenditem"><i class="legendline blue"></i>Pirituba → Lapa</span></div>
 <div class="map-keys" aria-label="Referências da região, sem marcação geográfica no desenho"><span class="leadkey">Referências da região</span><span class="chip">Lapa</span><span class="chip">Piqueri</span><span class="chip">Pirituba</span><span class="chip">Marginal Tietê</span><span class="chip">Rua John Harrison</span><span class="chip">Rua Gago Coutinho</span><span class="chip">Rua Martin Tenório</span><span class="chip">Rua Carlos Bertini</span><span class="hint">Ruas citadas no projeto SPObras (2019), incluindo o binário John Harrison; sua presença aqui não confirma passagem por todas elas no percurso animado.</span></div><div class="source">Base geográfica: SPObras (2019). As linhas coloridas e carrinhos são recursos explicativos, não rotas operacionais. A base permanece na resolução JPG do PDF; zoom não acrescenta nomes de ruas.</div></div>
 <aside class="panel"><h2>Controle da circulação</h2><div class="toggles">
 <label class="toggle"><input type="checkbox" id="showOrange" checked><span class="swatch orange"></span><span>Lapa → Pirituba</span></label>
 <label class="toggle"><input type="checkbox" id="showBlue" checked><span class="swatch blue"></span><span>Pirituba → Lapa</span></label></div>
-<div class="controls"><button class="primary" id="playPause">❚❚ Pausar carrinhos</button><button class="secondary" id="restart">↺ Reiniciar percurso</button><button class="secondary" id="center">Centralizar mapa</button></div>
+<label class="stop-toggle"><input type="checkbox" id="showStops"><span aria-hidden="true">🚏</span><span>Exibir camada de paradas previstas</span></label><div class="controls"><button class="primary" id="playPause">❚❚ Pausar carrinhos</button><button class="secondary" id="restart">↺ Reiniciar percurso</button><button class="secondary" id="center">Centralizar mapa</button></div>
 <p id="status" role="status" aria-live="polite" class="mini">Carregando os traçados candidatos do documento.</p>
 <p class="mini">Na Marginal Tietê, trens e tráfego adicional não estão simulados nesta etapa. Primeiro validaremos os dois carrinhos e o zoom sem deslocar a sobreposição.</p>
 </aside></div></main>
@@ -166,6 +185,7 @@ $("playPause").onclick=()=>{const now=performance.now();if(!paused){progressAtPa
 $("restart").onclick=()=>{progressAtPause=0;started=performance.now();cancelAnimationFrame(raf);draw(performance.now());};
 $("showOrange").onchange=e=>$("orangeRoute").style.display=e.target.checked?"":"none";
 $("showBlue").onchange=e=>$("blueRoute").style.display=e.target.checked?"":"none";
+$("showStops").onchange=e=>$("stopLayer").hidden=!e.target.checked;
 fetch(root+"routes-verified.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(data=>{
   // Lê cada rota original apenas para cálculo. Não modifica o JSON da SPObras.
   const raw=defs.map(def=>{
