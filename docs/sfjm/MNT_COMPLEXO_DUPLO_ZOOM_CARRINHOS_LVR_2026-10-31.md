@@ -43,3 +43,11 @@
 - O mapa original `rota-20.jpg` continua no GitHub para referência, mas deixou de ser uma opção própria do seletor. Não apagar fonte primária.
 - Nenhum arquivo da produção foi alterado; aguarda sincronização e aceite visual no LVR antes de eventual merge.
 - QA pendente: verificar contador 1–16, ações Anterior/Próximo, iframe sem barras internas excessivas no mobile, zoom, pause, seleção de ida/volta e todos os 15 mapas remanescentes.
+
+## Camada de paradas previstas — verificação do PDF original
+- Fonte: `PIRITUBA LAPA 2026.pdf` (projeto SPObras ago/2019), página 16: Binário Rua John Harrison especifica duas paradas existentes a reformar na John Harrison, uma reforma na Martin Tenório e uma nova parada na Carlos Bertini.
+- Página 13: duas paradas de ônibus no canteiro central da Av. Raimundo Pereira de Magalhães, lado sul.
+- Página 17: prancha de situação do binário e perfis John Harrison/Carlos Bertini; **não se presumiu equivalência georreferenciada** com o enquadramento da página 19.
+- Implementação: checkbox `showStops` controla um overlay/legenda discreto dentro da área do mapa. A camada é informativa, **sem pins ou coordenadas fictícias**; permanece fixa ao ampliar e arrastar o mapa.
+- `routes-verified.json`, os carros, as rotas e o zoom não foram alterados.
+- Gate LVR: verificar comportamento do checkbox desktop/mobile, legibilidade do overlay e possíveis obstruções do desenho; refinar posições geográficas em etapa separada somente com validação cartográfica.
