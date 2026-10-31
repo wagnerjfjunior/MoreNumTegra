@@ -485,7 +485,8 @@
     const neighborhood = String(project?.location || "").split("·")[0].trim();
     const location = PROJECT_LOCATION_COPY[neighborhood] || (neighborhood ? `em ${neighborhood}` : "em São Paulo");
     const hasStudios = /\bstudios?\b/i.test(String(project?.info || ""));
-    return `${hasStudios ? "Studios e apartamentos Tegra" : "Apartamentos Tegra"} ${location}.`;
+    const homes = /\bcasas\b/i.test(String(project?.info || ""));
+    return `${homes ? "Casas Tegra" : hasStudios ? "Studios e apartamentos Tegra" : "Apartamentos Tegra"} ${location}.`;
   }
 
   function priceMarkup(project) {
@@ -676,7 +677,7 @@
     const state = {status: "todos", city: "São Paulo", zone: "todas", price: "todos", query: ""};
 
     const syncZoneControls = () => {
-      if (zoneQuickField) zoneQuickField.hidden = state.city !== "São Paulo";
+      if (zoneQuickField) { zoneQuickField.hidden = state.city !== "São Paulo"; zoneQuickField.style.display = state.city !== "São Paulo" ? "none" : ""; }
       if (zone) zone.disabled = state.city !== "São Paulo";
       if (!zoneField) return;
       if (state.city !== "São Paulo" || mobileZoneQuery?.matches) zoneField.style.display = "none";
