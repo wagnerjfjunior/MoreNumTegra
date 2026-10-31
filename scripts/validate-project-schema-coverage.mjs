@@ -18,6 +18,16 @@ for(const slug of slugs){
  const now=graph(readFileSync(path,'utf8'));
  let base;try{base=graph(execFileSync('git',['show',BASE+':'+path],{encoding:'utf8',stdio:['ignore','pipe','ignore']}))}catch{base=[]}
  const requiredCore=slug==='studios-berrini'?['WebPage','Place']:mustExist;
+ const rioStaged=new Set(['kronos-by-tegra','claris-casa-e-clube','claris-rosas','gran-thai-leisure-residence','singular-private-residence','gaea-home-resort']).has(slug);
+ if(rioStaged){
+   const html=readFileSync(path,'utf8');
+   for(const t of ['WebPage','ApartmentComplex','BreadcrumbList','FAQPage','Organization','Person'])assert(now.some(n=>type(n,t)),slug+': staged RESF entity missing '+t);
+   assert(now.some(n=>type(n,'ImageObject')),slug+': verified project hero image entity missing');
+   assert(!now.some(n=>type(n,'Offer')),slug+': staged reference price is not a confirmed active offer');
+   assert(html.includes('name="robots" content="noindex,follow"'),slug+': staged page must remain noindex');
+   assert(now.some(n=>type(n,'ApartmentComplex')&&n.address?.addressLocality==='Rio de Janeiro'&&n.address?.addressRegion==='RJ'),slug+': project geography missing');
+ }
+
  for(const req of requiredCore)assert(now.some(n=>type(n,req)),slug+': missing essential '+req);
  if(slug==='studios-berrini'){
    assert(!now.some(n=>type(n,'ApartmentComplex')),'NR commercial project cannot fabricate residential ApartmentComplex');
@@ -86,5 +96,5 @@ for(const slug of slugs){
 console.log('\nLEGACY COVERAGE AUDIT (missing types are NOT fabricated):');
 for(const x of issues.filter(x=>x.legacy))console.log('DEBT',x.slug,'nodes='+x.entities,'missing='+x.missing);
 console.log('DEBT_SUMMARY',JSON.stringify({projectPages:slugs.length,pagesWithLessThanEightEntities:slugs.filter(slug=>issues.some(x=>x.slug===slug&&x.entities<8)).length,legacyCoverageFindings:issues.filter(x=>x.legacy).length}));
-assert.equal(slugs.length,28,'Expected 28 audited project pages including RIIO preparation');
-console.log('PASS: no schema removals/regressions in 28 project pages; Orbita, Jerivás and RIIO facts checked; legacy shortfalls reported');
+assert.equal(slugs.length,34,'Expected 28 existing pages plus six staged RJ pages');
+console.log('PASS: no regressions in 28 existing pages and six gated Rio project pages; Orbita, Jerivás and RIIO facts checked; legacy shortfalls reported');

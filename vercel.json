@@ -464,6 +464,30 @@
     {
       "source": "/empreendimentos/riio-by-piero-lissoni/",
       "destination": "/src-greenn/empreendimentos/riio-by-piero-lissoni/index.html"
+    },
+    {
+      "source": "/empreendimentos/kronos-by-tegra/",
+      "destination": "/src-greenn/empreendimentos/kronos-by-tegra/index.html"
+    },
+    {
+      "source": "/empreendimentos/claris-casa-e-clube/",
+      "destination": "/src-greenn/empreendimentos/claris-casa-e-clube/index.html"
+    },
+    {
+      "source": "/empreendimentos/claris-rosas/",
+      "destination": "/src-greenn/empreendimentos/claris-rosas/index.html"
+    },
+    {
+      "source": "/empreendimentos/gran-thai-leisure-residence/",
+      "destination": "/src-greenn/empreendimentos/gran-thai-leisure-residence/index.html"
+    },
+    {
+      "source": "/empreendimentos/singular-private-residence/",
+      "destination": "/src-greenn/empreendimentos/singular-private-residence/index.html"
+    },
+    {
+      "source": "/empreendimentos/gaea-home-resort/",
+      "destination": "/src-greenn/empreendimentos/gaea-home-resort/index.html"
     }
   ],
   "headers": [
