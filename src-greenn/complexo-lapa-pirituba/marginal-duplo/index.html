@@ -101,7 +101,6 @@ fetch("/src-greenn/complexo-lapa-pirituba/marginal-duplo/routes-marginal.json",{
   return {path,car:$("car"+page),len,duration:15500};
  });
  ready=true;move(0);$("play").disabled=$("restart").disabled=false;refreshMap();
- $("status").textContent="Dois trajetos disponíveis na prancha técnica original 23. Na arte editorial, os SVGs aguardam ajuste geométrico.";
- if(!matchMedia("(prefers-reduced-motion: reduce)").matches)$("play").click();
+ if(!editorialActive&&!matchMedia("(prefers-reduced-motion: reduce)").matches)$("play").click();
 }).catch(e=>{$("status").textContent="Erro: "+e.message;console.error(e)});
 </script></body></html>
