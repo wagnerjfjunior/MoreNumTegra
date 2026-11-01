@@ -81,3 +81,8 @@
 - Orientação explícita do usuário: **o SVG deve seguir apenas a linha tracejada azul original da prancha 23**, sem engenharia de percurso conjectural.
 - Alterado exclusivamente o sufixo da geometria `routes-verified.json["23"].d` em `viewBox 0 0 1200 849`, desde `Q 393 259 385 227`. O arco foi reduzido e reposicionado para acompanhar melhor o círculo tracejado em torno de (363,184) e sair à esquerda sobre o tracejado; nenhuma outra rota ou raster alterado.
 - `verified:false`; demanda aceite visual no LVR, com atenção à aderência do carrinho na rotatória e na saída para a Marginal Pinheiros. PR Draft; não mergear.
+
+## 01/11/2026 — Rota 23: sentido do laço corrigido esquerda → direita
+- Usuário especificou a causa-raiz do erro anterior: o carro percorria a circunferência da direita para a esquerda; o sentido requerido do círculo é **entrar pela esquerda, percorrer em direção à direita e depois sair rumo à Marginal Pinheiros**.
+- Ajustado somente o sufixo de `routes-verified.json["23"].d` desde `(385,227)`, deslocando a entrada ao lado esquerdo `(352,198)`, seguindo pelo arco superior até a direita `(379,187)` e saindo pelo arco inferior à esquerda `(338,202)` em direção a `(271,207)`. Não alterado o trajeto anterior sobre a ponte nem outros itens.
+- Estado permanece `verified:false`: conferir linha tracejada e orientação do carrinho em LVR. Sem merge.
