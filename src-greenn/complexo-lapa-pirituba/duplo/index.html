@@ -72,8 +72,6 @@ html.embedded .mapbar{padding:9px 12px}
 .stop-toggle input{accent-color:#168b9e;width:21px;height:21px;flex:none}
 @media(max-width:520px){.stop-layer{top:6px;left:6px;width:min(223px,65%);padding:8px}.stop-layer .stop-line{font-size:10px}.stop-layer .stop-note{font-size:9px}}
 
-.zoomlayer>canvas.cleaned-map{position:absolute;inset:0;width:100%;height:100%;display:none;pointer-events:none}.zoomlayer>canvas.cleaned-map.ready{display:block}.zoomlayer>img.cleaned-hidden{visibility:hidden}
-.map-signs{position:absolute;inset:0;z-index:3;pointer-events:none;font:700 clamp(8px,1.1vw,14px)/1.14 system-ui,sans-serif}.map-sign{position:absolute;color:white;text-align:center;border:1px solid white;border-radius:7px;padding:5px 8px;background:linear-gradient(145deg,#091d51,#085aa7 80%,#03bdb9);box-shadow:0 1px 5px #071d46aa;text-shadow:0 1px 2px #001b3aaa;white-space:nowrap}.map-sign.heading{top:6.2%;left:73%;font-size:clamp(11px,1.85vw,23px);padding:8px 12px;border-radius:12px}.map-sign.pirituba{left:9.5%;top:14.3%}.map-sign.ayrton{right:7%;top:22.8%}.map-sign.marginal{left:8.7%;top:40.7%;white-space:normal}.map-sign.lapa{left:62.5%;top:83%}@media(max-width:650px){.map-sign{font-size:clamp(6px,1vw,10px);padding:2px 3px;border-radius:4px}.map-sign.heading{font-size:clamp(7px,1.8vw,13px);padding:3px 5px;border-radius:6px}}
 </style><script>if(new URLSearchParams(location.search).get("embed")==="1")document.documentElement.classList.add("embedded");</script></head><body>
 <header><div class="wrap nav"><img alt="Tegra" src="https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp"><a href="/">More em um Tegra</a><a class="back" href="/complexo-lapa-pirituba/">← Página original</a></div></header>
 <main class="wrap"><section class="intro"><div class="eyebrow">SFJM / LVR • experimento visual • documento 2019</div>
@@ -83,11 +81,11 @@ html.embedded .mapbar{padding:9px 12px}
 <div class="mapbar"><strong>Mapa comparativo · dois sentidos</strong><small>Zoom de 1× a 3× • arraste ou use dois dedos</small></div>
 <div class="viewer" id="viewer" aria-label="Mapa ilustrativo com duas rotas e carrinhos animados" tabindex="0">
 <div class="zoomlayer" id="layer">
-<img src="/src-greenn/complexo-lapa-pirituba/assets/Complexo_Lapa_Pirituba_trajeto1.webp" id="mapImage" width="1200" height="849" alt="Base oficial do mapa SPObras, página 19; sobreposta com os dois trajetos coloridos"><canvas class="cleaned-map" id="cleanMap" width="1200" height="849" aria-label="Mapa sem as etiquetas antigas"></canvas>
+<img src="/src-greenn/complexo-lapa-pirituba/assets/Rota_Lapa_Pirituba_limpa.webp" id="mapImage" width="1200" height="849" alt="Base oficial do mapa SPObras, página 19; sobreposta com os dois trajetos coloridos">
 <svg id="svgmap" viewBox="0 0 1200 849" preserveAspectRatio="none" aria-hidden="true">
 <g id="orangeRoute"><path id="orangeHalo" class="route-halo"/><path id="orangePath" class="route-line orange"/><g id="orangeCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#e98311"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
 <g id="blueRoute"><path id="blueHalo" class="route-halo"/><path id="bluePath" class="route-line blue"/><g id="blueCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#156cda"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
-</svg><div class="map-signs" aria-label="Referências do mapa"><span class="map-sign heading">Lapa ↔ Pirituba</span><span class="map-sign pirituba">Pirituba</span><span class="map-sign ayrton">Ayrton Senna</span><span class="map-sign marginal">Marginal<br>Pinheiros</span><span class="map-sign lapa">Lapa</span></div>
+</svg>
 </div>
 <div id="stopLayer" class="stop-layer" role="note" aria-label="Camada de paradas de ônibus previstas no projeto" hidden>
 <strong><span aria-hidden="true">🚏</span> Paradas previstas · SPObras 2019</strong>
@@ -111,29 +109,7 @@ html.embedded .mapbar{padding:9px 12px}
 "use strict";
 const root="/src-greenn/complexo-lapa-pirituba/";
 const bg=document.getElementById("mapImage");
-function cleanLegacyLabels(){
- const canvas=document.getElementById("cleanMap"),ctx=canvas.getContext("2d",{willReadFrequently:true});if(!ctx)return;
- const W=canvas.width,H=canvas.height;ctx.drawImage(bg,0,0,W,H);
- const image=ctx.getImageData(0,0,W,H),pixels=image.data,source=new Uint8ClampedArray(pixels);
- const areas=[[880,46,256,68],[110,117,148,64],[99,315,171,105],[910,177,222,67],[729,696,137,75]];
- const pix=(x,y,c)=>source[(Math.max(0,Math.min(H-1,y))*W+Math.max(0,Math.min(W-1,x)))*4+c];
- for(const [rx,ry,rw,rh] of areas){
-   const x1=Math.max(2,rx),y1=Math.max(2,ry),x2=Math.min(W-3,rx+rw),y2=Math.min(H-3,ry+rh);
-   for(let y=y1;y<y2;y++)for(let x=x1;x<x2;x++){
-    const t=(x-x1)/(x2-x1),u=(y-y1)/(y2-y1),at=(y*W+x)*4;
-    for(let c=0;c<3;c++){
-      const horiz=pix(x1-2,y,c)*(1-t)+pix(x2+2,y,c)*t;
-      const vert=pix(x,y1-2,c)*(1-u)+pix(x,y2+2,c)*u;
-      pixels[at+c]=(horiz+vert)/2;
-    }pixels[at+3]=255;
-   }
- }
- ctx.putImageData(image,0,0);canvas.classList.add("ready");bg.classList.add("cleaned-hidden");
-}
-bg.addEventListener("load",cleanLegacyLabels);
-if(bg.complete&&bg.naturalWidth)cleanLegacyLabels();
-
-bg.addEventListener("error",()=>{if(!bg.dataset.fallback){bg.dataset.fallback="1";bg.src="/src-greenn/complexo-lapa-pirituba/assets/rota-19.jpg";return;}const label=document.getElementById("status");label.textContent="ERRO: mapa indisponível. URL: "+bg.src;console.error("Mapa SPObras indisponível",bg.src);});
+bg.addEventListener("error",()=>{if(!bg.dataset.fallback){bg.dataset.fallback="1";bg.src="/src-greenn/complexo-lapa-pirituba/assets/Complexo_Lapa_Pirituba_trajeto1.webp";return;}const label=document.getElementById("status");label.textContent="ERRO: mapa indisponível. URL: "+bg.src;console.error("Mapa SPObras indisponível",bg.src);});
 bg.addEventListener("load",()=>{const label=document.getElementById("status");if(label.textContent.startsWith("ERRO: JPG"))label.textContent="Imagem oficial carregada.";});
 const $=id=>document.getElementById(id),viewer=$("viewer"),layer=$("layer");
 let mapScale=1,offsetX=0,offsetY=0,paused=matchMedia("(prefers-reduced-motion: reduce)").matches,started=performance.now(),progressAtPause=0,pathsReady=false,raf=0;
