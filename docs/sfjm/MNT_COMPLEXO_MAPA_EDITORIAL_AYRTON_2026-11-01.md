@@ -38,3 +38,10 @@
 - Imagem ilustrativa feita por IA: pequenos textos, badges e geografia podem divergir do original. Verificar nome do empreendimento e badge `Ponte Lapa-Pirituba`; não confundir com Ponte do Piqueri.
 - Arte pode mostrar título `AYRTON SENNA -> PIRITUBA` embora a segunda animação tenha destino Lapa. Para página dual, usar título de UI correto, ou gerar arte sem título específico após validação.
 - Factualmente as rotas ilustram projeto SPObras 2019; não representam status atual de tráfego/operação.
+
+## 01/11/2026 — Correção do fallback / mapa ainda aparecia como prancha 21
+- Usuário enviou efetivamente o binário em `assets/Mapa_Ayrton_Senna_Pirituba_3.webp`, blob GitHub `35ebd5abac2040274fe13e75eea0f2f20f0f4ae5`. **Não** usou o nome planejado `Mapa_Ayrton_Senna_Pirituba_SFJM_20261101.webp`.
+- Causa-raiz: HTML buscava o nome planejado inexistente, então o manipulador `error` executava fallback para `rota-21.jpg`, que continuava visível no LVR.
+- Correção na PR #528: referências do `<img>`, `approvedArt` e detector `currentSrc` no `duplo-ayrton/index.html` apontam agora para **`Mapa_Ayrton_Senna_Pirituba_3.webp`**. Fallback da prancha 21 continua só para erro real ou modo `?mapa=original`.
+- Limite relevante: ao carregar o novo WebP, o código ainda **oculta o SVG e os carrinhos** para evitar sobreposição enganosa com paths homologados exclusivamente na prancha 21. O próximo passo é validar o carregamento e depois decidir ajuste geométrico/uso editorial separado. Não alegar que as animações já foram recalibradas.
+- NÃO fazer merge; obter novo teste LVR (sincronizar branch/recarregar a página e escolher opção 2).
