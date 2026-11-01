@@ -58,3 +58,18 @@
 - **BLOQUEIO DE INTEGRAÇÃO:** arquivo binário ainda não enviado ao GitHub. Enquanto faltar, a página usa o WebP antigo como fallback. Não declarar substituição concluída ou LVR pronto.
 - Rollback: commit HTML anterior `001bbcebeab661542b779023fd7d009142c4ac8d`, ou reverter a única alteração de `mapImage.src` + limpeza canvas; arquivo WebP antigo permanece intacto.
 - Antes do merge, validar que o GitHub serve o novo arquivo 200, que a imagem-base permanece alinhada aos paths SVG e que todas as 16 opções funcionam.
+
+## Auditoria pré-merge 31/10/2026 — NO-GO
+
+Solicitação do usuário: validar trajetórias/animação e, somente se estiver OK, mergear PR #528.
+
+Evidência do repositório GitHub head `4b25d427c2504a4caf52ee1c180b53228531c798`:
+- `src-greenn/complexo-lapa-pirituba/duplo/index.html` faz referência a `Rota_Lapa_Pirituba_limpa.webp`, **404 no fetch_file GitHub**; fallback é `Complexo_Lapa_Pirituba_trajeto1.webp`, presente.
+- Os `routes-verified.json` para páginas 19 e 20 (e todas demais) ainda estão `verified:false`; não declarar validação geométrica de precisão.
+- A nova imagem fornecida pelo usuário tem 1200×896 pixels, enquanto o viewer está em `aspect-ratio:1200/849` e o SVG em `viewBox=0 0 1200 849`; antes de liberar, verificar registro vertical e, se necessário, preservar proporção real na camada raster e correspondência SVG.
+- A própria PR #528 permanece DRAFT, com 16 rotas agrupadas e page IDs `[19,21..35]`; implementação verificável estaticamente, sem QA visual de LVR automático.
+- No head consultado, workflows retornaram: `SEO two distinct images - 39 URLs` SUCCESS; `Favicon standard validation` FAILURE (investigar escopo dessa falha antes de concluir liberação).
+- O upload de mídia binária não foi realizado via conector GitHub; o arquivo entregue anteriormente está disponível como download no chat para usuário incluir no mesmo branch.
+
+**Decisão:** NO-GO; merge não executado. Para retomar: (1) colocar asset aprovado no branch, (2) aferir geometria/proporção e sentido dos carrinhos nos quatro marcos (Lapa, Raimundo, Rio Tietê, Pirituba), (3) verificar 16 entradas e controles em LVR, (4) resolver checks relevantes, (5) apenas então merge e verificar Vercel READY.
+**Rollback:** base main anterior `5bed3e058d67e29821af55c46b870c83e40e97f5`; a branch permanece isolada. Não converter aceitação visual de uma imagem gerada em confirmação de alinhamento da imagem publicada.
