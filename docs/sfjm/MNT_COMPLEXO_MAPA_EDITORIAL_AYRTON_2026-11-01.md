@@ -61,3 +61,11 @@
 - Mapas permanecem responsivos por CSS, com IMG e SVG no mesmo enquadramento sem transformação espacial. Carrinhos SVG, dois sentidos, pausas, reinício, checkboxes e rota original `?mapa=original` são preservados.
 - Sem alterações nos JSONs dos caminhos, imagens, escala de geometria ou no primeiro item do catálogo além da remoção do zoom.
 - Critério LVR: rolagem mobile fluida, nenhum zoom por roda ou pinça, nenhum botão de zoom, duas linhas e carros visíveis e sincronizados, reprodução/reinício funcionais. PR Draft; sem merge.
+
+## 01/11/2026 — Terceiro simulador: Lapa → Marginal Pinheiros (SPObras, prancha 23)
+- Usuário aprovou operação de mapas sem zoom e solicitou avançar ao terceiro percurso usando `src-greenn/complexo-lapa-pirituba/assets/rota-23.jpg`.
+- Imagem original `rota-23.jpg` confirmada no GitHub (SHA blob `19bc0fbd7aab25e0eb9e1d2151ae0392839c8450`), visualmente inspecionada; a linha ciano oficial começa na Lapa na parte inferior direita, atravessa o eixo central da nova ponte rumo ao norte, circunda parcialmente a rotatória e sai à esquerda rumo à Marginal Pinheiros.
+- Criado `src-greenn/complexo-lapa-pirituba/lapa-marginal/index.html` com **imagem original única** em 1200×849, SVG sobreposto carregado diretamente do caminho **23** do `routes-verified.json`, um único carrinho, play/pause, reiniciar, exibir/ocultar e **sem zoom/pan/pinch**. Respeita redução de movimento, não altera caminhos das opções 1 e 2.
+- Integração na terceira posição do seletor em `src-greenn/complexo-lapa-pirituba/index.html` por iframe `#marginalEmbed`; restante do catálogo e dos dois duais preservado.
+- Cor ciano provisória `#089ACA` para destino Marginal Pinheiros, pois a convenção cromática do usuário define apenas **destino Pirituba = laranja #FF5F00** e **destino Lapa = azul #137CF1**. Não atribuir uma dessas duas cores a um destino diferente sem decisão.
+- `routes-verified.json["23"].verified=false`: geometria candidata. Não confundir traço vetorial com traçado geograficamente homologado. Gate LVR: imagem correta, curva na saída da Lapa, via da nova ponte, passagem próxima da rotatória e derivação final para Marginal Pinheiros; carro orientado pelo sentido, mobile/responsivo e controles. Sem merge ou publicação até aceite.
