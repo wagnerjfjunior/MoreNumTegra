@@ -69,3 +69,10 @@
 - Integração na terceira posição do seletor em `src-greenn/complexo-lapa-pirituba/index.html` por iframe `#marginalEmbed`; restante do catálogo e dos dois duais preservado.
 - Cor ciano provisória `#089ACA` para destino Marginal Pinheiros, pois a convenção cromática do usuário define apenas **destino Pirituba = laranja #FF5F00** e **destino Lapa = azul #137CF1**. Não atribuir uma dessas duas cores a um destino diferente sem decisão.
 - `routes-verified.json["23"].verified=false`: geometria candidata. Não confundir traço vetorial com traçado geograficamente homologado. Gate LVR: imagem correta, curva na saída da Lapa, via da nova ponte, passagem próxima da rotatória e derivação final para Marginal Pinheiros; carro orientado pelo sentido, mobile/responsivo e controles. Sem merge ou publicação até aceite.
+
+## 01/11/2026 — Correção da rotatória do trajeto 3: Lapa → Marginal Pinheiros
+- Usuário apontou por captura com marcação vermelha que a linha e o carrinho estavam tangenciando a rotatória no lado norte da nova ponte, em vez de realizar um laço.
+- Alterado **somente** `routes-verified.json["23"].d`: trecho inicial desde Lapa até a subida da ponte preservado, substituído trecho de topo após `Q 393 259 385 227` por curvas cúbicas que entram pela base/lado direito da rotatória, sobem pelo arco leste, contornam o arco superior e oeste e saem pela alça para a Marginal Pinheiros em direção esquerda. Ponto de saída mantido `L 271 207` em coordenadas originais `1200×849`.
+- Novo trecho: `C 380 214 377 206 378 201 C 385 193 386 181 379 173 C 373 165 362 163 353 169 C 343 175 341 188 347 196 C 340 200 326 201 312 201 Q 291 204 271 207`.
+- A geometria permanece **`verified:false`**: requer observação em LVR com mapa `rota-23.jpg` para avaliar aderência à linha impressa e movimento do carro sem corte ou salto na rotatória.
+- `lapa-marginal/index.html` não precisou de alteração: o mapa e carrinho já consomem `routes-verified.json` por `fetch`; demais rotas, legendas e duais intocados. PR #528 continua Draft, sem merge.
