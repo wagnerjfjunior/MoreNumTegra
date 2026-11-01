@@ -125,3 +125,10 @@
 - `?mapa=original` preserva `routes-marginal.json` e deslocamento aprovado `-6` do azul, em `viewBox 1200×849`; no mapa novo o deslocamento -6 NÃO é copiado.
 - **NÃO declarar alinhamento aprovado**: paths editoriais foram estimados por inspeção visual de vias e da rotatória; precisam de teste LVR para corrigir laço, acesso a Marginal, transições, início/fim e proximidade dos veículos. `verified:false` para ambos. Nunca editar o JPG nem o WebP para acomodar SVGs.
 - O primeiro e segundo simuladores, os outros itens e a produção permanecem intactos. PR #528 continua DRAFT, sem merge.
+
+## 01/11/2026 — Atualização dos badges de título nas artes 2 e 3 (PR #528)
+- Usuário disponibilizou e confirmou upload na branch dos arquivos `assets/Mapa_Ayrton_Senna_Pirituba_Badge2.webp` (blob `2e692b273773d7ed3d3b5e4356e86c138668a03e`) e `assets/Mapa_Lapa_Pirituba_Marginal_Badge3.webp` (blob `d27340dcadacc665ac1f0f92ea2151410e4ce543`).
+- Opção 2: título previsto para o badge do canto superior direito `2. Ayrton Senna → Pirituba / Lapa`; `duplo-ayrton/index.html` passou a usar o novo WebP em IMG, variável `approvedArt` e detector `currentSrc`.
+- Opção 3: título previsto `3. Lapa / Pirituba → Marginal Pinheiros`; `marginal-duplo/index.html` passou a usar o novo WebP em IMG, variável `editorial` e detector `currentSrc`.
+- Mantidas as medidas 1500×1049, geometrias SVG/JSON, cores, animações e fallback `?mapa=original`. Não foram alterados os simuladores 1 nem o catálogo.
+- Gate LVR: validar se os dois novos badges possuem texto exato, sem cortes ou sobreposição, e se os dois conjuntos de carros continuam alinhados. Nenhum merge/autorização de produção.
