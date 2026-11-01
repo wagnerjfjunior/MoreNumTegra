@@ -120,3 +120,13 @@ Evidência do repositório GitHub head `4b25d427c2504a4caf52ee1c180b53228531c798
 - Check estático: URL, asset existente, dimensões, seletor/iframe e JSON verificados. Teste dinâmico de movimento, zoom/pan e ausência de desvios não executado em navegador nesta sessão.
 - Impedimento de GO: `verified:false` permanece nos caminhos e usuário precisa conferir retorno Pirituba→Lapa no LVR. Não confundir novas etiquetas numeradas na arte com validação de geometria do retorno.
 - Rollback do fundo: restaurar `Mapa_Lapa_Pirituba_atualizado.webp?v=08f49013` no HTML e dimensão 1452×1083; manter asset v7 armazenado. Produção não alterada.
+
+## 01/11/2026 — Dual Ayrton Senna ↔ Pirituba (candidato, NÃO liberado)
+
+- Solicitação: reutilizar `Mapa_Trajeto_Lapa_Pirituba-7.webp`, consolidar Ayrton Senna → Pirituba e Pirituba → Ayrton Senna numa única opção dual.
+- Divergência dos nomes anteriores: item 2 era Ayrton Senna→Pirituba (PDF p.21), item 3 Ayrton Senna→Lapa (PDF p.22) e item 7 Pirituba→Ayrton Senna (PDF p.25). Para **não apagar a rota distinta da página 22**, reunimos páginas 21+25 e retiramos somente a entrada duplicada da página 25. O seletor mostra 15 opções, sendo a segunda `Ayrton Senna ↔ Pirituba` e a terceira `Ayrton Senna → Lapa`.
+- Novo `src-greenn/complexo-lapa-pirituba/duplo-ayrton/index.html`: simulador dual com controles existentes, cores laranja/azul, zoom/pan/pinch, badge de não homologado e mesmo WebP. Exibido por iframe `?embed=1` na página principal.
+- Novo `src-greenn/complexo-lapa-pirituba/duplo-ayrton/routes-ayrton.json`: candidatos das páginas 21 e 25 do `routes-verified.json` transformados linearmente de 1200×849 a 1456×1088, `verified:false`. **Escala geométrica não equivale a alinhamento cartográfico**. Não afirmar que os carrinhos seguem a via correta na nova figura sem inspeção.
+- O título presente no raster ainda diz `Lapa ↔ Pirituba` porque o usuário solicitou reaproveitar o mesmo mapa; necessidade potencial de subtítulo overlay ou tratamento visual não cartográfico na revisão.
+- Não alterar `routes-verified.json` nem o primeiro dual; nenhum merge ou publicação autorizada.
+- Gate para GO: testar no LVR as duas direções nas páginas 21/25 e provar alinhamento real com vias/acessos ao usar o mesmo WebP; revisar se a imagem é adequada para rota Ayrton Senna↔Pirituba. Corrigir arquivos candidatos isolados se necessário, mantendo rollback via PR.
