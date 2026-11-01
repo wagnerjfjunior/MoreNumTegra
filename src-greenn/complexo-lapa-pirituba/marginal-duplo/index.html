@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Lapa / Pirituba → Marginal Pinheiros | SPObras 23 e 24</title>
+<style>
+:root{--orange:#FF5F00;--blue:#137CF1;--gold:#EBB92E;--ink:#171813}
+*{box-sizing:border-box}body{margin:0;background:#f3f1e9;color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{width:min(1150px,calc(100% - 24px));margin:auto}
+header{background:#171813;color:white;padding:12px 0}header a{color:white;text-decoration:none;font-weight:700}
+h1{font:400 clamp(25px,4vw,40px)/1.15 Georgia,serif;margin:15px 0 5px}
+p{margin:8px 0}.context{font-size:13px;color:#564e43}
+.card{background:#fff;border:1px solid #ded7c7;border-radius:13px;overflow:hidden;margin:14px 0 20px}
+.bar{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:12px 15px;background:#f6f2e8;font-size:14px}
+.map{position:relative;width:100%;aspect-ratio:1200 / 849;background:#edeae2;overflow:hidden}
+.map img,.map svg{display:block;position:absolute;inset:0;width:100%;height:100%}
+.map img{object-fit:fill}.map svg{pointer-events:none}
+.halo{fill:none;stroke:#fff;stroke-width:10;stroke-linejoin:round;stroke-linecap:round}
+.route{fill:none;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}
+#lapa .route{stroke:var(--blue)}#pirituba .route{stroke:var(--orange)}
+#lapa .body{fill:var(--blue)}#pirituba .body{fill:var(--orange)}
+.body{stroke:#fff;stroke-width:1.8;filter:drop-shadow(0 1px 2px #0007)}
+.choices{display:flex;gap:10px 18px;align-items:center;flex-wrap:wrap;padding:12px 14px;border-top:1px solid #e9e6dd}
+.choices label{display:inline-flex;gap:7px;align-items:center;font-size:13px;font-weight:700}
+.choices input{width:19px;height:19px}
+button{border:0;border-radius:9px;background:var(--gold);padding:10px 14px;min-height:44px;cursor:pointer;font:700 14px system-ui;color:var(--ink)}
+button.secondary{background:#eee8dc}
+.swatch{height:13px;width:13px;border-radius:50%;display:inline-block}
+.swatch.blue{background:var(--blue)}.swatch.orange{background:var(--orange)}
+#status{margin:0;padding:11px 14px;font-size:12px;color:#584c34;background:#fff8e5}
+.note{font-size:12px;color:#59564f;padding:10px 14px}
+html.embedded header,html.embedded .intro{display:none}
+html.embedded body{background:white}
+html.embedded .wrap{width:100%}
+html.embedded .card{border:0;border-radius:0;margin:0}
+@media(max-width:650px){.choices{gap:10px}.bar{font-size:13px}}
+</style>
+<script>if(new URLSearchParams(location.search).get("embed")==="1")document.documentElement.classList.add("embedded");</script></head>
+<body><header><div class="wrap"><a href="/complexo-lapa-pirituba/">← Complexo Lapa–Pirituba</a></div></header>
+<main class="wrap"><div class="intro"><h1>Lapa / Pirituba → Marginal Pinheiros</h1><p class="context">Uma prancha com dois acessos distintos ao mesmo destino. Fontes: páginas 23 e 24 da SPObras (2019).</p></div>
+<div class="card">
+<div class="bar"><strong>3. Lapa / Pirituba → Marginal Pinheiros</strong><span>Base visual: prancha original 23</span></div>
+<div class="map" role="img" aria-label="Prancha técnica 23 da SPObras com dois trajetos, azul desde Lapa e laranja desde Pirituba">
+<img id="mapimg" src="/src-greenn/complexo-lapa-pirituba/assets/rota-23.jpg?v=19bc0fbd" width="1200" height="849" alt="Mapa da prancha 23, projeto viário Pirituba Lapa">
+<svg viewBox="0 0 1200 849" preserveAspectRatio="none" aria-hidden="true">
+<g id="lapa"><g transform="translate(-6 0)"><path class="halo" id="halo23"/><path class="route" id="route23"/>
+<g id="car23"><rect class="body" x="-8" y="-14" width="16" height="28" rx="5"/><rect x="-5" y="-8" width="10" height="7" rx="2" fill="#d8f2ff"/></g>
+</g></g>
+<g id="pirituba"><path class="halo" id="halo24"/><path class="route" id="route24"/>
+<g id="car24"><rect class="body" x="-8" y="-14" width="16" height="28" rx="5"/><rect x="-5" y="-8" width="10" height="7" rx="2" fill="#fff2e3"/></g>
+</g></svg></div>
+<div class="choices">
+<label><input id="show23" type="checkbox" checked style="accent-color:#137CF1"><span class="swatch blue"></span>Lapa → Marginal Pinheiros</label>
+<label><input id="show24" type="checkbox" checked style="accent-color:#FF5F00"><span class="swatch orange"></span>Pirituba → Marginal Pinheiros</label>
+<button id="play" type="button" disabled>▶ Reproduzir</button><button id="restart" type="button" class="secondary" disabled>↺ Reiniciar</button>
+</div>
+<p id="status" role="status">Carregando os dois trajetos…</p>
+<div class="note">As cores distinguem a origem neste mapa de destino comum: azul = Lapa; laranja = Pirituba. Sem zoom. Geometria da prancha 24 transferida manualmente por referências viárias, sujeita a homologação no LVR.</div>
+</div></main>
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+let trajectories=[],paused=true,elapsed=0,start=0,frame=0,ready=false;
+function move(t){
+ for(const item of trajectories){
+  const distance=item.len*((t%item.duration)/item.duration);
+  const p=item.path.getPointAtLength(distance),before=item.path.getPointAtLength(Math.max(0,distance-2)),after=item.path.getPointAtLength(Math.min(item.len,distance+2));
+  const angle=Math.atan2(after.y-before.y,after.x-before.x)*180/Math.PI+90;
+  item.car.setAttribute("transform",`translate(${p.x} ${p.y}) rotate(${angle})`);
+ }
+}
+function tick(time){if(paused)return;move(elapsed+time-start);frame=requestAnimationFrame(tick)}
+function pause(){if(!paused){elapsed+=performance.now()-start;paused=true;cancelAnimationFrame(frame)}$("play").textContent="▶ Reproduzir";}
+$("play").onclick=()=>{if(!ready)return;if(!paused){pause();return}paused=false;start=performance.now();$("play").textContent="❚❚ Pausar";frame=requestAnimationFrame(tick)};
+$("restart").onclick=()=>{if(!ready)return;elapsed=0;start=performance.now();move(0)};
+$("show23").onchange=e=>$("lapa").style.display=e.target.checked?"":"none";
+$("show24").onchange=e=>$("pirituba").style.display=e.target.checked?"":"none";
+$("mapimg").onerror=()=>{$("status").textContent="Erro: prancha 23 não carregada."};
+fetch("/src-greenn/complexo-lapa-pirituba/marginal-duplo/routes-marginal.json",{cache:"no-store"})
+.then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(data=>{
+ if(data.viewBox!=="0 0 1200 849")throw Error("viewBox incompatível");
+ trajectories=[23,24].map(page=>{
+  const route=data[String(page)];if(!route?.d)throw Error("Trajeto ausente: "+page);
+  const path=$("route"+page);path.setAttribute("d",route.d);
+  $("halo"+page).setAttribute("d",route.d);
+  const len=path.getTotalLength();if(!len)throw Error("Trajeto sem comprimento: "+page);
+  return {path,car:$("car"+page),len,duration:15500};
+ });
+ ready=true;move(0);$("play").disabled=$("restart").disabled=false;
+ $("status").textContent="Dois trajetos disponíveis: Lapa (azul, curva aprovada com -6px) e Pirituba (laranja, novo ajuste a conferir), ambos sobre a prancha 23.";
+ if(!matchMedia("(prefers-reduced-motion: reduce)").matches)$("play").click();
+}).catch(e=>{$("status").textContent="Erro: "+e.message;console.error(e)});
+</script></body></html>
