@@ -86,3 +86,9 @@
 - Usuário especificou a causa-raiz do erro anterior: o carro percorria a circunferência da direita para a esquerda; o sentido requerido do círculo é **entrar pela esquerda, percorrer em direção à direita e depois sair rumo à Marginal Pinheiros**.
 - Ajustado somente o sufixo de `routes-verified.json["23"].d` desde `(385,227)`, deslocando a entrada ao lado esquerdo `(352,198)`, seguindo pelo arco superior até a direita `(379,187)` e saindo pelo arco inferior à esquerda `(338,202)` em direção a `(271,207)`. Não alterado o trajeto anterior sobre a ponte nem outros itens.
 - Estado permanece `verified:false`: conferir linha tracejada e orientação do carrinho em LVR. Sem merge.
+
+## 01/11/2026 — Rota 23 aprovada no sentido; alinhamento fino -6 px
+- Usuário confirmou que **o sentido e o laço agora estão corretos** e solicitou apenas deslocar a linha ligeiramente para esquerda para coincidir com o tracejado ciano impresso da prancha 23.
+- Ajuste isolado no `lapa-marginal/index.html`: `<g id="route23Alignment" transform="translate(-6 0)">` envolve **halo, path SVG e carrinho**. Move-os juntos 6 unidades à esquerda no sistema 1200×849, sem alterar geometria nem sentido do laço.
+- Não foi modificado o JSON `routes-verified.json`, que preserva os pontos da versão aprovada, facilitando rollback; nenhum outro trajeto afetado.
+- Gate LVR: conferir aderência da linha ao tracejado, especialmente rotatória e via da ponte, em desktop e mobile. O valor -6 pode ser refinado após comparação visual. Sem merge.
