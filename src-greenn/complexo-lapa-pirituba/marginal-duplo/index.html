@@ -39,7 +39,7 @@ html.embedded .card{border:0;border-radius:0;margin:0}
 <div class="card">
 <div class="bar"><strong>3. Lapa / Pirituba → Marginal Pinheiros</strong><span>Base visual: mapa editorial · base técnica original preservada</span></div>
 <div class="map" role="img" aria-label="Prancha técnica 23 da SPObras com dois trajetos, azul desde Lapa e laranja desde Pirituba">
-<img id="mapimg" src="/src-greenn/complexo-lapa-pirituba/assets/Mapa_Padrao_Lado_Pirituba_Trajeto3.webp" width="1500" height="1049" alt="Mapa editorial colorido do complexo viário com Shopping Tietê Plaza, Ponte Lapa-Pirituba, Estação Piqueri e Avenida Raimundo Pereira de Magalhães">
+<img id="mapimg" src="/src-greenn/complexo-lapa-pirituba/assets/Mapa_Lapa_Pirituba_Marginal_Badge3.webp" width="1500" height="1049" alt="Mapa editorial colorido do complexo viário com Shopping Tietê Plaza, Ponte Lapa-Pirituba, Estação Piqueri e Avenida Raimundo Pereira de Magalhães">
 <svg id="routeSvg" viewBox="0 0 1200 849" preserveAspectRatio="none" aria-hidden="true">
 <g id="lapa"><g id="blueAlignment" transform="translate(-6 0)"><path class="halo" id="halo23"/><path class="route" id="route23"/>
 <g id="car23"><rect class="body" x="-8" y="-14" width="16" height="28" rx="5"/><rect x="-5" y="-8" width="10" height="7" rx="2" fill="#d8f2ff"/></g>
@@ -59,7 +59,7 @@ html.embedded .card{border:0;border-radius:0;margin:0}
 "use strict";
 const $=id=>document.getElementById(id);
 const assetRoot="/src-greenn/complexo-lapa-pirituba/assets/";
-const editorial=assetRoot+"Mapa_Padrao_Lado_Pirituba_Trajeto3.webp";
+const editorial=assetRoot+"Mapa_Lapa_Pirituba_Marginal_Badge3.webp";
 const original=assetRoot+"rota-23.jpg?v=19bc0fbd";
 let editorialActive=false,trajectories=[],paused=true,elapsed=0,start=0,frame=0,ready=false,routeSets=null;
 function applyRoutes(){
@@ -88,7 +88,7 @@ function applyRoutes(){
 }
 function refreshMap(){
  const img=$("mapimg");
- const newMap=img.naturalWidth===1500&&img.naturalHeight===1049&&img.currentSrc.includes("Mapa_Padrao_Lado_Pirituba_Trajeto3.webp");
+ const newMap=img.naturalWidth===1500&&img.naturalHeight===1049&&img.currentSrc.includes("Mapa_Lapa_Pirituba_Marginal_Badge3.webp");
  editorialActive=newMap;
  document.querySelector(".map").style.aspectRatio=newMap?"1500 / 1049":"1200 / 849";
  if(routeSets){try{applyRoutes()}catch(e){$("status").textContent="Erro nos traçados: "+e.message;console.error(e)}}else{
