@@ -1,15 +1,15 @@
 {
   "21": {
-    "label": "Ayrton Senna → Pirituba",
-    "d": "M1249.07 534.98 L1119.69 505.61 L1010.86 481.35 L887.53 448.16 L798.05 420.07 L729.13 430.28 L685.60 443.05 L665.04 429.00 L656.58 388.15 L644.49 333.24 L613.05 348.57 L573.14 377.93 L552.59 408.57 L521.15 403.47 L487.29 379.21 L451.02 346.01 L422.00 307.71 L390.56 259.19 L370.00 205.56 L351.87 136.62 L339.78 88.10",
-    "verified": false
+    "label": "Ayrton Senna → Pirituba (amarelo, via rotatória)",
+    "verified": false,
+    "d": "M 1031 420 C 957 406 840 382 734 351 C 690 338 667 330 651 330 C 619 330 597 346 573 348 C 561 348 555 343 552 333 C 546 317 539 305 524 301 C 510 297 496 304 484 318 C 469 320 445 307 423 292 C 400 278 374 258 351 227 C 327 196 312 167 303 133 C 294 104 287 79 281 69"
   },
   "22": {
-    "label": "Ayrton Senna → Lapa",
-    "d": "M1250.28 603.92 L1129.36 575.84 L1012.07 543.92 L898.41 512.00 L811.35 490.29 L742.43 492.84 L688.02 510.72 L666.25 492.84 L652.95 407.30 L639.65 335.80 L584.03 368.99 L530.82 403.47 L506.64 443.05 L533.24 480.08 L579.19 501.78 L616.68 524.76 L642.07 554.13 L660.21 617.97 L685.60 720.11 L708.57 815.87 L730.34 923.12 L746.06 994.62",
-    "verified": false
+    "label": "Ayrton Senna → Lapa (azul, acesso próprio e nova ponte)",
+    "verified": false,
+    "d": "M 1031 425 C 952 411 839 388 733 357 C 693 344 661 335 645 334 C 621 332 598 345 579 349 C 564 348 552 337 547 319 L 527 207 C 501 222 478 242 458 276 C 447 292 433 306 419 319 C 420 334 437 345 453 355 C 479 368 498 382 512 408 C 532 450 546 502 561 562 C 578 629 593 700 614 803"
   },
-  "viewBox": "0 0 1451 1084",
-  "asset": "Mapa_Ayrton_Senna_Pirituba_1.webp",
-  "source": "Pranchas originais 21 e 22 SPObras 2019, vetores candidatos transpostos por escala à arte única. NÃO validados no novo raster. Rota 21 inclui rotatória; rota 22 tem ligação distinta."
+  "viewBox": "0 0 1200 849",
+  "asset": "rota-21.jpg",
+  "source": "Prancha SPObras p.21 é a base única original 1200x849; trajetória amarela acompanha tracejado azul da p.21, passando APENAS pelo arco superior da rotatória; azul representa p.22 adaptada por pontos de referência viária ao enquadramento da p.21 (acesso oeste e ponte ao sul), sem inversão e sem rotatória. Vetores candidatos exigem inspeção LVR."
 }
