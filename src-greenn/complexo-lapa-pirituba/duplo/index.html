@@ -2,7 +2,7 @@
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#171813">
 <title>Complexo Lapa–Pirituba | Dois sentidos animados — homologação LVR</title>
-<meta name="description" content="Visualização experimental dos dois sentidos do projeto viário, com carros animados e zoom até 3 vezes. Fonte SPObras 2019.">
+<meta name="description" content="Visualização experimental dos dois sentidos do projeto viário, com carros animados e mapa responsivo. Fonte SPObras 2019.">
 <link rel="icon" href="/favicon.ico">
 <style>
 :root{--ink:#171813;--gold:#EBB92E;--paper:#f3f1e9;--blue:#147cf1;--orange:#ed8917}
@@ -14,7 +14,7 @@ h1{font:400 clamp(1.95rem,5vw,3.3rem)/1.13 Georgia,serif;margin:8px 0 12px}.sub{
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:18px;align-items:start;margin:15px 0 25px}
 .mapcard,.panel{background:#fff;border:1px solid #dad5c8;border-radius:14px;overflow:hidden;box-shadow:0 7px 24px #1111}
 .mapbar{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:13px 15px;border-bottom:1px solid #ddd6c8;background:#faf8f3;flex-wrap:wrap}
-.mapbar strong{font-size:14px}.mapbar small{color:#696759}.viewer{position:relative;overflow:hidden;touch-action:none;user-select:none;background:#e5e6e3;aspect-ratio:1456 / 1088;cursor:grab}.viewer.dragging{cursor:grabbing}
+.mapbar strong{font-size:14px}.mapbar small{color:#696759}.viewer{position:relative;overflow:hidden;touch-action:pan-y;user-select:none;background:#e5e6e3;aspect-ratio:1456 / 1088;cursor:default}.viewer.dragging{cursor:grabbing}
 .zoomlayer{position:absolute;inset:0;transform-origin:0 0;will-change:transform}.zoomlayer>img{width:100%;height:100%;display:block;pointer-events:none}
 .zoomlayer>svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
 .route-halo{fill:none;stroke:#fff;stroke-width:12;stroke-linecap:round;stroke-linejoin:round;opacity:.97}
@@ -78,7 +78,7 @@ html.embedded .mapbar{padding:9px 12px}
 <h1>Complexo Lapa–Pirituba: os dois sentidos, em movimento</h1>
 <p class="sub">Compare Lapa → Pirituba (laranja) e Pirituba → Lapa (azul) no mesmo mapa. A circulação ilustrada deriva das páginas 19 e 20 da apresentação SPObras de agosto de 2019; não representa vias liberadas nem trânsito real.</p><span class="pill">Protótipo — não publicado</span></section>
 <div class="layout"><div class="mapcard">
-<div class="mapbar"><strong>Mapa comparativo · dois sentidos</strong><small>Base: Mapa_Lapa_Pirituba_atualizado.webp • zoom até 3×</small></div>
+<div class="mapbar"><strong>Mapa comparativo · dois sentidos</strong><small>Base: Mapa_Lapa_Pirituba_atualizado.webp • visualização integral</small></div>
 <div class="viewer" id="viewer" aria-label="Mapa ilustrativo com duas rotas e carrinhos animados" tabindex="0">
 <div class="zoomlayer" id="layer">
 <img src="/src-greenn/complexo-lapa-pirituba/assets/Mapa_Trajeto_Lapa_Pirituba-7.webp?v=c9bfb0b5" id="mapImage" width="1456" height="1088" alt="Mapa ilustrado Lapa ↔ Pirituba com nova ligação viária, sobreposto aos dois trajetos animados">
@@ -95,15 +95,15 @@ html.embedded .mapbar{padding:9px 12px}
 <div class="stop-line"><b>2</b><span>Av. Raimundo Pereira de Magalhães · canteiro central</span></div>
 <p class="stop-note">Camada informativa, sem pinos geográficos: as posições exatas não foram transpostas da prancha do binário para esta base.</p>
 </div>
-<div class="zoombuttons" aria-label="Zoom do mapa"><button class="zoomchip" id="zoomIn" aria-label="Ampliar">+</button><span class="zoomread" id="zoomRead">1,0×</span><button class="zoomchip" id="zoomOut" aria-label="Reduzir">−</button><button class="zoomchip" id="zoomReset" aria-label="Voltar à vista completa" title="Centralizar mapa">⌂</button></div>
+
 </div><div class="map-legend" aria-label="Legenda das duas direções"><span class="legenditem"><i class="legendline orange"></i>Lapa → Pirituba</span><span class="legenditem"><i class="legendline blue"></i>Pirituba → Lapa</span></div>
 <div class="map-keys" aria-label="Referências da região, sem marcação geográfica no desenho"><span class="leadkey">Referências da região</span><span class="chip">Lapa</span><span class="chip">Piqueri</span><span class="chip">Pirituba</span><span class="chip">Marginal Tietê</span><span class="chip">Rua John Harrison</span><span class="chip">Rua Gago Coutinho</span><span class="chip">Rua Martin Tenório</span><span class="chip">Rua Carlos Bertini</span><span class="hint">Ruas citadas no projeto SPObras (2019), incluindo o binário John Harrison; sua presença aqui não confirma passagem por todas elas no percurso animado.</span></div><div class="source">Base geográfica: SPObras (2019). As linhas coloridas e carrinhos são recursos explicativos, não rotas operacionais. A base permanece na resolução JPG do PDF; zoom não acrescenta nomes de ruas.</div></div>
 <aside class="panel"><h2>Controle da circulação</h2><div class="toggles">
 <label class="toggle"><input type="checkbox" id="showOrange" checked><span class="swatch orange"></span><span>Lapa → Pirituba</span></label>
 <label class="toggle"><input type="checkbox" id="showBlue" checked><span class="swatch blue"></span><span>Pirituba → Lapa</span></label></div>
-<label class="stop-toggle"><input type="checkbox" id="showStops"><span aria-hidden="true">🚏</span><span>Exibir camada de paradas previstas</span></label><div class="controls"><button class="primary" id="playPause">❚❚ Pausar carrinhos</button><button class="secondary" id="restart">↺ Reiniciar percurso</button><button class="secondary" id="center">Centralizar mapa</button></div>
+<label class="stop-toggle"><input type="checkbox" id="showStops"><span aria-hidden="true">🚏</span><span>Exibir camada de paradas previstas</span></label><div class="controls"><button class="primary" id="playPause">❚❚ Pausar carrinhos</button><button class="secondary" id="restart">↺ Reiniciar percurso</button></div>
 <p id="status" role="status" aria-live="polite" class="mini">Carregando os traçados candidatos do documento.</p>
-<p class="mini">Na Marginal Tietê, trens e tráfego adicional não estão simulados nesta etapa. Primeiro validaremos os dois carrinhos e o zoom sem deslocar a sobreposição.</p>
+<p class="mini">Na Marginal Tietê, trens e tráfego adicional não estão simulados nesta etapa. Primeiro validaremos os dois carrinhos sem deslocar a sobreposição.</p>
 </aside></div></main>
 <script>
 "use strict";
@@ -116,22 +116,6 @@ let mapScale=1,offsetX=0,offsetY=0,paused=matchMedia("(prefers-reduced-motion: r
 const defs=[{page:"19",grp:"orangeRoute",path:"orangePath",halo:"orangeHalo",car:"orangeCar",duration:15500},{page:"20",grp:"blueRoute",path:"bluePath",halo:"blueHalo",car:"blueCar",duration:15500}];
 let items=[];
 const clamp=(v,lo,hi)=>Math.min(hi,Math.max(lo,v));
-function renderTransform(){layer.style.transform="translate3d("+offsetX+"px,"+offsetY+"px,0) scale("+mapScale+")";$("zoomRead").textContent=mapScale.toFixed(1).replace(".",",")+"×";}
-function keepBounds(){const w=viewer.clientWidth,h=viewer.clientHeight;offsetX=clamp(offsetX,w*(1-mapScale),0);offsetY=clamp(offsetY,h*(1-mapScale),0);renderTransform();}
-function zoomAt(x,y,newScale){newScale=clamp(newScale,1,3);const k=newScale/mapScale;offsetX=x-(x-offsetX)*k;offsetY=y-(y-offsetY)*k;mapScale=newScale;keepBounds();}
-const mid=()=>({x:viewer.clientWidth/2,y:viewer.clientHeight/2});
-function resetZoom(){mapScale=1;offsetX=offsetY=0;keepBounds();}
-$("zoomIn").onclick=()=>{const p=mid();zoomAt(p.x,p.y,mapScale+.5)};
-$("zoomOut").onclick=()=>{const p=mid();zoomAt(p.x,p.y,mapScale-.5)};
-$("zoomReset").onclick=$("center").onclick=resetZoom;
-viewer.addEventListener("wheel",e=>{e.preventDefault();const b=viewer.getBoundingClientRect();zoomAt(e.clientX-b.left,e.clientY-b.top,mapScale*(e.deltaY<0?1.13:1/1.13));},{passive:false});
-const pointers=new Map();let gesture=null;
-function measure(){const a=[...pointers.values()];if(a.length===1)return {center:a[0],distance:0};return {center:{x:(a[0].x+a[1].x)/2,y:(a[0].y+a[1].y)/2},distance:Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y)};}
-viewer.addEventListener("pointerdown",e=>{if(e.target.closest("button"))return;viewer.setPointerCapture(e.pointerId);const b=viewer.getBoundingClientRect();pointers.set(e.pointerId,{x:e.clientX-b.left,y:e.clientY-b.top});const m=measure();gesture={...m,scale:mapScale,x:offsetX,y:offsetY};viewer.classList.add("dragging");});
-viewer.addEventListener("pointermove",e=>{if(!pointers.has(e.pointerId)||!gesture)return;const b=viewer.getBoundingClientRect();pointers.set(e.pointerId,{x:e.clientX-b.left,y:e.clientY-b.top});const m=measure();if(pointers.size>1&&gesture.distance>0){const next=clamp(gesture.scale*m.distance/gesture.distance,1,3);const k=next/gesture.scale;mapScale=next;offsetX=m.center.x-(gesture.center.x-gesture.x)*k;offsetY=m.center.y-(gesture.center.y-gesture.y)*k;}else{offsetX=gesture.x+m.center.x-gesture.center.x;offsetY=gesture.y+m.center.y-gesture.center.y;}keepBounds();});
-function endPointer(e){pointers.delete(e.pointerId);if(!pointers.size){gesture=null;viewer.classList.remove("dragging");}else{const m=measure();gesture={...m,scale:mapScale,x:offsetX,y:offsetY};}}
-viewer.addEventListener("pointerup",endPointer);viewer.addEventListener("pointercancel",endPointer);viewer.addEventListener("lostpointercapture",endPointer);
-viewer.addEventListener("keydown",e=>{if(e.key==="+"||e.key==="="){e.preventDefault();const p=mid();zoomAt(p.x,p.y,mapScale+.25)}else if(e.key==="-"){e.preventDefault();const p=mid();zoomAt(p.x,p.y,mapScale-.25)}else if(e.key==="0"){resetZoom();}});
 // A geometria original é conservada; apenas os segmentos coincidentes e com
 // sentidos opostos recebem um pequeno afastamento visual no plano SVG.
 const SEPARATION_PX=4, SHARED_DISTANCE_PX=12, SAMPLE_STEP_PX=6;
@@ -205,5 +189,5 @@ fetch(root+"duplo/routes-duplo.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw
   $("status").textContent="Dois sentidos ativos. Caminhos SVG recalibrados para o mapa atualizado; os sentidos permanecem experimentais até a conferência no LVR.";
   updatePause();draw(performance.now());
 }).catch(e=>{$("status").textContent="Erro ao carregar geometria: "+e.message;console.error(e);});
-window.addEventListener("resize",keepBounds);resetZoom();
+
 </script></body></html>
