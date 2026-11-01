@@ -41,7 +41,7 @@ html.embedded .card{border:0;border-radius:0;margin:0}
 <div class="map" role="img" aria-label="Prancha técnica 23 da SPObras com dois trajetos, azul desde Lapa e laranja desde Pirituba">
 <img id="mapimg" src="/src-greenn/complexo-lapa-pirituba/assets/Mapa_Padrao_Lado_Pirituba_Trajeto3.webp" width="1500" height="1049" alt="Mapa editorial colorido do complexo viário com Shopping Tietê Plaza, Ponte Lapa-Pirituba, Estação Piqueri e Avenida Raimundo Pereira de Magalhães">
 <svg id="routeSvg" viewBox="0 0 1200 849" preserveAspectRatio="none" aria-hidden="true">
-<g id="lapa"><g transform="translate(-6 0)"><path class="halo" id="halo23"/><path class="route" id="route23"/>
+<g id="lapa"><g id="blueAlignment" transform="translate(-6 0)"><path class="halo" id="halo23"/><path class="route" id="route23"/>
 <g id="car23"><rect class="body" x="-8" y="-14" width="16" height="28" rx="5"/><rect x="-5" y="-8" width="10" height="7" rx="2" fill="#d8f2ff"/></g>
 </g></g>
 <g id="pirituba"><path class="halo" id="halo24"/><path class="route" id="route24"/>
@@ -61,20 +61,46 @@ const $=id=>document.getElementById(id);
 const assetRoot="/src-greenn/complexo-lapa-pirituba/assets/";
 const editorial=assetRoot+"Mapa_Padrao_Lado_Pirituba_Trajeto3.webp";
 const original=assetRoot+"rota-23.jpg?v=19bc0fbd";
-let editorialActive=false;
+let editorialActive=false,trajectories=[],paused=true,elapsed=0,start=0,frame=0,ready=false,routeSets=null;
+function applyRoutes(){
+ if(!routeSets)return;
+ const data=editorialActive?routeSets.editorial:routeSets.original;
+ const expected=editorialActive?"0 0 1500 1049":"0 0 1200 849";
+ if(data.viewBox!==expected)throw Error("Geometria incompatível: "+data.viewBox);
+ pause();elapsed=0;
+ $("routeSvg").setAttribute("viewBox",expected);
+ $("blueAlignment").setAttribute("transform",editorialActive?"translate(0 0)":"translate(-6 0)");
+ trajectories=[23,24].map(page=>{
+  const route=data[String(page)];if(!route?.d)throw Error("SVG ausente: "+page);
+  const path=$("route"+page);
+  path.setAttribute("d",route.d);$("halo"+page).setAttribute("d",route.d);
+  const len=path.getTotalLength();if(!len)throw Error("Comprimento zero: "+page);
+  return {path,car:$("car"+page),len,duration:15500};
+ });
+ ready=true;move(0);
+ $("routeSvg").style.display="";
+ $("play").disabled=$("restart").disabled=false;
+ for(const id of ["show23","show24"])$(id).disabled=false;
+ $("status").textContent=editorialActive?
+ "Mapa editorial: SVGs azul e laranja visíveis e animáveis. Vetores candidatos; conferir aderência à ponte, rotatória e alças no LVR.":
+ "Prancha 23 original: caminhos anteriores preservados, incluindo deslocamento azul de 6 px.";
+ if(!matchMedia("(prefers-reduced-motion: reduce)").matches)$("play").click();
+}
 function refreshMap(){
-  const img=$("mapimg"),isEditorial=img.naturalWidth===1500&&img.naturalHeight===1049&&img.currentSrc.includes("Mapa_Padrao_Lado_Pirituba_Trajeto3.webp");
-  editorialActive=isEditorial;
-  document.querySelector(".map").style.aspectRatio=isEditorial?"1500 / 1049":"1200 / 849";
-  $("routeSvg").style.display=isEditorial?"none":"";
-  for(const id of ["play","restart","show23","show24"])$(id).disabled=isEditorial||!ready;
-  if(isEditorial){pause();$("status").textContent="Mapa editorial em homologação: os SVGs da prancha 23 estão preservados, mas aguardam calibração para esta imagem. Use ?mapa=original para testar a versão anterior.";}
-  else{$("status").textContent="Prancha 23 original: os dois trajetos SVG continuam disponíveis."; }
+ const img=$("mapimg");
+ const newMap=img.naturalWidth===1500&&img.naturalHeight===1049&&img.currentSrc.includes("Mapa_Padrao_Lado_Pirituba_Trajeto3.webp");
+ editorialActive=newMap;
+ document.querySelector(".map").style.aspectRatio=newMap?"1500 / 1049":"1200 / 849";
+ if(routeSets){try{applyRoutes()}catch(e){$("status").textContent="Erro nos traçados: "+e.message;console.error(e)}}else{
+  $("status").textContent="Carregando os trajetos do mapa ativo…";
+ }
 }
 $("mapimg").addEventListener("load",refreshMap);
-$("mapimg").addEventListener("error",()=>{if(!$("mapimg").src.includes("rota-23.jpg")){$("mapimg").src=original;return;}$("status").textContent="Erro ao carregar a imagem original da prancha 23.";});
+$("mapimg").addEventListener("error",()=>{
+ if(!$("mapimg").src.includes("rota-23.jpg")){$("mapimg").src=original;return}
+ $("status").textContent="Erro ao carregar a prancha original 23.";
+});
 if(new URLSearchParams(location.search).get("mapa")==="original")$("mapimg").src=original;
-let trajectories=[],paused=true,elapsed=0,start=0,frame=0,ready=false;
 function move(t){
  for(const item of trajectories){
   const distance=item.len*((t%item.duration)/item.duration);
@@ -90,17 +116,11 @@ $("restart").onclick=()=>{if(!ready)return;elapsed=0;start=performance.now();mov
 $("show23").onchange=e=>$("lapa").style.display=e.target.checked?"":"none";
 $("show24").onchange=e=>$("pirituba").style.display=e.target.checked?"":"none";
 
-fetch("/src-greenn/complexo-lapa-pirituba/marginal-duplo/routes-marginal.json",{cache:"no-store"})
-.then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(data=>{
- if(data.viewBox!=="0 0 1200 849")throw Error("viewBox incompatível");
- trajectories=[23,24].map(page=>{
-  const route=data[String(page)];if(!route?.d)throw Error("Trajeto ausente: "+page);
-  const path=$("route"+page);path.setAttribute("d",route.d);
-  $("halo"+page).setAttribute("d",route.d);
-  const len=path.getTotalLength();if(!len)throw Error("Trajeto sem comprimento: "+page);
-  return {path,car:$("car"+page),len,duration:15500};
- });
- ready=true;move(0);$("play").disabled=$("restart").disabled=false;refreshMap();
- if(!editorialActive&&!matchMedia("(prefers-reduced-motion: reduce)").matches)$("play").click();
-}).catch(e=>{$("status").textContent="Erro: "+e.message;console.error(e)});
+const fetchData=name=>fetch("/src-greenn/complexo-lapa-pirituba/marginal-duplo/"+name,{cache:"no-store"})
+ .then(r=>{if(!r.ok)throw Error(name+": HTTP "+r.status);return r.json()});
+Promise.all([fetchData("routes-marginal.json"),fetchData("routes-marginal-editorial.json")])
+ .then(([originalData,editorialData])=>{
+  routeSets={original:originalData,editorial:editorialData};
+  refreshMap();
+ }).catch(e=>{$("status").textContent="Erro ao carregar trajetos: "+e.message;console.error(e)});
 </script></body></html>
