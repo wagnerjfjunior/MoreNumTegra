@@ -149,3 +149,12 @@ Evidência do repositório GitHub head `4b25d427c2504a4caf52ee1c180b53228531c798
 - Checagem estática via GitHub confirmou asset, dois paths distintos, um IMG, dois carros, dimensões e URLs. A execução efetiva em navegador do LVR **ainda depende do usuário**; não alegar alinhamento final. Não mergear.
 - Gate LVR: conferir o sentido amarelo, rotatória e saída; conferir azul via acesso distinto à Av. Raimundo; confirmar que separação visual não altera cruzamentos, alternância, zoom e pause. Fazer ajuste manual vetorial se o SVG não estiver sobre as pistas.
 - Rollback: PR isolada; restaurar o conteúdo de `duplo-ayrton/index.html` e `routes-ayrton.json` do estado anterior ao commit `c1de206032125f093ee2e4c5854cb030e5ff08b2` e o catálogo se necessário.
+
+## 01/11/2026 — Reprovação da imagem ilustrada e retorno obrigatório à prancha 21 (solicitação expressa)
+- Usuário rejeitou a utilização da imagem `Mapa_Ayrton_Senna_Pirituba_1.webp` no segundo simulador por desalinhamento já observado. **Base vinculante: `assets/rota-21.jpg`** (original SPObras, dimensões 1200×849).
+- Simulador `duplo-ayrton/index.html` preserva **um único slide e SVG com dois carrinhos**, mas agora carrega EXCLUSIVAMENTE `rota-21.jpg`, com `viewBox="0 0 1200 849"` e CSS aspect-ratio correspondente. O primeiro simulador Lapa↔Pirituba não foi modificado.
+- `duplo-ayrton/routes-ayrton.json`: corrigidos SVGs independentes, ambos na mesma base 1200×849:
+  - **21/amarelo = Ayrton Senna→Pirituba**. Trajeto agora usa arco superior da rotatória, sem acrescentar arco inferior extra; geometria reconstituída manualmente cotejando o tracejado ciano da página 21.
+  - **22/azul = Ayrton Senna→Lapa**. Retorno NÃO é inversão da rota 21; usa ligação própria ao norte/à esquerda da rotatória e prossegue pelo viaduto para Lapa, com base na prancha 22. Adaptado geometricamente por pontos de referência à prancha 21, pois os enquadramentos das pranchas diferem.
+- `verified:false` para ambas as geometrias. **Não confundir conferência dos arquivos/estrutura com alinhamento perfeito**; a precisão dos acessos precisa de inspeção com zoom no LVR.
+- Gate LVR: analisar especificamente o arco superior da rotatória (amarelo); azul sem atravessar rotatória; caminho azul na ponte; sobreposição e offset nos segmentos comuns; dois carros e direção. Sem merge/produção até aceite.
