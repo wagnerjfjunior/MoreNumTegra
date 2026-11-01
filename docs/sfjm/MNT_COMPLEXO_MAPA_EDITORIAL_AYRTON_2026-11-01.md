@@ -45,3 +45,12 @@
 - Correção na PR #528: referências do `<img>`, `approvedArt` e detector `currentSrc` no `duplo-ayrton/index.html` apontam agora para **`Mapa_Ayrton_Senna_Pirituba_3.webp`**. Fallback da prancha 21 continua só para erro real ou modo `?mapa=original`.
 - Limite relevante: ao carregar o novo WebP, o código ainda **oculta o SVG e os carrinhos** para evitar sobreposição enganosa com paths homologados exclusivamente na prancha 21. O próximo passo é validar o carregamento e depois decidir ajuste geométrico/uso editorial separado. Não alegar que as animações já foram recalibradas.
 - NÃO fazer merge; obter novo teste LVR (sincronizar branch/recarregar a página e escolher opção 2).
+
+## 01/11/2026 — SVGs invisíveis no WebP _3: correção para novo LVR
+- O usuário informou: novo mapa carrega mas linhas e carrinhos não aparecem.
+- Causa confirmada no frontend: `updateMapMode()` executava `svg.hidden=newArtActive` + `display:none` de maneira intencional, porque paths da prancha 21 não encaixavam na ilustração.
+- Nova solução implementada em branch de homologação: **dois conjuntos de caminhos independentes**. `duplo-ayrton/routes-ayrton.json` intacto e exclusivo para `rota-21.jpg`; novo `duplo-ayrton/routes-ayrton-art.json` com `viewBox 0 0 1500 1049` e duas rotas **candidatas manuais** sobre `Mapa_Ayrton_Senna_Pirituba_3.webp`. O HTML ajusta `viewBox` e usa os paths de acordo com o raster efetivamente carregado.
+- SVG visível no WebP, com 2 carros e controles pré-existentes. Amarelo segue rumo a Pirituba pela porção superior da rotatória; azul deriva para Lapa pelo acesso independente e nova ponte. Não inverter os caminhos. Linhas da ilustração não foram validadas no navegador ainda, `verified:false`.
+- Atenção: o WebP é uma ilustração cartográfica modificada com IA. Os vetores dessa arte foram construídos por inspeção visual e ainda demandam validação de curva, sentido, início/fim, passagem pela rotatória, acesso para ponte e proximidade dos badges. **Aceite LVR anterior da prancha 21 não transfere aprovação para o novo conjunto.**
+- Teste LVR: sincronizar branch e abrir opção 2 no `/complexo-lapa-pirituba/`; alternar cores, pausa, zoom. Comparar com `/src-greenn/complexo-lapa-pirituba/duplo-ayrton/index.html?mapa=original` para conferir a geometria anterior.
+- Sem merge/produção antes de GO. Rollback dos paths da arte: excluir `routes-ayrton-art.json` e restaurar o HTML anterior ao commit `a6900633010a821ee7be2d291c34d7059fa71435`.
