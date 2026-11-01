@@ -36,8 +36,11 @@ html.embedded .mapcard{border:0;box-shadow:none;margin:0}
 <div class="viewer" aria-label="Mapa da SPObras mostrando o trajeto Lapa para Marginal Pinheiros, com carrinho animado">
 <img id="bg" src="/src-greenn/complexo-lapa-pirituba/assets/rota-23.jpg?v=19bc0fbd" width="1200" height="849" alt="Prancha original SPObras 23: Lapa para Marginal Pinheiros">
 <svg viewBox="0 0 1200 849" preserveAspectRatio="none" aria-hidden="true">
+<!-- Ajuste fino exclusivo da rota 23: deslocamento horizontal -6px para alinhar ao tracejado do mapa, mantendo path e carro juntos. -->
+<g id="route23Alignment" transform="translate(-6 0)">
 <path id="halo" class="pathhalo"/><path id="line" class="pathline"/>
 <g id="car"><rect class="carbody" x="-8" y="-14" width="16" height="28" rx="5"/><rect x="-5" y="-8" width="10" height="7" rx="2" fill="#d8f0fb"/><rect x="-5" y="4" width="10" height="6" rx="2" fill="#d8f0fb"/></g>
+</g>
 </svg></div>
 <div class="controls"><button type="button" id="play" disabled>▶ Reproduzir percurso</button><button type="button" id="restart" class="secondary" disabled>↺ Reiniciar</button><label><input type="checkbox" id="visible" checked>Exibir percurso</label></div>
 <p id="status" role="status">Carregando SVG da prancha 23…</p>
