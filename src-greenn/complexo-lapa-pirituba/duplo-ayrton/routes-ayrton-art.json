@@ -1,0 +1,15 @@
+{
+  "21": {
+    "label": "Ayrton Senna → Pirituba (amarelo, arco superior da rotatória)",
+    "verified": false,
+    "d": "M 1490 541 C 1383 540 1260 533 1170 525 C 1058 519 912 515 810 501 C 750 491 709 474 678 455 C 669 450 663 443 664 431 C 664 404 650 379 624 378 C 601 377 586 390 574 407 C 564 413 549 408 531 397 C 495 377 453 340 415 305 C 374 268 349 222 330 163 C 315 117 305 78 296 63"
+  },
+  "22": {
+    "label": "Ayrton Senna → Lapa (azul, acesso alternativo e nova ponte)",
+    "verified": false,
+    "d": "M 1490 552 C 1385 550 1265 542 1171 535 C 1058 529 913 522 810 511 C 754 501 711 480 683 465 C 674 458 667 445 665 429 L 635 254 C 633 247 631 242 621 245 C 601 255 563 279 533 304 C 509 322 489 345 480 358 C 473 375 493 391 514 409 C 546 434 581 455 617 487 C 646 511 659 555 671 603 C 691 678 707 739 726 809 C 746 886 770 962 791 1041"
+  },
+  "viewBox": "0 0 1500 1049",
+  "asset": "Mapa_Ayrton_Senna_Pirituba_3.webp",
+  "source": "Traçados candidatos desenhados diretamente sobre a arte editorial _3.webp, reconstituídos manualmente a partir da geometria das pranchas SPObras 21 e 22. Não georreferenciados. Nunca substituir os caminhos aprovados sobre rota-21.jpg sem validação LVR."
+}
