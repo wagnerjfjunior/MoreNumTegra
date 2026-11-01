@@ -5,7 +5,7 @@
 <meta name="description" content="Visualização experimental dos dois sentidos do projeto viário, com carros animados e mapa responsivo. Fonte SPObras 2019.">
 <link rel="icon" href="/favicon.ico">
 <style>
-:root{--ink:#171813;--gold:#EBB92E;--paper:#f3f1e9;--blue:#147cf1;--orange:#ed8917}
+:root{--ink:#171813;--gold:#EBB92E;--paper:#f3f1e9;--blue:#137CF1;--orange:#FF5F00}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
 a{color:inherit}.wrap{width:min(1150px,calc(100% - 32px));margin:auto}
 header{background:#171813;color:#fff;padding:10px 0}.nav{display:flex;align-items:center;gap:13px}.nav img{width:54px;height:44px;object-fit:contain}.nav a{text-decoration:none;font-weight:700}.nav .back{margin-left:auto;font-size:14px;color:#ddd}
@@ -58,7 +58,7 @@ html.embedded .mapbar{padding:9px 12px}
 .map-legend{display:flex;gap:14px;flex-wrap:wrap;align-items:center;padding:11px 15px;background:#fbfaf6;border-top:1px solid #e7e4da;font-size:12px;font-weight:750;color:#46515a}
 .map-legend .legenditem{display:inline-flex;align-items:center;gap:7px}
 .map-legend .legendline{display:block;width:32px;height:5px;border-radius:4px}
-.map-legend .legendline.orange{background:#ed8917}.map-legend .legendline.blue{background:#147cf1}
+.map-legend .legendline.orange{background:#FF5F00}.map-legend .legendline.blue{background:#137CF1}
 @media(max-width:520px){.map-keys{gap:6px;padding:10px}.map-keys .chip{font-size:11px;padding:4px 8px}.map-legend{gap:8px;padding:10px;font-size:11px}}
 
 /* Camada independente e não georreferenciada: paradas previstas na prancha SPObras. */
@@ -83,8 +83,8 @@ html.embedded .mapbar{padding:9px 12px}
 <div class="zoomlayer" id="layer">
 <img src="/src-greenn/complexo-lapa-pirituba/assets/Mapa_Trajeto_Lapa_Pirituba-7.webp?v=c9bfb0b5" id="mapImage" width="1456" height="1088" alt="Mapa ilustrado Lapa ↔ Pirituba com nova ligação viária, sobreposto aos dois trajetos animados">
 <svg id="svgmap" viewBox="0 0 1452 1083" preserveAspectRatio="none" aria-hidden="true">
-<g id="orangeRoute"><path id="orangeHalo" class="route-halo"/><path id="orangePath" class="route-line orange"/><g id="orangeCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#e98311"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
-<g id="blueRoute"><path id="blueHalo" class="route-halo"/><path id="bluePath" class="route-line blue"/><g id="blueCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#156cda"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
+<g id="orangeRoute"><path id="orangeHalo" class="route-halo"/><path id="orangePath" class="route-line orange"/><g id="orangeCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#FF5F00"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
+<g id="blueRoute"><path id="blueHalo" class="route-halo"/><path id="bluePath" class="route-line blue"/><g id="blueCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#137CF1"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
 </svg>
 </div>
 <div id="stopLayer" class="stop-layer" role="note" aria-label="Camada de paradas de ônibus previstas no projeto" hidden>
