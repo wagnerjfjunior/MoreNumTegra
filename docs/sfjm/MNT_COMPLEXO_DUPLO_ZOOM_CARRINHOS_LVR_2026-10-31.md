@@ -104,3 +104,10 @@ Evidência do repositório GitHub head `4b25d427c2504a4caf52ee1c180b53228531c798
 - Não se alegou validação de execução em navegador; comportamento dinâmico de controles e renderização LVR continuam sem teste automatizado real nesta sessão. Paths ainda marcados `verified:false` até aceite visual do usuário.
 - GO técnico parcial para novo ensaio LVR: conferir direção, carrinhos lado a lado sem cruzar, regiões Lapa/av. Raimundo/Tietê/Pirituba, zoom 3×, duas camadas e seletor 1–16. Merge permanece condicionado a esse gate, sem publicação automática.
 - Rollback: arquivos originais preservados; voltar o HTML/duplo a commit `62556738178a967a82a0a12630a72a2cc69603c2` se necessário (antes da recalibração).
+
+## 01/11/2026 — Correção estrutural do retorno Pirituba → Lapa
+- Causa: arquivo `duplo/routes-duplo.json`, path 20, era reverso idêntico do path 19; isso contraria a página 20 do documento original, que apresenta conversões independentes no entorno da Lapa.
+- Commit `0d7f82e0aa38668f03445622fff4b15518f34a13`: caminho 20 independente e experimental baseado nas conversões da página 20; path 19 e imagem aprovados preservados.
+- Inspeção estática do caminho candidato sobre o WebP `Mapa_Lapa_Pirituba_atualizado.webp` mostra boa coincidência no corredor compartilhado, **mas diferenças expressivas no trecho final da Lapa**, pois a figura de fundo mostra principalmente a linha direta e não as manobras próprias do retorno. Não certificar geografia, nem automatizar merge.
+- Evidência visual gerada na conversa: `/mnt/data/inspecao_rota_azul_retorno.png` (linha magenta tracejada = caminho candidato 20; não corresponde a cor azul de produção).
+- Próximo gate: confrontar manobras com PDF página 20 e visual no LVR. Não fazer `verified:true` nem publicar enquanto o retorno estiver divergente.
