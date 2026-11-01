@@ -92,3 +92,15 @@ Evidência do repositório GitHub head `4b25d427c2504a4caf52ee1c180b53228531c798
 - Achado: na parte norte, há desvio lateral; na Av. Raimundo Pereira de Magalhães, alinhamento parcial; na curva inferior, divergência; no trecho final `Pirituba→Lapa` há segmentos inteiros fora da rota azul desenhada na imagem. A base publicada pretendida representa o novo complexo, e não deve ser inferida a partir da Ponte do Piqueri.
 - **Decisão NO-GO. Não executar merge da PR #528.** Corrigir vetores separados do mapa-base preservando a lógica dos sentidos e o pequeno afastamento lateral; depois gerar nova sobreposição, validar percurso completo e testar controles pelo LVR.
 - O `verified:false` de páginas 19 e 20 permanece justificável; não afirmar precisão geométrica com base apenas em parecer visual.
+
+## 01/11/2026 — Recalibração dos dois sentidos para o WebP aprovado
+
+- Eliminada dependência do `routes-verified.json` (páginas 19/20) no simulador dual: carrega `src-greenn/complexo-lapa-pirituba/duplo/routes-duplo.json` com caminhos visualmente recalibrados e `viewBox 0 0 1452 1083`.
+- Imagem em teste: `src-greenn/complexo-lapa-pirituba/assets/Mapa_Lapa_Pirituba_atualizado.webp` (1452×1083; arquivo presente no branch), que representa o corredor gráfico do projeto via a nova ponte; não inferir trajeto da Ponte do Piqueri.
+- Dados do legado `routes-verified.json` dos demais 15 percursos não foram alterados.
+- Direções: página lógica 19 laranja Lapa→Pirituba (início no canto inferior direito), 20 azul Pirituba→Lapa (início superior esquerdo); ambos percorrem mesma referência de corredor ao contrário, separados visualmente por normais de até 4 unidades de cada lado no trecho coincidente.
+- SVG e imagem usam agora as mesmas dimensões lógicas, `1452×1083`, sem deformação por razões divergentes. Zoom/pan/pinch preservados.
+- Inspeção visual: comparado raster e traçado suavizado em resolução nativa, corrigida curva da Lapa; evidência de trabalho local `/mnt/data/calibracao_svg_lapa_pirituba.png`. Inspeção inicial automatizada por máscara de tinta apontou mediana de 2px e p90 de 14,2px até qualquer tinta azul/laranja do mapa, incluindo regiões com interferência de rótulos. Esses números são apenas diagnóstico aproximado; **não prova que linha corresponde à via real**.
+- Não se alegou validação de execução em navegador; comportamento dinâmico de controles e renderização LVR continuam sem teste automatizado real nesta sessão. Paths ainda marcados `verified:false` até aceite visual do usuário.
+- GO técnico parcial para novo ensaio LVR: conferir direção, carrinhos lado a lado sem cruzar, regiões Lapa/av. Raimundo/Tietê/Pirituba, zoom 3×, duas camadas e seletor 1–16. Merge permanece condicionado a esse gate, sem publicação automática.
+- Rollback: arquivos originais preservados; voltar o HTML/duplo a commit `62556738178a967a82a0a12630a72a2cc69603c2` se necessário (antes da recalibração).
