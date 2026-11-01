@@ -14,7 +14,7 @@ h1{font:400 clamp(1.95rem,5vw,3.3rem)/1.13 Georgia,serif;margin:8px 0 12px}.sub{
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:18px;align-items:start;margin:15px 0 25px}
 .mapcard,.panel{background:#fff;border:1px solid #dad5c8;border-radius:14px;overflow:hidden;box-shadow:0 7px 24px #1111}
 .mapbar{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:13px 15px;border-bottom:1px solid #ddd6c8;background:#faf8f3;flex-wrap:wrap}
-.mapbar strong{font-size:14px}.mapbar small{color:#696759}.viewer{position:relative;overflow:hidden;touch-action:none;user-select:none;background:#e5e6e3;aspect-ratio:1451 / 1084;cursor:grab}.viewer.dragging{cursor:grabbing}
+.mapbar strong{font-size:14px}.mapbar small{color:#696759}.viewer{position:relative;overflow:hidden;touch-action:none;user-select:none;background:#e5e6e3;aspect-ratio:1200 / 849;cursor:grab}.viewer.dragging{cursor:grabbing}
 .zoomlayer{position:absolute;inset:0;transform-origin:0 0;will-change:transform}.zoomlayer>img{width:100%;height:100%;display:block;pointer-events:none}
 .zoomlayer>svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
 .route-halo{fill:none;stroke:#fff;stroke-width:12;stroke-linecap:round;stroke-linejoin:round;opacity:.97}
@@ -32,7 +32,7 @@ button.secondary{background:#f0ece3;border:1px solid #dbd4c5;border-radius:10px;
 .mini{font-size:13px;color:#625e52}.pill{display:inline-block;font-size:12px;padding:5px 10px;border:1px solid #e0c583;border-radius:99px;background:#fff5da;font-weight:750}
 :focus-visible{outline:3px solid #aa8016;outline-offset:3px}
 @media(max-width:880px){.layout{grid-template-columns:1fr}.panel{order:-1}.panel .toggles{display:flex;gap:22px;flex-wrap:wrap}.toggle{border:0;padding:5px 0}.controls{display:flex;flex-wrap:wrap}.controls button{flex:1;min-width:150px}}
-@media(max-width:520px){.nav .back{font-size:12px}.viewer{aspect-ratio:1451 / 1084}.mapbar{padding:10px}.panel{padding:13px}.zoomchip{min-height:40px;min-width:41px}.zoombuttons{bottom:8px;right:8px}}
+@media(max-width:520px){.nav .back{font-size:12px}.viewer{aspect-ratio:1200 / 849}.mapbar{padding:10px}.panel{padding:13px}.zoomchip{min-height:40px;min-width:41px}.zoombuttons{bottom:8px;right:8px}}
 </style><style>
 html.embedded,html.embedded body{background:transparent}
 html.embedded header,html.embedded .intro{display:none}
@@ -76,13 +76,13 @@ html.embedded .mapbar{padding:9px 12px}
 <header><div class="wrap nav"><img alt="Tegra" src="https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp"><a href="/">More em um Tegra</a><a class="back" href="/complexo-lapa-pirituba/">← Página original</a></div></header>
 <main class="wrap"><section class="intro"><div class="eyebrow">SFJM / LVR • experimento visual • documento 2019</div>
 <h1>Ayrton Senna: dois destinos, um mapa</h1>
-<p class="sub">Compare Ayrton Senna → Pirituba (amarelo) e Ayrton Senna → Lapa (azul) sobre um único mapa. Os SVGs das páginas 21 e 22 são candidatos; a primeira rota utiliza a rotatória, a segunda segue acesso próprio. A geometria ilustrada precisa de validação no LVR.</p><span class="pill">Protótipo — não publicado</span></section>
+<p class="sub">Prancha original SPObras 21 como base única: Ayrton Senna → Pirituba (amarelo), contornando o arco superior da rotatória; Ayrton Senna → Lapa (azul), acesso próprio e nova ponte. Dois caminhos independentes ainda sujeitos a conferência LVR.</p><span class="pill">Protótipo — não publicado</span></section>
 <div class="layout"><div class="mapcard">
-<div class="mapbar"><strong>Mapa comparativo · dois sentidos</strong><small>Base: Mapa_Lapa_Pirituba_atualizado.webp • zoom até 3×</small></div>
+<div class="mapbar"><strong>Mapa comparativo · dois sentidos</strong><small>Base: prancha SPObras 21 · JPG original • zoom até 3×</small></div>
 <div class="viewer" id="viewer" aria-label="Mapa ilustrativo com duas rotas e carrinhos animados" tabindex="0">
 <div class="zoomlayer" id="layer">
-<img src="/src-greenn/complexo-lapa-pirituba/assets/Mapa_Ayrton_Senna_Pirituba_1.webp?v=9c6343e0" id="mapImage" width="1451" height="1084" alt="Mapa ilustrado de referência para dois destinos a partir da Ayrton Senna, vetores candidatos sobrepostos">
-<svg id="svgmap" viewBox="0 0 1451 1084" preserveAspectRatio="none" aria-hidden="true">
+<img src="/src-greenn/complexo-lapa-pirituba/assets/rota-21.jpg?v=2e60aa86" id="mapImage" width="1200" height="849" alt="Prancha original SPObras página 21, Ayrton Senna para Pirituba, fundo único de dois trajetos">
+<svg id="svgmap" viewBox="0 0 1200 849" preserveAspectRatio="none" aria-hidden="true">
 <g id="orangeRoute"><path id="orangeHalo" class="route-halo"/><path id="orangePath" class="route-line orange"/><g id="orangeCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#EBB92E"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
 <g id="blueRoute"><path id="blueHalo" class="route-halo"/><path id="bluePath" class="route-line blue"/><g id="blueCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#156cda"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
 </svg>
@@ -97,7 +97,7 @@ html.embedded .mapbar{padding:9px 12px}
 </div>
 <div class="zoombuttons" aria-label="Zoom do mapa"><button class="zoomchip" id="zoomIn" aria-label="Ampliar">+</button><span class="zoomread" id="zoomRead">1,0×</span><button class="zoomchip" id="zoomOut" aria-label="Reduzir">−</button><button class="zoomchip" id="zoomReset" aria-label="Voltar à vista completa" title="Centralizar mapa">⌂</button></div>
 </div><div class="map-legend" aria-label="Legenda das duas direções"><span class="legenditem"><i class="legendline orange"></i>Ayrton Senna → Pirituba</span><span class="legenditem"><i class="legendline blue"></i>Ayrton Senna → Lapa</span></div>
-<div class="map-keys" aria-label="Referências da região, sem marcação geográfica no desenho"><span class="leadkey">Referências da região</span><span class="chip">Lapa</span><span class="chip">Piqueri</span><span class="chip">Pirituba</span><span class="chip">Marginal Tietê</span><span class="chip">Rua John Harrison</span><span class="chip">Rua Gago Coutinho</span><span class="chip">Rua Martin Tenório</span><span class="chip">Rua Carlos Bertini</span><span class="hint">Ruas citadas no projeto SPObras (2019), incluindo o binário John Harrison; sua presença aqui não confirma passagem por todas elas no percurso animado.</span></div><div class="source">Base geográfica: SPObras (2019). As linhas coloridas e carrinhos são recursos explicativos, não rotas operacionais. Base WebP ilustrativa 1451×1084; zoom não valida trajetos nem acrescenta ruas.</div></div>
+<div class="map-keys" aria-label="Referências da região, sem marcação geográfica no desenho"><span class="leadkey">Referências da região</span><span class="chip">Lapa</span><span class="chip">Piqueri</span><span class="chip">Pirituba</span><span class="chip">Marginal Tietê</span><span class="chip">Rua John Harrison</span><span class="chip">Rua Gago Coutinho</span><span class="chip">Rua Martin Tenório</span><span class="chip">Rua Carlos Bertini</span><span class="hint">Ruas citadas no projeto SPObras (2019), incluindo o binário John Harrison; sua presença aqui não confirma passagem por todas elas no percurso animado.</span></div><div class="source">Base geográfica: SPObras (2019). As linhas coloridas e carrinhos são recursos explicativos, não rotas operacionais. Base original SPObras: página 21 (1200×849). Azul redesenhado a partir da prancha 22 para a mesma base viária, ainda não homologado.</div></div>
 <aside class="panel"><h2>Controle da circulação</h2><div class="toggles">
 <label class="toggle"><input type="checkbox" id="showOrange" checked><span class="swatch orange"></span><span>Ayrton Senna → Pirituba</span></label>
 <label class="toggle"><input type="checkbox" id="showBlue" checked><span class="swatch blue"></span><span>Ayrton Senna → Lapa</span></label></div>
@@ -110,7 +110,7 @@ html.embedded .mapbar{padding:9px 12px}
 const root="/src-greenn/complexo-lapa-pirituba/";
 const bg=document.getElementById("mapImage");
 bg.addEventListener("error",()=>{const label=document.getElementById("status");label.textContent="ERRO: mapa atualizado não carregou: "+bg.src;console.error("WebP de homologação não carregou",bg.src);});
-bg.addEventListener("load",()=>{const label=document.getElementById("status");if(bg.naturalWidth!==1451||bg.naturalHeight!==1084){label.textContent="ERRO: dimensões inesperadas do mapa: "+bg.naturalWidth+"×"+bg.naturalHeight;return;}if(!label.textContent.startsWith("ERRO:"))label.textContent="Base de homologação carregada: Mapa_Ayrton_Senna_Pirituba_1.webp (1451×1084).";});
+bg.addEventListener("load",()=>{const label=document.getElementById("status");if(bg.naturalWidth!==1200||bg.naturalHeight!==849){label.textContent="ERRO: dimensões inesperadas do mapa: "+bg.naturalWidth+"×"+bg.naturalHeight;return;}if(!label.textContent.startsWith("ERRO:"))label.textContent="Base de homologação carregada: rota-21.jpg (1200×849).";});
 const $=id=>document.getElementById(id),viewer=$("viewer"),layer=$("layer");
 let mapScale=1,offsetX=0,offsetY=0,paused=matchMedia("(prefers-reduced-motion: reduce)").matches,started=performance.now(),progressAtPause=0,pathsReady=false,raf=0;
 const defs=[{page:"21",grp:"orangeRoute",path:"orangePath",halo:"orangeHalo",car:"orangeCar",duration:15500},{page:"22",grp:"blueRoute",path:"bluePath",halo:"blueHalo",car:"blueCar",duration:15500}];
