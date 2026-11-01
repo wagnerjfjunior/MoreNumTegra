@@ -71,6 +71,17 @@ html.embedded .mapbar{padding:9px 12px}
 .stop-toggle{display:flex;align-items:center;gap:9px;padding:13px 0;border-top:1px solid #eee9df;font-weight:650;font-size:14px}
 .stop-toggle input{accent-color:#168b9e;width:21px;height:21px;flex:none}
 @media(max-width:520px){.stop-layer{top:6px;left:6px;width:min(223px,65%);padding:8px}.stop-layer .stop-line{font-size:10px}.stop-layer .stop-note{font-size:9px}}
+
+/* Badges de orientação: camada puramente decorativa, sem alterações SVG. */
+.map-badges{position:absolute;inset:0;z-index:3;pointer-events:none;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
+.map-badge{position:absolute;display:block;max-width:35%;padding:.42em .75em .48em;border-radius:.9em;border:2px solid #f9fcff;color:#fff;background:linear-gradient(140deg,#09235d 0%,#064495 70%,#083e87 100%);box-shadow:inset 0 2px 3px #ffffff55,0 3px 10px #082a5b65,0 1px 0 2px #052b66b0;font-weight:800;font-size:clamp(9px,1.5vw,20px);line-height:1.1;text-align:center;text-shadow:0 1px 2px #001b41aa;white-space:nowrap}
+.map-badge::after{content:"";position:absolute;bottom:-2px;left:17%;right:12%;height:3px;border-radius:3px;background:linear-gradient(90deg,transparent,#22cde0 35%,#42f6d0 90%);box-shadow:0 0 5px #23c9ed99}
+.map-badge.main{top:4.5%;right:3%;font-size:clamp(12px,2.45vw,32px);padding:.48em .95em;border-radius:1.1em;max-width:47%;letter-spacing:-.02em}
+.map-badge.pirituba{left:5%;top:12%;font-size:clamp(10px,1.75vw,24px)}
+.map-badge.lapa{right:4%;bottom:7.5%;font-size:clamp(11px,1.9vw,26px)}
+.map-badge.ayrton{right:5%;top:21%;font-size:clamp(9px,1.35vw,18px)}
+.map-badge.marginal{left:5%;top:43%;font-size:clamp(9px,1.35vw,18px);white-space:normal;max-width:22%}
+@media(max-width:650px){.map-badge{border-width:1px;padding:.3em .5em;box-shadow:0 1px 5px #092f4966}.map-badge.main{right:2%;top:3%}.map-badge.marginal{left:3%}.map-badge.lapa{right:3%;bottom:6%}.map-badge::after{height:2px}}
 </style><script>if(new URLSearchParams(location.search).get("embed")==="1")document.documentElement.classList.add("embedded");</script></head><body>
 <header><div class="wrap nav"><img alt="Tegra" src="https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp"><a href="/">More em um Tegra</a><a class="back" href="/complexo-lapa-pirituba/">← Página original</a></div></header>
 <main class="wrap"><section class="intro"><div class="eyebrow">SFJM / LVR • experimento visual • documento 2019</div>
@@ -84,7 +95,14 @@ html.embedded .mapbar{padding:9px 12px}
 <svg id="svgmap" viewBox="0 0 1200 849" preserveAspectRatio="none" aria-hidden="true">
 <g id="orangeRoute"><path id="orangeHalo" class="route-halo"/><path id="orangePath" class="route-line orange"/><g id="orangeCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#e98311"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
 <g id="blueRoute"><path id="blueHalo" class="route-halo"/><path id="bluePath" class="route-line blue"/><g id="blueCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#156cda"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
-</svg></div>
+</svg>
+<div class="map-badges" aria-hidden="true">
+  <span class="map-badge main">Lapa ↔ Pirituba</span>
+  <span class="map-badge pirituba">Pirituba</span>
+  <span class="map-badge lapa">Lapa</span>
+  <span class="map-badge marginal">Marginal<br>Pinheiros</span>
+  <span class="map-badge ayrton">Ayrton Senna</span>
+</div></div>
 <div id="stopLayer" class="stop-layer" role="note" aria-label="Camada de paradas de ônibus previstas no projeto" hidden>
 <strong><span aria-hidden="true">🚏</span> Paradas previstas · SPObras 2019</strong>
 <div class="stop-line"><b>2</b><span>Rua John Harrison · reformas</span></div>
