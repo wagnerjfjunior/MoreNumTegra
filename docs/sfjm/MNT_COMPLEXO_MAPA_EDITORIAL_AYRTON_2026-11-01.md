@@ -117,3 +117,11 @@
 - **SVG e animação da nova imagem ainda NÃO calibrados.** Quando o WebP carregar, HTML oculta temporariamente o SVG antigo da prancha 23 e desabilita controles de animação, para não simular um trajeto falso. Na versão original, os SVGs aprovados permanecem integralmente funcionais, inclusive offset -6 px no trajeto desde Lapa.
 - Próximo gate: após upload, validar visualmente a nova arte no LVR, então mapear pontos homólogos e produzir SVGs específicos em coordenadas 1500×1049 (laranja origem Pirituba; azul origem Lapa), testando antes de ativar. Não transformar a geometria da prancha 23 apenas por escala. Caso o mapa editorial não preserve geometria suficiente, utilizar como figura de referência sem animação.
 - Preservados simuladores 1 e 2, catálogo com 14 opções, PR #528 Draft, sem merge.
+
+## 01/11/2026 — Ativação dos dois SVGs sobre mapa editorial do trajeto 3
+- Confirmado no GitHub asset real `src-greenn/complexo-lapa-pirituba/assets/Mapa_Padrao_Lado_Pirituba_Trajeto3.webp`, blob `37f8b9004d551c85aeb09d03527391c30a1fbb56`.
+- Criado `marginal-duplo/routes-marginal-editorial.json`, com **dois paths candidatos desenhados no próprio sistema `1500×1049` da arte editorial**, sobrepondo carro azul desde Lapa via nova ponte/rotatória e carro laranja desde Pirituba ao acesso da Marginal Pinheiros. As cores são `#137CF1` (origem Lapa) e `#FF5F00` (origem Pirituba), conforme convenção visual desta opção 3; o destino é o mesmo.
+- Alterado somente `marginal-duplo/index.html`: detecção do raster efetivamente carregado, ajuste do `viewBox`, seleção entre JSON original e editorial, exibição do SVG, animação e toggles. **Quando a imagem editorial carrega, os dois carrinhos são ativados** e a geometria original não é modificada.
+- `?mapa=original` preserva `routes-marginal.json` e deslocamento aprovado `-6` do azul, em `viewBox 1200×849`; no mapa novo o deslocamento -6 NÃO é copiado.
+- **NÃO declarar alinhamento aprovado**: paths editoriais foram estimados por inspeção visual de vias e da rotatória; precisam de teste LVR para corrigir laço, acesso a Marginal, transições, início/fim e proximidade dos veículos. `verified:false` para ambos. Nunca editar o JPG nem o WebP para acomodar SVGs.
+- O primeiro e segundo simuladores, os outros itens e a produção permanecem intactos. PR #528 continua DRAFT, sem merge.
