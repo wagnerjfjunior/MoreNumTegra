@@ -78,10 +78,10 @@ html.embedded .mapbar{padding:9px 12px}
 <h1>Ayrton Senna: dois destinos, um mapa</h1>
 <p class="sub">Prancha original SPObras 21 como base única: Ayrton Senna → Pirituba (amarelo), contornando o arco superior da rotatória; Ayrton Senna → Lapa (azul), acesso próprio e nova ponte. Dois caminhos independentes ainda sujeitos a conferência LVR.</p><span class="pill">Protótipo — não publicado</span></section>
 <div class="layout"><div class="mapcard">
-<div class="mapbar"><strong>Mapa comparativo · dois sentidos</strong><small>Base: prancha SPObras 21 · JPG original • zoom até 3×</small></div>
+<div class="mapbar"><strong>Mapa comparativo · dois sentidos</strong><small>Base: ilustração SFJM (recalibração pendente); original via ?mapa=original • zoom até 3×</small></div>
 <div class="viewer" id="viewer" aria-label="Mapa ilustrativo com duas rotas e carrinhos animados" tabindex="0">
 <div class="zoomlayer" id="layer">
-<img src="/src-greenn/complexo-lapa-pirituba/assets/rota-21.jpg?v=2e60aa86" id="mapImage" width="1200" height="849" alt="Prancha original SPObras página 21, Ayrton Senna para Pirituba, fundo único de dois trajetos">
+<img src="/src-greenn/complexo-lapa-pirituba/assets/Mapa_Ayrton_Senna_Pirituba_SFJM_20261101.webp" id="mapImage" width="1500" height="1049" alt="Mapa ilustrado para homologação da rota Ayrton Senna: badges Ponte Lapa-Pirituba, Avenida Raimundo Pereira de Magalhães e Tietê Plaza Shopping">
 <svg id="svgmap" viewBox="0 0 1200 849" preserveAspectRatio="none" aria-hidden="true">
 <g id="orangeRoute"><path id="orangeHalo" class="route-halo"/><path id="orangePath" class="route-line orange"/><g id="orangeCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#EBB92E"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
 <g id="blueRoute"><path id="blueHalo" class="route-halo"/><path id="bluePath" class="route-line blue"/><g id="blueCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#156cda"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
@@ -109,8 +109,29 @@ html.embedded .mapbar{padding:9px 12px}
 "use strict";
 const root="/src-greenn/complexo-lapa-pirituba/";
 const bg=document.getElementById("mapImage");
-bg.addEventListener("error",()=>{const label=document.getElementById("status");label.textContent="ERRO: mapa atualizado não carregou: "+bg.src;console.error("WebP de homologação não carregou",bg.src);});
-bg.addEventListener("load",()=>{const label=document.getElementById("status");if(bg.naturalWidth!==1200||bg.naturalHeight!==849){label.textContent="ERRO: dimensões inesperadas do mapa: "+bg.naturalWidth+"×"+bg.naturalHeight;return;}if(!label.textContent.startsWith("ERRO:"))label.textContent="Base de homologação carregada: rota-21.jpg (1200×849).";});
+const originalMap=root+"assets/rota-21.jpg?v=2e60aa86";
+const approvedArt=root+"assets/Mapa_Ayrton_Senna_Pirituba_SFJM_20261101.webp";
+let newArtActive=false;
+function updateMapMode(){
+  const label=document.getElementById("status"),svg=document.getElementById("svgmap");
+  newArtActive=bg.naturalWidth===1500&&bg.naturalHeight===1049&&bg.currentSrc.includes("Mapa_Ayrton_Senna_Pirituba_SFJM_20261101.webp");
+  // O novo raster é ILUSTRATIVO: os SVGs aprovados sobre a prancha 21 NÃO encaixam nele.
+  svg.hidden=newArtActive;svg.style.display=newArtActive?"none":"";
+  const viewer=document.getElementById("viewer");
+  viewer.style.aspectRatio=newArtActive?"1500 / 1049":"1200 / 849";
+  bg.width=newArtActive?1500:1200;bg.height=newArtActive?1049:849;
+  if(newArtActive){
+    label.textContent="Nova arte SFJM carregada. Animações ocultadas por segurança: geometria das rotas 21/22 requer recalibração nesta ilustração; use ?mapa=original para validar os trajetos funcionais.";
+  }else{
+    label.textContent="Prancha original 21 ativa (1200×849): animações e vetores preservados para comparação.";
+  }
+}
+bg.addEventListener("error",()=>{
+  if(bg.src!==originalMap){bg.src=originalMap;return;}
+  document.getElementById("status").textContent="ERRO: nem a nova arte nem a prancha original carregaram.";
+});
+bg.addEventListener("load",updateMapMode);
+if(new URLSearchParams(location.search).get("mapa")==="original")bg.src=originalMap;
 const $=id=>document.getElementById(id),viewer=$("viewer"),layer=$("layer");
 let mapScale=1,offsetX=0,offsetY=0,paused=matchMedia("(prefers-reduced-motion: reduce)").matches,started=performance.now(),progressAtPause=0,pathsReady=false,raf=0;
 const defs=[{page:"21",grp:"orangeRoute",path:"orangePath",halo:"orangeHalo",car:"orangeCar",duration:15500},{page:"22",grp:"blueRoute",path:"bluePath",halo:"blueHalo",car:"blueCar",duration:15500}];
@@ -202,7 +223,7 @@ fetch(root+"duplo-ayrton/routes-ayrton.json",{cache:"no-store"}).then(r=>{if(!r.
     return {...def,path,car:$(def.car),length:path.getTotalLength()};
   });
   pathsReady=true;
-  $("status").textContent="ATENÇÃO: geometrias candidatas páginas 21 e 22; confira rotatória da linha amarela e acesso distinto da azul antes de aprovar.";
+  updateMapMode();
   updatePause();draw(performance.now());
 }).catch(e=>{$("status").textContent="Erro ao carregar geometria: "+e.message;console.error(e);});
 window.addEventListener("resize",keepBounds);resetZoom();
