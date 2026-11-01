@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#171813">
+<title>Ayrton Senna ↔ Pirituba | Simulador dual — homologação LVR</title>
+<meta name="description" content="Visualização experimental dos dois sentidos do projeto viário, com carros animados e zoom até 3 vezes. Fonte SPObras 2019.">
+<link rel="icon" href="/favicon.ico">
+<style>
+:root{--ink:#171813;--gold:#EBB92E;--paper:#f3f1e9;--blue:#147cf1;--orange:#ed8917}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+a{color:inherit}.wrap{width:min(1150px,calc(100% - 32px));margin:auto}
+header{background:#171813;color:#fff;padding:10px 0}.nav{display:flex;align-items:center;gap:13px}.nav img{width:54px;height:44px;object-fit:contain}.nav a{text-decoration:none;font-weight:700}.nav .back{margin-left:auto;font-size:14px;color:#ddd}
+.intro{padding:25px 0 12px}.eyebrow{color:#87670d;letter-spacing:.12em;text-transform:uppercase;font-size:12px;font-weight:800}
+h1{font:400 clamp(1.95rem,5vw,3.3rem)/1.13 Georgia,serif;margin:8px 0 12px}.sub{max-width:810px;color:#555448;margin-bottom:14px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:18px;align-items:start;margin:15px 0 25px}
+.mapcard,.panel{background:#fff;border:1px solid #dad5c8;border-radius:14px;overflow:hidden;box-shadow:0 7px 24px #1111}
+.mapbar{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:13px 15px;border-bottom:1px solid #ddd6c8;background:#faf8f3;flex-wrap:wrap}
+.mapbar strong{font-size:14px}.mapbar small{color:#696759}.viewer{position:relative;overflow:hidden;touch-action:none;user-select:none;background:#e5e6e3;aspect-ratio:1456 / 1088;cursor:grab}.viewer.dragging{cursor:grabbing}
+.zoomlayer{position:absolute;inset:0;transform-origin:0 0;will-change:transform}.zoomlayer>img{width:100%;height:100%;display:block;pointer-events:none}
+.zoomlayer>svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
+.route-halo{fill:none;stroke:#fff;stroke-width:12;stroke-linecap:round;stroke-linejoin:round;opacity:.97}
+.route-line{fill:none;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.route-line.orange{stroke:var(--orange)}.route-line.blue{stroke:var(--blue)}
+.car-body{stroke:#fff;stroke-width:1.5;filter:drop-shadow(0 2px 3px #0009)}.car-window{fill:#dbedf7;stroke:#1d2830;stroke-width:.8}
+.zoombuttons{position:absolute;right:12px;bottom:12px;display:flex;flex-direction:column;gap:7px}.zoomchip{border-radius:10px;min-width:45px;min-height:44px;background:#fff;box-shadow:0 2px 12px #0003;font-size:22px;border:1px solid #ccc;color:#17202b;cursor:pointer}
+.zoomread{background:#fff;padding:4px 8px;border-radius:8px;font-size:12px;text-align:center;font-weight:700}
+.source{font-size:12px;color:#605d50;padding:12px 15px;background:#faf9f6;border-top:1px solid #eee8db}
+.panel{padding:19px}.panel h2{font:400 1.45rem/1.2 Georgia,serif;margin:2px 0 15px}.toggle{display:flex;align-items:center;gap:10px;padding:13px 0;border-top:1px solid #eee9df;font-weight:650}
+.toggle input{width:21px;height:21px;accent-color:#171813;flex:none}.swatch{display:inline-block;height:8px;width:31px;border-radius:999px;flex:none}
+.swatch.orange{background:var(--orange)}.swatch.blue{background:var(--blue)}
+.controls{display:grid;gap:9px;margin:16px 0}button{font:inherit;cursor:pointer}button.primary{border:0;border-radius:10px;background:var(--gold);padding:12px 14px;font-weight:800;min-height:46px}
+button.secondary{background:#f0ece3;border:1px solid #dbd4c5;border-radius:10px;padding:10px 14px;font-weight:700;min-height:45px}
+.mini{font-size:13px;color:#625e52}.pill{display:inline-block;font-size:12px;padding:5px 10px;border:1px solid #e0c583;border-radius:99px;background:#fff5da;font-weight:750}
+:focus-visible{outline:3px solid #aa8016;outline-offset:3px}
+@media(max-width:880px){.layout{grid-template-columns:1fr}.panel{order:-1}.panel .toggles{display:flex;gap:22px;flex-wrap:wrap}.toggle{border:0;padding:5px 0}.controls{display:flex;flex-wrap:wrap}.controls button{flex:1;min-width:150px}}
+@media(max-width:520px){.nav .back{font-size:12px}.viewer{aspect-ratio:1456 / 1088}.mapbar{padding:10px}.panel{padding:13px}.zoomchip{min-height:40px;min-width:41px}.zoombuttons{bottom:8px;right:8px}}
+</style><style>
+html.embedded,html.embedded body{background:transparent}
+html.embedded header,html.embedded .intro{display:none}
+html.embedded .wrap{width:100%;max-width:none}
+html.embedded .layout{margin:0;grid-template-columns:1fr;gap:10px}
+html.embedded .panel{order:2}
+html.embedded .mapcard{border:0;box-shadow:none}
+html.embedded .viewer{width:100%}
+html.embedded .panel{margin:0 10px 12px;box-shadow:none}
+html.embedded .mapbar{padding:9px 12px}
+/* Aparência editorial do mapa: nenhuma modificação na geometria, SVG ou animação. */
+.mapbar{background:linear-gradient(110deg,#fffaf0 0%,#edf5f5 100%);border-bottom:1px solid #ddd6c8}
+.mapbar strong{letter-spacing:.01em;color:#293c40}
+.viewer{background:#e3ede8}
+.zoomlayer>img{filter:saturate(1.18) contrast(1.07) brightness(1.035); }
+.zoomlayer::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(130deg,rgba(226,245,239,.10),transparent 48%,rgba(239,221,179,.09));mix-blend-mode:multiply;z-index:1}
+.zoomlayer>svg{z-index:2}
+.map-keys{display:flex;gap:9px;flex-wrap:wrap;align-items:center;padding:12px 15px;border-top:1px solid #e3ddd0;background:linear-gradient(100deg,#fffefb,#f7f8f5)}
+.map-keys .leadkey{font-weight:800;color:#45515a;font-size:12px;letter-spacing:.03em;text-transform:uppercase;margin-right:3px}
+.map-keys .chip{display:inline-flex;gap:6px;align-items:center;border:1px solid #d7dfd9;background:#fff;border-radius:999px;padding:5px 10px;font-weight:650;font-size:12px;color:#3b5557}
+.map-keys .chip::before{content:"";width:6px;height:6px;border-radius:50%;background:#85a79e;flex:none}
+.map-keys .hint{flex-basis:100%;font-size:11px;color:#69716b;margin-top:0}
+.map-legend{display:flex;gap:14px;flex-wrap:wrap;align-items:center;padding:11px 15px;background:#fbfaf6;border-top:1px solid #e7e4da;font-size:12px;font-weight:750;color:#46515a}
+.map-legend .legenditem{display:inline-flex;align-items:center;gap:7px}
+.map-legend .legendline{display:block;width:32px;height:5px;border-radius:4px}
+.map-legend .legendline.orange{background:#ed8917}.map-legend .legendline.blue{background:#147cf1}
+@media(max-width:520px){.map-keys{gap:6px;padding:10px}.map-keys .chip{font-size:11px;padding:4px 8px}.map-legend{gap:8px;padding:10px;font-size:11px}}
+
+/* Camada independente e não georreferenciada: paradas previstas na prancha SPObras. */
+.stop-layer[hidden]{display:none!important}
+.stop-layer{position:absolute;z-index:5;top:12px;left:12px;width:min(264px,48%);max-height:calc(100% - 28px);overflow:auto;pointer-events:auto;background:rgba(255,255,255,.94);backdrop-filter:blur(7px);border:1px solid #c3d1cf;border-radius:12px;box-shadow:0 4px 18px #092f3740;padding:10px 11px;color:#193842}
+.stop-layer strong{font-size:12px;letter-spacing:.02em;display:flex;gap:7px;align-items:center}
+.stop-layer .stop-line{display:flex;align-items:center;gap:8px;border-top:1px solid #e4e9e6;margin-top:6px;padding-top:6px;font-size:11px;line-height:1.3}
+.stop-layer .stop-line b{font-size:12px;color:#167e91;background:#e1f3f3;min-width:23px;height:23px;display:grid;place-items:center;border-radius:7px}
+.stop-layer .stop-note{font-size:10px;line-height:1.3;margin:9px 0 0;color:#596c6f}
+.stop-toggle{display:flex;align-items:center;gap:9px;padding:13px 0;border-top:1px solid #eee9df;font-weight:650;font-size:14px}
+.stop-toggle input{accent-color:#168b9e;width:21px;height:21px;flex:none}
+@media(max-width:520px){.stop-layer{top:6px;left:6px;width:min(223px,65%);padding:8px}.stop-layer .stop-line{font-size:10px}.stop-layer .stop-note{font-size:9px}}
+
+</style><script>if(new URLSearchParams(location.search).get("embed")==="1")document.documentElement.classList.add("embedded");</script></head><body>
+<header><div class="wrap nav"><img alt="Tegra" src="https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp"><a href="/">More em um Tegra</a><a class="back" href="/complexo-lapa-pirituba/">← Página original</a></div></header>
+<main class="wrap"><section class="intro"><div class="eyebrow">SFJM / LVR • experimento visual • documento 2019</div>
+<h1>Ayrton Senna ↔ Pirituba: os dois sentidos</h1>
+<p class="sub">Compare Ayrton Senna → Pirituba (laranja) e Pirituba → Ayrton Senna (azul) sobre a mesma imagem. Traçados das páginas 21 e 25 foram escalados como candidatos, ainda não homologados geograficamente neste mapa. Não representa tráfego ou vias liberadas.</p><span class="pill">Protótipo — não publicado</span></section>
+<div class="layout"><div class="mapcard">
+<div class="mapbar"><strong>Mapa comparativo · dois sentidos</strong><small>Base: Mapa_Lapa_Pirituba_atualizado.webp • zoom até 3×</small></div>
+<div class="viewer" id="viewer" aria-label="Mapa ilustrativo com duas rotas e carrinhos animados" tabindex="0">
+<div class="zoomlayer" id="layer">
+<img src="/src-greenn/complexo-lapa-pirituba/assets/Mapa_Trajeto_Lapa_Pirituba-7.webp?v=c9bfb0b5" id="mapImage" width="1456" height="1088" alt="Mapa ilustrado compartilhado com o trajeto Ayrton Senna ↔ Pirituba, sobreposto aos vetores experimentais">
+<svg id="svgmap" viewBox="0 0 1452 1083" preserveAspectRatio="none" aria-hidden="true">
+<g id="orangeRoute"><path id="orangeHalo" class="route-halo"/><path id="orangePath" class="route-line orange"/><g id="orangeCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#e98311"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
+<g id="blueRoute"><path id="blueHalo" class="route-halo"/><path id="bluePath" class="route-line blue"/><g id="blueCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#156cda"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
+</svg>
+</div>
+<div id="stopLayer" class="stop-layer" role="note" aria-label="Camada de paradas de ônibus previstas no projeto" hidden>
+<strong><span aria-hidden="true">🚏</span> Paradas previstas · SPObras 2019</strong>
+<div class="stop-line"><b>2</b><span>Rua John Harrison · reformas</span></div>
+<div class="stop-line"><b>1</b><span>Rua Martin Tenório · reforma</span></div>
+<div class="stop-line"><b>1</b><span>Rua Carlos Bertini · nova parada</span></div>
+<div class="stop-line"><b>2</b><span>Av. Raimundo Pereira de Magalhães · canteiro central</span></div>
+<p class="stop-note">Camada informativa, sem pinos geográficos: as posições exatas não foram transpostas da prancha do binário para esta base.</p>
+</div>
+<div class="zoombuttons" aria-label="Zoom do mapa"><button class="zoomchip" id="zoomIn" aria-label="Ampliar">+</button><span class="zoomread" id="zoomRead">1,0×</span><button class="zoomchip" id="zoomOut" aria-label="Reduzir">−</button><button class="zoomchip" id="zoomReset" aria-label="Voltar à vista completa" title="Centralizar mapa">⌂</button></div>
+</div><div class="map-legend" aria-label="Legenda das duas direções"><span class="legenditem"><i class="legendline orange"></i>Lapa → Pirituba</span><span class="legenditem"><i class="legendline blue"></i>Pirituba → Lapa</span></div>
+<div class="map-keys" aria-label="Referências da região, sem marcação geográfica no desenho"><span class="leadkey">Referências da região</span><span class="chip">Lapa</span><span class="chip">Piqueri</span><span class="chip">Pirituba</span><span class="chip">Marginal Tietê</span><span class="chip">Rua John Harrison</span><span class="chip">Rua Gago Coutinho</span><span class="chip">Rua Martin Tenório</span><span class="chip">Rua Carlos Bertini</span><span class="hint">Ruas citadas no projeto SPObras (2019), incluindo o binário John Harrison; sua presença aqui não confirma passagem por todas elas no percurso animado.</span></div><div class="source">Base geográfica: SPObras (2019). As linhas coloridas e carrinhos são recursos explicativos, não rotas operacionais. A base permanece na resolução JPG do PDF; zoom não acrescenta nomes de ruas.</div></div>
+<aside class="panel"><h2>Controle da circulação</h2><div class="toggles">
+<label class="toggle"><input type="checkbox" id="showOrange" checked><span class="swatch orange"></span><span>Ayrton Senna → Pirituba</span></label>
+<label class="toggle"><input type="checkbox" id="showBlue" checked><span class="swatch blue"></span><span>Pirituba → Ayrton Senna</span></label></div>
+<label class="stop-toggle"><input type="checkbox" id="showStops"><span aria-hidden="true">🚏</span><span>Exibir referências de paradas do projeto (não georreferenciadas)</span></label><div class="controls"><button class="primary" id="playPause">❚❚ Pausar carrinhos</button><button class="secondary" id="restart">↺ Reiniciar percurso</button><button class="secondary" id="center">Centralizar mapa</button></div>
+<p id="status" role="status" aria-live="polite" class="mini">Carregando os traçados candidatos do documento.</p>
+<p class="mini">Na Marginal Tietê, trens e tráfego adicional não estão simulados nesta etapa. Primeiro validaremos os dois carrinhos e o zoom sem deslocar a sobreposição.</p>
+</aside></div></main>
+<script>
+"use strict";
+const root="/src-greenn/complexo-lapa-pirituba/";
+const bg=document.getElementById("mapImage");
+bg.addEventListener("error",()=>{const label=document.getElementById("status");label.textContent="ERRO: mapa atualizado não carregou: "+bg.src;console.error("WebP de homologação não carregou",bg.src);});
+bg.addEventListener("load",()=>{const label=document.getElementById("status");if(bg.naturalWidth!==1456||bg.naturalHeight!==1088){label.textContent="ERRO: dimensões inesperadas do mapa: "+bg.naturalWidth+"×"+bg.naturalHeight;return;}if(!label.textContent.startsWith("ERRO:"))label.textContent="Base de homologação carregada: Mapa_Trajeto_Lapa_Pirituba-7.webp (1456×1088).";});
+const $=id=>document.getElementById(id),viewer=$("viewer"),layer=$("layer");
+let mapScale=1,offsetX=0,offsetY=0,paused=matchMedia("(prefers-reduced-motion: reduce)").matches,started=performance.now(),progressAtPause=0,pathsReady=false,raf=0;
+const defs=[{page:"21",grp:"orangeRoute",path:"orangePath",halo:"orangeHalo",car:"orangeCar",duration:15500},{page:"25",grp:"blueRoute",path:"bluePath",halo:"blueHalo",car:"blueCar",duration:15500}];
+let items=[];
+const clamp=(v,lo,hi)=>Math.min(hi,Math.max(lo,v));
+function renderTransform(){layer.style.transform="translate3d("+offsetX+"px,"+offsetY+"px,0) scale("+mapScale+")";$("zoomRead").textContent=mapScale.toFixed(1).replace(".",",")+"×";}
+function keepBounds(){const w=viewer.clientWidth,h=viewer.clientHeight;offsetX=clamp(offsetX,w*(1-mapScale),0);offsetY=clamp(offsetY,h*(1-mapScale),0);renderTransform();}
+function zoomAt(x,y,newScale){newScale=clamp(newScale,1,3);const k=newScale/mapScale;offsetX=x-(x-offsetX)*k;offsetY=y-(y-offsetY)*k;mapScale=newScale;keepBounds();}
+const mid=()=>({x:viewer.clientWidth/2,y:viewer.clientHeight/2});
+function resetZoom(){mapScale=1;offsetX=offsetY=0;keepBounds();}
+$("zoomIn").onclick=()=>{const p=mid();zoomAt(p.x,p.y,mapScale+.5)};
+$("zoomOut").onclick=()=>{const p=mid();zoomAt(p.x,p.y,mapScale-.5)};
+$("zoomReset").onclick=$("center").onclick=resetZoom;
+viewer.addEventListener("wheel",e=>{e.preventDefault();const b=viewer.getBoundingClientRect();zoomAt(e.clientX-b.left,e.clientY-b.top,mapScale*(e.deltaY<0?1.13:1/1.13));},{passive:false});
+const pointers=new Map();let gesture=null;
+function measure(){const a=[...pointers.values()];if(a.length===1)return {center:a[0],distance:0};return {center:{x:(a[0].x+a[1].x)/2,y:(a[0].y+a[1].y)/2},distance:Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y)};}
+viewer.addEventListener("pointerdown",e=>{if(e.target.closest("button"))return;viewer.setPointerCapture(e.pointerId);const b=viewer.getBoundingClientRect();pointers.set(e.pointerId,{x:e.clientX-b.left,y:e.clientY-b.top});const m=measure();gesture={...m,scale:mapScale,x:offsetX,y:offsetY};viewer.classList.add("dragging");});
+viewer.addEventListener("pointermove",e=>{if(!pointers.has(e.pointerId)||!gesture)return;const b=viewer.getBoundingClientRect();pointers.set(e.pointerId,{x:e.clientX-b.left,y:e.clientY-b.top});const m=measure();if(pointers.size>1&&gesture.distance>0){const next=clamp(gesture.scale*m.distance/gesture.distance,1,3);const k=next/gesture.scale;mapScale=next;offsetX=m.center.x-(gesture.center.x-gesture.x)*k;offsetY=m.center.y-(gesture.center.y-gesture.y)*k;}else{offsetX=gesture.x+m.center.x-gesture.center.x;offsetY=gesture.y+m.center.y-gesture.center.y;}keepBounds();});
+function endPointer(e){pointers.delete(e.pointerId);if(!pointers.size){gesture=null;viewer.classList.remove("dragging");}else{const m=measure();gesture={...m,scale:mapScale,x:offsetX,y:offsetY};}}
+viewer.addEventListener("pointerup",endPointer);viewer.addEventListener("pointercancel",endPointer);viewer.addEventListener("lostpointercapture",endPointer);
+viewer.addEventListener("keydown",e=>{if(e.key==="+"||e.key==="="){e.preventDefault();const p=mid();zoomAt(p.x,p.y,mapScale+.25)}else if(e.key==="-"){e.preventDefault();const p=mid();zoomAt(p.x,p.y,mapScale-.25)}else if(e.key==="0"){resetZoom();}});
+// A geometria original é conservada; apenas os segmentos coincidentes e com
+// sentidos opostos recebem um pequeno afastamento visual no plano SVG.
+const SEPARATION_PX=4, SHARED_DISTANCE_PX=12, SAMPLE_STEP_PX=6;
+function sampleRoute(path){
+  const length=path.getTotalLength(),count=Math.max(2,Math.ceil(length/SAMPLE_STEP_PX));
+  const points=[];
+  for(let i=0;i<=count;i++){
+    const at=length*i/count,p=path.getPointAtLength(at);
+    const before=path.getPointAtLength(Math.max(0,at-2));
+    const after=path.getPointAtLength(Math.min(length,at+2));
+    const dx=after.x-before.x,dy=after.y-before.y,mag=Math.hypot(dx,dy)||1;
+    points.push({x:p.x,y:p.y,tx:dx/mag,ty:dy/mag});
+  }
+  return points;
+}
+function separateSharedSegments(first,second){
+  // Compara proximidade + vetores tangentes: não separa cruzamentos nem vias
+  // paralelas que avancem no mesmo sentido.
+  function apply(source,other){
+    const weighted=source.map(p=>{
+      let closest=Infinity,opposition=false;
+      for(const q of other){
+        const distance=Math.hypot(p.x-q.x,p.y-q.y);
+        if(distance<closest){closest=distance;opposition=p.tx*q.tx+p.ty*q.ty<-.65;}
+      }
+      const weight=opposition?clamp((SHARED_DISTANCE_PX-closest)/12,0,1):0;
+      return weight;
+    });
+    // Evita alterações bruscas de direção nas junções.
+    const weights=weighted.map((_,i)=>{
+      let total=0,weightSum=0;
+      for(let k=-4;k<=4;k++){
+        const j=clamp(i+k,0,weighted.length-1);
+        const w=5-Math.abs(k);
+        total+=weighted[j]*w;weightSum+=w;
+      }
+      return total/weightSum;
+    });
+    // Direita do deslocamento no sistema de coordenadas da imagem (eixo Y para baixo). Como as direções são
+    // opostas, os dois trajetos se afastam entre si no trecho compartilhado.
+    return source.map((p,i)=>({
+      x:p.x-p.ty*SEPARATION_PX*weights[i],
+      y:p.y+p.tx*SEPARATION_PX*weights[i]
+    }));
+  }
+  return [apply(first,second),apply(second,first)];
+}
+function routeToD(points){return points.map((p,i)=>(i?"L":"M")+p.x.toFixed(2)+" "+p.y.toFixed(2)).join(" ");}
+function getElapsed(now){return paused?progressAtPause:progressAtPause+(now-started);}
+function draw(now){if(!pathsReady)return;const elapsed=getElapsed(now);for(const item of items){const length=item.length;const pointAt=clamp((elapsed%item.duration)/item.duration,0,1);const at=length*pointAt;const a=item.path.getPointAtLength(at);const b=item.path.getPointAtLength(Math.min(length,at+1));const c=item.path.getPointAtLength(Math.max(0,at-1));const angle=Math.atan2(b.y-c.y,b.x-c.x)*180/Math.PI+90;item.car.setAttribute("transform","translate("+a.x+" "+a.y+") rotate("+angle+")");}if(!paused)raf=requestAnimationFrame(draw);}
+function updatePause(){ $("playPause").textContent=paused?"▶ Reproduzir carrinhos":"❚❚ Pausar carrinhos"; }
+$("playPause").onclick=()=>{const now=performance.now();if(!paused){progressAtPause=getElapsed(now);paused=true;cancelAnimationFrame(raf);}else{paused=false;started=now;raf=requestAnimationFrame(draw);}updatePause();};
+$("restart").onclick=()=>{progressAtPause=0;started=performance.now();cancelAnimationFrame(raf);draw(performance.now());};
+$("showOrange").onchange=e=>$("orangeRoute").style.display=e.target.checked?"":"none";
+$("showBlue").onchange=e=>$("blueRoute").style.display=e.target.checked?"":"none";
+$("showStops").onchange=e=>$("stopLayer").hidden=!e.target.checked;
+fetch(root+"duplo-ayrton/routes-ayrton.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(data=>{
+  // Lê cada rota original apenas para cálculo. Não modifica o JSON da SPObras.
+  const raw=defs.map(def=>{
+    const route=data[def.page];if(!route?.d)throw Error("SVG ausente: página "+def.page);
+    const path=$(def.path);path.setAttribute("d",route.d);
+    return sampleRoute(path);
+  });
+  const separated=separateSharedSegments(raw[0],raw[1]);
+  items=defs.map((def,i)=>{
+    const path=$(def.path),displayD=routeToD(separated[i]);
+    path.setAttribute("d",displayD);$(def.halo).setAttribute("d",displayD);
+    return {...def,path,car:$(def.car),length:path.getTotalLength()};
+  });
+  pathsReady=true;
+  $("status").textContent="Traçados candidatos (páginas 21 e 25): ESCALA ajustada, alinhamento viário NÃO conferido. Não publicar sem validação da direção, curvas e acessos.";
+  updatePause();draw(performance.now());
+}).catch(e=>{$("status").textContent="Erro ao carregar geometria: "+e.message;console.error(e);});
+window.addEventListener("resize",keepBounds);resetZoom();
+</script></body></html>
