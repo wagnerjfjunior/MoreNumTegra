@@ -111,24 +111,22 @@ const root="/src-greenn/complexo-lapa-pirituba/";
 const bg=document.getElementById("mapImage");
 const originalMap=root+"assets/rota-21.jpg?v=2e60aa86";
 const approvedArt=root+"assets/Mapa_Ayrton_Senna_Pirituba_3.webp";
-let newArtActive=false;
+let newArtActive=false,routeSets=null;
 function updateMapMode(){
   const label=document.getElementById("status"),svg=document.getElementById("svgmap");
   newArtActive=bg.naturalWidth===1500&&bg.naturalHeight===1049&&bg.currentSrc.includes("Mapa_Ayrton_Senna_Pirituba_3.webp");
-  // O novo raster é ILUSTRATIVO: os SVGs aprovados sobre a prancha 21 NÃO encaixam nele.
-  svg.hidden=newArtActive;svg.style.display=newArtActive?"none":"";
+  const width=newArtActive?1500:1200,height=newArtActive?1049:849;
   const viewer=document.getElementById("viewer");
-  viewer.style.aspectRatio=newArtActive?"1500 / 1049":"1200 / 849";
-  bg.width=newArtActive?1500:1200;bg.height=newArtActive?1049:849;
-  if(newArtActive){
-    label.textContent="Nova arte SFJM carregada. Animações ocultadas por segurança: geometria das rotas 21/22 requer recalibração nesta ilustração; use ?mapa=original para validar os trajetos funcionais.";
-  }else{
-    label.textContent="Prancha original 21 ativa (1200×849): animações e vetores preservados para comparação.";
-  }
+  viewer.style.aspectRatio=width+" / "+height;
+  svg.setAttribute("viewBox","0 0 "+width+" "+height);
+  bg.width=width;bg.height=height;
+  svg.hidden=false;svg.style.display="";
+  if(routeSets){loadSelectedRoutes();return;}
+  label.textContent="Carregando caminhos adequados ao mapa ativo…";
 }
 bg.addEventListener("error",()=>{
-  if(bg.src!==originalMap){bg.src=originalMap;return;}
-  document.getElementById("status").textContent="ERRO: nem a nova arte nem a prancha original carregaram.";
+  if(!bg.currentSrc.includes("rota-21.jpg")&&!bg.src.includes("rota-21.jpg")){bg.src=originalMap;return;}
+  document.getElementById("status").textContent="ERRO: mapa editorial e prancha 21 indisponíveis.";
 });
 bg.addEventListener("load",updateMapMode);
 if(new URLSearchParams(location.search).get("mapa")==="original")bg.src=originalMap;
@@ -209,8 +207,13 @@ $("restart").onclick=()=>{progressAtPause=0;started=performance.now();cancelAnim
 $("showOrange").onchange=e=>$("orangeRoute").style.display=e.target.checked?"":"none";
 $("showBlue").onchange=e=>$("blueRoute").style.display=e.target.checked?"":"none";
 $("showStops").onchange=e=>$("stopLayer").hidden=!e.target.checked;
-fetch(root+"duplo-ayrton/routes-ayrton.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(data=>{
-  // Lê cada rota original apenas para cálculo. Não modifica o JSON da SPObras.
+function loadSelectedRoutes(){
+  if(!routeSets)return;
+  const data=newArtActive?routeSets.art:routeSets.original;
+  const expectedBox=newArtActive?"0 0 1500 1049":"0 0 1200 849";
+  if(data.viewBox!==expectedBox)throw Error("Sistema de coordenadas incompatível: "+data.viewBox);
+  cancelAnimationFrame(raf);
+  // Paths originais permanecem isolados dos paths candidatos da ilustração.
   const raw=defs.map(def=>{
     const route=data[def.page];if(!route?.d)throw Error("SVG ausente: página "+def.page);
     const path=$(def.path);path.setAttribute("d",route.d);
@@ -223,8 +226,17 @@ fetch(root+"duplo-ayrton/routes-ayrton.json",{cache:"no-store"}).then(r=>{if(!r.
     return {...def,path,car:$(def.car),length:path.getTotalLength()};
   });
   pathsReady=true;
-  updateMapMode();
+  $("status").textContent=newArtActive?
+    "MAPA EDITORIAL: 2 SVGs e 2 carrinhos ativos. Traçados candidatos: conferir rotatória do amarelo e acesso alternativo/ponte do azul no LVR antes de aprovar.":
+    "PRANCHA 21 ORIGINAL: trajetos anteriores preservados, ambos animados.";
   updatePause();draw(performance.now());
+}
+const fetchRoutes=path=>fetch(root+path,{cache:"no-store"}).then(r=>{
+  if(!r.ok)throw Error(path+": HTTP "+r.status);
+  return r.json();
+});
+Promise.all([fetchRoutes("duplo-ayrton/routes-ayrton.json"),fetchRoutes("duplo-ayrton/routes-ayrton-art.json")]).then(([original,art])=>{
+  routeSets={original,art};loadSelectedRoutes();
 }).catch(e=>{$("status").textContent="Erro ao carregar geometria: "+e.message;console.error(e);});
 window.addEventListener("resize",keepBounds);resetZoom();
 </script></body></html>
