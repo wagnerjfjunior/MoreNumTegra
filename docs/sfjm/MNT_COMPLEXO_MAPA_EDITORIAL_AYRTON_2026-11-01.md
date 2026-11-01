@@ -92,3 +92,11 @@
 - Ajuste isolado no `lapa-marginal/index.html`: `<g id="route23Alignment" transform="translate(-6 0)">` envolve **halo, path SVG e carrinho**. Move-os juntos 6 unidades à esquerda no sistema 1200×849, sem alterar geometria nem sentido do laço.
 - Não foi modificado o JSON `routes-verified.json`, que preserva os pontos da versão aprovada, facilitando rollback; nenhum outro trajeto afetado.
 - Gate LVR: conferir aderência da linha ao tracejado, especialmente rotatória e via da ponte, em desktop e mobile. O valor -6 pode ser refinado após comparação visual. Sem merge.
+
+## 01/11/2026 — Opção 4: Pirituba → Marginal Pinheiros, prancha 24 + cores por destino
+- Confirmação usuário: prancha 23 = Lapa→Marginal Pinheiros (opção 3, deslocamento -6px aprovado); prancha 24 = Pirituba→Marginal Pinheiros (opção 4).
+- Inspecionada `assets/rota-24.jpg` (blob `e66996e0aca8373dac1ebbdeaf591013bb8e8c09`). Imagem original mostra partida em Pirituba (ponto 355,167), descida pelo corredor oeste e saída à esquerda para Marginal Pinheiros (aprox. 403,456). Não confundir esta rota com o balão da opção 3.
+- Criado `pirituba-marginal/index.html` (um mapa JPG SPObras 1200×849, um carrinho, linha ciano, controls play/pause/reset/exibir, sem zoom). Conectado em `index.html` como `#piritubaMarginalEmbed` apenas para opção 4; opções 1–3 preservadas.
+- `routes-verified.json["24"]` suavizado com curvas cúbicas sobre a linha pontilhada da prancha 24, `verified:false`; sua aderência geométrica ainda exige teste LVR.
+- **Padrão visual obrigatório por DESTINO:** Pirituba `#FF5F00`; Lapa `#137CF1`; Marginal Pinheiros `#089ACA` (ciano mantido nos dois percursos 3 e 4). Alterados `duplo/index.html`, `duplo-ayrton/index.html` para aplicar hexadecimal exato à linha, legenda, swatch e carro. O `index.html` genérico agora calcula cor da rota de acordo com o destino e aplica inline aos SVGs e marcador. **Não** mudar a cor Tegra `#EBB92E` usada nos botões.
+- Gate LVR: validar Pirituba→Marginal Pinheiros acompanhando pontilhado original, curvas de saída e destino; cor do carrinho/linha e legibilidade; opções 1/2 cores exatas; opção 3 deslocamento -6px preservado. Sem merge/produção até GO.
