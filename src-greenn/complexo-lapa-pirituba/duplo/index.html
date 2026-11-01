@@ -82,7 +82,7 @@ html.embedded .mapbar{padding:9px 12px}
 <div class="viewer" id="viewer" aria-label="Mapa ilustrativo com duas rotas e carrinhos animados" tabindex="0">
 <div class="zoomlayer" id="layer">
 <img src="/src-greenn/complexo-lapa-pirituba/assets/rota-19.jpg" id="mapImage" width="1200" height="849" alt="Mapa técnico do projeto viário SPObras de agosto de 2019, página 19, com traçados candidatos sobrepostos">
-<svg id="svgmap" viewBox="0 0 1200 849" preserveAspectRatio="none" aria-hidden="true">
+<svg id="svgmap" viewBox="0 0 1452 1083" preserveAspectRatio="none" aria-hidden="true">
 <g id="orangeRoute"><path id="orangeHalo" class="route-halo"/><path id="orangePath" class="route-line orange"/><g id="orangeCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#e98311"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
 <g id="blueRoute"><path id="blueHalo" class="route-halo"/><path id="bluePath" class="route-line blue"/><g id="blueCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#156cda"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
 </svg>
@@ -134,7 +134,7 @@ viewer.addEventListener("pointerup",endPointer);viewer.addEventListener("pointer
 viewer.addEventListener("keydown",e=>{if(e.key==="+"||e.key==="="){e.preventDefault();const p=mid();zoomAt(p.x,p.y,mapScale+.25)}else if(e.key==="-"){e.preventDefault();const p=mid();zoomAt(p.x,p.y,mapScale-.25)}else if(e.key==="0"){resetZoom();}});
 // A geometria original é conservada; apenas os segmentos coincidentes e com
 // sentidos opostos recebem um pequeno afastamento visual no plano SVG.
-const SEPARATION_PX=8, SHARED_DISTANCE_PX=24, SAMPLE_STEP_PX=6;
+const SEPARATION_PX=4, SHARED_DISTANCE_PX=12, SAMPLE_STEP_PX=6;
 function sampleRoute(path){
   const length=path.getTotalLength(),count=Math.max(2,Math.ceil(length/SAMPLE_STEP_PX));
   const points=[];
@@ -157,7 +157,7 @@ function separateSharedSegments(first,second){
         const distance=Math.hypot(p.x-q.x,p.y-q.y);
         if(distance<closest){closest=distance;opposition=p.tx*q.tx+p.ty*q.ty<-.65;}
       }
-      const weight=opposition?clamp((SHARED_DISTANCE_PX-closest)/16,0,1):0;
+      const weight=opposition?clamp((SHARED_DISTANCE_PX-closest)/12,0,1):0;
       return weight;
     });
     // Evita alterações bruscas de direção nas junções.
@@ -188,7 +188,7 @@ $("restart").onclick=()=>{progressAtPause=0;started=performance.now();cancelAnim
 $("showOrange").onchange=e=>$("orangeRoute").style.display=e.target.checked?"":"none";
 $("showBlue").onchange=e=>$("blueRoute").style.display=e.target.checked?"":"none";
 $("showStops").onchange=e=>$("stopLayer").hidden=!e.target.checked;
-fetch(root+"routes-verified.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(data=>{
+fetch(root+"duplo/routes-duplo.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(data=>{
   // Lê cada rota original apenas para cálculo. Não modifica o JSON da SPObras.
   const raw=defs.map(def=>{
     const route=data[def.page];if(!route?.d)throw Error("SVG ausente: página "+def.page);
@@ -202,7 +202,7 @@ fetch(root+"routes-verified.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Er
     return {...def,path,car:$(def.car),length:path.getTotalLength()};
   });
   pathsReady=true;
-  $("status").textContent="Dois sentidos ativos. Trechos compartilhados separados em faixas paralelas de forma experimental; confirme no LVR.";
+  $("status").textContent="Dois sentidos ativos. Caminhos SVG recalibrados para o mapa atualizado; os sentidos permanecem experimentais até a conferência no LVR.";
   updatePause();draw(performance.now());
 }).catch(e=>{$("status").textContent="Erro ao carregar geometria: "+e.message;console.error(e);});
 window.addEventListener("resize",keepBounds);resetZoom();
