@@ -51,3 +51,10 @@
 - Implementação: checkbox `showStops` controla um overlay/legenda discreto dentro da área do mapa. A camada é informativa, **sem pins ou coordenadas fictícias**; permanece fixa ao ampliar e arrastar o mapa.
 - `routes-verified.json`, os carros, as rotas e o zoom não foram alterados.
 - Gate LVR: verificar comportamento do checkbox desktop/mobile, legibilidade do overlay e possíveis obstruções do desenho; refinar posições geográficas em etapa separada somente com validação cartográfica.
+
+## 31/10/2026 — substituição de fundo limpa solicitada
+- HTML do simulador atualizado em `4dc39273401db483a4c01aa452163c7b27d5e4b5`: removidos `cleanLegacyLabels`, canvas e badges HTML; rotas SVG, zoom e carrinhos preservados.
+- Novo asset esperado na branch: `src-greenn/complexo-lapa-pirituba/assets/Rota_Lapa_Pirituba_limpa.webp` (arquivo original do usuário, 1200×896; SHA256 `3a3927ddb70d3ff0023dbd48901f179864160aff36f066ff067980454bbca552`).
+- **BLOQUEIO DE INTEGRAÇÃO:** arquivo binário ainda não enviado ao GitHub. Enquanto faltar, a página usa o WebP antigo como fallback. Não declarar substituição concluída ou LVR pronto.
+- Rollback: commit HTML anterior `001bbcebeab661542b779023fd7d009142c4ac8d`, ou reverter a única alteração de `mapImage.src` + limpeza canvas; arquivo WebP antigo permanece intacto.
+- Antes do merge, validar que o GitHub serve o novo arquivo 200, que a imagem-base permanece alinhada aos paths SVG e que todas as 16 opções funcionam.
