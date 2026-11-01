@@ -76,3 +76,8 @@
 - Novo trecho: `C 380 214 377 206 378 201 C 385 193 386 181 379 173 C 373 165 362 163 353 169 C 343 175 341 188 347 196 C 340 200 326 201 312 201 Q 291 204 271 207`.
 - A geometria permanece **`verified:false`**: requer observação em LVR com mapa `rota-23.jpg` para avaliar aderência à linha impressa e movimento do carro sem corte ou salto na rotatória.
 - `lapa-marginal/index.html` não precisou de alteração: o mapa e carrinho já consomem `routes-verified.json` por `fetch`; demais rotas, legendas e duais intocados. PR #528 continua Draft, sem merge.
+
+## 01/11/2026 — Ajuste cirúrgico 2 no SVG da rota 23
+- Orientação explícita do usuário: **o SVG deve seguir apenas a linha tracejada azul original da prancha 23**, sem engenharia de percurso conjectural.
+- Alterado exclusivamente o sufixo da geometria `routes-verified.json["23"].d` em `viewBox 0 0 1200 849`, desde `Q 393 259 385 227`. O arco foi reduzido e reposicionado para acompanhar melhor o círculo tracejado em torno de (363,184) e sair à esquerda sobre o tracejado; nenhuma outra rota ou raster alterado.
+- `verified:false`; demanda aceite visual no LVR, com atenção à aderência do carrinho na rotatória e na saída para a Marginal Pinheiros. PR Draft; não mergear.
