@@ -54,3 +54,10 @@
 - Atenção: o WebP é uma ilustração cartográfica modificada com IA. Os vetores dessa arte foram construídos por inspeção visual e ainda demandam validação de curva, sentido, início/fim, passagem pela rotatória, acesso para ponte e proximidade dos badges. **Aceite LVR anterior da prancha 21 não transfere aprovação para o novo conjunto.**
 - Teste LVR: sincronizar branch e abrir opção 2 no `/complexo-lapa-pirituba/`; alternar cores, pausa, zoom. Comparar com `/src-greenn/complexo-lapa-pirituba/duplo-ayrton/index.html?mapa=original` para conferir a geometria anterior.
 - Sem merge/produção antes de GO. Rollback dos paths da arte: excluir `routes-ayrton-art.json` e restaurar o HTML anterior ao commit `a6900633010a821ee7be2d291c34d7059fa71435`.
+
+## 01/11/2026 — Simplificação LVR: remover zoom dos dois simuladores
+- Decisão explícita do usuário: zoom prejudica a visualização. Remover botões `+`, `−`, reset, centralização e comportamento de zoom/pan em desktop e mobile.
+- Implementado na branch da PR #528 em `duplo/index.html` (Lapa↔Pirituba) e `duplo-ayrton/index.html` (Ayrton Senna→Pirituba/Lapa): removidos controles do DOM, listeners de wheel/pointer/pinch/teclado e transformações de zoom. `touch-action: pan-y` mantém a rolagem vertical natural no mobile.
+- Mapas permanecem responsivos por CSS, com IMG e SVG no mesmo enquadramento sem transformação espacial. Carrinhos SVG, dois sentidos, pausas, reinício, checkboxes e rota original `?mapa=original` são preservados.
+- Sem alterações nos JSONs dos caminhos, imagens, escala de geometria ou no primeiro item do catálogo além da remoção do zoom.
+- Critério LVR: rolagem mobile fluida, nenhum zoom por roda ou pinça, nenhum botão de zoom, duas linhas e carros visíveis e sincronizados, reprodução/reinício funcionais. PR Draft; sem merge.
