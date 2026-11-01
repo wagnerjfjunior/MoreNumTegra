@@ -139,3 +139,13 @@ Evidência do repositório GitHub head `4b25d427c2504a4caf52ee1c180b53228531c798
 - `duplo-ayrton/routes-ayrton.json` antigo permanece como registro histórico de candidatos transpostos, mas **não é carregado pelo novo visor**.
 - Gate de aceite: verificar que cada JPG carrega, carro e traçado seguem a linha original inclusive acessos/retornos, pausa/reinício, zoom e toque mobile; depois definir se os visores permanecem separados ou se haverá georreferenciamento real para unificá-los.
 - **Sem merge** até validação, rollback pelo commit anterior à alteração `a9f3057029c0f83a09617951831af84b8e4d6776`.
+
+## 01/11/2026 — Corrigido para LVR: um mapa, dois destinos a partir da Ayrton Senna
+- Pedido mais recente do usuário prevalece sobre descrição anterior de retorno. **Amarelo = Ayrton Senna→Pirituba (PDF página 21, com rotatória); azul = Ayrton Senna→Lapa (PDF página 22, desvio próprio, sem espelhar a página 21)**.
+- `duplo-ayrton/index.html` reimplementado conforme o simulador do trajeto 1: **um só WebP**, um SVG com duas linhas/carrinhos, pausa/reinício e zoom/pan/pinch até 3×, identidade Tegra amarela.
+- Novo mapa é `assets/Mapa_Ayrton_Senna_Pirituba_1.webp`, blob `9c6343e05a3c227ae9918f41d21c181f549a674d`, dimensões 1451×1084; fundo original do trajeto 1 permanece intocado.
+- `duplo-ayrton/routes-ayrton.json` agora armazena **duas geometrias independentes, páginas 21 e 22**, escaladas das pranchas SPObras do `routes-verified.json` para o novo raster. Essa escala é **apenas candidata e não valida a aderência viária**, sobretudo a rotatória e o acesso alternativo à nova ponte.
+- Catálogo corrigido para 15 opções: item 2 agrupa páginas 21+22; página 25 Pirituba→Ayrton Senna preservada como item individual. O item Ayrton Senna→Lapa separado foi retirado para evitar duplicidade.
+- Checagem estática via GitHub confirmou asset, dois paths distintos, um IMG, dois carros, dimensões e URLs. A execução efetiva em navegador do LVR **ainda depende do usuário**; não alegar alinhamento final. Não mergear.
+- Gate LVR: conferir o sentido amarelo, rotatória e saída; conferir azul via acesso distinto à Av. Raimundo; confirmar que separação visual não altera cruzamentos, alternância, zoom e pause. Fazer ajuste manual vetorial se o SVG não estiver sobre as pistas.
+- Rollback: PR isolada; restaurar o conteúdo de `duplo-ayrton/index.html` e `routes-ayrton.json` do estado anterior ao commit `c1de206032125f093ee2e4c5854cb030e5ff08b2` e o catálogo se necessário.
