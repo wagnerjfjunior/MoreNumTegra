@@ -130,3 +130,12 @@ Evidência do repositório GitHub head `4b25d427c2504a4caf52ee1c180b53228531c798
 - O título presente no raster ainda diz `Lapa ↔ Pirituba` porque o usuário solicitou reaproveitar o mesmo mapa; necessidade potencial de subtítulo overlay ou tratamento visual não cartográfico na revisão.
 - Não alterar `routes-verified.json` nem o primeiro dual; nenhum merge ou publicação autorizada.
 - Gate para GO: testar no LVR as duas direções nas páginas 21/25 e provar alinhamento real com vias/acessos ao usar o mesmo WebP; revisar se a imagem é adequada para rota Ayrton Senna↔Pirituba. Corrigir arquivos candidatos isolados se necessário, mantendo rollback via PR.
+
+## 01/11/2026 — Ayrton Senna ↔ Pirituba: retorno às pranchas originais após reprovação LVR
+- Usuário reprovou sobreposição de caminhos nas imagens ilustradas: os vetores das páginas 21 e 25 foram apenas escalados e ficaram completamente fora.
+- Remediação em `src-greenn/complexo-lapa-pirituba/duplo-ayrton/index.html`: **dois visores separados no mesmo item de catálogo**, utilizando exclusivamente `assets/rota-21.jpg` e `assets/rota-25.jpg` com `viewBox 0 0 1200 849`, um carrinho animado por visor e cores laranja/azul; ambos compartilham reprodução/pausa e reinício, mas têm zoom/pan independentes. São duas imagens porque as pranchas não são a mesma base cartográfica.
+- Os caminhos são carregados diretamente das páginas 21 e 25 do `routes-verified.json`; **sem transposição, sem inversão, sem deslocamento lateral artificial**. Todos permanecem `verified:false` até cotejo das linhas impressas do PDF no LVR.
+- O primeiro dual Lapa↔Pirituba, demais opções e imagens aprovadas permanecem inalterados. O item de catálogo 2 continua agrupando os dois sentidos.
+- `duplo-ayrton/routes-ayrton.json` antigo permanece como registro histórico de candidatos transpostos, mas **não é carregado pelo novo visor**.
+- Gate de aceite: verificar que cada JPG carrega, carro e traçado seguem a linha original inclusive acessos/retornos, pausa/reinício, zoom e toque mobile; depois definir se os visores permanecem separados ou se haverá georreferenciamento real para unificá-los.
+- **Sem merge** até validação, rollback pelo commit anterior à alteração `a9f3057029c0f83a09617951831af84b8e4d6776`.
