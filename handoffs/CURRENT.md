@@ -1,3 +1,12 @@
+## 01/11/2026 — LVR: mapa editorial Ayrton Senna — PR #528 DRAFT
+
+- Consolidação técnica e histórico completo: [docs/sfjm/MNT_COMPLEXO_MAPA_EDITORIAL_AYRTON_2026-11-01.md](../docs/sfjm/MNT_COMPLEXO_MAPA_EDITORIAL_AYRTON_2026-11-01.md).
+- Visual aprovado pelo usuário: arte bege/verde/azul, shopping ilustrado no lote triangular e badge compacto Tietê Plaza Shopping; badges Ponte Lapa-Pirituba e Av. Raimundo Pereira de Magalhães indicados por marcações do usuário.
+- WebP local `Mapa_Ayrton_Senna_Pirituba_SFJM_20261101.webp` (1500×1049, ~238KB) entregue por download; **não presente no GitHub** até upload binário. Nova referência de imagem preparada em `duplo-ayrton/index.html`, fallback automático `rota-21.jpg`.
+- CRÍTICO: paths das páginas 21 e 22 aprovados visualmente somente na prancha 21. SVG/carrinhos ocultos quando arte nova carregar; recalibrar antes de reativá-los. `?mapa=original` mantém a experiência funcional de referência. Não aplicar escala direta.
+- Sem merge, sem produção. Rota 1 dual intacta.
+
+---
 ## 28/10/2026 — ESTADO VIGENTE: Mercado e RIIO em produção (PR #507)
 
 **Supera os avisos históricos de preparação/noindex abaixo para estas 12 páginas.** PR #507 MERGED; head final `99ff6710b1d792468d43a8cca3f38c1fc1b7b3e8` com 10/10 checks SUCCESS; merge/runtime `0b1de5b1218fb1c4c83c2683366bdfe11ad60d44`; Vercel Production READY `dpl_8iiXm3RtVDbMhNSbHdpaJBq6KjjG`. Onze artigos Mercado + RIIO HTTP200, indexáveis, canonical www e JSON-LD sintaticamente válido; hub/Blog/catálogo/sitemap atualizados (73 URLs no sitemap). Isso não comprova indexação Google/Bing.
