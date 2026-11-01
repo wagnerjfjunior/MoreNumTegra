@@ -81,7 +81,7 @@ html.embedded .mapbar{padding:9px 12px}
 <div class="mapbar"><strong>Mapa comparativo · dois sentidos</strong><small>Base: ilustração SFJM (recalibração pendente); original via ?mapa=original • visualização integral</small></div>
 <div class="viewer" id="viewer" aria-label="Mapa ilustrativo com duas rotas e carrinhos animados" tabindex="0">
 <div class="zoomlayer" id="layer">
-<img src="/src-greenn/complexo-lapa-pirituba/assets/Mapa_Ayrton_Senna_Pirituba_3.webp" id="mapImage" width="1500" height="1049" alt="Mapa ilustrado para homologação da rota Ayrton Senna: badges Ponte Lapa-Pirituba, Avenida Raimundo Pereira de Magalhães e Tietê Plaza Shopping">
+<img src="/src-greenn/complexo-lapa-pirituba/assets/Mapa_Ayrton_Senna_Pirituba_Badge2.webp" id="mapImage" width="1500" height="1049" alt="Mapa ilustrado para homologação da rota Ayrton Senna: badges Ponte Lapa-Pirituba, Avenida Raimundo Pereira de Magalhães e Tietê Plaza Shopping">
 <svg id="svgmap" viewBox="0 0 1200 849" preserveAspectRatio="none" aria-hidden="true">
 <g id="orangeRoute"><path id="orangeHalo" class="route-halo"/><path id="orangePath" class="route-line orange"/><g id="orangeCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#FF5F00"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
 <g id="blueRoute"><path id="blueHalo" class="route-halo"/><path id="bluePath" class="route-line blue"/><g id="blueCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#137CF1"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
@@ -110,11 +110,11 @@ html.embedded .mapbar{padding:9px 12px}
 const root="/src-greenn/complexo-lapa-pirituba/";
 const bg=document.getElementById("mapImage");
 const originalMap=root+"assets/rota-21.jpg?v=2e60aa86";
-const approvedArt=root+"assets/Mapa_Ayrton_Senna_Pirituba_3.webp";
+const approvedArt=root+"assets/Mapa_Ayrton_Senna_Pirituba_Badge2.webp";
 let newArtActive=false,routeSets=null;
 function updateMapMode(){
   const label=document.getElementById("status"),svg=document.getElementById("svgmap");
-  newArtActive=bg.naturalWidth===1500&&bg.naturalHeight===1049&&bg.currentSrc.includes("Mapa_Ayrton_Senna_Pirituba_3.webp");
+  newArtActive=bg.naturalWidth===1500&&bg.naturalHeight===1049&&bg.currentSrc.includes("Mapa_Ayrton_Senna_Pirituba_Badge2.webp");
   const width=newArtActive?1500:1200,height=newArtActive?1049:849;
   const viewer=document.getElementById("viewer");
   viewer.style.aspectRatio=width+" / "+height;
