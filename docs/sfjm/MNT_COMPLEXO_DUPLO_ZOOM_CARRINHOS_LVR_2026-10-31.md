@@ -111,3 +111,12 @@ Evidência do repositório GitHub head `4b25d427c2504a4caf52ee1c180b53228531c798
 - Inspeção estática do caminho candidato sobre o WebP `Mapa_Lapa_Pirituba_atualizado.webp` mostra boa coincidência no corredor compartilhado, **mas diferenças expressivas no trecho final da Lapa**, pois a figura de fundo mostra principalmente a linha direta e não as manobras próprias do retorno. Não certificar geografia, nem automatizar merge.
 - Evidência visual gerada na conversa: `/mnt/data/inspecao_rota_azul_retorno.png` (linha magenta tracejada = caminho candidato 20; não corresponde a cor azul de produção).
 - Próximo gate: confrontar manobras com PDF página 20 e visual no LVR. Não fazer `verified:true` nem publicar enquanto o retorno estiver divergente.
+
+## 01/11/2026 — Fundo v7 selecionado para PR #528 (sem merge)
+
+- Asset enviado pelo usuário e verificado no GitHub: `src-greenn/complexo-lapa-pirituba/assets/Mapa_Trajeto_Lapa_Pirituba-7.webp` (blob `c9bfb0b545e7f7034527010882f2e5e5b8bc9fec`, dimensão 1456×1088).
+- HTML `duplo/index.html` atualizado para usar arquivo v7 com cache-busting `?v=c9bfb0b5`; imagem e CSS aspect ratio atualizados para 1456×1088; erro de carregamento é explícito. Commit HTML `085a77e2af3bd6438b202dad858fde6f870cba5d`.
+- Trajetórias SVG existentes preservadas em `routes-duplo.json` com `viewBox 1452×1083`; como o raster novo tem quase a mesma proporção, a transformação CSS compartilha frame, mas **não houve prova cartográfica de alinhamento pleno**. Pontos e curvas da Lapa precisam de inspeção LVR.
+- Check estático: URL, asset existente, dimensões, seletor/iframe e JSON verificados. Teste dinâmico de movimento, zoom/pan e ausência de desvios não executado em navegador nesta sessão.
+- Impedimento de GO: `verified:false` permanece nos caminhos e usuário precisa conferir retorno Pirituba→Lapa no LVR. Não confundir novas etiquetas numeradas na arte com validação de geometria do retorno.
+- Rollback do fundo: restaurar `Mapa_Lapa_Pirituba_atualizado.webp?v=08f49013` no HTML e dimensão 1452×1083; manter asset v7 armazenado. Produção não alterada.
