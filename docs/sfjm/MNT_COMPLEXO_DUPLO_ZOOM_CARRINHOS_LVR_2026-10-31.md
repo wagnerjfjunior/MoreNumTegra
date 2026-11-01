@@ -81,3 +81,14 @@ Evidência do repositório GitHub head `4b25d427c2504a4caf52ee1c180b53228531c798
 - O WEBP aprovado possui linhas azuis/laranjas já pintadas nos pixels; overlay SVG acrescenta novamente traços, podendo produzir duplicidade visual, especialmente em trechos fora de coincidência.
 - **NO-GO para merge até corrigir a geometria/correspondência de ambos os vetores com o mapa e realizar teste LVR e navegador.** Não inventar ruas nem fazer merge apenas por arquivo presente.
 - Rollback rastreável: commit pré-troca HTML `4b25d427c2504a4caf52ee1c180b53228531c798`, arquivo original `Complexo_Lapa_Pirituba_trajeto1.webp` preservado.
+
+## 01/11/2026 — Validação visual efetiva do mapa atualizado (NO-GO)
+
+- Usuário pediu validação das duas rotas animadas antes do merge.
+- Arquivo de imagem no GitHub: `src-greenn/complexo-lapa-pirituba/assets/Mapa_Lapa_Pirituba_atualizado.webp`, blob `08f49013d7c3077cb56eefb3adb81aff174baf96`, dimensões **1452×1083**.
+- HTML da branch: aponta para esse WebP, viewport `aspect-ratio:1452/1083`, SVG ainda `viewBox=0 0 1200 849` com `preserveAspectRatio=none`.
+- Inspeção reproduzida em Python/CairoSVG: duas paths atuais extraídas das páginas 19/20 do `routes-verified.json` renderizadas sobre a **imagem atualizada** na mesma viewport do navegador; arquivo de evidência `/mnt/data/auditoria_sobreposicao_svg_mapa528.png` no ambiente da conversa (não incorporado ao repo).
+- Convenção da evidência: magenta = página 19 Lapa→Pirituba; verde = página 20 Pirituba→Lapa. As linhas foram desenhadas **sem** o pequeno offset adicional da função `separateSharedSegments`, então a divergência demonstrada é estrutural, não eliminável só pelo offset de faixas.
+- Achado: na parte norte, há desvio lateral; na Av. Raimundo Pereira de Magalhães, alinhamento parcial; na curva inferior, divergência; no trecho final `Pirituba→Lapa` há segmentos inteiros fora da rota azul desenhada na imagem. A base publicada pretendida representa o novo complexo, e não deve ser inferida a partir da Ponte do Piqueri.
+- **Decisão NO-GO. Não executar merge da PR #528.** Corrigir vetores separados do mapa-base preservando a lógica dos sentidos e o pequeno afastamento lateral; depois gerar nova sobreposição, validar percurso completo e testar controles pelo LVR.
+- O `verified:false` de páginas 19 e 20 permanece justificável; não afirmar precisão geométrica com base apenas em parecer visual.
