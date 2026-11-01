@@ -73,3 +73,11 @@ Evidência do repositório GitHub head `4b25d427c2504a4caf52ee1c180b53228531c798
 
 **Decisão:** NO-GO; merge não executado. Para retomar: (1) colocar asset aprovado no branch, (2) aferir geometria/proporção e sentido dos carrinhos nos quatro marcos (Lapa, Raimundo, Rio Tietê, Pirituba), (3) verificar 16 entradas e controles em LVR, (4) resolver checks relevantes, (5) apenas então merge e verificar Vercel READY.
 **Rollback:** base main anterior `5bed3e058d67e29821af55c46b870c83e40e97f5`; a branch permanece isolada. Não converter aceitação visual de uma imagem gerada em confirmação de alinhamento da imagem publicada.
+
+## 31/10/2026 — Asset novo presente; homologação geométrica ainda pendente
+- Confirmação Github: `src-greenn/complexo-lapa-pirituba/assets/Mapa_Lapa_Pirituba_atualizado.webp` existe na branch (blob `08f49013d7c3077cb56eefb3adb81aff174baf96`), imagem 1452×1083.
+- HTML do simulador atualizado para esse asset (commit `62556738178a967a82a0a12630a72a2cc69603c2`), proporção CSS corrigida para 1452/1083; `viewBox 1200 849` permanece como coordenada relativa do SVG; fallback anterior mantido.
+- Inspeção de composição raster + paths originais `19` e `20`: traço laranja acompanha corredor geral com discrepâncias; linha azul tem **desvio visível no trecho final de Lapa**, incluindo zigue-zagues sobre área fora do corredor da imagem. Ponto confirmado por prévia `inspecao_alinhamento_mapa_528.png` em conversa; não considerar `verified:true`.
+- O WEBP aprovado possui linhas azuis/laranjas já pintadas nos pixels; overlay SVG acrescenta novamente traços, podendo produzir duplicidade visual, especialmente em trechos fora de coincidência.
+- **NO-GO para merge até corrigir a geometria/correspondência de ambos os vetores com o mapa e realizar teste LVR e navegador.** Não inventar ruas nem fazer merge apenas por arquivo presente.
+- Rollback rastreável: commit pré-troca HTML `4b25d427c2504a4caf52ee1c180b53228531c798`, arquivo original `Complexo_Lapa_Pirituba_trajeto1.webp` preservado.
