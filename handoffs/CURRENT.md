@@ -1,3 +1,12 @@
+## 01/11/2026 — PR #528: simuladores 2 e 3, novo candidato LVR
+
+- Simulador 3: carros azul/laranja restaurados ao formato maior de 20×36 px com 2 para-brisas brancos, preservadas integralmente as linhas e geometrias previamente aprovadas.
+- Simulador 2: implementados 8 carros laranjas sobre rota 21, 8 azuis sobre rota 22 e 16 neutros (preto/vermelho/cinza) nas duas Marginais, com mesmo tamanho e caminhos invisíveis do tráfego do simulador 3. Autoloop, sem pausa/reinício; alternância de rotas e camada de paradas preservadas.
+- Documentação: `docs/sfjm/MNT_COMPLEXO_MAPA_EDITORIAL_AYRTON_2026-11-01.md`. Código atualizado em `duplo-ayrton/index.html` e `marginal-duplo/index.html`. **Não alterar geometria aprovada do simulador 3 nem a rotatória.**
+- Teste de integração em GitHub confirmado; **novo teste visual LVR pendente**. PR #528 Draft, sem merge ou produção.
+
+---
+
 ## 01/11/2026 — ACEITE VISUAL LVR · Simulador 3 (PR #528 Draft)
 
 - Usuário confirmou **"FICOU ótimo!!!!"** para o simulador **3. Lapa / Pirituba → Marginal Pinheiros**, na baseline de código `158e23a8c44057fe024986874f1b37542dbdb5d3`. **Aceite visual LVR reportado pelo usuário, não aceite técnico automatizado nem autorização de merge/produção.**
