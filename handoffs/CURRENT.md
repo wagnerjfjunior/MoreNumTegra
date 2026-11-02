@@ -1,3 +1,12 @@
+## 01/11/2026 — ACEITE VISUAL LVR · Simulador 3 (PR #528 Draft)
+
+- Usuário confirmou **"FICOU ótimo!!!!"** para o simulador **3. Lapa / Pirituba → Marginal Pinheiros**, na baseline de código `158e23a8c44057fe024986874f1b37542dbdb5d3`. **Aceite visual LVR reportado pelo usuário, não aceite técnico automatizado nem autorização de merge/produção.**
+- Documento canônico de aceite e rollback: [MNT_COMPLEXO_SIMULADOR3_ACEITE_LVR_2026-11-01.md](../docs/sfjm/MNT_COMPLEXO_SIMULADOR3_ACEITE_LVR_2026-11-01.md). Leia antes de editar qualquer parte do simulador.
+- Preservar **8 carros azuis seguindo o SVG azul, 8 laranjas seguindo SVG laranja (ambos visíveis), 16 carros pretos/vermelhos/cinzas nas guias invisíveis da Marginal Tietê**, autoplay sem controles/zoom. **Não alterar a rota azul nem o sentido da rotatória.** Curva laranja encurtada e faixa inferior corrigida, conforme aceite LVR.
+- PR #528 segue **Draft e NÃO merged**. Próxima ação segura: conferência de diff/QA da PR em leitura; nenhuma alteração visual no simulador 3 sem pedido específico e novo aceite. O catálogo e simuladores 1/2 ficam preservados.
+
+---
+
 ## 01/11/2026 — LVR: mapa editorial Ayrton Senna — PR #528 DRAFT
 
 - Consolidação técnica e histórico completo: [docs/sfjm/MNT_COMPLEXO_MAPA_EDITORIAL_AYRTON_2026-11-01.md](../docs/sfjm/MNT_COMPLEXO_MAPA_EDITORIAL_AYRTON_2026-11-01.md).
