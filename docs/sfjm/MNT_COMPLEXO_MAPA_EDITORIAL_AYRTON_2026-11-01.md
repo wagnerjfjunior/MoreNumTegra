@@ -180,3 +180,15 @@
 - SVG azul 23.d mantido integralmente, sem alteração em rotatória ou JSON original.
 - Guia invisível do trânsito inferior movida para o lado sul do Rio Tietê, com curva mais acentuada de acesso, sem editar a guia superior, contagens e cores dos veículos.
 - Validação visual pendente: confirmar encaixe exato da curva ciano e ausência de carros sobre o rio. PR #528 Draft, sem merge.
+
+## 01/11/2026 — Implementação 32 carros no simulador 2; carro maior no simulador 3
+
+**Solicitação explícita:** executar no próprio GitHub/MoreNumTegra, sem transferência de tarefa a outra ferramenta. PR #528 segue Draft.
+
+- **Simulador 3:** modificados somente os `<g id="car23">` e `<g id="car24">` em `marginal-duplo/index.html`: corpo 20×36 (`x=-10 y=-18 rx=7`), dois retângulos brancos por carro (`14×8` e `14×7`). Os sete clones de cada percurso herdam a geometria e o desenho. **Não alterados os paths SVG, guia invisível dos 16 veículos, mapa, badges, cores, autoplay ou demais parâmetros da baseline visual aprovada.** Este é um ajuste de apresentação posterior à baseline `158e23a8`, sujeito a novo teste LVR.
+- **Simulador 2:** em `duplo-ayrton/index.html`, acrescentada camada SVG independente `trafficLayer` com **16 veículos ambiente** (8 em cada margem da Marginal Tietê), guias invisíveis editoriais idênticas às do simulador 3, mesma dimensão 10×20 e paleta de preto/vermelho/cinza `#24272c`, `#c73434`, `#777f87`, `#3d4247`, `#b92f2e`, `#90969c`. Guias só aparecem na arte 1500×1049 para evitar projeções erradas no JPG técnico original.
+- **Simulador 2, carros de percurso:** **8 laranjas** no path 21 (Ayrton Senna→Pirituba) e **8 azuis** no path 22 (Ayrton Senna→Lapa), incluindo o carro original de cada rota e sete clones SVG, igualmente espaçados com `phase=i/8`, autoloop de 22,5s. Cor/forma grande original 20×36 e **dois para-brisas brancos**. Rotas SVG originais e lógica de separação de trechos preservadas; não alterar rotatória ou orientação.
+- **Simulador 2, controles:** botões de pausar/reiniciar removidos; autoplay, ciclo contínuo com um único `requestAnimationFrame`, desligamento ao ocultar aba e respeito a `prefers-reduced-motion`. Seletores de exibir percurso e paradas informativas preservados.
+- **Contagem editorial por simulador:** 8 azuis + 8 laranjas + 16 neutros = **32 carros**. Não há informação de tráfego em tempo real; visualização ilustrativa.
+- **Verificação GitHub:** arquivos atualizados na branch e inspeção estática de oito carros por rota, paleta, ausência de controles e SVGs. **Teste visual LVR continua pendente** para garantir que o fluxo do simulador 2 acompanha as pistas e não atravessa shopping/água; não confundir inspeção estática com homologação.
+- **Rollback seguro:** restaurar somente `duplo-ayrton/index.html` e/ou `marginal-duplo/index.html` da baseline imediatamente anterior ao ajuste, sem reverter dados de rotas ou todo o repositório. **Não fazer merge/publicação sem autorização.**
