@@ -178,10 +178,10 @@ function createAmbientTraffic(){
  // Guias específicas do mapa do simulador 1 (1452×1083), não são os paths das opções 2/3.
  // Margens do Rio Tietê: norte trafega da direita para esquerda, sul no sentido oposto.
  const bands=[
-  // Pista norte: curva larga, sentido oeste (direita → esquerda).
-  "M 1420 292 C 1260 287 1100 313 915 314 C 725 314 575 298 425 296 C 275 292 155 306 30 313",
-  // Pista sul: curva própria, sentido leste (esquerda → direita).
-  "M 30 377 C 165 366 313 363 460 369 C 627 379 790 397 945 396 C 1130 395 1280 376 1420 364"
+  // Marginal norte: sentido oeste, curva forte à esquerda acompanhando a beira do rio.
+  "M 1420 294 C 1240 295 1092 315 915 321 C 735 322 569 315 425 303 C 304 294 234 310 178 362 C 123 409 78 486 30 555",
+  // Marginal sul: sentido leste, curva equivalente na margem oposta; não atravessa o rio.
+  "M 30 665 C 83 582 124 506 183 443 C 240 400 309 383 420 381 C 575 382 741 403 922 402 C 1105 400 1260 381 1420 362"
  ];
  const colors=["#24272c","#c73434","#777f87","#3d4247","#b92f2e","#90969c"];
  for(let lane=0;lane<bands.length;lane++){
