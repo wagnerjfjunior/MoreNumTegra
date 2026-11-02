@@ -1,3 +1,9 @@
+## 02/11/2026 — Capa única solicitada: candidato para LVR
+
+Os três cards foram substituídos, na branch `ux/complexo-capa-unica-20261102`, pela capa fornecida pelo usuário, com três acessos funcionais e botões mobile. Detalhes e QA: `docs/sfjm/MNT_COMPLEXO_CAPA_UNICA_2026-11-02.md`. **Sem merge ou novo deploy de produção nesta etapa.** Produção permanece PR #532. Próximo: avaliação visual no LVR desta branch; preservar geometria e animação dos três simuladores.
+
+---
+
 ## 02/11/2026 — RELEASE em Vercel Production: Complexo Lapa–Pirituba, PR #528
 
 - Usuário autorizou merge/produção. PR #528 **MERGED**; commit integrado `6c49bdbca2eed63358ef6625e3c37ef2392fefe9`; Vercel `morenumtegra` deployment `dpl_6CEBRDtfEo11bBeqmREffq5rPNFd` **READY** com alias `www.moretegra.com.br` e `aliasError=null`.

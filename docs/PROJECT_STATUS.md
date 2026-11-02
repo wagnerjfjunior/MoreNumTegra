@@ -1,3 +1,9 @@
+## 02/11/2026 — Capa única solicitada: candidato para LVR
+
+Os três cards foram substituídos, na branch `ux/complexo-capa-unica-20261102`, pela capa fornecida pelo usuário, com três acessos funcionais e botões mobile. Detalhes e QA: `docs/sfjm/MNT_COMPLEXO_CAPA_UNICA_2026-11-02.md`. **Sem merge ou novo deploy de produção nesta etapa.** Produção permanece PR #532. Próximo: avaliação visual no LVR desta branch; preservar geometria e animação dos três simuladores.
+
+---
+
 ## 28/10/2026 — ESTADO VIGENTE: Mercado e RIIO em produção (PR #507)
 
 **Supera os avisos históricos de preparação/noindex abaixo para estas 12 páginas.** PR #507 MERGED; head final `99ff6710b1d792468d43a8cca3f38c1fc1b7b3e8` com 10/10 checks SUCCESS; merge/runtime `0b1de5b1218fb1c4c83c2683366bdfe11ad60d44`; Vercel Production READY `dpl_8iiXm3RtVDbMhNSbHdpaJBq6KjjG`. Onze artigos Mercado + RIIO HTTP200, indexáveis, canonical www e JSON-LD sintaticamente válido; hub/Blog/catálogo/sitemap atualizados (73 URLs no sitemap). Isso não comprova indexação Google/Bing.
