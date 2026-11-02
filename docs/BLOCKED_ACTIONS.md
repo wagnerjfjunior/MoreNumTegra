@@ -1,3 +1,11 @@
+## 02/11/2026 — Substituição do bloqueio histórico de merge da PR #528
+
+- **Autorização nova:** o usuário solicitou expressamente merge e produção. PR #528 já **MERGED**, Vercel production READY. Portanto o bloqueio histórico desta PR enquanto Draft foi superado somente para esta release.
+- **Continuam bloqueados sem novo pedido:** alterações nas rotas azuis, circulação da rotatória, ajustes adicionais de geometria aprovados, publicação separada na Greenn, desbloqueio de `noindex,nofollow` ou qualquer alteração além do Complexo.
+- Fonte de evidência: `docs/sfjm/MNT_COMPLEXO_RELEASE_PR528_PRODUCAO_2026-11-02.md`.
+
+---
+
 ## 01/11/2026 — Restrições explícitas · Simulador 3, PR #528
 
 - **Bloqueado sem autorização explícita:** merge da PR #528, publicação, troca da imagem de fundo, intervenção na rota azul `23.d` ou no sentido da rotatória, alterações de geometria já aprovadas no LVR e regressões nos outros simuladores.
