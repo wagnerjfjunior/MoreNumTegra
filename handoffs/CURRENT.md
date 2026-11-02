@@ -1,3 +1,11 @@
+## 01/11/2026 — Simulador 1: guias da Marginal agora fazem as curvas em ambos os sentidos
+
+- Ajustadas apenas as duas guias SVG invisíveis (`bands`) de `src-greenn/complexo-lapa-pirituba/duplo/index.html`, geometria independente por margem na base 1452×1083. Rota azul, laranja, sentidos e os 32 carros não foram modificados.
+- SFJM: `docs/sfjm/MNT_COMPLEXO_MAPA_EDITORIAL_AYRTON_2026-11-01.md`. QA visual no LVR ainda necessário para verificar aderência exata às pistas e ausência de carros no rio.
+- PR #528 Draft; sem merge ou produção.
+
+---
+
 ## 01/11/2026 — Simulador 1: 32 carros adicionados na PR #528
 
 - `duplo/index.html`: 8 laranjas na rota Lapa→Pirituba, 8 azuis na Pirituba→Lapa, 16 carros neutros preto/vermelho/cinza nas duas pistas da Marginal Tietê, em 2 guias invisíveis específicas da base 1452×1083. SVG/JSON `duplo/routes-duplo.json` **inalterado**; rotas visíveis, autoplay sem botões, seletor de rotas/paradas preservado.
