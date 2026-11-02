@@ -19,6 +19,7 @@ p{margin:8px 0}.context{font-size:13px;color:#564e43}
 #lapa .body{fill:var(--blue)}#pirituba .body{fill:var(--orange)}
 .body{stroke:#fff;stroke-width:1.8;filter:drop-shadow(0 1px 2px #0007)}
 .traffic-car .body{stroke:#263444;stroke-width:.9;filter:drop-shadow(0 1px 1px #0005)}.traffic-car .glass{fill:#cde4ed;opacity:.9}
+.route-car .body{stroke:#fff;stroke-width:1.4;filter:drop-shadow(0 1px 2px #0007)}
 .choices{display:flex;gap:10px 18px;align-items:center;flex-wrap:wrap;padding:12px 14px;border-top:1px solid #e9e6dd}
 .choices label{display:inline-flex;gap:7px;align-items:center;font-size:13px;font-weight:700}
 .choices input{width:19px;height:19px}
@@ -51,7 +52,7 @@ html.embedded .card{border:0;border-radius:0;margin:0}
 </g></svg></div>
 
 <p id="status" role="status" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap">Carregando animação…</p>
-<div class="note">As rotas azul e laranja seguem visíveis. Trânsito ilustrativo adicional na Marginal Tietê: 8 carros azuis e 8 laranjas, em sentidos opostos e sem linhas auxiliares. Animação automática contínua, sem controles; não representa trânsito atual.</div>
+<div class="note">Rotas SVG azul e laranja visíveis, com 8 carros em cada trajeto. A Marginal Tietê tem mais 16 carros pretos, vermelhos e cinzas em ambos os sentidos, sem linhas auxiliares. Movimento automático em loop, sem controles; trânsito ilustrativo, não representa condições atuais.</div>
 </div></main>
 <script>
 "use strict";
@@ -62,7 +63,6 @@ const original=assetRoot+"rota-23.jpg?v=19bc0fbd";
 const svgNS="http://www.w3.org/2000/svg";
 let editorialActive=false,trajectories=[],ambientTraffic=[],frame=0,ready=false,routeSets=null,animationEpoch=0;
 const reducedMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const currentMap=()=>editorialActive?"editorial":"original";
 function svgEl(tag,attrs={}){
  const el=document.createElementNS(svgNS,tag);
  for(const [key,value]of Object.entries(attrs))el.setAttribute(key,String(value));
@@ -75,20 +75,35 @@ function createTraffic(){
   {d:"M 1470 531 C 1130 531 965 512 765 505 C 524 490 320 470 65 462",reverse:false},
   {d:"M 65 660 C 345 636 610 642 850 650 C 1090 660 1285 674 1475 688",reverse:false}
  ];
- const colors=["#137CF1","#FF5F00"]; // azul no fluxo superior, laranja no inferior
+ const colors=["#24272c","#c73434","#777f87","#3d4247","#b92f2e","#90969c"]; // apenas trânsito da Marginal; NÃO usar azul ou laranja
  for(let lane=0;lane<bands.length;lane++){
   const guide=svgEl("path",{d:bands[lane].d,fill:"none",stroke:"none"});
   layer.appendChild(guide);
   const length=guide.getTotalLength();
   for(let i=0;i<8;i++){
    const car=svgEl("g",{"class":"traffic-car","aria-hidden":"true"});
-   car.appendChild(svgEl("rect",{"class":"body",x:-5,y:-10,width:10,height:20,rx:3,fill:colors[lane]}));
+   car.appendChild(svgEl("rect",{"class":"body",x:-5,y:-10,width:10,height:20,rx:3,fill:colors[(lane*3+i)%colors.length]}));
    car.appendChild(svgEl("rect",{"class":"glass",x:-3.2,y:-5.4,width:6.4,height:5.2,rx:1.3}));
    car.appendChild(svgEl("rect",{"class":"glass",x:-3.2,y:3.3,width:6.4,height:3.2,rx:1}));
    layer.appendChild(car);
    ambientTraffic.push({car,guide,length,phase:i/8,period:19000+lane*3200+(i%3)*850});
   }
  }
+}
+function createRouteCars(page,path,len){
+ const holder=$(page===23?"blueAlignment":"pirituba");
+ const originalCar=$(page===23?"car23":"car24");
+ const cars=[originalCar];
+ originalCar.setAttribute("class","route-car");
+ // Oito veículos no TOTAL em cada rota: um original + sete clones independentes.
+ for(let index=1;index<8;index++){
+  const car=originalCar.cloneNode(true);
+  car.removeAttribute("id");
+  car.setAttribute("data-route-car",String(index));
+  holder.appendChild(car);
+  cars.push(car);
+ }
+ return cars.map((car,index)=>({car,path,len,duration:22500,phase:index/8}));
 }
 function setCarPosition(item,distance){
  const point=item.path.getPointAtLength(distance);
@@ -100,7 +115,7 @@ function setCarPosition(item,distance){
 function paint(time){
  if(!ready)return;
  const elapsed=time-animationEpoch;
- for(const item of trajectories){setCarPosition(item,item.len*((elapsed%item.duration)/item.duration));}
+ for(const item of trajectories){const progress=((elapsed/item.duration+item.phase)%1+1)%1;setCarPosition(item,item.len*progress);}
  if(editorialActive){
   for(const t of ambientTraffic){
    const distance=t.length*(((elapsed/t.period+t.phase)%1+1)%1);
@@ -123,16 +138,18 @@ function applyRoutes(){
  cancelAnimationFrame(frame);frame=0;ready=false;
  $("routeSvg").setAttribute("viewBox",expected);
  $("blueAlignment").setAttribute("transform",editorialActive?"translate(0 0)":"translate(-6 0)");
- trajectories=[23,24].map(page=>{
+ // Reaplicações após load/fallback não podem duplicar veículos SVG.
+ document.querySelectorAll("[data-route-car]").forEach(car=>car.remove());
+ trajectories=[23,24].flatMap(page=>{
   const route=data[String(page)];if(!route?.d)throw Error("SVG ausente: "+page);
   const path=$("route"+page);path.setAttribute("d",route.d);
   $("halo"+page).setAttribute("d",route.d);
   const len=path.getTotalLength();if(!len)throw Error("Comprimento zero: "+page);
-  return {path,car:$("car"+page),len,duration:15500};
+  return createRouteCars(page,path,len);
  });
  if(editorialActive){createTraffic()}else{$("trafficLayer").replaceChildren();ambientTraffic=[];}
  ready=true;animationEpoch=performance.now();
- $("status").textContent="Animação contínua: rotas SVG principais visíveis e 16 carros de tráfego na Marginal Tietê (8 azuis e 8 laranjas); sem controles.";
+ $("status").textContent="Animação contínua: 8 carros azuis na rota azul, 8 laranjas na rota laranja e 16 veículos pretos/vermelhos/cinzas na Marginal Tietê.";
  startLoop();
 }
 function refreshMap(){
