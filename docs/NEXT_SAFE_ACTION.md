@@ -1,3 +1,11 @@
+## 02/11/2026 — Pós-release Complexo: PR #528 integrada
+
+- Merge autorizado e confirmado: `6c49bdbca2eed63358ef6625e3c37ef2392fefe9`. Vercel produção READY `dpl_6CEBRDtfEo11bBeqmREffq5rPNFd` com aliases atribuídos.
+- Próxima ação segura: QA em leitura de `/complexo-lapa-pirituba/` e três simuladores na produção, checar assets/rotas SVG/posicionamento dos veículos e mobile. Confirmar noindex desejado antes de planejar indexação. Documentação: `docs/sfjm/MNT_COMPLEXO_RELEASE_PR528_PRODUCAO_2026-11-02.md`.
+- Rollback anterior: `dpl_8dnBe9ATKvrbRpudd9mDNfsjpNVg`. Não alterar geometria do simulador 3 sem novo aceite visual.
+
+---
+
 ## 01/11/2026 — Próxima ação segura · Simulador 3 aprovado visualmente no LVR
 
 O usuário aprovou visualmente a versão do simulador 3 no commit `158e23a8c44057fe024986874f1b37542dbdb5d3`. Consultar `docs/sfjm/MNT_COMPLEXO_SIMULADOR3_ACEITE_LVR_2026-11-01.md`. Não redesenhar a curva azul, alterar sentido da rotatória ou reabrir os ajustes aceitos. A ação segura seguinte é auditoria em leitura do diff da PR #528 e QA desktop/mobile sem mudança de geometria. Merge/produção não autorizados. A PR permanece Draft.
