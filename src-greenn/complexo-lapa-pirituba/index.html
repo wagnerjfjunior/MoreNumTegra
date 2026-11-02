@@ -9,12 +9,12 @@
 <meta property="og:title" content="Complexo Lapa–Pirituba | Mapas e simuladores">
 <meta property="og:description" content="Visualize em mapas ilustrados as conexões projetadas entre Lapa, Pirituba, Ayrton Senna e Marginal Pinheiros, com referência documental de 2019.">
 <meta property="og:url" content="https://www.moretegra.com.br/complexo-lapa-pirituba/">
-<meta property="og:image" content="https://www.moretegra.com.br/src-greenn/complexo-lapa-pirituba/assets/Mapa_Lapa_Pirituba_Marginal_Badge3.webp">
-<meta property="og:image:alt" content="Mapa ilustrado do projeto de conexões viárias Lapa–Pirituba e Marginal Tietê">
+<meta property="og:image" content="https://www.moretegra.com.br/src-greenn/complexo-lapa-pirituba/assets/capa-complexo-lapa-pirituba.webp">
+<meta property="og:image:alt" content="Capa ilustrativa do Complexo Lapa–Pirituba e acesso aos três simuladores">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Complexo Lapa–Pirituba | Mapas e simuladores">
 <meta name="twitter:description" content="Três simuladores animados e mapas dos acessos do projeto viário Lapa–Pirituba.">
-<meta name="twitter:image" content="https://www.moretegra.com.br/src-greenn/complexo-lapa-pirituba/assets/Mapa_Lapa_Pirituba_Marginal_Badge3.webp">
+<meta name="twitter:image" content="https://www.moretegra.com.br/src-greenn/complexo-lapa-pirituba/assets/capa-complexo-lapa-pirituba.webp">
 <script type="application/ld+json">{
   "@context":"https://schema.org",
   "@graph":[
@@ -34,23 +34,17 @@
 .dual-embed{border:0;display:block;width:100%;min-height:850px;background:white}
 @media(max-width:750px){.dual-embed{min-height:930px}}#ayrtonEmbed{min-height:1150px}@media(max-width:750px){#ayrtonEmbed{min-height:1710px}}#marginalDualEmbed{min-height:970px}@media(max-width:750px){#marginalDualEmbed{min-height:920px}}
 </style><style>
-/* Capa editorial: isolada dos simuladores embarcados */
-.cover-wrap{max-width:1160px;margin:0 auto;padding:28px 18px 4px}
-.cover-intro{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-bottom:20px}
-.cover-intro h2{margin:0 0 8px;font-size:clamp(1.6rem,3.8vw,2.45rem);line-height:1.12}
-.cover-intro p{margin:0;color:#544f45;max-width:780px;font-size:15px;line-height:1.65}
-.cover-note{font-size:12px;font-weight:750;color:#695a36;background:#fff2cd;border:1px solid #e0cc95;border-radius:20px;padding:6px 12px}
-.sim-cover-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
-.sim-cover{overflow:hidden;background:#fff;border:1px solid #dfd6c6;border-radius:17px;box-shadow:0 12px 28px #231d110c;display:flex;flex-direction:column}
-.sim-cover img{width:100%;aspect-ratio:1.55;object-fit:cover;display:block;background:#e3e4dc}
-.sim-cover-copy{padding:18px;display:flex;flex-direction:column;flex:1;gap:9px}
-.sim-cover-number{font-size:11px;font-weight:850;letter-spacing:.1em;text-transform:uppercase;color:#956b0b}
-.sim-cover h3{font:400 clamp(1.3rem,2vw,1.65rem)/1.2 Georgia,serif;margin:0;color:#171813}
-.sim-cover p{color:#514e47;line-height:1.55;font-size:14px;margin:0;flex:1}
-.sim-cover button{width:100%;margin-top:7px;border-radius:10px;min-height:48px;background:#EBB92E;color:#171813}
-.sim-cover button:hover,.sim-cover button:focus-visible{background:#f5c94e;outline-offset:2px}
-.cover-tags{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}
-.cover-tags span{font-size:11px;font-weight:700;background:#f7f2e8;padding:5px 9px;border-radius:16px;color:#514a39}
+/* Capa única fornecida pelo usuário; controles HTML sobre os acessos da arte. */
+main{max-width:1440px;padding-top:20px}
+.cover-heading{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.cover-wrap{padding:0;margin:0 0 30px}
+.sim-cover-art{position:relative;margin:0;background:#101e2b;border-radius:16px;overflow:hidden}
+.sim-cover-art picture,.sim-cover-art img{display:block;width:100%;height:auto}
+.cover-scenarios{position:absolute;left:4.2%;right:3.3%;bottom:1.7%;height:6.2%;display:grid;grid-template-columns:27% 32% 1fr;gap:1.7%}
+.cover-scenarios button{display:block;width:100%;min-height:0;padding:0;background:transparent;border:0;border-radius:28px;color:transparent;font:700 15px/1.3 system-ui,sans-serif}
+.cover-scenarios button:focus-visible{outline:3px solid white;outline-offset:3px;box-shadow:0 0 0 6px #171813}
+.cover-scenarios button:hover{box-shadow:inset 0 0 0 2px #fff}
+.cover-caption{margin:12px 0 0;font-size:13px;line-height:1.6;color:#544f45;max-width:1000px}
 #simuladores{scroll-margin-top:18px}
 .explain-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:14px}
 .explain-grid article{background:#fff;padding:19px;border:1px solid #e5ddce;border-radius:14px}
@@ -61,17 +55,26 @@
 .faq-list summary{cursor:pointer;font-weight:750;color:#24221c}
 .faq-list p{color:#514f48;font-size:15px;line-height:1.65;margin:12px 0 0}
 .section-intro{max-width:860px;color:#535148;font-size:15px;line-height:1.65}
-@media(max-width:800px){.sim-cover-grid,.explain-grid{grid-template-columns:1fr}.sim-cover{max-width:660px}.sim-cover img{aspect-ratio:1.85}.cover-wrap{padding:25px 16px 0}}
-@media(prefers-reduced-motion:reduce){.sim-cover *{scroll-behavior:auto}}
+@media(max-width:800px){
+ main{padding:16px 12px 45px}.explain-grid{grid-template-columns:1fr}
+ .sim-cover-art{border-radius:10px}.cover-scenarios{position:static;height:auto;display:grid;grid-template-columns:1fr;gap:9px;padding:14px}
+ .cover-scenarios button{min-height:48px;padding:12px 14px;border:1px solid #81909d;border-radius:9px;background:#162b3d;color:#fff;text-align:left}
+ .cover-scenarios button:last-child{background:#EBB92E;border-color:#EBB92E;color:#171813}
+ .cover-scenarios button:focus-visible{outline-color:#EBB92E;box-shadow:none}
+}
 </style></head><body>
-<div class="sitebar"><img src="https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp" width="55" height="45" alt="Tegra"><a href="/">More em um Tegra</a><a class="secondarylink" href="/regioes/lapa/">Lapa</a><a class="secondarylink" href="/blog/">Blog</a></div><header><div class="eyebrow">Documento técnico • Prefeitura de São Paulo / SPObras • agosto de 2019</div><h1>Complexo Lapa–Pirituba</h1><p class="lead">Explore os caminhos previstos no projeto viário. As imagens reproduzem os mapas do documento original, sem representar condições de trânsito ou circulação atuais.</p></header>
-<main><section class="cover-wrap" aria-labelledby="capa-titulo">
-<div class="cover-intro"><div><h2 id="capa-titulo">Explore os três simuladores de trajetos</h2><p>Compare visualmente as ligações propostas entre Lapa, Pirituba e Marginal Tietê. Escolha um cenário para abrir seu mapa animado e observar os sentidos de circulação ilustrados.</p></div><span class="cover-note">Referência histórica · SPObras 2019</span></div>
-<div class="sim-cover-grid">
-<article class="sim-cover"><img src="/src-greenn/complexo-lapa-pirituba/assets/Mapa_Trajeto_Lapa_Pirituba-7.webp" width="1456" height="1088" loading="eager" fetchpriority="high" alt="Mapa ilustrado das conexões em dois sentidos entre Lapa e Pirituba"><div class="sim-cover-copy"><div class="cover-tags"><span>8 carros azuis</span><span>8 laranjas</span><span>16 no trânsito</span></div><span class="sim-cover-number">Simulador 01</span><h3>Lapa ↔ Pirituba</h3><p>Visualize os percursos de ida e volta no corredor viário ilustrado e a circulação animada junto à Marginal Tietê.</p><button type="button" data-open-sim="0" aria-label="Abrir simulador 1: Lapa e Pirituba">Explorar trajetos</button></div></article>
-<article class="sim-cover"><img src="/src-greenn/complexo-lapa-pirituba/assets/Mapa_Ayrton_Senna_Pirituba_Badge2.webp" width="1500" height="1049" loading="lazy" alt="Mapa editorial dos acessos da Rodovia Ayrton Senna para Pirituba e Lapa"><div class="sim-cover-copy"><div class="cover-tags"><span>Acessos da Ayrton Senna</span><span>32 veículos ilustrativos</span></div><span class="sim-cover-number">Simulador 02</span><h3>Ayrton Senna → Pirituba e Lapa</h3><p>Examine as conexões previstas a partir da Ayrton Senna, com trajetos simultâneos identificados em laranja e azul.</p><button type="button" data-open-sim="1" aria-label="Abrir simulador 2: Ayrton Senna para Pirituba e Lapa">Explorar acessos</button></div></article>
-<article class="sim-cover"><img src="/src-greenn/complexo-lapa-pirituba/assets/Mapa_Lapa_Pirituba_Marginal_Badge3.webp" width="1500" height="1049" loading="lazy" alt="Mapa editorial da conexão entre Lapa, Pirituba e Marginal Pinheiros pelo entorno da Marginal Tietê"><div class="sim-cover-copy"><div class="cover-tags"><span>Marginal Pinheiros</span><span>32 veículos ilustrativos</span></div><span class="sim-cover-number">Simulador 03</span><h3>Lapa / Pirituba → Marginal Pinheiros</h3><p>Acompanhe os trajetos de conexão à Marginal Pinheiros com a rotatória e as pistas da Marginal Tietê representadas no mapa.</p><button type="button" data-open-sim="2" aria-label="Abrir simulador 3: Lapa e Pirituba para Marginal Pinheiros">Explorar conexões</button></div></article>
-</div></section><section id="simuladores" aria-labelledby="selecionar-percurso"><h2 id="selecionar-percurso">Escolha seu percurso</h2><p class="section-intro">Os três cenários animados estão disponíveis abaixo. O seletor também apresenta outros trajetos documentados; parte deles permanece com vetorização experimental.</p><div class="layout"><div class="panel"><label for="route">Percursos do projeto</label><select id="route"></select><h3 id="name"></h3><p id="counter"></p><div class="actions"><button id="prev" class="secondary">Anterior</button><button id="next">Próximo</button><button id="play" disabled aria-pressed="false">Reproduzir percurso</button></div><p class="status" id="status" role="status" aria-live="polite">Selecione um percurso.</p></div>
+<div class="sitebar"><img src="https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp" width="55" height="45" alt="Tegra"><a href="/">More em um Tegra</a><a class="secondarylink" href="/regioes/lapa/">Lapa</a><a class="secondarylink" href="/blog/">Blog</a></div><header class="cover-heading"><div class="eyebrow">Documento técnico • Prefeitura de São Paulo / SPObras • agosto de 2019</div><h1>Complexo Lapa–Pirituba</h1><p class="lead">Explore os caminhos previstos no projeto viário. As imagens reproduzem os mapas do documento original, sem representar condições de trânsito ou circulação atuais.</p></header>
+<main><section class="cover-wrap" aria-label="Capa e acesso aos três simuladores">
+<figure class="sim-cover-art">
+<picture><source media="(max-width:800px)" srcset="/src-greenn/complexo-lapa-pirituba/assets/capa-complexo-lapa-pirituba-840.webp"><img src="/src-greenn/complexo-lapa-pirituba/assets/capa-complexo-lapa-pirituba.webp" width="1672" height="941" fetchpriority="high" loading="eager" alt="Complexo Lapa–Pirituba: capa ilustrada com mapa, Shopping Tietê Plaza e trajetos azul e laranja em direção à Marginal Pinheiros."></picture>
+<nav class="cover-scenarios" aria-label="Abrir um simulador">
+<button type="button" data-open-sim="0" aria-controls="simuladores">1. Lapa ↔ Pirituba</button>
+<button type="button" data-open-sim="1" aria-controls="simuladores">2. Ayrton Senna → Pirituba / Lapa</button>
+<button type="button" data-open-sim="2" aria-controls="simuladores">3. Lapa / Pirituba → Marginal Pinheiros</button>
+</nav>
+</figure>
+<p class="cover-caption">Ilustração conceitual. Os simuladores representam o projeto SPObras de agosto de 2019; a arte não comprova acessos liberados, condições atuais nem redução de tempo de viagem. Escolha um dos três trajetos para explorar o mapa animado.</p>
+</section><section id="simuladores" aria-labelledby="selecionar-percurso"><h2 id="selecionar-percurso">Escolha seu percurso</h2><p class="section-intro">Os três cenários animados estão disponíveis abaixo. O seletor também apresenta outros trajetos documentados; parte deles permanece com vetorização experimental.</p><div class="layout"><div class="panel"><label for="route">Percursos do projeto</label><select id="route"></select><h3 id="name"></h3><p id="counter"></p><div class="actions"><button id="prev" class="secondary">Anterior</button><button id="next">Próximo</button><button id="play" disabled aria-pressed="false">Reproduzir percurso</button></div><p class="status" id="status" role="status" aria-live="polite">Selecione um percurso.</p></div>
 <div class="map"><div id="originalMap" class="original-map"><div class="maphead"><strong id="maptitle"></strong><small id="page"></small></div><div class="canvas" id="canvas"><img id="mapimg" alt="" width="1200" height="849" hidden><div id="missingMap" class="missing-map"><strong>Mapa técnico ainda não incorporado ao GitHub</strong><p>O documento original contém este percurso. A imagem e sua animação ficarão disponíveis após migração e conferência no LVR.</p></div><svg id="overlay" viewBox="0 0 1200 849" preserveAspectRatio="none" aria-hidden="true"><path id="base" class="route-base"></path><path id="flow" class="route-flow"></path><path id="progress" class="route-progress"></path><circle id="marker" class="marker" r="8" cx="-100" cy="-100"></circle></svg></div><div class="mapfoot">Traçados ilustrativos baseados na apresentação SPObras (2019). O movimento não indica trânsito atual, disponibilidade de acessos nem instrução de navegação.</div></div><iframe id="dualEmbed" class="dual-embed" title="Simulador bidirecional Lapa e Pirituba com carrinhos sem zoom" src="/src-greenn/complexo-lapa-pirituba/duplo/index.html?embed=1" loading="eager" hidden></iframe><iframe id="ayrtonEmbed" class="dual-embed" title="Simulador de Ayrton Senna para Pirituba e Lapa, sem zoom" src="/src-greenn/complexo-lapa-pirituba/duplo-ayrton/index.html?embed=1" loading="lazy" hidden></iframe><iframe id="marginalDualEmbed" class="dual-embed" title="Duas rotas, Lapa e Pirituba, para Marginal Pinheiros em uma prancha, sem zoom" src="/src-greenn/complexo-lapa-pirituba/marginal-duplo/index.html?embed=1" loading="lazy" hidden></iframe></div></div></section>
 <section><h2>Como interpretar o mapa</h2><p class="fine">As linhas laranja e azul identificam os sentidos do simulador duplo; nos demais mapas, a linha azul pontilhada representa o percurso descrito no documento. O movimento da animação, quando habilitado, acompanha a direção original do mapa; não é rastreamento GPS, previsão de velocidade, liberação de pistas nem serviço de navegação.</p></section>
 <section aria-labelledby="contexto"><h2 id="contexto">O que o projeto viário Lapa–Pirituba propôs?</h2><p class="section-intro">A apresentação técnica da Prefeitura de São Paulo e da SPObras, datada de agosto de 2019, descreve ligações viárias na região entre a Lapa e Pirituba. Os mapas de percurso ilustram acessos, travessias e movimentos relacionados à Marginal Tietê. Esta página organiza essas representações para facilitar a comparação de sentidos e alternativas de deslocamento propostas no documento histórico.</p><div class="explain-grid"><article><h3>Dois sentidos entre Lapa e Pirituba</h3><p>O primeiro simulador apresenta, no mesmo desenho, as direções opostas entre os dois bairros. As linhas azul e laranja representam trajetos ilustrativos e não orientações para uso imediato.</p></article><article><h3>Acesso a partir da Ayrton Senna</h3><p>O segundo cenário reúne percursos indicados no documento para conexões em direção a Pirituba e à Lapa, permitindo observar diferenças entre alternativas propostas.</p></article><article><h3>Conexões com a Marginal Pinheiros</h3><p>O terceiro cenário apresenta movimentos de saída de Lapa e Pirituba em direção à Marginal Pinheiros, com veículos animados separados dos trajetos principais.</p></article></div></section>
