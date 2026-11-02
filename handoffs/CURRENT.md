@@ -1,3 +1,9 @@
+## 02/11/2026 — Complexo UX V2 publicada (PR #535)
+
+PR #535 MERGED; commit `ce44e071eb169fddaa27b9646ad5a873d46eb03a`. Vercel Production deployment `dpl_6M8sHAEYqbQJVFdvqC6YAzAJQYai` READY, alias `www.moretegra.com.br`, `aliasError=null`. UX escura mobile-first, 3 seletores, sentidos por checkbox, instruções de gestos, script compartilhado para pinch/pan/zoom e slot de publicidade independente. Arquivos de rota e geometria SVG não foram alterados. Sintaxe JS/JSON-LD verificada por inspeção; browser público e iPhone 11 **ainda não certificados**. Rollback preparado (não executado): `dpl_GaocVCL1UD8UMrTbLp7R3oP3Prg8` (PR #533). Procedimento: `docs/sfjm/MNT_COMPLEXO_UX_V2_ROLLBACK_2026-11-02.md`. Homologar no iPhone e retornar ao baseline imediatamente em caso de regressão.
+
+---
+
 ## 02/11/2026 — Capa única PR #533 PUBLICADA para teste
 
 Autorização do usuário: “Vou testar em produção mas cuide do rollback”. PR #533 MERGED, runtime `60b8bdb839e3a34f987f80558595188e7c683305`; Vercel `dpl_GaocVCL1UD8UMrTbLp7R3oP3Prg8` READY com alias www sem erro. HTTP 200, capa presente e cards antigos ausentes; três acessos conferidos em browser de produção. Aceite do proprietário e teste físico mobile pendentes. Supera a espera por LVR descrita abaixo.
