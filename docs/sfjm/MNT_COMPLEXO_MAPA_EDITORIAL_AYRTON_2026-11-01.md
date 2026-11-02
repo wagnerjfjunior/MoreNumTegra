@@ -174,3 +174,9 @@
 - Em `marginal-duplo/routes-marginal-editorial.json`, restaurada **identicamente** a string `23.d` azul da versão histórica canônica anterior às intervenções `10935974b3b8e85718adf1b83f24d1f0c3513b37`. Comparação textual exata confirmou igualdade.
 - Laranja `24.d` também restaurada da mesma referência, **exceto por dois comandos Bézier junto à curva da rotatória**: `C 618 470 620 478 615 485 C 604 494 584 484 565 482` → `C 618 470 621 476 617 482 C 613 488 590 484 565 482`. Isso preserva todos os segmentos restantes, a ordem de pontos e o sentido de circulação, reduzindo o vértice na transição.
 - Não modificado o HTML, mapas, layout, número de carros, guias auxiliares de tráfego ou JSON da prancha original. **Novo teste visual LVR obrigatório**, sem afirmar que já está homologado. PR #528 Draft; produção intacta.
+
+## 01/11/2026 — Correção pontual da curva laranja e via inferior
+- Conforme capturas LVR 22h21 e 22h23, encurtada exclusivamente a curva do SVG laranja 24.d, eliminando a extensão até x608–617, preservando o restante do percurso e seu sentido.
+- SVG azul 23.d mantido integralmente, sem alteração em rotatória ou JSON original.
+- Guia invisível do trânsito inferior movida para o lado sul do Rio Tietê, com curva mais acentuada de acesso, sem editar a guia superior, contagens e cores dos veículos.
+- Validação visual pendente: confirmar encaixe exato da curva ciano e ausência de carros sobre o rio. PR #528 Draft, sem merge.
