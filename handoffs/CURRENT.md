@@ -1,3 +1,12 @@
+## 02/11/2026 — RELEASE em Vercel Production: Complexo Lapa–Pirituba, PR #528
+
+- Usuário autorizou merge/produção. PR #528 **MERGED**; commit integrado `6c49bdbca2eed63358ef6625e3c37ef2392fefe9`; Vercel `morenumtegra` deployment `dpl_6CEBRDtfEo11bBeqmREffq5rPNFd` **READY** com alias `www.moretegra.com.br` e `aliasError=null`.
+- Três simuladores integrados, 32 carros por cenário. Correções de curvas Marginal, veículos e favicons. CI favicon + imagens **SUCCESS**.
+- Registro canônico: `docs/sfjm/MNT_COMPLEXO_RELEASE_PR528_PRODUCAO_2026-11-02.md`. Rollback Vercel: `dpl_8dnBe9ATKvrbRpudd9mDNfsjpNVg` (commit `5bed3e058d67e29821af55c46b870c83e40e97f5`).
+- Pendências: teste HTTP/browser público e QA mobile; páginas do Complexo mantêm `noindex,nofollow`; publicação Greenn não atestada. Histórico anterior de PR Draft ou bloqueio de merge desta PR foi **superado pela autorização de 02/11/2026**.
+
+---
+
 ## 01/11/2026 — Simulador 1: curva oeste da Marginal efetivamente corrigida, pendente teste LVR
 
 - A geometria anterior ignorava a grande curva diagonal no lado oeste do mapa; substituídas somente as duas strings `bands` de tráfego neutro no `duplo/index.html` por curvas Bézier que seguem ambos os lados do Rio Tietê. Comparação de código confirmou que nada além dessas duas guias mudou. SVG azul/laranja e 32 carros preservados.
