@@ -207,7 +207,16 @@ const routeNames=["Lapa ↔ Pirituba","Ayrton Senna → Pirituba / Ayrton Senna 
 // Assets JPG fornecidos pelo usuário na branch, sob assets/rota-<pagina>.jpg.
 // routes-verified.json deve conter um objeto por página: { "19": {"viewBox":"0 0 850 850","d":"M ...","verified":true} }
 // O campo verified é aplicado somente após inspeção do alinhamento e sentido no LVR.
-const routeSelect=document.getElementById("route"),$=id=>document.getElementById(id);const mapImg=$("mapimg");mapImg.addEventListener("load",()=>{mapImg.hidden=false;$("missingMap").hidden=true;$("overlay").hidden=false;});mapImg.addEventListener("error",()=>{mapImg.hidden=true;$("missingMap").hidden=false;$("overlay").hidden=true;$("missingMap").querySelector("strong").textContent="Imagem não encontrada no GitHub";$("status").textContent="Falha ao carregar "+mapImg.getAttribute("src")+". Confira o nome exato do arquivo na branch.";});
+const routeSelect=document.getElementById("route"),$=id=>document.getElementById(id);const mapImg=$("mapimg");let mapCandidates=[],mapAttempt=0;
+function setMapImage(page){const name="rota-"+page+".jpg",root="/src-greenn/complexo-lapa-pirituba/assets/"+name;
+ mapCandidates=[root,"/complexo-lapa-pirituba/assets/"+name,"/assets/"+name,
+ "https://raw.githubusercontent.com/wagnerjfjunior/MoreNumTegra/feat/complexo-prancha4-ayrton-lapa-20261102/src-greenn/complexo-lapa-pirituba/assets/"+name];
+ mapAttempt=0;mapImg.src=mapCandidates[0];}
+mapImg.addEventListener("load",()=>{mapImg.hidden=false;$("missingMap").hidden=true;$("overlay").hidden=false;});
+mapImg.addEventListener("error",()=>{if(mapAttempt+1<mapCandidates.length){mapImg.src=mapCandidates[++mapAttempt];return;}
+ mapImg.hidden=true;$("missingMap").hidden=false;$("overlay").hidden=true;
+ $("missingMap").querySelector("strong").textContent="Falha ao carregar a imagem da prancha.";
+ $("status").textContent="Nenhuma das origens configuradas carregou a prancha "+routePages[idx]+"; verifique a rede do LVR.";});
 let verified={},frame=0,start=0,paused=true,idx=0;
 routeNames.forEach((n,i)=>{let o=document.createElement("option");o.value=i;o.textContent=(i+1)+". "+n;routeSelect.append(o);});
 function halt(){cancelAnimationFrame(frame);paused=true;$("progress").setAttribute("stroke-dasharray","0 99999");$("play").textContent="Reproduzir percurso";$("play").setAttribute("aria-pressed","false");}
@@ -245,7 +254,7 @@ function startPiqueriCars(){
 }
 function toggle(){if($("play").disabled)return;if(!paused){halt();return;}paused=false;start=performance.now();$("play").textContent="Pausar animação";$("play").setAttribute("aria-pressed","true");frame=requestAnimationFrame(tick);}
 function destinationColor(name){if(name==="Pirituba → Piqueri / Ayrton Senna")return "#137CF1";const destination=name.split("→").pop().trim();if(destination==="Pirituba")return "#FF5F00";if(destination==="Lapa")return "#137CF1";if(destination==="Marginal Pinheiros")return "#089ACA";return "#089ACA";}
-function render(n){halt();clearPiqueriCars();idx=(n+routePages.length)%routePages.length;routeSelect.value=idx;const page=routePages[idx],route=routeNames[idx],entry=verified[String(page)];const dual=(idx===0),ayrton=(idx===1),marginalDual=(idx===2),simulator=dual||ayrton||marginalDual;$("dualEmbed").hidden=!dual;$("ayrtonEmbed").hidden=!ayrton;$("marginalDualEmbed").hidden=!marginalDual;$("originalMap").hidden=simulator;$("play").hidden=simulator;$("name").textContent=route;$("maptitle").textContent=route;$("counter").textContent="Percurso "+(idx+1)+" de "+routePages.length;$("page").textContent="Página "+page+" do PDF";if(simulator){$("status").textContent=marginalDual?"Prancha 23: Lapa (azul) e Pirituba (laranja) → Marginal Pinheiros, dois carrinhos e um mapa. Visualização ilustrativa sem vínculo com o trânsito real.":ayrton?"Ayrton Senna → Pirituba e Ayrton Senna → Lapa: dois trajetos simultâneos em um mapa.":"Simulador duplo Lapa ↔ Pirituba: dois trajetos simultâneos e veículos animados.";return;}mapImg.hidden=true;$("missingMap").hidden=false;$("overlay").hidden=true;$("missingMap").querySelector("strong").textContent="Carregando mapa oficial…";mapImg.src="/src-greenn/complexo-lapa-pirituba/assets/rota-"+page+".jpg";$("mapimg").alt="Mapa oficial do trajeto "+route+" (página "+page+")";const candidate=Boolean(entry?.d&&entry?.viewBox);const ok=candidate;$("overlay").setAttribute("viewBox",ok?entry.viewBox:"0 0 1200 849");for(const id of ["base","flow","progress"])$(id).setAttribute("d",ok?entry.d:"");const color=destinationColor(route);$("flow").style.stroke=color;$("progress").style.stroke=color;$("marker").style.fill=color;$("marker").setAttribute("cx",-100);$("marker").setAttribute("cy",-100);$("play").disabled=!ok;if(idx===3&&ok)startPiqueriCars();$("status").textContent=ok?(entry.verified?"Traçado conferido. Reproduza para acompanhar o percurso.":idx===3?"Quarto cenário: 8 carros azul principal (Piqueri), 8 azul-claro (Ayrton Senna) e 16 carros ilustrativos da Marginal Tietê. Conferir alinhamento no LVR.":"ANIMAÇÃO EXPERIMENTAL — confira a direção e o alinhamento sobre a linha azul original."):"Mapa original do PDF; animação pendente de vetorização.";}
+function render(n){halt();clearPiqueriCars();idx=(n+routePages.length)%routePages.length;routeSelect.value=idx;const page=routePages[idx],route=routeNames[idx],entry=verified[String(page)];const dual=(idx===0),ayrton=(idx===1),marginalDual=(idx===2),simulator=dual||ayrton||marginalDual;$("dualEmbed").hidden=!dual;$("ayrtonEmbed").hidden=!ayrton;$("marginalDualEmbed").hidden=!marginalDual;$("originalMap").hidden=simulator;$("play").hidden=simulator;$("name").textContent=route;$("maptitle").textContent=route;$("counter").textContent="Percurso "+(idx+1)+" de "+routePages.length;$("page").textContent="Página "+page+" do PDF";if(simulator){$("status").textContent=marginalDual?"Prancha 23: Lapa (azul) e Pirituba (laranja) → Marginal Pinheiros, dois carrinhos e um mapa. Visualização ilustrativa sem vínculo com o trânsito real.":ayrton?"Ayrton Senna → Pirituba e Ayrton Senna → Lapa: dois trajetos simultâneos em um mapa.":"Simulador duplo Lapa ↔ Pirituba: dois trajetos simultâneos e veículos animados.";return;}mapImg.hidden=true;$("missingMap").hidden=false;$("overlay").hidden=true;$("missingMap").querySelector("strong").textContent="Carregando mapa oficial…";setMapImage(page);$("mapimg").alt="Mapa oficial do trajeto "+route+" (página "+page+")";const candidate=Boolean(entry?.d&&entry?.viewBox);const ok=candidate;$("overlay").setAttribute("viewBox",ok?entry.viewBox:"0 0 1200 849");for(const id of ["base","flow","progress"])$(id).setAttribute("d",ok?entry.d:"");const color=destinationColor(route);$("flow").style.stroke=color;$("progress").style.stroke=color;$("marker").style.fill=color;$("marker").setAttribute("cx",-100);$("marker").setAttribute("cy",-100);$("play").disabled=!ok;if(idx===3&&ok)startPiqueriCars();$("status").textContent=ok?(entry.verified?"Traçado conferido. Reproduza para acompanhar o percurso.":idx===3?"Quarto cenário: 8 carros azul principal (Piqueri), 8 azul-claro (Ayrton Senna) e 16 carros ilustrativos da Marginal Tietê. Conferir alinhamento no LVR.":"ANIMAÇÃO EXPERIMENTAL — confira a direção e o alinhamento sobre a linha azul original."):"Mapa original do PDF; animação pendente de vetorização.";}
 routeSelect.addEventListener("change",()=>render(Number(routeSelect.value)));
 $("prev").addEventListener("click",()=>render(idx-1));$("next").addEventListener("click",()=>render(idx+1));$("play").addEventListener("click",toggle);
 
@@ -257,14 +266,16 @@ render(0);
 const names=[
   ['Pirituba → Lapa','Lapa → Pirituba'],
   ['Ayrton Senna → Lapa','Ayrton Senna → Pirituba'],
-  ['Lapa → Marginal Pinheiros','Pirituba → Marginal Pinheiros']
+  ['Lapa → Marginal Pinheiros','Pirituba → Marginal Pinheiros'],
+  ['Pirituba → Piqueri','Pirituba → Ayrton Senna']
 ];
 const ids=['dualEmbed','ayrtonEmbed','marginalDualEmbed'];
 const route=document.getElementById('route');
 const boxes=[document.getElementById('uxBlue'),document.getElementById('uxOrange')];
-function activeIndex(){const n=Number(route.value);return n>=0&&n<3?n:-1;}
+function activeIndex(){const n=Number(route.value);return n>=0&&n<4?n:-1;}
 function send(color,enabled){
   const n=activeIndex();if(n<0)return;
+  if(n===3){const ids=color==='blue'?['flow','piqueriCars']:['route26paired','piqueriCarsSecondary'];ids.forEach(id=>document.getElementById(id).style.display=enabled?'':'none');return;}
   const frame=document.getElementById(ids[n]);
   if(frame&&frame.contentWindow)frame.contentWindow.postMessage({namespace:'mnt-complexo-ux-v2',type:'route',color,enabled},location.origin);
 }
@@ -273,6 +284,7 @@ function refresh(){
   document.getElementById('uxDirections').hidden=n<0;
   document.querySelector('.ux-instructions').hidden=n<0;
   if(n>=0){
+    document.querySelector('.ux-dir.ux-orange .ux-car-svg').style.filter=n===3?'hue-rotate(165deg) saturate(1.3)':'';
     document.getElementById('uxBlueName').textContent=names[n][0];
     document.getElementById('uxOrangeName').textContent=names[n][1];
     send('blue',boxes[0].checked);send('orange',boxes[1].checked);
