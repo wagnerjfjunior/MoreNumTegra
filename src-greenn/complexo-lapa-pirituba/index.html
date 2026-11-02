@@ -229,8 +229,8 @@ function startPiqueriCars(){
  clearPiqueriCars();if(idx!==3)return;
  const primary=$("flow"),second=$("route26paired"),entry=verified["26"];
  if(!primary.getAttribute("d")||!entry?.d)return;
- // Traçado ajustado manualmente à base 25 após marcação verde enviada pelo usuário. Não projetar o d da prancha 26 diretamente.
- const alignedAyrton="M 356 167 Q 369 184 375 209 Q 380 233 394 259 Q 407 284 423 307 Q 439 330 455 350 Q 470 370 487 386 Q 503 401 516 415 Q 529 429 539 430 Q 548 440 550 458 L 555 501 Q 560 531 568 565 L 576 607 Q 582 629 581 647 Q 579 669 555 677 Q 534 681 501 683 Q 464 685 434 689 Q 418 695 420 710 Q 425 724 462 727 C 526 731 623 727 712 726 Q 783 727 855 728";
+ // Traçado dedicado à base 25: digitalização dos trechos verdes da referência enviada e confirmada pelo usuário (imagem 458×525). Pontos de passagem calibrados pelo traçado azul aprovado. Não reutilizar geometria da prancha 26 nem alterar Pirituba → Piqueri.
+ const alignedAyrton="M 356 167 Q 369 184 375 209 Q 380 233 394 259 Q 407 284 423 307 Q 439 330 455 350 Q 470 370 487 386 Q 503 401 516 415 Q 529 429 539 430 C 548 438 563 448 576 476 C 595 512 605 552 615 588 C 626 635 645 673 650 718 L 656 774 Q 662 800 634 810 C 602 819 546 816 518 814 Q 497 814 492 785 C 485 743 484 682 474 639 Q 463 600 474 590 Q 487 581 521 581 C 598 582 693 584 787 584";
  second.setAttribute("d",alignedAyrton);second.setAttribute("stroke","#4BA3FA");
  // Reprojeção provisória: bases 25/26 possuem enquadramentos distintos; alinha origem e nó comum, preservando d original.
  second.removeAttribute("transform");
