@@ -1,3 +1,9 @@
+## 01/11/2026 — Próxima ação segura · Simulador 3 aprovado visualmente no LVR
+
+O usuário aprovou visualmente a versão do simulador 3 no commit `158e23a8c44057fe024986874f1b37542dbdb5d3`. Consultar `docs/sfjm/MNT_COMPLEXO_SIMULADOR3_ACEITE_LVR_2026-11-01.md`. Não redesenhar a curva azul, alterar sentido da rotatória ou reabrir os ajustes aceitos. A ação segura seguinte é auditoria em leitura do diff da PR #528 e QA desktop/mobile sem mudança de geometria. Merge/produção não autorizados. A PR permanece Draft.
+
+---
+
 ## 28/10/2026 — ESTADO VIGENTE: Mercado e RIIO em produção (PR #507)
 
 **Supera os avisos históricos de preparação/noindex abaixo para estas 12 páginas.** PR #507 MERGED; head final `99ff6710b1d792468d43a8cca3f38c1fc1b7b3e8` com 10/10 checks SUCCESS; merge/runtime `0b1de5b1218fb1c4c83c2683366bdfe11ad60d44`; Vercel Production READY `dpl_8iiXm3RtVDbMhNSbHdpaJBq6KjjG`. Onze artigos Mercado + RIIO HTTP200, indexáveis, canonical www e JSON-LD sintaticamente válido; hub/Blog/catálogo/sitemap atualizados (73 URLs no sitemap). Isso não comprova indexação Google/Bing.

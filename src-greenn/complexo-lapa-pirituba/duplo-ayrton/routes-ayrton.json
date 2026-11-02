@@ -1,0 +1,15 @@
+{
+  "21": {
+    "label": "Ayrton Senna → Pirituba (amarelo, via rotatória)",
+    "verified": false,
+    "d": "M 1031 420 C 957 406 840 382 734 351 C 690 338 667 330 651 330 C 619 330 597 346 573 348 C 561 348 555 343 552 333 C 546 317 539 305 524 301 C 510 297 496 304 484 318 C 469 320 445 307 423 292 C 400 278 374 258 351 227 C 327 196 312 167 303 133 C 294 104 287 79 281 69"
+  },
+  "22": {
+    "label": "Ayrton Senna → Lapa (azul, acesso próprio e nova ponte)",
+    "verified": false,
+    "d": "M 1031 425 C 952 411 839 388 733 357 C 693 344 661 335 645 334 C 621 332 598 345 579 349 C 564 348 552 337 547 319 L 527 207 C 501 222 478 242 458 276 C 447 292 433 306 419 319 C 420 334 437 345 453 355 C 479 368 498 382 512 408 C 532 450 546 502 561 562 C 578 629 593 700 614 803"
+  },
+  "viewBox": "0 0 1200 849",
+  "asset": "rota-21.jpg",
+  "source": "Prancha SPObras p.21 é a base única original 1200x849; trajetória amarela acompanha tracejado azul da p.21, passando APENAS pelo arco superior da rotatória; azul representa p.22 adaptada por pontos de referência viária ao enquadramento da p.21 (acesso oeste e ponte ao sul), sem inversão e sem rotatória. Vetores candidatos exigem inspeção LVR."
+}

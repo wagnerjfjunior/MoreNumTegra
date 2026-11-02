@@ -1,0 +1,19 @@
+{
+  "23": {
+    "label": "Lapa → Marginal Pinheiros",
+    "color": "#137CF1",
+    "verified": false,
+    "d": "M 930 719 Q 853 681 812 660 Q 770 639 742 636 Q 713 633 692 642 Q 671 650 651 665 Q 630 679 602 698 Q 574 717 559 729 Q 544 740 532 743 Q 519 746 513 734 Q 507 721 499 689 Q 491 657 481 615 Q 471 573 461 534 Q 451 494 442 454 Q 433 413 423 375 Q 413 336 403 298 Q 393 259 385 227 C 381 211 368 202 352 198 C 346 193 346 184 351 177 C 355 170 361 167 367 169 C 376 171 380 179 379 187 C 378 195 372 201 363 202 C 354 203 347 202 338 202 C 321 202 299 204 281 207 L 271 207",
+    "offsetX": -6
+  },
+  "24": {
+    "label": "Pirituba → Marginal Pinheiros",
+    "color": "#FF5F00",
+    "verified": false,
+    "d": "M 236 46 C 245 59 247 85 258 106 C 271 130 290 150 311 166 C 322 175 330 185 334 191 C 340 196 339 200 330 203 C 316 207 291 209 272 211",
+    "offsetX": 0
+  },
+  "viewBox": "0 0 1200 849",
+  "asset": "rota-23.jpg",
+  "source": "Imagem única SPObras p.23. Azul: mesma geometria aprovada da p.23, -6px somente na camada SVG. Laranja: reconstrução manual do traçado p.24 sobre marcos equivalentes da p.23, sem escala linear. Ambos candidatos até novo LVR."
+}

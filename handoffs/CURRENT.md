@@ -1,3 +1,54 @@
+## 01/11/2026 — Simulador 1: curva oeste da Marginal efetivamente corrigida, pendente teste LVR
+
+- A geometria anterior ignorava a grande curva diagonal no lado oeste do mapa; substituídas somente as duas strings `bands` de tráfego neutro no `duplo/index.html` por curvas Bézier que seguem ambos os lados do Rio Tietê. Comparação de código confirmou que nada além dessas duas guias mudou. SVG azul/laranja e 32 carros preservados.
+- Auditoria visual local por overlay no mapa 1456×1088; detalhes em `docs/sfjm/MNT_COMPLEXO_MAPA_EDITORIAL_AYRTON_2026-11-01.md`.
+- **Aceite ainda pendente no LVR**; PR #528 Draft, nenhum merge ou deploy.
+
+---
+
+## 01/11/2026 — Simulador 1: guias da Marginal agora fazem as curvas em ambos os sentidos
+
+- Ajustadas apenas as duas guias SVG invisíveis (`bands`) de `src-greenn/complexo-lapa-pirituba/duplo/index.html`, geometria independente por margem na base 1452×1083. Rota azul, laranja, sentidos e os 32 carros não foram modificados.
+- SFJM: `docs/sfjm/MNT_COMPLEXO_MAPA_EDITORIAL_AYRTON_2026-11-01.md`. QA visual no LVR ainda necessário para verificar aderência exata às pistas e ausência de carros no rio.
+- PR #528 Draft; sem merge ou produção.
+
+---
+
+## 01/11/2026 — Simulador 1: 32 carros adicionados na PR #528
+
+- `duplo/index.html`: 8 laranjas na rota Lapa→Pirituba, 8 azuis na Pirituba→Lapa, 16 carros neutros preto/vermelho/cinza nas duas pistas da Marginal Tietê, em 2 guias invisíveis específicas da base 1452×1083. SVG/JSON `duplo/routes-duplo.json` **inalterado**; rotas visíveis, autoplay sem botões, seletor de rotas/paradas preservado.
+- Estado **candidato para teste LVR**: conferir geometrias das duas guias, carros fora do rio, sentidos, travessia da ponte, todos os veículos e mobile. Não declarar aprovado antes do aceite.
+- SFJM: `docs/sfjm/MNT_COMPLEXO_MAPA_EDITORIAL_AYRTON_2026-11-01.md`. PR #528 Draft, sem merge/produção.
+
+---
+
+## 01/11/2026 — PR #528: simuladores 2 e 3, novo candidato LVR
+
+- Simulador 3: carros azul/laranja restaurados ao formato maior de 20×36 px com 2 para-brisas brancos, preservadas integralmente as linhas e geometrias previamente aprovadas.
+- Simulador 2: implementados 8 carros laranjas sobre rota 21, 8 azuis sobre rota 22 e 16 neutros (preto/vermelho/cinza) nas duas Marginais, com mesmo tamanho e caminhos invisíveis do tráfego do simulador 3. Autoloop, sem pausa/reinício; alternância de rotas e camada de paradas preservadas.
+- Documentação: `docs/sfjm/MNT_COMPLEXO_MAPA_EDITORIAL_AYRTON_2026-11-01.md`. Código atualizado em `duplo-ayrton/index.html` e `marginal-duplo/index.html`. **Não alterar geometria aprovada do simulador 3 nem a rotatória.**
+- Teste de integração em GitHub confirmado; **novo teste visual LVR pendente**. PR #528 Draft, sem merge ou produção.
+
+---
+
+## 01/11/2026 — ACEITE VISUAL LVR · Simulador 3 (PR #528 Draft)
+
+- Usuário confirmou **"FICOU ótimo!!!!"** para o simulador **3. Lapa / Pirituba → Marginal Pinheiros**, na baseline de código `158e23a8c44057fe024986874f1b37542dbdb5d3`. **Aceite visual LVR reportado pelo usuário, não aceite técnico automatizado nem autorização de merge/produção.**
+- Documento canônico de aceite e rollback: [MNT_COMPLEXO_SIMULADOR3_ACEITE_LVR_2026-11-01.md](../docs/sfjm/MNT_COMPLEXO_SIMULADOR3_ACEITE_LVR_2026-11-01.md). Leia antes de editar qualquer parte do simulador.
+- Preservar **8 carros azuis seguindo o SVG azul, 8 laranjas seguindo SVG laranja (ambos visíveis), 16 carros pretos/vermelhos/cinzas nas guias invisíveis da Marginal Tietê**, autoplay sem controles/zoom. **Não alterar a rota azul nem o sentido da rotatória.** Curva laranja encurtada e faixa inferior corrigida, conforme aceite LVR.
+- PR #528 segue **Draft e NÃO merged**. Próxima ação segura: conferência de diff/QA da PR em leitura; nenhuma alteração visual no simulador 3 sem pedido específico e novo aceite. O catálogo e simuladores 1/2 ficam preservados.
+
+---
+
+## 01/11/2026 — LVR: mapa editorial Ayrton Senna — PR #528 DRAFT
+
+- Consolidação técnica e histórico completo: [docs/sfjm/MNT_COMPLEXO_MAPA_EDITORIAL_AYRTON_2026-11-01.md](../docs/sfjm/MNT_COMPLEXO_MAPA_EDITORIAL_AYRTON_2026-11-01.md).
+- Visual aprovado pelo usuário: arte bege/verde/azul, shopping ilustrado no lote triangular e badge compacto Tietê Plaza Shopping; badges Ponte Lapa-Pirituba e Av. Raimundo Pereira de Magalhães indicados por marcações do usuário.
+- WebP local `Mapa_Ayrton_Senna_Pirituba_SFJM_20261101.webp` (1500×1049, ~238KB) entregue por download; **não presente no GitHub** até upload binário. Nova referência de imagem preparada em `duplo-ayrton/index.html`, fallback automático `rota-21.jpg`.
+- CRÍTICO: paths das páginas 21 e 22 aprovados visualmente somente na prancha 21. SVG/carrinhos ocultos quando arte nova carregar; recalibrar antes de reativá-los. `?mapa=original` mantém a experiência funcional de referência. Não aplicar escala direta.
+- Sem merge, sem produção. Rota 1 dual intacta.
+
+---
 ## 28/10/2026 — ESTADO VIGENTE: Mercado e RIIO em produção (PR #507)
 
 **Supera os avisos históricos de preparação/noindex abaixo para estas 12 páginas.** PR #507 MERGED; head final `99ff6710b1d792468d43a8cca3f38c1fc1b7b3e8` com 10/10 checks SUCCESS; merge/runtime `0b1de5b1218fb1c4c83c2683366bdfe11ad60d44`; Vercel Production READY `dpl_8iiXm3RtVDbMhNSbHdpaJBq6KjjG`. Onze artigos Mercado + RIIO HTTP200, indexáveis, canonical www e JSON-LD sintaticamente válido; hub/Blog/catálogo/sitemap atualizados (73 URLs no sitemap). Isso não comprova indexação Google/Bing.

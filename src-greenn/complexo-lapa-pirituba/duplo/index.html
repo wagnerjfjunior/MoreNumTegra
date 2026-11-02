@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#171813">
+<title>Complexo Lapa–Pirituba | Dois sentidos animados — homologação LVR</title>
+<meta name="description" content="Visualização experimental dos dois sentidos do projeto viário, com carros animados e mapa responsivo. Fonte SPObras 2019.">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="shortcut icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+:root{--ink:#171813;--gold:#EBB92E;--paper:#f3f1e9;--blue:#137CF1;--orange:#FF5F00}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+a{color:inherit}.wrap{width:min(1150px,calc(100% - 32px));margin:auto}
+header{background:#171813;color:#fff;padding:10px 0}.nav{display:flex;align-items:center;gap:13px}.nav img{width:54px;height:44px;object-fit:contain}.nav a{text-decoration:none;font-weight:700}.nav .back{margin-left:auto;font-size:14px;color:#ddd}
+.intro{padding:25px 0 12px}.eyebrow{color:#87670d;letter-spacing:.12em;text-transform:uppercase;font-size:12px;font-weight:800}
+h1{font:400 clamp(1.95rem,5vw,3.3rem)/1.13 Georgia,serif;margin:8px 0 12px}.sub{max-width:810px;color:#555448;margin-bottom:14px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:18px;align-items:start;margin:15px 0 25px}
+.mapcard,.panel{background:#fff;border:1px solid #dad5c8;border-radius:14px;overflow:hidden;box-shadow:0 7px 24px #1111}
+.mapbar{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:13px 15px;border-bottom:1px solid #ddd6c8;background:#faf8f3;flex-wrap:wrap}
+.mapbar strong{font-size:14px}.mapbar small{color:#696759}.viewer{position:relative;overflow:hidden;touch-action:pan-y;user-select:none;background:#e5e6e3;aspect-ratio:1456 / 1088;cursor:default}.viewer.dragging{cursor:grabbing}
+.zoomlayer{position:absolute;inset:0;transform-origin:0 0;will-change:transform}.zoomlayer>img{width:100%;height:100%;display:block;pointer-events:none}
+.zoomlayer>svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
+.route-halo{fill:none;stroke:#fff;stroke-width:12;stroke-linecap:round;stroke-linejoin:round;opacity:.97}
+.route-line{fill:none;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.route-line.orange{stroke:var(--orange)}.route-line.blue{stroke:var(--blue)}
+.car-body{stroke:#fff;stroke-width:1.5;filter:drop-shadow(0 2px 3px #0009)}.car-window{fill:#fff;stroke:none}
+.traffic-car .body{stroke:#263444;stroke-width:.9;filter:drop-shadow(0 1px 1px #0005)}.traffic-car .glass{fill:#cde4ed;opacity:.9}
+.zoombuttons{position:absolute;right:12px;bottom:12px;display:flex;flex-direction:column;gap:7px}.zoomchip{border-radius:10px;min-width:45px;min-height:44px;background:#fff;box-shadow:0 2px 12px #0003;font-size:22px;border:1px solid #ccc;color:#17202b;cursor:pointer}
+.zoomread{background:#fff;padding:4px 8px;border-radius:8px;font-size:12px;text-align:center;font-weight:700}
+.source{font-size:12px;color:#605d50;padding:12px 15px;background:#faf9f6;border-top:1px solid #eee8db}
+.panel{padding:19px}.panel h2{font:400 1.45rem/1.2 Georgia,serif;margin:2px 0 15px}.toggle{display:flex;align-items:center;gap:10px;padding:13px 0;border-top:1px solid #eee9df;font-weight:650}
+.toggle input{width:21px;height:21px;accent-color:#171813;flex:none}.swatch{display:inline-block;height:8px;width:31px;border-radius:999px;flex:none}
+.swatch.orange{background:var(--orange)}.swatch.blue{background:var(--blue)}
+.controls{display:grid;gap:9px;margin:16px 0}button{font:inherit;cursor:pointer}button.primary{border:0;border-radius:10px;background:var(--gold);padding:12px 14px;font-weight:800;min-height:46px}
+button.secondary{background:#f0ece3;border:1px solid #dbd4c5;border-radius:10px;padding:10px 14px;font-weight:700;min-height:45px}
+.mini{font-size:13px;color:#625e52}.pill{display:inline-block;font-size:12px;padding:5px 10px;border:1px solid #e0c583;border-radius:99px;background:#fff5da;font-weight:750}
+:focus-visible{outline:3px solid #aa8016;outline-offset:3px}
+@media(max-width:880px){.layout{grid-template-columns:1fr}.panel{order:-1}.panel .toggles{display:flex;gap:22px;flex-wrap:wrap}.toggle{border:0;padding:5px 0}.controls{display:flex;flex-wrap:wrap}.controls button{flex:1;min-width:150px}}
+@media(max-width:520px){.nav .back{font-size:12px}.viewer{aspect-ratio:1456 / 1088}.mapbar{padding:10px}.panel{padding:13px}.zoomchip{min-height:40px;min-width:41px}.zoombuttons{bottom:8px;right:8px}}
+</style><style>
+html.embedded,html.embedded body{background:transparent}
+html.embedded header,html.embedded .intro{display:none}
+html.embedded .wrap{width:100%;max-width:none}
+html.embedded .layout{margin:0;grid-template-columns:1fr;gap:10px}
+html.embedded .panel{order:2}
+html.embedded .mapcard{border:0;box-shadow:none}
+html.embedded .viewer{width:100%}
+html.embedded .panel{margin:0 10px 12px;box-shadow:none}
+html.embedded .mapbar{padding:9px 12px}
+/* Aparência editorial do mapa: nenhuma modificação na geometria, SVG ou animação. */
+.mapbar{background:linear-gradient(110deg,#fffaf0 0%,#edf5f5 100%);border-bottom:1px solid #ddd6c8}
+.mapbar strong{letter-spacing:.01em;color:#293c40}
+.viewer{background:#e3ede8}
+.zoomlayer>img{filter:saturate(1.18) contrast(1.07) brightness(1.035); }
+.zoomlayer::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(130deg,rgba(226,245,239,.10),transparent 48%,rgba(239,221,179,.09));mix-blend-mode:multiply;z-index:1}
+.zoomlayer>svg{z-index:2}
+.map-keys{display:flex;gap:9px;flex-wrap:wrap;align-items:center;padding:12px 15px;border-top:1px solid #e3ddd0;background:linear-gradient(100deg,#fffefb,#f7f8f5)}
+.map-keys .leadkey{font-weight:800;color:#45515a;font-size:12px;letter-spacing:.03em;text-transform:uppercase;margin-right:3px}
+.map-keys .chip{display:inline-flex;gap:6px;align-items:center;border:1px solid #d7dfd9;background:#fff;border-radius:999px;padding:5px 10px;font-weight:650;font-size:12px;color:#3b5557}
+.map-keys .chip::before{content:"";width:6px;height:6px;border-radius:50%;background:#85a79e;flex:none}
+.map-keys .hint{flex-basis:100%;font-size:11px;color:#69716b;margin-top:0}
+.map-legend{display:flex;gap:14px;flex-wrap:wrap;align-items:center;padding:11px 15px;background:#fbfaf6;border-top:1px solid #e7e4da;font-size:12px;font-weight:750;color:#46515a}
+.map-legend .legenditem{display:inline-flex;align-items:center;gap:7px}
+.map-legend .legendline{display:block;width:32px;height:5px;border-radius:4px}
+.map-legend .legendline.orange{background:#FF5F00}.map-legend .legendline.blue{background:#137CF1}
+@media(max-width:520px){.map-keys{gap:6px;padding:10px}.map-keys .chip{font-size:11px;padding:4px 8px}.map-legend{gap:8px;padding:10px;font-size:11px}}
+
+/* Camada independente e não georreferenciada: paradas previstas na prancha SPObras. */
+.stop-layer[hidden]{display:none!important}
+.stop-layer{position:absolute;z-index:5;top:12px;left:12px;width:min(264px,48%);max-height:calc(100% - 28px);overflow:auto;pointer-events:auto;background:rgba(255,255,255,.94);backdrop-filter:blur(7px);border:1px solid #c3d1cf;border-radius:12px;box-shadow:0 4px 18px #092f3740;padding:10px 11px;color:#193842}
+.stop-layer strong{font-size:12px;letter-spacing:.02em;display:flex;gap:7px;align-items:center}
+.stop-layer .stop-line{display:flex;align-items:center;gap:8px;border-top:1px solid #e4e9e6;margin-top:6px;padding-top:6px;font-size:11px;line-height:1.3}
+.stop-layer .stop-line b{font-size:12px;color:#167e91;background:#e1f3f3;min-width:23px;height:23px;display:grid;place-items:center;border-radius:7px}
+.stop-layer .stop-note{font-size:10px;line-height:1.3;margin:9px 0 0;color:#596c6f}
+.stop-toggle{display:flex;align-items:center;gap:9px;padding:13px 0;border-top:1px solid #eee9df;font-weight:650;font-size:14px}
+.stop-toggle input{accent-color:#168b9e;width:21px;height:21px;flex:none}
+@media(max-width:520px){.stop-layer{top:6px;left:6px;width:min(223px,65%);padding:8px}.stop-layer .stop-line{font-size:10px}.stop-layer .stop-note{font-size:9px}}
+
+</style><script>if(new URLSearchParams(location.search).get("embed")==="1")document.documentElement.classList.add("embedded");</script></head><body>
+<header><div class="wrap nav"><img alt="Tegra" src="https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp"><a href="/">More em um Tegra</a><a class="back" href="/complexo-lapa-pirituba/">← Página original</a></div></header>
+<main class="wrap"><section class="intro"><div class="eyebrow">SFJM / LVR • experimento visual • documento 2019</div>
+<h1>Complexo Lapa–Pirituba: os dois sentidos, em movimento</h1>
+<p class="sub">Compare Lapa → Pirituba (laranja) e Pirituba → Lapa (azul) no mesmo mapa. A circulação ilustrada deriva das páginas 19 e 20 da apresentação SPObras de agosto de 2019; não representa vias liberadas nem trânsito real.</p><span class="pill">Protótipo — não publicado</span></section>
+<div class="layout"><div class="mapcard">
+<div class="mapbar"><strong>Mapa comparativo · dois sentidos</strong><small>Base: Mapa_Lapa_Pirituba_atualizado.webp • visualização integral</small></div>
+<div class="viewer" id="viewer" aria-label="Mapa ilustrativo com duas rotas e carrinhos animados" tabindex="0">
+<div class="zoomlayer" id="layer">
+<img src="/src-greenn/complexo-lapa-pirituba/assets/Mapa_Trajeto_Lapa_Pirituba-7.webp?v=c9bfb0b5" id="mapImage" width="1456" height="1088" alt="Mapa ilustrado Lapa ↔ Pirituba com nova ligação viária, sobreposto aos dois trajetos animados">
+<svg id="svgmap" viewBox="0 0 1452 1083" preserveAspectRatio="none" aria-hidden="true">
+<g id="trafficLayer"></g>
+<g id="orangeRoute"><path id="orangeHalo" class="route-halo"/><path id="orangePath" class="route-line orange"/><g id="orangeCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#FF5F00"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
+<g id="blueRoute"><path id="blueHalo" class="route-halo"/><path id="bluePath" class="route-line blue"/><g id="blueCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#137CF1"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
+</svg>
+</div>
+<div id="stopLayer" class="stop-layer" role="note" aria-label="Camada de paradas de ônibus previstas no projeto" hidden>
+<strong><span aria-hidden="true">🚏</span> Paradas previstas · SPObras 2019</strong>
+<div class="stop-line"><b>2</b><span>Rua John Harrison · reformas</span></div>
+<div class="stop-line"><b>1</b><span>Rua Martin Tenório · reforma</span></div>
+<div class="stop-line"><b>1</b><span>Rua Carlos Bertini · nova parada</span></div>
+<div class="stop-line"><b>2</b><span>Av. Raimundo Pereira de Magalhães · canteiro central</span></div>
+<p class="stop-note">Camada informativa, sem pinos geográficos: as posições exatas não foram transpostas da prancha do binário para esta base.</p>
+</div>
+
+</div><div class="map-legend" aria-label="Legenda das duas direções"><span class="legenditem"><i class="legendline orange"></i>Lapa → Pirituba</span><span class="legenditem"><i class="legendline blue"></i>Pirituba → Lapa</span></div>
+<div class="map-keys" aria-label="Referências da região, sem marcação geográfica no desenho"><span class="leadkey">Referências da região</span><span class="chip">Lapa</span><span class="chip">Piqueri</span><span class="chip">Pirituba</span><span class="chip">Marginal Tietê</span><span class="chip">Rua John Harrison</span><span class="chip">Rua Gago Coutinho</span><span class="chip">Rua Martin Tenório</span><span class="chip">Rua Carlos Bertini</span><span class="hint">Ruas citadas no projeto SPObras (2019), incluindo o binário John Harrison; sua presença aqui não confirma passagem por todas elas no percurso animado.</span></div><div class="source">Base geográfica: SPObras (2019). As linhas coloridas e carrinhos são recursos explicativos, não rotas operacionais. A base permanece na resolução JPG do PDF; zoom não acrescenta nomes de ruas.</div></div>
+<aside class="panel"><h2>Controle da circulação</h2><div class="toggles">
+<label class="toggle"><input type="checkbox" id="showOrange" checked><span class="swatch orange"></span><span>Lapa → Pirituba</span></label>
+<label class="toggle"><input type="checkbox" id="showBlue" checked><span class="swatch blue"></span><span>Pirituba → Lapa</span></label></div>
+<label class="stop-toggle"><input type="checkbox" id="showStops"><span aria-hidden="true">🚏</span><span>Exibir camada de paradas previstas</span></label>
+<p id="status" role="status" aria-live="polite" class="mini">Carregando os traçados candidatos do documento.</p>
+<p class="mini">Na arte editorial: oito carros em cada trajeto principal e dezesseis veículos pretos, vermelhos e cinzas nas duas margens do Rio Tietê. Autoloop sem controles. Tráfego ilustrativo.</p>
+</aside></div></main>
+<script>
+"use strict";
+const root="/src-greenn/complexo-lapa-pirituba/";
+const bg=document.getElementById("mapImage");
+bg.addEventListener("error",()=>{const label=document.getElementById("status");label.textContent="ERRO: mapa atualizado não carregou: "+bg.src;console.error("WebP de homologação não carregou",bg.src);});
+bg.addEventListener("load",()=>{const label=document.getElementById("status");if(bg.naturalWidth!==1456||bg.naturalHeight!==1088){label.textContent="ERRO: dimensões inesperadas do mapa: "+bg.naturalWidth+"×"+bg.naturalHeight;return;}if(!label.textContent.startsWith("ERRO:"))label.textContent="Base de homologação carregada: Mapa_Trajeto_Lapa_Pirituba-7.webp (1456×1088).";});
+const $=id=>document.getElementById(id),viewer=$("viewer"),layer=$("layer");
+let mapScale=1,offsetX=0,offsetY=0,started=performance.now(),pathsReady=false,raf=0,ambientTraffic=[];
+const reducedMotion=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const defs=[{page:"19",grp:"orangeRoute",path:"orangePath",halo:"orangeHalo",car:"orangeCar",duration:15500},{page:"20",grp:"blueRoute",path:"bluePath",halo:"blueHalo",car:"blueCar",duration:15500}];
+let items=[];
+const clamp=(v,lo,hi)=>Math.min(hi,Math.max(lo,v));
+// A geometria original é conservada; apenas os segmentos coincidentes e com
+// sentidos opostos recebem um pequeno afastamento visual no plano SVG.
+const SEPARATION_PX=4, SHARED_DISTANCE_PX=12, SAMPLE_STEP_PX=6;
+function sampleRoute(path){
+  const length=path.getTotalLength(),count=Math.max(2,Math.ceil(length/SAMPLE_STEP_PX));
+  const points=[];
+  for(let i=0;i<=count;i++){
+    const at=length*i/count,p=path.getPointAtLength(at);
+    const before=path.getPointAtLength(Math.max(0,at-2));
+    const after=path.getPointAtLength(Math.min(length,at+2));
+    const dx=after.x-before.x,dy=after.y-before.y,mag=Math.hypot(dx,dy)||1;
+    points.push({x:p.x,y:p.y,tx:dx/mag,ty:dy/mag});
+  }
+  return points;
+}
+function separateSharedSegments(first,second){
+  // Compara proximidade + vetores tangentes: não separa cruzamentos nem vias
+  // paralelas que avancem no mesmo sentido.
+  function apply(source,other){
+    const weighted=source.map(p=>{
+      let closest=Infinity,opposition=false;
+      for(const q of other){
+        const distance=Math.hypot(p.x-q.x,p.y-q.y);
+        if(distance<closest){closest=distance;opposition=p.tx*q.tx+p.ty*q.ty<-.65;}
+      }
+      const weight=opposition?clamp((SHARED_DISTANCE_PX-closest)/12,0,1):0;
+      return weight;
+    });
+    // Evita alterações bruscas de direção nas junções.
+    const weights=weighted.map((_,i)=>{
+      let total=0,weightSum=0;
+      for(let k=-4;k<=4;k++){
+        const j=clamp(i+k,0,weighted.length-1);
+        const w=5-Math.abs(k);
+        total+=weighted[j]*w;weightSum+=w;
+      }
+      return total/weightSum;
+    });
+    // Direita do deslocamento no sistema de coordenadas da imagem (eixo Y para baixo). Como as direções são
+    // opostas, os dois trajetos se afastam entre si no trecho compartilhado.
+    return source.map((p,i)=>({
+      x:p.x-p.ty*SEPARATION_PX*weights[i],
+      y:p.y+p.tx*SEPARATION_PX*weights[i]
+    }));
+  }
+  return [apply(first,second),apply(second,first)];
+}
+function routeToD(points){return points.map((p,i)=>(i?"L":"M")+p.x.toFixed(2)+" "+p.y.toFixed(2)).join(" ");}
+const svgNS="http://www.w3.org/2000/svg";
+function createSVG(tag,attrs={}){
+ const el=document.createElementNS(svgNS,tag);
+ for(const [key,value]of Object.entries(attrs))el.setAttribute(key,String(value));
+ return el;
+}
+function createAmbientTraffic(){
+ const layer=$("trafficLayer");layer.replaceChildren();ambientTraffic=[];
+ // Guias específicas do mapa do simulador 1 (1452×1083), não são os paths das opções 2/3.
+ // Margens do Rio Tietê: norte trafega da direita para esquerda, sul no sentido oposto.
+ const bands=[
+  // Marginal norte: sentido oeste, curva forte à esquerda acompanhando a beira do rio.
+  "M 1420 294 C 1240 295 1092 315 915 321 C 735 322 569 315 425 303 C 304 294 234 310 178 362 C 123 409 78 486 30 555",
+  // Marginal sul: sentido leste, curva equivalente na margem oposta; não atravessa o rio.
+  "M 30 665 C 83 582 124 506 183 443 C 240 400 309 383 420 381 C 575 382 741 403 922 402 C 1105 400 1260 381 1420 362"
+ ];
+ const colors=["#24272c","#c73434","#777f87","#3d4247","#b92f2e","#90969c"];
+ for(let lane=0;lane<bands.length;lane++){
+  const guide=createSVG("path",{d:bands[lane],fill:"none",stroke:"none"});
+  layer.appendChild(guide);
+  const length=guide.getTotalLength();
+  for(let i=0;i<8;i++){
+   const car=createSVG("g",{"class":"traffic-car","aria-hidden":"true"});
+   car.appendChild(createSVG("rect",{"class":"body",x:-5,y:-10,width:10,height:20,rx:3,fill:colors[(lane*3+i)%colors.length]}));
+   car.appendChild(createSVG("rect",{"class":"glass",x:-3.2,y:-5.4,width:6.4,height:5.2,rx:1.3}));
+   car.appendChild(createSVG("rect",{"class":"glass",x:-3.2,y:3.3,width:6.4,height:3.2,rx:1}));
+   layer.appendChild(car);
+   ambientTraffic.push({car,guide,length,period:19000+lane*3200+(i%3)*850,phase:i/8});
+  }
+ }
+}
+function createRouteCars(def,path){
+ const group=$(def.grp),master=$(def.car),length=path.getTotalLength();
+ const cars=[master];
+ for(let i=1;i<8;i++){
+  const car=master.cloneNode(true);car.removeAttribute("id");
+  car.setAttribute("data-route-clone",def.page);
+  group.appendChild(car);cars.push(car);
+ }
+ return cars.map((car,i)=>({car,path,length,phase:i/8,duration:22500}));
+}
+function placeCar(car,path,length,progress){
+ const at=length*progress,p=path.getPointAtLength(at);
+ const before=path.getPointAtLength(Math.max(0,at-2));
+ const after=path.getPointAtLength(Math.min(length,at+2));
+ const angle=Math.atan2(after.y-before.y,after.x-before.x)*180/Math.PI+90;
+ car.setAttribute("transform",`translate(${p.x.toFixed(2)} ${p.y.toFixed(2)}) rotate(${angle.toFixed(2)})`);
+}
+function draw(now){
+ raf=0;if(!pathsReady||document.hidden)return;
+ const elapsed=now-started;
+ for(const item of items){
+  const phase=((elapsed/item.duration+item.phase)%1+1)%1;
+  placeCar(item.car,item.path,item.length,phase);
+ }
+ for(const item of ambientTraffic){
+  const phase=((elapsed/item.period+item.phase)%1+1)%1;
+  placeCar(item.car,item.guide,item.length,phase);
+ }
+ if(!reducedMotion)raf=requestAnimationFrame(draw);
+}
+function startAnimation(){cancelAnimationFrame(raf);raf=0;started=performance.now();if(pathsReady)draw(started);}
+document.addEventListener("visibilitychange",()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else startAnimation()});
+$("showOrange").onchange=e=>$("orangeRoute").style.display=e.target.checked?"":"none";
+$("showBlue").onchange=e=>$("blueRoute").style.display=e.target.checked?"":"none";
+$("showStops").onchange=e=>$("stopLayer").hidden=!e.target.checked;
+fetch(root+"duplo/routes-duplo.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(data=>{
+  // Lê cada rota original apenas para cálculo. Não modifica o JSON da SPObras.
+  const raw=defs.map(def=>{
+    const route=data[def.page];if(!route?.d)throw Error("SVG ausente: página "+def.page);
+    const path=$(def.path);path.setAttribute("d",route.d);
+    return sampleRoute(path);
+  });
+  const separated=separateSharedSegments(raw[0],raw[1]);
+  document.querySelectorAll("[data-route-clone]").forEach(car=>car.remove());
+  items=defs.flatMap((def,i)=>{
+    const path=$(def.path),displayD=routeToD(separated[i]);
+    path.setAttribute("d",displayD);$(def.halo).setAttribute("d",displayD);
+    return createRouteCars(def,path);
+  });
+  createAmbientTraffic();
+  pathsReady=true;
+  $("status").textContent="32 carros em loop: 8 laranjas (Lapa→Pirituba), 8 azuis (Pirituba→Lapa) e 16 neutros na Marginal Tietê. Conferir faixas no LVR.";
+  startAnimation();
+}).catch(e=>{$("status").textContent="Erro ao carregar geometria: "+e.message;console.error(e);});
+
+</script></body></html>

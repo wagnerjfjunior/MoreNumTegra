@@ -1,0 +1,19 @@
+{
+  "23": {
+    "label": "Lapa → Marginal Pinheiros",
+    "color": "#137CF1",
+    "verified": false,
+    "offsetX": 0,
+    "d": "M 781 1045 C 768 997 760 957 747 908 C 733 853 721 809 711 758 C 701 713 685 665 675 623 C 665 580 655 547 643 519 C 635 495 625 473 618 459 C 603 458 591 449 591 427 C 591 408 604 387 623 386 C 648 383 655 402 652 424 C 650 445 635 457 617 467 C 611 481 599 493 571 496 C 526 497 487 501 448 507 C 394 515 338 523 282 535 C 236 545 193 565 153 584"
+  },
+  "24": {
+    "label": "Pirituba → Marginal Pinheiros",
+    "color": "#FF5F00",
+    "verified": false,
+    "offsetX": 0,
+    "d": "M 300 65 C 313 83 323 113 329 148 C 338 187 350 224 369 260 C 390 302 419 336 456 373 C 489 404 525 424 550 444 C 568 454 570 458 565 464 C 560 474 551 476 537 477 C 523 478 506 481 491 485 C 453 489 420 495 379 502 C 339 509 301 514 270 524 C 227 535 187 551 148 570"
+  },
+  "viewBox": "0 0 1500 1049",
+  "asset": "Mapa_Padrao_Lado_Pirituba_Trajeto3.webp",
+  "source": "Apenas curva laranja reduzida na ligação Pirituba→Marginal seguindo marcação ciano enviada em 01/11. Rota azul 23.d congelada integralmente. Sentido da rotatória azul preservado. LVR pendente."
+}
