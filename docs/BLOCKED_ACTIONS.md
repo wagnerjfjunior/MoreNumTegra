@@ -1,3 +1,11 @@
+## 01/11/2026 — Restrições explícitas · Simulador 3, PR #528
+
+- **Bloqueado sem autorização explícita:** merge da PR #528, publicação, troca da imagem de fundo, intervenção na rota azul `23.d` ou no sentido da rotatória, alterações de geometria já aprovadas no LVR e regressões nos outros simuladores.
+- Baseline visual aprovada: `158e23a8c44057fe024986874f1b37542dbdb5d3`. Documento de aceite: `docs/sfjm/MNT_COMPLEXO_SIMULADOR3_ACEITE_LVR_2026-11-01.md`.
+- Rotas principais azul/laranja visíveis; 8 carros em cada percurso; tráfego ambiente neutro 8+8 por dois sentidos, sem linhas auxiliares visíveis. Exigir nova homologação LVR em caso de mudança material.
+
+---
+
 ## 28/10/2026 — ESTADO VIGENTE: Mercado e RIIO em produção (PR #507)
 
 **Supera os avisos históricos de preparação/noindex abaixo para estas 12 páginas.** PR #507 MERGED; head final `99ff6710b1d792468d43a8cca3f38c1fc1b7b3e8` com 10/10 checks SUCCESS; merge/runtime `0b1de5b1218fb1c4c83c2683366bdfe11ad60d44`; Vercel Production READY `dpl_8iiXm3RtVDbMhNSbHdpaJBq6KjjG`. Onze artigos Mercado + RIIO HTTP200, indexáveis, canonical www e JSON-LD sintaticamente válido; hub/Blog/catálogo/sitemap atualizados (73 URLs no sitemap). Isso não comprova indexação Google/Bing.
