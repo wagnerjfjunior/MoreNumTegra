@@ -4,16 +4,16 @@
     "color": "#137CF1",
     "verified": false,
     "offsetX": 0,
-    "d": "M 781 1045 C 768 997 760 957 747 908 C 733 853 721 809 711 758 C 701 713 685 665 675 623 C 665 580 655 547 643 519 C 635 495 625 473 618 459 C 603 458 591 449 591 427 C 591 408 604 387 623 386 C 648 383 655 402 652 424 C 650 445 635 457 617 467 C 611 481 599 493 571 496 C 526 497 487 501 448 507 C 394 515 338 523 282 535 C 236 545 193 565 153 584"
+    "d": "M 781 1045 C 768 997 760 957 747 908 C 733 853 721 809 711 758 C 701 713 685 665 675 623 C 665 580 655 547 643 519 C 635 495 625 473 618 459 C 603 458 591 449 591 427 C 591 408 604 387 623 386 C 648 383 655 402 652 424 C 650 445 635 457 617 467 C 613 481 604 490 573 496 C 525 502 486 505 446 510 C 394 518 335 530 279 542 C 234 554 192 574 153 591"
   },
   "24": {
     "label": "Pirituba → Marginal Pinheiros",
     "color": "#FF5F00",
     "verified": false,
     "offsetX": 0,
-    "d": "M 300 65 C 313 83 323 113 329 148 C 338 187 350 224 369 260 C 390 302 419 336 456 373 C 489 404 525 424 550 444 C 572 460 588 468 608 469 C 618 470 620 478 615 485 C 604 494 584 484 565 482 C 540 482 517 481 491 485 C 453 489 420 495 379 502 C 339 509 301 514 270 524 C 227 535 187 551 148 570"
+    "d": "M 300 65 C 313 83 323 113 329 148 C 338 187 350 224 369 260 C 390 302 419 336 456 373 C 489 404 525 424 550 444 C 565 453 577 461 585 467 C 594 475 581 481 564 477 C 540 474 511 477 484 481 C 448 486 416 492 377 499 C 335 506 300 515 268 523 C 223 534 184 551 148 570"
   },
   "viewBox": "0 0 1500 1049",
   "asset": "Mapa_Padrao_Lado_Pirituba_Trajeto3.webp",
-  "source": "Geometria editorial candidata, 2026-11-01: Pirituba → Marginal Pinheiros em curva Bézier suave na rotatória, faixa laranja do lado shopping e azul paralela mais externa em todo trecho junto ao shopping; faixa invisível ambiente externa. Requer homologação visual LVR, não certificação viária."
+  "source": "Revisão candidata a partir da captura anotada do usuário em 01/11/2026: laranja vindo de Pirituba faz curva menor e suave próxima à rotatória, mantendo-se na faixa junto ao shopping; azul volta da rotatória por faixa paralela externa, sem cruzamento desenhado; trânsito da Marginal em guia invisível separada. Verificação LVR pendente."
 }
