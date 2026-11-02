@@ -1,3 +1,11 @@
+## 01/11/2026 — Simulador 1: curva oeste da Marginal efetivamente corrigida, pendente teste LVR
+
+- A geometria anterior ignorava a grande curva diagonal no lado oeste do mapa; substituídas somente as duas strings `bands` de tráfego neutro no `duplo/index.html` por curvas Bézier que seguem ambos os lados do Rio Tietê. Comparação de código confirmou que nada além dessas duas guias mudou. SVG azul/laranja e 32 carros preservados.
+- Auditoria visual local por overlay no mapa 1456×1088; detalhes em `docs/sfjm/MNT_COMPLEXO_MAPA_EDITORIAL_AYRTON_2026-11-01.md`.
+- **Aceite ainda pendente no LVR**; PR #528 Draft, nenhum merge ou deploy.
+
+---
+
 ## 01/11/2026 — Simulador 1: guias da Marginal agora fazem as curvas em ambos os sentidos
 
 - Ajustadas apenas as duas guias SVG invisíveis (`bands`) de `src-greenn/complexo-lapa-pirituba/duplo/index.html`, geometria independente por margem na base 1452×1083. Rota azul, laranja, sentidos e os 32 carros não foram modificados.
