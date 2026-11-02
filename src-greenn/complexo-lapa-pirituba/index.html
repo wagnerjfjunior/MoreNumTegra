@@ -16,15 +16,127 @@
 <meta name="twitter:description" content="Três simuladores animados e mapas dos acessos do projeto viário Lapa–Pirituba.">
 <meta name="twitter:image" content="https://www.moretegra.com.br/src-greenn/complexo-lapa-pirituba/assets/capa-complexo-lapa-pirituba.webp">
 <script type="application/ld+json">{
-  "@context":"https://schema.org",
-  "@graph":[
-    {"@type":"WebPage","@id":"https://www.moretegra.com.br/complexo-lapa-pirituba/#webpage","url":"https://www.moretegra.com.br/complexo-lapa-pirituba/","name":"Complexo Lapa–Pirituba: mapas e simuladores dos acessos viários","description":"Mapas e simulações ilustrativas dos trajetos apresentados no projeto viário Pirituba–Lapa pela SPObras em 2019.","inLanguage":"pt-BR","isPartOf":{"@id":"https://www.moretegra.com.br/#website"},"breadcrumb":{"@id":"https://www.moretegra.com.br/complexo-lapa-pirituba/#breadcrumbs"}},
-    {"@type":"BreadcrumbList","@id":"https://www.moretegra.com.br/complexo-lapa-pirituba/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://www.moretegra.com.br/"},{"@type":"ListItem","position":2,"name":"Complexo Lapa–Pirituba","item":"https://www.moretegra.com.br/complexo-lapa-pirituba/"}]},
-    {"@type":"FAQPage","@id":"https://www.moretegra.com.br/complexo-lapa-pirituba/#faq","mainEntity":[
-      {"@type":"Question","name":"O que mostram os simuladores do Complexo Lapa–Pirituba?","acceptedAnswer":{"@type":"Answer","text":"Os simuladores ilustram percursos descritos no projeto viário da SPObras de agosto de 2019. Não indicam condições atuais de trânsito nem a liberação de vias."}},
-      {"@type":"Question","name":"É possível comparar os dois sentidos de circulação?","acceptedAnswer":{"@type":"Answer","text":"Sim. Os três primeiros percursos mostram trajetos em azul e laranja ao mesmo tempo, com carrinhos animados sobre mapas ilustrativos."}},
-      {"@type":"Question","name":"As rotas representam caminhos disponíveis hoje?","acceptedAnswer":{"@type":"Answer","text":"Não necessariamente. A base documental é histórica, de 2019, e deve ser consultada junto às atualizações oficiais para conhecer a situação vigente das obras."}}
-    ]}
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.moretegra.com.br/complexo-lapa-pirituba/#webpage",
+      "url": "https://www.moretegra.com.br/complexo-lapa-pirituba/",
+      "name": "Complexo Lapa–Pirituba: mapas e simuladores dos acessos viários",
+      "description": "Mapas e simulações ilustrativas dos trajetos apresentados no projeto viário Pirituba–Lapa pela SPObras em 2019.",
+      "inLanguage": "pt-BR",
+      "isPartOf": {
+        "@id": "https://www.moretegra.com.br/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://www.moretegra.com.br/complexo-lapa-pirituba/#breadcrumbs"
+      },
+      "mainEntity": {
+        "@id": "https://www.moretegra.com.br/complexo-lapa-pirituba/#simulador"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.moretegra.com.br/complexo-lapa-pirituba/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://www.moretegra.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Complexo Lapa–Pirituba",
+          "item": "https://www.moretegra.com.br/complexo-lapa-pirituba/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.moretegra.com.br/complexo-lapa-pirituba/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O que mostram os simuladores do Complexo Lapa–Pirituba?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Os simuladores ilustram percursos descritos no projeto viário da SPObras de agosto de 2019. Não indicam condições atuais de trânsito nem a liberação de vias."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "É possível comparar os dois sentidos de circulação?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. Os três primeiros percursos mostram trajetos em azul e laranja ao mesmo tempo, com carrinhos animados sobre mapas ilustrativos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "As rotas representam caminhos disponíveis hoje?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não necessariamente. A base documental é histórica, de 2019, e deve ser consultada junto às atualizações oficiais para conhecer a situação vigente das obras."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.moretegra.com.br/complexo-lapa-pirituba/#simulador",
+      "name": "Simuladores interativos do Complexo Lapa–Pirituba",
+      "url": "https://www.moretegra.com.br/complexo-lapa-pirituba/",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web",
+      "isAccessibleForFree": true,
+      "description": "Três cenários animados dos trajetos apresentados em projeto viário de 2019. Não representam trânsito real."
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://www.moretegra.com.br/complexo-lapa-pirituba/#trajetos",
+      "name": "Simuladores de trajetos",
+      "numberOfItems": 3,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Lapa e Pirituba",
+          "url": "https://www.moretegra.com.br/complexo-lapa-pirituba/#cenario-1"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Ayrton Senna, Lapa e Pirituba",
+          "url": "https://www.moretegra.com.br/complexo-lapa-pirituba/#cenario-2"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Lapa e Pirituba para Marginal Pinheiros",
+          "url": "https://www.moretegra.com.br/complexo-lapa-pirituba/#cenario-3"
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://www.moretegra.com.br/complexo-lapa-pirituba/#mapa-1",
+      "contentUrl": "https://www.moretegra.com.br/src-greenn/complexo-lapa-pirituba/assets/Mapa_Trajeto_Lapa_Pirituba-7.webp",
+      "name": "Mapa ilustrativo do simulador 1"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://www.moretegra.com.br/complexo-lapa-pirituba/#mapa-2",
+      "contentUrl": "https://www.moretegra.com.br/src-greenn/complexo-lapa-pirituba/assets/Mapa_Ayrton_Senna_Pirituba_Badge2.webp",
+      "name": "Mapa ilustrativo do simulador 2"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://www.moretegra.com.br/complexo-lapa-pirituba/#mapa-3",
+      "contentUrl": "https://www.moretegra.com.br/src-greenn/complexo-lapa-pirituba/assets/Mapa_Lapa_Pirituba_Marginal_Badge3.webp",
+      "name": "Mapa ilustrativo do simulador 3"
+    }
   ]
 }</script>
 <style>:root{--navy:#171813;--cyan:#EBB92E;--ink:#171813}body{background:#f3f1e9;color:#171813}header{background:#171813}h1,h2{font-family:Georgia,serif;font-weight:400;letter-spacing:-.035em}.eyebrow{color:#EBB92E}.panel,.map{border-color:#ded7c7;box-shadow:0 8px 20px #3025140b}button{background:#EBB92E;color:#171813}button.secondary{background:#e8e3d5;color:#171813}.maphead{background:#e8e3d5}.status{background:#fff7da;border-left:4px solid #EBB92E}.route-flow,.route-progress{stroke:#079dd1}.mapfoot{color:#615e54}header .headwrap{max-width:1120px;margin:auto}.sitebar{background:#171813;color:white;border-bottom:1px solid #ffffff28;padding:12px max(18px,calc((100% - 1120px)/2));display:flex;align-items:center;gap:15px;flex-wrap:wrap}.sitebar img{object-fit:contain;width:55px;height:45px}.sitebar a{color:#fff;text-decoration:none;font-weight:700}.sitebar .secondarylink{font-size:14px;color:#e2dbbf}.canvas img:not([src]),.canvas img[data-error="true"]{display:none}.missing-map{padding:70px 24px;text-align:center;background:repeating-linear-gradient(135deg,#ece8df,#ece8df 12px,#f5f1e9 12px,#f5f1e9 24px);color:#474239}.missing-map strong{display:block;font-size:1.2rem}.missing-map p{max-width:520px;margin:12px auto}.map-footnote{background:#fff8e7} </style><style>
@@ -69,9 +181,9 @@ body{background:#0b1827;color:#f1f5f9}main{max-width:1320px}.sitebar{background:
 <div class="sitebar"><img src="https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp" width="55" height="45" alt="Tegra"><a href="/">More em um Tegra</a><a class="secondarylink" href="/regioes/lapa/">Lapa</a><a class="secondarylink" href="/blog/">Blog</a></div><header class="cover-heading"><div class="eyebrow">Documento técnico • Prefeitura de São Paulo / SPObras • agosto de 2019</div><h1>Complexo Lapa–Pirituba</h1><p class="lead">Explore os caminhos previstos no projeto viário. As imagens reproduzem os mapas do documento original, sem representar condições de trânsito ou circulação atuais.</p></header>
 <main><section class="cover-wrap" aria-label="Capa e acesso aos três simuladores">
 <div class="ux-cover-intro"><span class="ux-kicker">SIMULADOR INTERATIVO · PROJETO SPObras 2019</span><h2>Explore os acessos Lapa–Pirituba</h2><p>Três mapas animados para comparar origens e destinos. Toque em um trajeto para abrir a simulação.</p></div></section><section id="simuladores" aria-labelledby="selecionar-percurso"><h2 id="selecionar-percurso">Escolha seu percurso</h2><p class="section-intro">Os três cenários animados estão disponíveis abaixo. O seletor também apresenta outros trajetos documentados; parte deles permanece com vetorização experimental.</p><nav class="ux-scenarios" aria-label="Escolha um simulador">
-<button type="button" data-open-sim="0">1 · Lapa ↔ Pirituba</button>
-<button type="button" data-open-sim="1">2 · Ayrton Senna → Lapa / Pirituba</button>
-<button type="button" data-open-sim="2">3 · Lapa / Pirituba → Marginal Pinheiros</button>
+<button type="button" id="cenario-1" data-open-sim="0">1 · Lapa ↔ Pirituba</button>
+<button type="button" id="cenario-2" data-open-sim="1">2 · Ayrton Senna → Lapa / Pirituba</button>
+<button type="button" id="cenario-3" data-open-sim="2">3 · Lapa / Pirituba → Marginal Pinheiros</button>
 </nav><div class="layout"><div class="panel">
 <h3 class="ux-panel-title">Sentidos do trajeto</h3>
 <div class="ux-directions" id="uxDirections">
