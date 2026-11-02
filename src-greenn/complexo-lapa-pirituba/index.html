@@ -242,9 +242,11 @@ function startPiqueriCars(){
  motion.push({car:g,path,length,phase:i/8,period:12000});}});
  // Fluxo ambiente ilustrativo: 2 faixas, 8 carros cada, independentes dos percursos.
  // Referências de fluxo adotadas do simulador Marginal aprovado; adaptadas ao viewBox 1200x849.
- const guides=[
- "M 1176 443 C 960 438 794 432 646 428 C 549 426 490 429 436 433 C 367 438 291 446 230 468 C 163 492 119 510 75 539",
- "M 52 686 C 96 627 160 592 248 571 C 340 547 442 545 547 548 C 736 558 936 574 1180 586"
+ // Trânsito ambiente da Marginal Tietê: duas faixas no leito viário sul, abaixo do rio, contornando a curva junto ao acesso.
+// Não aproveitar a antiga linha de y≈428: ela atravessa visualmente o Rio Tietê na base 25.
+const guides=[
+ "M 1165 592 C 1006 589 861 589 744 587 C 646 584 565 582 522 588 Q 481 594 453 604 Q 414 621 360 649 Q 277 684 188 711",
+ "M 186 734 Q 272 705 367 672 C 412 652 450 634 483 628 Q 520 620 559 619 C 690 620 888 629 1167 632"
  ];
  const ambient=$("marginalAmbient"),neutral=["#24272c","#c73434","#777f87","#3d4247","#b92f2e","#90969c"];
  guides.forEach((d,lane)=>{const guide=sv("path",{d,fill:"none",stroke:"none"});ambient.append(guide);const length=guide.getTotalLength();for(let i=0;i<8;i++){const g=sv("g");g.append(sv("rect",{x:-5,y:-10,width:10,height:20,rx:3,fill:neutral[(lane*3+i)%neutral.length],stroke:"#263444","stroke-width":1}),sv("rect",{x:-3,y:-5,width:6,height:5,rx:1,fill:"#cde4ed"}));ambient.append(g);motion.push({car:g,path:guide,length,phase:i/8,period:19000+lane*3200});}});
