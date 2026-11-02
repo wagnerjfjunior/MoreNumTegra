@@ -11,9 +11,9 @@
     "color": "#FF5F00",
     "verified": false,
     "offsetX": 0,
-    "d": "M 300 65 C 313 83 323 113 329 148 C 338 187 350 224 369 260 C 390 302 419 336 456 373 C 489 404 525 424 550 444 C 572 460 588 468 608 469 C 618 470 621 476 617 482 C 613 488 590 484 565 482 C 540 482 517 481 491 485 C 453 489 420 495 379 502 C 339 509 301 514 270 524 C 227 535 187 551 148 570"
+    "d": "M 300 65 C 313 83 323 113 329 148 C 338 187 350 224 369 260 C 390 302 419 336 456 373 C 489 404 525 424 550 444 C 568 454 570 458 565 464 C 560 474 551 476 537 477 C 523 478 506 481 491 485 C 453 489 420 495 379 502 C 339 509 301 514 270 524 C 227 535 187 551 148 570"
   },
   "viewBox": "0 0 1500 1049",
   "asset": "Mapa_Padrao_Lado_Pirituba_Trajeto3.webp",
-  "source": "Restauração estrita do sentido da rotatória e da rota azul ao estado anterior (commit 10935974). Apenas pontos de controle na curva laranja perto da rotatória foram suavizados, preservando a sequência e sentido do traçado. Pendente aceite visual LVR."
+  "source": "Apenas curva laranja reduzida na ligação Pirituba→Marginal seguindo marcação ciano enviada em 01/11. Rota azul 23.d congelada integralmente. Sentido da rotatória azul preservado. LVR pendente."
 }
