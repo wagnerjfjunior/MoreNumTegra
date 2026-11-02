@@ -142,3 +142,9 @@
 - Em `?mapa=original` os dois carros principais também executam autoplay sem linhas e sem controles; tráfego ambiente só aparece no mapa editorial, porque o desenho de pistas é exclusivo da arte 1500×1049.
 - **Gate LVR**: verificar se as 2 linhas principais desapareceram, se os 2 carros permanecem no traçado correto, se os 8 veículos menores passam nas duas margens sem atravessar o Rio Tietê, se as direções são opostas, se não cobrem badges e se o loop não trava nem causa sobrecarga mobile. Se houver desvio de pista, ajustar apenas os caminhos invisíveis `bands` do trânsito ambiente.
 - PR #528 Draft, sem merge ou publicação.
+
+## 01/11/2026 — Ajuste solicitado: 8 carros azuis e 8 laranjas na Marginal Tietê
+- A solicitação "8 carros de cada" foi aplicada como **16 carros adicionais**: oito azuis `#137CF1` numa pista/sentido, oito laranjas `#FF5F00` na pista oposta, além dos **dois carrinhos principais** azul e laranja. Total de 18 veículos virtuais no mapa editorial.
+- Correção de regressão: `marginal-duplo/index.html` volta a renderizar **linhas SVG principais** `.halo` e `.route` com contorno branco e traços azul/laranja. Apenas guias invisíveis dos carros extras permanecem sem `stroke`.
+- Auto-loop, sem botões nem zoom; movimento espalhado ao longo dos corredores por `phase=i/8` e pequenas variações de período. Mapa `Mapa_Lapa_Pirituba_Marginal_Badge3.webp` e ambos JSONs de geometria não foram modificados.
+- Validar no LVR: 8 carros em cada lado/sentido, cores, colisões visuais com vias/badges, linhas principais legíveis e carrinhos sem saltos. Tráfego é ficcional/ilustrativo, sem dados reais. Nenhum merge autorizado.
