@@ -68,9 +68,9 @@ const complexoSource=fs.readFileSync('src-greenn/complexo-lapa-pirituba/index.ht
 assert(!/<meta[^>]*noindex/i.test(complexoSource),'Complexo cover must be indexable');
 assert(complexoSource.includes('<link rel="canonical" href="https://www.moretegra.com.br/complexo-lapa-pirituba/">'),'Complexo canonical mismatch');
 assert(complexoSource.includes('<meta property="og:image"'),'Complexo social imagery missing');
-assert.equal((complexoSource.match(/<h1\\b/gi)||[]).length,1,'Complexo requires one H1');
+assert.equal((complexoSource.match(/<h1\b/gi)||[]).length,1,'Complexo requires one H1');
 for(const id of ['dualEmbed','ayrtonEmbed','marginalDualEmbed'])assert(complexoSource.includes('id="'+id+'"'),'Complexo simulator missing: '+id);
-assert.equal((complexoSource.match(/data-open-sim="\\d"/g)||[]).length,3,'Complexo requires 3 scenario controls');
+assert.equal((complexoSource.match(/data-open-sim="\d"/g)||[]).length,3,'Complexo requires 3 scenario controls');
 const complexoGraph=extract(complexoSource);
 for(const type of ['WebPage','BreadcrumbList','FAQPage'])assert(complexoGraph.some(n=>n['@type']===type),'Complexo missing '+type);
 assert.equal(complexoGraph.find(n=>n['@type']==='FAQPage').mainEntity.length,3,'Complexo FAQ must match visible questions');
