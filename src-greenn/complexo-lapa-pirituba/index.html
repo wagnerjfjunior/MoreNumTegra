@@ -62,20 +62,23 @@ main{max-width:1440px;padding-top:20px}
  .cover-scenarios button:last-child{background:#EBB92E;border-color:#EBB92E;color:#171813}
  .cover-scenarios button:focus-visible{outline-color:#EBB92E;box-shadow:none}
 }
+</style><style id="ux-v2-css">
+body{background:#0b1827;color:#f1f5f9}main{max-width:1320px}.sitebar{background:#081421}.cover-wrap{margin:0 0 12px}.ux-cover-intro{padding:12px 5px 18px}.ux-kicker{color:#EBB92E;font-size:12px;letter-spacing:.09em;font-weight:800}.ux-cover-intro h2{font-family:system-ui,sans-serif;font-weight:800;font-size:clamp(25px,4vw,42px);margin:4px 0}.ux-cover-intro p{color:#c2d3df;margin:0}.ux-scenarios{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:12px 0 14px}.ux-scenarios button{color:#dae5f2;background:#152a40;border:1px solid #42546a;min-height:55px;text-align:left}.ux-scenarios button[aria-current="true"]{background:#EBB92E;color:#091827;border-color:#EBB92E}.layout{grid-template-columns:minmax(260px,330px) minmax(0,1fr)}.panel,.map{background:#12273b;color:white;border-color:#30475f}.panel h3,.panel label{color:white}.panel #name,.panel #counter{color:#d5e0ec}.panel select{color:#101b28}.panel button.secondary{background:#33475b;color:white}.panel .status{background:#1b344d;color:#d7e9fb;border-color:#EBB92E}.ux-directions{display:grid;gap:9px;margin:8px 0 15px}.ux-dir{display:flex!important;align-items:center;gap:9px;background:#1d3851;border:1px solid #46617a;border-radius:10px;padding:12px 9px;margin:0!important;font-size:14px;line-height:1.3;cursor:pointer}.ux-dir input{width:23px;height:23px;flex:none;accent-color:#EBB92E}.ux-car{font-size:25px}.ux-blue .ux-car{filter:drop-shadow(0 0 3px #137CF1)}.ux-orange .ux-car{filter:drop-shadow(0 0 3px #FF5F00)}.ux-instructions{display:grid;gap:7px;background:#091827;border-radius:10px;padding:12px;color:#dce8f5;font-size:13px;margin-bottom:14px}.ux-ad{margin-top:14px;padding:14px;background:linear-gradient(140deg,#1a3045,#0d2032);border:1px solid #576879;border-radius:10px}.ux-ad span{font-size:10px;color:#EBB92E;letter-spacing:.08em;font-weight:800}.ux-ad strong{display:block;margin-top:5px;color:white}.ux-ad p{font-size:12px;color:#b8cee2;margin:5px 0}.ux-panel-title{font:700 18px system-ui!important;margin:0 0 12px!important}.dual-embed{background:#e8ecee}.map{overflow:hidden}.maphead{color:#1b2b39}.section-intro,.fine{color:#d2dce7!important}#simuladores>h2{color:white}#simuladores{margin-top:0}.ux-scenarios button:focus-visible,.ux-dir:focus-within{outline:3px solid #EBB92E;outline-offset:2px}
+@media(max-width:800px){.layout{display:flex;flex-direction:column;gap:12px}.layout>.map{order:0;width:100%}.layout>.panel{order:1;width:100%}.ux-scenarios{display:flex;flex-direction:column;gap:7px}.ux-scenarios button{min-height:48px}.dual-embed{min-height:840px}main{padding:12px 9px 42px}.panel{padding:13px}.ux-cover-intro h2{font-size:26px}.ux-instructions{grid-template-columns:1fr}}
 </style></head><body>
 <div class="sitebar"><img src="https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp" width="55" height="45" alt="Tegra"><a href="/">More em um Tegra</a><a class="secondarylink" href="/regioes/lapa/">Lapa</a><a class="secondarylink" href="/blog/">Blog</a></div><header class="cover-heading"><div class="eyebrow">Documento técnico • Prefeitura de São Paulo / SPObras • agosto de 2019</div><h1>Complexo Lapa–Pirituba</h1><p class="lead">Explore os caminhos previstos no projeto viário. As imagens reproduzem os mapas do documento original, sem representar condições de trânsito ou circulação atuais.</p></header>
 <main><section class="cover-wrap" aria-label="Capa e acesso aos três simuladores">
-<figure class="sim-cover-art">
-<picture><source media="(max-width:800px)" srcset="/src-greenn/complexo-lapa-pirituba/assets/capa-complexo-lapa-pirituba-840.webp"><img src="/src-greenn/complexo-lapa-pirituba/assets/capa-complexo-lapa-pirituba.webp" width="1672" height="941" fetchpriority="high" loading="eager" alt="Complexo Lapa–Pirituba: capa ilustrada com mapa, Shopping Tietê Plaza e trajetos azul e laranja em direção à Marginal Pinheiros."></picture>
-<nav class="cover-scenarios" aria-label="Abrir um simulador">
-<button type="button" data-open-sim="0" aria-controls="simuladores">1. Lapa ↔ Pirituba</button>
-<button type="button" data-open-sim="1" aria-controls="simuladores">2. Ayrton Senna → Pirituba / Lapa</button>
-<button type="button" data-open-sim="2" aria-controls="simuladores">3. Lapa / Pirituba → Marginal Pinheiros</button>
-</nav>
-</figure>
-<p class="cover-caption">Ilustração conceitual. Os simuladores representam o projeto SPObras de agosto de 2019; a arte não comprova acessos liberados, condições atuais nem redução de tempo de viagem. Escolha um dos três trajetos para explorar o mapa animado.</p>
-</section><section id="simuladores" aria-labelledby="selecionar-percurso"><h2 id="selecionar-percurso">Escolha seu percurso</h2><p class="section-intro">Os três cenários animados estão disponíveis abaixo. O seletor também apresenta outros trajetos documentados; parte deles permanece com vetorização experimental.</p><div class="layout"><div class="panel"><label for="route">Percursos do projeto</label><select id="route"></select><h3 id="name"></h3><p id="counter"></p><div class="actions"><button id="prev" class="secondary">Anterior</button><button id="next">Próximo</button><button id="play" disabled aria-pressed="false">Reproduzir percurso</button></div><p class="status" id="status" role="status" aria-live="polite">Selecione um percurso.</p></div>
-<div class="map"><div id="originalMap" class="original-map"><div class="maphead"><strong id="maptitle"></strong><small id="page"></small></div><div class="canvas" id="canvas"><img id="mapimg" alt="" width="1200" height="849" hidden><div id="missingMap" class="missing-map"><strong>Mapa técnico ainda não incorporado ao GitHub</strong><p>O documento original contém este percurso. A imagem e sua animação ficarão disponíveis após migração e conferência no LVR.</p></div><svg id="overlay" viewBox="0 0 1200 849" preserveAspectRatio="none" aria-hidden="true"><path id="base" class="route-base"></path><path id="flow" class="route-flow"></path><path id="progress" class="route-progress"></path><circle id="marker" class="marker" r="8" cx="-100" cy="-100"></circle></svg></div><div class="mapfoot">Traçados ilustrativos baseados na apresentação SPObras (2019). O movimento não indica trânsito atual, disponibilidade de acessos nem instrução de navegação.</div></div><iframe id="dualEmbed" class="dual-embed" title="Simulador bidirecional Lapa e Pirituba com carrinhos sem zoom" src="/src-greenn/complexo-lapa-pirituba/duplo/index.html?embed=1" loading="eager" hidden></iframe><iframe id="ayrtonEmbed" class="dual-embed" title="Simulador de Ayrton Senna para Pirituba e Lapa, sem zoom" src="/src-greenn/complexo-lapa-pirituba/duplo-ayrton/index.html?embed=1" loading="lazy" hidden></iframe><iframe id="marginalDualEmbed" class="dual-embed" title="Duas rotas, Lapa e Pirituba, para Marginal Pinheiros em uma prancha, sem zoom" src="/src-greenn/complexo-lapa-pirituba/marginal-duplo/index.html?embed=1" loading="lazy" hidden></iframe></div></div></section>
+<div class="ux-cover-intro"><span class="ux-kicker">SIMULADOR INTERATIVO · PROJETO SPObras 2019</span><h2>Explore os acessos Lapa–Pirituba</h2><p>Três mapas animados para comparar origens e destinos. Toque em um trajeto para abrir a simulação.</p></div></section><section id="simuladores" aria-labelledby="selecionar-percurso"><h2 id="selecionar-percurso">Escolha seu percurso</h2><p class="section-intro">Os três cenários animados estão disponíveis abaixo. O seletor também apresenta outros trajetos documentados; parte deles permanece com vetorização experimental.</p><nav class="ux-scenarios" aria-label="Escolha um simulador">
+<button type="button" data-open-sim="0">1 · Lapa ↔ Pirituba</button>
+<button type="button" data-open-sim="1">2 · Ayrton Senna → Lapa / Pirituba</button>
+<button type="button" data-open-sim="2">3 · Lapa / Pirituba → Marginal Pinheiros</button>
+</nav><div class="layout"><div class="panel">
+<h3 class="ux-panel-title">Sentidos do trajeto</h3>
+<div class="ux-directions" id="uxDirections">
+<label class="ux-dir ux-blue"><input type="checkbox" id="uxBlue" checked><span class="ux-car">🚙</span><span id="uxBlueName">Pirituba → Lapa</span></label>
+<label class="ux-dir ux-orange"><input type="checkbox" id="uxOrange" checked><span class="ux-car">🚙</span><span id="uxOrangeName">Lapa → Pirituba</span></label>
+</div><div class="ux-instructions" aria-label="Como usar o mapa"><span>☝ <strong>1 dedo</strong> · mover mapa ampliado</span><span>🤏 <strong>2 dedos</strong> · aumentar ou diminuir zoom</span></div><label for="route">Percursos do projeto</label><select id="route"></select><h3 id="name"></h3><p id="counter"></p><div class="actions"><button id="prev" class="secondary">Anterior</button><button id="next">Próximo</button><button id="play" disabled aria-pressed="false">Reproduzir percurso</button></div><aside class="ux-ad" aria-label="Espaço publicitário"><span>ESPAÇO PUBLICITÁRIO</span><strong>Divulgação regional</strong><p>Área preparada para imagem, campanha, link e chamada de ação. Conteúdo publicitário identificado.</p></aside><p class="status" id="status" role="status" aria-live="polite">Selecione um percurso.</p></div>
+<div class="map"><div id="originalMap" class="original-map"><div class="maphead"><strong id="maptitle"></strong><small id="page"></small></div><div class="canvas" id="canvas"><img id="mapimg" alt="" width="1200" height="849" hidden><div id="missingMap" class="missing-map"><strong>Mapa técnico ainda não incorporado ao GitHub</strong><p>O documento original contém este percurso. A imagem e sua animação ficarão disponíveis após migração e conferência no LVR.</p></div><svg id="overlay" viewBox="0 0 1200 849" preserveAspectRatio="none" aria-hidden="true"><path id="base" class="route-base"></path><path id="flow" class="route-flow"></path><path id="progress" class="route-progress"></path><circle id="marker" class="marker" r="8" cx="-100" cy="-100"></circle></svg></div><div class="mapfoot">Traçados ilustrativos baseados na apresentação SPObras (2019). O movimento não indica trânsito atual, disponibilidade de acessos nem instrução de navegação.</div></div><iframe id="dualEmbed" class="dual-embed" title="Simulador bidirecional Lapa e Pirituba com carrinhos com zoom gestual" src="/src-greenn/complexo-lapa-pirituba/duplo/index.html?embed=1" loading="eager" hidden></iframe><iframe id="ayrtonEmbed" class="dual-embed" title="Simulador de Ayrton Senna para Pirituba e Lapa, com zoom gestual" src="/src-greenn/complexo-lapa-pirituba/duplo-ayrton/index.html?embed=1" loading="lazy" hidden></iframe><iframe id="marginalDualEmbed" class="dual-embed" title="Duas rotas, Lapa e Pirituba, para Marginal Pinheiros em uma prancha, com zoom gestual" src="/src-greenn/complexo-lapa-pirituba/marginal-duplo/index.html?embed=1" loading="lazy" hidden></iframe></div></div></section>
 <section><h2>Como interpretar o mapa</h2><p class="fine">As linhas laranja e azul identificam os sentidos do simulador duplo; nos demais mapas, a linha azul pontilhada representa o percurso descrito no documento. O movimento da animação, quando habilitado, acompanha a direção original do mapa; não é rastreamento GPS, previsão de velocidade, liberação de pistas nem serviço de navegação.</p></section>
 <section aria-labelledby="contexto"><h2 id="contexto">O que o projeto viário Lapa–Pirituba propôs?</h2><p class="section-intro">A apresentação técnica da Prefeitura de São Paulo e da SPObras, datada de agosto de 2019, descreve ligações viárias na região entre a Lapa e Pirituba. Os mapas de percurso ilustram acessos, travessias e movimentos relacionados à Marginal Tietê. Esta página organiza essas representações para facilitar a comparação de sentidos e alternativas de deslocamento propostas no documento histórico.</p><div class="explain-grid"><article><h3>Dois sentidos entre Lapa e Pirituba</h3><p>O primeiro simulador apresenta, no mesmo desenho, as direções opostas entre os dois bairros. As linhas azul e laranja representam trajetos ilustrativos e não orientações para uso imediato.</p></article><article><h3>Acesso a partir da Ayrton Senna</h3><p>O segundo cenário reúne percursos indicados no documento para conexões em direção a Pirituba e à Lapa, permitindo observar diferenças entre alternativas propostas.</p></article><article><h3>Conexões com a Marginal Pinheiros</h3><p>O terceiro cenário apresenta movimentos de saída de Lapa e Pirituba em direção à Marginal Pinheiros, com veículos animados separados dos trajetos principais.</p></article></div></section>
 <section aria-labelledby="faq"><h2 id="faq">Perguntas frequentes</h2><div class="faq-list"><details><summary>O que mostram os simuladores do Complexo Lapa–Pirituba?</summary><p>Os simuladores ilustram percursos descritos no projeto viário da SPObras de agosto de 2019. Não indicam condições atuais de trânsito nem a liberação de vias.</p></details><details><summary>É possível comparar os dois sentidos de circulação?</summary><p>Sim. Os três primeiros percursos mostram trajetos em azul e laranja ao mesmo tempo, com carrinhos animados sobre mapas ilustrativos.</p></details><details><summary>As rotas representam caminhos disponíveis hoje?</summary><p>Não necessariamente. A base documental é histórica, de 2019, e deve ser consultada junto às atualizações oficiais para conhecer a situação vigente das obras.</p></details></div></section>
@@ -102,4 +105,49 @@ $("prev").addEventListener("click",()=>render(idx-1));$("next").addEventListener
 fetch("/src-greenn/complexo-lapa-pirituba/routes-verified.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error("HTTP "+r.status);return r.json();}).then(data=>{verified=data;render(idx);}).catch(err=>{console.warn("Dados SVG indisponíveis",err);$("status").textContent="Mapas disponíveis; falha ao carregar dados de animação: "+err.message;});
 document.querySelectorAll("[data-open-sim]").forEach(button=>button.addEventListener("click",()=>{render(Number(button.dataset.openSim));document.getElementById("simuladores").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});routeSelect.focus({preventScroll:true});}));
 render(0);
+</script><script id="ux-v2-controller">
+(()=>{'use strict';
+const names=[
+  ['Pirituba → Lapa','Lapa → Pirituba'],
+  ['Ayrton Senna → Lapa','Ayrton Senna → Pirituba'],
+  ['Lapa → Marginal Pinheiros','Pirituba → Marginal Pinheiros']
+];
+const ids=['dualEmbed','ayrtonEmbed','marginalDualEmbed'];
+const route=document.getElementById('route');
+const boxes=[document.getElementById('uxBlue'),document.getElementById('uxOrange')];
+function activeIndex(){const n=Number(route.value);return n>=0&&n<3?n:-1;}
+function send(color,enabled){
+  const n=activeIndex();if(n<0)return;
+  const frame=document.getElementById(ids[n]);
+  if(frame&&frame.contentWindow)frame.contentWindow.postMessage({namespace:'mnt-complexo-ux-v2',type:'route',color,enabled},location.origin);
+}
+function refresh(){
+  const n=activeIndex();
+  document.getElementById('uxDirections').hidden=n<0;
+  document.querySelector('.ux-instructions').hidden=n<0;
+  if(n>=0){
+    document.getElementById('uxBlueName').textContent=names[n][0];
+    document.getElementById('uxOrangeName').textContent=names[n][1];
+    send('blue',boxes[0].checked);send('orange',boxes[1].checked);
+  }
+  document.querySelectorAll('.ux-scenarios button').forEach((b,i)=>b.setAttribute('aria-current',String(i===n)));
+}
+boxes.forEach((b,i)=>b.addEventListener('change',()=>send(i===0?'blue':'orange',b.checked)));
+route.addEventListener('change',()=>requestAnimationFrame(refresh));
+document.querySelectorAll('.ux-scenarios button').forEach(button=>button.addEventListener('click',()=>{
+  const n=Number(button.dataset.openSim);route.value=String(n);
+  route.dispatchEvent(new Event('change',{bubbles:true}));
+  document.getElementById('simuladores').scrollIntoView({block:'start',behavior:'smooth'});
+}));
+document.getElementById('prev').addEventListener('click',()=>setTimeout(refresh,0));
+document.getElementById('next').addEventListener('click',()=>setTimeout(refresh,0));
+window.addEventListener('message',e=>{
+ if(e.origin!==location.origin||!e.data||e.data.namespace!=='mnt-complexo-ux-v2'||e.data.type!=='ready')return;
+ const n=activeIndex();
+ if(n<0)return;
+ if(e.source!==document.getElementById(ids[n]).contentWindow)return;
+ send('blue',boxes[0].checked);send('orange',boxes[1].checked);
+});
+refresh();
+})();
 </script></body></html>
