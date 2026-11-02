@@ -168,3 +168,9 @@
 - Em `marginal-duplo/index.html`, curvas invisíveis do tráfego ambiente norte/sul adaptadas para acompanhar as curvas de acesso à Marginal indicadas em ciano, com 8 carros ambiente por sentido em preto/vermelho/cinza (linhas não desenhadas).
 - Mantidos: 8 carros azuis sobre SVG azul visível + 8 carros laranjas sobre SVG laranja visível, loop automático sem controles nem zoom; 16 carros ambiente, total 32 veículos. Proibido fundir SVG na imagem base.
 - **Aceite pendente no LVR**: confirmar se no exato trecho próximo à rotatória houve eliminação dos cruzamentos, se as curvas correspondem às pistas e se a guia ciano de referência fica dentro da via. Correções pontuais de coordenadas somente depois de inspeção; nenhum merge/produção.
+
+## 01/11/2026 — Correção de escopo: NÃO alterar SVG azul ou sentido da rotatória
+- Usuário identificou intervenção indevida na rota azul e mudança no sentido da rotatória. Regra explícita: **azul não pode ser alterado**; **sentido da rotatória é imutável**. Único pedido admissível neste ajuste: suavização localizada da curva da **rota laranja**.
+- Em `marginal-duplo/routes-marginal-editorial.json`, restaurada **identicamente** a string `23.d` azul da versão histórica canônica anterior às intervenções `10935974b3b8e85718adf1b83f24d1f0c3513b37`. Comparação textual exata confirmou igualdade.
+- Laranja `24.d` também restaurada da mesma referência, **exceto por dois comandos Bézier junto à curva da rotatória**: `C 618 470 620 478 615 485 C 604 494 584 484 565 482` → `C 618 470 621 476 617 482 C 613 488 590 484 565 482`. Isso preserva todos os segmentos restantes, a ordem de pontos e o sentido de circulação, reduzindo o vértice na transição.
+- Não modificado o HTML, mapas, layout, número de carros, guias auxiliares de tráfego ou JSON da prancha original. **Novo teste visual LVR obrigatório**, sem afirmar que já está homologado. PR #528 Draft; produção intacta.
