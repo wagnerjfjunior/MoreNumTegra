@@ -198,3 +198,12 @@
 - Implementação confinada ao `src-greenn/complexo-lapa-pirituba/duplo/index.html`. Inserida camada `trafficLayer` com 2 guias invisíveis **específicas da imagem do simulador 1 (1452×1083)**; não copiadas coordenadas dos outros mapas. Carros de trânsito com o mesmo tamanho 10×20 e paleta preto/vermelho/cinza dos simuladores 2/3.
 - Cada carro principal original 20×36 com 2 para-brisas brancos é mantido, mais 7 clones por rota, fases `i/8`, sem editar o JSON `duplo/routes-duplo.json` ou os caminhos. SVGs principais seguem visíveis; controles de reprodução removidos, alternância de exibição das rotas e camada de paradas preservadas; autoplay/autoloop com `requestAnimationFrame`, pausa em aba oculta e respeito à preferência de movimento reduzido.
 - **QA visual LVR ainda pendente**: validar alinhamento das duas guias dos carros da Marginal nos dois lados do Rio Tietê (evitar rio e bairros), direção, rotas principais, 32 veículos, mobile e badges. Não reivindicar aceite, nem merge/publicação.
+
+## 01/11/2026 — Simulador 1: curvas da Marginal corrigidas nos dois sentidos
+- Solicitação do usuário após inserir 32 veículos: fazer os 8 carros neutros de cada margem acompanharem a curva da pista, sem interferir no resto.
+- Mudança **exclusivamente nas duas strings SVG `bands` de `createAmbientTraffic()`** em `src-greenn/complexo-lapa-pirituba/duplo/index.html`, sobre a imagem `Mapa_Trajeto_Lapa_Pirituba-7.webp` (base SVG 1452×1083).
+- **Margem norte / sentido da direita à esquerda:** `M 1420 292 C 1260 287 1100 313 915 314 C 725 314 575 298 425 296 C 275 292 155 306 30 313`.
+- **Margem sul / sentido da esquerda à direita:** `M 30 377 C 165 366 313 363 460 369 C 627 379 790 397 945 396 C 1130 395 1280 376 1420 364`.
+- Objetivo: cada guia faz curvatura distinta acompanhando a respectiva pista ao lado do Rio Tietê, sem transitar sobre a água. **As duas guias permanecem invisíveis.**
+- Inalterados: JSON e SVG azul/laranja, sentido dos dois percursos principais, imagem de base, carros, 8+8+16, cores, tamanho, para-brisas, playback, catálogo, simuladores 2 e 3.
+- **Aguardando QA visual LVR** para calibrar eventuais pontos da via, mantendo apenas as guias ajustáveis; sem merge ou deploy.
