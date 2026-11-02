@@ -70,9 +70,9 @@ function svgEl(tag,attrs={}){
 }
 function createTraffic(){
  const layer=$("trafficLayer");layer.replaceChildren();ambientTraffic=[];
- // Apenas vias marginais da arte editorial 1500×1049; geometria independente dos trajetos SPObras.
+ // Tráfego ambiente na faixa mais afastada do shopping, sem sobrepor linhas laranja/azul; sul do rio no sentido inverso.
  const bands=[
-  {d:"M 1470 531 C 1130 531 965 512 765 505 C 524 490 320 470 65 462",reverse:false},
+  {d:"M 1470 546 C 1190 540 971 527 800 523 C 694 520 610 517 546 520 C 454 524 367 536 286 558 C 207 580 143 609 90 648",reverse:false},
   {d:"M 65 660 C 345 636 610 642 850 650 C 1090 660 1285 674 1475 688",reverse:false}
  ];
  const colors=["#24272c","#c73434","#777f87","#3d4247","#b92f2e","#90969c"]; // apenas trânsito da Marginal; NÃO usar azul ou laranja
