@@ -570,6 +570,11 @@
   ],
   "redirects": [
     {
+      "source": "/src-greenn/complexo-lapa-pirituba/index.html",
+      "destination": "/complexo-lapa-pirituba/",
+      "permanent": true
+    },
+    {
       "source": "/empreendimentos/capitolo-piero-lissoni/",
       "destination": "/empreendimentos/capiitolo-piero-lissoni/",
       "permanent": true
