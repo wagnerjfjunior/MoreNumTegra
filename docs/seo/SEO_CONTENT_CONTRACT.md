@@ -19,3 +19,25 @@
 Script `scripts/validate-seo-content.mjs`: `node scripts/validate-seo-content.mjs --strict src-greenn/empreendimentos/ampere-brooklin/index.html`. Sem arquivo faz varredura recursiva de HTML em `src-greenn`. Os avisos de alt e H1 são não bloqueantes; `noindex` não é erro. Cada URL e arquivo devem ser reconciliados com o sitemap e roteamento Vercel antes de uma aprovação global.
 
 Importante: o script é uma primeira barreira automática, não um parser HTML completo e não testa dimensão/peso de imagens, renderização JS, fontes, dados comerciais ou SERP real. Faz parte da revisão juntamente com os gates pré-existentes RESF/SFJM. Não publicar com erro em arquivo alterado.
+
+
+## Norma obrigatória: intenção de busca ANTES do limite de caracteres
+
+Para cada URL, registrar na matriz SEO:
+1. Palavra-chave primária e intenção (genérica local, empreendimento/marca, tipologia, informação).
+2. Termos secundários e variações naturais, sem repetição artificial.
+3. URL responsável pela consulta primária; evitar canibalização entre hub regional e páginas de empreendimento.
+4. Title PROPOSTO com palavra-chave principal preferencialmente próxima ao começo, mantendo identificadores comerciais necessários.
+5. H1 coerente, não obrigatoriamente idêntico ao title, e conteúdo que responda à busca.
+6. Description com diferenciais verificáveis e CTA; atributos (m², suítes, vagas) entram quando ajudam a decisão, sem substituir termos comerciais prioritários.
+7. Links internos contextuais de hubs, blog e páginas relacionadas, com âncoras descritivas.
+8. DE/PARA do title e description (texto integral, caracteres antes/depois, fonte, URL, status); não otimizar apenas por comprimento.
+9. Validação: até 60 caracteres em title e 160 em description como política interna; evitar duplicidade, conferir canônico, dados comerciais, robots, OG/Twitter, JSON-LD, ALT e RESF.
+10. Usar GSC para selecionar queries e aferir resultado; nenhuma mudança garante ranking. Não alterar produção antes dos gates e autorização.
+
+### Exemplo: Brooklin
+
+- `/regioes/brooklin/` = foco em consultas amplas como «apartamentos no Brooklin» e «apartamento à venda no Brooklin».
+- `/empreendimentos/ampere-brooklin/` = foco em «Ampère Brooklin», «Ampère Tegra» e variações de tipologia; pode utilizar «apartamentos no Brooklin» no title de forma contextual, mas sem substituir o papel do hub.
+- Title de Ampère definido nesta PR: «Apartamentos no Brooklin | Ampère Tegra de 262 m²» (49 caracteres).
+- Ao revisar outros empreendimentos, nunca trocar automaticamente «apartamento» por «suíte», «vaga» ou «metragem» apenas para encurtar.
