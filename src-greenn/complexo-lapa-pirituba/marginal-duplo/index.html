@@ -13,11 +13,11 @@ p{margin:8px 0}.context{font-size:13px;color:#564e43}
 .map{position:relative;width:100%;aspect-ratio:1200 / 849;background:#edeae2;overflow:hidden}
 .map img,.map svg{display:block;position:absolute;inset:0;width:100%;height:100%}
 .map img{object-fit:fill}.map svg{pointer-events:none}
-.halo{fill:none;stroke:#fff;stroke-width:10;stroke-linejoin:round;stroke-linecap:round}
-.route{fill:none;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}
+.halo,.route{fill:none;stroke:none;visibility:hidden;pointer-events:none}
 #lapa .route{stroke:var(--blue)}#pirituba .route{stroke:var(--orange)}
 #lapa .body{fill:var(--blue)}#pirituba .body{fill:var(--orange)}
 .body{stroke:#fff;stroke-width:1.8;filter:drop-shadow(0 1px 2px #0007)}
+.traffic-car .body{stroke:#263444;stroke-width:.9;filter:drop-shadow(0 1px 1px #0005)}.traffic-car .glass{fill:#cde4ed;opacity:.9}
 .choices{display:flex;gap:10px 18px;align-items:center;flex-wrap:wrap;padding:12px 14px;border-top:1px solid #e9e6dd}
 .choices label{display:inline-flex;gap:7px;align-items:center;font-size:13px;font-weight:700}
 .choices input{width:19px;height:19px}
@@ -41,19 +41,16 @@ html.embedded .card{border:0;border-radius:0;margin:0}
 <div class="map" role="img" aria-label="Prancha técnica 23 da SPObras com dois trajetos, azul desde Lapa e laranja desde Pirituba">
 <img id="mapimg" src="/src-greenn/complexo-lapa-pirituba/assets/Mapa_Lapa_Pirituba_Marginal_Badge3.webp" width="1500" height="1049" alt="Mapa editorial colorido do complexo viário com Shopping Tietê Plaza, Ponte Lapa-Pirituba, Estação Piqueri e Avenida Raimundo Pereira de Magalhães">
 <svg id="routeSvg" viewBox="0 0 1200 849" preserveAspectRatio="none" aria-hidden="true">
+<g id="trafficLayer"></g>
 <g id="lapa"><g id="blueAlignment" transform="translate(-6 0)"><path class="halo" id="halo23"/><path class="route" id="route23"/>
 <g id="car23"><rect class="body" x="-8" y="-14" width="16" height="28" rx="5"/><rect x="-5" y="-8" width="10" height="7" rx="2" fill="#d8f2ff"/></g>
 </g></g>
 <g id="pirituba"><path class="halo" id="halo24"/><path class="route" id="route24"/>
 <g id="car24"><rect class="body" x="-8" y="-14" width="16" height="28" rx="5"/><rect x="-5" y="-8" width="10" height="7" rx="2" fill="#fff2e3"/></g>
 </g></svg></div>
-<div class="choices">
-<label><input id="show23" type="checkbox" checked style="accent-color:#137CF1"><span class="swatch blue"></span>Lapa → Marginal Pinheiros</label>
-<label><input id="show24" type="checkbox" checked style="accent-color:#FF5F00"><span class="swatch orange"></span>Pirituba → Marginal Pinheiros</label>
-<button id="play" type="button" disabled>▶ Reproduzir</button><button id="restart" type="button" class="secondary" disabled>↺ Reiniciar</button>
-</div>
-<p id="status" role="status">Carregando os dois trajetos…</p>
-<div class="note">As cores distinguem a origem neste mapa de destino comum: azul = Lapa; laranja = Pirituba. Sem zoom. Geometria da prancha 24 transferida manualmente por referências viárias, sujeita a homologação no LVR.</div>
+
+<p id="status" role="status" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap">Carregando animação…</p>
+<div class="note">Animação ilustrativa em loop contínuo, com dois carrinhos de percurso e tráfego ambiente nos dois sentidos da Marginal Tietê. Sem linhas de trajeto e sem controles. Projeto SPObras (2019), não representa trânsito atual.</div>
 </div></main>
 <script>
 "use strict";
@@ -61,66 +58,94 @@ const $=id=>document.getElementById(id);
 const assetRoot="/src-greenn/complexo-lapa-pirituba/assets/";
 const editorial=assetRoot+"Mapa_Lapa_Pirituba_Marginal_Badge3.webp";
 const original=assetRoot+"rota-23.jpg?v=19bc0fbd";
-let editorialActive=false,trajectories=[],paused=true,elapsed=0,start=0,frame=0,ready=false,routeSets=null;
+const svgNS="http://www.w3.org/2000/svg";
+let editorialActive=false,trajectories=[],ambientTraffic=[],frame=0,ready=false,routeSets=null,animationEpoch=0;
+const reducedMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const currentMap=()=>editorialActive?"editorial":"original";
+function svgEl(tag,attrs={}){
+ const el=document.createElementNS(svgNS,tag);
+ for(const [key,value]of Object.entries(attrs))el.setAttribute(key,String(value));
+ return el;
+}
+function createTraffic(){
+ const layer=$("trafficLayer");layer.replaceChildren();ambientTraffic=[];
+ // Apenas vias marginais da arte editorial 1500×1049; geometria independente dos trajetos SPObras.
+ const bands=[
+  {d:"M 1470 531 C 1130 531 965 512 765 505 C 524 490 320 470 65 462",reverse:false},
+  {d:"M 65 660 C 345 636 610 642 850 650 C 1090 660 1285 674 1475 688",reverse:false}
+ ];
+ const colors=["#d7e3ea","#f4f5f1","#6a7a88","#c5c0b2"];
+ for(let lane=0;lane<bands.length;lane++){
+  const guide=svgEl("path",{d:bands[lane].d,fill:"none",stroke:"none"});
+  layer.appendChild(guide);
+  const length=guide.getTotalLength();
+  for(let i=0;i<4;i++){
+   const car=svgEl("g",{"class":"traffic-car","aria-hidden":"true"});
+   car.appendChild(svgEl("rect",{"class":"body",x:-5,y:-10,width:10,height:20,rx:3,fill:colors[(i+lane)%colors.length]}));
+   car.appendChild(svgEl("rect",{"class":"glass",x:-3.2,y:-5.4,width:6.4,height:5.2,rx:1.3}));
+   car.appendChild(svgEl("rect",{"class":"glass",x:-3.2,y:3.3,width:6.4,height:3.2,rx:1}));
+   layer.appendChild(car);
+   ambientTraffic.push({car,guide,length,phase:i/4,period:19000+lane*3200+i*1500});
+  }
+ }
+}
+function setCarPosition(item,distance){
+ const point=item.path.getPointAtLength(distance);
+ const a=item.path.getPointAtLength(Math.max(0,distance-2));
+ const b=item.path.getPointAtLength(Math.min(item.len,distance+2));
+ const angle=Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI+90;
+ item.car.setAttribute("transform",`translate(${point.x.toFixed(2)} ${point.y.toFixed(2)}) rotate(${angle.toFixed(2)})`);
+}
+function paint(time){
+ if(!ready)return;
+ const elapsed=time-animationEpoch;
+ for(const item of trajectories){setCarPosition(item,item.len*((elapsed%item.duration)/item.duration));}
+ if(editorialActive){
+  for(const t of ambientTraffic){
+   const distance=t.length*(((elapsed/t.period+t.phase)%1+1)%1);
+   const p=t.guide.getPointAtLength(distance);
+   const a=t.guide.getPointAtLength(Math.max(0,distance-2));
+   const b=t.guide.getPointAtLength(Math.min(t.length,distance+2));
+   const angle=Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI+90;
+   t.car.setAttribute("transform",`translate(${p.x.toFixed(2)} ${p.y.toFixed(2)}) rotate(${angle.toFixed(2)})`);
+  }
+ }
+}
+function tick(time){frame=0;if(!ready||document.hidden)return;paint(time);frame=requestAnimationFrame(tick)}
+function startLoop(){cancelAnimationFrame(frame);frame=0;if(!ready)return;if(!animationEpoch)animationEpoch=performance.now();paint(performance.now());if(!reducedMotion&&!document.hidden)frame=requestAnimationFrame(tick)}
+document.addEventListener("visibilitychange",()=>{if(document.hidden){cancelAnimationFrame(frame);frame=0;}else{animationEpoch=performance.now();startLoop()}});
 function applyRoutes(){
  if(!routeSets)return;
  const data=editorialActive?routeSets.editorial:routeSets.original;
  const expected=editorialActive?"0 0 1500 1049":"0 0 1200 849";
  if(data.viewBox!==expected)throw Error("Geometria incompatível: "+data.viewBox);
- pause();elapsed=0;
+ cancelAnimationFrame(frame);frame=0;ready=false;
  $("routeSvg").setAttribute("viewBox",expected);
  $("blueAlignment").setAttribute("transform",editorialActive?"translate(0 0)":"translate(-6 0)");
  trajectories=[23,24].map(page=>{
   const route=data[String(page)];if(!route?.d)throw Error("SVG ausente: "+page);
-  const path=$("route"+page);
-  path.setAttribute("d",route.d);$("halo"+page).setAttribute("d",route.d);
+  const path=$("route"+page);path.setAttribute("d",route.d);
+  $("halo"+page).setAttribute("d",route.d);
   const len=path.getTotalLength();if(!len)throw Error("Comprimento zero: "+page);
   return {path,car:$("car"+page),len,duration:15500};
  });
- ready=true;move(0);
- $("routeSvg").style.display="";
- $("play").disabled=$("restart").disabled=false;
- for(const id of ["show23","show24"])$(id).disabled=false;
- $("status").textContent=editorialActive?
- "Mapa editorial: SVGs azul e laranja visíveis e animáveis. Vetores candidatos; conferir aderência à ponte, rotatória e alças no LVR.":
- "Prancha 23 original: caminhos anteriores preservados, incluindo deslocamento azul de 6 px.";
- if(!matchMedia("(prefers-reduced-motion: reduce)").matches)$("play").click();
+ if(editorialActive){createTraffic()}else{$("trafficLayer").replaceChildren();ambientTraffic=[];}
+ ready=true;animationEpoch=performance.now();
+ $("status").textContent="Animação contínua ilustrativa com dois carrinhos e tráfego na Marginal Tietê; sem controles ou linhas.";
+ startLoop();
 }
 function refreshMap(){
  const img=$("mapimg");
- const newMap=img.naturalWidth===1500&&img.naturalHeight===1049&&img.currentSrc.includes("Mapa_Lapa_Pirituba_Marginal_Badge3.webp");
- editorialActive=newMap;
- document.querySelector(".map").style.aspectRatio=newMap?"1500 / 1049":"1200 / 849";
- if(routeSets){try{applyRoutes()}catch(e){$("status").textContent="Erro nos traçados: "+e.message;console.error(e)}}else{
-  $("status").textContent="Carregando os trajetos do mapa ativo…";
- }
+ editorialActive=img.naturalWidth===1500&&img.naturalHeight===1049&&img.currentSrc.includes("Mapa_Lapa_Pirituba_Marginal_Badge3.webp");
+ document.querySelector(".map").style.aspectRatio=editorialActive?"1500 / 1049":"1200 / 849";
+ if(routeSets){try{applyRoutes()}catch(e){$("status").textContent="Erro nos trajetos: "+e.message;console.error(e)}}
 }
 $("mapimg").addEventListener("load",refreshMap);
-$("mapimg").addEventListener("error",()=>{
- if(!$("mapimg").src.includes("rota-23.jpg")){$("mapimg").src=original;return}
- $("status").textContent="Erro ao carregar a prancha original 23.";
-});
+$("mapimg").addEventListener("error",()=>{if(!$("mapimg").src.includes("rota-23.jpg")){$("mapimg").src=original;return}$("status").textContent="Erro ao carregar a prancha 23."});
 if(new URLSearchParams(location.search).get("mapa")==="original")$("mapimg").src=original;
-function move(t){
- for(const item of trajectories){
-  const distance=item.len*((t%item.duration)/item.duration);
-  const p=item.path.getPointAtLength(distance),before=item.path.getPointAtLength(Math.max(0,distance-2)),after=item.path.getPointAtLength(Math.min(item.len,distance+2));
-  const angle=Math.atan2(after.y-before.y,after.x-before.x)*180/Math.PI+90;
-  item.car.setAttribute("transform",`translate(${p.x} ${p.y}) rotate(${angle})`);
- }
-}
-function tick(time){if(paused)return;move(elapsed+time-start);frame=requestAnimationFrame(tick)}
-function pause(){if(!paused){elapsed+=performance.now()-start;paused=true;cancelAnimationFrame(frame)}$("play").textContent="▶ Reproduzir";}
-$("play").onclick=()=>{if(!ready)return;if(!paused){pause();return}paused=false;start=performance.now();$("play").textContent="❚❚ Pausar";frame=requestAnimationFrame(tick)};
-$("restart").onclick=()=>{if(!ready)return;elapsed=0;start=performance.now();move(0)};
-$("show23").onchange=e=>$("lapa").style.display=e.target.checked?"":"none";
-$("show24").onchange=e=>$("pirituba").style.display=e.target.checked?"":"none";
-
 const fetchData=name=>fetch("/src-greenn/complexo-lapa-pirituba/marginal-duplo/"+name,{cache:"no-store"})
  .then(r=>{if(!r.ok)throw Error(name+": HTTP "+r.status);return r.json()});
 Promise.all([fetchData("routes-marginal.json"),fetchData("routes-marginal-editorial.json")])
- .then(([originalData,editorialData])=>{
-  routeSets={original:originalData,editorial:editorialData};
-  refreshMap();
- }).catch(e=>{$("status").textContent="Erro ao carregar trajetos: "+e.message;console.error(e)});
+ .then(([originalData,editorialData])=>{routeSets={original:originalData,editorial:editorialData};refreshMap()})
+ .catch(e=>{$("status").textContent="Erro ao carregar caminhos: "+e.message;console.error(e)});
 </script></body></html>
