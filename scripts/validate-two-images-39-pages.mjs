@@ -47,7 +47,11 @@ assert.deepEqual(blogPaths,[
 ],'Blog sitemap additions must remain explicitly scoped');
 const investmentPaths=allPaths.filter(p=>p.startsWith('/investimentos/'));
 assert.deepEqual(investmentPaths,['/investimentos/studios-e-salas-comerciais/'],'New investment collection routes need an explicit own-image audit');
-const paths=allPaths.filter(p=>!p.startsWith('/blog/')&&!p.startsWith('/investimentos/'));
+// The infrastructure simulation has its own editorial/FAQ/image contract rather than
+// commercial RESF ImageObject requirements; keep the commercial image gate intact.
+const complexoPaths=allPaths.filter(p=>p==='/complexo-lapa-pirituba/');
+assert.deepEqual(complexoPaths,['/complexo-lapa-pirituba/'],'Complexo landing must appear once in sitemap');
+const paths=allPaths.filter(p=>!p.startsWith('/blog/')&&!p.startsWith('/investimentos/')&&!complexoPaths.includes(p));
 assert.equal(new Set(allPaths).size,allPaths.length,'Duplicate sitemap URLs');
 const rewrite=JSON.parse(fs.readFileSync('vercel.json','utf8')).rewrites;
 assert.equal(paths.length,43,'Expected 42 canonical home/region/project URLs, including Jerivás and Studios Berrini');
@@ -59,6 +63,20 @@ const exp=new Map([
 const extract=s=>[...s.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)].flatMap(m=>{
  const obj=JSON.parse(m[1]);return obj['@graph']||[obj];
 });
+// Independent validation for the non-commercial Complexo Lapa–Pirituba landing.
+const complexoSource=fs.readFileSync('src-greenn/complexo-lapa-pirituba/index.html','utf8');
+assert(!/<meta[^>]*noindex/i.test(complexoSource),'Complexo cover must be indexable');
+assert(complexoSource.includes('<link rel="canonical" href="https://www.moretegra.com.br/complexo-lapa-pirituba/">'),'Complexo canonical mismatch');
+assert(complexoSource.includes('<meta property="og:image"'),'Complexo social imagery missing');
+assert.equal((complexoSource.match(/<h1\b/gi)||[]).length,1,'Complexo requires one H1');
+for(const id of ['dualEmbed','ayrtonEmbed','marginalDualEmbed'])assert(complexoSource.includes('id="'+id+'"'),'Complexo simulator missing: '+id);
+assert.equal((complexoSource.match(/data-open-sim="\d"/g)||[]).length,3,'Complexo requires 3 scenario controls');
+const complexoGraph=extract(complexoSource);
+for(const type of ['WebPage','BreadcrumbList','FAQPage'])assert(complexoGraph.some(n=>n['@type']===type),'Complexo missing '+type);
+assert.equal(complexoGraph.find(n=>n['@type']==='FAQPage').mainEntity.length,3,'Complexo FAQ must match visible questions');
+assert.equal((complexoSource.match(/<details>/g)||[]).length,3,'Complexo must show FAQ answers');
+console.log('COMPLEXO_EDITORIAL_SITEMAP_SCHEMA_PASS');
+
 const mainImages=s=>{
  const i=s.indexOf('<main'),j=s.indexOf('</main>',i);
  assert(i>=0&&j>i,'Page lacks <main>');
