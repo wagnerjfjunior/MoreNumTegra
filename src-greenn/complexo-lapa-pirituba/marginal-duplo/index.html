@@ -13,7 +13,8 @@ p{margin:8px 0}.context{font-size:13px;color:#564e43}
 .map{position:relative;width:100%;aspect-ratio:1200 / 849;background:#edeae2;overflow:hidden}
 .map img,.map svg{display:block;position:absolute;inset:0;width:100%;height:100%}
 .map img{object-fit:fill}.map svg{pointer-events:none}
-.halo,.route{fill:none;stroke:none;visibility:hidden;pointer-events:none}
+.halo{fill:none;stroke:#fff;stroke-width:9;stroke-linejoin:round;stroke-linecap:round;pointer-events:none}
+.route{fill:none;stroke-width:5;stroke-linejoin:round;stroke-linecap:round;pointer-events:none}
 #lapa .route{stroke:var(--blue)}#pirituba .route{stroke:var(--orange)}
 #lapa .body{fill:var(--blue)}#pirituba .body{fill:var(--orange)}
 .body{stroke:#fff;stroke-width:1.8;filter:drop-shadow(0 1px 2px #0007)}
@@ -50,7 +51,7 @@ html.embedded .card{border:0;border-radius:0;margin:0}
 </g></svg></div>
 
 <p id="status" role="status" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap">Carregando animação…</p>
-<div class="note">Animação ilustrativa em loop contínuo, com dois carrinhos de percurso e tráfego ambiente nos dois sentidos da Marginal Tietê. Sem linhas de trajeto e sem controles. Projeto SPObras (2019), não representa trânsito atual.</div>
+<div class="note">As rotas azul e laranja seguem visíveis. Trânsito ilustrativo adicional na Marginal Tietê: 8 carros azuis e 8 laranjas, em sentidos opostos e sem linhas auxiliares. Animação automática contínua, sem controles; não representa trânsito atual.</div>
 </div></main>
 <script>
 "use strict";
@@ -74,18 +75,18 @@ function createTraffic(){
   {d:"M 1470 531 C 1130 531 965 512 765 505 C 524 490 320 470 65 462",reverse:false},
   {d:"M 65 660 C 345 636 610 642 850 650 C 1090 660 1285 674 1475 688",reverse:false}
  ];
- const colors=["#d7e3ea","#f4f5f1","#6a7a88","#c5c0b2"];
+ const colors=["#137CF1","#FF5F00"]; // azul no fluxo superior, laranja no inferior
  for(let lane=0;lane<bands.length;lane++){
   const guide=svgEl("path",{d:bands[lane].d,fill:"none",stroke:"none"});
   layer.appendChild(guide);
   const length=guide.getTotalLength();
-  for(let i=0;i<4;i++){
+  for(let i=0;i<8;i++){
    const car=svgEl("g",{"class":"traffic-car","aria-hidden":"true"});
-   car.appendChild(svgEl("rect",{"class":"body",x:-5,y:-10,width:10,height:20,rx:3,fill:colors[(i+lane)%colors.length]}));
+   car.appendChild(svgEl("rect",{"class":"body",x:-5,y:-10,width:10,height:20,rx:3,fill:colors[lane]}));
    car.appendChild(svgEl("rect",{"class":"glass",x:-3.2,y:-5.4,width:6.4,height:5.2,rx:1.3}));
    car.appendChild(svgEl("rect",{"class":"glass",x:-3.2,y:3.3,width:6.4,height:3.2,rx:1}));
    layer.appendChild(car);
-   ambientTraffic.push({car,guide,length,phase:i/4,period:19000+lane*3200+i*1500});
+   ambientTraffic.push({car,guide,length,phase:i/8,period:19000+lane*3200+(i%3)*850});
   }
  }
 }
@@ -131,7 +132,7 @@ function applyRoutes(){
  });
  if(editorialActive){createTraffic()}else{$("trafficLayer").replaceChildren();ambientTraffic=[];}
  ready=true;animationEpoch=performance.now();
- $("status").textContent="Animação contínua ilustrativa com dois carrinhos e tráfego na Marginal Tietê; sem controles ou linhas.";
+ $("status").textContent="Animação contínua: rotas SVG principais visíveis e 16 carros de tráfego na Marginal Tietê (8 azuis e 8 laranjas); sem controles.";
  startLoop();
 }
 function refreshMap(){
