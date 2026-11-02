@@ -207,3 +207,11 @@
 - Objetivo: cada guia faz curvatura distinta acompanhando a respectiva pista ao lado do Rio Tietê, sem transitar sobre a água. **As duas guias permanecem invisíveis.**
 - Inalterados: JSON e SVG azul/laranja, sentido dos dois percursos principais, imagem de base, carros, 8+8+16, cores, tamanho, para-brisas, playback, catálogo, simuladores 2 e 3.
 - **Aguardando QA visual LVR** para calibrar eventuais pontos da via, mantendo apenas as guias ajustáveis; sem merge ou deploy.
+
+## 01/11/2026 — Correção efetiva do desvio das curvas da Marginal no simulador 1
+- Usuário rejeitou o ajuste anterior por não reproduzir a curva real dos carros neutros. Reinspecionada a imagem base local `Mapa_Trajeto_Lapa_Pirituba-7.webp` (1456×1088) com grade de coordenadas e sobreposição de diagnóstico das duas novas guias. O problema identificado foi geométrico: as antigas guias terminavam à esquerda em `y≈313/377`, ignorando a curva diagonal relevante no trecho ocidental próximo ao letreiro Marginal Pinheiros, onde os caminhos devem chegar perto de `y≈555/665`.
+- **Guia norte (direita → esquerda)**: `M 1420 294 C 1240 295 1092 315 915 321 C 735 322 569 315 425 303 C 304 294 234 310 178 362 C 123 409 78 486 30 555`.
+- **Guia sul (esquerda → direita)**: `M 30 665 C 83 582 124 506 183 443 C 240 400 309 383 420 381 C 575 382 741 403 922 402 C 1105 400 1260 381 1420 362`.
+- Mudança limitada ao array `bands` de `duplo/index.html`, usando caminhos independentes com curvatura pronunciada na parte ocidental e curvatura suave no trecho horizontal; sem alterar SVG azul/laranja, rotatória, veículos, mapa, contagem 32, simuladores 2/3 ou automação. Comparação do conteúdo confirmou `onlyBandsChanged=true`.
+- **Evidência local:** imagem `/mnt/data/auditoria_curvas_simulador1_20261101.png` com linhas temporárias de diagnóstico sobre o mapa original; arquivo de diagnóstico NÃO foi adicionado ao GitHub ou à aplicação e não aparece ao usuário.
+- **Ainda pendente:** novo teste LVR para confirmar aderência dos veículos às pistas durante a animação e ausência de carros no rio. A aprovação visual anterior não cobria esta mudança. PR #528 Draft, sem merge ou produção.
