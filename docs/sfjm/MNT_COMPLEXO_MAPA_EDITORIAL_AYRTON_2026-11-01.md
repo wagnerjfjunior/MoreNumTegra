@@ -132,3 +132,13 @@
 - Opção 3: título previsto `3. Lapa / Pirituba → Marginal Pinheiros`; `marginal-duplo/index.html` passou a usar o novo WebP em IMG, variável `editorial` e detector `currentSrc`.
 - Mantidas as medidas 1500×1049, geometrias SVG/JSON, cores, animações e fallback `?mapa=original`. Não foram alterados os simuladores 1 nem o catálogo.
 - Gate LVR: validar se os dois novos badges possuem texto exato, sem cortes ou sobreposição, e se os dois conjuntos de carros continuam alinhados. Nenhum merge/autorização de produção.
+
+## 01/11/2026 — Terceiro simulador: tráfego ambiente nos dois sentidos + autoplay sem controles
+- Pedido do usuário: preservar os dois carros principais (Lapa azul `#137CF1`, Pirituba laranja `#FF5F00`) e acrescentar **carros menores em trânsito nos dois lados da Marginal Tietê**, com movimentos opostos. Não desenhar linhas de trajetória em nenhum dos casos; remover controles de reprodução e seletores, animação sempre em movimento e com loop automático.
+- Aplicado apenas a `marginal-duplo/index.html` (opção 3). Mapa `Mapa_Lapa_Pirituba_Marginal_Badge3.webp`, badges e SVGs de `routes-marginal-editorial.json` e `routes-marginal.json` **inalterados**.
+- Os `path` dos dois trajetos continuam no DOM para computar coordenadas dos carros, mas estão invisíveis no CSS (`.halo,.route{stroke:none;visibility:hidden}`). Carrinhos principais permanecem visíveis e seguem o mesmo loop de 15,5s.
+- Adicionados **8 carros pequenos em duas vias da Marginal Tietê** sobre a arte editorial, 4 por sentido, em cinza/branco/bege para não confundir com as cores das rotas principais. Os caminhos de tráfego ambiente são independentes e invisíveis, só para animação, **não representam dados de trânsito reais**.
+- Removidos DOM e handlers de botões `play`/`restart` e checkboxes de mostrar/ocultar. Um único `requestAnimationFrame` anima carros principais + tráfego; `visibilitychange` interrompe processamento em aba oculta e reinicia quando retorna; `prefers-reduced-motion` exibe posição estática por acessibilidade.
+- Em `?mapa=original` os dois carros principais também executam autoplay sem linhas e sem controles; tráfego ambiente só aparece no mapa editorial, porque o desenho de pistas é exclusivo da arte 1500×1049.
+- **Gate LVR**: verificar se as 2 linhas principais desapareceram, se os 2 carros permanecem no traçado correto, se os 8 veículos menores passam nas duas margens sem atravessar o Rio Tietê, se as direções são opostas, se não cobrem badges e se o loop não trava nem causa sobrecarga mobile. Se houver desvio de pista, ajustar apenas os caminhos invisíveis `bands` do trânsito ambiente.
+- PR #528 Draft, sem merge ou publicação.
