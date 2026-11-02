@@ -220,15 +220,17 @@ function startPiqueriCars(){
  clearPiqueriCars();if(idx!==3)return;
  const primary=$("flow"),second=$("route26paired"),entry=verified["26"];
  if(!primary.getAttribute("d")||!entry?.d)return;
- second.setAttribute("d",entry.d);second.setAttribute("stroke","#4BA3FA");
+ // Traçado ajustado manualmente à base 25 após marcação verde enviada pelo usuário. Não projetar o d da prancha 26 diretamente.
+ const alignedAyrton="M 356 167 Q 369 184 375 209 Q 380 233 394 259 Q 407 284 423 307 Q 439 330 455 350 Q 470 370 487 386 Q 503 401 516 415 Q 529 429 539 430 Q 556 433 565 452 Q 577 475 584 507 Q 590 532 600 554 Q 607 565 625 565 C 675 566 730 564 810 562";
+ second.setAttribute("d",alignedAyrton);second.setAttribute("stroke","#4BA3FA");
  // Reprojeção provisória: bases 25/26 possuem enquadramentos distintos; alinha origem e nó comum, preservando d original.
- second.setAttribute("transform","matrix(0.67 0 0 0.75 175 108)");
+ second.removeAttribute("transform");
  $("flow").style.stroke="#137CF1";$("progress").style.stroke="#137CF1";
  const paths=[primary,second],groups=[$("piqueriCars"),$("piqueriCarsSecondary")],colors=["#137CF1","#4BA3FA"];
  const motion=[];
  paths.forEach((path,lane)=>{const length=path.getTotalLength();for(let i=0;i<8;i++){
  const g=sv("g");g.append(sv("rect",{x:-9,y:-16,width:18,height:32,rx:5,fill:colors[lane],stroke:"#fff","stroke-width":2}),sv("rect",{x:-6,y:-9,width:12,height:9,rx:2,fill:"#d7efff"}));groups[lane].append(g);
- motion.push({car:g,path,length,phase:i/8,period:12000,paired:lane===1});}});
+ motion.push({car:g,path,length,phase:i/8,period:12000});}});
  // Fluxo ambiente ilustrativo: 2 faixas, 8 carros cada, independentes dos percursos.
  // Referências de fluxo adotadas do simulador Marginal aprovado; adaptadas ao viewBox 1200x849.
  const guides=[
@@ -238,7 +240,7 @@ function startPiqueriCars(){
  const ambient=$("marginalAmbient"),neutral=["#24272c","#c73434","#777f87","#3d4247","#b92f2e","#90969c"];
  guides.forEach((d,lane)=>{const guide=sv("path",{d,fill:"none",stroke:"none"});ambient.append(guide);const length=guide.getTotalLength();for(let i=0;i<8;i++){const g=sv("g");g.append(sv("rect",{x:-5,y:-10,width:10,height:20,rx:3,fill:neutral[(lane*3+i)%neutral.length],stroke:"#263444","stroke-width":1}),sv("rect",{x:-3,y:-5,width:6,height:5,rx:1,fill:"#cde4ed"}));ambient.append(g);motion.push({car:g,path:guide,length,phase:i/8,period:19000+lane*3200});}});
  const epoch=piqueriEpoch,still=matchMedia("(prefers-reduced-motion: reduce)").matches,start=performance.now();
- function draw(t){if(epoch!==piqueriEpoch||idx!==3)return;for(const item of motion){const distance=item.length*((item.phase+(still?0:(t-start)/item.period))%1),p=item.path.getPointAtLength(distance),q=item.path.getPointAtLength(Math.min(item.length,distance+2));const paired=item.paired;const x=paired?0.67*p.x+175:p.x,y=paired?0.75*p.y+108:p.y;const dx=paired?0.67*(q.x-p.x):q.x-p.x,dy=paired?0.75*(q.y-p.y):q.y-p.y;const angle=Math.atan2(dy,dx)*180/Math.PI+90;item.car.setAttribute("transform","translate("+x+" "+y+") rotate("+angle+")");}if(!still)piqueriFrame=requestAnimationFrame(draw);}
+ function draw(t){if(epoch!==piqueriEpoch||idx!==3)return;for(const item of motion){const distance=item.length*((item.phase+(still?0:(t-start)/item.period))%1),p=item.path.getPointAtLength(distance),q=item.path.getPointAtLength(Math.min(item.length,distance+2));const angle=Math.atan2(q.y-p.y,q.x-p.x)*180/Math.PI+90;item.car.setAttribute("transform","translate("+p.x+" "+p.y+") rotate("+angle+")");}if(!still)piqueriFrame=requestAnimationFrame(draw);}
  piqueriFrame=requestAnimationFrame(draw);
 }
 function toggle(){if($("play").disabled)return;if(!paused){halt();return;}paused=false;start=performance.now();$("play").textContent="Pausar animação";$("play").setAttribute("aria-pressed","true");frame=requestAnimationFrame(tick);}
