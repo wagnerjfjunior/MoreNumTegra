@@ -19,6 +19,6 @@ Inventário integral da amostra rastreada pelo OpenSEO, **85 URLs**, não confun
 ## Primeira intervenção
 Ampère Brooklin: alinhar title, meta description e equivalentes sociais/estruturados, mantendo configuração comercial factual existente e endereço canônico. GSC (03/10 a 30/10) 145 impressões/0 cliques (posição média 10,17). Não atribuir causalidade nem prometer CTR. Validar após deploy com novo período GSC.
 
-Novo title: Ampère Brooklin Tegra | 262 m², 4 suítes e 4 vagas (50 caracteres)
+Novo title: Apartamentos no Brooklin | Ampère Tegra de 262 m² (49 caracteres)
 
 Nova description: Ampère Brooklin Tegra: apartamentos de 262 m², 4 suítes e 4 vagas, com dois terraços. Veja plantas e consulte condições e disponibilidade. (138 caracteres)
