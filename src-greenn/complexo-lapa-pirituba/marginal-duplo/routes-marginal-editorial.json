@@ -4,16 +4,16 @@
     "color": "#137CF1",
     "verified": false,
     "offsetX": 0,
-    "d": "M 781 1045 C 768 997 760 957 747 908 C 733 853 721 809 711 758 C 701 713 685 665 675 623 C 665 580 655 547 643 519 C 632 493 619 471 613 458 C 593 456 580 446 584 420 C 587 397 600 382 622 382 C 646 380 659 399 655 423 C 651 448 626 465 604 474 C 581 484 563 481 542 481 C 515 482 491 487 466 489 C 419 493 375 500 322 502 C 304 504 281 506 266 510"
+    "d": "M 781 1045 C 768 997 760 957 747 908 C 733 853 721 809 711 758 C 701 713 685 665 675 623 C 665 580 655 547 643 519 C 635 495 625 473 618 459 C 603 458 591 449 591 427 C 591 408 604 387 623 386 C 648 383 655 402 652 424 C 650 445 635 457 617 467 C 611 481 599 493 571 496 C 526 497 487 501 448 507 C 394 515 338 523 282 535 C 236 545 193 565 153 584"
   },
   "24": {
     "label": "Pirituba → Marginal Pinheiros",
     "color": "#FF5F00",
     "verified": false,
     "offsetX": 0,
-    "d": "M 300 65 C 313 83 323 113 329 148 C 338 187 350 224 369 260 C 390 302 419 336 456 373 C 489 404 525 424 550 444 C 571 456 587 462 598 476 C 580 486 562 488 540 492 C 505 497 474 499 448 503 C 407 508 366 514 321 515 C 297 516 280 518 261 520"
+    "d": "M 300 65 C 313 83 323 113 329 148 C 338 187 350 224 369 260 C 390 302 419 336 456 373 C 489 404 525 424 550 444 C 572 460 588 468 608 469 C 618 470 620 478 615 485 C 604 494 584 484 565 482 C 540 482 517 481 491 485 C 453 489 420 495 379 502 C 339 509 301 514 270 524 C 227 535 187 551 148 570"
   },
   "viewBox": "0 0 1500 1049",
   "asset": "Mapa_Padrao_Lado_Pirituba_Trajeto3.webp",
-  "source": "Traçados CANDIDATOS redesenhados manualmente no mapa editorial fornecido pelo usuário. Manter originais de routes-marginal.json. Aderência aos eixos, balão e retorno requer teste visual LVR; não houve validação de engenharia."
+  "source": "Geometria editorial candidata, 2026-11-01: Pirituba → Marginal Pinheiros em curva Bézier suave na rotatória, faixa laranja do lado shopping e azul paralela mais externa em todo trecho junto ao shopping; faixa invisível ambiente externa. Requer homologação visual LVR, não certificação viária."
 }
