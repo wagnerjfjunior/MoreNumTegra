@@ -1,3 +1,11 @@
+## 01/11/2026 — Simulador 1: 32 carros adicionados na PR #528
+
+- `duplo/index.html`: 8 laranjas na rota Lapa→Pirituba, 8 azuis na Pirituba→Lapa, 16 carros neutros preto/vermelho/cinza nas duas pistas da Marginal Tietê, em 2 guias invisíveis específicas da base 1452×1083. SVG/JSON `duplo/routes-duplo.json` **inalterado**; rotas visíveis, autoplay sem botões, seletor de rotas/paradas preservado.
+- Estado **candidato para teste LVR**: conferir geometrias das duas guias, carros fora do rio, sentidos, travessia da ponte, todos os veículos e mobile. Não declarar aprovado antes do aceite.
+- SFJM: `docs/sfjm/MNT_COMPLEXO_MAPA_EDITORIAL_AYRTON_2026-11-01.md`. PR #528 Draft, sem merge/produção.
+
+---
+
 ## 01/11/2026 — PR #528: simuladores 2 e 3, novo candidato LVR
 
 - Simulador 3: carros azul/laranja restaurados ao formato maior de 20×36 px com 2 para-brisas brancos, preservadas integralmente as linhas e geometrias previamente aprovadas.
