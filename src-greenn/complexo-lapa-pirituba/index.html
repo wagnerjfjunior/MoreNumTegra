@@ -208,20 +208,34 @@ const routeNames=["Lapa ↔ Pirituba","Ayrton Senna → Pirituba / Ayrton Senna 
 // routes-verified.json deve conter um objeto por página: { "19": {"viewBox":"0 0 850 850","d":"M ...","verified":true} }
 // O campo verified é aplicado somente após inspeção do alinhamento e sentido no LVR.
 const routeSelect=document.getElementById("route"),$=id=>document.getElementById(id);const mapImg=$("mapimg");let mapCandidates=[],mapAttempt=0;
+const MAP_WEBP_VERSION="d8a09854";
+let mapErrorLog=[];
 function setMapImage(page){
  const root="/src-greenn/complexo-lapa-pirituba/assets/";
- const primary=page===25?"Mapa_Figura2_Pirituba_Piqueri_Ayrton_Senna.webp":"rota-"+page+".jpg";
- const fallback="rota-"+page+".jpg";
- mapCandidates=[root+primary,"/complexo-lapa-pirituba/assets/"+primary,
- ...(page===25?[root+fallback,"/complexo-lapa-pirituba/assets/"+fallback]:[]),
- "/assets/"+fallback];
- mapAttempt=0;mapImg.src=mapCandidates[0];
+ const webp="Mapa_Figura2_Pirituba_Piqueri_Ayrton_Senna.webp";
+ const jpg="rota-"+page+".jpg";
+ mapCandidates=page===25?[
+  root+webp+"?v="+MAP_WEBP_VERSION,
+  "/complexo-lapa-pirituba/assets/"+webp+"?v="+MAP_WEBP_VERSION,
+  "https://raw.githubusercontent.com/wagnerjfjunior/MoreNumTegra/feat/complexo-prancha4-ayrton-lapa-20261102/src-greenn/complexo-lapa-pirituba/assets/"+webp,
+  root+jpg
+ ]:[root+jpg,"/complexo-lapa-pirituba/assets/"+jpg];
+ mapAttempt=0;mapErrorLog=[];mapImg.src=mapCandidates[0];
 }
-mapImg.addEventListener("load",()=>{mapImg.hidden=false;$("missingMap").hidden=true;$("overlay").hidden=false;});
-mapImg.addEventListener("error",()=>{if(mapAttempt+1<mapCandidates.length){mapImg.src=mapCandidates[++mapAttempt];return;}
+mapImg.addEventListener("load",()=>{
+ mapImg.hidden=false;$("missingMap").hidden=true;$("overlay").hidden=false;
+ if(idx===3){
+  const usingWebp=mapImg.currentSrc.includes(".webp");
+  $("status").textContent="LVR-C4-WEBP-TEST-F | "+(usingWebp?"WEBP OK":"WEBP FALHOU - fallback JPG")+" | "+mapImg.naturalWidth+"x"+mapImg.naturalHeight+" | "+mapImg.currentSrc.split("/").pop()+(usingWebp?"":" | falhas: "+mapErrorLog.join(", "));
+ }
+});
+mapImg.addEventListener("error",()=>{
+ mapErrorLog.push(mapCandidates[mapAttempt]||mapImg.currentSrc);
+ if(mapAttempt+1<mapCandidates.length){mapImg.src=mapCandidates[++mapAttempt];return;}
  mapImg.hidden=true;$("missingMap").hidden=false;$("overlay").hidden=true;
  $("missingMap").querySelector("strong").textContent="Falha ao carregar a imagem da prancha.";
- $("status").textContent="Nenhuma das origens configuradas carregou a prancha "+routePages[idx]+"; verifique a rede do LVR.";});
+ $("status").textContent="LVR-C4-WEBP-TEST-F | Todas as imagens falharam. "+mapErrorLog.join(" | ");
+});
 let verified={},frame=0,start=0,paused=true,idx=0;
 routeNames.forEach((n,i)=>{let o=document.createElement("option");o.value=i;o.textContent=(i+1)+". "+n;routeSelect.append(o);});
 function halt(){cancelAnimationFrame(frame);paused=true;$("progress").setAttribute("stroke-dasharray","0 99999");$("play").textContent="Reproduzir percurso";$("play").setAttribute("aria-pressed","false");}
