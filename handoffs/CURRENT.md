@@ -1,3 +1,11 @@
+## 02/11/2026 — Capa única PR #533 PUBLICADA para teste
+
+Autorização do usuário: “Vou testar em produção mas cuide do rollback”. PR #533 MERGED, runtime `60b8bdb839e3a34f987f80558595188e7c683305`; Vercel `dpl_GaocVCL1UD8UMrTbLp7R3oP3Prg8` READY com alias www sem erro. HTTP 200, capa presente e cards antigos ausentes; três acessos conferidos em browser de produção. Aceite do proprietário e teste físico mobile pendentes. Supera a espera por LVR descrita abaixo.
+
+Rollback preparado e não executado: deployment anterior `dpl_4vAHBB7UXbyYX3JofdaojFnwXoYK`, source `96703353b0bc6b6bffbc5ca2bb0c6eb3602a2022`. Procedimento: `docs/sfjm/MNT_COMPLEXO_CAPA_UNICA_RELEASE_PR533_2026-11-02.md`. Preservar trajetos, curvas e carros.
+
+---
+
 ## 02/11/2026 — Capa única solicitada: candidato para LVR
 
 Os três cards foram substituídos, na branch `ux/complexo-capa-unica-20261102`, pela capa fornecida pelo usuário, com três acessos funcionais e botões mobile. Detalhes e QA: `docs/sfjm/MNT_COMPLEXO_CAPA_UNICA_2026-11-02.md`. **Sem merge ou novo deploy de produção nesta etapa.** Produção permanece PR #532. Próximo: avaliação visual no LVR desta branch; preservar geometria e animação dos três simuladores.
