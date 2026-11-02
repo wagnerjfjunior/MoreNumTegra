@@ -247,7 +247,7 @@ function startPiqueriCars(){
  // Preservar os segmentos centrais separados da geometria anterior ao commit 5ca568e7.
  const guides=[
   "M 1105 490 C 992 493 926 491 848 488 C 731 481 672 475 570 474 C 492 471 415 463 365 468 C 299 470 243 494 200 519 C 137 558 82 631 33 759",
-  "M 71 849 C 75 785 111 708 173 640 C 229 584 275 576 304 580 C 321 574 335 569 356 567 C 394 561 425 557 454 558 C 490 557 535 573 565 575 C 650 579 790 577 860 583 C 949 592 1039 599 1170 602"
+  "M 83 790 C 109 729 153 665 211 614 C 270 552 335 510 429 507 C 489 505 539 508 586 512 C 725 516 880 526 1030 536 C 1090 540 1137 543 1170 545"
  ];
  const ambient=$("marginalAmbient"),neutral=["#24272c","#c73434","#777f87","#3d4247","#b92f2e","#90969c"];
  guides.forEach((d,lane)=>{const guide=sv("path",{d,fill:"none",stroke:"none"});ambient.append(guide);const length=guide.getTotalLength();for(let i=0;i<8;i++){const g=sv("g");g.append(sv("rect",{x:-5,y:-10,width:10,height:20,rx:3,fill:neutral[(lane*3+i)%neutral.length],stroke:"#263444","stroke-width":1}),sv("rect",{x:-3,y:-5,width:6,height:5,rx:1,fill:"#cde4ed"}));ambient.append(g);motion.push({car:g,path:guide,length,phase:i/8,period:19000+lane*3200});}});
