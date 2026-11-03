@@ -432,9 +432,9 @@ function refresh(){
   if(n>=0){
     const orangeLabel=document.querySelector('.ux-dir.ux-orange');orangeLabel.hidden=n===4;
     const blueCar=document.querySelector('.ux-dir.ux-blue .ux-car-svg path');
-    blueCar.setAttribute('fill',n===4?'#8B5CF6':'#168af0');
+    blueCar.setAttribute('fill',n===4?'#8B5CF6':n===1?'#36B86B':'#168af0');
     const orangeCar=document.querySelector('.ux-dir.ux-orange .ux-car-svg path');
-    orangeCar.setAttribute('fill',n===3?'#4BA3FA':'#FF5F00');
+    orangeCar.setAttribute('fill',n===3?'#4BA3FA':n===1?'#16834A':'#FF5F00');
     document.getElementById('uxBlueName').textContent=names[n][0];
     document.getElementById('uxOrangeName').textContent=names[n][1];
     send('blue',boxes[0].checked);send('orange',boxes[1].checked);
