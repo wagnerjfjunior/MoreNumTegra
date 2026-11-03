@@ -1,0 +1,48 @@
+name: MoreTegra SEO metadata gates
+
+on:
+  pull_request:
+    paths:
+      - 'src-greenn/**/*.html'
+      - 'scripts/validate-seo-content.mjs'
+      - 'scripts/validate-seo-gate-02.mjs'
+      - '.github/workflows/seo-metadata-gates.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  seo-metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Node.js runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate only HTML files changed in PR
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin "${GITHUB_BASE_REF}"
+          mapfile -t pages < <(git diff --name-only --diff-filter=ACM "origin/${GITHUB_BASE_REF}...HEAD" | grep -E '^src-greenn/.*\.html$' || true)
+          printf 'Changed HTML files: %s\n' "${#pages[@]}"
+          if (( ${#pages[@]} > 0 )); then
+            node scripts/validate-seo-content.mjs --strict "${pages[@]}"
+            node scripts/validate-seo-gate-02.mjs "${pages[@]}"
+          else
+            echo 'No HTML pages changed.'
+          fi
+      - name: Manual workflow execution
+        if: github.event_name == 'workflow_dispatch'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t pages < <(find src-greenn -type f -name '*.html' | sort)
+          node scripts/validate-seo-content.mjs --strict "${pages[@]}"
+          node scripts/validate-seo-gate-02.mjs "${pages[@]}"
