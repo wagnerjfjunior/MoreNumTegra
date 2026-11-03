@@ -60,3 +60,6 @@ Usuário forneceu duas capturas JSON da mesma ferrovia: primeira parcial com 14 
 
 ## 03/11/2026 — ampliação dos trens ferroviários C4 para 8 composições
 Solicitação explícita: aumentar cada trem vermelho na prancha 4 de 3 para 8 composições. Commit `e6b556cce47940767ae773e65f46d60ad23193a9`: dois trens mantidos em sentidos opostos; 8 vagões SVG independentes por trem, cada um amostrando sua própria posição e orientação no trilho (espaçamento 31 unidades) para acompanhar curvas, mantendo 60 unidades SVG/s, os mesmos paths, cleanup e reduced-motion. Sem alteração nas rotas rodoviárias, no tráfego ambiente ou nos outros cenários. Verificação sintática: 5/5 scripts OK. Pendente visual LVR, especialmente curvas, distância entre vagões e transição no fim do circuito. Rollback pontual: HTML blob `c75cd6e335fa719dbf406d8d05f21155f98d82f3`. Nenhum merge ou deploy.
+
+## 03/11/2026 — aceite visual dos dois trens com oito composições
+Após testar a atualização de `e6b556cce47940767ae773e65f46d60ad23193a9` no LVR, o usuário confirmou: **“ficou ótimo!!!!”**. Aceite visual registrado para dois trens vermelhos, oito composições por trem, sobre os trilhos da prancha 4. Não implica aprovação de merge nem deploy. Preservar rollback `c75cd6e335fa719dbf406d8d05f21155f98d82f3` e a geometria rodoviária aprovada.
