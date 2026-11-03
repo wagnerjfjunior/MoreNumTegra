@@ -15,7 +15,7 @@ for(const gallery of document.querySelectorAll("[data-rio-gallery]")){
  }
  function move(dir){
    const next=Math.max(0,Math.min(slides.length-1,active+dir));
-   track.scrollTo({left:slides[next].offsetLeft-track.offsetLeft,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"instant":"smooth"});
+   track.scrollTo({left:slides[next].offsetLeft,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"instant":"smooth"});
    active=next;
    if(status)status.textContent=(active+1)+" / "+slides.length;
    buttons[0].disabled=active===0;buttons[1].disabled=active===slides.length-1;
