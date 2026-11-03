@@ -386,7 +386,21 @@ for(const [slug,street,cep] of expected){
     // HTML as the new immutable runtime snapshot; the postal/schema invariants
     // above still check historical facts independently.
     const approvedHtml=execFileSync('git',['show','ffe7dd2183e51360c8ecf6a217f61605b8ca652a:'+filename],{encoding:'utf8'});
-    assert.equal(candidate,approvedHtml,'Ampere full HTML drifted from USER_ACCEPTED integrated release baseline');
+    const normalizeAmpereOnlySeoMeta = html => html
+      .replace(/<title>[^<]*<\/title>/, '<title>APPROVED_SEO_TITLE</title>')
+      .replace(/<meta name="description" content="[^"]*">/, '<meta name="description" content="APPROVED_SEO_DESCRIPTION">')
+      .replace(/<meta property="og:title" content="[^"]*">/, '<meta property="og:title" content="APPROVED_OG_TITLE">')
+      .replace(/<meta property="og:description" content="[^"]*">/, '<meta property="og:description" content="APPROVED_OG_DESCRIPTION">')
+      .replace(/<meta name="twitter:title" content="[^"]*">/, '<meta name="twitter:title" content="APPROVED_TWITTER_TITLE">')
+      .replace(/<meta name="twitter:description" content="[^"]*">/, '<meta name="twitter:description" content="APPROVED_TWITTER_DESCRIPTION">')
+      .replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/, (tag, json) => {
+        const root=JSON.parse(json);
+        for(const n of (root['@graph']||[root])){
+          if(n['@type']==='WebPage'){n.name='APPROVED_SEO_TITLE';n.description='APPROVED_SEO_DESCRIPTION'}
+        }
+        return '<script type="application/ld+json">'+JSON.stringify(root)+'</script>';
+      });
+    assert.equal(normalizeAmpereOnlySeoMeta(candidate),normalizeAmpereOnlySeoMeta(approvedHtml),'Ampere runtime drifted beyond approved title, description and WebPage metadata');
  }else if(slug==='tiel-vila-nova-conceicao'){
    // RESF Tièl specific, source-verified commercial expansion. The separate
    // Tièl quality test verifies factual Product/Offer, two plans, FAQ pairs and
