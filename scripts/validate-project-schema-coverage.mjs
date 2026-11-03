@@ -21,7 +21,9 @@ for(const slug of slugs){
  const rioStaged=new Set(['kronos-by-tegra','claris-casa-e-clube','claris-rosas','gran-thai-leisure-residence','singular-private-residence','gaea-home-resort']).has(slug);
  if(rioStaged){
    const html=readFileSync(path,'utf8');
-   for(const t of ['WebPage','ApartmentComplex','BreadcrumbList','FAQPage','Organization','Person'])assert(now.some(n=>type(n,t)),slug+': staged RESF entity missing '+t);
+   for(const t of ['WebPage','BreadcrumbList','FAQPage','Organization','Person'])assert(now.some(n=>type(n,t)),slug+': staged RESF entity missing '+t);
+   const residentialType=slug==='claris-casa-e-clube'?'GatedResidenceCommunity':'ApartmentComplex';
+   assert(now.some(n=>type(n,residentialType)),slug+': staged RESF property type missing '+residentialType);
    assert(now.some(n=>type(n,'ImageObject')),slug+': verified project hero image entity missing');
    assert(!now.some(n=>type(n,'Offer')),slug+': staged reference price is not a confirmed active offer');
    assert(html.includes('name="robots" content="noindex,follow"'),slug+': staged page must remain noindex');
