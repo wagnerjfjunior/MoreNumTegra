@@ -76,3 +76,11 @@ Solicitação explícita do usuário: "pode colocar o trem nas pranchas 2,3 e 5"
 - Cenário 4: nenhuma mudança visual ou de trajetória ferroviária; ambos os trens aprovados permanecem.
 - Verificação estática: 5/5 scripts sintáticos no HTML pai, 3/3 em C2 e 3/3 em C3; ambos os paths ferroviários idênticos em todos os três arquivos; todos os 2×8 vagões presentes. NÃO se afirma homologação visual; aguarda teste LVR dos cenários 2/3/5.
 - Sem merge, sem deploy, sem alteração nos carros/trajetos rodoviários nem nas cores por origem.
+
+## 03/11/2026 — editor SVG habilitado para o simulador 6 (página 28)
+Pedido do usuário: usar a mesma prancha aprovada nos cenários 2, 3, 4, 5 e 6 e habilitar o editor para marcar o trajeto 6. Implementado em `src-greenn/complexo-lapa-pirituba/index.html`, commit `0db7795cbb56bc09bad57b0bca829495fa975448`.
+- Cenário 6 (índice 5, nome canônico existente **Retornos dos condomínios → Lapa**, página 28) usa como imagem primária `Prancha5_Mapa_Aprovado_Tiete_Escola_Mercado_Drogaria.webp` (1500×1049); fallback preservado.
+- Editor `c6CalPanel` com iniciar/pausar, desfazer, limpar e copiar pontos. Os pontos são coletados por transformação inversa da matriz SVG, no grupo `c6CalPoints`, com JSON exportado na chave `retornos_condominios_lapa` e base/viewBox da imagem aprovada.
+- Cenário 6 não ganhou rota artificial: path de animação vazio e botão de reprodução desabilitado até geometria ser fornecida e aprovada. Cenários 1–5 e seus carros/trens preservados.
+- Status `LVR-C6-EDITOR-PRANCHA-COMUM-V1`. Verificação estática 5/5 scripts sintaticamente válidos, HTML/editor confirmados por leitura GitHub. Ainda depende de teste LVR e envio dos pontos pelo usuário.
+- Rollback pontual: restaurar blob HTML principal `f31d6f272fb68260af45586a252a11c029186d46` anterior à alteração. Sem merge ou deploy.
