@@ -1,3 +1,9 @@
+## 03/11/2026 — C6: confirmar legenda original escura com três carrinhos no LVR
+
+Em `feat/complexo-unificacao-pranchas-2-3-4-5-20261103`, verificar visualmente após o commit `dc556a1936facad039508ee37b2e54de6dcc13c7`: EXISTE APENAS a legenda escura original `Sentidos do trajeto`, 3 carrinhos coloridos nos tons A/B/C e rótulos Condomínios→Marginal Pinheiros/Ayrton Senna/Lapa, sem caixa branca adicional. Testar habilitação individual de A/B/C, seleção de C1–C5 sem terceiro controle, badge azul `Saída dos Condomínios` e mobile. Não modificar geometrias, 111 pontos, trens nem tráfego da Marginal. Dossiê integral: `docs/sfjm/MNT_COMPLEXO_DOSSIE_INTEGRAL_HANDOFF_2026-11-03.md`. Nenhum merge/deploy autorizado.
+
+---
+
 ## 03/11/2026 — Ação segura: testar controles e badge do simulador 6
 
 Em LVR na branch `feat/complexo-unificacao-pranchas-2-3-4-5-20261103`, abrir C6 e verificar três controles que ocultam/exibem as rotas A/B/C independentemente, com legendas na ordem `Condomínios → Marginal Pinheiros`, `Condomínios → Ayrton Senna`, `Condomínios → Lapa`; validar badge azul “Saída dos Condomínios” sem duplicidade/obstrução no mapa, especialmente mobile. Cores A `#007985`, B `#00B8C7`, C `#B9EDCF` foram aceitas pelo usuário; controles e badge ainda não. Verificar a correspondência destino/traçado no mapa e auditar inversão de cores C3 (Pirituba azul/Lapa laranja) antes da release. Ler dossiê completo `docs/sfjm/MNT_COMPLEXO_DOSSIE_INTEGRAL_HANDOFF_2026-11-03.md`. Sem merge/deploy autorizado.
