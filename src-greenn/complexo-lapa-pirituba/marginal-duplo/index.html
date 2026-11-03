@@ -52,7 +52,7 @@ html.embedded .card{border:0;border-radius:0;margin:0}
 </g></svg></div>
 
 <p id="status" role="status" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap">Carregando animação…</p>
-<div class="note">Rotas SVG azul e laranja visíveis, com 8 carros em cada trajeto. A Marginal Tietê tem mais 16 carros pretos, vermelhos e cinzas em ambos os sentidos, sem linhas auxiliares. Movimento automático em loop, sem controles; trânsito ilustrativo, não representa condições atuais.</div>
+<div class="route-legend-clean" aria-label="Sentidos do trajeto"><strong>Sentidos do trajeto</strong><span style="display:inline-flex;align-items:center;gap:8px;margin:6px 18px 6px 0"><svg width="18" height="32" viewBox="0 0 20 36" aria-hidden="true"><rect width="20" height="36" rx="7" fill="#137CF1"/><rect x="3" y="7" width="14" height="8" rx="2" fill="#e7f4fb"/><rect x="3" y="23" width="14" height="7" rx="2" fill="#e7f4fb"/></svg>Lapa → Marginal Pinheiros</span><span style="display:inline-flex;align-items:center;gap:8px;margin:6px 18px 6px 0"><svg width="18" height="32" viewBox="0 0 20 36" aria-hidden="true"><rect width="20" height="36" rx="7" fill="#FF5F00"/><rect x="3" y="7" width="14" height="8" rx="2" fill="#e7f4fb"/><rect x="3" y="23" width="14" height="7" rx="2" fill="#e7f4fb"/></svg>Pirituba → Marginal Pinheiros</span></div>
 </div></main>
 <script>
 "use strict";
@@ -71,10 +71,8 @@ function svgEl(tag,attrs={}){
 function createTraffic(){
  const layer=$("trafficLayer");layer.replaceChildren();ambientTraffic=[];
  // Tráfego ambiente na faixa mais afastada do shopping, sem sobrepor linhas laranja/azul; sul do rio no sentido inverso.
- const bands=[
-  {d:"M 1470 548 C 1200 542 993 534 808 529 C 686 527 612 530 545 535 C 459 542 364 552 287 579 C 204 609 149 631 94 666",reverse:false},
-  {d:"M 65 848 C 120 776 200 732 310 706 C 425 676 553 674 684 678 C 920 689 1170 709 1475 724",reverse:false}
- ];
+ // Pistas e sentidos exatamente como o cenário 4.
+ const bands=[{"d":"M 1469 544 L 1325 549 L 1219 542 L 1071 530 L 918 519 L 791 509 L 591 501 L 450 500 L 336 519 L 245 546 L 167 587 L 94 644 L 38 706 L 12 740"},{"d":"M 27 908 L 104 795 L 170 727 L 215 687 L 291 652 L 368 633 L 440 617 L 495 612 L 585 614 L 649 617 L 733 625 L 818 628 L 979 649 L 1126 662 L 1240 670 L 1351 671 L 1481 667"}];
  const colors=["#24272c","#c73434","#777f87","#3d4247","#b92f2e","#90969c"]; // apenas trânsito da Marginal; NÃO usar azul ou laranja
  for(let lane=0;lane<bands.length;lane++){
   const guide=svgEl("path",{d:bands[lane].d,fill:"none",stroke:"none"});
@@ -83,10 +81,9 @@ function createTraffic(){
   for(let i=0;i<8;i++){
    const car=svgEl("g",{"class":"traffic-car","aria-hidden":"true"});
    car.appendChild(svgEl("rect",{"class":"body",x:-5,y:-10,width:10,height:20,rx:3,fill:colors[(lane*3+i)%colors.length]}));
-   car.appendChild(svgEl("rect",{"class":"glass",x:-3.2,y:-5.4,width:6.4,height:5.2,rx:1.3}));
-   car.appendChild(svgEl("rect",{"class":"glass",x:-3.2,y:3.3,width:6.4,height:3.2,rx:1}));
+   car.appendChild(svgEl("rect",{"class":"glass",x:-3,y:-5,width:6,height:5,rx:1,fill:"#cde4ed"}));
    layer.appendChild(car);
-   ambientTraffic.push({car,guide,length,phase:i/8,period:19000+lane*3200+(i%3)*850});
+   ambientTraffic.push({car,guide,length,phase:i/8,period:19000+lane*3200});
   }
  }
 }
