@@ -51,3 +51,6 @@ Escopo aplicado:
 - Sem merge ou deploy. `fetch_file` verificou os quatro HTML alterados na branch, scripts sintaticamente válidos (index 5/5, duplo 3/3, duplo-ayrton 3/3, marginal-duplo 3/3), guias compartilhadas presentes nos arquivos C2, C3 e index.
 - **PENDENTE:** verificação visual e responsiva SFJM/LVR pelo usuário, especialmente alinhamento das rotas C2/C3 sobre a arte comum e posições de tráfego ambiente. A validação estática não equivale a homologação visual.
 - Rollback por arquivo: index antes de unificação blob `da182f8c377007b3b9746f21d190849eb000051e`; duplo antes de limpeza `6e983acd72906db55dfa3c87597825145ddae95b`; duplo-ayrton antes de mudanças `87328ea786e4ce4981cc10251432658d8a4508eb`; marginal-duplo antes de mudanças `b16eea44efd984a46ff65d3fbe3ed94eb3f480bf`. A branch origem continua intacta.
+
+## 03/11/2026 — aceite do usuário no LVR da branch unificada
+Após testar no SFJM/LVR a branch `feat/complexo-unificacao-pranchas-2-3-4-5-20261103`, o usuário confirmou: **“funcionou!!!”**. Registro de aceite funcional relatado pelo usuário da consolidação de mapa/tráfego/UI. Não equiparar a testes automatizados de regressão ou de todos os viewports. Não fazer merge nem deploy sem autorização específica. Manter rollback por arquivo documentado anteriormente.
