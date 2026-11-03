@@ -1,3 +1,9 @@
+## 03/11/2026 — Próxima ação segura Complexo C6 / dossiê integral
+
+Ler `docs/sfjm/MNT_COMPLEXO_DOSSIE_INTEGRAL_HANDOFF_2026-11-03.md` **por inteiro** e o diário `docs/sfjm/MNT_PRANCHA5_REUSO_FIGURA2_2026-11-03.md`, resolver HEAD live da branch `feat/complexo-unificacao-pranchas-2-3-4-5-20261103`. Testar no LVR **C6 A `#007985`, B `#00B8C7`, C `#B9EDCF`**, sem alterar geometrias (26/44/41 pontos). Usuário aprovou A; B/C não foram novamente validados depois de corrigidos. Destinos A/B/C ainda pendentes. Próxima auditoria funcional C3: Pirituba azul e Lapa laranja, evitando inversões de rótulo/linha/carro, sem alterar SVGs. Trens 2×8 e tráfego ambiente C4 reaproveitados nos C2–C6. Este lote não foi integrado a main nem publicado; não fazer merge/deploy nem remover controles de calibração sem preparar release específica e obter autorização.
+
+---
+
 ## 02/11/2026 — Capa única PR #533 PUBLICADA para teste
 
 Autorização do usuário: “Vou testar em produção mas cuide do rollback”. PR #533 MERGED, runtime `60b8bdb839e3a34f987f80558595188e7c683305`; Vercel `dpl_GaocVCL1UD8UMrTbLp7R3oP3Prg8` READY com alias www sem erro. HTTP 200, capa presente e cards antigos ausentes; três acessos conferidos em browser de produção. Aceite do proprietário e teste físico mobile pendentes. Supera a espera por LVR descrita abaixo.
