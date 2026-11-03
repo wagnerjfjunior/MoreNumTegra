@@ -30,7 +30,9 @@ for(const slug of slugs) {
  if(!/(vagas?|Garagem)/i.test(facts))fail("parking fact not marked");
  if(!/(Pronto para morar|Em construção|Lançamento)/.test(facts))fail("stage fact missing");
  if(!h.includes('<section class="section" id="galeria"'))fail("gallery landmark missing");
- if(!gallery.includes("<figure")||!gallery.includes('loading="lazy"'))fail("gallery must contain a lazy-loaded project scene");
+ if(!gallery.includes("<figure")||!gallery.includes('loading="lazy"'))fail("gallery must contain lazy project scenes");
+ if((gallery.match(/class="photo rio-gallery-slide"/g)||[]).length!==2||!gallery.includes("data-rio-gallery")||!gallery.includes("data-gallery-next")||!gallery.includes("data-gallery-prev"))fail("two-scene touch and keyboard gallery controls missing");
+ if(!h.includes('src="/src-greenn/empreendimentos/rio/resf-rio-gallery.js"'))fail("portable vanilla gallery script missing");
  if((h.match(/<h1\b/gi)||[]).length!==1)fail("H1 must be unique");
  if((h.match(/<img\b(?![^>]*\balt=)[^>]*>/gi)||[]).length)fail("one or more images missing ALT");
  if(!h.includes('id="plantas"'))fail("tipology section missing");
