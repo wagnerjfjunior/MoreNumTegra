@@ -44,6 +44,7 @@ html.embedded .card{border:0;border-radius:0;margin:0}
 <img id="mapimg" src="/src-greenn/complexo-lapa-pirituba/assets/Prancha5_Mapa_Aprovado_Tiete_Escola_Mercado_Drogaria.webp" width="1500" height="1049" alt="Mapa editorial colorido do complexo viário com Shopping Tietê Plaza, Ponte Lapa-Pirituba, Estação Piqueri e Avenida Raimundo Pereira de Magalhães">
 <svg id="routeSvg" viewBox="0 0 1200 849" preserveAspectRatio="none" aria-hidden="true">
 <g id="trafficLayer"></g>
+<g id="railTrains" aria-label="Dois trens vermelhos nos trilhos"></g>
 <g id="lapa"><g id="blueAlignment" transform="translate(-6 0)"><path class="halo" id="halo23"/><path class="route" id="route23"/>
 <g id="car23"><rect class="body" x="-10" y="-18" width="20" height="36" rx="7"/><rect x="-7" y="-11" width="14" height="8" rx="2" fill="#fff"/><rect x="-7" y="5" width="14" height="7" rx="2" fill="#fff"/></g>
 </g></g>
@@ -67,6 +68,44 @@ function svgEl(tag,attrs={}){
  const el=document.createElementNS(svgNS,tag);
  for(const [key,value]of Object.entries(attrs))el.setAttribute(key,String(value));
  return el;
+}
+
+// Trilhos originais marcados pelo usuário na prancha compartilhada de 1500 × 1049.
+// Mesmos dois sentidos e mesmas oito composições por trem do simulador 4.
+const SHARED_TRAIN_RAILS=["M 669 2 L 661 60 L 658 104 L 654 182 L 659 248 L 675 344 L 700 422 L 731 509 L 795 714 L 825 810 L 846 858 L 894 956 L 928 1009 L 945 1030 L 976 1043","M 976 1043 L 938 996 L 906 939 L 854 840 L 807 724 L 774 615 L 726 466 L 695 367 L 680 310 L 667 222 L 670 138 L 677 65 L 683 5"];
+let sharedTrains=[];
+function rebuildSharedTrains(active){
+ const layer=$("railTrains");layer.replaceChildren();sharedTrains=[];
+ if(!active)return;
+ SHARED_TRAIN_RAILS.forEach((d,lane)=>{
+  const path=svgEl("path",{d,fill:"none",stroke:"none"});
+  layer.append(path);
+  const len=path.getTotalLength(),cars=[];
+  for(let k=0;k<8;k++){
+   const car=svgEl("g",{"aria-label":k===0?"Trem vermelho":"Vagão vermelho "+k});
+   car.append(svgEl("rect",{x:-10,y:-14,width:20,height:27,rx:3,fill:"#D8333C",stroke:"#791C27","stroke-width":1.3}));
+   car.append(svgEl("rect",{x:-7,y:-9,width:14,height:7,rx:1.5,fill:"#d5edfa"}));
+   car.append(svgEl("rect",{x:-7,y:2,width:14,height:5,rx:1.5,fill:"#edf5fa"}));
+   if(k===0){
+    car.append(svgEl("rect",{x:-8,y:-14,width:16,height:5,rx:1,fill:"#f2f7ff"}));
+    car.append(svgEl("circle",{cx:-7,cy:-14,r:1.5,fill:"#fff1b2"}),svgEl("circle",{cx:7,cy:-14,r:1.5,fill:"#fff1b2"}));
+   }
+   layer.append(car);cars.push(car);
+  }
+  sharedTrains.push({path,len,cars,lane});
+ });
+}
+function drawSharedTrains(elapsed){
+ const speed=60,spacing=31;
+ for(const {path,len,cars,lane} of sharedTrains){
+  const head=reducedMotion?len*0.48:(elapsed/1000*speed+len*(0.18+lane*0.11))%len;
+  cars.forEach((car,k)=>{
+   const s=((head-k*spacing)%len+len)%len;
+   const p=path.getPointAtLength(s),a=path.getPointAtLength(Math.max(0,s-3)),b=path.getPointAtLength(Math.min(len,s+3));
+   const angle=Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI+90;
+   car.setAttribute("transform","translate("+p.x+" "+p.y+") rotate("+angle+")");
+  });
+ }
 }
 function createTraffic(){
  const layer=$("trafficLayer");layer.replaceChildren();ambientTraffic=[];
@@ -123,6 +162,7 @@ function paint(time){
    t.car.setAttribute("transform",`translate(${p.x.toFixed(2)} ${p.y.toFixed(2)}) rotate(${angle.toFixed(2)})`);
   }
  }
+ drawSharedTrains(elapsed);
 }
 function tick(time){frame=0;if(!ready||document.hidden)return;paint(time);frame=requestAnimationFrame(tick)}
 function startLoop(){cancelAnimationFrame(frame);frame=0;if(!ready)return;if(!animationEpoch)animationEpoch=performance.now();paint(performance.now());if(!reducedMotion&&!document.hidden)frame=requestAnimationFrame(tick)}
@@ -145,6 +185,7 @@ function applyRoutes(){
   return createRouteCars(page,path,len);
  });
  if(editorialActive){createTraffic()}else{$("trafficLayer").replaceChildren();ambientTraffic=[];}
+ rebuildSharedTrains(editorialActive);
  ready=true;animationEpoch=performance.now();
  $("status").textContent="LVR-MAPA-COMUM-C3-V1 | 8 carros azuis, 8 laranjas, 16 neutros na Marginal. Conferir alinhamento SVG.";
  startLoop();
