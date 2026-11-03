@@ -41,7 +41,7 @@ html.embedded .card{border:0;border-radius:0;margin:0}
 <div class="card">
 <div class="bar"><strong>3. Lapa / Pirituba → Marginal Pinheiros</strong><span>Base visual: mapa editorial · base técnica original preservada</span></div>
 <div class="map" role="img" aria-label="Prancha técnica 23 da SPObras com dois trajetos, azul desde Lapa e laranja desde Pirituba">
-<img id="mapimg" src="/src-greenn/complexo-lapa-pirituba/assets/Mapa_Lapa_Pirituba_Marginal_Badge3.webp" width="1500" height="1049" alt="Mapa editorial colorido do complexo viário com Shopping Tietê Plaza, Ponte Lapa-Pirituba, Estação Piqueri e Avenida Raimundo Pereira de Magalhães">
+<img id="mapimg" src="/src-greenn/complexo-lapa-pirituba/assets/Prancha5_Mapa_Aprovado_Tiete_Escola_Mercado_Drogaria.webp" width="1500" height="1049" alt="Mapa editorial colorido do complexo viário com Shopping Tietê Plaza, Ponte Lapa-Pirituba, Estação Piqueri e Avenida Raimundo Pereira de Magalhães">
 <svg id="routeSvg" viewBox="0 0 1200 849" preserveAspectRatio="none" aria-hidden="true">
 <g id="trafficLayer"></g>
 <g id="lapa"><g id="blueAlignment" transform="translate(-6 0)"><path class="halo" id="halo23"/><path class="route" id="route23"/>
@@ -58,7 +58,7 @@ html.embedded .card{border:0;border-radius:0;margin:0}
 "use strict";
 const $=id=>document.getElementById(id);
 const assetRoot="/src-greenn/complexo-lapa-pirituba/assets/";
-const editorial=assetRoot+"Mapa_Lapa_Pirituba_Marginal_Badge3.webp";
+const editorial=assetRoot+"Prancha5_Mapa_Aprovado_Tiete_Escola_Mercado_Drogaria.webp";
 const original=assetRoot+"rota-23.jpg?v=19bc0fbd";
 const svgNS="http://www.w3.org/2000/svg";
 let editorialActive=false,trajectories=[],ambientTraffic=[],frame=0,ready=false,routeSets=null,animationEpoch=0;
@@ -154,7 +154,7 @@ function applyRoutes(){
 }
 function refreshMap(){
  const img=$("mapimg");
- editorialActive=img.naturalWidth===1500&&img.naturalHeight===1049&&img.currentSrc.includes("Mapa_Lapa_Pirituba_Marginal_Badge3.webp");
+ editorialActive=img.naturalWidth===1500&&img.naturalHeight===1049&&img.currentSrc.includes("Prancha5_Mapa_Aprovado_Tiete_Escola_Mercado_Drogaria.webp");
  document.querySelector(".map").style.aspectRatio=editorialActive?"1500 / 1049":"1200 / 849";
  if(routeSets){try{applyRoutes()}catch(e){$("status").textContent="Erro nos trajetos: "+e.message;console.error(e)}}
 }
