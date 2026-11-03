@@ -38,3 +38,12 @@ O usuário rejeitou explicitamente o modelo simplificado das páginas RJ e exigi
 
 ## Estado de publicação
 **NÃO PUBLICADO, NOINDEX PRESERVADO, PR #539 DRAFT.**
+
+
+## QA visual em Chromium e correção de mídia — evidências de 03/11/2026
+
+1. O smoke `Rio RESF visual mobile and desktop` com validação de decodificação de hero detectou **falha real nas duas resoluções do Kronos**: os arquivos anteriormente hospedados em `kronosbytegrario.com.br/assets/images/gallery/` não carregavam no navegador.
+2. As duas imagens foram substituídas por mídias distintas da origem oficial Tegra `stracctegra.blob.core.windows.net/assets/BannerHome/5/Imagem/`, extraídas dos dois links de imagem da página institucional `https://www.tegraincorporadora.com.br/rj` e não de domínio de vendas não verificado. Hero, galeria, SEO OG e ImageObject tiveram os caminhos atualizados, com ALTs sem atribuição de cena não comprovada.
+3. **PASS** no workflow visual do commit `630a3f301cb147a73b7fb9862c755d508dbbced0`, GitHub Actions run `41648696155`: seis páginas × mobile 390×844 e desktop 1440×900, imagem hero carregada, largura sem overflow, hero/CTA acessíveis, quatro fatos nas colunas esperadas e botão da galeria efetivo. Evidência: 12 screenshots em artefato `resf-rio-six-projects-mobile-desktop` (id `13234344929`).
+4. A aprovação automática é **técnica**, não homologação estética manual ou verificação de todos os assets/estados de formulário em dispositivo real.
+5. As seis páginas mantêm **noindex,follow**, sem merge/produção. O release depende de reconciliação com `main`, QA editorial/factual individual e decisão formal de liberação.
