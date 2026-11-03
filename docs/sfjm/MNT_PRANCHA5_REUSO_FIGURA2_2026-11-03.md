@@ -84,3 +84,13 @@ Pedido do usuário: usar a mesma prancha aprovada nos cenários 2, 3, 4, 5 e 6 e
 - Cenário 6 não ganhou rota artificial: path de animação vazio e botão de reprodução desabilitado até geometria ser fornecida e aprovada. Cenários 1–5 e seus carros/trens preservados.
 - Status `LVR-C6-EDITOR-PRANCHA-COMUM-V1`. Verificação estática 5/5 scripts sintaticamente válidos, HTML/editor confirmados por leitura GitHub. Ainda depende de teste LVR e envio dos pontos pelo usuário.
 - Rollback pontual: restaurar blob HTML principal `f31d6f272fb68260af45586a252a11c029186d46` anterior à alteração. Sem merge ou deploy.
+
+## 03/11/2026 — C6 com três rotas independentes e nova cor por origem
+Usuário forneceu 111 pares SVG no JSON `retornos_condominios_lapa` em sequência, separados por pausas manuais, e pediu visualizar três caminhos no simulador 6, com origem Condomínios e possíveis destinos Lapa, Ayrton Senna e Marginal Pinheiros.
+- Commit funcional `945b9a008da9c95c9ebac5e929bdd878a117e120`, arquivo `src-greenn/complexo-lapa-pirituba/index.html`, branch `feat/complexo-unificacao-pranchas-2-3-4-5-20261103`.
+- Reconstituídos três paths independentes (26 pontos A: 323,6 → 10,680; 44 pontos B: 541,123 → 1485,542; 41 pontos C: 593,269 → 792,1022); nenhum salto entre grupos. Todos os pontos copiados na ordem dada pelo usuário, sem suavizações nem interpolação cartográfica não autorizada. Base comum 1500×1049.
+- Nova matriz de origem **Condomínios = ciano #00B8C7**, aplicada aos três SVG tracejados e aos respectivos oito carrinhos de cada rota, 24 carrinhos no conjunto. A/B/C são identificadores provisórios: **não atribuir** destino específico sem confirmação visual do usuário.
+- C6 também herda os dois trens vermelhos de 8 composições e o tráfego Marginal de 8+8 carros da geometria C4. Editor C6 continua disponível para correções. Ciclos de animação têm cancelamento/limpeza ao trocar de cenário.
+- Legenda própria do simulador 6 na página, seletor habilitado para idx5, controles de duas cores ocultos no C6 em favor de legenda com A/B/C. Os cenários 1–5 não tiveram geometria alterada.
+- Verificação de sintaxe de JS: 5/5 blocos OK. Validação visual e correspondência A/B/C aos três destinos permanecem pendentes LVR.
+- Rollback pontual: HTML anterior blob `8edf980707ddb7870de078ef3a938c309837b978`. Nenhum merge ou deploy.
