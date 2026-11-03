@@ -28,3 +28,11 @@ Usuário forneceu 23 pontos no JSON `points.pirituba_ayrton_senna`, base `Pranch
 
 ## 03/11/2026 — aceite visual do ajuste parcial do cenário 4
 O usuário confirmou após testar no LVR: **“ok funcionou!!!”**. Considera-se validada visualmente a correção parcial do trajeto **Pirituba → Ayrton Senna** implementada no commit `b63a39b8b70b8124ad96bfcf2abe918acef493f6`. O aceite não implica autorização para merge, deploy ou remoção dos calibradores. Preservar rota Piqueri, guias Marginal e cenário 5.
+
+## 03/11/2026 — experimento de prancha visual comum nos cenários 2 e 3
+Autorização: “o que estou percebendo aqui é que podemos deixar a mesma prancha para o trajeto 2 e 3 também, vamos tentar?”. Branch `feat/complexo-prancha5-marginal-pirituba-20261103`.
+- Cenário 2 `duplo-ayrton/index.html`: imagem primária passa a `Prancha5_Mapa_Aprovado_Tiete_Escola_Mercado_Drogaria.webp` (commit `1cd1a908fcf75391e7d5b0a24ea3b6ee654fa51a`; rollback blob anterior `db01ac9e374245db3197ef2b5a6430e06bc54d1c`). Os paths continuam no conjunto SVG editorial existente 1500×1049, sem reescrever rotas.
+- Cenário 3 `marginal-duplo/index.html`: imagem primária passa ao mesmo WebP (commit `73ad5231c61730a33d0c5b7d2264ed1967cb3a7f`, diagnóstico `LVR-MAPA-COMUM-C3-V1` adicionado em `7cebf622be2c8335fb9bbfaccaf61fabd54f4d60`; rollback blob original `c8fd0091ad7b52b2831406390445591ed58c6d94`). Os paths seguem no JSON editorial atual.
+- Diagnóstico cenário 2: `LVR-MAPA-COMUM-C2-V1`.
+- Scripts dos dois arquivos verificados sintaticamente 3/3 cada. Cenários 4 e 5 e suas calibrações, 33 pontos e imagens não alterados.
+- **PENDENTE:** validação visual em SFJM/LVR dos trajetos e veículos sobre a nova arte; dimensões 1500×1049 iguais não garantem alinhamento cartográfico. Sem merge, sem deploy. Restaurar blobs originais de cada arquivo para rollback pontual, sem afetar os demais cenários.
