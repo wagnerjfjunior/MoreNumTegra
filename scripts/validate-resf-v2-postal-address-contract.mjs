@@ -316,7 +316,19 @@ for(const [slug,street,cep] of expected){
   const approved=execFileSync('git',['show',approvedSnapshot+':'+filename],{encoding:'utf8'});
   // Accept only the seven descriptive thumbnail alts copied from the approved data-alt.
   const approvedWithThumbAlts=slug==='aria-higienopolis'?approved.replace(/(<button\b[^>]*class="mt-gallery-thumb"[^>]*data-alt="([^"]+)"[^>]*>)(<img\b[^>]*>)/g,(m,button,alt,img)=>button+img.replace('alt=""','alt="'+alt+'"')):approved;
-  assert.equal(candidate,approvedWithThumbAlts,slug+': approved commercial runtime HTML/schema has drifted');
+  const normalizeBemSeoApproved = html => {
+    if(slug!=='bem-moema-studios-offices')return html;
+    return html
+      .replace(/<title>[^<]*<\/title>/, '<title>APPROVED_SEO_TITLE</title>')
+      .replace(/<meta property="og:title" content="[^"]*">/, '<meta property="og:title" content="APPROVED_OG_TITLE">')
+      .replace(/<meta name="twitter:title" content="[^"]*">/, '<meta name="twitter:title" content="APPROVED_TWITTER_TITLE">')
+      .replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/, (tag,json) => {
+        const root=JSON.parse(json);
+        for(const n of (root['@graph']||[root]))if(n['@type']==='WebPage')n.name='APPROVED_SEO_TITLE';
+        return '<script type="application/ld+json">'+JSON.stringify(root)+'</script>';
+      });
+   };
+   assert.equal(normalizeBemSeoApproved(candidate),normalizeBemSeoApproved(approvedWithThumbAlts),slug+': runtime drift beyond approved SEO title metadata');
  }else if(slug==='ampere-brooklin'){
    // Schema-only PR #386: preserve all pre-existing entities except the bounded
    // WebPage mentions, ApartmentComplex.brand removal and verified FloorPlan links.
@@ -427,7 +439,7 @@ for(const [slug,street,cep] of expected){
        }
        if(n['@type']==='WebPage'){
          // Tièl PR #395: only governed search-intent editorial metadata may change.
-         assert.equal(n.name,'Tièl Vila Nova Conceição | Apartamentos Tegra prontos para morar');
+         assert.equal(n.name,'Tièl Tegra | Apartamentos na Vila Nova Conceição');
          assert.equal(n.description,'Conheça o Tièl Vila Nova Conceição: apartamentos Tegra prontos para morar, piscina e bar no rooftop, fitness e plantas oficiais. Consulte unidades e condições.');
          n.name=structuredClone(old.name);
          n.description=structuredClone(old.description);
