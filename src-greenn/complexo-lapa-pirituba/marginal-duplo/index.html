@@ -149,7 +149,7 @@ function applyRoutes(){
  });
  if(editorialActive){createTraffic()}else{$("trafficLayer").replaceChildren();ambientTraffic=[];}
  ready=true;animationEpoch=performance.now();
- $("status").textContent="Animação contínua: 8 carros azuis na rota azul, 8 laranjas na rota laranja e 16 veículos pretos/vermelhos/cinzas na Marginal Tietê.";
+ $("status").textContent="LVR-MAPA-COMUM-C3-V1 | 8 carros azuis, 8 laranjas, 16 neutros na Marginal. Conferir alinhamento SVG.";
  startLoop();
 }
 function refreshMap(){
