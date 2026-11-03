@@ -38,6 +38,8 @@ jobs:
           else
             echo 'No HTML pages changed.'
           fi
+      - name: Enforce Rio RESF exact-project standard
+        run: node scripts/validate-resf-rio.mjs
       - name: Manual workflow execution
         if: github.event_name == 'workflow_dispatch'
         shell: bash
