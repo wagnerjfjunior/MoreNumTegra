@@ -16,6 +16,11 @@ for(const [mode,viewport] of Object.entries({mobile:{width:390,height:844},deskt
    await page.goto(url,{waitUntil:"domcontentloaded",timeout:30000});
    await page.locator(".hero .hero-content h1").waitFor({state:"visible",timeout:10000});
    await page.waitForTimeout(700);
+   const loaded=await page.locator(".hero-poster").evaluate(img=>Promise.race([
+     img.decode().then(()=>img.naturalWidth>0).catch(()=>false),
+     new Promise(resolve=>setTimeout(()=>resolve(false),10000))
+   ]));
+   if(!loaded)throw Error("hero image did not load in browser; verify media source and hotlink policy");
    const x=await page.evaluate(()=>{
     const hero=document.querySelector(".hero"),facts=document.querySelectorAll(".facts .fact"),h1=document.querySelector(".hero-content h1");
     const r=f=>{const x=f.getBoundingClientRect();return {x:Math.round(x.x),y:Math.round(x.y),width:Math.round(x.width),height:Math.round(x.height)}};
