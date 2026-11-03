@@ -36,3 +36,18 @@ Autorização: “o que estou percebendo aqui é que podemos deixar a mesma pran
 - Diagnóstico cenário 2: `LVR-MAPA-COMUM-C2-V1`.
 - Scripts dos dois arquivos verificados sintaticamente 3/3 cada. Cenários 4 e 5 e suas calibrações, 33 pontos e imagens não alterados.
 - **PENDENTE:** validação visual em SFJM/LVR dos trajetos e veículos sobre a nova arte; dimensões 1500×1049 iguais não garantem alinhamento cartográfico. Sem merge, sem deploy. Restaurar blobs originais de cada arquivo para rollback pontual, sem afetar os demais cenários.
+
+## 03/11/2026 — branch de unificação REAL criada e testável no LVR
+Usuário pediu branch específica `feat/complexo-unificacao-pranchas-2-3-4-5-20261103`; houve falha inicial de LVR `unknown revision origin/feat/complexo-unificacao-pranchas-2-3-4-5-20261103` porque o nome foi indicado antes de a branch existir. A branch foi criada de fato no GitHub a partir de `feat/complexo-prancha5-marginal-pirituba-20261103` e `fetch_file` confirmou existência.
+
+Escopo aplicado:
+- Cenários 2, 3, 4 e 5: mesmo WebP aprovado da escola/mercado/farmácia (C2/C3 herdaram alterações da branch origem; C4/C5 já usavam).
+- Tráfego da Marginal Tietê nos cenários 2 e 3: paths **idênticos** ao cenário 4 (14 pontos via superior, 17 via inferior, ambas no viewBox 1500×1049), 8 carros por sentido, cores neutras, modelo 10×20 com uma janela e ciclos 19000ms/22200ms (commits C2 `bd13a6c38e1c295c910163cd4d8fb08587be149f`; C3 `9de23da51c9c0be664dacfd0662c19dc353ac2ff`).
+- Cenário 5: os mesmos guias e 16 veículos ambientes independentes da animação principal roxa; controle adequado de cleanup e requestAnimationFrame. Cenário 4: geometria de Marginal e trajetos intocada.
+- UI: retirada da navegação superior redundante de apenas três botões; seletor único de todos os percursos mantido; legenda de carros e sentidos no painel principal incluindo o cenário 5 roxo; correção do controle roxo `915f5d683807582f0b64fba2cf62c916c8cf699a`.
+- Rodapés dos sub-simuladores 1 e 2: retirados blocos visíveis `Referências da região`, `Controle da circulação`, camadas de paradas, descrições técnicas longas e redundantes. Mantidos internamente controles ocultos necessários ao contrato JavaScript, e legenda concisa por cor/carrinho. Simulador 3: removido texto inferior longo e criada legenda concisa por cor/carrinho.
+- Cena 1: somente limpeza visual do rodapé; mapa, geometria e tráfego inalterados (`388fdbd9b404fd39cd013d7511c5fc60efbd1b8d`).
+- Cenários 4 e 5: editores temporários de calibração mantidos nesta branch para testes/correções, sem remoção antecipada.
+- Sem merge ou deploy. `fetch_file` verificou os quatro HTML alterados na branch, scripts sintaticamente válidos (index 5/5, duplo 3/3, duplo-ayrton 3/3, marginal-duplo 3/3), guias compartilhadas presentes nos arquivos C2, C3 e index.
+- **PENDENTE:** verificação visual e responsiva SFJM/LVR pelo usuário, especialmente alinhamento das rotas C2/C3 sobre a arte comum e posições de tráfego ambiente. A validação estática não equivale a homologação visual.
+- Rollback por arquivo: index antes de unificação blob `da182f8c377007b3b9746f21d190849eb000051e`; duplo antes de limpeza `6e983acd72906db55dfa3c87597825145ddae95b`; duplo-ayrton antes de mudanças `87328ea786e4ce4981cc10251432658d8a4508eb`; marginal-duplo antes de mudanças `b16eea44efd984a46ff65d3fbe3ed94eb3f480bf`. A branch origem continua intacta.
