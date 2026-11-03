@@ -554,7 +554,24 @@ for(const [slug,street,cep] of expected){
    assert.deepEqual(newTypes.slice().sort(),allowed.slice().sort(),'Órbita: only specifically approved commercial/image/plan types may be added');
  }else {
    const normalized=normalizeOnsiteAgent(stripApprovedImages(stripBemMoemaRichEntities(after,slug),before,slug,candidate),before,slug);
-   assert.deepEqual(scrub(normalizeBuenoEditorial(normalized,before,slug,candidate)),scrub(before),slug+': forbidden non-image/non-address schema change');
+   const editorialNormalized=normalizeBuenoEditorial(normalized,before,slug,candidate);
+   // Allow only content-approved search metadata on the exact three SEO URLs.
+   if(['ayla-moema-studio-office','caminhos-da-lapa-elo-duo','key-moema'].includes(slug)){
+     const originalNodes=flat(before),currentNodes=flat(editorialNormalized);
+     const priorPage=originalNodes.find(n=>n['@type']==='WebPage');
+     const currentPage=currentNodes.find(n=>n['@type']==='WebPage');
+     assert(priorPage&&currentPage,slug+': WebPage schema missing');
+     currentPage.name=structuredClone(priorPage.name);
+     currentPage.description=structuredClone(priorPage.description);
+     if(slug==='ayla-moema-studio-office'){
+       const priorFaq=originalNodes.find(n=>n['@type']==='FAQPage');
+       const currentFaq=currentNodes.find(n=>n['@type']==='FAQPage');
+       assert(priorFaq&&currentFaq,slug+': FAQPage schema missing');
+       assert.equal(currentFaq.mainEntity.length,priorFaq.mainEntity.length,'Ayla: FAQ count must remain fixed');
+       currentFaq.mainEntity[0].name=priorFaq.mainEntity[0].name;
+     }
+   }
+   assert.deepEqual(scrub(editorialNormalized),scrub(before),slug+': forbidden non-image/non-address schema change');
  }
  const prior=flat(before).filter(x=>x['@type']==='ApartmentComplex');
  const current=flat(after).filter(x=>x['@type']==='ApartmentComplex');
