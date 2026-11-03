@@ -40,7 +40,7 @@ Na execução do commit `0c3c1c2f29aed33576892bae62e4f39800003814`:
 - Gate Tièl RESF V1: **SUCCESS** após normalização estritamente editorial.
 - Gate RESF V2 endereço postal: **SUCCESS** após permitir apenas metadados editoriais aprovados no Ampère, Bem Moema, Tièl, Ayla, Key e Elo Duo, com demais invariantes preservadas.
 - Gate GTM Elo: **SUCCESS** no commit `d57df37c36d135368e02a4f853ad146ce774ad83`, após atualizar o smoke de ordem de `default_consent` e `gtm.js` para refletir a `main` existente, mantendo checagem de carregamento tardio, requests únicos e consentimento. Nenhum código de execução do Elo foi modificado para isso.
-- Na consulta ao commit `d57df37c36d135368e02a4f853ad146ce774ad83`: **21 workflows SUCCESS, zero falhas finalizadas e 1 pendente** (`M5-06 CTA/Form journey`). Resultados são específicos desse commit; commits documentais posteriores requerem verificação nova se forem usados para aceite.
+- Verificação final do commit `d57df37c36d135368e02a4f853ad146ce774ad83`: **22/22 workflows SUCCESS, zero falhas e zero pendências** (incluindo `M5-06 CTA/Form journey` e `M5-07 Lead semantics`). Resultado certificado neste commit; commits documentais posteriores devem ser conferidos novamente para aceite.
 - FAQ Ayla: pergunta estruturada alinhada ao texto visível.
 - FAQ DSG: permanece dependente de renderização JS; não declarado conforme.
 - As evidências anteriores de falha GTM registradas acima são históricas e foram superadas pela correção do teste, não pela mudança do runtime.
