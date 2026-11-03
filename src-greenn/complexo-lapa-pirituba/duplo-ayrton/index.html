@@ -5,7 +5,7 @@
 <meta name="description" content="Visualização experimental dos dois sentidos do projeto viário, com carros animados e mapa responsivo. Fonte SPObras 2019.">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="shortcut icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <style>
-:root{--ink:#171813;--gold:#EBB92E;--paper:#f3f1e9;--blue:#137CF1;--orange:#FF5F00}
+:root{--ink:#171813;--gold:#EBB92E;--paper:#f3f1e9;--blue:#36B86B;--orange:#16834A}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
 a{color:inherit}.wrap{width:min(1150px,calc(100% - 32px));margin:auto}
 header{background:#171813;color:#fff;padding:10px 0}.nav{display:flex;align-items:center;gap:13px}.nav img{width:54px;height:44px;object-fit:contain}.nav a{text-decoration:none;font-weight:700}.nav .back{margin-left:auto;font-size:14px;color:#ddd}
@@ -60,7 +60,7 @@ html.embedded .mapbar{padding:9px 12px}
 .map-legend{display:flex;gap:14px;flex-wrap:wrap;align-items:center;padding:11px 15px;background:#fbfaf6;border-top:1px solid #e7e4da;font-size:12px;font-weight:750;color:#46515a}
 .map-legend .legenditem{display:inline-flex;align-items:center;gap:7px}
 .map-legend .legendline{display:block;width:32px;height:5px;border-radius:4px}
-.map-legend .legendline.orange{background:#FF5F00}.map-legend .legendline.blue{background:#137CF1}
+.map-legend .legendline.orange{background:#16834A}.map-legend .legendline.blue{background:#36B86B}
 @media(max-width:520px){.map-keys{gap:6px;padding:10px}.map-keys .chip{font-size:11px;padding:4px 8px}.map-legend{gap:8px;padding:10px;font-size:11px}}
 
 /* Camada independente e não georreferenciada: paradas previstas na prancha SPObras. */
@@ -86,8 +86,8 @@ html.embedded .mapbar{padding:9px 12px}
 <img src="/src-greenn/complexo-lapa-pirituba/assets/Prancha5_Mapa_Aprovado_Tiete_Escola_Mercado_Drogaria.webp" id="mapImage" width="1500" height="1049" alt="Mapa ilustrado para homologação da rota Ayrton Senna: badges Ponte Lapa-Pirituba, Avenida Raimundo Pereira de Magalhães e Tietê Plaza Shopping">
 <svg id="svgmap" viewBox="0 0 1200 849" preserveAspectRatio="none" aria-hidden="true">
 <g id="trafficLayer"></g>
-<g id="orangeRoute"><path id="orangeHalo" class="route-halo"/><path id="orangePath" class="route-line orange"/><g id="orangeCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#FF5F00"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
-<g id="blueRoute"><path id="blueHalo" class="route-halo"/><path id="bluePath" class="route-line blue"/><g id="blueCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#137CF1"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
+<g id="orangeRoute"><path id="orangeHalo" class="route-halo"/><path id="orangePath" class="route-line orange"/><g id="orangeCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#16834A"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
+<g id="blueRoute"><path id="blueHalo" class="route-halo"/><path id="bluePath" class="route-line blue"/><g id="blueCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#36B86B"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
 </svg>
 </div>
 <div id="stopLayer" class="stop-layer" role="note" aria-label="Camada de paradas de ônibus previstas no projeto" hidden hidden>
@@ -99,7 +99,7 @@ html.embedded .mapbar{padding:9px 12px}
 <p class="stop-note">Camada informativa, sem pinos geográficos: as posições exatas não foram transpostas da prancha do binário para esta base.</p>
 </div>
 
-</div><div class="map-legend" aria-label="Sentidos do trajeto"><strong>Sentidos do trajeto</strong><span class="legenditem"><svg width="24" height="37" viewBox="0 0 20 36" aria-hidden="true"><rect width="20" height="36" rx="7" fill="#FF5F00"/><rect x="3" y="7" width="14" height="8" rx="2" fill="#e7f4fb"/><rect x="3" y="23" width="14" height="7" rx="2" fill="#e7f4fb"/></svg><span>Ayrton Senna → Pirituba</span></span><span class="legenditem"><svg width="24" height="37" viewBox="0 0 20 36" aria-hidden="true"><rect width="20" height="36" rx="7" fill="#137CF1"/><rect x="3" y="7" width="14" height="8" rx="2" fill="#e7f4fb"/><rect x="3" y="23" width="14" height="7" rx="2" fill="#e7f4fb"/></svg><span>Ayrton Senna → Lapa</span></span></div></div><div hidden aria-hidden="true"><input id="showOrange" type="checkbox" checked><input id="showBlue" type="checkbox" checked><input id="showStops" type="checkbox"></div><p id="status" role="status" aria-live="polite" class="mini" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap">Carregando trajetos...</p></div></main>
+</div><div class="map-legend" aria-label="Sentidos do trajeto"><strong>Sentidos do trajeto</strong><span class="legenditem"><svg width="24" height="37" viewBox="0 0 20 36" aria-hidden="true"><rect width="20" height="36" rx="7" fill="#16834A"/><rect x="3" y="7" width="14" height="8" rx="2" fill="#e7f4fb"/><rect x="3" y="23" width="14" height="7" rx="2" fill="#e7f4fb"/></svg><span>Ayrton Senna → Pirituba</span></span><span class="legenditem"><svg width="24" height="37" viewBox="0 0 20 36" aria-hidden="true"><rect width="20" height="36" rx="7" fill="#36B86B"/><rect x="3" y="7" width="14" height="8" rx="2" fill="#e7f4fb"/><rect x="3" y="23" width="14" height="7" rx="2" fill="#e7f4fb"/></svg><span>Ayrton Senna → Lapa</span></span></div></div><div hidden aria-hidden="true"><input id="showOrange" type="checkbox" checked><input id="showBlue" type="checkbox" checked><input id="showStops" type="checkbox"></div><p id="status" role="status" aria-live="polite" class="mini" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap">Carregando trajetos...</p></div></main>
 <script>
 "use strict";
 const root="/src-greenn/complexo-lapa-pirituba/";
