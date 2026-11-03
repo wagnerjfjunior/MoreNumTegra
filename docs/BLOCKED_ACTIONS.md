@@ -1,3 +1,9 @@
+## 03/11/2026 — Restrições da branch unificada C2–C6
+
+**Sem autorização de merge/deploy/publicação:** branch `feat/complexo-unificacao-pranchas-2-3-4-5-20261103`. **Bloqueado**: alterar/desenhar de novo paths aprovados em C1–C5, inventar destino de A/B/C em C6, ligar os três paths C6 entre si, recriar a capa com cards antigos, remover editores SVG sem plano de release, trocar cores por destino e não por origem, afetar o formulário Greenn/CRM/SEO/campanhas. Handoff integral obrigatório em `docs/sfjm/MNT_COMPLEXO_DOSSIE_INTEGRAL_HANDOFF_2026-11-03.md`. **Atenção:** cor correta C3 ainda exige auditoria de código; o C6 3 tons mais recente exige homologação LVR.
+
+---
+
 ## 02/11/2026 — Substituição do bloqueio histórico de merge da PR #528
 
 - **Autorização nova:** o usuário solicitou expressamente merge e produção. PR #528 já **MERGED**, Vercel production READY. Portanto o bloqueio histórico desta PR enquanto Draft foi superado somente para esta release.
