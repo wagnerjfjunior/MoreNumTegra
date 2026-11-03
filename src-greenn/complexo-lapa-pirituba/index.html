@@ -195,7 +195,7 @@ body{background:#0b1827;color:#f1f5f9}main{max-width:1320px}.sitebar{background:
 <label class="ux-dir ux-orange"><input type="checkbox" id="uxOrange" checked><span class="ux-car" aria-label="Carro laranja"><svg class="ux-car-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 40" aria-hidden="true" focusable="false"><path d="M10 12h8l6-8h20l8 8h4a5 5 0 0 1 5 5v13H3V17a5 5 0 0 1 5-5z" fill="#f28b22" stroke="#081626" stroke-width="3" stroke-linejoin="round"/><path d="M27 9h14l5 7H22z" fill="#d8f1fa" stroke="#081626" stroke-width="2"/><circle cx="17" cy="30" r="7" fill="#121b28" stroke="#d9e4ec" stroke-width="2"/><circle cx="48" cy="30" r="7" fill="#121b28" stroke="#d9e4ec" stroke-width="2"/><circle cx="17" cy="30" r="2" fill="#9eabb7"/><circle cx="48" cy="30" r="2" fill="#9eabb7"/></svg></span><span id="uxOrangeName">Lapa → Pirituba</span></label>
 </div><div class="ux-instructions" aria-label="Como usar o mapa"><span>☝ <strong>1 dedo</strong> · mover mapa ampliado</span><span>🤏 <strong>2 dedos</strong> · aumentar ou diminuir zoom</span></div><label for="route">Percursos do projeto</label><select id="route"></select><h3 id="name"></h3><p id="counter"></p><div class="actions"><button id="prev" class="secondary">Anterior</button><button id="next">Próximo</button><button id="play" disabled aria-pressed="false">Reproduzir percurso</button></div><aside class="ux-ad" aria-label="Espaço publicitário"><span>ESPAÇO PUBLICITÁRIO</span><strong>Divulgação regional</strong><p>Área preparada para imagem, campanha, link e chamada de ação. Conteúdo publicitário identificado.</p></aside><p class="status" id="status" role="status" aria-live="polite">Selecione um percurso.</p></div>
 <div class="map"><div id="originalMap" class="original-map"><div class="maphead"><strong id="maptitle"></strong><small id="page"></small></div><div class="canvas" id="canvas"><img id="mapimg" alt="" width="1200" height="849" hidden><div id="missingMap" class="missing-map"><strong>Mapa técnico ainda não incorporado ao GitHub</strong><p>O documento original contém este percurso. A imagem e sua animação ficarão disponíveis após migração e conferência no LVR.</p></div><svg id="overlay" viewBox="0 0 1200 849" preserveAspectRatio="none" aria-hidden="true"><path id="base" class="route-base"></path><path id="flow" class="route-flow"></path><path id="progress" class="route-progress"></path><circle id="marker" class="marker" r="8" cx="-100" cy="-100"></circle><g id="piqueriCars" aria-hidden="true"></g><path id="route26paired" class="route-flow" style="stroke:#4BA3FA;fill:none;stroke-width:5;stroke-dasharray:13 9" aria-hidden="true"></path><g id="piqueriCarsSecondary" aria-hidden="true"></g><g id="marginalAmbient" aria-hidden="true"></g><g id="c5CalPoints"></g></svg></div><div id="c5CalPanel" hidden style="background:#10263b;color:white;padding:12px;display:none;gap:8px">
- <strong>Editor SVG — cenário 5: Marginal Pinheiros → Pirituba (LVR)</strong><span style="font-size:12px">Diagnóstico: LVR-C5-EDITOR-V2</span>
+ <strong>Editor SVG — cenário 5: Marginal Pinheiros → Pirituba (LVR)</strong><span style="font-size:12px">Diagnóstico: LVR-C5-MAPA-APROVADO-V3</span>
  <span style="font-size:12px">Clique no centro da pista, começando na Marginal Pinheiros e terminando em Pirituba. Imagem compartilhada da prancha 4, coordenadas 1500 × 1049.</span>
  <div style="display:flex;gap:7px;flex-wrap:wrap">
  <button id="c5CalToggle" type="button">Iniciar marcação</button>
@@ -222,8 +222,14 @@ let mapErrorLog=[];
 function setMapImage(page){
  const root="/src-greenn/complexo-lapa-pirituba/assets/";
  const webp="Mapa_Figura2_Pirituba_Piqueri_Ayrton_Senna.webp";
+ const c5Webp="Prancha5_Mapa_Aprovado_Tiete_Escola_Mercado_Drogaria.webp";
  const jpg="rota-"+page+".jpg";
- mapCandidates=(page===25||page===27)?[
+ mapCandidates=page===27?[
+  root+c5Webp+"?v=d9e38498",
+  "/complexo-lapa-pirituba/assets/"+c5Webp+"?v=d9e38498",
+  root+webp+"?v="+MAP_WEBP_VERSION,
+  root+jpg
+ ]:page===25?[
   root+webp+"?v="+MAP_WEBP_VERSION,
   "/complexo-lapa-pirituba/assets/"+webp+"?v="+MAP_WEBP_VERSION,
   "https://raw.githubusercontent.com/wagnerjfjunior/MoreNumTegra/main/src-greenn/complexo-lapa-pirituba/assets/"+webp,
@@ -234,8 +240,8 @@ function setMapImage(page){
 mapImg.addEventListener("load",()=>{
  mapImg.hidden=false;$("missingMap").hidden=true;$("overlay").hidden=false;
  if(idx===4){
-  const isWebp=mapImg.currentSrc.includes(".webp");
-  $("status").textContent="LVR-C5-EDITOR-V2 | "+(isWebp?"Figura 2 WEBP OK":"Fallback JPG: revise a origem WEBP")+" | "+mapImg.naturalWidth+"x"+mapImg.naturalHeight;
+  const correct=mapImg.currentSrc.includes("Prancha5_Mapa_Aprovado_Tiete_Escola_Mercado_Drogaria.webp");
+  $("status").textContent="LVR-C5-MAPA-APROVADO-V3 | "+(correct?"Novo WEBP carregado":"ATENÇÃO: imagem de fallback, não calibrar")+" | "+mapImg.naturalWidth+"x"+mapImg.naturalHeight;
  }
  if(idx===3){
   const usingWebp=mapImg.currentSrc.includes(".webp");
@@ -286,7 +292,7 @@ function startPiqueriCars(){
 }
 function toggle(){if($("play").disabled)return;if(!paused){halt();return;}paused=false;start=performance.now();$("play").textContent="Pausar animação";$("play").setAttribute("aria-pressed","true");frame=requestAnimationFrame(tick);}
 function destinationColor(name){if(name==="Pirituba → Piqueri / Ayrton Senna")return "#137CF1";const destination=name.split("→").pop().trim();if(destination==="Pirituba")return "#FF5F00";if(destination==="Lapa")return "#137CF1";if(destination==="Marginal Pinheiros")return "#089ACA";return "#089ACA";}
-function render(n){halt();clearPiqueriCars();idx=(n+routePages.length)%routePages.length;routeSelect.value=idx;const page=routePages[idx],route=routeNames[idx],entry=verified[String(page)];const dual=(idx===0),ayrton=(idx===1),marginalDual=(idx===2),simulator=dual||ayrton||marginalDual;$("dualEmbed").hidden=!dual;$("ayrtonEmbed").hidden=!ayrton;$("marginalDualEmbed").hidden=!marginalDual;$("originalMap").hidden=simulator;$("play").hidden=simulator;$("name").textContent=route;$("maptitle").textContent=route;$("counter").textContent="Percurso "+(idx+1)+" de "+routePages.length;$("page").textContent="Página "+page+" do PDF";if(simulator){$("status").textContent=marginalDual?"Prancha 23: Lapa (azul) e Pirituba (laranja) → Marginal Pinheiros, dois carrinhos e um mapa. Visualização ilustrativa sem vínculo com o trânsito real.":ayrton?"Ayrton Senna → Pirituba e Ayrton Senna → Lapa: dois trajetos simultâneos em um mapa.":"Simulador duplo Lapa ↔ Pirituba: dois trajetos simultâneos e veículos animados.";return;}mapImg.hidden=true;$("missingMap").hidden=false;$("overlay").hidden=true;$("missingMap").querySelector("strong").textContent="Carregando mapa oficial…";setMapImage(page);$("mapimg").alt=idx===4?"Mapa ilustrado do Complexo Lapa–Pirituba compartilhado com a prancha 4, para calibração da rota Marginal Pinheiros a Pirituba":"Mapa oficial do trajeto "+route+" (página "+page+")";const candidate=Boolean(entry?.d&&entry?.viewBox);const ok=candidate;
+function render(n){halt();clearPiqueriCars();idx=(n+routePages.length)%routePages.length;routeSelect.value=idx;const page=routePages[idx],route=routeNames[idx],entry=verified[String(page)];const dual=(idx===0),ayrton=(idx===1),marginalDual=(idx===2),simulator=dual||ayrton||marginalDual;$("dualEmbed").hidden=!dual;$("ayrtonEmbed").hidden=!ayrton;$("marginalDualEmbed").hidden=!marginalDual;$("originalMap").hidden=simulator;$("play").hidden=simulator;$("name").textContent=route;$("maptitle").textContent=route;$("counter").textContent="Percurso "+(idx+1)+" de "+routePages.length;$("page").textContent="Página "+page+" do PDF";if(simulator){$("status").textContent=marginalDual?"Prancha 23: Lapa (azul) e Pirituba (laranja) → Marginal Pinheiros, dois carrinhos e um mapa. Visualização ilustrativa sem vínculo com o trânsito real.":ayrton?"Ayrton Senna → Pirituba e Ayrton Senna → Lapa: dois trajetos simultâneos em um mapa.":"Simulador duplo Lapa ↔ Pirituba: dois trajetos simultâneos e veículos animados.";return;}mapImg.hidden=true;$("missingMap").hidden=false;$("overlay").hidden=true;$("missingMap").querySelector("strong").textContent="Carregando mapa oficial…";setMapImage(page);$("mapimg").alt=idx===4?"Mapa ilustrado definitivo da prancha 5, com Escola Alexandre Von Humboldt, Pão de Açúcar e Drogasil, para calibração Marginal Pinheiros a Pirituba":"Mapa oficial do trajeto "+route+" (página "+page+")";const candidate=Boolean(entry?.d&&entry?.viewBox);const ok=candidate;
 const c4=idx===3&&ok;
 if(idx===4){
  $("play").disabled=true;
@@ -369,7 +375,7 @@ function refresh(){panel.hidden=!enabled();panel.style.display=enabled()?"grid":
 toggle.addEventListener("click",()=>{active=!active;refresh();});
 document.getElementById("c5CalUndo").addEventListener("click",()=>{points.pop();paint();});
 document.getElementById("c5CalClear").addEventListener("click",()=>{points=[];paint();});
-document.getElementById("c5CalCopy").addEventListener("click",async()=>{const data=JSON.stringify({base:"Mapa_Figura2_Pirituba_Piqueri_Ayrton_Senna.webp",viewBox:"0 0 1500 1049",points:{marginal_pinheiros_pirituba:points}},null,2);try{await navigator.clipboard.writeText(data);info.textContent="Coordenadas copiadas: envie o JSON no chat.";}catch{info.textContent=data;}});
+document.getElementById("c5CalCopy").addEventListener("click",async()=>{const data=JSON.stringify({base:"Prancha5_Mapa_Aprovado_Tiete_Escola_Mercado_Drogaria.webp",viewBox:"0 0 1500 1049",points:{marginal_pinheiros_pirituba:points}},null,2);try{await navigator.clipboard.writeText(data);info.textContent="Coordenadas copiadas: envie o JSON no chat.";}catch{info.textContent=data;}});
 overlay.addEventListener("pointerdown",e=>{if(!active||!enabled())return;e.preventDefault();e.stopImmediatePropagation();const pt=overlay.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;const matrix=overlay.getScreenCTM();if(!matrix)return;const p=pt.matrixTransform(matrix.inverse());points.push([Math.round(p.x),Math.round(p.y)]);paint();},true);
 route.addEventListener("change",()=>requestAnimationFrame(refresh));document.getElementById("prev").addEventListener("click",()=>requestAnimationFrame(refresh));document.getElementById("next").addEventListener("click",()=>requestAnimationFrame(refresh));refresh();
 })();
