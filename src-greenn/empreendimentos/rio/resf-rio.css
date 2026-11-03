@@ -88,3 +88,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 @media(max-width:680px){.wrap{width:calc(100% - 32px)}.topbar{padding:8px 0}.topbar img{width:88px;height:55px}.topbar nav a:not(:last-child){display:none}.hero-content{padding:145px 0 50px}.hero-content h1{font-size:clamp(2.65rem,12vw,4.4rem)}.hero-content>p:not(.eyebrow){font-size:1rem}.hero-content .actions{display:grid;grid-template-columns:1fr}.hero-content .actions .button{width:100%;min-height:52px}.section h2{font-size:clamp(2.4rem,9vw,3.6rem)}.featurelist{grid-template-columns:1fr}.photo{margin-top:24px}.phone{grid-template-columns:1fr}.dock{left:12px;right:12px;display:grid;grid-template-columns:minmax(0,1fr) 54px}.dock .button{width:100%;padding:10px}.bread{font-size:.72rem}}
 @media(max-width:380px){.hero-content h1{font-size:2.5rem}.fact strong{font-size:1.12rem}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+
+
+/* Touch/keyboard accessible gallery, sourced from existing project images. */
+.rio-gallery{position:relative;max-width:100%;margin-top:28px}
+.rio-gallery-controls{display:flex;align-items:center;justify-content:flex-end;gap:12px;margin-bottom:12px}
+.gallery-arrow{border:1px solid #171813;background:#171813;color:#fff;padding:11px 18px;cursor:pointer;min-height:44px;font-size:.8rem;font-weight:800}
+.gallery-arrow:disabled{opacity:.38;cursor:not-allowed}
+.rio-gallery-status{min-width:45px;text-align:center;font-variant-numeric:tabular-nums;font-size:.8rem;color:#393834}
+.rio-gallery-track{position:relative;display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;outline-offset:6px}
+.rio-gallery-slide{flex:0 0 100%;min-width:0;margin:0;scroll-snap-align:start;scroll-snap-stop:always}
+.rio-gallery-slide img{width:100%;height:clamp(300px,52vw,690px);object-fit:cover}
+.rio-gallery-slide figcaption{min-height:60px}
+@media(max-width:680px){.gallery-arrow{padding:10px 14px}.rio-gallery-slide img{height:320px;object-fit:cover}}
