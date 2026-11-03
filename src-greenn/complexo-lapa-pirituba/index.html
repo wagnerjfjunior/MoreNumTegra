@@ -230,9 +230,10 @@ function setMapImage(page){
   root+webp+"?v="+MAP_WEBP_VERSION,
   root+jpg
  ]:page===25?[
+  root+c5Webp+"?v=d9e38498",
+  "/complexo-lapa-pirituba/assets/"+c5Webp+"?v=d9e38498",
   root+webp+"?v="+MAP_WEBP_VERSION,
   "/complexo-lapa-pirituba/assets/"+webp+"?v="+MAP_WEBP_VERSION,
-  "https://raw.githubusercontent.com/wagnerjfjunior/MoreNumTegra/main/src-greenn/complexo-lapa-pirituba/assets/"+webp,
   root+jpg
  ]:[root+jpg,"/complexo-lapa-pirituba/assets/"+jpg];
  mapAttempt=0;mapErrorLog=[];mapImg.src=mapCandidates[0];
@@ -244,8 +245,8 @@ mapImg.addEventListener("load",()=>{
   $("status").textContent="LVR-C5-MAPA-APROVADO-V3 | "+(correct?"Novo WEBP carregado":"ATENÇÃO: imagem de fallback, não calibrar")+" | "+mapImg.naturalWidth+"x"+mapImg.naturalHeight;
  }
  if(idx===3){
-  const usingWebp=mapImg.currentSrc.includes(".webp");
-  $("status").textContent="LVR-C4-WEBP-TEST-F | "+(usingWebp?"WEBP OK":"WEBP FALHOU - fallback JPG")+" | "+mapImg.naturalWidth+"x"+mapImg.naturalHeight+" | "+mapImg.currentSrc.split("/").pop()+(usingWebp?"":" | falhas: "+mapErrorLog.join(", "));
+  const usingNewMap=mapImg.currentSrc.includes("Prancha5_Mapa_Aprovado_Tiete_Escola_Mercado_Drogaria.webp");
+  $("status").textContent="LVR-C4-C5-MAPA-COMUM-V4 | "+(usingNewMap?"Novo mapa carregado — conferir alinhamento dos 110 pontos":"Mapa de fallback carregado — verificar arquivo")+" | "+mapImg.naturalWidth+"x"+mapImg.naturalHeight;
  }
 });
 mapImg.addEventListener("error",()=>{
@@ -292,7 +293,7 @@ function startPiqueriCars(){
 }
 function toggle(){if($("play").disabled)return;if(!paused){halt();return;}paused=false;start=performance.now();$("play").textContent="Pausar animação";$("play").setAttribute("aria-pressed","true");frame=requestAnimationFrame(tick);}
 function destinationColor(name){if(name==="Pirituba → Piqueri / Ayrton Senna")return "#137CF1";const destination=name.split("→").pop().trim();if(destination==="Pirituba")return "#FF5F00";if(destination==="Lapa")return "#137CF1";if(destination==="Marginal Pinheiros")return "#089ACA";return "#089ACA";}
-function render(n){halt();clearPiqueriCars();idx=(n+routePages.length)%routePages.length;routeSelect.value=idx;const page=routePages[idx],route=routeNames[idx],entry=verified[String(page)];const dual=(idx===0),ayrton=(idx===1),marginalDual=(idx===2),simulator=dual||ayrton||marginalDual;$("dualEmbed").hidden=!dual;$("ayrtonEmbed").hidden=!ayrton;$("marginalDualEmbed").hidden=!marginalDual;$("originalMap").hidden=simulator;$("play").hidden=simulator;$("name").textContent=route;$("maptitle").textContent=route;$("counter").textContent="Percurso "+(idx+1)+" de "+routePages.length;$("page").textContent="Página "+page+" do PDF";if(simulator){$("status").textContent=marginalDual?"Prancha 23: Lapa (azul) e Pirituba (laranja) → Marginal Pinheiros, dois carrinhos e um mapa. Visualização ilustrativa sem vínculo com o trânsito real.":ayrton?"Ayrton Senna → Pirituba e Ayrton Senna → Lapa: dois trajetos simultâneos em um mapa.":"Simulador duplo Lapa ↔ Pirituba: dois trajetos simultâneos e veículos animados.";return;}mapImg.hidden=true;$("missingMap").hidden=false;$("overlay").hidden=true;$("missingMap").querySelector("strong").textContent="Carregando mapa oficial…";setMapImage(page);$("mapimg").alt=idx===4?"Mapa ilustrado definitivo da prancha 5, com Escola Alexandre Von Humboldt, Pão de Açúcar e Drogasil, para calibração Marginal Pinheiros a Pirituba":"Mapa oficial do trajeto "+route+" (página "+page+")";const candidate=Boolean(entry?.d&&entry?.viewBox);const ok=candidate;
+function render(n){halt();clearPiqueriCars();idx=(n+routePages.length)%routePages.length;routeSelect.value=idx;const page=routePages[idx],route=routeNames[idx],entry=verified[String(page)];const dual=(idx===0),ayrton=(idx===1),marginalDual=(idx===2),simulator=dual||ayrton||marginalDual;$("dualEmbed").hidden=!dual;$("ayrtonEmbed").hidden=!ayrton;$("marginalDualEmbed").hidden=!marginalDual;$("originalMap").hidden=simulator;$("play").hidden=simulator;$("name").textContent=route;$("maptitle").textContent=route;$("counter").textContent="Percurso "+(idx+1)+" de "+routePages.length;$("page").textContent="Página "+page+" do PDF";if(simulator){$("status").textContent=marginalDual?"Prancha 23: Lapa (azul) e Pirituba (laranja) → Marginal Pinheiros, dois carrinhos e um mapa. Visualização ilustrativa sem vínculo com o trânsito real.":ayrton?"Ayrton Senna → Pirituba e Ayrton Senna → Lapa: dois trajetos simultâneos em um mapa.":"Simulador duplo Lapa ↔ Pirituba: dois trajetos simultâneos e veículos animados.";return;}mapImg.hidden=true;$("missingMap").hidden=false;$("overlay").hidden=true;$("missingMap").querySelector("strong").textContent="Carregando mapa oficial…";setMapImage(page);$("mapimg").alt=idx===4?"Mapa ilustrado definitivo da prancha 5, com Escola Alexandre Von Humboldt, Pão de Açúcar e Drogasil, para calibração Marginal Pinheiros a Pirituba":idx===3?"Mapa ilustrado atualizado do cenário 4, com Escola Alexandre Von Humboldt, Pão de Açúcar e Drogasil, e quatro trajetos animados":"Mapa oficial do trajeto "+route+" (página "+page+")";const candidate=Boolean(entry?.d&&entry?.viewBox);const ok=candidate;
 const c4=idx===3&&ok;
 if(idx===4){
  $("play").disabled=true;
