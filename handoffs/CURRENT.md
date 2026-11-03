@@ -1,3 +1,9 @@
+## 03/11/2026 — C6: correção da legenda duplicada branca, padrão escuro restaurado
+
+Usuário rejeitou a UI duplicada no simulador 6 e comprovou em capturas LVR que a nova caixa branca `c6Legend` havia sido adicionada abaixo da legenda escura original (com 2 carrinhos antigos). Correção funcional `dc556a1936facad039508ee37b2e54de6dcc13c7`: painel branco removido, reutilizada `uxDirections` escura com os 2 controles originais recoloridos/renomeados e um terceiro carro `uxThird` do mesmo formato. C6: A→Marginal Pinheiros `#007985`; B→Ayrton Senna `#00B8C7`; C→Lapa `#B9EDCF`. Cada checkbox alterna grupo SVG correspondente. Badge `Saída dos Condomínios` preservado. 5/5 scripts compilam; **teste visual pós-correção ainda pendente**. Restauração por blob anterior `412620f39f1352f63712c47128dfd672004543ad`. Ler dossiê integral seção 17 em `docs/sfjm/MNT_COMPLEXO_DOSSIE_INTEGRAL_HANDOFF_2026-11-03.md`. Nenhum merge/deploy.
+
+---
+
 ## 03/11/2026 — Complexo C6: 3 controles por destino, badge novo e aceite das cores
 
 Usuário aprovou a diferenciação cromática A `#007985`, B `#00B8C7`, C `#B9EDCF` (“ficou ótimo”) e pediu controles com destinos nomeados, além do badge azul **“Saída dos Condomínios”**. Na branch `feat/complexo-unificacao-pranchas-2-3-4-5-20261103`, commit `8b0dafc365c2af704ff5f097fbd5a00911eeb299`: três controles checkbox independentes com carrinhos coloridos (A → Marginal Pinheiros; B → Ayrton Senna; C → Lapa, conforme ordem informada) e badge azul no canto superior direito. 111 pontos intactos; 16 carros Marginal e 2×8 composições de trem intactos. Validar interação/posição do badge e correspondência visual no LVR antes de release. Estado/história integral em `docs/sfjm/MNT_COMPLEXO_DOSSIE_INTEGRAL_HANDOFF_2026-11-03.md`; diário em `docs/sfjm/MNT_PRANCHA5_REUSO_FIGURA2_2026-11-03.md`. **Sem merge nem deploy desta branch.**
