@@ -94,3 +94,9 @@ Usuário forneceu 111 pares SVG no JSON `retornos_condominios_lapa` em sequênci
 - Legenda própria do simulador 6 na página, seletor habilitado para idx5, controles de duas cores ocultos no C6 em favor de legenda com A/B/C. Os cenários 1–5 não tiveram geometria alterada.
 - Verificação de sintaxe de JS: 5/5 blocos OK. Validação visual e correspondência A/B/C aos três destinos permanecem pendentes LVR.
 - Rollback pontual: HTML anterior blob `8edf980707ddb7870de078ef3a938c309837b978`. Nenhum merge ou deploy.
+
+## 03/11/2026 — aprovação visual do contraste C6; três controles de destino e badge
+- Após reclamação de tons B/C semelhantes, patch de cores `957bf61a838411b5be9ec46f8ddf80722453a6b5` fixou A `#007985`, B `#00B8C7` e C `#B9EDCF`. Usuário confirmou a versão: **“ficou ótimo”**.
+- Pedido seguinte: controles com os textos `Condomínios → Marginal Pinheiros` / `Condomínios → Ayrton Senna` / `Condomínios → Lapa`; badge azul superior direito **“Saída dos Condomínios”**.
+- Implementado no HTML principal commit `8b0dafc365c2af704ff5f097fbd5a00911eeb299`: `c6ToggleA/B/C` ocultam/exibem de forma independente o grupo SVG de cada rota; `c6Badge` exibe o texto solicitado apenas em C6, título do seletor atualizado; 5/5 scripts sintaticamente válidos; **LVR pendente** para nova interação e posicionamento badge. Correspondência aplicada conforme a ordem do usuário: A Marginal Pinheiros, B Ayrton Senna, C Lapa. Sem mudança em 111 coordenadas, oito carros por rota, Marginal 8+8 ou 2 trens de 8 composições.
+- Rollback pontual do patch de controles: blob anterior `331669efc9e22278250adb29b42dd5c7653d0aeb`. Documentação integral: `docs/sfjm/MNT_COMPLEXO_DOSSIE_INTEGRAL_HANDOFF_2026-11-03.md`. Sem merge/deploy.
