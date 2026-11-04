@@ -101,3 +101,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 .rio-gallery-slide img{width:100%;height:clamp(300px,52vw,690px);object-fit:cover}
 .rio-gallery-slide figcaption{min-height:60px}
 @media(max-width:680px){.gallery-arrow{padding:10px 14px}.rio-gallery-slide img{height:320px;object-fit:cover}}
+
+/* RESF Rio — plantas oficiais e implantação, separadas da galeria comercial */
+.rio-plans-section{background:#ebe7df}
+.rio-plans-section .prose{max-width:900px}
+.rio-plans-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin:32px 0}
+.rio-plan{margin:0;background:#fff;min-width:0;border:1px solid rgba(10,10,9,.12)}
+.rio-plan a{display:block;overflow:hidden;background:white}
+.rio-plan img{display:block;width:100%;height:auto;max-height:520px;object-fit:contain}
+.rio-plan figcaption{padding:14px 17px;color:#524e49;font-size:.83rem;line-height:1.5}
+.rio-plans-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;margin-bottom:18px}
+@media(max-width:700px){.rio-plans-grid{grid-template-columns:1fr;gap:18px}.rio-plans-actions{display:grid;grid-template-columns:1fr}.rio-plans-actions .button{width:100%}}
