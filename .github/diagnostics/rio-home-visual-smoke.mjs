@@ -26,6 +26,16 @@ for(const [label,viewport] of Object.entries({mobile:{width:390,height:844},desk
    try{await Promise.race([img.decode(),new Promise((_,reject)=>setTimeout(()=>reject(new Error("timeout")),10000))]);return {ok:img.naturalWidth>0,width:img.naturalWidth};}catch(e){return {ok:false,error:String(e)}}
   });
   assert(image.ok,"Rio panoramic hero image did not load: "+JSON.stringify(image));
+  if(label==="desktop"){
+   const media=await page.locator(".rio-project-media img").evaluateAll(async imgs=>Promise.all(imgs.map(async img=>{
+     img.loading="eager";
+     try{await Promise.race([img.decode(),new Promise((_,reject)=>setTimeout(()=>reject(Error("timeout")),12000))]);return {src:img.currentSrc||img.src,ok:img.naturalWidth>0};}
+     catch(e){return {src:img.currentSrc||img.src,ok:false,error:String(e)}}
+   })));
+   const broken=media.filter(m=>!m.ok);
+   assert.equal(broken.length,0,"project cards must not have broken images: "+JSON.stringify(broken));
+   console.log("PASS seven project card images decoded",media.length);
+  }
   assert.equal(await page.locator("[data-rio-card]:visible").count(),7,"show all projects");
   await page.locator("#rio-busca").fill("Kronos");
   assert.equal(await page.locator("[data-rio-card]:visible").count(),1,"search by name");
