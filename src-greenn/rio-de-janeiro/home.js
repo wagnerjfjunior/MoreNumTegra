@@ -1,0 +1,8 @@
+(()=>{"use strict";
+const root=document.querySelector("[data-rio-home]");if(!root)return;
+const search=root.querySelector("#rio-busca"),stage=root.querySelector("#rio-estagio"),type=root.querySelector("#rio-tipo"),size=root.querySelector("#rio-metragem"),reset=root.querySelector("#rio-limpar"),total=root.querySelector("#rio-total"),empty=root.querySelector("#rio-vazio"),cards=[...root.querySelectorAll("[data-rio-card]")];
+const normalize=v=>String(v??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+function update(){const term=normalize(search?.value.trim()),phase=stage?.value||"",kind=type?.value||"",area=Number(size?.value||0);let visible=0;for(const card of cards){const terms=normalize(card.dataset.search||card.textContent),min=Number(card.dataset.minArea||0),max=Number(card.dataset.maxArea||0);const show=(!term||terms.includes(term))&&(!phase||card.dataset.stage===phase)&&(!kind||card.dataset.kind===kind)&&(!area||(min<=area&&max>=area));card.hidden=!show;if(show)visible++}if(total)total.textContent=visible+" empreendimento"+(visible===1?"":"s")+" encontrado"+(visible===1?"":"s");if(empty)empty.hidden=visible>0}
+[search,stage,type,size].forEach(el=>el?.addEventListener(el===search?"input":"change",update));reset?.addEventListener("click",()=>{if(search)search.value="";if(stage)stage.value="";if(type)type.value="";if(size)size.value="";update();search?.focus()});update();
+for(const link of root.querySelectorAll("[data-rio-interest]")){link.addEventListener("click",()=>{const form=document.querySelector("#moretegra-lead-form"),name=link.dataset.rioInterest;if(!form||!name)return;form.dataset.selectedProject=name;const context=form.querySelector("[data-lead-context]");if(context)context.textContent="Interesse: "+name;})}
+})();
