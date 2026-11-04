@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Cenário 7 — Editor de implantação | SFJM</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif}*{box-sizing:border-box}body{margin:0;background:#101d2b;color:#edf4fb}header,section{padding:14px 16px}h1{font-size:1.12rem;margin:0 0 6px}p{margin:4px 0;font-size:.9rem;color:#c8d5e2}.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#1a3045}.toolbar label{font-weight:650}select,button{font:inherit;min-height:40px;border-radius:7px;border:1px solid #647d94;padding:8px;color:white;background:#203f59}button{cursor:pointer}button:focus-visible,select:focus-visible{outline:3px solid #f0c451}button.primary{background:#EBB92E;color:#19232b;font-weight:750;border:0}button[aria-pressed=true]{background:#177d75}#wrap{padding:10px;background:#101d2b}#map{position:relative;width:100%;max-width:1500px;margin:auto;border:2px solid #637a8e;line-height:0;touch-action:pan-x pan-y}#map img{width:100%;height:auto;display:block}#marks{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}#marks.editing{pointer-events:auto;touch-action:none;cursor:crosshair}#message{min-height:28px}#progress{padding:10px 16px;color:#d7e7f4;font-size:.87rem}#progress ol{margin:8px 0;padding-left:24px;columns:2}#progress li{padding:2px 0}#jsonFallback{width:100%;height:190px;background:#0b1723;color:white;border:1px solid #657487}#jsonFallback[hidden]{display:none!important}.foot{font-size:.78rem;color:#b9c7d4} @media(max-width:640px){#progress ol{columns:1}}
+</style></head><body>
+<header><h1>SFJM · Cenário 7 — marcação editorial dos condomínios</h1>
+<p>Prancha original preservada. Marque o contorno de cada área com pontos sucessivos; NÃO é editor de rotas de carros. Cenários 7 e 8 reunidos para implantação.</p></header>
+<div class="toolbar"><label for="target">Item a marcar</label><select id="target"></select>
+<button id="toggle" class="primary" type="button" aria-pressed="false">Iniciar marcação</button>
+<button id="undo" type="button">Desfazer último ponto</button><button id="clear" type="button">Limpar item selecionado</button>
+<button id="copy" type="button">Copiar JSON completo</button><button id="download" type="button">Baixar JSON</button></div>
+<section><p id="message" role="status" aria-live="polite">Carregando prancha…</p></section>
+<div id="wrap"><div id="map"><img id="base" alt="Prancha ilustrada de Pirituba e lado Lapa, com a malha urbana utilizada para implantação editorial" decoding="async"><svg id="marks" xmlns="http://www.w3.org/2000/svg" aria-label="Marcação SVG editorial"></svg></div></div>
+<div id="progress"><strong>9 marcações independentes</strong><ol id="summary"></ol>
+<p class="foot">Marque o perímetro de cada lote/edificação, sem inventar geometrias. Para as torres em L ou o conjunto de quatro torres, o contorno identifica a área; a forma final será definida após aceite. Exportar antes de sair da página.</p>
+<textarea id="jsonFallback" readonly hidden aria-label="JSON para copiar manualmente"></textarea></div>
+<script>
+(()=>{'use strict';
+const ROOT='/src-greenn/complexo-lapa-pirituba/assets/';
+const FILE='Mapa Ilustrado-Pirituba–Lado-Lapa.png';
+const ITEMS=[
+['quintas','1. Quintas da Lapa — 4 torres paralelas à Raimundo','#EAB308','criar'],
+['homeclub','2. Home Club — referência existente na esquina','#F59E0B','preservar'],
+['jerivas','3. Caminhos da Lapa Jerivás — 1º retângulo','#10B981','criar'],
+['reserva','4. Caminhos da Lapa Reserva — 2º retângulo','#14B8A6','criar'],
+['elo_duo','5. Caminhos da Lapa Elo Duo — extremidade do terreno','#A855F7','criar'],
+['garden_design','6. Garden Design — torre de trás em L invertido','#3B82F6','criar'],
+['nova_vivere','7. Nova Vivere — torre da frente em L, base paralela à Fortunato Ferraz','#EC4899','criar'],
+['stand_vendas','8. Stand de Vendas Caminhos da Lapa','#F97316','criar'],
+['remover_area_exercito','9. Apagar edifício indevido na área verde do Exército','#EF4444','remover']
+];
+const $=id=>document.getElementById(id),img=$('base'),svg=$('marks'),sel=$('target'),points=Object.fromEntries(ITEMS.map(item=>[item[0],[]]));
+let enabled=false,width=0,height=0;
+const NS='http://www.w3.org/2000/svg';
+ITEMS.forEach(([id,label])=>{const o=document.createElement('option');o.value=id;o.textContent=label;sel.append(o);});
+const el=(name,attrs)=>{const n=document.createElementNS(NS,name);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,String(v)));return n;};
+function draw(){
+svg.replaceChildren();
+for(const [id,label,color] of ITEMS){const ps=points[id];if(!ps.length)continue;
+if(ps.length>=3)svg.append(el('polygon',{points:ps.map(p=>p.join(',')).join(' '),fill:color,'fill-opacity':'.14',stroke:color,'stroke-width':id===sel.value?4:2,'stroke-dasharray':id===sel.value?'':'7 5'}));
+else if(ps.length>1)svg.append(el('polyline',{points:ps.map(p=>p.join(',')).join(' '),fill:'none',stroke:color,'stroke-width':4}));
+ps.forEach((p,i)=>{svg.append(el('circle',{cx:p[0],cy:p[1],r:id===sel.value?5:3,fill:color,stroke:'#fff','stroke-width':1.5}));});
+}
+$('summary').replaceChildren();ITEMS.forEach(([id,label])=>{const li=document.createElement('li');li.textContent=label+' — '+points[id].length+' pontos';$('summary').append(li);});
+$('message').textContent=(width?width+' × '+height+' px | ':'Imagem ainda não carregada | ')+ITEMS.find(i=>i[0]===sel.value)[1]+' — '+points[sel.value].length+' pontos'+(enabled?' | Marcação ativa':' | Pausado');
+}
+function setEnabled(value){enabled=Boolean(value&&width&&height);svg.classList.toggle('editing',enabled);$('toggle').setAttribute('aria-pressed',String(enabled));$('toggle').textContent=enabled?'Pausar marcação':'Iniciar marcação';draw();}
+function payload(){return {schema:'sfjm-cenario7-implantacao-v1',base:FILE,viewBox:'0 0 '+width+' '+height,dimensions:{width,height},items:Object.fromEntries(ITEMS.map(([id,label,color,action])=>[id,{label,action,points:points[id]}]))};}
+img.addEventListener('load',()=>{width=img.naturalWidth;height=img.naturalHeight;svg.setAttribute('viewBox','0 0 '+width+' '+height);svg.setAttribute('preserveAspectRatio','none');draw();});
+img.addEventListener('error',()=>{$('message').textContent='Erro ao carregar a prancha. Verifique o caminho no GitHub/LVR.';});
+img.src=ROOT+encodeURIComponent(FILE);
+$('toggle').addEventListener('click',()=>setEnabled(!enabled));
+sel.addEventListener('change',()=>{setEnabled(false);});
+$('undo').addEventListener('click',()=>{points[sel.value].pop();draw();});
+$('clear').addEventListener('click',()=>{if(points[sel.value].length&&!confirm('Apagar somente os pontos deste item?'))return;points[sel.value]=[];draw();});
+svg.addEventListener('pointerdown',event=>{if(!enabled)return;event.preventDefault();const matrix=svg.getScreenCTM();if(!matrix)return;const p=svg.createSVGPoint();p.x=event.clientX;p.y=event.clientY;const q=p.matrixTransform(matrix.inverse());if(q.x<0||q.x>width||q.y<0||q.y>height)return;points[sel.value].push([Math.round(q.x),Math.round(q.y)]);draw();});
+$('copy').addEventListener('click',async()=>{const str=JSON.stringify(payload(),null,2);try{await navigator.clipboard.writeText(str);$('message').textContent='JSON copiado. Envie o conteúdo no chat para validação.';}catch{$('jsonFallback').hidden=false;$('jsonFallback').value=str;$('jsonFallback').select();$('message').textContent='Cópia automática indisponível; copie o JSON no campo abaixo.';}});
+$('download').addEventListener('click',()=>{const blob=new Blob([JSON.stringify(payload(),null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='sfjm-cenario7-implantacao.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+draw();
+})();
+</script></body></html>
