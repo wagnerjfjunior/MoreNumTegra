@@ -26,7 +26,24 @@ assert(h.includes('name="form_id" value="46"'),"Form 46 contract");
 assert(h.includes('data-moretegra-lead-form'),"runtime integration marker");
 assert(h.includes('/src-greenn/preview/runtime.js'),"shared validated form runtime");
 assert(h.includes('/src-greenn/rio-de-janeiro/home.js'),"filters attached");
-assert(!/R\$\s*[\d.]+/.test(h),"stale promo price must not appear on the city hub");
+const referencePrices=new Map([
+ ["kronos-by-tegra","R$ 1.471.000"],
+ ["gran-thai-leisure-residence","R$ 2.148.000"],
+ ["claris-casa-e-clube","R$ 3.473.000"],
+ ["claris-rosas","R$ 3.647.000"],
+ ["gaea-home-resort","R$ 2.221.000"],
+ ["singular-private-residence","R$ 3.610.000"],
+ ["riio-by-piero-lissoni","R$ 8.212.000"]
+]);
+assert.equal((h.match(/class="rio-reference-price"/g)||[]).length,7,"every Rio card must include one reference price");
+for(const [slug,price] of referencePrices){
+ const card=h.match(new RegExp('<article class="rio-project"[^>]*>[\\s\\S]*?<a class="rio-project-media" href="/empreendimentos/'+slug+'/"[\\s\\S]*?<\\/article>'))?.[0];
+ assert(card&&card.includes(price),"missing governed reference price "+slug);
+ assert(card.includes("Preço de referência · a partir de")&&card.includes("confirme valor e disponibilidade"),"historical price context absent "+slug);
+}
+assert(h.includes("Não representam oferta vigente"),"historical price disclosure missing");
+assert(!h.includes('"@type":"Offer"'),"historical reference is not an active Offer");
+
 assert(!/https:\/\/www\.tegraincorporadora\.com\.br/.test(h),"no outbound commercial links");
 assert(!h.includes("/empreendimentos/claris-marapendi/"),"do not mix Claris phases");
 assert(!h.includes('href="/sao-paulo/"'),"São Paulo hub not yet published");
