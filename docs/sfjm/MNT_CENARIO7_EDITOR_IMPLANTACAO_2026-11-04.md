@@ -51,3 +51,13 @@
 - Causa identificada no roteamento: `vercel.json` só declara rewrite de `/complexo-lapa-pirituba/` para o HTML principal, e não da subrota de conferência. A URL previamente anunciada não era comprovada no LVR.
 - Correção minimalista: botão **Mostrar/Ocultar 9 áreas coletadas** incorporado diretamente em `cenario7-editor/index.html`, que já é carregado como iframe do cenário 7 na página principal conhecida `/complexo-lapa-pirituba/`. SVG da sobreposição permanece separado e em resolução 1448×1086. Não foi alterado `vercel.json`, nem o HTML dos cenários 1–6, nem imagem, rotas ou polígonos.
 - Teste pendente: selecionar branch LVR e abrir somente `/complexo-lapa-pirituba/` → cenário 7; verificar botão dentro do editor. Não usar a subrota `/complexo-lapa-pirituba/cenario7-editor/conferencia.html` como URL certificada.
+
+## 04/11/2026 — primeira prévia editorial: Quintas da Lapa (LVR)
+- O usuário aprovou no LVR o acesso ao editor do C7 e a conferência das nove marcações; isso não aprova a aparência ou implantação definitiva de torres.
+- Prévia isolada `src-greenn/complexo-lapa-pirituba/cenario7-editor/quintas-preview.svg`. Quatro volumes arquitetônicos esquemáticos dentro do polígono original do usuário `520,657 479,672 518,800 559,785 521,659`, em base SVG `1448×1086`.
+- Os centros/volumes foram **propostos para visualização** dentro do limite; não são coordenadas coletadas pelo usuário, dados de implantação oficial nem aceites. Manter claramente o caráter provisório.
+- Botão **Prévia Quintas (4 torres)** adicionado ao editor do cenário 7, com exibição/ocultação independente do overlay de 9 áreas; nenhum pixel da imagem original foi modificado.
+- Como o arquivo PNG do GitHub não foi obtido como bytes pelo conector, não afirmar edição raster. A prévia SVG mantém a base como imagem no LVR, sem redesenhar ruas, imóveis vizinhos ou as oito áreas restantes.
+- Teste visual usuário pendente para a distribuição/orientação dos quatro volumes. Após aceite, avaliar consolidação visual da prancha e seguir Jerivás/Reserva, preservando o Home Club.
+- Reversão pontual: remover `quintas-preview.svg` e as referências `showQuintas`/`quintasPreview` em `cenario7-editor/index.html` na branch, sem reset da main.
+- Sem merge/deploy e sem rotas de carros.
