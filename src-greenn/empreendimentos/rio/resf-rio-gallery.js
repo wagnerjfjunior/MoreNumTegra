@@ -1,4 +1,4 @@
-/* RESF Rio — vanilla JS; two project scenes, scroll-snap + click/keyboard. */
+/* RESF Rio — vanilla JS; verified project scenes, scroll-snap + touch/keyboard. */
 (()=>{"use strict";
 for(const gallery of document.querySelectorAll("[data-rio-gallery]")){
  const track=gallery.querySelector(".rio-gallery-track"),slides=[...track.querySelectorAll(".rio-gallery-slide")];
