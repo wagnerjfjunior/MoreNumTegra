@@ -29,3 +29,11 @@
 - Preservar todos os seis cenários anteriores, especialmente C6 homologado pelo usuário. Sem produção sem nova autorização.
 - Rollback de código desta fase: restaurar `src-greenn/complexo-lapa-pirituba/index.html` da branch origem e remover o diretório novo `cenario7-editor/`, em commit de reversão isolado.
 - QA visual LVR ainda pendente. O sucesso do commit GitHub não comprova carregamento da imagem ou funcionamento no navegador.
+
+## 04/11/2026 — coleta de coordenadas recebida e nome do cenário 7
+- O usuário definiu a nomenclatura: **Lapa → Ayrton Senna / Condomínios Anastácio**. O índice 6 (sétima opção) do seletor principal foi atualizado; o índice 7 (oitava opção) continua abrindo o mesmo editor, preservando a unificação editorial.
+- JSON fornecido pelo usuário integralmente registrado em `docs/sfjm/data/cenario7-implantacao-coordenadas-2026-11-04.json`, com 9 itens, 49 pontos, base `Mapa Ilustrado-Pirituba–Lado-Lapa.png` e `viewBox 0 0 1448 1086`.
+- Auditoria geométrica em leitura: os 9 itens têm pontos; polígonos das 8 outras áreas são válidos; **stand_vendas** apresenta autointerseção/anomalia de fechamento do contorno nos pontos `[265,847]` e `[265,849]`. Preservados os pontos enviados sem correção automática. Confirmar visualmente no LVR antes de usar como máscara definitiva.
+- Alguns polígonos terminam próximos, mas não exatamente no primeiro ponto; SVG `polygon` fecha automaticamente. Não acrescentar coordenadas fictícias.
+- Os polígonos representam localização editorial marcada pelo usuário, não geometria definitiva de torres: desenho final ainda depende de inspeção/aceite. Nenhuma edição raster ou rota de carros efetuada.
+- Branch de trabalho isolada; sem merge/deploy.
