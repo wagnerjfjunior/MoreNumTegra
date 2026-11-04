@@ -1,0 +1,45 @@
+name: Rio RESF visual mobile and desktop
+
+on:
+  pull_request:
+    paths:
+      - 'src-greenn/empreendimentos/rio/resf-rio.css'
+      - 'src-greenn/empreendimentos/kronos-by-tegra/index.html'
+      - 'src-greenn/empreendimentos/gran-thai-leisure-residence/index.html'
+      - 'src-greenn/empreendimentos/claris-casa-e-clube/index.html'
+      - 'src-greenn/empreendimentos/claris-rosas/index.html'
+      - 'src-greenn/empreendimentos/gaea-home-resort/index.html'
+      - 'src-greenn/empreendimentos/singular-private-residence/index.html'
+      - '.github/diagnostics/resf-rio-visual-smoke.mjs'
+      - '.github/workflows/rio-resf-visual.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  visual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Start static server
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/resf-rio-http.log 2>&1 &
+          sleep 2
+      - name: Validate six projects in real browser
+        run: node .github/diagnostics/resf-rio-visual-smoke.mjs
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: resf-rio-six-projects-mobile-desktop
+          path: /tmp/resf-rio-screenshots/*.png
+          if-no-files-found: ignore
+          retention-days: 7

@@ -316,7 +316,19 @@ for(const [slug,street,cep] of expected){
   const approved=execFileSync('git',['show',approvedSnapshot+':'+filename],{encoding:'utf8'});
   // Accept only the seven descriptive thumbnail alts copied from the approved data-alt.
   const approvedWithThumbAlts=slug==='aria-higienopolis'?approved.replace(/(<button\b[^>]*class="mt-gallery-thumb"[^>]*data-alt="([^"]+)"[^>]*>)(<img\b[^>]*>)/g,(m,button,alt,img)=>button+img.replace('alt=""','alt="'+alt+'"')):approved;
-  assert.equal(candidate,approvedWithThumbAlts,slug+': approved commercial runtime HTML/schema has drifted');
+  const normalizeBemSeoApproved = html => {
+    if(slug!=='bem-moema-studios-offices')return html;
+    return html
+      .replace(/<title>[^<]*<\/title>/, '<title>APPROVED_SEO_TITLE</title>')
+      .replace(/<meta property="og:title" content="[^"]*">/, '<meta property="og:title" content="APPROVED_OG_TITLE">')
+      .replace(/<meta name="twitter:title" content="[^"]*">/, '<meta name="twitter:title" content="APPROVED_TWITTER_TITLE">')
+      .replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/, (tag,json) => {
+        const root=JSON.parse(json);
+        for(const n of (root['@graph']||[root]))if(n['@type']==='WebPage')n.name='APPROVED_SEO_TITLE';
+        return '<script type="application/ld+json">'+JSON.stringify(root)+'</script>';
+      });
+   };
+   assert.equal(normalizeBemSeoApproved(candidate),normalizeBemSeoApproved(approvedWithThumbAlts),slug+': runtime drift beyond approved SEO title metadata');
  }else if(slug==='ampere-brooklin'){
    // Schema-only PR #386: preserve all pre-existing entities except the bounded
    // WebPage mentions, ApartmentComplex.brand removal and verified FloorPlan links.
@@ -386,7 +398,21 @@ for(const [slug,street,cep] of expected){
     // HTML as the new immutable runtime snapshot; the postal/schema invariants
     // above still check historical facts independently.
     const approvedHtml=execFileSync('git',['show','ffe7dd2183e51360c8ecf6a217f61605b8ca652a:'+filename],{encoding:'utf8'});
-    assert.equal(candidate,approvedHtml,'Ampere full HTML drifted from USER_ACCEPTED integrated release baseline');
+    const normalizeAmpereOnlySeoMeta = html => html
+      .replace(/<title>[^<]*<\/title>/, '<title>APPROVED_SEO_TITLE</title>')
+      .replace(/<meta name="description" content="[^"]*">/, '<meta name="description" content="APPROVED_SEO_DESCRIPTION">')
+      .replace(/<meta property="og:title" content="[^"]*">/, '<meta property="og:title" content="APPROVED_OG_TITLE">')
+      .replace(/<meta property="og:description" content="[^"]*">/, '<meta property="og:description" content="APPROVED_OG_DESCRIPTION">')
+      .replace(/<meta name="twitter:title" content="[^"]*">/, '<meta name="twitter:title" content="APPROVED_TWITTER_TITLE">')
+      .replace(/<meta name="twitter:description" content="[^"]*">/, '<meta name="twitter:description" content="APPROVED_TWITTER_DESCRIPTION">')
+      .replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/, (tag, json) => {
+        const root=JSON.parse(json);
+        for(const n of (root['@graph']||[root])){
+          if(n['@type']==='WebPage'){n.name='APPROVED_SEO_TITLE';n.description='APPROVED_SEO_DESCRIPTION'}
+        }
+        return '<script type="application/ld+json">'+JSON.stringify(root)+'</script>';
+      });
+    assert.equal(normalizeAmpereOnlySeoMeta(candidate),normalizeAmpereOnlySeoMeta(approvedHtml),'Ampere runtime drifted beyond approved title, description and WebPage metadata');
  }else if(slug==='tiel-vila-nova-conceicao'){
    // RESF Tièl specific, source-verified commercial expansion. The separate
    // Tièl quality test verifies factual Product/Offer, two plans, FAQ pairs and
@@ -413,7 +439,7 @@ for(const [slug,street,cep] of expected){
        }
        if(n['@type']==='WebPage'){
          // Tièl PR #395: only governed search-intent editorial metadata may change.
-         assert.equal(n.name,'Tièl Vila Nova Conceição | Apartamentos Tegra prontos para morar');
+         assert.equal(n.name,'Tièl Tegra | Apartamentos na Vila Nova Conceição');
          assert.equal(n.description,'Conheça o Tièl Vila Nova Conceição: apartamentos Tegra prontos para morar, piscina e bar no rooftop, fitness e plantas oficiais. Consulte unidades e condições.');
          n.name=structuredClone(old.name);
          n.description=structuredClone(old.description);
@@ -528,7 +554,24 @@ for(const [slug,street,cep] of expected){
    assert.deepEqual(newTypes.slice().sort(),allowed.slice().sort(),'Órbita: only specifically approved commercial/image/plan types may be added');
  }else {
    const normalized=normalizeOnsiteAgent(stripApprovedImages(stripBemMoemaRichEntities(after,slug),before,slug,candidate),before,slug);
-   assert.deepEqual(scrub(normalizeBuenoEditorial(normalized,before,slug,candidate)),scrub(before),slug+': forbidden non-image/non-address schema change');
+   const editorialNormalized=normalizeBuenoEditorial(normalized,before,slug,candidate);
+   // Allow only content-approved search metadata on the exact three SEO URLs.
+   if(['ayla-moema-studio-office','caminhos-da-lapa-elo-duo','key-moema'].includes(slug)){
+     const originalNodes=flat(before),currentNodes=flat(editorialNormalized);
+     const priorPage=originalNodes.find(n=>n['@type']==='WebPage');
+     const currentPage=currentNodes.find(n=>n['@type']==='WebPage');
+     assert(priorPage&&currentPage,slug+': WebPage schema missing');
+     currentPage.name=structuredClone(priorPage.name);
+     currentPage.description=structuredClone(priorPage.description);
+     if(slug==='ayla-moema-studio-office'){
+       const priorFaq=originalNodes.find(n=>n['@type']==='FAQPage');
+       const currentFaq=currentNodes.find(n=>n['@type']==='FAQPage');
+       assert(priorFaq&&currentFaq,slug+': FAQPage schema missing');
+       assert.equal(currentFaq.mainEntity.length,priorFaq.mainEntity.length,'Ayla: FAQ count must remain fixed');
+       currentFaq.mainEntity[0].name=priorFaq.mainEntity[0].name;
+     }
+   }
+   assert.deepEqual(scrub(editorialNormalized),scrub(before),slug+': forbidden non-image/non-address schema change');
  }
  const prior=flat(before).filter(x=>x['@type']==='ApartmentComplex');
  const current=flat(after).filter(x=>x['@type']==='ApartmentComplex');

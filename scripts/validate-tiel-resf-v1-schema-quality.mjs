@@ -15,7 +15,9 @@ const stripApprovedEditorialHead = text => text
  .replace(/<title>[^<]*<\/title>/,'<title>EDITORIAL_TITLE</title>')
  .replace(/<meta name="description" content="[^"]*">/,'<meta name="description" content="EDITORIAL_DESCRIPTION">')
  .replace(/<meta property="og:title" content="[^"]*">/,'<meta property="og:title" content="EDITORIAL_OG_TITLE">')
- .replace(/<meta name="twitter:title" content="[^"]*">/,'<meta name="twitter:title" content="EDITORIAL_TWITTER_TITLE">');
+ .replace(/<meta name="twitter:title" content="[^"]*">/,'<meta name="twitter:title" content="EDITORIAL_TWITTER_TITLE">')
+ .replace(/<meta property="og:description" content="[^"]*">/,'<meta property="og:description" content="EDITORIAL_OG_DESCRIPTION">')
+ .replace(/<meta name="twitter:description" content="[^"]*">/,'<meta name="twitter:description" content="EDITORIAL_TWITTER_DESCRIPTION">');
 const stripApprovedTielUx = text => text
  .replace(/\n\/\* Tièl RESF — escala editorial e fotos do bairro \*\/[\s\S]*?(?=<\/style>)/,'')
  .replace('.quick .quick-wa{background:#25d366;color:#0c3420;border:1px solid #178744}','.quick .quick-wa{background:#fff;color:#111}')
