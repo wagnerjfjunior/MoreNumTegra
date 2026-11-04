@@ -22,6 +22,10 @@ for(const [label,viewport] of Object.entries({mobile:{width:390,height:844},desk
   assert.equal(measure.css,"relative","CSS must be loaded");
   assert(measure.scrollWidth<=measure.viewport+3,"no horizontal overflow: "+JSON.stringify(measure));
   assert.equal(measure.cards,7,"seven cards must be present");
+  const pricing=await page.locator("[data-rio-card] .rio-reference-price strong").allTextContents();
+  assert.deepEqual(pricing,["R$ 1.471.000","R$ 2.148.000","R$ 3.473.000","R$ 3.647.000","R$ 2.221.000","R$ 3.610.000","R$ 8.212.000"],"reference prices in cards");
+  assert(await page.locator(".rio-price-note").isVisible(),"historical pricing notice must be visible");
+
   const image=await page.locator(".rio-hero-media img").evaluate(async img=>{
    try{await Promise.race([img.decode(),new Promise((_,reject)=>setTimeout(()=>reject(new Error("timeout")),10000))]);return {ok:img.naturalWidth>0,width:img.naturalWidth};}catch(e){return {ok:false,error:String(e)}}
   });
