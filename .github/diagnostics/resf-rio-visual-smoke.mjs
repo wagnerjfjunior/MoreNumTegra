@@ -37,7 +37,12 @@ for(const [mode,viewport] of Object.entries({mobile:{width:390,height:844},deskt
    await page.locator("[data-gallery-next]").click();
    await page.waitForTimeout(550);
    const status=await page.locator("[data-gallery-status]").textContent();
-   if(status.trim()!=="2 / 2")throw Error("gallery touch/click navigation failed: "+status);
+   const expected=slug==="claris-rosas"?3:10;
+   if(status.trim()!=="2 / "+expected)throw Error("gallery touch/click navigation failed: "+status);
+   const count=await page.locator(".rio-gallery-track .rio-gallery-slide").count();
+   if(count!==expected)throw Error("gallery scene count mismatch: "+count+" expected "+expected);
+   const sectionCount=await page.locator("#plantas-oficiais").count();
+   if(sectionCount!==1)throw Error("dedicated floorplan/implantation section missing");
    const file="/tmp/resf-rio-screenshots/"+slug+"-"+mode+".png";
    await page.screenshot({path:file,fullPage:true,animations:"disabled",timeout:30000});
    console.log("PASS",slug,mode,JSON.stringify({viewport:x.viewport,scrollWidth:x.scrollWidth,hero:x.hero.height,cta:x.cta.width,facts:x.facts.length}));
