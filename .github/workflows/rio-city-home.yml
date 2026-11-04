@@ -1,0 +1,66 @@
+name: Rio city-home RESF acceptance
+
+on:
+  pull_request:
+    paths:
+      - 'src-greenn/rio-de-janeiro/**'
+      - 'src-greenn/empreendimentos/rio/**'
+      - 'src-greenn/empreendimentos/kronos-by-tegra/index.html'
+      - 'src-greenn/empreendimentos/gran-thai-leisure-residence/index.html'
+      - 'src-greenn/empreendimentos/claris-casa-e-clube/index.html'
+      - 'src-greenn/empreendimentos/claris-rosas/index.html'
+      - 'src-greenn/empreendimentos/gaea-home-resort/index.html'
+      - 'src-greenn/empreendimentos/singular-private-residence/index.html'
+      - 'scripts/validate-resf-rio.mjs'
+      - '.github/diagnostics/resf-rio-visual-smoke.mjs'
+      - 'scripts/validate-rio-home.mjs'
+      - '.github/diagnostics/rio-home-visual-smoke.mjs'
+      - '.github/workflows/rio-city-home.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  rio-home:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Static SEO, RESF and Form46 checks
+        run: node scripts/validate-rio-home.mjs
+      - name: Six exact-project RESF contract
+        run: node scripts/validate-resf-rio.mjs
+      - name: Install Playwright Chromium
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Local route equivalent
+        run: |
+          python3 - <<'PY' >/tmp/rio-home-http.log 2>&1 &
+          from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+          class Routes(SimpleHTTPRequestHandler):
+              def do_GET(self):
+                  if self.path.split("?",1)[0]=='/rio-de-janeiro/':
+                      self.path='/src-greenn/rio-de-janeiro/index.html'
+                  return super().do_GET()
+          ThreadingHTTPServer(('127.0.0.1',4173),Routes).serve_forever()
+          PY
+          sleep 2
+      - name: Mobile desktop filters and safe lead smoke
+        run: node .github/diagnostics/rio-home-visual-smoke.mjs
+      - name: Validate all six exact-project pages in Chromium
+        run: node .github/diagnostics/resf-rio-visual-smoke.mjs
+      - name: Save screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rio-home-mobile-desktop
+          path: |
+            /tmp/rio-home-screenshots/*.png
+            /tmp/resf-rio-screenshots/*.png
+          if-no-files-found: ignore
+          retention-days: 7

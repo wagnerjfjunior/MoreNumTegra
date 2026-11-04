@@ -12,7 +12,8 @@ for(const slug of slugs){
  pages++;
  const nodes=[...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)].flatMap(m=>{const v=JSON.parse(m[1]);return v['@graph']||[v]});
  if(new Set(['kronos-by-tegra','claris-casa-e-clube','claris-rosas','gran-thai-leisure-residence','singular-private-residence','gaea-home-resort']).has(slug)){
-  const project=nodes.find(n=>n['@type']==='ApartmentComplex');
+  const residentialType=slug==='claris-casa-e-clube'?'GatedResidenceCommunity':'ApartmentComplex';
+  const project=nodes.find(n=>n['@type']===residentialType);
   assert(project?.address?.addressLocality==='Rio de Janeiro'&&project.address.addressRegion==='RJ',slug+': project city/state missing');
   assert(!nodes.some(n=>n['@type']==='RealEstateAgent'&&n.address),slug+': remote contact must not claim an onsite brokerage office');
   assert(html.includes('name="robots" content="noindex,follow"'),slug+': page must remain noindex pending acceptance');
