@@ -1,0 +1,261 @@
+{
+  "schema": "sfjm-cenario7-implantacao-v1",
+  "base": "Mapa Ilustrado-Pirituba–Lado-Lapa.png",
+  "viewBox": "0 0 1448 1086",
+  "dimensions": {
+    "width": 1448,
+    "height": 1086
+  },
+  "items": {
+    "quintas": {
+      "label": "1. Quintas da Lapa — 4 torres paralelas à Raimundo",
+      "action": "criar",
+      "points": [
+        [
+          520,
+          657
+        ],
+        [
+          479,
+          672
+        ],
+        [
+          518,
+          800
+        ],
+        [
+          559,
+          785
+        ],
+        [
+          521,
+          659
+        ]
+      ]
+    },
+    "homeclub": {
+      "label": "2. Home Club — referência existente na esquina",
+      "action": "preservar",
+      "points": [
+        [
+          508,
+          831
+        ],
+        [
+          563,
+          815
+        ],
+        [
+          575,
+          858
+        ],
+        [
+          520,
+          867
+        ],
+        [
+          510,
+          834
+        ]
+      ]
+    },
+    "jerivas": {
+      "label": "3. Caminhos da Lapa Jerivás — 1º retângulo",
+      "action": "criar",
+      "points": [
+        [
+          510,
+          868
+        ],
+        [
+          465,
+          703
+        ],
+        [
+          443,
+          735
+        ],
+        [
+          455,
+          876
+        ],
+        [
+          510,
+          870
+        ]
+      ]
+    },
+    "reserva": {
+      "label": "4. Caminhos da Lapa Reserva — 2º retângulo",
+      "action": "criar",
+      "points": [
+        [
+          450,
+          878
+        ],
+        [
+          437,
+          742
+        ],
+        [
+          411,
+          776
+        ],
+        [
+          409,
+          878
+        ],
+        [
+          450,
+          878
+        ]
+      ]
+    },
+    "elo_duo": {
+      "label": "5. Caminhos da Lapa Elo Duo — extremidade do terreno",
+      "action": "criar",
+      "points": [
+        [
+          147,
+          841
+        ],
+        [
+          184,
+          847
+        ],
+        [
+          184,
+          891
+        ],
+        [
+          148,
+          878
+        ],
+        [
+          150,
+          842
+        ]
+      ]
+    },
+    "garden_design": {
+      "label": "6. Garden Design — torre de trás em L invertido",
+      "action": "criar",
+      "points": [
+        [
+          191,
+          849
+        ],
+        [
+          191,
+          889
+        ],
+        [
+          226,
+          889
+        ],
+        [
+          225,
+          876
+        ],
+        [
+          203,
+          876
+        ],
+        [
+          203,
+          849
+        ],
+        [
+          192,
+          849
+        ]
+      ]
+    },
+    "nova_vivere": {
+      "label": "7. Nova Vivere — torre da frente em L, base paralela à Fortunato Ferraz",
+      "action": "criar",
+      "points": [
+        [
+          208,
+          850
+        ],
+        [
+          208,
+          868
+        ],
+        [
+          233,
+          868
+        ],
+        [
+          234,
+          891
+        ],
+        [
+          252,
+          889
+        ],
+        [
+          251,
+          849
+        ],
+        [
+          210,
+          850
+        ]
+      ]
+    },
+    "stand_vendas": {
+      "label": "8. Stand de Vendas Caminhos da Lapa",
+      "action": "criar",
+      "points": [
+        [
+          265,
+          847
+        ],
+        [
+          265,
+          889
+        ],
+        [
+          294,
+          891
+        ],
+        [
+          299,
+          854
+        ],
+        [
+          265,
+          849
+        ]
+      ]
+    },
+    "remover_area_exercito": {
+      "label": "9. Apagar edifício indevido na área verde do Exército",
+      "action": "remover",
+      "points": [
+        [
+          473,
+          927
+        ],
+        [
+          503,
+          978
+        ],
+        [
+          606,
+          946
+        ],
+        [
+          567,
+          883
+        ],
+        [
+          476,
+          928
+        ]
+      ]
+    }
+  }
+}
