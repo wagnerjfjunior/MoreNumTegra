@@ -45,3 +45,9 @@
 - Área 8 `stand_vendas` permanece com polígono autointersectante; não usar como máscara de edição até revisão visual. A tela de conferência sinaliza o alerta.
 - O GitHub confirmou a existência e blob do PNG, mas o conector não disponibilizou os bytes do PNG. Sem QA visual browser nesta etapa, e sem reconstrução da prancha via gerador de imagens.
 - Não houve merge nem deploy. Próxima etapa: confirmar posições em LVR e só então criar versão editada da imagem em arquivo separado.
+
+## 04/11/2026 — correção de acesso LVR, sem rota nova
+- Usuário reportou `404 - SFJM LVR local file not found` ao tentar acessar `/complexo-lapa-pirituba/cenario7-editor/conferencia.html`.
+- Causa identificada no roteamento: `vercel.json` só declara rewrite de `/complexo-lapa-pirituba/` para o HTML principal, e não da subrota de conferência. A URL previamente anunciada não era comprovada no LVR.
+- Correção minimalista: botão **Mostrar/Ocultar 9 áreas coletadas** incorporado diretamente em `cenario7-editor/index.html`, que já é carregado como iframe do cenário 7 na página principal conhecida `/complexo-lapa-pirituba/`. SVG da sobreposição permanece separado e em resolução 1448×1086. Não foi alterado `vercel.json`, nem o HTML dos cenários 1–6, nem imagem, rotas ou polígonos.
+- Teste pendente: selecionar branch LVR e abrir somente `/complexo-lapa-pirituba/` → cenário 7; verificar botão dentro do editor. Não usar a subrota `/complexo-lapa-pirituba/cenario7-editor/conferencia.html` como URL certificada.
