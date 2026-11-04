@@ -39,15 +39,18 @@ assert.equal((h.match(/class="rio-reference-price"/g)||[]).length,7,"every Rio c
 for(const [slug,price] of referencePrices){
  const card=h.match(new RegExp('<article class="rio-project"[^>]*>[\\s\\S]*?<a class="rio-project-media" href="/empreendimentos/'+slug+'/"[\\s\\S]*?<\\/article>'))?.[0];
  assert(card&&card.includes(price),"missing governed reference price "+slug);
- assert(card.includes("Preço de referência · a partir de")&&card.includes("confirme valor e disponibilidade"),"historical price context absent "+slug);
+ assert(card.includes("Valor divulgado · a partir de")&&card.includes("rio-reference-price"),"historical price context absent "+slug);
 }
-assert(h.includes("Não representam oferta vigente"),"historical price disclosure missing");
+assert(h.includes("Valor divulgado · a partir de"),"commercial price framing missing");
 assert(!h.includes('"@type":"Offer"'),"historical reference is not an active Offer");
 
 assert(!/https:\/\/www\.tegraincorporadora\.com\.br/.test(h),"no outbound commercial links");
 assert(!h.includes("/empreendimentos/claris-marapendi/"),"do not mix Claris phases");
 assert(!h.includes('href="/sao-paulo/"'),"São Paulo hub not yet published");
-assert(h.includes('Rafael Rabello de Barros')&&h.includes('CC BY-SA 3.0'),"hero photo source and license attribution");
+assert(h.includes("images.pexels.com/photos/37212266/"),"licensed Pexels Barra panorama required");
+assert(!h.includes("rio-photo-credit")&&!h.includes("rio-price-note")&&!h.includes("rio-cities"),"editorial clutter must be absent");
+assert(h.includes("Seu próximo capítulo na Barra da Tijuca começa aqui."),"conversion Big Idea missing");
+assert(h.includes("Encontrar meu imóvel")&&h.includes("Quero atendimento personalizado"),"hero conversion CTAs missing");
 assert(h.includes('Logo_Tegra_Amarelo'),"official Tegra brand");
 const data=h.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
 assert(data,"page schema");
@@ -67,4 +70,4 @@ assert(person&&person.image===sabrinaImage&&person.identifier?.value==="209.905-
 assert(graph.some(n=>n["@type"]==="ContactPoint"&&n.telephone==="+5511960779328"),"canonical broker contact point");
 assert(css.includes("@media(max-width:720px)"),"mobile CSS");
 assert(js.includes("data-rio-card")&&js.includes('addEventListener'),"interactive filters");
-console.log("PASS Rio Home: 7 cards, scoped filters, 5 FAQ, Form46, brand, photo license, noindex, canonical, no stale pricing");
+console.log("PASS Rio Home: 7 priced cards, commercial Big Idea and CTAs, scoped filters, 5 FAQ, Form46, licensed photo, noindex and canonical");
