@@ -1,3 +1,15 @@
+## 04/11/2026 — Acao principal RJ: concluir copy de ALTA CONVERSAO e valores
+
+Retomar a PR #540 no head real: revisar a Home RJ e sete paginas, com foco primeiro em headline/Big Idea, beneficios, CTA, remocao de notas editoriais desnecessarias e exibicao dos precos numericos ja registrados. Fazer matriz de evidencias por URL e QA mobile; manter informacao comercial verdadeira e contratos/creditos legais. #539 (SEO) e gate tecnico subsidiario, nao substitui a atividade comercial. Nao mergear sem aceite. Handoff: `docs/sfjm/MNT_RIO_CONTINUIDADE_RESF_SEO_2026-11-04.md`.
+
+---
+
+## 04/11/2026 — Próxima ação segura da frente RJ
+
+Antes de qualquer merge, resolver main/heads/diff/checks/deployment live e sobreposição #539 versus #540; gerar DE/PARA e QA SEO/RESF/comercial por URL da Home RJ e das sete páginas, incluindo robots, Form46, fotos/licenças e preços válidos. Manter #540 Draft até aprovação. Guia `docs/sfjm/MNT_RIO_CONTINUIDADE_RESF_SEO_2026-11-04.md`. Frentes independentes abaixo não estão canceladas.
+
+---
+
 ## 02/11/2026 — Capa única PR #533 PUBLICADA para teste
 
 Autorização do usuário: “Vou testar em produção mas cuide do rollback”. PR #533 MERGED, runtime `60b8bdb839e3a34f987f80558595188e7c683305`; Vercel `dpl_GaocVCL1UD8UMrTbLp7R3oP3Prg8` READY com alias www sem erro. HTTP 200, capa presente e cards antigos ausentes; três acessos conferidos em browser de produção. Aceite do proprietário e teste físico mobile pendentes. Supera a espera por LVR descrita abaixo.

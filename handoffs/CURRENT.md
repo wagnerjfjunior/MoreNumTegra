@@ -1,3 +1,15 @@
+## 04/11/2026 — CORRECAO DE PRIORIDADE: RJ = HIGH-CONVERSION PAGES + VALORES
+
+O usuario reafirmou que a ultima atividade era reformular comercialmente Home Rio + sete paginas: copy, Big Idea, headline, CTA, remover 'baboseiras' editoriais e inserir/preservar valores visiveis. A PR #540 (Draft) e o trabalho de continuidade; SEO #539 e secundario, como QA. Nao recomecar a construcao. Precos registrados e ressalvas factuais: `docs/sfjm/MNT_RIO_CONTINUIDADE_RESF_SEO_2026-11-04.md`. Nenhuma publicacao autorizada por este registro.
+
+---
+
+## 04/11/2026 — Retomada RJ (documentação em PR, sem release)
+
+PRs #523–#526 integradas; #540 (Home RJ e seis RESF) e #539 (SEO 85 URLs) permaneciam OPEN/DRAFT na reconciliação. Não presumir merge, indexação ou aprovação das alterações RJ da #540. Handoff: `docs/sfjm/MNT_RIO_CONTINUIDADE_RESF_SEO_2026-11-04.md`. Estado do Complexo descrito abaixo preservado. Próxima ação: reconcile diff #539/#540, validar RJ URL a URL, sem mudanças no runtime.
+
+---
+
 ## 03/11/2026 — PR #538 mergeada e cenário 4 publicado (homologação visual LVR)
 
 Autorização explícita: “sim vamos publicar o quarto cenário, retirar os controles para criar os pontos,precisaremos do controle na prancha 5? para criar o percurso”. PR #538 MERGED em `main`: `c4c37f5d4c5a3b94089ece6cccbafcff7f3e6e1a`. Vercel Production READY: `dpl_2eYYe3WxdhZeMMNgrZZg3XMA4n7w`, `githubCommitSha` corresponde ao merge, alias `www.moretegra.com.br`, `aliasError=null`. O quarto cenário usa Figura 2 WebP (1500×1049), 110 pontos calibrados pelo usuário em quatro rotas, 32 carros, geometria validada visualmente e teste responsivo em resoluções de console. Controle de criação de pontos removido do HTML de produção; código do calibrador arquivado para reuso futuro na prancha 5 em `docs/sfjm/MNT_CALIBRADOR_REUSO_PRANCHA5_2026-11-03.md`. Cenarios 1–3 não foram alterados nesta última release. Rollback: restaurar o commit `main` anterior ao merge PR #538 (`247bef9a0635768e952d75b512760ffe5adc6dae`), preferindo revert da PR #538 para não descartar alterações posteriores. Não alterar geometria homologada sem novo pedido.

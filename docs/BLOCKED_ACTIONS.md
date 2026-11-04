@@ -1,3 +1,9 @@
+## 04/11/2026 — Guardrails RJ / SEO
+
+Bloqueados sem gates específicos: merge/publicação da #540, remoção em lote de noindex, propaganda de valores expirados como vigentes, supressão de atribuição fotográfica exigida por licença, edição não auditada dos mesmos metadados nas PRs #539/#540 e mudanças fora da frente RJ. Handoff `docs/sfjm/MNT_RIO_CONTINUIDADE_RESF_SEO_2026-11-04.md`.
+
+---
+
 ## 02/11/2026 — Substituição do bloqueio histórico de merge da PR #528
 
 - **Autorização nova:** o usuário solicitou expressamente merge e produção. PR #528 já **MERGED**, Vercel production READY. Portanto o bloqueio histórico desta PR enquanto Draft foi superado somente para esta release.

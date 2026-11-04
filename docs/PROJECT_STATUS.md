@@ -1,3 +1,9 @@
+## 04/11/2026 — Frente RJ: estado reconciliado (documentação proposta)
+
+PRs #523–#526 MERGED. PR #540 (Home Rio e seis páginas RESF): OPEN/DRAFT; PR #539 (SEO/DE-PARA): OPEN/DRAFT. Correções comerciais/SEO pendentes de QA, release e eventual liberação de indexação individual. Referência `docs/sfjm/MNT_RIO_CONTINUIDADE_RESF_SEO_2026-11-04.md`. Não altera status de releases anteriores.
+
+---
+
 ## 02/11/2026 — Capa única PR #533 PUBLICADA para teste
 
 Autorização do usuário: “Vou testar em produção mas cuide do rollback”. PR #533 MERGED, runtime `60b8bdb839e3a34f987f80558595188e7c683305`; Vercel `dpl_GaocVCL1UD8UMrTbLp7R3oP3Prg8` READY com alias www sem erro. HTTP 200, capa presente e cards antigos ausentes; três acessos conferidos em browser de produção. Aceite do proprietário e teste físico mobile pendentes. Supera a espera por LVR descrita abaixo.
