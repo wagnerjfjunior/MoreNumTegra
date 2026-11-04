@@ -9,28 +9,28 @@
 <polygon points="520,657 479,672 518,800 559,785" fill="#b6e1a0" fill-opacity=".72"/>
 <g stroke-linejoin="round" stroke="#607a82" stroke-width="1.5">
 <!-- Os quatro volumes são protótipos de implantação; não substituir os pontos do usuário. -->
-<g transform="translate(500 680) rotate(-16)">
+<g transform="translate(500 680) rotate(74)">
 <rect x="-13" y="-14" width="26" height="28" rx="2" fill="#9eaaa8" opacity=".30"/>
 <polygon points="-10,-17 8,-17 14,-11 -4,-11" fill="url(#roof)"/>
 <polygon points="-10,-11 -4,-5 -4,10 -10,4" fill="#d4a782"/>
 <polygon points="-4,-5 14,-11 14,7 -4,13" fill="#f0d5ae"/>
 <path d="M0 -3 V11 M7 -6 V8 M-4 1 H14 M-4 7 H14" stroke="#7496a8" stroke-width="1"/>
 </g>
-<g transform="translate(510 710) rotate(-16)">
+<g transform="translate(510 710) rotate(74)">
 <rect x="-13" y="-14" width="26" height="28" rx="2" fill="#9eaaa8" opacity=".30"/>
 <polygon points="-10,-17 8,-17 14,-11 -4,-11" fill="url(#roof)"/>
 <polygon points="-10,-11 -4,-5 -4,10 -10,4" fill="#d4a782"/>
 <polygon points="-4,-5 14,-11 14,7 -4,13" fill="#f0d5ae"/>
 <path d="M0 -3 V11 M7 -6 V8 M-4 1 H14 M-4 7 H14" stroke="#7496a8" stroke-width="1"/>
 </g>
-<g transform="translate(520 741) rotate(-16)">
+<g transform="translate(520 741) rotate(74)">
 <rect x="-13" y="-14" width="26" height="28" rx="2" fill="#9eaaa8" opacity=".30"/>
 <polygon points="-10,-17 8,-17 14,-11 -4,-11" fill="url(#roof)"/>
 <polygon points="-10,-11 -4,-5 -4,10 -10,4" fill="#d4a782"/>
 <polygon points="-4,-5 14,-11 14,7 -4,13" fill="#f0d5ae"/>
 <path d="M0 -3 V11 M7 -6 V8 M-4 1 H14 M-4 7 H14" stroke="#7496a8" stroke-width="1"/>
 </g>
-<g transform="translate(530 773) rotate(-16)">
+<g transform="translate(530 773) rotate(74)">
 <rect x="-13" y="-14" width="26" height="28" rx="2" fill="#9eaaa8" opacity=".30"/>
 <polygon points="-10,-17 8,-17 14,-11 -4,-11" fill="url(#roof)"/>
 <polygon points="-10,-11 -4,-5 -4,10 -10,4" fill="#d4a782"/>
