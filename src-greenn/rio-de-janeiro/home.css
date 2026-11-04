@@ -20,3 +20,10 @@
 .rio-reference-price strong{font-size:clamp(1.24rem,1.75vw,1.52rem);line-height:1.2;letter-spacing:-.035em;color:#171813;white-space:nowrap;font-variant-numeric:tabular-nums}
 .rio-reference-price small{font-size:.7rem;color:#696156;line-height:1.4}
 @media(max-width:390px){.rio-reference-price strong{font-size:1.34rem;white-space:normal}}
+
+/* Cards RJ: hierarquia comercial alinhada ao catalogo SP */
+.rio-project-body .rio-card-headline{font-weight:800;color:#25241f;margin:0 0 8px;line-height:1.45}
+.rio-project-body .rio-card-benefit{font-size:.9rem;color:#605c54;margin:0 0 16px}
+.rio-project-body .rio-reference-price{margin-top:auto;padding:14px 0 16px}
+.rio-project-body .rio-reference-price span{display:block;font-size:.8rem;font-weight:750;color:#5d5952}
+.rio-project-body .rio-reference-price strong{display:block;font-size:clamp(1.35rem,1.7vw,1.75rem);line-height:1.25;color:#171813;letter-spacing:-.025em}
