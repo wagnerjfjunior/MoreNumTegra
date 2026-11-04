@@ -1,3 +1,9 @@
+## 04/11/2026 — CORRECAO DE PRIORIDADE: RJ = HIGH-CONVERSION PAGES + VALORES
+
+O usuario reafirmou que a ultima atividade era reformular comercialmente Home Rio + sete paginas: copy, Big Idea, headline, CTA, remover 'baboseiras' editoriais e inserir/preservar valores visiveis. A PR #540 (Draft) e o trabalho de continuidade; SEO #539 e secundario, como QA. Nao recomecar a construcao. Precos registrados e ressalvas factuais: `docs/sfjm/MNT_RIO_CONTINUIDADE_RESF_SEO_2026-11-04.md`. Nenhuma publicacao autorizada por este registro.
+
+---
+
 ## 04/11/2026 — Retomada RJ (documentação em PR, sem release)
 
 PRs #523–#526 integradas; #540 (Home RJ e seis RESF) e #539 (SEO 85 URLs) permaneciam OPEN/DRAFT na reconciliação. Não presumir merge, indexação ou aprovação das alterações RJ da #540. Handoff: `docs/sfjm/MNT_RIO_CONTINUIDADE_RESF_SEO_2026-11-04.md`. Estado do Complexo descrito abaixo preservado. Próxima ação: reconcile diff #539/#540, validar RJ URL a URL, sem mudanças no runtime.
