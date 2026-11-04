@@ -1,3 +1,15 @@
+## PRIORIDADE OPERACIONAL CORRIGIDA — orientação expressa do usuário em 04/11/2026
+
+**A ULTIMA ATIVIDADE NAO ERA UMA AUDITORIA SEO GENERICA.** Era transformar a Home Rio e todas as paginas RJ em paginas de ALTA CONVERSAO, retirar mensagens editoriais/administrativas que afastam compradores e INSERIR/PRESERVAR OS VALORES NUMERICOS DOS EMPREENDIMENTOS. A PR #540 ja implementa a base desta frente; continuar nela, nao reconstruir nem reabrir trabalho concluido.
+
+Ordem de trabalho: (1) copy comercial Big Idea + headline + beneficio + CTA; (2) cards e secoes com precos visiveis historicamente registrados e qualificacao discreta/verdadeira, sem afirmar ofertas expiradas como atuais; (3) limpeza das mensagens desnecessarias e creditos fotografico-visiveis apenas quando licenca permitir; (4) validacao comercial e visual mobile da Home e de cada pagina exata; (5) SEO/RESF como gates tecnicos complementares; (6) aceite e release rastreavel.
+
+O usuario rejeitou expressamente a copy 'Voce esta explorando os empreendimentos Tegra do Rio de Janeiro', notas ostensivas de 'Valores de referencia' e frases 'Promocao encerrada em 31/10/2026', 'Tabela de referencia de maio/2026' na area de conversao. O footer juridico obrigatorio e a veracidade dos precos devem permanecer; nao mascarar campanhas vencidas como ofertas atuais. Manter os precos numericos registrados por produto, conforme secao 4; reconfirmar vigencia antes de afirmar 'preco atual' ou publicidade de oferta. A copy final precisa ser especifica a cada empreendimento, nao um molde repetitivo.
+
+**Proxima acao:** revisar o HEAD da #540 e apontar, para cada uma das oito paginas, o que ja foi efetivamente removido, onde os valores aparecem, headline/CTA e pendencias reais de conversao. Nao substituir esse trabalho por inventario SEO generico.
+
+---
+
 # SFJM — Continuidade Rio de Janeiro / RESF / SEO — 2026-11-04
 
 Status: DOCUMENTATION_ONLY; candidato em branch; nao equivale a aceite, merge, deploy ou indexacao.
