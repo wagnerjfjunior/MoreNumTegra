@@ -38,7 +38,7 @@ for(const [label,viewport] of Object.entries({mobile:{width:390,height:844},desk
   assert.equal(await page.locator("[data-rio-card]:visible").count(),1,"stage filter");
   await page.locator("#rio-limpar").click();
   await page.locator("#rio-metragem").selectOption("450");
-  assert.equal(await page.locator("[data-rio-card]:visible").count(),3,"area filter (Claris 2 + RIIO/Singular)");
+  assert.equal(await page.locator("[data-rio-card]:visible").count(),4,"area filter (Claris 2 + RIIO + Singular)");
   await page.locator("#rio-limpar").click();
   await page.locator("[data-rio-interest]").first().click();
   assert.equal(await page.locator("#moretegra-lead-form").getAttribute("data-selected-project"),"Kronos by Tegra","interest carried into Form46");
