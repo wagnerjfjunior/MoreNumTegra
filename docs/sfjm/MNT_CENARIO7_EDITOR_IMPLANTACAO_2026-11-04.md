@@ -37,3 +37,11 @@
 - Alguns polígonos terminam próximos, mas não exatamente no primeiro ponto; SVG `polygon` fecha automaticamente. Não acrescentar coordenadas fictícias.
 - Os polígonos representam localização editorial marcada pelo usuário, não geometria definitiva de torres: desenho final ainda depende de inspeção/aceite. Nenhuma edição raster ou rota de carros efetuada.
 - Branch de trabalho isolada; sem merge/deploy.
+
+## 04/11/2026 — overlay de conferência não destrutivo
+- SVG transparente com os nove polígonos e 49 pontos originais do usuário: `src-greenn/complexo-lapa-pirituba/cenario7-editor/implantacao-marcacoes.svg`.
+- Visualização para comparar com a imagem original, sem modificar pixels, vias, edifícios ou cenários C1–C6: `src-greenn/complexo-lapa-pirituba/cenario7-editor/conferencia.html`.
+- Testar no LVR em `/complexo-lapa-pirituba/cenario7-editor/conferencia.html`, verificando carregamento da imagem PNG e botão de mostrar/ocultar overlay. Caso LVR use roteamento diferente, verificar acesso ao mesmo arquivo pela árvore `src-greenn`.
+- Área 8 `stand_vendas` permanece com polígono autointersectante; não usar como máscara de edição até revisão visual. A tela de conferência sinaliza o alerta.
+- O GitHub confirmou a existência e blob do PNG, mas o conector não disponibilizou os bytes do PNG. Sem QA visual browser nesta etapa, e sem reconstrução da prancha via gerador de imagens.
+- Não houve merge nem deploy. Próxima etapa: confirmar posições em LVR e só então criar versão editada da imagem em arquivo separado.
