@@ -12,3 +12,11 @@
 .rio-agent-contact{font-size:.9rem}
 .rio-agent-contact a{font-weight:800;text-underline-offset:3px}
 @media(max-width:720px){.rio-agent-grid{grid-template-columns:1fr}.rio-agent-photo{max-width:100%;width:min(100%,450px);margin:auto}.rio-agent-actions{display:grid;grid-template-columns:1fr}.rio-agent-actions .rio-btn{width:100%}}
+
+/* Historical reference pricing — distinct from a confirmed offer */
+.rio-price-note{max-width:100%;margin:0 0 18px;padding:14px 18px;border-left:4px solid #b88714;background:#fff8e6;color:#514535;font-size:.83rem;line-height:1.55}
+.rio-reference-price{margin:0 0 20px;padding:15px 16px;border:1px solid #e4dcc7;background:#fbf8ef;border-radius:12px;display:grid;gap:3px}
+.rio-reference-price span{font-size:.75rem;font-weight:800;color:#6f5d3d}
+.rio-reference-price strong{font-size:clamp(1.24rem,1.75vw,1.52rem);line-height:1.2;letter-spacing:-.035em;color:#171813;white-space:nowrap;font-variant-numeric:tabular-nums}
+.rio-reference-price small{font-size:.7rem;color:#696156;line-height:1.4}
+@media(max-width:390px){.rio-reference-price strong{font-size:1.34rem;white-space:normal}}
