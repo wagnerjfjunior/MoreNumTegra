@@ -39,6 +39,15 @@ for(const [mode,viewport] of Object.entries({mobile:{width:390,height:844},deskt
    const status=await page.locator("[data-gallery-status]").textContent();
    const expected=slug==="claris-rosas"?3:10;
    if(status.trim()!=="2 / "+expected)throw Error("gallery touch/click navigation failed: "+status);
+   if(mode==="desktop"){
+     const media=await page.locator(".rio-gallery-track img").evaluateAll(async imgs=>Promise.all(imgs.map(async img=>{
+       img.loading="eager";
+       try{await Promise.race([img.decode(),new Promise((_,reject)=>setTimeout(()=>reject(Error("timeout")),12000))]);return {src:img.currentSrc||img.src,ok:img.naturalWidth>0};}
+       catch(e){return {src:img.currentSrc||img.src,ok:false,error:String(e)}}
+     })));
+     const broken=media.filter(x=>!x.ok);
+     if(broken.length)throw Error("broken gallery media: "+JSON.stringify(broken));
+   }
    const count=await page.locator(".rio-gallery-track .rio-gallery-slide").count();
    if(count!==expected)throw Error("gallery scene count mismatch: "+count+" expected "+expected);
    const sectionCount=await page.locator("#plantas-oficiais").count();
