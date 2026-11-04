@@ -9,6 +9,10 @@ let errors=[];
 const d=x=>String(x||"").replaceAll("&amp;","&").replaceAll("&quot;",'"').replaceAll("&#39;","'");
 for(const slug of slugs) {
  const path=root+slug+"/index.html",h=fs.readFileSync(path,"utf8");
+ const body=h.slice(h.indexOf("<body"));
+ assert(!/31\/10\/2026|Fonte e transparência|Fonte:|fonte: galeria pública|tabela de setembro\/2026|promoção encerrada/i.test(body),slug+": internal audit or expired campaign language in conversion page");
+ assert(body.includes("class=\"pricebox\"")&&body.includes("Consultar condições com Sabrina"),slug+": price CTA missing");
+ assert(body.includes("Seu próximo passo")&&body.includes("Quero receber uma proposta"),slug+": conversion section missing");
  const fail=m=>errors.push(slug+": "+m);
  const hero=h.match(/<section class="hero"[\s\S]*?<\/section>/)?.[0]||"";
  const facts=h.match(/<section class="facts"[\s\S]*?<\/section>/)?.[0]||"";
