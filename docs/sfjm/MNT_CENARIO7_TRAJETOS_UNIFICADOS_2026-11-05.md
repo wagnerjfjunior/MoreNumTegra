@@ -70,3 +70,9 @@ Sem merge/deploy; sem gerar rotas de carros automaticamente; sem alterar polígo
 - Snapshot em `docs/sfjm/data/cenario7-trajetos-coleta-2026-11-05.json`: 35 + 37 + 33 = **105 pontos**.
 - Gate de homologação: conferir visualmente sentido, trajeto, carros de dois vidros, botão individual, pausa dos outros trajetos, toque/coleta do editor e exportação JSON; a confirmação no GitHub não equivale ao teste LVR.
 - Branch isolada `feat/complexo-prancha-condominios-lapa-20261104`, **sem merge ou deploy**.
+
+## 05/11/2026 — Densidade de carros ajustada nos trajetos 2 e 3
+- Pedido explícito do usuário: reduzir para **5 carros** o segundo percurso coletado (**Saída Parques da Lapa**, 37 pontos) e o terceiro (**Lapa → Quintas da Lapa**, 33 pontos).
+- Implementação: constante `SECONDARY_COUNT=5` aplicada à criação de carros, validação da frota, espaçamento sobre o SVG e rótulos dos controles de cada um desses percursos.
+- Primeiro percurso (**Lapa → Ayrton Senna**, 35 pontos) permanece com **8 carros** (`DRIVE_COUNT=8`). Todos preservam a carroceria e os dois vidros.
+- Sem modificação de coordenadas, cores, tempo de percurso, outros cenários ou conteúdo do JSON de coleta. GitHub atualizado na mesma branch; validação visual LVR ainda pendente. Sem merge/deploy.
