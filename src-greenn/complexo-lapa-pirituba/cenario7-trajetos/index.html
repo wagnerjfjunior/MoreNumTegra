@@ -1,119 +1,40 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow"><title>Cenário 7 — Editor SVG dos trajetos | SFJM</title>
+<meta name="robots" content="noindex,nofollow"><title>Cenário 7 — Lapa → Ayrton Senna / Condomínio Anastácio</title>
 <style>
-:root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif}*{box-sizing:border-box}body{margin:0;background:#101d2b;color:#eef4fb}header,.toolbar,.summary{padding:12px 16px}h1{font-size:1.13rem;margin:0 0 6px}p{margin:4px 0;color:#ccdae7;line-height:1.4;font-size:.86rem}.toolbar{display:flex;align-items:end;gap:8px;flex-wrap:wrap;background:#1c3248}.field{display:flex;flex-direction:column;gap:3px;min-width:220px;flex:1}.field label{font-size:.83rem;font-weight:600}button,select{font:inherit;background:#274660;color:#fff;border:1px solid #8394a7;border-radius:7px;padding:8px;min-height:41px}button{cursor:pointer}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #f5c54b}button[aria-pressed=true]{background:#087c76}button.primary{background:#ebb92e;border:0;color:#172433;font-weight:700}button:disabled{opacity:.45;cursor:not-allowed}.car-body{stroke:#fff;stroke-width:1.5;filter:drop-shadow(0 2px 3px #0009)}.car-window{fill:#e7f4fb;stroke:none}#mapWrap{padding:10px}#map{width:100%;max-width:1448px;margin:auto;position:relative;border:2px solid #607a92;line-height:0}#map img{width:100%;height:auto;display:block}#routeSvg,#boundaries{position:absolute;inset:0;width:100%;height:100%}#boundaries{pointer-events:none;opacity:.73}#routeSvg{pointer-events:none}#routeSvg.active{pointer-events:auto;cursor:crosshair;touch-action:none}#status{padding:8px 16px;min-height:36px;color:#ffe6a6;font-weight:600;font-size:.86rem}#coords{color:#cfe0ed;font-size:.8rem}.summary{border-top:1px solid #52687d}#routesSummary{padding-left:22px;margin:8px 0}#routesSummary li{margin:5px 0;font-size:.88rem}#fallback{width:100%;height:150px;background:#091b29;color:#fff;border:1px solid #8293a4;margin-top:7px}a{color:#ffe5a3}.hint{color:#bcd0e0;font-size:.79rem}@media(max-width:680px){.toolbar button{flex:1}.field{flex-basis:100%}}
-</style></head><body>
-<header><h1>Cenário 7 · Lapa → Ayrton Senna / Condomínio Anastácio</h1>
-<p>Editor SVG de trajetos — um ponto por toque, na ordem real de circulação. Cenário 8 consolidado aqui; os nove perímetros de condomínios permanecem disponíveis apenas como referência.</p></header>
-<div class="toolbar">
-<div class="field"><label for="route">Trajeto a mapear</label><select id="route"></select></div>
-<button id="capture" class="primary" aria-pressed="false" type="button">Iniciar coleta</button>
-<button id="testDrive" type="button" aria-pressed="false">Reproduzir Lapa → Ayrton Senna (8 carros)</button>
-<button id="testParques" type="button" aria-pressed="false">Reproduzir Saída Parques (5 carros)</button>
-<button id="testQuintas" type="button" aria-pressed="false">Reproduzir Lapa → Quintas (5 carros)</button>
-<button id="undo" type="button">Desfazer ponto</button>
-<button id="clear" type="button">Limpar este trajeto</button>
-<button id="limits" type="button" aria-pressed="false">Mostrar lotes SVG</button>
-<button id="copy" type="button">Copiar JSON</button>
-<button id="download" type="button">Baixar JSON</button>
-</div>
-<div id="status" role="status" aria-live="polite">Carregando prancha...</div>
-<div id="mapWrap"><div id="map">
-<img id="base" alt="Prancha Complexo Lapa–Tietê, percurso completo, base para mapear os trajetos" decoding="async">
-<img id="boundaries" src="../cenario7-editor/implantacao-marcacoes.svg" alt="" hidden>
-<svg id="routeSvg" xmlns="http://www.w3.org/2000/svg" aria-label="Trajetos SVG do cenário 7"></svg>
-</div></div>
-<section class="summary">
-<strong>3 trajetos coletados: Lapa → Ayrton Senna (35 pontos), Saída Parques (37 pontos) e Lapa → Quintas da Lapa (33 pontos). Primeiro trajeto com 8 carros; segundo e terceiro com 5 carros de dois vidros. Ciclo 10% mais rápido e frotas 2/3 defasadas para reduzir aglomeração.</strong>
-<ol id="routesSummary"></ol>
-<p class="hint">Comece na origem de cada percurso e adicione pontos na ordem do deslocamento. O último ponto é o destino. Alterar a opção de trajeto pausa a coleta e preserva os pontos já marcados nesta sessão.</p>
-<p class="hint">O trajeto 1 utiliza o laranja canônico da origem Lapa (#FF5F00). A Saída Parques usa sua cor de coleta provisória (#D7A44D), ainda não homologada como cor definitiva. As cores dos demais trajetos são auxiliares. Salve o JSON antes de sair: os pontos não são enviados automaticamente ao GitHub.</p>
-<p id="coords" aria-live="polite"></p><textarea id="fallback" readonly hidden aria-label="JSON exportado para copiar manualmente"></textarea>
-<p><a href="../cenario7-editor/index.html" target="_blank" rel="noopener noreferrer">Abrir editor histórico dos nove condomínios</a></p>
-</section>
+:root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#101d2b;color:#eef4fb}header{padding:13px 16px 8px}h1{margin:0;font-size:clamp(16px,2vw,21px)}header p{color:#b9cbde;font-size:12px;line-height:1.4;margin:6px 0}.legend{margin:5px 12px 8px;padding:12px;border-radius:11px;border:1px solid #405c74;background:#18334b}.legend-title{font-size:14px;font-weight:750;margin:0 0 8px}.options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.option{display:flex;align-items:center;gap:9px;padding:8px;border-radius:9px;border:1px solid #4e677d;background:#10283b;font-size:12px;line-height:1.35;cursor:pointer;min-height:50px}.option input{width:19px;height:19px;accent-color:#EBB92E;flex:none}.option svg{width:21px;height:37px;flex:none;overflow:visible}.option strong{font-size:12px}.actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:10px}.actions button{font:700 12px system-ui;min-height:39px;border-radius:8px;padding:8px 14px;cursor:pointer;background:#ebb92e;border:0;color:#182536}.actions button.secondary{border:1px solid #657b90;background:#213c54;color:#edf4fb}.status{color:#b6cadb;font-size:12px}#stage{position:relative;max-width:1448px;margin:auto;line-height:0;overflow:hidden}#map{display:block;width:100%;height:auto}#overlay{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.route-line{fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;opacity:.76;stroke-dasharray:10 7}.car-body{stroke:#fff;stroke-width:1.5;filter:drop-shadow(0 2px 3px #0009)}.car-window{fill:#e7f4fb}#error{padding:12px;color:#ffd8aa}.hint{margin:10px 15px;color:#aabfd2;font-size:11px;line-height:1.45}button:focus-visible,input:focus-visible{outline:3px solid #ebb92e;outline-offset:2px}[hidden]{display:none!important}@media(max-width:700px){.options{grid-template-columns:1fr}.option{min-height:44px}.legend{padding:10px}.actions{justify-content:flex-start}}
+</style></head>
+<body><header><h1>Lapa → Ayrton Senna / Condomínio Anastácio</h1>
+<p>Simulação ilustrativa dos acessos sobre a prancha completa do Complexo Lapa–Tietê.</p></header>
+<section class="legend" aria-label="Sentidos do trajeto"><h2 class="legend-title">Sentidos do trajeto</h2><div id="routeControls" class="options"></div>
+<div class="actions"><button id="toggle" type="button" aria-pressed="true">Pausar animação</button><button id="restart" class="secondary" type="button">Reiniciar percursos</button><span id="status" class="status" aria-live="polite">Carregando prancha…</span></div></section>
+<div id="stage"><img id="map" alt="Mapa ilustrado do Complexo Lapa–Tietê com os acessos de Lapa, Ayrton Senna e condomínios Anastácio" width="1448" height="1086" decoding="async">
+<svg id="overlay" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1448 1086" preserveAspectRatio="xMidYMid meet" aria-label="Três trajetos com veículos animados"></svg></div>
+<p class="hint">Percursos esquemáticos desenhados a partir dos pontos coletados. A animação não representa trânsito em tempo real ou liberação oficial das vias.</p><div id="error" hidden role="alert"></div>
 <script>
 (()=>{'use strict';
 const FILE='Complexo-Lapa-Tietê-Percurso-Completo-v1.png';
-const PATH='/src-greenn/complexo-lapa-pirituba/assets/';
-const ROUTES=[
-{id:'lapa_ayrton',name:'1. Lapa → Ayrton Senna',color:'#FF5F00'},
-{id:'lapa_bosques',name:'2. Lapa → Bosques da Lapa',color:'#D86B16'},
-{id:'saida_parques',name:'3A. Saída Parques da Lapa',color:'#D7A44D'},
-{id:'saida_pracas',name:'3B. Saída Praças da Lapa',color:'#CA8245'},
-{id:'lapa_quintas',name:'4. Lapa → Quintas da Lapa',color:'#FAAD53'}
-];
-const $=id=>document.getElementById(id),svg=$('routeSvg'),sel=$('route'),img=$('base');
-const pts=Object.fromEntries(ROUTES.map(r=>[r.id,[]]));
-// Pontos fornecidos pelo usuário e preservados no SFJM, sem interpolação/recalibração.
-pts.lapa_ayrton=[[1437,1048],[1292,988],[1142,927],[1001,864],[936,831],[909,825],[880,825],[860,834],[753,906],[698,940],[662,964],[641,966],[622,945],[606,901],[502,557],[478,482],[476,468],[482,458],[489,448],[495,434],[486,422],[482,408],[474,395],[474,387],[479,379],[489,371],[505,369],[525,371],[701,384],[760,390],[834,395],[902,390],[1115,371],[1282,356],[1428,343]];
-// Segundo trajeto recebido do usuário em nova coleta; 37 pontos sem alteração.
-pts.saida_parques=[[606,897],[589,881],[555,879],[455,881],[405,874],[346,858],[314,845],[281,834],[273,827],[275,817],[278,808],[285,787],[299,752],[315,714],[327,689],[328,663],[327,647],[322,639],[312,631],[270,607],[241,590],[229,563],[236,538],[249,527],[270,519],[281,514],[335,508],[418,498],[445,499],[460,503],[469,506],[476,512],[478,521],[479,529],[478,540],[461,543],[443,547]];
-// Terceiro trajeto coletado pelo usuário: Lapa → Quintas da Lapa, 33 pontos.
-pts.lapa_quintas=[[610,902],[602,892],[588,884],[570,879],[547,879],[502,882],[429,882],[371,871],[322,855],[285,838],[276,834],[276,821],[276,801],[296,761],[317,702],[325,668],[325,650],[323,634],[333,624],[341,615],[359,602],[387,592],[427,582],[463,571],[492,568],[499,577],[503,602],[510,629],[518,654],[520,673],[508,688],[487,696],[471,697]];
-const NS='http://www.w3.org/2000/svg';
-let width=0,height=0,active=false,driveFrame=0,driveStart=0,drivePath=null,driveCars=[];
-let parquesFrame=0,parquesPath=null,parquesCars=[];
-let quintasFrame=0,quintasPath=null,quintasCars=[];
-// Aumento de velocidade de 10%: 28.000 ms / 1,10 = 25.454,5 ms por ciclo.
-const DRIVE_MS=28000/1.10,DRIVE_COUNT=8,SECONDARY_COUNT=5,DRIVE_ID="lapa_ayrton";
-// Rotas 2 e 3 percorrem vias comuns: um relógio compartilhado preserva o distanciamento entre frotas, inclusive após pausar/retomar.
-const PARQUES_PHASE=0,QUINTAS_PHASE=0.125;
-let secondaryEpoch=0;
-for(const r of ROUTES){const o=document.createElement('option');o.value=r.id;o.textContent=r.name;sel.append(o);}
-const node=(tag,attrs)=>{const n=document.createElementNS(NS,tag);for(const [key,value] of Object.entries(attrs))n.setAttribute(key,String(value));return n;};
-function capture(flag){if(flag){stopDrive();stopParques();stopQuintas();}active=Boolean(flag&&width&&height);svg.classList.toggle('active',active);$('capture').setAttribute('aria-pressed',String(active));$('capture').textContent=active?'Pausar coleta':'Iniciar coleta';draw();}
-function exportData(){return {schema:'sfjm-cenario7-trajetos-v1',scenario:'Lapa → Ayrton Senna / Condomínio Anastácio',base:FILE,viewBox:'0 0 '+width+' '+height,dimensions:{width,height},routes:Object.fromEntries(ROUTES.map(r=>[r.id,{label:r.name,colorPreview:r.color,points:pts[r.id]}]))};}
-function draw(){
-svg.replaceChildren();drivePath=null;driveCars=[];parquesPath=null;parquesCars=[];quintasPath=null;quintasCars=[];
-const defs=node('defs',{});
-for(const r of ROUTES){const marker=node('marker',{id:'arr_'+r.id,markerWidth:6,markerHeight:6,refX:5,refY:3,orient:'auto',markerUnits:'strokeWidth'});marker.append(node('path',{d:'M0 0 L6 3 L0 6 Z',fill:r.color}));defs.append(marker);}
-svg.append(defs);
-for(const r of ROUTES){const p=pts[r.id];if(!p.length)continue;
-if(p.length>1)svg.append(node('polyline',{points:p.map(x=>x.join(',')).join(' '),fill:'none',stroke:r.color,'stroke-width':r.id===sel.value?5:3,'stroke-linecap':'round','stroke-linejoin':'round','marker-end':'url(#arr_'+r.id+')',opacity:r.id===sel.value?1:.75}));
-p.forEach((q,i)=>svg.append(node('circle',{cx:q[0],cy:q[1],r:r.id===sel.value?4.5:3,stroke:'#fff','stroke-width':1.3,fill:r.color})));
-}
-if(pts[DRIVE_ID].length>1){
-const p=pts[DRIVE_ID];drivePath=node('path',{d:'M '+p.map(q=>q.join(' ')).join(' L '),fill:'none',stroke:'none'});svg.append(drivePath);
-const fleet=node('g',{'aria-label':'Oito carrinhos laranja com dois vidros',visibility:'hidden'});
-for(let i=0;i<DRIVE_COUNT;i++){const car=node('g',{});car.append(node('rect',{class:'car-body',x:-10,y:-18,width:20,height:36,rx:7,fill:'#FF5F00'}));car.append(node('rect',{class:'car-window',x:-7,y:-11,width:14,height:8,rx:2}));car.append(node('rect',{class:'car-window',x:-7,y:5,width:14,height:7,rx:2}));fleet.append(car);driveCars.push(car);}svg.append(fleet);
-}
-if(pts.saida_parques.length>1){
-const p=pts.saida_parques;parquesPath=node('path',{d:'M '+p.map(q=>q.join(' ')).join(' L '),fill:'none',stroke:'none'});svg.append(parquesPath);
-const fleet=node('g',{'aria-label':'Cinco carrinhos Saída Parques com dois vidros',visibility:'hidden'});
-for(let i=0;i<SECONDARY_COUNT;i++){const car=node('g',{});car.append(node('rect',{class:'car-body',x:-10,y:-18,width:20,height:36,rx:7,fill:'#D7A44D'}));car.append(node('rect',{class:'car-window',x:-7,y:-11,width:14,height:8,rx:2}));car.append(node('rect',{class:'car-window',x:-7,y:5,width:14,height:7,rx:2}));fleet.append(car);parquesCars.push(car);}svg.append(fleet);
-}
-if(pts.lapa_quintas.length>1){
-const p=pts.lapa_quintas;quintasPath=node('path',{d:'M '+p.map(q=>q.join(' ')).join(' L '),fill:'none',stroke:'none'});svg.append(quintasPath);
-const fleet=node('g',{'aria-label':'Cinco carrinhos Lapa Quintas com dois vidros',visibility:'hidden'});
-for(let i=0;i<SECONDARY_COUNT;i++){const car=node('g',{});car.append(node('rect',{class:'car-body',x:-10,y:-18,width:20,height:36,rx:7,fill:'#FF5F00'}));car.append(node('rect',{class:'car-window',x:-7,y:-11,width:14,height:8,rx:2}));car.append(node('rect',{class:'car-window',x:-7,y:5,width:14,height:7,rx:2}));fleet.append(car);quintasCars.push(car);}svg.append(fleet);
-}
-$('routesSummary').replaceChildren();
-for(const r of ROUTES){const li=document.createElement('li');li.textContent=r.name+' — '+pts[r.id].length+' ponto(s)';li.style.borderLeft='4px solid '+r.color;li.style.paddingLeft='8px';$('routesSummary').append(li);}
-const p=pts[sel.value];const last=p.length?p[p.length-1].join(', '):'nenhum';
-$('coords').textContent='Último ponto do trajeto selecionado: '+last;
-$('status').textContent=(width?width+' × '+height+' px | ':'Imagem não carregada | ')+ROUTES.find(r=>r.id===sel.value).name+' | '+p.length+' pontos | '+(active?'Coleta ativa':'Coleta pausada');
-}
-function stopDrive(){if(driveFrame)cancelAnimationFrame(driveFrame);driveFrame=0;driveStart=0;driveCars.forEach(car=>car.parentNode.setAttribute('visibility','hidden'));$('testDrive').setAttribute('aria-pressed','false');$('testDrive').textContent='Reproduzir Lapa → Ayrton Senna (8 carros)';}
-function startDrive(){if(active||!width||width!==1448||height!==1086||pts[DRIVE_ID].length<2)return;stopDrive();if(!drivePath||driveCars.length!==DRIVE_COUNT)draw();if(!drivePath||driveCars.length!==DRIVE_COUNT)return;const length=drivePath.getTotalLength();if(length<=0)return;driveCars.forEach(car=>car.parentNode.setAttribute('visibility','visible'));driveStart=performance.now();$('testDrive').setAttribute('aria-pressed','true');$('testDrive').textContent='Pausar carros';function frame(t){const phase=((t-driveStart)/DRIVE_MS)%1;for(let i=0;i<driveCars.length;i++){const distance=length*((phase+i/DRIVE_COUNT)%1);const pos=drivePath.getPointAtLength(distance),ahead=drivePath.getPointAtLength(Math.min(length,distance+3));const behind=drivePath.getPointAtLength(Math.max(0,distance-3));const angle=Math.atan2(ahead.y-behind.y,ahead.x-behind.x)*180/Math.PI+90;driveCars[i].setAttribute('transform','translate('+pos.x+' '+pos.y+') rotate('+angle+')');}driveFrame=requestAnimationFrame(frame);}driveFrame=requestAnimationFrame(frame);}
-$('testDrive').addEventListener('click',()=>{if(driveFrame)stopDrive();else startDrive();});
-function stopParques(){if(parquesFrame)cancelAnimationFrame(parquesFrame);parquesFrame=0;parquesCars.forEach(car=>car.parentNode.setAttribute('visibility','hidden'));$('testParques').setAttribute('aria-pressed','false');$('testParques').textContent='Reproduzir Saída Parques (5 carros)';}
-function startParques(){if(active||width!==1448||height!==1086||pts.saida_parques.length<2)return;stopParques();if(!parquesPath||parquesCars.length!==SECONDARY_COUNT)draw();if(!parquesPath||parquesCars.length!==SECONDARY_COUNT)return;const length=parquesPath.getTotalLength();if(length<=0)return;parquesCars.forEach(car=>car.parentNode.setAttribute('visibility','visible'));if(!secondaryEpoch)secondaryEpoch=performance.now();$('testParques').setAttribute('aria-pressed','true');$('testParques').textContent='Pausar Saída Parques';function frame(t){const phase=((t-secondaryEpoch)/DRIVE_MS+PARQUES_PHASE)%1;for(let i=0;i<parquesCars.length;i++){const distance=length*((phase+i/SECONDARY_COUNT)%1),pos=parquesPath.getPointAtLength(distance),ahead=parquesPath.getPointAtLength(Math.min(length,distance+3)),behind=parquesPath.getPointAtLength(Math.max(0,distance-3)),angle=Math.atan2(ahead.y-behind.y,ahead.x-behind.x)*180/Math.PI+90;parquesCars[i].setAttribute('transform','translate('+pos.x+' '+pos.y+') rotate('+angle+')');}parquesFrame=requestAnimationFrame(frame);}parquesFrame=requestAnimationFrame(frame);}
-$('testParques').addEventListener('click',()=>{if(parquesFrame)stopParques();else startParques();});
-function stopQuintas(){if(quintasFrame)cancelAnimationFrame(quintasFrame);quintasFrame=0;quintasCars.forEach(car=>car.parentNode.setAttribute('visibility','hidden'));$('testQuintas').setAttribute('aria-pressed','false');$('testQuintas').textContent='Reproduzir Lapa → Quintas (5 carros)';}
-function startQuintas(){if(active||width!==1448||height!==1086||pts.lapa_quintas.length<2)return;stopQuintas();if(!quintasPath||quintasCars.length!==SECONDARY_COUNT)draw();if(!quintasPath||quintasCars.length!==SECONDARY_COUNT)return;const length=quintasPath.getTotalLength();if(length<=0)return;quintasCars.forEach(car=>car.parentNode.setAttribute('visibility','visible'));if(!secondaryEpoch)secondaryEpoch=performance.now();$('testQuintas').setAttribute('aria-pressed','true');$('testQuintas').textContent='Pausar Lapa → Quintas';function frame(t){const phase=((t-secondaryEpoch)/DRIVE_MS+QUINTAS_PHASE)%1;for(let i=0;i<quintasCars.length;i++){const distance=length*((phase+i/SECONDARY_COUNT)%1),pos=quintasPath.getPointAtLength(distance),ahead=quintasPath.getPointAtLength(Math.min(length,distance+3)),behind=quintasPath.getPointAtLength(Math.max(0,distance-3)),angle=Math.atan2(ahead.y-behind.y,ahead.x-behind.x)*180/Math.PI+90;quintasCars[i].setAttribute('transform','translate('+pos.x+' '+pos.y+') rotate('+angle+')');}quintasFrame=requestAnimationFrame(frame);}quintasFrame=requestAnimationFrame(frame);}
-$('testQuintas').addEventListener('click',()=>{if(quintasFrame)stopQuintas();else startQuintas();});
-img.addEventListener('load',()=>{width=img.naturalWidth;height=img.naturalHeight;svg.setAttribute('viewBox','0 0 '+width+' '+height);svg.setAttribute('preserveAspectRatio','none');if(width!==1448||height!==1086){$('limits').disabled=true;$('testDrive').disabled=true;$('testParques').disabled=true;$('testQuintas').disabled=true;$('status').textContent='Dimensões da prancha diferentes de 1448×1086: animação bloqueada até recalibração.';$('limits').title='Os polígonos históricos estão na referência 1448×1086; recalibração necessária.';draw();return;}draw();secondaryEpoch=performance.now();startDrive();startParques();startQuintas();});
-img.addEventListener('error',()=>{$('status').textContent='ERRO: prancha não carregou no LVR. Confirme branch e caminho do asset.';});
-img.src=PATH+encodeURIComponent(FILE);
-sel.addEventListener('change',()=>{stopDrive();stopParques();stopQuintas();capture(false);draw();});
-$('capture').addEventListener('click',()=>capture(!active));
-$('undo').addEventListener('click',()=>{stopDrive();stopParques();stopQuintas();pts[sel.value].pop();draw();});
-$('clear').addEventListener('click',()=>{if(pts[sel.value].length&&!confirm('Limpar apenas o trajeto selecionado?'))return;stopDrive();stopParques();stopQuintas();pts[sel.value]=[];draw();});
-$('limits').addEventListener('click',()=>{const el=$('boundaries');el.hidden=!el.hidden;$('limits').setAttribute('aria-pressed',String(!el.hidden));$('limits').textContent=el.hidden?'Mostrar lotes SVG':'Ocultar lotes SVG';});
-svg.addEventListener('pointerdown',e=>{if(!active)return;e.preventDefault();const m=svg.getScreenCTM();if(!m)return;const p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;const q=p.matrixTransform(m.inverse());if(q.x<0||q.y<0||q.x>width||q.y>height)return;pts[sel.value].push([Math.round(q.x),Math.round(q.y)]);draw();});
-$('copy').addEventListener('click',async()=>{const output=JSON.stringify(exportData(),null,2);try{await navigator.clipboard.writeText(output);$('status').textContent='JSON copiado: envie as coordenadas para validação.';}catch{$('fallback').hidden=false;$('fallback').value=output;$('fallback').select();$('status').textContent='Cópia indisponível: copie o campo JSON manualmente.';}});
-$('download').addEventListener('click',()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(exportData(),null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='sfjm-cenario7-trajetos.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
-draw();
+const ROUTES=[{"id":"lapa_ayrton","name":"Lapa → Ayrton Senna","color":"#FF5F00","cars":8,"phase":0,"points":[[1437,1048],[1292,988],[1142,927],[1001,864],[936,831],[909,825],[880,825],[860,834],[753,906],[698,940],[662,964],[641,966],[622,945],[606,901],[502,557],[478,482],[476,468],[482,458],[489,448],[495,434],[486,422],[482,408],[474,395],[474,387],[479,379],[489,371],[505,369],[525,371],[701,384],[760,390],[834,395],[902,390],[1115,371],[1282,356],[1428,343]]},{"id":"saida_parques","name":"Saída Parques da Lapa","color":"#D7A44D","cars":5,"phase":0,"points":[[606,897],[589,881],[555,879],[455,881],[405,874],[346,858],[314,845],[281,834],[273,827],[275,817],[278,808],[285,787],[299,752],[315,714],[327,689],[328,663],[327,647],[322,639],[312,631],[270,607],[241,590],[229,563],[236,538],[249,527],[270,519],[281,514],[335,508],[418,498],[445,499],[460,503],[469,506],[476,512],[478,521],[479,529],[478,540],[461,543],[443,547]]},{"id":"lapa_quintas","name":"Lapa → Quintas da Lapa","color":"#FF5F00","cars":5,"phase":0.125,"points":[[610,902],[602,892],[588,884],[570,879],[547,879],[502,882],[429,882],[371,871],[322,855],[285,838],[276,834],[276,821],[276,801],[296,761],[317,702],[325,668],[325,650],[323,634],[333,624],[341,615],[359,602],[387,592],[427,582],[463,571],[492,568],[499,577],[503,602],[510,629],[518,654],[520,673],[508,688],[487,696],[471,697]]}];
+const NS='http://www.w3.org/2000/svg',DURATION=28000/1.1;
+const $=id=>document.getElementById(id),overlay=$('overlay'),controls=$('routeControls');
+let runId=0,epoch=0,pausedAt=0,playing=false,loaded=false;
+const create=(tag,a={})=>{const el=document.createElementNS(NS,tag);for(const [k,v]of Object.entries(a))el.setAttribute(k,String(v));return el;};
+function carIcon(c){return '<svg viewBox="0 0 20 36" role="img" aria-label="Carro com dois vidros"><rect x="0.5" y="0.5" width="19" height="35" rx="6" fill="'+c+'" stroke="#fff"/><rect x="3" y="7" width="14" height="8" rx="2" fill="#e7f4fb"/><rect x="3" y="23" width="14" height="7" rx="2" fill="#e7f4fb"/></svg>';}
+for(const r of ROUTES){
+ const label=document.createElement('label');label.className='option';label.innerHTML='<input type="checkbox" checked aria-label="Exibir '+r.name+'">'+carIcon(r.color)+'<strong>'+r.name+'</strong>';controls.append(label);
+ r.enabled=true;label.querySelector('input').addEventListener('change',e=>{r.enabled=e.target.checked;r.group.hidden=!r.enabled;});
+ const d='M '+r.points.map(x=>x.join(' ')).join(' L ');
+ r.group=create('g',{'data-route':r.id});r.path=create('path',{d,fill:'none',stroke:'none'});r.group.append(r.path);
+ r.group.append(create('path',{d,class:'route-line',stroke:r.color}));
+ r.fleet=create('g',{'aria-label':r.name+' — '+r.cars+' carros'});r.vehicles=[];
+ for(let i=0;i<r.cars;i++){const v=create('g');v.append(create('rect',{class:'car-body',x:-10,y:-18,width:20,height:36,rx:7,fill:r.color}));v.append(create('rect',{class:'car-window',x:-7,y:-11,width:14,height:8,rx:2}));v.append(create('rect',{class:'car-window',x:-7,y:5,width:14,height:7,rx:2}));r.fleet.append(v);r.vehicles.push(v);}r.group.append(r.fleet);overlay.append(r.group);
+ }
+function render(now){for(const r of ROUTES){if(!r.enabled)continue;const length=r.length,phase=((now-epoch)/DURATION+r.phase)%1;for(let i=0;i<r.vehicles.length;i++){const dist=length*((phase+i/r.cars)%1),p=r.path.getPointAtLength(dist),a=r.path.getPointAtLength(Math.min(length,dist+3)),b=r.path.getPointAtLength(Math.max(0,dist-3)),deg=Math.atan2(a.y-b.y,a.x-b.x)*180/Math.PI+90;r.vehicles[i].setAttribute('transform','translate('+p.x+' '+p.y+') rotate('+deg+')');}}if(playing)runId=requestAnimationFrame(render);}
+function pause(){if(!playing)return;playing=false;cancelAnimationFrame(runId);pausedAt=performance.now();$('toggle').textContent='Reproduzir animação';$('toggle').setAttribute('aria-pressed','false');}
+function resume(reset=false){if(!loaded)return;if(playing)cancelAnimationFrame(runId);if(reset||!epoch)epoch=performance.now();else if(pausedAt)epoch+=performance.now()-pausedAt;pausedAt=0;playing=true;$('toggle').textContent='Pausar animação';$('toggle').setAttribute('aria-pressed','true');runId=requestAnimationFrame(render);}
+$('toggle').addEventListener('click',()=>playing?pause():resume());$('restart').addEventListener('click',()=>resume(true));
+$('map').addEventListener('load',()=>{const image=$('map');if(image.naturalWidth!==1448||image.naturalHeight!==1086){$('error').hidden=false;$('error').textContent='Dimensões da prancha incompatíveis: animação bloqueada para evitar desalinhamento.';return;}for(const r of ROUTES)r.length=r.path.getTotalLength();loaded=true;$('status').textContent='3 percursos · 18 carros no total';if(matchMedia('(prefers-reduced-motion: reduce)').matches){$('toggle').textContent='Reproduzir animação';$('toggle').setAttribute('aria-pressed','false');}else resume(true);});
+$('map').addEventListener('error',()=>{$('error').hidden=false;$('error').textContent='Prancha indisponível. Verifique o arquivo no servidor.';});
+$('map').src='/src-greenn/complexo-lapa-pirituba/assets/'+encodeURIComponent(FILE);
 })();
 </script></body></html>
