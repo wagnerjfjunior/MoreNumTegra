@@ -10,6 +10,7 @@
 <div class="field"><label for="route">Trajeto a mapear</label><select id="route"></select></div>
 <button id="capture" class="primary" aria-pressed="false" type="button">Iniciar coleta</button>
 <button id="testDrive" type="button" aria-pressed="false">Reproduzir Lapa → Ayrton Senna (8 carros)</button>
+<button id="testParques" type="button" aria-pressed="false">Reproduzir Saída Parques (8 carros)</button>
 <button id="undo" type="button">Desfazer ponto</button>
 <button id="clear" type="button">Limpar este trajeto</button>
 <button id="limits" type="button" aria-pressed="false">Mostrar lotes SVG</button>
@@ -23,10 +24,10 @@
 <svg id="routeSvg" xmlns="http://www.w3.org/2000/svg" aria-label="Trajetos SVG do cenário 7"></svg>
 </div></div>
 <section class="summary">
-<strong>Trajeto 1: Lapa → Ayrton Senna — 35 pontos coletados, 8 carros laranja, dois vidros. Outros trajetos em coleta.</strong>
+<strong>2 trajetos coletados: Lapa → Ayrton Senna (35 pontos) e Saída Parques da Lapa (37 pontos). Oito carrinhos por percurso, com dois vidros.</strong>
 <ol id="routesSummary"></ol>
 <p class="hint">Comece na origem de cada percurso e adicione pontos na ordem do deslocamento. O último ponto é o destino. Alterar a opção de trajeto pausa a coleta e preserva os pontos já marcados nesta sessão.</p>
-<p class="hint">O trajeto 1 utiliza o laranja canônico da origem Lapa (#FF5F00). As cores dos demais trajetos são apenas auxiliares para coleta. Salve o JSON antes de sair: os pontos não são enviados automaticamente ao GitHub.</p>
+<p class="hint">O trajeto 1 utiliza o laranja canônico da origem Lapa (#FF5F00). A Saída Parques usa sua cor de coleta provisória (#D7A44D), ainda não homologada como cor definitiva. As cores dos demais trajetos são auxiliares. Salve o JSON antes de sair: os pontos não são enviados automaticamente ao GitHub.</p>
 <p id="coords" aria-live="polite"></p><textarea id="fallback" readonly hidden aria-label="JSON exportado para copiar manualmente"></textarea>
 <p><a href="../cenario7-editor/index.html" target="_blank" rel="noopener noreferrer">Abrir editor histórico dos nove condomínios</a></p>
 </section>
@@ -45,15 +46,18 @@ const $=id=>document.getElementById(id),svg=$('routeSvg'),sel=$('route'),img=$('
 const pts=Object.fromEntries(ROUTES.map(r=>[r.id,[]]));
 // Pontos fornecidos pelo usuário e preservados no SFJM, sem interpolação/recalibração.
 pts.lapa_ayrton=[[1437,1048],[1292,988],[1142,927],[1001,864],[936,831],[909,825],[880,825],[860,834],[753,906],[698,940],[662,964],[641,966],[622,945],[606,901],[502,557],[478,482],[476,468],[482,458],[489,448],[495,434],[486,422],[482,408],[474,395],[474,387],[479,379],[489,371],[505,369],[525,371],[701,384],[760,390],[834,395],[902,390],[1115,371],[1282,356],[1428,343]];
+// Segundo trajeto recebido do usuário em nova coleta; 37 pontos sem alteração.
+pts.saida_parques=[[606,897],[589,881],[555,879],[455,881],[405,874],[346,858],[314,845],[281,834],[273,827],[275,817],[278,808],[285,787],[299,752],[315,714],[327,689],[328,663],[327,647],[322,639],[312,631],[270,607],[241,590],[229,563],[236,538],[249,527],[270,519],[281,514],[335,508],[418,498],[445,499],[460,503],[469,506],[476,512],[478,521],[479,529],[478,540],[461,543],[443,547]];
 const NS='http://www.w3.org/2000/svg';
 let width=0,height=0,active=false,driveFrame=0,driveStart=0,drivePath=null,driveCars=[];
+let parquesFrame=0,parquesPath=null,parquesCars=[];
 const DRIVE_MS=28000,DRIVE_COUNT=8,DRIVE_ID="lapa_ayrton";
 for(const r of ROUTES){const o=document.createElement('option');o.value=r.id;o.textContent=r.name;sel.append(o);}
 const node=(tag,attrs)=>{const n=document.createElementNS(NS,tag);for(const [key,value] of Object.entries(attrs))n.setAttribute(key,String(value));return n;};
-function capture(flag){if(flag)stopDrive();active=Boolean(flag&&width&&height);svg.classList.toggle('active',active);$('capture').setAttribute('aria-pressed',String(active));$('capture').textContent=active?'Pausar coleta':'Iniciar coleta';draw();}
+function capture(flag){if(flag){stopDrive();stopParques();}active=Boolean(flag&&width&&height);svg.classList.toggle('active',active);$('capture').setAttribute('aria-pressed',String(active));$('capture').textContent=active?'Pausar coleta':'Iniciar coleta';draw();}
 function exportData(){return {schema:'sfjm-cenario7-trajetos-v1',scenario:'Lapa → Ayrton Senna / Condomínio Anastácio',base:FILE,viewBox:'0 0 '+width+' '+height,dimensions:{width,height},routes:Object.fromEntries(ROUTES.map(r=>[r.id,{label:r.name,colorPreview:r.color,points:pts[r.id]}]))};}
 function draw(){
-svg.replaceChildren();drivePath=null;driveCars=[];
+svg.replaceChildren();drivePath=null;driveCars=[];parquesPath=null;parquesCars=[];
 const defs=node('defs',{});
 for(const r of ROUTES){const marker=node('marker',{id:'arr_'+r.id,markerWidth:6,markerHeight:6,refX:5,refY:3,orient:'auto',markerUnits:'strokeWidth'});marker.append(node('path',{d:'M0 0 L6 3 L0 6 Z',fill:r.color}));defs.append(marker);}
 svg.append(defs);
@@ -66,6 +70,11 @@ const p=pts[DRIVE_ID];drivePath=node('path',{d:'M '+p.map(q=>q.join(' ')).join('
 const fleet=node('g',{'aria-label':'Oito carrinhos laranja com dois vidros',visibility:'hidden'});
 for(let i=0;i<DRIVE_COUNT;i++){const car=node('g',{});car.append(node('rect',{class:'car-body',x:-10,y:-18,width:20,height:36,rx:7,fill:'#FF5F00'}));car.append(node('rect',{class:'car-window',x:-7,y:-11,width:14,height:8,rx:2}));car.append(node('rect',{class:'car-window',x:-7,y:5,width:14,height:7,rx:2}));fleet.append(car);driveCars.push(car);}svg.append(fleet);
 }
+if(pts.saida_parques.length>1){
+const p=pts.saida_parques;parquesPath=node('path',{d:'M '+p.map(q=>q.join(' ')).join(' L '),fill:'none',stroke:'none'});svg.append(parquesPath);
+const fleet=node('g',{'aria-label':'Oito carrinhos Saída Parques com dois vidros',visibility:'hidden'});
+for(let i=0;i<DRIVE_COUNT;i++){const car=node('g',{});car.append(node('rect',{class:'car-body',x:-10,y:-18,width:20,height:36,rx:7,fill:'#D7A44D'}));car.append(node('rect',{class:'car-window',x:-7,y:-11,width:14,height:8,rx:2}));car.append(node('rect',{class:'car-window',x:-7,y:5,width:14,height:7,rx:2}));fleet.append(car);parquesCars.push(car);}svg.append(fleet);
+}
 $('routesSummary').replaceChildren();
 for(const r of ROUTES){const li=document.createElement('li');li.textContent=r.name+' — '+pts[r.id].length+' ponto(s)';li.style.borderLeft='4px solid '+r.color;li.style.paddingLeft='8px';$('routesSummary').append(li);}
 const p=pts[sel.value];const last=p.length?p[p.length-1].join(', '):'nenhum';
@@ -75,13 +84,16 @@ $('status').textContent=(width?width+' × '+height+' px | ':'Imagem não carrega
 function stopDrive(){if(driveFrame)cancelAnimationFrame(driveFrame);driveFrame=0;driveStart=0;driveCars.forEach(car=>car.parentNode.setAttribute('visibility','hidden'));$('testDrive').setAttribute('aria-pressed','false');$('testDrive').textContent='Reproduzir Lapa → Ayrton Senna (8 carros)';}
 function startDrive(){if(active||!width||width!==1448||height!==1086||pts[DRIVE_ID].length<2)return;stopDrive();draw();if(!drivePath||driveCars.length!==DRIVE_COUNT)return;const length=drivePath.getTotalLength();if(length<=0)return;driveCars.forEach(car=>car.parentNode.setAttribute('visibility','visible'));driveStart=performance.now();$('testDrive').setAttribute('aria-pressed','true');$('testDrive').textContent='Pausar carros';function frame(t){const phase=((t-driveStart)/DRIVE_MS)%1;for(let i=0;i<driveCars.length;i++){const distance=length*((phase+i/DRIVE_COUNT)%1);const pos=drivePath.getPointAtLength(distance),ahead=drivePath.getPointAtLength(Math.min(length,distance+3));const behind=drivePath.getPointAtLength(Math.max(0,distance-3));const angle=Math.atan2(ahead.y-behind.y,ahead.x-behind.x)*180/Math.PI+90;driveCars[i].setAttribute('transform','translate('+pos.x+' '+pos.y+') rotate('+angle+')');}driveFrame=requestAnimationFrame(frame);}driveFrame=requestAnimationFrame(frame);}
 $('testDrive').addEventListener('click',()=>{if(driveFrame)stopDrive();else startDrive();});
-img.addEventListener('load',()=>{width=img.naturalWidth;height=img.naturalHeight;svg.setAttribute('viewBox','0 0 '+width+' '+height);svg.setAttribute('preserveAspectRatio','none');if(width!==1448||height!==1086){$('limits').disabled=true;$('testDrive').disabled=true;$('status').textContent='Dimensões da prancha diferentes de 1448×1086: animação bloqueada até recalibração.';$('limits').title='Os polígonos históricos estão na referência 1448×1086; recalibração necessária.';draw();return;}draw();startDrive();});
+function stopParques(){if(parquesFrame)cancelAnimationFrame(parquesFrame);parquesFrame=0;parquesCars.forEach(car=>car.parentNode.setAttribute('visibility','hidden'));$('testParques').setAttribute('aria-pressed','false');$('testParques').textContent='Reproduzir Saída Parques (8 carros)';}
+function startParques(){if(active||width!==1448||height!==1086||pts.saida_parques.length<2)return;stopParques();if(!parquesPath||parquesCars.length!==DRIVE_COUNT)draw();if(!parquesPath||parquesCars.length!==DRIVE_COUNT)return;const length=parquesPath.getTotalLength();if(length<=0)return;parquesCars.forEach(car=>car.parentNode.setAttribute('visibility','visible'));const start=performance.now();$('testParques').setAttribute('aria-pressed','true');$('testParques').textContent='Pausar Saída Parques';function frame(t){const phase=((t-start)/DRIVE_MS)%1;for(let i=0;i<parquesCars.length;i++){const distance=length*((phase+i/DRIVE_COUNT)%1),pos=parquesPath.getPointAtLength(distance),ahead=parquesPath.getPointAtLength(Math.min(length,distance+3)),behind=parquesPath.getPointAtLength(Math.max(0,distance-3)),angle=Math.atan2(ahead.y-behind.y,ahead.x-behind.x)*180/Math.PI+90;parquesCars[i].setAttribute('transform','translate('+pos.x+' '+pos.y+') rotate('+angle+')');}parquesFrame=requestAnimationFrame(frame);}parquesFrame=requestAnimationFrame(frame);}
+$('testParques').addEventListener('click',()=>{if(parquesFrame)stopParques();else startParques();});
+img.addEventListener('load',()=>{width=img.naturalWidth;height=img.naturalHeight;svg.setAttribute('viewBox','0 0 '+width+' '+height);svg.setAttribute('preserveAspectRatio','none');if(width!==1448||height!==1086){$('limits').disabled=true;$('testDrive').disabled=true;$('testParques').disabled=true;$('status').textContent='Dimensões da prancha diferentes de 1448×1086: animação bloqueada até recalibração.';$('limits').title='Os polígonos históricos estão na referência 1448×1086; recalibração necessária.';draw();return;}draw();startDrive();startParques();});
 img.addEventListener('error',()=>{$('status').textContent='ERRO: prancha não carregou no LVR. Confirme branch e caminho do asset.';});
 img.src=PATH+encodeURIComponent(FILE);
-sel.addEventListener('change',()=>{stopDrive();capture(false);draw();});
+sel.addEventListener('change',()=>{stopDrive();stopParques();capture(false);draw();});
 $('capture').addEventListener('click',()=>capture(!active));
-$('undo').addEventListener('click',()=>{stopDrive();pts[sel.value].pop();draw();});
-$('clear').addEventListener('click',()=>{if(pts[sel.value].length&&!confirm('Limpar apenas o trajeto selecionado?'))return;stopDrive();pts[sel.value]=[];draw();});
+$('undo').addEventListener('click',()=>{stopDrive();stopParques();pts[sel.value].pop();draw();});
+$('clear').addEventListener('click',()=>{if(pts[sel.value].length&&!confirm('Limpar apenas o trajeto selecionado?'))return;stopDrive();stopParques();pts[sel.value]=[];draw();});
 $('limits').addEventListener('click',()=>{const el=$('boundaries');el.hidden=!el.hidden;$('limits').setAttribute('aria-pressed',String(!el.hidden));$('limits').textContent=el.hidden?'Mostrar lotes SVG':'Ocultar lotes SVG';});
 svg.addEventListener('pointerdown',e=>{if(!active)return;e.preventDefault();const m=svg.getScreenCTM();if(!m)return;const p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;const q=p.matrixTransform(m.inverse());if(q.x<0||q.y<0||q.x>width||q.y>height)return;pts[sel.value].push([Math.round(q.x),Math.round(q.y)]);draw();});
 $('copy').addEventListener('click',async()=>{const output=JSON.stringify(exportData(),null,2);try{await navigator.clipboard.writeText(output);$('status').textContent='JSON copiado: envie as coordenadas para validação.';}catch{$('fallback').hidden=false;$('fallback').value=output;$('fallback').select();$('status').textContent='Cópia indisponível: copie o campo JSON manualmente.';}});
