@@ -36,3 +36,15 @@ Não há coordenadas de carros nem de trajetos pré-fabricadas neste commit.
 
 ## Bloqueios
 Sem merge/deploy; sem gerar rotas de carros automaticamente; sem alterar polígonos aprovados, C1–C6, planta original, ferrovias, tráfego ambiental ou identidade visual.
+
+## 05/11/2026 — Primeiro trajeto capturado: Lapa → Ayrton Senna, animação candidata ao LVR
+
+- Usuário forneceu `sfjm-cenario7-trajetos.json`; **35 pontos** de `lapa_ayrton` preservados sem alteração na ordem e sem novas coordenadas, `viewBox=0 0 1448 1086`, base `Complexo-Lapa-Tietê-Percurso-Completo-v1.png`.
+- Cópia documental fiel da coleta em `docs/sfjm/data/cenario7-trajetos-coleta-2026-11-05.json`, com outras quatro rotas vazias.
+- Editor `src-greenn/complexo-lapa-pirituba/cenario7-trajetos/index.html` agora pré-carrega a rota 1, usa a matriz cromática por **origem Lapa: laranja `#FF5F00`**, substituindo a cor provisória `#F08C29` apenas na apresentação do trajeto 1.
+- Oito carros simultâneos, espaçados por distância proporcional ao comprimento do path SVG, usando modelo já presente no simulador duplo: carroceria `20 × 36`, `rx=7`, contorno branco, **dois vidros** em `y=-11` e `y=5`. Movimento por `getPointAtLength()`, rotação tangente conforme a direção dos pontos, repetição em 28 s; sem geometria inventada.
+- O percurso é reproduzido automaticamente após carregar uma base `1448×1086`; botão **Pausar carros / Reproduzir Lapa → Ayrton Senna (8 carros)**. Coleta SVG desliga a animação para permitir novos pontos. Quando pausados, os carros ficam ocultos, não acumulados em `0,0`.
+- As outras quatro opções permanecem disponíveis para coleta; não possuem carro, trajeto inventado nem alteração de pontos.
+- Auditoria técnica: HTML/JavaScript alterado somente no editor C7; JavaScript submetido a verificação sintática V8 **PASS**. **Ainda sem QA visual em navegador/LVR**; verificar alinhamento, sentido, dois vidros, comportamento de play/pause e responsividade.
+- Preservados a prancha, o arquivo original de polígonos imobiliários, os seis simuladores anteriores, seus trens e carros. Nenhum merge ou deploy.
+- Rollback isolado: reverter commits do editor do C7 e manter o JSON original para nova homologação.
