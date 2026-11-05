@@ -37,3 +37,11 @@ Arquivo: `src-greenn/complexo-lapa-pirituba/cenario7-trajetos/index.html`.
 ## Pendências explícitas
 - Destinos futuros Lapa → Bosques e Saída Praças não estão nesta release: zero pontos no JSON. Não inventar.
 - Se surgirem erros de posicionamento, contagem, pausa ou integração após merge, retornar à versão anterior e corrigir em branch separada.
+
+## Resultado da publicação — 05/11/2026
+- PR **#542**: **MERGED** em `main`; commit de produção `2aa6b8c268e8a112c9d74fe1c293c3cec9358db2`.
+- Vercel projeto `morenumtegra` (`prj_f8r2PwQ42f38CWUjOGpEStkjmaqt`), deployment `dpl_GCsg81XJDEfUeVX7A4RGsVnw815f` **READY**, `target=production`, `githubCommitSha` idêntico ao merge, alias `www.moretegra.com.br`, `aliasError=null`.
+- Main compare contra merge idêntico. O merge não introduziu alterações em C1–C6; cinco arquivos previstos compõem a release.
+- Baseline anterior pronto ao rollback do projeto: `dpl_2eYYe3WxdhZeMMNgrZZg3XMA4n7w` (PR #538, `c4c37f5d4c5a3b94089ece6cccbafcff7f3e6e1a`).
+- Atenção: **READY não comprova funcionamento visual nos navegadores**. QA mobile/desktop pós-publicação permanece aberto.
+- Greenn não modificada.
