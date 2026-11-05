@@ -234,4 +234,14 @@ fetch(root+"duplo/routes-duplo.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw
   startAnimation();
 }).catch(e=>{$("status").textContent="Erro ao carregar geometria: "+e.message;console.error(e);});
 
+</script><script id="embed-auto-height">
+(()=>{'use strict';
+if(!document.documentElement.classList.contains('embedded'))return;
+let lastHeight=0;
+function report(){const h=Math.ceil(document.documentElement.scrollHeight);if(h!==lastHeight){lastHeight=h;window.parent.postMessage({namespace:'mnt-complexo-iframe',type:'resize',height:h},location.origin);}}
+new ResizeObserver(report).observe(document.body);
+window.addEventListener('load',report);
+window.addEventListener('resize',report);
+report();
+})();
 </script><script src="/src-greenn/complexo-lapa-pirituba/ux-map-v2.js" defer></script></body></html>
