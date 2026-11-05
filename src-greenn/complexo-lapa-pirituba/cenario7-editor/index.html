@@ -5,7 +5,7 @@
 :root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif}*{box-sizing:border-box}body{margin:0;background:#101d2b;color:#edf4fb}header,section{padding:14px 16px}h1{font-size:1.12rem;margin:0 0 6px}p{margin:4px 0;font-size:.9rem;color:#c8d5e2}.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#1a3045}.toolbar label{font-weight:650}select,button{font:inherit;min-height:40px;border-radius:7px;border:1px solid #647d94;padding:8px;color:white;background:#203f59}button{cursor:pointer}button:focus-visible,select:focus-visible{outline:3px solid #f0c451}button.primary{background:#EBB92E;color:#19232b;font-weight:750;border:0}button[aria-pressed=true]{background:#177d75}#wrap{padding:10px;background:#101d2b}#map{position:relative;width:100%;max-width:1500px;margin:auto;border:2px solid #637a8e;line-height:0;touch-action:pan-x pan-y}#map img{width:100%;height:auto;display:block}#quintasPreview{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}#quintasPreview[hidden]{display:none}#overlayApproved{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}#overlayApproved[hidden]{display:none}#marks{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}#marks.editing{pointer-events:auto;touch-action:none;cursor:crosshair}#message{min-height:28px}#progress{padding:10px 16px;color:#d7e7f4;font-size:.87rem}#progress ol{margin:8px 0;padding-left:24px;columns:2}#progress li{padding:2px 0}#jsonFallback{width:100%;height:190px;background:#0b1723;color:white;border:1px solid #657487}#jsonFallback[hidden]{display:none!important}.foot{font-size:.78rem;color:#b9c7d4} @media(max-width:640px){#progress ol{columns:1}}
 </style></head><body>
 <header><h1>SFJM · Cenário 7 — marcação editorial dos condomínios</h1>
-<p>Prancha original preservada. Marque o contorno de cada área com pontos sucessivos; NÃO é editor de rotas de carros. Cenários 7 e 8 reunidos para implantação.</p></header>
+<p>Prancha compartilhada v1 carregada para os cenários 7 e 8. O mapeamento SVG histórico permanece preservado, mas deve ser reconferido visualmente nesta nova base antes de novas edições.</p></header>
 <div class="toolbar"><label for="target">Item a marcar</label><select id="target"></select>
 <button id="toggle" class="primary" type="button" aria-pressed="false">Iniciar marcação</button>
 <button id="undo" type="button">Desfazer último ponto</button><button id="clear" type="button">Limpar item selecionado</button>
@@ -18,7 +18,7 @@
 <script>
 (()=>{'use strict';
 const ROOT='/src-greenn/complexo-lapa-pirituba/assets/';
-const FILE='Mapa Ilustrado-Pirituba–Lado-Lapa.png';
+const FILE='Complexo-Lapa-Tietê-Percurso-Completo-v1.png';
 const ITEMS=[
 ['quintas','1. Quintas da Lapa — 4 torres paralelas à Raimundo','#EAB308','criar'],
 ['homeclub','2. Home Club — referência existente na esquina','#F59E0B','preservar'],
