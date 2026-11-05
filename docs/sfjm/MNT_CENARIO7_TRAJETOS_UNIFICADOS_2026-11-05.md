@@ -76,3 +76,23 @@ Sem merge/deploy; sem gerar rotas de carros automaticamente; sem alterar polígo
 - Implementação: constante `SECONDARY_COUNT=5` aplicada à criação de carros, validação da frota, espaçamento sobre o SVG e rótulos dos controles de cada um desses percursos.
 - Primeiro percurso (**Lapa → Ayrton Senna**, 35 pontos) permanece com **8 carros** (`DRIVE_COUNT=8`). Todos preservam a carroceria e os dois vidros.
 - Sem modificação de coordenadas, cores, tempo de percurso, outros cenários ou conteúdo do JSON de coleta. GitHub atualizado na mesma branch; validação visual LVR ainda pendente. Sem merge/deploy.
+
+## 05/11/2026 — Ajuste de fluidez: +10% de velocidade e antissobreposição das frotas 2/3
+
+Pedido: aumentar a velocidade dos carros **10%**, eliminar a aparência de engarrafamento visual causada por veículos agrupados nos trechos comuns das rotas 2 (Saída Parques) e 3 (Lapa → Quintas), tomando a fluidez do trajeto 1 como referência.
+
+### Diagnóstico
+- Os dois trajetos secundários iniciavam com fases iguais e relógios locais independentes; como seus traçados passam por ruas semelhantes, a distribuição criava clusters de carros sobrepostos.
+- Contagens preservadas: **8** na rota 1, **5** em cada rota secundária; 35 + 37 + 33 = **105 pontos inalterados**; carros de dois vidros e cores inalterados.
+
+### Mudanças implementadas
+- `DRIVE_MS=28000/1.10` (novo ciclo **25.454,545 ms**, antes 28.000 ms). Como velocidade é inversamente proporcional ao tempo para a mesma geometria, este ajuste corresponde a **+10% de velocidade**.
+- Relógio compartilhado `secondaryEpoch` para os percursos 2 e 3, evitando que pausar/retomar um deles reinicie o deslocamento relativo e provoque reacoplamento.
+- `PARQUES_PHASE=0`, `QUINTAS_PHASE=0.125`: deslocamento de **12,5% do ciclo**. A sequência de cinco carros por rota continua uniformemente espaçada em seus comprimentos.
+- A fase não desloca nem redesenha os pontos SVG: altera somente a posição instantânea dos veículos nos dois paths.
+- Simulação geométrica offline com **1.500 amostras temporais** do ciclo: a menor distância entre centros de carros de Parques e Quintas foi de aproximadamente **47,96 px** para a diferença de fase de 0,125; antes, com fase igual, houve múltiplas aproximações menores que 35 px. Este resultado é um teste amostrado de posições no SVG, **não substitui** validação de caixas rotacionadas ou navegador real.
+
+### Validação e aceite
+- Código carregado de volta do GitHub; sintaxe do script JavaScript **PASS**.
+- **Pendente LVR:** verificar fluidez, possíveis cruzamentos pontuais, loop sem salto perceptível, dois vidros e controles individuais. Comparar cenário após manter as duas rotas ativadas por pelo menos um ciclo completo; pausar/reproduzir rota 2 e depois rota 3 independentemente para confirmar defasagem.
+- Nenhuma alteração no mapa-base, geometrias das rotas, editor de lotes, cenários 1–6, formulário, SEO, merge ou deploy.
