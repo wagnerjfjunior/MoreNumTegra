@@ -1,0 +1,178 @@
+{
+  "schema": "sfjm-cenario7-trajetos-v1",
+  "scenario": "Lapa → Ayrton Senna / Condomínio Anastácio",
+  "base": "Complexo-Lapa-Tietê-Percurso-Completo-v1.png",
+  "viewBox": "0 0 1448 1086",
+  "dimensions": {
+    "width": 1448,
+    "height": 1086
+  },
+  "routes": {
+    "lapa_ayrton": {
+      "label": "1. Lapa → Ayrton Senna",
+      "colorPreview": "#F08C29",
+      "points": [
+        [
+          1437,
+          1048
+        ],
+        [
+          1292,
+          988
+        ],
+        [
+          1142,
+          927
+        ],
+        [
+          1001,
+          864
+        ],
+        [
+          936,
+          831
+        ],
+        [
+          909,
+          825
+        ],
+        [
+          880,
+          825
+        ],
+        [
+          860,
+          834
+        ],
+        [
+          753,
+          906
+        ],
+        [
+          698,
+          940
+        ],
+        [
+          662,
+          964
+        ],
+        [
+          641,
+          966
+        ],
+        [
+          622,
+          945
+        ],
+        [
+          606,
+          901
+        ],
+        [
+          502,
+          557
+        ],
+        [
+          478,
+          482
+        ],
+        [
+          476,
+          468
+        ],
+        [
+          482,
+          458
+        ],
+        [
+          489,
+          448
+        ],
+        [
+          495,
+          434
+        ],
+        [
+          486,
+          422
+        ],
+        [
+          482,
+          408
+        ],
+        [
+          474,
+          395
+        ],
+        [
+          474,
+          387
+        ],
+        [
+          479,
+          379
+        ],
+        [
+          489,
+          371
+        ],
+        [
+          505,
+          369
+        ],
+        [
+          525,
+          371
+        ],
+        [
+          701,
+          384
+        ],
+        [
+          760,
+          390
+        ],
+        [
+          834,
+          395
+        ],
+        [
+          902,
+          390
+        ],
+        [
+          1115,
+          371
+        ],
+        [
+          1282,
+          356
+        ],
+        [
+          1428,
+          343
+        ]
+      ]
+    },
+    "lapa_bosques": {
+      "label": "2. Lapa → Bosques da Lapa",
+      "colorPreview": "#D86B16",
+      "points": []
+    },
+    "saida_parques": {
+      "label": "3A. Saída Parques da Lapa",
+      "colorPreview": "#D7A44D",
+      "points": []
+    },
+    "saida_pracas": {
+      "label": "3B. Saída Praças da Lapa",
+      "colorPreview": "#CA8245",
+      "points": []
+    },
+    "lapa_quintas": {
+      "label": "4. Lapa → Quintas da Lapa",
+      "colorPreview": "#FAAD53",
+      "points": []
+    }
+  }
+}
