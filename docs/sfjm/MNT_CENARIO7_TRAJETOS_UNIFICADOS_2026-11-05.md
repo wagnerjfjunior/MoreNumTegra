@@ -59,3 +59,14 @@ Sem merge/deploy; sem gerar rotas de carros automaticamente; sem alterar polígo
 - Dados atualizados em `docs/sfjm/data/cenario7-trajetos-coleta-2026-11-05.json`: **35 + 37 pontos**. Outros três continuam vazios.
 - QA: integração confirmada no código do GitHub; **teste visual LVR e calibração real pendentes**. Validar direção da rota Saída Parques, cor desejada, contagem/vidros dos carros, não interferência com a primeira rota, pausa individual, responsividade e exportação dos dois conjuntos de pontos.
 - Não houve merge/deploy, nem alteração nas demais pranchas ou cenários 1–6.
+
+## 05/11/2026 — Terceiro trajeto coletado: Lapa → Quintas da Lapa
+
+- Novo arquivo do usuário: `sfjm-cenario7-trajetos (2).json` (schema `sfjm-cenario7-trajetos-v1`, base compartilhada, viewBox `0 0 1448 1086`).
+- **33 pontos** de `lapa_quintas` inseridos integralmente e na mesma ordem no editor `src-greenn/complexo-lapa-pirituba/cenario7-trajetos/index.html`.
+- Origem Lapa: cor canônica laranja `#FF5F00` para **carrinhos**; a linha do editor mantém temporariamente a cor visual própria `#FAAD53`, a validar.
+- Terceiro controle independente `Reproduzir Lapa → Quintas (8 carros)`, com oito veículos e dois vidros, rotação tangente, progressão SVG por `getPointAtLength()` e duração 28 s; autopartida após carregar imagem nas dimensões 1448×1086.
+- Os trajetos anteriores foram preservados sem edição: `lapa_ayrton` (35 pontos) e `saida_parques` (37 pontos). `lapa_bosques` e `saida_pracas` permanecem vazios.
+- Snapshot em `docs/sfjm/data/cenario7-trajetos-coleta-2026-11-05.json`: 35 + 37 + 33 = **105 pontos**.
+- Gate de homologação: conferir visualmente sentido, trajeto, carros de dois vidros, botão individual, pausa dos outros trajetos, toque/coleta do editor e exportação JSON; a confirmação no GitHub não equivale ao teste LVR.
+- Branch isolada `feat/complexo-prancha-condominios-lapa-20261104`, **sem merge ou deploy**.
