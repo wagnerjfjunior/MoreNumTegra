@@ -25,3 +25,13 @@ Foi criada a branch `release/complexo-cenarios5-6-20261105` a partir da main vig
 - Rollback: reverter exclusivamente a PR desta release; base anterior é o commit main imediatamente anterior ao merge de C5/C6, já contendo C7.
 - Vercel: comparar deployment production READY ao merge SHA e alias www.moretegra.com.br; manter referência do deployment anterior para rollback.
 - Greenn não é alvo deste merge.
+
+## Publicação efetiva — 05/11/2026
+
+- **PR #543 MERGED**, squash SHA `be685ba8ae28c04fa93f9a3c50db00962ccd1a5f`.
+- Vercel projeto `morenumtegra`, deployment `dpl_Gc372kgLzEuXv3gbAA4ra95VhNV9`, **target production / state READY**.
+- `githubCommitSha` do deployment corresponde exatamente ao merge `be685ba8ae28c04fa93f9a3c50db00962ccd1a5f`; domínio/alias `www.moretegra.com.br`; `aliasError=null`.
+- PR isolada alterou somente três arquivos: HTML principal do complexo, asset WebP compartilhado e este documento de governança.
+- **Rollback seguro:** reverter a PR #543, mantendo a PR #542 do C7 publicada; deployment READY anterior `dpl_GCsg81XJDEfUeVX7A4RGsVnw815f`, SHA `2aa6b8c268e8a112c9d74fe1c293c3cec9358db2`.
+- Fonte pública não acessível pela ferramenta web utilizada na sessão: não declarar QA visual público concluído. QA mobile e desktop permanece pendente.
+- Publicação Greenn não realizada.
