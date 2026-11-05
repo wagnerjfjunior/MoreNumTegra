@@ -2,13 +2,14 @@
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><title>Cenário 7 — Editor SVG dos trajetos | SFJM</title>
 <style>
-:root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif}*{box-sizing:border-box}body{margin:0;background:#101d2b;color:#eef4fb}header,.toolbar,.summary{padding:12px 16px}h1{font-size:1.13rem;margin:0 0 6px}p{margin:4px 0;color:#ccdae7;line-height:1.4;font-size:.86rem}.toolbar{display:flex;align-items:end;gap:8px;flex-wrap:wrap;background:#1c3248}.field{display:flex;flex-direction:column;gap:3px;min-width:220px;flex:1}.field label{font-size:.83rem;font-weight:600}button,select{font:inherit;background:#274660;color:#fff;border:1px solid #8394a7;border-radius:7px;padding:8px;min-height:41px}button{cursor:pointer}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #f5c54b}button[aria-pressed=true]{background:#087c76}button.primary{background:#ebb92e;border:0;color:#172433;font-weight:700}button:disabled{opacity:.45;cursor:not-allowed}#mapWrap{padding:10px}#map{width:100%;max-width:1448px;margin:auto;position:relative;border:2px solid #607a92;line-height:0}#map img{width:100%;height:auto;display:block}#routeSvg,#boundaries{position:absolute;inset:0;width:100%;height:100%}#boundaries{pointer-events:none;opacity:.73}#routeSvg{pointer-events:none}#routeSvg.active{pointer-events:auto;cursor:crosshair;touch-action:none}#status{padding:8px 16px;min-height:36px;color:#ffe6a6;font-weight:600;font-size:.86rem}#coords{color:#cfe0ed;font-size:.8rem}.summary{border-top:1px solid #52687d}#routesSummary{padding-left:22px;margin:8px 0}#routesSummary li{margin:5px 0;font-size:.88rem}#fallback{width:100%;height:150px;background:#091b29;color:#fff;border:1px solid #8293a4;margin-top:7px}a{color:#ffe5a3}.hint{color:#bcd0e0;font-size:.79rem}@media(max-width:680px){.toolbar button{flex:1}.field{flex-basis:100%}}
+:root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif}*{box-sizing:border-box}body{margin:0;background:#101d2b;color:#eef4fb}header,.toolbar,.summary{padding:12px 16px}h1{font-size:1.13rem;margin:0 0 6px}p{margin:4px 0;color:#ccdae7;line-height:1.4;font-size:.86rem}.toolbar{display:flex;align-items:end;gap:8px;flex-wrap:wrap;background:#1c3248}.field{display:flex;flex-direction:column;gap:3px;min-width:220px;flex:1}.field label{font-size:.83rem;font-weight:600}button,select{font:inherit;background:#274660;color:#fff;border:1px solid #8394a7;border-radius:7px;padding:8px;min-height:41px}button{cursor:pointer}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #f5c54b}button[aria-pressed=true]{background:#087c76}button.primary{background:#ebb92e;border:0;color:#172433;font-weight:700}button:disabled{opacity:.45;cursor:not-allowed}.car-body{stroke:#fff;stroke-width:1.5;filter:drop-shadow(0 2px 3px #0009)}.car-window{fill:#e7f4fb;stroke:none}#mapWrap{padding:10px}#map{width:100%;max-width:1448px;margin:auto;position:relative;border:2px solid #607a92;line-height:0}#map img{width:100%;height:auto;display:block}#routeSvg,#boundaries{position:absolute;inset:0;width:100%;height:100%}#boundaries{pointer-events:none;opacity:.73}#routeSvg{pointer-events:none}#routeSvg.active{pointer-events:auto;cursor:crosshair;touch-action:none}#status{padding:8px 16px;min-height:36px;color:#ffe6a6;font-weight:600;font-size:.86rem}#coords{color:#cfe0ed;font-size:.8rem}.summary{border-top:1px solid #52687d}#routesSummary{padding-left:22px;margin:8px 0}#routesSummary li{margin:5px 0;font-size:.88rem}#fallback{width:100%;height:150px;background:#091b29;color:#fff;border:1px solid #8293a4;margin-top:7px}a{color:#ffe5a3}.hint{color:#bcd0e0;font-size:.79rem}@media(max-width:680px){.toolbar button{flex:1}.field{flex-basis:100%}}
 </style></head><body>
 <header><h1>Cenário 7 · Lapa → Ayrton Senna / Condomínio Anastácio</h1>
 <p>Editor SVG de trajetos — um ponto por toque, na ordem real de circulação. Cenário 8 consolidado aqui; os nove perímetros de condomínios permanecem disponíveis apenas como referência.</p></header>
 <div class="toolbar">
 <div class="field"><label for="route">Trajeto a mapear</label><select id="route"></select></div>
 <button id="capture" class="primary" aria-pressed="false" type="button">Iniciar coleta</button>
+<button id="testDrive" type="button" aria-pressed="false">Reproduzir Lapa → Ayrton Senna (8 carros)</button>
 <button id="undo" type="button">Desfazer ponto</button>
 <button id="clear" type="button">Limpar este trajeto</button>
 <button id="limits" type="button" aria-pressed="false">Mostrar lotes SVG</button>
@@ -22,10 +23,10 @@
 <svg id="routeSvg" xmlns="http://www.w3.org/2000/svg" aria-label="Trajetos SVG do cenário 7"></svg>
 </div></div>
 <section class="summary">
-<strong>Trajetos independentes — nenhuma rota desenhada automaticamente</strong>
+<strong>Trajeto 1: Lapa → Ayrton Senna — 35 pontos coletados, 8 carros laranja, dois vidros. Outros trajetos em coleta.</strong>
 <ol id="routesSummary"></ol>
 <p class="hint">Comece na origem de cada percurso e adicione pontos na ordem do deslocamento. O último ponto é o destino. Alterar a opção de trajeto pausa a coleta e preserva os pontos já marcados nesta sessão.</p>
-<p class="hint">As cores são provisórias para facilitar a coleta, não alteram a matriz cromática aprovada dos simuladores anteriores. Salve o JSON antes de sair: os pontos não são enviados automaticamente ao GitHub.</p>
+<p class="hint">O trajeto 1 utiliza o laranja canônico da origem Lapa (#FF5F00). As cores dos demais trajetos são apenas auxiliares para coleta. Salve o JSON antes de sair: os pontos não são enviados automaticamente ao GitHub.</p>
 <p id="coords" aria-live="polite"></p><textarea id="fallback" readonly hidden aria-label="JSON exportado para copiar manualmente"></textarea>
 <p><a href="../cenario7-editor/index.html" target="_blank" rel="noopener noreferrer">Abrir editor histórico dos nove condomínios</a></p>
 </section>
@@ -34,7 +35,7 @@
 const FILE='Complexo-Lapa-Tietê-Percurso-Completo-v1.png';
 const PATH='/src-greenn/complexo-lapa-pirituba/assets/';
 const ROUTES=[
-{id:'lapa_ayrton',name:'1. Lapa → Ayrton Senna',color:'#F08C29'},
+{id:'lapa_ayrton',name:'1. Lapa → Ayrton Senna',color:'#FF5F00'},
 {id:'lapa_bosques',name:'2. Lapa → Bosques da Lapa',color:'#D86B16'},
 {id:'saida_parques',name:'3A. Saída Parques da Lapa',color:'#D7A44D'},
 {id:'saida_pracas',name:'3B. Saída Praças da Lapa',color:'#CA8245'},
@@ -42,14 +43,17 @@ const ROUTES=[
 ];
 const $=id=>document.getElementById(id),svg=$('routeSvg'),sel=$('route'),img=$('base');
 const pts=Object.fromEntries(ROUTES.map(r=>[r.id,[]]));
+// Pontos fornecidos pelo usuário e preservados no SFJM, sem interpolação/recalibração.
+pts.lapa_ayrton=[[1437,1048],[1292,988],[1142,927],[1001,864],[936,831],[909,825],[880,825],[860,834],[753,906],[698,940],[662,964],[641,966],[622,945],[606,901],[502,557],[478,482],[476,468],[482,458],[489,448],[495,434],[486,422],[482,408],[474,395],[474,387],[479,379],[489,371],[505,369],[525,371],[701,384],[760,390],[834,395],[902,390],[1115,371],[1282,356],[1428,343]];
 const NS='http://www.w3.org/2000/svg';
-let width=0,height=0,active=false;
+let width=0,height=0,active=false,driveFrame=0,driveStart=0,drivePath=null,driveCars=[];
+const DRIVE_MS=28000,DRIVE_COUNT=8,DRIVE_ID="lapa_ayrton";
 for(const r of ROUTES){const o=document.createElement('option');o.value=r.id;o.textContent=r.name;sel.append(o);}
 const node=(tag,attrs)=>{const n=document.createElementNS(NS,tag);for(const [key,value] of Object.entries(attrs))n.setAttribute(key,String(value));return n;};
-function capture(flag){active=Boolean(flag&&width&&height);svg.classList.toggle('active',active);$('capture').setAttribute('aria-pressed',String(active));$('capture').textContent=active?'Pausar coleta':'Iniciar coleta';draw();}
+function capture(flag){if(flag)stopDrive();active=Boolean(flag&&width&&height);svg.classList.toggle('active',active);$('capture').setAttribute('aria-pressed',String(active));$('capture').textContent=active?'Pausar coleta':'Iniciar coleta';draw();}
 function exportData(){return {schema:'sfjm-cenario7-trajetos-v1',scenario:'Lapa → Ayrton Senna / Condomínio Anastácio',base:FILE,viewBox:'0 0 '+width+' '+height,dimensions:{width,height},routes:Object.fromEntries(ROUTES.map(r=>[r.id,{label:r.name,colorPreview:r.color,points:pts[r.id]}]))};}
 function draw(){
-svg.replaceChildren();
+svg.replaceChildren();drivePath=null;driveCars=[];
 const defs=node('defs',{});
 for(const r of ROUTES){const marker=node('marker',{id:'arr_'+r.id,markerWidth:6,markerHeight:6,refX:5,refY:3,orient:'auto',markerUnits:'strokeWidth'});marker.append(node('path',{d:'M0 0 L6 3 L0 6 Z',fill:r.color}));defs.append(marker);}
 svg.append(defs);
@@ -57,19 +61,27 @@ for(const r of ROUTES){const p=pts[r.id];if(!p.length)continue;
 if(p.length>1)svg.append(node('polyline',{points:p.map(x=>x.join(',')).join(' '),fill:'none',stroke:r.color,'stroke-width':r.id===sel.value?5:3,'stroke-linecap':'round','stroke-linejoin':'round','marker-end':'url(#arr_'+r.id+')',opacity:r.id===sel.value?1:.75}));
 p.forEach((q,i)=>svg.append(node('circle',{cx:q[0],cy:q[1],r:r.id===sel.value?4.5:3,stroke:'#fff','stroke-width':1.3,fill:r.color})));
 }
+if(pts[DRIVE_ID].length>1){
+const p=pts[DRIVE_ID];drivePath=node('path',{d:'M '+p.map(q=>q.join(' ')).join(' L '),fill:'none',stroke:'none'});svg.append(drivePath);
+const fleet=node('g',{'aria-label':'Oito carrinhos laranja com dois vidros'});
+for(let i=0;i<DRIVE_COUNT;i++){const car=node('g',{});car.append(node('rect',{class:'car-body',x:-10,y:-18,width:20,height:36,rx:7,fill:'#FF5F00'}));car.append(node('rect',{class:'car-window',x:-7,y:-11,width:14,height:8,rx:2}));car.append(node('rect',{class:'car-window',x:-7,y:5,width:14,height:7,rx:2}));fleet.append(car);driveCars.push(car);}svg.append(fleet);
+}
 $('routesSummary').replaceChildren();
 for(const r of ROUTES){const li=document.createElement('li');li.textContent=r.name+' — '+pts[r.id].length+' ponto(s)';li.style.borderLeft='4px solid '+r.color;li.style.paddingLeft='8px';$('routesSummary').append(li);}
 const p=pts[sel.value];const last=p.length?p[p.length-1].join(', '):'nenhum';
 $('coords').textContent='Último ponto do trajeto selecionado: '+last;
 $('status').textContent=(width?width+' × '+height+' px | ':'Imagem não carregada | ')+ROUTES.find(r=>r.id===sel.value).name+' | '+p.length+' pontos | '+(active?'Coleta ativa':'Coleta pausada');
 }
-img.addEventListener('load',()=>{width=img.naturalWidth;height=img.naturalHeight;svg.setAttribute('viewBox','0 0 '+width+' '+height);svg.setAttribute('preserveAspectRatio','none');if(width!==1448||height!==1086){$('limits').disabled=true;$('limits').title='Os polígonos históricos estão na referência 1448×1086; recalibração necessária.';}draw();});
+function stopDrive(){if(driveFrame)cancelAnimationFrame(driveFrame);driveFrame=0;driveStart=0;$('testDrive').setAttribute('aria-pressed','false');$('testDrive').textContent='Reproduzir Lapa → Ayrton Senna (8 carros)';}
+function startDrive(){if(active||!width||width!==1448||height!==1086||pts[DRIVE_ID].length<2)return;stopDrive();draw();if(!drivePath||driveCars.length!==DRIVE_COUNT)return;const length=drivePath.getTotalLength();if(length<=0)return;driveStart=performance.now();$('testDrive').setAttribute('aria-pressed','true');$('testDrive').textContent='Pausar carros';function frame(t){const phase=((t-driveStart)/DRIVE_MS)%1;for(let i=0;i<driveCars.length;i++){const distance=length*((phase+i/DRIVE_COUNT)%1);const pos=drivePath.getPointAtLength(distance),ahead=drivePath.getPointAtLength(Math.min(length,distance+3));const behind=drivePath.getPointAtLength(Math.max(0,distance-3));const angle=Math.atan2(ahead.y-behind.y,ahead.x-behind.x)*180/Math.PI+90;driveCars[i].setAttribute('transform','translate('+pos.x+' '+pos.y+') rotate('+angle+')');}driveFrame=requestAnimationFrame(frame);}driveFrame=requestAnimationFrame(frame);}
+$('testDrive').addEventListener('click',()=>{if(driveFrame)stopDrive();else startDrive();});
+img.addEventListener('load',()=>{width=img.naturalWidth;height=img.naturalHeight;svg.setAttribute('viewBox','0 0 '+width+' '+height);svg.setAttribute('preserveAspectRatio','none');if(width!==1448||height!==1086){$('limits').disabled=true;$('testDrive').disabled=true;$('status').textContent='Dimensões da prancha diferentes de 1448×1086: animação bloqueada até recalibração.';$('limits').title='Os polígonos históricos estão na referência 1448×1086; recalibração necessária.';draw();return;}draw();startDrive();});
 img.addEventListener('error',()=>{$('status').textContent='ERRO: prancha não carregou no LVR. Confirme branch e caminho do asset.';});
 img.src=PATH+encodeURIComponent(FILE);
-sel.addEventListener('change',()=>capture(false));
+sel.addEventListener('change',()=>{stopDrive();capture(false);draw();});
 $('capture').addEventListener('click',()=>capture(!active));
-$('undo').addEventListener('click',()=>{pts[sel.value].pop();draw();});
-$('clear').addEventListener('click',()=>{if(pts[sel.value].length&&!confirm('Limpar apenas o trajeto selecionado?'))return;pts[sel.value]=[];draw();});
+$('undo').addEventListener('click',()=>{stopDrive();pts[sel.value].pop();draw();});
+$('clear').addEventListener('click',()=>{if(pts[sel.value].length&&!confirm('Limpar apenas o trajeto selecionado?'))return;stopDrive();pts[sel.value]=[];draw();});
 $('limits').addEventListener('click',()=>{const el=$('boundaries');el.hidden=!el.hidden;$('limits').setAttribute('aria-pressed',String(!el.hidden));$('limits').textContent=el.hidden?'Mostrar lotes SVG':'Ocultar lotes SVG';});
 svg.addEventListener('pointerdown',e=>{if(!active)return;e.preventDefault();const m=svg.getScreenCTM();if(!m)return;const p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;const q=p.matrixTransform(m.inverse());if(q.x<0||q.y<0||q.x>width||q.y>height)return;pts[sel.value].push([Math.round(q.x),Math.round(q.y)]);draw();});
 $('copy').addEventListener('click',async()=>{const output=JSON.stringify(exportData(),null,2);try{await navigator.clipboard.writeText(output);$('status').textContent='JSON copiado: envie as coordenadas para validação.';}catch{$('fallback').hidden=false;$('fallback').value=output;$('fallback').select();$('status').textContent='Cópia indisponível: copie o campo JSON manualmente.';}});
