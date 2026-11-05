@@ -15,13 +15,11 @@
   viewer.classList.add('ux-map-viewport');
   layer.classList.add('ux-map-transform');
   const style = document.createElement('style');
-  style.textContent = '.ux-map-viewport{touch-action:pan-y;overscroll-behavior:contain;position:relative;overflow:hidden}.ux-map-transform{transform-origin:0 0;will-change:transform}.ux-map-transform.ux-zoom-layer{position:absolute;inset:0}.ux-map-transform.ux-zoom-layer>img,.ux-map-transform.ux-zoom-layer>svg{position:absolute;inset:0;width:100%;height:100%}.ux-map-viewport .ux-map-help{position:absolute;bottom:9px;left:9px;z-index:15;color:#fff;background:#102638e8;padding:5px 8px;font:600 11px system-ui;border-radius:8px;pointer-events:none}.ux-map-viewport .ux-zoom-tools{position:absolute;right:8px;top:8px;z-index:16;display:flex;gap:5px}.ux-map-viewport .ux-zoom-tools button{min-width:37px;height:39px;padding:0 7px;border:1px solid #aebdcc;border-radius:7px;background:#fff;color:#122334;font:bold 19px system-ui;touch-action:manipulation}.ux-map-viewport .zoombuttons{display:none!important}';
+  style.textContent = '.ux-map-viewport{touch-action:pan-y;overscroll-behavior:contain;position:relative;overflow:hidden}.ux-map-transform{transform-origin:0 0;will-change:transform}.ux-map-transform.ux-zoom-layer{position:absolute;inset:0}.ux-map-transform.ux-zoom-layer>img,.ux-map-transform.ux-zoom-layer>svg{position:absolute;inset:0;width:100%;height:100%}.ux-map-viewport .ux-zoom-tools{position:absolute;right:8px;top:8px;z-index:16;display:flex;gap:5px}.ux-map-viewport .ux-zoom-tools button{min-width:37px;height:39px;padding:0 7px;border:1px solid #aebdcc;border-radius:7px;background:#fff;color:#122334;font:bold 19px system-ui;touch-action:manipulation}.ux-map-viewport .zoombuttons{display:none!important}';
   document.head.appendChild(style);
-  const help=document.createElement('div');
-  help.className='ux-map-help';help.textContent='☝ 1 dedo: mover  ·  2 dedos: zoom';
   const buttons=document.createElement('div');buttons.className='ux-zoom-tools';
   buttons.innerHTML='<button type="button" data-uxzoom="in" aria-label="Aumentar zoom">+</button><button type="button" data-uxzoom="out" aria-label="Diminuir zoom">−</button><button type="button" data-uxzoom="reset" aria-label="Centralizar mapa">⌂</button>';
-  viewer.append(help,buttons);
+  viewer.append(buttons);
   let scale=1,x=0,y=0,previous=null;
   const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
   const bounds=()=>({w:viewer.clientWidth,h:viewer.clientHeight});
@@ -91,6 +89,9 @@
   function showRoute(color,enabled){
     const input=document.getElementById(color==='blue'?'showBlue':'showOrange');
     if(input){if(input.checked!==enabled){input.checked=enabled;input.dispatchEvent(new Event('change',{bubbles:true}));}return;}
+    // A UI do iframe foi simplificada: os controles externos agora devem agir diretamente nos grupos SVG.
+    const duploGroup=document.getElementById(color==='blue'?'blueRoute':'orangeRoute');
+    if(duploGroup){duploGroup.style.display=enabled?'':'none';return;}
     if(marginal){
       const id=color==='blue'?'lapa':'pirituba';
       const el=document.getElementById(id);
