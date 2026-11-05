@@ -48,3 +48,14 @@ Sem merge/deploy; sem gerar rotas de carros automaticamente; sem alterar polígo
 - Auditoria técnica: HTML/JavaScript alterado somente no editor C7; JavaScript submetido a verificação sintática V8 **PASS**. **Ainda sem QA visual em navegador/LVR**; verificar alinhamento, sentido, dois vidros, comportamento de play/pause e responsividade.
 - Preservados a prancha, o arquivo original de polígonos imobiliários, os seis simuladores anteriores, seus trens e carros. Nenhum merge ou deploy.
 - Rollback isolado: reverter commits do editor do C7 e manter o JSON original para nova homologação.
+
+## 05/11/2026 — Segunda rota coletada integrada: Saída Parques da Lapa
+
+- O usuário coletou o segundo trajeto cronologicamente, **Saída Parques da Lapa** (`saida_parques`), embora permaneça denominado `3A` na numeração editorial original da seleção.
+- Foram preservados **37 pontos** no mesmo `viewBox 0 0 1448 1086` da prancha `Complexo-Lapa-Tietê-Percurso-Completo-v1.png`, sem interpolação ou geometria fabricada.
+- `src-greenn/complexo-lapa-pirituba/cenario7-trajetos/index.html`: rota pré-carregada, visível no SVG e animável independentemente com 8 carrinhos de dois vidros, mesmo desenho dos carros do primeiro trajeto.
+- Cor **provisória** da coleta `#D7A44D`; não declarar como cor canônica de origem até aprovação. O trajeto Lapa → Ayrton Senna segue intacto com 35 pontos e laranja canônico `#FF5F00`.
+- Dois botões separados para pausar/reproduzir os veículos sem reinicializar o outro percurso; animação automática de ambos no carregamento da prancha se a imagem medir 1448×1086.
+- Dados atualizados em `docs/sfjm/data/cenario7-trajetos-coleta-2026-11-05.json`: **35 + 37 pontos**. Outros três continuam vazios.
+- QA: integração confirmada no código do GitHub; **teste visual LVR e calibração real pendentes**. Validar direção da rota Saída Parques, cor desejada, contagem/vidros dos carros, não interferência com a primeira rota, pausa individual, responsividade e exportação dos dois conjuntos de pontos.
+- Não houve merge/deploy, nem alteração nas demais pranchas ou cenários 1–6.
