@@ -238,8 +238,8 @@ fetch(root+"duplo/routes-duplo.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw
 (()=>{'use strict';
 if(!document.documentElement.classList.contains('embedded'))return;
 let lastHeight=0;
-function report(){const h=Math.ceil(document.documentElement.scrollHeight);if(h!==lastHeight){lastHeight=h;window.parent.postMessage({namespace:'mnt-complexo-iframe',type:'resize',height:h},location.origin);}}
-new ResizeObserver(report).observe(document.body);
+function report(){const main=document.querySelector('main');const h=Math.ceil(main?main.getBoundingClientRect().bottom:document.body.getBoundingClientRect().bottom);if(h>0&&h!==lastHeight){lastHeight=h;window.parent.postMessage({namespace:'mnt-complexo-iframe',type:'resize',height:h},location.origin);}}
+new ResizeObserver(report).observe(document.querySelector('main')||document.body);
 window.addEventListener('load',report);
 window.addEventListener('resize',report);
 report();
