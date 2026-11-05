@@ -185,7 +185,13 @@ body{background:#0b1827;color:#f1f5f9}main{max-width:1320px}.sitebar{background:
 .ux-route-picker select:focus-visible{outline:3px solid #eabb2e;outline-offset:3px}
 .ux-route-help{color:#b7c9d8;margin:8px 0 0;font-size:12px;line-height:1.45}
 @media(max-width:800px){.layout>.panel{order:-1;width:100%}.layout>.map{order:0;width:100%}.ux-route-picker{margin:8px 0 12px;padding:12px}.ux-route-picker select{font-size:15px}.panel .ux-directions{margin-bottom:8px}.panel .ux-dir{min-height:45px}}
-</style><style id="ux-iframe-fit-v3">#dualEmbed{min-height:0;height:620px;background:#fff}#simuladores>.ux-ad{margin-top:14px;max-width:100%}@media(max-width:800px){#dualEmbed{height:380px;min-height:0}}</style></head><body>
+</style><style id="ux-iframe-fit-v3">#dualEmbed{min-height:0;height:620px;background:#fff}#simuladores>.ux-ad{margin-top:14px;max-width:100%}@media(max-width:800px){#dualEmbed{height:380px;min-height:0}}</style><style id="ux-mobile-controls-fix">
+/* Cenários com controles internos (C7) ou ainda sem animação: sem legenda externa duplicada. */
+#simuladores .panel[hidden],#simuladores #uxDirections[hidden],#simuladores .ux-dir[hidden],#simuladores .ux-instructions[hidden]{display:none!important}
+#simuladores .layout.ux-map-only{grid-template-columns:minmax(0,1fr)}
+#simuladores .layout.ux-map-only>.map{width:100%;min-width:0}
+@media(max-width:800px){#simuladores .layout.ux-map-only{display:flex;flex-direction:column}}
+</style></head><body>
 <div class="sitebar"><img src="https://s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo%20666X375%20SemFundo.webp" width="55" height="45" alt="Tegra"><a href="/">More em um Tegra</a><a class="secondarylink" href="/regioes/lapa/">Lapa</a><a class="secondarylink" href="/blog/">Blog</a></div><header class="cover-heading"><div class="eyebrow">Documento técnico • Prefeitura de São Paulo / SPObras • agosto de 2019</div><p>Ponte Pirituba–Lapa: projeto, obras e trajetos previstos</p><p class="lead">Explore os caminhos previstos no projeto viário. As imagens reproduzem os mapas do documento original, sem representar condições de trânsito ou circulação atuais.</p></header>
 <main><section class="bridge-hero" aria-labelledby="bridge-title"><div class="bridge-hero-copy"><p class="bridge-eyebrow">Mobilidade urbana · Lapa e Pirituba · São Paulo</p><h1 id="bridge-title">Nova Ponte Pirituba–Lapa: projeto, obras e trajetos previstos</h1><p>Conheça as intervenções planejadas sobre o Rio Tietê, o histórico das obras e os caminhos previstos para carros, ônibus, ciclistas e pedestres. Explore também três simuladores ilustrativos dos trajetos.</p><div class="bridge-cta"><a href="#simuladores">Explorar simuladores</a><a class="outline" href="#cronologia-ponte">Ver datas e andamento</a></div><small>Projeto técnico SPObras de agosto de 2019 e comunicados oficiais posteriores. Este portal é independente da Prefeitura.</small></div><figure class="bridge-hero-media"><img src="/src-greenn/complexo-lapa-pirituba/assets/Ilustração-Projeto-Viario-Pirituba-Lapa-Ponte-Implantada.png" width="1200" height="750" alt="Ilustração do projeto viário da ponte Pirituba–Lapa implantada, representação conceitual e não fotografia da obra concluída" fetchpriority="high"><figcaption>Ilustração de projeto — representação conceitual, não fotografia atual da ponte.</figcaption></figure></section>
 <section class="bridge-facts" aria-label="Dados principais do projeto"><article><span>Ligação planejada</span><strong>Pirituba ↔ Lapa</strong><small>Travessia sobre o Rio Tietê</small></article><article><span>Extensão divulgada em 2026</span><strong>cerca de 900 m</strong><small>Ponte e acessos, segundo a Prefeitura</small></article><article><span>Intervenções anunciadas</span><strong>aprox. 3 km</strong><small>Conjunto de obras viárias</small></article><article><span>Documentação-base</span><strong>2019–2026</strong><small>Projeto histórico e atualizações oficiais</small></article></section>
@@ -466,6 +472,10 @@ function send(color,enabled){
 }
 function refresh(){
  const n=activeIndex();
+ const panel=document.querySelector("#simuladores .panel");
+ const mapOnly=n<0;
+ panel.hidden=mapOnly;
+ document.querySelector("#simuladores .layout").classList.toggle("ux-map-only",mapOnly);
  const third=document.querySelector('.ux-dir.ux-third'),orange=document.querySelector('.ux-dir.ux-orange');
  document.getElementById('c6Badge').hidden=n!==5;
  document.getElementById('uxDirections').hidden=n<0;
@@ -482,7 +492,7 @@ function refresh(){
   if(n===5){boxes.forEach((box,i)=>{const g=document.querySelector('#c6Routes [data-c6-route="'+i+'"]');if(g)g.style.display=box.checked?'':'none';});}
   else{send('blue',boxes[0].checked);send('orange',boxes[1].checked);}
  }
- document.getElementById('route').setAttribute('aria-label','Cenário '+(n+1)+' de '+route.options.length+' — '+route.selectedOptions[0]?.textContent);
+ document.getElementById('route').setAttribute('aria-label','Cenário '+(Number(route.value)+1)+' de '+route.options.length+' — '+route.selectedOptions[0]?.textContent);
 }
 boxes.forEach((box,i)=>box.addEventListener('change',()=>{
  if(activeIndex()===5){const g=document.querySelector('#c6Routes [data-c6-route="'+i+'"]');if(g)g.style.display=box.checked?'':'none';}
