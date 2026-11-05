@@ -61,3 +61,10 @@
 - Teste visual usuário pendente para a distribuição/orientação dos quatro volumes. Após aceite, avaliar consolidação visual da prancha e seguir Jerivás/Reserva, preservando o Home Club.
 - Reversão pontual: remover `quintas-preview.svg` e as referências `showQuintas`/`quintasPreview` em `cenario7-editor/index.html` na branch, sem reset da main.
 - Sem merge/deploy e sem rotas de carros.
+
+## 05/11/2026 — nova prancha compartilhada carregada no C7/C8
+- Usuário informou upload do arquivo `src-greenn/complexo-lapa-pirituba/assets/Complexo-Lapa-Tietê-Percurso-Completo-v1.png` e solicitou corrigir a referência não atualizada no cenário 7.
+- GitHub confirmou presença do arquivo (blob SHA `a9d4fbee962a3d9c95bd52fc87a37202646e1c88`).
+- `src-greenn/complexo-lapa-pirituba/cenario7-editor/index.html` agora carrega a nova prancha por `FILE`, mantendo o arquivo histórico intacto.
+- Cenários 7 e 8 compartilham o editor existente; C1–C6 não foram alterados. O JSON original de 49 pontos e os overlays são históricos: **revalidar sobre a nova prancha antes de usar como máscara**; não foi comprovada equivalência cartográfica apenas pelo nome do arquivo.
+- Sem merge ou deploy. Homologação visual LVR pendente. Rollback pontual: reverter o commit de atualização do `FILE` para o nome anterior.
