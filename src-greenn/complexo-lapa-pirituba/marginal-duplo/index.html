@@ -166,4 +166,23 @@ const fetchData=name=>fetch("/src-greenn/complexo-lapa-pirituba/marginal-duplo/"
 Promise.all([fetchData("routes-marginal.json"),fetchData("routes-marginal-editorial.json")])
  .then(([originalData,editorialData])=>{routeSets={original:originalData,editorial:editorialData};refreshMap()})
  .catch(e=>{$("status").textContent="Erro ao carregar caminhos: "+e.message;console.error(e)});
+</script><script id="c3-iframe-auto-height">
+(()=>{
+ 'use strict';
+ if(!document.documentElement.classList.contains('embedded')||window===parent)return;
+ let lastHeight=0;
+ const main=document.querySelector('main');
+ function report(){
+   const height=Math.ceil(main.getBoundingClientRect().bottom);
+   if(height<160||height>2400||height===lastHeight)return;
+   lastHeight=height;
+   parent.postMessage({namespace:'mnt-complexo-iframe',type:'resize',height},location.origin);
+ }
+ const observer=new ResizeObserver(report);
+ observer.observe(main);
+ window.addEventListener('load',report);
+ window.addEventListener('resize',report);
+ document.getElementById('mapimg')?.addEventListener('load',report);
+ report();
+})();
 </script><script src="/src-greenn/complexo-lapa-pirituba/ux-map-v2.js" defer></script></body></html>
