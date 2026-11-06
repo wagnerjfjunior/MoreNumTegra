@@ -185,19 +185,19 @@ function createAmbientTraffic(){
 function createRouteCars(def,path){
  const group=$(def.grp),master=$(def.car),length=path.getTotalLength();
  const cars=[master];
- for(let i=1;i<2;i++){
+ for(let i=1;i<1;i++){
   const car=master.cloneNode(true);car.removeAttribute("id");
   car.setAttribute("data-route-clone",def.page);
   group.appendChild(car);cars.push(car);
  }
- return cars.map((car,i)=>({car,path,length,phase:i/2,duration:30000}));
+ return cars.map((car,i)=>({car,path,length,phase:0,duration:12000}));
 }
 function placeCar(car,path,length,progress){
  const at=length*progress,p=path.getPointAtLength(at);
  const before=path.getPointAtLength(Math.max(0,at-2));
  const after=path.getPointAtLength(Math.min(length,at+2));
  const angle=Math.atan2(after.y-before.y,after.x-before.x)*180/Math.PI+90;
- car.setAttribute("transform",`translate(${p.x.toFixed(2)} ${p.y.toFixed(2)}) rotate(${angle.toFixed(2)}) scale(${car.classList.contains('traffic-car')?1.4:1.2})`);
+ car.setAttribute("transform",`translate(${p.x.toFixed(2)} ${p.y.toFixed(2)}) rotate(${angle.toFixed(2)}) scale(1.65)`);
 }
 function draw(now){
  raf=0;if(!pathsReady||document.hidden)return;
@@ -228,7 +228,7 @@ fetch(root+"duplo/routes-duplo.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw
     path.setAttribute("d",displayD);$(def.halo).setAttribute("d",displayD);
     return createRouteCars(def,path);
   });
-  createAmbientTraffic();
+  $("trafficLayer").replaceChildren();
   pathsReady=true;
   $("status").textContent="Mapa carregado. Dois trajetos animados disponíveis.";
   startAnimation();
