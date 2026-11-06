@@ -1,3 +1,9 @@
+## 05/11/2026 — COMPLEXO LAPA–PIRITUBA: handoff live e releases #542–#550
+
+Atualização canônica desta frente: **docs/sfjm/MNT_COMPLEXO_HANDOFF_INTEGRAL_ESTADO_LIVE_2026-11-05.md**. A produção funcional foi confirmada no commit `0f5a059d1c42b1ad4b33c96e5a542a18e8d6181c` (PR #550), Vercel READY `dpl_7BY6Jjk6Vq3vdh9WBAtspJtCSX7q`, alias www sem erro. O ponto de rollback anterior é `dpl_NNXvsx7EyThGjhiuyERzvrnkLFSW` (PR #549). O **teste visual no iPhone pós-PR #550 segue pendente**. Branch de editores C8/C9 divergente e **não autorizada para merge**. Para esta frente, ler o handoff integral antes dos blocos históricos abaixo; não confundir publicação com aceite visual.
+
+---
+
 ## 28/10/2026 — ESTADO VIGENTE: Mercado e RIIO em produção (PR #507)
 
 **Supera os avisos históricos de preparação/noindex abaixo para estas 12 páginas.** PR #507 MERGED; head final `99ff6710b1d792468d43a8cca3f38c1fc1b7b3e8` com 10/10 checks SUCCESS; merge/runtime `0b1de5b1218fb1c4c83c2683366bdfe11ad60d44`; Vercel Production READY `dpl_8iiXm3RtVDbMhNSbHdpaJBq6KjjG`. Onze artigos Mercado + RIIO HTTP200, indexáveis, canonical www e JSON-LD sintaticamente válido; hub/Blog/catálogo/sitemap atualizados (73 URLs no sitemap). Isso não comprova indexação Google/Bing.
