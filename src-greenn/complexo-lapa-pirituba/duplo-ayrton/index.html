@@ -80,7 +80,7 @@ html.embedded .mapbar{padding:9px 12px}
 <h1>Ayrton Senna: dois destinos, um mapa</h1>
 <p class="sub">Prancha original SPObras 21 como base única: Ayrton Senna → Pirituba (amarelo), contornando o arco superior da rotatória; Ayrton Senna → Lapa (azul), acesso próprio e nova ponte. Dois caminhos independentes ainda sujeitos a conferência LVR.</p><span class="pill">Protótipo — não publicado</span></section>
 <div class="layout"><div class="mapcard">
-<div class="mapbar"><strong>Mapa comparativo · dois sentidos</strong><small>Base: ilustração SFJM (recalibração pendente); original via ?mapa=original • visualização integral</small></div>
+<div class="mapbar"><strong>Ayrton Senna → Pirituba / Lapa</strong></div>
 <div class="viewer" id="viewer" aria-label="Mapa ilustrativo com duas rotas e carrinhos animados" tabindex="0">
 <div class="zoomlayer" id="layer">
 <img src="/src-greenn/complexo-lapa-pirituba/assets/Mapa_Ayrton_Senna_Pirituba_Badge2.webp" id="mapImage" width="1500" height="1049" alt="Mapa ilustrado para homologação da rota Ayrton Senna: badges Ponte Lapa-Pirituba, Avenida Raimundo Pereira de Magalhães e Tietê Plaza Shopping">
@@ -90,24 +90,8 @@ html.embedded .mapbar{padding:9px 12px}
 <g id="blueRoute"><path id="blueHalo" class="route-halo"/><path id="bluePath" class="route-line blue"/><g id="blueCar"><rect class="car-body" x="-10" y="-18" width="20" height="36" rx="7" fill="#137CF1"/><rect class="car-window" x="-7" y="-11" width="14" height="8" rx="2"/><rect class="car-window" x="-7" y="5" width="14" height="7" rx="2"/></g></g>
 </svg>
 </div>
-<div id="stopLayer" class="stop-layer" role="note" aria-label="Camada de paradas de ônibus previstas no projeto" hidden>
-<strong><span aria-hidden="true">🚏</span> Paradas previstas · SPObras 2019</strong>
-<div class="stop-line"><b>2</b><span>Rua John Harrison · reformas</span></div>
-<div class="stop-line"><b>1</b><span>Rua Martin Tenório · reforma</span></div>
-<div class="stop-line"><b>1</b><span>Rua Carlos Bertini · nova parada</span></div>
-<div class="stop-line"><b>2</b><span>Av. Raimundo Pereira de Magalhães · canteiro central</span></div>
-<p class="stop-note">Camada informativa, sem pinos geográficos: as posições exatas não foram transpostas da prancha do binário para esta base.</p>
-</div>
-
-</div><div class="map-legend" aria-label="Legenda das duas direções"><span class="legenditem"><i class="legendline orange"></i>Ayrton Senna → Pirituba</span><span class="legenditem"><i class="legendline blue"></i>Ayrton Senna → Lapa</span></div>
-<div class="map-keys" aria-label="Referências da região, sem marcação geográfica no desenho"><span class="leadkey">Referências da região</span><span class="chip">Lapa</span><span class="chip">Piqueri</span><span class="chip">Pirituba</span><span class="chip">Marginal Tietê</span><span class="chip">Rua John Harrison</span><span class="chip">Rua Gago Coutinho</span><span class="chip">Rua Martin Tenório</span><span class="chip">Rua Carlos Bertini</span><span class="hint">Ruas citadas no projeto SPObras (2019), incluindo o binário John Harrison; sua presença aqui não confirma passagem por todas elas no percurso animado.</span></div><div class="source">Base geográfica: SPObras (2019). As linhas coloridas e carrinhos são recursos explicativos, não rotas operacionais. Base original SPObras: página 21 (1200×849). Azul redesenhado a partir da prancha 22 para a mesma base viária, ainda não homologado.</div></div>
-<aside class="panel"><h2>Controle da circulação</h2><div class="toggles">
-<label class="toggle"><input type="checkbox" id="showOrange" checked><span class="swatch orange"></span><span>Ayrton Senna → Pirituba</span></label>
-<label class="toggle"><input type="checkbox" id="showBlue" checked><span class="swatch blue"></span><span>Ayrton Senna → Lapa</span></label></div>
-<label class="stop-toggle"><input type="checkbox" id="showStops"><span aria-hidden="true">🚏</span><span>Exibir referências de paradas do projeto</span></label>
-<p id="status" role="status" aria-live="polite" class="mini">Carregando os traçados candidatos do documento.</p>
-<p class="mini">Na arte editorial: 8 carros azuis, 8 laranjas e 16 carros pretos/vermelhos/cinzas na Marginal Tietê. Animação ilustrativa contínua, sem controles.</p>
-</aside></div></main>
+</div></div>
+<output id="status" hidden role="status" aria-live="polite">Carregando mapa…</output></div></main>
 <script>
 "use strict";
 const root="/src-greenn/complexo-lapa-pirituba/";
@@ -257,9 +241,6 @@ document.addEventListener("visibilitychange",()=>{
  if(document.hidden){cancelAnimationFrame(raf);raf=0;}
  else startAnimation();
 });
-$("showOrange").onchange=e=>$("orangeRoute").style.display=e.target.checked?"":"none";
-$("showBlue").onchange=e=>$("blueRoute").style.display=e.target.checked?"":"none";
-$("showStops").onchange=e=>$("stopLayer").hidden=!e.target.checked;
 function loadSelectedRoutes(){
   if(!routeSets)return;
   const data=newArtActive?routeSets.art:routeSets.original;
@@ -282,7 +263,7 @@ function loadSelectedRoutes(){
   createAmbientTraffic();
   pathsReady=true;
   $("status").textContent=newArtActive?
-    "32 carros em loop: 8 laranjas na rota Pirituba, 8 azuis na rota Lapa, 16 neutros na Marginal. Geometria das rotas preservada.":
+    "Mapa carregado. Dois trajetos animados disponíveis.":
     "Prancha original: oito carros por trajeto; trânsito ambiente exclusivo do mapa editorial.";
   startAnimation();
 }
@@ -294,4 +275,11 @@ Promise.all([fetchRoutes("duplo-ayrton/routes-ayrton.json"),fetchRoutes("duplo-a
   routeSets={original,art};loadSelectedRoutes();
 }).catch(e=>{$("status").textContent="Erro ao carregar geometria: "+e.message;console.error(e);});
 
+</script><script id="embed-auto-height">
+(()=>{'use strict';
+if(!document.documentElement.classList.contains('embedded'))return;
+let lastHeight=0;function report(){const main=document.querySelector('main');const h=Math.ceil(main?main.getBoundingClientRect().bottom:document.body.getBoundingClientRect().bottom);if(h>0&&h!==lastHeight){lastHeight=h;window.parent.postMessage({namespace:'mnt-complexo-iframe',type:'resize',height:h},location.origin);}}
+new ResizeObserver(report).observe(document.querySelector('main')||document.body);
+window.addEventListener('load',report);window.addEventListener('resize',report);report();
+})();
 </script><script src="/src-greenn/complexo-lapa-pirituba/ux-map-v2.js" defer></script></body></html>
