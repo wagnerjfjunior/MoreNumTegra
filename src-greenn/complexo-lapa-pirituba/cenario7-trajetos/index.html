@@ -7,7 +7,7 @@
 <body><header><h1>Lapa → Ayrton Senna / Condomínio Anastácio</h1>
 </header>
 <section class="legend" aria-label="Sentidos do trajeto"><h2 class="legend-title">Sentidos do trajeto</h2><div id="routeControls" class="options"></div>
-<div class="actions"><button id="toggle" type="button" aria-pressed="true">Pausar animação</button><button id="restart" class="secondary" type="button">Reiniciar percursos</button><span id="status" class="status" aria-live="polite">Carregando prancha…</span></div></section>
+<div class="actions"><button id="toggle" type="button" aria-pressed="true">Pausar animação</button><button id="restart" class="secondary" type="button">Reiniciar percursos</button><span id="status" class="status" aria-live="polite">Carregando mapa…</span></div></section>
 <div id="stage"><img id="map" alt="Mapa ilustrado do Complexo Lapa–Tietê com os acessos de Lapa, Ayrton Senna e condomínios Anastácio" width="1448" height="1086" decoding="async">
 <svg id="overlay" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1448 1086" preserveAspectRatio="xMidYMid meet" aria-label="Três trajetos com veículos animados"></svg></div>
 <div id="error" hidden role="alert"></div>
@@ -33,8 +33,8 @@ function render(now){for(const r of ROUTES){if(!r.enabled)continue;const length=
 function pause(){if(!playing)return;playing=false;cancelAnimationFrame(runId);pausedAt=performance.now();$('toggle').textContent='Reproduzir animação';$('toggle').setAttribute('aria-pressed','false');}
 function resume(reset=false){if(!loaded)return;if(playing)cancelAnimationFrame(runId);if(reset||!epoch)epoch=performance.now();else if(pausedAt)epoch+=performance.now()-pausedAt;pausedAt=0;playing=true;$('toggle').textContent='Pausar animação';$('toggle').setAttribute('aria-pressed','true');runId=requestAnimationFrame(render);}
 $('toggle').addEventListener('click',()=>playing?pause():resume());$('restart').addEventListener('click',()=>resume(true));
-$('map').addEventListener('load',()=>{const image=$('map');if(image.naturalWidth!==1448||image.naturalHeight!==1086){$('error').hidden=false;$('error').textContent='Dimensões da prancha incompatíveis: animação bloqueada para evitar desalinhamento.';return;}for(const r of ROUTES)r.length=r.path.getTotalLength();loaded=true;$('status').textContent='3 percursos · 18 carros no total';if(matchMedia('(prefers-reduced-motion: reduce)').matches){$('toggle').textContent='Reproduzir animação';$('toggle').setAttribute('aria-pressed','false');}else resume(true);});
-$('map').addEventListener('error',()=>{$('error').hidden=false;$('error').textContent='Prancha indisponível. Verifique o arquivo no servidor.';});
+$('map').addEventListener('load',()=>{const image=$('map');if(image.naturalWidth!==1448||image.naturalHeight!==1086){$('error').hidden=false;$('error').textContent='Não foi possível mostrar os trajetos.';return;}for(const r of ROUTES)r.length=r.path.getTotalLength();loaded=true;$('status').textContent='Percursos prontos';if(matchMedia('(prefers-reduced-motion: reduce)').matches){$('toggle').textContent='Reproduzir animação';$('toggle').setAttribute('aria-pressed','false');}else resume(true);});
+$('map').addEventListener('error',()=>{$('error').hidden=false;$('error').textContent='Mapa indisponível neste momento.';});
 $('map').src='/src-greenn/complexo-lapa-pirituba/assets/'+encodeURIComponent(FILE);
 })();
 </script></body></html>
