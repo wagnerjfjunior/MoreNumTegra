@@ -1,3 +1,9 @@
+## 05/11/2026 — STATUS LIVE: COMPLEXO LAPA–PIRITUBA
+
+Consultar **`docs/sfjm/MNT_COMPLEXO_HANDOFF_INTEGRAL_ESTADO_LIVE_2026-11-05.md`** para histórico completo e baselines. Releases #542–#550 `MERGED`. Funcionalidade em `main` no commit `0f5a059d1c42b1ad4b33c96e5a542a18e8d6181c`; Vercel Production READY `dpl_7BY6Jjk6Vq3vdh9WBAtspJtCSX7q` e alias www sem erro. Rollback anterior: `dpl_NNXvsx7EyThGjhiuyERzvrnkLFSW`. C3 recebeu resize responsivo via PR #550; **QA visual no iPhone pós-publicação pendente**. Editor C8/C9 não publicado, branch divergente. Não confundir status de implementação/compilação com aceite visual.
+
+---
+
 ## 02/11/2026 — Capa única PR #533 PUBLICADA para teste
 
 Autorização do usuário: “Vou testar em produção mas cuide do rollback”. PR #533 MERGED, runtime `60b8bdb839e3a34f987f80558595188e7c683305`; Vercel `dpl_GaocVCL1UD8UMrTbLp7R3oP3Prg8` READY com alias www sem erro. HTTP 200, capa presente e cards antigos ausentes; três acessos conferidos em browser de produção. Aceite do proprietário e teste físico mobile pendentes. Supera a espera por LVR descrita abaixo.
