@@ -149,14 +149,14 @@ function applyRoutes(){
  });
  if(editorialActive){createTraffic()}else{$("trafficLayer").replaceChildren();ambientTraffic=[];}
  ready=true;animationEpoch=performance.now();
- $("status").textContent="Animação contínua: 8 carros azuis na rota azul, 8 laranjas na rota laranja e 16 veículos pretos/vermelhos/cinzas na Marginal Tietê.";
+ $("status").textContent="Percursos prontos para explorar.";
  startLoop();
 }
 function refreshMap(){
  const img=$("mapimg");
  editorialActive=img.naturalWidth===1500&&img.naturalHeight===1049&&img.currentSrc.includes("Mapa_Lapa_Pirituba_Marginal_Badge3.webp");
  document.querySelector(".map").style.aspectRatio=editorialActive?"1500 / 1049":"1200 / 849";
- if(routeSets){try{applyRoutes()}catch(e){$("status").textContent="Erro nos trajetos: "+e.message;console.error(e)}}
+ if(routeSets){try{applyRoutes()}catch(e){$("status").textContent="Não foi possível carregar os trajetos: "+e.message;console.error(e)}}
 }
 $("mapimg").addEventListener("load",refreshMap);
 $("mapimg").addEventListener("error",()=>{if(!$("mapimg").src.includes("rota-23.jpg")){$("mapimg").src=original;return}$("status").textContent="Erro ao carregar a prancha 23."});
