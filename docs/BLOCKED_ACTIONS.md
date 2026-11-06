@@ -1,3 +1,13 @@
+## 05/11/2026 — BLOQUEIOS VIGENTES: COMPLEXO LAPA–PIRITUBA
+
+- **Proibido sem autorização específica:** merge/publicação da branch divergente `feat/complexo-cenarios8-9-editor-prancha7-20261105` ou de editores C8/C9 sem pontos; alterar traçados aprovados, frotas, cores, velocidades, mapa-base e controles C1–C7.
+- Não declarar a correção de espaço branco do C3 visualmente aprovada: PR #550 está em produção READY, mas **aguarda captura/QA de iPhone posterior ao merge**.
+- Não recolocar notas SFJM/LVR/SVG, contagens/cores hex, listas de ruas, controles duplicados, avisos de engenharia e explicações repetitivas na interface pública dos cenários. Manter informações factuais de origem/projeto histórico na área informativa e FAQ.
+- Não realizar force-push/reset da main, publicação Greenn, reestruturação de framework, alteração SEO/Form46 nem deploy extra sem solicitação pertinente.
+- Referência: `docs/sfjm/MNT_COMPLEXO_HANDOFF_INTEGRAL_ESTADO_LIVE_2026-11-05.md`. Bloqueios históricos abaixo devem ser interpretados em seu contexto temporal, sem desfazer releases já autorizadas #542–#550.
+
+---
+
 ## 02/11/2026 — Substituição do bloqueio histórico de merge da PR #528
 
 - **Autorização nova:** o usuário solicitou expressamente merge e produção. PR #528 já **MERGED**, Vercel production READY. Portanto o bloqueio histórico desta PR enquanto Draft foi superado somente para esta release.

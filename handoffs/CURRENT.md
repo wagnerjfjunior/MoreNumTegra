@@ -1,3 +1,17 @@
+## 05/11/2026 — HANDOFF ATUAL COMPLEXO LAPA–PIRITUBA (SFJM)
+
+**Documento de retomada obrigatório:** `docs/sfjm/MNT_COMPLEXO_HANDOFF_INTEGRAL_ESTADO_LIVE_2026-11-05.md`. Resume integralmente decisões, C1–C9, PRs #542–#550, UX mobile, estado de produção e rollback.
+
+**Verificado live:** PR #550 `MERGED` em `main`, commit `0f5a059d1c42b1ad4b33c96e5a542a18e8d6181c`; Vercel `dpl_7BY6Jjk6Vq3vdh9WBAtspJtCSX7q` `READY`, alias `www.moretegra.com.br`, `aliasError=null`. Retorno anterior READY `dpl_NNXvsx7EyThGjhiuyERzvrnkLFSW` (`fcebc6ccc62ebb2e5e0e8ebebaba8f9e87c12ca4`). **Correção C3 de altura publicada, sem confirmação visual posterior no iPhone**. LVR indisponível para o usuário; releases recentes com autorização explícita e rollback candidato.
+
+**UX mandatória:** interface simples para público geral, sem textos SVG/LVR/SFJM/calibração/quantidade de carros; sem controles duplicados; seletor antes do mapa; simuladores antes de Perspectivas; C7 mantém seus controles internos. Nunca alterar geometrias/carrinhos já validados durante ajustes editoriais.
+
+**C8/C9 pendentes:** branch `feat/complexo-cenarios8-9-editor-prancha7-20261105` contém editores com dois trajetos cada e **zero pontos coletados/aprovados**; live compare com main: diverged (11 ahead / 7 behind no momento do handoff). Não mergear branch diretamente ou publicar editores na produção.
+
+**Próximo passo:** avaliar visualmente o cenário 3 **após** PR #550 em produção; se persistir branco, investigar altura real e iframe sem reconstruir rotas. Reconfirmar sempre status GitHub/Vercel live antes de novas ações.
+
+---
+
 ## 03/11/2026 — PR #538 mergeada e cenário 4 publicado (homologação visual LVR)
 
 Autorização explícita: “sim vamos publicar o quarto cenário, retirar os controles para criar os pontos,precisaremos do controle na prancha 5? para criar o percurso”. PR #538 MERGED em `main`: `c4c37f5d4c5a3b94089ece6cccbafcff7f3e6e1a`. Vercel Production READY: `dpl_2eYYe3WxdhZeMMNgrZZg3XMA4n7w`, `githubCommitSha` corresponde ao merge, alias `www.moretegra.com.br`, `aliasError=null`. O quarto cenário usa Figura 2 WebP (1500×1049), 110 pontos calibrados pelo usuário em quatro rotas, 32 carros, geometria validada visualmente e teste responsivo em resoluções de console. Controle de criação de pontos removido do HTML de produção; código do calibrador arquivado para reuso futuro na prancha 5 em `docs/sfjm/MNT_CALIBRADOR_REUSO_PRANCHA5_2026-11-03.md`. Cenarios 1–3 não foram alterados nesta última release. Rollback: restaurar o commit `main` anterior ao merge PR #538 (`247bef9a0635768e952d75b512760ffe5adc6dae`), preferindo revert da PR #538 para não descartar alterações posteriores. Não alterar geometria homologada sem novo pedido.
