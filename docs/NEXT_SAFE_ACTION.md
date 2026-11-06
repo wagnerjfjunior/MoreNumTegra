@@ -1,3 +1,13 @@
+## 05/11/2026 — PRÓXIMA AÇÃO SEGURA: COMPLEXO LAPA–PIRITUBA
+
+1. Ler o handoff integral `docs/sfjm/MNT_COMPLEXO_HANDOFF_INTEGRAL_ESTADO_LIVE_2026-11-05.md` e resolver live `main` + Vercel.
+2. Checar em produção o cenário 3 no iPhone após PR #550, especialmente área vazia abaixo do mapa; último deploy funcional conhecido `dpl_7BY6Jjk6Vq3vdh9WBAtspJtCSX7q` READY, SHA `0f5a059d1c42b1ad4b33c96e5a542a18e8d6181c`. **Sem aceite visual ainda**.
+3. Caso regresse, comparar CSS do iframe, `ResizeObserver`, `postMessage` e altura efetiva; corrigir somente escopo comprovado. Rollback candidato `dpl_NNXvsx7EyThGjhiuyERzvrnkLFSW` (PR #549), revalidar antes de restaurar.
+4. C8/C9 só após coordenadas reais e aprovação; não mergear branch divergente. Preservar rota/geometria/carrinhos C1–C7; evitar textos técnicos na UI.
+5. Releases com PR isolada, confirmação exata de SHA e deployment READY; LVR indisponível não dispensa QA visual posterior em produção.
+
+---
+
 ## 02/11/2026 — Capa única PR #533 PUBLICADA para teste
 
 Autorização do usuário: “Vou testar em produção mas cuide do rollback”. PR #533 MERGED, runtime `60b8bdb839e3a34f987f80558595188e7c683305`; Vercel `dpl_GaocVCL1UD8UMrTbLp7R3oP3Prg8` READY com alias www sem erro. HTTP 200, capa presente e cards antigos ausentes; três acessos conferidos em browser de produção. Aceite do proprietário e teste físico mobile pendentes. Supera a espera por LVR descrita abaixo.
