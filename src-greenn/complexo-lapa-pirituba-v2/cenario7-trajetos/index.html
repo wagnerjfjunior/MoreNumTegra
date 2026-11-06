@@ -35,6 +35,6 @@ function resume(reset=false){if(!loaded)return;if(playing)cancelAnimationFrame(r
 $('toggle').addEventListener('click',()=>playing?pause():resume());$('restart').addEventListener('click',()=>resume(true));
 $('map').addEventListener('load',()=>{const image=$('map');if(image.naturalWidth!==1448||image.naturalHeight!==1086){$('error').hidden=false;$('error').textContent='Não foi possível mostrar os trajetos.';return;}for(const r of ROUTES)r.length=r.path.getTotalLength();loaded=true;$('status').textContent='Percursos prontos';if(matchMedia('(prefers-reduced-motion: reduce)').matches){$('toggle').textContent='Reproduzir animação';$('toggle').setAttribute('aria-pressed','false');}else resume(true);});
 $('map').addEventListener('error',()=>{$('error').hidden=false;$('error').textContent='Mapa indisponível neste momento.';});
-$('map').src='/src-greenn/complexo-lapa-pirituba-v2/assets/'+encodeURIComponent(FILE);
+$('map').src='/src-greenn/complexo-lapa-pirituba/assets/'+encodeURIComponent(FILE);
 })();
 </script></body></html>
