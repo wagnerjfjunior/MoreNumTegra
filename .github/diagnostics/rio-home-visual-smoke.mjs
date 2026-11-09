@@ -42,6 +42,8 @@ for(const [label,viewport] of Object.entries({mobile:{width:390,height:844},desk
   }
   const agent=page.locator(".rio-agent-photo img");
   assert.equal(await agent.count(),1,"Sabrina portrait must be present");
+  // The portrait is loading="lazy" below the fold: bring it into view so the browser actually fetches it before decode().
+  await agent.scrollIntoViewIfNeeded();
   const agentImage=await agent.evaluate(async img=>{try{await Promise.race([img.decode(),new Promise((_,reject)=>setTimeout(()=>reject(Error("timeout")),12000))]);return {ok:img.naturalWidth>0,width:img.naturalWidth};}catch(e){return {ok:false,error:String(e)}}});
   assert(agentImage.ok,"approved Sabrina portrait did not decode: "+JSON.stringify(agentImage));
   console.log("PASS canonical Sabrina photo",label,agentImage.width);
