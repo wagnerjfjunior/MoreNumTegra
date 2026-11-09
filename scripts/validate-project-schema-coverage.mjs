@@ -26,7 +26,7 @@ for(const slug of slugs){
    assert(now.some(n=>type(n,residentialType)),slug+': staged project type missing '+residentialType);
    assert(now.some(n=>type(n,'ImageObject')),slug+': verified project hero image entity missing');
    assert(!now.some(n=>type(n,'Offer')),slug+': staged reference price is not a confirmed active offer');
-   assert(html.includes('name="robots" content="noindex,follow"'),slug+': staged page must remain noindex');
+   assert(html.includes('name="robots" content="index,follow,max-image-preview:large"'),slug+': Rio page released on 2026-11-09 must be indexable');
    assert(now.some(n=>type(n,residentialType)&&n.address?.addressLocality==='Rio de Janeiro'&&n.address?.addressRegion==='RJ'),slug+': project geography missing');
  }
 

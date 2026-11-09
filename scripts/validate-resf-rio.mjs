@@ -56,7 +56,8 @@ for(const slug of slugs) {
    if(name&&!visible.includes(name))fail("FAQ schema question not visible: "+name);
  }
  const robots=h.match(/<meta name="robots" content="([^"]+)"/)?.[1];
- if(robots!=="noindex,follow")fail("robots changed without launch approval");
+ if(robots!=="index,follow,max-image-preview:large")fail("robots must be indexable after launch approval of 2026-11-09");
+ if(/31\/10\/2026|Rio Open|setembro(\/| de )2026|maio\/2026/i.test(h))fail("expired campaign or dated table reference must not return (HTML or JSON-LD)");
  console.log("CHECK",slug,"facts="+factCount,"faq="+(faqNode?.mainEntity?.length||0));
 }
 for(const e of errors)console.error("FAIL",e);

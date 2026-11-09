@@ -8,7 +8,7 @@ const route="https://www.moretegra.com.br/rio-de-janeiro/";
 const titles=[...h.matchAll(/<title>([^<]+)<\/title>/g)];
 assert.equal(titles.length,1,"SEO title unique");
 assert.equal([...titles[0][1]].length<=65,true,"SEO title length");
-assert(h.includes('name="robots" content="noindex,follow"'),"noindex must persist until publication approval");
+assert(h.includes('name="robots" content="index,follow,max-image-preview:large"')&&!/noindex/i.test(h),"Rio Home released for indexing by Wagner on 2026-11-09 must stay indexable");
 assert(h.includes('rel="canonical" href="'+route+'"'),"canonical");
 assert(h.includes('property="og:url" content="'+route+'"'),"OG canonical");
 assert.equal((h.match(/<h1\b/g)||[]).length,1,"one H1");
@@ -39,9 +39,9 @@ assert.equal((h.match(/class="rio-reference-price"/g)||[]).length,7,"every Rio c
 for(const [slug,price] of referencePrices){
  const card=h.match(new RegExp('<article class="rio-project"[^>]*>[\\s\\S]*?<a class="rio-project-media" href="/empreendimentos/'+slug+'/"[\\s\\S]*?<\\/article>'))?.[0];
  assert(card&&card.includes(price),"missing governed reference price "+slug);
- assert(card.includes("Valor divulgado · a partir de")&&card.includes("rio-reference-price"),"historical price context absent "+slug);
+ assert(card.includes("<span>Preço a partir de</span>")&&card.includes("rio-reference-price")&&card.includes("consulte a tabela vigente"),"reference price context absent "+slug);
 }
-assert(h.includes("Valor divulgado · a partir de"),"commercial price framing missing");
+assert(h.includes("Preço a partir de"),"commercial price framing missing");
 assert(!h.includes('"@type":"Offer"'),"historical reference is not an active Offer");
 
 assert(!/https:\/\/www\.tegraincorporadora\.com\.br/.test(h),"no outbound commercial links");
@@ -70,4 +70,4 @@ assert(person&&person.image===sabrinaImage&&person.identifier?.value==="209.905-
 assert(graph.some(n=>n["@type"]==="ContactPoint"&&n.telephone==="+5511960779328"),"canonical broker contact point");
 assert(css.includes("@media(max-width:720px)"),"mobile CSS");
 assert(js.includes("data-rio-card")&&js.includes('addEventListener'),"interactive filters");
-console.log("PASS Rio Home: 7 priced cards, commercial Big Idea and CTAs, scoped filters, 5 FAQ, Form46, licensed photo, noindex and canonical");
+console.log("PASS Rio Home: 7 priced cards, commercial Big Idea and CTAs, scoped filters, 5 FAQ, Form46, licensed photo, indexable and canonical");

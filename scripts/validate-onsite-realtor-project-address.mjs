@@ -16,7 +16,7 @@ for(const slug of slugs){
   const project=nodes.find(n=>n['@type']===residentialType);
   assert(project?.address?.addressLocality==='Rio de Janeiro'&&project.address.addressRegion==='RJ',slug+': project city/state missing');
   assert(!nodes.some(n=>n['@type']==='RealEstateAgent'&&n.address),slug+': remote contact must not claim an onsite brokerage office');
-  assert(html.includes('name="robots" content="noindex,follow"'),slug+': page must remain noindex pending acceptance');
+  assert(html.includes('name="robots" content="index,follow,max-image-preview:large"')&&!/noindex/i.test(html),slug+': Rio page released for indexing on 2026-11-09 must stay indexable');
   assert(html.includes('CRECI-SP 209.905-F')&&html.includes('atendimento inicial'),slug+': remote consultation identity missing');
   assert(!/CRECI-RJ|CRECI RJ/.test(html),slug+': never invent RJ CRECI');
   notApplicable++;
