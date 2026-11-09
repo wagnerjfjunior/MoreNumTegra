@@ -115,3 +115,32 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 
 /* Rodapé fonte única (Wagner, 2026-11-09): mesma cor, sem sublinhado, sem negrito ou itálico */
 .footer,.footer p,.footer a,.footer a:visited,.footer a:hover,.footer strong,.footer b,.footer em,.footer i{color:#ccc;font-family:inherit;font-weight:400;font-style:normal;text-decoration:none}
+
+/* Localização no padrão Mozae: mapa regional não interativo; clique solicita a localização exata pelo WhatsApp */
+.mnt-map-card{overflow:hidden;border:1px solid var(--line);border-radius:20px;background:#fff;margin-top:24px}
+.mnt-map-visual{position:relative;height:320px;background:#ddd}
+.mnt-map-visual iframe{display:block;width:100%;height:100%;max-width:none;border:0;pointer-events:none}
+.mnt-map-hit{position:absolute;inset:0;z-index:2;display:block;cursor:pointer}
+.mnt-map-hit:focus-visible{outline:4px solid var(--yellow);outline-offset:-4px}
+.mnt-map-actions{display:grid;gap:10px;padding:14px;background:#171813;color:#fff}
+.mnt-map-copy strong{display:block}
+.mnt-map-copy small{display:block;margin-top:3px;color:#aaa69b}
+.mnt-map-buttons{display:grid;grid-template-columns:1fr;gap:8px}
+.mnt-map-buttons a{display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:999px;padding:0 16px;text-decoration:none;font-size:13px;font-weight:900;text-align:center}
+.mnt-map-whatsapp{background:var(--yellow);color:#171813}
+@media(min-width:620px){.mnt-map-actions{grid-template-columns:minmax(0,1fr) auto;align-items:center}.mnt-map-buttons{grid-template-columns:auto}}
+/* Plantas em cards: cada card pede a planta pelo WhatsApp */
+.rio-plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:28px}
+.rio-plan-card{display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--line);border-radius:20px;background:#fff}
+.rio-plan-visual{position:relative;aspect-ratio:3/2;background:linear-gradient(135deg,#ece6d8,#d6cdb9);display:grid;place-items:center}
+.rio-plan-visual img{width:100%;height:100%;object-fit:contain;background:#fff}
+.rio-plan-mark{font-family:inherit;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;color:#171813;letter-spacing:-.02em}
+.rio-plan-tag{position:absolute;left:14px;top:14px;background:#171813;color:#fff;border-radius:999px;padding:6px 12px;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.rio-plan-body{display:flex;flex-direction:column;gap:12px;padding:20px;flex:1}
+.rio-plan-body h3{margin:0;font-size:1.25rem}
+.rio-plan-body p{margin:0;color:#4a4740}
+.rio-plan-specs{list-style:none;margin:4px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rio-plan-specs li{border-top:1px solid var(--line);padding-top:10px;display:flex;flex-direction:column}
+.rio-plan-specs b{font-size:1.15rem}
+.rio-plan-specs span{font-size:.78rem;color:#6b665c}
+.rio-plan-cta{margin-top:auto;align-self:stretch;text-align:center}
