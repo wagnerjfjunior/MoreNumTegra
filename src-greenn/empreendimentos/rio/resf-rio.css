@@ -112,3 +112,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 .rio-plan figcaption{padding:14px 17px;color:#524e49;font-size:.83rem;line-height:1.5}
 .rio-plans-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;margin-bottom:18px}
 @media(max-width:700px){.rio-plans-grid{grid-template-columns:1fr;gap:18px}.rio-plans-actions{display:grid;grid-template-columns:1fr}.rio-plans-actions .button{width:100%}}
+
+/* Rodapé fonte única (Wagner, 2026-11-09): mesma cor, sem sublinhado, sem negrito ou itálico */
+.footer,.footer p,.footer a,.footer a:visited,.footer a:hover,.footer strong,.footer b,.footer em,.footer i{color:#ccc;font-family:inherit;font-weight:400;font-style:normal;text-decoration:none}

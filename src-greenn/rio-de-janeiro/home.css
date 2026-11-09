@@ -27,3 +27,6 @@
 .rio-project-body .rio-reference-price{margin-top:auto;padding:14px 0 16px}
 .rio-project-body .rio-reference-price span{display:block;font-size:.8rem;font-weight:750;color:#5d5952}
 .rio-project-body .rio-reference-price strong{display:block;font-size:clamp(1.35rem,1.7vw,1.75rem);line-height:1.25;color:#171813;letter-spacing:-.025em}
+
+/* Rodapé fonte única (Wagner, 2026-11-09): mesma cor, sem sublinhado, sem negrito ou itálico */
+.rio-footer,.rio-footer p,.rio-footer a,.rio-footer a:visited,.rio-footer a:hover,.rio-footer strong,.rio-footer b,.rio-footer em,.rio-footer i{color:#ddd;font-family:inherit;font-weight:400;font-style:normal;text-decoration:none}

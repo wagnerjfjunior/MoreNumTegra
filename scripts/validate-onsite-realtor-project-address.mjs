@@ -4,6 +4,23 @@
 import {readFileSync,readdirSync} from 'node:fs';
 import assert from 'node:assert/strict';
 const root='src-greenn/empreendimentos';
+// Rio in-loco stand (Tegra RJ team) — address/CEP approved by Wagner on 2026-11-09; geo only where a Google Maps point inside Barra da Tijuca was confirmed.
+const STAND=slug=>'https://www.moretegra.com.br/empreendimentos/'+slug+'/#estande-tegra';
+const RIO_ADDR={'kronos-by-tegra':['Avenida Afonso Arinos de Melo Franco, 425','22631-455'],'claris-casa-e-clube':['Avenida Prefeito Dulcídio Cardoso, 2900','22631-052'],'claris-rosas':['Avenida Prefeito Dulcídio Cardoso, 2900','22631-052'],'gran-thai-leisure-residence':['Avenida Flamboyants da Península, 600','22776-070'],'singular-private-residence':['Avenida das Acácias da Península, 540','22776-000'],'gaea-home-resort':['Avenida Evandro Lins e Silva, 335','22640-100'],'riio-by-piero-lissoni':['Avenida Lúcio Costa, 4900','22630-011']};
+function assertStand(slug,nodes,project,html){
+ const [street,cep]=RIO_ADDR[slug];
+ assert.equal(project.address.streetAddress,street,slug+': project street');
+ assert.equal(project.address.postalCode,cep,slug+': project CEP');
+ const s=nodes.find(n=>n['@id']===STAND(slug));
+ assert(s&&s['@type']==='RealEstateAgent',slug+': in-loco Tegra stand entity missing');
+ for(const k of ['streetAddress','postalCode','addressLocality','addressRegion'])assert.equal(s.address?.[k],project.address[k],slug+': stand address '+k+' must equal project');
+ assert(!s.employee&&!s.identifier&&!s.telephone,slug+': stand must not borrow Sabrina identity, CRECI or phone');
+ assert.deepEqual(s.geo,project.geo,slug+': stand geo must equal project geo (or both absent)');
+ if(project.geo){assert.equal(slug,'gaea-home-resort',slug+': geo only for confirmed point');}
+ const foot=(html.match(/<span data-mnt-footer-address[^>]*>([\s\S]*?)<\/span>/)||[])[1]||'';
+ assert(foot.includes(street.split(',')[0])&&foot.includes(street.split(',')[1].trim())&&foot.includes('CEP '+cep),slug+': footer address must match JSON-LD');
+ assert(!/remoto; local exato/.test(html),slug+': obsolete remote-only footer text');
+}
 const slugs=readdirSync(root,{withFileTypes:true}).filter(x=>x.isDirectory()).map(x=>x.name).sort();
 let pages=0,agents=0,notApplicable=0;
 for(const slug of slugs){
@@ -15,7 +32,9 @@ for(const slug of slugs){
   const residentialType=slug==='claris-casa-e-clube'?'GatedResidenceCommunity':'ApartmentComplex';
   const project=nodes.find(n=>n['@type']===residentialType);
   assert(project?.address?.addressLocality==='Rio de Janeiro'&&project.address.addressRegion==='RJ',slug+': project city/state missing');
-  assert(!nodes.some(n=>n['@type']==='RealEstateAgent'&&n.address),slug+': remote contact must not claim an onsite brokerage office');
+  // Wagner 2026-11-09: Sabrina (CRECI-SP) stays remote first contact; in-loco service is the Tegra RJ stand team at the project address.
+  assert(!nodes.some(n=>n['@type']==='RealEstateAgent'&&n.address&&n['@id']!==STAND(slug)),slug+': remote contact must not claim an onsite brokerage office');
+  assertStand(slug,nodes,project,html);
   assert(html.includes('name="robots" content="index,follow,max-image-preview:large"')&&!/noindex/i.test(html),slug+': Rio page released for indexing on 2026-11-09 must stay indexable');
   assert(html.includes('CRECI-SP 209.905-F')&&html.includes('atendimento inicial'),slug+': remote consultation identity missing');
   assert(!/CRECI-RJ|CRECI RJ/.test(html),slug+': never invent RJ CRECI');
@@ -37,9 +56,10 @@ for(const slug of slugs){
  if(slug==='riio-by-piero-lissoni'){
   // First RJ intake is explicitly remote; the project address is not an office.
   const project=nodes.find(n=>n['@type']==='ApartmentComplex');
-  const agent=nodes.find(n=>n['@type']==='RealEstateAgent');
+  const agent=nodes.find(n=>n['@type']==='RealEstateAgent'&&n['@id']!==STAND(slug));
   const service=nodes.find(n=>n['@type']==='Service');
   assert.equal(project?.address?.streetAddress,'Avenida Lúcio Costa, 4900');
+  assertStand(slug,nodes,project,html);
   assert.equal(project.address.addressLocality,'Rio de Janeiro');
   assert.equal(project.address.addressRegion,'RJ');
   assert.equal(agent?.employee?.['@id'],'https://www.moretegra.com.br/#sabrina-da-tegra');
