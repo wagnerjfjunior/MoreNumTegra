@@ -5,14 +5,16 @@ Validador: `scripts/validate-resf-conversion-guard.mjs`.
 
 Página MoreTegra é página de venda de alta conversão. Todo clique termina em formulário, WhatsApp da Sabrina, telefone ou outra página MoreTegra.
 
-## R1. Nunca mandar o cliente para outro site que vende o mesmo produto
-- Proibido link para portais, imobiliárias, sites de lançamento, sites de corretores e hotsites de terceiros, inclusive com rótulo de "origem oficial" ou "ver material". Exemplos: peninsulacollection.com.br, invexo, evandroimoveisrj, lancamentosrj, myside, apto.vc, zap, vivareal, imovelweb.
+## R1. Nunca mandar o cliente para fora do funil da Sabrina
+- Proibido link para portais, imobiliárias, sites de lançamento e sites de corretores (concorrentes), inclusive com rótulo de "origem oficial" ou "ver material". Exemplos: invexo, evandroimoveisrj, lancamentosrj, myside, apto.vc, zap, vivareal, imovelweb.
+- Sites oficiais da Tegra também não recebem link (isolamento de site Tegra), porque o lead sai do atendimento da Sabrina: tegraincorporadora.com.br e hotsites como peninsulacollection.com.br (site oficial Tegra da Península, confirmado pelo Wagner em 2026-11-10). A única exceção existente é o tour 360 da Tegra.
 - Proibido link para Google Maps (`google.com/maps/search`). A localização segue a R4.
 - A Sabrina é o canal: `https://wa.me/5511960779328`, `tel:+5511960779328`, Form 46.
 
 ## R2. Nenhuma mídia carregada de site concorrente
 - Imagem, vídeo ou PDF vem de ativos Tegra (stracctegra, arquivos Tegra), Green Sales (s3-gdigital) ou ativos próprios do MoreTegra.
-- Mídia legada hospedada em concorrente é dívida (`COMPETITOR_MEDIA_DEBT`), listada no validador, e não pode crescer.
+- Mídia legada hospedada em concorrente é dívida (`COMPETITOR_MEDIA_DEBT`), listada no validador, e não pode crescer. Desde 2026-11-10 a dívida é zero: as galerias do Gran Thai e do Singular passaram para a mídia oficial Tegra (`stracctegra/.../peninsula/`), a mesma usada pelo hotsite oficial.
+- Planta com imagem: só a planta oficial Tegra, com a área exata da própria planta.
 
 ## R3. Página de venda não se justifica
 - Proibido texto de auditoria, de proveniência ou de desculpa: "divulgado", "o catálogo informa", "a incorporadora informa", "não usamos plantas…", "precisam corresponder…", "confirme na documentação", "sob confirmação", "origem oficial", "valor divulgado anteriormente", "esta página não anuncia…".
