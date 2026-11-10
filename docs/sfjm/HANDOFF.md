@@ -7,7 +7,7 @@
 - Repositório: `wagnerjfjunior/MoreNumTegra`
 - Branch: `feat/rio-enderecos-estandes-20261109`
 - PR: #561 (aberta, base `main`). Merge só pelo Wagner.
-- Head do código coberto por este handoff: `9335daa`. O commit deste arquivo vem depois dele e só acrescenta este documento.
+- Head do código coberto por este handoff: `dbda76a`. O commit deste arquivo vem depois dele e só altera este documento.
 - Teste local: LVR com live sync pelo nome da branch (sem preview Vercel).
 
 ## Commits da branch (mais antigo primeiro)
@@ -21,16 +21,21 @@
 | `f3a2903` | RIIO: sem quadros por edifício e sem seção da Sabrina |
 | `9577d9f` | Galeria cabe na tela; Kronos com 12 ambientes variados |
 | `f30285e` | Galeria no padrão Ampère Brooklin, em tela cheia como o hero |
-| `9335daa` | Os 4 ajustes de 2026-11-10 (abaixo) |
+| `9335daa` | 4 ajustes de 2026-11-10: galeria sem linha repetida, header do RIIO, card do hub abre no hero, bloco de atendimento no hub |
+| `9c15d48` | Primeiro handoff de caminho fixo |
+| `dbda76a` | Páginas do Rio sem Sabrina, atendimento "Direto com a Incorporadora Tegra", metragens oficiais (abaixo) |
 
-## Os 4 ajustes pedidos em 2026-11-10 — todos concluídos em `9335daa`
+## O que `dbda76a` fez (decisões de 2026-11-10)
 
-1. Linha repetida abaixo da galeria (`.rio-scene-list`) removida das 6 páginas e do CSS. **Feito.**
-2. Header do RIIO no padrão topbar Rio (logo Tegra, Início, Rio de Janeiro, Plantas, Imagens, Atendimento). Faixa escura porque o hero travado do RIIO abre em fundo claro. **Feito.**
-3. Card do hub abria a página no meio. Causa: `scrollIntoView` no seletor de plantas (Claris Rosas, Gran Thai, Singular, Gaea). Corrigido; as 7 páginas abrem no hero (scrollY 0 medido). **Feito.**
-4. Hub: seção da Sabrina trocada por "Atendimento personalizado Tegra Vendas" com um botão "Falar no WhatsApp". JSON-LD Person sem `image`. Rodapé mantém nome, CRECI e telefone. **Feito.**
+Escopo: **só as páginas do Rio de Janeiro** (hub + 7 páginas). São Paulo não mudou: Sabrina, CRECI-SP e perfil continuam lá, e os validadores de SP seguem exigindo isso.
 
-Verificação em `9335daa`: validadores 32 PASS + as mesmas 6 FAIL de base do `main` (clone raso); smokes `resf-rio-visual-smoke` e `rio-home-visual-smoke` PASS em desktop e mobile.
+1. Nenhuma referência à Sabrina nas páginas RJ: botões, FAQ (HTML e JSON-LD), texto do formulário, rodapé, `aria-label`, link de perfil, `Person` e CRECI no JSON-LD. No RIIO: `#atendimento` e `Service` sem `Person`, opção do formulário "Falar com especialista", `riio.css` sem as regras `.sabrina-*` (não usadas).
+2. Atendimento "Direto com a Incorporadora Tegra". Botões: "Falar direto com a Tegra" e, no quadro de preço, "Negociar direto com a Tegra". Mensagens do WhatsApp começam com "Olá, quero ...". Mesmo número de WhatsApp e telefone.
+3. Hub: bloco "Atendimento direto com a Incorporadora Tegra" com botão "Falar direto com a Tegra". Saiu o aviso "Atendimento inicial remoto…".
+4. Metragens oficiais, sem decimais: Gran Thai 125 a 405 m²; Gaea 123 a 365 m². Batem com as plantas oficiais já publicadas nas páginas (125,01–405,45 e 123,35–365,16). Filtro de metragem do hub atualizado. Formato "125 a 405 m²", igual ao resto do site.
+5. Validadores (só regras do Rio): nova R7 no guard de conversão (páginas RJ e hub sem Sabrina e com contato direto Tegra); `validate-rio-home`, `validate-resf-rio`, `validate-onsite-realtor-project-address`, `validate-project-schema-coverage`, `validate-commercial-page-standard` (exceção RJ), `validate-riio-editorial-review-20261028` e `rio-home-visual-smoke`. Hash aprovado do Form46 do RIIO atualizado, com o anterior guardado em `history`.
+
+Verificação em `dbda76a`: validadores 32 PASS + as mesmas 6 FAIL da linha de base (conferido com os commits de referência buscados; fora do Rio); smokes `rio-home-visual-smoke` e `resf-rio-visual-smoke` PASS em desktop e mobile.
 
 ## Decisões do Wagner (com data)
 
@@ -38,21 +43,22 @@ Verificação em `9335daa`: validadores 32 PASS + as mesmas 6 FAIL de base do `m
 - 2026-11-09: rodapé com o endereço do próprio empreendimento (igual ao JSON-LD), fonte única, sem negrito, itálico ou sublinhado.
 - 2026-11-09: nunca mandar cliente para concorrente ou para fora do funil; sem texto de justificativa; toda planta com foto oficial.
 - 2026-11-09: peninsulacollection.com.br é site oficial da Tegra.
-- 2026-11-10: galeria sem a linha repetida; header do RIIO padronizado; card do hub abre no hero; hub sem a seção da Sabrina, com "Atendimento personalizado Tegra Vendas".
+- 2026-11-10: galeria sem a linha repetida; header do RIIO padronizado; card do hub abre no hero.
+- 2026-11-10: nas páginas do Rio de Janeiro, nada relacionado à Sabrina (questão do CRECI no RJ); atendimento "Direto com a Incorporadora Tegra". Só Rio.
+- 2026-11-10: metragens oficiais sem decimais — Gran Thai 125–405 m², Gaea 123–365 m².
 
 ## Pendências
 
-- **Decisão do Wagner:** atualizar metragens? Gran Thai hoje 125–210 m², ficha oficial 125,01–405,45 m². Gaea hoje 125 e 170 m², oficial 123,35–365,16 m².
-- **Decisão do Wagner:** o nome da Sabrina ainda aparece no hub em 2 respostas do FAQ, no texto do formulário e no botão flutuante do WhatsApp. Manter ou tirar.
+- **Decisão do Wagner:** a home de SP (`src-greenn/moretegra.js`) mostra os cards do Gran Thai e do Gaea com a metragem antiga (125 a 210 m²; 125 e 170 m²). Ficou fora desta mudança por ser página de SP. Atualizar só esses dois números ou deixar.
 - **Wagner:** QA no LVR das 7 páginas RJ e do hub.
 - **Wagner:** merge da PR #561. Depois do merge: IndexNow/Search Console das URLs RJ.
 
 ## Próxima ação (única)
 
-Wagner faz o QA no LVR desta branch e responde às duas decisões acima (metragens; nome da Sabrina no hub).
+Wagner faz o QA no LVR desta branch e decide sobre a metragem dos dois cards na home de SP.
 
 ## Prompt de retomada
 
 ```
-Retomada MoreNumTegra, frente Imobiliário. Leia ao vivo a branch feat/rio-enderecos-estandes-20261109 e o arquivo docs/sfjm/HANDOFF.md. Confira se o head do código citado no handoff (9335daa) é o pai do commit que criou o handoff, ou o head atual. Se for, siga a próxima ação dele. Se divergir, pare e me diga.
+Retomada MoreNumTegra, frente Imobiliário. Leia ao vivo a branch feat/rio-enderecos-estandes-20261109 e o arquivo docs/sfjm/HANDOFF.md. Confira se o head do código citado no handoff (dbda76a) é o pai do commit que reescreveu o handoff, ou o head atual. Se for, siga a próxima ação dele. Se divergir, pare e me diga.
 ```
