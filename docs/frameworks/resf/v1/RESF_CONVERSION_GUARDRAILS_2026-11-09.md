@@ -23,10 +23,12 @@ Página MoreTegra é página de venda de alta conversão. Todo clique termina em
 ## R4. Localização no padrão Mozae
 - Mapa regional embutido, não interativo (`pointer-events:none`). O clique no mapa e o botão "Solicitar localização" abrem o WhatsApp com "Por favor me envie a localização exata do <Projeto>.".
 
-## R5. Plantas sem imagem oficial: cards por tipologia
-- Um card por tipologia: título, descrição curta de venda, três indicadores e o botão **Solicitar Planta**, que abre o WhatsApp com "Por favor me envie <a planta …> do <Projeto>.".
-- A imagem entra só se for planta oficial Tegra da própria tipologia. Nunca planta de outro projeto nem de terceiro.
-- Referência: Kronos by Tegra (Apartamentos Tipo, Apartamentos Garden, Coberturas Lineares).
+## R5. Plantas: toda planta com foto e pedido pelo WhatsApp
+- Nenhum card ou planta sem imagem (Wagner, 2026-11-10).
+- **Seletor (padrão Chateau Jardin)** quando há planta oficial publicada: grupos (Apartamentos, Gardens, Coberturas, Casas), uma aba por planta com título e área privativa exata, imagem oficial e o botão **Solicitar Planta**, que abre o WhatsApp com "Por favor me envie a planta <título> do <Projeto>.". Módulo único: `src-greenn/empreendimentos/rio/resf-rio-plans.js`.
+- **Cards por tipologia** quando não há planta baixa oficial publicada: foto oficial da tipologia (decorado, terraço etc.), título, descrição de venda, três indicadores e **Solicitar Planta** pelo WhatsApp. Referência: Kronos by Tegra.
+- Imagem só de mídia oficial Tegra: stracctegra, Green Sales (s3-gdigital) e hotsites oficiais Tegra (peninsulacollection.com.br, kronosbytegra.com.br). Nunca de site de corretor ou portal; por exemplo, clariscasaclube.com.br é da Apetopia Imobiliária e fica vetado.
+- A área vem do carimbo ou da legenda oficial da própria planta.
 
 ## R6. Rodapé e endereço
 - O endereço do rodapé é o mesmo do JSON-LD (`PostalAddress`). O texto do rodapé usa fonte única e a mesma cor, sem sublinhado, negrito ou itálico; a marcação RESF aprovada é preservada e o estilo resolve.

@@ -7,6 +7,8 @@ const COMPETITOR=/(?:^|\.)(invexo\.com\.br|evandroimoveisrj\.com\.br|lancamentos
 const TEGRA_HOTSITE=/(?:^|\.)(peninsulacollection\.com\.br|tegraincorporadora\.com\.br)$/i;
 // R2 legacy debt: may only shrink. Empty since 2026-11-10 (Gran Thai/Singular galleries moved to Tegra media).
 const MEDIA_DEBT={};
+// Official Tegra media hosts for plan images/photos (Tegra blob, Green Sales, Tegra official hotsites).
+const OFFICIAL_MEDIA=/(?:^|\.)(stracctegra\.blob\.core\.windows\.net|s3-gdigital\.s3\.amazonaws\.com|peninsulacollection\.com\.br|kronosbytegra\.com\.br)$/i;
 const STRICT=['kronos-by-tegra','claris-casa-e-clube','claris-rosas','gran-thai-leisure-residence','singular-private-residence','gaea-home-resort','riio-by-piero-lissoni'];
 const CARDS=STRICT.filter(s=>s!=='riio-by-piero-lissoni');
 const BANNED=/divulgad|o catálogo (?:oficial |da Tegra |Tegra )?informa|incorporadora informa|ficha oficial informa|não usamos plantas|precisam corresponder|sem reutilizar|confirme (?:o endereço|na documentação)|sob confirmação|origem oficial|anteriormente foi|esta página não anuncia|informado pela Tegra/i;
@@ -34,8 +36,20 @@ for(const slug of [...pages,'__hub_rio']){
  if(CARDS.includes(slug)){
   const plans=h.match(/<section class="section rio-plans-section" id="plantas-oficiais"[\s\S]*?<\/section>/)?.[0]||'';
   const cards=[...plans.matchAll(/<article class="rio-plan-card">[\s\S]*?<\/article>/g)].map(m=>m[0]);
-  if(cards.length<2)fails.push(`${slug}: R5 plan cards missing`);
-  for(const c of cards)if(!/<a class="button rio-plan-cta" href="https:\/\/wa\.me\/5511960779328\?text=Por%20favor%20me%20envie[^"]*"[^>]*>Solicitar Planta<\/a>/.test(c))fails.push(`${slug}: R5 card without WhatsApp "Solicitar Planta"`);
+  const tabs=[...plans.matchAll(/<button[^>]*data-plan-tab[^>]*>/g)].map(m=>m[0]);
+  if(cards.length<2&&tabs.length<2)fails.push(`${slug}: R5 plan cards or plan selector missing`);
+  for(const c of cards){
+   if(!/<a class="button rio-plan-cta" href="https:\/\/wa\.me\/5511960779328\?text=Por%20favor%20me%20envie[^"]*"[^>]*>Solicitar Planta<\/a>/.test(c))fails.push(`${slug}: R5 card without WhatsApp "Solicitar Planta"`);
+   const src=c.match(/<img[^>]*src="([^"]+)"/)?.[1];
+   if(!src)fails.push(`${slug}: R5 plan card without photo`);else if(!OFFICIAL_MEDIA.test(host(src)))fails.push(`${slug}: R5 plan card photo not official Tegra media ${src}`);
+  }
+  for(const t of tabs){
+   const img=t.match(/data-img="([^"]+)"/)?.[1],wa=t.match(/data-wa="([^"]+)"/)?.[1];
+   if(!img||!OFFICIAL_MEDIA.test(host(img)))fails.push(`${slug}: R5 selector plan without official image ${img}`);
+   if(!wa||!/^https:\/\/wa\.me\/5511960779328\?text=Por%20favor%20me%20envie%20a%20planta/.test(wa))fails.push(`${slug}: R5 selector plan without WhatsApp request`);
+  }
+  if(tabs.length&&!/data-plan-cta href="https:\/\/wa\.me\/5511960779328/.test(plans.replace(/class="button rio-plan-cta" /,'')))fails.push(`${slug}: R5 selector CTA must open WhatsApp`);
+  if(tabs.length&&!h.includes('src="/src-greenn/empreendimentos/rio/resf-rio-plans.js"'))fails.push(`${slug}: R5 plan selector script missing`);
  }
 }
 for(const f of fails)console.error('FAIL',f);
