@@ -4,6 +4,14 @@
   "sha256": {
     "hero": "4be7a5701dee2ba114e59abfc3fd254c1104b2fb6300b27818bd39b70b1c5cf8",
     "facts": "08551f611e98311c0705c74c7909bd2c9383e60d187e336edd29d5fc0103639f",
-    "form46": "e6f49018779542bcbe0ad96f283dd99217611200f81a2994ab90dd4ad185bc00"
-  }
+    "form46": "99e9118756aeaa63258df18690e7719f3f3237323fce104a15a05ce6d16e2cea"
+  },
+  "history": [
+    {
+      "date": "2026-11-10",
+      "component": "form46",
+      "previous_sha256": "e6f49018779542bcbe0ad96f283dd99217611200f81a2994ab90dd4ad185bc00",
+      "reason": "Decisão do Wagner: páginas do Rio sem referência à Sabrina (CRECI no RJ). Única mudança no form: rótulo da opção 'Falar com Sabrina' -> 'Falar com especialista'."
+    }
+  ]
 }

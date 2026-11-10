@@ -32,11 +32,12 @@ for(const slug of slugs){
   const residentialType=slug==='claris-casa-e-clube'?'GatedResidenceCommunity':'ApartmentComplex';
   const project=nodes.find(n=>n['@type']===residentialType);
   assert(project?.address?.addressLocality==='Rio de Janeiro'&&project.address.addressRegion==='RJ',slug+': project city/state missing');
-  // Wagner 2026-11-09: Sabrina (CRECI-SP) stays remote first contact; in-loco service is the Tegra RJ stand team at the project address.
+  // Wagner 2026-11-09: in-loco service is the Tegra RJ stand team at the project address.
+  // Wagner 2026-11-10: Rio pages carry no Sabrina reference (CRECI issue in RJ); contact is "Direto com a Incorporadora Tegra".
   assert(!nodes.some(n=>n['@type']==='RealEstateAgent'&&n.address&&n['@id']!==STAND(slug)),slug+': remote contact must not claim an onsite brokerage office');
   assertStand(slug,nodes,project,html);
   assert(html.includes('name="robots" content="index,follow,max-image-preview:large"')&&!/noindex/i.test(html),slug+': Rio page released for indexing on 2026-11-09 must stay indexable');
-  assert(html.includes('CRECI-SP 209.905-F')&&html.includes('atendimento inicial'),slug+': remote consultation identity missing');
+  assert(!/sabrina/i.test(html)&&!/CRECI/.test(html)&&html.includes('Atendimento direto com a Incorporadora Tegra'),slug+': Rio page must be direct Tegra contact, without Sabrina/CRECI');
   assert(!/CRECI-RJ|CRECI RJ/.test(html),slug+': never invent RJ CRECI');
   notApplicable++;
   console.log('RIO_REMOTE_STAGING_PASS',slug);
@@ -62,12 +63,12 @@ for(const slug of slugs){
   assertStand(slug,nodes,project,html);
   assert.equal(project.address.addressLocality,'Rio de Janeiro');
   assert.equal(project.address.addressRegion,'RJ');
-  assert.equal(agent?.employee?.['@id'],'https://www.moretegra.com.br/#sabrina-da-tegra');
+  assert(agent&&!agent.employee&&!agent.identifier&&agent.parentOrganization?.['@id']==='https://www.moretegra.com.br/#tegra-vendas','RIIO intake is direct Tegra, without broker identity');
   assert.equal(agent.telephone,'+5511960779328');
   assert.equal(agent['@id'],'https://www.moretegra.com.br/empreendimentos/riio-by-piero-lissoni/#atendimento');
   assert.equal(service?.provider?.['@id'],agent['@id']);
   assert(!agent.address&&!agent.geo,'Remote RIIO intake must not fabricate on-site office/address');
-  assert(html.includes('CRECI-SP 209.905-F')&&html.includes('atendimento inicial'));
+  assert(!/sabrina/i.test(html)&&!/CRECI/.test(html)&&html.includes('Atendimento direto com a Incorporadora Tegra'),'RIIO must be direct Tegra contact, without Sabrina/CRECI');
   assert(!/CRECI-RJ|CRECI RJ/.test(html),'Do not invent RJ credential');
   assert(html.includes('content="index,follow,max-image-preview:large"'),'RIIO publication is indexable');
   notApplicable++;

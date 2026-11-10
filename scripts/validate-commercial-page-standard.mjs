@@ -7,6 +7,9 @@ const P1 = "Página de atendimento comercial More em um Tegra. Informações de 
 const P2 = "Os valores exibidos nesta página são referências comerciais vinculadas às unidades indicadas e podem sofrer alterações. Alguns empreendimentos podem apresentar condições promocionais específicas, sujeitas à disponibilidade da respectiva unidade. Preços, unidades, disponibilidade e condições comerciais devem ser confirmados com nossos corretores no atendimento.";
 const CONTACT = "Sabrina da Tegra · Corretora Tegra Vendas · CRECI-SP 209.905-F.";
 const PROFILE = "https://corretor.tegravendas.com.br/sabrina/sp";
+// Wagner 2026-11-10: only the Rio pages drop Sabrina (CRECI issue in RJ); São Paulo keeps CONTACT and PROFILE.
+const RIO_SLUGS = new Set(["kronos-by-tegra","claris-casa-e-clube","claris-rosas","gran-thai-leisure-residence","singular-private-residence","gaea-home-resort","riio-by-piero-lissoni"]);
+const CONTACT_RIO = "Atendimento direto com a Incorporadora Tegra.";
 const TEGRA_CORPORATE_HOST = /(?:https?:)?\/\/(?:[^\s"'<>/]+\.)?tegraincorporadora\.com\.br\b/i;
 const EXACT_STREET_TOKENS = [
   "Rua Fortunato Ferraz",
@@ -92,9 +95,11 @@ if(fs.existsSync(projectsDir)){
     if(!footer.includes("data-mnt-footer-address")) fail(`${rel}: future-page governed address hook missing`);
     if(!footer.includes(FOOTER_LOGO)) fail(`${rel}: future-page canonical footer logo missing`);
     if(!footer.includes(P1)||!footer.includes(P2)) fail(`${rel}: future-page disclaimer copy drift`);
-    if(!footer.includes(CONTACT)) fail(`${rel}: future-page canonical Sabrina contact missing`);
+    const rio=RIO_SLUGS.has(dir.name);
+    if(rio){ if(!footer.includes(CONTACT_RIO)||/sabrina|CRECI/i.test(footer)) fail(`${rel}: Rio footer must be direct Tegra contact without Sabrina/CRECI`); }
+    else if(!footer.includes(CONTACT)) fail(`${rel}: future-page canonical Sabrina contact missing`);
     if(!footer.includes('href="tel:+5511960779328"')) fail(`${rel}: future-page canonical phone link missing`);
-    if(!footer.includes(PROFILE)) fail(`${rel}: future-page official Sabrina profile missing`);
+    if(!rio&&!footer.includes(PROFILE)) fail(`${rel}: future-page official Sabrina profile missing`);
     validateNeutralFooterAddress(rel, html, footer);
     // Exact Órbita 360-degree tour is an explicit visual-media exception.
     // Strip only this official tour destination; all other corporate URLs remain prohibited.

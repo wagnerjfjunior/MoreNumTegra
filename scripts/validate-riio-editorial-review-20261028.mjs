@@ -43,5 +43,12 @@ const ids=[...html.matchAll(/\bid="([^\"]+)"/g)].map(x=>x[1]);assert.equal(ids.l
 const footer=html.match(/<footer\b[\s\S]*?<\/footer>/)[0];
 const referenceFooter=read('src-greenn/empreendimentos/tiel-vila-nova-conceicao/index.html').match(/<footer\b[\s\S]*?<\/footer>/)[0];
 const normalizeFooter=s=>s.replace(/<span data-mnt-footer-address[^>]*>[\s\S]*?<\/span>/,'<span data-mnt-footer-address>PROJECT_ADDRESS</span>');
-assert.equal(normalizeFooter(footer),normalizeFooter(referenceFooter),'RIIO must follow the approved RESF footer without extra navigation');
+// Wagner 2026-11-10: Rio pages carry no Sabrina reference (CRECI issue in RJ). The reference footer is São Paulo (Tiel),
+// so only the contact paragraph is swapped to the Rio contact before comparing; everything else must stay identical.
+const SP_CONTACT='<p><strong>Sabrina da Tegra · Corretora Tegra Vendas · CRECI-SP 209.905-F.</strong><br><a href="tel:+5511960779328">(11) 96077-9328</a> · <a href="https://corretor.tegravendas.com.br/sabrina/sp" target="_blank" rel="noopener noreferrer">perfil oficial Tegra Vendas</a></p>';
+const RIO_CONTACT='<p><strong>Atendimento direto com a Incorporadora Tegra.</strong><br><a href="tel:+5511960779328">(11) 96077-9328</a></p>';
+assert.equal(footer.split(RIO_CONTACT).length,2,'RIIO footer must carry the direct Tegra contact once');
+assert.equal(referenceFooter.split(SP_CONTACT).length,2,'Reference footer contact changed; review this comparison');
+assert(!/sabrina|CRECI/i.test(html),'RIIO page must carry no Sabrina/CRECI reference');
+assert.equal(normalizeFooter(footer),normalizeFooter(referenceFooter.replace(SP_CONTACT,RIO_CONTACT)),'RIIO must follow the approved RESF footer without extra navigation');
 console.log('PASS: approved hero/facts/Form46 unchanged; ficha kept in docs (9 buildings, 132 residences), tables and Sabrina section off the page, 10 gallery scenes, 11 plan plates with precise linked areas, 3 neighborhood photos and WhatsApp context map. Static evidence only.');
