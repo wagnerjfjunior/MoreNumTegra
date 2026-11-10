@@ -7,13 +7,11 @@ const ficha=JSON.parse(read(root+'/riio-ficha-tecnica.json')),plans=JSON.parse(r
 for(const [key,pattern] of [['hero',/<section class="riio-hero">[\s\S]*?<\/section>/],['facts',/<section class="facts"[\s\S]*?<\/section>/],['form46',/<form id="moretegra-lead-form"[\s\S]*?<\/form>/]])assert.equal(createHash('sha256').update(html.match(pattern)[0]).digest('hex'),approved.sha256[key],'Approved '+key+' changed');
 assert.equal(ficha.buildings.length,9);assert.equal(ficha.terrain_m2,30003.73);
 assert.equal(ficha.buildings.reduce((n,b)=>n+b.rows.reduce((total,row)=>total+row.quantity,0),0),132);
-const technical=html.match(/<section[^>]+id="tipologias"[\s\S]*?<\/section>/)[0];
-assert(technical.includes('30.003,73 m²'));assert(!technical.includes('.pdf'),'Ficha must be integrated, not a PDF substitute');
-for(const b of ficha.buildings){
- const card=technical.match(new RegExp('<article class="riio-building" id="edificio-'+b.name.toLowerCase()+'">([\\s\\S]*?)</article>'))[1];
- assert.equal((card.match(/<tr>/g)||[]).length,b.rows.length+1,'Every configuration of '+b.name+' must be present');
- for(const row of b.rows)assert(card.includes('<b>'+row.quantity+'</b> '+row.type.toLowerCase()),'Unit group omitted: '+b.name);
-}
+// Wagner 2026-11-10: the per-building technical tables (#tipologias) and the Sabrina section were removed from the sales page.
+// The ficha data stays governed in docs (riio-ficha-tecnica.json); the page sells through the 11 plan plates, gallery and Form46.
+assert(!html.includes('id="tipologias"')&&!html.includes('href="#tipologias"'),'Per-building technical tables must stay off the RIIO sales page');
+assert(!html.includes('id="sabrina"')&&!html.includes('sabrina-section'),'Sabrina section must stay off the RIIO sales page');
+assert(!/ficha técnica/i.test(html.replace(/<section class="facts"[\s\S]*?<\/section>/,'')),'No technical-sheet justification copy outside the locked facts band');
 assert(html.includes('Avenida Lúcio Costa, 4900 e Avenida Peregrino Junior, 133'));
 const galleries=[...html.matchAll(/<div class="riio-viewer[^>]+data-riio-gallery="([^\"]+)"[\s\S]*?<script type="application\/json" data-gallery-data>([\s\S]*?)<\/script>/g)];
 assert.deepEqual(galleries.map(x=>x[1]),['ambientes','plantas']);
@@ -46,4 +44,4 @@ const footer=html.match(/<footer\b[\s\S]*?<\/footer>/)[0];
 const referenceFooter=read('src-greenn/empreendimentos/tiel-vila-nova-conceicao/index.html').match(/<footer\b[\s\S]*?<\/footer>/)[0];
 const normalizeFooter=s=>s.replace(/<span data-mnt-footer-address[^>]*>[\s\S]*?<\/span>/,'<span data-mnt-footer-address>PROJECT_ADDRESS</span>');
 assert.equal(normalizeFooter(footer),normalizeFooter(referenceFooter),'RIIO must follow the approved RESF footer without extra navigation');
-console.log('PASS: approved hero/facts/Form46 unchanged; complete 9-building ficha, 132 residences, 10 gallery scenes, 11 plan plates with precise linked areas, 3 neighborhood photos and WhatsApp context map. Static evidence only.');
+console.log('PASS: approved hero/facts/Form46 unchanged; ficha kept in docs (9 buildings, 132 residences), tables and Sabrina section off the page, 10 gallery scenes, 11 plan plates with precise linked areas, 3 neighborhood photos and WhatsApp context map. Static evidence only.');
