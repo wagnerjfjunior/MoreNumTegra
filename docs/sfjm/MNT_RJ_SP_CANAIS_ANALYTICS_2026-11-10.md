@@ -51,6 +51,8 @@ Fora do escopo por decisão do Wagner (2026-11-10): **blog** (inclusive os posts
 | GA4 | `G-57M2XR0CY2` | a mesma propriedade (não criar outra) |
 | Página de obrigado | `/obrigado/` | a mesma rota (o gatilho do GTM exige `^/obrigado/?$`) |
 
+Evidência versionada: `docs/runtime/green-form47/Formulario_47_-_Tegra_RJ_embed_2026-11-10.md` (versão final enviada pelo Wagner às 13:28 de 2026-11-10; SHA-256 `a5754c48ae84d1e8e8216db68334580ea681b2e83afc45b57bcdd557e88936c6`). As duas versões anteriores enviadas no mesmo dia não tinham o campo `texto-livre` e foram substituídas.
+
 O form 47 foi conferido pelo HTML da Green enviado pelo Wagner em 2026-11-10: o campo "Empreendimento" tem `name="texto-livre-preview"`, que o script da Green envia como `texto-livre`. O contrato de campos é idêntico ao do 46 (`docs/runtime/MNT_VERCEL_FORM46_GTM_CONFIG_2026-09-14.md`). O script de embed da Green (axios via CDN) **não** é usado; o `runtime.js` faz o mesmo POST sem dependência externa.
 
 ## 3. Diagnóstico — canais nas páginas RJ (head `6194e4b`)
@@ -163,3 +165,34 @@ Papéis: Claude planeja, executa e audita; ChatGPT produz a copy e valida este d
 ## 8. Critério de aceite
 
 Qualquer IA que leia o repositório entende, sem esta conversa: por que existem dois números; qual região cada um atende; quem recebe o lead do Rio e como ele é encaminhado; qual formulário e quais campos cada região usa; e como RJ e SP se separam no GA4.
+
+## 9. Validação do ChatGPT (head `79031f8`) e reconciliação do Claude
+
+O ChatGPT validou este documento lendo o repositório, sem executar navegador nem validadores. Resultado: contagens da seção 3 e achados das seções 3–5 confirmados; GTM confirmado (14 tags, 13 gatilhos, 22 variáveis). Abaixo, cada ponto levantado e a resposta, com o tipo de evidência.
+
+| # | Ponto do ChatGPT | Resposta do Claude | Evidência |
+|---|---|---|---|
+| V1 | Form 47 sem `texto-livre` (divergente) | Resolvido. O ChatGPT viu uma versão anterior. A versão final tem `name="texto-livre-preview"`, enviado como `texto-livre`. Agora versionada no repositório (seção 2). | Arquivo versionado + SHA-256 |
+| V2 | Blocos protegidos do RIIO: 0 ocorrências não verificável só pelo registro de hashes | Verificado. Recortando os blocos com os mesmos limites, os 3 SHA-256 atuais (`hero`, `facts`, `form46`) são iguais aos aprovados; dentro deles: 0 telefone SP, 0 Sabrina; `form46` tem `data-form-id="46"` e `form_id` 46. O `validate-riio-editorial-review-20261028` também passa. | (E) recorte + SHA-256 |
+| V3 | Mensagem com "Sabrina" em `syncLeadContext()` no `runtime.js` | Aceito como risco latente (eu não tinha visto). Hoje não aparece no Rio: as 8 páginas montam o contexto do empreendimento, então o aviso fica oculto e vazio. Commit B: aviso neutro quando o form for 47, e teste que falha se "Sabrina" aparecer em página RJ. SP mantém o texto atual. | (N) aviso `hidden`, texto vazio, "Sabrina" ausente do texto visível nas 8 páginas |
+| V4 | Marcador da conversão sem `form_id`; ID inesperado não pode virar 47 | Aceito (já no plano) com regra explícita: só o valor exato `47`, gravado depois de envio bem-sucedido, vira RJ; qualquer outro valor, ausente ou malformado, mantém o comportamento atual (46). Consumido uma vez. | Plano, commit B |
+| V5 | Sucesso decidido por `response.ok`; HTTP 2xx com erro de negócio da Green | Hipótese não verificável sem o contrato de resposta da Green. É o comportamento atual de SP, não muda com esta entrega. Pendência P8: observar o corpo da resposta no lead controlado. | — |
+| V6 | `project_name`/`offer_name` podem carregar dado pessoal | Risco baixo: os valores vêm de atributos da própria página (`data-project-name`, `data-region-context`, `data-moretegra-interest`) e do mapa fixo de intenções, nunca dos campos digitados pelo visitante. Commit B: validador que falha se algum evento de mensuração ler campos do formulário (`nome`, `email`, `telefone`). Lista fixa de nomes de empreendimentos não entra (custo de manutenção sem ganho proporcional; opinião). | (E) origem dos valores em `leadProjectContext()` |
+| V7 | Consentimento restaurado três vezes em `/obrigado/`; definir um único responsável | Aceito como melhoria, fora desta entrega (mexe em SP). Pendência P9. | (N) três `mnt_consent_accept` |
+| V8 | `form_id` como dimensão no GA4; WhatsApp não pode contar como formulário | Concordo. Hoje o clique de WhatsApp gera `mnt_intent` (com `contact_channel`) e só `mnt_lead_success` em `/obrigado/` gera `generate_lead`. A dimensão no GA4 segue em P3. | (E) `measurement-core.js`, export GTM |
+| V9 | Decisão anterior de tornar a homepage exclusiva de SP | Não encontrei essa decisão no repositório (busca em `docs/`). Pela regra 1, não entra no plano sem confirmação do Wagner. Pendência P10. | (E) busca sem resultado |
+| V10 | Testes em Chromium não reproduzidos | Correto: foram executados pelo Claude fora do repositório. O commit B transforma esse teste em smoke versionado em `.github/diagnostics/`, reproduzível por qualquer IA. | — |
+
+Achado novo do Claude durante a reconciliação:
+
+- **N1 — eventos do Rio sem projeto.** `measurementProjectContext()` devolve vazio quando o formulário tem `data-region-context` e não tem projeto selecionado. Por isso o `generate_lead` das páginas RJ (menos o RIIO) sai sem `project_name` (observado no teste da seção 4). O texto enviado à Green inclui o empreendimento ("Rio de Janeiro | Kronos by Tegra | MoreTegra | …"), mas o GA4 não. Commit B: cada página RJ de empreendimento declara o próprio projeto no formulário, para o `project_name` chegar ao GA4; o hub continua sem projeto.
+
+Pendências acrescentadas à seção 7:
+
+| # | Item | Dono |
+|---|---|---|
+| P8 | No lead controlado, registrar o corpo da resposta da Green (sucesso × erro de negócio) | Wagner + Claude |
+| P9 | Um único responsável pela restauração do consentimento em `/obrigado/` | Backlog |
+| P10 | Confirmar se existe decisão de homepage exclusiva de SP; se sim, entra como entrega separada | Wagner |
+
+Copy RJ (P1): as 3 opções do ChatGPT passam na lista de termos proibidos do guard (R3). Recomendação do ChatGPT: opção 1 no bloco principal e "Negociar condições" (opção 3) nos quadros de preço. Escolha do Wagner pendente.

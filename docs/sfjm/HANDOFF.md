@@ -18,6 +18,10 @@
 
 Export do contêiner auditado: `docs/attribution/gtm/GTM-PGCR4R47_workspace14_export_2026-11-10.json`.
 
+Evidência do form 47 (versão final): `docs/runtime/green-form47/Formulario_47_-_Tegra_RJ_embed_2026-11-10.md`.
+
+Validação do ChatGPT no head `79031f8`: contagens e achados confirmados; pontos levantados e respostas na seção 9 do documento (V1–V10, achado novo N1).
+
 ## Commits da branch (mais antigo primeiro)
 
 | Commit | O que muda |
@@ -35,7 +39,8 @@ Export do contêiner auditado: `docs/attribution/gtm/GTM-PGCR4R47_workspace14_ex
 | `444a698` | Handoff no head `dbda76a` |
 | `07e91ab` | Home de SP: só os cards do Gran Thai (125 a 405 m²) e do Gaea (123 a 365 m²) com a metragem oficial |
 | `6194e4b` | Handoff no head `07e91ab` |
-| (este) | Documento de canais e analytics RJ/SP, export do GTM e este handoff |
+| `79031f8` | Documento de canais e analytics RJ/SP, export do GTM e handoff |
+| (este) | Validação do ChatGPT reconciliada (seção 9 do documento), evidência do form 47 versionada e este handoff |
 
 ## O que `dbda76a` fez
 
@@ -67,16 +72,19 @@ Verificação em `dbda76a` e `07e91ab`: validadores 32 PASS + as mesmas 6 FAIL d
 | # | Item | Dono |
 |---|---|---|
 | P1 | Copy RJ (título, linha de apoio, rodapé, 3 botões) sem declarar o canal como da Tegra | ChatGPT propõe; Wagner aprova |
-| P2 | Validação de `MNT_RJ_SP_CANAIS_ANALYTICS_2026-11-10.md` contra o repositório | ChatGPT |
+| P2 | ~~Validação do documento pelo ChatGPT~~ — feita no head `79031f8`; reconciliada na seção 9 | concluída |
 | P3 | Confirmar workspace 14 = versão publicada do GTM; dimensão `form_id` no GA4 | Wagner |
 | P4 | Decidir se corrige os 2 defeitos do GTM (leitura de `mnt.consent.v2`; gatilhos de clique mortos) | Wagner |
-| P5 | Commit A (canais) e commit B (formulário e mensuração) | Claude, depois de P1 e P2 |
+| P5 | Commit A (canais) e commit B (formulário e mensuração, incluindo V3, V4, V6 e N1 da seção 9) | Claude, depois de P1 |
 | P6 | QA no LVR, merge, GTM Preview, DebugView, 1 lead controlado RJ e 1 SP | Wagner |
 | P7 | Depois do merge: IndexNow/Search Console das URLs RJ | Wagner |
+| P8 | No lead controlado, registrar o corpo da resposta da Green (sucesso × erro de negócio) | Wagner + Claude |
+| P9 | Um único responsável pela restauração do consentimento em `/obrigado/` | Backlog |
+| P10 | Confirmar se existe decisão de homepage exclusiva de SP; se sim, entrega separada | Wagner |
 
 ## Próxima ação (única)
 
-ChatGPT valida o documento `docs/sfjm/MNT_RJ_SP_CANAIS_ANALYTICS_2026-11-10.md` contra o repositório e entrega as opções de copy RJ (P1 e P2). Com a copy aprovada pelo Wagner, Claude executa os commits A e B.
+Wagner escolhe a copy RJ entre as 3 opções do ChatGPT (P1). Com a escolha, Claude executa os commits A e B.
 
 ## Prompt de retomada
 
