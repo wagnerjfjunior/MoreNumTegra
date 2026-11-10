@@ -14,7 +14,9 @@ document.querySelectorAll("[data-rio-plans]").forEach(root=>{
   const pre=new Image();pre.onload=()=>{img.src=d.img;img.width=+d.w||img.width;img.height=+d.h||img.height;};pre.src=d.img;
   img.alt=d.alt||d.title;title.textContent=d.title;area.textContent=d.area;if(kicker)kicker.textContent=d.kicker||"";if(cta)cta.href=d.wa;
   if(count){const v=visible();count.textContent=String(v.indexOf(t)+1).padStart(2,"0")+" / "+String(v.length).padStart(2,"0");}
-  t.scrollIntoView({block:"nearest",inline:"nearest"});if(focus)t.focus();
+  /* rola só a faixa de abas na horizontal; nunca a página (scrollIntoView puxava a página para o meio ao carregar) */
+  const bar=t.parentElement;if(bar&&bar.scrollWidth>bar.clientWidth){const l=t.offsetLeft-bar.offsetLeft-(bar.clientWidth-t.clientWidth)/2;bar.scrollTo({left:Math.max(0,l)});}
+  if(focus)t.focus({preventScroll:true});
  }
  function selectGroup(g){
   groups.forEach(b=>{const on=b.dataset.planGroup===g;b.setAttribute("aria-selected",String(on));b.tabIndex=on?0:-1;});

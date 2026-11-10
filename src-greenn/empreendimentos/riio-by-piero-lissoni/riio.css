@@ -11,3 +11,14 @@
 
 /* Rodapé fonte única (Wagner, 2026-11-09): mesma cor, sem sublinhado, sem negrito ou itálico */
 .footer,.footer p,.footer a,.footer a:visited,.footer a:hover,.footer strong,.footer b,.footer em,.footer i{color:#dedcd4;font-family:inherit;font-weight:400;font-style:normal;text-decoration:none}
+
+/* Header padrão Rio (Wagner, 2026-11-10): mesma marcação e tipografia do .topbar das páginas Rio.
+   O hero do RIIO abre em fundo claro (bloco travado), então o topbar fica em faixa escura, não transparente. */
+.topbar{position:relative;z-index:25;color:#fff;padding:17px 0;background:#171813}
+.topbar>.wrap{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.topbar img{width:110px;height:62px;object-fit:contain;display:block}
+.topbar nav{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:14px;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;font-weight:800}
+.topbar nav a{color:#fff;text-decoration:none;padding:10px 5px}
+.topbar nav a:last-child{border:1px solid #ffffff8a;padding:10px 16px;border-radius:99px;background:#0005}
+.topbar nav a:hover{text-decoration:underline}
+@media(max-width:680px){.topbar{padding:8px 0}.topbar img{width:88px;height:55px}.topbar nav a:not(:last-child){display:none}}
