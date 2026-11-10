@@ -33,7 +33,7 @@ const neighborhood=html.match(/<section[^>]+id="localizacao"[\s\S]*?<\/section>/
 assert.equal((neighborhood.match(/<figure>/g)||[]).length,3);
 assert.equal((neighborhood.match(/<article>/g)||[]).length,4);
 assert(neighborhood.includes('pointer-events')||read(path+'riio-galleries.css').includes('pointer-events:none'));
-assert(neighborhood.includes('riio-map-visual')&&neighborhood.includes('https://wa.me/5511960779328'));
+assert(neighborhood.includes('riio-map-visual')&&neighborhood.includes('https://wa.me/5511951667227'));
 assert(!neighborhood.includes('google.com/maps/search'),'Use contextual map with WhatsApp route request');
 assert(html.includes('id="riio-image-dialog"')&&html.includes('data-zoom-in')&&html.includes('data-close-dialog'));
 assert.equal((html.match(/riio-gallery\.js"/g)||[]).length,1);
@@ -46,9 +46,11 @@ const normalizeFooter=s=>s.replace(/<span data-mnt-footer-address[^>]*>[\s\S]*?<
 // Wagner 2026-11-10: Rio pages carry no Sabrina reference (CRECI issue in RJ). The reference footer is São Paulo (Tiel),
 // so only the contact paragraph is swapped to the Rio contact before comparing; everything else must stay identical.
 const SP_CONTACT='<p><strong>Sabrina da Tegra · Corretora Tegra Vendas · CRECI-SP 209.905-F.</strong><br><a href="tel:+5511960779328">(11) 96077-9328</a> · <a href="https://corretor.tegravendas.com.br/sabrina/sp" target="_blank" rel="noopener noreferrer">perfil oficial Tegra Vendas</a></p>';
-const RIO_CONTACT='<p><strong>Atendimento direto com a Incorporadora Tegra.</strong><br><a href="tel:+5511960779328">(11) 96077-9328</a></p>';
+// Wagner 2026-11-10: RJ service-center contact (R1/R7), approved copy.
+const RIO_CONTACT='<p>Central de atendimento RJ · <a href="tel:+5511951667227">(11) 95166-7227</a> · Encaminhamento ao corretor local autorizado.</p>';
 assert.equal(footer.split(RIO_CONTACT).length,2,'RIIO footer must carry the direct Tegra contact once');
 assert.equal(referenceFooter.split(SP_CONTACT).length,2,'Reference footer contact changed; review this comparison');
 assert(!/sabrina|CRECI/i.test(html),'RIIO page must carry no Sabrina/CRECI reference');
-assert.equal(normalizeFooter(footer),normalizeFooter(referenceFooter.replace(SP_CONTACT,RIO_CONTACT)),'RIIO must follow the approved RESF footer without extra navigation');
+const SP_DISCLAIMER='devem ser confirmadas diretamente com a equipe Tegra Vendas.', RIO_DISCLAIMER='devem ser confirmadas com a central de atendimento RJ.';
+assert.equal(normalizeFooter(footer),normalizeFooter(referenceFooter.replace(SP_CONTACT,RIO_CONTACT).replace(SP_DISCLAIMER,RIO_DISCLAIMER)),'RIIO must follow the approved RESF footer without extra navigation');
 console.log('PASS: approved hero/facts/Form46 unchanged; ficha kept in docs (9 buildings, 132 residences), tables and Sabrina section off the page, 10 gallery scenes, 11 plan plates with precise linked areas, 3 neighborhood photos and WhatsApp context map. Static evidence only.');

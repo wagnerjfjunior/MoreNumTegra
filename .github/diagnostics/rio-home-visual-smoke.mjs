@@ -41,8 +41,9 @@ for(const [label,viewport] of Object.entries({mobile:{width:390,height:844},desk
    console.log("PASS seven project card images decoded",media.length);
   }
   assert.equal(await page.locator(".rio-agent-photo").count(),0,"hub has no Sabrina portrait section");
-  // Wagner 2026-11-10: Rio pages carry no Sabrina reference (CRECI issue in RJ); contact is direct with Tegra.
-  assert.equal((await page.locator("#atendimento h2").textContent()).trim(),"Atendimento direto com a Incorporadora Tegra");
+  // Wagner 2026-11-10: Rio pages carry no Sabrina reference (CRECI issue in RJ); channel = RJ service center (R1/R7).
+  assert.equal((await page.locator("#atendimento h2").textContent()).trim(),"Atendimento exclusivo para seu próximo imóvel");
+  assert.match(await page.locator("#atendimento a.rio-btn").getAttribute("href"),/^https:\/\/wa\.me\/5511951667227\?/);
   assert.equal(await page.locator("body:has-text(\"Sabrina\")").count(),0,"hub shows no Sabrina reference");
   console.log("PASS Tegra Vendas service block",label);
   assert.equal(await page.locator("[data-rio-card]:visible").count(),7,"show all projects");

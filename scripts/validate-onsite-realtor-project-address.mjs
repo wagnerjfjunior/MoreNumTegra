@@ -3,6 +3,7 @@
 // No cross-project fixed brokerage location; preserve known CEP and media identity.
 import {readFileSync,readdirSync} from 'node:fs';
 import assert from 'node:assert/strict';
+import {CHANNELS,RJ_FORBIDDEN} from './lib/commercial-channels.mjs';
 const root='src-greenn/empreendimentos';
 // Rio in-loco stand (Tegra RJ team) — address/CEP approved by Wagner on 2026-11-09; geo only where a Google Maps point inside Barra da Tijuca was confirmed.
 const STAND=slug=>'https://www.moretegra.com.br/empreendimentos/'+slug+'/#estande-tegra';
@@ -33,11 +34,11 @@ for(const slug of slugs){
   const project=nodes.find(n=>n['@type']===residentialType);
   assert(project?.address?.addressLocality==='Rio de Janeiro'&&project.address.addressRegion==='RJ',slug+': project city/state missing');
   // Wagner 2026-11-09: in-loco service is the Tegra RJ stand team at the project address.
-  // Wagner 2026-11-10: Rio pages carry no Sabrina reference (CRECI issue in RJ); contact is "Direto com a Incorporadora Tegra".
+  // Wagner 2026-11-10: Rio pages carry no Sabrina reference (CRECI issue in RJ); contact is the RJ service center (R1/R7).
   assert(!nodes.some(n=>n['@type']==='RealEstateAgent'&&n.address&&n['@id']!==STAND(slug)),slug+': remote contact must not claim an onsite brokerage office');
   assertStand(slug,nodes,project,html);
   assert(html.includes('name="robots" content="index,follow,max-image-preview:large"')&&!/noindex/i.test(html),slug+': Rio page released for indexing on 2026-11-09 must stay indexable');
-  assert(!/sabrina/i.test(html)&&!/CRECI/.test(html)&&html.includes('Atendimento direto com a Incorporadora Tegra'),slug+': Rio page must be direct Tegra contact, without Sabrina/CRECI');
+  assert(!RJ_FORBIDDEN.test(html.replace(/https?:\/\/[^"\s]+/g,''))&&html.includes('Central de atendimento RJ'),slug+': Rio page must use the RJ service center, without Sabrina/CRECI or Tegra attribution');
   assert(!/CRECI-RJ|CRECI RJ/.test(html),slug+': never invent RJ CRECI');
   notApplicable++;
   console.log('RIO_REMOTE_STAGING_PASS',slug);
@@ -63,12 +64,13 @@ for(const slug of slugs){
   assertStand(slug,nodes,project,html);
   assert.equal(project.address.addressLocality,'Rio de Janeiro');
   assert.equal(project.address.addressRegion,'RJ');
-  assert(agent&&!agent.employee&&!agent.identifier&&agent.parentOrganization?.['@id']==='https://www.moretegra.com.br/#tegra-vendas','RIIO intake is direct Tegra, without broker identity');
-  assert.equal(agent.telephone,'+5511960779328');
+  assert(agent&&!agent.employee&&!agent.identifier&&!agent.parentOrganization&&agent.name.startsWith('Central de atendimento RJ'),'RIIO intake is the RJ service center, without broker identity or Tegra Vendas link');
+  assert.equal(agent.telephone,CHANNELS.rj.tel);
+  assert(!agent.parentOrganization,'RIIO RJ service center is not attached to Tegra Vendas');
   assert.equal(agent['@id'],'https://www.moretegra.com.br/empreendimentos/riio-by-piero-lissoni/#atendimento');
   assert.equal(service?.provider?.['@id'],agent['@id']);
   assert(!agent.address&&!agent.geo,'Remote RIIO intake must not fabricate on-site office/address');
-  assert(!/sabrina/i.test(html)&&!/CRECI/.test(html)&&html.includes('Atendimento direto com a Incorporadora Tegra'),'RIIO must be direct Tegra contact, without Sabrina/CRECI');
+  assert(!RJ_FORBIDDEN.test(html.replace(/https?:\/\/[^"\s]+/g,''))&&html.includes('Central de atendimento RJ'),'RIIO must use the RJ service center, without Sabrina/CRECI or Tegra attribution');
   assert(!/CRECI-RJ|CRECI RJ/.test(html),'Do not invent RJ credential');
   assert(html.includes('content="index,follow,max-image-preview:large"'),'RIIO publication is indexable');
   notApplicable++;

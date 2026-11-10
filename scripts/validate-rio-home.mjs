@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from "node:fs";
 import assert from "node:assert/strict";
+import {CHANNELS,RJ_PROJECT_SLUGS,RJ_COPY,RJ_FORBIDDEN} from "./lib/commercial-channels.mjs";
 const h=fs.readFileSync("src-greenn/rio-de-janeiro/index.html","utf8");
 const js=fs.readFileSync("src-greenn/rio-de-janeiro/home.js","utf8");
 const css=fs.readFileSync("src-greenn/rio-de-janeiro/home.css","utf8");
@@ -60,15 +61,18 @@ assert.equal(coll.url,route);assert.equal(list.itemListElement.length,7);
 assert.equal(faq.mainEntity.length,5);
 const htmlText=h.replace(/<script[\s\S]*?<\/script>/g,"").replace(/<[^>]+>/g," ").replace(/\s+/g," ");
 for(const f of faq.mainEntity)assert(htmlText.includes(f.name),"FAQ JSON-LD must match visible question "+f.name);
-// Decisão do Wagner (2026-11-10): páginas do Rio sem nenhuma referência à Sabrina (questão do CRECI no RJ); atendimento "Direto com a Incorporadora Tegra".
+// Decisão do Wagner (2026-11-10): canal RJ = central de atendimento RJ (R1/R7), sem Sabrina e sem atribuir o canal à Tegra.
 const agentSec=(h.match(/<section class="rio-section rio-agent-section"[\s\S]*?<\/section>/)||[""])[0];
-assert(agentSec.includes('id="atendimento"')&&agentSec.includes("Atendimento direto com a Incorporadora Tegra"),"direct Tegra service block");
+assert(agentSec.includes('id="atendimento"')&&agentSec.includes(RJ_COPY.blockTitle)&&agentSec.includes(RJ_COPY.blockLead)&&agentSec.includes(`wa.me/${CHANNELS.rj.whatsapp}`),"RJ service block with approved copy");
 assert(!h.includes('id="sabrina"')&&!/rio-agent-photo|Sabrina/.test(agentSec),"no Sabrina portrait section on the hub");
 assert(!/sabrina/i.test(h)&&!/CRECI/.test(h),"Rio hub carries no Sabrina reference nor CRECI");
-assert(h.includes("Atendimento direto com a Incorporadora Tegra."),"direct Tegra contact in footer");
-assert(h.includes('href="tel:+5511960779328"'),"contact identity");
+assert(h.replace(/<[^>]+>/g,"").includes(RJ_COPY.footer),"RJ service-center contact in footer");
+assert(!RJ_FORBIDDEN.test(h.replace(/https?:\/\/[^"\s]+/g,"")),"no Sabrina/CRECI or Tegra attribution on the Rio hub");
+assert(!h.includes(CHANNELS.sp.whatsapp),"no São Paulo channel on the Rio hub");
+assert(h.includes(`href="tel:${CHANNELS.rj.tel}"`),"contact identity");
 assert(!graph.some(n=>n["@type"]==="Person"),"no broker Person on the Rio hub");
-assert(graph.some(n=>n["@type"]==="ContactPoint"&&n.telephone==="+5511960779328"),"canonical broker contact point");
+assert(graph.some(n=>n["@type"]==="ContactPoint"&&n.telephone===CHANNELS.rj.tel&&n.name==="Central de atendimento RJ"),"RJ service-center contact point");
+assert(!graph.some(n=>n.contactPoint&&String(n["@id"]).endsWith("#tegra-vendas")),"RJ channel is not attached to Tegra Vendas");
 assert(css.includes("@media(max-width:720px)"),"mobile CSS");
 assert(js.includes("data-rio-card")&&js.includes('addEventListener'),"interactive filters");
 console.log("PASS Rio Home: 7 priced cards, commercial Big Idea and CTAs, scoped filters, 5 FAQ, Form46, licensed photo, indexable and canonical");

@@ -196,3 +196,17 @@ Pendências acrescentadas à seção 7:
 | P10 | Confirmar se existe decisão de homepage exclusiva de SP; se sim, entra como entrega separada | Wagner |
 
 Copy RJ (P1): as 3 opções do ChatGPT passam na lista de termos proibidos do guard (R3). Recomendação do ChatGPT: opção 1 no bloco principal e "Negociar condições" (opção 3) nos quadros de preço. Escolha do Wagner pendente.
+
+## 10. Decisões finais e execução
+
+Aprovações do Wagner (2026-11-10, depois da validação do ChatGPT):
+
+- **Copy RJ aprovada:** bloco "Atendimento exclusivo para seu próximo imóvel" / "Conheça plantas, valores e condições dos empreendimentos Tegra no Rio de Janeiro."; rodapé "Central de atendimento RJ · (11) 95166-7227 · Encaminhamento ao corretor local autorizado."; botões "Conversar no WhatsApp", "Negociar condições", "Solicitar planta". "Exclusivo" qualifica o atendimento dedicado ao cliente, não exclusividade de representação da Tegra.
+- **Homepage exclusiva de São Paulo — USER_APPROVED (2026-11-10), PENDING_IMPLEMENTATION.** `https://www.moretegra.com.br/` passa a ser só de São Paulo: sair os 7 cards RJ e as referências comerciais ao Rio (filtros, navegação), preservando catálogo SP, Sabrina, CRECI-SP, form 46 e WhatsApp SP. O hub `/rio-de-janeiro/` e as 7 páginas RJ continuam independentes, indexáveis e com as mesmas URLs. **Entrega separada, fora dos commits A e B.** Substitui a pendência P10.
+- Autorizados os commits A e B na branch da PR #561, sem merge.
+- **Gates de aceite** (não bloqueiam os commits; bloqueiam declarar a captação validada em produção): P8 (resposta de negócio da Green no form 47) e P9 (consentimento em `/obrigado/` sem atualizações conflitantes e sem `generate_lead` duplicado), além de P3 (GTM publicado e dimensão `form_id`).
+
+Execução:
+
+- **Commit A — canais:** concluído (ver `docs/sfjm/HANDOFF.md`).
+- **Commit B — formulário e mensuração:** a seguir.
