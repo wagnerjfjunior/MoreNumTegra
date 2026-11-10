@@ -2,21 +2,21 @@
 
 > Arquivo de caminho fixo: reescrito por inteiro a cada checkpoint (commit da branch). No merge, o conteúdo vai para o `NEXT_SAFE_ACTION` do projeto e este arquivo sai. Histórico: `git log -- docs/sfjm/HANDOFF.md`.
 >
-> Última atualização: 2026-11-10 (Commit A).
+> Última atualização: 2026-11-10 (Commit B).
 
 - Repositório: `wagnerjfjunior/MoreNumTegra`
 - Branch: `feat/rio-enderecos-estandes-20261109`
 - PR: #561 (aberta, base `main`). Merge só pelo Wagner.
-- Este handoff vai no próprio Commit A (canais). O head anterior era `10e5024`.
+- Este handoff vai no próprio Commit B (formulário e mensuração). Commit A: `1acb100`.
 - Teste local: LVR com live sync pelo nome da branch (sem preview Vercel).
 
-> **Não fazer merge da #561 ainda.** Falta o Commit B (form 47 e mensuração no Rio). Sem ele, os leads do Rio pelo formulário ainda vão para o form 46 e o Rio não tem GTM.
+> **Pronta para QA do Wagner.** Commits A e B concluídos. A captação do Rio só é considerada validada depois dos gates de produção (P3, P6, P8, P9).
 
 ## Documento de referência
 
-`docs/sfjm/MNT_RJ_SP_CANAIS_ANALYTICS_2026-11-10.md` — por que existem dois canais (RJ/SP), quem recebe o lead do Rio e como ele é encaminhado, contrato de canais e analytics, diagnóstico, auditoria do GTM, validação do ChatGPT (seção 9) e decisões finais (seção 10).
+`docs/sfjm/MNT_RJ_SP_CANAIS_ANALYTICS_2026-11-10.md` — por que existem dois canais, quem recebe o lead do Rio e como ele é encaminhado, contrato de canais e analytics, diagnóstico, auditoria do GTM, validação do ChatGPT (seção 9), decisões finais e execução (seção 10).
 
-Evidências versionadas: `docs/attribution/gtm/GTM-PGCR4R47_workspace14_export_2026-11-10.json` (contêiner auditado) e `docs/runtime/green-form47/Formulario_47_-_Tegra_RJ_embed_2026-11-10.md` (form 47).
+Evidências: `docs/attribution/gtm/GTM-PGCR4R47_workspace14_export_2026-11-10.json` (contêiner auditado) e `docs/runtime/green-form47/Formulario_47_-_Tegra_RJ_embed_2026-11-10.md` (form 47).
 
 ## Dois canais comerciais (decisão do Wagner, 2026-11-10)
 
@@ -24,27 +24,38 @@ Evidências versionadas: `docs/attribution/gtm/GTM-PGCR4R47_workspace14_export_2
 |---|---|---|
 | Quem atende | Sabrina da Tegra (CRECI-SP 209.905-F) | Central de atendimento RJ, que encaminha ao corretor local autorizado a vender Tegra no RJ |
 | WhatsApp | `5511960779328` | `5511951667227` (provisório; será trocado por um DDD do RJ) |
-| Formulário Green | 46 | 47 (Commit B) |
-| GTM / GA4 / tenant / obrigado | `GTM-PGCR4R47` / `G-57M2XR0CY2` / 313 / `/obrigado/` | os mesmos |
+| Formulário Green (tenant 313) | 46 | 47 — campos iguais: `nome`, `email`, `telefone`, `texto-livre` |
+| GTM / GA4 / obrigado | `GTM-PGCR4R47` / `G-57M2XR0CY2` / `/obrigado/` | os mesmos |
+| Como se separam no GA4 | `form_id` 46 no `generate_lead`; rota e identidade da página | `form_id` 47; rota e identidade `<slug>_project` |
 
-Motivo: a questão do CRECI no RJ. O canal RJ não é da incorporadora; as páginas não dizem que o atendimento é da própria Tegra. Fonte única para os validadores: `scripts/lib/commercial-channels.mjs`. Regras: R1 (canal por região) e R7 (Rio sem Sabrina e sem atribuir o canal à Tegra) em `docs/frameworks/resf/v1/RESF_CONVERSION_GUARDRAILS_2026-11-09.md`.
+Motivo: a questão do CRECI no RJ. O canal RJ não é da incorporadora. Fonte única para os validadores: `scripts/lib/commercial-channels.mjs`. Regras R1 e R7: `docs/frameworks/resf/v1/RESF_CONVERSION_GUARDRAILS_2026-11-09.md`.
 
-## O que o Commit A fez
+## Commit A (`1acb100`) — canais
 
-Escopo: as 8 páginas do Rio (hub + Kronos, Claris Rosas, Claris Casa & Clube, Gran Thai, Singular, Gaea, RIIO). Nenhuma página de São Paulo foi alterada.
+Só as 8 páginas RJ: número da central RJ em todos os pontos de contato (144 ocorrências + 8 telefones visíveis), copy aprovada, JSON-LD do canal fora da Tegra Vendas, guardrails R1/R7, contrato central, validador `validate-commercial-channels-rj-sp.mjs` e validadores do Rio atualizados. Nenhuma página de SP alterada.
 
-1. **Número:** as 144 ocorrências do canal SP nas páginas RJ viraram o canal RJ — 127 WhatsApp (links e `data-wa` dos seletores de plantas), 14 `tel:`, 3 `telephone` no JSON-LD — e os 8 telefones visíveis viraram (11) 95166-7227.
-2. **Copy aprovada:** bloco do hub "Atendimento exclusivo para seu próximo imóvel" + "Conheça plantas, valores e condições dos empreendimentos Tegra no Rio de Janeiro."; rodapé "Central de atendimento RJ · (11) 95166-7227 · Encaminhamento ao corretor local autorizado."; botões "Conversar no WhatsApp" e "Negociar condições"; eyebrow do formulário "Central de atendimento RJ". FAQs, meta da Claris Rosas, aviso do rodapé ("confirmadas com a central de atendimento RJ") e card de visita do RIIO sem "direto com a Tegra" / "Incorporadora Tegra" / "equipe Tegra Vendas". Os botões "Solicitar Planta" já existentes mantiveram a grafia exigida pela R5.
-3. **JSON-LD:** o `ContactPoint` do hub virou `#central-atendimento-rj` ("Central de atendimento RJ", `areaServed` Rio de Janeiro) e saiu da organização Tegra Vendas; no RIIO, `#atendimento` virou "Central de atendimento RJ — RIIO by Piero Lissoni", sem `parentOrganization`. O estande físico `#estande-tegra` continua ligado à Tegra (é o estande da Tegra, não o canal).
-4. **Guardrails:** R1 com o canal por região e R7 formalizada no documento.
-5. **Contrato central:** `scripts/lib/commercial-channels.mjs` (canais, formulários, campos, páginas RJ, copy aprovada, frases proibidas no Rio).
-6. **Validadores:** novo `validate-commercial-channels-rj-sp.mjs` (Rio só com o canal RJ, sem Sabrina/CRECI/atribuição à Tegra, rodapé e bloco aprovados; nenhum arquivo fora do Rio com o canal RJ; SP continua com o canal SP). Atualizados, só nas regras do Rio: `validate-resf-conversion-guard`, `validate-rio-home`, `validate-onsite-realtor-project-address`, `validate-commercial-page-standard` (aviso P1 e telefone por região; SP inalterado), `validate-resf-rio`, `validate-riio-editorial-review-20261028`; smoke `rio-home-visual-smoke`.
+## Commit B (este) — formulário 47 e mensuração
 
-Verificação do Commit A:
-- Validadores: 32 PASS + as mesmas 6 FAIL da linha de base (fora do Rio), mais o validador novo em PASS (8 páginas RJ só com o canal RJ; 128 arquivos fora do Rio só com o canal SP).
-- Prova negativa do validador novo: com o número SP recolocado numa página RJ, ele reprova; a página foi restaurada byte a byte.
+Arquivos:
+- Páginas RJ (hub + 7): bootstrap GTM igual ao de SP (`default_consent` antes do `gtm.js`, carga tardia, `noscript`), `<body data-moretegra>`, identidade (`data-mnt-page-identity`, `data-mnt-product-identity`, `data-moretegra-interest`), `measurement-core.js`, formulário 47 (`data-form-id` e `form_id`).
+- `src-greenn/preview/runtime.js`: `form_id` do `data-form-id` com lista permitida 46/47 e padrão 46; marcador da conversão com `form_id`; aviso sem empreendimento neutro no form 47.
+- `src-greenn/preview/measurement-form.js`: reconhece o form 47; só nele `form_id: 47` e `placement: form_47`.
+- `src-greenn/preview/thank-you-measurement.js`: só o valor exato `"47"` no marcador vira lead RJ (`form_id: 47`, `lead_method: green_form_47`, mensagem da central RJ e WhatsApp RJ em `/obrigado/`); qualquer outro valor mantém o 46.
+- `docs/editorial/mercado-2026-10-28/riio-componentes-aprovados.json`: rebaseline autorizado do bloco `form46` do RIIO (só 46 → 47), hash anterior em `history`.
+- Validadores: novo `validate-measurement-region-rj.mjs` (um GTM por página RJ, ordem do consentimento, identidade, scripts, form 47 só no Rio, padrão 46 em SP, módulos de mensuração sem dados pessoais); `validate-resf-rio`, `validate-rio-home` e `validate-commercial-channels-rj-sp` ajustados ao form 47.
+- Smoke novo: `.github/diagnostics/rj-sp-form-measurement-smoke.mjs` (Chromium, GTM e Green interceptados, nenhum lead real).
+
+Efeito no texto enviado à Green nas 7 páginas de empreendimento: "<Projeto> | <intenção>" (mesmo formato de SP); antes era "Rio de Janeiro | <Projeto> | MoreTegra | <intenção>". O hub mantém o contexto "Rio de Janeiro | Hub de empreendimentos | MoreTegra".
+
+Verificação do Commit B:
+- Validadores: 34 PASS (os 32 da linha de base + os 2 novos) e as mesmas 6 FAIL anteriores, fora do Rio.
+- `test-thank-you-lead-guard.mjs` e `test-vercel-thank-you-consent.mjs`: PASS.
+- Smoke novo, desktop e mobile: 8 páginas RJ com GTM pedido, `default_consent` antes do `gtm.js`, um `mnt_page_view` com a identidade certa, `mnt_form_start` com form 47, payload Green form 47 / tenant 313 com o empreendimento, uma única conversão form 47 com `project_name`, WhatsApp RJ e mensagem da central em `/obrigado/`, nenhuma conversão extra ao recarregar, "Sabrina" ausente do texto visível, nenhum dado pessoal no `dataLayer`. Tièl e Château continuam no form 46, com WhatsApp SP e mensagem atual.
+- Comparação SP antes/depois (Tièl, Château, Ária, Mozae): eventos, payload Green, `/obrigado/`, recarregamento e ausência de dados pessoais idênticos.
 - Smokes `rio-home-visual-smoke` e `resf-rio-visual-smoke`: PASS em desktop e mobile.
-- Blocos protegidos do RIIO (`hero`, `facts`, `form46`): intocados neste commit.
+- Provas negativas: validador de canais reprova número SP numa página RJ; validador de mensuração reprova GTM duplicado. Páginas restauradas byte a byte.
+
+Não verificável aqui (vai para produção): disparo real das tags no GA4, versão publicada do GTM, recebimento real do form 47 pela Green.
 
 ## Commits da branch (mais antigo primeiro)
 
@@ -53,19 +64,20 @@ Verificação do Commit A:
 | `e853c93` | Endereço, CEP e estande Tegra no JSON-LD e no rodapé das 7 páginas RJ |
 | `9d83f56` | Páginas RJ como página de venda: mapa estilo Mozae, plantas com WhatsApp, guardrails R1–R6 |
 | `ef2aad9` | Mídia e plantas oficiais Tegra no Gran Thai e no Singular |
-| `67693da` | Seletor de plantas (`resf-rio-plans.js`) e foto oficial em todo card de planta |
+| `67693da` | Seletor de plantas e foto oficial em todo card de planta |
 | `f3a2903` | RIIO: sem quadros por edifício e sem seção da Sabrina |
 | `9577d9f` | Galeria cabe na tela; Kronos com 12 ambientes |
 | `f30285e` | Galeria no padrão Ampère Brooklin |
 | `9335daa` | Galeria sem linha repetida, header do RIIO, card do hub abre no hero, bloco de atendimento no hub |
 | `9c15d48` | Primeiro handoff de caminho fixo |
-| `dbda76a` | Rio sem Sabrina; copy "Direto com a Incorporadora Tegra" (substituída no Commit A); metragens oficiais |
+| `dbda76a` | Rio sem Sabrina; metragens oficiais |
 | `444a698` | Handoff |
 | `07e91ab` | Home de SP: metragem oficial nos cards do Gran Thai e do Gaea |
 | `6194e4b` | Handoff |
 | `79031f8` | Documento de canais e analytics RJ/SP e export do GTM |
 | `10e5024` | Validação do ChatGPT reconciliada e evidência do form 47 |
-| (este) | Commit A — canais RJ |
+| `1acb100` | Commit A — canal da central de atendimento RJ |
+| (este) | Commit B — formulário 47 e mensuração no Rio |
 
 ## Decisões do Wagner (com data)
 
@@ -73,29 +85,29 @@ Verificação do Commit A:
 - 2026-11-10: galeria sem linha repetida; header do RIIO padronizado; card do hub abre no hero.
 - 2026-11-10: metragens oficiais sem decimais — Gran Thai 125–405 m², Gaea 123–365 m² (também nos 2 cards da home de SP).
 - 2026-11-10: páginas do Rio sem nada relacionado à Sabrina (questão do CRECI no RJ).
-- 2026-11-10: canais separados RJ/SP (tabela acima); blog fora do escopo; form 47 criado com os campos do 46; rebaseline do bloco `form46` do RIIO autorizado.
-- 2026-11-10: copy RJ aprovada (Commit A).
-- 2026-11-10: **homepage exclusiva de São Paulo — USER_APPROVED, PENDING_IMPLEMENTATION**, entrega separada (seção 10 do documento de referência).
+- 2026-11-10: canais separados RJ/SP; blog fora do escopo; form 47 criado com os campos do 46; rebaseline do bloco `form46` do RIIO autorizado.
+- 2026-11-10: copy RJ aprovada; commits A e B autorizados, sem merge.
+- 2026-11-10: **homepage exclusiva de São Paulo — USER_APPROVED, PENDING_IMPLEMENTATION**, entrega separada.
 
 ## Pendências
 
 | # | Item | Dono |
 |---|---|---|
-| P5 | Commit B: GTM nas 8 páginas, identidade, form 47 (rebaseline do RIIO), `runtime`/`measurement-form`/`thank-you` com padrão 46, `/obrigado/` com canal RJ para o form 47, aviso neutro (V3), regra do marcador (V4), validador de dados pessoais (V6), `project_name` no GA4 (N1), validador e smoke de mensuração | Claude |
-| P3 | Confirmar workspace 14 = versão publicada do GTM; dimensão `form_id` no GA4 | Wagner |
-| P4 | Decidir se corrige os 2 defeitos do GTM (leitura de `mnt.consent.v2`; gatilhos de clique mortos) | Wagner |
-| P6 | QA no LVR, merge, GTM Preview, DebugView, 1 lead controlado RJ e 1 SP | Wagner |
-| P7 | Depois do merge: IndexNow/Search Console das URLs RJ | Wagner |
+| P6 | QA no LVR das 8 páginas RJ; merge da #561 | Wagner |
+| P3 | Gate: confirmar que o workspace 14 é a versão publicada do GTM; dimensão `form_id` no GA4 | Wagner |
+| P6b | Gate, depois do merge: GTM Preview e GA4 DebugView; 1 lead controlado RJ (Green: form 47 com "Empreendimento" preenchido) e 1 SP | Wagner |
 | P8 | Gate: no lead controlado, registrar o corpo da resposta da Green (sucesso × erro de negócio) | Wagner + Claude |
-| P9 | Gate: consentimento em `/obrigado/` sem atualizações conflitantes e sem `generate_lead` duplicado | Claude (teste) |
-| P11 | Homepage exclusiva de SP (entrega separada) | Claude, depois da #561 |
+| P9 | Gate: consentimento em `/obrigado/` em produção, incluindo o caminho de recusa (localmente: conversão única e restaurações coerentes no aceite) | Claude |
+| P4 | Decidir se corrige os 2 defeitos do GTM (leitura de `mnt.consent.v2`; gatilhos de clique mortos) | Wagner |
+| P7 | Depois do merge: IndexNow/Search Console das URLs RJ | Wagner |
+| P11 | Homepage exclusiva de SP (entrega separada, depois da #561) | Claude |
 
 ## Próxima ação (única)
 
-Claude executa o Commit B (formulário 47 e mensuração no Rio) na mesma branch.
+Wagner faz o QA no LVR da branch nas 8 páginas RJ (canal RJ, copy, formulário) e, se aprovar, faz o merge da #561.
 
 ## Prompt de retomada
 
 ```
-Retomada MoreNumTegra, frente Imobiliário. Leia ao vivo a branch feat/rio-enderecos-estandes-20261109, o arquivo docs/sfjm/HANDOFF.md e docs/sfjm/MNT_RJ_SP_CANAIS_ANALYTICS_2026-11-10.md. Confira se o head atual é o commit que trouxe este handoff (Commit A, filho de 10e5024). Se for, siga a próxima ação do handoff. Se divergir, pare e me diga.
+Retomada MoreNumTegra, frente Imobiliário. Leia ao vivo a branch feat/rio-enderecos-estandes-20261109, o arquivo docs/sfjm/HANDOFF.md e docs/sfjm/MNT_RJ_SP_CANAIS_ANALYTICS_2026-11-10.md. Confira se o head atual é o commit que trouxe este handoff (Commit B, filho de 1acb100). Se for, siga a próxima ação do handoff. Se divergir, pare e me diga.
 ```

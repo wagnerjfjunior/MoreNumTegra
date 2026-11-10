@@ -208,5 +208,14 @@ Aprovações do Wagner (2026-11-10, depois da validação do ChatGPT):
 
 Execução:
 
-- **Commit A — canais:** concluído (ver `docs/sfjm/HANDOFF.md`).
-- **Commit B — formulário e mensuração:** a seguir.
+- **Commit A — canais:** `1acb100`.
+- **Commit B — formulário e mensuração:** commit seguinte (ver `docs/sfjm/HANDOFF.md`). Resumo:
+  - 8 páginas RJ com o mesmo bootstrap GTM de SP (`default_consent` antes do `gtm.js`, carga tardia, `noscript`), raiz `[data-moretegra]`, identidade de página (`<slug>_project` / `<slug>`; hub `rio_de_janeiro_hub` / `rio-de-janeiro`), `data-moretegra-interest` com o nome do empreendimento, `measurement-core.js` e formulário 47.
+  - Efeito no texto enviado à Green nas 7 páginas de empreendimento: de "Rio de Janeiro | <Projeto> | MoreTegra | <intenção>" para "<Projeto> | <intenção>", o mesmo formato de SP; a região já é identificada pelo form 47. O hub mantém "Rio de Janeiro | Hub de empreendimentos | MoreTegra | <intenção>".
+  - `runtime.js`: `form_id` vindo do `data-form-id` com lista permitida 46/47 e padrão 46; marcador da conversão com `form_id`; aviso sem empreendimento neutro no form 47 (V3).
+  - `measurement-form.js`: reconhece o form 47 e só nele envia `form_id: 47` / `placement: form_47`.
+  - `thank-you-measurement.js`: só o valor exato `"47"` no marcador vira lead RJ (V4): `form_id: 47`, `lead_method: green_form_47`, mensagem da central RJ e WhatsApp RJ em `/obrigado/`. Qualquer outro valor mantém o form 46.
+  - N1 resolvido: o `generate_lead` das páginas RJ de empreendimento leva `project_name`.
+  - Rebaseline autorizado do bloco `form46` do RIIO (só `data-form-id` e `form_id` de 46 para 47), hash anterior em `history`.
+  - Validadores novos: `validate-measurement-region-rj.mjs` (inclui V6, dados pessoais) e smoke `.github/diagnostics/rj-sp-form-measurement-smoke.mjs`.
+  - P9 (evidência local): uma única conversão por lead, nenhuma conversão extra no recarregamento, e, no caminho de aceite, as três restaurações de consentimento em `/obrigado/` repetem a mesma escolha (nenhuma atualização conflitante). O caminho de recusa não foi testado. A verificação em produção continua no gate P6/P9.

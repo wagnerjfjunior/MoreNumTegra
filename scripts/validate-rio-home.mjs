@@ -23,7 +23,8 @@ for(const id of ["rio-busca","rio-estagio","rio-tipo","rio-metragem","rio-limpar
  assert(h.includes('id="'+id+'"'),"missing control "+id);
 }
 assert(h.includes('name="tenant_id" value="313"'),"tenant contract");
-assert(h.includes('name="form_id" value="46"'),"Form 46 contract");
+// Wagner 2026-11-10: o Rio usa o formulário 47 da Green (canal RJ); São Paulo continua no 46.
+assert(h.includes(`name="form_id" value="${CHANNELS.rj.formId}"`)&&h.includes(`data-form-id="${CHANNELS.rj.formId}"`),"Form 47 (Rio) contract");
 assert(h.includes('data-moretegra-lead-form'),"runtime integration marker");
 assert(h.includes('/src-greenn/preview/runtime.js'),"shared validated form runtime");
 assert(h.includes('/src-greenn/rio-de-janeiro/home.js'),"filters attached");

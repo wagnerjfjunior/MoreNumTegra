@@ -14,6 +14,10 @@
   const LEAD_MAX_AGE_MS = 10 * 60 * 1000;
   const EVENT_VERSION = 1;
   const RUN_MARKER = Symbol.for("morenumtegra.vercel.lead_success.v1");
+  // Wagner 2026-11-10: canais separados. Só o valor exato "47" gravado no marcador (depois de envio
+  // bem-sucedido) identifica um lead do Rio; qualquer outro valor mantém o form 46 (São Paulo).
+  const RJ_WHATSAPP = "https://wa.me/5511951667227?text=Ol%C3%A1%2C%20acabei%20de%20enviar%20meu%20interesse%20em%20um%20empreendimento%20Tegra%20no%20Rio%20de%20Janeiro%20e%20quero%20continuar%20o%20atendimento.";
+  let leadFormId = 46;
 
   function normalizedPath() {
     const path = window.location.pathname.replace(/\/+$/, "");
@@ -59,6 +63,7 @@
         let marker = null;
         try { marker = JSON.parse(rawV2); } catch { marker = null; }
         if (!marker || marker.version !== 2 || !freshTimestamp(marker.submitted_at)) return null;
+        leadFormId = marker.form_id === "47" ? 47 : 46;
 
         const projectName = controlledBusinessLabel(marker.project_name);
         const offerName = controlledBusinessLabel(marker.offer_name);
@@ -82,6 +87,12 @@
     const eyebrow = root.querySelector("[data-thanks-eyebrow]");
     const message = root.querySelector("[data-thanks-message]");
     if (eyebrow) eyebrow.textContent = "SOLICITAÇÃO RECEBIDA";
+    if (leadFormId === 47) {
+      if (message) message.textContent = "Recebemos sua solicitação. A central de atendimento RJ encaminha você ao corretor local autorizado para confirmar disponibilidade e condições atualizadas.";
+      const whatsapp = root.querySelector('a[href^="https://wa.me/"]');
+      if (whatsapp) whatsapp.href = RJ_WHATSAPP;
+      return;
+    }
     if (message) message.textContent = "Recebemos sua solicitação. O atendimento seguirá com a Tegra Vendas para confirmar disponibilidade e condições atualizadas.";
   }
 
@@ -111,10 +122,10 @@
       route: THANK_YOU_ROUTE,
       funnel_stage: "lead",
       form_provider: "green",
-      form_id: 46,
+      form_id: leadFormId,
       form_name: "MoreEmUmTegra",
-      lead_method: "green_form_46",
-      placement: "form_46",
+      lead_method: `green_form_${leadFormId}`,
+      placement: `form_${leadFormId}`,
       ...leadContext
     });
     markAcceptedLeadUi(root);

@@ -8,8 +8,9 @@ import path from "node:path";
 import { CHANNELS, RJ_PAGES, RJ_COPY, RJ_FORBIDDEN } from "./lib/commercial-channels.mjs";
 
 const ROOT = "src-greenn";
-// Arquivos fora das páginas RJ que podem citar o canal RJ por desenho (preenchido pelo commit B, se necessário).
-const REGIONAL_SHARED = new Set([]);
+// Arquivos fora das páginas RJ que citam o canal RJ por desenho:
+// - thank-you-measurement.js troca o WhatsApp de /obrigado/ para o canal RJ só quando o marcador é do form 47.
+const REGIONAL_SHARED = new Set(["src-greenn/preview/thank-you-measurement.js"]);
 const fails = [];
 const rj = new Set(RJ_PAGES.map((p) => path.normalize(p)));
 const walk = (dir) => readdirSync(dir).flatMap((n) => {

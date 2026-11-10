@@ -45,7 +45,7 @@ for(const slug of slugs) {
  if((h.match(/<img\b(?![^>]*\balt=)[^>]*>/gi)||[]).length)fail("one or more images missing ALT");
  if(!h.includes('id="plantas"'))fail("tipology section missing");
  if(!h.includes('id="formulario"'))fail("conversion section missing");
- if(!h.includes('id="moretegra-lead-form"')||!h.includes('name="tenant_id" value="313"')||!h.includes('name="form_id" value="46"'))fail("Greenn Form 46 contract missing");
+ if(!h.includes('id="moretegra-lead-form"')||!h.includes('name="tenant_id" value="313"')||!h.includes('name="form_id" value="47"')||!h.includes('data-form-id="47"'))fail("Greenn Form 47 (Rio) contract missing");
  if(!h.includes('id="mt-floating-dock"'))fail("floating WhatsApp and conditions dock missing");
  if(!h.includes('href="#formulario"'))fail("conditions CTA missing");
  if(!h.includes('s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo'))fail("official yellow Tegra logo missing");
