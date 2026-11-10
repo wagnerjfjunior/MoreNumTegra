@@ -98,7 +98,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 .rio-gallery-status{min-width:45px;text-align:center;font-variant-numeric:tabular-nums;font-size:.8rem;color:#393834}
 .rio-gallery-track{position:relative;display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;outline-offset:6px}
 .rio-gallery-slide{flex:0 0 100%;min-width:0;margin:0;scroll-snap-align:start;scroll-snap-stop:always}
-.rio-gallery-slide img{width:100%;height:clamp(300px,52vw,690px);object-fit:cover}
+.rio-gallery-slide img{width:100%;height:clamp(300px,min(52vw,66vh),640px);object-fit:cover}
 .rio-gallery-slide figcaption{min-height:60px}
 @media(max-width:680px){.gallery-arrow{padding:10px 14px}.rio-gallery-slide img{height:320px;object-fit:cover}}
 

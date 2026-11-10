@@ -35,7 +35,7 @@ for(const slug of slugs) {
  if(!/(Pronto para morar|Em construção|Lançamento)/.test(facts))fail("stage fact missing");
  if(!h.includes('<section class="section" id="galeria"'))fail("gallery landmark missing");
  if(!gallery.includes("<figure")||!gallery.includes('loading="lazy"'))fail("gallery must contain lazy project scenes");
- const expectedSlides=slug==="claris-rosas"?3:slug==="kronos-by-tegra"?9:10;
+ const expectedSlides=slug==="claris-rosas"?3:slug==="kronos-by-tegra"?12:10;
  const slideCount=(gallery.match(/class="photo rio-gallery-slide"/g)||[]).length;
  if(slideCount!==expectedSlides||!gallery.includes("data-rio-gallery")||!gallery.includes("data-gallery-next")||!gallery.includes("data-gallery-prev"))fail("gallery count/controls wrong: "+slideCount+" expected "+expectedSlides);
  if(!h.includes('id="plantas-oficiais"'))fail("missing distinct floorplans/implantation section");

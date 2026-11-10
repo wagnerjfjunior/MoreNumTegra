@@ -37,7 +37,7 @@ for(const [mode,viewport] of Object.entries({mobile:{width:390,height:844},deskt
    await page.locator("[data-gallery-next]").click();
    await page.waitForTimeout(550);
    const status=await page.locator("[data-gallery-status]").textContent();
-   const expected=slug==="claris-rosas"?3:slug==="kronos-by-tegra"?9:10;
+   const expected=slug==="claris-rosas"?3:slug==="kronos-by-tegra"?12:10;
    if(status.trim()!=="2 / "+expected)throw Error("gallery touch/click navigation failed: "+status);
    if(mode==="desktop"){
      const media=await page.locator(".rio-gallery-track img").evaluateAll(async imgs=>Promise.all(imgs.map(async img=>{
