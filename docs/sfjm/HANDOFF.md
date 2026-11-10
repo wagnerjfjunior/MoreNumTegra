@@ -7,7 +7,7 @@
 - Repositório: `wagnerjfjunior/MoreNumTegra`
 - Branch: `feat/rio-enderecos-estandes-20261109`
 - PR: #561 (aberta, base `main`). Merge só pelo Wagner.
-- Head do código coberto por este handoff: `dbda76a`. O commit deste arquivo vem depois dele e só altera este documento.
+- Head do código coberto por este handoff: `07e91ab`. O commit deste arquivo vem depois dele e só altera este documento.
 - Teste local: LVR com live sync pelo nome da branch (sem preview Vercel).
 
 ## Commits da branch (mais antigo primeiro)
@@ -24,6 +24,8 @@
 | `9335daa` | 4 ajustes de 2026-11-10: galeria sem linha repetida, header do RIIO, card do hub abre no hero, bloco de atendimento no hub |
 | `9c15d48` | Primeiro handoff de caminho fixo |
 | `dbda76a` | Páginas do Rio sem Sabrina, atendimento "Direto com a Incorporadora Tegra", metragens oficiais (abaixo) |
+| `444a698` | Handoff no head `dbda76a` |
+| `07e91ab` | Home de SP: só os cards do Gran Thai (125 a 405 m²) e do Gaea (123 a 365 m²) com a metragem oficial |
 
 ## O que `dbda76a` fez (decisões de 2026-11-10)
 
@@ -35,7 +37,7 @@ Escopo: **só as páginas do Rio de Janeiro** (hub + 7 páginas). São Paulo nã
 4. Metragens oficiais, sem decimais: Gran Thai 125 a 405 m²; Gaea 123 a 365 m². Batem com as plantas oficiais já publicadas nas páginas (125,01–405,45 e 123,35–365,16). Filtro de metragem do hub atualizado. Formato "125 a 405 m²", igual ao resto do site.
 5. Validadores (só regras do Rio): nova R7 no guard de conversão (páginas RJ e hub sem Sabrina e com contato direto Tegra); `validate-rio-home`, `validate-resf-rio`, `validate-onsite-realtor-project-address`, `validate-project-schema-coverage`, `validate-commercial-page-standard` (exceção RJ), `validate-riio-editorial-review-20261028` e `rio-home-visual-smoke`. Hash aprovado do Form46 do RIIO atualizado, com o anterior guardado em `history`.
 
-Verificação em `dbda76a`: validadores 32 PASS + as mesmas 6 FAIL da linha de base (conferido com os commits de referência buscados; fora do Rio); smokes `rio-home-visual-smoke` e `resf-rio-visual-smoke` PASS em desktop e mobile.
+Verificação em `dbda76a` (repetida em `07e91ab`, mesmo resultado nos validadores): validadores 32 PASS + as mesmas 6 FAIL da linha de base (conferido com os commits de referência buscados; fora do Rio); smokes `rio-home-visual-smoke` e `resf-rio-visual-smoke` PASS em desktop e mobile.
 
 ## Decisões do Wagner (com data)
 
@@ -45,20 +47,19 @@ Verificação em `dbda76a`: validadores 32 PASS + as mesmas 6 FAIL da linha de b
 - 2026-11-09: peninsulacollection.com.br é site oficial da Tegra.
 - 2026-11-10: galeria sem a linha repetida; header do RIIO padronizado; card do hub abre no hero.
 - 2026-11-10: nas páginas do Rio de Janeiro, nada relacionado à Sabrina (questão do CRECI no RJ); atendimento "Direto com a Incorporadora Tegra". Só Rio.
-- 2026-11-10: metragens oficiais sem decimais — Gran Thai 125–405 m², Gaea 123–365 m².
+- 2026-11-10: metragens oficiais sem decimais — Gran Thai 125–405 m², Gaea 123–365 m²; também nos 2 cards da home de SP (só a metragem).
 
 ## Pendências
 
-- **Decisão do Wagner:** a home de SP (`src-greenn/moretegra.js`) mostra os cards do Gran Thai e do Gaea com a metragem antiga (125 a 210 m²; 125 e 170 m²). Ficou fora desta mudança por ser página de SP. Atualizar só esses dois números ou deixar.
 - **Wagner:** QA no LVR das 7 páginas RJ e do hub.
 - **Wagner:** merge da PR #561. Depois do merge: IndexNow/Search Console das URLs RJ.
 
 ## Próxima ação (única)
 
-Wagner faz o QA no LVR desta branch e decide sobre a metragem dos dois cards na home de SP.
+Wagner faz o QA no LVR desta branch (7 páginas RJ, hub e os 2 cards do Rio na home).
 
 ## Prompt de retomada
 
 ```
-Retomada MoreNumTegra, frente Imobiliário. Leia ao vivo a branch feat/rio-enderecos-estandes-20261109 e o arquivo docs/sfjm/HANDOFF.md. Confira se o head do código citado no handoff (dbda76a) é o pai do commit que reescreveu o handoff, ou o head atual. Se for, siga a próxima ação dele. Se divergir, pare e me diga.
+Retomada MoreNumTegra, frente Imobiliário. Leia ao vivo a branch feat/rio-enderecos-estandes-20261109 e o arquivo docs/sfjm/HANDOFF.md. Confira se o head do código citado no handoff (07e91ab) é o pai do commit que reescreveu o handoff, ou o head atual. Se for, siga a próxima ação dele. Se divergir, pare e me diga.
 ```
