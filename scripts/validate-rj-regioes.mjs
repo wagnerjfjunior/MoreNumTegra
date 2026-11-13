@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Páginas de bairro do Rio (Wagner, 2026-11-13): /rj/regioes/ e /rj/regioes/oeste/barra-da-tijuca/.
+// Páginas de bairro do Rio (Wagner, 2026-11-13): /rio-de-janeiro/regioes/ e /rio-de-janeiro/regioes/oeste/barra-da-tijuca/.
 // Canal, form 47 e GTM já são cobertos por validate-commercial-channels-rj-sp e validate-measurement-region-rj
 // (RJ_REGION_PAGES em scripts/lib/commercial-channels.mjs). Aqui: rotas, sitemap, SEO, links e independência do Rio.
 import { readFileSync } from "node:fs";
@@ -7,7 +7,7 @@ import { RJ_PROJECT_SLUGS, RJ_REGION_PAGES } from "./lib/commercial-channels.mjs
 
 const SITE = "https://www.moretegra.com.br";
 const HERO = "https://stracctegra.blob.core.windows.net/assets/Bairro/GuiaBairro/29/Imagem/59a1c0b7-2f30-4f6e-a212-665f2683ecd3.jpg";
-const PAGES = { "/rj/regioes/": RJ_REGION_PAGES[0], "/rj/regioes/oeste/barra-da-tijuca/": RJ_REGION_PAGES[1] };
+const PAGES = { "/rio-de-janeiro/regioes/": RJ_REGION_PAGES[0], "/rio-de-janeiro/regioes/oeste/barra-da-tijuca/": RJ_REGION_PAGES[1] };
 const fails = [];
 const vercel = JSON.parse(readFileSync("vercel.json", "utf8"));
 const sitemap = readFileSync("sitemap.xml", "utf8");
@@ -30,13 +30,24 @@ for (const [route, file] of Object.entries(PAGES)) {
   if (hrefs.some((u) => u === "/" || u === SITE + "/" || /^\/regioes\//.test(u))) fails.push(`${route}: links to the São Paulo home or SP neighborhoods`);
 }
 
-const barra = readFileSync(PAGES["/rj/regioes/oeste/barra-da-tijuca/"], "utf8");
+const barra = readFileSync(PAGES["/rio-de-janeiro/regioes/oeste/barra-da-tijuca/"], "utf8");
 for (const slug of RJ_PROJECT_SLUGS) if (!barra.includes(`href="/empreendimentos/${slug}/"`)) fails.push(`barra-da-tijuca: link to ${slug} missing`);
 const list = JSON.parse(barra.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])["@graph"].find((n) => n["@id"]?.endsWith("#projects"));
 if (!list || list.itemListElement.length !== RJ_PROJECT_SLUGS.length) fails.push("barra-da-tijuca: ItemList must list the 7 Rio projects");
-const idx = readFileSync(PAGES["/rj/regioes/"], "utf8");
-if (!idx.includes('href="/rj/regioes/oeste/barra-da-tijuca/"')) fails.push("/rj/regioes/: link to Barra da Tijuca missing");
-if (!hub.includes('href="/rj/regioes/"') || !hub.includes('href="/rj/regioes/oeste/barra-da-tijuca/"')) fails.push("hub: links to the Rio neighborhood pages missing");
+const idx = readFileSync(PAGES["/rio-de-janeiro/regioes/"], "utf8");
+if (!idx.includes('href="/rio-de-janeiro/regioes/oeste/barra-da-tijuca/"')) fails.push("/rio-de-janeiro/regioes/: link to Barra da Tijuca missing");
+// Slugs antigos (/rj/regioes/...) ficam como 301 para os novos (Wagner, 2026-11-13).
+for (const route of Object.keys(PAGES)) {
+  const old = route.replace("/rio-de-janeiro/regioes/", "/rj/regioes/");
+  if (!vercel.redirects.some((r) => r.source === old && r.destination === route && (r.permanent === true || r.statusCode === 301))) fails.push(`${old}: permanent redirect to ${route} missing`);
+  if (sitemap.includes(`<loc>${SITE}${old}</loc>`)) fails.push(`${old}: old slug still in the sitemap`);
+}
+// Estandes RealEstateAgent do Rio com imagem (aviso opcional do teste de resultados avançados).
+for (const f of [hub, ...RJ_PROJECT_SLUGS.map((s) => readFileSync(`src-greenn/empreendimentos/${s}/index.html`, "utf8"))]) {
+  const g = JSON.parse(f.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])["@graph"];
+  for (const n of g.filter((x) => x["@id"]?.endsWith("#estande-tegra"))) if (!/^https:\/\//.test(n.image || "")) fails.push(`${n["@id"]}: image missing`);
+}
+if (!hub.includes('href="/rio-de-janeiro/regioes/"') || !hub.includes('href="/rio-de-janeiro/regioes/oeste/barra-da-tijuca/"')) fails.push("hub: links to the Rio neighborhood pages missing");
 
 if (fails.length) { fails.forEach((f) => console.error("FAIL " + f)); process.exit(1); }
-console.log("PASS Rio neighborhood pages: routes, sitemap, canonical, Tegra hero, breadcrumb, FAQ, 7 project links, hub links, no links to the São Paulo home.");
+console.log("PASS Rio neighborhood pages: routes, sitemap, canonical, Tegra hero, breadcrumb, FAQ, 7 project links, hub links, 301 from the old /rj/ slugs, estande images, no links to the São Paulo home.");

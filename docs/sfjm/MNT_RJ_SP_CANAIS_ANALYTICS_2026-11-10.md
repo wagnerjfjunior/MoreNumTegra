@@ -241,3 +241,20 @@ Branch `feat/rj-bairros-barra-20261113`. Decisões do Wagner (2026-11-13):
 Como foram feitas: visual e blocos do hub (`home.css`, formulário 47, rodapé e canal RJ). Geradas por `scripts/build-rj-regioes-pages.py`, que lê os 7 projetos dos cards do hub (fonte única). Entram no contrato RJ (`RJ_REGION_PAGES` em `scripts/lib/commercial-channels.mjs`), então seguem as regras R1/R7 e a mensuração do Rio. Não têm link para a home de São Paulo nem para bairros de SP. Guarda: `scripts/validate-rj-regioes.mjs`.
 
 Fatos usados no texto da Barra e fontes: Bosque da Barra com 50 hectares, acesso pela Avenida das Américas, 6000 (Riotur); estação Jardim Oceânico da Linha 4, Barra–Ipanema em cerca de 13 minutos (Diário do Transporte, 06/08/2026); sub-regiões, escolas, faculdades, shoppings e praias resumidos do guia de bairro da Tegra (texto reescrito, não copiado). Endereços dos projetos: rodapé do hub.
+
+## 13. Slugs do Rio padronizados e imagem nos estandes (2026-11-13)
+
+Branch `feat/rio-slugs-estandes-20261113`, a partir da `main` em `81cfb6e` (#563).
+
+Decisão do Wagner (2026-11-13): o padrão de URL do Rio é `/rio-de-janeiro/`, `/rio-de-janeiro/regioes/` e `/rio-de-janeiro/regioes/oeste/barra-da-tijuca/`. Isso substitui o `/rj/regioes/...` da seção 12.
+
+- Arquivos movidos para `src-greenn/rio-de-janeiro/regioes/...`. As rotas, o canonical, o Open Graph, a trilha, o `Place` `@id`, o sitemap e os links do hub usam o novo slug.
+- `/rj/regioes/` e `/rj/regioes/oeste/barra-da-tijuca/` ficam como redirecionamento permanente (301/308) para os novos endereços, porque já foram publicados e talvez indexados.
+- As identidades de página no GA4 (`rj_regioes_hub`, `rj_regiao_barra_da_tijuca`) não mudaram, para não quebrar a série de dados. Não aparecem para o visitante.
+
+Teste de resultados avançados do Google em `/rio-de-janeiro/`: 7 itens válidos, com avisos opcionais no `RealEstateAgent` `#estande-tegra` (telephone, priceRange, image).
+
+- `image`: incluído nos 7 estandes do hub e no estande de cada página de empreendimento. É a mesma imagem do `og:image` da página do empreendimento.
+- `telephone`: não incluído. O nó se chama "Atendimento presencial Tegra" e aponta para `#tegra-vendas`. Pôr nele o número da central RJ atribuiria o canal à Tegra, o que conflita com a R7. Só o Wagner decide.
+- `priceRange`: não incluído. Preço no schema envelhece; os cards do hub têm condições com validade. Só o Wagner decide.
+- Avisos opcionais não impedem o item de ser válido (fato do próprio teste: "erros não críticos").

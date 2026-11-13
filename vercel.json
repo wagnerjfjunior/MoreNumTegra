@@ -41,8 +41,8 @@
       "source": "/rio-de-janeiro/",
       "destination": "/src-greenn/rio-de-janeiro/index.html"
     },
-    { "source": "/rj/regioes/", "destination": "/src-greenn/rj/regioes/index.html" },
-    { "source": "/rj/regioes/oeste/barra-da-tijuca/", "destination": "/src-greenn/rj/regioes/oeste/barra-da-tijuca/index.html" },
+    { "source": "/rio-de-janeiro/regioes/", "destination": "/src-greenn/rio-de-janeiro/regioes/index.html" },
+    { "source": "/rio-de-janeiro/regioes/oeste/barra-da-tijuca/", "destination": "/src-greenn/rio-de-janeiro/regioes/oeste/barra-da-tijuca/index.html" },
     {
       "source": "/regioes/",
       "destination": "/src-greenn/regioes/index.html"
@@ -591,6 +591,8 @@
     }
   ],
   "redirects": [
+    { "source": "/rj/regioes/", "destination": "/rio-de-janeiro/regioes/", "permanent": true },
+    { "source": "/rj/regioes/oeste/barra-da-tijuca/", "destination": "/rio-de-janeiro/regioes/oeste/barra-da-tijuca/", "permanent": true },
     {
       "source": "/src-greenn/complexo-lapa-pirituba/index.html",
       "destination": "/complexo-lapa-pirituba/",

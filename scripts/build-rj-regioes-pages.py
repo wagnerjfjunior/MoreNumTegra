@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Gera as páginas de bairro do Rio (Wagner, 2026-11-13):
-  /rj/regioes/                         -> src-greenn/rj/regioes/index.html
-  /rj/regioes/oeste/barra-da-tijuca/   -> src-greenn/rj/regioes/oeste/barra-da-tijuca/index.html
+  /rio-de-janeiro/regioes/                         -> src-greenn/rio-de-janeiro/regioes/index.html
+  /rio-de-janeiro/regioes/oeste/barra-da-tijuca/   -> src-greenn/rio-de-janeiro/regioes/oeste/barra-da-tijuca/index.html
 Reaproveita o visual e os blocos do hub /rio-de-janeiro/ (home.css, formulário 47, rodapé e canal RJ).
 Os dados de projeto (nome, URL, imagem, tipologia, endereço) são lidos do próprio hub, que é a fonte.
 Uso: python3 -I scripts/build-rj-regioes-pages.py   (rodar na raiz do repositório)
@@ -78,7 +78,7 @@ def card(p):
 def header():
     return (f'<header class="rio-top"><div class="rio-wrap"><a class="rio-brand" href="/rio-de-janeiro/" aria-label="MoreTegra Rio de Janeiro">'
             f'<img src="{LOGO}" width="110" height="62" alt="Tegra">MoreTegra</a><nav aria-label="Navegação principal">'
-            '<a href="/rio-de-janeiro/">Rio de Janeiro</a><a href="/rj/regioes/">Bairros do Rio</a>'
+            '<a href="/rio-de-janeiro/">Rio de Janeiro</a><a href="/rio-de-janeiro/regioes/">Bairros do Rio</a>'
             '<a href="/rio-de-janeiro/#empreendimentos">Empreendimentos</a>'
             '<a class="rio-nav-cta" href="#contato">Receber condições</a></nav></div></header>')
 
@@ -158,12 +158,12 @@ def base_graph(route, name, desc, crumbs):
         {"@type": "WebSite", "@id": SITE + "/#website", "url": SITE + "/", "name": "More em um Tegra"},
         {"@type": "WebPage", "@id": url + "#webpage", "url": url, "name": name, "description": desc, "inLanguage": "pt-BR",
          "isPartOf": {"@id": SITE + "/#website"}, "primaryImageOfPage": {"@id": url + "#image"}, "breadcrumb": {"@id": url + "#breadcrumbs"},
-         "about": {"@id": SITE + "/rj/regioes/oeste/barra-da-tijuca/#place"}},
+         "about": {"@id": SITE + "/rio-de-janeiro/regioes/oeste/barra-da-tijuca/#place"}},
         {"@type": "ImageObject", "@id": url + "#image", "contentUrl": HERO, "url": HERO, "width": 1920, "height": 640,
          "caption": "Vista aérea da Barra da Tijuca, Rio de Janeiro"},
         {"@type": "BreadcrumbList", "@id": url + "#breadcrumbs", "itemListElement": [
             {"@type": "ListItem", "position": i + 1, "name": n, "item": SITE + r} for i, (n, r) in enumerate(crumbs)]},
-        {"@type": "Place", "@id": SITE + "/rj/regioes/oeste/barra-da-tijuca/#place", "name": "Barra da Tijuca",
+        {"@type": "Place", "@id": SITE + "/rio-de-janeiro/regioes/oeste/barra-da-tijuca/#place", "name": "Barra da Tijuca",
          "containedInPlace": {"@type": "City", "name": "Rio de Janeiro", "containedInPlace": {"@type": "State", "name": "Rio de Janeiro"}}},
         {"@type": "ContactPoint", "@id": url + "#central-atendimento-rj", "name": "Central de atendimento RJ", "contactType": "Atendimento comercial",
          "telephone": "+5511951667227", "url": f"https://wa.me/{WA}", "availableLanguage": "pt-BR",
@@ -177,10 +177,10 @@ def crumb_nav(crumbs):
 
 
 # ---------------------------------------------------------------- Barra da Tijuca
-R_BARRA = "/rj/regioes/oeste/barra-da-tijuca/"
+R_BARRA = "/rio-de-janeiro/regioes/oeste/barra-da-tijuca/"
 T_BARRA = "Apartamentos e casas Tegra na Barra da Tijuca | MoreTegra"
 D_BARRA = "Conheça a Barra da Tijuca, na Zona Oeste do Rio: praia, Península, Jardim Oceânico, metrô e os sete empreendimentos Tegra do bairro."
-C_BARRA = [("Rio de Janeiro", "/rio-de-janeiro/"), ("Bairros do Rio", "/rj/regioes/"), ("Barra da Tijuca", R_BARRA)]
+C_BARRA = [("Rio de Janeiro", "/rio-de-janeiro/"), ("Bairros do Rio", "/rio-de-janeiro/regioes/"), ("Barra da Tijuca", R_BARRA)]
 MSG_BARRA = "Olá, quero conhecer os empreendimentos Tegra na Barra da Tijuca."
 FAQ_BARRA = [
     ("Quais empreendimentos Tegra ficam na Barra da Tijuca?",
@@ -219,7 +219,7 @@ barra = head(R_BARRA, T_BARRA, D_BARRA, "rj_regiao_barra_da_tijuca", "barra-da-t
 '''
 
 # ---------------------------------------------------------------- Bairros do Rio
-R_IDX = "/rj/regioes/"
+R_IDX = "/rio-de-janeiro/regioes/"
 T_IDX = "Bairros do Rio de Janeiro com empreendimentos Tegra | MoreTegra"
 D_IDX = "Guia dos bairros do Rio de Janeiro com empreendimentos Tegra. Comece pela Barra da Tijuca, na Zona Oeste."
 C_IDX = [("Rio de Janeiro", "/rio-de-janeiro/"), ("Bairros do Rio", R_IDX)]
@@ -249,7 +249,7 @@ idx = head(R_IDX, T_IDX, D_IDX, "rj_regioes_hub", "rj-regioes", g) + f'''<main i
 </body></html>
 '''
 
-for rel, content in (("src-greenn/rj/regioes/oeste/barra-da-tijuca/index.html", barra), ("src-greenn/rj/regioes/index.html", idx)):
+for rel, content in (("src-greenn/rio-de-janeiro/regioes/oeste/barra-da-tijuca/index.html", barra), ("src-greenn/rio-de-janeiro/regioes/index.html", idx)):
     p = ROOT / rel
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(content, encoding="utf-8")
