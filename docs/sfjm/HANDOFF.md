@@ -1,70 +1,56 @@
-# Handoff da branch — Home exclusiva de São Paulo
+# Handoff da branch — Bairros do Rio e foto oficial no hero
 
 > Arquivo de caminho fixo: reescrito por inteiro a cada checkpoint (commit da branch). No merge, o conteúdo vai para o `NEXT_SAFE_ACTION` do projeto e este arquivo sai. Histórico: `git log -- docs/sfjm/HANDOFF.md`.
 >
-> Última atualização: 2026-11-12.
+> Última atualização: 2026-11-13.
 
 - Repositório: `wagnerjfjunior/MoreNumTegra`
-- Branch: `feat/home-sp-exclusiva-20261112`
-- Base: `main` em `8fe1043` (squash da PR #561, mergeada em 2026-11-12 com aprovação do Wagner). A branch foi rebaseada sobre esse commit e contém só as mudanças da home.
-- PR: aberta para a `main`. Merge aprovado pelo Wagner em 2026-11-12.
-- Teste local: LVR com live sync pelo nome da branch (sem preview Vercel).
+- Branch: `feat/rj-bairros-barra-20261113`, criada a partir da `main` em `9c6f20e` (PRs #561 e #562 já mergeadas).
+- PR: aberta para a `main`. Merge só com aprovação do Wagner.
+- Contexto: `docs/sfjm/MNT_RJ_SP_CANAIS_ANALYTICS_2026-11-10.md`, seção 12.
 
-O handoff da #561 (canais RJ/SP, form 47 e mensuração) está no histórico: `git show 8fe1043:docs/sfjm/HANDOFF.md`. Contexto completo: `docs/sfjm/MNT_RJ_SP_CANAIS_ANALYTICS_2026-11-10.md` (seção 11 trata desta entrega).
+## Decisão do Wagner (2026-11-13)
 
-## Decisão do Wagner
-
-- 2026-11-10: homepage exclusiva de São Paulo aprovada (USER_APPROVED).
-- 2026-11-12: "o CRECI é regional". A home `www.moretegra.com.br/` fica só com São Paulo: sem cards, menu, hero, filtro ou metadados do Rio. O hub `/rio-de-janeiro/` e as 7 páginas RJ ficam independentes.
-- 2026-11-12: o bloco do Prêmio Master Imobiliário 2026 continua citando o RIIO, porque não tem link.
+- Hero do hub do Rio com a foto oficial da Tegra do guia da Barra da Tijuca (dispensa crédito), no lugar da foto do Pexels.
+- Páginas novas: `www.moretegra.com.br/rj/regioes/` e `www.moretegra.com.br/rj/regioes/oeste/barra-da-tijuca/`.
 
 ## O que mudou
 
-`src-greenn/preview/index.html`:
-- Título, description, Open Graph, Twitter e JSON-LD `WebPage`: "Apartamentos Tegra em São Paulo | MoreTegra"; "por bairro, estágio…" no lugar de "por cidade".
-- JSON-LD `ItemList`: sem o RIIO (era o 16º item).
-- Topo: "MORE EM UM TEGRA · SÃO PAULO"; menu sem "Rio de Janeiro".
-- Hero: "PORTFÓLIO TEGRA · SÃO PAULO", título "Empreendimentos Tegra em São Paulo", texto só de São Paulo.
-- Catálogo: "Encontre seu próximo Tegra em São Paulo." / "Compare os projetos por zona, estágio e faixa de valor."; filtro "Cidade" removido (e a regra de CSS dele); mensagem de lista vazia sem "cidade".
-- Script `moretegra.js` com nova versão na URL (`?v=20261112-home-sp`), para o navegador não usar a versão antiga em cache.
-
-`src-greenn/moretegra.js`:
-- Catálogo `PROJECTS` só com os empreendimentos de São Paulo. Os 7 cards RJ saíram; ficam no histórico do git (commit `846876b`).
-- Saiu o texto de localização "na Barra da Tijuca, Rio de Janeiro"; o rótulo da imagem indisponível virou "TEGRA · SÃO PAULO".
-- A lógica de filtros não mudou: ela já trata a ausência do filtro de cidade e começa em São Paulo.
-
-Novo validador: `scripts/validate-home-sp-exclusiva.mjs` — reprova qualquer referência ao Rio na home fora do bloco do prêmio, filtro de cidade, link para o hub ou para páginas RJ, catálogo RJ no script ou canal RJ na home; exige form 46, WhatsApp SP e Sabrina na home; exige as 8 URLs do Rio no sitemap.
-
-Nada mudou nas páginas do Rio nem em outras páginas de São Paulo.
+- `src-greenn/rio-de-janeiro/index.html`: foto da Tegra no hero, no Open Graph, no Twitter e no JSON-LD (sem os campos de licença do Pexels); sem `preconnect` para o Pexels; link "Bairros do Rio" no menu e botão "Conhecer o bairro da Barra da Tijuca" na seção sobre a Barra.
+- `src-greenn/rj/regioes/index.html` (novo): hub dos bairros do Rio, com a Barra da Tijuca.
+- `src-greenn/rj/regioes/oeste/barra-da-tijuca/index.html` (novo): página do bairro — hero com a foto da Tegra, trilha de navegação, "O bairro", rotina (escolas, faculdades, deslocamento, lazer), os 7 empreendimentos agrupados por parte do bairro (Península; Parque das Rosas; Orla da Avenida Lúcio Costa; outros endereços), FAQ, atendimento e formulário 47.
+- Ambas: canal da central de atendimento RJ, formulário 47, GTM, identidade de página (`rj_regioes_hub`, `rj_regiao_barra_da_tijuca`), JSON-LD (`WebPage`/`CollectionPage`, `BreadcrumbList`, `Place`, `ContactPoint`, `ItemList`, `FAQPage`); sem preço nos cards; sem link para a home de SP.
+- `scripts/build-rj-regioes-pages.py` (novo): gera as duas páginas a partir dos cards do hub.
+- `src-greenn/rio-de-janeiro/home.css`: regras da trilha de navegação e dos grupos por área (aditivo).
+- `vercel.json` (2 rotas) e `sitemap.xml` (2 URLs).
+- `scripts/lib/commercial-channels.mjs`: `RJ_REGION_PAGES` dentro de `RJ_PAGES`.
+- Validadores: novo `validate-rj-regioes.mjs`; `validate-rio-home.mjs` exige a foto da Tegra, nenhum Pexels e os links para os bairros. Smoke `rj-sp-form-measurement-smoke` cobre as 2 páginas novas.
 
 ## Verificação
 
-- Validadores: 35 PASS (os 34 da #561 + o novo) e as mesmas 6 FAIL anteriores.
-- Prova negativa: com o link "Rio de Janeiro" recolocado no menu, o validador novo reprova; arquivo restaurado byte a byte.
-- Home antes/depois em Chromium (desktop 1440 e mobile 390): os mesmos 33 cards de São Paulo, na mesma ordem; nenhum link para o Rio (antes: `/rio-de-janeiro/`); payload do form 46, eventos e ida para `/obrigado/` idênticos; sem estouro horizontal; sem erro de JavaScript. Texto do Rio visível só no bloco do prêmio ("RIIO BY PIERO LISSONI", "Tegra · Rio de Janeiro"). Filtros de estágio funcionando (15 prontos, 11 em construção, 3 lançamentos).
-- Smoke `rj-sp-form-measurement-smoke` (8 RJ + 2 SP, desktop e mobile): PASS.
-- Smoke `m5-07-lead-semantics-smoke`: os mesmos 11 testes PASS em Chromium antes e depois (inclui `home-negotiate`); falha só ao abrir o Firefox, que não está instalado neste ambiente, igual antes.
-- `test-riio-gallery-20261028.mjs` falha antes e depois por falta do módulo `jsdom` neste ambiente; não tem relação com a home.
+- Validadores: 36 PASS (os 35 anteriores + `validate-rj-regioes`) e as mesmas 6 FAIL antigas.
+- Canal e mensuração agora conferidos em 10 páginas RJ (hub, 7 empreendimentos, 2 bairros).
+- Smoke `rj-sp-form-measurement-smoke`: PASS nas 10 páginas RJ e 2 de SP, desktop e mobile (GTM, consentimento, form 47, conversão única, WhatsApp RJ no obrigado, sem dados pessoais, sem "Sabrina").
+- Smokes `rio-home-visual-smoke` e `resf-rio-visual-smoke`: PASS.
+- Navegador (desktop 1440 e iPhone 13): hub, Barra e Bairros do Rio sem estouro horizontal, sem imagem quebrada e sem erro de JavaScript; as 7 imagens de projeto carregam.
 
-Observação para o QA: no desktop 1440, a palavra "Empreendimentos" do título do hero encosta na coluna do vídeo. Já acontecia antes desta mudança e pode ser só a fonte substituta do ambiente de teste (as fontes externas não carregam aqui). Conferir no LVR.
+Observação: a foto da Tegra é um panorama 1920×640. No celular o hero recorta o centro e a imagem fica um pouco suave, porque é ampliada.
 
 ## Pendências
 
 | # | Item | Dono |
 |---|---|---|
-| H1 | ~~Merge da PR #561~~ — feito em 2026-11-12 (`8fe1043`) | concluída |
-| H2 | ~~Abrir a PR desta branch~~ — aberta | concluída |
-| H3 | Conferir em produção a home (inclui o título do hero no desktop) | Wagner |
-| H4 | Depois do merge: pedir reindexação da home no Search Console | Wagner |
-| — | Pendências da #561, agora em produção: gates P3 (GTM publicado, dimensão `form_id`), P6b (GTM Preview, DebugView, 1 lead RJ e 1 SP), P8 (resposta da Green), P9 (consentimento em `/obrigado/`); P4 (defeitos do GTM); P7 (IndexNow das URLs RJ) | Wagner + Claude |
-| — | CI com falhas antigas, também na `main` antes da #561: `favicon`, `two-images-39-pages`, `mercado-editorial`, `m5-10-elo-late-gtm-bootstrap-smoke` | Backlog |
+| B1 | QA no LVR do texto e do visual da página da Barra; merge | Wagner |
+| B2 | Depois do merge: IndexNow / Search Console das 2 URLs novas | Wagner |
+| B3 | Decidir se o menu do hub do Rio continua com "Home nacional" (`/`) e "São Paulo" (`/regioes/`), que levam para o site de SP | Wagner |
+| — | Gates de produção da #561 (P3, P6b, P8, P9), P4, P7 | Wagner + Claude |
 
 ## Próxima ação (única)
 
-Depois do merge desta PR: Wagner faz os testes em produção da #561 (gate P6b: GTM Preview, DebugView, 1 lead controlado RJ e 1 SP) e confere a home.
+Wagner faz o QA da branch no LVR (página da Barra e hero do hub) e aprova o merge.
 
 ## Prompt de retomada
 
 ```
-Retomada MoreNumTegra, frente Imobiliário. Leia ao vivo a branch feat/home-sp-exclusiva-20261112 e o arquivo docs/sfjm/HANDOFF.md dela. Confira se a PR desta branch foi mergeada na main. Se sim, siga a próxima ação do handoff. Se divergir, pare e me diga.
+Retomada MoreNumTegra, frente Imobiliário. Leia ao vivo a branch feat/rj-bairros-barra-20261113 e o docs/sfjm/HANDOFF.md dela. Confira se o head é o commit que trouxe este handoff. Se for, siga a próxima ação. Se divergir, pare e me diga.
 ```

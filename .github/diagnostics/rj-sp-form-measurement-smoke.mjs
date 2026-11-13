@@ -18,6 +18,8 @@ const RJ = [
   ["/empreendimentos/gran-thai-leisure-residence/", "gran_thai_leisure_residence_project", "Gran Thai Leisure Residence"],
   ["/empreendimentos/claris-rosas/", "claris_rosas_project", "Claris Rosas"],
   ["/empreendimentos/claris-casa-e-clube/", "claris_casa_e_clube_project", "Claris Casa & Clube"],
+  ["/rj/regioes/", "rj_regioes_hub", null],
+  ["/rj/regioes/oeste/barra-da-tijuca/", "rj_regiao_barra_da_tijuca", null],
 ];
 const SP = [
   ["/empreendimentos/tiel-vila-nova-conceicao/", "Tièl Vila Nova Conceição"],
@@ -28,6 +30,7 @@ const PII = /smoke@example\.com|11987654321|Teste Smoke/;
 
 function local(p) {
   if (p === "/rio-de-janeiro/") p = "/src-greenn/rio-de-janeiro/index.html";
+  else if (p.startsWith("/rj/regioes/")) p = "/src-greenn" + p + "index.html";
   else if (p === "/obrigado/") p = "/src-greenn/preview/obrigado.html";
   else if (/^\/empreendimentos\/[^/]+\/$/.test(p)) p = "/src-greenn" + p + "index.html";
   const f = path.join(ROOT, decodeURIComponent(p));
@@ -118,7 +121,7 @@ try {
       console.log(`PASS SP ${tag} ${route} form 46 preserved`);
     }
   }
-  console.log("PASS RJ/SP form and measurement smoke: 8 Rio pages on form 47, 2 São Paulo pages on form 46, desktop and mobile.");
+  console.log("PASS RJ/SP form and measurement smoke: 10 Rio pages on form 47, 2 São Paulo pages on form 46, desktop and mobile.");
 } finally {
   await browser.close();
 }

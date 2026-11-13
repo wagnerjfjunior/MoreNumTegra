@@ -230,3 +230,14 @@ O que mudou: `src-greenn/preview/index.html` (title, description, Open Graph, Tw
 
 As 8 URLs do Rio continuam no `sitemap.xml`, que é por onde o Google passa a encontrá-las sem o link da home.
 
+
+## 12. Páginas de bairro do Rio e foto oficial no hero (2026-11-13)
+
+Branch `feat/rj-bairros-barra-20261113`. Decisões do Wagner (2026-11-13):
+
+- Hero do hub `/rio-de-janeiro/` passa a usar a foto oficial da Tegra do guia do bairro Barra da Tijuca (`https://stracctegra.blob.core.windows.net/assets/Bairro/GuiaBairro/29/Imagem/59a1c0b7-2f30-4f6e-a212-665f2683ecd3.jpg`, 1920×640), no lugar da foto do Pexels, para dispensar crédito. Fonte: `https://www.tegraincorporadora.com.br/rj/rio-de-janeiro/oeste/barra-da-tijuca`.
+- Novas páginas `/rj/regioes/` e `/rj/regioes/oeste/barra-da-tijuca/`, no padrão de URL da Tegra.
+
+Como foram feitas: visual e blocos do hub (`home.css`, formulário 47, rodapé e canal RJ). Geradas por `scripts/build-rj-regioes-pages.py`, que lê os 7 projetos dos cards do hub (fonte única). Entram no contrato RJ (`RJ_REGION_PAGES` em `scripts/lib/commercial-channels.mjs`), então seguem as regras R1/R7 e a mensuração do Rio. Não têm link para a home de São Paulo nem para bairros de SP. Guarda: `scripts/validate-rj-regioes.mjs`.
+
+Fatos usados no texto da Barra e fontes: Bosque da Barra com 50 hectares, acesso pela Avenida das Américas, 6000 (Riotur); estação Jardim Oceânico da Linha 4, Barra–Ipanema em cerca de 13 minutos (Diário do Transporte, 06/08/2026); sub-regiões, escolas, faculdades, shoppings e praias resumidos do guia de bairro da Tegra (texto reescrito, não copiado). Endereços dos projetos: rodapé do hub.
