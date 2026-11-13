@@ -1,52 +1,40 @@
-# Handoff da branch — Slugs do Rio padronizados e estandes completos
+# Handoff da branch — Base de demanda SEO do Rio
 
 > Arquivo de caminho fixo: reescrito por inteiro a cada checkpoint (commit da branch). No merge, o conteúdo vai para o `NEXT_SAFE_ACTION` do projeto e este arquivo sai. Histórico: `git log -- docs/sfjm/HANDOFF.md`.
 >
 > Última atualização: 2026-11-13.
 
 - Repositório: `wagnerjfjunior/MoreNumTegra`
-- Branch: `feat/rio-slugs-estandes-20261113`, criada a partir da `main` em `81cfb6e` (#561, #562 e #563 já mergeadas).
-- PR: aberta para a `main`. Merge só com aprovação do Wagner.
-- Contexto: `docs/sfjm/MNT_RJ_SP_CANAIS_ANALYTICS_2026-11-10.md`, seção 13.
+- Branch: `docs/seo-rio-base-20261113`, criada a partir da `main` em `4ed7151` (#561 a #564 mergeadas e publicadas).
+- PR: só documentação, aberta para a `main`. Merge com aprovação do Wagner.
 
-## Decisão do Wagner (2026-11-13)
+## O que esta branch registra
 
-- Padrão de URL do Rio: `/rio-de-janeiro/`, `/rio-de-janeiro/regioes/`, `/rio-de-janeiro/regioes/oeste/barra-da-tijuca/`.
-- Sem 301 dos `/rj/regioes/...` (não estavam indexados).
-- Estandes com `image`, `telephone` da central RJ (`+5511951667227`, confirmado) e `priceRange` "A partir de R$ X" (menor valor anunciado).
+- `docs/seo/rio-2026-11-13/`: estudo do Wagner (9 exportações do Keyword Planner e 4 estudos do Trends, originais), consolidado em UTF-8 com 1.446 termos do Rio, script de consolidação e `README.md` com limites, achados, hipóteses, decisões e o pedido ao especialista.
+- `docs/NEXT_SAFE_ACTION.md`: entrada de 13/11 com o estado de produção do Rio e a próxima ação. Substitui o handoff da #564, que ficou na `main`.
 
-## O que mudou
+## Estado de produção conferido (2026-11-13)
 
-- `src-greenn/rj/regioes/...` → `src-greenn/rio-de-janeiro/regioes/...` (git mv + regeneração pelo `scripts/build-rj-regioes-pages.py`).
-- `vercel.json`: rewrites dos novos slugs; os `/rj/regioes/...` saem sem redirecionamento.
-- `sitemap.xml`: só os novos slugs.
-- Hub `/rio-de-janeiro/`: links do menu e da seção da Barra para os novos slugs; `image`, `telephone` e `priceRange` nos 7 `RealEstateAgent` `#estande-tegra`.
-- 7 páginas de empreendimento do Rio: `image` e `telephone` no `#estande-tegra`; `priceRange` em 6 (o RIIO não mostra preço na página).
-- `scripts/lib/commercial-channels.mjs` (`RJ_REGION_PAGES`), `validate-rj-regioes.mjs` (proíbe `/rj/regioes/`, exige image/telefone RJ/priceRange visível), `validate-onsite-realtor-project-address.mjs` (telefone do estande só o da central RJ), `validate-rio-home.mjs`, smoke `rj-sp-form-measurement-smoke`, comentário em `home.css`.
-- Identidades GA4 das páginas de bairro mantidas (`rj_regioes_hub`, `rj_regiao_barra_da_tijuca`).
-
-## Verificação
-
-- Validadores: 36 PASS; as mesmas 6 FAIL antigas, com saída idêntica antes e depois (só muda o pid).
-- Smoke `rj-sp-form-measurement-smoke`: PASS nas 10 páginas RJ (com os novos slugs) e 2 de SP, desktop e mobile.
-- Smokes `rio-home-visual-smoke` e `resf-rio-visual-smoke`: PASS.
-
-## Pendências
-
-| # | Item | Dono |
-|---|---|---|
-| S2 | QA no LVR e merge | Wagner |
-| S3 | Depois do merge: conferir os novos slugs no ar, IndexNow / Search Console, novo teste de resultados avançados | Wagner + Claude |
-| S4 | Página do RIIO sem preço visível: decidir se mostra "a partir de" (aí entra o `priceRange`) | Wagner |
-| B3 | Menu do hub do Rio com "Home nacional" (`/`) e "São Paulo" (`/regioes/`) | Wagner |
-| — | Gates de produção da #561 (P3, P6b, P8, P9), P4, P7 | Wagner + Claude |
+- `/rio-de-janeiro/`, `/rio-de-janeiro/regioes/` e `/rio-de-janeiro/regioes/oeste/barra-da-tijuca/`: 200, cada uma com canonical próprio e presentes no sitemap.
+- `/rj/regioes/...`: 404 (decisão do Wagner: não estavam indexadas).
+- Estandes (`RealEstateAgent` `#estande-tegra`) com `image`, `telephone` `+5511951667227` e `priceRange` "A partir de R$ X". O RIIO fica sem `priceRange`, porque a página dele não mostra preço.
 
 ## Próxima ação (única)
 
-Wagner aprova o merge.
+Conversa nova: rodar o especialista em SEO sobre as 10 páginas do Rio e entregar o plano do hub e das páginas, conforme `docs/seo/rio-2026-11-13/README.md`, seção "Pedido ao especialista".
 
 ## Prompt de retomada
 
 ```
-Retomada MoreNumTegra, frente Imobiliário. Leia ao vivo a branch feat/rio-slugs-estandes-20261113 e o docs/sfjm/HANDOFF.md dela. Confira se o head é o commit que trouxe este handoff. Se for, siga a próxima ação. Se divergir, pare e me diga.
+Retomada MoreNumTegra, frente Imobiliário — plano SEO do Rio.
+Leia ao vivo, na main (ou na branch docs/seo-rio-base-20261113 se a PR ainda não foi mergeada):
+docs/NEXT_SAFE_ACTION.md (entrada de 13/11), docs/seo/rio-2026-11-13/README.md e
+docs/sfjm/MNT_RJ_SP_CANAIS_ANALYTICS_2026-11-10.md (seções 12 e 13).
+Confira se a main está em 4ed7151 ou depois e se as 10 páginas do Rio respondem 200 em produção.
+Depois rode o especialista em SEO (skills seo-aeo-geo-ultimate) como auditoria independente,
+num agente separado, e entregue o plano do hub /rio-de-janeiro/ e das páginas do Rio
+(mapa palavra-chave → página, plano por página, páginas novas, plano de ação).
+Use o arquivo 08 (Google, RJ) como base principal. "Em construção" e "na planta": minha
+sugestão é mesclar, mas quem decide é o especialista, com justificativa.
+Não altere páginas nem faça merge sem minha aprovação. Separe fato, hipótese e opinião.
 ```
