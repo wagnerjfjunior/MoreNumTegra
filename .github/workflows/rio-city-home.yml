@@ -11,6 +11,8 @@ on:
       - 'src-greenn/empreendimentos/claris-rosas/index.html'
       - 'src-greenn/empreendimentos/gaea-home-resort/index.html'
       - 'src-greenn/empreendimentos/singular-private-residence/index.html'
+      - 'src-greenn/empreendimentos/riio-by-piero-lissoni/index.html'
+      - 'scripts/validate-resf-conversion-guard.mjs'
       - 'scripts/validate-resf-rio.mjs'
       - '.github/diagnostics/resf-rio-visual-smoke.mjs'
       - 'scripts/validate-rio-home.mjs'
@@ -34,6 +36,8 @@ jobs:
         run: node scripts/validate-rio-home.mjs
       - name: Six exact-project RESF contract
         run: node scripts/validate-resf-rio.mjs
+      - name: RESF conversion guardrails (no competitor links/media, no justification copy, map and plan CTAs to WhatsApp)
+        run: node scripts/validate-resf-conversion-guard.mjs
       - name: Install Playwright Chromium
         run: |
           npm install --no-save playwright@1.55.0

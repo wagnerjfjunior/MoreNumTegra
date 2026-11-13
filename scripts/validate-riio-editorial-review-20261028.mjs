@@ -7,13 +7,11 @@ const ficha=JSON.parse(read(root+'/riio-ficha-tecnica.json')),plans=JSON.parse(r
 for(const [key,pattern] of [['hero',/<section class="riio-hero">[\s\S]*?<\/section>/],['facts',/<section class="facts"[\s\S]*?<\/section>/],['form46',/<form id="moretegra-lead-form"[\s\S]*?<\/form>/]])assert.equal(createHash('sha256').update(html.match(pattern)[0]).digest('hex'),approved.sha256[key],'Approved '+key+' changed');
 assert.equal(ficha.buildings.length,9);assert.equal(ficha.terrain_m2,30003.73);
 assert.equal(ficha.buildings.reduce((n,b)=>n+b.rows.reduce((total,row)=>total+row.quantity,0),0),132);
-const technical=html.match(/<section[^>]+id="tipologias"[\s\S]*?<\/section>/)[0];
-assert(technical.includes('30.003,73 m²'));assert(!technical.includes('.pdf'),'Ficha must be integrated, not a PDF substitute');
-for(const b of ficha.buildings){
- const card=technical.match(new RegExp('<article class="riio-building" id="edificio-'+b.name.toLowerCase()+'">([\\s\\S]*?)</article>'))[1];
- assert.equal((card.match(/<tr>/g)||[]).length,b.rows.length+1,'Every configuration of '+b.name+' must be present');
- for(const row of b.rows)assert(card.includes('<b>'+row.quantity+'</b> '+row.type.toLowerCase()),'Unit group omitted: '+b.name);
-}
+// Wagner 2026-11-10: the per-building technical tables (#tipologias) and the Sabrina section were removed from the sales page.
+// The ficha data stays governed in docs (riio-ficha-tecnica.json); the page sells through the 11 plan plates, gallery and Form46.
+assert(!html.includes('id="tipologias"')&&!html.includes('href="#tipologias"'),'Per-building technical tables must stay off the RIIO sales page');
+assert(!html.includes('id="sabrina"')&&!html.includes('sabrina-section'),'Sabrina section must stay off the RIIO sales page');
+assert(!/ficha técnica/i.test(html.replace(/<section class="facts"[\s\S]*?<\/section>/,'')),'No technical-sheet justification copy outside the locked facts band');
 assert(html.includes('Avenida Lúcio Costa, 4900 e Avenida Peregrino Junior, 133'));
 const galleries=[...html.matchAll(/<div class="riio-viewer[^>]+data-riio-gallery="([^\"]+)"[\s\S]*?<script type="application\/json" data-gallery-data>([\s\S]*?)<\/script>/g)];
 assert.deepEqual(galleries.map(x=>x[1]),['ambientes','plantas']);
@@ -35,7 +33,7 @@ const neighborhood=html.match(/<section[^>]+id="localizacao"[\s\S]*?<\/section>/
 assert.equal((neighborhood.match(/<figure>/g)||[]).length,3);
 assert.equal((neighborhood.match(/<article>/g)||[]).length,4);
 assert(neighborhood.includes('pointer-events')||read(path+'riio-galleries.css').includes('pointer-events:none'));
-assert(neighborhood.includes('riio-map-visual')&&neighborhood.includes('https://wa.me/5511960779328'));
+assert(neighborhood.includes('riio-map-visual')&&neighborhood.includes('https://wa.me/5511951667227'));
 assert(!neighborhood.includes('google.com/maps/search'),'Use contextual map with WhatsApp route request');
 assert(html.includes('id="riio-image-dialog"')&&html.includes('data-zoom-in')&&html.includes('data-close-dialog'));
 assert.equal((html.match(/riio-gallery\.js"/g)||[]).length,1);
@@ -45,5 +43,14 @@ const ids=[...html.matchAll(/\bid="([^\"]+)"/g)].map(x=>x[1]);assert.equal(ids.l
 const footer=html.match(/<footer\b[\s\S]*?<\/footer>/)[0];
 const referenceFooter=read('src-greenn/empreendimentos/tiel-vila-nova-conceicao/index.html').match(/<footer\b[\s\S]*?<\/footer>/)[0];
 const normalizeFooter=s=>s.replace(/<span data-mnt-footer-address[^>]*>[\s\S]*?<\/span>/,'<span data-mnt-footer-address>PROJECT_ADDRESS</span>');
-assert.equal(normalizeFooter(footer),normalizeFooter(referenceFooter),'RIIO must follow the approved RESF footer without extra navigation');
-console.log('PASS: approved hero/facts/Form46 unchanged; complete 9-building ficha, 132 residences, 10 gallery scenes, 11 plan plates with precise linked areas, 3 neighborhood photos and WhatsApp context map. Static evidence only.');
+// Wagner 2026-11-10: Rio pages carry no Sabrina reference (CRECI issue in RJ). The reference footer is São Paulo (Tiel),
+// so only the contact paragraph is swapped to the Rio contact before comparing; everything else must stay identical.
+const SP_CONTACT='<p><strong>Sabrina da Tegra · Corretora Tegra Vendas · CRECI-SP 209.905-F.</strong><br><a href="tel:+5511960779328">(11) 96077-9328</a> · <a href="https://corretor.tegravendas.com.br/sabrina/sp" target="_blank" rel="noopener noreferrer">perfil oficial Tegra Vendas</a></p>';
+// Wagner 2026-11-10: RJ service-center contact (R1/R7), approved copy.
+const RIO_CONTACT='<p>Central de atendimento RJ · <a href="tel:+5511951667227">(11) 95166-7227</a> · Encaminhamento ao corretor local autorizado.</p>';
+assert.equal(footer.split(RIO_CONTACT).length,2,'RIIO footer must carry the direct Tegra contact once');
+assert.equal(referenceFooter.split(SP_CONTACT).length,2,'Reference footer contact changed; review this comparison');
+assert(!/sabrina|CRECI/i.test(html),'RIIO page must carry no Sabrina/CRECI reference');
+const SP_DISCLAIMER='devem ser confirmadas diretamente com a equipe Tegra Vendas.', RIO_DISCLAIMER='devem ser confirmadas com a central de atendimento RJ.';
+assert.equal(normalizeFooter(footer),normalizeFooter(referenceFooter.replace(SP_CONTACT,RIO_CONTACT).replace(SP_DISCLAIMER,RIO_DISCLAIMER)),'RIIO must follow the approved RESF footer without extra navigation');
+console.log('PASS: approved hero/facts/Form46 unchanged; ficha kept in docs (9 buildings, 132 residences), tables and Sabrina section off the page, 10 gallery scenes, 11 plan plates with precise linked areas, 3 neighborhood photos and WhatsApp context map. Static evidence only.');

@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import {CHANNELS,RJ_PROJECT_SLUGS,RJ_COPY,RJ_FORBIDDEN} from "./lib/commercial-channels.mjs";
 
 const ROOT = process.cwd();
 const FOOTER_LOGO = "/assets/brand/tegra-vendas-256.webp";
@@ -7,6 +8,11 @@ const P1 = "Página de atendimento comercial More em um Tegra. Informações de 
 const P2 = "Os valores exibidos nesta página são referências comerciais vinculadas às unidades indicadas e podem sofrer alterações. Alguns empreendimentos podem apresentar condições promocionais específicas, sujeitas à disponibilidade da respectiva unidade. Preços, unidades, disponibilidade e condições comerciais devem ser confirmados com nossos corretores no atendimento.";
 const CONTACT = "Sabrina da Tegra · Corretora Tegra Vendas · CRECI-SP 209.905-F.";
 const PROFILE = "https://corretor.tegravendas.com.br/sabrina/sp";
+// Wagner 2026-11-10: canais separados por região (R1/R7). Só as páginas RJ usam a central de atendimento RJ,
+// sem Sabrina; São Paulo mantém CONTACT, PROFILE, telefone e aviso P1 atuais. Fonte: scripts/lib/commercial-channels.mjs.
+const RIO_SLUGS = new Set(RJ_PROJECT_SLUGS);
+const P1_RIO = P1.replace("devem ser confirmadas diretamente com a equipe Tegra Vendas.", "devem ser confirmadas com a central de atendimento RJ.");
+const textOnly = (html) => html.replace(/<[^>]+>/g, "");
 const TEGRA_CORPORATE_HOST = /(?:https?:)?\/\/(?:[^\s"'<>/]+\.)?tegraincorporadora\.com\.br\b/i;
 const EXACT_STREET_TOKENS = [
   "Rua Fortunato Ferraz",
@@ -91,10 +97,14 @@ if(fs.existsSync(projectsDir)){
     if(!footer) fail(`${rel}: future-page footer contract missing`);
     if(!footer.includes("data-mnt-footer-address")) fail(`${rel}: future-page governed address hook missing`);
     if(!footer.includes(FOOTER_LOGO)) fail(`${rel}: future-page canonical footer logo missing`);
-    if(!footer.includes(P1)||!footer.includes(P2)) fail(`${rel}: future-page disclaimer copy drift`);
-    if(!footer.includes(CONTACT)) fail(`${rel}: future-page canonical Sabrina contact missing`);
-    if(!footer.includes('href="tel:+5511960779328"')) fail(`${rel}: future-page canonical phone link missing`);
-    if(!footer.includes(PROFILE)) fail(`${rel}: future-page official Sabrina profile missing`);
+    const rio=RIO_SLUGS.has(dir.name);
+    if(!footer.includes(rio?P1_RIO:P1)||!footer.includes(P2)) fail(`${rel}: future-page disclaimer copy drift`);
+    if(rio){ if(!textOnly(footer).includes(RJ_COPY.footer)||RJ_FORBIDDEN.test(footer)) fail(`${rel}: Rio footer must carry the RJ service-center contact, without Sabrina/CRECI or Tegra attribution`); }
+    else if(!footer.includes(CONTACT)) fail(`${rel}: future-page canonical Sabrina contact missing`);
+    const tel=rio?CHANNELS.rj.tel:CHANNELS.sp.tel, otherTel=rio?CHANNELS.sp.tel:CHANNELS.rj.tel;
+    if(!footer.includes(`href="tel:${tel}"`)) fail(`${rel}: future-page canonical phone link missing`);
+    if(html.includes(otherTel.slice(1))) fail(`${rel}: page uses the commercial channel of the other region`);
+    if(!rio&&!footer.includes(PROFILE)) fail(`${rel}: future-page official Sabrina profile missing`);
     validateNeutralFooterAddress(rel, html, footer);
     // Exact Órbita 360-degree tour is an explicit visual-media exception.
     // Strip only this official tour destination; all other corporate URLs remain prohibited.

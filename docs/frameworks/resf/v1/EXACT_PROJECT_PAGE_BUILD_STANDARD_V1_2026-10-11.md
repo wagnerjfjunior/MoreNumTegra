@@ -143,3 +143,6 @@ Em toda revisão RESF envolvendo descoberta, páginas de empreendimento, convers
 - *Unidade {número} · condição à vista de R$ {preço}. Consulte a Tegra Vendas para confirmar a vigência, valores promocionais e disponibilidade.
 
 Asterisco único na composição do preço; evitar rótulos duplicados de “à vista”. Preservar o componente de destaque `cashOffer` e `cashSuffixSmall`, acessibilidade e os dados estruturados consistentes. Revisões da redação comercial exigem alinhamento explícito prévio com o proprietário; **não enriquecer a copy por iniciativa própria**. A manutenção de evidências internas, confirmação de preço/disponibilidade e gates de QA/release permanece obrigatória, sem poluir o conteúdo comercial exibido ao comprador.
+
+## Adendo de 2026-11-09 — Regras de conversão (REGRA)
+As regras R1–R6 de `RESF_CONVERSION_GUARDRAILS_2026-11-09.md` valem para toda página de venda: nunca enviar o cliente a site concorrente; nenhuma mídia de concorrente; página de venda não se justifica; localização no padrão Mozae (mapa → WhatsApp); plantas sem imagem oficial em cards com "Solicitar Planta" → WhatsApp; rodapé com endereço igual ao JSON-LD. Validador: `scripts/validate-resf-conversion-guard.mjs`.

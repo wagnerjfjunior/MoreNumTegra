@@ -11,7 +11,7 @@ for(const slug of slugs) {
  const path=root+slug+"/index.html",h=fs.readFileSync(path,"utf8");
  const body=h.slice(h.indexOf("<body"));
  assert(!/31\/10\/2026|Fonte e transparência|Fonte:|fonte: galeria pública|tabela de setembro\/2026|promoção encerrada/i.test(body),slug+": internal audit or expired campaign language in conversion page");
- assert(body.includes("class=\"pricebox\"")&&body.includes("Consultar condições com Sabrina"),slug+": price CTA missing");
+ assert(body.includes("class=\"pricebox\"")&&body.includes("Negociar condições"),slug+": price CTA missing");
  assert(body.includes("Seu próximo passo")&&body.includes("Quero receber uma proposta"),slug+": conversion section missing");
  const fail=m=>errors.push(slug+": "+m);
  const hero=h.match(/<section class="hero"[\s\S]*?<\/section>/)?.[0]||"";
@@ -35,7 +35,7 @@ for(const slug of slugs) {
  if(!/(Pronto para morar|Em construção|Lançamento)/.test(facts))fail("stage fact missing");
  if(!h.includes('<section class="section" id="galeria"'))fail("gallery landmark missing");
  if(!gallery.includes("<figure")||!gallery.includes('loading="lazy"'))fail("gallery must contain lazy project scenes");
- const expectedSlides=slug==="claris-rosas"?3:slug==="kronos-by-tegra"?9:10;
+ const expectedSlides=slug==="claris-rosas"?3:slug==="kronos-by-tegra"?12:10;
  const slideCount=(gallery.match(/class="photo rio-gallery-slide"/g)||[]).length;
  if(slideCount!==expectedSlides||!gallery.includes("data-rio-gallery")||!gallery.includes("data-gallery-next")||!gallery.includes("data-gallery-prev"))fail("gallery count/controls wrong: "+slideCount+" expected "+expectedSlides);
  if(!h.includes('id="plantas-oficiais"'))fail("missing distinct floorplans/implantation section");
@@ -45,7 +45,7 @@ for(const slug of slugs) {
  if((h.match(/<img\b(?![^>]*\balt=)[^>]*>/gi)||[]).length)fail("one or more images missing ALT");
  if(!h.includes('id="plantas"'))fail("tipology section missing");
  if(!h.includes('id="formulario"'))fail("conversion section missing");
- if(!h.includes('id="moretegra-lead-form"')||!h.includes('name="tenant_id" value="313"')||!h.includes('name="form_id" value="46"'))fail("Greenn Form 46 contract missing");
+ if(!h.includes('id="moretegra-lead-form"')||!h.includes('name="tenant_id" value="313"')||!h.includes('name="form_id" value="47"')||!h.includes('data-form-id="47"'))fail("Greenn Form 47 (Rio) contract missing");
  if(!h.includes('id="mt-floating-dock"'))fail("floating WhatsApp and conditions dock missing");
  if(!h.includes('href="#formulario"'))fail("conditions CTA missing");
  if(!h.includes('s3-gdigital.s3.amazonaws.com/gdigital/313/Logo_Tegra_Amarelo'))fail("official yellow Tegra logo missing");

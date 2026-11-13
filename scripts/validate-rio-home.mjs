@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from "node:fs";
 import assert from "node:assert/strict";
+import {CHANNELS,RJ_PROJECT_SLUGS,RJ_COPY,RJ_FORBIDDEN} from "./lib/commercial-channels.mjs";
 const h=fs.readFileSync("src-greenn/rio-de-janeiro/index.html","utf8");
 const js=fs.readFileSync("src-greenn/rio-de-janeiro/home.js","utf8");
 const css=fs.readFileSync("src-greenn/rio-de-janeiro/home.css","utf8");
@@ -22,7 +23,8 @@ for(const id of ["rio-busca","rio-estagio","rio-tipo","rio-metragem","rio-limpar
  assert(h.includes('id="'+id+'"'),"missing control "+id);
 }
 assert(h.includes('name="tenant_id" value="313"'),"tenant contract");
-assert(h.includes('name="form_id" value="46"'),"Form 46 contract");
+// Wagner 2026-11-10: o Rio usa o formulário 47 da Green (canal RJ); São Paulo continua no 46.
+assert(h.includes(`name="form_id" value="${CHANNELS.rj.formId}"`)&&h.includes(`data-form-id="${CHANNELS.rj.formId}"`),"Form 47 (Rio) contract");
 assert(h.includes('data-moretegra-lead-form'),"runtime integration marker");
 assert(h.includes('/src-greenn/preview/runtime.js'),"shared validated form runtime");
 assert(h.includes('/src-greenn/rio-de-janeiro/home.js'),"filters attached");
@@ -60,14 +62,18 @@ assert.equal(coll.url,route);assert.equal(list.itemListElement.length,7);
 assert.equal(faq.mainEntity.length,5);
 const htmlText=h.replace(/<script[\s\S]*?<\/script>/g,"").replace(/<[^>]+>/g," ").replace(/\s+/g," ");
 for(const f of faq.mainEntity)assert(htmlText.includes(f.name),"FAQ JSON-LD must match visible question "+f.name);
-const sabrinaImage="https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp";
-assert(h.includes('id="sabrina"')&&h.includes(sabrinaImage),"approved Sabrina portrait section and image");
-assert(h.includes("Corretora Tegra Vendas · CRECI-SP 209.905-F"),"professional credentials");
-assert(h.includes("solicite atendimento por Sabrina da Tegra"),"in-stand instruction");
-assert(h.includes('href="tel:+5511960779328"'),"contact identity");
-const person=graph.find(n=>n["@type"]==="Person"&&n["@id"]==="https://www.moretegra.com.br/#sabrina-da-tegra");
-assert(person&&person.image===sabrinaImage&&person.identifier?.value==="209.905-F","broker schema must match visible photo and registration");
-assert(graph.some(n=>n["@type"]==="ContactPoint"&&n.telephone==="+5511960779328"),"canonical broker contact point");
+// Decisão do Wagner (2026-11-10): canal RJ = central de atendimento RJ (R1/R7), sem Sabrina e sem atribuir o canal à Tegra.
+const agentSec=(h.match(/<section class="rio-section rio-agent-section"[\s\S]*?<\/section>/)||[""])[0];
+assert(agentSec.includes('id="atendimento"')&&agentSec.includes(RJ_COPY.blockTitle)&&agentSec.includes(RJ_COPY.blockLead)&&agentSec.includes(`wa.me/${CHANNELS.rj.whatsapp}`),"RJ service block with approved copy");
+assert(!h.includes('id="sabrina"')&&!/rio-agent-photo|Sabrina/.test(agentSec),"no Sabrina portrait section on the hub");
+assert(!/sabrina/i.test(h)&&!/CRECI/.test(h),"Rio hub carries no Sabrina reference nor CRECI");
+assert(h.replace(/<[^>]+>/g,"").includes(RJ_COPY.footer),"RJ service-center contact in footer");
+assert(!RJ_FORBIDDEN.test(h.replace(/https?:\/\/[^"\s]+/g,"")),"no Sabrina/CRECI or Tegra attribution on the Rio hub");
+assert(!h.includes(CHANNELS.sp.whatsapp),"no São Paulo channel on the Rio hub");
+assert(h.includes(`href="tel:${CHANNELS.rj.tel}"`),"contact identity");
+assert(!graph.some(n=>n["@type"]==="Person"),"no broker Person on the Rio hub");
+assert(graph.some(n=>n["@type"]==="ContactPoint"&&n.telephone===CHANNELS.rj.tel&&n.name==="Central de atendimento RJ"),"RJ service-center contact point");
+assert(!graph.some(n=>n.contactPoint&&String(n["@id"]).endsWith("#tegra-vendas")),"RJ channel is not attached to Tegra Vendas");
 assert(css.includes("@media(max-width:720px)"),"mobile CSS");
 assert(js.includes("data-rio-card")&&js.includes('addEventListener'),"interactive filters");
 console.log("PASS Rio Home: 7 priced cards, commercial Big Idea and CTAs, scoped filters, 5 FAQ, Form46, licensed photo, indexable and canonical");

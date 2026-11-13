@@ -6,6 +6,13 @@
   const FORM_ENDPOINT = "https://back.gdigital.com.br/form/register";
   const TENANT_ID = "313";
   const FORM_ID = "46";
+  // Wagner 2026-11-10: canais separados. Form 46 = São Paulo (padrão); form 47 = Rio de Janeiro, só quando a
+  // página declara data-form-id="47". Qualquer outro valor cai no 46. Contrato: scripts/lib/commercial-channels.mjs.
+  const FORM_IDS = Object.freeze(["46", "47"]);
+  function formIdOf(form) {
+    const declared = String(form?.dataset?.formId || "");
+    return FORM_IDS.includes(declared) ? declared : FORM_ID;
+  }
   const FORM_TITLE = "MoreEmUmTegra";
   const LEAD_PENDING_KEY = "mnt.lead.pending.v2";
   const LEGACY_LEAD_PENDING_KEY = "mnt.lead.pending.v1";
@@ -81,6 +88,7 @@
       const marker = {
         version: 2,
         submitted_at: Date.now(),
+        form_id: formIdOf(form),
         ...measurementProjectContext(form)
       };
       window.sessionStorage.setItem(LEAD_PENDING_KEY, JSON.stringify(marker));
@@ -494,7 +502,9 @@
       const noProject = project === "Página principal | Nenhum empreendimento selecionado";
       contextNode.hidden = !noProject;
       contextNode.textContent = noProject
-        ? "Nenhum empreendimento selecionado. Sabrina pode ajudar você a comparar as opções."
+        ? (formIdOf(form) === "47"
+          ? "Nenhum empreendimento selecionado. A central de atendimento RJ ajuda você a comparar as opções."
+          : "Nenhum empreendimento selecionado. Sabrina pode ajudar você a comparar as opções.")
         : "";
     };
 
@@ -563,7 +573,7 @@
       const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
       const payload = new FormData();
       payload.append("tenant_id", TENANT_ID);
-      payload.append("form_id", FORM_ID);
+      payload.append("form_id", formIdOf(form));
       payload.append("title", FORM_TITLE);
       payload.append("nome", result.name);
       payload.append("email", result.email);

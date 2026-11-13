@@ -21,7 +21,9 @@ for(const slug of slugs){
  const rioStaged=new Set(['kronos-by-tegra','claris-casa-e-clube','claris-rosas','gran-thai-leisure-residence','singular-private-residence','gaea-home-resort']).has(slug);
  if(rioStaged){
    const html=readFileSync(path,'utf8');
-   for(const t of ['WebPage','BreadcrumbList','FAQPage','Organization','Person'])assert(now.some(n=>type(n,t)),slug+': staged RESF entity missing '+t);
+   // Wagner 2026-11-10: Rio pages drop the broker Person (CRECI issue in RJ); contact is direct with Tegra.
+   for(const t of ['WebPage','BreadcrumbList','FAQPage','Organization'])assert(now.some(n=>type(n,t)),slug+': staged RESF entity missing '+t);
+   assert(!now.some(n=>type(n,'Person')),slug+': Rio page must not declare a broker Person');
    const residentialType=slug==='claris-casa-e-clube'?'GatedResidenceCommunity':'ApartmentComplex';
    assert(now.some(n=>type(n,residentialType)),slug+': staged project type missing '+residentialType);
    assert(now.some(n=>type(n,'ImageObject')),slug+': verified project hero image entity missing');
@@ -64,7 +66,7 @@ for(const slug of slugs){
   assert(!now.some(n=>type(n,'Offer')),'Jerivás cannot declare unsourced active offers');
  }
  if(slug==='riio-by-piero-lissoni'){
-  for(const t of ['BreadcrumbList','ImageObject','Organization','ContactPoint','Person','RealEstateAgent','Service','FloorPlan','FAQPage'])assert(now.some(n=>type(n,t)),'RIIO: missing evidenced entity '+t);
+  for(const t of ['BreadcrumbList','ImageObject','Organization','ContactPoint','RealEstateAgent','Service','FloorPlan','FAQPage'])assert(now.some(n=>type(n,t)),'RIIO: missing evidenced entity '+t);
   const p=now.find(n=>type(n,'ApartmentComplex'));
   assert.equal(p.address?.streetAddress,'Avenida Lúcio Costa, 4900');
   assert.equal(p.address?.addressRegion,'RJ');
