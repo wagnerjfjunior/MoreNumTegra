@@ -219,3 +219,14 @@ Execução:
   - Rebaseline autorizado do bloco `form46` do RIIO (só `data-form-id` e `form_id` de 46 para 47), hash anterior em `history`.
   - Validadores novos: `validate-measurement-region-rj.mjs` (inclui V6, dados pessoais) e smoke `.github/diagnostics/rj-sp-form-measurement-smoke.mjs`.
   - P9 (evidência local): uma única conversão por lead, nenhuma conversão extra no recarregamento, e, no caminho de aceite, as três restaurações de consentimento em `/obrigado/` repetem a mesma escolha (nenhuma atualização conflitante). O caminho de recusa não foi testado. A verificação em produção continua no gate P6/P9.
+
+## 11. Homepage exclusiva de São Paulo (2026-11-12)
+
+Status: **IMPLEMENTADA na branch `feat/home-sp-exclusiva-20261112`** (criada a partir de `846876b`, head da PR #561); entra em produção com o merge dessa branch.
+
+Decisões do Wagner (2026-11-12): "o CRECI é regional"; a home `www.moretegra.com.br/` fica só com São Paulo (sem cards, menu, hero, filtro ou metadados do Rio); o hub `/rio-de-janeiro/` e as 7 páginas RJ ficam independentes. O bloco do Prêmio Master Imobiliário 2026, que cita o RIIO sem link, **permanece** ("como não tem link ou redirecionamento não vejo problema").
+
+O que mudou: `src-greenn/preview/index.html` (title, description, Open Graph, Twitter, JSON-LD `WebPage` e `ItemList` sem o RIIO; faixa do topo "SÃO PAULO"; menu sem "Rio de Janeiro"; hero, título e texto do catálogo só de São Paulo; filtro "Cidade" removido; versão do script) e `src-greenn/moretegra.js` (catálogo `PROJECTS` só com `SP_PROJECTS`; os 7 cards RJ e o texto de localização da Barra saíram; o catálogo removido fica no histórico do git, commit `846876b`). Guarda: `scripts/validate-home-sp-exclusiva.mjs`.
+
+As 8 URLs do Rio continuam no `sitemap.xml`, que é por onde o Google passa a encontrá-las sem o link da home.
+
