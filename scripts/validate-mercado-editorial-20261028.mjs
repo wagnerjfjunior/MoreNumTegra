@@ -15,8 +15,11 @@ for(const p of ['src-greenn/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/
 const titles=new Set(),descriptions=new Set(),h1s=new Set(),allLinks=new Set();
 const rew=new Map(v.rewrites.map(r=>[r.source,r.destination]));
 const results=[];
+// Artigos sobre o Rio usam o canal RJ, sem a Sabrina (Wagner, 2026-11-13; scripts/lib/rj-blog-posts.mjs).
+const RJ_IDS=new Set([8]);
+const RJ_FOOTER='Central de atendimento RJ · <a href="tel:+5511951667227">(11) 95166-7227</a> · Encaminhamento ao corretor local autorizado. · <a href="/rio-de-janeiro/#contato">Formulário</a>';
 for(const a of data){
- const file='src-greenn'+a.url+'index.html',html=read(file),url='https://www.moretegra.com.br'+a.url;
+ const file='src-greenn'+a.url+'index.html',html=read(file),url='https://www.moretegra.com.br'+a.url,rj=RJ_IDS.has(a.id);
  assert.notEqual(a.url,a.legacy);assert.ok(!h1s.has(a.h1));h1s.add(a.h1);
  assert.ok(!titles.has(a.title));titles.add(a.title);assert.ok(!descriptions.has(a.description));descriptions.add(a.description);
  assert.equal((html.match(/<h1\b/g)||[]).length,1);assert.ok(html.includes('<h1>'+a.h1+'</h1>'));
@@ -25,11 +28,12 @@ for(const a of data){
  assert.ok(html.includes('property="og:url" content="'+url+'"'));
  for(const field of ['og:image','og:title','og:description','twitter:image','twitter:title','twitter:description'])assert.ok(html.includes('"'+field+'"'));
  const graph=JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
- assert.deepEqual(graph.map(x=>x['@type']).sort(),['BlogPosting','BreadcrumbList','Person','RealEstateAgent'].sort());
+ assert.deepEqual(graph.map(x=>x['@type']).sort(),(rj?['BlogPosting','BreadcrumbList']:['BlogPosting','BreadcrumbList','Person','RealEstateAgent']).sort());
  const post=graph.find(x=>x['@type']==='BlogPosting');assert.equal(post.headline,a.h1);assert.equal(post.mainEntityOfPage['@id'],url);assert.notEqual(post.author.name,'Sabrina da Tegra');
  const crumbs=graph.find(x=>x['@type']==='BreadcrumbList');assert.equal(crumbs.itemListElement.at(-1).item,url);
- assert.ok(html.includes('CRECI-SP 209.905-F'));assert.ok(html.includes('href="/regioes/#formulario"'));
- assert.ok(html.includes('https://wa.me/5511960779328?text='));
+ if(rj){assert.ok(!/sabrina|CRECI|5511960779328|\/regioes\/#formulario/i.test(html),'RJ article without SP channel '+a.id);assert.ok(html.includes('https://wa.me/5511951667227?text='));assert.ok(html.includes(RJ_FOOTER));}
+ else{assert.ok(html.includes('CRECI-SP 209.905-F'));assert.ok(html.includes('href="/regioes/#formulario"'));
+ assert.ok(html.includes('https://wa.me/5511960779328?text='));}
  assert.equal((html.match(/id="mt-floating-dock"/g)||[]).length,1,'One approved RESF dock');
  assert.ok(!html.includes('mnt-market-dock'),'Retired nonstandard dock must not return');
  const dock=html.match(/<nav id="mt-floating-dock"[\s\S]*?<\/nav>/)[0];
@@ -37,7 +41,7 @@ for(const a of data){
  assert.ok(dock.includes('mt-floating mt-floating-whatsapp'));
  assert.ok(dock.includes('whatsapp-removebg.webp'),'Official WhatsApp logo');
  assert.ok(html.includes('var(--mt-consent-offset,14px)'),'Dock respects consent offset');
- const copy=html.match(/<div class="mnt-market-copy">([\s\S]*?)<\/div><section class="mnt-sabrina-card"/)[1];
+ const copy=html.match(/<div class="mnt-market-copy">([\s\S]*?)<\/div><section class="mnt-(?:sabrina|rj)-card"/)[1];
  assert.ok(!/<p>[^]*?<a href="\//.test(copy.replace(/<aside\b[\s\S]*?<\/aside>/g,'')),'Internal editorial links must use cards');
  assert.ok(!html.includes('FAQPage'));assert.ok(!html.includes('<!-- CARD:'));assert.ok(!html.includes('localhost'));
  const ids=[...html.matchAll(/\bid="([^\"]+)"/g)].map(x=>x[1]);assert.equal(new Set(ids).size,ids.length,'Duplicate HTML id '+a.id);
@@ -52,7 +56,7 @@ for(const a of data){
   assert.ok(existsSync(dest.slice(1))||existsSync(dest.slice(1)+'index.html')||path==='/','Broken internal link '+href);
   if(hash){const target=path==='/'?'src-greenn/index.html':(existsSync(dest.slice(1))?dest.slice(1):dest.slice(1)+'index.html');assert.ok(read(target).includes('id="'+hash+'"'),'Missing anchor '+href);}
  }
- const legacyFile='src-greenn'+a.legacy+'index.html';assert.equal(read(legacyFile),baseline(legacyFile));assert.ok(read(legacyFile).includes('noindex'));
+ const legacyFile='src-greenn'+a.legacy+'index.html',legacyBase=baseline(legacyFile);assert.equal(read(legacyFile),rj?legacyBase.replace('Atendimento Sabrina da Tegra · CRECI-SP 209.905-F · <a href="tel:+5511960779328">(11) 96077-9328</a> · <a href="/regioes/#formulario">Formulário</a>',RJ_FOOTER):legacyBase);assert.ok(read(legacyFile).includes('noindex'));
  assert.ok(a.words>=1800&&a.words<=2400,'Editorial word target '+a.id+' = '+a.words);
  assert.ok(a.sources.length>=2);assert.equal(rew.get(a.url),'/'+file);
  results.push({id:a.id,url:a.url,words:a.words,images:imgCount,source_links:a.sources.length,status:'STATIC_PASS'});
