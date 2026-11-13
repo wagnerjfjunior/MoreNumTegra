@@ -15,7 +15,9 @@ function assertStand(slug,nodes,project,html){
  const s=nodes.find(n=>n['@id']===STAND(slug));
  assert(s&&s['@type']==='RealEstateAgent',slug+': in-loco Tegra stand entity missing');
  for(const k of ['streetAddress','postalCode','addressLocality','addressRegion'])assert.equal(s.address?.[k],project.address[k],slug+': stand address '+k+' must equal project');
- assert(!s.employee&&!s.identifier&&!s.telephone,slug+': stand must not borrow Sabrina identity, CRECI or phone');
+ assert(!s.employee&&!s.identifier,slug+': stand must not borrow Sabrina identity or CRECI');
+ // Telefone do estande: só a central de atendimento RJ (Wagner, 2026-11-13); nunca o número de SP/Sabrina.
+ assert(!s.telephone||s.telephone===CHANNELS.rj.tel,slug+': stand phone must be the RJ central, never the SP/Sabrina number');
  assert.deepEqual(s.geo,project.geo,slug+': stand geo must equal project geo (or both absent)');
  if(project.geo){assert.equal(slug,'gaea-home-resort',slug+': geo only for confirmed point');}
  const foot=(html.match(/<span data-mnt-footer-address[^>]*>([\s\S]*?)<\/span>/)||[])[1]||'';

@@ -241,3 +241,39 @@ Branch `feat/rj-bairros-barra-20261113`. Decisões do Wagner (2026-11-13):
 Como foram feitas: visual e blocos do hub (`home.css`, formulário 47, rodapé e canal RJ). Geradas por `scripts/build-rj-regioes-pages.py`, que lê os 7 projetos dos cards do hub (fonte única). Entram no contrato RJ (`RJ_REGION_PAGES` em `scripts/lib/commercial-channels.mjs`), então seguem as regras R1/R7 e a mensuração do Rio. Não têm link para a home de São Paulo nem para bairros de SP. Guarda: `scripts/validate-rj-regioes.mjs`.
 
 Fatos usados no texto da Barra e fontes: Bosque da Barra com 50 hectares, acesso pela Avenida das Américas, 6000 (Riotur); estação Jardim Oceânico da Linha 4, Barra–Ipanema em cerca de 13 minutos (Diário do Transporte, 06/08/2026); sub-regiões, escolas, faculdades, shoppings e praias resumidos do guia de bairro da Tegra (texto reescrito, não copiado). Endereços dos projetos: rodapé do hub.
+
+## 13. Slugs do Rio padronizados e estandes completos (2026-11-13)
+
+Branch `feat/rio-slugs-estandes-20261113`, a partir da `main` em `81cfb6e` (#563).
+
+Decisões do Wagner (2026-11-13):
+
+- Padrão de URL do Rio: `/rio-de-janeiro/`, `/rio-de-janeiro/regioes/` e `/rio-de-janeiro/regioes/oeste/barra-da-tijuca/`. Substitui o `/rj/regioes/...` da seção 12.
+- Sem redirecionamento 301 dos `/rj/regioes/...`, porque essas páginas não estavam indexadas (informação do Wagner, não verificada no Search Console). Os endereços antigos passam a dar 404.
+- `telephone` dos estandes: central RJ `+5511951667227`. O Wagner escreveu "11951667226" e confirmou depois que é o 7227, o número já publicado em todo o Rio. Fica registrado que é uma decisão do Wagner que relativiza a R7 nesse campo: o nó "Atendimento presencial Tegra" (`parentOrganization` `#tegra-vendas`) passa a ter o telefone da central.
+- `priceRange`: "A partir de R$ X", com o menor valor anunciado. Não há valor máximo publicado no site nem na página dos empreendimentos, então a faixa com teto não foi possível.
+
+O que mudou:
+
+- Arquivos movidos para `src-greenn/rio-de-janeiro/regioes/...`. As rotas, o canonical, o Open Graph, a trilha, o `Place` `@id`, o sitemap e os links do hub usam o novo slug. As identidades de página no GA4 (`rj_regioes_hub`, `rj_regiao_barra_da_tijuca`) ficaram iguais, para manter a série de dados.
+- `RealEstateAgent` `#estande-tegra`, nos 7 nós do hub e no nó de cada empreendimento:
+  - `image`: a mesma do `og:image` da página do empreendimento.
+  - `telephone`: `+5511951667227`.
+  - `priceRange`: o mesmo "a partir de" visível na página.
+- Preços usados:
+
+  | Empreendimento | Preço a partir de |
+  |---|---|
+  | Kronos | R$ 1.471.000 |
+  | Gran Thai | R$ 2.148.000 |
+  | Gaea | R$ 2.221.000 |
+  | Claris Casa & Clube | R$ 3.473.000 |
+  | Singular | R$ 3.610.000 |
+  | Claris Rosas | R$ 3.647.000 |
+  | RIIO | R$ 8.212.000 (só no hub) |
+
+- A página do RIIO não mostra preço, então o estande dela ficou sem `priceRange`. Schema só pode repetir o que está visível. Ali o aviso opcional continua.
+- Guardas:
+  - `validate-rj-regioes.mjs`: proíbe os slugs `/rj/regioes/`; exige `image` e o telefone da central RJ; exige que o `priceRange` esteja visível na página.
+  - `validate-onsite-realtor-project-address.mjs`: o estande pode ter telefone, mas só o da central RJ, nunca o de SP ou da Sabrina.
+- Manutenção: quando a tabela de preços mudar, o card do hub, o FAQ da página e o `priceRange` precisam mudar juntos. O validador acusa se o `priceRange` não bater com o texto da página.

@@ -45,8 +45,8 @@ export const RJ_PROJECT_SLUGS = Object.freeze([
 
 // Páginas de bairro do Rio (Wagner, 2026-11-13): mesmo canal RJ, form 47 e regras R1/R7.
 export const RJ_REGION_PAGES = Object.freeze([
-  "src-greenn/rj/regioes/index.html",
-  "src-greenn/rj/regioes/oeste/barra-da-tijuca/index.html",
+  "src-greenn/rio-de-janeiro/regioes/index.html",
+  "src-greenn/rio-de-janeiro/regioes/oeste/barra-da-tijuca/index.html",
 ]);
 
 export const RJ_PAGES = Object.freeze([

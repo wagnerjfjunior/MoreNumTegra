@@ -24,6 +24,6 @@
 
 /* Rodapé fonte única (Wagner, 2026-11-09): mesma cor, sem sublinhado, sem negrito ou itálico */
 .rio-footer,.rio-footer p,.rio-footer a,.rio-footer a:visited,.rio-footer a:hover,.rio-footer strong,.rio-footer b,.rio-footer em,.rio-footer i{color:#ddd;font-family:inherit;font-weight:400;font-style:normal;text-decoration:none}
-/* Páginas de bairro do Rio (/rj/regioes/), 2026-11-13 */
+/* Páginas de bairro do Rio (/rio-de-janeiro/regioes/), 2026-11-13 */
 .rio-crumb{background:#f6f1e7;border-bottom:1px solid rgba(23,24,19,.08);font-size:.9rem}.rio-crumb .rio-wrap{padding:12px 0}.rio-crumb a{color:inherit}.rio-crumb [aria-current]{font-weight:600}
 .rio-area{margin-top:34px}.rio-area h3{font:500 clamp(1.4rem,2.4vw,1.9rem)/1.15 Georgia,"Times New Roman",serif;margin:0 0 6px}.rio-area>p{margin:0 0 16px;max-width:680px}
