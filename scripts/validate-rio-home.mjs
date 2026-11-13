@@ -49,7 +49,11 @@ assert(!h.includes('"@type":"Offer"'),"historical reference is not an active Off
 assert(!/https:\/\/www\.tegraincorporadora\.com\.br/.test(h),"no outbound commercial links");
 assert(!h.includes("/empreendimentos/claris-marapendi/"),"do not mix Claris phases");
 assert(!h.includes('href="/sao-paulo/"'),"São Paulo hub not yet published");
-assert(h.includes("images.pexels.com/photos/37212266/"),"licensed Pexels Barra panorama required");
+// Wagner 2026-11-13: hero = foto oficial da Tegra do guia do bairro Barra da Tijuca (dispensa crédito), no lugar do Pexels.
+const HERO_TEGRA="https://stracctegra.blob.core.windows.net/assets/Bairro/GuiaBairro/29/Imagem/59a1c0b7-2f30-4f6e-a212-665f2683ecd3.jpg";
+assert(h.split(HERO_TEGRA).length-1>=4,"official Tegra Barra panorama required in hero, og, twitter and JSON-LD");
+assert(!/pexels/i.test(h),"no Pexels image or license left on the Rio hub");
+assert(h.includes('href="/rj/regioes/"')&&h.includes('href="/rj/regioes/oeste/barra-da-tijuca/"'),"hub links to the Rio neighborhood pages");
 assert(!h.includes("rio-photo-credit")&&!h.includes("rio-price-note")&&!h.includes("rio-cities"),"editorial clutter must be absent");
 assert(h.includes("Seu próximo capítulo na Barra da Tijuca começa aqui."),"conversion Big Idea missing");
 assert(h.includes("Encontrar meu imóvel")&&h.includes("Quero atendimento personalizado"),"hero conversion CTAs missing");

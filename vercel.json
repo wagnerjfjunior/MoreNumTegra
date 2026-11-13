@@ -41,6 +41,8 @@
       "source": "/rio-de-janeiro/",
       "destination": "/src-greenn/rio-de-janeiro/index.html"
     },
+    { "source": "/rj/regioes/", "destination": "/src-greenn/rj/regioes/index.html" },
+    { "source": "/rj/regioes/oeste/barra-da-tijuca/", "destination": "/src-greenn/rj/regioes/oeste/barra-da-tijuca/index.html" },
     {
       "source": "/regioes/",
       "destination": "/src-greenn/regioes/index.html"

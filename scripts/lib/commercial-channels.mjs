@@ -43,9 +43,16 @@ export const RJ_PROJECT_SLUGS = Object.freeze([
   "riio-by-piero-lissoni",
 ]);
 
+// Páginas de bairro do Rio (Wagner, 2026-11-13): mesmo canal RJ, form 47 e regras R1/R7.
+export const RJ_REGION_PAGES = Object.freeze([
+  "src-greenn/rj/regioes/index.html",
+  "src-greenn/rj/regioes/oeste/barra-da-tijuca/index.html",
+]);
+
 export const RJ_PAGES = Object.freeze([
   "src-greenn/rio-de-janeiro/index.html",
   ...RJ_PROJECT_SLUGS.map((slug) => `src-greenn/empreendimentos/${slug}/index.html`),
+  ...RJ_REGION_PAGES,
 ]);
 
 // Copy aprovada para o canal RJ (Wagner, 2026-11-10).
