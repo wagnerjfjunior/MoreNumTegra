@@ -591,8 +591,6 @@
     }
   ],
   "redirects": [
-    { "source": "/rj/regioes/", "destination": "/rio-de-janeiro/regioes/", "permanent": true },
-    { "source": "/rj/regioes/oeste/barra-da-tijuca/", "destination": "/rio-de-janeiro/regioes/oeste/barra-da-tijuca/", "permanent": true },
     {
       "source": "/src-greenn/complexo-lapa-pirituba/index.html",
       "destination": "/complexo-lapa-pirituba/",

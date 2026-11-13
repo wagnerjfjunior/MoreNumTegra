@@ -36,18 +36,19 @@ const list = JSON.parse(barra.match(/<script type="application\/ld\+json">([\s\S
 if (!list || list.itemListElement.length !== RJ_PROJECT_SLUGS.length) fails.push("barra-da-tijuca: ItemList must list the 7 Rio projects");
 const idx = readFileSync(PAGES["/rio-de-janeiro/regioes/"], "utf8");
 if (!idx.includes('href="/rio-de-janeiro/regioes/oeste/barra-da-tijuca/"')) fails.push("/rio-de-janeiro/regioes/: link to Barra da Tijuca missing");
-// Slugs antigos (/rj/regioes/...) ficam como 301 para os novos (Wagner, 2026-11-13).
-for (const route of Object.keys(PAGES)) {
-  const old = route.replace("/rio-de-janeiro/regioes/", "/rj/regioes/");
-  if (!vercel.redirects.some((r) => r.source === old && r.destination === route && (r.permanent === true || r.statusCode === 301))) fails.push(`${old}: permanent redirect to ${route} missing`);
-  if (sitemap.includes(`<loc>${SITE}${old}</loc>`)) fails.push(`${old}: old slug still in the sitemap`);
-}
-// Estandes RealEstateAgent do Rio com imagem (aviso opcional do teste de resultados avançados).
+// Slugs antigos /rj/regioes/... saem sem redirecionamento: não estavam indexados (Wagner, 2026-11-13).
+if (JSON.stringify(vercel).includes("/rj/regioes/") || sitemap.includes("/rj/regioes/")) fails.push("old /rj/regioes/ slug still in vercel.json or sitemap");
+// Estandes RealEstateAgent do Rio (teste de resultados avançados, Wagner 2026-11-13):
+// image; telephone da central RJ; priceRange "A partir de R$ X" só se o preço estiver visível na própria página.
 for (const f of [hub, ...RJ_PROJECT_SLUGS.map((s) => readFileSync(`src-greenn/empreendimentos/${s}/index.html`, "utf8"))]) {
   const g = JSON.parse(f.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])["@graph"];
-  for (const n of g.filter((x) => x["@id"]?.endsWith("#estande-tegra"))) if (!/^https:\/\//.test(n.image || "")) fails.push(`${n["@id"]}: image missing`);
+  for (const n of g.filter((x) => x["@id"]?.endsWith("#estande-tegra"))) {
+    if (!/^https:\/\//.test(n.image || "")) fails.push(`${n["@id"]}: image missing`);
+    if (n.telephone !== "+5511951667227") fails.push(`${n["@id"]}: telephone must be the RJ central +5511951667227`);
+    if (n.priceRange && !(/^A partir de R\$ [\d.]+$/.test(n.priceRange) && f.includes(n.priceRange.slice(12)))) fails.push(`${n["@id"]}: priceRange not shown on the page`);
+  }
 }
 if (!hub.includes('href="/rio-de-janeiro/regioes/"') || !hub.includes('href="/rio-de-janeiro/regioes/oeste/barra-da-tijuca/"')) fails.push("hub: links to the Rio neighborhood pages missing");
 
 if (fails.length) { fails.forEach((f) => console.error("FAIL " + f)); process.exit(1); }
-console.log("PASS Rio neighborhood pages: routes, sitemap, canonical, Tegra hero, breadcrumb, FAQ, 7 project links, hub links, 301 from the old /rj/ slugs, estande images, no links to the São Paulo home.");
+console.log("PASS Rio neighborhood pages: routes, sitemap, canonical, Tegra hero, breadcrumb, FAQ, 7 project links, hub links, no old /rj/ slugs, estande image/telephone/priceRange, no links to the São Paulo home.");

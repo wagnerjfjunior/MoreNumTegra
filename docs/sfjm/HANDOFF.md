@@ -1,4 +1,4 @@
-# Handoff da branch — Slugs do Rio padronizados e imagem nos estandes
+# Handoff da branch — Slugs do Rio padronizados e estandes completos
 
 > Arquivo de caminho fixo: reescrito por inteiro a cada checkpoint (commit da branch). No merge, o conteúdo vai para o `NEXT_SAFE_ACTION` do projeto e este arquivo sai. Histórico: `git log -- docs/sfjm/HANDOFF.md`.
 >
@@ -12,16 +12,17 @@
 ## Decisão do Wagner (2026-11-13)
 
 - Padrão de URL do Rio: `/rio-de-janeiro/`, `/rio-de-janeiro/regioes/`, `/rio-de-janeiro/regioes/oeste/barra-da-tijuca/`.
-- Corrigir os avisos do teste de resultados avançados no `/rio-de-janeiro/`.
+- Sem 301 dos `/rj/regioes/...` (não estavam indexados).
+- Estandes com `image`, `telephone` da central RJ (`+5511951667227`, confirmado) e `priceRange` "A partir de R$ X" (menor valor anunciado).
 
 ## O que mudou
 
 - `src-greenn/rj/regioes/...` → `src-greenn/rio-de-janeiro/regioes/...` (git mv + regeneração pelo `scripts/build-rj-regioes-pages.py`).
-- `vercel.json`: rewrites dos novos slugs; 301 permanentes de `/rj/regioes/` e `/rj/regioes/oeste/barra-da-tijuca/`.
+- `vercel.json`: rewrites dos novos slugs; os `/rj/regioes/...` saem sem redirecionamento.
 - `sitemap.xml`: só os novos slugs.
-- Hub `/rio-de-janeiro/`: links do menu e da seção da Barra para os novos slugs; `image` nos 7 `RealEstateAgent` `#estande-tegra`.
-- 7 páginas de empreendimento do Rio: `image` no `#estande-tegra` (a mesma do `og:image` da página).
-- `scripts/lib/commercial-channels.mjs` (`RJ_REGION_PAGES`), `validate-rj-regioes.mjs` (agora exige os 301 e a imagem dos estandes), `validate-rio-home.mjs`, smoke `rj-sp-form-measurement-smoke`, comentário em `home.css`.
+- Hub `/rio-de-janeiro/`: links do menu e da seção da Barra para os novos slugs; `image`, `telephone` e `priceRange` nos 7 `RealEstateAgent` `#estande-tegra`.
+- 7 páginas de empreendimento do Rio: `image` e `telephone` no `#estande-tegra`; `priceRange` em 6 (o RIIO não mostra preço na página).
+- `scripts/lib/commercial-channels.mjs` (`RJ_REGION_PAGES`), `validate-rj-regioes.mjs` (proíbe `/rj/regioes/`, exige image/telefone RJ/priceRange visível), `validate-onsite-realtor-project-address.mjs` (telefone do estande só o da central RJ), `validate-rio-home.mjs`, smoke `rj-sp-form-measurement-smoke`, comentário em `home.css`.
 - Identidades GA4 das páginas de bairro mantidas (`rj_regioes_hub`, `rj_regiao_barra_da_tijuca`).
 
 ## Verificação
@@ -34,15 +35,15 @@
 
 | # | Item | Dono |
 |---|---|---|
-| S1 | Decidir `telephone` e `priceRange` nos estandes (ver seção 13: conflito com a R7 e risco de preço vencido) | Wagner |
 | S2 | QA no LVR e merge | Wagner |
-| S3 | Depois do merge: conferir os 301, IndexNow / Search Console dos novos slugs, novo teste de resultados avançados | Wagner + Claude |
+| S3 | Depois do merge: conferir os novos slugs no ar, IndexNow / Search Console, novo teste de resultados avançados | Wagner + Claude |
+| S4 | Página do RIIO sem preço visível: decidir se mostra "a partir de" (aí entra o `priceRange`) | Wagner |
 | B3 | Menu do hub do Rio com "Home nacional" (`/`) e "São Paulo" (`/regioes/`) | Wagner |
 | — | Gates de produção da #561 (P3, P6b, P8, P9), P4, P7 | Wagner + Claude |
 
 ## Próxima ação (única)
 
-Wagner decide S1 e aprova o merge.
+Wagner aprova o merge.
 
 ## Prompt de retomada
 
