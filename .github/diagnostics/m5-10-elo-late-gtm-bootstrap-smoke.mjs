@@ -67,7 +67,8 @@ async function runScenario(name, choiceBeforeLoad){
   assert.notEqual(before.readyState,"complete",`${name}: window.load must still be blocked by held hero`);
   assert.equal(gtmRequests,0,`${name}: GTM network must not start before load/interaction`);
   assert.equal(before.stub,null,`${name}: GTM stub must not be loaded before trigger`);
-  assert.equal(before.events[0],"gtm.js",`${name}: first queued event must remain gtm.js`);
+  // Consent Mode: o default (negado) é enfileirado antes do gtm.js desde 2026-09-28 (56a578ae).
+  assert.deepEqual(before.events.slice(0,2),["default_consent","gtm.js"],`${name}: consent default must precede gtm.js`);
   assert.ok(before.events.includes("mnt_page_view"),`${name}: mnt_page_view must queue before GTM network load`);
 
   if(choiceBeforeLoad){
@@ -86,7 +87,7 @@ async function runScenario(name, choiceBeforeLoad){
     assert.notEqual(early.readyState,"complete",`${name}: first interaction should load GTM before held window.load`);
     assert.equal(gtmRequests,1,`${name}: first interaction must request GTM exactly once`);
     assert.ok(early.events.includes(expected),`${name}: consent source event must remain in dataLayer`);
-    assert.equal(early.stub.queueAtLoad[0],"gtm.js",`${name}: GTM sees gtm.js first even on early interaction`);
+    assert.deepEqual(early.stub.queueAtLoad.slice(0,2),["default_consent","gtm.js"],`${name}: GTM sees consent default then gtm.js even on early interaction`);
   }
 
   heroRelease();
@@ -97,7 +98,7 @@ async function runScenario(name, choiceBeforeLoad){
   if(!choiceBeforeLoad){
     assert.equal(gtmRequests,1,`${name}: window.load must request GTM exactly once`);
     const atLoad=await page.evaluate(()=>window.__mntGtmStub);
-    assert.equal(atLoad.queueAtLoad[0],"gtm.js",`${name}: GTM sees gtm.js first on load-trigger path`);
+    assert.deepEqual(atLoad.queueAtLoad.slice(0,2),["default_consent","gtm.js"],`${name}: GTM sees consent default then gtm.js on load-trigger path`);
 
     await page.locator("[data-consent-accept]").click({timeout:10000});
     await page.waitForTimeout(50);
@@ -110,7 +111,7 @@ async function runScenario(name, choiceBeforeLoad){
   }));
 
   assert.equal(gtmRequests,1,`${name}: load + interaction combination must never duplicate GTM request`);
-  assert.equal(after.events[0],"gtm.js",`${name}: queue ordering remains stable`);
+  assert.deepEqual(after.events.slice(0,2),["default_consent","gtm.js"],`${name}: queue ordering remains stable`);
   assert.ok(after.events.includes("mnt_page_view"),`${name}: page-view source event remains present`);
 
   if(choiceBeforeLoad==="denied"){
