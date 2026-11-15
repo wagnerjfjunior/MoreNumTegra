@@ -19,6 +19,8 @@ BAIRROS = {
  "vila-nova-conceicao": ("Vila Nova Conceição", ["bueno-brandao-257","tiel-vila-nova-conceicao"]),
  "lapa": ("Lapa", ["caminhos-da-lapa-elo-duo","garden-design","nova-vivere","reserva-caminhos-da-lapa"]),
  "brooklin": ("Brooklin", ["ampere-brooklin","ledge-brooklin","studios-berrini"]),
+ "higienopolis": ("Higienópolis", ["aria-higienopolis","mozae-higienopolis"]),
+ "alto-do-ipiranga": ("Alto do Ipiranga", ["ypy-alto-do-ipiranga"]),
  "tatuape": ("Tatuapé", ["universo-tatuape-orbita"]),
  "sacoma": ("Sacomã", ["teg-sacoma"]),
  "jardins": ("Jardins", ["zahle-jardins"]),
@@ -28,7 +30,7 @@ NOME = {
  "chez-vous-moema":"Chez Vous Moema","key-moema":"Key Moema","viso-moema":"Viso Moema","ode-perdizes":"ODE Perdizes","soma-perdizes":"Soma Perdizes",
  "bueno-brandao-257":"Bueno Brandão 257","tiel-vila-nova-conceicao":"Tièl Vila Nova Conceição","caminhos-da-lapa-elo-duo":"Elo Duo Caminhos da Lapa",
  "garden-design":"Garden Design Caminhos da Lapa","nova-vivere":"Nova Vivere Caminhos da Lapa","reserva-caminhos-da-lapa":"Reserva Caminhos da Lapa",
- "ampere-brooklin":"Ampère Brooklin","ledge-brooklin":"Ledge Brooklin","studios-berrini":"Studios Berrini NR",
+ "aria-higienopolis":"Ária Higienópolis","mozae-higienopolis":"Mozae Higienópolis","ampere-brooklin":"Ampère Brooklin","ledge-brooklin":"Ledge Brooklin","studios-berrini":"Studios Berrini NR",
 }
 # descritores = fatos já publicados nas metadescrições/H1 de cada página
 DESC = {
@@ -46,12 +48,15 @@ DESC = {
  "garden-design":"Apartamentos de 61 a 78 m², com 2 ou 3 dormitórios.",
  "nova-vivere":"Apartamentos de 72 e 105 m², com 2 ou 3 suítes.",
  "reserva-caminhos-da-lapa":"Projeto entregue, com plantas de 91, 127 e 157 m².",
+ "aria-higienopolis":"Studios de 30 m², apartamentos de 53 m² com 1 ou 2 dormitórios e salas comerciais.",
+ "mozae-higienopolis":"Torre única com apartamentos de 46 e 73 m², 1 ou 2 suítes.",
+ "ypy-alto-do-ipiranga":"Apartamentos de 65 e 80 m², com 2 ou 3 dormitórios.",
  "ampere-brooklin":"Apartamentos de 262 m², com 4 suítes, em torre única.",
  "ledge-brooklin":"Apartamentos de 70, 80 e 122 m² e studios de 30 a 40 m².",
  "studios-berrini":"Studios e unidades de 29,63 a 56,16 m².",
 }
 # páginas editáveis (as demais estão travadas por validador ou fora do escopo)
-EDIT = ["ayla-moema-studio-office","chez-vous-moema","key-moema","viso-moema","ode-perdizes","soma-perdizes","bueno-brandao-257",
+EDIT = ["aria-higienopolis","mozae-higienopolis","ledge-brooklin","ampere-brooklin","ypy-alto-do-ipiranga","ayla-moema-studio-office","chez-vous-moema","key-moema","viso-moema","ode-perdizes","soma-perdizes","bueno-brandao-257",
         "tiel-vila-nova-conceicao","caminhos-da-lapa-elo-duo","studios-berrini","teg-sacoma","universo-tatuape-orbita","zahle-jardins"]
 
 def module(bslug, slug):
@@ -67,7 +72,7 @@ def module(bslug, slug):
         h2 = f"Conheça {label} antes de escolher."
         p = "O guia do bairro reúne localização, rotina e o contexto do projeto."
     ul = f'<ul class="mnb">{"".join(li)}</ul>'
-    if slug == "caminhos-da-lapa-elo-duo":  # sistema de design próprio (mt-*)
+    if slug in ("caminhos-da-lapa-elo-duo", "aria-higienopolis"):  # sistema de design próprio (mt-*)
         return (f'<section id="mais-no-bairro" aria-labelledby="mnb-title"><div class="mt-shell"><div class="mt-section-head">'
                 f'<p class="mt-eyebrow">MAIS EM {label.upper()}</p><h2 id="mnb-title">{h2}</h2><p>{p}</p></div>{ul}</div></section>')
     if slug == "studios-berrini":
@@ -94,7 +99,7 @@ def main():
             m = re.search(r'<section (?:class="lead[^"]*" )?id="formulario"', s)
             assert m, slug + ": âncora do formulário não encontrada"
             s2 = s[:m.start()] + new + s[m.start():]
-        css = CSS_ADAPT if slug in ("caminhos-da-lapa-elo-duo", "studios-berrini") else CSS
+        css = CSS_ADAPT if slug in ("caminhos-da-lapa-elo-duo", "aria-higienopolis", "studios-berrini") else CSS
         if css not in s2:
             i = s2.find("</style>"); assert i > 0, slug + ": sem <style>"
             s2 = s2[:i] + css + s2[i:]

@@ -4,7 +4,7 @@ const html=readFileSync('src-greenn/empreendimentos/ampere-brooklin/index.html',
 const hero=html.match(/<section class="hero"[\s\S]*?<\/section>/)?.[0];
 assert(hero,'missing hero');
 assert.equal((html.match(/<h1\b/g)||[]).length,1,'one H1 only');
-assert(hero.includes('<h1 id="title" class="display">Ampère Brooklin</h1>'),'H1 unique project name');
+assert(hero.includes('<h1 id="title" class="display">Ampère Brooklin Tegra<br>apartamentos de 262 m² e 4 suítes</h1>'),'H1 unique project name');
 assert(hero.includes('<p class="hero-lead">Apartamentos de 262 m² com 4 suítes e 4 vagas.</p>'),'search-oriented H2');
 assert(!html.includes('class="pilot" href="/regioes/brooklin/"'),'regional outbound navigation not at hero top');
 const locality=html.match(/<section class="section residences" id="localizacao">[\s\S]*?<\/section>/)?.[0];
