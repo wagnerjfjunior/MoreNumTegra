@@ -1,3 +1,27 @@
+## 15/11/2026 — PRÓXIMA AÇÃO SEGURA: SEO MoreTegra SP — reescrever os títulos H2/H3 do Lote 1
+
+Reconciliação de estado pedida pelo Wagner em 15/11/2026 (decisão dele, registrada na conversa SFJM). `main` ao vivo na escrita: `0867ba67786f90116b1274b337633425ce123b18`. Esta seção passa a ser a mais nova; as seções abaixo (Complexo Lapa–Pirituba, 05/11, e anteriores) são históricas e não foram reverificadas.
+
+**Única próxima ação segura:** reescrever, **copy-first**, os H2/H3 das páginas livres do Lote 1, lendo o conteúdo real de cada página, mantendo paridade HTML ↔ JSON-LD e rodando os validadores contra o baseline. Abrir PR em rascunho mostrando antes e depois.
+
+**Pré-condições (a confirmar antes de executar):**
+1. O Wagner confirma o padrão de títulos da seção 3 do handoff H1/H2/H3 (pendência 2 do próprio handoff). Este registro não presume essa confirmação.
+2. A lista do Lote 1 vem da planilha "Mestre de títulos H1/H2/H3 — MoreTegra SP" (no Projeto Claude). Não foi lida nesta reconciliação. A coluna "Título proposto" dessa planilha está RETIRADA.
+
+**Fontes do padrão (propostas em PR aberto, não estão no `main`):** `docs/sfjm/MNT_SEO_H1_H2H3_FONTES_HANDOFF_2026-11-15.md`, na branch `docs/sfjm-handoff-h1h2h3-fontes-20261115` (PR #582). Também: `docs/frameworks/resf/v1/RESF_CONVERSION_GUARDRAILS_2026-11-09.md` (no `main`).
+
+**Limites (sem autorização explícita do Wagner, não):**
+- mesclar o PR #581 (rascunho, aguarda "pode mergear"), o #582 ou qualquer outro; fazer deploy ou publicar;
+- alterar páginas travadas por validador sem a exceção exata já usada no #581;
+- inventar preço, metragem, endereço, data ou métrica;
+- iniciar a frente "Fontes e créditos" (depende da posição da Tegra Vendas sobre as imagens).
+
+**Abertos em 15/11/2026 (conforme a conversa SFJM; lifecycle não reverificado depois):** PR #581 (módulo de links em Aria, Mozae, Ledge, Ampère, Ypy), PR #582 (documentação), PR #583 (ponto de entrada `CLAUDE.md`/`AGENTS.md`).
+
+**Pendência anterior que permanece aberta e NÃO é a próxima ação:** QA visual de iPhone do cenário 3 do Complexo (seção de 05/11 abaixo). Estado não reverificado.
+
+---
+
 ## 05/11/2026 — PRÓXIMA AÇÃO SEGURA: COMPLEXO LAPA–PIRITUBA
 
 1. Ler o handoff integral `docs/sfjm/MNT_COMPLEXO_HANDOFF_INTEGRAL_ESTADO_LIVE_2026-11-05.md` e resolver live `main` + Vercel.

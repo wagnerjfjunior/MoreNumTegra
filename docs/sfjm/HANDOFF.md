@@ -1,3 +1,5 @@
+> **15/11/2026 — SUPERADO NO `main`:** a branch `feat/rio-slugs-estandes-20261113` foi mesclada em #564 (commit `4ed7151`, 13/11). Este arquivo é histórico. A próxima ação vigente está no topo de `docs/NEXT_SAFE_ACTION.md`. As pendências abaixo (S2–S4, B3) não foram reverificadas.
+
 # Handoff da branch — Slugs do Rio padronizados e estandes completos
 
 > Arquivo de caminho fixo: reescrito por inteiro a cada checkpoint (commit da branch). No merge, o conteúdo vai para o `NEXT_SAFE_ACTION` do projeto e este arquivo sai. Histórico: `git log -- docs/sfjm/HANDOFF.md`.
