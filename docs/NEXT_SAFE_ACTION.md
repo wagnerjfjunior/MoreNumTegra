@@ -26,6 +26,26 @@ Reconciliação de estado pedida pelo Wagner em 15/11/2026 (decisão dele, regis
 
 ---
 
+## 13/11/2026 — FRENTE ABERTA (HISTÓRICO como próxima ação): plano SEO do Rio (especialista)
+
+> **15/11/2026:** esta seção era a "próxima ação segura" de 13/11 e foi superada como ação **única** pela decisão do Wagner de 15/11 (seção acima). A frente continua aberta e elegível quando o Wagner decidir; ela está no inventário de `docs/PROJECT_STATUS.md` (F12).
+
+Estado em produção (`main` `4ed7151`, Vercel READY):
+- Rio separado de SP por causa do CRECI: central de atendimento RJ (`5511951667227`), formulário 47, sem Sabrina. A home `/` é só de SP.
+- PRs mergeadas: #561 (canais, form 47, mensuração), #562 (home SP), #563 (bairros e foto oficial da Tegra) e #564 (slugs `/rio-de-janeiro/regioes/...` sem 301; estandes com `image`, `telephone` e `priceRange`).
+- Histórico e decisões: `docs/sfjm/MNT_RJ_SP_CANAIS_ANALYTICS_2026-11-10.md`, seções 1–13.
+
+Próxima ação: abrir conversa nova e rodar o especialista em SEO (auditoria independente e plano) sobre as 10 páginas do Rio. Base de dados: `docs/seo/rio-2026-11-13/README.md`. "Em construção" e "na planta": a sugestão do Wagner é mesclar; o especialista decide.
+
+Pendências que continuam abertas:
+- Gates de produção da #561: P3, P6b, P8, P9; e P4 (2 defeitos no GTM).
+- P7: IndexNow / Search Console das URLs do Rio.
+- B3: menu do hub do Rio com "Home nacional" e "São Paulo".
+- S4: preço visível no RIIO, que libera o `priceRange` na página dele.
+- CI: runner ubuntu26.04 sem Playwright.
+
+---
+
 ## 05/11/2026 — PRÓXIMA AÇÃO SEGURA: COMPLEXO LAPA–PIRITUBA
 
 1. Ler o handoff integral `docs/sfjm/MNT_COMPLEXO_HANDOFF_INTEGRAL_ESTADO_LIVE_2026-11-05.md` e resolver live `main` + Vercel.
