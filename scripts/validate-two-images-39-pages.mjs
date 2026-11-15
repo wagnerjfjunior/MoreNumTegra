@@ -51,9 +51,9 @@ assert.deepEqual(investmentPaths,['/investimentos/studios-e-salas-comerciais/'],
 // commercial RESF ImageObject requirements; keep the commercial image gate intact.
 const complexoPaths=allPaths.filter(p=>p==='/complexo-lapa-pirituba/');
 assert.deepEqual(complexoPaths,['/complexo-lapa-pirituba/'],'Complexo landing must appear once in sitemap');
-// Rio launch of 2026-11-09 (Wagner): hub + six exact-project pages have their own RESF Rio contract
+// Rio launch of 2026-11-09 (Wagner) + 2 regional pages added to the sitemap later (SFJM 2026-11-15): hub + two regional pages + six exact-project pages have their own RESF Rio contract
 // (scripts/validate-rio-home.mjs and scripts/validate-resf-rio.mjs). RIIO stays in the commercial 43.
-const rioLaunch=['/rio-de-janeiro/','/empreendimentos/kronos-by-tegra/','/empreendimentos/claris-casa-e-clube/','/empreendimentos/claris-rosas/','/empreendimentos/gran-thai-leisure-residence/','/empreendimentos/singular-private-residence/','/empreendimentos/gaea-home-resort/'];
+const rioLaunch=['/rio-de-janeiro/','/rio-de-janeiro/regioes/','/rio-de-janeiro/regioes/oeste/barra-da-tijuca/','/empreendimentos/kronos-by-tegra/','/empreendimentos/claris-casa-e-clube/','/empreendimentos/claris-rosas/','/empreendimentos/gran-thai-leisure-residence/','/empreendimentos/singular-private-residence/','/empreendimentos/gaea-home-resort/'];
 const rioPaths=allPaths.filter(p=>rioLaunch.includes(p));
 assert.deepEqual(rioPaths,rioLaunch,'Rio launch routes must appear once each, in the approved order');
 const paths=allPaths.filter(p=>!p.startsWith('/blog/')&&!p.startsWith('/investimentos/')&&!complexoPaths.includes(p)&&!rioLaunch.includes(p));
