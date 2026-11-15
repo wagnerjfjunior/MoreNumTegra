@@ -1,4 +1,4 @@
-> **15/11/2026 — SUPERADO NO `main`:** a branch `feat/rio-slugs-estandes-20261113` foi mesclada em #564 (commit `4ed7151`, 13/11). Este arquivo é histórico. A próxima ação vigente está no topo de `docs/NEXT_SAFE_ACTION.md`. As pendências abaixo (S2–S4, B3) não foram reverificadas.
+> **15/11/2026 — HISTÓRICO NO `main`:** este arquivo é handoff de BRANCH. No `main` ele nunca é a fonte da próxima ação, que está no topo de `docs/NEXT_SAFE_ACTION.md`. A branch descrita abaixo (`feat/rio-slugs-estandes-20261113`) foi mesclada em #564 (commit `4ed7151`, 13/11). Das pendências abaixo, S2 (QA e merge) foi cumprida com o merge do #564; S3 não foi reverificada; S4 e B3 continuam abertas. Todas estão no inventário de `docs/PROJECT_STATUS.md` (15/11); o texto desta lista não foi reescrito.
 
 # Handoff da branch — Slugs do Rio padronizados e estandes completos
 

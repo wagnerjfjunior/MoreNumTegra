@@ -369,7 +369,7 @@
     "production_deployment_id": "dpl_8iiXm3RtVDbMhNSbHdpaJBq6KjjG",
     "production_deployment": "dpl_8iiXm3RtVDbMhNSbHdpaJBq6KjjG / READY",
     "evidence": "docs/sfjm/MNT_MERCADO_RIIO_PRODUCAO_CONTINUIDADE_2026-10-28.md",
-    "next_safe_action": "Resolve live, perform read-only post-release QA/indexing inspection; then reuse SEO research for qualified clicks.",
+    "next_safe_action": "Rewrite, copy-first, the H2/H3 headings of the free Lote 1 SP pages reading each page's real content (title standard confirmed by Wagner on 2026-11-15; text of the standard is in PR #582 until merged), keeping HTML/JSON-LD parity and validators without regression; open a draft PR with before/after. No merge, deploy or publication without explicit order from Wagner. Authoritative record: docs/NEXT_SAFE_ACTION.md (2026-11-15 section).",
     "next_safe_action_source": "docs/NEXT_SAFE_ACTION.md"
   },
   "progress": {
@@ -768,10 +768,10 @@
     }
   },
   "next": {
-    "task_id": "MNT-SEO-CLICKS-20261027",
-    "state": "ACTIVE / READ_ONLY",
-    "safe_action": "Resolve live, perform read-only post-release QA/indexing inspection; then reuse SEO research for qualified clicks.",
-    "evidence": "docs/sfjm/MNT_MERCADO_RIIO_PRODUCAO_CONTINUIDADE_2026-10-28.md"
+    "task_id": "MNT-SEO-H2H3-LOTE1-20261115",
+    "state": "PLANNED / DRAFT_PR_ONLY",
+    "safe_action": "Rewrite, copy-first, the H2/H3 headings of the free Lote 1 SP pages reading each page's real content (title standard confirmed by Wagner on 2026-11-15; text of the standard is in PR #582 until merged), keeping HTML/JSON-LD parity and validators without regression; open a draft PR with before/after. No merge, deploy or publication without explicit order from Wagner. Authoritative record: docs/NEXT_SAFE_ACTION.md (2026-11-15 section).",
+    "evidence": "docs/NEXT_SAFE_ACTION.md"
   },
   "cross_project": {
     "commercial_catalog": {
@@ -1061,5 +1061,20 @@
     "deployment": "dpl_8iiXm3RtVDbMhNSbHdpaJBq6KjjG",
     "supersedes_preparation_state": true,
     "historical_resf_accounting_unchanged": true
+  },
+  "continuity_2026_11_15": {
+    "observed_at": "2026-11-15",
+    "observed_main_sha": "0867ba67786f90116b1274b337633425ce123b18",
+    "state": "RECONCILIATION_IN_PR_584 / EVERY_OTHER_FIELD_IN_THIS_FILE_DESCRIBES_2026-10-28",
+    "authoritative_next_action": "docs/NEXT_SAFE_ACTION.md",
+    "next_task_id": "MNT-SEO-H2H3-LOTE1-20261115",
+    "next_task_state": "PLANNED / DRAFT_PR_ONLY",
+    "inventory": "docs/PROJECT_STATUS.md",
+    "blocked_actions": "docs/BLOCKED_ACTIONS.md",
+    "merged_after_2026_11_05": "#551-#558, #561-#564, #566-#580",
+    "open_prs": [565, 581, 582, 583, 584],
+    "closed_unmerged_prs": [559, 560],
+    "not_reverified": ["vercel production deployment", "search console", "bing webmaster", "gtm and ga4", "green and crm"],
+    "note": "Derived file. It authorizes nothing. runtime_sha, deployment ids, task states and forecasts above were not refreshed."
   }
 }
