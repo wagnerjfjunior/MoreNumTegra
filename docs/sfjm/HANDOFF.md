@@ -1,3 +1,5 @@
+> **15/11/2026 — HISTÓRICO NO `main`:** este arquivo é handoff de BRANCH. No `main` ele nunca é a fonte da próxima ação, que está no topo de `docs/NEXT_SAFE_ACTION.md`. Branch descrita abaixo: `docs/seo-rio-base-20261113` (PR #565). Pendências em aberto: inventário de `docs/PROJECT_STATUS.md` (15/11). O handoff anterior deste arquivo (branch `feat/rio-slugs-estandes-20261113`, mesclada em #564) permanece no histórico do git.
+
 # Handoff da branch — Base de demanda SEO do Rio
 
 > Arquivo de caminho fixo: reescrito por inteiro a cada checkpoint (commit da branch). No merge, o conteúdo vai para o `NEXT_SAFE_ACTION` do projeto e este arquivo sai. Histórico: `git log -- docs/sfjm/HANDOFF.md`.

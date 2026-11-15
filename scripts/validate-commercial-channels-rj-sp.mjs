@@ -6,6 +6,7 @@
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
 import { CHANNELS, RJ_PAGES, RJ_COPY, RJ_FORBIDDEN } from "./lib/commercial-channels.mjs";
+import { RJ_BLOG_POSTS } from "./lib/rj-blog-posts.mjs";
 
 const ROOT = "src-greenn";
 // Arquivos fora das páginas RJ que citam o canal RJ por desenho:
@@ -13,6 +14,8 @@ const ROOT = "src-greenn";
 const REGIONAL_SHARED = new Set(["src-greenn/preview/thank-you-measurement.js"]);
 const fails = [];
 const rj = new Set(RJ_PAGES.map((p) => path.normalize(p)));
+// Posts do blog sobre o Rio (Wagner, 2026-11-13; #566): canal RJ, sem SP. A guarda completa está em validate-rj-blog-canal-20261113.mjs.
+const rjBlog = new Set(RJ_BLOG_POSTS.map((p) => path.normalize(p.file)));
 const walk = (dir) => readdirSync(dir).flatMap((n) => {
   const p = path.join(dir, n);
   return statSync(p).isDirectory() ? walk(p) : [p];
@@ -40,12 +43,17 @@ for (const file of RJ_PAGES) {
     }
   }
 }
+for (const file of rjBlog) {
+  const html = readFileSync(file, "utf8");
+  if (html.includes(CHANNELS.sp.whatsapp) || html.includes(CHANNELS.sp.display)) fails.push(`${file}: São Paulo channel on a Rio blog post`);
+  for (const m of html.matchAll(/wa\.me\/(\d+)/g)) if (m[1] !== CHANNELS.rj.whatsapp) fails.push(`${file}: WhatsApp ${m[1]} is not the RJ channel`);
+}
 const hub = readFileSync("src-greenn/rio-de-janeiro/index.html", "utf8");
 if (!hub.includes(RJ_COPY.blockTitle) || !hub.includes(RJ_COPY.blockLead)) fails.push("hub: approved RJ service block copy missing");
 
 let spFiles = 0;
 for (const file of walk(ROOT).filter((f) => /\.(html|js|json)$/.test(f))) {
-  if (rj.has(path.normalize(file)) || REGIONAL_SHARED.has(file)) continue;
+  if (rj.has(path.normalize(file)) || rjBlog.has(path.normalize(file)) || REGIONAL_SHARED.has(file)) continue;
   const s = readFileSync(file, "utf8");
   if (s.includes(CHANNELS.rj.whatsapp) || s.includes(CHANNELS.rj.display)) fails.push(`${file}: RJ channel outside the Rio pages`);
   for (const m of s.matchAll(/wa\.me\/(\d+)/g)) if (m[1] !== CHANNELS.sp.whatsapp) fails.push(`${file}: WhatsApp ${m[1]} is not the SP channel`);
@@ -54,4 +62,4 @@ for (const file of walk(ROOT).filter((f) => /\.(html|js|json)$/.test(f))) {
 if (spFiles === 0) fails.push("São Paulo channel disappeared from the site");
 
 if (fails.length) { fails.forEach((f) => console.error("FAIL " + f)); process.exit(1); }
-console.log(`PASS commercial channels: ${RJ_PAGES.length} Rio pages on the RJ channel only; ${spFiles} non-Rio files on the SP channel only.`);
+console.log(`PASS commercial channels: ${RJ_PAGES.length} Rio pages and ${rjBlog.size} Rio blog posts on the RJ channel only; ${spFiles} non-Rio files on the SP channel only.`);

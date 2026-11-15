@@ -1,3 +1,21 @@
+## 15/11/2026 — HANDOFF ATUAL: o que mudou desde 05/11 (reconciliação)
+
+Próxima ação vigente: ver o topo de `docs/NEXT_SAFE_ACTION.md` (seção de 15/11); é o único registro autoritativo. Inventário das frentes e matriz de cobertura: `docs/PROJECT_STATUS.md` (15/11). Bloqueios consolidados: `docs/BLOCKED_ACTIONS.md` (15/11). As seções de 05/11 (Complexo) abaixo são históricas.
+
+**Mesclado no `main` depois de 05/11 (lido do histórico git em 15/11/2026):**
+- Rio e home de SP: #561 (canais RJ/SP, form 47, mensuração, páginas de venda do Rio), #562 (home exclusiva de São Paulo), #563 (páginas de bairro do Rio), #564 (slugs `/rio-de-janeiro/regioes/` e estandes com `image`, `telephone` e `priceRange`; commit `4ed7151`, 13/11).
+- SEO e atendimento (15/11): #573 (links internos na home e títulos de bairro), #574 (atendimento Time Tegra Vendas nas páginas de SP), #575 e #577 (título e descrições do DSG Itaim), #576 (limpeza de checks), #578 (módulo `#mais-no-bairro` e piloto de FAQ no Soma Perdizes), #579 (H1 estratégicos), #580 (H1 estático do shell do DSG Itaim).
+- #566 (posts do blog do Rio no canal RJ, sem Sabrina), #567 (IndexNow aceita as URLs do núcleo Rio), #568 (`<lastmod>` nas 83 URLs do sitemap, 13/11), #569 (5 meta descriptions ≤160), #570 (validador de canais RJ/SP aceita os posts do Rio), #571 (workflows com Playwright fixados em ubuntu-24.04), #572 (teste M5-10: `default_consent` antes de `gtm.js`).
+- Abertos: #565 (base de demanda SEO do Rio, 13/11). Fechados sem merge: #559 e #560 (09/11); em 15/11 o `main` tem as páginas do Rio indexáveis e o nó `#tegra-vendas` no hub, mas **como esse efeito chegou ao `main` não foi rastreado** (clone raso).
+
+**Registros novos em `docs/sfjm/` (não citados antes por este arquivo):** `MNT_RJ_SP_CANAIS_ANALYTICS_2026-11-10.md`, `MNT_ATENDIMENTO_TIME_TEGRA_VENDAS_SPEC_2026-11-14.md`, `MNT_SEO_LINKS_INTERNOS_TITULOS_BAIRROS_2026-11-14.md`, `MNT_SESSAO_TIME_TEGRA_DSG_LIMPEZA_2026-11-15.md`; e `docs/frameworks/resf/v1/RESF_CONVERSION_GUARDRAILS_2026-11-09.md`.
+
+**Derivados:** `docs/sfjm/CURRENT_PROGRAM_STATE.json`, `PROJECT_READ_MODEL.json` e `PROGRAM_TASK_GRAPH.json` descrevem o `main` em `0b1de5b` (28/10). Nesta reconciliação só mudaram os campos `next_*` (alinhados ao NSA de 15/11) e foi acrescentado o bloco `continuity_2026_11_15`; **todos os outros campos continuam em 28/10 e não foram reverificados** (inclusive SHAs de runtime e deployment). São derivados e não autorizam nada. O banner de 28/10 no topo do `bootstrap/BOOTSTRAP_CANONICO.md` (próxima ação "cliques qualificados") foi marcado como histórico por um banner de 15/11.
+
+**`docs/sfjm/HANDOFF.md`:** handoff da branch do Rio, já mesclada em #564. Histórico no `main`.
+
+---
+
 ## 05/11/2026 — HANDOFF ATUAL COMPLEXO LAPA–PIRITUBA (SFJM)
 
 **Documento de retomada obrigatório:** `docs/sfjm/MNT_COMPLEXO_HANDOFF_INTEGRAL_ESTADO_LIVE_2026-11-05.md`. Resume integralmente decisões, C1–C9, PRs #542–#550, UX mobile, estado de produção e rollback.

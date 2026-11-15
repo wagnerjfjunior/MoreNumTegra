@@ -528,6 +528,25 @@ for(const [slug,street,cep] of expected){
    assert.deepEqual(newTypes.slice().sort(),allowed.slice().sort(),'Órbita: only specifically approved commercial/image/plan types may be added');
  }else {
    const normalized=normalizeOnsiteAgent(stripApprovedImages(stripBemMoemaRichEntities(after,slug),before,slug,candidate),before,slug);
+   if(slug==='key-moema'){
+     // SFJM 2026-11-15: WebPage.description was refreshed editorially after the 9c8bdc7 baseline.
+     // Accept only this exact approved text; every other schema change still fails.
+     const APPROVED_KEY_MOEMA_DESCRIPTION='Key Moema Tegra: apartamentos de 62 a 74 m², 2 dormitórios, 1 a 2 suítes, a 220 m da Estação Eucaliptos. Consulte disponibilidade e condições.';
+     const pageAfter=flat(normalized).find(n=>n['@type']==='WebPage'),pageBefore=flat(before).find(n=>n['@type']==='WebPage');
+     assert(pageAfter&&pageBefore,'Key Moema: WebPage missing');
+     assert.equal(pageAfter.description,APPROVED_KEY_MOEMA_DESCRIPTION,'Key Moema: WebPage.description differs from the approved editorial text');
+     pageBefore.description=APPROVED_KEY_MOEMA_DESCRIPTION;
+   }
+   if(slug==='soma-perdizes'){
+     // SFJM 2026-11-15: three approved FAQ entries were added after the 9c8bdc7 baseline (page enrichment).
+     // Accept only these exact questions, inserted before the last baseline question; every other schema change still fails.
+     const APPROVED_SOMA_FAQ=['Quais áreas de lazer o Soma Perdizes tem?','O Soma Perdizes tem studios e salas comerciais?','Qual é a diferença entre o Soma Perdizes e o ODE Perdizes?'];
+     const faqAfter=flat(normalized).find(n=>n['@type']==='FAQPage'),faqBefore=flat(before).find(n=>n['@type']==='FAQPage');
+     assert(faqAfter&&faqBefore,'Soma: FAQPage missing');
+     const addedNames=faqAfter.mainEntity.filter(q=>!faqBefore.mainEntity.some(b=>b.name===q.name)).map(q=>q.name);
+     assert.deepEqual(addedNames,APPROVED_SOMA_FAQ,'Soma: only the approved FAQ entries may be added');
+     faqAfter.mainEntity=faqAfter.mainEntity.filter(q=>!APPROVED_SOMA_FAQ.includes(q.name));
+   }
    assert.deepEqual(scrub(normalizeBuenoEditorial(normalized,before,slug,candidate)),scrub(before),slug+': forbidden non-image/non-address schema change');
  }
  const prior=flat(before).filter(x=>x['@type']==='ApartmentComplex');

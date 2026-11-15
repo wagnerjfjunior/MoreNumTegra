@@ -1,0 +1,26 @@
+name: RJ blog canal (sem Sabrina)
+on:
+  pull_request:
+    paths:
+      - 'src-greenn/blog/**'
+      - 'src-greenn/rio-de-janeiro/index.html'
+      - 'scripts/lib/rj-blog-posts.mjs'
+      - 'scripts/lib/commercial-channels.mjs'
+      - 'scripts/apply-rj-blog-canal-20261113.mjs'
+      - 'scripts/validate-rj-blog-canal-20261113.mjs'
+      - '.github/workflows/rj-blog-canal.yml'
+permissions:
+  contents: read
+jobs:
+  rj-blog-canal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/validate-rj-blog-canal-20261113.mjs
+      - name: Aplicar de novo não muda nada (idempotência)
+        run: |
+          node scripts/apply-rj-blog-canal-20261113.mjs
+          git diff --exit-code -- src-greenn/blog

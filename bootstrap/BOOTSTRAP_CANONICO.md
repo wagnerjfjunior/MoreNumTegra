@@ -1,3 +1,7 @@
+> **15/11/2026 — PRÓXIMA AÇÃO: leia o topo de `docs/NEXT_SAFE_ACTION.md` (seção de 15/11), que é o único registro autoritativo.** Os avisos abaixo, até o título "# Bootstrap Canônico — MoreNumTegra", são **históricos** (inclusive o de 28/10 com "próxima ação: cliques qualificados" e o de 05/11 do Complexo). Ponto de entrada para IA: `CLAUDE.md` na raiz, quando estiver no `main` (PR #583). Manifesto LVR: `.sfjm/project.json`. Inventário de frentes: `docs/PROJECT_STATUS.md` (15/11). Protocolo SFJM: repositórios privados `wagnerjfjunior/StopJuniorMode` e `wagnerjfjunior/sfjm-workspace`; sem acesso, declare a lacuna.
+
+---
+
 ## 05/11/2026 — COMPLEXO LAPA–PIRITUBA: handoff live e releases #542–#550
 
 Atualização canônica desta frente: **docs/sfjm/MNT_COMPLEXO_HANDOFF_INTEGRAL_ESTADO_LIVE_2026-11-05.md**. A produção funcional foi confirmada no commit `0f5a059d1c42b1ad4b33c96e5a542a18e8d6181c` (PR #550), Vercel READY `dpl_7BY6Jjk6Vq3vdh9WBAtspJtCSX7q`, alias www sem erro. O ponto de rollback anterior é `dpl_NNXvsx7EyThGjhiuyERzvrnkLFSW` (PR #549). O **teste visual no iPhone pós-PR #550 segue pendente**. Branch de editores C8/C9 divergente e **não autorizada para merge**. Para esta frente, ler o handoff integral antes dos blocos históricos abaixo; não confundir publicação com aceite visual.
@@ -61,6 +65,7 @@ Ler integralmente `docs/sfjm/MNT_MERCADO_RIIO_PRODUCAO_CONTINUIDADE_2026-10-28.m
 - Latest traceability audit: `docs/governance/MNT_TRACEABILITY_AUDIT_2026-09-25.md`
 - Historical planning baseline archive: `docs/roadmap/archive/MNT_RESF_PLANNING_BASELINE_2026-09-10.md`
 - Data de referência desta revisão: `2026-09-23`
+- Reconciliação de continuidade: `2026-11-15` (banner no topo, §3 e `docs/NEXT_SAFE_ACTION.md`). As demais seções (arquitetura, deploy, formulário, medição, SEO) seguem com a revisão de 2026-09-23 e **não foram reauditadas** nesta data.
 
 ## 2. Regra de canonicalidade
 
@@ -107,6 +112,8 @@ Se houver divergência entre documentação e estado live, não prosseguir por i
 
 ## 3. Ordem mínima de leitura
 
+0a. `CLAUDE.md` na raiz, quando existir no `main` (ponteiro de entrada e precedência, sem estado)
+0b. `.sfjm/project.json` (manifesto LVR: push e deploy só com ordem explícita)
 1. `handoffs/CURRENT.md`
 2. `docs/governance/MNT_CHANGE_TRACEABILITY_STANDARD_V1.md`
 2a. `docs/governance/MNT_LOCAL_LIVE_SYNC_VALIDATION_STANDARD_V1.md`
@@ -119,7 +126,10 @@ Se houver divergência entre documentação e estado live, não prosseguir por i
 9. `docs/NEXT_SAFE_ACTION.md`
 10. `docs/BLOCKED_ACTIONS.md`
 11. `docs/sfjm/PROJECT_READ_MODEL.json` e `docs/sfjm/PROGRAM_TASK_GRAPH.json` quando programa/horas/progresso forem materiais
-12. evidências específicas referenciadas pela tarefa.
+12. evidências específicas referenciadas pela tarefa;
+13. `docs/sfjm/HANDOFF.md` **somente** como histórico de branch: no `main` ele nunca define a próxima ação (a regra é de `docs/NEXT_SAFE_ACTION.md`).
+
+Os arquivos `docs/NEXT_SAFE_ACTION.md`, `docs/PROJECT_STATUS.md`, `docs/BLOCKED_ACTIONS.md` e `handoffs/CURRENT.md` são pilhas de seções datadas, mais novas no topo: leia a seção do topo e as que ela cita. Se a data do topo de `docs/NEXT_SAFE_ACTION.md` for anterior a PRs mesclados no `main`, o kit está defasado e isso é divergência material.
 
 Historical baselines/ADRs remain valid as point-in-time evidence, but current production semantics are governed by V2.3 + ADR-006.
 

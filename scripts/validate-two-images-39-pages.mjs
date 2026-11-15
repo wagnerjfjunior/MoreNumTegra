@@ -51,9 +51,9 @@ assert.deepEqual(investmentPaths,['/investimentos/studios-e-salas-comerciais/'],
 // commercial RESF ImageObject requirements; keep the commercial image gate intact.
 const complexoPaths=allPaths.filter(p=>p==='/complexo-lapa-pirituba/');
 assert.deepEqual(complexoPaths,['/complexo-lapa-pirituba/'],'Complexo landing must appear once in sitemap');
-// Rio launch of 2026-11-09 (Wagner): hub + six exact-project pages have their own RESF Rio contract
+// Rio launch of 2026-11-09 (Wagner) + 2 regional pages added to the sitemap later (SFJM 2026-11-15): hub + two regional pages + six exact-project pages have their own RESF Rio contract
 // (scripts/validate-rio-home.mjs and scripts/validate-resf-rio.mjs). RIIO stays in the commercial 43.
-const rioLaunch=['/rio-de-janeiro/','/empreendimentos/kronos-by-tegra/','/empreendimentos/claris-casa-e-clube/','/empreendimentos/claris-rosas/','/empreendimentos/gran-thai-leisure-residence/','/empreendimentos/singular-private-residence/','/empreendimentos/gaea-home-resort/'];
+const rioLaunch=['/rio-de-janeiro/','/rio-de-janeiro/regioes/','/rio-de-janeiro/regioes/oeste/barra-da-tijuca/','/empreendimentos/kronos-by-tegra/','/empreendimentos/claris-casa-e-clube/','/empreendimentos/claris-rosas/','/empreendimentos/gran-thai-leisure-residence/','/empreendimentos/singular-private-residence/','/empreendimentos/gaea-home-resort/'];
 const rioPaths=allPaths.filter(p=>rioLaunch.includes(p));
 assert.deepEqual(rioPaths,rioLaunch,'Rio launch routes must appear once each, in the approved order');
 const paths=allPaths.filter(p=>!p.startsWith('/blog/')&&!p.startsWith('/investimentos/')&&!complexoPaths.includes(p)&&!rioLaunch.includes(p));
@@ -75,7 +75,9 @@ assert(complexoSource.includes('<link rel="canonical" href="https://www.moretegr
 assert(complexoSource.includes('<meta property="og:image"'),'Complexo social imagery missing');
 assert.equal((complexoSource.match(/<h1\b/gi)||[]).length,1,'Complexo requires one H1');
 for(const id of ['dualEmbed','ayrtonEmbed','marginalDualEmbed'])assert(complexoSource.includes('id="'+id+'"'),'Complexo simulator missing: '+id);
-assert.equal((complexoSource.match(/data-open-sim="\d"/g)||[]).length,3,'Complexo requires 3 scenario controls');
+// SFJM 2026-11-15: the cover replaced the three data-open-sim buttons with a route selector (#route) plus three route toggles.
+assert(complexoSource.includes('<select id="route"'),'Complexo requires the route selector');
+for(const id of ['uxBlue','uxOrange','uxThird'])assert(complexoSource.includes('id="'+id+'"'),'Complexo route toggle missing: '+id);
 const complexoGraph=extract(complexoSource);
 for(const type of ['WebPage','BreadcrumbList','FAQPage'])assert(complexoGraph.some(n=>n['@type']===type),'Complexo missing '+type);
 assert.equal(complexoGraph.find(n=>n['@type']==='FAQPage').mainEntity.length,3,'Complexo FAQ must match visible questions');
@@ -110,7 +112,10 @@ for(const path of releasedDecor){
  const canonical=html.match(/<link\b(?=[^>]*rel=["']canonical["'])(?=[^>]*href=["']([^"']+)["'])[^>]*>/i);
  assert.equal(canonical?.[1],'https://www.moretegra.com.br'+path,path+': wrong canonical');
  const graph=extract(html);
- for(const type of ['BlogPosting','BreadcrumbList','Person','RealEstateAgent'])assert(graph.some(x=>x['@type']===type),path+': missing '+type);
+ // SFJM 2026-11-15: Rio-channel posts do not carry the Sabrina/SP broker entities (Rio uses the RJ central).
+ const rioChannelPost=path==='/blog/dicasedecor/casa-condominio-layout-claris-barra/';
+ if(rioChannelPost)assert(!/Sabrina/.test(html),path+': Rio post must not mention Sabrina');
+ for(const type of rioChannelPost?['BlogPosting','BreadcrumbList']:['BlogPosting','BreadcrumbList','Person','RealEstateAgent'])assert(graph.some(x=>x['@type']===type),path+': missing '+type);
  assert.equal(graph.find(x=>x['@type']==='BlogPosting').mainEntityOfPage['@id'],'https://www.moretegra.com.br'+path);
  assert(mainImages(html).length>=2,path+': missing editorial/closing imagery');
 }

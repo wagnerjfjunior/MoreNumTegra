@@ -277,3 +277,27 @@ O que mudou:
   - `validate-rj-regioes.mjs`: proíbe os slugs `/rj/regioes/`; exige `image` e o telefone da central RJ; exige que o `priceRange` esteja visível na página.
   - `validate-onsite-realtor-project-address.mjs`: o estande pode ter telefone, mas só o da central RJ, nunca o de SP ou da Sabrina.
 - Manutenção: quando a tabela de preços mudar, o card do hub, o FAQ da página e o `priceRange` precisam mudar juntos. O validador acusa se o `priceRange` não bater com o texto da página.
+
+## 14. Blog do Rio sem a Sabrina (2026-11-13)
+
+Branch `fix/blog-rj-sem-sabrina-20261113`, a partir da `main` em `4ed7151`.
+
+Decisão do Wagner (2026-11-13): os posts do blog sobre o Rio não podem ter o cartão "Atendimento imobiliário personalizado" da Sabrina. Isso revoga, só para esses posts, a exclusão do blog feita na seção 1. Também decidido: nada de aviso "não é o site oficial da Tegra", e a home de SP não pode ter link para o Rio.
+
+Posts do Rio (lista única em `scripts/lib/rj-blog-posts.mjs`):
+- Indexados, com cartão: `/blog/mercado/orla-barra-tijuca-localizacao-conservacao/` e `/blog/dicasedecor/casa-condominio-layout-claris-barra/`.
+- Antigos (noindex, fora do sitemap), só rodapé: `condominio-de-casas-entenda-e-conheca-o-claris-casa-clube`, `kronos-by-tegra-a-primeira-blue-zone-urbana-do-rio`, `a-orla-da-barra-da-tijuca-luxo-no-rio-de-janeiro`, `claris-casa-clube-refugio-de-alto-padrao-na-barra-da-tijuca`, `o-minimalismo-do-riio-by-piero-lissoni-redefine-o-luxo-carioca`, `viver-na-abm-e-o-novo-significado-de-conveniencia-na-barra-da-tijuca`.
+- Fica com o canal SP: `/blog/dicasedecor/quadras-condominio-tenis-beach-tennis/` (tema SP/Lapa; o Claris aparece uma vez, de passagem).
+
+O que mudou (`scripts/apply-rj-blog-canal-20261113.mjs`, idempotente):
+- Cartão: sem foto, nome e CRECI; texto "Fale com a central de atendimento RJ…"; WhatsApp `5511951667227`. O post do Claris deixou de oferecer "apartamentos Tegra em São Paulo" e passa a oferecer o Claris Casa & Clube.
+- Rodapé: copy RJ aprovada (`RJ_COPY.footer`) e "Formulário" → `/rio-de-janeiro/#contato` (form 47), no lugar de `/regioes/#formulario` (form 46).
+- Barra flutuante do post da orla: formulário e WhatsApp do Rio.
+- JSON-LD: removidos os nós `Person` e `RealEstateAgent` da Sabrina e as menções a eles.
+- Guardas: `validate-rj-blog-canal-20261113.mjs` (workflow `rj-blog-canal.yml`) e o artigo 8 em `validate-mercado-editorial-20261028.mjs`.
+
+Fora do escopo (registrado): os posts do blog não carregam GTM, então os cliques não são medidos; o bloco "Continue sua busca" do post da orla aponta para páginas de SP.
+
+Conferido nos sites oficiais da Tegra em 2026-11-13 (ainda não aplicado no site; cada item exige PR própria e aprovação):
+- Claris: "Claris Casa & Clube" é o complexo, com dois condomínios na Av. Prefeito Dulcídio Cardoso, 2900, e o mesmo produto (casas de 318 a 580 m², 3 e 4 suítes, Sá e Almeida e Debora Aguiar). O Claris Marapendi tem a obra 98% concluída e preço a partir de R$ 3.473.000 (casa 107, Bloco 8). O Claris Rosas está em construção, com 26%, e preço a partir de R$ 4.350.000 (casa 108, Bloco Rosas; tabela de nov/2026, promoção até 30/11/2026). "Violeta" é nome de planta ou fachada, não de prédio. O site mostra R$ 3.647.000 para o Claris Rosas: **desatualizado**.
+- Kronos: a Tegra marca "Lançamento", sem menção a obra; preço a partir de R$ 1.484.000 (promoção até 30/11/2026). O site mostra "Lançamento · em obras" e R$ 1.471.000: **o selo e o preço estão desatualizados**. O FAQ "na planta" está coerente com o lançamento.

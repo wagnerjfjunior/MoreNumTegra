@@ -1,0 +1,23 @@
+name: Sitemap lastmod
+on:
+  pull_request:
+    paths:
+      - 'sitemap.xml'
+      - 'src-greenn/**'
+      - 'vercel.json'
+      - 'scripts/sitemap-lastmod.mjs'
+      - '.github/workflows/sitemap-lastmod.yml'
+permissions:
+  contents: read
+jobs:
+  lastmod:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Cada URL do sitemap tem <lastmod> igual ou posterior ao último commit da página
+        run: node scripts/sitemap-lastmod.mjs --check
