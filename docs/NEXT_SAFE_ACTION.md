@@ -1,3 +1,31 @@
+## 15/11/2026 — PRÓXIMA AÇÃO SEGURA: SEO MoreTegra SP — reescrever os títulos H2/H3 do Lote 1
+
+Reconciliação de estado pedida pelo Wagner em 15/11/2026 (decisão dele, registrada na conversa SFJM). `main` ao vivo na escrita: `0867ba67786f90116b1274b337633425ce123b18`. Esta seção passa a ser a mais nova; as seções abaixo (Complexo Lapa–Pirituba, 05/11, e anteriores) são históricas. O inventário completo das frentes, com PR, estado verificado, critério de conclusão e dependência, está em `docs/PROJECT_STATUS.md` (seção de 15/11/2026); os bloqueios consolidados, em `docs/BLOCKED_ACTIONS.md` (mesma data). **Este arquivo guarda só a próxima ação; o inventário não a substitui nem a amplia.**
+
+**Única próxima ação segura:** reescrever, **copy-first**, os H2/H3 das páginas livres do Lote 1, lendo o conteúdo real de cada página, mantendo paridade HTML ↔ JSON-LD e rodando os validadores contra o baseline. Abrir PR em rascunho mostrando antes e depois.
+
+**Pré-condições (a confirmar antes de executar):**
+1. Padrão de títulos: **confirmado pelo Wagner em 15/11/2026** na conversa SFJM (resposta "ótimo!!!!" à pergunta "Esse estilo serve?", com a adição de que a estrutura traga a pergunta e a resposta, para servir de referência a IA). O texto do padrão está na seção 3 do handoff do PR #582, que **ainda não está no `main`**: a execução lê dele na branch `docs/sfjm-handoff-h1h2h3-fontes-20261115` ou o #582 é mesclado antes (merge só com ordem do Wagner).
+2. A lista do Lote 1 vem da planilha "Mestre de títulos H1/H2/H3 — MoreTegra SP" (no Projeto Claude). Não foi lida nesta reconciliação. A coluna "Título proposto" dessa planilha está RETIRADA.
+
+**Fontes do padrão (propostas em PR aberto, não estão no `main`):** `docs/sfjm/MNT_SEO_H1_H2H3_FONTES_HANDOFF_2026-11-15.md`, na branch `docs/sfjm-handoff-h1h2h3-fontes-20261115` (PR #582). Também: `docs/frameworks/resf/v1/RESF_CONVERSION_GUARDRAILS_2026-11-09.md` (no `main`).
+
+**Limites (sem autorização explícita do Wagner, não):**
+- mesclar o PR #581 (rascunho, aguarda "pode mergear"), o #582 ou qualquer outro; fazer deploy ou publicar;
+- alterar páginas travadas por validador sem a exceção exata já usada no #581;
+- inventar preço, metragem, endereço, data ou métrica;
+- iniciar a frente "Fontes e créditos" (depende da posição da Tegra Vendas sobre as imagens).
+
+**PRs abertos, reverificados ao vivo em 15/11/2026 (todos rascunho, `mergeable_state: clean`, nenhum mesclado):** #581 (módulo de links em Aria, Mozae, Ledge, Ampère, Ypy + H1 do Ampère), #582 (handoff H1/H2/H3 e diagnóstico do ponto de entrada), #583 (`CLAUDE.md`/`AGENTS.md`), #584 (esta reconciliação) e #565 (base de demanda SEO do Rio, de 13/11). Entre #581, #582, #583 e #584 não há arquivo em comum.
+
+**Conflito conhecido, a decidir pelo Wagner:** o #565 e o #584 alteram o topo de `docs/NEXT_SAFE_ACTION.md` e o início de `docs/sfjm/HANDOFF.md`. Simulado em 15/11 aplicando o #565 sobre o `main` e depois o #584: conflito nos dois arquivos (`CURRENT.md` aplica limpo). Recomendação: mesclar o #584 primeiro; o #565 é então reaplicado com o bloco de 13/11 abaixo da seção de 15/11 e **sem** reescrever o `HANDOFF.md` (o `CLAUDE.md` do #583 define o `HANDOFF.md` como histórico no `main`; o conteúdo da base de demanda já fica em `docs/seo/rio-2026-11-13/`). Alterar o #565 exige autorização própria; não foi tocado.
+
+**A próxima ação anterior (13/11), do #565, permanece como frente aberta e não foi descartada:** plano SEO do Rio por especialista independente, sobre as 10 páginas do Rio, a partir de `docs/seo/rio-2026-11-13/README.md`. Foi superada como "única próxima ação" pela decisão do Wagner de 15/11, e volta a ser elegível quando o Wagner decidir.
+
+**Pendência anterior que permanece aberta e NÃO é a próxima ação:** QA visual de iPhone do cenário 3 do Complexo (seção de 05/11 abaixo). Estado não reverificado.
+
+---
+
 ## 05/11/2026 — PRÓXIMA AÇÃO SEGURA: COMPLEXO LAPA–PIRITUBA
 
 1. Ler o handoff integral `docs/sfjm/MNT_COMPLEXO_HANDOFF_INTEGRAL_ESTADO_LIVE_2026-11-05.md` e resolver live `main` + Vercel.

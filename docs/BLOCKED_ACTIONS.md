@@ -1,3 +1,29 @@
+## 15/11/2026 — BLOQUEIOS CONSOLIDADOS (reconciliação)
+
+Esta seção é a mais nova e vale junto com a próxima ação de 15/11 em `docs/NEXT_SAFE_ACTION.md`. O inventário das frentes está em `docs/PROJECT_STATUS.md` (15/11). As seções de 05/11 (Complexo) e anteriores continuam valendo **no contexto de cada frente**; onde esta seção for mais restritiva, vale esta.
+
+**Autorizações: nenhuma se propaga.** Merge, deploy, publicação, gasto em mídia, alteração de validador e mudança de regra RESF só com ordem explícita e específica do Wagner. Preparar, auditar e executar são atos distintos. PRs abertos (#565, #581, #582, #583, #584) são propostas, não estado do `main`.
+
+**Escopo da restrição de 05/11.** "Não realizar ... alteração SEO/Form46 ... sem solicitação pertinente" (seção de 05/11 abaixo) vale para a frente do Complexo Lapa–Pirituba. As frentes SEO de 14–15/11 (#573–#580) foram feitas por solicitação e autorização do Wagner; elas **não** liberam nada além do que cada autorização cobriu.
+
+**Proibido sem autorização específica do Wagner:**
+- mesclar qualquer PR; fazer deploy; publicar; gastar em mídia;
+- editar validador (`scripts/validate-*`, `scripts/test-*`) ou versão de referência de validador, inclusive para trocar "Sabrina" nas páginas travadas;
+- alterar as páginas congeladas por `validate-resf-html-regression` (Aria, Château Jardin, Garden Design, Ledge, Mozae, Nova Vivere, Reserva) ou travadas por snapshot (Ampère, Bem Moema, Bem Moema Studios, Ypy) sem a exceção exata já usada no #581, com teste negativo; a página do Jerivás sem autorizar a mudança de `validate-jerivas-commercial`;
+- alterar o rodapé comercial (nome, CRECI, telefone, endereço, perfil), qualquer JSON-LD fora do escopo autorizado, links `wa.me`/`tel:`, Form 46/47, medição e consentimento;
+- publicar disponibilidade ou unidades vivas ("últimas unidades"); endereço exato fora do rodapé; preço, metragem, endereço, data ou métrica sem fonte;
+- propagar "Time Tegra Vendas" para o Rio; citar Sabrina, CRECI de SP ou "equipe Tegra Vendas" em página ou post do Rio (R7); usar o canal de uma região na outra;
+- linkar site oficial da Tegra ou de concorrente nas páginas de venda (R1; exceção: tour 360) e publicar texto de proveniência (R3). Isso bloqueia a frente "Fontes e créditos" até o Wagner decidir (divergência D3 do inventário);
+- afirmar que as imagens são "autorizadas pela Tegra Vendas" sem confirmação escrita da Tegra Vendas;
+- mudar C1–C7 do Complexo, mesclar a branch C8/C9 ou publicar editores sem pontos;
+- iniciar o topo do funil (portal neutro/Órulo) ou criar domínio.
+
+**Gates que continuam abertos (não declarar validado em produção):** Rio P3, P4, P6b, P8, P9, P7; QA visual de iPhone do cenário 3 do Complexo; reenvio de sitemap e IndexNow pós-#567/#568 (não reverificados); comparação de 28 dias do Search Console.
+
+**Não afirmar sem evidência nova:** que PR mesclado equivale a tarefa concluída; que a produção Vercel corresponde ao `main`; que os JSON derivados (`CURRENT_PROGRAM_STATE`, `PROJECT_READ_MODEL`, `PROGRAM_TASK_GRAPH`) descrevem o estado atual além do bloco `continuity_2026_11_15`; que o gate de migração é PASS enquanto houver divergência material não resolvida (ver inventário, D1–D5).
+
+---
+
 ## 05/11/2026 — BLOQUEIOS VIGENTES: COMPLEXO LAPA–PIRITUBA
 
 - **Proibido sem autorização específica:** merge/publicação da branch divergente `feat/complexo-cenarios8-9-editor-prancha7-20261105` ou de editores C8/C9 sem pontos; alterar traçados aprovados, frotas, cores, velocidades, mapa-base e controles C1–C7.
