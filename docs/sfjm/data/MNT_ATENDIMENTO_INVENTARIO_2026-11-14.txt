@@ -1,0 +1,287 @@
+Counter({'empreendimentos': 27, 'blog': 26, 'regioes': 14, 'complexo-lapa-pirituba-v2': 1, 'complexo-lapa-pirituba': 1, 'investimentos': 1, 'preview': 1}) 286
+62 {'blog': 24, 'empreendimentos': 24, 'regioes': 13, 'preview': 1} | <strong>Sabrina da Tegra
+21 {'blog': 21} | <div class="mnt-sabrina-photo">
+21 {'blog': 21} | <div class="mnt-sabrina-content">
+21 {'blog': 21} | <h2 id="mnt-sabrina-title">
+21 {'blog': 21} | <p class="mnt-sabrina-subtle">
+16 {'regioes': 11, 'empreendimentos': 5} | <p class="eyebrow">Atendimento com Sabrina da Tegra
+12 {'blog': 12} | <section class="mnt-sabrina-card" id="sabrina-da-tegra" aria-labelledby="mnt-sabrina-title">
+12 {'blog': 12} | <img src="S3" alt="Sabrina da Tegra, corretora de imóveis, CRECI-SP 209.905-F" loading="lazy" decoding="async" width="420" height="500">
+12 {'blog': 12} | <a class="mt-floating mt-floating-whatsapp" href="https://wa.me/5511960779328?text=…" target="_blank" rel="noopener noreferrer" aria-label="Conversar com Sabrina no WhatsApp">
+11 {'regioes': 11} | <h2>Sabrina da Tegra: atendimento focado em imóveis Tegra.
+11 {'regioes': 11} | <p>Sabrina da Tegra é corretora Tegra Vendas e especialista em produtos Tegra. O atendimento pode orientar a busca e confirmar disponibilidade e condições vigentes.
+11 {'regioes': 11} | <p>Use o formulário ou o WhatsApp. Sabrina da Tegra confirmará as informações vigentes no atendimento comercial.
+10 {'blog': 10} | <p>A Sabrina pode ajudar você a comparar plantas e informações de empreendimentos Tegra em São Paulo, de acordo com o que procura para morar.
+10 {'blog': 10} | <a class="mnt-sabrina-cta" href="https://wa.me/5511960779328?text=…" target="_blank" rel="noopener noreferrer" aria-label="Conversar com Sabrina da Tegra sobre apartamentos em São Paulo">Conversar com Sabrina pelo WhatsApp 
+9 {'blog': 9} | <section aria-labelledby="mnt-sabrina-title" class="mnt-sabrina-card" id="sabrina-da-tegra">
+9 {'blog': 9} | <img alt="Sabrina da Tegra, corretora de imóveis, CRECI-SP 209.905-F" decoding="async" height="500" loading="lazy" src="S3" width="420"/>
+9 {'blog': 9} | <p>Sabrina pode ajudar você a conhecer plantas e áreas comuns dos empreendimentos Tegra em São Paulo e consultar as informações de cada projeto.
+9 {'blog': 9} | <a aria-label="Conversar com Sabrina da Tegra sobre apartamentos em São Paulo" class="mnt-sabrina-cta" href="https://wa.me/5511960779328?text=…" rel="noopener noreferrer" target="_blank">Conversar com Sabrina pelo WhatsApp 
+6 {'empreendimentos': 5, 'preview': 1} | <a href="https://corretor.tegravendas.com.br/sabrina/sp" target="_blank" rel="noopener noreferrer">
+5 {'empreendimentos': 5} | <option value="Falar com especialista">Falar com Sabrina da Tegra
+4 {'empreendimentos': 4} | <small>disponibilidade com Sabrina da Tegra
+4 {'empreendimentos': 4} | <p>Fale com Sabrina da Tegra para consultar disponibilidade, condições atuais e próximos passos.
+4 {'empreendimentos': 4} | <span data-submit-label>Falar com Sabrina da Tegra
+3 {'blog': 3} | <a class="btn light" href="tel:+5511960779328" aria-label="Ligar para Sabrina da Tegra">
+3 {'empreendimentos': 1, 'investimentos': 1, 'blog': 1} | <a href="https://wa.me/5511960779328?text=…" target="_blank" rel="noopener noreferrer">
+3 {'empreendimentos': 3} | <p>Fale com Sabrina da Tegra para confirmar unidades, valores e agendar seu atendimento.
+3 {'empreendimentos': 3} | <p>A disponibilidade deve ser confirmada no atendimento. Fale com Sabrina da Tegra para verificar oportunidades e condições atuais.
+2 {'blog': 2} | <p>Conheça as características do projeto e consulte opções com Sabrina da Tegra.
+2 {'blog': 2} | <a href="https://wa.me/5511960779328?text=…" aria-label="Consultar oportunidades no Home Club Caminhos da Lapa pelo WhatsApp com Sabrina">
+2 {'blog': 2} | <span class="mnt-project-cta">Consultar com Sabrina 
+2 {'blog': 2} | <span class="eyebrow">Sabrina da Tegra · Atendimento consultivo
+2 {'blog': 2} | <a class="btn message" href="https://wa.me/5511960779328?text=…" target="_blank" rel="noopener noreferrer" aria-label="Mensagem WhatsApp para Sabrina da Tegra">
+2 {'blog': 2} | <a class="mnt-sabrina-cta" href="https://wa.me/5511960779328?text=…" target="_blank" rel="noopener noreferrer" aria-label="Conversar com Sabrina da Tegra pelo WhatsApp sobre plantas de apartamentos">Conversar com Sabrina pelo What
+2 {'blog': 2} | <strong>Sabrina da Tegra · Tegra Vendas · CRECI-SP 209.905-F
+2 {'blog': 2} | <p>Compare projetos por região e converse com Sabrina da Tegra para verificar opções e condições.
+2 {'blog': 1, 'empreendimentos': 1} | <div class="wrap sabrina-grid">
+2 {'complexo-lapa-pirituba': 1, 'complexo-lapa-pirituba-v2': 1} | <a class="tegra-campaign-cta" href="https://wa.me/5511960779328?text=…">Falar com Sabrina no WhatsApp
+1 {'blog': 1} | <p>Jerivás e Home Club já foram entregues; o contato com Sabrina é para informações e eventuais oportunidades particulares.
+1 {'blog': 1} | <p class="mnt-urban-disclaimer">Condições, disponibilidade e oportunidades particulares dependem de confirmação com Sabrina da Tegra. A venda original de Reserva, Jerivás e Home Club está encerrada.
+1 {'blog': 1} | <p>Estou à disposição para explicar o Caminhos da Lapa, a Rua Jardim, as tipologias e as condições comerciais que estiverem disponíveis. Agende antes de visitar o estande e, ao chegar, solicite expressamente Sabrina da Tegra.
+1 {'blog': 1} | <p>Além de um bom acabamento, a cozinha precisa funcionar no dia a dia. A Sabrina pode ajudar você a comparar opções de apartamentos Tegra, conhecer plantas e consultar as informações disponíveis de cada empreendimento.
+1 {'blog': 1} | <p>A incidência de luz e a posição dos ambientes podem mudar a experiência de morar. Sabrina pode ajudar você a comparar plantas de apartamentos Tegra, observar orientação e aberturas e consultar as opções disponíveis.
+1 {'blog': 1} | <section class="mnt-hub-sub mnt-hub-agent" id="sabrina-da-tegra" aria-labelledby="hub-agent-title">
+1 {'blog': 1} | <img src="S3" alt="Sabrina da Tegra, corretora de imóveis CRECI-SP 209.905-F" width="420" height="500" loading="lazy" decoding="async">
+1 {'blog': 1} | <h2 id="hub-agent-title">Da pesquisa à visita: converse com Sabrina da Tegra.
+1 {'blog': 1} | <p>Você já sabe quais ambientes e características priorizar? Sabrina da Tegra, corretora de imóveis CRECI-SP 209.905-F, pode ajudar a conhecer empreendimentos Tegra em São Paulo, comparar plantas e consultar condições atualizadas.
+1 {'blog': 1} | <a class="mnt-hub-button" href="https://wa.me/5511960779328?text=…" target="_blank" rel="noopener noreferrer">Comparar apartamentos com Sabrina ↗
+1 {'blog': 1} | <a href="https://wa.me/5511960779328?text=…" target="_blank" rel="noopener noreferrer">Comparar com Sabrina ↗
+1 {'blog': 1} | <p>Use os guias para entender seus critérios e avance para o catálogo de empreendimentos, regiões ou studios e salas. Sabrina da Tegra pode ajudar a comparar opções.
+1 {'blog': 1} | <a href="#sabrina-da-tegra" class="bridge-btn">Falar com Sabrina ↓
+1 {'blog': 1} | <section class="blog-sabrina" id="sabrina-da-tegra" aria-labelledby="sabrina-title">
+1 {'blog': 1} | <h2 id="sabrina-title">Sabrina da Tegra
+1 {'blog': 1} | <p class="sabrina-intro">
+1 {'blog': 1} | <p>Sou Sabrina da Tegra, corretora Tegra Vendas. Posso ajudar você a comparar bairros, conhecer opções de imóveis e esclarecer dúvidas sobre as etapas da compra, de forma consultiva.
+1 {'blog': 1} | <p class="sabrina-creci">
+1 {'blog': 1} | <div class="sabrina-contact">
+1 {'blog': 1} | <a class="btn message" href="https://wa.me/5511960779328?text=…" target="_blank" rel="noopener noreferrer" aria-label="Enviar mensagem para Sabrina da Tegra no WhatsApp">
+1 {'blog': 1} | <p>Deixe seus dados e selecione o motivo do contato. Sabrina da Tegra poderá orientar você sobre empreendimentos e condições comerciais que precisem de confirmação.
+1 {'blog': 1} | <a class="mnt-hub-contact-link" href="https://wa.me/5511960779328?text=…" target="_blank" rel="noopener noreferrer">Fale agora com Sabrina pelo WhatsApp
+1 {'blog': 1} | <section class="mnt-hub-sub mnt-hub-agent" id="sabrina-da-tegra" aria-labelledby="sabrina-title">
+1 {'blog': 1} | <img src="S3" alt="Sabrina da Tegra, corretora CRECI-SP 209.905-F" width="420" height="500" loading="lazy">
+1 {'blog': 1} | <h2 id="sabrina-title">
+1 {'blog': 1} | <p>Sabrina da Tegra, corretora de imóveis CRECI-SP 209.905-F, pode orientar a comparação entre empreendimentos, plantas e condições vigentes.
+1 {'blog': 1} | <a class="mnt-hub-button" href="https://wa.me/5511960779328?text=…" rel="noopener noreferrer" target="_blank">Comparar imóveis com Sabrina ↗
+1 {'blog': 1} | <p>Conte a Sabrina o que procura: um apartamento para morar, um studio para investir ou informações sobre os empreendimentos Tegra. O atendimento poderá apresentar plantas, disponibilidade e condições atualizadas.
+1 {'blog': 1} | <a class="mt-floating mt-floating-lead" href="#formulario" data-form-intent="conditions" aria-label="Comparar imóveis com Sabrina pelo formulário">
+1 {'blog': 1} | <p>Compare metragens, dormitórios e vagas dos projetos do Caminhos da Lapa. Os dados representam tipologias do empreendimento, não estoque disponível; confirme a unidade e as condições com Sabrina.
+1 {'blog': 1} | <p>Jerivás e Home Club também fazem parte do complexo. Conheça seus perfis e consulte Sabrina da Tegra sobre eventuais oportunidades particulares.
+1 {'blog': 1} | <p>Estou à disposição para esclarecer dúvidas e ajudar você a comparar opções com calma. O atendimento vai além da venda: podemos conversar sobre o bairro, o perfil do imóvel e as informações comerciais disponíveis. Agende antes d
+1 {'complexo-lapa-pirituba-v2': 1} | <a class="outline" href="https://wa.me/5511960779328?text=…">Conversar com Sabrina
+1 {'empreendimentos': 1} | <p class="intro-copy">Quer avaliar um apartamento no Brooklin de 262 m² com quatro suítes e quatro vagas? Fale com Sabrina da Tegra Vendas sobre plantas, localização, estágio da obra e disponibilidade. Como o Ampère está em constr
+1 {'empreendimentos': 1} | <a class="quick-wa" data-floating-whatsapp aria-label="Conversar com Sabrina da Tegra pelo WhatsApp" href="https://wa.me/5511960779328?text=…" target="_blank" rel="noopener noreferrer">
+1 {'empreendimentos': 1} | <p>O Ayla Moema Studio &amp; Office tem disponibilidade sujeita a consulta. Consulte Sabrina da Tegra para verificar oportunidades, disponibilidade e condições atuais.
+1 {'empreendimentos': 1} | <p>Sabrina da Tegra pode verificar disponibilidade, condições atuais e oportunidades relacionadas ao Ayla Moema Studio & Office.
+1 {'empreendimentos': 1} | <p class="fine">Consulte Sabrina da Tegra para confirmar disponibilidade e organizar o atendimento.
+1 {'empreendimentos': 1} | <p>Sabrina da Tegra, corretora Tegra Vendas, conduz o atendimento comercial e confirma disponibilidade e condições vigentes.
+1 {'empreendimentos': 1} | <p>Sabrina da Tegra pode confirmar disponibilidade, condições atuais e próximos passos para o Bem Moema.
+1 {'empreendimentos': 1} | <a href="https://wa.me/5511960779328?text=…" target="_blank" rel="noopener noreferrer">Fale diretamente com Sabrina da Tegra pelo WhatsApp
+1 {'empreendimentos': 1} | <p>Selecione 500 m² ou cobertura de 923 m² no quadro de condições comerciais e utilize o Form 46 ou o WhatsApp para falar com Sabrina da Tegra. Os preços são referências e dependem de confirmação comercial.
+1 {'empreendimentos': 1} | <a class="mt-quick-whatsapp" aria-label="Conversar com Sabrina da Tegra no WhatsApp sobre Bueno Brandão 257" data-floating-whatsapp href="https://wa.me/5511960779328?text=…" target="_blank" rel="noopener noreferrer">
+1 {'empreendimentos': 1} | <p>Para avançar na decisão de compra, fale diretamente com Sabrina da Tegra, confirme a disponibilidade e agende sua visita ao plantão.
+1 {'empreendimentos': 1} | <p>Fale com Sabrina da Tegra para confirmar unidades disponíveis, condições comerciais e possibilidades de pagamento. Se desejar conhecer o empreendimento, solicite também o agendamento para visitar o plantão, a maquete do Caminho
+1 {'empreendimentos': 1} | <p>A disponibilidade pode ser pontual. Consulte Sabrina da Tegra para verificar oportunidades, condições atuais e possibilidades de atendimento para o Chez Vous Moema.
+1 {'empreendimentos': 1} | <p>Sabrina da Tegra, corretora Tegra Vendas, pode verificar disponibilidade e condições atuais e orientar o atendimento.
+1 {'empreendimentos': 1} | <p>Sabrina da Tegra pode verificar disponibilidade, condições atuais e oportunidades relacionadas ao Chez Vous Moema.
+1 {'empreendimentos': 1} | <strong>Conheça as opções disponíveis, compare as plantas e fale com a corretora Sabrina da Tegra para receber as condições atuais do Garden Design.
+1 {'empreendimentos': 1} | <p>Fale diretamente com Sabrina da Tegra para consultar unidades, condições comerciais e possibilidades de atendimento para o Garden Design.
+1 {'empreendimentos': 1} | <p>Fale com Sabrina da Tegra para consultar unidades disponíveis, condições comerciais e possibilidades de pagamento do Garden Design.
+1 {'empreendimentos': 1} | <meta property="og:description" content="Condomínio entregue com plantas de 105 e 136 m². Consulte Sabrina da Tegra sobre eventuais oportunidades particulares.">
+1 {'empreendimentos': 1} | <p>Conheça as tipologias residenciais de 105 e 136 m² e fale com Sabrina da Tegra para verificar eventuais oportunidades particulares no condomínio.
+1 {'empreendimentos': 1} | <p>Quando houver um apartamento particular anunciado, o valor dependerá da unidade, da metragem, das condições e da negociação. Consulte Sabrina da Tegra para saber se há alguma oportunidade concreta no momento.
+1 {'empreendimentos': 1} | <a class="button outline" href="https://wa.me/5511960779328?text=…" target="_blank" rel="noopener noreferrer">
+1 {'empreendimentos': 1} | <p>Nenhuma unidade está anunciada como disponível nesta página sem confirmação atual. O contato com Sabrina é o primeiro passo para verificar oportunidades particulares.
+1 {'empreendimentos': 1} | <a href="https://wa.me/5511960779328?text=…" target="_blank" rel="noopener noreferrer">Conversar com Sabrina ↗
+1 {'empreendimentos': 1} | <p>Planta padrão do condomínio Jerivás. Consulte Sabrina sobre eventual oferta e documentação da unidade.
+1 {'empreendimentos': 1} | <p>Não há um preço vigente de unidade confirmado para publicação. Como a venda original está concluída, o valor depende de uma eventual unidade particular efetivamente ofertada. Consulte Sabrina da Tegra para verificar preço, disp
+1 {'empreendimentos': 1} | <p>Preencha o formulário de atendimento ou fale com Sabrina da Tegra pelo WhatsApp para solicitar informações comerciais atualizadas e agendar uma conversa.
+1 {'empreendimentos': 1} | <section class="section sabrina-section" id="sabrina" aria-labelledby="jerivas-sabrina-title">
+1 {'empreendimentos': 1} | <div class="sabrina-photo">
+1 {'empreendimentos': 1} | <img src="S3" alt="Sabrina da Tegra, corretora de imóveis" loading="lazy" decoding="async" width="720" height="900">
+1 {'empreendimentos': 1} | <div class="sabrina-copy">
+1 {'empreendimentos': 1} | <h2 id="jerivas-sabrina-title">Sabrina da Tegra
+1 {'empreendimentos': 1} | <p class="sabrina-credential">
+1 {'empreendimentos': 1} | <p>Quer entender quanto custa um apartamento no Jerivás? Sabrina verifica se existem unidades particulares disponíveis, apresenta os valores confirmados e orienta os próximos passos do atendimento.
+1 {'empreendimentos': 1} | <a class="button outline" href="https://wa.me/5511960779328?text=…" target="_blank" rel="noopener noreferrer">Falar com Sabrina pelo WhatsApp
+1 {'empreendimentos': 1} | <p class="eyebrow">SABRINA DA TEGRA
+1 {'empreendimentos': 1} | <p>Envie seus dados para solicitar uma consulta de disponibilidade. Sabrina verificará as informações comerciais atuais e poderá orientar os próximos passos. Nenhuma unidade é considerada disponível antes dessa confirmação.
+1 {'empreendimentos': 1} | <a href="https://wa.me/5511960779328?text=…" target="_blank" rel="noopener noreferrer" class="button outline">
+1 {'empreendimentos': 1} | <option value="Falar com especialista">Falar com Sabrina
+1 {'empreendimentos': 1} | <a class="floating-whatsapp" href="https://wa.me/5511960779328?text=…" target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp com Sabrina">
+1 {'empreendimentos': 1} | <p>Consulte Sabrina da Tegra para verificar oportunidades, condições atuais e disponibilidade relacionada ao Key Moema.
+1 {'empreendimentos': 1} | <p>Sabrina da Tegra pode verificar disponibilidade, condições atuais e oportunidades relacionadas ao Key Moema.
+1 {'empreendimentos': 1} | <p>Fale diretamente com Sabrina da Tegra para consultar unidades, condições comerciais e possibilidades de atendimento para o Nova Vivere.
+1 {'empreendimentos': 1} | <p>Fale com Sabrina da Tegra para consultar unidades disponíveis, condições comerciais e possibilidades de pagamento do Nova Vivere.
+1 {'empreendimentos': 1} | <p class="mnt-plant-note">Plantas oficiais de referência. A configuração e a disponibilidade de cada oportunidade devem ser confirmadas com a corretora Sabrina da Tegra.
+1 {'empreendimentos': 1} | <p>Sim. O Reserva é um empreendimento entregue no Caminhos da Lapa, na Lapa, Zona Oeste de São Paulo. Fale com a corretora Sabrina da Tegra para verificar as oportunidades disponíveis.
+1 {'empreendimentos': 1} | <p>Não. As unidades originalmente comercializadas pela Tegra já foram vendidas. As oportunidades atuais, quando disponíveis, não são negociadas diretamente com a incorporadora. Fale com a corretora Sabrina da Tegra para verificar 
+1 {'empreendimentos': 1} | <p>Fale com a corretora Sabrina da Tegra para verificar as oportunidades disponíveis, receber informações atualizadas e agendar sua visita ao Reserva Caminhos da Lapa.
+1 {'empreendimentos': 1} | <p class="intro-copy">Para avançar na sua decisão, fale diretamente com Sabrina da Tegra, verifique as oportunidades disponíveis e agende sua visita ao Reserva Caminhos da Lapa.
+1 {'empreendimentos': 1} | <p>Fale com Sabrina da Tegra para verificar as oportunidades disponíveis no Reserva Caminhos da Lapa e solicitar o agendamento da sua visita. As oportunidades atuais, quando disponíveis, não são negociadas diretamente com a incorp
+1 {'empreendimentos': 1} | <meta name="description" content="Conheça Studios Berrini NR, no Brooklin: tipologias de 29,63 a 56,16 m², lazer, localização e condições com Sabrina da Tegra. Estoque sob consulta.">
+1 {'empreendimentos': 1} | <p>Consulte Sabrina da Tegra para conferir a planta, o final, o pavimento e as regras de utilização da unidade específica.
+1 {'empreendimentos': 1} | <p>A disponibilidade de unidades NR não está comprovada. A comunicação institucional indica 100% vendido; consulte a Sabrina para verificar se existe estoque atual.
+1 {'empreendimentos': 1} | <p>Peça à Sabrina a planta oficial correspondente ao final e pavimento de interesse, além do memorial e das regras de uso NR.
+1 {'empreendimentos': 1} | <p>Você pode solicitar condições pelo formulário ou falar com Sabrina da Tegra no WhatsApp (11) 96077-9328.
+1 {'empreendimentos': 1} | <p>Sim. Solicite o atendimento e confirme o local e os horários de visita com Sabrina da Tegra.
+1 {'empreendimentos': 1} | <section class="section" id="sabrina-da-tegra">
+1 {'empreendimentos': 1} | <img src="S3" width="520" height="620" loading="lazy" alt="Sabrina da Tegra, corretora Tegra Vendas" style="max-width:360px;aspect-ratio:5/6;object-fit:cover;border-radius:16px">
+1 {'empreendimentos': 1} | <h2 class="display">Fale com Sabrina da Tegra.
+1 {'empreendimentos': 1} | <p>CRECI-SP 209.905-F. Consulte estoque NR, plantas, condições comerciais e orientações para visita. Ao chegar a um estande, solicite atendimento por Sabrina da Tegra.
+1 {'empreendimentos': 1} | <a class="quick-wa" href="https://wa.me/5511960779328?text=…" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Sabrina da Tegra">
+1 {'empreendimentos': 1} | <summary>Como agendar atendimento com Sabrina da Tegra?
+1 {'empreendimentos': 1} | <p>Use o formulário de contato ou o WhatsApp da página. Para atendimento no estande, solicite expressamente Sabrina da Tegra, corretora Tegra Vendas, CRECI-SP 209.905-F.
+1 {'empreendimentos': 1} | <p>Consulte Sabrina da Tegra para verificar oportunidades, condições atuais e disponibilidade relacionada ao Viso Moema.
+1 {'empreendimentos': 1} | <p>Sabrina da Tegra pode verificar disponibilidade, condições atuais e oportunidades relacionadas ao Viso Moema.
+1 {'investimentos': 1} | <meta name="description" content="Compare studios e salas comerciais Tegra em São Paulo por bairro, estágio e faixa de preço. Conheça oportunidades e consulte Sabrina da Tegra.">
+1 {'investimentos': 1} | <p>Compare tipologias compactas e espaços comerciais por localização, estágio e referência de valor. Conheça empreendimentos prontos ou em construção e consulte as condições atuais com Sabrina da Tegra.
+1 {'investimentos': 1} | <small class="invest-price-disclaimer">Condição comercial de outubro/2026; disponibilidade, vigência e condições sujeitas à confirmação com Sabrina da Tegra.
+1 {'investimentos': 1} | <small class="invest-price-disclaimer">O espelho de 20/10/2026 não identifica studio disponível para oferta direta. Consulte possibilidades com Sabrina da Tegra.
+1 {'investimentos': 1} | <small class="invest-price-disclaimer">Consulte Sabrina da Tegra para confirmar possibilidades, unidades e condições atuais.
+1 {'investimentos': 1} | <p class="invest-empty" id="inv-empty" hidden>Nenhum empreendimento corresponde a esta combinação. Ajuste as seleções ou consulte Sabrina.
+1 {'investimentos': 1} | <p>Os valores são referências comerciais documentadas e sujeitos a alteração. Peça a tabela e a disponibilidade vigentes à Sabrina.
+1 {'investimentos': 1} | <summary>Como consultar salas e studios com Sabrina da Tegra?
+1 {'investimentos': 1} | <p>Selecione uma oportunidade e preencha o formulário ou entre em contato pelo WhatsApp (11) 96077-9328. Em visitas ao estande, solicite atendimento por Sabrina da Tegra.
+1 {'investimentos': 1} | <section class="invest-agent" id="sabrina-da-tegra">
+1 {'investimentos': 1} | <img src="S3" width="520" height="620" loading="lazy" decoding="async" alt="Sabrina da Tegra, corretora de imóveis">
+1 {'investimentos': 1} | <p>Sou Sabrina da Tegra. Ajudo você a comparar tipologias, localizações e condições comerciais de studios e salas comerciais para tomar uma decisão fundamentada.
+1 {'investimentos': 1} | <strong>Sabrina da Tegra · CRECI-SP 209.905-F
+1 {'investimentos': 1} | <p>Ao visitar um estande, solicite expressamente atendimento por Sabrina da Tegra.
+1 {'investimentos': 1} | <p>Envie seus dados para que Sabrina da Tegra possa apresentar as opções adequadas.
+1 {'investimentos': 1} | <p class="lead-context" data-lead-context aria-live="polite">Interesse em studios e salas comerciais Tegra. Escolha as opções acima ou consulte Sabrina.
+1 {'investimentos': 1} | <a class="mt-quick-whatsapp" data-floating-whatsapp aria-label="Conversar com Sabrina da Tegra pelo WhatsApp sobre studios e salas comerciais" href="https://wa.me/5511960779328?text=…" target="_blank" rel="noopener noreferrer">
+1 {'preview': 1} | <p class="mt-form-context mt-field-wide" data-lead-context aria-live="polite">Nenhum empreendimento selecionado. Sabrina pode ajudar você a comparar as opções.
+1 {'regioes': 1} | <meta name="description" content="Apartamentos em Alto do Ipiranga: conheça o bairro e o YPY Alto do Ipiranga, em construção Tegra. Fale com Sabrina da Tegra.">
+1 {'regioes': 1} | <meta property="og:description" content="Apartamentos em Alto do Ipiranga: conheça o bairro e o YPY Alto do Ipiranga, empreendimento em construção Tegra. Fale com Sabrina da Tegra.">
+1 {'regioes': 1} | <meta name="twitter:description" content="Apartamentos em Alto do Ipiranga: conheça o bairro e o YPY Alto do Ipiranga, empreendimento em construção Tegra. Fale com Sabrina da Tegra.">
+1 {'regioes': 1} | <p>Em Alto do Ipiranga, o YPY Alto do Ipiranga é a opção Tegra apresentada para quem procura apartamento na planta e em construção em Alto do Ipiranga. Consulte os detalhes do empreendimento e fale com Sabrina da Tegra para confir
+1 {'regioes': 1} | <p>O YPY está em construção. Consulte Sabrina da Tegra para conhecer as opções disponíveis e as condições atuais.
+1 {'regioes': 1} | <p class="section-intro">Conheça YPY Alto do Ipiranga e consulte com Sabrina da Tegra as unidades disponíveis e as condições comerciais vigentes.
+1 {'regioes': 1} | <p>O YPY Alto do Ipiranga está em construção. Fale com Sabrina da Tegra para conhecer o projeto, consultar unidades disponíveis e entender as condições atuais de compra.
+1 {'regioes': 1} | <p>Se você está comparando bairros, quer entender se o momento é de comprar um empreendimento em construção ou já chegou ao YPY Alto do Ipiranga, Sabrina pode conduzir o próximo passo e confirmar as informações vigentes antes da p
+1 {'regioes': 1} | <p>Fale com Sabrina da Tegra para consultar YPY Alto do Ipiranga, organizar sua busca e receber informações comerciais atuais da Tegra Vendas.
+1 {'regioes': 1} | <p>Envie sua solicitação sobre YPY Alto do Ipiranga. Sabrina da Tegra, corretora especialista em produtos Tegra, pode ajudar com disponibilidade, condições atuais e próximos passos.
+1 {'regioes': 1} | <p>YPY Alto do Ipiranga é o empreendimento Tegra apresentado em Alto do Ipiranga. Conheça o projeto em detalhes e fale com Sabrina da Tegra para verificar as opções disponíveis.
+1 {'regioes': 1} | <p>Conheça plantas, características e detalhes de YPY Alto do Ipiranga na apresentação completa do empreendimento. Para disponibilidade e condições comerciais, fale com Sabrina da Tegra.
+1 {'regioes': 1} | <p class="section-intro">Compare Ledge Brooklin e Ampère Brooklin e consulte com Sabrina da Tegra as unidades disponíveis e as condições comerciais vigentes.
+1 {'regioes': 1} | <p>O Ledge Brooklin está em construção. Fale com Sabrina da Tegra para conhecer o projeto, consultar unidades disponíveis e entender as condições atuais de compra.
+1 {'regioes': 1} | <p>Se você está comparando bairros, quer entender se o momento é de comprar um apartamento na planta ou em construção ou já chegou ao Ledge Brooklin, Sabrina pode conduzir o próximo passo e confirmar as informações vigentes antes 
+1 {'regioes': 1} | <p>Fale com Sabrina da Tegra para consultar Ledge Brooklin, organizar sua busca e receber informações comerciais atuais da Tegra Vendas.
+1 {'regioes': 1} | <p>Envie sua solicitação sobre Ledge Brooklin ou Ampère Brooklin. Sabrina da Tegra, corretora especialista em produtos Tegra, pode ajudar com disponibilidade, condições atuais e próximos passos.
+1 {'regioes': 1} | <p>Ledge Brooklin é o empreendimento Tegra apresentado em Brooklin. Conheça o projeto em detalhes e fale com Sabrina da Tegra para verificar as opções disponíveis.
+1 {'regioes': 1} | <p>Conheça plantas, características e detalhes de Ledge Brooklin na apresentação completa do empreendimento. Para disponibilidade e condições comerciais, fale com Sabrina da Tegra.
+1 {'regioes': 1} | <meta name="description" content="Apartamentos em Chácara Klabin: conheça o bairro e o CAPIITOLO by Piero Lissoni, em construção Tegra. Fale com Sabrina da Tegra.">
+1 {'regioes': 1} | <meta property="og:description" content="Apartamentos em Chácara Klabin: conheça o bairro e o CAPIITOLO by Piero Lissoni, empreendimento em construção Tegra. Fale com Sabrina da Tegra.">
+1 {'regioes': 1} | <meta name="twitter:description" content="Apartamentos em Chácara Klabin: conheça o bairro e o CAPIITOLO by Piero Lissoni, empreendimento em construção Tegra. Fale com Sabrina da Tegra.">
+1 {'regioes': 1} | <p>Em Chácara Klabin, o CAPIITOLO by Piero Lissoni é a opção Tegra apresentada para quem procura apartamento na planta e em construção em Chácara Klabin. Consulte os detalhes do empreendimento e fale com Sabrina da Tegra para conf
+1 {'regioes': 1} | <p>O CAPIITOLO está em construção. Consulte Sabrina da Tegra para conhecer as opções disponíveis e as condições atuais.
+1 {'regioes': 1} | <p class="section-intro">Conheça CAPIITOLO by Piero Lissoni e consulte com Sabrina da Tegra as unidades disponíveis e as condições comerciais vigentes.
+1 {'regioes': 1} | <p>O CAPIITOLO by Piero Lissoni está em construção. Fale com Sabrina da Tegra para conhecer o projeto, consultar unidades disponíveis e entender as condições atuais de compra.
+1 {'regioes': 1} | <p>Se você está comparando bairros, quer entender se o momento é de comprar um empreendimento em construção ou já chegou ao CAPIITOLO by Piero Lissoni, Sabrina pode conduzir o próximo passo e confirmar as informações vigentes ante
+1 {'regioes': 1} | <p>Fale com Sabrina da Tegra para consultar CAPIITOLO by Piero Lissoni, organizar sua busca e receber informações comerciais atuais da Tegra Vendas.
+1 {'regioes': 1} | <p>Envie sua solicitação sobre CAPIITOLO by Piero Lissoni. Sabrina da Tegra, corretora especialista em produtos Tegra, pode ajudar com disponibilidade, condições atuais e próximos passos.
+1 {'regioes': 1} | <p>CAPIITOLO by Piero Lissoni é o empreendimento Tegra apresentado em Chácara Klabin. Conheça o projeto em detalhes e fale com Sabrina da Tegra para verificar as opções disponíveis.
+1 {'regioes': 1} | <p>Conheça plantas, características e detalhes de CAPIITOLO by Piero Lissoni na apresentação completa do empreendimento. Para disponibilidade e condições comerciais, fale com Sabrina da Tegra.
+1 {'regioes': 1} | <meta name="description" content="Apartamentos em Cidade Jardim: conheça o bairro e o Château Jardin, lançamento Tegra. Fale com Sabrina da Tegra.">
+1 {'regioes': 1} | <meta property="og:description" content="Apartamentos em Cidade Jardim: conheça o bairro e o Château Jardin, lançamento Tegra. Fale com Sabrina da Tegra.">
+1 {'regioes': 1} | <meta name="twitter:description" content="Apartamentos em Cidade Jardim: conheça o bairro e o Château Jardin, lançamento Tegra. Fale com Sabrina da Tegra.">
+1 {'regioes': 1} | <p>Em Cidade Jardim, o Château Jardin é a opção Tegra apresentada para quem procura apartamento em lançamento em Cidade Jardim. Consulte os detalhes do empreendimento e fale com Sabrina da Tegra para confirmar disponibilidade e co
+1 {'regioes': 1} | <p class="section-intro">Conheça Château Jardin e consulte com Sabrina da Tegra as unidades disponíveis e as condições comerciais vigentes.
+1 {'regioes': 1} | <p>Se você está comparando bairros, quer entender se o momento é de comprar um lançamento ou já chegou ao Château Jardin, Sabrina pode conduzir o próximo passo e confirmar as informações vigentes antes da proposta.
+1 {'regioes': 1} | <p>Fale com Sabrina da Tegra para consultar Château Jardin, organizar sua busca e receber informações comerciais atuais da Tegra Vendas.
+1 {'regioes': 1} | <p>Envie sua solicitação sobre Château Jardin. Sabrina da Tegra, corretora especialista em produtos Tegra, pode ajudar com disponibilidade, condições atuais e próximos passos.
+1 {'regioes': 1} | <p>Château Jardin é o empreendimento Tegra apresentado em Cidade Jardim. Conheça o projeto em detalhes e fale com Sabrina da Tegra para verificar as opções disponíveis.
+1 {'regioes': 1} | <p>Conheça plantas, características e detalhes de Château Jardin na apresentação completa do empreendimento. Para disponibilidade e condições comerciais, fale com Sabrina da Tegra.
+1 {'regioes': 1} | <p>Escolha um empreendimento acima ou envie sua solicitação sobre Higienópolis. Sabrina da Tegra pode ajudar com disponibilidade e condições atuais.
+1 {'regioes': 1} | <meta name="description" content="Explore bairros de São Paulo com empreendimentos Tegra. Compare regiões, conheça os projetos e encontre o imóvel com atendimento Sabrina da Tegra.">
+1 {'regioes': 1} | <p>Apartamentos em Itaim Bibi: conheça o bairro e o DSG Itaim, pronto para morar Tegra. Fale com Sabrina da Tegra.
+1 {'regioes': 1} | <p>Apartamentos em Cidade Jardim: conheça o bairro e o Château Jardin, lançamento Tegra. Fale com Sabrina da Tegra.
+1 {'regioes': 1} | <p>Apartamentos em Jardins: conheça o bairro e o Zahle Jardins, pronto para morar Tegra. Fale com Sabrina da Tegra.
+1 {'regioes': 1} | <p>Apartamentos em Tatuapé: conheça o bairro e o Universo Tatuapé Órbita, pronto para morar Tegra. Fale com Sabrina da Tegra.
+1 {'regioes': 1} | <p>Apartamentos em Chácara Klabin: conheça o bairro e o CAPIITOLO by Piero Lissoni, em construção Tegra. Fale com Sabrina da Tegra.
+1 {'regioes': 1} | <p>Apartamentos em Alto do Ipiranga: conheça o bairro e o YPY Alto do Ipiranga, em construção Tegra. Fale com Sabrina da Tegra.
+1 {'regioes': 1} | <p>Apartamentos em Sacomã: conheça o bairro e o TEG Sacomã, pronto para morar Tegra. Fale com Sabrina da Tegra.
+1 {'regioes': 1} | <div class="mnt-guide-actions" aria-label="Formas de contato com Sabrina da Tegra">
+1 {'regioes': 1} | <a class="btn secondary mnt-cta-call" href="tel:+5511960779328" aria-label="Ligar para Sabrina da Tegra">
+1 {'regioes': 1} | <a class="btn secondary mnt-cta-message" href="https://wa.me/5511960779328?text=…" target="_blank" rel="noopener noreferrer" aria-label="Enviar mensagem a Sabrina da Tegra pelo WhatsApp">
+1 {'regioes': 1} | <section class="agent-section" id="sabrina-da-tegra" aria-labelledby="sabrina-titulo">
+1 {'regioes': 1} | <img src="S3" alt="Sabrina da Tegra, corretora de imóveis da Tegra Vendas" width="520" height="620" loading="lazy" decoding="async">
+1 {'regioes': 1} | <h2 id="sabrina-titulo">Conte com Sabrina da Tegra para encontrar seu imóvel em São Paulo
+1 {'regioes': 1} | <p>Escolher um bairro é o início da busca. Sou Sabrina da Tegra, corretora de imóveis, CRECI-SP 209.905-F, e posso ajudar você a comparar os empreendimentos Tegra apresentados no More em um Tegra, esclarecer dúvidas e consultar co
+1 {'regioes': 1} | <strong>Ao chegar ao estande de vendas, solicite expressamente atendimento por Sabrina da Tegra.
+1 {'regioes': 1} | <p>Não. As páginas ajudam na descoberta e comparação, mas não substituem a confirmação comercial. Valores, metragens, unidades e condições devem ser verificados com Sabrina da Tegra antes de qualquer decisão.
+1 {'regioes': 1} | <p>Sim. Fale com Sabrina da Tegra para verificar opções de visita e organizar o atendimento conforme os empreendimentos de interesse. Ao visitar um estande, solicite expressamente atendimento por Sabrina da Tegra.
+1 {'regioes': 1} | <a href="https://wa.me/5511960779328?text=…">WhatsApp da Sabrina
+1 {'regioes': 1} | <p>Solicite orientação para comparar bairros, empreendimentos e condições de compra. Sabrina da Tegra, corretora Tegra Vendas, CRECI-SP 209.905-F, fará o atendimento.
+1 {'regioes': 1} | <a href="https://wa.me/5511960779328?text=…" target="_blank" rel="noopener noreferrer">WhatsApp da Sabrina da Tegra
+1 {'regioes': 1} | <p class="lead-privacy-copy">As informações comerciais dependem de disponibilidade e confirmação. Ao visitar um estande, solicite atendimento por Sabrina da Tegra.
+1 {'regioes': 1} | <a class="mt-quick-whatsapp" aria-label="Conversar com Sabrina da Tegra pelo WhatsApp sobre bairros de São Paulo" data-floating-whatsapp href="https://wa.me/5511960779328?text=…" target="_blank" rel="noopener noreferrer">
+1 {'regioes': 1} | <meta name="description" content="Apartamentos em Itaim Bibi: conheça o bairro e o DSG Itaim, pronto para morar Tegra. Fale com Sabrina da Tegra.">
+1 {'regioes': 1} | <meta property="og:description" content="Apartamentos em Itaim Bibi: conheça o bairro e o DSG Itaim, empreendimento entregue Tegra. Fale com Sabrina da Tegra.">
+1 {'regioes': 1} | <meta name="twitter:description" content="Apartamentos em Itaim Bibi: conheça o bairro e o DSG Itaim, empreendimento entregue Tegra. Fale com Sabrina da Tegra.">
+1 {'regioes': 1} | <p>Em Itaim Bibi, o DSG Itaim é a opção Tegra apresentada para quem procura apartamento pronto para morar em Itaim Bibi. Consulte os detalhes do empreendimento e fale com Sabrina da Tegra para confirmar disponibilidade e condições
+1 {'regioes': 1} | <p>O DSG Itaim é um empreendimento entregue. Consulte Sabrina da Tegra para confirmar as unidades disponíveis e as condições atuais.
+1 {'regioes': 1} | <p class="section-intro">Conheça DSG Itaim e consulte com Sabrina da Tegra as unidades disponíveis e as condições comerciais vigentes.
+1 {'regioes': 1} | <p>Se você está comparando bairros, quer entender se o momento é de comprar um empreendimento entregue ou já chegou ao DSG Itaim, Sabrina pode conduzir o próximo passo e confirmar as informações vigentes antes da proposta.
+1 {'regioes': 1} | <p>Fale com Sabrina da Tegra para consultar DSG Itaim, organizar sua busca e receber informações comerciais atuais da Tegra Vendas.
+1 {'regioes': 1} | <p>Envie sua solicitação sobre DSG Itaim. Sabrina da Tegra, corretora especialista em produtos Tegra, pode ajudar com disponibilidade, condições atuais e próximos passos.
+1 {'regioes': 1} | <p>DSG Itaim é o empreendimento Tegra apresentado em Itaim Bibi. Conheça o projeto em detalhes e fale com Sabrina da Tegra para verificar as opções disponíveis.
+1 {'regioes': 1} | <p>Conheça plantas, características e detalhes de DSG Itaim na apresentação completa do empreendimento. Para disponibilidade e condições comerciais, fale com Sabrina da Tegra.
+1 {'regioes': 1} | <meta name="description" content="Apartamentos em Jardins: conheça o bairro e o Zahle Jardins, pronto para morar Tegra. Fale com Sabrina da Tegra.">
+1 {'regioes': 1} | <meta property="og:description" content="Apartamentos em Jardins: conheça o bairro e o Zahle Jardins, empreendimento entregue Tegra. Fale com Sabrina da Tegra.">
+1 {'regioes': 1} | <meta name="twitter:description" content="Apartamentos em Jardins: conheça o bairro e o Zahle Jardins, empreendimento entregue Tegra. Fale com Sabrina da Tegra.">
+1 {'regioes': 1} | <p>Em Jardins, o Zahle Jardins é a opção Tegra apresentada para quem procura apartamento pronto para morar em Jardins. Consulte os detalhes do empreendimento e fale com Sabrina da Tegra para confirmar disponibilidade e condições v
+1 {'regioes': 1} | <p>O Zahle Jardins é um empreendimento entregue. Consulte Sabrina da Tegra para confirmar as unidades disponíveis e as condições atuais.
+1 {'regioes': 1} | <p class="section-intro">Conheça Zahle Jardins e consulte com Sabrina da Tegra as unidades disponíveis e as condições comerciais vigentes.
+1 {'regioes': 1} | <p>Se você está comparando bairros, quer entender se o momento é de comprar um empreendimento entregue ou já chegou ao Zahle Jardins, Sabrina pode conduzir o próximo passo e confirmar as informações vigentes antes da proposta.
+1 {'regioes': 1} | <p>Fale com Sabrina da Tegra para consultar Zahle Jardins, organizar sua busca e receber informações comerciais atuais da Tegra Vendas.
+1 {'regioes': 1} | <p>Envie sua solicitação sobre Zahle Jardins. Sabrina da Tegra, corretora especialista em produtos Tegra, pode ajudar com disponibilidade, condições atuais e próximos passos.
+1 {'regioes': 1} | <p>Zahle Jardins é o empreendimento Tegra apresentado em Jardins. Conheça o projeto em detalhes e fale com Sabrina da Tegra para verificar as opções disponíveis.
+1 {'regioes': 1} | <p>Conheça plantas, características e detalhes de Zahle Jardins na apresentação completa do empreendimento. Para disponibilidade e condições comerciais, fale com Sabrina da Tegra.
+1 {'regioes': 1} | <p>Escolha um projeto acima ou envie sua solicitação regional. Sabrina da Tegra pode ajudar a comparar disponibilidade, estágio, plantas e condições atuais.
+1 {'regioes': 1} | <p>O Bem Moema é um empreendimento entregue. Consulte Sabrina da Tegra para confirmar as unidades disponíveis e as condições atuais.
+1 {'regioes': 1} | <p class="section-intro">Chez Vous, Key, Ayla e Viso são projetos Tegra que tiveram forte aceitação comercial. Conheça plantas, características e localização e consulte Sabrina da Tegra para verificar disponibilidade e condições a
+1 {'regioes': 1} | <p>Se você está comparando bairros, quer entender se o momento é de comprar um empreendimento entregue ou já chegou ao Bem Moema, Sabrina pode conduzir o próximo passo e confirmar as informações vigentes antes da proposta.
+1 {'regioes': 1} | <p>Fale com Sabrina da Tegra para consultar Bem Moema, organizar sua busca e receber informações comerciais atuais da Tegra Vendas.
+1 {'regioes': 1} | <p>Envie sua solicitação sobre Bem Moema. Sabrina da Tegra, corretora especialista em produtos Tegra, pode ajudar com disponibilidade, condições atuais e próximos passos.
+1 {'regioes': 1} | <p>Conheça plantas, características e detalhes de Bem Moema na apresentação completa do empreendimento. Para disponibilidade e condições comerciais, fale com Sabrina da Tegra.
+1 {'regioes': 1} | <p>O Soma é um empreendimento entregue. Consulte Sabrina da Tegra para confirmar as unidades disponíveis e as condições atuais.
+1 {'regioes': 1} | <p>Se você está comparando bairros, quer entender se o momento é de comprar um empreendimento entregue ou já chegou ao Soma Perdizes, Sabrina pode conduzir o próximo passo e confirmar as informações vigentes antes da proposta.
+1 {'regioes': 1} | <p>Fale com Sabrina da Tegra para consultar Soma Perdizes, organizar sua busca e receber informações comerciais atuais da Tegra Vendas.
+1 {'regioes': 1} | <p>Envie sua solicitação sobre Soma Perdizes. Sabrina da Tegra, corretora especialista em produtos Tegra, pode ajudar com disponibilidade, condições atuais e próximos passos.
+1 {'regioes': 1} | <p>Soma Perdizes é o empreendimento Tegra apresentado em Perdizes. Conheça o projeto em detalhes e fale com Sabrina da Tegra para verificar as opções disponíveis.
+1 {'regioes': 1} | <p>Conheça plantas, características e detalhes de Soma Perdizes na apresentação completa do empreendimento. Para disponibilidade e condições comerciais, fale com Sabrina da Tegra.
+1 {'regioes': 1} | <meta name="description" content="Apartamentos em Sacomã: conheça o bairro e o TEG Sacomã, pronto para morar Tegra. Fale com Sabrina da Tegra.">
+1 {'regioes': 1} | <meta property="og:description" content="Apartamentos em Sacomã: conheça o bairro e o TEG Sacomã, empreendimento pronto para morar Tegra. Fale com Sabrina da Tegra.">
+1 {'regioes': 1} | <meta name="twitter:description" content="Apartamentos em Sacomã: conheça o bairro e o TEG Sacomã, empreendimento pronto para morar Tegra. Fale com Sabrina da Tegra.">
+1 {'regioes': 1} | <p>Em Sacomã, o TEG Sacomã é a opção Tegra apresentada para quem procura apartamento pronto para morar em Sacomã. Consulte os detalhes do empreendimento e fale com Sabrina da Tegra para confirmar disponibilidade e condições vigent
+1 {'regioes': 1} | <p class="section-intro">Conheça TEG Sacomã e consulte com Sabrina da Tegra as unidades disponíveis e as condições comerciais vigentes.
+1 {'regioes': 1} | <p>O TEG Sacomã é apresentado como pronto para morar. Fale com Sabrina da Tegra para conhecer o projeto, consultar unidades disponíveis e entender as condições atuais de compra.
+1 {'regioes': 1} | <p>Se você está comparando bairros, quer entender se o momento é de comprar um empreendimento pronto para morar ou já chegou ao TEG Sacomã, Sabrina pode conduzir o próximo passo e confirmar as informações vigentes antes da propost
+1 {'regioes': 1} | <p>Fale com Sabrina da Tegra para consultar TEG Sacomã, organizar sua busca e receber informações comerciais atuais da Tegra Vendas.
+1 {'regioes': 1} | <p>Envie sua solicitação sobre TEG Sacomã. Sabrina da Tegra, corretora especialista em produtos Tegra, pode ajudar com disponibilidade, condições atuais e próximos passos.
+1 {'regioes': 1} | <p>TEG Sacomã é o empreendimento Tegra apresentado em Sacomã. Conheça o projeto em detalhes e fale com Sabrina da Tegra para verificar as opções disponíveis.
+1 {'regioes': 1} | <p>Conheça plantas, características e detalhes de TEG Sacomã na apresentação completa do empreendimento. Para disponibilidade e condições comerciais, fale com Sabrina da Tegra.
+1 {'regioes': 1} | <meta name="description" content="Apartamentos em Tatuapé: conheça o bairro e o Universo Tatuapé Órbita, pronto para morar Tegra. Fale com Sabrina da Tegra.">
+1 {'regioes': 1} | <meta property="og:description" content="Apartamentos em Tatuapé: conheça o bairro e o Universo Tatuapé Órbita, empreendimento pronto para morar Tegra. Fale com Sabrina da Tegra.">
+1 {'regioes': 1} | <meta name="twitter:description" content="Apartamentos em Tatuapé: conheça o bairro e o Universo Tatuapé Órbita, empreendimento pronto para morar Tegra. Fale com Sabrina da Tegra.">
+1 {'regioes': 1} | <p>Em Tatuapé, o Universo Tatuapé Órbita é a opção Tegra apresentada para quem procura apartamento pronto para morar em Tatuapé. Consulte os detalhes do empreendimento e fale com Sabrina da Tegra para confirmar disponibilidade e c
+1 {'regioes': 1} | <p class="section-intro">Conheça Universo Tatuapé Órbita e consulte com Sabrina da Tegra as unidades disponíveis e as condições comerciais vigentes.
+1 {'regioes': 1} | <p>O Universo Tatuapé Órbita é apresentado como pronto para morar. Fale com Sabrina da Tegra para conhecer o projeto, consultar unidades disponíveis e entender as condições atuais de compra.
+1 {'regioes': 1} | <p>Se você está comparando bairros, quer entender se o momento é de comprar um empreendimento pronto para morar ou já chegou ao Universo Tatuapé Órbita, Sabrina pode conduzir o próximo passo e confirmar as informações vigentes ant
+1 {'regioes': 1} | <p>Fale com Sabrina da Tegra para consultar Universo Tatuapé Órbita, organizar sua busca e receber informações comerciais atuais da Tegra Vendas.
+1 {'regioes': 1} | <p>Envie sua solicitação sobre Universo Tatuapé Órbita. Sabrina da Tegra, corretora especialista em produtos Tegra, pode ajudar com disponibilidade, condições atuais e próximos passos.
+1 {'regioes': 1} | <p>Universo Tatuapé Órbita é o empreendimento Tegra apresentado em Tatuapé. Conheça o projeto em detalhes e fale com Sabrina da Tegra para verificar as opções disponíveis.
+1 {'regioes': 1} | <p>Conheça plantas, características e detalhes de Universo Tatuapé Órbita na apresentação completa do empreendimento. Para disponibilidade e condições comerciais, fale com Sabrina da Tegra.
+1 {'regioes': 1} | <p class="hero-lead">Conheça duas propostas Tegra na Vila Nova Conceição: residências amplas no Bueno Brandão 257 e studios compactos no Tièl, para morar ou avaliar investimento. Compare as opções e consulte as condições com Sabri
+1 {'regioes': 1} | <p>Bueno Brandão 257 e Tièl são apresentados como prontos para morar. Confirme unidades e condições com Sabrina da Tegra.
+1 {'regioes': 1} | <p>Conheça as configurações do empreendimento e compare a proposta residencial, a planta e os diferenciais antes de escolher uma unidade. Sabrina da Tegra pode apresentar as condições vigentes e orientar o atendimento.
+1 {'regioes': 1} | <a class="btn btn-outline" href="#formulario" data-interest="Bueno Brandão 257 | Residencial alto padrão" data-form-intent="conditions">Consultar unidades com Sabrina
+1 {'regioes': 1} | <a class="btn btn-outline" href="#formulario" data-interest="Tièl Vila Nova Conceição | Interesse em investimento" data-form-intent="conditions">Consultar condições com Sabrina
+1 {'regioes': 1} | <p>Se você busca uma residência ampla no Bueno Brandão 257 ou um studio compacto no Tièl, Sabrina pode orientar a comparação das unidades e confirmar as informações comerciais vigentes antes da proposta.
+1 {'regioes': 1} | <p>Fale com Sabrina da Tegra para consultar Tièl ou Bueno Brandão 257, organizar sua busca e receber informações comerciais atuais da Tegra Vendas.
+1 {'regioes': 1} | <p>Envie sua solicitação sobre Tièl ou Bueno Brandão 257. Sabrina da Tegra, corretora especialista em produtos Tegra, pode ajudar com disponibilidade, condições atuais e próximos passos.
+1 {'regioes': 1} | <p>Bueno Brandão 257 e Tièl Vila Nova Conceição são os empreendimentos Tegra apresentados em Vila Nova Conceição. Conheça o projeto em detalhes e fale com Sabrina da Tegra para verificar as opções disponíveis.
+1 {'regioes': 1} | <p>Conheça plantas, características e detalhes de Bueno Brandão 257 na apresentação completa do empreendimento. Para disponibilidade e condições comerciais, fale com Sabrina da Tegra.
+1 {'regioes': 1} | <p>A unidade AP510 tem área exata de 18,80 m² e referência comercial de R$ 488.800, equivalente a R$ 26.000/m². Confirme preço, planta e disponibilidade com Sabrina da Tegra.
