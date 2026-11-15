@@ -528,6 +528,15 @@ for(const [slug,street,cep] of expected){
    assert.deepEqual(newTypes.slice().sort(),allowed.slice().sort(),'Órbita: only specifically approved commercial/image/plan types may be added');
  }else {
    const normalized=normalizeOnsiteAgent(stripApprovedImages(stripBemMoemaRichEntities(after,slug),before,slug,candidate),before,slug);
+   if(slug==='key-moema'){
+     // SFJM 2026-11-15: WebPage.description was refreshed editorially after the 9c8bdc7 baseline.
+     // Accept only this exact approved text; every other schema change still fails.
+     const APPROVED_KEY_MOEMA_DESCRIPTION='Key Moema Tegra: apartamentos de 62 a 74 m², 2 dormitórios, 1 a 2 suítes, a 220 m da Estação Eucaliptos. Consulte disponibilidade e condições.';
+     const pageAfter=flat(normalized).find(n=>n['@type']==='WebPage'),pageBefore=flat(before).find(n=>n['@type']==='WebPage');
+     assert(pageAfter&&pageBefore,'Key Moema: WebPage missing');
+     assert.equal(pageAfter.description,APPROVED_KEY_MOEMA_DESCRIPTION,'Key Moema: WebPage.description differs from the approved editorial text');
+     pageBefore.description=APPROVED_KEY_MOEMA_DESCRIPTION;
+   }
    assert.deepEqual(scrub(normalizeBuenoEditorial(normalized,before,slug,candidate)),scrub(before),slug+': forbidden non-image/non-address schema change');
  }
  const prior=flat(before).filter(x=>x['@type']==='ApartmentComplex');
