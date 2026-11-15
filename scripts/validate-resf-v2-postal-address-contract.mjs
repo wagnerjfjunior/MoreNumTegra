@@ -546,6 +546,13 @@ for(const [slug,street,cep] of expected){
      const addedNames=faqAfter.mainEntity.filter(q=>!faqBefore.mainEntity.some(b=>b.name===q.name)).map(q=>q.name);
      assert.deepEqual(addedNames,APPROVED_SOMA_FAQ,'Soma: only the approved FAQ entries may be added');
      faqAfter.mainEntity=faqAfter.mainEntity.filter(q=>!APPROVED_SOMA_FAQ.includes(q.name));
+     // SFJM 2026-11-15: the 'Onde fica' answer was aligned with the visible page copy (Tegra's own wording about the future
+     // Estação Perdizes). Accept only this exact text; any other change to that answer still fails.
+     const APPROVED_SOMA_WHERE_ANSWER='Em Perdizes, na Avenida Sumaré. A Tegra destaca o empreendimento em frente ao eixo da futura Estação Perdizes da linha laranja, com acesso ao Allianz Parque, Bourbon, West Plaza, Sesc Pompeia e Parque da Água Branca.';
+     const whereAfter=faqAfter.mainEntity.find(q=>q.name==='Onde fica o Soma Perdizes?'),whereBefore=faqBefore.mainEntity.find(q=>q.name==='Onde fica o Soma Perdizes?');
+     assert(whereAfter&&whereBefore,'Soma: FAQ "Onde fica" missing');
+     assert.equal(whereAfter.acceptedAnswer.text,APPROVED_SOMA_WHERE_ANSWER,'Soma: FAQ "Onde fica" answer differs from the approved text');
+     whereBefore.acceptedAnswer.text=APPROVED_SOMA_WHERE_ANSWER;
    }
    assert.deepEqual(scrub(normalizeBuenoEditorial(normalized,before,slug,candidate)),scrub(before),slug+': forbidden non-image/non-address schema change');
  }
