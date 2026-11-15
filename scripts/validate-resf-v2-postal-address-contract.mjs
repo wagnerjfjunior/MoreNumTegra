@@ -305,7 +305,18 @@ let changed=0,completeUnchanged=0;
 for(const [slug,street,cep] of expected){
  const filename='src-greenn/empreendimentos/'+slug+'/index.html';
  const original=execFileSync('git',['show',BASE+':'+filename],{encoding:'utf8'});
- const candidate=readFileSync(filename,'utf8');
+ const candidateRaw=readFileSync(filename,'utf8');
+ // SFJM 2026-11-15: approved internal-link module (HTML only, no JSON-LD) on four protected pages; Ampère handled in its own branch.
+ const SFJM_STRIP=['aria-higienopolis','mozae-higienopolis','ledge-brooklin','ypy-alto-do-ipiranga'];
+ const SFJM_CSS=[".mnb{margin:26px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}.mnb li{border-bottom:1px solid var(--line);padding:16px 0}.mnb a{color:var(--ink);font-weight:800;text-decoration:underline;text-decoration-color:var(--yellow);text-underline-offset:4px}.mnb span{display:block;max-width:820px;color:var(--muted);margin-top:4px}",".mnb{margin:26px 0 0;padding:0;list-style:none;border-top:1px solid rgba(128,128,128,.4)}.mnb li{border-bottom:1px solid rgba(128,128,128,.4);padding:16px 0}.mnb a{color:inherit;font-weight:800;text-decoration:underline;text-decoration-color:#EBB92E;text-underline-offset:4px}.mnb span{display:block;max-width:820px;opacity:.78;margin-top:4px}"];
+ const sfjmStrip=html=>{
+  const mod=[...html.matchAll(/<section [^>]*id="mais-no-bairro"[\s\S]*?<\/section>/g)];
+  assert.equal(mod.length,1,slug+': internal-link module must occur exactly once');
+  assert([...mod[0][0].matchAll(/href="([^"]*)"/g)].every(m=>/^\/(regioes|empreendimentos)\/[a-z0-9-]+\/$/.test(m[1])),slug+': module links must be internal');
+  const css=SFJM_CSS.filter(c=>html.includes(c)); assert.equal(css.length,1,slug+': module CSS must occur exactly once');
+  return html.replace(mod[0][0],'').replace(css[0],'');
+ };
+ const candidate=SFJM_STRIP.includes(slug)?sfjmStrip(candidateRaw):candidateRaw;
  const before=documents(original),after=documents(candidate);
  const approvedCommercialSlugs=['aria-higienopolis','bem-moema','bem-moema-studios-offices','garden-design','mozae-higienopolis','ypy-alto-do-ipiranga'];
  if(approvedCommercialSlugs.includes(slug)){
@@ -386,7 +397,16 @@ for(const [slug,street,cep] of expected){
     // HTML as the new immutable runtime snapshot; the postal/schema invariants
     // above still check historical facts independently.
     const approvedHtml=execFileSync('git',['show','ffe7dd2183e51360c8ecf6a217f61605b8ca652a:'+filename],{encoding:'utf8'});
-    assert.equal(candidate,approvedHtml,'Ampere full HTML drifted from USER_ACCEPTED integrated release baseline');
+    // SFJM 2026-11-15: remove only the approved internal-link module, its CSS and the approved H1, then require exact snapshot equality.
+    const sfjmMods=[...candidate.matchAll(/<section [^>]*id="mais-no-bairro"[\s\S]*?<\/section>/g)];
+    assert.equal(sfjmMods.length,1,'Ampere: internal-link module must occur exactly once');
+    assert([...sfjmMods[0][0].matchAll(/href="([^"]*)"/g)].every(m=>/^\/(regioes|empreendimentos)\/[a-z0-9-]+\/$/.test(m[1])),'Ampere: module links must be internal');
+    const sfjmCss=".mnb{margin:26px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}.mnb li{border-bottom:1px solid var(--line);padding:16px 0}.mnb a{color:var(--ink);font-weight:800;text-decoration:underline;text-decoration-color:var(--yellow);text-underline-offset:4px}.mnb span{display:block;max-width:820px;color:var(--muted);margin-top:4px}";
+    assert.equal(candidate.split(sfjmCss).length,2,'Ampere: module CSS must occur exactly once');
+    const sfjmH1='<h1 id="title" class="display">Ampère Brooklin Tegra<br>apartamentos de 262 m² e 4 suítes</h1>';
+    assert.equal(candidate.split(sfjmH1).length,2,'Ampere: approved H1 missing or modified');
+    const sfjmStripped=candidate.replace(sfjmMods[0][0],'').replace(sfjmCss,'').replace(sfjmH1,'<h1 id="title" class="display">Ampère Brooklin</h1>');
+    assert.equal(sfjmStripped,approvedHtml,'Ampere full HTML drifted from USER_ACCEPTED integrated release baseline');
  }else if(slug==='tiel-vila-nova-conceicao'){
    // RESF Tièl specific, source-verified commercial expansion. The separate
    // Tièl quality test verifies factual Product/Offer, two plans, FAQ pairs and
