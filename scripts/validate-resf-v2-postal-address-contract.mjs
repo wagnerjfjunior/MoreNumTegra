@@ -3,6 +3,17 @@
 import { readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import assert from 'node:assert/strict';
+// SFJM 2026-11-15: 'brand' is not a schema.org property of ApartmentComplex (Place). The approved snapshot pages
+// (Garden Design, Mozae, YPY) accept exactly one delta: that property removed from the ApartmentComplex node.
+const SNAPSHOT_BRAND_SLUGS=['garden-design','mozae-higienopolis','ypy-alto-do-ipiranga'];
+const snapshotWithoutComplexBrand=html=>html.replace(/(<script\b[^>]*type=["']application\/ld\+json["'][^>]*>)([\s\S]*?)(<\/script>)/i,(m,open,body,close)=>{
+ const doc=JSON.parse(body);
+ assert.equal(JSON.stringify(doc),body,'brand delta: snapshot JSON-LD must be compact so only the brand property changes');
+ const complex=(doc['@graph']||[doc]).find(x=>x['@type']==='ApartmentComplex');
+ assert(complex&&complex.brand&&complex.brand['@id']==='https://www.moretegra.com.br/#tegra-brand','brand delta: snapshot must carry the Tegra brand reference on ApartmentComplex');
+ delete complex.brand;
+ return open+JSON.stringify(doc)+close;
+});
 const BASE='9c8bdc74cb83dc9c9566f87d9288daf25f10c051';
 const expected=[
  ['ampere-brooklin','Rua André Ampére, 136','04562-080'],
@@ -316,7 +327,7 @@ for(const [slug,street,cep] of expected){
   const approved=execFileSync('git',['show',approvedSnapshot+':'+filename],{encoding:'utf8'});
   // Accept only the seven descriptive thumbnail alts copied from the approved data-alt.
   const approvedWithThumbAlts=slug==='aria-higienopolis'?approved.replace(/(<button\b[^>]*class="mt-gallery-thumb"[^>]*data-alt="([^"]+)"[^>]*>)(<img\b[^>]*>)/g,(m,button,alt,img)=>button+img.replace('alt=""','alt="'+alt+'"')):approved;
-  assert.equal(candidate,approvedWithThumbAlts,slug+': approved commercial runtime HTML/schema has drifted');
+  assert.equal(candidate,SNAPSHOT_BRAND_SLUGS.includes(slug)?snapshotWithoutComplexBrand(approvedWithThumbAlts):approvedWithThumbAlts,slug+': approved commercial runtime HTML/schema has drifted');
  }else if(slug==='ampere-brooklin'){
    // Schema-only PR #386: preserve all pre-existing entities except the bounded
    // WebPage mentions, ApartmentComplex.brand removal and verified FloorPlan links.
@@ -528,6 +539,15 @@ for(const [slug,street,cep] of expected){
    assert.deepEqual(newTypes.slice().sort(),allowed.slice().sort(),'Órbita: only specifically approved commercial/image/plan types may be added');
  }else {
    const normalized=normalizeOnsiteAgent(stripApprovedImages(stripBemMoemaRichEntities(after,slug),before,slug,candidate),before,slug);
+   // SFJM 2026-11-15: 'brand' is not a schema.org property of ApartmentComplex (Place). Approved delta: that single
+   // property is removed from the ApartmentComplex node on the listed pages; any other schema change still fails.
+   const BRAND_REMOVAL_SLUGS=['soma-perdizes','zahle-jardins','chateau-jardin','ypy-alto-do-ipiranga','reserva-caminhos-da-lapa','teg-sacoma','garden-design','ledge-brooklin','nova-vivere','ode-perdizes','mozae-higienopolis'];
+   if(BRAND_REMOVAL_SLUGS.includes(slug)){
+     const cAfter=flat(normalized).find(n=>n['@type']==='ApartmentComplex'),cBefore=flat(before).find(n=>n['@type']==='ApartmentComplex');
+     assert(cAfter&&cBefore,slug+': ApartmentComplex missing');
+     assert(!('brand' in cAfter),slug+': ApartmentComplex must not carry brand');
+     if('brand' in cBefore){assert.deepEqual(cBefore.brand,{'@id':'https://www.moretegra.com.br/#tegra-brand'},slug+': unexpected baseline brand value');delete cBefore.brand;}
+   }
    if(slug==='key-moema'){
      // SFJM 2026-11-15: WebPage.description was refreshed editorially after the 9c8bdc7 baseline.
      // Accept only this exact approved text; every other schema change still fails.
@@ -546,6 +566,19 @@ for(const [slug,street,cep] of expected){
      const addedNames=faqAfter.mainEntity.filter(q=>!faqBefore.mainEntity.some(b=>b.name===q.name)).map(q=>q.name);
      assert.deepEqual(addedNames,APPROVED_SOMA_FAQ,'Soma: only the approved FAQ entries may be added');
      faqAfter.mainEntity=faqAfter.mainEntity.filter(q=>!APPROVED_SOMA_FAQ.includes(q.name));
+     // SFJM 2026-11-15: Soma gets the Nova Vivere commercial schema pattern. Accept only these exact additions
+     // (Organization enrichment plus Person, Service, Product and Offer); everything else must still equal the baseline.
+     const APPROVED_SOMA_COMMERCIAL={"org":{"@type":"Organization","@id":"https://www.moretegra.com.br/#tegra-vendas","name":"Tegra Vendas","url":"https://www.moretegra.com.br/","brand":{"@id":"https://www.moretegra.com.br/#tegra-brand"},"contactPoint":{"@id":"https://www.moretegra.com.br/#sabrina-contato"}},"person":{"@type":"Person","@id":"https://www.moretegra.com.br/#sabrina-da-tegra","name":"Sabrina da Tegra","jobTitle":"Corretora de imóveis","identifier":{"@type":"PropertyValue","propertyID":"CRECI-SP","value":"209.905-F"},"worksFor":{"@id":"https://www.moretegra.com.br/#tegra-vendas"},"contactPoint":{"@id":"https://www.moretegra.com.br/#sabrina-contato"},"sameAs":"https://corretor.tegravendas.com.br/sabrina/sp","image":"https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp","workLocation":{"@id":"https://www.moretegra.com.br/empreendimentos/soma-perdizes/#project"}},"service":{"@type":"Service","@id":"https://www.moretegra.com.br/empreendimentos/soma-perdizes/#atendimento","name":"Atendimento comercial Soma Perdizes","serviceType":"Atendimento para unidades do Soma Perdizes","provider":{"@id":"https://www.moretegra.com.br/#tegra-vendas"},"broker":{"@id":"https://www.moretegra.com.br/#sabrina-da-tegra"},"areaServed":{"@type":"City","name":"São Paulo"},"url":"https://www.moretegra.com.br/empreendimentos/soma-perdizes/"},"product":{"@type":"Product","@id":"https://www.moretegra.com.br/empreendimentos/soma-perdizes/#product","name":"Soma Perdizes — apartamento unidade 0602 de 45 m²","description":"Apartamento unidade 0602 de 45 m² no Soma Perdizes, empreendimento Tegra mixed use na Avenida Sumaré, em Perdizes.","url":"https://www.moretegra.com.br/empreendimentos/soma-perdizes/","image":["https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/314/ImagemPrincipal/Tegra-Incorporadora-Perspectiva-Ilustrada-Voo-Diurno-Fachada-Apartamentos-Studios-Salas-Comerciais-Soma-Perdizes-Sao-Paulo-SP-714x640-1715885527011.jpg"],"brand":{"@id":"https://www.moretegra.com.br/#tegra-brand"},"isRelatedTo":{"@id":"https://www.moretegra.com.br/empreendimentos/soma-perdizes/#project"},"offers":{"@id":"https://www.moretegra.com.br/empreendimentos/soma-perdizes/#offer"},"additionalProperty":{"@type":"PropertyValue","name":"Referência comercial","value":"Unidade 0602 · 45 m² · R$ 14.000/m²"}},"offer":{"@type":"Offer","@id":"https://www.moretegra.com.br/empreendimentos/soma-perdizes/#offer","url":"https://www.moretegra.com.br/empreendimentos/soma-perdizes/","priceCurrency":"BRL","price":"630000","description":"Unidade 0602 · 45 m² · referência de R$ 630.000. Disponibilidade e condições sujeitas à confirmação.","itemOffered":{"@id":"https://www.moretegra.com.br/empreendimentos/soma-perdizes/#product"}}};
+     const flatAfter=flat(normalized),flatBefore=flat(before);
+     const orgAfter=flatAfter.find(n=>n['@type']==='Organization'),orgBefore=flatBefore.find(n=>n['@type']==='Organization');
+     assert(orgAfter&&orgBefore,'Soma: Organization missing');
+     assert.deepEqual(orgAfter,APPROVED_SOMA_COMMERCIAL.org,'Soma: Organization differs from the approved enrichment');
+     Object.assign(orgBefore,structuredClone(APPROVED_SOMA_COMMERCIAL.org));
+     const addedNodes=flatAfter.filter(n=>!flatBefore.some(b=>b['@id']===n['@id']&&b['@type']===n['@type']));
+     const approvedAdded=[APPROVED_SOMA_COMMERCIAL.person,APPROVED_SOMA_COMMERCIAL.service,APPROVED_SOMA_COMMERCIAL.product,APPROVED_SOMA_COMMERCIAL.offer];
+     assert.deepEqual(addedNodes.filter(n=>n['@type']!=='Question'),approvedAdded,'Soma: only the approved Person, Service, Product and Offer nodes may be added');
+     const graphAfter=normalized.find(x=>x['@graph'])?.['@graph'];
+     if(graphAfter){for(const n of approvedAdded){const i=graphAfter.findIndex(x=>x['@id']===n['@id']&&x['@type']===n['@type']);assert(i>=0,'Soma: approved node not found in graph');graphAfter.splice(i,1);}}
      // SFJM 2026-11-15: the 'Onde fica' answer was aligned with the visible page copy (Tegra's own wording about the future
      // Estação Perdizes). Accept only this exact text; any other change to that answer still fails.
      const APPROVED_SOMA_WHERE_ANSWER='Em Perdizes, na Avenida Sumaré. A Tegra destaca o empreendimento em frente ao eixo da futura Estação Perdizes da linha laranja, com acesso ao Allianz Parque, Bourbon, West Plaza, Sesc Pompeia e Parque da Água Branca.';

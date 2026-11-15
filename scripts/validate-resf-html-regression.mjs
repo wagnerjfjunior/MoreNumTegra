@@ -33,6 +33,18 @@ const pages=[
 const withoutJsonLd=html=>html.replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi,'<script type="application/ld+json"></script>');
 const documents=html=>[...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)].map(m=>JSON.parse(m[1]));
 const address=html=>documents(html).flatMap(x=>x['@graph']||[x]).find(x=>x['@type']==='ApartmentComplex')?.address;
+// SFJM 2026-11-15: 'brand' is not a schema.org property of ApartmentComplex (Place). The approved delta removes
+// exactly that one property from the ApartmentComplex node; the Tegra Brand node and Organization/Product brand stay.
+const TEGRA_BRAND_REF='https://www.moretegra.com.br/#tegra-brand';
+const BRAND_REMOVAL_SLUGS=['garden-design','mozae-higienopolis','ypy-alto-do-ipiranga'];
+const withoutComplexBrand=html=>html.replace(/(<script\b[^>]*type=["']application\/ld\+json["'][^>]*>)([\s\S]*?)(<\/script>)/i,(m,open,body,close)=>{
+ const doc=JSON.parse(body);
+ assert.equal(JSON.stringify(doc),body,'brand delta: baseline JSON-LD must be compact so only the brand property changes');
+ const complex=(doc['@graph']||[doc]).find(x=>x['@type']==='ApartmentComplex');
+ assert(complex&&complex.brand&&complex.brand['@id']===TEGRA_BRAND_REF,'brand delta: approved snapshot must carry the Tegra brand reference on ApartmentComplex');
+ delete complex.brand;
+ return open+JSON.stringify(doc)+close;
+});
 const sabrina='<p>Ao chegar ao estande de vendas do Mozae Higienópolis, solicite atendimento por <strong>Sabrina da Tegra</strong>. Para agendar sua visita, fale pelo <a href="https://wa.me/5511960779328?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20visita%20ao%20Mozae%20Higien%C3%B3polis%20com%20Sabrina%20da%20Tegra." target="_blank" rel="noopener noreferrer">WhatsApp (11) 96077-9328</a>.</p>';
 let checked=0;
 for(const [slug,street,cep] of pages){
@@ -50,7 +62,8 @@ for(const [slug,street,cep] of pages){
   const approved=execFileSync('git',['show',approvedSnapshot+':'+filename],{encoding:'utf8'});
   // Accept only the seven descriptive thumbnail alts copied from the approved data-alt.
   const approvedWithThumbAlts=slug==='aria-higienopolis'?approved.replace(/(<button\b[^>]*class="mt-gallery-thumb"[^>]*data-alt="([^"]+)"[^>]*>)(<img\b[^>]*>)/g,(m,button,alt,img)=>button+img.replace('alt=""','alt="'+alt+'"')):approved;
-  assert.equal(candidate,approvedWithThumbAlts,slug+': approved commercial runtime HTML/schema has drifted');
+  const approvedExpected=BRAND_REMOVAL_SLUGS.includes(slug)?withoutComplexBrand(approvedWithThumbAlts):approvedWithThumbAlts;
+  assert.equal(candidate,approvedExpected,slug+': approved commercial runtime HTML/schema has drifted');
  }else if(slug==='bem-moema-studios-offices'){
     const form=x=>x.match(/<form id="moretegra-lead-form"[\s\S]*?<\/form>/)?.[0];
     const sources=x=>[...x.matchAll(/<(?:img|iframe)\b[^>]*>/g)].map(m=>(m[0].match(/\bsrc="([^"]+)"/)||[])[1]);
