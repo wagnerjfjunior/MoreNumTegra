@@ -1,3 +1,13 @@
+## 23/11/2026 — ODE Perdizes: modelo de página documentado, PR #590 autorizada para merge
+
+- **Modelo de implementação (não novo padrão global):** `docs/frameworks/resf/v1/RESF_ODE_PERDIZES_PAGE_MODEL_2026-11-23.md`. Fonte HTML `src-greenn/empreendimentos/ode-perdizes/index.html`; rota `/empreendimentos/ode-perdizes/`.
+- **Escopo PR #590:** remove ticker e hero-meta redundantes; preserva banda única de quatro facts; H2/H3 em perguntas e respostas; lazer antes da galeria; 14 perspectivas oficiais distintas com menu único; seletor de plantas; lead/rodapé visual Ária; CTA flutuante `Mais Informações` + WhatsApp com ícone; cabeçalho visual Soma (`ODE Perdizes · MoreTegra` e retorno branco); `sitemap.xml` com `lastmod` 23/11.
+- **Autorização específica do usuário:** “pode mergear e documentar o modelo desta pagina” em 23/11. Os 10 checks do head pré-documentação `5fb821f82e9854a26866b657005f8627680841d5` passaram; **verificar checks do head final, merge SHA e deployment live antes de declarar release**. Base `main` antes do merge: `aeefc2a470b9b0b645ce83a657648d4ed32aeafc`. Deployment Vercel anterior: `dpl_4B4yBarLYCLFMjme2BnU9b34GcBn` (READY).
+- **Pendências explícitas:** QA visual mobile independente; HTTP e autorização de republicação das 14 mídias; envio real Form 46 e CRM; verificação Vercel READY/alias e produção após merge. **Risco comercial:** copy herdada da `main` fala de “última unidade”/Unidade 22 e R$ 2.090.000, mas site oficial indicou “100% Vendido”; confirmar estoque e corrigir todas as representações da oferta se necessário. Não declarar oferta atual confirmada.
+- **Sem propagação de autorização:** este aceite não autoriza alterações de outras páginas, regras RESF, Greenn, campanhas ou validadores. A próxima ação transversal continua governada por `docs/NEXT_SAFE_ACTION.md` e bloqueios em `docs/BLOCKED_ACTIONS.md`.
+
+---
+
 ## 15/11/2026 — HANDOFF ATUAL: o que mudou desde 05/11 (reconciliação)
 
 Próxima ação vigente: ver o topo de `docs/NEXT_SAFE_ACTION.md` (seção de 15/11); é o único registro autoritativo. Inventário das frentes e matriz de cobertura: `docs/PROJECT_STATUS.md` (15/11). Bloqueios consolidados: `docs/BLOCKED_ACTIONS.md` (15/11). As seções de 05/11 (Complexo) abaixo são históricas.
