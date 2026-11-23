@@ -1,3 +1,23 @@
+## 23/11/2026 — PR #595: próxima ação segura FGTS TRANSVERSAL (sem merge)
+
+Wagner aprovou (“sim, claro”) a **revisão da PR #595** para que FGTS seja um cluster de todo o catálogo residencial pronto em São Paulo, não uma campanha exclusiva do Órbita. Também aprovou a correção **exata** da allowlist de sitemap com teste negativo, sem alterar outros validadores.
+
+**Próxima ação:** validar o head da PR #595 (CI + QA estático), executar **LOCAL_LIVE_SYNC** em 360/390/430/900/1440, testar `/?estagio=pronto#oportunidades` e `/?interesse=FGTS%20para%20comprar%20apartamento#formulario`, conferir links e layouts dos projetos Elo Duo, Órbita e Soma. **Não criar Preview; não mesclar/deployar até autorização específica.**
+
+A frente F02 H2/H3 Lote 1 permanece distinta e não foi cancelada. Fonte: `docs/seo/MNT_FGTS_ORBITA_CLUSTER_2026-11-23.md` §9.
+
+---
+
+## 23/11/2026 — AÇÃO SEGURA DESTA FRENTE: QA da PR SEO FGTS/Órbita, sem merge
+
+**Autorização específica do Wagner:** preparar a expansão FGTS proposta na conversa, em PR separada, sem merge automático. A frente H2/H3 Lote 1 (seção de 15/11 abaixo) não foi cancelada; esta autorização pontual adiciona a frente FGTS sem autorizar ações em outras páginas.
+
+**Única próxima ação para FGTS:** conferir diff/CI do head exato da branch `feat/seo-fgts-orbita-guia-20261123`, executar **LOCAL LIVE SYNC** e obter aceite visual/editorial do artigo e do card FGTS do Órbita. **Não usar Vercel Preview.** Não mesclar/publicar até ordem explícita.
+
+Dossiê: `docs/seo/MNT_FGTS_ORBITA_CLUSTER_2026-11-23.md`. GSC não demonstrou tráfego FGTS; Semrush sem unidades API. Não alterar validadores nem reivindicar melhora de ranking antes de medição. O topo histórico de 15/11 é anterior a PRs integrados depois daquela data; a reconciliação desta frente não é auditoria global de todas as frentes.
+
+---
+
 ## 15/11/2026 — PRÓXIMA AÇÃO SEGURA: SEO MoreTegra SP — reescrever os títulos H2/H3 do Lote 1
 
 Reconciliação de estado pedida pelo Wagner em 15/11/2026 (decisão dele, registrada na conversa SFJM). `main` ao vivo na escrita: `0867ba67786f90116b1274b337633425ce123b18`. Esta seção passa a ser a mais nova; as seções abaixo (Complexo Lapa–Pirituba, 05/11, e anteriores) são históricas. O inventário completo das frentes, com PR, estado verificado, critério de conclusão e dependência, está em `docs/PROJECT_STATUS.md` (seção de 15/11/2026); os bloqueios consolidados, em `docs/BLOCKED_ACTIONS.md` (mesma data). **Este arquivo guarda só a próxima ação; o inventário não a substitui nem a amplia.**

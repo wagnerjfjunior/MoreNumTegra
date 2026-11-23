@@ -665,6 +665,10 @@
     const zoneField = zone?.closest("label") || null;
     const mobileZoneQuery = window.matchMedia?.("(max-width: 759px)") || null;
     const state = {status: "todos", city: "São Paulo", zone: "todas", price: "todos", query: ""};
+    // Atalho editorial compartilhável: somente o valor "pronto" ativa o filtro já existente.
+    // A página mantém o canonical da home e não cria uma URL SEO indexável concorrente.
+    if (new URLSearchParams(window.location.search).get("estagio") === "pronto") state.status = "entregue";
+    if (mobileStatus) mobileStatus.value = state.status;
 
     const syncZoneControls = () => {
       if (zoneQuickField) { zoneQuickField.hidden = state.city !== "São Paulo"; zoneQuickField.style.display = state.city !== "São Paulo" ? "none" : ""; }
@@ -851,6 +855,21 @@
 
   function prefillInterestFromUrl() {
     const interest = new URLSearchParams(window.location.search).get("interesse");
+    if (interest === "FGTS para comprar apartamento") {
+      // Form46: preserva campos e endpoint. O contexto existente integra o campo texto-livre,
+      // sem atribuir o interesse genérico a um empreendimento ou à medição de produto.
+      const form = document.querySelector('#moretegra-lead-form[data-moretegra-lead-form][data-form-id="46"]');
+      if (form instanceof HTMLFormElement) {
+        if (!form.dataset.selectedProject && !form.dataset.projectName) {
+          form.dataset.regionContext = "Orientação FGTS na compra de apartamento";
+        }
+        const intent = form.elements["texto-livre"];
+        if (intent instanceof HTMLSelectElement && [...intent.options].some(option => option.value === "Simular forma de pagamento")) {
+          intent.value = "Simular forma de pagamento";
+        }
+      }
+      return;
+    }
     const input = document.getElementById("mt-lead-project");
     if (!interest || !input || input.value) return;
     input.value = interest;

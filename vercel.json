@@ -232,6 +232,10 @@
       "destination": "/src-greenn/blog/mercado/index.html"
     },
     {
+      "source": "/blog/mercado/usar-fgts-comprar-apartamento/",
+      "destination": "/src-greenn/blog/mercado/usar-fgts-comprar-apartamento/index.html"
+    },
+    {
       "source": "/blog/dicasedecor/",
       "destination": "/src-greenn/blog/dicasedecor/index.html"
     },
