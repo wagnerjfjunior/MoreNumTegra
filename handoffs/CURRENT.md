@@ -1,3 +1,13 @@
+## 23/11/2026 — Órbita: artes Livelo GDigital desktop + mobile 9:16 integradas — SEM MERGE
+
+- **Pedido:** proprietário forneceu URLs finais da campanha Livelo+Tegra. Figura adicionada em `#livelo` **após os parágrafos H2 explicativos e antes do CTA**; card FGTS e demais componentes preservados.
+- **Desktop:** `https://s3-gdigital.s3.amazonaws.com/gdigital/313/Entrada_que_vira_pontos_Livelo.webp`; **mobile 9:16:** `https://s3-gdigital.s3.amazonaws.com/gdigital/313/Pontos_Livelo_no_Universo_Tatuape%CC%81_9x16.webp`. Preservar URL encoded `%CC%81` sem normalização. `<picture>` até 640px, `loading=lazy`, `decoding=async`, `alt`, CSS escopado com `object-fit:contain` (sem cortar texto). Não armazenar binários no GitHub.
+- **Evidência:** URL fornecida pelo proprietário, HTTP não verificado por DNS/cache miss; conferir no LVR. **Campanha:** arte indica validade 30/11/2026, mas regulamento, mecânica de pontos e elegibilidade do Órbita ainda não confirmados; **não publicar sem comprovação**. Material de campanha RJ não prova aplicabilidade em SP.
+- **Branch:** `feat/orbita-resf-ode-premium-20261123`, PR #594 DRAFT; sem merge, Preview ou produção. Preservar três falhas legadas de CI sem modificar validadores. Dossiê `docs/frameworks/resf/v1/RESF_ORBITA_PAGE_MODEL_2026-11-23.md` §9.
+- **Gate LVR:** branch/head exato, imagens desktop/mobile carregadas, proporção 9:16 sem crop, leitura 360/390px, CLS/scroll, CTA, Form46 e paridade de imagens SEO.
+
+---
+
 ## 23/11/2026 — Órbita: imagens FGTS GDigital desktop/mobile integradas — SEM MERGE
 
 - **Pedido:** proprietário forneceu duas URLs GDigital/S3 da arte FGTS gerada nesta conversa. Inseridas na seção de perguntas do Órbita, dentro do card `#fgts`, **antes do CTA**.
