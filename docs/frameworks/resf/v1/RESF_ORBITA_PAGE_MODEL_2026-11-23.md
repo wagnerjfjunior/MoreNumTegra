@@ -215,3 +215,7 @@ No CI seguinte, a imagem passou a coincidir em URL, mas o guard exigiu também *
 - Mantidas 12 perguntas, todas as respostas do HTML visível iguais às do JSON-LD, seis originais preservadas. Não alterados Form46, WhatsApp, mídias, CTA Livelo, alinhamento desktop Livelo/FGTS ou scripts de validação.
 
 **Débitos de CI preexistentes e fora do escopo:** a versão RESF atual retirou `Product/Offer` ligados a preço antigo da unidade 1814 e a galeria de três fotos; validadores legados exigem esses itens. Não restaurar preço não confirmado ou galeria contra decisão de design apenas para deixar CI verde; não editar validadores sem autorização específica. Merge deve obedecer ao GitHub e à governança SFJM. Verificar live após merge e manter rollback por SHA.
+
+### 12.1 Ajuste de paridade de descrições JSON-LD
+
+A validação postal revelou que, além do FAQ original, o contrato histórico congela as descrições das entidades `WebPage` e `ApartmentComplex`. Ambas foram restauradas ao texto original factual (apartamentos 1–3 dormitórios, salas comerciais, plantas oficiais, lazer e condições no Tatuapé). A informação **Entregue / Últimas unidades** continua no hero e no FAQ HTML + JSON-LD. Não houve alteração de metadados Open Graph, de preço ou de scripts de validação. Conferir novo CI do head final antes do merge.
