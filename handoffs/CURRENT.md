@@ -1,3 +1,12 @@
+## 23/11/2026 — Órbita: imagens Livelo e FGTS alinhadas no desktop — SEM MERGE
+
+- **Evidência:** screenshot do usuário no Local Live Sync `localhost:8080` revelou figura FGTS acima da Livelo, porque os parágrafos têm alturas diferentes. Os CTAs já estavam alinhados.
+- **Correção:** somente CSS escopado no Órbita para desktop `min-width:851px`: figuras com `margin-top:auto` e links CTA com `margin-top:0;min-height:48px`. Assim a diferença de altura fica **acima** da imagem, mantendo bordas superiores e inferiores das duas figuras alinhadas; proporção desktop 3:2 mantida.
+- **Mobile:** nenhuma alteração até 850px; Livelo 9:16 até 640px e FGTS responsivo preservados. Sem mudanças em conteúdo, Form46, WhatsApp, analytics, JSON-LD ou URLs de mídia.
+- **QA:** validação estática passou; **aguarda nova captura LVR** (900/1024/1440px + 390px). PR #594 DRAFT; sem Preview, merge ou publicação. Três validadores legados continuam fora do escopo desta correção. Dossiê RESF §10.
+
+---
+
 ## 23/11/2026 — Órbita: artes Livelo GDigital desktop + mobile 9:16 integradas — SEM MERGE
 
 - **Pedido:** proprietário forneceu URLs finais da campanha Livelo+Tegra. Figura adicionada em `#livelo` **após os parágrafos H2 explicativos e antes do CTA**; card FGTS e demais componentes preservados.
