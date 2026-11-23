@@ -3,7 +3,7 @@
 **Data-base da auditoria:** 23/11/2026  
 **Repo canônico:** wagnerjfjunior/MoreNumTegra  
 **Branch de documentação:** docs/auditoria-seo-funis-revisao-claude-20261123  
-**Estado da tarefa:** AVALIAR DOCUMENTAÇÃO, FONTES, METODOLOGIA E PLANO — SOMENTE LEITURA. NÃO IMPLEMENTAR, NÃO MESCLAR, NÃO DEPLLOYAR.
+**Estado da tarefa:** AVALIAR DOCUMENTAÇÃO, FONTES, METODOLOGIA E PLANO — SOMENTE LEITURA. NÃO IMPLEMENTAR, NÃO MESCLAR, NÃO PUBLICAR.
 
 ## Mensagem de entrada para o Claude
 
@@ -41,7 +41,7 @@ Fontes complementares: sitemap.xml, src-greenn/preview/index.html, src-greenn/bl
 - As 84 URLs auditadas correspondem às 84 do sitemap atual? O inventário tem exatamente 89 linhas e classifica as 5 extras corretamente? Existem páginas relevantes fora desse universo, no robots, sitemap, arquivos ou runtime?
 - A homepage representada por src-greenn/preview/index.html é idêntica ao runtime? Como as versões Greenn/preview e o JavaScript geram links e filtros? Há links não encontrados por HTML estático?
 - O crawl OpenSEO de 14/11 com 87 URLs está sendo indevidamente apresentado como auditoria pós-23/11? Quais conclusões exigem novo crawl e validação de DOM?
-- Qual a real distribuição de links ENTRANTES e SAINTES, por contexto/editorial vs nav vs footer vs galeria vs cards vs JS? Há erros ao chamar páginas de "órfãs"?
+- Qual a real distribuição de links ENTRANTES e SAÍNTES, por contexto/editorial vs nav vs footer vs galeria vs cards vs JS? Há erros ao chamar páginas de "órfãs"?
 - Verificar literalmente os href /rio-de-janeiro/#projeto-N e a ausência/presença dos IDs no destino. O conserto correto é URL de projeto ou fragmento existente? Qual risco de regressão?
 
 **Estratégia SEO baseada em dados**
