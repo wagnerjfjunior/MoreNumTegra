@@ -199,3 +199,19 @@ No CI seguinte, a imagem passou a coincidir em URL, mas o guard exigiu também *
 - JSON-LD/FAQPage não precisaram ser alterados: esta seção editorial H2 não integra `FAQPage.mainEntity`; `ImageObject#secondary-image` e alt seguem em paridade. Form46, WhatsApp, analytics, consentimento e metadados intactos.
 
 **Gate de publicação:** a arte GDigital e a referência Tegra RJ exibem conversão 1:1, mas **não foi anexado regulamento comprovando a aplicação dessa mecânica à compra do Órbita/SP**. Não tratar a copy como oferta confirmada ou publicar sem validar a mecânica, unidades elegíveis e vigência. Este commit é de preparação na PR #594 DRAFT, não é autorização para merge. Três falhas antigas de CI seguem fora do escopo. Testar no **Local Live Sync** com viewport desktop 900/1024/1440px (bordas superior e inferior das figuras, CTAs, sem overflow) e mobile 390px (Livelo 9:16, leitura da faixa e CTA). Sem Vercel Preview.
+
+## 12. Fonte oficial Órbita: últimas unidades + FAQ FGTS/Livelo e JSON-LD (23/11/2026)
+
+**Ordem do proprietário:** confirmar `Últimas unidades` na fonte Tegra, corrigir a página, sincronizar FAQ/JSON-LD, acrescentar dúvidas FGTS e Livelo e **mesclar a PR #594 para testar em produção**.
+
+**Evidência externa:** página oficial `https://www.tegraincorporadora.com.br/sp/sao-paulo/leste/tatuape/universoorbita` consultada em 23/11/2026, exibindo `Entregue`, `Últimas unidades`, endereço `Avenida Celso Garcia, 5040` e nota de financiamento com possibilidade de FGTS sujeita a análise de crédito, recursos e condições. A fonte **não confirma** a campanha Livelo 1:1 para cada unidade do Órbita. Materiais de campanha disponibilizados pelo proprietário são fonte da arte e da copy, com nota de elegibilidade.
+
+**Implementação em HTML e JSON-LD:**
+- Hero acrescenta `Últimas unidades` ao kicker comercial, sem número de estoque e sem `Offer.availability`.
+- FAQ #1 retoma a resposta de baseline (`O Universo Tatuapé Órbita está entregue e a fonte oficial o apresenta com últimas unidades.`) no HTML visível e `FAQPage.mainEntity`.
+- FAQ #5 retoma a resposta exata do baseline, preservando o prefixo original de seis FAQs e a expectativa do validador postal.
+- FAQ #7 substitui pergunta redundante sobre vagas por `Posso usar o FGTS para comprar um apartamento no Órbita?`, explicando entrada/amortização/quitação sob regras e análise de financiamento.
+- FAQ #10 substitui pergunta redundante sobre plantas por `Como acumular pontos Livelo com a entrada do Órbita?`, com equivalência divulgada `R$ 1 = 1 ponto` e ressalvas de regulamento/vigência/elegibilidade.
+- Mantidas 12 perguntas, todas as respostas do HTML visível iguais às do JSON-LD, seis originais preservadas. Não alterados Form46, WhatsApp, mídias, CTA Livelo, alinhamento desktop Livelo/FGTS ou scripts de validação.
+
+**Débitos de CI preexistentes e fora do escopo:** a versão RESF atual retirou `Product/Offer` ligados a preço antigo da unidade 1814 e a galeria de três fotos; validadores legados exigem esses itens. Não restaurar preço não confirmado ou galeria contra decisão de design apenas para deixar CI verde; não editar validadores sem autorização específica. Merge deve obedecer ao GitHub e à governança SFJM. Verificar live após merge e manter rollback por SHA.
