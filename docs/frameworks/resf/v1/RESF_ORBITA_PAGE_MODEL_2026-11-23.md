@@ -163,3 +163,15 @@ No CI seguinte, a imagem passou a coincidir em URL, mas o guard exigiu também *
 - **Preservado:** Form46, WhatsApp, CTA, analytics, consentimento, endereço, FAQ e JSON-LD.
 
 **Gate:** confirmar no **LOCAL LIVE SYNC** que ambas as URLs servem `image/webp`, que a versão mobile é escolhida em viewport até 640px, que o texto da imagem é legível e que a seção não gera CLS ou rolagem horizontal. Não utilizar Vercel Preview. PR #594 continua DRAFT, sem merge.
+
+## 9. Arte Livelo responsiva GDigital (23/11/2026)
+
+**Entrada:** proprietário forneceu as URLs finais da arte didática Livelo+Tegra para desktop e mobile 9:16, no contexto da seção H2 “Como funcionam os pontos Livelo na compra do Órbita?”. Integração apenas em branch/PR, sem autorização de merge/publicação.
+
+- Desktop: `https://s3-gdigital.s3.amazonaws.com/gdigital/313/Entrada_que_vira_pontos_Livelo.webp`.
+- Mobile: `https://s3-gdigital.s3.amazonaws.com/gdigital/313/Pontos_Livelo_no_Universo_Tatuape%CC%81_9x16.webp`. **Preservar a sequência percent-encoded `%CC%81`**, pois corresponde ao acento combinante na chave do objeto; não normalizar/reconstruir a URL.
+- **Não foi possível validar HTTP/S3 nesta execução**: DNS externo do ambiente falhou e a tentativa de acesso web retornou cache miss. Dimensões reais, `Content-Type`, disponibilidade, peso e texto da imagem exigem conferência no Local Live Sync.
+- Implementação: figura `<figure class="orbita-opps-livelo-media">` **dentro do card `#livelo`**, após os dois parágrafos informativos e antes do CTA `Consultar regras e condições da campanha`. `<picture>` com `<source media="(max-width: 640px)" type="image/webp">` e `<img src=desktop width=1536 height=1024 loading=lazy decoding=async alt=...>`.
+- CSS escopado, `aspect-ratio:3/2` no desktop e `9/16` até 640px, `object-fit:contain` **sem recortar texto, marca ou aviso legal**. O card FGTS, Form46, WhatsApp, JSON-LD e contrato da primeira imagem secundária permaneceram intocados.
+- **Risco comercial crítico:** as artes de referência geradas nesta conversa apresentam a conversão da entrada em pontos Livelo e validade até **30/11/2026**. O usuário informou fim de novembro, mas **não foi fornecido regulamento vigente, confirmação documental de elegibilidade do Órbita nem regra de conversão**. A imagem deve ser tratada como material promocional fornecido pelo proprietário e **não é prova** de que a campanha esteja ativa no empreendimento ou de que 100% da entrada seja convertida. Não fazer merge/publicação sem confirmar regulamento, unidade elegível, mecânica e vigência; não inferir que campanha Tegra RJ valha para SP.
+- **LVR obrigatório:** confirmar download das duas URLs, escolha da versão 9:16 em 360/390px, legibilidade dos três passos, ausência de corte e scroll horizontal, CLS, CTA, Form46, FAQ, performance e sem Preview.
