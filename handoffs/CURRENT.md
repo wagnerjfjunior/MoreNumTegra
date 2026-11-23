@@ -1,9 +1,9 @@
-## 23/11/2026 — ODE Perdizes: “Consultar Valor” (proposta, SEM MERGE)
+## 23/11/2026 — ODE Perdizes: “Consultar Valor” (merge autorizado; CI pendente)
 
 - **Solicitação:** alterar bloco de valor (“Referência comercial” → “Valor”; R$ 2.090.000 → “Consultar Valor”), retirar Unidade 22/2º andar/única disponível/preço anterior/desconto e criar copy de conversão com CTA para formulário.
 - **Implementação na branch:** `feat/ode-consultar-valor-sem-estoque-20261123`; seção `#valores` após hero/facts; CTA “Consultar valor e condições” → `#formulario`. Removida também alegação de última unidade no hero, título/meta/OG/Twitter, WebPage/ApartmentComplex JSON-LD e FAQ HTML/FAQPage JSON-LD para manter consistência. Ajustada tipografia do valor para mobile.
 - **Preservados:** footer compacto da PR #592, Form46, CTA flutuante, WhatsApp, galeria, plantas, consentimento, rotas, outros empreendimentos. Documentação RESF §12.
-- **Gate:** solicitação autoriza **preparar a mudança**, não expressou ordem de merge. Aguardar aprovação específica para publicar. Antes disso conferir CI, diff, base live e compatibilidade com validadores. Rollback base: `c2d29712cf55194d11cde437f793fa3a79540976`, deployment `dpl_3y4N8DAGHE3vVzf3AoQPdDFc4WSk` (READY após PR #592; revalidar no release).
+- **Gate:** proprietário autorizou expressamente atualizar JSON-LD e mesclar (“atualize o json-ld e pode mergear”; “Aprovado”). Exceção exata de cinco campos ODE no validador `validate-resf-v2-postal-address-contract.mjs`, preservando todos os demais campos e páginas. Antes de merge conferir CI, diff, base live e compatibilidade com validadores. Rollback base: `c2d29712cf55194d11cde437f793fa3a79540976`, deployment `dpl_3y4N8DAGHE3vVzf3AoQPdDFc4WSk` (READY após PR #592; revalidar no release).
 - **Risco:** ODE antes anunciava última unidade, enquanto fonte oficial indicava “100% Vendido”. Nova copy evita afirmar estoque, mas disponibilidade e atendimento comercial continuam sujeitos a verificação independente.
 
 ---
