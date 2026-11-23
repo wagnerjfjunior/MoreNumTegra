@@ -94,3 +94,48 @@ O proprietário corrigiu expressamente a execução anterior: **“o protocolo p
 - Confirmação escrita de vigência Livelo, regulamento, elegibilidade FGTS e nova tabela de unidades promocionais/decorados antes de alegar ofertas ativas ou publicar valores.
 - Se solicitado, exceções **exatas** nos três validadores do Órbita, com testes negativos e sem relaxar proteção de outras páginas.
 - Autorização explícita de merge e validação Production READY/rollback; o trabalho em branch não altera a produção.
+
+## 7. SEO/OpenSEO e perguntas comerciais com imagem (23/11/2026)
+
+### 7.1 Evidência fornecida pelo proprietário (não revalidada via GSC/OpenSEO nesta execução)
+
+Relatório **“Relatório SEO — Universo Tatuapé Órbita”**, OpenSEO + Google Search Console, datado de 23/11/2026, colado integralmente pelo proprietário. Link de registro interno (não inserir na página comercial): https://app.openseo.so/p/a071ab48-dda6-4b7c-bf71-2e3e3d40694d/reports/dbba67e3-5021-4295-a35f-a72ddd241299
+
+- Janela GSC 20/08–20/11/2026, Web: **257 impressões, 8 cliques, CTR 3,11%, posição média 9,5**.
+- Consultas: `orbita tegra` 60 impressões, 1 clique, posição média 6,3; `universo tatuapé órbita` 13 impressões, 0 cliques, posição média 30,8; `órbita tatuapé` 3 impressões, 1 clique, posição média 10,3; `universo orbita` 5 impressões, 0 cliques, posição 10,8; `orbita tatuape` 5 impressões, 0 cliques, posição 14; `tegra orbita` 3 impressões, 0 cliques, posição 8. Não somar as linhas como total do GSC.
+- Últimos 28 dias 24/10–20/11: **175 impressões, 6 cliques, CTR 3,43%, posição média 9,2**.
+- Auditoria OpenSEO 14/11/2026: HTTP 200, indexável, sitemap, title, description, H1=1, 1.080 palavras, 11 imagens, 0 sem ALT, 2 links internos; auditoria de 87 páginas sem problemas críticos específicos desta URL. **Não incluiu Lighthouse nem prova de Core Web Vitals.** É evidência anterior à branch atual.
+- Diagnóstico: preservar `orbita tegra` enquanto se fortalece `universo tatuapé órbita`, melhorar intenção de compra, sem reconstrução integral. Amostra pequena: nenhuma melhoria de ranking/CTR/conversão pode ser declarada antes de nova medição.
+
+### 7.2 Correção do desenho anterior da seção
+
+O proprietário rejeitou a seção de quatro cards predominantemente orientados a formulário e determinou **H2 em perguntas com respostas úteis** sobre Livelo e FGTS, além de **uma imagem**. Esta seção **substitui** a solução §6.2 da mesma branch, sem apagar o histórico.
+
+Novo `#oportunidades` (entre facts e valor) com:
+1. H2: **“Quais oportunidades podem facilitar a compra do Universo Tatuapé Órbita?”**; introdução do projeto Tegra pronto para morar.
+2. Figura fotográfica oficial já presente na galeria: perspectiva ilustrada **“Voo do lazer”**, origem `stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/339/Imagem/…004-1715474686469.jpg`; `<figure><img loading=lazy decoding=async width height alt><figcaption>`. Sem novas mídias pesadas no repositório, sem URL de concorrente; possível reaproveitamento do cache do navegador. QA de enquadramento e tamanho real pendente no LVR.
+3. H2: **“Como funcionam os pontos Livelo na compra do Órbita?”**; resposta visível explica vínculo da campanha com pagamento do ato, regras de vigência/quantidade/crédito/resgate e que pontos **não equivalem a desconto financeiro automático**. CTA ao Form46 somente **após** o conteúdo.
+4. H2: **“Posso usar o FGTS para comprar um apartamento no Órbita?”**; resposta visível diferencia uso do saldo como recurso próprio para entrada/amortização/quitação, sujeito a regras do fundo, imóvel e financiamento; não promete aprovação. CTA ao Form46 após explicação.
+5. H2: **“Existem apartamentos promocionais e decorados à venda no Órbita?”**; resposta distingue planta, metragem, vaga, mobiliário incluído e estoque vigente. CTAs: navegar às plantas na mesma página, consultar condições via Form46, falar de decorados pelo WhatsApp SP.
+6. Mobile: duas respostas em uma coluna, imagem com proporção reservada, CTAs de toque, sem nova dependência JS. Seção editorial é HTML indexável, **não texto SEO oculto**.
+
+**Não há valores promocionais ou promessa de campanha ativa**: unidades dos flyers de outubro não foram publicadas. A FAQ estruturada permanece limitada às perguntas da FAQ visível no final da página; H2 editoriais não foram injetados artificialmente em `FAQPage` nem alteraram o número de perguntas do grafo.
+
+### 7.3 Outras melhorias da página na mesma branch
+
+- **H1:** `Universo Tatuapé Órbita / Apartamentos Tegra prontos para morar`; preserva nome completo, Tegra e estágio no topo.
+- **Title:** mantido `Universo Tatuapé Órbita Tegra | Apartamentos no Tatuapé`, considerado adequado pelo relatório; não sacrificar consulta abreviada por troca especulativa de title.
+- **Description:** reforço de nome completo, Tegra, apartamentos prontos para morar, 1–3 dormitórios, Tatuapé, lazer, plantas e compra. Meta description, OG/Twitter e descrições correspondentes no JSON-LD foram sincronizadas.
+- **Hero lead:** benefícios residenciais concretos e CTA preservado.
+- **Localização:** adicionada referência genérica à proximidade do Metrô Carrão (sem alegar 450/500 m ou 8 min), link contextual para rota **existente** `/regioes/tatuape/`, convite a visita. Mapa regional/WhatsApp e footer mantidos.
+- **Conflito deliberado com recomendação do relatório:** o relatório sugeriu exibir `Av. Celso Garcia, 5040` na seção de localização, mas `docs/content/COMMERCIAL_FOOTER_AND_LOCATION_STANDARD.md` e baseline técnica V2.3 impõem `VISIBLE_EXACT_ADDRESS=FOOTER_ONLY`, mapa regional sem link direto. **Não alterado** fora do footer, pois isso exigiria exceção expressa do proprietário ao padrão. Endereço permanece no footer e JSON-LD governados.
+- **Redundância:** retirada uma enumeração duplicada de amenities na seção residencial/comercial, substituída por orientação para comparação de plantas.
+- **FAQ:** quatro respostas antes excessivamente metatextuais simplificadas (localização, vagas, plantas, tour), com **paridade textual exata** no `FAQPage` do JSON-LD; 12 perguntas preservadas. Não criar FAQ para termos de campanha sem documentação vigente.
+- **Medição:** não houve alterações em GA4, GTM, CRM, consentimento ou Form46. Relatório solicita medir Core Web Vitals mobile, cliques WhatsApp, início/envio/recebimento de formulário e tráfego orgânico; são gates posteriores, **não resultados**.
+
+### 7.4 Estado e próximos gates
+
+- Branch `feat/orbita-resf-ode-premium-20261123`, PR #594 DRAFT; **não mesclar nem publicar** sem autorização específica. Fluxo exclusivo `LOCAL_LIVE_SYNC`, sem Vercel Preview.
+- Confirmar no LVR: branch/head imutável, imagem de lazer carregando, H2/perguntas legíveis no mobile, CTAs de Livelo/FGTS/plantas/decorados, localização sem endereço exato fora do footer, galeria/plantas/tour, Form46 e WhatsApp, SEO/FAQ.
+- Três validadores legados já falhavam na PR #594 antes desta revisão: `Orbita commercial structured data parity`, `Project structured data coverage guard`, `RESF V2 approved project postal addresses`. Não alterar guardas sem autorização e testes negativos; verificar se surgiram falhas novas.
+- Validação automática de DOM textual, H1 único, IDs únicos, JSON-LD parseável, FAQ 12/12, imagem oficial, formulário, CTA e restrição de endereço passou na edição; **não é QA visual/funcional LVR nem prova de produção**.
