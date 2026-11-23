@@ -7,7 +7,11 @@
 
 ## Mensagem de entrada para o Claude
 
-Você foi designado como **revisor adversarial independente** da auditoria de SEO e arquitetura de links internos do MoreNumTegra. O objetivo não é validar por concordância a análise anterior, mas encontrar os erros, omissões, prioridades incorretas, termos sem demanda real, quebra de governança e oportunidades perdidas que impediriam a conversão orgânica.
+Você foi designado como **revisor adversarial independente** da auditoria de SEO e arquitetura de links internos do MoreNumTegra. **Terminologia:** RJ = Rio de Janeiro (geografia), NÃO Recuperação Judicial. GSC = Google Search Console. Não confundir estados e políticas de atendimento SP/RJ.
+
+**Acesso:** só avaliar após leitura direta da branch em GitHub. Uma tentativa via busca web OpenSEO em 23/11 leu 0/10 arquivos; ver docs/seo/auditorias/2026-11-23/MNT_CLAUDE_TENTATIVA_ACESSO_2026-11-23.md. Não aceitar resumos de busca como substituto de arquivos completos.
+
+O objetivo não é validar por concordância a análise anterior, mas encontrar os erros, omissões, prioridades incorretas, termos sem demanda real, quebra de governança e oportunidades perdidas que impediriam a conversão orgânica.
 
 Leia os **documentos completos** e os **5 datasets**, não apenas o resumo, antes de opinar. Assuma que nenhuma recomendação anterior é aprovada automaticamente.
 
@@ -41,7 +45,7 @@ Fontes complementares: sitemap.xml, src-greenn/preview/index.html, src-greenn/bl
 - As 84 URLs auditadas correspondem às 84 do sitemap atual? O inventário tem exatamente 89 linhas e classifica as 5 extras corretamente? Existem páginas relevantes fora desse universo, no robots, sitemap, arquivos ou runtime?
 - A homepage representada por src-greenn/preview/index.html é idêntica ao runtime? Como as versões Greenn/preview e o JavaScript geram links e filtros? Há links não encontrados por HTML estático?
 - O crawl OpenSEO de 14/11 com 87 URLs está sendo indevidamente apresentado como auditoria pós-23/11? Quais conclusões exigem novo crawl e validação de DOM?
-- Qual a real distribuição de links ENTRANTES e SAÍNTES, por contexto/editorial vs nav vs footer vs galeria vs cards vs JS? Há erros ao chamar páginas de "órfãs"?
+- Qual a real distribuição de links ENTRANTES e SAÍDAS, por contexto/editorial vs nav vs footer vs galeria vs cards vs JS? Há erros ao chamar páginas de "órfãs"?
 - Verificar literalmente os href /rio-de-janeiro/#projeto-N e a ausência/presença dos IDs no destino. O conserto correto é URL de projeto ou fragmento existente? Qual risco de regressão?
 
 **Estratégia SEO baseada em dados**
