@@ -548,6 +548,42 @@ for(const [slug,street,cep] of expected){
      assert(!('brand' in cAfter),slug+': ApartmentComplex must not carry brand');
      if('brand' in cBefore){assert.deepEqual(cBefore.brand,{'@id':'https://www.moretegra.com.br/#tegra-brand'},slug+': unexpected baseline brand value');delete cBefore.brand;}
    }
+   if(slug==='ode-perdizes'){
+     // SFJM 2026-11-23: user-approved removal of unverified price/unit/scarcity claims.
+     // Normalize only these exact ODE fields against the frozen baseline; all other JSON-LD changes still fail.
+     const current=flat(normalized),prior=flat(before);
+     const pageNow=current.find(n=>n['@type']==='WebPage'),pageOld=prior.find(n=>n['@type']==='WebPage');
+     const complexNow=current.find(n=>n['@type']==='ApartmentComplex'),complexOld=prior.find(n=>n['@type']==='ApartmentComplex');
+     const faqNow=current.find(n=>n['@type']==='FAQPage'),faqOld=prior.find(n=>n['@type']==='FAQPage');
+     assert(pageNow&&pageOld&&complexNow&&complexOld&&faqNow&&faqOld,'ODE: required schema nodes missing');
+     const oldName='ODE Perdizes Tegra | Última unidade de 156 m² em Perdizes';
+     const newName='ODE Perdizes Tegra | Pronto para morar em Perdizes';
+     const oldDescription='ODE Perdizes Tegra pronto para morar: 156 m², 4 dormitórios, 2 ou 3 suítes, 2 vagas, plantas oficiais e condição da última unidade 22.';
+     const newDescription='Conheça o ODE Perdizes da Tegra: 156 m², 4 dormitórios, 2 ou 3 suítes, 2 vagas, plantas e detalhes do projeto. Consulte as condições comerciais.';
+     assert.equal(pageOld.name,oldName,'ODE: unexpected baseline WebPage.name');
+     assert.equal(pageNow.name,newName,'ODE: WebPage.name differs from approved value');
+     pageOld.name=newName;
+     for(const [now,old,label] of [[pageNow,pageOld,'WebPage'],[complexNow,complexOld,'ApartmentComplex']]){
+       assert.equal(old.description,oldDescription,'ODE: unexpected baseline '+label+'.description');
+       assert.equal(now.description,newDescription,'ODE: '+label+'.description differs from approved value');
+       old.description=newDescription;
+     }
+     const approvedAnswers=[
+       ['Qual é o estágio do ODE Perdizes?',
+        'O ODE Perdizes está pronto para morar e a condição comercial governada registra a Unidade 22 como última unidade disponível, sujeita à confirmação.',
+        'O ODE Perdizes é um empreendimento entregue e pronto para morar em Perdizes, São Paulo.'],
+       ['Como consultar preço e disponibilidade?',
+        'Use o formulário ou o WhatsApp para confirmar a Unidade 22, disponibilidade e condições vigentes com a Tegra Vendas.',
+        'Use o formulário ou o WhatsApp para consultar as condições comerciais e verificar a disponibilidade com a equipe Tegra Vendas.']
+     ];
+     for(const [name,oldAnswer,newAnswer] of approvedAnswers){
+       const old=faqOld.mainEntity.find(q=>q.name===name),now=faqNow.mainEntity.find(q=>q.name===name);
+       assert(old&&now,'ODE: FAQ question missing: '+name);
+       assert.equal(old.acceptedAnswer.text,oldAnswer,'ODE: unexpected baseline FAQ: '+name);
+       assert.equal(now.acceptedAnswer.text,newAnswer,'ODE: FAQ answer differs from approved value: '+name);
+       old.acceptedAnswer.text=newAnswer;
+     }
+   }
    if(slug==='key-moema'){
      // SFJM 2026-11-15: WebPage.description was refreshed editorially after the 9c8bdc7 baseline.
      // Accept only this exact approved text; every other schema change still fails.
