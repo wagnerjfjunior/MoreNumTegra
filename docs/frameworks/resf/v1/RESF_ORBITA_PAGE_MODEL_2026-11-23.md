@@ -182,3 +182,20 @@ No CI seguinte, a imagem passou a coincidir em URL, mas o guard exigiu também *
 - **Correção pontual:** somente CSS escopado na página Órbita, em `@media(min-width:851px)`: figuras `.orbita-opps-livelo-media` e `.orbita-opps-fgts-media` passam a receber `margin-top:auto`, enquanto os CTAs diretos `.orbita-opps-answer>.orbita-opps-link` passam a `margin-top:0;min-height:48px`. O espaço variável é deslocado para **antes** da figura; com os cards esticados pelo grid, imagens desktop de mesma razão 3:2 e CTAs com altura mínima igual, suas bordas ficam alinhadas.
 - **Mobile intocado:** breakpoint de empilhamento em `max-width:850px` continua com layout original; Livelo 9:16 até 640px; FGTS mobile preservado. Não houve mudança em textos, URLs, HTML, JSON-LD, Form46, WhatsApp, métricas ou guardas.
 - **QA:** inspeção estática de DOM/URLs, razões 3:2/9:16, CTAs, IDs únicos e JSON-LD concluída. Conferir alinhamento visual real no Local Live Sync em larguras 900, 1024 e 1440px, e ausência de regressão em 390px. **Sem Preview, sem merge e sem publicação.** Três falhas legadas de CI não autorizam alteração de validadores.
+
+## 11. Copy comercial Livelo: equivalência R$ 1 = 1 ponto + alinhamento das imagens (23/11/2026)
+
+**Ordem explícita do proprietário:** substituir o texto excessivamente explicativo sobre Livelo por copy de conversão, com H2 interrogativo para SEO/AEO, promessa forte, **equivalência R$ 1 na entrada = 1 ponto Livelo** em máximo destaque, benefícios de viagens/produtos/experiências e CTA comercial. Preservar alinhamento das figuras Livelo/FGTS no desktop.
+
+**Implementado apenas em `src-greenn/empreendimentos/universo-tatuape-orbita/index.html`:**
+- Kicker: `Livelo + Tegra · Campanha especial`.
+- H2: `Como transformar a entrada do seu Órbita em pontos Livelo?`.
+- H3 de promessa: `Seu novo apartamento é só o começo. Sua próxima viagem pode começar aqui!`.
+- Faixa amarela de destaque: `R$ 1 na entrada = 1 ponto Livelo*`, com CSS específico, sem substituir texto HTML por imagem.
+- Copy emocional curta, conectando compra do **Universo Tatuapé Órbita** a viagens, produtos e experiências; fecho `Uma conquista. Dois motivos para comemorar.`.
+- CTA: `Quero aproveitar meus pontos Livelo`, preservando `href="#formulario"` e `data-form-intent="conditions"`.
+- Nota curta visível sobre regulamento, elegibilidade e vigência. A arte Livelo desktop e mobile 9:16 segue **entre texto e CTA**; imagem FGTS e seu conteúdo permanecem intactos.
+- Desktop (`min-width:851px`): preservado `margin-top:auto` nas duas figuras e alturas iguais de CTA (`min-height:56px`); borda superior do card Livelo igualada a 4px, como a do FGTS, evitando deslocamento de 3px. Imagens mantidas com **mesma proporção 3:2 e largura equivalente**, alinhadas pelo rodapé da estrutura flex. Mobile até 850px não recebe essa regra; Livelo 9:16 até 640px.
+- JSON-LD/FAQPage não precisaram ser alterados: esta seção editorial H2 não integra `FAQPage.mainEntity`; `ImageObject#secondary-image` e alt seguem em paridade. Form46, WhatsApp, analytics, consentimento e metadados intactos.
+
+**Gate de publicação:** a arte GDigital e a referência Tegra RJ exibem conversão 1:1, mas **não foi anexado regulamento comprovando a aplicação dessa mecânica à compra do Órbita/SP**. Não tratar a copy como oferta confirmada ou publicar sem validar a mecânica, unidades elegíveis e vigência. Este commit é de preparação na PR #594 DRAFT, não é autorização para merge. Três falhas antigas de CI seguem fora do escopo. Testar no **Local Live Sync** com viewport desktop 900/1024/1440px (bordas superior e inferior das figuras, CTAs, sem overflow) e mobile 390px (Livelo 9:16, leitura da faixa e CTA). Sem Vercel Preview.
