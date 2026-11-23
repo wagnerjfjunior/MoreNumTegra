@@ -89,3 +89,39 @@ Head inicial `c40f39f7d576af57d6d1db2b4d3769983d8925bd`: 13 workflows, **7 succe
 - **Falha nova bloqueada por autorização:** `SEO two distinct images - 39 URLs` usa `scripts/validate-two-images-39-pages.mjs`, cujo array `blogPaths` está congelado em URLs anteriores. A nova URL no sitemap faz o teste falhar com `Blog sitemap additions must remain explicitly scoped`. **Correção técnica proposta:** adicionar **somente** `/blog/mercado/usar-fgts-comprar-apartamento/` à lista de blogs permitidos, mantendo intactas as demais asserções, e executar teste negativo para uma URL arbitrária não autorizada. **Aguardando autorização específica do proprietário para editar esse validador.** Não remover a URL do sitemap para disfarçar o gate.
 
 Após a correção de favicon, CI do head final deve ser consultado novamente; números do primeiro head não representam o resultado final. LVR e QA visual ainda não executados.
+
+## 9. DECISÃO POSTERIOR DO PROPRIETÁRIO — FGTS TRANSVERSAL (23/11/2026)
+
+**Esta seção substitui o foco exclusivamente Órbita das seções 1, 4 e 7 e supera a pendência de autorização para o validador registrada na seção 8.** Não apaga a trilha histórica.
+
+**Pedido e aprovação:** Wagner questionou a limitação ao Órbita e aprovou expressamente (“sim, claro”) a proposta de **reestruturar a PR #595** como cluster transversal de FGTS, com catálogo Tegra de prontos para morar, links em empreendimentos residenciais selecionados, correção exata do validador de sitemap e **sem merge automático**.
+
+### Nova arquitetura implementada na mesma PR #595
+
+- **Guia pilar genérico:** URL canônica permanece `/blog/mercado/usar-fgts-comprar-apartamento/`; H1, title, FAQ 4/4, JSON-LD, informações financeiras e meta description preservados. Imagem principal/OG/Twitter/BlogPosting mudou de **Órbita** para asset editorial existente `/assets/blog/mercado-2026/rua-jardim.webp` (perspectiva ilustrativa de múltiplos edifícios). Sem imagem nova, download pesado ou marca concorrente.
+- **CTA do artigo:** removeu direcionamento obrigatório ao Órbita; agora navega para `/?estagio=pronto#oportunidades` (catálogo SP pré-filtrado) ou `/?interesse=FGTS%20para%20comprar%20apartamento#formulario` (formulário 46 da homepage com interesse pré-preenchido). WhatsApp SP preservado. Os links não criam nova URL canônica indexável; a homepage mantém `canonical /`.
+- **Catálogo:** `src-greenn/moretegra.js` reconhece somente `estagio=pronto` como parâmetro de filtro, mapeia para o `statusKey=entregue` já existente, sincroniza o seletor mobile e respeita a cidade padrão São Paulo. Sem alterar catálogo, dados comerciais, preço, estágio, ordenação ou filtros existentes.
+- **Links editoriais:** o artigo apresenta **Elo Duo (Lapa)**, **Órbita (Tatuapé)** e **Soma Perdizes** como exemplos de empreendimentos apresentados como prontos/entregues e com opções residenciais; cada card direciona para sua página, e há um quarto card para o catálogo completo. **Nenhuma unidade é declarada elegível, disponível ou aprovada para FGTS.** A homepage pode conter projetos de uso misto: a seleção do comprador deve ser residencial e enquadrada.
+- **Distribuição de autoridade:** Elo Duo e Soma Perdizes receberam um parágrafo de orientação e link para o guia. Órbita já possuía link FGTS na PR. Páginas congeladas por validadores (Reserva, Bem Moema, Garden Design etc.) não foram alteradas em lote; expansão adicional requer gates por página. No Soma, o texto deixa claro que salas comerciais não se enquadram na finalidade de moradia própria.
+- **SEO:** guia informacional único para as variantes de FGTS; páginas de produto continuam transacionais, sem repetir FAQ e sem schema de `Offer` inventado. Nenhuma nova landing page `/fgts` criada. O catálogo com query param é experiência de navegação, não uma nova página SEO.
+- **Validador autorizado e limitado:** `scripts/validate-two-images-39-pages.mjs` adiciona somente `/blog/mercado/usar-fgts-comprar-apartamento/` à allowlist exata de URLs do blog e inclui teste negativo `/blog/mercado/nao-autorizado/` que deve ser rejeitado. Não afrouxa as asserções para as outras rotas, nem altera contratos de Product/Offer/FloorPlan/galeria do Órbita.
+- **Escopo preservado:** Form46, WhatsApp SP, GTM/GA4, scripts de consentimento, Livelo, imagens FGTS/Livelo, estilos de alinhamento, CTAs das páginas comerciais, preços, metragem, endereços, canonicals dos projetos e Rio de Janeiro. Não houve merge/deploy/IndexNow.
+
+### Inventário inicial de expansão
+
+| Empreendimento | Evidência em main consultada | Alteração nesta PR | Nota de enquadramento |
+| --- | --- | --- | --- |
+| Elo Duo Caminhos da Lapa | Pronto para morar, tipologias residenciais | Link contextual no texto | FGTS depende de comprador, unidade e operação |
+| Universo Tatuapé Órbita | Pronto/entregue, tipologias residenciais | Link da fase anterior da PR mantido | Campanha Livelo separada; não comprova FGTS |
+| Soma Perdizes | Entregue, uso misto (apartamentos, studios, comerciais) | Link contextual no texto | Somente tipologia residencial para moradia própria, sob análise |
+| Reserva Caminhos da Lapa | Pronto para morar, residencial | Apenas navegação via catálogo; página congelada | Verificar valor, disponibilidade e elegibilidade antes de texto dedicado |
+| Bem Moema | Pronto para morar, residencial | Apenas navegação via catálogo; snapshot congelado | Não sugerir FGTS sem verificar valor de avaliação |
+| Garden Design | Página apresenta em construção | Não incluído na seleção de prontos | Confirmar estágio; FGTS em construção pode ser possível conforme operação |
+
+### Gates atualizados
+
+1. Conferir branch/head da PR #595, diff, 13 workflows e falhas legadas; validar novo teste negativo.
+2. QA estático do artigo: H1, canonical, OG/Twitter e JSON-LD com imagem neutra, 4 FAQs em paridade; link de catálogo e form 46 válidos.
+3. QA de navegação no `LOCAL_LIVE_SYNC`: `/?estagio=pronto#oportunidades` seleciona desktop `Prontos para morar` e mobile `data-status-mobile=entregue`; sem parâmetro a home continua `todos`. Verificar limpeza de filtro, mudança de região e mobile 360/390/430.
+4. QA dos três projetos: CTAs e formulários 46, mídia e FAQ/JSON-LD Órbita, layout responsivo, nenhum efeito em campanhas.
+5. **Sem merge/deploy sem autorização posterior e específica**; Vercel Preview proibido pelo LVR desta frente. Não reivindicar performance ou ganho de ranking antes de Search Console/GA4.
