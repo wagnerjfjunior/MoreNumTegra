@@ -1,3 +1,14 @@
+## 23/11/2026 — DECISÃO VIGENTE: PR #595 FGTS TRANSVERSAL, SEM MERGE
+
+- **Aprovação posterior de Wagner:** “sim, claro” para reestruturar a PR #595 como cluster FGTS de todo o catálogo residencial pronto de São Paulo e corrigir a allowlist do sitemap de forma exata, **sem merge automático**. Esta decisão supera o escopo exclusivamente Órbita registrado abaixo.
+- **Arquitetura:** guia central `/blog/mercado/usar-fgts-comprar-apartamento/` sem hero ou CTA exclusivos Órbita; links para Elo Duo/Lapa, Órbita/Tatuapé, Soma/Perdizes e catálogo `/?estagio=pronto#oportunidades`. Formulário da homepage via `/?interesse=FGTS%20para%20comprar%20apartamento#formulario` (Form46 preservado).
+- **Catálogo:** JS lê apenas `estagio=pronto`, ativa status `entregue` e sincroniza seletor mobile; URL de navegação, canonical da homepage permanece `/`. Páginas Elo Duo e Soma recebem link contextual; Órbita mantém link já preparado; demais páginas protegidas não foram alteradas.
+- **Validador específico:** `scripts/validate-two-images-39-pages.mjs` autoriza **somente** nova URL do artigo na allowlist e adiciona teste negativo para URL não autorizada; nenhuma regra geral relaxada.
+- **Comercial:** não afirmar que todo imóvel pronto aceita FGTS; elegibilidade depende de imóvel residencial, comprador e operação. No Soma, excluir salas comerciais da finalidade. Sem alteração de preços, Form46, Livelo, WhatsApp ou medição.
+- **Gates abertos:** CI do head final, teste negativo, LVR mobile/desktop, SEO, CTA e formulário; **não fazer merge/deploy sem autorização posterior**. Dossiê atualizado `docs/seo/MNT_FGTS_ORBITA_CLUSTER_2026-11-23.md` §9.
+
+---
+
 ## 23/11/2026 — FGTS SEO Órbita + guia Mercado — PR DE PREPARAÇÃO, SEM MERGE
 
 - **Autorização desta frente:** Wagner respondeu “ótimo vamos fazer” à proposta de expandir o FGTS do Órbita, criar guia editorial, linkar ambos e preparar PR isolada sem merge automático.
