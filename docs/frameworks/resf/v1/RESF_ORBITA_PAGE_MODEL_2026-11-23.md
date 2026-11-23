@@ -51,3 +51,46 @@ A página histórica tinha links `?unidade=2408#valores` e `?unidade=1305#valore
 - Antes de publicar: diff restrito, CI do head final, QA mobile/desktop (hero, 2 colunas facts, galeria, plantas, tour, footer, CTAs, form), JSON-LD parseável, FAQ visível em paridade, testes de links antigos e consentimento, revisão de sitemap, Vercel READY/alias/SHA e rollback identificado.
 - Verificação de recebimento real de lead/CRM, licença de mídia, disponibilidade, preço e métricas Core Web Vitals permanece pendente; CI não comprova esses pontos.
 - A branch não autoriza publicar ofertas, preços, unidades ou mudar `main`/produção antes de decisão específica.
+
+## 6. Novos materiais comerciais e seção de oportunidades (23/11/2026)
+
+### 6.1 Origem, integridade e distinção temporal
+
+O proprietário forneceu três imagens promocionais do Órbita na conversa em 23/11/2026. São **materiais comerciais fornecidos pelo usuário**, não tabelas vigentes verificadas na Tegra nem autorização de publicação de preços. Os anexos originais permanecem na conversa, **não** foram copiados para GitHub nem usados como imagens no site (peças visualmente carregadas e mídia pesada). Foram extraídos os seguintes fatos para futura validação comercial:
+
+| Peça | Informação extraída | Limite da evidência |
+| --- | --- | --- |
+| 1 — Órbita / Tegra / Livelo / FGTS | 1, 2 e 3 dormitórios; pronto para morar; menção a conversão de entrada em pontos Livelo, uso do FGTS, endereço Av. Celso Garcia 5040 e “8 minutos a pé” do Metrô Carrão | Não apresenta regulamento completo nem vigência da campanha Livelo. Não transformar “100%” em promessa de equivalência monetária sem regras oficiais |
+| 2 — promoção de apartamentos | Unidade 601: 43 m², 1 dorm, sem vaga, R$ 375 mil; 606: 51 m², 2 dorms, sem vaga, R$ 448 mil; 2607: 53 m², 2 dorms, com vaga, R$ 570 mil; 1805: 69 m², 3 dorms, com vaga, R$ 692 mil. Indica 500 m do Metrô Carrão | **Vigência e disponibilidade não confirmadas**. Não exibir como oferta atual; metragem/vagas associadas apenas à unidade citada |
+| 3 — decorados à venda | Unidade 221: 1 dorm, R$ 540 mil; 247: 2 dorms com vaga, R$ 735 mil; 225: 3 dorms com vaga, R$ 895 mil. Indica 450 m do Metrô Carrão | **Validade expressa até 31/10/2026 — vencida em 23/11/2026**. Não publicar preços ou alegar estoque atual sem nova tabela |
+
+As distâncias “8 minutos”, “500 m” e “450 m” divergem em apresentação/metodologia; a nova seção usa apenas **“próximo ao Metrô Carrão”**. O FGTS depende da elegibilidade do comprador e das regras de financiamento, não sendo benefício garantido a qualquer pessoa.
+
+### 6.2 Decisão de conteúdo e arquitetura da seção
+
+O pedido do proprietário é incluir próximo ao topo uma seção de conversão que destaque **Livelo, FGTS, condições promocionais e decorados**, com copy melhor que a peça de referência, sem reproduzir a poluição visual dos flyers.
+
+- Implementação **apenas** na página do Órbita, branch `feat/orbita-resf-ode-premium-20261123`, na posição **Hero → Facts → Oportunidades → Consultar Valor**.
+- Seção `#oportunidades`, título H2: **“Seu novo capítulo no Tatuapé já pode começar.”**; introdução sobre pronto para morar, 1–3 dormitórios, lazer e proximidade do Metrô Carrão.
+- Quatro cards sem imagens pesadas, mobile-first, visual premium com Tegra amarelo, fundo claro e destaque azul escuro para Livelo: (1) condições especiais; (2) campanha Livelo; (3) possível uso do FGTS; (4) opções de decorados.
+- CTAs dos três primeiros cards vão ao **Form46**, usando apenas intents já suportados pelo runtime: `conditions` e `payment_simulation`. CTA “Quero conhecer o decorado” abre WhatsApp SP da Sabrina com mensagem contextualizada. Não foram alterados endpoint, campos, medição, consentimento ou canal RJ.
+- **Não publicado:** preços e unidades promocionais, prazo de oferta, promessa de pontos equivalentes a 100% do valor, garantia de elegibilidade FGTS ou disponibilidade de decorados. Essas informações exigem aprovação comercial atualizada antes de publicação.
+- Aviso curto na seção: campanhas e condições dependem de vigência/regulamento/disponibilidade; FGTS depende de elegibilidade. Não usar parágrafos técnicos ou referências a fonte na página de vendas.
+- Nenhuma mídia dos panfletos foi incorporada. HTML/CSS sem JS adicional e sem novas dependências.
+
+### 6.3 Protocolo de teste: Live Sync obrigatório, Preview proibido
+
+O proprietário corrigiu expressamente a execução anterior: **“o protocolo proíbe a utilização de preview, usamos sempre o live sync pois o preview pode comprometer a utilização por conta de limites da versão free”**. Esta decisão prevalece para o fluxo de teste da frente.
+
+- Protocolo canônico: `docs/governance/MNT_LOCAL_LIVE_SYNC_VALIDATION_STANDARD_V1.md`; manifesto `.sfjm/project.json` (`local-first-remote-on-promotion`, `remoteIterationAllowed=false`, push/deploy com intenção explícita).
+- Vercel `vercel.json` tem `git.deploymentEnabled["**"]=false`, `main=true`. **Não criar deployments Preview manuais, não habilitar preview para branches e não usar URL `*.vercel.app` para QA.**
+- Para testar, iniciar sessão LVR travada em `feat/orbita-resf-ode-premium-20261123`, conferir `[SYNC] OK branch=<branch> head=<sha>`, abrir a rota `/empreendimentos/universo-tatuape-orbita/` no servidor local, validar desktop/mobile e os quatro CTAs; registrar `VALIDATION_SURFACE=LOCAL_LIVE_SYNC`.
+- **A execução anterior criou um Preview manual**, contrário à preferência do proprietário; foi registrada como erro operacional. Nenhum novo Preview manual foi solicitado nesta etapa.
+- Os três validadores antigos da PR #594 continuam bloqueando a adaptação anterior (schema de preço/Offer, cobertura Product, snapshot de FAQ). Não alterar validadores, não mesclar e não publicar sem autorização específica. Também não harmonizar os cards da home com preços antigos sem ordem expressa.
+
+### 6.4 Aceite pendente
+
+- QA visual do proprietário via LVR e conferência de hierarquia/CTA/mobile.
+- Confirmação escrita de vigência Livelo, regulamento, elegibilidade FGTS e nova tabela de unidades promocionais/decorados antes de alegar ofertas ativas ou publicar valores.
+- Se solicitado, exceções **exatas** nos três validadores do Órbita, com testes negativos e sem relaxar proteção de outras páginas.
+- Autorização explícita de merge e validação Production READY/rollback; o trabalho em branch não altera a produção.
