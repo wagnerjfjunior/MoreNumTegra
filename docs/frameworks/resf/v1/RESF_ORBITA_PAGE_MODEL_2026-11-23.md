@@ -143,3 +143,5 @@ Novo `#oportunidades` (entre facts e valor) com:
 ### 7.5 Ajuste de imagem para contrato SEO de duas imagens
 
 O CI do primeiro head da revisão apontou falha **nova** em `SEO two distinct images - 39 URLs`: a primeira imagem editorial adicionada era `…004…`, mas o `ImageObject#secondary-image` governado aponta para `…005…`. Corrigido **sem editar validador nem metadata**: `#oportunidades` agora usa a foto da **piscina `…005…`**, e a seção visual `.full` usa o **voo do lazer `…004…`**, ambos assets oficiais já existentes. O objetivo é manter imagem secundária visível em HTML e reduzir repetição visual. Verificar CI do novo head; não declarar PASS antecipadamente.
+
+No CI seguinte, a imagem passou a coincidir em URL, mas o guard exigiu também **igualdade exata do `alt` visível com o `ImageObject#secondary-image.caption`**. O `alt` da figura foi ajustado para `Lazer Órbita de Universo Tatuapé Órbita`, mantendo a descrição existente no JSON-LD e sem tocar no validador. Reexecutar CI para confirmar.
