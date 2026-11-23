@@ -1,3 +1,9 @@
+## 23/11/2026 — GATES ESPECÍFICOS DA FRENTE SEO FGTS/ÓRBITA
+
+A autorização “ótimo vamos fazer” permite **preparar em branch e PR** artigo FGTS, links, hub, rewrite e sitemap. **Não autoriza merge, deploy, IndexNow, alteração de validadores, Form46, medição, preços, campanhas ou outra página.** Validação de branch: **LOCAL_LIVE_SYNC**, sem Preview. A elegibilidade FGTS do comprador/unidade deve ser avaliada; não divulgar teto de avaliação em fontes oficiais conflitantes. Risco Livelo 1:1 permanece fora do escopo. Dossiê: `docs/seo/MNT_FGTS_ORBITA_CLUSTER_2026-11-23.md`.
+
+---
+
 ## 15/11/2026 — BLOQUEIOS CONSOLIDADOS (reconciliação)
 
 Esta seção é a mais nova e vale junto com a próxima ação de 15/11 em `docs/NEXT_SAFE_ACTION.md`. O inventário das frentes está em `docs/PROJECT_STATUS.md` (15/11). As seções de 05/11 (Complexo) e anteriores continuam valendo **no contexto de cada frente**; onde esta seção for mais restritiva, vale esta.
