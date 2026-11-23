@@ -1,3 +1,15 @@
+## 23/11/2026 — Órbita: H2 de perguntas, imagem e diagnóstico SEO do usuário — SEM MERGE
+
+- **Solicitação:** usuário rejeitou cards que apenas conduzem ao formulário. Requer **H2 em perguntas com respostas sobre Livelo/FGTS**, uma figura e aplicação cirúrgica do relatório OpenSEO/GSC de 23/11. A implementação anterior de 4 cards foi **substituída**, mantendo seu histórico abaixo.
+- **Relatório fornecido pelo usuário, não reconsultado:** GSC 20/08–20/11: 257 impressões, 8 cliques, CTR 3,11%, posição 9,5; `orbita tegra` 60/1/6,3 versus `universo tatuapé órbita` 13/0/30,8. Auditoria 14/11: HTTP200, indexável, H1=1, 11 imagens, ALT completo, 2 links internos; sem Lighthouse. Dados não provam conversão nem ranking futuro.
+- **Alterações em branch `feat/orbita-resf-ode-premium-20261123` / PR #594 DRAFT:** `#oportunidades` com H2 de pergunta introdutória + H2 sobre Livelo, FGTS e apartamentos promocionais/decorados; respostas textuais indexáveis e CTAs só depois da explicação; figura de **Voo do lazer** usando mídia Tegra existente com lazy load e alt. H1 e descrição SEO reforçam nome completo, Tegra e pronto para morar; title preservado; localidade aprimorada com Metrô Carrão sem distância exata e link interno `/regioes/tatuape/`; 4 respostas FAQ menos técnicas sincronizadas 1:1 com JSON-LD; lazer duplicado removido.
+- **Limite do relatório:** recomendação de mostrar `Av. Celso Garcia, 5040` no corpo **conflita** com `docs/content/COMMERCIAL_FOOTER_AND_LOCATION_STANDARD.md` (`VISIBLE_EXACT_ADDRESS=FOOTER_ONLY`). Preservado endereço no footer/JSON-LD, sem alteração de mapa. Exceção requer autorização expressa do proprietário.
+- **Riscos comerciais:** Livelo sem vigência/regulamento confirmado; FGTS depende de elegibilidade; preços dos decorados do flyer venceram em 31/10/2026. Nenhuma oferta/estoque/preço vencido foi publicado. Não modificar Form46, GTM/GA4, consentimento, canais ou validadores.
+- **Protocolo:** **LOCAL LIVE SYNC LVR somente**. Não criar Vercel Preview, não fazer merge/deploy sem autorização. CI da PR #594 tinha 3 falhas legadas antes desta edição (schema comercial, cobertura Product e postal/FAQ snapshot). QA LVR, Core Web Vitals, GA4→CRM e confirmação de campanhas permanecem pendentes.
+- **Dossiê:** `docs/frameworks/resf/v1/RESF_ORBITA_PAGE_MODEL_2026-11-23.md` §7. Confirmar SHA live antes do LVR e registrar `[SYNC] OK branch=<branch> head=<sha>`.
+
+---
+
 ## 23/11/2026 — Órbita: campanha Livelo, FGTS, oportunidades e decorados — LVR, SEM MERGE
 
 - **Novo pedido:** inserir uma seção de alta conversão próxima ao topo do Órbita, com campanha Livelo, possibilidade de FGTS, apartamentos promocionais e decorados à venda; copy própria, sem reproduzir três flyers poluídos fornecidos pelo proprietário.
