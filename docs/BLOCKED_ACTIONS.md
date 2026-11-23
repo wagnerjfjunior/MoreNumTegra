@@ -1,3 +1,11 @@
+## 23/11/2026 — ESCOPO ATUALIZADO PR #595: FGTS TRANSVERSAL
+
+A aprovação posterior “sim, claro” **autoriza** reestruturar artigo/links para múltiplos empreendimentos residenciais prontos SP, incluir atalho de catálogo na home e **editar somente a allowlist de URLs do blog** em `scripts/validate-two-images-39-pages.mjs` para o artigo FGTS, com teste negativo. **Não autoriza** relaxar outros contratos, mudar preço, Form46, Livelo, Rio, campanhas, páginas congeladas, GTM, publicar ou mesclar. O bloqueio genérico de alteração de validadores registrado abaixo continua valendo **para qualquer outro validador ou regra**.
+
+**Não presumir FGTS aprovado para empreendimento pronto:** conferir tipo residencial, enquadramento do comprador, imóvel e operação. Não criar landing SEO de query parametrizada; canonical da homepage permanece `/`. Gate: CI + LOCAL_LIVE_SYNC + aprovação específica de merge. Dossiê §9: `docs/seo/MNT_FGTS_ORBITA_CLUSTER_2026-11-23.md`.
+
+---
+
 ## 23/11/2026 — GATES ESPECÍFICOS DA FRENTE SEO FGTS/ÓRBITA
 
 A autorização “ótimo vamos fazer” permite **preparar em branch e PR** artigo FGTS, links, hub, rewrite e sitemap. **Não autoriza merge, deploy, IndexNow, alteração de validadores, Form46, medição, preços, campanhas ou outra página.** Validação de branch: **LOCAL_LIVE_SYNC**, sem Preview. A elegibilidade FGTS do comprador/unidade deve ser avaliada; não divulgar teto de avaliação em fontes oficiais conflitantes. Risco Livelo 1:1 permanece fora do escopo. Dossiê: `docs/seo/MNT_FGTS_ORBITA_CLUSTER_2026-11-23.md`.
