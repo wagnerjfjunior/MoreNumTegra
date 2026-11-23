@@ -12,7 +12,8 @@ Data-base: 23/11/2026. Repositório: wagnerjfjunior/MoreNumTegra. Escopo: São P
 6. [OpenSEO — palavras-chave e funis](MNT_KEYWORDS_FUNIS.csv): amostra filtrada de 17 termos, volumes nacionais estimados, intenções e destinos.
 7. [Plano de execução segura e verificações](MNT_PLANO_EXECUCAO_SEGURA.md).
 8. [Divergências de governança e evidências](MNT_RECONCILIACAO_EVIDENCIAS.md).
-9. [Handoff de revisão pelo Claude](../../../../handoffs/MNT_SEO_LINKS_FUNIS_CLAUDE_REVIEW_2026-11-23.md).
+9. [Tentativa de revisão e limitação de acesso Claude](MNT_CLAUDE_TENTATIVA_ACESSO_2026-11-23.md): tentativa externa leu 0/10 arquivos; parecer técnico ainda não emitido.
+10. [Handoff de revisão pelo Claude](../../../../handoffs/MNT_SEO_LINKS_FUNIS_CLAUDE_REVIEW_2026-11-23.md).
 
 ## Proveniência / classificação
 
