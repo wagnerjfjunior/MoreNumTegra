@@ -38,13 +38,13 @@ const approvedBlogPaths=[
  "/blog/mercado/infraestrutura-entorno-escolha-imovel/",
  "/blog/mercado/condominio-sustentavel-solucoes-custos/",
  "/blog/mercado/iptu-apartamento-sp-consulta-orcamento/",
+ "/blog/mercado/usar-fgts-comprar-apartamento/",
  "/blog/mercado/compra-imovel-investimento-longo-prazo/",
  "/blog/mercado/fii-ou-imovel-fisico-comparacao/",
  "/blog/mercado/orla-barra-tijuca-localizacao-conservacao/",
  "/blog/mercado/imoveis-luxo-renda-custos-liquidez/",
  "/blog/mercado/morar-itaim-bibi-rotina-custo/",
- "/blog/mercado/imovel-herdado-inventario-documentos-etapas/",
- "/blog/mercado/usar-fgts-comprar-apartamento/"
+ "/blog/mercado/imovel-herdado-inventario-documentos-etapas/"
 ];
 const validateBlogScope=paths=>assert.deepEqual(paths,approvedBlogPaths,'Blog sitemap additions must remain explicitly scoped');
 validateBlogScope(blogPaths);
