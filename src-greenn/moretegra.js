@@ -665,6 +665,10 @@
     const zoneField = zone?.closest("label") || null;
     const mobileZoneQuery = window.matchMedia?.("(max-width: 759px)") || null;
     const state = {status: "todos", city: "São Paulo", zone: "todas", price: "todos", query: ""};
+    // Atalho editorial compartilhável: somente o valor "pronto" ativa o filtro já existente.
+    // A página mantém o canonical da home e não cria uma URL SEO indexável concorrente.
+    if (new URLSearchParams(window.location.search).get("estagio") === "pronto") state.status = "entregue";
+    if (mobileStatus) mobileStatus.value = state.status;
 
     const syncZoneControls = () => {
       if (zoneQuickField) { zoneQuickField.hidden = state.city !== "São Paulo"; zoneQuickField.style.display = state.city !== "São Paulo" ? "none" : ""; }
