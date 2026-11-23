@@ -1,3 +1,13 @@
+## 23/11/2026 — F20: CLUSTER SEO FGTS/ÓRBITA (proposta isolada)
+
+| Frente | Autorização | Estado nesta branch | Próximo gate |
+| --- | --- | --- | --- |
+| F20 — FGTS/Órbita + blog Mercado | “ótimo vamos fazer” após proposta de PR isolada sem merge | Artigo HTML, enriquecimento do card FGTS, links internos, hub 13/13, rewrite e sitemap preparados em `feat/seo-fgts-orbita-guia-20261123`; **não integrados à main** | CI, QA `LOCAL_LIVE_SYNC`, aceite do proprietário, autorização específica de merge e verificação Production |
+
+A frente F02 (H2/H3 Lote 1) da seção de 15/11 permanece pendente; não foi substituída em escopo. Fonte: `docs/seo/MNT_FGTS_ORBITA_CLUSTER_2026-11-23.md`. Base live inicial `cc78efe0640bc4af2283f464137849b41afe72f4`; não presumir que main ou produção permaneçam nesse SHA após esta escrita.
+
+---
+
 ## 15/11/2026 — INVENTÁRIO DAS FRENTES E MATRIZ DE COBERTURA (reconciliação)
 
 `main` ao vivo na escrita: `0867ba67786f90116b1274b337633425ce123b18`. A próxima ação única está em `docs/NEXT_SAFE_ACTION.md` (15/11) e **este inventário não a altera**: ele existe para que nenhuma outra frente se perca. **PR mesclado não significa tarefa concluída**: a coluna "Estado" separa o que foi verificado no `main` nesta data do que vem só do corpo do PR ou de registro. Não verificado: Vercel/produção (sem acesso nesta rodada), Search Console, Bing, GTM/GA4, Green/CRM.
