@@ -1,3 +1,90 @@
+## 23/11/2026 — Órbita: últimas unidades confirmadas + FAQ FGTS/Livelo sincronizado — MERGE AUTORIZADO
+
+- **Autorização explícita:** proprietário solicitou corrigir status, atualizar JSON-LD e FAQ FGTS/Livelo e fazer merge para testar produção. **Não altera automaticamente autorização de editar validadores.**
+- **Fonte:** `https://www.tegraincorporadora.com.br/sp/sao-paulo/leste/tatuape/universoorbita` consultada em 23/11/2026: `Entregue`, `Últimas unidades`, endereço Celso Garcia 5040 e possibilidade de FGTS sob regras de financiamento. Sem número de estoque confirmado.
+- **Mudança:** hero com `Últimas unidades`; FAQ visível e JSON-LD `FAQPage.mainEntity` com resposta de status restaurada e primeiro bloco de seis perguntas exatamente igual ao baseline. Duas perguntas redundantes substituídas por FGTS (uso condicionado a regras/análise) e Livelo (R$ 1 na entrada = 1 ponto, sujeito a regulamento, elegibilidade e vigência). Mantidas 12 perguntas com paridade literal HTML/JSON-LD.
+- **Preservado:** Form46, CTA, WhatsApp, imagens e alinhamento Livelo/FGTS, analytics, schema de imagem, layout mobile. Sem mudança de validadores, Product/Offer, galeria de três fotos ou preço antigo.
+- **Pendências:** CI do novo head; dois validadores legados exigem Product/Offer de preço antigo e galeria de bairro removida pela arquitetura RESF; não maquiar dados ou inserir conteúdo oculto. Campanha Livelo para Órbita/SP depende de confirmação documental de elegibilidade. Após merge, verificar GitHub main, Vercel Production, HTTP/SEO/FAQ/CTA e obter teste visual do proprietário. Dossiê RESF §12.
+
+---
+
+## 23/11/2026 — Órbita: copy Livelo comercial 1:1 + alinhamento desktop — SEM MERGE
+
+- **Pedido explícito:** trocar o manual da seção Livelo por copy de conversão com Big Idea, H2 pergunta e promessa, destacando **R$ 1 na entrada = 1 ponto Livelo***; preservar alinhamento das figuras Livelo/FGTS no desktop.
+- **HTML:** kicker Livelo + Tegra; H2 `Como transformar a entrada do seu Órbita em pontos Livelo?`; H3 `Seu novo apartamento é só o começo. Sua próxima viagem pode começar aqui!`; faixa amarela `R$ 1 na entrada = 1 ponto Livelo*`; texto comercial de viagens/produtos/experiências; CTA `Quero aproveitar meus pontos Livelo` mantendo `href="#formulario"`/`data-form-intent="conditions"`. Nota de regulamento curta e visível.
+- **CSS desktop >850px:** ambas figuras usam `margin-top:auto`, CTAs `min-height:56px`, bordas superiores Livelo/FGTS com 4px e imagens 3:2, para alinhamento vertical mesmo com textos de comprimentos diferentes. **Mobile:** sem mudança de breakpoint, Livelo 9:16 até 640px.
+- **Preservados:** Form46, imagens S3, FGTS, FAQ/JSON-LD, imagem secundária SEO, WhatsApp, analytics, consentimento. Inspeção estática passou. 
+- **Bloqueio comercial:** referência 1:1 aparece na arte e material Tegra de outra região, **mas ainda falta regulamento que confirme mecânica/elegibilidade do Órbita/SP**; não publicar a promessa como condição vigente sem prova. **Sem autorização de merge**; PR #594 DRAFT, sem Preview/produção. Validadores legados bloqueados; não editar scripts.
+- **Gate LVR:** sincronizar branch/head exato e conferir desktop 900/1024/1440px (imagens e CTAs alinhados) e mobile 390px (faixa legível, Livelo 9:16, sem scroll/CLS). Dossiê `docs/frameworks/resf/v1/RESF_ORBITA_PAGE_MODEL_2026-11-23.md` §11.
+
+---
+
+## 23/11/2026 — Órbita: imagens Livelo e FGTS alinhadas no desktop — SEM MERGE
+
+- **Evidência:** screenshot do usuário no Local Live Sync `localhost:8080` revelou figura FGTS acima da Livelo, porque os parágrafos têm alturas diferentes. Os CTAs já estavam alinhados.
+- **Correção:** somente CSS escopado no Órbita para desktop `min-width:851px`: figuras com `margin-top:auto` e links CTA com `margin-top:0;min-height:48px`. Assim a diferença de altura fica **acima** da imagem, mantendo bordas superiores e inferiores das duas figuras alinhadas; proporção desktop 3:2 mantida.
+- **Mobile:** nenhuma alteração até 850px; Livelo 9:16 até 640px e FGTS responsivo preservados. Sem mudanças em conteúdo, Form46, WhatsApp, analytics, JSON-LD ou URLs de mídia.
+- **QA:** validação estática passou; **aguarda nova captura LVR** (900/1024/1440px + 390px). PR #594 DRAFT; sem Preview, merge ou publicação. Três validadores legados continuam fora do escopo desta correção. Dossiê RESF §10.
+
+---
+
+## 23/11/2026 — Órbita: artes Livelo GDigital desktop + mobile 9:16 integradas — SEM MERGE
+
+- **Pedido:** proprietário forneceu URLs finais da campanha Livelo+Tegra. Figura adicionada em `#livelo` **após os parágrafos H2 explicativos e antes do CTA**; card FGTS e demais componentes preservados.
+- **Desktop:** `https://s3-gdigital.s3.amazonaws.com/gdigital/313/Entrada_que_vira_pontos_Livelo.webp`; **mobile 9:16:** `https://s3-gdigital.s3.amazonaws.com/gdigital/313/Pontos_Livelo_no_Universo_Tatuape%CC%81_9x16.webp`. Preservar URL encoded `%CC%81` sem normalização. `<picture>` até 640px, `loading=lazy`, `decoding=async`, `alt`, CSS escopado com `object-fit:contain` (sem cortar texto). Não armazenar binários no GitHub.
+- **Evidência:** URL fornecida pelo proprietário, HTTP não verificado por DNS/cache miss; conferir no LVR. **Campanha:** arte indica validade 30/11/2026, mas regulamento, mecânica de pontos e elegibilidade do Órbita ainda não confirmados; **não publicar sem comprovação**. Material de campanha RJ não prova aplicabilidade em SP.
+- **Branch:** `feat/orbita-resf-ode-premium-20261123`, PR #594 DRAFT; sem merge, Preview ou produção. Preservar três falhas legadas de CI sem modificar validadores. Dossiê `docs/frameworks/resf/v1/RESF_ORBITA_PAGE_MODEL_2026-11-23.md` §9.
+- **Gate LVR:** branch/head exato, imagens desktop/mobile carregadas, proporção 9:16 sem crop, leitura 360/390px, CLS/scroll, CTA, Form46 e paridade de imagens SEO.
+
+---
+
+## 23/11/2026 — Órbita: imagens FGTS GDigital desktop/mobile integradas — SEM MERGE
+
+- **Pedido:** proprietário forneceu duas URLs GDigital/S3 da arte FGTS gerada nesta conversa. Inseridas na seção de perguntas do Órbita, dentro do card `#fgts`, **antes do CTA**.
+- **Desktop:** `https://s3-gdigital.s3.amazonaws.com/gdigital/313/Usar_FGTS_Aquisicao_Imoveis_1536x1024.webp` (1536×1024). **Mobile:** `https://s3-gdigital.s3.amazonaws.com/gdigital/313/fgts-universo-tatuape-orbita-mobile.webp` (960×640). Implementação `<picture>` responsiva até 640px, `img loading=lazy decoding=async`, dimensões, alt e CSS escopado; nenhuma mídia pesada em GitHub.
+- **Validação:** DOM/JSON-LD/primeira imagem secundária e Form46 preservados em inspeção estática; **não** foi possível verificar HTTP da CDN neste ambiente (DNS indisponível; fetch remoto sem cache). LVR deve conferir 200, carregamento em 360/390px e desktop, legibilidade e ausência de CLS.
+- **Branch:** `feat/orbita-resf-ode-premium-20261123`, PR #594 DRAFT; **sem merge, sem Preview e sem publicação**. Três falhas antigas de validadores continuam bloqueando release; não editar scripts sem autorização específica.
+- **Documentação:** `docs/frameworks/resf/v1/RESF_ORBITA_PAGE_MODEL_2026-11-23.md` §8. Fluxo de QA exclusivamente `LOCAL_LIVE_SYNC`.
+
+---
+
+## 23/11/2026 — Órbita: H2 de perguntas, imagem e diagnóstico SEO do usuário — SEM MERGE
+
+- **Solicitação:** usuário rejeitou cards que apenas conduzem ao formulário. Requer **H2 em perguntas com respostas sobre Livelo/FGTS**, uma figura e aplicação cirúrgica do relatório OpenSEO/GSC de 23/11. A implementação anterior de 4 cards foi **substituída**, mantendo seu histórico abaixo.
+- **Relatório fornecido pelo usuário, não reconsultado:** GSC 20/08–20/11: 257 impressões, 8 cliques, CTR 3,11%, posição 9,5; `orbita tegra` 60/1/6,3 versus `universo tatuapé órbita` 13/0/30,8. Auditoria 14/11: HTTP200, indexável, H1=1, 11 imagens, ALT completo, 2 links internos; sem Lighthouse. Dados não provam conversão nem ranking futuro.
+- **Alterações em branch `feat/orbita-resf-ode-premium-20261123` / PR #594 DRAFT:** `#oportunidades` com H2 de pergunta introdutória + H2 sobre Livelo, FGTS e apartamentos promocionais/decorados; respostas textuais indexáveis e CTAs só depois da explicação; figura de **Piscina** usando mídia Tegra existente com lazy load e alt; a seção visual abaixo usa **Voo do lazer** (ajuste de ordem exigido pelo guard SEO de imagem secundária). H1 e descrição SEO reforçam nome completo, Tegra e pronto para morar; title preservado; localidade aprimorada com Metrô Carrão sem distância exata e link interno `/regioes/tatuape/`; 4 respostas FAQ menos técnicas sincronizadas 1:1 com JSON-LD; lazer duplicado removido.
+- **Limite do relatório:** recomendação de mostrar `Av. Celso Garcia, 5040` no corpo **conflita** com `docs/content/COMMERCIAL_FOOTER_AND_LOCATION_STANDARD.md` (`VISIBLE_EXACT_ADDRESS=FOOTER_ONLY`). Preservado endereço no footer/JSON-LD, sem alteração de mapa. Exceção requer autorização expressa do proprietário.
+- **Riscos comerciais:** Livelo sem vigência/regulamento confirmado; FGTS depende de elegibilidade; preços dos decorados do flyer venceram em 31/10/2026. Nenhuma oferta/estoque/preço vencido foi publicado. Não modificar Form46, GTM/GA4, consentimento, canais ou validadores.
+- **Protocolo:** **LOCAL LIVE SYNC LVR somente**. Não criar Vercel Preview, não fazer merge/deploy sem autorização. CI da PR #594 tinha 3 falhas legadas antes desta edição (schema comercial, cobertura Product e postal/FAQ snapshot). QA LVR, Core Web Vitals, GA4→CRM e confirmação de campanhas permanecem pendentes.
+- **Dossiê:** `docs/frameworks/resf/v1/RESF_ORBITA_PAGE_MODEL_2026-11-23.md` §7. Confirmar SHA live antes do LVR e registrar `[SYNC] OK branch=<branch> head=<sha>`.
+
+---
+
+## 23/11/2026 — Órbita: campanha Livelo, FGTS, oportunidades e decorados — LVR, SEM MERGE
+
+- **Novo pedido:** inserir uma seção de alta conversão próxima ao topo do Órbita, com campanha Livelo, possibilidade de FGTS, apartamentos promocionais e decorados à venda; copy própria, sem reproduzir três flyers poluídos fornecidos pelo proprietário.
+- **Decisão operacional explícita:** **PROIBIDO usar Vercel Preview para testar esta frente**. Usar `docs/governance/MNT_LOCAL_LIVE_SYNC_VALIDATION_STANDARD_V1.md`, branch lock e SHA imutável; `vercel.json` já bloqueia deploy de branches não-main. A criação manual de Preview na etapa anterior foi indevida e não deve se repetir.
+- **Branch existente:** `feat/orbita-resf-ode-premium-20261123`, PR #594 **DRAFT**, sem merge. HTML: `src-greenn/empreendimentos/universo-tatuape-orbita/index.html`.
+- **Implementado em branch:** `#oportunidades` entre facts e valor, quatro cards (condições especiais, Livelo, FGTS, decorados), copy premium, CSS responsivo e quatro CTAs; 3 → Form46 por intents existentes, 1 → WhatsApp SP com texto de decorados. Nenhuma nova imagem pesada, dependência JS, endpoint ou contrato de formulário.
+- **Fatos dos três flyers:** tabela de promoções (601 43 m² R$375k; 606 51 m² R$448k; 2607 53 m² R$570k; 1805 69 m² R$692k), decorados (221 R$540k; 247 R$735k; 225 R$895k **válidos somente até 31/10/2026**), campanha Livelo sem regulamento/vigência, FGTS sujeito a elegibilidade; distâncias divergentes 450/500 m e 8 minutos. **Preços, unidades e garantias NÃO publicados**.
+- **Dossiê atualizado:** `docs/frameworks/resf/v1/RESF_ORBITA_PAGE_MODEL_2026-11-23.md` §6; fonte é o material fornecido pelo proprietário em 23/11, não tabela vigente confirmada.
+- **Gates:** QA **LOCAL_LIVE_SYNC** ainda pendente; não declarar aceite. PR #594 tem 3 checks antigos falhando (Orbita commercial structured data parity, Project structured data coverage guard, RESF V2 approved project postal addresses); **não modificar validadores** sem autorização expressa. Não alterar home nem mesclar/publicar sem ordem específica.
+- **Rollback:** `main` pré-branch `8deb35630d7dd14f145a4f3e051ca489046e163d` / Vercel Production READY `dpl_7Pv6c74kJMupWwk31nfHDEfvVMjf` na última verificação; resolver live novamente antes de release.
+
+---
+
+## 23/11/2026 — Órbita: adaptação do padrão ODE (branch de preparação, SEM MERGE)
+
+- **Pedido do proprietário:** “ficou ótimo vamos salvar as informações e vamos repetir o processo na página do órbita” — referência `https://www.moretegra.com.br/empreendimentos/universo-tatuape-orbita/`.
+- **Fonte de modelo consolidada:** `docs/frameworks/resf/v1/RESF_ODE_PERDIZES_PAGE_MODEL_2026-11-23.md` §13; PR #593 MERGED `8deb35630d7dd14f145a4f3e051ca489046e163d`, 8/8 CI, Vercel Production READY `dpl_7Pv6c74kJMupWwk31nfHDEfvVMjf`, aceite visual do proprietário “ficou ótimo”.
+- **Branch Órbita:** `feat/orbita-resf-ode-premium-20261123`, base main `8deb35630d7dd14f145a4f3e051ca489046e163d`. Modelo e limites em `docs/frameworks/resf/v1/RESF_ORBITA_PAGE_MODEL_2026-11-23.md`.
+- **Preparado:** header premium com logo/identidade/retorno; hero sem “últimas unidades”; quatro facts, sem ticker; “Consultar Valor” e CTA Form46; conteúdo em perguntas/respostas; lazer antes da galeria; seis perspectivas e plantas agrupadas mantidas; tour 360° preservado; imagens/links Wikimedia removidos; footer preto compacto; SEO/FAQ/JSON-LD sem ofertas vencidas; links `?unidade=1814|2408|1305` preservam somente interesse em tipologia, sem prometer estoque; sitemap lastmod atualizado.
+- **Preservados:** contato SP Sabrina/CRECI/telefone, WhatsApp, Form46, analytics/consentimento, mapa bairro, imagens Tegra e demais páginas. Nenhum preço novo ou disponibilidade inventados.
+- **Gates:** **não mesclar sem ordem específica**; `scripts/validate-resf-v2-postal-address-contract.mjs` pode bloquear alterações do JSON-LD do Órbita contra snapshot. **Não alterar validador sem autorização específica**. Revisar também cards da home que podem manter preços/links antigos; fora deste escopo.
+- **Rollback:** produção anterior `dpl_7Pv6c74kJMupWwk31nfHDEfvVMjf` / `8deb35630d7dd14f145a4f3e051ca489046e163d` READY; revalidar antes de qualquer release.
+
+---
+
 ## 23/11/2026 — ODE Perdizes: “Consultar Valor” (merge autorizado; CI pendente)
 
 - **Solicitação:** alterar bloco de valor (“Referência comercial” → “Valor”; R$ 2.090.000 → “Consultar Valor”), retirar Unidade 22/2º andar/única disponível/preço anterior/desconto e criar copy de conversão com CTA para formulário.

@@ -146,3 +146,11 @@ Origem operacional: URLs extraídas pelo proprietário do site oficial `https://
 - **Risco residual:** “Consultar Valor” não é prova de disponibilidade. A verificação de estoque/condições com a equipe Tegra Vendas permanece pendente antes de prometer oferta concreta.
 
 - **Exceção de validador específica:** `scripts/validate-resf-v2-postal-address-contract.mjs` permite apenas cinco alterações exatas de JSON-LD do ODE (WebPage.name, WebPage.description, ApartmentComplex.description, duas respostas FAQ), verifica textos anteriores e novos e mantém a comparação integral para todos os demais campos/páginas. Nenhuma exceção geral foi criada. Publicação condicionada aos checks do head final e Vercel READY.
+
+## 13. Recibo final da experiência aprovada e reutilização controlada (23/11/2026)
+
+- **PR #593:** https://github.com/wagnerjfjunior/MoreNumTegra/pull/593 — **MERGED**, merge SHA `8deb35630d7dd14f145a4f3e051ca489046e163d`; 8/8 workflows SUCCESS, incluindo validador JSON-LD com exceção exata apenas para o ODE.
+- **Produção:** Vercel `dpl_7Pv6c74kJMupWwk31nfHDEfvVMjf` READY, `githubCommitSha=8deb35630d7dd14f145a4f3e051ca489046e163d`, alias `www.moretegra.com.br`, sem erro de alias, confirmado no release. Rollback anterior: `dpl_3y4N8DAGHE3vVzf3AoQPdDFc4WSk` / `c2d29712cf55194d11cde437f793fa3a79540976`.
+- **Aceite do proprietário:** “ficou ótimo” após teste da página em 23/11. **USER_CONFIRMED** (não equivale a QA técnico independente em todos os dispositivos).
+- **Estado comercial final:** hero sem “última unidade”; bloco de valor exibe `Valor` / `Consultar Valor` / CTA `Consultar valor e condições` para `#formulario`; SEO/FAQ/JSON-LD sem preço, desconto ou unidade específica; footer preto compacto com avisos e perfil oficial em disclosure. Não declarar estoque disponível sem confirmação.
+- **Novo destino de adaptação solicitado:** Universo Tatuapé Órbita, `docs/frameworks/resf/v1/RESF_ORBITA_PAGE_MODEL_2026-11-23.md`. **Reutilização do modelo não equivale a autorização automática de merge, mudança de validador ou cópia de dados de ODE.**
