@@ -145,3 +145,21 @@ Novo `#oportunidades` (entre facts e valor) com:
 O CI do primeiro head da revisão apontou falha **nova** em `SEO two distinct images - 39 URLs`: a primeira imagem editorial adicionada era `…004…`, mas o `ImageObject#secondary-image` governado aponta para `…005…`. Corrigido **sem editar validador nem metadata**: `#oportunidades` agora usa a foto da **piscina `…005…`**, e a seção visual `.full` usa o **voo do lazer `…004…`**, ambos assets oficiais já existentes. O objetivo é manter imagem secundária visível em HTML e reduzir repetição visual. Verificar CI do novo head; não declarar PASS antecipadamente.
 
 No CI seguinte, a imagem passou a coincidir em URL, mas o guard exigiu também **igualdade exata do `alt` visível com o `ImageObject#secondary-image.caption`**. O `alt` da figura foi ajustado para `Lazer Órbita de Universo Tatuapé Órbita`, mantendo a descrição existente no JSON-LD e sem tocar no validador. Reexecutar CI para confirmar.
+
+## 8. Arte FGTS responsiva hospedada na GDigital (23/11/2026)
+
+**Entrada:** o proprietário forneceu dois endereços S3/GDigital para inserir a arte de FGTS que havia sido criada e otimizada nesta conversa. A integração foi solicitada no contexto da seção FGTS do Órbita, sem autorização de merge/publicação.
+
+- Desktop: `https://s3-gdigital.s3.amazonaws.com/gdigital/313/Usar_FGTS_Aquisicao_Imoveis_1536x1024.webp` (1536 × 1024; arquivo local original produzido nesta conversa: 133.738 bytes).
+- Mobile: `https://s3-gdigital.s3.amazonaws.com/gdigital/313/fgts-universo-tatuape-orbita-mobile.webp` (960 × 640; arquivo local original produzido nesta conversa: 74.786 bytes).
+- **Observação de evidência:** URLs fornecidas pelo proprietário, não verificadas por HTTP nesta execução (ambiente de execução sem acesso DNS e fetch web retornou cache miss). A disponibilidade S3/CDN e o enquadramento real devem ser testados no LVR, inclusive em rede móvel.
+
+**Implementação em `src-greenn/empreendimentos/universo-tatuape-orbita/index.html`:**
+- Inserida figura **dentro do card `#fgts`**, entre os parágrafos explicativos e o CTA “Simular possibilidades com FGTS”. O conteúdo da pergunta H2 continua texto HTML indexável.
+- `<picture>` com `<source media="(max-width: 640px)" srcset="...mobile.webp" type="image/webp">` e `<img src="...1536x1024.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="...">`; proporção reservada 3:2, imagem fluida e `object-fit:cover`.
+- CSS limitado a `.orbita-opps-fgts-media`, sem scripts, sem novas dependências e sem upload de mídia pesada ao GitHub. **A fonte canônica do asset é GDigital/S3, não GitHub.**
+- Texto legal/comercial não alterado: uso do FGTS sujeito a regras/elegibilidade; não afirmar aprovação garantida.
+- **SEO:** primeira imagem secundária editorial `…005…` e `ImageObject#secondary-image` permanecem idênticos; a arte FGTS entra após a imagem secundária, sem mudar o contrato de duas imagens. Não adicionar `ImageObject` extra sem necessidade.
+- **Preservado:** Form46, WhatsApp, CTA, analytics, consentimento, endereço, FAQ e JSON-LD.
+
+**Gate:** confirmar no **LOCAL LIVE SYNC** que ambas as URLs servem `image/webp`, que a versão mobile é escolhida em viewport até 640px, que o texto da imagem é legível e que a seção não gera CLS ou rolagem horizontal. Não utilizar Vercel Preview. PR #594 continua DRAFT, sem merge.
