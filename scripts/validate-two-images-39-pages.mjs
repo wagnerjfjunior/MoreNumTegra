@@ -25,7 +25,7 @@ const decorArticlePaths=[
 const releasedDecor=decorArticlePaths.filter(p=>allPaths.includes(p));
 const decorCategory=allPaths.includes('/blog/dicasedecor/')?['/blog/dicasedecor/']:[];
 const blogPaths=allPaths.filter(p=>p.startsWith('/blog/'));
-assert.deepEqual(blogPaths,[
+const approvedBlogPaths=[
  '/blog/',
  '/blog/bairros-sao-paulo/',
  '/blog/bairros-sao-paulo/lapa-vila-anastacio-como-escolher/',
@@ -43,8 +43,13 @@ assert.deepEqual(blogPaths,[
  "/blog/mercado/orla-barra-tijuca-localizacao-conservacao/",
  "/blog/mercado/imoveis-luxo-renda-custos-liquidez/",
  "/blog/mercado/morar-itaim-bibi-rotina-custo/",
- "/blog/mercado/imovel-herdado-inventario-documentos-etapas/"
-],'Blog sitemap additions must remain explicitly scoped');
+ "/blog/mercado/imovel-herdado-inventario-documentos-etapas/",
+ "/blog/mercado/usar-fgts-comprar-apartamento/"
+];
+const validateBlogScope=paths=>assert.deepEqual(paths,approvedBlogPaths,'Blog sitemap additions must remain explicitly scoped');
+validateBlogScope(blogPaths);
+// Negative gate: an extra, unapproved blog URL must still fail this exact allowlist.
+assert.throws(()=>validateBlogScope([...blogPaths,'/blog/mercado/nao-autorizado/']),{code:'ERR_ASSERTION'},'Unapproved blog sitemap URL must be rejected');
 const investmentPaths=allPaths.filter(p=>p.startsWith('/investimentos/'));
 assert.deepEqual(investmentPaths,['/investimentos/studios-e-salas-comerciais/'],'New investment collection routes need an explicit own-image audit');
 // The infrastructure simulation has its own editorial/FAQ/image contract rather than
