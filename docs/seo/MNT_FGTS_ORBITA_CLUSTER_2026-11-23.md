@@ -78,3 +78,14 @@ Janelas sugeridas: 30/60/90 dias. Search Console por URL/query (impressões, cli
 - Livelo 1:1 segue dependente de regulamento e elegibilidade específica do Órbita; **esta PR não altera a campanha**.
 - O antigo topo `docs/NEXT_SAFE_ACTION.md` (15/11, H2/H3 Lote 1) está defasado frente a merges posteriores e não representa autorização para este escopo. Esta frente foi pedida diretamente em 23/11; o Lote 1 permanece pendente como frente distinta.
 - Sem autorização para publicar; PR DRAFT e LVR primeiro.
+
+## 8. CI observado no primeiro head da PR #595 (23/11/2026)
+
+PR: https://github.com/wagnerjfjunior/MoreNumTegra/pull/595 (DRAFT).
+Head inicial `c40f39f7d576af57d6d1db2b4d3769983d8925bd`: 13 workflows, **7 success / 6 failure**.
+
+- **Falhas herdadas do main/PR #594 (4):** `Project structured data coverage guard` exige `Product` removido do Órbita; `Orbita commercial structured data parity` exige galeria antiga de três fotos; `RESF V2 approved project postal addresses` exige `FloorPlan`, `Offer` e `Product` antigos; `Mercado editorial 11 draft gates` compara `vercel.json.redirects` com snapshot anterior e já conflita com redirect do Complexo. Nenhuma foi introduzida pelo conteúdo FGTS. **Não corrigir com ofertas desatualizadas nem afrouxamento genérico.**
+- **Falha nova corrigida em conteúdo:** `Favicon standard validation` identificou ausência dos favicons 32x32 e 16x16 no novo artigo; adicionados no commit `d460aef70e8303f3323387a7b3b6acd1f99b5067`.
+- **Falha nova bloqueada por autorização:** `SEO two distinct images - 39 URLs` usa `scripts/validate-two-images-39-pages.mjs`, cujo array `blogPaths` está congelado em URLs anteriores. A nova URL no sitemap faz o teste falhar com `Blog sitemap additions must remain explicitly scoped`. **Correção técnica proposta:** adicionar **somente** `/blog/mercado/usar-fgts-comprar-apartamento/` à lista de blogs permitidos, mantendo intactas as demais asserções, e executar teste negativo para uma URL arbitrária não autorizada. **Aguardando autorização específica do proprietário para editar esse validador.** Não remover a URL do sitemap para disfarçar o gate.
+
+Após a correção de favicon, CI do head final deve ser consultado novamente; números do primeiro head não representam o resultado final. LVR e QA visual ainda não executados.
