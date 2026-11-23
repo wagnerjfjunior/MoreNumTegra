@@ -1,3 +1,13 @@
+## 23/11/2026 — F20 atualizado: FGTS transversal SP, PR #595 DRAFT
+
+| Frente | Decisão posterior do proprietário | Implementado em branch | Bloqueio |
+| --- | --- | --- | --- |
+| F20 — cluster FGTS residencial SP | “sim, claro” para deixar de priorizar Órbita e incluir prontos de outras regiões, com validador de sitemap exato e sem merge | Guia universal com imagem neutra, CTA catálogo `/?estagio=pronto#oportunidades` e Form46 home, links Elo Duo/Órbita/Soma, trechos contextuais nas páginas Elo Duo e Soma, whitelist de sitemap com teste negativo | CI/LVR/aceite editorial, **merge somente mediante ordem específica** |
+
+Nenhuma página comercial congelada por baseline foi editada, além do link Órbita já presente na primeira fase da PR. A matriz completa de candidatos e ressalvas sobre FGTS estão no dossiê `docs/seo/MNT_FGTS_ORBITA_CLUSTER_2026-11-23.md` §9. O registro F20 anterior abaixo é histórico e foi superado pela decisão atual. F02 H2/H3 permanece aberta.
+
+---
+
 ## 23/11/2026 — F20: CLUSTER SEO FGTS/ÓRBITA (proposta isolada)
 
 | Frente | Autorização | Estado nesta branch | Próximo gate |
