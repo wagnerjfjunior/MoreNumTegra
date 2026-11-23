@@ -1,3 +1,15 @@
+## 23/11/2026 — Órbita: adaptação do padrão ODE (branch de preparação, SEM MERGE)
+
+- **Pedido do proprietário:** “ficou ótimo vamos salvar as informações e vamos repetir o processo na página do órbita” — referência `https://www.moretegra.com.br/empreendimentos/universo-tatuape-orbita/`.
+- **Fonte de modelo consolidada:** `docs/frameworks/resf/v1/RESF_ODE_PERDIZES_PAGE_MODEL_2026-11-23.md` §13; PR #593 MERGED `8deb35630d7dd14f145a4f3e051ca489046e163d`, 8/8 CI, Vercel Production READY `dpl_7Pv6c74kJMupWwk31nfHDEfvVMjf`, aceite visual do proprietário “ficou ótimo”.
+- **Branch Órbita:** `feat/orbita-resf-ode-premium-20261123`, base main `8deb35630d7dd14f145a4f3e051ca489046e163d`. Modelo e limites em `docs/frameworks/resf/v1/RESF_ORBITA_PAGE_MODEL_2026-11-23.md`.
+- **Preparado:** header premium com logo/identidade/retorno; hero sem “últimas unidades”; quatro facts, sem ticker; “Consultar Valor” e CTA Form46; conteúdo em perguntas/respostas; lazer antes da galeria; seis perspectivas e plantas agrupadas mantidas; tour 360° preservado; imagens/links Wikimedia removidos; footer preto compacto; SEO/FAQ/JSON-LD sem ofertas vencidas; links `?unidade=1814|2408|1305` preservam somente interesse em tipologia, sem prometer estoque; sitemap lastmod atualizado.
+- **Preservados:** contato SP Sabrina/CRECI/telefone, WhatsApp, Form46, analytics/consentimento, mapa bairro, imagens Tegra e demais páginas. Nenhum preço novo ou disponibilidade inventados.
+- **Gates:** **não mesclar sem ordem específica**; `scripts/validate-resf-v2-postal-address-contract.mjs` pode bloquear alterações do JSON-LD do Órbita contra snapshot. **Não alterar validador sem autorização específica**. Revisar também cards da home que podem manter preços/links antigos; fora deste escopo.
+- **Rollback:** produção anterior `dpl_7Pv6c74kJMupWwk31nfHDEfvVMjf` / `8deb35630d7dd14f145a4f3e051ca489046e163d` READY; revalidar antes de qualquer release.
+
+---
+
 ## 23/11/2026 — ODE Perdizes: “Consultar Valor” (merge autorizado; CI pendente)
 
 - **Solicitação:** alterar bloco de valor (“Referência comercial” → “Valor”; R$ 2.090.000 → “Consultar Valor”), retirar Unidade 22/2º andar/única disponível/preço anterior/desconto e criar copy de conversão com CTA para formulário.
