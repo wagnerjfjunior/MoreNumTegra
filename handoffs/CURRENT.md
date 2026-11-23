@@ -1,3 +1,13 @@
+## 23/11/2026 — Órbita: últimas unidades confirmadas + FAQ FGTS/Livelo sincronizado — MERGE AUTORIZADO
+
+- **Autorização explícita:** proprietário solicitou corrigir status, atualizar JSON-LD e FAQ FGTS/Livelo e fazer merge para testar produção. **Não altera automaticamente autorização de editar validadores.**
+- **Fonte:** `https://www.tegraincorporadora.com.br/sp/sao-paulo/leste/tatuape/universoorbita` consultada em 23/11/2026: `Entregue`, `Últimas unidades`, endereço Celso Garcia 5040 e possibilidade de FGTS sob regras de financiamento. Sem número de estoque confirmado.
+- **Mudança:** hero com `Últimas unidades`; FAQ visível e JSON-LD `FAQPage.mainEntity` com resposta de status restaurada e primeiro bloco de seis perguntas exatamente igual ao baseline. Duas perguntas redundantes substituídas por FGTS (uso condicionado a regras/análise) e Livelo (R$ 1 na entrada = 1 ponto, sujeito a regulamento, elegibilidade e vigência). Mantidas 12 perguntas com paridade literal HTML/JSON-LD.
+- **Preservado:** Form46, CTA, WhatsApp, imagens e alinhamento Livelo/FGTS, analytics, schema de imagem, layout mobile. Sem mudança de validadores, Product/Offer, galeria de três fotos ou preço antigo.
+- **Pendências:** CI do novo head; dois validadores legados exigem Product/Offer de preço antigo e galeria de bairro removida pela arquitetura RESF; não maquiar dados ou inserir conteúdo oculto. Campanha Livelo para Órbita/SP depende de confirmação documental de elegibilidade. Após merge, verificar GitHub main, Vercel Production, HTTP/SEO/FAQ/CTA e obter teste visual do proprietário. Dossiê RESF §12.
+
+---
+
 ## 23/11/2026 — Órbita: copy Livelo comercial 1:1 + alinhamento desktop — SEM MERGE
 
 - **Pedido explícito:** trocar o manual da seção Livelo por copy de conversão com Big Idea, H2 pergunta e promessa, destacando **R$ 1 na entrada = 1 ponto Livelo***; preservar alinhamento das figuras Livelo/FGTS no desktop.
