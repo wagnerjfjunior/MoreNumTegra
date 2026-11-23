@@ -1,3 +1,14 @@
+## 23/11/2026 — Órbita: copy Livelo comercial 1:1 + alinhamento desktop — SEM MERGE
+
+- **Pedido explícito:** trocar o manual da seção Livelo por copy de conversão com Big Idea, H2 pergunta e promessa, destacando **R$ 1 na entrada = 1 ponto Livelo***; preservar alinhamento das figuras Livelo/FGTS no desktop.
+- **HTML:** kicker Livelo + Tegra; H2 `Como transformar a entrada do seu Órbita em pontos Livelo?`; H3 `Seu novo apartamento é só o começo. Sua próxima viagem pode começar aqui!`; faixa amarela `R$ 1 na entrada = 1 ponto Livelo*`; texto comercial de viagens/produtos/experiências; CTA `Quero aproveitar meus pontos Livelo` mantendo `href="#formulario"`/`data-form-intent="conditions"`. Nota de regulamento curta e visível.
+- **CSS desktop >850px:** ambas figuras usam `margin-top:auto`, CTAs `min-height:56px`, bordas superiores Livelo/FGTS com 4px e imagens 3:2, para alinhamento vertical mesmo com textos de comprimentos diferentes. **Mobile:** sem mudança de breakpoint, Livelo 9:16 até 640px.
+- **Preservados:** Form46, imagens S3, FGTS, FAQ/JSON-LD, imagem secundária SEO, WhatsApp, analytics, consentimento. Inspeção estática passou. 
+- **Bloqueio comercial:** referência 1:1 aparece na arte e material Tegra de outra região, **mas ainda falta regulamento que confirme mecânica/elegibilidade do Órbita/SP**; não publicar a promessa como condição vigente sem prova. **Sem autorização de merge**; PR #594 DRAFT, sem Preview/produção. Validadores legados bloqueados; não editar scripts.
+- **Gate LVR:** sincronizar branch/head exato e conferir desktop 900/1024/1440px (imagens e CTAs alinhados) e mobile 390px (faixa legível, Livelo 9:16, sem scroll/CLS). Dossiê `docs/frameworks/resf/v1/RESF_ORBITA_PAGE_MODEL_2026-11-23.md` §11.
+
+---
+
 ## 23/11/2026 — Órbita: imagens Livelo e FGTS alinhadas no desktop — SEM MERGE
 
 - **Evidência:** screenshot do usuário no Local Live Sync `localhost:8080` revelou figura FGTS acima da Livelo, porque os parágrafos têm alturas diferentes. Os CTAs já estavam alinhados.
