@@ -1,3 +1,13 @@
+## 23/11/2026 — ODE Perdizes: correção final exclusivamente do footer preto
+
+- **Solicitação/autorização explícita:** “o footer é preto e nao da cor atual, somente o footer, altere, mergeie e vamos finalizar”. Escopo **somente** `src-greenn/empreendimentos/ode-perdizes/index.html` (CSS do footer) e documentação.
+- **Causa:** uma segunda regra `.footer` no fim do CSS sobrescrevia o fundo escuro com bege `#eae6dc` e links/textos escuros. **Solução:** footer `#000000`, remoção apenas do override bege e restauração das cores claras preexistentes.
+- **Modelo atualizado:** `docs/frameworks/resf/v1/RESF_ODE_PERDIZES_PAGE_MODEL_2026-11-23.md`, §10. **Preservados** lead/formulário, Form46, WhatsApp, hero, SEO, galeria, plantas, footer comercial (texto/contato/CRECI) e todas as outras páginas.
+- **Release isolada:** branch `fix/ode-footer-preto-20261123`, base main `0cb88831b43e81a5ca0a85ad22b9550210013ee3` (PR #590). Registrar PR/merge SHA, checks e Vercel READY no recibo da PR. Rollback: deployment de produção da PR #590 `dpl_8pnAHDEkNWW5wQZEabjsh6xjNBtG` (verificar live antes de usar).
+- **Limites:** não autoriza alteração de conteúdo comercial, oferta, imagens, dados de leads, Greenn ou outras páginas. QA visual pós-merge ainda necessário.
+
+---
+
 ## 23/11/2026 — ODE Perdizes: modelo de página documentado, PR #590 autorizada para merge
 
 - **Modelo de implementação (não novo padrão global):** `docs/frameworks/resf/v1/RESF_ODE_PERDIZES_PAGE_MODEL_2026-11-23.md`. Fonte HTML `src-greenn/empreendimentos/ode-perdizes/index.html`; rota `/empreendimentos/ode-perdizes/`.

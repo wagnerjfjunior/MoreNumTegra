@@ -7,7 +7,7 @@
 - **Sitemap:** `sitemap.xml` (`lastmod` do ODE atualizado para `2026-11-23`).
 - **Integração:** PR [#590](https://github.com/wagnerjfjunior/MoreNumTegra/pull/590), branch `feat/ode-perdizes-perguntas-facts-sem-ticker-20261123`; merge expressamente autorizado pelo proprietário em 23/11/2026. O commit de integração e o status de produção devem ser consultados **ao vivo** no GitHub/Vercel; não são inferidos por este documento.
 - **Precedência:** `bootstrap/BOOTSTRAP_CANONICO.md`, `handoffs/CURRENT.md`, `docs/PROJECT_STATUS.md`, `docs/NEXT_SAFE_ACTION.md`, `docs/BLOCKED_ACTIONS.md`, baselines funcional/técnica e `EXACT_PROJECT_PAGE_BUILD_STANDARD_V1_2026-10-11.md` continuam prevalecendo.
-- **Referência de layout:** Soma Perdizes, **somente** para a composição do cabeçalho; Ária Higienópolis para o tratamento visual de formulário/rodapé. Não copiar fatos, mídias ou preços de outro projeto.
+- **Referência de layout:** Soma Perdizes, **somente** para a composição do cabeçalho; Ária Higienópolis como referência visual para o bloco de captação (não para o footer). Não copiar fatos, mídias ou preços de outro projeto.
 
 ## 1. Objetivo da experiência
 
@@ -45,7 +45,7 @@ Esta ordem é a **implementação do ODE**, não um contrato que obriga outras p
 - Facts: quatro colunas em desktop; duas colunas em largura reduzida, com bordas/espacamentos ajustados.
 - Galeria: `aspect-ratio:16/10`, `object-fit:contain`, faixa de abas horizontal com rolagem, `scroll-snap` e alvo de toque mínimo de 44px; setas anteriores/próximas.
 - CTAs fixos: `Mais Informações` + WhatsApp verde `#25d366` com ícone `https://s3-gdigital.s3.amazonaws.com/gdigital/313/whatsapp-removebg.webp`; 54px de alvo, `aria-label`, ajuste do deslocamento pelo consentimento. Preservar texto e links aprovados ao adaptar.
-- Lead/rodapé: tratamento bege/branco inspirado em Ária, sem mudar contrato comercial nem dados do formulário.
+- Lead/formulário: tratamento próprio de captação, preservado; **footer comercial exclusivamente preto (`#000000`)**, com textos e links em tons claros, sem borda bege. A mudança de cor do footer não altera o conteúdo, endereço, CRECI, telefone, consentimento nem o Form 46.
 
 ## 4. Galeria: modelo de dados e comportamento
 
@@ -114,3 +114,12 @@ Origem operacional: URLs extraídas pelo proprietário do site oficial `https://
 - `docs/frameworks/resf/v1/RESF_CONVERSION_GUARDRAILS_2026-11-09.md`
 - `docs/baseline/FUNCTIONAL_BASELINE_V2.md`
 - `docs/baseline/TECHNICAL_BASELINE_V2_3.md`
+
+## 10. Ajuste visual final — footer preto (23/11/2026)
+
+- **Decisão do proprietário:** “o footer é preto e nao da cor atual, somente o footer, altere, mergeie e vamos finalizar”. Escopo restrito à página ODE Perdizes.
+- **Causa raiz:** o CSS já tinha uma primeira regra `.footer` escura, mas uma **segunda declaração posterior** forçava fundo bege `#eae6dc`, borda bege e texto/link escuros. A segunda declaração prevalecia por ordem de cascata.
+- **Correção:** `.footer{background:#000;color:#999;padding:36px 0 100px}` e remoção **exclusiva** da segunda regra bege e das três regras posteriores `.footer-standard a/strong/p` que forçavam tons escuros. Permanecem válidas as regras anteriores de contraste: links `#c8c3b8`, destaques `#d6d1c6` e texto `#999`.
+- **Preservado integralmente:** `section.lead#formulario`, formulário 46, CTAs flutuantes, WhatsApp, gallery, plantas, hero, SEO, JSON-LD, endereço, nome comercial, CRECI e telefone. **Não** converter o lead para preto nem aplicar este ajuste a outras páginas sem solicitação.
+- **QA:** conferir fundo preto e legibilidade do rodapé em desktop/mobile; não confundir sucesso de CI com inspeção visual independente.
+- **Release:** PR de correção isolada; conferir número, merge SHA, Vercel READY e rollback na PR após a integração. O merge anterior do modelo é PR #590 / `0cb88831b43e81a5ca0a85ad22b9550210013ee3`.
