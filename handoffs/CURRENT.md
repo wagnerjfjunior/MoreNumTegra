@@ -1,3 +1,16 @@
+## 23/11/2026 — Órbita: campanha Livelo, FGTS, oportunidades e decorados — LVR, SEM MERGE
+
+- **Novo pedido:** inserir uma seção de alta conversão próxima ao topo do Órbita, com campanha Livelo, possibilidade de FGTS, apartamentos promocionais e decorados à venda; copy própria, sem reproduzir três flyers poluídos fornecidos pelo proprietário.
+- **Decisão operacional explícita:** **PROIBIDO usar Vercel Preview para testar esta frente**. Usar `docs/governance/MNT_LOCAL_LIVE_SYNC_VALIDATION_STANDARD_V1.md`, branch lock e SHA imutável; `vercel.json` já bloqueia deploy de branches não-main. A criação manual de Preview na etapa anterior foi indevida e não deve se repetir.
+- **Branch existente:** `feat/orbita-resf-ode-premium-20261123`, PR #594 **DRAFT**, sem merge. HTML: `src-greenn/empreendimentos/universo-tatuape-orbita/index.html`.
+- **Implementado em branch:** `#oportunidades` entre facts e valor, quatro cards (condições especiais, Livelo, FGTS, decorados), copy premium, CSS responsivo e quatro CTAs; 3 → Form46 por intents existentes, 1 → WhatsApp SP com texto de decorados. Nenhuma nova imagem pesada, dependência JS, endpoint ou contrato de formulário.
+- **Fatos dos três flyers:** tabela de promoções (601 43 m² R$375k; 606 51 m² R$448k; 2607 53 m² R$570k; 1805 69 m² R$692k), decorados (221 R$540k; 247 R$735k; 225 R$895k **válidos somente até 31/10/2026**), campanha Livelo sem regulamento/vigência, FGTS sujeito a elegibilidade; distâncias divergentes 450/500 m e 8 minutos. **Preços, unidades e garantias NÃO publicados**.
+- **Dossiê atualizado:** `docs/frameworks/resf/v1/RESF_ORBITA_PAGE_MODEL_2026-11-23.md` §6; fonte é o material fornecido pelo proprietário em 23/11, não tabela vigente confirmada.
+- **Gates:** QA **LOCAL_LIVE_SYNC** ainda pendente; não declarar aceite. PR #594 tem 3 checks antigos falhando (Orbita commercial structured data parity, Project structured data coverage guard, RESF V2 approved project postal addresses); **não modificar validadores** sem autorização expressa. Não alterar home nem mesclar/publicar sem ordem específica.
+- **Rollback:** `main` pré-branch `8deb35630d7dd14f145a4f3e051ca489046e163d` / Vercel Production READY `dpl_7Pv6c74kJMupWwk31nfHDEfvVMjf` na última verificação; resolver live novamente antes de release.
+
+---
+
 ## 23/11/2026 — Órbita: adaptação do padrão ODE (branch de preparação, SEM MERGE)
 
 - **Pedido do proprietário:** “ficou ótimo vamos salvar as informações e vamos repetir o processo na página do órbita” — referência `https://www.moretegra.com.br/empreendimentos/universo-tatuape-orbita/`.
