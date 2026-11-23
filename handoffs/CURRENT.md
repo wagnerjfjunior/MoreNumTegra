@@ -1,3 +1,13 @@
+## 23/11/2026 — Órbita: imagens FGTS GDigital desktop/mobile integradas — SEM MERGE
+
+- **Pedido:** proprietário forneceu duas URLs GDigital/S3 da arte FGTS gerada nesta conversa. Inseridas na seção de perguntas do Órbita, dentro do card `#fgts`, **antes do CTA**.
+- **Desktop:** `https://s3-gdigital.s3.amazonaws.com/gdigital/313/Usar_FGTS_Aquisicao_Imoveis_1536x1024.webp` (1536×1024). **Mobile:** `https://s3-gdigital.s3.amazonaws.com/gdigital/313/fgts-universo-tatuape-orbita-mobile.webp` (960×640). Implementação `<picture>` responsiva até 640px, `img loading=lazy decoding=async`, dimensões, alt e CSS escopado; nenhuma mídia pesada em GitHub.
+- **Validação:** DOM/JSON-LD/primeira imagem secundária e Form46 preservados em inspeção estática; **não** foi possível verificar HTTP da CDN neste ambiente (DNS indisponível; fetch remoto sem cache). LVR deve conferir 200, carregamento em 360/390px e desktop, legibilidade e ausência de CLS.
+- **Branch:** `feat/orbita-resf-ode-premium-20261123`, PR #594 DRAFT; **sem merge, sem Preview e sem publicação**. Três falhas antigas de validadores continuam bloqueando release; não editar scripts sem autorização específica.
+- **Documentação:** `docs/frameworks/resf/v1/RESF_ORBITA_PAGE_MODEL_2026-11-23.md` §8. Fluxo de QA exclusivamente `LOCAL_LIVE_SYNC`.
+
+---
+
 ## 23/11/2026 — Órbita: H2 de perguntas, imagem e diagnóstico SEO do usuário — SEM MERGE
 
 - **Solicitação:** usuário rejeitou cards que apenas conduzem ao formulário. Requer **H2 em perguntas com respostas sobre Livelo/FGTS**, uma figura e aplicação cirúrgica do relatório OpenSEO/GSC de 23/11. A implementação anterior de 4 cards foi **substituída**, mantendo seu histórico abaixo.
