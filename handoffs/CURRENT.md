@@ -1,3 +1,13 @@
+## 23/11/2026 — ODE Perdizes: footer compacto aprovado para teste em produção
+
+- **Autorização:** “ótimo faça isto e pode mergear para eu testar aqui”, referente à proposta de footer comercial preto simplificado, sem link externo na leitura principal. Escopo exclusivo ODE Perdizes + documentação.
+- **Implementação:** footer `#000` com título amarelo “MORE EM UM TEGRA”, resumo comercial curto, endereço neutro, Sabrina/CRECI/telefone visíveis. Dois avisos canônicos completos e link do perfil profissional **preservados em disclosure nativo recolhido** (“Informações comerciais e condições”), para não alterar `scripts/validate-commercial-page-standard.mjs` nem a regra comercial global; não é remoção física do link.
+- **Preservados:** logo e hooks `data-mnt-commercial-footer`/`data-mnt-footer-address`, `tel:`, Form46, WhatsApp, CTA, SEO, JSON-LD, mídias, plantas e demais páginas; consentimento e preferências não alterados. Documentação: `docs/frameworks/resf/v1/RESF_ODE_PERDIZES_PAGE_MODEL_2026-11-23.md`, §11.
+- **Base de rollback:** `main` anterior `5ad961127a9b9a6182e8d03a287a5ca7d6dbabeb`, Vercel READY `dpl_Gg1cSd1WW6xACE4u1XmW9fE2Rf53` (validado antes da mudança). Release nova requer CI, merge e confirmação live READY/alias; QA visual do proprietário ainda pendente.
+- **Risco comercial anterior não resolvido:** última unidade/Unidade 22 e R$ 2.090.000 na página vs. indicação oficial “100% Vendido”. Não confundir ajuste de footer com validação de estoque.
+
+---
+
 ## 23/11/2026 — ODE Perdizes: correção final exclusivamente do footer preto
 
 - **Solicitação/autorização explícita:** “o footer é preto e nao da cor atual, somente o footer, altere, mergeie e vamos finalizar”. Escopo **somente** `src-greenn/empreendimentos/ode-perdizes/index.html` (CSS do footer) e documentação.
