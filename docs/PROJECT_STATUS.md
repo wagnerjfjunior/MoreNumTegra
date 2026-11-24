@@ -1,3 +1,17 @@
+## 24/11/2026 — Reconciliação pontual: Órbita e releases recentes
+
+Referência: `docs/sfjm/MNT_ORBITA_SCHEMA_RECONCILIATION_2026-11-24.md`. Base observada main #601, `5629c9035a6f60be002e9ebe03bfc225544f1d4b`. Esta seção é reconciliação pontual; não certifica QA de produção ou fechamento global.
+
+| Frente | Estado observado | Gate |
+| --- | --- | --- |
+| Órbita — schema comercial / validadores | Ausência deliberada de Product/Offer; três scripts incompatíveis com o modelo aprovado | PR técnica isolada, bateria antes/depois e testes negativos; merge específico |
+| F20 FGTS | #595/#596 integrados; #600 origem FGTS Form46 integrada | QA produção/CRM real não confirmado nesta rodada |
+| Rio | #599 links e #601 copy integrados | QA externo e demais gates preservados |
+
+F02 permanece aberta; não inferir aceite ou produção a partir de merge. Histórico abaixo preservado.
+
+---
+
 ## 23/11/2026 — F20 atualizado: FGTS transversal SP, PR #595 DRAFT
 
 | Frente | Decisão posterior do proprietário | Implementado em branch | Bloqueio |
