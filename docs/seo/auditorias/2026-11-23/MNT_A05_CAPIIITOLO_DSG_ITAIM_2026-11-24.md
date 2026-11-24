@@ -37,3 +37,23 @@ Texto âncora inequívoco, útil para a pessoa e para crawl, sem criar outra URL
 - Comparar conteúdo renderizado a `main`, sem inventar ganho de SEO.
 - CI do head; LOCAL_LIVE_SYNC porta 8080 e revisão humana; solicitar ordem **específica** antes de merge, deploy, IndexNow ou Search Console.
 - SFJM: topo da `main` ainda é registro antigo de Órbita/Rio (já publicados) e PR documental #598 segue não integrada. O pedido atual determina o foco A05, **não** autoriza mesclar PRs não relacionadas. Estado de SFJM permanece com drift documental até reconciliação posterior.
+
+## Ajuste RESF solicitado após a etapa 1 — Facts, não hero-meta
+
+**Decisão explícita do proprietário:** ambas as páginas apresentavam simultaneamente `.hero-meta` no hero e `.facts` logo depois. A faixa canônica do RESF é `.facts`; eliminar a duplicação, conservando os CTA do hero e a hierarquia de seções. Fonte contratual: `docs/frameworks/resf/v1/EXACT_PROJECT_PAGE_BUILD_STANDARD_V1_2026-10-11.md`, seção 3C: exatamente **1** faixa imediatamente após hero; **4** fatos ordenados (área/tipologia, vagas, diferencial+bairro, estágio), **4** colunas desktop e **2×2** mobile; `.hero-meta` e seus estilos proibidos.
+
+**Implementação na mesma PR #611 (sem merge):**
+- `experiments/capiitolo-editorial-v3/index.html`: removidos HTML e CSS de `.hero-meta`, inclusive sua regra mobile. Uma única faixa `.facts` passa a exibir, em ordem: (1) **210 m²**, apartamento tipo com 4 suítes; (2) **3 vagas**, apenas para a configuração tipo; (3) **torre única**, Chácara Klabin e Piero Lissoni; (4) **em construção**. Área Giardino 281 m² e Duplex 363 m² continuam explicadas no módulo próprio de tipologias, não foram eliminadas da página.
+- `experiments/dsg-itaim-editorial-v3/index.html`: removidos HTML e CSS de `.hero-meta`; uma única `.facts` exibe (1) **27–61 m² offices**, comercial; (2) **Vagas por tipologia — sob consulta**, sem alegação de quantidade; (3) **uso misto**, studios e offices no Itaim Bibi; (4) **entregue**, estágio do empreendimento. Studios de 27/29 m² e apartamentos de 44 m² seguem na seção de tipologias, sem extrapolação de disponibilidade residencial.
+- H1, imagem/iframe do hero, CTA `Receber condições`, bloco comercial, Form46, WhatsApp, medição, schema e URLs canônicas permanecem inalterados. A PR #611 etapa 1 (links de retorno de bairro em shell e template) também permanece intacta.
+- `a05-regional-reciprocity-smoke.mjs` agora verifica **zero** `.hero-meta`, **1** `.facts` imediatamente após hero, **4** posições no contrato, dados visíveis/ordem, grid 2×2 de 360–430 px e 4 colunas 900/1440, preservando checks de links de bairro/SEO/Form46 e zero POST.
+
+### FACTS_DATA_GAP DSG — vagas não verificadas
+
+Em 24/11/2026, o HTML canônico e o template DSG não fornecem quantidade de vagas por tipologia. A página pública oficial Tegra `https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/itaim-bibi/dsgitaim` informa escritórios, studios, apartamentos e estágio entregue, mas **não declara quantidade de vagas** no conteúdo textual consultado. As plantas residenciais no material oficial estão marcadas como vendidas, e não se pode inferir vaga/estoque de office, studio ou apartamento a partir de terceiros. Foi preservado o **slot** obrigatório da segunda posição sem declarar um número: `Sob consulta | Vagas por tipologia`, com marcador `data-fact-gap="parking"`. **Isso é uma solução provisória, não aprovação plena do contrato RESF**. Gate comercial para merge: o proprietário deve confirmar valor e tipologia das vagas em material oficial ou aprovar **exceção específica** para o texto deste slot. Nenhum alegado `0 vagas`, `1 vaga` ou `2 vagas` foi inventado.
+
+### Achado comercial independente, fora da mudança
+
+Na página oficial Tegra consultada em 24/11, o preço publicizado de referência para **Office 32 m² unidade 208, Nov/26** é **R$ 355.000**. O shell DSG nesta PR conserva a referência anterior **R$ 412.500, Ago/26**; esses valores e respectivas datas são discrepantes. Esta PR não atualiza preços porque a solicitação foi sobre apresentação do RESF, e a reconciliação comercial exige autorização distinta com registro da origem, vigência e unidade. Não afirmar que o valor antigo seja preço atual; esse é um `COMMERCIAL_DATA_REVALIDATION` pendente.
+
+**Status de aceite:** a etapa RESF está preparada em branch, e CI precisa ser validado no head exato após este adendo. Não houve merge, publicação, contato com CRM ou atualização de preço.
