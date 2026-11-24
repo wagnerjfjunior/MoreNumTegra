@@ -51,7 +51,10 @@ validateBlogScope(blogPaths);
 // Negative gate: an extra, unapproved blog URL must still fail this exact allowlist.
 assert.throws(()=>validateBlogScope([...blogPaths,'/blog/mercado/nao-autorizado/']),{code:'ERR_ASSERTION'},'Unapproved blog sitemap URL must be rejected');
 const investmentPaths=allPaths.filter(p=>p.startsWith('/investimentos/'));
-assert.deepEqual(investmentPaths,['/investimentos/studios-e-salas-comerciais/'],'New investment collection routes need an explicit own-image audit');
+const approvedInvestmentPaths=['/investimentos/studios-e-salas-comerciais/','/investimentos/calculadora-rentabilidade-imovel/'];
+const validateInvestmentScope=paths=>assert.deepEqual(paths,approvedInvestmentPaths,'New investment routes need an explicit independent audit');
+validateInvestmentScope(investmentPaths);
+assert.throws(()=>validateInvestmentScope([...investmentPaths,'/investimentos/nao-autorizado/']),{code:'ERR_ASSERTION'});
 // The infrastructure simulation has its own editorial/FAQ/image contract rather than
 // commercial RESF ImageObject requirements; keep the commercial image gate intact.
 const complexoPaths=allPaths.filter(p=>p==='/complexo-lapa-pirituba/');
@@ -107,6 +110,30 @@ const investmentGraph=extract(investmentHtml);
 assert(investmentGraph.some(n=>n['@type']==='CollectionPage'&&n.url==='https://www.moretegra.com.br/investimentos/studios-e-salas-comerciais/'),'Investment collection schema missing');
 assert(investmentGraph.some(n=>n['@type']==='ItemList'&&n.numberOfItems===15),'Investment list must preserve 15 selected projects');
 console.log('INVESTMENT_HUB_IMAGES_PASS /investimentos/studios-e-salas-comerciais/');
+// Dedicated utility: its own contract, without imposing commercial project hero imagery.
+const calculatorRoute='/investimentos/calculadora-rentabilidade-imovel/';
+const calculatorFile='src-greenn'+calculatorRoute+'index.html';
+const calculatorHtml=fs.readFileSync(calculatorFile,'utf8');
+const calculatorCanonical='https://www.moretegra.com.br'+calculatorRoute;
+assert(rewrite.some(x=>x.source===calculatorRoute&&x.destination==='/'+calculatorFile),'Calculator rewrite missing');
+assert(calculatorHtml.includes('<link rel="canonical" href="'+calculatorCanonical+'">'),'Calculator canonical mismatch');
+assert(!/<meta[^>]*noindex/i.test(calculatorHtml),'Calculator must be indexable');
+assert.equal((calculatorHtml.match(/<h1\b/gi)||[]).length,1,'Calculator requires one H1');
+assert(calculatorHtml.includes('<meta property="og:image"'),'Calculator share image missing');
+assert(mainImages(calculatorHtml).some(x=>x.alt&&x.alt.trim()),'Calculator editorial image missing');
+const calculatorGraph=extract(calculatorHtml);
+for(const type of ['WebPage','WebApplication','BreadcrumbList'])assert(calculatorGraph.some(x=>x['@type']===type),'Calculator schema missing '+type);
+assert(calculatorGraph.some(x=>x['@type']==='WebPage'&&x.url===calculatorCanonical),'Calculator schema URL mismatch');
+for(const html of [calculatorHtml,investmentHtml]){
+ assert(html.includes('src="/src-greenn/investimentos/calculadora-rentabilidade.js" defer'),'Shared calculator controller missing');
+ for(const id of ['simulador-rentabilidade','calc-run','calc-reset','calc-rates','calc-net','calc-cmp-cdb','calc-cmp-saving'])assert(html.includes('id="'+id+'"'),'Calculator control missing: '+id);
+ assert(html.includes('name="form_id" value="46"'),'Calculator Form46 missing');
+}
+assert(investmentHtml.includes('href="'+calculatorRoute+'"'),'Hub link to calculator missing');
+assert(calculatorHtml.includes('href="/investimentos/studios-e-salas-comerciais/"'),'Calculator link to hub missing');
+assert(fs.readFileSync('src-greenn/investimentos/calculadora-rentabilidade.js','utf8').includes('function model('),'Calculator model missing');
+console.log('INVESTMENT_CALCULATOR_SOURCE_PASS',calculatorRoute);
+
 // Published decoration articles have an editorial contract independent of RESF.
 for(const path of releasedDecor){
  const target=rewrite.find(x=>x.source===path);
