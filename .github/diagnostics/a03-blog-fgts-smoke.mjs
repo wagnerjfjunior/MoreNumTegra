@@ -31,8 +31,8 @@ await new Promise(ok=>server.listen(4178,"127.0.0.1",ok));
 let browser;
 const ok=(name,info={})=>{checks++;console.log(JSON.stringify({name,result:"PASS",...info}));};
 const noOverflow=async(page,name,width)=>{
-  const measure=await page.evaluate(()=>({actual:document.documentElement.scrollWidth,viewport:innerWidth}));
-  assert.ok(measure.actual<=measure.viewport+10,name+": horizontal overflow "+JSON.stringify(measure));
+  const measure=await page.evaluate(expected=>({actual:document.documentElement.scrollWidth,viewport:innerWidth,client:document.documentElement.clientWidth,visual:visualViewport?.width,screen:screen.width,offenders:[...document.querySelectorAll("body *")].filter(el=>el.getBoundingClientRect().right>expected+8).slice(0,8).map(el=>({tag:el.tagName,selector:el.className?.toString().slice(0,90),right:Math.round(el.getBoundingClientRect().right)}))}),width);
+  assert.ok(measure.actual<=width+10,name+": horizontal overflow at configured viewport "+JSON.stringify({expected:width,...measure}));
   ok(name,{width,...measure});
 };
 try{
