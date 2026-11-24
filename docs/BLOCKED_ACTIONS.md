@@ -1,3 +1,11 @@
+## 24/11/2026 — Órbita: limites da reconciliação
+
+Referência: `docs/sfjm/MNT_ORBITA_SCHEMA_RECONCILIATION_2026-11-24.md`. Base observada main #601, `5629c9035a6f60be002e9ebe03bfc225544f1d4b`. Esta seção é reconciliação pontual; não certifica QA de produção ou fechamento global.
+
+Manter bloqueio de preço antigo, estoque não comprovado, oferta artificial e alterações globais de validadores. A exceção técnica proposta é estritamente limitada aos três scripts e aos deltas do Órbita, com testes negativos; não se estende a outras páginas. Nenhuma alteração de HTML/runtime, Form46, FGTS, Livelo ou medição nesta frente. Merge, deploy e publicação exigem ordem específica. Restauração de Product/Offer depende de preço vigente comprovado, paridade visível e elegibilidade Google revisada.
+
+---
+
 ## 23/11/2026 — ESCOPO ATUALIZADO PR #595: FGTS TRANSVERSAL
 
 A aprovação posterior “sim, claro” **autoriza** reestruturar artigo/links para múltiplos empreendimentos residenciais prontos SP, incluir atalho de catálogo na home e **editar somente a allowlist de URLs do blog** em `scripts/validate-two-images-39-pages.mjs` para o artigo FGTS, com teste negativo. **Não autoriza** relaxar outros contratos, mudar preço, Form46, Livelo, Rio, campanhas, páginas congeladas, GTM, publicar ou mesclar. O bloqueio genérico de alteração de validadores registrado abaixo continua valendo **para qualquer outro validador ou regra**.

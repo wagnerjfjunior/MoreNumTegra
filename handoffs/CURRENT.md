@@ -1,3 +1,13 @@
+## 24/11/2026 — Órbita: decisão SEO e reconciliação dos testes
+
+Referência: `docs/sfjm/MNT_ORBITA_SCHEMA_RECONCILIATION_2026-11-24.md`. Base observada main #601, `5629c9035a6f60be002e9ebe03bfc225544f1d4b`. Esta seção é reconciliação pontual; não certifica QA de produção ou fechamento global.
+
+- Product/Offer removidos deliberadamente no RESF de 23/11; manter ausentes enquanto não houver preço vigente comprovado e visível. Capturas Google: Órbita 4 itens, Bueno 7. Não restaurar ofertas antigas nem estoque.
+- Preparar PR técnica restrita aos três validadores identificados no dossiê, com negativos; nenhuma alteração de página. Não mergear/deployar sem autorização.
+- #595/#596/#599/#600/#601 já integrados; os registros abaixo de PR #595 pendente são históricos. A origem FGTS Form46 #600 está integrada, sem comprovação de lead real; demais gates continuam distintos.
+
+---
+
 ## 23/11/2026 — DECISÃO VIGENTE: PR #595 FGTS TRANSVERSAL, SEM MERGE
 
 - **Aprovação posterior de Wagner:** “sim, claro” para reestruturar a PR #595 como cluster FGTS de todo o catálogo residencial pronto de São Paulo e corrigir a allowlist do sitemap de forma exata, **sem merge automático**. Esta decisão supera o escopo exclusivamente Órbita registrado abaixo.

@@ -1,3 +1,7 @@
+> **24/11/2026 — Reconciliação Órbita:** leia o topo de `docs/NEXT_SAFE_ACTION.md` e o dossiê `docs/sfjm/MNT_ORBITA_SCHEMA_RECONCILIATION_2026-11-24.md`. Decisão: manter ausência temporária de Product/Offer até preço vigente confirmado. O kit de 23/11 ficou defasado após #595/#596/#599/#600/#601. Avisos históricos abaixo não definem próxima ação.
+
+---
+
 > **15/11/2026 — PRÓXIMA AÇÃO: leia o topo de `docs/NEXT_SAFE_ACTION.md` (seção de 15/11), que é o único registro autoritativo.** Os avisos abaixo, até o título "# Bootstrap Canônico — MoreNumTegra", são **históricos** (inclusive o de 28/10 com "próxima ação: cliques qualificados" e o de 05/11 do Complexo). Ponto de entrada para IA: `CLAUDE.md` na raiz, quando estiver no `main` (PR #583). Manifesto LVR: `.sfjm/project.json`. Inventário de frentes: `docs/PROJECT_STATUS.md` (15/11). Protocolo SFJM: repositórios privados `wagnerjfjunior/StopJuniorMode` e `wagnerjfjunior/sfjm-workspace`; sem acesso, declare a lacuna.
 
 ---

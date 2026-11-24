@@ -1,3 +1,5 @@
+> **Adendo 24/11/2026 — decisão comercial confirmada:** manter Product/Offer ausentes até preço vigente comprovado e visível. A retirada registrada no §3 item 12 foi deliberada. Os três validadores históricos devem ser reconciliados em PR técnica isolada, com testes negativos e sem alterar páginas. Ver `docs/sfjm/MNT_ORBITA_SCHEMA_RECONCILIATION_2026-11-24.md`. O status histórico abaixo não comprova estado atual de release.
+
 # RESF — adaptação Órbita pelo modelo ODE Perdizes (23/11/2026)
 
 **Status:** proposta em branch, ainda sem merge nem QA visual; nenhuma alteração publicada em produção por este documento.

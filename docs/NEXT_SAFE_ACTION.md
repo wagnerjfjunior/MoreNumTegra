@@ -1,3 +1,11 @@
+## 24/11/2026 — Próxima ação desta frente: reconciliar os três validadores do Órbita
+
+Referência: `docs/sfjm/MNT_ORBITA_SCHEMA_RECONCILIATION_2026-11-24.md`. Base observada main #601, `5629c9035a6f60be002e9ebe03bfc225544f1d4b`. Esta seção é reconciliação pontual; não certifica QA de produção ou fechamento global.
+
+Preparar PR técnica separada e restrita aos três scripts nomeados no dossiê, mantendo ausência temporária de Product/Offer e todas as proteções válidas, com testes negativos específicos e bateria integral antes/depois. Sem alteração de página, sem merge/deploy/Preview sem ordem específica. F02 e demais frentes não canceladas. A PR #595 já está integrada; não repetir seu merge.
+
+---
+
 ## 23/11/2026 — PR #595: próxima ação segura FGTS TRANSVERSAL (sem merge)
 
 Wagner aprovou (“sim, claro”) a **revisão da PR #595** para que FGTS seja um cluster de todo o catálogo residencial pronto em São Paulo, não uma campanha exclusiva do Órbita. Também aprovou a correção **exata** da allowlist de sitemap com teste negativo, sem alterar outros validadores.
