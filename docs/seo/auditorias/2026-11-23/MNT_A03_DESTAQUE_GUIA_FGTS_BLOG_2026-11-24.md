@@ -16,10 +16,10 @@ No bloco editorial “Leituras que ajudam a decidir”, trocar **apenas a tercei
 - Descrição: **Regras, entrada e o que conferir antes de escolher seu imóvel**.
 - Destino HTML rastreável: `/blog/mercado/usar-fgts-comprar-apartamento/`.
 
-A matéria Lapa/Vila Anastácio **continua acessível** na editoria de bairros da própria capa; não é retirada do blog. Layout existente de três cards e classes `featured-story` são mantidos, sem CSS novo nem imagens adicionais.
+A matéria Lapa/Vila Anastácio **continua acessível** na editoria de bairros da própria capa; não é retirada do blog. Layout existente de três cards e classes `featured-story` são mantidos, sem imagens adicionais. O CSS recebe apenas uma regra escopada no mobile para permitir quebra de linha dos links longos de `.featured-heading .section-more`.
 
 ## Gates de validação
-1. Conferir diff: somente um `<a>` alterado na vitrine editorial; preservar todos os outros links e conteúdo.
+1. Conferir diff: somente um `<a>` alterado na vitrine editorial; preservar todos os outros links e conteúdo; uma regra CSS mobile é adicionada apenas à `.featured-heading .section-more` para corrigir o transbordamento preexistente.
 2. Conferir destino existente, canonical próprio, robots `index,follow`; manter title, description, H1 único, JSON-LD e canonical da capa idênticos à main. No sitemap, alterar apenas `/blog/` de `lastmod 2026-11-14` para `2026-11-24`, mantendo 84 entradas.
 3. Confirmar Form46, canal SP, WhatsApp e consentimento inalterados.
 4. LVR `localhost:8080/blog/` no head exato: 360 / 390 / 430 / 900 / 1440px; testar toque no card até o guia e a partir dele o CTA FGTS. Sem Preview remoto e sem lead real.
@@ -35,3 +35,7 @@ A01/A02 já integradas; A04–A15 não iniciadas neste candidato. PR #598 (docum
 ## Automação de regressão adicionada
 
 - `.github/diagnostics/a03-blog-fgts-smoke.mjs` e workflow `.github/workflows/a03-blog-fgts-smoke.yml` executam Chromium local com media externa bloqueada; 360/390/430/900/1440, navegação `/blog/` → guia, H1/canonical, artigo Lapa preservado, overflow horizontal e zero POST. Ver resultado efetivo do GitHub Actions no head exato; inclusão do teste não é PASS por si só.
+
+## Regressão mobile detectada pelo teste estrito
+
+A primeira versão do smoke comparava `document.documentElement.scrollWidth` com `window.innerWidth` e aprovou, mas em emulação 360/390 o navegador expandiu `innerWidth` para 405px. O teste foi corrigido para comparar contra a largura solicitada; falhou a 360px (`scrollWidth=405`, `clientWidth=360`, `visualViewport.width=360`) e identificou o `<a class=section-more>` da vitrine com borda direita em 404px. Esse link é anterior à A03 e não foi alterado. **Correção em escopo mínimo:** adicionar somente dentro de `@media(max-width:600px)` a regra `.featured-heading .section-more{white-space:normal;overflow-wrap:anywhere}` em `src-greenn/blog/blog-home.css`. Reexecutar e exigir `scrollWidth <= largura configurada + 10` para `/blog/` e guia nas cinco larguras. Não declarar aprovado sem log da CI final.
