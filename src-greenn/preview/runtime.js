@@ -614,12 +614,6 @@
       }
     });
 
-    // O CTA de orientação do guia usa o parâmetro legado `interesse`: a intenção
-    // inicial é simulação, mas o visitante pode alterá-la antes do envio.
-    if (formIdOf(form) === "46" && window.location.pathname === "/" &&
-        new URLSearchParams(window.location.search).get("interesse") === "FGTS para comprar apartamento") {
-      applyFormIntent("payment_simulation");
-    }
     syncCountry();
     syncLeadContext();
   }
