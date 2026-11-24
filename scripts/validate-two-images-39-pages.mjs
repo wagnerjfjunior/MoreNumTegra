@@ -44,7 +44,8 @@ const approvedBlogPaths=[
  "/blog/mercado/orla-barra-tijuca-localizacao-conservacao/",
  "/blog/mercado/imoveis-luxo-renda-custos-liquidez/",
  "/blog/mercado/morar-itaim-bibi-rotina-custo/",
- "/blog/mercado/imovel-herdado-inventario-documentos-etapas/"
+ "/blog/mercado/imovel-herdado-inventario-documentos-etapas/",
+ "/blog/mercado/investir-em-studios-sao-paulo/"
 ];
 const validateBlogScope=paths=>assert.deepEqual(paths,approvedBlogPaths,'Blog sitemap additions must remain explicitly scoped');
 validateBlogScope(blogPaths);
