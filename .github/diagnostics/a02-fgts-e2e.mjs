@@ -14,6 +14,7 @@ const server=createServer(async(req,res)=>{
   let pathname;
   try {pathname=decodeURIComponent(new URL(req.url,origin).pathname);}catch{res.writeHead(400);res.end();return;}
   pathname=aliases.get(pathname)||pathname;
+  if (/^\/(blog|empreendimentos|rio-de-janeiro)\//.test(pathname)) pathname="/src-greenn"+pathname;
   let file=resolve(root,"."+pathname);
   if(file!==root && !file.startsWith(root+sep)){res.writeHead(403);res.end();return;}
   try {
