@@ -1,10 +1,21 @@
-## 24/11/2026 — F20 reconciliada: FGTS transversal SP está no `main`
+## 24/11/2026 — F20 ENTREGUE; AUDITORIA A01/A02 FECHADAS; A03 EM PR DRAFT
 
-| Frente | Estado verificado | Fonte | Pendência |
+**Snapshot GitHub nesta revisão:** `main 5629c9035a6f60be002e9ebe03bfc225544f1d4b` e Vercel Production `dpl_34zZ9Nhko7bTRSuyqJQGJbT82B9S` READY. As seções de 23/11 abaixo que registram #595 como DRAFT são fotografias anteriores e não descrevem a `main` atual.
+
+| Frente | Entrega / evidência | Estado | Residual |
 | --- | --- | --- | --- |
-| F20 — cluster FGTS residencial SP | #595 mesclada (`0cd8dc8`) e #596 mesclada (`05e0169`), ambas em 23/11/2026 | `git log --first-parent origin/main` | LVR/Form46 pós-merge não verificados; sem medição ainda (GSC sem consultas FGTS até o lançamento) |
+| F20 — SEO FGTS transversal SP | #595 `0cd8dc8`, #596 `05e0169` mescladas | PUBLICADO | Elegibilidade caso a caso; GSC após janela de maturação |
+| Auditoria A01/P0 — links RJ | #599 `2f2d5b5` mesclada; 18 links em seis páginas | IMPLEMENTADO/PRODUÇÃO | Amostragem posterior de cliques reais e canal RJ |
+| Auditoria A02/P0 — atribuição FGTS/CRM | #600 `4140152` mesclada; Chromium CI 33/33 (5 viewports) + captura do `texto-livre` na Green Sales | VALIDADO NO CRM E PRODUÇÃO | Monitoramento GA4/GSC independente |
+| SEO RJ — metadados de sete empreendimentos | #601 `5629c90` mesclada; deploy Vercel READY | PUBLICADO | Impacto orgânico futuro não comprovado |
+| Auditoria A03/P1 — guia FGTS na capa `/blog/` | #602 DRAFT, um único destaque substituído, 10/10 verificações estáticas | PREPARADO; NÃO PUBLICADO | LVR 360/390/430/900/1440, clique, aceite e merge específico |
+| Auditoria A04–A15 | Plano em PR #597 | PENDENTE | Revisão de prioridades e PRs isoladas |
+| Auditoria mãe #597 | 89 URLs / 10 funis / 15 ações | DRAFT/SEM MERGE | Parecer independente não confirmado |
+| Estado SFJM #598 | Atualização dos quatro ponteiros e andamento da auditoria | DRAFT/SEM MERGE | Aceite e merge separados |
 
-As linhas de F20 de 23/11 abaixo ("PR #595 DRAFT", "proposta isolada") são históricas. Demais frentes: sem alteração por esta reconciliação; F02 H2/H3 segue aberta e depende da PR #582 (aberta). PRs abertas: #565, #581, #582, #597.
+**F02 H2/H3 Lote 1** não foi cancelada; depende da decisão sobre #582. #581 e #565 permanecem abertas e fora do escopo da A03. O check `Mercado editorial 11 draft gates` segue com falha histórica de baseline de redirects; não foi corrigido, suprimido ou homologado como PASS por esta atualização.
+
+**Critério:** estado integrado só é o que está na `main`/produção. Código de PR #602 e textos desta PR #598 são propostas, não publicação.
 
 ---
 
