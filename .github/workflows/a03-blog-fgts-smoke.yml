@@ -19,6 +19,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
+      - name: Validate public S3 FGTS WebP assets (ephemeral downloads)
+        run: |
+          for entry in \
+            "desktop|https://s3-gdigital.s3.amazonaws.com/gdigital/313/Utilize_seu_FGTS_1535x1024.webp" \
+            "mobile|https://s3-gdigital.s3.amazonaws.com/gdigital/313/Utilize_seu_FGTS_941x1672.webp"; do
+            label="${entry%%|*}"
+            uri="${entry#*|}"
+            destination="$RUNNER_TEMP/fgts-${label}.webp"
+            curl --fail --location --silent --show-error --retry 2 --connect-timeout 10 --max-time 45 --output "$destination" "$uri"
+            node -e 'const fs=require("node:fs");const p=process.argv[1];const b=fs.readFileSync(p);if(b.toString("ascii",0,4)!=="RIFF"||b.toString("ascii",8,12)!=="WEBP")process.exit(1);console.log(p+" valid WEBP; bytes="+b.length)' "$destination"
+          done
       - name: Install isolated Chromium browser
         run: |
           npm install --no-save playwright@1.55.0
