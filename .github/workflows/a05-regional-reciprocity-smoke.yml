@@ -1,0 +1,30 @@
+name: A05 CAPIITOLO DSG regional links browser smoke
+
+on:
+  pull_request:
+    paths:
+      - "src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html"
+      - "src-greenn/empreendimentos/dsg-itaim/index.html"
+      - "experiments/capiitolo-editorial-v3/index.html"
+      - "experiments/dsg-itaim-editorial-v3/index.html"
+      - ".github/diagnostics/a05-regional-reciprocity-smoke.mjs"
+      - ".github/workflows/a05-regional-reciprocity-smoke.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  regional-reciprocity:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install isolated Chromium
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Test shell, hydrated JS, region navigation and Form46
+        run: node .github/diagnostics/a05-regional-reciprocity-smoke.mjs
