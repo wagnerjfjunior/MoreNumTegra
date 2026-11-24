@@ -67,12 +67,12 @@ def wa(text):
 
 def card(p):
     n = html.escape(p["name"])
-    return (f'<article class="rio-project"><a class="rio-project-media" href="{p["url"]}" aria-label="Conhecer {n}">'
+    return (f'<article class="rio-project"><a class="rio-project-media" href="{p["url"]}" aria-label="Ver {n}">'
             f'<img src="{p["img"]}" alt="{p["alt"]}" width="800" height="535" loading="lazy" decoding="async">'
             f'<span class="rio-stage">{p["stage"]}</span></a><div class="rio-project-body">'
             f'<span class="rio-eyebrow">Barra da Tijuca · Rio de Janeiro</span><h3>{n}</h3><p class="rio-meta">{p["meta"]}</p>'
-            f'<div class="rio-project-footer"><a class="rio-btn" href="{p["url"]}">Conhecer projeto</a>'
-            f'<a href="#contato"><small>Receber condições</small></a></div></div></article>')
+            f'<div class="rio-project-footer"><a class="rio-btn" href="{p["url"]}">Ver {n}</a>'
+            f'<a href="#contato"><small>Consultar</small></a></div></div></article>')
 
 
 def header():

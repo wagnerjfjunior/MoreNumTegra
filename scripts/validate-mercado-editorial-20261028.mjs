@@ -100,7 +100,7 @@ const reference=read('src-greenn/empreendimentos/jerivas-caminhos-da-lapa/index.
 assert.equal(form,reference,'Preserve native Form46, adjusting only project context');
 // MNT 2026-11-24 (SFJM): scripts compartilhados presos ao ultimo snapshot aprovado de cada um
 // (runtime.js: #600 FGTS/origem no Form46; measurement-form.js: #561 canal RJ/form 47). measurement-core.js segue no baseline.
-const SCRIPT_SNAPSHOT={'runtime.js':'41401521','measurement-core.js':base,'measurement-form.js':'8fe1043a'};
+const SCRIPT_SNAPSHOT={'runtime.js':'3389f77e','measurement-core.js':base,'measurement-form.js':'8fe1043a'};
 for(const script of ['runtime.js','measurement-core.js','measurement-form.js']){
  assert.ok(riio.includes('/src-greenn/preview/'+script));
  const p='src-greenn/preview/'+script;
