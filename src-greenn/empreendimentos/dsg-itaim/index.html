@@ -42,7 +42,7 @@
       <h1>DSG Itaim Tegra<br>studios e salas comerciais no Itaim Bibi</h1>
       <p>Offices de 27 a 61 m² · studios de 27 e 29 m² · apartamentos de 44 m² · empreendimento entregue.</p>
       <p><strong>DSG Itaim</strong> · empreendimento Tegra no Itaim Bibi. Consulte disponibilidade e condições vigentes.</p>
-      <p><strong>A partir de R$ 412.500,00.</strong> Ref. 32 m² · unidade 208 · Office · Ago/26 · pagamento à vista. Fonte: Tegra Incorporadora. Valor, unidade e disponibilidade podem mudar e devem ser confirmados no atendimento.</p>
+      <p><strong>A partir de R$ 355.000,00.</strong> Ref. 32 m² · unidade 208 · Office · Nov/26 · pagamento à vista. Fonte: Tegra Incorporadora. Valor, unidade e disponibilidade podem mudar e devem ser confirmados no atendimento.</p>
       <p><strong>Time Tegra Vendas</strong> · Atendimento comercial especializado em São Paulo · <a href="tel:+5511960779328">(11) 96077-9328</a> · Na recepção, solicite <strong>Sabrina da Tegra</strong>.</p>
       <p>Conheça a região no <a href="/regioes/itaim-bibi/">guia do Itaim Bibi</a>.</p>
       <p>Carregando experiência completa…</p>
@@ -60,7 +60,7 @@
     const canonical="https://www.moretegra.com.br/empreendimentos/dsg-itaim/";
     const source="/experiments/dsg-itaim-editorial-v3/index.html";
     const schemaText=document.getElementById("dsg-schema")?.textContent||"";
-    const priceSection=`<section class="mnt-price-section" id="valores" aria-labelledby="mnt-price-title"><div class="wrap mnt-price-grid"><div><p class="mnt-price-label">A partir de</p><h2 id="mnt-price-title" class="mnt-price-amount" data-commercial-value aria-live="polite">R$ 412.500</h2></div><div data-commercial-key="dsg-itaim"><p class="mnt-price-label">Referência comercial</p><p class="mnt-price-reference">Ref. 32 m² · unidade 208 · Office · Ago/26 · pagamento à vista</p><p class="mnt-price-note">Unidade disponível na data de referência. Fonte: Tegra Incorporadora. Valor e condições podem mudar; confirme as condições vigentes antes da proposta.</p><a class="btn yellow" href="#formulario" data-form-intent="conditions">Receber condições <span>↓</span></a></div></div></section>`;
+    const priceSection=`<section class="mnt-price-section" id="valores" aria-labelledby="mnt-price-title"><div class="wrap mnt-price-grid"><div><p class="mnt-price-label">A partir de</p><h2 id="mnt-price-title" class="mnt-price-amount" data-commercial-value aria-live="polite">R$ 355.000</h2></div><div data-commercial-key="dsg-itaim"><p class="mnt-price-label">Referência comercial</p><p class="mnt-price-reference">Ref. 32 m² · unidade 208 · Office · Nov/26 · pagamento à vista</p><p class="mnt-price-note">Referência publicada pela Tegra em Nov/26 para Office (uso comercial), não para studios ou apartamentos. Confirme valor e disponibilidade antes da proposta.</p><a class="btn yellow" href="#formulario" data-form-intent="conditions">Receber condições <span>↓</span></a></div></div></section>`;
     fetch(source,{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.text()}).then(html=>{
       const doc=new DOMParser().parseFromString(html,"text/html");
       doc.documentElement.dataset.mntRoute="/empreendimentos/dsg-itaim/";
