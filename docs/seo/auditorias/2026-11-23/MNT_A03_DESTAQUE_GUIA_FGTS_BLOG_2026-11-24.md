@@ -39,3 +39,14 @@ A01/A02 já integradas; A04–A15 não iniciadas neste candidato. PR #598 (docum
 ## Regressão mobile detectada pelo teste estrito
 
 A primeira versão do smoke comparava `document.documentElement.scrollWidth` com `window.innerWidth` e aprovou, mas em emulação 360/390 o navegador expandiu `innerWidth` para 405px. O teste foi corrigido para comparar contra a largura solicitada; falhou a 360px (`scrollWidth=405`, `clientWidth=360`, `visualViewport.width=360`) e identificou o `<a class=section-more>` da vitrine com borda direita em 404px. Esse link é anterior à A03 e não foi alterado. **Correção em escopo mínimo:** adicionar somente dentro de `@media(max-width:600px)` a regra `.featured-heading .section-more{white-space:normal;overflow-wrap:anywhere}` em `src-greenn/blog/blog-home.css`. Reexecutar e exigir `scrollWidth <= largura configurada + 10` para `/blog/` e guia nas cinco larguras. Não declarar aprovado sem log da CI final.
+
+
+## Mídia FGTS responsiva fornecida pelo proprietário — 24/11/2026
+
+- **Desktop (1535×1024):** `https://s3-gdigital.s3.amazonaws.com/gdigital/313/Utilize_seu_FGTS_1535x1024.webp`.
+- **Mobile (941×1672, 9:16):** `https://s3-gdigital.s3.amazonaws.com/gdigital/313/Utilize_seu_FGTS_941x1672.webp`.
+- Inseridas no **mesmo card** via `<picture>` com `<source media="(max-width: 600px)">` e `<img>` padrão desktop; no mobile, preservar todo o pôster vertical sem `object-fit:cover` e sem overlay sobre a chamada. O rodapé editorial do card continua HTML indexável e todo o card é um único link rastreável para o artigo.
+- Mídia externa permanece no S3/GDigital, sem guardar WebP pesado no GitHub; `loading="lazy"`, `decoding="async"`, dimensões intrínsecas e `alt` descritivo. O teste estático/Chromium valida o `currentSrc` correto e dimensões visuais nas cinco larguras.
+- **Limite da evidência:** os URLs foram fornecidos pelo proprietário. Os bytes e o HTTP 200 reais do S3 não foram conferidos neste ambiente; acesso externo/binary direto indisponível no momento. QA visual real no LVR deve verificar que as duas imagens carregam e que o texto que faz parte da arte é legível.
+- **Conformidade comercial:** a imagem ilustra possibilidade de usar FGTS, não comprova elegibilidade do comprador ou imóvel; o guia mantém as condições de utilização conforme regras aplicáveis.
+- **Escopo adicional restrito:** somente `src-greenn/blog/index.html`, regras especializadas da vitrine no `src-greenn/blog/blog-home.css` e verificação da mesma imagem no teste próprio. O artigo e demais CTAs, Form46, Form47, medição, JSON-LD e sitemap não foram alterados nesta etapa de mídia.
