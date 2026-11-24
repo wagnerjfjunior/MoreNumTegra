@@ -28,7 +28,7 @@ O campo `texto-livre` passa a ser:
 
 1. `src-greenn/blog/mercado/usar-fgts-comprar-apartamento/index.html`: 9 links editoriais existentes passam a incluir `origem=fgts`; três atalhos diretos `?interesse=FGTS...` permanecem válidos. Conteúdo, layout, JSON-LD, title e canonical inalterados.
 2. `src-greenn/moretegra.js`: apenas `detailUrlFor()` adiciona `origem=fgts` aos links **internos para /empreendimentos/** gerados no catálogo quando a visita chegou com um marcador FGTS válido. Preserva parâmetros já existentes (`unidade`, `condicao`) e o fragmento (`#valores`). Não cria nova rota indexável.
-3. `src-greenn/preview/runtime.js`: `composeLeadContext(form)` acrescenta ` | Interesse: FGTS` somente no Form46 com parâmetro autorizado. Se o visitante ainda não escolheu um empreendimento, usa **somente no texto de CRM** o rótulo `Orientação FGTS na compra de apartamento`, sem inventar projeto ou alterar o contexto Measurement; no atalho direto com `?interesse=FGTS...`, pré-seleciona `Simular forma de pagamento`, opção que o visitante pode modificar. Mantém assinatura, validação, `fetch`, endpoint, payload de campos, `FormData`, privacidade/consentimento e fluxo de sucesso/erro.
+3. `src-greenn/preview/runtime.js`: `composeLeadContext(form)` acrescenta ` | Interesse: FGTS` somente no Form46 com parâmetro autorizado. Se o visitante ainda não escolheu um empreendimento, usa **somente no texto de CRM** o rótulo `Orientação FGTS na compra de apartamento`, sem inventar projeto ou alterar o contexto Measurement; no atalho direto com `?interesse=FGTS...`, reutiliza a pré-seleção **já existente** em `src-greenn/moretegra.js` de `Simular forma de pagamento`, opção que o visitante pode modificar. Nenhum novo manipulador de seleção foi adicionado ao runtime. Mantém assinatura, validação, `fetch`, endpoint, payload de campos, `FormData`, privacidade/consentimento e fluxo de sucesso/erro.
 4. `src-greenn/preview/index.html`: atualização restrita ao query versionador de `moretegra.js` para evitar reutilização do JS anterior na homepage.
 5. `sitemap.xml`: `lastmod=2026-11-24` apenas na homepage e artigo FGTS; todas as outras URLs mantêm seu estado.
 
@@ -64,7 +64,7 @@ Executados sobre as funções **extraídas do código da branch**, em ambiente i
 
 - **7/7** cenários de composição do `texto-livre` passaram: atalho direto, catálogo sem projeto, Órbita com projeto, tráfego não-FGTS, Form47/RJ, origem diferente e origem visualmente semelhante porém inválida;
 - **5/5** cenários de links de catálogo passaram: preservação de `unidade` e `#valores`, ausência de origem, URL canônica sem parâmetro inicial, origem inválida e destino externo não modificado;
-- **1/1** checagem de preseleção direta: existe opção `Simular forma de pagamento` e o código da homepage a ativa somente no atalho exato de orientação.
+- **1/1** checagem de preseleção direta: existe opção `Simular forma de pagamento` e a função `prefillInterestFromUrl()` existente em `src-greenn/moretegra.js` a ativa somente no atalho exato de orientação.
 
 **Total: 13/13 verificações funcionais isoladas.** É proibido interpretar esse teste como validação do DOM real no LVR, sucesso de POST ou recebimento do lead no Green.
 
