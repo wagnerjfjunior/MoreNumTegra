@@ -57,3 +57,9 @@ Em 24/11/2026, o HTML canônico e o template DSG não fornecem quantidade de vag
 Na página oficial Tegra consultada em 24/11, o preço publicizado de referência para **Office 32 m² unidade 208, Nov/26** é **R$ 355.000**. O shell DSG nesta PR conserva a referência anterior **R$ 412.500, Ago/26**; esses valores e respectivas datas são discrepantes. Esta PR não atualiza preços porque a solicitação foi sobre apresentação do RESF, e a reconciliação comercial exige autorização distinta com registro da origem, vigência e unidade. Não afirmar que o valor antigo seja preço atual; esse é um `COMMERCIAL_DATA_REVALIDATION` pendente.
 
 **Status de aceite:** a etapa RESF está preparada em branch, e CI precisa ser validado no head exato após este adendo. Não houve merge, publicação, contato com CRM ou atualização de preço.
+
+### Regressão E2E identificada: runtime CAPIITOLO sobrescrevia os facts
+
+O smoke de navegador, após a correção da leitura de texto afetada pelo `text-transform` CSS, detectou que o quarto fact do CAPIITOLO renderizado era `Chácara Klabin / São Paulo`, apesar de o template correto declarar `Em construção / Estágio do empreendimento`. Causa encontrada na `main` original: dentro de `initCapiitoloExperience()` em `src-greenn/preview/runtime.js`, um bloco legado selecionava indiscriminadamente `.facts .fact[3]` e substituía seus textos, desacoplando conteúdo renderizado e template. Removido **somente esse bloco mutador** no candidato A05, mantendo intactos mapa, badge, lead, outros fatos e demais funções do runtime. O bootstrap do CAPIITOLO continua a utilizar seu schema e preço definidos na página comercial. O teste regressivo do quarto fact impede que o erro retorne sem detecção.
+
+Este ajuste toca `runtime.js` (módulo compartilhado) com modificação localizada ao código CAPIITOLO. Exige suíte CI completa + smoke e inspeção de diff antes do merge. Nenhuma autorização de merge/publicação foi inferida.
