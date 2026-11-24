@@ -1,3 +1,9 @@
+## 24/11/2026 — Candidato de reconciliação A06-L01 (escopo parcial)
+
+Base `4f755ac39c2618d62eeb63a6809e3e689b92c2a2`. FGTS #595/#596, A01 #599, A02 #600, A03 #602 e A05 etapa 1 #611 integradas; A04 #606 e #607 draft não integradas. A06 Ampère/Ária: GSC, métricas BR/SP, tendências, SERP e sobreposição query×page pesquisadas; proposta de oito campos por slug e preflight em memória registrados. Runtime NOT_EXECUTED: autorização específica de exceção dos validadores pendente. Fonte `docs/seo/auditorias/2026-11-23/MNT_A06_L01_KEYWORD_MAPPING_EVIDENCE_2026-11-24.md`. Atividade paralela #612/#614/#615/#616 identificada no GitHub, não auditada nesta frente; derivações JSON globais não reconciliadas. Não declarar estado global limpo.
+
+---
+
 ## 24/11/2026 — Rio: #601, #605 e #608 em produção; MNT Órbita integrada (#604)
 
 Main `ed9978d`. As 10 páginas do Rio têm title, meta e H2 alinhados ao estudo; hub e Barra com H2 em pergunta e FAQ novo da Barra; 6 empreendimentos com H2 em pergunta. MNT Órbita (#604, `3fe3b0b`): testes reconciliados, `Product`/`Offer` ausentes de forma temporária e intencional. Pendências: RIIO e `/regioes/` sem H2 em pergunta; reindexação no Search Console; dois validadores que falham (Órbita parity e home-consent). Fonte: `handoffs/CURRENT.md` (24/11) e `docs/seo/MNT_ORBITA_RECONCILIACAO_JSONLD_2026-11-24.md`.

@@ -1,3 +1,9 @@
+## 24/11/2026 — Candidato: próxima ação segura A06-L01 (documentação sem runtime)
+
+Única ação proposta para a frente escolhida pelo proprietário: revisar `docs/seo/auditorias/2026-11-23/MNT_A06_L01_KEYWORD_MAPPING_EVIDENCE_2026-11-24.md` e resolver o gate de autorização específica da exceção exata dos validadores e a dependência #606→#607. Não executar runtime, merge, deploy ou IndexNow enquanto bloqueado. Esta proposta aguarda integração documental autorizada; não é autoridade enquanto aberta. Outras frentes, incluindo recrawl RJ, continuam registradas abaixo, sem cancelamento nem autorização nova.
+
+---
+
 ## 24/11/2026 — Próxima ação segura (após #601, #604, #605 e #608)
 
 1. Wagner: pedir reindexação no Search Console das 9 URLs do Rio alteradas (hub, Barra e 7 empreendimentos). Nada a fazer no código.
