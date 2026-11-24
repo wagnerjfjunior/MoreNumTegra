@@ -65,3 +65,23 @@ O smoke de navegador, após a correção da leitura de texto afetada pelo `text-
 Este ajuste toca `runtime.js` (módulo compartilhado) com modificação localizada ao código CAPIITOLO. Exige suíte CI completa + smoke e inspeção de diff antes do merge. Nenhuma autorização de merge/publicação foi inferida.
 
 **Breakpoint QA observado:** os estilos originais aplicam `@media(max-width:900px)` à faixa `.facts-in`; o smoke inicialmente presumiu 4 colunas a 900px e reprovou por erro na expectativa do teste, não por regressão do layout. Ajuste do teste respeita o breakpoint CSS real: 2 colunas em 360/390/430/900 e 4 colunas em 1440. A apresentação mobile permanece 2×2 e não há substituição de CSS do grid.
+
+
+## 24/11/2026 — ATUALIZAÇÃO COMERCIAL AUTORIZADA: OFFICE DSG R$ 355.000
+
+**Decisão expressa do proprietário nesta conversa:** “se a própria página da Tegra traz este valor podemos utilizar também”, referindo-se ao preço oficial de **R$ 355.000,00**. A decisão **substitui a pendência de preço comercial** descrita nos parágrafos históricos acima; não altera o bloqueio de vagas do FACTS DSG, nem autoriza merge/deploy.
+
+**Fonte primária reinspecionada em 24/11/2026:** [DSG Itaim na Tegra Incorporadora](https://www.tegraincorporadora.com.br/sp/sao-paulo/sul/itaim-bibi/dsgitaim). A ficha oficial apresenta:
+- “A partir de R$ 355.000,00”;
+- “Ref. 32m² (unidade 208 - Office) - Nov/26 | com pagamento à vista”;
+- empreendimento entregue; últimas unidades;
+- configuração mista (salas comerciais, studios e apartamentos).
+
+**Limite de verdade:** a referência financeira é **exclusivamente Office 32 m², unidade 208, pagamento à vista, Nov/26**; não é preço de studio/apartamento, nem oferta irrevogável ou confirmação de estoque em 24/11. O valor histórico Ago/26, R$ 412.500, deixa de ser exibido no candidato A05. Disponibilidade e condições seguem sujeitas à confirmação com a incorporadora.
+
+**Alterações exatas no código da PR #611**:
+1. `src-greenn/empreendimentos/dsg-itaim/index.html`: bootstrap apresenta **R$ 355.000,00** e a referência **Office 32 m² / unidade 208 / Nov/26 / à vista**. `priceSection` injetada no DOM apresenta **R$ 355.000** e a mesma referência; a nota explicita uso comercial e exclui studios/apartamentos.
+2. `experiments/dsg-itaim-editorial-v3/index.html`: parágrafo comercial e resposta no FAQ atualizados para mesma referência Nov/26, sem variação de preço/área/tipologia.
+3. `.github/diagnostics/a05-regional-reciprocity-smoke.mjs`: asserts no HTML inicial sem JS e no Chromium de 360/390/430/900/1440 para valor, data, unidade, tipologia, FAQ e ausência da referência antiga. Não há envio de leads.
+
+**Fora do escopo:** nenhuma inclusão de `Product`/`Offer`, nenhuma promessa de financiamento/FGTS para Office, nenhuma alteração de metatags, CAPIITOLO, Form46, Form47, Analytics, WhatsApp, scripts de consentimento ou validadores gerais. O sitemap já tinha `lastmod` das duas páginas atualizado para 24/11 no início da A05; não exige duplicar a alteração. A PR permanece DRAFT e requer CI, homologação e ordem específica de merge.
