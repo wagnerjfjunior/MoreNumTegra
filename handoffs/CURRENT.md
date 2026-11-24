@@ -1,3 +1,12 @@
+## 24/11/2026 — RECONCILIAÇÃO: PRs #595 e #596 MESCLADAS
+
+- **Fato:** PR #595 (`feat(seo): guia FGTS e cluster de conversão para Universo Tatuapé Órbita`) **mesclada** no `main` em 23/11/2026 18:21 (-03), commit `0cd8dc8`; PR #596 (`fix: imagens FGTS responsivas no blog e no Órbita`) **mesclada** em 23/11/2026 19:00 (-03), commit `05e0169`, que era o `main` ao vivo na escrita desta seção. Fonte: `git log --first-parent origin/main`.
+- **Efeito sobre as seções de 23/11 abaixo:** "SEM MERGE" / "DRAFT" nelas descreve o estado anterior ao merge e é histórico. A decisão de escopo ali registrada (FGTS transversal, sem promessa de elegibilidade, validador exato da allowlist) foi o que entrou no `main`.
+- **Não verificado nesta reconciliação:** resultado do LOCAL_LIVE_SYNC e do Form46 após o merge, ID do deploy da Vercel.
+- **Aberto:** PRs #565, #581, #582 e #597; destino a decidir pelo Wagner (ver `docs/NEXT_SAFE_ACTION.md`, seção de 24/11/2026).
+
+---
+
 ## 23/11/2026 — DECISÃO VIGENTE: PR #595 FGTS TRANSVERSAL, SEM MERGE
 
 - **Aprovação posterior de Wagner:** “sim, claro” para reestruturar a PR #595 como cluster FGTS de todo o catálogo residencial pronto de São Paulo e corrigir a allowlist do sitemap de forma exata, **sem merge automático**. Esta decisão supera o escopo exclusivamente Órbita registrado abaixo.

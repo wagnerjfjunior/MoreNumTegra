@@ -1,3 +1,15 @@
+## 24/11/2026 — RECONCILIAÇÃO: #595 e #596 JÁ ESTÃO NO `main`; a decisão aberta é o destino de #582, #581 e #565
+
+**Fato verificado:** PR #595 (`feat(seo): guia FGTS e cluster de conversão para Universo Tatuapé Órbita`) **mesclada** no `main` em 23/11/2026 18:21 (-03), commit `0cd8dc8`; PR #596 (`fix: imagens FGTS responsivas no blog e no Órbita`) **mesclada** em 23/11/2026 19:00 (-03), commit `05e0169`, que era o `main` ao vivo na escrita desta seção. Fonte: `git log --first-parent origin/main`. As seções de 23/11 abaixo que dizem "sem merge" descrevem o estado **antes** desses merges e ficam como histórico. O guia FGTS (`/blog/mercado/usar-fgts-comprar-apartamento/`) respondeu HTTP 200 em produção e com o mesmo conteúdo do repositório na conferência de 23/11 (~20:40 -03).
+
+**Próxima ação segura (proposta; vale só após o Wagner aprovar esta PR):** o Wagner decide o destino das PRs abertas **#582** (handoff H1/H2/H3: é a fonte do padrão de títulos exigida pela frente F02 H2/H3 Lote 1, ver a seção de 15/11 abaixo), **#581** (módulo de links em Ária, Mozae, Ledge, Ampère e YPY + H1 do Ampère; hoje conflita com o `main` em 3 páginas) e **#565** (base de demanda do Rio). Enquanto isso não for decidido, nenhuma PR de execução SEO é aberta.
+
+**A frente F02 H2/H3 Lote 1 (15/11) não foi cancelada** e continua dependendo da #582. Pendências desta frente após os merges (não verificadas por esta PR): LOCAL_LIVE_SYNC 360/390/430/900/1440, `/?estagio=pronto#oportunidades` e `/?interesse=FGTS%20para%20comprar%20apartamento#formulario`, Form46 de ponta a ponta.
+
+Análise que sustenta esta decisão: parecer independente de 23/11/2026 no Projeto Claude (`claude/parecer-revisao-seo-links-funis-2026-11-23.md`) e auditoria em `docs/seo/auditorias/2026-11-23/` (PR #597, aberta). Esta seção não autoriza merge, deploy, IndexNow, mudança de validador nem edição de página.
+
+---
+
 ## 23/11/2026 — PR #595: próxima ação segura FGTS TRANSVERSAL (sem merge)
 
 Wagner aprovou (“sim, claro”) a **revisão da PR #595** para que FGTS seja um cluster de todo o catálogo residencial pronto em São Paulo, não uma campanha exclusiva do Órbita. Também aprovou a correção **exata** da allowlist de sitemap com teste negativo, sem alterar outros validadores.

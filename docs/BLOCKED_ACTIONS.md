@@ -1,3 +1,11 @@
+## 24/11/2026 — RECONCILIAÇÃO: o que mudou e o que continua bloqueado
+
+**Mudou:** as PRs #595 (`0cd8dc8`) e #596 (`05e0169`) foram mescladas no `main` em 23/11/2026 (detalhe em `docs/NEXT_SAFE_ACTION.md`, seção de 24/11/2026). Os bloqueios de 23/11 que dizem "não mesclar a #595" ficam como histórico.
+
+**Continua bloqueado sem autorização específica do Wagner:** merge das PRs #565, #581, #582 e #597; deploy, IndexNow e Search Console; alteração de validadores e de páginas travadas por baseline; mudança de preço, disponibilidade, Form46/47, medição, campanhas e Rio. Elegibilidade FGTS: não afirmar que todo imóvel pronto aceita FGTS.
+
+---
+
 ## 23/11/2026 — ESCOPO ATUALIZADO PR #595: FGTS TRANSVERSAL
 
 A aprovação posterior “sim, claro” **autoriza** reestruturar artigo/links para múltiplos empreendimentos residenciais prontos SP, incluir atalho de catálogo na home e **editar somente a allowlist de URLs do blog** em `scripts/validate-two-images-39-pages.mjs` para o artigo FGTS, com teste negativo. **Não autoriza** relaxar outros contratos, mudar preço, Form46, Livelo, Rio, campanhas, páginas congeladas, GTM, publicar ou mesclar. O bloqueio genérico de alteração de validadores registrado abaixo continua valendo **para qualquer outro validador ou regra**.

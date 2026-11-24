@@ -1,3 +1,13 @@
+## 24/11/2026 — F20 reconciliada: FGTS transversal SP está no `main`
+
+| Frente | Estado verificado | Fonte | Pendência |
+| --- | --- | --- | --- |
+| F20 — cluster FGTS residencial SP | #595 mesclada (`0cd8dc8`) e #596 mesclada (`05e0169`), ambas em 23/11/2026 | `git log --first-parent origin/main` | LVR/Form46 pós-merge não verificados; sem medição ainda (GSC sem consultas FGTS até o lançamento) |
+
+As linhas de F20 de 23/11 abaixo ("PR #595 DRAFT", "proposta isolada") são históricas. Demais frentes: sem alteração por esta reconciliação; F02 H2/H3 segue aberta e depende da PR #582 (aberta). PRs abertas: #565, #581, #582, #597.
+
+---
+
 ## 23/11/2026 — F20 atualizado: FGTS transversal SP, PR #595 DRAFT
 
 | Frente | Decisão posterior do proprietário | Implementado em branch | Bloqueio |
