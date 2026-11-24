@@ -137,7 +137,12 @@
   }
 
   function composeLeadContext(form) {
-    const project = leadProjectContext(form);
+    const selectedProject = leadProjectContext(form);
+    // Sem projeto escolhido, registra a finalidade da consulta sem inventar um empreendimento.
+    // Esta etiqueta pertence só ao payload Green e não substitui project_name no Measurement.
+    const project = isFgtsJourney(form) && selectedProject === NO_PROJECT_CONTEXT
+      ? "Orientação FGTS na compra de apartamento"
+      : selectedProject;
     const intent = String(form.elements["texto-livre"]?.value || "").trim();
     const context = intent ? `${project} | ${intent}` : project;
     return isFgtsJourney(form) ? `${context} | Interesse: FGTS` : context;
@@ -609,6 +614,12 @@
       }
     });
 
+    // O CTA de orientação do guia usa o parâmetro legado `interesse`: a intenção
+    // inicial é simulação, mas o visitante pode alterá-la antes do envio.
+    if (formIdOf(form) === "46" && window.location.pathname === "/" &&
+        new URLSearchParams(window.location.search).get("interesse") === "FGTS para comprar apartamento") {
+      applyFormIntent("payment_simulation");
+    }
     syncCountry();
     syncLeadContext();
   }
