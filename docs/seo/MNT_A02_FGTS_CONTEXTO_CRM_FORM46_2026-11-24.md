@@ -28,7 +28,7 @@ O campo `texto-livre` passa a ser:
 
 1. `src-greenn/blog/mercado/usar-fgts-comprar-apartamento/index.html`: 9 links editoriais existentes passam a incluir `origem=fgts`; três atalhos diretos `?interesse=FGTS...` permanecem válidos. Conteúdo, layout, JSON-LD, title e canonical inalterados.
 2. `src-greenn/moretegra.js`: apenas `detailUrlFor()` adiciona `origem=fgts` aos links **internos para /empreendimentos/** gerados no catálogo quando a visita chegou com um marcador FGTS válido. Preserva parâmetros já existentes (`unidade`, `condicao`) e o fragmento (`#valores`). Não cria nova rota indexável.
-3. `src-greenn/preview/runtime.js`: `composeLeadContext(form)` acrescenta ` | Interesse: FGTS` somente no Form46 com parâmetro autorizado. Mantém assinatura, validação, `fetch`, endpoint, payload de campos, `FormData`, privacy/consent e fluxo de sucesso/erro.
+3. `src-greenn/preview/runtime.js`: `composeLeadContext(form)` acrescenta ` | Interesse: FGTS` somente no Form46 com parâmetro autorizado. Se o visitante ainda não escolheu um empreendimento, usa **somente no texto de CRM** o rótulo `Orientação FGTS na compra de apartamento`, sem inventar projeto ou alterar o contexto Measurement; no atalho direto com `?interesse=FGTS...`, pré-seleciona `Simular forma de pagamento`, opção que o visitante pode modificar. Mantém assinatura, validação, `fetch`, endpoint, payload de campos, `FormData`, privacidade/consentimento e fluxo de sucesso/erro.
 4. `src-greenn/preview/index.html`: atualização restrita ao query versionador de `moretegra.js` para evitar reutilização do JS anterior na homepage.
 5. `sitemap.xml`: `lastmod=2026-11-24` apenas na homepage e artigo FGTS; todas as outras URLs mantêm seu estado.
 
@@ -57,6 +57,18 @@ O campo `texto-livre` passa a ser:
 - Não introduzir cookies persistentes, nova sessão de rastreamento, tokens, PII em URLs ou campos novos no Form46.
 - Não afirmar que o uso FGTS é aprovado para unidade ou salas comerciais.
 - Preservar SEO e os padrões SFJM/RESF para HTML/CSS/JS.
+
+## Testes determinísticos de funções — execução 24/11/2026
+
+Executados sobre as funções **extraídas do código da branch**, em ambiente isolado com implementações mínimas de `URL` e `URLSearchParams`; não correspondem a Playwright nem a interação com o CRM:
+
+- **7/7** cenários de composição do `texto-livre` passaram: atalho direto, catálogo sem projeto, Órbita com projeto, tráfego não-FGTS, Form47/RJ, origem diferente e origem visualmente semelhante porém inválida;
+- **5/5** cenários de links de catálogo passaram: preservação de `unidade` e `#valores`, ausência de origem, URL canônica sem parâmetro inicial, origem inválida e destino externo não modificado;
+- **1/1** checagem de preseleção direta: existe opção `Simular forma de pagamento` e o código da homepage a ativa somente no atalho exato de orientação.
+
+**Total: 13/13 verificações funcionais isoladas.** É proibido interpretar esse teste como validação do DOM real no LVR, sucesso de POST ou recebimento do lead no Green.
+
+A workflow `Mercado editorial 11 draft gates` falhava no head inicial por comparar `vercel.json.redirects` com uma baseline imutável de outubro, devido ao redirecionamento `/src-greenn/complexo-lapa-pirituba/index.html`. A PR FGTS não edita `vercel.json` nem o validador; registrar como **falha herdada**, sem alterar contratos ou relaxar testes. O conjunto final de checks da PR deve ser novamente avaliado após a última atualização.
 
 ## Limites e próxima validação
 
