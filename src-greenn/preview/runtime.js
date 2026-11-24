@@ -128,10 +128,24 @@
     };
   }
 
+  // Form46/SP: preserva o interesse FGTS explicitado na navegação sem alterar o vocabulário
+  // de intenção, o contrato Green, o Form47/RJ ou os eventos de Measurement.
+  function isFgtsJourney(form) {
+    if (formIdOf(form) !== "46") return false;
+    const params = new URLSearchParams(window.location.search);
+    return params.get("origem") === "fgts" || params.get("interesse") === "FGTS para comprar apartamento";
+  }
+
   function composeLeadContext(form) {
-    const project = leadProjectContext(form);
+    const selectedProject = leadProjectContext(form);
+    // Sem projeto escolhido, registra a finalidade da consulta sem inventar um empreendimento.
+    // Esta etiqueta pertence só ao payload Green e não substitui project_name no Measurement.
+    const project = isFgtsJourney(form) && selectedProject === NO_PROJECT_CONTEXT
+      ? "Orientação FGTS na compra de apartamento"
+      : selectedProject;
     const intent = String(form.elements["texto-livre"]?.value || "").trim();
-    return intent ? `${project} | ${intent}` : project;
+    const context = intent ? `${project} | ${intent}` : project;
+    return isFgtsJourney(form) ? `${context} | Interesse: FGTS` : context;
   }
 
   function validate(form, countrySelect) {

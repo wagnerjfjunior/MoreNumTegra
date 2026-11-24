@@ -46,9 +46,21 @@
     "Ampère Brooklin": "/empreendimentos/ampere-brooklin/"
   });
 
+  // Contexto de origem explícito: só acompanha links internos se a visita começou no funil FGTS.
+  // Canonical, status dos projetos e links de outros visitantes permanecem inalterados.
+  function isFgtsJourney() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("origem") === "fgts" || params.get("interesse") === "FGTS para comprar apartamento";
+  }
+
   function detailUrlFor(project) {
     const key = project.projectName || project.name;
-    return project.detailUrl || DETAIL_ROUTES[key] || null;
+    const route = project.detailUrl || DETAIL_ROUTES[key] || null;
+    if (!route || !isFgtsJourney()) return route;
+    const target = new URL(route, window.location.origin);
+    if (target.origin !== window.location.origin || !target.pathname.startsWith("/empreendimentos/")) return route;
+    target.searchParams.set("origem", "fgts");
+    return target.pathname + target.search + target.hash;
   }
 
   // Home exclusiva de São Paulo (Wagner, 2026-11-10/12; CRECI é regional). Os empreendimentos do Rio
