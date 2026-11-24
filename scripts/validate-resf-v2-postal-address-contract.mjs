@@ -408,13 +408,15 @@ for(const [slug,street,cep] of expected){
     // HTML as the new immutable runtime snapshot; the postal/schema invariants
     // above still check historical facts independently.
     const approvedHtml=execFileSync('git',['show','ffe7dd2183e51360c8ecf6a217f61605b8ca652a:'+filename],{encoding:'utf8'});
-    // SFJM 2026-11-15: remove only the approved internal-link module and its CSS, then require exact snapshot equality.
+    // SFJM 2026-11-15: remove only the approved internal-link module, its CSS and the approved H1, then require exact snapshot equality.
     const sfjmMods=[...candidate.matchAll(/<section [^>]*id="mais-no-bairro"[\s\S]*?<\/section>/g)];
     assert.equal(sfjmMods.length,1,'Ampere: internal-link module must occur exactly once');
     assert([...sfjmMods[0][0].matchAll(/href="([^"]*)"/g)].every(m=>/^\/(regioes|empreendimentos)\/[a-z0-9-]+\/$/.test(m[1])),'Ampere: module links must be internal');
     const sfjmCss=".mnb{margin:26px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}.mnb li{border-bottom:1px solid var(--line);padding:16px 0}.mnb a{color:var(--ink);font-weight:800;text-decoration:underline;text-decoration-color:var(--yellow);text-underline-offset:4px}.mnb span{display:block;max-width:820px;color:var(--muted);margin-top:4px}";
     assert.equal(candidate.split(sfjmCss).length,2,'Ampere: module CSS must occur exactly once');
-    const sfjmStripped=candidate.replace(sfjmMods[0][0],'').replace(sfjmCss,'');
+    const sfjmH1='<h1 id="title" class="display">Ampère Brooklin Tegra<br>apartamentos de 262 m² e 4 suítes</h1>';
+    assert.equal(candidate.split(sfjmH1).length,2,'Ampere: approved H1 missing or modified');
+    const sfjmStripped=candidate.replace(sfjmMods[0][0],'').replace(sfjmCss,'').replace(sfjmH1,'<h1 id="title" class="display">Ampère Brooklin</h1>');
     assert.equal(sfjmStripped,approvedHtml,'Ampere full HTML drifted from USER_ACCEPTED integrated release baseline');
  }else if(slug==='tiel-vila-nova-conceicao'){
    // RESF Tièl specific, source-verified commercial expansion. The separate
