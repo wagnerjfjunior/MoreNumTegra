@@ -39,6 +39,12 @@ try{
     assert.ok(html.includes('rel="canonical" href="https://www.moretegra.com.br'+f.page+'"'),"source canonical "+f.name);
     assert.ok(html.includes('content="index,follow'),"source indexability "+f.name);
     pass("source-html-region-and-seo",{page:f.name});
+    if(f.name==="DSG Itaim"){
+      assert.match(html,/A partir de R\$ 355\.000,00/,"shell price must match official Office reference");
+      assert.match(html,/unidade 208 · Office · Nov\/26 · pagamento à vista/,"shell commercial unit and conditions mismatch");
+      assert.ok(!/412\.500|Ago\/26/.test(html),"old Office reference in DSG shell");
+      pass("dsg-office-source-price-nov26",{amount:355000,typology:"Office",unit:"208"});
+    }
   }
   browser=await chromium.launch({headless:true});
   for(const width of [360,390,430,900,1440]){
@@ -96,6 +102,18 @@ try{
       assert.equal(await form.getAttribute("data-form-id"),"46");
       assert.equal(await form.getAttribute("data-project-name"),f.project);
       pass("seo-form46-regression",{page:f.name,width});
+      if(f.name==="DSG Itaim"){
+        const amount=page.locator('.mnt-price-section [data-commercial-value]');
+        await amount.waitFor({state:"visible"});
+        assert.equal((await amount.innerText()).trim(),"R$ 355.000","rendered DSG offer differs from official");
+        const detail=await page.locator(".mnt-price-section .mnt-price-reference").innerText();
+        assert.match(detail,/32 m² · unidade 208 · Office · Nov\/26 · pagamento à vista/);
+        assert.match(await page.locator(".mnt-price-section .mnt-price-note").innerText(),/uso comercial/);
+        const content=await page.locator("main").innerText();
+        assert.match(content,/R\$ 355\.000/);
+        assert.ok(!content.includes("R$ 412.500")&&!content.includes("Ago/26"),"stale DSG price in page body/FAQ");
+        pass("dsg-office-hydrated-price-and-faq",{width,price:"R$ 355.000",period:"Nov/26"});
+      }
       const w=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
       assert.ok(w.scroll<=width+12,"project horizontal overflow "+JSON.stringify({page:f.name,width,...w}));
       pass("project-width",{page:f.name,width,...w});
