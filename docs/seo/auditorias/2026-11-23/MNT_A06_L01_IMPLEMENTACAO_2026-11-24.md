@@ -1,0 +1,9 @@
+# MNT-A06-L01 — Implementação candidata
+
+Autoridade: usuário autorizou expressamente implementação em 24/11/2026, após aprovação do escopo exato de exceções e testes negativos. Dossiê documental: PR #617 (head d32908b78f1b351cf0a9765e66729f0b6951e794). Main observada b18370ea48de2124329d85a65a85b10a83ea4f7c; base de trabalho #607 fedb64081270a3a3eac229c496dbd492e679bd62 (depende #606). Base diverge da main desde 3fe3b0b; PR empilhada para não incorporar mudanças alheias no diff. Reconciliar e retestar antes de qualquer merge.
+
+Escopo: 2 HTML, 2 validadores existentes, este recibo. Seis tags e dois campos WebPage por slug, conforme #617. Nenhum H1, preço, facts, FAQ, formulário, mídia ou sitemap alterado (lastmod já 24/11 no stack). Guarda idêntica nos dois validadores: exige valores novos exatos, unicidade de tags e WebPage, identidade e JSON compacto; restaura unicamente o delta para comparações de snapshot existentes, que permanecem intactas. Não é relaxamento geral. Metadados sincronizados inclusive OG/Twitter e WebPage.
+
+Preflight executado em memória sobre os arquivos reais do head: reversão integral por página, 14 casos negativos (7 por página) rejeitados por guarda ou comparação integral; inclui título errado, duplicação de título/meta/WebPage, WebPage errado, mutação de corpo e de grafo. **Não equivale a execução dos validadores Node completos**; CI, LOCAL_LIVE_SYNC e testes contra snapshot histórico efetivo permanecem pendentes. Nenhuma alteração nas outras páginas. Sem merge, deploy, Preview, IndexNow ou GSC submission.
+
+Próxima ação: conferir diff, CI e negativos no ambiente Node com histórico Git, reconciliar cadeia #606 -> #607 -> A06; #617 documental independente. Somente depois autorização específica de merge. Kit global continua parcialmente defasado; não afirmar produção nem ganho CTR.
