@@ -1,3 +1,9 @@
+## 24/11/2026 — Bloqueio A06-L01 (candidato documental)
+
+Proibido alterar Ampère/Ária, seus snapshots ou `scripts/validate-resf-html-regression.mjs` / `scripts/validate-resf-v2-postal-address-contract.mjs` sem autorização específica e delta exato com negativos. Não relaxar comparação de outras partes, não duplicar #606/#607, não modificar preço, Product/Offer, facts, FAQ, formulário, mídias, consentimento, WhatsApp, headings ou outras rotas. Sem merge/deploy/Preview/IndexNow nesta etapa. Não confundir volumes estimados, KD inconclusivo ou SERP variável com efeito comprovado. Dossiê `docs/seo/auditorias/2026-11-23/MNT_A06_L01_KEYWORD_MAPPING_EVIDENCE_2026-11-24.md`. Demais bloqueios abaixo permanecem.
+
+---
+
 ## 24/11/2026 — Bloqueios vigentes (Rio e Órbita)
 
 Não restaurar `Product`/`Offer` no Órbita com preço histórico ou disponibilidade não comprovada; só após preço vigente confirmado e PR própria. Não relaxar validadores das demais páginas. Alterações em testes e em produção são entregas distintas. Rio: não inventar preço, metragem, endereço ou métrica; não afirmar que as perguntas dos H2 são idênticas às do Google; não trocar o H1 do hub sem decisão do Wagner. Merge/deploy somente com autorização explícita e específica de cada PR. Sem IndexNow ou gasto em mídia.

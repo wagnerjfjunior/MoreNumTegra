@@ -1,3 +1,9 @@
+## 24/11/2026 — Proposta de continuidade A06-L01 (documentação, sem runtime)
+
+Escopo desta proposta: recuperação FGTS/A01–A05 e pesquisa CTR Ampère/Ária. Base observada `4f755ac39c2618d62eeb63a6809e3e689b92c2a2`; kit anterior descreve ed9978d. A01 #599, A02 #600, A03 #602 e A05 etapa 1 #611 integradas; A04 #606 e H1 Ampère #607 abertos. A06 pesquisa GSC/OpenSEO concluída com lacunas; preflight em memória dos metadados realizado, sem editar páginas. Gate de validadores estritos bloqueia runtime até autorização específica. Dossiê: `docs/seo/auditorias/2026-11-23/MNT_A06_L01_KEYWORD_MAPPING_EVIDENCE_2026-11-24.md`. Esta seção não certifica produção nem reconciliação global e não substitui outras frentes. A próxima ação proposta está no NEXT_SAFE_ACTION desta mesma branch; main canônica até merge documental autorizado.
+
+---
+
 ## 24/11/2026 — Rio em produção (#601, #605, #608) + MNT Órbita integrada (#604)
 
 - **Main ao vivo na escrita:** `ed9978d75da3b3d7888b8bfd532c4f315b1f5052`. Merges autorizados por Wagner, um a um, no chat; deploy em produção conferido por leitura do HTML ao vivo (moretegra.com.br). Vercel, não Green.
