@@ -12,6 +12,12 @@ function graph(s){return [...s.matchAll(/<script\b[^>]*type=["']application\/ld\
 function type(n,t){return n['@type']===t||(Array.isArray(n['@type'])&&n['@type'].includes(t))}
 const mustExist=['WebPage','ApartmentComplex'];
 const enriched=['BreadcrumbList','ImageObject','Organization','ContactPoint','RealEstateAgent','Service','Product','Offer'];
+// MNT 2026-11-24 (SFJM) — Reconciliação SEO/JSON-LD Órbita: ausência TEMPORÁRIA e INTENCIONAL de Product/Offer
+// no Órbita até confirmação de preço vigente. Vale só para este slug; todas as demais páginas seguem inalteradas.
+// Nesta pausa o teste passa a exigir a AUSÊNCIA (impede restaurar preço histórico ou disponibilidade não comprovada).
+const ORBITA_SLUG='universo-tatuape-orbita';
+const ORBITA_COMMERCIAL_PAUSE=new Set(['Product','Offer']);
+const paused=(slug,t)=>slug===ORBITA_SLUG&&ORBITA_COMMERCIAL_PAUSE.has(t);
 const issues=[];
 for(const slug of slugs){
  const path=root+'/'+slug+'/index.html';
@@ -55,6 +61,7 @@ for(const slug of slugs){
      const restored={...newer,'@id':old['@id'],address:old.address,geo:old.geo};
      assert.deepEqual(restored,old,'Elo Duo Realtor has unintended changes besides scoped identity/location');
    }
+   if(!newer&&paused(slug,old['@type']))continue;
    assert(newer,slug+': schema entity deleted: '+old['@type']+' '+old['@id']);
  }
  if(slug==='jerivas-caminhos-da-lapa'){
@@ -82,8 +89,8 @@ for(const slug of slugs){
  // missing commercial schema and uses hard gates for explicitly upgraded pages.
  const absent=enriched.filter(t=>!currentTypes.has(t));
  const hardGate=slug==='universo-tatuape-orbita';
- if(hardGate)for(const required of enriched)assert(currentTypes.has(required),slug+': REQUIRED structured entity missing: '+required);
- for(const t of beforeTypes)assert(currentTypes.has(t),slug+': structured entity type regressed: '+t);
+ if(hardGate)for(const required of enriched.filter(t=>!paused(slug,t)))assert(currentTypes.has(required),slug+': REQUIRED structured entity missing: '+required);
+ for(const t of beforeTypes)if(!paused(slug,t))assert(currentTypes.has(t),slug+': structured entity type regressed: '+t);
  const product=now.find(n=>type(n,'Product')),offer=now.find(n=>type(n,'Offer'));
  if(product&&offer){
    assert(product.offers,slug+': Product.offers missing');
@@ -91,7 +98,7 @@ for(const slug of slugs){
    assert(target===offer['@id']||typeof product.offers==='object'&&product.offers['@type']==='Offer',slug+': Product.offers must link Offer');
    assert(offer.priceCurrency==='BRL'||!offer.price,slug+': price currency must be BRL');
  }
- if(hardGate)assert(product&&offer,slug+': commercially upgraded page must have paired Product + Offer');
+ if(hardGate)assert(!product&&!offer,slug+': MNT 2026-11-24: Product/Offer must stay absent until a current price is confirmed (no historical price or unproven availability)');
  if(now.length<8||absent.length){
    issues.push({slug,entities:now.length,missing:absent.join(', '),legacy:!hardGate});
  }

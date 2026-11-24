@@ -8,10 +8,16 @@ const base='bbe59c7a0b7b8a597826d56f6bc01d5291d9dfa5';
 const baseline=p=>execFileSync('git',['show',base+':'+p],{encoding:'utf8'});
 const v=JSON.parse(read('vercel.json')),vb=JSON.parse(baseline('vercel.json'));
 assert.equal(data.length,11);
-assert.deepEqual(v.redirects,vb.redirects,'Do not add migrations before individual publication approval');
+// MNT 2026-11-24 (SFJM): a lista de redirects segue FECHADA. Além do baseline, só entram as adições explicitamente aprovadas abaixo
+// (limpeza do caminho interno do Complexo Lapa-Pirituba; não é migração de artigo). Qualquer outra adição continua reprovando.
+const APPROVED_REDIRECT_ADDITIONS=[{source:'/src-greenn/complexo-lapa-pirituba/index.html',destination:'/complexo-lapa-pirituba/',permanent:true}];
+const rk=r=>JSON.stringify(Object.fromEntries(Object.entries(r).sort()));
+assert.deepEqual(v.redirects.map(rk).sort(),[...vb.redirects,...APPROVED_REDIRECT_ADDITIONS].map(rk).sort(),'Do not add migrations before individual publication approval');
 for(const r of vb.rewrites)assert.ok(v.rewrites.some(x=>JSON.stringify(x)===JSON.stringify(r)),'Existing rewrite changed');
 for(const a of data)assert.ok(read('sitemap.xml').includes('https://www.moretegra.com.br'+a.url),'Published article in sitemap');
-for(const p of ['src-greenn/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/index.html'])assert.equal(read(p),baseline(p).replace("Valorização imobiliária na Lapa (SP): preços, riscos e potencial | MoreTegra","Valorização imobiliária na Lapa: preços e riscos | MoreTegra"),'Protected source changed beyond approved title: '+p);
+// MNT 2026-11-24 (SFJM): fonte protegida presa ao snapshot aprovado aa1cd583 (2026-11-14: Sabrina -> Time Tegra Vendas, titulo aprovado).
+// Qualquer outra alteracao na pagina continua reprovando.
+for(const p of ['src-greenn/blog/mercado/valorizacao-imobiliaria-lapa-sao-paulo/index.html'])assert.equal(read(p),execFileSync('git',['show','aa1cd583:'+p],{encoding:'utf8'}),'Protected source changed beyond approved snapshot aa1cd583: '+p);
 const titles=new Set(),descriptions=new Set(),h1s=new Set(),allLinks=new Set();
 const rew=new Map(v.rewrites.map(r=>[r.source,r.destination]));
 const results=[];
@@ -82,15 +88,23 @@ assert.ok(!riio.includes('hero-meta'));
 assert.ok(riio.includes('<b>3 a 6 vagas</b>')&&riio.includes('<b>Em construção</b>'));
 const rg=JSON.parse(riio.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
 assert.ok(!rg.some(x=>['Product','Offer'].includes(x['@type'])),'No unverified unit offer');
-assert.ok(!riio.includes('R$')&&!riio.includes('postalCode'),'No inherited price or invented CEP');
+// MNT 2026-11-24 (SFJM): o unico CEP permitido no RIIO e o governado por validate-onsite-realtor-project-address.mjs (22630-011, #561).
+// Preco herdado e qualquer outro CEP continuam reprovando.
+assert.ok(!riio.includes('R$')&&[...riio.matchAll(/"postalCode":"([^"]*)"/g)].every(m=>m[1]==='22630-011'),'No inherited price or invented CEP');
 const questions=[...riio.matchAll(/<details><summary>([\s\S]*?)<\/summary><p>([\s\S]*?)<\/p><\/details>/g)].map(x=>[x[1].replaceAll('&amp;','&'),x[2].replaceAll('&amp;','&')]);
 assert.deepEqual(rg.find(x=>x['@type']==='FAQPage').mainEntity.map(x=>[x.name,x.acceptedAnswer.text]),questions,'RIIO FAQ parity');
 const form=riio.match(/<form id="moretegra-lead-form"[\s\S]*?<\/form>/)[0];
-const reference=read('src-greenn/empreendimentos/jerivas-caminhos-da-lapa/index.html').match(/<form id="moretegra-lead-form"[\s\S]*?<\/form>/)[0].replaceAll('Jerivás Caminhos da Lapa','RIIO by Piero Lissoni').replaceAll('Jerivás','RIIO by Piero Lissoni');
+const reference=read('src-greenn/empreendimentos/jerivas-caminhos-da-lapa/index.html').match(/<form id="moretegra-lead-form"[\s\S]*?<\/form>/)[0].replaceAll('Jerivás Caminhos da Lapa','RIIO by Piero Lissoni').replaceAll('Jerivás','RIIO by Piero Lissoni')
+ // MNT 2026-11-24 (SFJM): deltas aprovados do canal RJ (#561): form 47 e atendimento 'especialista' (sem Sabrina). Nada além disso.
+ .replace('data-form-id="46"','data-form-id="47"').replace('name="form_id" value="46"','name="form_id" value="47"').replace('Falar com Sabrina</option>','Falar com especialista</option>');
 assert.equal(form,reference,'Preserve native Form46, adjusting only project context');
+// MNT 2026-11-24 (SFJM): scripts compartilhados presos ao ultimo snapshot aprovado de cada um
+// (runtime.js: #600 FGTS/origem no Form46; measurement-form.js: #561 canal RJ/form 47). measurement-core.js segue no baseline.
+const SCRIPT_SNAPSHOT={'runtime.js':'41401521','measurement-core.js':base,'measurement-form.js':'8fe1043a'};
 for(const script of ['runtime.js','measurement-core.js','measurement-form.js']){
  assert.ok(riio.includes('/src-greenn/preview/'+script));
- assert.equal(read('src-greenn/preview/'+script),baseline('src-greenn/preview/'+script));
+ const p='src-greenn/preview/'+script;
+ assert.equal(read(p),execFileSync('git',['show',SCRIPT_SNAPSHOT[script]+':'+p],{encoding:'utf8'}),'Shared script drifted from approved snapshot: '+script);
 }
 for(const [,src] of riio.matchAll(/<img[^>]+src="(\/[^\"]+)"/g))assert.ok(existsSync(src.slice(1)),'RIIO image '+src);
 assert.equal(rew.get('/empreendimentos/riio-by-piero-lissoni/'),'/src-greenn/empreendimentos/riio-by-piero-lissoni/index.html');

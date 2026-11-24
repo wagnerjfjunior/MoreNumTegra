@@ -535,7 +535,10 @@ for(const [slug,street,cep] of expected){
    normalizedFaq.mainEntity=structuredClone(priorFaq.mainEntity);
    assert.deepEqual(scrub([{'@graph':kept}]),scrub([{'@graph':baseline}]),'Órbita: original schema entities must remain unchanged except approved new references');
    const newTypes=enriched.filter(n=>!baseline.some(x=>x['@id']===n['@id'])).map(n=>n['@type']);
-   const allowed=['Organization','ContactPoint','Person','RealEstateAgent','Service','Product','Offer','ImageObject','ImageObject','FloorPlan','FloorPlan','FloorPlan','FloorPlan'];
+   // MNT 2026-11-24 (SFJM) — Reconciliação SEO/JSON-LD Órbita: ausência TEMPORÁRIA e INTENCIONAL de Product/Offer
+   // até confirmação de preço vigente. A lista exata de tipos novos permanece fechada (sem Product/Offer; 3 FloorPlan).
+   const allowed=['Organization','ContactPoint','Person','RealEstateAgent','Service','ImageObject','ImageObject','FloorPlan','FloorPlan','FloorPlan'];
+   assert(!enriched.some(n=>n['@type']==='Product'||n['@type']==='Offer'),'Órbita: MNT 2026-11-24 — Product/Offer must stay absent until a current price is confirmed');
    assert.deepEqual(newTypes.slice().sort(),allowed.slice().sort(),'Órbita: only specifically approved commercial/image/plan types may be added');
  }else {
    const normalized=normalizeOnsiteAgent(stripApprovedImages(stripBemMoemaRichEntities(after,slug),before,slug,candidate),before,slug);

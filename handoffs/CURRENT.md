@@ -1,3 +1,12 @@
+## 24/11/2026 — MNT Reconciliação SEO/JSON-LD Órbita + PR #601 Rio integrada
+
+- **PR #601 integrada na main:** `5629c9035a6f60be002e9ebe03bfc225544f1d4b`. Title, meta e H2 dos 7 produtos do Rio (Kronos, Gran Thai, Singular, Gaea, Claris Casa & Clube, Claris Rosas, RIIO); H1, FAQ, links e hub/Barra intactos. Titles ≤ 60 caracteres, metas ≤ 160. “Preço” na meta só onde a página publica “A partir de” (RIIO não). Deploy: Vercel (não Green).
+- **Decisão do proprietário (24/11):** Órbita sem `Product`/`Offer` de forma temporária e intencional; proibido restaurar preço histórico ou disponibilidade não comprovada; reconciliar só os três validadores (`coverage`, `postal`, `draft-quality`); entrega de testes separada de produção. Dossiê: `docs/seo/MNT_ORBITA_RECONCILIACAO_JSONLD_2026-11-24.md`.
+- **Estado:** reconciliação em PR própria, **sem merge**. Pendência latente fora do escopo: `validate-orbita-commercial-schema-parity.mjs`.
+- **Rio, próxima frente (não iniciada):** H2 em pergunta no hub e na página da Barra, apenas com perguntas observadas no Google (“As pessoas também perguntam”: planta, preço/m², cobertura, área nobre). O estudo de keywords do Rio (Keyword Planner, PR #565) não contém perguntas; páginas de produto seguem com H2 afirmativo.
+
+---
+
 ## 23/11/2026 — DECISÃO VIGENTE: PR #595 FGTS TRANSVERSAL, SEM MERGE
 
 - **Aprovação posterior de Wagner:** “sim, claro” para reestruturar a PR #595 como cluster FGTS de todo o catálogo residencial pronto de São Paulo e corrigir a allowlist do sitemap de forma exata, **sem merge automático**. Esta decisão supera o escopo exclusivamente Órbita registrado abaixo.
