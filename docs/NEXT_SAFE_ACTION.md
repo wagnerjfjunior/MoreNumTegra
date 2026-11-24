@@ -1,3 +1,11 @@
+## 24/11/2026 — Próxima ação segura: MNT Órbita (testes) e Rio PR 2
+
+1. Validar o CI da PR de reconciliação (`coverage`, `postal`, `draft-quality` verdes) e aguardar autorização explícita de merge. Não alterar páginas nesta PR.
+2. Rio PR 2 (hub + Barra): H2 em pergunta somente com perguntas observadas no Google e resposta publicável na própria página; páginas de produto não recebem H2 em pergunta. Dossiê da frente: documento “Rio de Janeiro — Keyword mapping e plano de SEO on-page” no projeto Claude.
+3. Antes de qualquer PR que toque o Órbita: decidir o destino de `validate-orbita-commercial-schema-parity.mjs`.
+
+---
+
 ## 23/11/2026 — PR #595: próxima ação segura FGTS TRANSVERSAL (sem merge)
 
 Wagner aprovou (“sim, claro”) a **revisão da PR #595** para que FGTS seja um cluster de todo o catálogo residencial pronto em São Paulo, não uma campanha exclusiva do Órbita. Também aprovou a correção **exata** da allowlist de sitemap com teste negativo, sem alterar outros validadores.

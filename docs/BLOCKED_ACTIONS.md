@@ -1,3 +1,9 @@
+## 24/11/2026 — Bloqueios do MNT Órbita
+
+Não restaurar `Product`/`Offer` no Órbita com preço histórico ou disponibilidade não comprovada; só após preço vigente confirmado e PR própria. Não relaxar validadores das demais páginas. Alterações em testes e em produção são entregas distintas. Merge/deploy somente com autorização explícita. Sem IndexNow ou gasto em mídia.
+
+---
+
 ## 23/11/2026 — ESCOPO ATUALIZADO PR #595: FGTS TRANSVERSAL
 
 A aprovação posterior “sim, claro” **autoriza** reestruturar artigo/links para múltiplos empreendimentos residenciais prontos SP, incluir atalho de catálogo na home e **editar somente a allowlist de URLs do blog** em `scripts/validate-two-images-39-pages.mjs` para o artigo FGTS, com teste negativo. **Não autoriza** relaxar outros contratos, mudar preço, Form46, Livelo, Rio, campanhas, páginas congeladas, GTM, publicar ou mesclar. O bloqueio genérico de alteração de validadores registrado abaixo continua valendo **para qualquer outro validador ou regra**.

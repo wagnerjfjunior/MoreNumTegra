@@ -1,3 +1,9 @@
+## 24/11/2026 — Rio: PR #601 integrada (5629c90) + MNT Órbita em PR
+
+PR #601 integrada: title/meta/H2 dos 7 produtos do Rio. MNT Reconciliação SEO/JSON-LD Órbita registrada (Product/Offer ausentes de forma temporária e intencional; três validadores reconciliados em PR própria, sem merge). Fonte: `docs/seo/MNT_ORBITA_RECONCILIACAO_JSONLD_2026-11-24.md`. Frente Rio seguinte: H2 em pergunta no hub e na Barra, não iniciada.
+
+---
+
 ## 23/11/2026 — F20 atualizado: FGTS transversal SP, PR #595 DRAFT
 
 | Frente | Decisão posterior do proprietário | Implementado em branch | Bloqueio |
