@@ -1,9 +1,13 @@
-## 24/11/2026 — MNT Reconciliação SEO/JSON-LD Órbita + PR #601 Rio integrada
+## 24/11/2026 — Rio em produção (#601, #605, #608) + MNT Órbita integrada (#604)
 
-- **PR #601 integrada na main:** `5629c9035a6f60be002e9ebe03bfc225544f1d4b`. Title, meta e H2 dos 7 produtos do Rio (Kronos, Gran Thai, Singular, Gaea, Claris Casa & Clube, Claris Rosas, RIIO); H1, FAQ, links e hub/Barra intactos. Titles ≤ 60 caracteres, metas ≤ 160. “Preço” na meta só onde a página publica “A partir de” (RIIO não). Deploy: Vercel (não Green).
-- **Decisão do proprietário (24/11):** Órbita sem `Product`/`Offer` de forma temporária e intencional; proibido restaurar preço histórico ou disponibilidade não comprovada; reconciliar só os três validadores (`coverage`, `postal`, `draft-quality`); entrega de testes separada de produção. Dossiê: `docs/seo/MNT_ORBITA_RECONCILIACAO_JSONLD_2026-11-24.md`.
-- **Estado:** reconciliação em PR própria, **sem merge**. Pendência latente fora do escopo: `validate-orbita-commercial-schema-parity.mjs`.
-- **Rio, próxima frente (não iniciada):** H2 em pergunta no hub e na página da Barra, apenas com perguntas observadas no Google (“As pessoas também perguntam”: planta, preço/m², cobertura, área nobre). O estudo de keywords do Rio (Keyword Planner, PR #565) não contém perguntas; páginas de produto seguem com H2 afirmativo.
+- **Main ao vivo na escrita:** `ed9978d75da3b3d7888b8bfd532c4f315b1f5052`. Merges autorizados por Wagner, um a um, no chat; deploy em produção conferido por leitura do HTML ao vivo (moretegra.com.br). Vercel, não Green.
+- **#601 `5629c90`:** title (≤ 60), meta (≤ 160) e H2 dos 7 produtos do Rio. “Preço” na meta só onde a página publica “A partir de” (RIIO não).
+- **#604 `3fe3b0b`:** MNT Reconciliação SEO/JSON-LD Órbita. Só testes e documentação: `coverage`, `postal` e `draft-quality` reconciliados; Órbita sem `Product`/`Offer` de forma temporária e intencional. Dossiê: `docs/seo/MNT_ORBITA_RECONCILIACAO_JSONLD_2026-11-24.md`.
+- **#605 `9a36ae3`:** hub `/rio-de-janeiro/` e Barra: title/meta com termos do estudo; H2 em pergunta com resposta na primeira frase; FAQ da Barra com condomínios, metragem (77 a 1.042 m²) e cobertura (Kronos). H1 do hub preservado (validador o fixa como Big Idea aprovada).
+- **#608 `ed9978d`:** H2 em pergunta nos 6 empreendimentos (“Quais plantas/casas/residências o X oferece?”, “Em que parte da Barra fica o X?”, Gaea: “Como é a localização…”), no hub (“Como é viver na Barra da Tijuca?”) e na Barra (“Como é o dia a dia na Barra da Tijuca?”). Sem dado novo.
+- **Decisão que substitui a anterior:** a nota de 24/11 “páginas de produto não recebem H2 em pergunta” foi superada por pedido do Wagner; vale #608. Ficaram de fora o RIIO (seções sem resposta direta), os H2 de FAQ (rótulos) e `/rio-de-janeiro/regioes/` (índice, não tocado).
+- **Limite de evidência:** o estudo do Keyword Planner (PR #565) não tem perguntas. As perguntas seguem os temas vistos no “As pessoas também perguntam” (metragem, condomínio, cobertura, planta); o texto literal não foi guardado, então não afirmar que as perguntas são idênticas às do Google.
+- **Abertos:** reindexação no Search Console (Wagner); `validate-orbita-commercial-schema-parity.mjs` (falha, fora do contrato); `validate-home-consent-desktop-width.mjs` (falha também na main, sem relação).
 
 ---
 

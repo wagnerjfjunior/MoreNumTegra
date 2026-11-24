@@ -1,8 +1,8 @@
 # MoreNumTegra — MNT Reconciliação SEO/JSON-LD Órbita (24/11/2026)
 
-**Status:** IMPLEMENTADO EM BRANCH `claude/mnt-orbita-reconciliacao-validadores-20261124` / PR PENDENTE / SEM MERGE / SEM PRODUÇÃO.
+**Status:** INTEGRADO NA MAIN pela PR #604 (`3fe3b0bfc243459b7dc688dac96367b4ecf228c3`), com autorização do proprietário em 24/11/2026. Só testes e documentação; sem alteração de página de produção.
 **Autoridade:** decisão registrada pelo proprietário em 24/11/2026 sob governança SFJM (contrato abaixo, §1).
-**Repositório:** `wagnerjfjunior/MoreNumTegra`. **Base main:** `5629c9035a6f60be002e9ebe03bfc225544f1d4b` (PR #601 integrada).
+**Repositório:** `wagnerjfjunior/MoreNumTegra`. **Base main da PR:** `5629c9035a6f60be002e9ebe03bfc225544f1d4b` (PR #601 integrada). Main posterior: `ed9978d` (após #605 e #608, do Rio).
 **Natureza da entrega:** **somente testes e documentação**. Nenhuma página, schema, preço ou rota de produção é alterada nesta PR.
 
 ## 1. Contrato registrado
@@ -34,6 +34,6 @@ O item `draft-quality` estava vermelho por causas além do Órbita (canal RJ do 
 
 ## 5. Gates
 
-- CI da PR: `coverage`, `postal` e `draft-quality` devem ficar verdes; os demais checks não mudam.
-- Merge somente com autorização explícita do proprietário.
+- CI da PR #604: `coverage`, `postal` e `draft-quality` ficaram verdes (cumprido).
+- Merge da #604 com autorização explícita do proprietário em 24/11/2026 (cumprido).
 - Restabelecer `Product`/`Offer` do Órbita exige preço vigente confirmado e PR própria, revertendo a proibição do §3 no mesmo ato.
