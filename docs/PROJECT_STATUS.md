@@ -1,6 +1,6 @@
-## 24/11/2026 — Rio: PR #601 integrada (5629c90) + MNT Órbita em PR
+## 24/11/2026 — Rio: #601, #605 e #608 em produção; MNT Órbita integrada (#604)
 
-PR #601 integrada: title/meta/H2 dos 7 produtos do Rio. MNT Reconciliação SEO/JSON-LD Órbita registrada (Product/Offer ausentes de forma temporária e intencional; três validadores reconciliados em PR própria, sem merge). Fonte: `docs/seo/MNT_ORBITA_RECONCILIACAO_JSONLD_2026-11-24.md`. Frente Rio seguinte: H2 em pergunta no hub e na Barra, não iniciada.
+Main `ed9978d`. As 10 páginas do Rio têm title, meta e H2 alinhados ao estudo; hub e Barra com H2 em pergunta e FAQ novo da Barra; 6 empreendimentos com H2 em pergunta. MNT Órbita (#604, `3fe3b0b`): testes reconciliados, `Product`/`Offer` ausentes de forma temporária e intencional. Pendências: RIIO e `/regioes/` sem H2 em pergunta; reindexação no Search Console; dois validadores que falham (Órbita parity e home-consent). Fonte: `handoffs/CURRENT.md` (24/11) e `docs/seo/MNT_ORBITA_RECONCILIACAO_JSONLD_2026-11-24.md`.
 
 ---
 

@@ -1,8 +1,9 @@
-## 24/11/2026 — Próxima ação segura: MNT Órbita (testes) e Rio PR 2
+## 24/11/2026 — Próxima ação segura (após #601, #604, #605 e #608)
 
-1. Validar o CI da PR de reconciliação (`coverage`, `postal`, `draft-quality` verdes) e aguardar autorização explícita de merge. Não alterar páginas nesta PR.
-2. Rio PR 2 (hub + Barra): H2 em pergunta somente com perguntas observadas no Google e resposta publicável na própria página; páginas de produto não recebem H2 em pergunta. Dossiê da frente: documento “Rio de Janeiro — Keyword mapping e plano de SEO on-page” no projeto Claude.
-3. Antes de qualquer PR que toque o Órbita: decidir o destino de `validate-orbita-commercial-schema-parity.mjs`.
+1. Wagner: pedir reindexação no Search Console das 9 URLs do Rio alteradas (hub, Barra e 7 empreendimentos). Nada a fazer no código.
+2. Rio PR 4 (opcional, em PR própria): RIIO (uma frase de resposta por seção antes de virar pergunta) e `/rio-de-janeiro/regioes/` como índice dos bairros. Só com dado já publicado nas páginas.
+3. Antes de qualquer PR que toque o Órbita: decidir o destino de `validate-orbita-commercial-schema-parity.mjs`. `validate-home-consent-desktop-width.mjs` falha também na main e precisa de dono próprio.
+4. Atualizar o documento “Rio de Janeiro — Keyword mapping e plano de SEO on-page” (ainda descreve H2 em pergunta só no hub/Barra e não registra #608).
 
 ---
 

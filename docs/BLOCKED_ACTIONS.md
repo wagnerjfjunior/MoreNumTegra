@@ -1,6 +1,6 @@
-## 24/11/2026 — Bloqueios do MNT Órbita
+## 24/11/2026 — Bloqueios vigentes (Rio e Órbita)
 
-Não restaurar `Product`/`Offer` no Órbita com preço histórico ou disponibilidade não comprovada; só após preço vigente confirmado e PR própria. Não relaxar validadores das demais páginas. Alterações em testes e em produção são entregas distintas. Merge/deploy somente com autorização explícita. Sem IndexNow ou gasto em mídia.
+Não restaurar `Product`/`Offer` no Órbita com preço histórico ou disponibilidade não comprovada; só após preço vigente confirmado e PR própria. Não relaxar validadores das demais páginas. Alterações em testes e em produção são entregas distintas. Rio: não inventar preço, metragem, endereço ou métrica; não afirmar que as perguntas dos H2 são idênticas às do Google; não trocar o H1 do hub sem decisão do Wagner. Merge/deploy somente com autorização explícita e específica de cada PR. Sem IndexNow ou gasto em mídia.
 
 ---
 
