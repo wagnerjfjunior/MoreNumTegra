@@ -1,3 +1,19 @@
+## 24/11/2026 — BLOQUEIOS VIGENTES APÓS A01/A02 E PR #601; A03 NÃO PUBLICADA
+
+**Merges liberados anteriormente, já concluídos:** #595, #596, #599, #600 e #601 estão no `main 5629c9035a6f60be002e9ebe03bfc225544f1d4b`. As restrições abaixo que falam “não mesclar #595” ou “FGTS só em branch” foram superadas pelos merges específicos e hoje são históricas, **somente para essas PRs**. Form46 FGTS possui evidência de integração no CRM fornecida pelo proprietário. Nenhuma nova autorização decorre desses fatos.
+
+**Agora expressamente gated:**
+- **PR #602 A03:** só preparação e QA de branch autorizados pela solicitação “ok, siga”; **não realizar merge, deploy, IndexNow nem mudar a produção** antes de ordem específica posterior. LOCAL_LIVE_SYNC 360/390/430/900/1440 e clique do card editorial ainda não certificados.
+- **PR #597 auditoria:** documento em rascunho, parecer independente não confirmado; não tratar A04–A15 como autorizadas para edição ou release.
+- **PR #598 SFJM (esta branch):** somente proposta documental. Não mesclar automaticamente ou considerar `docs/NEXT_SAFE_ACTION.md` atualizado na `main` antes do merge autorizado.
+- **PRs #565/#581/#582 e F02 H2/H3:** decisões separadas. Nenhum merge implícito por A03.
+- **CI antigo:** `Mercado editorial 11 draft gates` falha pelo baseline histórico de redirects; proibição de editar/suprimir validador sem autorização específica.
+- **Contratos preservados:** Form46/SP, Form47/RJ, atribuição e consentimento, identidade/comercial regional, SEO/schema, RESF, imagens e preços. Não anunciar elegibilidade FGTS universal, valores, estoque ou campanha não verificados.
+
+Produção observada neste snapshot: Vercel `dpl_34zZ9Nhko7bTRSuyqJQGJbT82B9S` READY para o commit #601. Publicação da A03 **não ocorreu**.
+
+---
+
 ## 23/11/2026 — ESCOPO ATUALIZADO PR #595: FGTS TRANSVERSAL
 
 A aprovação posterior “sim, claro” **autoriza** reestruturar artigo/links para múltiplos empreendimentos residenciais prontos SP, incluir atalho de catálogo na home e **editar somente a allowlist de URLs do blog** em `scripts/validate-two-images-39-pages.mjs` para o artigo FGTS, com teste negativo. **Não autoriza** relaxar outros contratos, mudar preço, Form46, Livelo, Rio, campanhas, páginas congeladas, GTM, publicar ou mesclar. O bloqueio genérico de alteração de validadores registrado abaixo continua valendo **para qualquer outro validador ou regra**.

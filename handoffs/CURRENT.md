@@ -1,3 +1,14 @@
+## 24/11/2026 — RETOMADA DA AUDITORIA: A01/A02 PRODUÇÃO; A03 PR #602 SEM MERGE
+
+- **Fonte canônica live nesta leitura:** GitHub `main 5629c9035a6f60be002e9ebe03bfc225544f1d4b`. Merges confirmados: #595 (`0cd8dc8`), #596 (`05e0169`), #599 (`2f2d5b5`), #600 (`4140152`) e #601 (`5629c90`). Vercel Production READY da #601: `dpl_34zZ9Nhko7bTRSuyqJQGJbT82B9S`. As seções abaixo que dizem #595 DRAFT/sem merge são anteriores ao release e permanecem apenas como histórico.
+- **A01:** 18 links relacionados em seis empreendimentos do RJ passaram a apontar diretamente a páginas comerciais, PR #599 integrada; não modificar atendimento RJ/Form47.
+- **A02:** funil FGTS integra origem + intenção + empreendimento em `texto-livre` do Form46, PR #600 integrada. Chromium CI 33/33 em 360/390/430/900/1440; evidência visual do proprietário confirma o campo com `Interesse: FGTS` na Green Sales, com intenção comercial `Condições e disponibilidade`. Não copiar PII do registro.
+- **A03:** o usuário autorizou a preparação (“ok, siga” após o plano). PR #602 em rascunho substitui o terceiro destaque da vitrine `/blog/` por link ao guia FGTS e adiciona correção CSS móvel escopada para um link preexistente que provocava overflow a 360px. Há 10 verificações editoriais estáticas PASS; o smoke estrito de cinco larguras passou **31/31** no head `3f59c01` (GitHub Actions run `45407463134`). O LOCAL_LIVE_SYNC do proprietário e a autorização de merge seguem pendentes.
+- **Auditoria mãe:** PR #597 contém 89 URLs, 10 funis e A01–A15; revisão independente externa ainda não confirmada. Atualização pontual da matriz de andamento na PR #598 (documentação), sem alterar código da auditoria antiga.
+- **Próxima ação:** somente a homologação da A03, conforme `docs/NEXT_SAFE_ACTION.md` atualizado nesta branch. F02 H2/H3, PRs #565/#581/#582, A04–A15 e revisão de validator editorial antigo permanecem frentes separadas. **Sem merge, IndexNow, Preview, GSC ou alterações ao CRM nesta PR documental.**
+
+---
+
 ## 23/11/2026 — DECISÃO VIGENTE: PR #595 FGTS TRANSVERSAL, SEM MERGE
 
 - **Aprovação posterior de Wagner:** “sim, claro” para reestruturar a PR #595 como cluster FGTS de todo o catálogo residencial pronto de São Paulo e corrigir a allowlist do sitemap de forma exata, **sem merge automático**. Esta decisão supera o escopo exclusivamente Órbita registrado abaixo.
