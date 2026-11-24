@@ -52,6 +52,10 @@
       "destination": "/src-greenn/investimentos/studios-e-salas-comerciais/index.html"
     },
     {
+      "source": "/investimentos/calculadora-rentabilidade-imovel/",
+      "destination": "/src-greenn/investimentos/calculadora-rentabilidade-imovel/index.html"
+    },
+    {
       "source": "/blog/",
       "destination": "/src-greenn/blog/index.html"
     },
