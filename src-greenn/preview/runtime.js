@@ -375,15 +375,6 @@
 
     const pilot = document.querySelector(".pilot");
     if (pilot) pilot.textContent = "CAPIITOLO · Chácara Klabin";
-    const facts = document.querySelectorAll(".facts .fact");
-    const locationFact = facts[3];
-    if (locationFact) {
-      const value = locationFact.querySelector("b");
-      const label = locationFact.querySelector("span");
-      if (value) value.textContent = "Chácara Klabin";
-      if (label) label.textContent = "São Paulo";
-    }
-
     const locationImage = document.querySelector(".location > img");
     if (locationImage instanceof HTMLImageElement) {
       locationImage.src = "https://s3-gdigital.s3.amazonaws.com/gdigital/313/Chacara_Klabin.webp";
