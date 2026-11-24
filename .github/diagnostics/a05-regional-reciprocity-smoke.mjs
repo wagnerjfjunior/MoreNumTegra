@@ -60,7 +60,7 @@ try{
       assert.equal(await page.locator("section.facts").count(),1,"duplicate fact bands");
       const slots=facts.locator(".facts-in > .fact");
       assert.equal(await slots.count(),4,"RESF 4 ordered fact slots");
-      const texts=await slots.allInnerTexts();
+      const texts=(await slots.allTextContents()).map(x=>x.replace(/\s+/g," ").trim());
       if(f.name==="CAPIITOLO"){
         assert.match(texts[0],/210 m²/);
         assert.match(texts[0],/4 suítes/);
