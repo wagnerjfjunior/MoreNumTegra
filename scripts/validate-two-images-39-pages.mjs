@@ -45,7 +45,8 @@ const approvedBlogPaths=[
  "/blog/mercado/imoveis-luxo-renda-custos-liquidez/",
  "/blog/mercado/morar-itaim-bibi-rotina-custo/",
  "/blog/mercado/imovel-herdado-inventario-documentos-etapas/",
- "/blog/mercado/investir-em-studios-sao-paulo/"
+ "/blog/mercado/investir-em-studios-sao-paulo/",
+ "/blog/mercado/imovel-ou-cdi/"
 ];
 const validateBlogScope=paths=>assert.deepEqual(paths,approvedBlogPaths,'Blog sitemap additions must remain explicitly scoped');
 validateBlogScope(blogPaths);
