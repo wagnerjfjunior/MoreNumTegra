@@ -1,0 +1,30 @@
+name: A02 FGTS funnel 5-viewport browser smoke
+
+on:
+  pull_request:
+    paths:
+      - ".github/diagnostics/a02-fgts-e2e.mjs"
+      - ".github/workflows/a02-fgts-e2e.yml"
+      - "src-greenn/preview/runtime.js"
+      - "src-greenn/preview/index.html"
+      - "src-greenn/moretegra.js"
+      - "src-greenn/blog/mercado/usar-fgts-comprar-apartamento/index.html"
+
+permissions:
+  contents: read
+
+jobs:
+  fgts-e2e:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install isolated Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Browser smoke 360/390/430/900/1440 (no CRM POST)
+        run: node .github/diagnostics/a02-fgts-e2e.mjs
