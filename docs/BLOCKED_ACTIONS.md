@@ -1,8 +1,16 @@
-## 24/11/2026 — RECONCILIAÇÃO: o que mudou e o que continua bloqueado
+## 24/11/2026 — BLOQUEIOS VIGENTES APÓS A01/A02 E PR #601; A03 NÃO PUBLICADA
 
-**Mudou:** as PRs #595 (`0cd8dc8`) e #596 (`05e0169`) foram mescladas no `main` em 23/11/2026 (detalhe em `docs/NEXT_SAFE_ACTION.md`, seção de 24/11/2026). Os bloqueios de 23/11 que dizem "não mesclar a #595" ficam como histórico.
+**Merges liberados anteriormente, já concluídos:** #595, #596, #599, #600 e #601 estão no `main 5629c9035a6f60be002e9ebe03bfc225544f1d4b`. As restrições abaixo que falam “não mesclar #595” ou “FGTS só em branch” foram superadas pelos merges específicos e hoje são históricas, **somente para essas PRs**. Form46 FGTS possui evidência de integração no CRM fornecida pelo proprietário. Nenhuma nova autorização decorre desses fatos.
 
-**Continua bloqueado sem autorização específica do Wagner:** merge das PRs #565, #581, #582 e #597; deploy, IndexNow e Search Console; alteração de validadores e de páginas travadas por baseline; mudança de preço, disponibilidade, Form46/47, medição, campanhas e Rio. Elegibilidade FGTS: não afirmar que todo imóvel pronto aceita FGTS.
+**Agora expressamente gated:**
+- **PR #602 A03:** só preparação e QA de branch autorizados pela solicitação “ok, siga”; **não realizar merge, deploy, IndexNow nem mudar a produção** antes de ordem específica posterior. LOCAL_LIVE_SYNC 360/390/430/900/1440 e clique do card editorial ainda não certificados.
+- **PR #597 auditoria:** documento em rascunho, parecer independente não confirmado; não tratar A04–A15 como autorizadas para edição ou release.
+- **PR #598 SFJM (esta branch):** somente proposta documental. Não mesclar automaticamente ou considerar `docs/NEXT_SAFE_ACTION.md` atualizado na `main` antes do merge autorizado.
+- **PRs #565/#581/#582 e F02 H2/H3:** decisões separadas. Nenhum merge implícito por A03.
+- **CI antigo:** `Mercado editorial 11 draft gates` falha pelo baseline histórico de redirects; proibição de editar/suprimir validador sem autorização específica.
+- **Contratos preservados:** Form46/SP, Form47/RJ, atribuição e consentimento, identidade/comercial regional, SEO/schema, RESF, imagens e preços. Não anunciar elegibilidade FGTS universal, valores, estoque ou campanha não verificados.
+
+Produção observada neste snapshot: Vercel `dpl_34zZ9Nhko7bTRSuyqJQGJbT82B9S` READY para o commit #601. Publicação da A03 **não ocorreu**.
 
 ---
 
