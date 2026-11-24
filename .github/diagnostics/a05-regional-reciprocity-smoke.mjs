@@ -85,9 +85,9 @@ try{
         return {display:style.display,cols:style.gridTemplateColumns.trim().split(/\s+/).length,box:r.toJSON(),slots};
       });
       assert.equal(grid.display,"grid","facts layout must be CSS Grid");
-      assert.equal(grid.cols,width<=760?2:4,"RESF mobile 2x2, desktop 4 columns");
+      assert.equal(grid.cols,width<=900?2:4,"RESF 2x2 until tablet breakpoint 900px, 4 desktop columns");
       assert.ok(grid.slots.every(x=>x.left>=grid.box.left-2&&x.right<=grid.box.right+2),"facts exceed their grid bounds");
-      if(width<=760)assert.ok(grid.slots[0].top===grid.slots[1].top&&grid.slots[2].top===grid.slots[3].top&&grid.slots[2].top>grid.slots[0].top,"facts must be in two mobile rows");
+      if(width<=900)assert.ok(grid.slots[0].top===grid.slots[1].top&&grid.slots[2].top===grid.slots[3].top&&grid.slots[2].top>grid.slots[0].top,"facts must be in two mobile rows");
       pass("resf-facts-single-band-no-hero-meta",{page:f.name,width,columns:grid.cols,slots:texts.map(x=>x.replace(/\s+/g," ").slice(0,100))});
       const robots=await page.locator('head meta[name="robots"]').getAttribute("content");
       assert.ok(robots.startsWith("index,follow"),"rendered noindex? "+robots);
