@@ -38,6 +38,16 @@
 .featured-text{position:relative;z-index:1;padding:clamp(22px,3vw,36px);display:flex;flex-direction:column;gap:12px;max-width:650px}
 .featured-text strong{font-size:clamp(1.25rem,2.1vw,2.25rem);letter-spacing:-.035em;line-height:1.17}
 .featured-text>span{font-size:.87rem;color:#f4efe4;font-weight:600}
+/* A03: preserve as peças FGTS completas; a legenda permanece HTML clicável. */
+.featured-story.featured-story-fgts{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;background:#17283d}
+.featured-story-fgts:after{display:none}
+.featured-story-fgts .featured-art-fgts{display:block;width:100%;flex:none;line-height:0}
+.featured-story-fgts .featured-art-fgts img{position:static;inset:auto;display:block;width:100%;height:auto;aspect-ratio:1535 / 1024;object-fit:contain;transform:none}
+.featured-story-fgts:hover .featured-art-fgts img{transform:none}
+.featured-story-fgts .featured-text{display:flex;flex:1;max-width:none;width:100%;gap:6px;padding:16px 20px 18px;background:#17283d}
+.featured-story-fgts .featured-text strong{font-size:clamp(1.06rem,1.8vw,1.36rem)}
+.featured-story-fgts .featured-text>span{color:#f4efe4}
+@media(max-width:600px){.featured-story-fgts .featured-art-fgts img{aspect-ratio:941 / 1672}.featured-story-fgts .featured-text{padding:17px 19px 20px}}
 .blog-category-section:not(.blog-pending-section) .story-grid>.blog-story:nth-child(n+4){display:none}
 .blog-category-section:not(.blog-pending-section){padding:62px 0}
 .blog-category-section:not(.blog-pending-section) .category-heading{margin-bottom:26px}
