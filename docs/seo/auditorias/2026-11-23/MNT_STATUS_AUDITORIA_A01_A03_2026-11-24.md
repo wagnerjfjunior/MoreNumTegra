@@ -15,7 +15,7 @@ Data da atualização: 2026-11-24. Documento de continuidade preparado na PR #59
 | --- | --- | --- | --- |
 | A01 | P0 | IMPLEMENTADO EM PRODUÇÃO | PR #599 merged, 18 links de seis páginas RJ apontam para URL canônica dos projetos; revisão HTTP móvel completa não certificada |
 | A02 | P0 | IMPLEMENTADO / CRM CONFIRMADO | PR #600 merged, 33/33 testes de navegador com cinco viewports; campo `Interesse: FGTS` recebido na Green Sales; intenção enviada no exemplo foi `Condições e disponibilidade` |
-| A03 | P1 | PREPARADO / SEM MERGE | PR #602 draft, um destaque no `/blog/` aponta ao guia FGTS; 10/10 verificações estáticas; LVR e aceite pendentes |
+| A03 | P1 | PREPARADO / SEM MERGE | PR #602 draft, um destaque no `/blog/` aponta ao guia FGTS; correção CSS móvel escopada para overflow preexistente de 405px em tela de 360px; 10/10 verificações editoriais estáticas; smoke estrito, LVR e aceite dependem de evidência do último head |
 | A04 | P1 | PENDENTE | Hubs de região e links recíprocos por produto |
 | A05 | P1 | PENDENTE | Capiitolo e DSG Itaim; verificar fatos antes de ampliar copy |
 | A06 | P1 | PENDENTE | CTR/snippets com consulta e URL atuais; não presumir efeito de #601 em dados anteriores |
