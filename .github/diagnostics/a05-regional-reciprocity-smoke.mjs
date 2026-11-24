@@ -54,6 +54,41 @@ try{
       assert.equal(await link.count(),1,"no single hydrated region link "+f.name);
       assert.ok(await link.isVisible(),"region link not visible "+f.name);
       pass("hydrated-regional-link",{page:f.name,width});
+      assert.equal(await page.locator(".hero-meta, #hero-meta").count(),0,"RESF forbids duplicate hero-meta");
+      const facts=page.locator("section.hero + section.facts");
+      assert.equal(await facts.count(),1,"RESF requires a single facts band immediately after hero");
+      assert.equal(await page.locator("section.facts").count(),1,"duplicate fact bands");
+      const slots=facts.locator(".facts-in > .fact");
+      assert.equal(await slots.count(),4,"RESF 4 ordered fact slots");
+      const texts=await slots.allInnerTexts();
+      if(f.name==="CAPIITOLO"){
+        assert.match(texts[0],/210 m²/);
+        assert.match(texts[0],/4 suítes/);
+        assert.match(texts[1],/3 vagas/);
+        assert.match(texts[2],/Torre única/);
+        assert.match(texts[2],/Chácara Klabin/);
+        assert.match(texts[3],/Em construção/);
+        assert.equal(await facts.locator('[data-fact-gap]').count(),0);
+      }else{
+        assert.match(texts[0],/27–61 m²/);
+        assert.match(texts[0],/Offices/);
+        assert.match(texts[1],/Sob consulta/);
+        assert.match(texts[1],/Vagas por tipologia/);
+        assert.equal(await facts.locator('[data-fact-gap="parking"]').count(),1,"parking fact data gap not registered");
+        assert.match(texts[2],/Uso misto/);
+        assert.match(texts[2],/Itaim Bibi/);
+        assert.match(texts[3],/Entregue/);
+      }
+      const grid=await facts.locator(".facts-in").evaluate(el=>{
+        const style=getComputedStyle(el),r=el.getBoundingClientRect();
+        const slots=[...el.querySelectorAll(":scope > .fact")].map(x=>({left:x.getBoundingClientRect().left,right:x.getBoundingClientRect().right,top:x.getBoundingClientRect().top}));
+        return {display:style.display,cols:style.gridTemplateColumns.trim().split(/\s+/).length,box:r.toJSON(),slots};
+      });
+      assert.equal(grid.display,"grid","facts layout must be CSS Grid");
+      assert.equal(grid.cols,width<=760?2:4,"RESF mobile 2x2, desktop 4 columns");
+      assert.ok(grid.slots.every(x=>x.left>=grid.box.left-2&&x.right<=grid.box.right+2),"facts exceed their grid bounds");
+      if(width<=760)assert.ok(grid.slots[0].top===grid.slots[1].top&&grid.slots[2].top===grid.slots[3].top&&grid.slots[2].top>grid.slots[0].top,"facts must be in two mobile rows");
+      pass("resf-facts-single-band-no-hero-meta",{page:f.name,width,columns:grid.cols,slots:texts.map(x=>x.replace(/\s+/g," ").slice(0,100))});
       const robots=await page.locator('head meta[name="robots"]').getAttribute("content");
       assert.ok(robots.startsWith("index,follow"),"rendered noindex? "+robots);
       assert.equal(await page.locator('head link[rel="canonical"]').getAttribute("href"),"https://www.moretegra.com.br"+f.page);
