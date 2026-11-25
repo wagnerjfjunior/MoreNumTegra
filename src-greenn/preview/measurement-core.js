@@ -74,7 +74,7 @@ function onClick(e){
   const targets={"#oportunidades":"opportunities","#como-escolher":"how_to_choose","#negociacao":"negotiation","#inicio":"top"};
   if(targets[href]){section(targets[href],t.closest(".mt-header")?"header_nav":t.closest(".mt-hero")?"hero":"content");return}
   if(t.matches('a[href^="https://wa.me/"]')){
-    if(t.closest(".mt-negotiation")){intent("schedule_visit","whatsapp","negotiation",selected());return}
+    if(t.closest(".mt-negotiation,#visita")){intent("schedule_visit","whatsapp","negotiation",selected());return}
     if(exactProject()){intent("whatsapp_contact","whatsapp",t.matches(".mnt-whatsapp-float")?"floating":"content",selected());return}
   }
 }
