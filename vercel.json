@@ -10,6 +10,10 @@
   "ignoreCommand": "if git diff --name-only HEAD^ HEAD | grep -Ev '^(docs/|handoffs/|bootstrap/|\\.sfjm/|\\.github/|README\\.md$)' | grep -q .; then exit 1; else exit 0; fi",
   "rewrites": [
     {
+      "source": "/.well-known/ai-catalog.json",
+      "destination": "/.well-known/ard.json"
+    },
+    {
       "source": "/complexo-lapa-pirituba-v2/",
       "destination": "/src-greenn/complexo-lapa-pirituba-v2/index.html"
     },
@@ -553,6 +557,43 @@
     }
   ],
   "headers": [
+    {
+      "source": "/.well-known/(ard|ai-catalog).json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/agent-skills/property-discovery/SKILL.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www\\.moretegra\\.com\\.br"
+        }
+      ],
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.moretegra.com.br/.well-known/ard.json>; rel=\"ard\""
+        }
+      ]
+    },
     {
       "source": "/(.*)",
       "has": [
