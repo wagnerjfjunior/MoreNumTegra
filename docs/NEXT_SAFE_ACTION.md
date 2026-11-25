@@ -1,3 +1,15 @@
+## 25/11/2026 — Única próxima ação segura: homologar medição da PR #628 em produção
+
+**Fundamento live:** `main d21d2bb06b90b2e2c52ad4d0f3f64b4058b1e258`; [PR #628](https://github.com/wagnerjfjunior/MoreNumTegra/pull/628) MERGED; Vercel Production `dpl_7gpZfxXyvqPjrtS7PxDqZQcgwwaQ` READY, `www.moretegra.com.br` associado. A entrega do código está verificada, o funcionamento E2E de GTM/GA4/LGPD **não**.
+
+**Ação única:** executar auditoria **não destrutiva em navegador real na produção**, começando por `https://www.moretegra.com.br/blog/dicasedecor/iluminacao-apartamento-camadas-circuitos/` (falha relatada pelo proprietário em 24/11). Conferir `gtm.js` após `load`/interação, quatro sinais default denied e updates por aceite/recusa, dataLayer, deduplicação, GA4 Realtime/DebugView e comportamento mobile. Registrar evidência antes de alterar qualquer bootstrap/tempo de carga. O usuário não consegue executar comandos: conduzir pelo acesso remoto disponível, não solicitar CLI.
+
+**Restrições:** sem alteração de runtime, consentimento administrativo, GTM, Form46/47, schema comercial, preços, nova campanha, lead real de teste, merge ou redeploy sem autorização própria. A exclusão de Product/Offer Órbita permanece intencional pela #604 até preço comprovado. Handoff: `docs/sfjm/MNT_COMPARAR_PRODUCT_OFFER_GTM_CONTINUIDADE_2026-11-25.md`.
+
+**Precedência:** esta seção substitui como próxima ação global as seções de 24/11/15/11, que ficam como histórico de outras frentes; não equivale a cancelamento das obrigações SEO/Rio/FGTS existentes. Gate de migração ainda **FAIL/PENDING** enquanto a medição real não for homologada e demais divergências materiais não forem reconciliadas.
+
+---
+
 ## 24/11/2026 — Próxima ação segura (após #601, #604, #605 e #608)
 
 1. Wagner: pedir reindexação no Search Console das 9 URLs do Rio alteradas (hub, Barra e 7 empreendimentos). Nada a fazer no código.
