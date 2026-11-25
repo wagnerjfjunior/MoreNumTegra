@@ -157,7 +157,16 @@ const A06_META = {
     }
   }
 };
+function restoreA06L02C(html, slug) {
+ if(slug!=='ypy-alto-do-ipiranga')return html;
+ for(const [approved,prior,count] of [["Alto do Ipiranga · São Paulo · Pronto para morar","Alto do Ipiranga · São Paulo · Em construção",1],["<b>Entregue</b><span>Pronto para morar</span>","<b>Em construção</b><span>status oficial</span>",1],["<p>O YPY Alto do Ipiranga está entregue. Consulte as unidades disponíveis e as condições de compra.</p>","<p>A fonte oficial Tegra consultada apresenta o YPY como em construção.</p>",1],["\"text\":\"O YPY Alto do Ipiranga está entregue. Consulte as unidades disponíveis e as condições de compra.\"","\"text\":\"A página oficial da Tegra consultada apresenta o empreendimento como em construção.\"",1],["Empreendimento Tegra entregue no Alto do Ipiranga com apartamentos de 65 e 80 m², 2 ou 3 dormitórios, 1 suíte e 1 vaga.","Empreendimento Tegra no Alto do Ipiranga com apartamentos de 65 e 80 m², 2 ou 3 dormitórios, 1 suíte e 1 vaga.",1],["YPY Alto do Ipiranga Tegra | Apartamentos Prontos","YPY Alto do Ipiranga Tegra | Apartamentos de 2 e 3 Dorms.",4],["Apartamentos prontos no YPY Alto do Ipiranga: 65 e 80 m², 2 ou 3 dormitórios com suíte, perto do metrô. Consulte plantas, preços e condições.","Conheça o YPY Alto do Ipiranga: apartamentos de 65 e 80 m², 2 ou 3 dormitórios com suíte, próximos ao metrô. Consulte plantas, preços e condições.",4]]) {
+  assert.equal(html.split(approved).length,count+1,slug+': L02C exact delta mismatch: '+approved);
+  html=html.split(approved).join(prior);
+ }
+ return html;
+}
 function restoreA06Metadata(html, slug) {
+ html=restoreA06L02C(html,slug);
  const rule=A06_META[slug];
  if(!rule)return html;
  const replaceOnce=(source,from,to)=>{

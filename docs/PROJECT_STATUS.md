@@ -1,3 +1,9 @@
+## 25/11/2026 — A06-L02C YPY e backlog SEO
+
+PR #627 publicada em `531043561e32c9e6d93e0b7f059a78e3f4fe26c6`, Vercel READY `dpl_3RNRPceJfip42bBuiUhHumxXZ8Wt`, CI 14/14, HTTP 200 YPY e Mozae. A06-L02C autorizada para reconciliação comercial YPY, catálogo e hub; ver `docs/seo/auditorias/2026-11-23/MNT_A06_L02C_YPY_STATUS_2026-11-25.md`. Gates desta release ainda pendentes até evidência live. SEO Control Center permanece BACKLOG, sem implementação. Próxima ação após release: QA/reindexação e estudo Elo Duo. Não substituir pendências históricas de outras frentes.
+
+---
+
 ## 24/11/2026 — Rio: #601, #605 e #608 em produção; MNT Órbita integrada (#604)
 
 Main `ed9978d`. As 10 páginas do Rio têm title, meta e H2 alinhados ao estudo; hub e Barra com H2 em pergunta e FAQ novo da Barra; 6 empreendimentos com H2 em pergunta. MNT Órbita (#604, `3fe3b0b`): testes reconciliados, `Product`/`Offer` ausentes de forma temporária e intencional. Pendências: RIIO e `/regioes/` sem H2 em pergunta; reindexação no Search Console; dois validadores que falham (Órbita parity e home-consent). Fonte: `handoffs/CURRENT.md` (24/11) e `docs/seo/MNT_ORBITA_RECONCILIACAO_JSONLD_2026-11-24.md`.
