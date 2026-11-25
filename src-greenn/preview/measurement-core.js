@@ -5,7 +5,7 @@ const status={todos:"all",lancamento:"launch",construcao:"construction",entregue
 const projectOverride={"Nova Vivere | 72 m²":"Nova Vivere","Nova Vivere | 105 m²":"Nova Vivere","CAPIITOLO by Piero Lissoni | à vista":"CAPIITOLO by Piero Lissoni"};
 const faqMap={"os valores mostrados sao finais":"valores_finais","como comparar os empreendimentos":"comparar_empreendimentos","como negociar uma condicao melhor":"negociar_condicao","este e o site institucional da tegra":"site_institucional"};
 function ok(){return location.hostname===H}
-function root(){return document.querySelector(R)}
+function root(){return document.querySelector(R)||(!location.pathname.startsWith("/blog/")&&document.documentElement.dataset.mntPageIdentity?document.body:null)}
 function el(t){return t instanceof Element?t:t?.parentElement||null}
 function norm(v){return String(v||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim()}
 function ctl(v){return norm(v).replace(/[^a-z0-9]+/g," ").replace(/\s+/g," ").trim()}
@@ -25,7 +25,7 @@ function faqItem(s){return faqMap[ctl(s?.textContent)]||"other"}
 function pageView(){if(!ok()||!root()||window[pv])return;window[pv]=true;emit("mnt_page_view","discovery",{placement:"document"})}
 function later(fn){setTimeout(fn,0)}
 function filter(r,dim,val,place){const map=dim==="status"?status:dim==="zone"?zone:price,canonical=map[val];if(canonical)emit("mnt_catalog_filter","consideration",{filter_dimension:dim,filter_value:canonical,result_count:count(r),placement:place})}
-function onChange(e){const t=el(e.target),r=t?.closest(R);if(!r)return;if(t.matches("[data-status-mobile]"))later(()=>filter(r,"status",t.value||"todos","status_mobile"));else if(t.matches("[data-zone-filter]"))later(()=>filter(r,"zone",t.value||"todas","zone_select"));else if(t.matches("[data-price-filter]"))later(()=>filter(r,"price",t.value||"todos","price_select"))}
+function onChange(e){const t=el(e.target),r=t?.closest(R)||root();if(!r)return;if(t.matches("[data-status-mobile]"))later(()=>filter(r,"status",t.value||"todos","status_mobile"));else if(t.matches("[data-zone-filter]"))later(()=>filter(r,"zone",t.value||"todas","zone_select"));else if(t.matches("[data-price-filter]"))later(()=>filter(r,"price",t.value||"todos","price_select"))}
 function onInput(e){const t=el(e.target);if(!t?.matches("[data-project-search]"))return;const r=t.closest(R);if(!r)return;refreshLocations(r);let s=searchState.get(t);if(!s){s={last:norm(t.defaultValue),timer:0};searchState.set(t,s)}const next=norm(t.value);clearTimeout(s.timer);s.timer=setTimeout(()=>{if(next===s.last)return;s.last=next;emit("mnt_catalog_search","consideration",{search_state:next?"active":"cleared",search_location:next?classify(next):N,result_count:count(r),placement:"catalog_search"})},600)}
 function intent(type,channel,place,c={}){later(()=>emit("mnt_intent","intent",{intent_type:type,contact_channel:channel,placement:place,...c}))}
 function section(name,place,faq=N){later(()=>emit("mnt_section_click","consideration",{section_target:name,faq_item:faq,placement:place}))}
@@ -50,7 +50,7 @@ function onClick(e){
     else intent("whatsapp_contact","whatsapp","floating",c);
     return
   }
-  const r=x.closest(R);if(!r)return;
+  const r=x.closest(R)||root();if(!r)return;
   const faq=x.closest(".mt-faq summary,#faq summary");
   if(faq&&r.contains(faq)){if(faq.closest("details")?.open!==true)section("faq","faq",faqItem(faq));return}
   const t=x.closest("a,button");if(!t||!r.contains(t))return;
@@ -74,7 +74,7 @@ function onClick(e){
   const targets={"#oportunidades":"opportunities","#como-escolher":"how_to_choose","#negociacao":"negotiation","#inicio":"top"};
   if(targets[href]){section(targets[href],t.closest(".mt-header")?"header_nav":t.closest(".mt-hero")?"hero":"content");return}
   if(t.matches('a[href^="https://wa.me/"]')){
-    if(t.closest(".mt-negotiation")){intent("schedule_visit","whatsapp","negotiation",selected());return}
+    if(t.closest(".mt-negotiation,#visita")){intent("schedule_visit","whatsapp","negotiation",selected());return}
     if(exactProject()){intent("whatsapp_contact","whatsapp",t.matches(".mnt-whatsapp-float")?"floating":"content",selected());return}
   }
 }
