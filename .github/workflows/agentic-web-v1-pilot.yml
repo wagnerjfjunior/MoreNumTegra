@@ -1,0 +1,21 @@
+name: Agentic Web V1 Pilot
+on:
+  pull_request:
+    paths:
+      - 'src-greenn/preview/agentic-web.js'
+      - 'src-greenn/preview/index.html'
+      - 'scripts/test-agentic-web.mjs'
+      - 'docs/AGENTIC_WEB_V1.md'
+      - '.github/workflows/agentic-web-v1-pilot.yml'
+  workflow_dispatch:
+jobs:
+  agentic-web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check src-greenn/preview/agentic-web.js
+      - run: node scripts/test-agentic-web.mjs
