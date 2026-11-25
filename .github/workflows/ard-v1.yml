@@ -1,0 +1,29 @@
+name: ARD V1 contract
+on:
+  pull_request:
+    paths:
+      - '.well-known/**'
+      - 'agent-skills/**'
+      - 'vercel.json'
+      - 'robots.txt'
+      - 'scripts/test-ard-v1.mjs'
+      - '.github/workflows/ard-v1.yml'
+  push:
+    branches: [main]
+    paths:
+      - '.well-known/**'
+      - 'agent-skills/**'
+      - 'vercel.json'
+      - 'robots.txt'
+      - 'scripts/test-ard-v1.mjs'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/test-ard-v1.mjs
