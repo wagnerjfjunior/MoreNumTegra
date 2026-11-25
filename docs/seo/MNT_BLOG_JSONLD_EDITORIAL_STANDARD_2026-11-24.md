@@ -14,7 +14,7 @@
 - Compra de longo prazo, FII x imóvel físico e imóveis de luxo: quatro nós BlogPosting, BreadcrumbList, Person, RealEstateAgent; datas não declaradas. São lote legado com validador que exige conjunto exato de tipos e proíbe FAQPage; não alterar esse contrato sem autorização.
 - Orla Barra: BlogPosting e BreadcrumbList; ausência de Sabrina intencional, canal RJ confirmado.
 
-## Gate obrigatório proposto
+## Gate editorial obrigatório
 Para cada artigo novo, conferir canonical, H1, headline, IDs únicos, dados institucionais idênticos ao modelo, imagem visível, FAQ parity e canal. Teste estático não substitui Schema.org Validator e Rich Results Test. Não prometer quantidade de rich results. O aviso não crítico do Google ainda não foi expandido pelo proprietário; causa não comprovada.
 
-Implementação de um novo workflow/validador automático deverá ser aprovada especificamente conforme docs/BLOCKED_ACTIONS.md. Nenhum validador existente foi modificado.
+Autorizado pelo proprietário na conversa. Novo `scripts/validate-blog-editorial-schema.mjs` e workflow `.github/workflows/blog-editorial-schema.yml` implementados; nenhum validador existente modificado. O gate percorre as URLs do sitemap, exclui somente as rotas legadas explicitamente enumeradas e valida novos artigos SP. Novos artigos RJ exigem contrato regional próprio antes da publicação. Testes negativos de entidade ausente, divergência de headline e canal incorreto. A obrigatoriedade de status check como proteção de branch depende de configuração GitHub e não é presumida. O gate verifica a marcação FAQ do modelo editorial vigente e formato de datas, mas não comprova autoria, datas históricas ou validade semântica oficial.
