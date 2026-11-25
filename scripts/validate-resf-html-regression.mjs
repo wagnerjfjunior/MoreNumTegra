@@ -4,6 +4,116 @@
 import {readFileSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import assert from 'node:assert/strict';
+
+// A06-L01: owner-authorized exact metadata delta only. All existing snapshot
+// comparisons remain active. No wildcard normalization of the head or graph.
+const A06_META = {
+  "ampere-brooklin": {
+    "pairs": [
+      [
+        "<title>Tegra Ampère Brooklin | Apartamentos de 262 m² no Brooklin</title>",
+        "<title>Ampère Brooklin Tegra | Apartamentos de 262 m² e 4 suítes</title>"
+      ],
+      [
+        "<meta name=\"description\" content=\"Conheça o Tegra Ampère Brooklin: apartamentos em construção de 262 m², 4 suítes, 4 vagas e dois terraços em torre única. Consulte plantas e condições.\">",
+        "<meta name=\"description\" content=\"Apartamentos de alto padrão no Brooklin, com 262 m², 4 suítes, 4 vagas e dois terraços. Conheça as plantas e consulte as condições.\">"
+      ],
+      [
+        "<meta property=\"og:title\" content=\"Tegra Ampère Brooklin | Apartamentos de 262 m² no Brooklin\">",
+        "<meta property=\"og:title\" content=\"Ampère Brooklin Tegra | Apartamentos de 262 m² e 4 suítes\">"
+      ],
+      [
+        "<meta property=\"og:description\" content=\"Conheça o Tegra Ampère Brooklin: apartamentos em construção de 262 m², 4 suítes, 4 vagas e dois terraços em torre única. Consulte plantas e condições.\">",
+        "<meta property=\"og:description\" content=\"Apartamentos de alto padrão no Brooklin, com 262 m², 4 suítes, 4 vagas e dois terraços. Conheça as plantas e consulte as condições.\">"
+      ],
+      [
+        "<meta name=\"twitter:title\" content=\"Tegra Ampère Brooklin | Apartamentos de 262 m² no Brooklin\">",
+        "<meta name=\"twitter:title\" content=\"Ampère Brooklin Tegra | Apartamentos de 262 m² e 4 suítes\">"
+      ],
+      [
+        "<meta name=\"twitter:description\" content=\"Conheça o Tegra Ampère Brooklin: apartamentos em construção de 262 m², 4 suítes, 4 vagas e dois terraços em torre única. Consulte plantas e condições.\">",
+        "<meta name=\"twitter:description\" content=\"Apartamentos de alto padrão no Brooklin, com 262 m², 4 suítes, 4 vagas e dois terraços. Conheça as plantas e consulte as condições.\">"
+      ]
+    ],
+    "id": "https://www.moretegra.com.br/empreendimentos/ampere-brooklin/#webpage",
+    "before": {
+      "name": "Tegra Ampère Brooklin | Apartamentos de 262 m² no Brooklin",
+      "description": "Conheça o Tegra Ampère Brooklin: apartamentos em construção de 262 m², 4 suítes, 4 vagas e dois terraços em torre única. Consulte plantas e condições."
+    },
+    "after": {
+      "name": "Ampère Brooklin Tegra | Apartamentos de 262 m² e 4 suítes",
+      "description": "Apartamentos de alto padrão no Brooklin, com 262 m², 4 suítes, 4 vagas e dois terraços. Conheça as plantas e consulte as condições."
+    }
+  },
+  "aria-higienopolis": {
+    "pairs": [
+      [
+        "<title>Ária Tegra Higienópolis | Studios e apartamentos prontos</title>",
+        "<title>Ária Higienópolis Tegra | Studios e Apartamentos Prontos</title>"
+      ],
+      [
+        "<meta name=\"description\" content=\"Conheça o Ária Higienópolis: studios de 30 m², apartamentos de 53 m² com 1 ou 2 dormitórios, salas comerciais, rooftop com piscina e empreendimento entregue.\">",
+        "<meta name=\"description\" content=\"Conheça o Ária Higienópolis: studios de 30 m² e apartamentos de 53 m² prontos para morar. Consulte preços, plantas e condições.\">"
+      ],
+      [
+        "<meta property=\"og:title\" content=\"Ária Tegra Higienópolis | Studios e apartamentos prontos\">",
+        "<meta property=\"og:title\" content=\"Ária Higienópolis Tegra | Studios e Apartamentos Prontos\">"
+      ],
+      [
+        "<meta property=\"og:description\" content=\"Studios de 30 m² e apartamentos de 53 m² em empreendimento entregue, com rooftop e piscina em Higienópolis.\">",
+        "<meta property=\"og:description\" content=\"Conheça o Ária Higienópolis: studios de 30 m² e apartamentos de 53 m² prontos para morar. Consulte preços, plantas e condições.\">"
+      ],
+      [
+        "<meta name=\"twitter:title\" content=\"Ária Tegra Higienópolis | Studios e apartamentos prontos\">",
+        "<meta name=\"twitter:title\" content=\"Ária Higienópolis Tegra | Studios e Apartamentos Prontos\">"
+      ],
+      [
+        "<meta name=\"twitter:description\" content=\"Conheça tipologias, lazer, localização e condições do Ária Higienópolis.\">",
+        "<meta name=\"twitter:description\" content=\"Conheça o Ária Higienópolis: studios de 30 m² e apartamentos de 53 m² prontos para morar. Consulte preços, plantas e condições.\">"
+      ]
+    ],
+    "id": "https://www.moretegra.com.br/empreendimentos/aria-higienopolis/#webpage",
+    "before": {
+      "name": "Ária Tegra Higienópolis | Studios e apartamentos prontos",
+      "description": "Página do Ária Higienópolis, empreendimento entregue com studios, apartamentos, salas comerciais, lazer e rooftop."
+    },
+    "after": {
+      "name": "Ária Higienópolis Tegra | Studios e Apartamentos Prontos",
+      "description": "Conheça o Ária Higienópolis: studios de 30 m² e apartamentos de 53 m² prontos para morar. Consulte preços, plantas e condições."
+    }
+  }
+};
+function restoreA06Metadata(html, slug) {
+ const rule=A06_META[slug];
+ if(!rule)return html;
+ const replaceOnce=(source,from,to)=>{
+  assert.equal(source.split(from).length,2,slug+': A06 exact metadata missing, duplicated or changed');
+  return source.replace(from,to);
+ };
+ const head=html.match(/<head\b[^>]*>[\s\S]*?<\/head>/i)?.[0];
+ assert(head,slug+': head missing');
+ assert.equal((head.match(/<title\b/gi)||[]).length,1,slug+': duplicate title');
+ for(const key of ['description','og:title','og:description','twitter:title','twitter:description']){
+  const tags=[...head.matchAll(/<meta\b[^>]*>/gi)].filter(m=>new RegExp('\\b(?:name|property)\\s*=\\s*["\\\']'+key+'["\\\']','i').test(m[0]));
+  assert.equal(tags.length,1,slug+': duplicate or missing '+key);
+ }
+ let out=html;
+ for(const [prior,approved] of rule.pairs)out=replaceOnce(out,approved,prior);
+ const blocks=[...out.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)];
+ assert.equal(blocks.length,1,slug+': A06 graph count');
+ const body=blocks[0][1], doc=JSON.parse(body);
+ assert.equal(JSON.stringify(doc),body,slug+': A06 graph must remain compact and unambiguous');
+ const nodes=(doc['@graph']||[doc]).filter(n=>n['@type']==='WebPage');
+ assert.equal(nodes.length,1,slug+': WebPage count');
+ const node=nodes[0];
+ assert.equal(node['@id'],rule.id,slug+': WebPage identity');
+ for(const key of ['name','description']){
+  assert.equal(node[key],rule.after[key],slug+': A06 WebPage '+key);
+  node[key]=rule.before[key];
+ }
+ return replaceOnce(out,body,JSON.stringify(doc));
+}
+
 const BASE='9c8bdc74cb83dc9c9566f87d9288daf25f10c051';
 const pages=[
  ['ampere-brooklin','Rua André Ampére, 136','04562-080'],
@@ -50,7 +160,28 @@ let checked=0;
 for(const [slug,street,cep] of pages){
  const filename='src-greenn/empreendimentos/'+slug+'/index.html';
  const original=execFileSync('git',['show',BASE+':'+filename],{encoding:'utf8'});
- const candidate=readFileSync(filename,'utf8');
+ const candidateRaw=restoreA06Metadata(readFileSync(filename,'utf8'),slug);
+ // SFJM 2026-11-15: approved internal-link module on five protected pages + one approved H1 (Ampère).
+ // The module section, its CSS and the approved Ampère H1 are removed here; everything else must still equal the snapshot.
+ const SFJM_LINK_SLUGS=['aria-higienopolis','mozae-higienopolis','ledge-brooklin','ampere-brooklin','ypy-alto-do-ipiranga'];
+ const SFJM_CSS=[".mnb{margin:26px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}.mnb li{border-bottom:1px solid var(--line);padding:16px 0}.mnb a{color:var(--ink);font-weight:800;text-decoration:underline;text-decoration-color:var(--yellow);text-underline-offset:4px}.mnb span{display:block;max-width:820px;color:var(--muted);margin-top:4px}",".mnb{margin:26px 0 0;padding:0;list-style:none;border-top:1px solid rgba(128,128,128,.4)}.mnb li{border-bottom:1px solid rgba(128,128,128,.4);padding:16px 0}.mnb a{color:inherit;font-weight:800;text-decoration:underline;text-decoration-color:#EBB92E;text-underline-offset:4px}.mnb span{display:block;max-width:820px;opacity:.78;margin-top:4px}"];
+ const stripSfjmModule=(html,slug)=>{
+  const mod=[...html.matchAll(/<section [^>]*id="mais-no-bairro"[\s\S]*?<\/section>/g)];
+  assert.equal(mod.length,1,slug+': internal-link module must occur exactly once');
+  const hrefs=[...mod[0][0].matchAll(/href="([^"]*)"/g)].map(m=>m[1]);
+  assert(hrefs.length>=1&&hrefs.every(h=>/^\/(regioes|empreendimentos)\/[a-z0-9-]+\/$/.test(h)),slug+': module links must be internal region/project URLs');
+  let out=html.replace(mod[0][0],'');
+  const css=SFJM_CSS.filter(c=>out.includes(c));
+  assert.equal(css.length,1,slug+': module CSS must occur exactly once');
+  out=out.replace(css[0],'');
+  if(slug==='ampere-brooklin'){
+   const newH1='<h1 id="title" class="display">Ampère Brooklin Tegra<br>apartamentos de 262 m² e 4 suítes</h1>';
+   assert.equal(out.split(newH1).length,2,'Ampère: approved H1 missing or modified');
+   out=out.replace(newH1,'<h1 id="title" class="display">Ampère Brooklin</h1>');
+  }
+  return out;
+ };
+ const candidate=SFJM_LINK_SLUGS.includes(slug)?stripSfjmModule(candidateRaw,slug):candidateRaw;
  const prior=address(original);
  if(prior?.streetAddress!==street||prior?.postalCode!==cep)continue;
  const approvedCommercialSlugs=['aria-higienopolis','bem-moema','bem-moema-studios-offices','garden-design','mozae-higienopolis','ypy-alto-do-ipiranga'];
