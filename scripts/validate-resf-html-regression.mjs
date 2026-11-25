@@ -81,6 +81,80 @@ const A06_META = {
       "name": "Ária Higienópolis Tegra | Studios e Apartamentos Prontos",
       "description": "Conheça o Ária Higienópolis: studios de 30 m² e apartamentos de 53 m² prontos para morar. Consulte preços, plantas e condições."
     }
+  },
+  "ypy-alto-do-ipiranga": {
+    "pairs": [
+      [
+        "<title>YPY Alto do Ipiranga Tegra | Apartamentos 65 e 80 m²</title>",
+        "<title>YPY Alto do Ipiranga Tegra | Apartamentos de 2 e 3 Dorms.</title>"
+      ],
+      [
+        "<meta name=\"description\" content=\"YPY Alto do Ipiranga Tegra: apartamentos de 65 e 80 m², 2 ou 3 dormitórios e lazer completo perto do metrô. Consulte unidades e condições.\">",
+        "<meta name=\"description\" content=\"Conheça o YPY Alto do Ipiranga: apartamentos de 65 e 80 m², 2 ou 3 dormitórios com suíte, próximos ao metrô. Consulte plantas, preços e condições.\">"
+      ],
+      [
+        "<meta property=\"og:title\" content=\"YPY Alto do Ipiranga Tegra\">",
+        "<meta property=\"og:title\" content=\"YPY Alto do Ipiranga Tegra | Apartamentos de 2 e 3 Dorms.\">"
+      ],
+      [
+        "<meta property=\"og:description\" content=\"Apartamentos de 65 e 80 m² no Alto do Ipiranga, com lazer e proximidade ao metrô.\">",
+        "<meta property=\"og:description\" content=\"Conheça o YPY Alto do Ipiranga: apartamentos de 65 e 80 m², 2 ou 3 dormitórios com suíte, próximos ao metrô. Consulte plantas, preços e condições.\">"
+      ],
+      [
+        "<meta name=\"twitter:title\" content=\"YPY Alto do Ipiranga Tegra\">",
+        "<meta name=\"twitter:title\" content=\"YPY Alto do Ipiranga Tegra | Apartamentos de 2 e 3 Dorms.\">"
+      ],
+      [
+        "<meta name=\"twitter:description\" content=\"Conheça o YPY Alto do Ipiranga e consulte unidades e condições.\">",
+        "<meta name=\"twitter:description\" content=\"Conheça o YPY Alto do Ipiranga: apartamentos de 65 e 80 m², 2 ou 3 dormitórios com suíte, próximos ao metrô. Consulte plantas, preços e condições.\">"
+      ]
+    ],
+    "id": "https://www.moretegra.com.br/empreendimentos/ypy-alto-do-ipiranga/#webpage",
+    "before": {
+      "name": "YPY Alto do Ipiranga Tegra | Apartamentos 65 e 80 m²",
+      "description": "YPY Alto do Ipiranga Tegra: apartamentos de 65 e 80 m², 2 ou 3 dormitórios e lazer completo próximo ao metrô."
+    },
+    "after": {
+      "name": "YPY Alto do Ipiranga Tegra | Apartamentos de 2 e 3 Dorms.",
+      "description": "Conheça o YPY Alto do Ipiranga: apartamentos de 65 e 80 m², 2 ou 3 dormitórios com suíte, próximos ao metrô. Consulte plantas, preços e condições."
+    }
+  },
+  "mozae-higienopolis": {
+    "pairs": [
+      [
+        "<title>Mozae Higienópolis Tegra | Apartamentos 46 e 73 m²</title>",
+        "<title>Mozae Higienópolis Tegra | Apartamentos de 1 e 2 Suítes</title>"
+      ],
+      [
+        "<meta name=\"description\" content=\"Mozae Higienópolis Tegra: torre única com apartamentos de 46 e 73 m², 1 ou 2 suítes, rooftop e lazer. Consulte unidades e condições.\">",
+        "<meta name=\"description\" content=\"Conheça o Mozae Higienópolis: apartamentos de 46 e 73 m², 1 ou 2 suítes, torre única, rooftop e 1 vaga. Consulte plantas, preços e condições.\">"
+      ],
+      [
+        "<meta property=\"og:title\" content=\"Mozae Higienópolis Tegra\">",
+        "<meta property=\"og:title\" content=\"Mozae Higienópolis Tegra | Apartamentos de 1 e 2 Suítes\">"
+      ],
+      [
+        "<meta property=\"og:description\" content=\"Apartamentos de 46 e 73 m² em torre única em Higienópolis.\">",
+        "<meta property=\"og:description\" content=\"Conheça o Mozae Higienópolis: apartamentos de 46 e 73 m², 1 ou 2 suítes, torre única, rooftop e 1 vaga. Consulte plantas, preços e condições.\">"
+      ],
+      [
+        "<meta name=\"twitter:title\" content=\"Mozae Higienópolis Tegra\">",
+        "<meta name=\"twitter:title\" content=\"Mozae Higienópolis Tegra | Apartamentos de 1 e 2 Suítes\">"
+      ],
+      [
+        "<meta name=\"twitter:description\" content=\"Conheça o Mozae Higienópolis e consulte unidades e condições.\">",
+        "<meta name=\"twitter:description\" content=\"Conheça o Mozae Higienópolis: apartamentos de 46 e 73 m², 1 ou 2 suítes, torre única, rooftop e 1 vaga. Consulte plantas, preços e condições.\">"
+      ]
+    ],
+    "id": "https://www.moretegra.com.br/empreendimentos/mozae-higienopolis/#webpage",
+    "before": {
+      "name": "Mozae Higienópolis Tegra | Apartamentos 46 e 73 m²",
+      "description": "Mozae Higienópolis Tegra: torre única com apartamentos de 46 e 73 m², 1 ou 2 suítes e lazer em Higienópolis."
+    },
+    "after": {
+      "name": "Mozae Higienópolis Tegra | Apartamentos de 1 e 2 Suítes",
+      "description": "Conheça o Mozae Higienópolis: apartamentos de 46 e 73 m², 1 ou 2 suítes, torre única, rooftop e 1 vaga. Consulte plantas, preços e condições."
+    }
   }
 };
 function restoreA06Metadata(html, slug) {
