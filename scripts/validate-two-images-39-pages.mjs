@@ -46,7 +46,12 @@ const approvedBlogPaths=[
  "/blog/mercado/morar-itaim-bibi-rotina-custo/",
  "/blog/mercado/imovel-herdado-inventario-documentos-etapas/",
  "/blog/mercado/investir-em-studios-sao-paulo/",
- "/blog/mercado/imovel-ou-cdi/"
+ "/blog/mercado/imovel-ou-cdi/",
+ "/blog/mercado/comprar-sala-comercial-para-alugar/",
+ "/blog/mercado/studio-residencial-ou-nr/",
+ "/blog/mercado/imovel-ou-poupanca/",
+ "/blog/mercado/como-calcular-roi-yield-imobiliario/",
+ "/blog/mercado/melhores-bairros-investir-studios-sao-paulo/"
 ];
 const validateBlogScope=paths=>assert.deepEqual(paths,approvedBlogPaths,'Blog sitemap additions must remain explicitly scoped');
 validateBlogScope(blogPaths);
