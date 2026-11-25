@@ -554,6 +554,21 @@
   ],
   "headers": [
     {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www\\.moretegra\\.com\\.br"
+        }
+      ],
+      "headers": [
+        {
+          "key": "Origin-Trial",
+          "value": "AsDUqS0ptvIxNLerolpQQhKwg7H7zjAyoWcsnllDJXMGKoUrn14dDTPRcpFSn5tW7f42maFsZMYYK6xcmfVAOg4AAABneyJvcmlnaW4iOiJodHRwczovL3d3dy5tb3JldGVncmEuY29tLmJyOjQ0MyIsImZlYXR1cmUiOiJXZWJNQ1AiLCJleHBpcnkiOjE4MDYzNjQ4MDAsImlzU3ViZG9tYWluIjp0cnVlfQ=="
+        }
+      ]
+    },
+    {
       "source": "/favicon.ico",
       "headers": [
         {

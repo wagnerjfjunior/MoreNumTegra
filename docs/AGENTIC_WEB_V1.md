@@ -1,8 +1,12 @@
 # AGENTIC-WEB-V1-PILOT — MoreNumTegra
 
+## Atualização operacional — 25/11/2026 — Origin Trial
+
+PR #630 integrada em `9cd49d921a836659db2715e378e8baacc3162472`, 15/15 workflows aprovados, Vercel READY `dpl_6Sfgx3NKqPxwQBVs23DqhQagkSR8`. Proprietário reportou PageSpeed com quatro auditorias ainda N/A; aceite nativo não concluído. Autorização explícita posterior: corrigir e publicar Origin Trial. Esta correção adiciona somente header HTTP `Origin-Trial` em vercel.json, host canônico www.moretegra.com.br, todos os caminhos; token público first-party fornecido pelo proprietário, expira 2027-03-30 00:00 UTC. A implementação de ferramentas continua restrita à homepage. Sem alteração de Form46, GTM, GA4, LGPD, sitemap, ARD ou demais páginas. Validar header ao vivo, API nativa e auditorias; não presumir que PageSpeed habilite a API. Rollback: remover somente a regra adicionada. Os registros históricos abaixo não representam o estado atual. Ponteiros SFJM globais defasados; não sobrescrever a frente concorrente #629, que trata de GTM/GA4. Reconciliação global permanece pendente.
+
 Data da implementação: 25/11/2026. Repositório: wagnerjfjunior/MoreNumTegra. Homepage piloto: https://www.moretegra.com.br/.
 
-**Estado:** implementação preparada em branch/PR; NÃO MESCLADA nem PUBLICADA. Teste JavaScript simulado efetuado; execução nativa WebMCP, Lighthouse pós-publicação, Tag Assistant e performance mobile ainda NÃO VERIFICADOS.
+**Estado histórico pré-merge:** implementação preparada em branch/PR; ver atualização operacional acima. Teste JavaScript simulado efetuado; execução nativa WebMCP, Lighthouse pós-publicação, Tag Assistant e performance mobile ainda NÃO VERIFICADOS.
 
 ## 1. Estado inicial e governança
 
