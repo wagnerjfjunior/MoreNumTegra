@@ -1,0 +1,7 @@
+# MNT A04/A06 — Release reconciliada
+
+Autorização: proprietário solicitou conciliação, merge e produção em 24/11/2026, condicionada aos gates de qualidade. Base main ffb4f1113b501377236c6a664d5615511c41038e; cadeia #606 → #607 → #620 (53e023519b6fa0d9c3fcd60009985922aa170b91); evidência #617 (d32908b78f1b351cf0a9765e66729f0b6951e794). Branch release/a04-a06-reconciled-20261124.
+
+Comparação de árvores Git: 13 arquivos da cadeia, 12 sem alteração concorrente na main; copiados os blobs exatos. Sitemap é o único arquivo compartilhado: preservadas 92 URLs da main, alterados somente seis lastmod para 24/11. Evidência #617 incorporada sem substituir os quatro ponteiros globais defasados. Histórico original preservado nas PRs. Scope: seis páginas, cinco scripts, sitemap, dois documentos de origem e este recibo. Nenhum preço, CRM, campanha, alteração de blog ou calculadora. Não fechar PRs anteriores automaticamente antes da integração.
+
+Checks dos heads antigos: #606 19/19, #607 12/12, #620 17/17. Negativos preliminares #620 14/14 em memória. CI do novo head, LOCAL_LIVE_SYNC e Vercel Production ainda não verificados. Não alegar PASS de release a partir de checks antigos. Próxima ação: CI/QA do head consolidado e conferência main, depois merge autorizado, verificação Vercel/HTTP e rollback se necessário. Estado global SFJM ainda parcial; dossiê de evidências e recibo da implementação são registros da frente, não substituem a auditoria global.
