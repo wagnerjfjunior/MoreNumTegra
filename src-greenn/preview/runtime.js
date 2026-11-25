@@ -294,7 +294,12 @@
     manage.hidden = false;
     const emitChoice = (choice) => {
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({event: choice === "granted" ? "mnt_consent_accept" : "mnt_consent_reject"});
+      if (window.__mntGtmPilot) {
+        window.dataLayer.push({event: choice === "granted" ? "mnt_pilot_analytics_accept" : "mnt_consent_reject"});
+        document.dispatchEvent(new Event("mnt:consent-changed"));
+      } else {
+        window.dataLayer.push({event: choice === "granted" ? "mnt_consent_accept" : "mnt_consent_reject"});
+      }
     };
     if (banner.dataset.consentBound !== "true") {
       banner.dataset.consentBound = "true";
