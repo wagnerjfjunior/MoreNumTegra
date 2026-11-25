@@ -1,3 +1,15 @@
+## 25/11/2026 — Retomada “Comparar Product e Offer”; GTM/Consent em produção, QA pendente
+
+- **Estado verificado em 25/11:** main `d21d2bb06b90b2e2c52ad4d0f3f64b4058b1e258`, PR [#628](https://github.com/wagnerjfjunior/MoreNumTegra/pull/628) MERGED em 03:51:47 UTC, Vercel Production READY `dpl_7gpZfxXyvqPjrtS7PxDqZQcgwwaQ`, com alias `www.moretegra.com.br`; não foi conferido recebimento real em GA4.
+- **Objeto:** recuperar contexto da conversa encerrada “Comparar Product e Offer”, sem exigir comandos locais do Wagner. Handoff detalhado: `docs/sfjm/MNT_COMPARAR_PRODUCT_OFFER_GTM_CONTINUIDADE_2026-11-25.md`.
+- **Mensuração:** #628 reintroduziu GTM/default consent em 37 rotas editoriais, Berrini e Complexo; medição editorial e calculadora; controle estático de cobertura. GTM `GTM-PGCR4R47`, GA4 `G-57M2XR0CY2`, Form46 SP / Form47 RJ inalterados.
+- **Relato originário 24/11:** artigo `/blog/dicasedecor/iluminacao-apartamento-camadas-circuitos/` não carregava tag no Tag Assistant; o relato é anterior ao merge. O bootstrap da página atual carrega `gtm.js` após `window.load` ou primeira interação, o que pode afetar detecção imediata. Hipótese, ainda sem QA real.
+- **Product/Offer:** #604 preserva ausência intencional de `Product`/`Offer` Órbita até preço atual verificável; não enfraquecer validações de outras páginas.
+- **Próxima ação única para esta frente:** QA real e não destrutivo na produção #628, iniciando pelo artigo citado, cobrindo rede, consentimento, eventos/deduplicação e GA4. Sem modificar runtime, GTM administrativo ou formulário por inferência.
+- **Gates:** documentação via PR; novos merges/deploys dependem de autorização específica. A seção de 24/11 a seguir permanece como histórico de Rio/Órbita.
+
+---
+
 ## 24/11/2026 — Rio em produção (#601, #605, #608) + MNT Órbita integrada (#604)
 
 - **Main ao vivo na escrita:** `ed9978d75da3b3d7888b8bfd532c4f315b1f5052`. Merges autorizados por Wagner, um a um, no chat; deploy em produção conferido por leitura do HTML ao vivo (moretegra.com.br). Vercel, não Green.

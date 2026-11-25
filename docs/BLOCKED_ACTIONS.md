@@ -1,3 +1,15 @@
+## 25/11/2026 — Bloqueios vigentes pós-release de GTM/Consent #628
+
+- **Não declarar GTM/GA4/LGPD corrigidos end-to-end** apenas pelo merge [#628](https://github.com/wagnerjfjunior/MoreNumTegra/pull/628), pelo snippet no HTML ou pelo Vercel READY `dpl_7gpZfxXyvqPjrtS7PxDqZQcgwwaQ`. Faltam QA de rede, Consent Mode efetivo, quatro sinais de aceite/recusa, eventos, duplicidade e confirmação GA4.
+- **Não restaurar `Product`/`Offer` do Órbita** para satisfazer Rich Results sem preço vigente/unidade/disponibilidade verificáveis. `validate-orbita-commercial-schema-parity.mjs` permanece pendência separada do contrato da #604; não alterar testes sem gate.
+- **Não desativar consentimento negado ou antecipar coleta sem prova de conformidade.** O bootstrap tardio do GTM (após `load` ou primeira interação) pode explicar detecção tardia, mas ainda requer QA antes de mudança.
+- **Não fazer submissão real de lead de teste** Form46/47 sem autorização específica e plano para rastrear/distinguir o registro de teste. Não propagar PII para GA4/dataLayer.
+- **Não modificar configurações administrativas de GTM/GA4** sem acesso ao container, inventário de tags, gatilhos, versões e aprovação correspondente. Não confundir código de produção com publicação dentro do GTM.
+- **Sem execução de comandos locais pelo proprietário:** preferir leitura remota e ferramentas conectadas; documentar quando não houver acesso a navegador ou GA4.
+- **Próximo gate:** auditoria não destrutiva em produção. Handoff integral: `docs/sfjm/MNT_COMPARAR_PRODUCT_OFFER_GTM_CONTINUIDADE_2026-11-25.md`. Os bloqueios históricos abaixo conservam seus escopos próprios.
+
+---
+
 ## 24/11/2026 — Bloqueios vigentes (Rio e Órbita)
 
 Não restaurar `Product`/`Offer` no Órbita com preço histórico ou disponibilidade não comprovada; só após preço vigente confirmado e PR própria. Não relaxar validadores das demais páginas. Alterações em testes e em produção são entregas distintas. Rio: não inventar preço, metragem, endereço ou métrica; não afirmar que as perguntas dos H2 são idênticas às do Google; não trocar o H1 do hub sem decisão do Wagner. Merge/deploy somente com autorização explícita e específica de cada PR. Sem IndexNow ou gasto em mídia.

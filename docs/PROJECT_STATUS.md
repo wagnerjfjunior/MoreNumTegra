@@ -1,3 +1,16 @@
+## 25/11/2026 — Mensuração transversal (#628) e contexto Product/Offer — reconciliação live
+
+| Frente | Código GitHub | Produção Vercel | Aceite funcional | Próximo gate |
+|---|---|---|---|---|
+| GTM/Consent/GA4 transversal | [#628](https://github.com/wagnerjfjunior/MoreNumTegra/pull/628) MERGED `d21d2bb` | READY `dpl_7gpZfxXyvqPjrtS7PxDqZQcgwwaQ` com alias `www.moretegra.com.br` | **PENDENTE** — consentimento 4 sinais, rede GTM, eventos, deduplicação, GA4 | QA produção sem novas mudanças; começar pelo artigo iluminação |
+| Product/Offer Órbita | #604 já integrada | sem alteração de página na #604 | bloqueado comercialmente para Offer vigente | obter preço/unidade/disponibilidade comprovados + PR própria; validar `validate-orbita-commercial-schema-parity.mjs` separadamente |
+| SEO A04/A06 | #626 integrado em `3db1938` | Vercel READY anterior `dpl_48bWwRkVfBm59SWF4sPLaXftUKut`; sucedido por #628 | rankings/clicks não inferidos de deploy | medição GSC e avaliação independente |
+
+- **Critério:** HEAD da main consultado em 25/11 `d21d2bb06b90b2e2c52ad4d0f3f64b4058b1e258`. Evidência de runtime e de GA4 são classes distintas. O HTML pode conter o identificador do GTM sem prova de disparo e recebimento.
+- **Documentação integral de retomada:** `docs/sfjm/MNT_COMPARAR_PRODUCT_OFFER_GTM_CONTINUIDADE_2026-11-25.md`. A seção de 15/11 e demais abaixo são fotografias anteriores e não devem ser tratadas como estado da mensuração em 25/11.
+
+---
+
 ## 24/11/2026 — Rio: #601, #605 e #608 em produção; MNT Órbita integrada (#604)
 
 Main `ed9978d`. As 10 páginas do Rio têm title, meta e H2 alinhados ao estudo; hub e Barra com H2 em pergunta e FAQ novo da Barra; 6 empreendimentos com H2 em pergunta. MNT Órbita (#604, `3fe3b0b`): testes reconciliados, `Product`/`Offer` ausentes de forma temporária e intencional. Pendências: RIIO e `/regioes/` sem H2 em pergunta; reindexação no Search Console; dois validadores que falham (Órbita parity e home-consent). Fonte: `handoffs/CURRENT.md` (24/11) e `docs/seo/MNT_ORBITA_RECONCILIACAO_JSONLD_2026-11-24.md`.

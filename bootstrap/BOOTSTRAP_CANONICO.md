@@ -1,3 +1,7 @@
+> **25/11/2026 — CONTINUIDADE ATUALIZADA (PR #628 GTM/GA4):** o topo de `docs/NEXT_SAFE_ACTION.md` define o gate de homologação real de mensuração em produção; ler também `docs/sfjm/MNT_COMPARAR_PRODUCT_OFFER_GTM_CONTINUIDADE_2026-11-25.md`. A integração #628 (`d21d2bb`) está no Vercel Production READY, mas recebimento GA4, consentimento funcional e deduplicação **não** foram homologados. Os banners de 15/11 e anteriores abaixo são históricos. Para Product/Offer Órbita, preservar a decisão de #604 (sem Offer fictício). Não tratar merge de código como aceite de analytics.
+
+---
+
 > **15/11/2026 — PRÓXIMA AÇÃO: leia o topo de `docs/NEXT_SAFE_ACTION.md` (seção de 15/11), que é o único registro autoritativo.** Os avisos abaixo, até o título "# Bootstrap Canônico — MoreNumTegra", são **históricos** (inclusive o de 28/10 com "próxima ação: cliques qualificados" e o de 05/11 do Complexo). Ponto de entrada para IA: `CLAUDE.md` na raiz, quando estiver no `main` (PR #583). Manifesto LVR: `.sfjm/project.json`. Inventário de frentes: `docs/PROJECT_STATUS.md` (15/11). Protocolo SFJM: repositórios privados `wagnerjfjunior/StopJuniorMode` e `wagnerjfjunior/sfjm-workspace`; sem acesso, declare a lacuna.
 
 ---
