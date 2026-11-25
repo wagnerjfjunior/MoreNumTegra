@@ -783,14 +783,14 @@
         <p class="mt-lead-privacy">Seus dados são enviados à Green Sales para atendimento comercial e não são copiados para o Google Analytics.</p>
       </div>
 
-      <form id="moretegra-lead-form" class="mt-lead-form" data-moretegra-lead-form data-form-id="46" novalidate>
+      <form id="moretegra-lead-form" class="mt-lead-form" data-moretegra-lead-form data-form-id="46" toolname="request_sales_contact" tooldescription="Prepara a solicitação de atendimento imobiliário Tegra em São Paulo. A transmissão acontece somente após o visitante revisar os dados e clicar em Enviar solicitação." novalidate>
         <input type="hidden" name="tenant_id" value="313">
         <input type="hidden" name="form_id" value="46">
 
         <div class="mt-form-grid">
           <label class="mt-field mt-field-wide" for="mt-lead-intent">
             <span>O que você deseja? <b aria-hidden="true">*</b></span>
-            <select id="mt-lead-intent" name="texto-livre" required aria-required="true">
+            <select id="mt-lead-intent" name="texto-livre" toolparamdescription="Assunto do atendimento, como condições, visita ou pagamento." required aria-required="true">
               <option value="Condições e disponibilidade" selected>Receber condições e disponibilidade</option>
               <option value="Agendar visita">Agendar uma visita</option>
               <option value="Simular forma de pagamento">Simular forma de pagamento</option>
@@ -802,17 +802,17 @@
 
           <label class="mt-field mt-field-wide" for="mt-lead-name">
             <span>Nome <b aria-hidden="true">*</b></span>
-            <input id="mt-lead-name" name="nome" type="text" autocomplete="name" maxlength="120" placeholder="Seu nome" required aria-required="true">
+            <input id="mt-lead-name" name="nome" toolparamdescription="Nome do visitante para o contato comercial." type="text" autocomplete="name" maxlength="120" placeholder="Seu nome" required aria-required="true">
           </label>
 
           <label class="mt-field mt-field-wide" for="mt-lead-email">
             <span>E-mail <b aria-hidden="true">*</b></span>
-            <input id="mt-lead-email" name="email" type="email" autocomplete="email" maxlength="160" placeholder="voce@exemplo.com" required aria-required="true">
+            <input id="mt-lead-email" name="email" toolparamdescription="Endereço de e-mail para retorno." type="email" autocomplete="email" maxlength="160" placeholder="voce@exemplo.com" required aria-required="true">
           </label>
 
           <label class="mt-field mt-field-country" for="mt-phone-country">
             <span>País <b aria-hidden="true">*</b></span>
-            <select id="mt-phone-country" name="pais" autocomplete="country" aria-label="País">
+            <select id="mt-phone-country" name="pais" toolparamdescription="Código de país do telefone." autocomplete="country" aria-label="País">
               <option value="+55" selected>🇧🇷 Brasil (+55)</option>
               <option value="+54">🇦🇷 Argentina (+54)</option>
               <option value="+598">🇺🇾 Uruguai (+598)</option>
@@ -846,7 +846,7 @@
 
           <label class="mt-field mt-field-phone" for="mt-lead-phone">
             <span>Telefone / WhatsApp <b aria-hidden="true">*</b></span>
-            <input id="mt-lead-phone" name="telefone_display" type="tel" autocomplete="tel-national" inputmode="tel" maxlength="24" placeholder="(11) 99999-9999" required aria-required="true">
+            <input id="mt-lead-phone" name="telefone_display" toolparamdescription="Telefone ou WhatsApp com DDD." type="tel" autocomplete="tel-national" inputmode="tel" maxlength="24" placeholder="(11) 99999-9999" required aria-required="true">
           </label>
 
           <div class="mt-honeypot" aria-hidden="true">
@@ -950,6 +950,7 @@
   <script src="/src-greenn/preview/measurement-form.js" defer></script>
   <script src="/src-greenn/portal-links.js" defer></script>
   <script src="/src-greenn/moretegra.js?v=20261124-fgts-contexto" defer></script>
+  <script src="/src-greenn/preview/agentic-web.js?v=1" defer></script>
 
 </body>
 </html>

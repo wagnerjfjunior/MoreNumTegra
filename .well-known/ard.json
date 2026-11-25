@@ -1,0 +1,32 @@
+{
+  "entries": [
+    {
+      "identifier": "urn:air:www.moretegra.com.br:skill:property-discovery",
+      "displayName": "MoreTegra — descoberta de imóveis em São Paulo",
+      "type": "application/agent-skills+md",
+      "url": "https://www.moretegra.com.br/agent-skills/property-discovery/SKILL.md",
+      "description": "Orientação para consultar e comparar empreendimentos Tegra publicados na homepage MoreTegra, com ferramentas WebMCP quando disponíveis e navegação convencional como alternativa.",
+      "version": "1.0.0",
+      "tags": [
+        "real-estate",
+        "sao-paulo",
+        "apartamentos"
+      ],
+      "capabilities": [
+        "search_properties",
+        "get_property_details",
+        "compare_properties",
+        "get_property_location",
+        "get_property_price",
+        "request_visit",
+        "request_sales_contact"
+      ],
+      "representativeQueries": [
+        "Quais apartamentos Tegra estão prontos para morar em São Paulo?",
+        "Compare os empreendimentos Tegra na Lapa.",
+        "Quais preços e metragens estão publicados no catálogo MoreTegra?",
+        "Como solicitar uma visita a um empreendimento Tegra?"
+      ]
+    }
+  ]
+}
