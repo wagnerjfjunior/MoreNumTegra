@@ -50,7 +50,23 @@ let checked=0;
 for(const [slug,street,cep] of pages){
  const filename='src-greenn/empreendimentos/'+slug+'/index.html';
  const original=execFileSync('git',['show',BASE+':'+filename],{encoding:'utf8'});
- const candidate=readFileSync(filename,'utf8');
+ const candidateRaw=readFileSync(filename,'utf8');
+ // SFJM 2026-11-15: approved internal-link module on five protected pages.
+ // The module section and its CSS are removed here; everything else must still equal the snapshot.
+ const SFJM_LINK_SLUGS=['aria-higienopolis','mozae-higienopolis','ledge-brooklin','ampere-brooklin','ypy-alto-do-ipiranga'];
+ const SFJM_CSS=[".mnb{margin:26px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}.mnb li{border-bottom:1px solid var(--line);padding:16px 0}.mnb a{color:var(--ink);font-weight:800;text-decoration:underline;text-decoration-color:var(--yellow);text-underline-offset:4px}.mnb span{display:block;max-width:820px;color:var(--muted);margin-top:4px}",".mnb{margin:26px 0 0;padding:0;list-style:none;border-top:1px solid rgba(128,128,128,.4)}.mnb li{border-bottom:1px solid rgba(128,128,128,.4);padding:16px 0}.mnb a{color:inherit;font-weight:800;text-decoration:underline;text-decoration-color:#EBB92E;text-underline-offset:4px}.mnb span{display:block;max-width:820px;opacity:.78;margin-top:4px}"];
+ const stripSfjmModule=(html,slug)=>{
+  const mod=[...html.matchAll(/<section [^>]*id="mais-no-bairro"[\s\S]*?<\/section>/g)];
+  assert.equal(mod.length,1,slug+': internal-link module must occur exactly once');
+  const hrefs=[...mod[0][0].matchAll(/href="([^"]*)"/g)].map(m=>m[1]);
+  assert(hrefs.length>=1&&hrefs.every(h=>/^\/(regioes|empreendimentos)\/[a-z0-9-]+\/$/.test(h)),slug+': module links must be internal region/project URLs');
+  let out=html.replace(mod[0][0],'');
+  const css=SFJM_CSS.filter(c=>out.includes(c));
+  assert.equal(css.length,1,slug+': module CSS must occur exactly once');
+  out=out.replace(css[0],'');
+  return out;
+ };
+ const candidate=SFJM_LINK_SLUGS.includes(slug)?stripSfjmModule(candidateRaw,slug):candidateRaw;
  const prior=address(original);
  if(prior?.streetAddress!==street||prior?.postalCode!==cep)continue;
  const approvedCommercialSlugs=['aria-higienopolis','bem-moema','bem-moema-studios-offices','garden-design','mozae-higienopolis','ypy-alto-do-ipiranga'];
