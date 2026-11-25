@@ -266,7 +266,9 @@ for(const [slug,street,cep] of pages){
   // Mozae: owner-authorized market-intelligence editorial snapshot; still strict full-file parity.
   const approved=execFileSync('git',['show',approvedSnapshot+':'+filename],{encoding:'utf8'});
   // Accept only the seven descriptive thumbnail alts copied from the approved data-alt.
-  const approvedWithThumbAlts=slug==='aria-higienopolis'?approved.replace(/(<button\b[^>]*class="mt-gallery-thumb"[^>]*data-alt="([^"]+)"[^>]*>)(<img\b[^>]*>)/g,(m,button,alt,img)=>button+img.replace('alt=""','alt="'+alt+'"')):approved;
+  let approvedWithThumbAlts=slug==='aria-higienopolis'?approved.replace(/(<button\b[^>]*class="mt-gallery-thumb"[^>]*data-alt="([^"]+)"[^>]*>)(<img\b[^>]*>)/g,(m,button,alt,img)=>button+img.replace('alt=""','alt="'+alt+'"')):approved;
+  // Owner-approved measurement-only additions; full snapshot comparison remains strict.
+  if(slug==='aria-higienopolis')approvedWithThumbAlts=approvedWithThumbAlts.replace('<html lang="pt-BR"','<html lang="pt-BR"'+" data-mnt-page-identity=\"aria_higienopolis_project\" data-mnt-product-identity=\"aria-higienopolis\" data-mnt-route=\"/empreendimentos/aria-higienopolis/\"").replace('<body','<body data-moretegra').replace('</body>',"<script src=\"/src-greenn/preview/measurement-core.js\" defer></script><script src=\"/src-greenn/preview/measurement-form.js\" defer></script>"+'</body>');
   const approvedExpected=BRAND_REMOVAL_SLUGS.includes(slug)?withoutComplexBrand(approvedWithThumbAlts):approvedWithThumbAlts;
   assert.equal(candidate,approvedExpected,slug+': approved commercial runtime HTML/schema has drifted');
  }else if(slug==='bem-moema-studios-offices'){
