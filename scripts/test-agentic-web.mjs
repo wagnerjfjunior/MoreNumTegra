@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 const script=readFileSync(new URL("../src-greenn/preview/agentic-web.js",import.meta.url),"utf8");
 const html=readFileSync(new URL("../src-greenn/preview/index.html",import.meta.url),"utf8");
-const execute=new Function("document","location","URL","Symbol","Promise",script);
+const execute=new Function("document","location","URL","Symbol","Promise","window",script);
 const makeCard=(name,href,zone,status,place,info,price,note="Referência")=>{
  const fields={"h3":name,".mt-project-location":place,".mt-project-info":info,".mt-feature":"Varanda",".mt-status":status,".mt-price-current":price,".mt-price-label":"A partir de",".mt-price-urgency":note};
  return {dataset:{city:"São Paulo",zone,status},querySelector(q){
@@ -15,13 +15,14 @@ const cards=[
 makeCard("Nova Vivere | 105 m²","/empreendimentos/nova-vivere/?unidade=708#valores","Zona Oeste","lancamento","Lapa · Zona Oeste","105 m² · 3 suítes","R$ 1.129.900","Condição de 29/08/2026"),
 makeCard("Garden Design","/empreendimentos/garden-design/","Zona Oeste","construcao","Lapa · Zona Oeste","61 m² a 78 m²","R$ 695.600"),
 makeCard("Caminhos da Lapa Elo Duo","/empreendimentos/caminhos-da-lapa-elo-duo/","Zona Oeste","entregue","Lapa · Zona Oeste","67 m² · 2 dormitórios","R$ 690.000")];
+let consent="denied"; const win={localStorage:{getItem(){return consent}},dataLayer:[]};
 const registered=[];let submits=0,scrolls=0,focuses=0;
 const intent={value:"Condições",options:[{value:"Agendar visita"}]};
 const form={elements:{"texto-livre":intent},scrollIntoView(){scrolls++},querySelector(){return{focus(){focuses++}}},submit(){submits++}};
 const context={registerTool(tool){registered.push(tool);return Promise.resolve()}};
 const document={modelContext:context,readyState:"complete",querySelectorAll(){return cards},querySelector(){return form}};
 const location={hostname:"www.moretegra.com.br",pathname:"/",origin:"https://www.moretegra.com.br"};
-execute(document,location,URL,Symbol,Promise);
+execute(document,location,URL,Symbol,Promise,win);
 assert.deepEqual(registered.map(tool=>tool.name),["search_properties","get_property_details","compare_properties","get_property_location","get_property_price","request_visit"]);
 for(const tool of registered){assert.equal(tool.inputSchema.type,"object");assert.equal(tool.inputSchema.additionalProperties,false);assert.equal(typeof tool.execute,"function");}
 const call=async(name,args={})=>JSON.parse(await registered.find(tool=>tool.name===name).execute(args));
@@ -46,8 +47,22 @@ result=await call("request_visit");assert.equal(result.status,"prepared_only");
 assert.equal(intent.value,"Agendar visita");assert.equal(scrolls,1);assert.equal(focuses,1);assert.equal(submits,0);
 assert.match(html,/toolname="request_sales_contact"/);assert.match(html,/toolparamdescription=/);
 assert.doesNotMatch(html,/toolautosubmit/i);assert.match(html,/src-greenn\/preview\/agentic-web\.js/);
-assert.doesNotThrow(()=>execute({...document,modelContext:null},location,URL,Symbol,Promise));
-assert.doesNotThrow(()=>execute(document,{...location,hostname:"example.com"},URL,Symbol,Promise));
+assert.doesNotThrow(()=>execute({...document,modelContext:null},location,URL,Symbol,Promise,win));
+assert.doesNotThrow(()=>execute(document,{...location,hostname:"example.com"},URL,Symbol,Promise,win));
 assert.equal(registered.length,6);
 assert.doesNotMatch(script,/\bfetch\s*\(|\bXMLHttpRequest\b|\bgtag\s*\(|\bfbq\s*\(|\.submit\s*\(/);
 console.log("PASS AGENTIC-WEB-V1: tools/catalogue/search/validation/compare/Form46 fallback and no autosubmit.");
+
+assert.equal(win.dataLayer.length,0,'no telemetry without consent');
+consent='granted';
+await call('search_properties',{query:'private@example.invalid'});
+assert.deepEqual(win.dataLayer.map(e=>e.event),['webmcp_tool_invoked','webmcp_tool_success']);
+assert.ok(!JSON.stringify(win.dataLayer).includes('private@example.invalid'));
+await call('get_property_details',{slug:'missing'});
+assert.equal(win.dataLayer.at(-1).event,'webmcp_tool_error');
+await call('request_visit');
+assert.equal(win.dataLayer.at(-1).event,'webmcp_visit_intent');
+assert.equal(submits,0);
+const n=win.dataLayer.length;consent='denied';await call('search_properties');assert.equal(win.dataLayer.length,n);
+consent='granted';win.localStorage.getItem=()=>{throw Error('blocked')};assert.equal((await call('search_properties')).ok,true);assert.equal(win.dataLayer.length,n);
+console.log('PASS consent-gated WebMCP telemetry; no arguments or PII.');

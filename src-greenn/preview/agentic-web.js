@@ -122,6 +122,32 @@
         catch (err) {return errorResult(err.message);}
       }};
   }
+  // Fixed-cardinality telemetry only; never emit arguments, results, errors or PII.
+  function observe(tool) {
+    const original = tool.execute;
+    const emit = (event, outcome) => {
+      try {
+        if (window.localStorage.getItem("mnt.consent.v2") !== "granted") return;
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({event, webmcp_tool:tool.name, webmcp_outcome:outcome,
+          page_identity:"moretegra_home", product_identity:"moretegra_portfolio", route:"/",
+          mnt_event_version:1, funnel_stage:"consideration"});
+      } catch { /* Analytics must never break tool execution. */ }
+    };
+    return {...tool,execute:async (params) => {
+      emit("webmcp_tool_invoked","started");
+      try {
+        const result = await original(params);
+        const ok = JSON.parse(result).ok === true;
+        emit(ok ? "webmcp_tool_success" : "webmcp_tool_error",ok ? "success" : "error");
+        if(ok && tool.name === "request_visit") emit("webmcp_visit_intent","prepared_only");
+        return result;
+      } catch (err) {
+        emit("webmcp_tool_error","error");
+        throw err;
+      }
+    }};
+  }
   function start() {
     if (location.hostname !== "www.moretegra.com.br" || location.pathname !== "/") return;
     const context = document.modelContext;
@@ -162,7 +188,7 @@
         }}
     ];
     for (const tool of tools) {
-      try {Promise.resolve(context.registerTool(tool)).catch(() => {});}
+      try {Promise.resolve(context.registerTool(observe(tool))).catch(() => {});}
       catch { /* Graceful degradation. */ }
     }
   }
