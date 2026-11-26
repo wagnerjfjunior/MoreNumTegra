@@ -1,3 +1,11 @@
+## 25/11/2026 — Consent Mode V3: implementação transversal e gates
+
+Autorização expressa do proprietário para executar a frente de consentimento granular, incluindo PR, CI, merge e produção. Implementação técnica em `feat/consent-granular-v3-20261125`: manager singleton, `mnt.consent.v3`, quatro sinais, persistência de 365 dias, banner e footer em 157 documentos HTML completos; cobertura de 137 rewrites e 92 URLs do sitemap; Form46/47 preservados. Testes remotos da nova matriz (27) e thank-you (9), e verificadores de rotas e RJ passaram na branch de trabalho. **Não confundir implementação local com PR mergeada ou deploy; registrar as provas live após completar.** Dossiê: `docs/sfjm/MNT_CONSENT_MODE_V3_FINAL_RESOLUTION.md`.
+
+A configuração administrativa efetiva do GTM `GTM-PGCR4R47` e GA4/Clarity não foi auditada e não deve ser declarada publicada. Não habilitar publicidade antes da conciliação dos triggers de consentimento e verificação Tag Assistant. Fora deste escopo, decisões e bloqueios históricos preservados.
+
+---
+
 ## 25/11/2026 — A06-L02C YPY e backlog SEO
 
 PR #627 publicada em `531043561e32c9e6d93e0b7f059a78e3f4fe26c6`, Vercel READY `dpl_3RNRPceJfip42bBuiUhHumxXZ8Wt`, CI 14/14, HTTP 200 YPY e Mozae. A06-L02C autorizada para reconciliação comercial YPY, catálogo e hub; ver `docs/seo/auditorias/2026-11-23/MNT_A06_L02C_YPY_STATUS_2026-11-25.md`. Gates desta release ainda pendentes até evidência live. SEO Control Center permanece BACKLOG, sem implementação. Próxima ação após release: QA/reindexação e estudo Elo Duo. Não substituir pendências históricas de outras frentes.

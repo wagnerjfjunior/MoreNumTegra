@@ -1,3 +1,9 @@
+## 25/11/2026 — Ação segura da frente Consent Mode V3
+
+Executar os gates da própria frente com autorização explícita: validar diff em branch, testes V3/CI (inclusive negativos e regressão), criar PR, merge somente sem falhas conhecidas de privacidade ou CRM, confirmar Deployment READY e alias no Vercel, registrar recibo SFJM. No GTM/GA4, conciliar administrativamente triggers, templates, Consent Initialization, GA4 `send_page_view:false` e Clarity antes de liberar objetivo publicitário. O gate operacional de Tag Assistant continua **BLOCKED** sem permissão administrativa e acesso ao navegador do proprietário; documentar fato, não inferir aprovação. Demais frentes SEO históricas não alteradas.
+
+---
+
 ## 25/11/2026 — A06-L02C YPY e backlog SEO
 
 PR #627 publicada em `531043561e32c9e6d93e0b7f059a78e3f4fe26c6`, Vercel READY `dpl_3RNRPceJfip42bBuiUhHumxXZ8Wt`, CI 14/14, HTTP 200 YPY e Mozae. A06-L02C autorizada para reconciliação comercial YPY, catálogo e hub; ver `docs/seo/auditorias/2026-11-23/MNT_A06_L02C_YPY_STATUS_2026-11-25.md`. Gates desta release ainda pendentes até evidência live. SEO Control Center permanece BACKLOG, sem implementação. Próxima ação após release: QA/reindexação e estudo Elo Duo. Não substituir pendências históricas de outras frentes.
