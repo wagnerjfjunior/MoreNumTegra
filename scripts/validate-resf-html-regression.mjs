@@ -1,3 +1,4 @@
+import {verifiedPreV3} from "./lib/consent-v3-migration.mjs";
 #!/usr/bin/env node
 // RESF frozen-page regression guard, extracted from PostalAddress test.
 // This check is independent of postal address and schema modifications.
@@ -243,7 +244,7 @@ let checked=0;
 for(const [slug,street,cep] of pages){
  const filename='src-greenn/empreendimentos/'+slug+'/index.html';
  const original=execFileSync('git',['show',BASE+':'+filename],{encoding:'utf8'});
- const candidateRaw=restoreA06Metadata(readFileSync(filename,'utf8'),slug);
+ const candidateRaw=restoreA06Metadata(verifiedPreV3(filename),slug);
  // SFJM 2026-11-15: approved internal-link module on five protected pages + one approved H1 (Ampère).
  // The module section, its CSS and the approved Ampère H1 are removed here; everything else must still equal the snapshot.
  const SFJM_LINK_SLUGS=['aria-higienopolis','mozae-higienopolis','ledge-brooklin','ampere-brooklin','ypy-alto-do-ipiranga'];

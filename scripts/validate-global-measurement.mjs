@@ -5,7 +5,10 @@ const routes=[...sitemap.matchAll(/<loc>https:\/\/www\.moretegra\.com\.br([^<]*)
 const manager='/src-greenn/preview/consent-v3.js?v=20261125-final';
 function verify(h,route){
  assert.equal(h.split(manager).length-1,1,route+' consent manager must appear once');
- assert(h.indexOf(manager)<h.indexOf('</head>'),route+' Consent Manager must be loaded in HEAD');
+ const dynamic=/\/empreendimentos\/(?:capiitolo-piero-lissoni|dsg-itaim)\//.test(route);
+ if(dynamic){
+  assert(h.includes('consentScript.src="'+manager+'"')&&h.includes('doc.head.insertBefore(consentScript,doc.head.firstChild)')&&h.includes('document.write('),route+' dynamic page manager must be installed first in the effective document');
+ }else assert(h.indexOf(manager)<h.indexOf('</head>'),route+' Consent Manager must be loaded in HEAD');
  assert(!h.includes('googletagmanager.com/gtm.js') && !h.includes('googletagmanager.com/ns.html') && !/<script[^>]*>[^<]*(?:gtm\.start|default_consent)/i.test(h),route+' legacy GTM/consent bootstrap');
  if(route.startsWith('/blog/')&&h.includes('measurement-editorial.js')) assert.equal((h.match(/\/src-greenn\/blog\/measurement-editorial\.js\?v=20261125-v3/g)||[]).length,1,route+' dispatcher');
 }

@@ -1,8 +1,9 @@
+import {verifiedPreV3} from "./lib/consent-v3-migration.mjs";
 import assert from 'node:assert/strict';
 import {readFileSync,existsSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
 const root='docs/editorial/mercado-2026-10-28';
-const read=p=>readFileSync(p,'utf8');
+const read=p=>(p.startsWith("src-greenn/")&&p.endsWith(".html")&&!p.endsWith("/thank-you/obrigado.html")&&!p.includes("/blocks/"))?verifiedPreV3(p):readFileSync(p,"utf8");
 const data=JSON.parse(read(root+'/mapa-artigos.json'));
 const base='bbe59c7a0b7b8a597826d56f6bc01d5291d9dfa5';
 const baseline=p=>execFileSync('git',['show',base+':'+p],{encoding:'utf8'});
