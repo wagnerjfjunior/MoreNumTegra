@@ -646,7 +646,7 @@
     });
 
     const scheduleAutoplay = () => {
-      window.setTimeout(() => play(false), 2000);
+      window.setTimeout(() => play(false), 3000);
     };
 
     if (document.readyState === "complete") {

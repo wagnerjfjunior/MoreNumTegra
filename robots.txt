@@ -12,4 +12,4 @@ Allow: /
 
 Sitemap: https://www.moretegra.com.br/sitemap.xml
 
-Agentmap: https://www.moretegra.com.br/.well-known/ard.json
+# Descoberta agêntica via Link rel=ard e /.well-known/ard.json.
