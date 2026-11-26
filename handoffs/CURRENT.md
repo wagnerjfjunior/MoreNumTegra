@@ -1,3 +1,9 @@
+## 26/11/2026 — Consent V3, performance e Órbita
+
+Reconciliação documental de #637–#646 (MERGED), main observada `14c5b2536eff26ed3a2aaa7d998ded7dd8326e58`. Dossiê: `docs/sfjm/MNT_CONSENT_PERF_ORBITA_HANDOFF_2026-11-26.md`. Órbita PSI mobile USER_REPORTED 98/97/96/100, agêntica 4/4; próxima ação read-only: comparar WebMCP com home e validar consentimento/CRM sem lead real. GTM administrativo e deploy atual não recertificados; bloqueios preservados; nenhuma mudança runtime autorizada por este registro.
+
+---
+
 ## 25/11/2026 — Consent Mode V3: implementação transversal e gates
 
 Autorização expressa do proprietário para executar a frente de consentimento granular, incluindo PR, CI, merge e produção. Implementação técnica em `feat/consent-granular-v3-20261125`: manager singleton, `mnt.consent.v3`, quatro sinais, persistência de 365 dias, banner e footer em 157 documentos HTML completos; cobertura de 137 rewrites e 92 URLs do sitemap; Form46/47 preservados. Testes remotos da nova matriz (27) e thank-you (9), e verificadores de rotas e RJ passaram na branch de trabalho. **Não confundir implementação local com PR mergeada ou deploy; registrar as provas live após completar.** Dossiê: `docs/sfjm/MNT_CONSENT_MODE_V3_FINAL_RESOLUTION.md`.
