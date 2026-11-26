@@ -1,93 +1,77 @@
 #!/usr/bin/env node
+// SFJM: isolated Orbita commercial parity reconciliation after PR #604.
+// Scoped approved facts and independent negative fixtures; no runtime edits.
 import {readFileSync} from "node:fs";
 import {execFileSync} from "node:child_process";
 import assert from "node:assert/strict";
-const path="src-greenn/empreendimentos/universo-tatuape-orbita/index.html";
-const base="3acd0a9228ebaf4d368fba40052f1ff41c0cbca2";
+const path="src-greenn/empreendimentos/universo-tatuape-orbita/index.html",old="3acd0a9228ebaf4d368fba40052f1ff41c0cbca2",approved="ed9978d75da3b3d7888b8bfd532c4f315b1f5052";
 const source=readFileSync(path,"utf8");
-const prior=execFileSync("git",["show",base+":"+path],{encoding:"utf8"});
-const pattern=/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
-const get=(s)=>{const all=[...s.matchAll(pattern)];assert.equal(all.length,1);return {raw:all[0][1],json:JSON.parse(all[0][1])}};
-const a=get(prior),b=get(source);
-const removeLegacyHeroMeta = html => html.replace(/\.hero-meta\{[^}]*\}\.hero-meta strong\{[^}]*\}\.hero-meta span\{[^}]*\}/,"").replace(/<div class="hero-meta">[\s\S]*?<\/div><a class="hero-cta"/,'<a class="hero-cta"');
-assert(!source.includes("hero-meta"),"RESF V1 forbids duplicated legacy hero-meta");
-assert(source.includes('data-plant-groups'),"Grouped floorplan controls must exist");
-assert(source.includes('data-plant-group="Residencial"')&&source.includes('data-plant-group="Comercial"')&&source.includes('data-plant-group="Implantação"'),"All three categories required");
-assert(source.includes('class="wrap tour-grid"')&&source.includes('class="tour-image"'),"Editorial 360 tour requires two-column media/text");
-assert.equal((source.match(/<div class="neighborhood-gallery"/g)||[]).length,1,"Three-photo neighborhood editorial block required");
-assert.equal((source.match(/<figure><img loading="lazy" decoding="async"/g)||[]).length,3,"Three lazy-loaded neighborhood images required");
-assert(source.includes('<form id="moretegra-lead-form"')&&source.includes('data-form-id="46"'),"Form 46 contract preserved");
-assert(source.includes('https://wa.me/5511960779328'),"WhatsApp contact preserved");
-const oldGraph=a.json["@graph"],graph=b.json["@graph"],find=(type)=>graph.find(n=>n["@type"]===type);
-const types=["WebSite","WebPage","BreadcrumbList","Brand","ApartmentComplex","FAQPage"];
-for(const type of types){
- const before=oldGraph.find(n=>n["@type"]===type),after=find(type);
- assert(before&&after,"missing "+type);
- assert.equal(after["@id"],before["@id"],"Canonical entity ID changed: "+type);
- if(type==="FAQPage"){assert.equal(after.mainEntity.length,12);assert.deepEqual(after.mainEntity.slice(0,6),before.mainEntity,"Previous six FAQ questions must be preserved");}
+const readRef=ref=>execFileSync("git",["show",ref+":"+path],{encoding:"utf8"});
+const prior=readRef(old),baseline=readRef(approved);
+function validate(source,prior,approved,assert){
+ const pattern=/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
+ const get=s=>{const m=[...s.matchAll(pattern)];assert.equal(m.length,1,"Exactly one JSON-LD script");const j=JSON.parse(m[0][1]);assert.equal(j["@context"],"https://schema.org","Schema context");assert(Array.isArray(j["@graph"]),"Graph required");return j["@graph"]};
+ const graph=get(source),oldGraph=get(prior),baseline=get(approved),find=t=>graph.find(n=>n["@type"]===t);
+ const walk=(x,fn)=>{if(x&&typeof x==="object"){if(!Array.isArray(x))fn(x);for(const v of Object.values(x))walk(v,fn)}};
+ walk(graph,x=>{assert(![x["@type"]].flat().some(t=>["Product","Offer","AggregateOffer"].includes(t)),"Commercial Product/Offer paused");assert(!Object.hasOwn(x,"availability"),"Unverified availability forbidden")});
+ const counts={WebSite:1,WebPage:1,BreadcrumbList:1,Brand:1,ApartmentComplex:1,FAQPage:1,Organization:1,ContactPoint:1,Person:1,RealEstateAgent:1,Service:1,ImageObject:2,FloorPlan:3};
+ for(const [t,n] of Object.entries(counts))assert.equal(graph.filter(x=>x["@type"]===t).length,n,"Required entity count "+t);
+ assert.equal(graph.length,16,"Exact graph cardinality");const ids=graph.map(n=>n["@id"]);assert(ids.every(x=>typeof x==="string"&&x.length),"Every entity has ID");assert.equal(new Set(ids).size,ids.length,"Unique entity IDs");
+ walk(graph,x=>{if(Object.hasOwn(x,"@id"))assert(ids.includes(x["@id"]),"Unresolved graph reference: "+x["@id"])});
+ assert.deepEqual([...ids].sort(),baseline.map(n=>n["@id"]).sort(),"Approved entity identities");
+ for(const n of oldGraph)assert.equal(find(n["@type"])?.["@id"],n["@id"],"Canonical entity ID changed");
+ for(const t of Object.keys(counts).filter(t=>t!=="FAQPage"))assert.deepEqual(graph.filter(n=>n["@type"]===t),baseline.filter(n=>n["@type"]===t),"Approved semantic content "+t);
+ const faq=find("FAQPage");assert.equal(faq.mainEntity.length,12,"Twelve FAQ questions");assert.deepEqual(faq.mainEntity.slice(0,6),oldGraph.find(n=>n["@type"]==="FAQPage").mainEntity,"Original six FAQ entries");
+ const section=(id,s=source)=>s.match(new RegExp('<section\\b[^>]*\\bid="'+id+'"[^>]*>([\\s\\S]*?)<\\/section>'))?.[1]||"";
+ const displayed=[...section("faq").matchAll(/<details><summary>([\s\S]*?)<\/summary><p>([\s\S]*?)<\/p><\/details>/g)].map(m=>[m[1],m[2]]);
+ assert.equal(displayed.length,12,"Visible FAQ count");assert.deepEqual(displayed,faq.mainEntity.map(q=>[q.name,q.acceptedAnswer.text]),"Visible FAQ and JSON-LD parity");
+ const url="https://www.moretegra.com.br/empreendimentos/universo-tatuape-orbita/";
+ assert(source.includes('<link rel="canonical" href="'+url+'">'),"Canonical URL");assert(source.includes('<meta name="robots" content="index,follow,max-image-preview:large">'),"Indexability");
+ const web=find("WebPage"),complex=find("ApartmentComplex"),agent=find("RealEstateAgent"),svc=find("Service"),contact=find("ContactPoint");
+ assert.equal(web.url,url,"WebPage canonical");assert.deepEqual(web.mainEntity,{"@id":complex["@id"]},"Project reference");
+ assert.equal(complex.address.streetAddress,"Avenida Celso Garcia, 5040","Project street");assert.equal(complex.address.postalCode,"03064-000","Project CEP");assert.deepEqual(agent.address,complex.address,"Agent and project address parity");
+ assert.equal(contact.telephone,"+5511960779328","Commercial contact");assert.equal(agent.identifier.value,"209.905-F","CRECI");assert.equal(svc.provider["@id"],"https://www.moretegra.com.br/#tegra-vendas","Service provider");
+ const hero=graph.find(n=>n["@id"]===url+"#primary-image"),secondary=graph.find(n=>n["@id"]===url+"#secondary-image");assert(hero&&secondary&&hero.contentUrl!==secondary.contentUrl,"Distinct image entities");
+ const attr=(tag,key)=>tag.match(new RegExp("\\b"+key+'="([^"]+)"'))?.[1];
+ assert([...source.matchAll(/<img\b[^>]*>/g)].some(m=>m[0].includes('class="hero-poster"')&&attr(m[0],"src")===hero.contentUrl),"Visible hero image");assert(source.includes('content="'+hero.contentUrl+'"'),"OG image");
+ const img=(source.match(/<figure class="orbita-opps-visual">([\s\S]*?)<\/figure>/)?.[1]||"").match(/<img\b[^>]*>/)?.[0]||"";
+ assert.equal(attr(img,"src"),secondary.contentUrl,"Secondary visible image URL");assert.equal(attr(img,"alt"),secondary.caption,"Secondary visible image alt");
+ assert.deepEqual(web.image,[{"@id":hero["@id"]},{"@id":secondary["@id"]}],"Ordered WebPage images");assert.equal(web.primaryImageOfPage["@id"],hero["@id"],"Primary image owner");assert.equal(complex.image[0]["@id"],hero["@id"],"Complex primary image");
+ const array=(s,name,next)=>{const m=s.match(new RegExp("const "+name+"=(\\[[\\s\\S]*?\\]);const "+next+"="));assert(m,"Missing "+name+" inventory");return JSON.parse(m[1])};
+ const scenes=array(source,"scenes","stage"),plants=array(source,"plants","pTabs");assert.equal(scenes.length,6,"Six gallery scenes");assert.equal(plants.length,15,"Fifteen official plants");assert.deepEqual(scenes,array(approved,"scenes","stage"),"Gallery inventory");assert.deepEqual(plants,array(approved,"plants","pTabs"),"Plant inventory");
+ const plans=graph.filter(n=>n["@type"]==="FloorPlan");assert.deepEqual(complex.accommodationFloorPlan,plans.map(n=>({"@id":n["@id"]})),"Exact FloorPlan references");
+ for(const n of plans)assert(plants.some(p=>p[3]===n.image),"Visible modeled FloorPlan");for(const p of plants)assert(p.length===4&&p[3].startsWith("https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/339/Planta/"),"Official plant origin");
+ const gallery=section("galeria");for(const t of ["data-gallery","data-gallery-prev","data-gallery-next","data-scene-nav"])assert(gallery.includes(t),"Required gallery control "+t);
+ const residences=section("residencias");for(const t of ['data-plant-groups','data-plant-tabs','data-plant-group="Residencial"','data-plant-group="Comercial"','data-plant-group="Implantação"'])assert(residences.includes(t),"Required plant control "+t);
+ for(const t of ['class="wrap tour-grid"','class="tour-image"','https://arquivos.tegraincorporadora.com.br/tour360/orbita/','id="localizacao"','class="map-frame"','class="map-whatsapp"','https://wa.me/5511960779328','CRECI-SP 209.905-F','id="fgts"','id="livelo"','id="decorados"','id="oportunidades"'])assert(source.includes(t),"Required page feature "+t);
+ assert(!source.includes("hero-meta")&&!source.includes('class="neighborhood-gallery"'),"Retired visual structures");
+ const facts=[...source.matchAll(/<section class="facts"[^>]*>([\s\S]*?)<\/section>/g)];assert.equal(facts.length,1,"Single facts band");assert.equal((facts[0][1].match(/<div class="fact">/g)||[]).length,4,"Four facts");for(const t of ["38–69 m²","1 a 3","Tatuapé","Entregue"])assert(facts[0][1].includes(t),"Required fact "+t);
+ const values=section("valores");assert(values.includes("Consultar Valor")&&values.includes('href="#formulario"')&&values.includes('data-form-intent="conditions"'),"Consultation CTA");
+ assert(!/data-orbita-unit\s*=|343900\.00|R\$\s*343\.900|R\$\s*645\.800|Unidade 1814 · 1 dormitório/i.test(source),"Retired price/unit must not return");
+ assert(source.includes("#moretegra-lead-form.form{background:#f9f7f1"),"Approved form style");const form=s=>s.match(/<form id="moretegra-lead-form"[\s\S]*?<\/form>/)?.[0]||"";
+ const f=form(source);assert(f.length>0&&f.includes('data-form-id="46"')&&f.includes('name="tenant_id" value="313"')&&f.includes('name="form_id" value="46"'),"Form46 contract");assert.deepEqual(f,form(approved),"Approved Form46 markup");
 }
-const faqSection=(source.match(/<section class="section residences" id="faq">([\s\S]*?)<\/section>/)||[])[1]||"";
-const displayed=[...faqSection.matchAll(/<details><summary>([\s\S]*?)<\/summary><p>([\s\S]*?)<\/p><\/details>/g)].map(x=>[x[1],x[2]]);
-assert.equal(displayed.length,12);
-assert.deepEqual(displayed,find("FAQPage").mainEntity.map(q=>[q.name,q.acceptedAnswer.text]),"Visible FAQ and JSON-LD parity");
-assert.equal((source.match(/<section class="facts">/g)||[]).length,1);
-assert(source.includes("Vagas por tipologia · confirmar"));
-assert(source.includes("#moretegra-lead-form.form{background:#f9f7f1"));
-const expectedExtra=["Organization","ContactPoint","Person","RealEstateAgent","Service","Product","Offer"];
-for(const type of expectedExtra)assert.equal(graph.filter(n=>n["@type"]===type).length,1,"Required unique "+type);
-const ids=graph.map(n=>n["@id"]).filter(Boolean);
-assert.equal(new Set(ids).size,ids.length,"@id must be unique");
-const n=find("ApartmentComplex"),p=find("Product"),o=find("Offer"),agent=find("RealEstateAgent"),svc=find("Service"),contact=find("ContactPoint");
-const hero="https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/339/ImagemPrincipal/e56e585c-b5a8-44b5-95a6-c6227d8d18ea.jpg";
-const img=find("ImageObject"),floorplans=graph.filter(n=>n["@type"]==="FloorPlan");
-assert.equal(graph.filter(n=>n["@type"]==="ImageObject").length,2,"Exactly primary and secondary ImageObjects");
-assert.equal(img.contentUrl,hero,"Hero URL must equal approved RESF image inventory");
-assert.equal(n.image[0]["@id"],img["@id"]);
-assert.equal(find("WebPage").primaryImageOfPage["@id"],img["@id"]);
-const secondary=graph.find(n=>n["@type"]==="ImageObject"&&n["@id"]==="https://www.moretegra.com.br/empreendimentos/universo-tatuape-orbita/#secondary-image");
-assert(secondary,"Secondary ImageObject is required");
-const visual=(source.match(/<section class="full"><img\b[^>]*>/)||[])[0]||"";
-const actualSrc=(visual.match(/\bsrc="([^"]+)"/)||[])[1];
-const actualAlt=(visual.match(/\balt="([^"]+)"/)||[])[1];
-assert(actualSrc&&actualAlt&&actualSrc!==hero,"Second page visual must be distinct from hero");
-assert.equal(secondary.contentUrl,actualSrc,"Secondary URL must match second visible content image");
-assert.equal(secondary.caption,actualAlt,"Secondary caption must match visible alt");
-assert.deepEqual(find("WebPage").image,[{"@id":img["@id"]},{"@id":secondary["@id"]}],"WebPage.image must preserve ordered primary and secondary references");
-assert.equal(find("WebPage").primaryImageOfPage["@id"],img["@id"],"Primary image owner cannot change");
-assert.equal(floorplans.length,4);
-assert.equal(n.accommodationFloorPlan.length,4);
-assert(floorplans.every(x=>n.accommodationFloorPlan.some(y=>y["@id"]===x["@id"])));
-const plantsMatch=source.match(/const plants=(\[[\s\S]*?\]);const pTabs=/);
-assert(plantsMatch,"Plants data must exist");
-const displayedPlants=JSON.parse(plantsMatch[1]);
-assert.equal(displayedPlants.length,15,"All fifteen official floorplan/implantation views required");
-assert(displayedPlants.every(p=>p.length===4&&p[3].startsWith("https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/339/Planta/")));
-for(const u of floorplans.filter(p=>p.image).map(p=>p.image))assert(displayedPlants.some(p=>p[3]===u),"Original modeled plan must remain visible");
-assert(source.includes('https://arquivos.tegraincorporadora.com.br/tour360/orbita/'),"Tour must point to official 360");
-const plan69=floorplans.find(x=>x.floorSize?.value===69);
-assert(plan69 && plan69.floorSize.unitCode==="MTK");
-assert(!plan69.image,"Exact AP0609 blueprint was not mapped to a named plant in the HTML");
-assert.equal(p.image[0],hero);
-assert(source.includes('content="'+hero+'"'),"Approved OG image URL unchanged");
-
-assert.equal(n.address.streetAddress,"Avenida Celso Garcia, 5040");
-assert.equal(n.address.postalCode,"03064-000");
-assert.equal(p.offers["@id"],o["@id"]);
-assert.equal(o.itemOffered["@id"],p["@id"]);
-assert.equal(o.priceCurrency,"BRL");
-assert.equal(o.price,"343900.00");
-assert(source.includes('data-orbita-unit="1814"')&&source.includes("R$ 343.900"),"Entry AP1814 / R$343.900 must remain visible");
-assert(!source.includes("data-orbita-unit=\"2408\""),"Old primary unit must not remain as active selection");
-assert(p.name.includes("1814")&&o.description.includes("1814"),"Product/Offer must match displayed selected unit");
-assert(source.includes('data-orbita-unit="1305"')&&source.includes("R$ 645.800"),"Second commercial option must remain visible");
-assert.equal(p.image[0],img.contentUrl);
-assert.equal(contact.telephone,"+5511960779328");
-assert.equal(agent.identifier.value,"209.905-F");
-assert.equal(svc.provider["@id"],"https://www.moretegra.com.br/#tegra-vendas");
-assert(!("availability" in o),"Do not claim confirmed stock");
-assert.deepEqual(agent.address,n.address,"On-site RealEstateAgent address must match the exact Orbita project address");
-assert.equal(agent.image,"https://s3-gdigital.s3.amazonaws.com/gdigital/313/sNzJJWhmmsjkZjUV7gCKTgrlzRINCD6yDIAvkZOJ.webp","RealEstateAgent photo must match approved Home business profile");
-assert.equal(agent.address.streetAddress,"Avenida Celso Garcia, 5040");
-assert(source.includes("Unidade 1814 · 1 dormitório"),"Current commercial reference must be visible");
-assert(source.includes("CRECI-SP 209.905-F"),"Agent credentials must be visible");
-console.log("PASS: Orbita commercial entities, approved primary ImageObject and official FloorPlans grounded; original address/FAQ and HTML frozen");
+function mutateGraph(s,change){return s.replace(/(<script\b[^>]*type=["']application\/ld\+json["'][^>]*>)([\s\S]*?)(<\/script>)/i,(_,a,b,c)=>{const j=JSON.parse(b);change(j["@graph"]);return a+JSON.stringify(j)+c})}
+function negativeCases(s,mg){return [
+ ["missing entity",mg(s,g=>g.splice(g.findIndex(n=>n["@type"]==="Service"),1)),/Required entity count Service/],
+ ["historical offer",mg(s,g=>g.push({"@type":"Offer","price":"343900.00"})),/Product\/Offer paused/],
+ ["nested product",mg(s,g=>g[0].offers={"@type":"Product"}),/Product\/Offer paused/],
+ ["unverified availability",mg(s,g=>g[0].availability="https://schema.org/InStock"),/availability forbidden/],
+ ["orphan reference",mg(s,g=>g.find(n=>n["@type"]==="WebPage").mainEntity={"@id":"https://www.moretegra.com.br/#orphan"}),/Unresolved graph reference/],
+ ["FAQ mismatch",s.replace("<summary>Como consultar o valor dos apartamentos no Órbita?</summary>","<summary>Alteração indevida?</summary>"),/FAQ and JSON-LD parity/],
+ ["contact drift",mg(s,g=>g.find(n=>n["@type"]==="ContactPoint").telephone="+5500000000000"),/Approved semantic content ContactPoint/],
+ ["wrong address",mg(s,g=>g.find(n=>n["@type"]==="ApartmentComplex").address.postalCode="00000-000"),/Approved semantic content ApartmentComplex/],
+ ["wrong form",s.replace('data-form-id="46"','data-form-id="47"'),/Form46 contract/],
+ ["secondary image drift",s.replace('alt="Lazer Órbita de Universo Tatuapé Órbita"','alt="Alteração indevida"'),/Secondary visible image alt/],
+ ["plant regression",s.replace('data-plant-group="Comercial"','data-plant-group="Incorreto"'),/Required plant control/],
+ ["retired price",s.replace("Consultar Valor","R$ 343.900"),/Consultation CTA|Retired price\/unit/],
+ ["gallery control",s.replace("data-gallery-next aria-label","data-removed-next aria-label"),/Required gallery control/],
+ ["new historical price",s.replace("Consultar Valor","Consultar Valor R$ 343.900"),/Retired price\/unit/]
+]}
+validate(source,prior,baseline,assert);
+for(const [name,mutated,expected] of negativeCases(baseline,mutateGraph)){
+ assert.notEqual(mutated,baseline,"Mutation fixture ineffective: "+name);
+ assert.throws(()=>validate(mutated,prior,baseline,assert),expected,"Negative test must fail: "+name);
+ console.log("NEGATIVE PASS",name);
+}
+console.log("PASS: Orbita schema, commercial pause, visible FAQ, approved imagery/plants and Form46; 14 negative fixtures rejected");
