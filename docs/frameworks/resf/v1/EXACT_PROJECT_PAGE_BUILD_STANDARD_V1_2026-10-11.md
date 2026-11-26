@@ -146,3 +146,7 @@ Asterisco único na composição do preço; evitar rótulos duplicados de “à 
 
 ## Adendo de 2026-11-09 — Regras de conversão (REGRA)
 As regras R1–R6 de `RESF_CONVERSION_GUARDRAILS_2026-11-09.md` valem para toda página de venda: nunca enviar o cliente a site concorrente; nenhuma mídia de concorrente; página de venda não se justifica; localização no padrão Mozae (mapa → WhatsApp); plantas sem imagem oficial em cards com "Solicitar Planta" → WhatsApp; rodapé com endereço igual ao JSON-LD. Validador: `scripts/validate-resf-conversion-guard.mjs`.
+
+## Adendo de 2026-11-26 — Performance V7 / escala controlada
+
+Adotar o adendo do padrão `docs/performance/RESPONSIVE_MEDIA_DELIVERY_STANDARD_V1.md` e o procedimento `docs/performance/MNT_RESF_PERFORMANCE_SCALE_RUNBOOK_2026-11-26.md` para novos builds e remediações autorizadas. A V7 da home é referência de laboratório aceita pelo proprietário (três medições; gate de cinco ainda aberto), não modelo visual nem garantia de performance para outra página. Manter facts, identidade, galerias/plantas, CTA, schema, consentimento, Form46/47 e canais regionais. Inventariar antes de editar, reutilizar variantes existentes, validar cinco execuções comparáveis e gates funcionais por URL, autorizar separadamente cada PR; não reescrever páginas congeladas nem relaxar validadores. Não adotar largura/crop/preload universal. As metas existentes continuam vigentes.

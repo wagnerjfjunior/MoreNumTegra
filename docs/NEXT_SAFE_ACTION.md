@@ -1,3 +1,9 @@
+## 26/11/2026 — MNT-PERF-V7 / RESF performance reference
+
+Owner approved consolidation of homepage V7 and documentation for scale. Runtime PR #646 MERGED, SHA `14c5b2536eff26ed3a2aaa7d998ded7dd8326e58`, Vercel READY `dpl_AauxUVtEYxmzx8gS3VBNFuU8WHAd`, www alias verified, CI 13/13 applicable. Three USER_REPORTED mobile PSI runs 98/100/100, median LCP 1.4 s, CLS 0, SI 2.3 s (0.8–4.0), SEO/accessibility/best practices 100 and agentic 6/6 each. OWNER_APPROVED_REFERENCE / LAB_BATTERY_INCOMPLETE (3/5); no CrUX or functional QA certification. Evidence: `docs/sfjm/MNT_PERF_V7_RESPONSIVE_MEDIA_2026-11-26.md`. Consumer RESF procedure: `docs/performance/MNT_RESF_PERFORMANCE_SCALE_RUNBOOK_2026-11-26.md`; addendum to existing responsive-media standard and exact-project standard. Other fronts unchanged. Next safe action for performance only: finish two comparable home runs, functional/visual smoke, then read-only inventory and propose bounded pilot scope; no runtime edits without specific authorization.
+
+---
+
 ## 25/11/2026 — Ação segura da frente Consent Mode V3
 
 Executar os gates da própria frente com autorização explícita: validar diff em branch, testes V3/CI (inclusive negativos e regressão), criar PR, merge somente sem falhas conhecidas de privacidade ou CRM, confirmar Deployment READY e alias no Vercel, registrar recibo SFJM. No GTM/GA4, conciliar administrativamente triggers, templates, Consent Initialization, GA4 `send_page_view:false` e Clarity antes de liberar objetivo publicitário. O gate operacional de Tag Assistant continua **BLOCKED** sem permissão administrativa e acesso ao navegador do proprietário; documentar fato, não inferir aprovação. Demais frentes SEO históricas não alteradas.
