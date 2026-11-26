@@ -48,9 +48,9 @@ export function verifiedPreV3(path){
   assert.equal(expected.split(image).length,3);
   expected=expected.split(image).join("https://s3-gdigital.s3.amazonaws.com/gdigital/313/Vista_aerea_Rua_Jardim.webp");
   assert.equal(expected.split("O player é carregado apenas quando você iniciar o vídeo.").length,2);
-  expected=expected.replace("O player é carregado apenas quando você iniciar o vídeo.","O vídeo inicia automaticamente após o carregamento da página, com atraso de 3 segundos. Você também pode tocar para iniciar.");
+  expected=expected.replace("O player é carregado apenas quando você iniciar o vídeo.","Toque para carregar o vídeo externo do YouTube. A reprodução automática depende das suas preferências de cookies e das condições do dispositivo.");
   assert.equal(expected.split("moretegra.js?v=20261124-fgts-contexto").length,2);
-  expected=expected.replace("moretegra.js?v=20261124-fgts-contexto","moretegra.js?v=20261126-video-delay3");
+  expected=expected.replace("moretegra.js?v=20261124-fgts-contexto","moretegra.js?v=20261126-poster-stable");
  }
  assert.equal(current,expected,path+": actual HTML differs from the only authorized V3 migration; other business/schema/media changes prohibited");
  return before;
