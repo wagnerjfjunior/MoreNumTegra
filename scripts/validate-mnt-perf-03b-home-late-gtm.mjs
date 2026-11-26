@@ -35,6 +35,6 @@ if(failed) process.exit(1);
 console.log("MNT-PERF-03B Home late-GTM bootstrap static validation: PASS");
 
 // Ordered deferred scripts preserve the consent-first contract without blocking parsing.
-const executable = [...html.matchAll(/<script\\b([^>]*)>([\\s\\S]*?)<\\/script>/gi)].filter(m=>!m[1].includes("ld+json"));
-if(executable.length!==7 || executable[0][0]!=="<script src=\"/src-greenn/preview/consent-v3.js?v=20261125-final\" defer></script>" || executable.some(m=>! /\\bdefer\\b/.test(m[1]) || /\\basync\\b/.test(m[1]) || m[2].trim())) throw new Error("Home must execute consent before all deferred consumers; no inline or async executable scripts");
+const executable = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)].filter(m=>!m[1].includes("ld+json"));
+if(executable.length!==7 || executable[0][0]!=='<script src="/src-greenn/preview/consent-v3.js?v=20261125-final" defer></script>' || executable.some(m=>!/\bdefer\b/.test(m[1]) || /\basync\b/.test(m[1]) || m[2].trim())) throw new Error("Home must execute consent before all deferred consumers; no inline or async executable scripts");
 console.log("PASS: ordered deferred consent-first bootstrap");

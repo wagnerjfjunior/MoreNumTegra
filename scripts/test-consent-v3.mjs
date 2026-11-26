@@ -5,7 +5,8 @@ import vm from "node:vm";
 const base="src-greenn/preview/";
 const code=fs.readFileSync(base+"consent-v3.js","utf8");
 const key="mnt.consent.v3",ttl=365*86400000;
-const original={version:3,analytics:true,marketing:true,savedAt:Date.now()-3600000,expiresAt:Date.now()-3600000+ttl};
+const fixtureSavedAt=Date.now()-3600000;
+const original={version:3,analytics:true,marketing:true,savedAt:fixtureSavedAt,expiresAt:fixtureSavedAt+ttl};
 function env(p=null,hostname="www.moretegra.com.br",legacy=null,unavailable=false){
  const store=new Map();if(p!==null)store.set(key,typeof p==="string"?p:JSON.stringify(p));
  if(legacy!==null)store.set("mnt.consent.v2",legacy);
@@ -29,7 +30,8 @@ check("restore across reload",()=>{const e=env(original);assert.equal(e.win.MNTC
 check("restore rejection across reload",()=>{const e=env({...original,analytics:false,marketing:false});assert.equal(e.requests.length,0);assert.equal(e.win.MNTConsent.allowed("marketing"),false);});
 check("cross-route persistence shared key",()=>{const e=env({...original,analytics:true,marketing:false});assert.equal(e.win.MNTConsent.allowed("analytics"),true);assert.equal(e.win.MNTConsent.allowed("marketing"),false);});
 check("new browser session same origin",()=>{const e=env({...original,analytics:true,marketing:false});assert.equal(e.win.MNTConsent.get().version,3);});
-check("expired",()=>{const e=env({...original,savedAt:Date.now()-ttl-1000,expiresAt:Date.now()-1000});assert.equal(e.win.MNTConsent.get(),null);assert.equal(e.requests.length,0);});
+check("expired",()=>{const savedAt=Date.now()-ttl-1000;const e=env({...original,savedAt,expiresAt:savedAt+ttl});assert.equal(e.win.MNTConsent.get(),null);assert.equal(e.requests.length,0);});
+check("invalid TTL fails closed",()=>{const e=env({...original,expiresAt:original.expiresAt+1});assert.equal(e.win.MNTConsent.get(),null);assert.equal(e.requests.length,0);});
 check("invalid record",()=>{const e=env('{"version":3,"analytics":"granted"}');assert.equal(e.win.MNTConsent.get(),null);});
 check("V2 never grants advertising",()=>{const e=env(null,"www.moretegra.com.br","granted");assert.equal(e.win.MNTConsent.get(),null);assert.equal(e.requests.length,0);});
 check("revocation reload",()=>{const e=env(original);e.win.MNTConsent.save(false,false);assert.equal(e.reloads(),1);assert.equal(e.win.MNTConsent.signals().analytics_storage,"denied");});
