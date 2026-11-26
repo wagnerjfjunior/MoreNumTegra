@@ -1,3 +1,9 @@
+## 26/11/2026 — Reconciliação Consent V3 / RESF / Órbita
+
+PR #647 integrada em `98f9f4bb6fde60c611333b38794dec2b0f7eb084`; preservado histórico #649 em `docs/sfjm/MNT_CONSENT_PERF_ORBITA_HANDOFF_2026-11-26.md`. Gap analysis estática concluída em `docs/performance/MNT_ORBITA_RESF_GAP_ANALYSIS_2026-11-26.md`. Próxima ação segura: completar evidência lab e trace, confirmar runtime e propor slice de mídia existente; Form46 Brasil-only solicitado para Órbita diverge do padrão internacional e requer reconciliação específica antes de alterar runtime. Nenhuma alteração runtime ou autorização em lote; demais gates preservados.
+
+---
+
 ## 26/11/2026 — MNT-PERF-V7 / RESF performance reference
 
 Owner approved consolidation of homepage V7 and documentation for scale. Runtime PR #646 MERGED, SHA `14c5b2536eff26ed3a2aaa7d998ded7dd8326e58`, Vercel READY `dpl_AauxUVtEYxmzx8gS3VBNFuU8WHAd`, www alias verified, CI 13/13 applicable. Three USER_REPORTED mobile PSI runs 98/100/100, median LCP 1.4 s, CLS 0, SI 2.3 s (0.8–4.0), SEO/accessibility/best practices 100 and agentic 6/6 each. OWNER_APPROVED_REFERENCE / LAB_BATTERY_INCOMPLETE (3/5); no CrUX or functional QA certification. Evidence: `docs/sfjm/MNT_PERF_V7_RESPONSIVE_MEDIA_2026-11-26.md`. Consumer RESF procedure: `docs/performance/MNT_RESF_PERFORMANCE_SCALE_RUNBOOK_2026-11-26.md`; addendum to existing responsive-media standard and exact-project standard. Other fronts unchanged. Next safe action for performance only: finish two comparable home runs, functional/visual smoke, then read-only inventory and propose bounded pilot scope; no runtime edits without specific authorization.
