@@ -95,54 +95,11 @@
       const media=doc.querySelector(".media-row");if(media&&!doc.querySelector(".mnt-price-section"))media.insertAdjacentHTML("beforebegin",priceSection);
       const leadCopy=doc.querySelector(".lead-copy");if(leadCopy&&!doc.querySelector("[data-sabrina-attendance]")){leadCopy.insertAdjacentHTML("beforeend",'<p data-sabrina-attendance><strong>Sabrina da Tegra</strong><br>Corretora Tegra Vendas · CRECI-SP 209.905-F<br><a href="tel:+5511960779328">(11) 96077-9328</a> · Na recepção, solicite <strong>Sabrina da Tegra</strong> · <a href="https://corretor.tegravendas.com.br/sabrina/sp" target="_blank" rel="noopener noreferrer">perfil oficial Tegra Vendas</a></p>')}
       const commercialStyle=doc.createElement("style");commercialStyle.textContent='.mnt-conditions-heading{font:400 clamp(1.8rem,4vw,3.4rem)/1.12 Georgia,serif;margin:0 0 18px}.mnt-condition-options{display:flex;flex-wrap:wrap;gap:10px}.mnt-condition-options button{min-height:48px;padding:12px 18px;background:transparent;color:#fff;border:1px solid #aaa;border-radius:12px;font:700 .85rem/1.2 Arial,sans-serif;cursor:pointer}.mnt-condition-options button[aria-pressed="true"]{background:#ebb92e;color:#171813;border-color:#ebb92e}.mnt-condition-options button:focus-visible{outline:3px solid #ebb92e;outline-offset:3px}';doc.head.appendChild(commercialStyle);
-      // Bind commercial state in the rendered document, not in the shell discarded by document.write().
-      function initializeCapiitoloConditions() {
-        "use strict";
-        const conditions={
-          promocional:{label:"Preço a partir de",price:"R$ 3.350.000",note:"Unidade 33 · condição promocional de referência R$ 3.350.000. Consulte a Tegra Vendas para confirmar a vigência, valores promocionais e disponibilidade."},
-          avista:{label:"À vista",price:"R$ 3.135.000 à vista*",note:"*Unidade 33 · condição à vista de R$ 3.135.000. Consulte a Tegra Vendas para confirmar a vigência, valores promocionais e disponibilidade."}
-        };
-        const intent=document.getElementById("mt-lead-intent");
-        const conditionOption=intent?.querySelector('option[value^="Condições e disponibilidade"]');
-        function chooseCondition(id) {
-          const data=conditions[id];
-          if(!data)return;
-          document.querySelectorAll("[data-mnt-condition]").forEach(button=>button.setAttribute("aria-pressed",String(button.dataset.mntCondition===id)));
-          const label=document.getElementById("mnt-condition-label"),price=document.getElementById("mnt-price-title"),note=document.getElementById("mnt-condition-note");
-          if(label)label.textContent=data.label;
-          if(price)price.textContent=data.price;
-          if(note)note.textContent=data.note;
-          if(conditionOption){
-            const wasSelected=intent.selectedIndex===conditionOption.index;
-            conditionOption.value="Condições e disponibilidade — CAPIITOLO, unidade 33, "+(id==="avista"?"à vista":"promocional");
-            if(wasSelected)intent.value=conditionOption.value;
-          }
-        }
-        // Capture the CTA before the shared runtime's exact-value (generic) intent handler.
-        document.addEventListener("click",event=>{
-          const target=event.target instanceof Element?event.target:null;
-          if(!target)return;
-          const choice=target.closest("[data-mnt-condition]");
-          if(choice){
-            const id=choice.dataset.mntCondition;
-            if(Object.hasOwn(conditions,id)){
-              chooseCondition(id);
-              const url=new URL(location.href);
-              url.searchParams.set("condicao",id);
-              history.replaceState(history.state,"",url.pathname+url.search+url.hash);
-            }
-          }
-          if(target.closest('[data-form-intent="conditions"]')&&conditionOption){
-            intent.value=conditionOption.value;
-          }
-        },true);
-        const selected=new URLSearchParams(location.search).get("condicao");
-        chooseCondition(Object.hasOwn(conditions,selected)?selected:"promocional");
-      }
-      const commercialScript=doc.createElement("script");
-      commercialScript.textContent="("+initializeCapiitoloConditions.toString()+")();";
-      doc.body.appendChild(commercialScript);
       document.open();document.write("<!doctype html>"+doc.documentElement.outerHTML);document.close();
+      const conditions={promocional:{label:"Preço a partir de",price:"R$ 3.350.000",note:"Unidade 33 · condição promocional de referência R$ 3.350.000. Consulte a Tegra Vendas para confirmar a vigência, valores promocionais e disponibilidade."},avista:{label:"À vista",price:"R$ 3.135.000 à vista*",note:"*Unidade 33 · condição à vista de R$ 3.135.000. Consulte a Tegra Vendas para confirmar a vigência, valores promocionais e disponibilidade."}};
+      function chooseCondition(id){const data=conditions[id];if(!data)return;document.querySelectorAll("[data-mnt-condition]").forEach(x=>x.setAttribute("aria-pressed",String(x.dataset.mntCondition===id)));const label=document.getElementById("mnt-condition-label"),price=document.getElementById("mnt-price-title"),note=document.getElementById("mnt-condition-note");if(label)label.textContent=data.label;if(price)price.textContent=data.price;if(note)note.textContent=data.note;const intent=document.getElementById("mt-lead-intent");if(intent){const option=intent.querySelector('option[value^="Condições e disponibilidade"]');if(option){option.value="Condições e disponibilidade — CAPIITOLO, unidade 33, "+(id==="avista"?"à vista":"promocional");if(intent.selectedIndex===0)intent.value=option.value;}}}
+      document.querySelectorAll("[data-mnt-condition]").forEach(x=>x.addEventListener("click",()=>{chooseCondition(x.dataset.mntCondition);const url=new URL(location.href);url.searchParams.set("condicao",x.dataset.mntCondition);history.replaceState(history.state,"",url.pathname+url.search+url.hash)}));
+      const selected=new URLSearchParams(location.search).get("condicao");chooseCondition(Object.hasOwn(conditions,selected)?selected:"promocional");
     }).catch(err=>{console.error("CAPIITOLO bootstrap failed",err);const node=document.querySelector("#mnt-capiitolo-bootstrap p:last-child");if(node)node.textContent="Não foi possível carregar a experiência completa agora. Atualize a página para tentar novamente."});
   })();
   </script>
