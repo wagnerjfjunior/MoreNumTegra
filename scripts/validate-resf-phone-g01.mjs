@@ -1,0 +1,12 @@
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import vm from "node:vm";
+const source=fs.readFileSync(new URL("../src-greenn/preview/runtime-resf-phone-v1.js",import.meta.url),"utf8");
+const segment=source.split("// RESF_PHONE_V1_BEGIN")[1].split("// RESF_PHONE_V1_END")[0];
+const run=vm.runInNewContext(segment+"\n({normalizeE164, RESF_PHONE_DATA})");
+const cases=[["11987654321","BR","+5511987654321"],["1134567890","BR","+551134567890"],["+5511987654321","BR","+5511987654321"],["005511987654321","BR","+5511987654321"],["2025550123","US","+12025550123"],["4165550123","CA","+14165550123"],["912345678","PT","+351912345678"],["0212345678","IT","+390212345678"],["09012345678","JP","+819012345678"],["0111512345678","AR","+5491112345678"],["+351912345678","OTHER","+351912345678"],["00351912345678","OTHER","+351912345678"],["912345678","OTHER",""],["+351912345678","BR",""],["","BR",""],["123","BR",""],["+1234567890123456","OTHER",""],["11987654321abc","BR",""],["5511987654321","BR",""],["2025550123","OTHER",""]];
+for(const [raw,iso,want] of cases)assert.equal(run.normalizeE164(raw,iso),want,raw+" "+iso);
+assert.equal(Object.keys(run.RESF_PHONE_DATA).filter(k=>/^[A-Z]{2}$/.test(k)).length,245);
+const paths=["src-greenn/preview/index.html","src-greenn/empreendimentos/universo-tatuape-orbita/index.html","src-greenn/empreendimentos/ampere-brooklin/index.html","src-greenn/empreendimentos/bem-moema/index.html","src-greenn/empreendimentos/tiel-vila-nova-conceicao/index.html","src-greenn/empreendimentos/aria-higienopolis/index.html","src-greenn/empreendimentos/mozae-higienopolis/index.html","src-greenn/empreendimentos/ode-perdizes/index.html","src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html","src-greenn/empreendimentos/riio-by-piero-lissoni/index.html"];
+for(const p of paths){const s=fs.readFileSync(new URL("../"+p,import.meta.url),"utf8");const id=p.includes("riio-by")?"47":"46";const region=id==="47"?"RJ":"SP";const f=s.match(/<form\b[^>]*id="moretegra-lead-form"[^>]*>[\s\S]*?<\/form>/)?.[0];assert.ok(f);assert.ok(f.includes('data-form-id="'+id+'"'));assert.ok(f.includes('name="form_id" value="'+id+'"'));assert.ok(f.includes('data-resf-region="'+region+'"'));assert.ok(f.includes('value="BR" selected'));assert.ok(f.includes('value="OTHER"'));assert.ok(f.includes('value="US"'));assert.ok(f.includes('value="CA"'));assert.ok(s.includes("runtime-resf-phone-v1.js"));}
+console.log("RESF phone cases:",cases.length,"; G01 routes:",paths.length);
