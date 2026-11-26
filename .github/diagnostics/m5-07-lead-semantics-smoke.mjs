@@ -33,6 +33,14 @@ async function localRoute(route){
   return route.fulfill({status:200,contentType:typeOf(file),body:fs.readFileSync(file)});
 }
 async function open(context,p){
+  // Explicit, persisted analytics-only consent for positive measurement smoke.
+  // The V3 first-visit denied and negative branches are tested separately.
+  await context.addInitScript(()=>{
+    if(location.hostname==="www.moretegra.com.br"&&!localStorage.getItem("mnt.consent.v3")){
+      const now=Date.now();
+      localStorage.setItem("mnt.consent.v3",JSON.stringify({version:3,analytics:true,marketing:false,savedAt:now,expiresAt:now+365*86400000}));
+    }
+  });
   const page=await context.newPage();
   await page.route("**/*",localRoute);
   const response=await page.goto(BASE+p,{waitUntil:"domcontentloaded",timeout:30000});

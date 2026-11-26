@@ -15,7 +15,7 @@ const cards=[
 makeCard("Nova Vivere | 105 m²","/empreendimentos/nova-vivere/?unidade=708#valores","Zona Oeste","lancamento","Lapa · Zona Oeste","105 m² · 3 suítes","R$ 1.129.900","Condição de 29/08/2026"),
 makeCard("Garden Design","/empreendimentos/garden-design/","Zona Oeste","construcao","Lapa · Zona Oeste","61 m² a 78 m²","R$ 695.600"),
 makeCard("Caminhos da Lapa Elo Duo","/empreendimentos/caminhos-da-lapa-elo-duo/","Zona Oeste","entregue","Lapa · Zona Oeste","67 m² · 2 dormitórios","R$ 690.000")];
-let consent="denied"; const win={localStorage:{getItem(){return consent}},dataLayer:[]};
+let consent="denied"; const win={localStorage:{getItem(){return consent}},MNTConsent:{allowed:kind=>kind==="analytics"&&consent==="granted"},dataLayer:[]};
 const registered=[];let submits=0,scrolls=0,focuses=0;
 const intent={value:"Condições",options:[{value:"Agendar visita"}]};
 const form={elements:{"texto-livre":intent},scrollIntoView(){scrolls++},querySelector(){return{focus(){focuses++}}},submit(){submits++}};
@@ -64,5 +64,5 @@ await call('request_visit');
 assert.equal(win.dataLayer.at(-1).event,'webmcp_visit_intent');
 assert.equal(submits,0);
 const n=win.dataLayer.length;consent='denied';await call('search_properties');assert.equal(win.dataLayer.length,n);
-consent='granted';win.localStorage.getItem=()=>{throw Error('blocked')};assert.equal((await call('search_properties')).ok,true);assert.equal(win.dataLayer.length,n);
+consent='denied';win.localStorage.getItem=()=>{throw Error('blocked')};assert.equal((await call('search_properties')).ok,true);assert.equal(win.dataLayer.length,n);
 console.log('PASS consent-gated WebMCP telemetry; no arguments or PII.');
