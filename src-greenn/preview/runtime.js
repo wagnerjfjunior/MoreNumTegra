@@ -265,6 +265,7 @@
   }
 
   function initConsent() {
+    if (window.MNTConsent) return; // V3 is the one source of truth on the canonical origin.
     const banner = ensureConsentBanner();
     const manage = ensureConsentManageControl();
     const syncOffset = () => {

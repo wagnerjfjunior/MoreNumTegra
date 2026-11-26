@@ -1058,7 +1058,7 @@
   }
 
   function emit(eventName, funnelStage, parameters = {}) {
-    if (!isEligibleHost() || !projectRoot()) return false;
+    if (!isEligibleHost() || !projectRoot() || !window.MNTConsent?.allowed("analytics")) return false;
     if (!ALLOWED_EVENT_PARAMETERS[eventName]) return false;
 
     window.dataLayer = window.dataLayer || [];
