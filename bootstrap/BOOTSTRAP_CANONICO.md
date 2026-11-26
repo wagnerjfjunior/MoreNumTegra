@@ -1,3 +1,9 @@
+## 26/11/2026 — RESF G01 INDEX_SUBMISSION_COMPLETE / G02 PREPARED
+
+Runtime #661 `da69974eb1a959401cad92406eff458a1e2649fd`, Vercel Production READY dpl_835EpVEGLGRV4J3ZNVG62RAF7p1u. G01 Google 10/10 solicitações USER_REPORTED, IndexNow 10/10 submitted (processamento não confirmado); QA residual aberto. Baseline comercial Ampère 5/6 por uma unidade, consulta Órbita/ODE 4/4, hub Home 3/3, RJ específico. Telefone #659: 28 países + OTHER, Brasil primeiro, OTHER segundo; substitui a proposta histórica de catálogo completo/Brasil-only. Form46 SP, Form47 RJ. Inventário atual 92 URLs distintas, G02 dez propostas sem sobreposição. Ler [recibo e plano](/docs/sfjm/MNT_RESF_G01_CLOSE_G02_PLAN_2026-11-26.md). Próxima ação segura: auditoria prévia G02 e autorização específica de implementação; retestes G01 independentes. Sem alteração runtime, de validadores, CRM, consentimento, infra, mídia ou oferta nesta consolidação. Restrições das demais frentes permanecem vigentes. Os blocos abaixo são históricos quanto ao estado RESF G01/G02.
+
+---
+
 ## 26/11/2026 — Reconciliação Consent V3 / RESF / Órbita
 
 PR #647 integrada em `98f9f4bb6fde60c611333b38794dec2b0f7eb084`; preservado histórico #649 em `docs/sfjm/MNT_CONSENT_PERF_ORBITA_HANDOFF_2026-11-26.md`. Gap analysis estática concluída em `docs/performance/MNT_ORBITA_RESF_GAP_ANALYSIS_2026-11-26.md`. Próxima ação segura: completar evidência lab e trace, confirmar runtime e propor slice de mídia existente; Form46 Brasil-only solicitado para Órbita diverge do padrão internacional e requer reconciliação específica antes de alterar runtime. Nenhuma alteração runtime ou autorização em lote; demais gates preservados.
