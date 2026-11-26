@@ -1,0 +1,5 @@
+# MNT-PERF-V5 — Critical path
+
+Baseline production #641, commit 285945f0a504973173a9f964682e71da5bf6d088. User report 08:21 mobile: performance 96, SI 4.2s, LCP 2.3s, TBT 0, CLS 0, SEO/accessibility/best practices 100, agentic 6/6. Lighthouse reported unused crossorigin S3 preconnect, render delay 1670ms, render-blocking resources 380ms, image potential savings 252 KiB.
+
+Pilot: move charset and S3 non-CORS preconnect before synchronous consent manager, preload existing LCP image and two existing critical styles before manager, retain stylesheet application and consent execution order; lower priority of below-fold Rua Jardim image and declare its measured intrinsic dimensions; footer logo dimensions follow existing canonical footer block. No video/consent logic, catalog, CRM or robots changes. Exact V3 home baseline reconciled without weakening equality. Image recompression and S3 cache TTL remain pending: external image download failed in local runtime (DNS), no replacement URLs invented. Validate fresh mobile PSI and browser before claiming gains. CAPIITOLO failure preexisting and separate, as previously verified on #640/#641.
