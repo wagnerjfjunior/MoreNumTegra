@@ -106,6 +106,52 @@
     document.querySelectorAll("img").forEach(img=>img.addEventListener("error",()=>{img.style.background="#242421";img.alt=`${img.alt}. Imagem temporariamente indisponível.`},{once:true}));
   })();
   </script>
+  <script>
+      function initializeCapiitoloConditions() {
+        "use strict";
+        const conditions={
+          promocional:{label:"Preço a partir de",price:"R$ 3.350.000",note:"Unidade 33 · condição promocional de referência R$ 3.350.000. Consulte a Tegra Vendas para confirmar a vigência, valores promocionais e disponibilidade."},
+          avista:{label:"À vista",price:"R$ 3.135.000 à vista*",note:"*Unidade 33 · condição à vista de R$ 3.135.000. Consulte a Tegra Vendas para confirmar a vigência, valores promocionais e disponibilidade."}
+        };
+        const intent=document.getElementById("mt-lead-intent");
+        const conditionOption=intent?.querySelector('option[value^="Condições e disponibilidade"]');
+        function chooseCondition(id) {
+          const data=conditions[id];
+          if(!data)return;
+          document.querySelectorAll("[data-mnt-condition]").forEach(button=>button.setAttribute("aria-pressed",String(button.dataset.mntCondition===id)));
+          const label=document.getElementById("mnt-condition-label"),price=document.getElementById("mnt-price-title"),note=document.getElementById("mnt-condition-note");
+          if(label)label.textContent=data.label;
+          if(price)price.textContent=data.price;
+          if(note)note.textContent=data.note;
+          if(conditionOption){
+            const wasSelected=intent.selectedIndex===conditionOption.index;
+            conditionOption.value="Condições e disponibilidade — CAPIITOLO, unidade 33, "+(id==="avista"?"à vista":"promocional");
+            if(wasSelected)intent.value=conditionOption.value;
+          }
+        }
+        // Capture the CTA before the shared runtime's exact-value (generic) intent handler.
+        document.addEventListener("click",event=>{
+          const target=event.target instanceof Element?event.target:null;
+          if(!target)return;
+          const choice=target.closest("[data-mnt-condition]");
+          if(choice){
+            const id=choice.dataset.mntCondition;
+            if(Object.hasOwn(conditions,id)){
+              chooseCondition(id);
+              const url=new URL(location.href);
+              url.searchParams.set("condicao",id);
+              history.replaceState(history.state,"",url.pathname+url.search+url.hash);
+            }
+          }
+          if(target.closest('[data-form-intent="conditions"]')&&conditionOption){
+            intent.value=conditionOption.value;
+          }
+        },true);
+        const selected=new URLSearchParams(location.search).get("condicao");
+        chooseCondition(Object.hasOwn(conditions,selected)?selected:"promocional");
+      }
+      initializeCapiitoloConditions();
+  </script>
   <script src="/src-greenn/preview/runtime.js" defer></script>
   <script src="/src-greenn/preview/measurement-core.js" defer></script>
   <script src="/src-greenn/preview/measurement-form.js" defer></script>
