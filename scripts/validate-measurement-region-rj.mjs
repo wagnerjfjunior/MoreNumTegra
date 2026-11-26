@@ -12,17 +12,16 @@ import { ANALYTICS, CHANNELS, RJ_PAGES, RJ_PROJECT_SLUGS } from "./lib/commercia
 
 const fails = [];
 const count = (s, needle) => s.split(needle).length - 1;
-const SCRIPTS = ["runtime.js", "measurement-core.js", "measurement-form.js"].map((n) => `<script src="/src-greenn/preview/${n}" defer></script>`);
+const SCRIPTS = ["runtime.js", "measurement-core.js", "measurement-form.js"].map((n) => "/src-greenn/preview/" + n + "?v=20261125-v3");
 
 for (const file of RJ_PAGES) {
   const h = readFileSync(file, "utf8");
   const slug = file.split("/").at(-2);
-  if (count(h, "googletagmanager.com/gtm.js?id=") !== 1) fails.push(`${file}: GTM loader must appear exactly once`);
-  if (count(h, `googletagmanager.com/ns.html?id=${ANALYTICS.gtm}`) !== 1) fails.push(`${file}: GTM noscript must appear exactly once`);
-  if (count(h, ANALYTICS.gtm) !== 2) fails.push(`${file}: expected the container ${ANALYTICS.gtm} only in the loader and the noscript`);
-  const dc = h.indexOf('event:"default_consent"'), gl = h.indexOf("event:'gtm.js'");
-  if (dc < 0 || gl < 0 || dc > gl) fails.push(`${file}: default_consent must be pushed before gtm.js`);
-  if (h.indexOf("event:'gtm.js'") > h.indexOf("</head>")) fails.push(`${file}: GTM loader must be in <head>`);
+  // Basic Consent Mode V3: centralized loader is first in <head>, inline GTM is forbidden.
+  const manager = '/src-greenn/preview/consent-v3.js?v=20261125-final';
+  if (count(h, manager) !== 1 || h.indexOf(manager) > h.indexOf("</head>")) fails.push(file + ": V3 manager must be unique and early");
+  if (h.includes("gtm.start") || h.includes("default_consent") || h.includes("googletagmanager.com/ns.html")) fails.push(file + ": legacy GTM bootstrap forbidden");
+  if (h.indexOf(manager) > h.indexOf(SCRIPTS[0])) fails.push(file + ": manager must precede runtime");
   if (!/<body[^>]*\bdata-moretegra\b(?!-)/.test(h)) fails.push(`${file}: <body> without [data-moretegra] root`);
   const html = (h.match(/<html[^>]*>/) || [""])[0];
   if (!/data-mnt-page-identity="[a-z0-9_]+"/.test(html) || !/data-mnt-product-identity="[a-z0-9-]+"/.test(html)) fails.push(`${file}: page/product identity missing on <html>`);
