@@ -1,3 +1,9 @@
+## 26/11/2026 — Consent V3, performance e Órbita
+
+Reconciliação documental de #637–#646 (MERGED), main observada `14c5b2536eff26ed3a2aaa7d998ded7dd8326e58`. Dossiê: `docs/sfjm/MNT_CONSENT_PERF_ORBITA_HANDOFF_2026-11-26.md`. Órbita PSI mobile USER_REPORTED 98/97/96/100, agêntica 4/4; próxima ação read-only: comparar WebMCP com home e validar consentimento/CRM sem lead real. GTM administrativo e deploy atual não recertificados; bloqueios preservados; nenhuma mudança runtime autorizada por este registro.
+
+---
+
 ## 25/11/2026 — Ação segura da frente Consent Mode V3
 
 Executar os gates da própria frente com autorização explícita: validar diff em branch, testes V3/CI (inclusive negativos e regressão), criar PR, merge somente sem falhas conhecidas de privacidade ou CRM, confirmar Deployment READY e alias no Vercel, registrar recibo SFJM. No GTM/GA4, conciliar administrativamente triggers, templates, Consent Initialization, GA4 `send_page_view:false` e Clarity antes de liberar objetivo publicitário. O gate operacional de Tag Assistant continua **BLOCKED** sem permissão administrativa e acesso ao navegador do proprietário; documentar fato, não inferir aprovação. Demais frentes SEO históricas não alteradas.
