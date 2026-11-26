@@ -8,8 +8,7 @@ let failed=false;
 const check=(ok,msg)=>{ if(ok) console.log("PASS:",msg); else {console.error("FAIL:",msg);failed=true;} };
 
 
-check(head.includes("if(loaded)return"),"GTM loader is idempotent");
-check((html.match(/googletagmanager\.com\/gtm\.js/g)||[]).length===1,"exactly one GTM JavaScript network path exists");
+
 check(!html.includes("googletagmanager.com/gtag/js"),"no direct gtag bootstrap added");
 check(!/\bgtag\s*\(/.test(html),"no project-owned direct gtag() call added");
 check(html.includes('<script src="/src-greenn/preview/runtime.js?v=20261125-v3" defer></script>'),"Consent/Form46 runtime preserved");
@@ -22,6 +21,8 @@ check(!head.includes('<link rel="preconnect" href="https://www.youtube-nocookie.
 // The late-GTM pilot is superseded by the explicitly consent-gated Basic Consent Mode V3.
 const consentV3=fs.readFileSync("src-greenn/preview/consent-v3.js","utf8");
 const headV3=html.slice(0,html.indexOf("</head>"));
+check(consentV3.includes("if(!live||gtmStarted)return;"),"GTM loader is idempotent");
+check((consentV3.match(/googletagmanager\.com\/gtm\.js/g)||[]).length===1&&!html.includes("googletagmanager.com/gtm.js"),"exactly one consent-gated GTM JavaScript network path exists");
 check(headV3.includes('<script src="/src-greenn/preview/consent-v3.js?v=20261125-final"></script>'),"V3 loads in head before any external tag");
 check(!headV3.includes("gtm.start")&&!html.includes("googletagmanager.com/gtm.js"),"no eager GTM bootstrap or network call before consent");
 check(!html.includes("googletagmanager.com/ns.html"),"Basic Consent Mode excludes unconsented GTM noscript iframe");
