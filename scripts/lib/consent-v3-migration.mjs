@@ -51,6 +51,11 @@ export function verifiedPreV3(path){
   expected=expected.replace("O player é carregado apenas quando você iniciar o vídeo.","Toque para carregar o vídeo externo do YouTube. A reprodução automática depende das suas preferências de cookies e das condições do dispositivo.");
   assert.equal(expected.split("moretegra.js?v=20261124-fgts-contexto").length,2);
   expected=expected.replace("moretegra.js?v=20261124-fgts-contexto","moretegra.js?v=20261126-poster-stable");
+  // Authorized critical-path-only homepage changes: exact substitutions, no relaxed comparisons.
+  for(const [oldValue,newValue] of [["<script src=\"/src-greenn/preview/consent-v3.js?v=20261125-final\"></script>\n\n  <meta charset=\"utf-8\">","  <meta charset=\"utf-8\">\n  <link rel=\"preconnect\" href=\"https://s3-gdigital.s3.amazonaws.com\">\n  <link rel=\"preload\" as=\"image\" href=\"https://s3-gdigital.s3.amazonaws.com/gdigital/313/Tegra-Incorporadora-Perspectiva-Ilustrada-Caminhos-da-Lapa-Rua-Fortunato-Ferraz-1200x630.webp\" fetchpriority=\"high\">\n  <link rel=\"preload\" as=\"style\" href=\"/src-greenn/moretegra.css\">\n  <link rel=\"preload\" as=\"style\" href=\"/src-greenn/preview/runtime.css\">\n<script src=\"/src-greenn/preview/consent-v3.js?v=20261125-final\"></script>"],["  <link rel=\"preconnect\" href=\"https://s3-gdigital.s3.amazonaws.com\" crossorigin>\n",""],["<img class=\"mt-footer-logo\" src=\"/assets/brand/tegra-vendas-256.webp\" alt=\"Tegra\"","<img class=\"mt-footer-logo\" src=\"/assets/brand/tegra-vendas-256.webp\" width=\"256\" height=\"256\" alt=\"Tegra\""],["<img loading=\"lazy\" decoding=\"async\" src=\"https://s3-gdigital.s3.amazonaws.com/gdigital/313/Vista_aerea_Rua_Jardim.webp\"","<img loading=\"lazy\" decoding=\"async\" fetchpriority=\"low\" width=\"1668\" height=\"1080\" src=\"https://s3-gdigital.s3.amazonaws.com/gdigital/313/Vista_aerea_Rua_Jardim.webp\""]]){
+   assert.equal(expected.split(oldValue).length,2,"critical rendering baseline");
+   expected=expected.replace(oldValue,newValue);
+  }
  }
  assert.equal(current,expected,path+": actual HTML differs from the only authorized V3 migration; other business/schema/media changes prohibited");
  return before;
