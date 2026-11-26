@@ -594,66 +594,136 @@
     frame.dataset.videoInitialized = "true";
     const id = frame.dataset.videoId;
     if (!id) return;
-
-    const mount = () => {
-      const existing = frame.querySelector("iframe");
-      if (existing) return existing;
-      const iframe = document.createElement("iframe");
-      const params = new URLSearchParams({
-        autoplay: "1",
-        mute: "1",
-        controls: "1",
-        disablekb: "0",
-        enablejsapi: "1",
-        fs: "1",
-        loop: "1",
-        playlist: id,
-        playsinline: "1",
-        rel: "0",
-        modestbranding: "1"
-      });
-      iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?${params.toString()}`;
-      iframe.title = "Filme da campanha More em um Tegra";
-      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-      iframe.referrerPolicy = "strict-origin-when-cross-origin";
-      iframe.allowFullscreen = true;
-      iframe.tabIndex = 0;
-      frame.replaceChildren(iframe);
-      return iframe;
+    const origin = "https://www.youtube-nocookie.com";
+    let iframe = null, timeout = null, probe = null, started = false, focusRequested = false;
+    let autoTimer = null;
+    const poster = frame.querySelector("img");
+    const overlay = frame.querySelector(".mt-video-overlay");
+    const autoAllowed = () => window.MNTConsent?.allowed("marketing") === true &&
+      !navigator.connection?.saveData &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
+      document.visibilityState === "visible" &&
+      frame.getBoundingClientRect().bottom > 0 &&
+      frame.getBoundingClientRect().top < window.innerHeight;
+    const send = (data) => iframe?.contentWindow?.postMessage(JSON.stringify(data), origin);
+    const clearProbe = () => {
+      window.clearInterval(probe);
+      window.clearTimeout(timeout);
+      probe = timeout = null;
     };
-
-    const play = (focusPlayer = false) => {
+    const reveal = () => {
+      if (!iframe || started) return;
+      started = true;
+      clearProbe();
+      iframe.style.visibility = "visible";
+      iframe.style.pointerEvents = "";
+      iframe.removeAttribute("aria-hidden");
+      iframe.tabIndex = 0;
+      if (poster) poster.hidden = true;
+      if (overlay) overlay.hidden = true;
       frame.removeAttribute("role");
       frame.removeAttribute("tabindex");
       frame.removeAttribute("aria-label");
       delete frame.dataset.videoReady;
-      const iframe = mount();
-      if (focusPlayer && iframe) {
-        window.requestAnimationFrame(() => iframe.focus());
+      if (focusRequested) window.requestAnimationFrame(() => iframe?.focus());
+    };
+    const reset = () => {
+      clearProbe();
+      iframe?.remove();
+      iframe = null;
+      started = false;
+      focusRequested = false;
+      if (poster) poster.hidden = false;
+      if (overlay) overlay.hidden = false;
+      frame.dataset.videoReady = "true";
+      frame.setAttribute("role", "button");
+      frame.setAttribute("tabindex", "0");
+      frame.setAttribute("aria-label", "Reproduzir filme da campanha More em um Tegra");
+    };
+    window.addEventListener("message", (event) => {
+      if (!iframe || event.origin !== origin || event.source !== iframe.contentWindow) return;
+      let data;
+      try { data = typeof event.data === "string" ? JSON.parse(event.data) : event.data; } catch { return; }
+      if (!data || typeof data !== "object") return;
+      if ((data.event === "onStateChange" && data.info === 1) ||
+          (data.event === "infoDelivery" && data.info?.playerState === 1)) reveal();
+    });
+    const mount = () => {
+      if (iframe) return iframe;
+      iframe = document.createElement("iframe");
+      const params = new URLSearchParams({
+        autoplay: "1", mute: "1", controls: "1", disablekb: "0",
+        enablejsapi: "1", fs: "1", loop: "1", playlist: id,
+        playsinline: "1", rel: "0", modestbranding: "1", origin: window.location.origin
+      });
+      iframe.src = `${origin}/embed/${encodeURIComponent(id)}?${params.toString()}`;
+      iframe.title = "Filme da campanha More em um Tegra";
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      iframe.allowFullscreen = true;
+      iframe.tabIndex = -1;
+      iframe.setAttribute("aria-hidden", "true");
+      iframe.style.visibility = "hidden";
+      iframe.style.pointerEvents = "none";
+      const handshake = () => {
+        send({event: "listening", id: "mnt-hero-video"});
+        send({event: "command", func: "addEventListener", args: ["onStateChange"]});
+      };
+      iframe.addEventListener("load", handshake, {once: true});
+      frame.appendChild(iframe);
+      probe = window.setInterval(handshake, 500);
+      // Never discard the poster on a failed or blocked automatic playback.
+      timeout = window.setTimeout(reset, 15000);
+      return iframe;
+    };
+    const play = (focusPlayer = false, manual = false) => {
+      if (started) return;
+      if (manual) {
+        focusRequested = focusPlayer;
+        window.clearTimeout(autoTimer);
+      }
+      const player = mount();
+      // Manual intent exposes the controls even if autoplay is blocked by the browser.
+      if (manual && player) {
+        player.style.visibility = "visible";
+        player.style.pointerEvents = "";
+        player.removeAttribute("aria-hidden");
+        player.tabIndex = 0;
+        frame.removeAttribute("role");
+        frame.removeAttribute("tabindex");
+        frame.removeAttribute("aria-label");
+        delete frame.dataset.videoReady;
+        if (focusPlayer) window.requestAnimationFrame(() => player.focus());
+        window.clearTimeout(timeout);
+        timeout = null;
+        window.clearInterval(probe);
+        probe = null;
       }
     };
-
-    frame.dataset.videoReady = "true";
-    frame.setAttribute("role", "button");
-    frame.setAttribute("tabindex", "0");
-    frame.setAttribute("aria-label", "Reproduzir filme da campanha More em um Tegra");
-    frame.addEventListener("click", () => play(false), {once: true});
+    reset();
+    frame.addEventListener("click", () => play(false, true));
     frame.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
+      if (event.target === frame && (event.key === "Enter" || event.key === " ")) {
         event.preventDefault();
-        play(true);
+        play(true, true);
       }
     });
-
     const scheduleAutoplay = () => {
-      window.setTimeout(() => play(false), 3000);
+      window.clearTimeout(autoTimer);
+      autoTimer = window.setTimeout(() => {
+        if (!iframe && autoAllowed()) play(false);
+      }, 3000);
     };
-
-    if (document.readyState === "complete") {
-      scheduleAutoplay();
-    } else {
-      window.addEventListener("load", scheduleAutoplay, {once: true});
-    }
+    document.addEventListener("mnt:consent-changed", () => {
+      if (window.MNTConsent?.allowed("marketing") === true) {
+        if (document.readyState === "complete") scheduleAutoplay();
+      } else {
+        window.clearTimeout(autoTimer);
+        reset();
+      }
+    });
+    if (document.readyState === "complete") scheduleAutoplay();
+    else window.addEventListener("load", scheduleAutoplay, {once: true});
   }
 
   function initRoot(root) {

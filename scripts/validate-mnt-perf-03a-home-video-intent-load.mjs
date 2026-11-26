@@ -22,7 +22,7 @@ expect(
 for (const [name, source] of [["preview/index.html", html], ["blocks/01-html-inicial.html", block]]) {
   expect(source.includes('data-hero-video data-video-id="SCCM3vzNlyk"'), `${name}: governed campaign video id must remain present.`);
   expect(source.includes("Clique ou toque para reproduzir"), `${name}: explicit user-intent affordance must be visible.`);
-  expect(source.includes("O vídeo inicia automaticamente após o carregamento da página, com atraso de 3 segundos. Você também pode tocar para iniciar."), `${name}: deferred-load explanation must be present.`);
+  expect(source.includes("Toque para carregar o vídeo externo do YouTube. A reprodução automática depende das suas preferências de cookies e das condições do dispositivo."), `${name}: deferred-load explanation must be present.`);
 }
 
 const initStart = js.indexOf("  function initVideo(frame) {");
@@ -35,14 +35,18 @@ expect(initVideo.includes('frame.setAttribute("tabindex", "0")'), "Video facade 
 expect(initVideo.includes('event.key === "Enter" || event.key === " "'), "Video facade must support Enter and Space.");
 expect(!/frame\.addEventListener\("keydown"[\s\S]*?\}, \{once: true\}\);/.test(initVideo), "Keyboard handler must not be one-shot on unrelated keys.");
 expect(initVideo.includes('frame.addEventListener("click"'), "Video iframe must be activated from click intent.");
-expect(initVideo.includes("const iframe = mount();"), "Player mounting must occur inside explicit play flow.");
+expect(initVideo.includes("const player = mount();"), "Player mounting must occur inside play flow.");
 expect(!initVideo.includes("IntersectionObserver"), "Video iframe must not mount from viewport intersection.");
 expect(!initVideo.includes("setTimeout(() => mount"), "Video iframe must not bypass the play flow.");
-expect(initVideo.includes("window.setTimeout(() => play(false), 3000);"), "Autoplay must wait 3000ms after window load.");
+expect(initVideo.includes("}, 3000);") && initVideo.includes("if (!iframe && autoAllowed()) play(false);"), "Autoplay waits 3000ms and checks eligibility.");
+expect(initVideo.includes('window.MNTConsent?.allowed("marketing") === true'), "Automatic external video requires marketing consent.");
+expect(initVideo.includes("event.origin !== origin || event.source !== iframe.contentWindow"), "Player messages must validate origin and source.");
 expect(initVideo.includes('window.addEventListener("load", scheduleAutoplay, {once: true})'), "Autoplay must wait for window load.");
-expect(initVideo.includes("frame.replaceChildren(iframe)"), "Poster facade must be replaced by the iframe after intent.");
+expect(initVideo.includes("frame.appendChild(iframe)") && !initVideo.includes("frame.replaceChildren(iframe)"), "Poster must remain mounted while player loads.");
+expect(initVideo.includes("playerState === 1") && initVideo.includes("reveal()"), "Automatic reveal requires playing state.");
+expect(initVideo.includes("window.setTimeout(reset, 15000)"), "Failed autoplay returns to poster.");
 expect(css.includes('.mt-video-frame[data-video-ready="true"]{cursor:pointer}'), "Interactive video facade must expose pointer affordance.");
 
 if (!process.exitCode) {
-  console.log("PASS: Home YouTube player is deferred for 3000ms after load, with immediate accessible user intent.");
+  console.log("PASS: Home YouTube autoplay is consent-gated and preserves poster until playback.");
 }
