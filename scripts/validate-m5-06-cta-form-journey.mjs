@@ -109,6 +109,11 @@ assert(capSource.includes('data-form-intent="conditions">Receber condições ↓
 assert(!capSource.includes("Receber condições e agendar visita"),"CAPIITOLO mixed-intent hero CTA is removed");
 assert(capSource.includes('data-form-intent="schedule_visit">Agendar visita'),"CAPIITOLO retains separate visit CTA");
 assert(cap.includes('data-form-intent="conditions">Receber condições <span>↓</span></a>'),"CAPIITOLO inserted commercial CTA maps to conditions");
+assert(cap.includes('doc.body.appendChild(commercialScript);') && cap.indexOf("doc.body.appendChild(commercialScript);") < cap.indexOf("document.open();document.write("),"CAPIITOLO binds condition controller inside effective document before document.write");
+assert(cap.includes('conditionOption.value="Condições e disponibilidade — CAPIITOLO, unidade 33, "') && cap.includes('chooseCondition(Object.hasOwn(conditions,selected)?selected:"promocional");'),"CAPIITOLO initializes whitelisted commercial units for direct links");
+assert(cap.includes('target.closest(\'[data-form-intent="conditions"]\')') && cap.includes("intent.value=conditionOption.value;"),"CAPIITOLO condition CTA restores specific selection even after manual intent change");
+assert(runtime.includes('intent.replace(/^Condições e disponibilidade — CAPIITOLO, unidade 33, (promocional|à vista)$/'),"CRM removes only duplicated CAPIITOLO label, retaining unit/payment");
+
 
 const sourceFiles=[home,elo,aria,ledge,soma,zahle,ypy,bem,mozae,bueno,chateau,reserva,nova,garden,capSource];
 const allowed=new Set(["conditions","schedule_visit","payment_simulation","specialist","negotiate_scenario"]);
