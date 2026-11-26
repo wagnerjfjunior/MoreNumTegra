@@ -1,3 +1,4 @@
+import {verifiedPreV3} from "./lib/consent-v3-migration.mjs";
 #!/usr/bin/env node
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -20,7 +21,7 @@ function restoreMatchPointCopy(s){
 const path='src-greenn/empreendimentos/bem-moema/index.html';
 const baseline='b5da71bf80cacc115026466f5b37c79a7f98e13c';
 const before=execFileSync('git',['show',baseline+':'+path],{encoding:'utf8'});
-const after=readFileSync(path,'utf8'),rx=/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/i;
+const after=verifiedPreV3(path),rx=/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/i;
 const old=before.match(rx),now=after.match(rx);
 assert(old&&now);
 assert.equal(restoreApprovedBemMoemaSurface(restoreMatchPointCopy(after.replace(now[1],old[1]))),before,'Visible HTML/JS, form, metadata and media must not change outside approved M5-06 deltas');

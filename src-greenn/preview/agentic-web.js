@@ -127,7 +127,7 @@
     const original = tool.execute;
     const emit = (event, outcome) => {
       try {
-        if (window.localStorage.getItem("mnt.consent.v2") !== "granted") return;
+        if (!window.MNTConsent?.allowed("analytics")) return;
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({event, webmcp_tool:tool.name, webmcp_outcome:outcome,
           page_identity:"moretegra_home", product_identity:"moretegra_portfolio", route:"/",

@@ -96,15 +96,6 @@
     if (message) message.textContent = "Recebemos sua solicitação. O atendimento seguirá com a Tegra Vendas para confirmar disponibilidade e condições atualizadas.";
   }
 
-  function restoreConsent() {
-    if (window.location.hostname !== ELIGIBLE_HOST) return;
-    let saved = "";
-    try { saved = window.localStorage.getItem(CONSENT_KEY) || ""; } catch { saved = ""; }
-    if (saved !== "granted" && saved !== "denied") return;
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({event: saved === "granted" ? "mnt_consent_accept" : "mnt_consent_reject"});
-  }
-
   function emit(root) {
     if (window[RUN_MARKER]) return false;
     if (window.location.hostname !== ELIGIBLE_HOST || normalizedPath() !== THANK_YOU_ROUTE) return false;
@@ -112,6 +103,8 @@
     if (leadContext === null) return false;
 
     window[RUN_MARKER] = true;
+    markAcceptedLeadUi(root);
+    if (!window.MNTConsent?.allowed("analytics")) return true;
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       event: "mnt_lead_success",
@@ -128,12 +121,10 @@
       placement: `form_${leadFormId}`,
       ...leadContext
     });
-    markAcceptedLeadUi(root);
     return true;
   }
 
   function start() {
-    restoreConsent();
     const root = document.querySelector(ROOT_SELECTOR);
     if (root) return emit(root);
     const observer = new MutationObserver(() => {

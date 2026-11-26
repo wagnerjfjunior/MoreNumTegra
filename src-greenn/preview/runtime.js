@@ -265,6 +265,7 @@
   }
 
   function initConsent() {
+    if (window.MNTConsent) return; // V3 is the one source of truth on the canonical origin.
     const banner = ensureConsentBanner();
     const manage = ensureConsentManageControl();
     const syncOffset = () => {
@@ -292,6 +293,21 @@
       return;
     }
     manage.hidden = false;
+    if (window.MNTConsent) {
+      banner.innerHTML = '<div><strong>Privacidade e cookies</strong><p>Cookies essenciais mantêm o site funcionando. Com sua autorização, usamos Google Analytics e Clarity para análise de navegação e Google Ads para medição e personalização de anúncios. Escolha ou altere suas preferências.</p></div><div class="mnt-runtime-consent-actions"><button type="button" data-v3-reject>Recusar todos</button><button type="button" data-v3-accept>Aceitar todos</button><button type="button" data-v3-custom>Personalizar preferências</button></div><div data-v3-options hidden><label><input type="checkbox" data-v3-analytics> Análise e desempenho</label><br><label><input type="checkbox" data-v3-marketing> Publicidade e marketing</label><br><button type="button" data-v3-save>Salvar preferências</button></div>';
+      const q = (s) => banner.querySelector(s);
+      const options = q("[data-v3-options]");
+      const open = () => { const p=window.MNTConsent.get(); q("[data-v3-analytics]").checked=!!p?.analytics; q("[data-v3-marketing]").checked=!!p?.marketing; options.hidden=true; showBanner(); };
+      const save = (a,m) => { if(window.MNTConsent.save(a,m)){hideBanner();releaseConsentFocus(banner);} };
+      q("[data-v3-accept]").addEventListener("click",()=>save(true,true));
+      q("[data-v3-reject]").addEventListener("click",()=>save(false,false));
+      q("[data-v3-custom]").addEventListener("click",()=>{options.hidden=!options.hidden;syncOffset();});
+      q("[data-v3-save]").addEventListener("click",()=>save(q("[data-v3-analytics]").checked,q("[data-v3-marketing]").checked));
+      manage.textContent="Gerenciar cookies";
+      manage.addEventListener("click",open);
+      if(window.MNTConsent.get())hideBanner();else open();
+      return;
+    }
     const emitChoice = (choice) => {
       window.dataLayer = window.dataLayer || [];
       if (window.__mntGtmPilot) {

@@ -13,7 +13,7 @@ function slug(v){return ctl(v).replace(/\s+/g,"_")}
 function id(){return crypto?.randomUUID?.()||`mnt-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,12)}`}
 function pageMeta(){const d=document.documentElement.dataset;return{page_identity:String(d.mntPageIdentity||P),product_identity:String(d.mntProductIdentity||D),route:String(d.mntRoute||location.pathname||"/")}}
 function exactProject(){return pageMeta().product_identity!==D}
-function emit(event,funnel,p={}){if(!ok()||!root())return false;window.dataLayer=window.dataLayer||[];window.dataLayer.push({event,mnt_event_id:id(),mnt_event_version:V,...pageMeta(),funnel_stage:funnel,...p});return true}
+function emit(event,funnel,p={}){if(!ok()||!root()||!window.MNTConsent?.allowed("analytics"))return false;window.dataLayer=window.dataLayer||[];window.dataLayer.push({event,mnt_event_id:id(),mnt_event_version:V,...pageMeta(),funnel_stage:funnel,...p});return true}
 function context(v){v=String(v||"").trim();return v?{project_name:projectOverride[v]||v,offer_name:v}:{project_name:N,offer_name:N}}
 function selected(){return context(document.documentElement.dataset.moretegraInterest||"")}
 function count(r){const n=parseInt(r?.querySelector("[data-result-count]")?.textContent||"",10);return Number.isFinite(n)?n:0}
@@ -22,7 +22,7 @@ function register(v){const n=ctl(v),s=slug(v);if(n&&s&&n!=="todas"&&!locations.h
 function refreshLocations(r){r?.querySelectorAll(".mt-project-location").forEach(n=>String(n.textContent||"").split("·").map(x=>x.trim()).filter(Boolean).forEach(register))}
 function classify(v){const q=ctl(v);if(!q)return N;if(locations.has(q))return locations.get(q);const hits=new Set;for(const[k,s]of locations)if((` ${q} `).includes(` ${k} `)||(` ${k} `).includes(` ${q} `))hits.add(s);return hits.size===1?[...hits][0]:"other"}
 function faqItem(s){return faqMap[ctl(s?.textContent)]||"other"}
-function pageView(){if(!ok()||!root()||window[pv])return;window[pv]=true;emit("mnt_page_view","discovery",{placement:"document"})}
+function pageView(){if(!ok()||!root()||window[pv]||!window.MNTConsent?.allowed("analytics"))return;window[pv]=true;emit("mnt_page_view","discovery",{placement:"document"})}
 function later(fn){setTimeout(fn,0)}
 function filter(r,dim,val,place){const map=dim==="status"?status:dim==="zone"?zone:price,canonical=map[val];if(canonical)emit("mnt_catalog_filter","consideration",{filter_dimension:dim,filter_value:canonical,result_count:count(r),placement:place})}
 function onChange(e){const t=el(e.target),r=t?.closest(R)||root();if(!r)return;if(t.matches("[data-status-mobile]"))later(()=>filter(r,"status",t.value||"todos","status_mobile"));else if(t.matches("[data-zone-filter]"))later(()=>filter(r,"zone",t.value||"todas","zone_select"));else if(t.matches("[data-price-filter]"))later(()=>filter(r,"price",t.value||"todos","price_select"))}
@@ -80,6 +80,6 @@ function onClick(e){
 }
 function bind(){if(window[bound])return;window[bound]=true;document.addEventListener("click",onClick,true);document.addEventListener("change",onChange,true);document.addEventListener("input",onInput,true)}
 function prime(){const r=root();if(!r)return false;refreshLocations(r);pageView();return true}
-function start(){if(!ok())return;bind();if(prime())return;const o=new MutationObserver(()=>{if(prime())o.disconnect()});o.observe(document.documentElement,{childList:true,subtree:true});setTimeout(()=>o.disconnect(),10000)}
+function start(){if(!ok())return;document.addEventListener("mnt:consent-changed",pageView);bind();if(prime())return;const o=new MutationObserver(()=>{if(prime())o.disconnect()});o.observe(document.documentElement,{childList:true,subtree:true});setTimeout(()=>o.disconnect(),10000)}
 start();
 })();

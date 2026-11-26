@@ -1,3 +1,4 @@
+import {verifiedPreV3} from "./lib/consent-v3-migration.mjs";
 #!/usr/bin/env node
 import {readFileSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
@@ -20,7 +21,7 @@ function restoreMatchPointCopy(s){
 }
 const path='src-greenn/empreendimentos/bem-moema/index.html';
 const baseline='08e727aa879ab2f4afa996dfbbe40aade85c3c72';
-const html=readFileSync(path,'utf8');
+const html=verifiedPreV3(path);
 const original=execFileSync('git',['show',baseline+':'+path],{encoding:'utf8'});
 const pat=/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/i;
 const oldBlock=original.match(pat),newBlock=html.match(pat);

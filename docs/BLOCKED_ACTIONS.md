@@ -1,3 +1,9 @@
+## 25/11/2026 — Exceção específica de consentimento V3
+
+A missão executiva de 25/11 autoriza editar código transversal do consent manager, scripts compartilhados, HTML completos, testes estritamente relacionados ao contrato V3, documentação, PR e publicação. Não equivale a autorização para alterar preço, catálogo, identidade comercial, Form46/47, endpoint ou outras frentes SEO. Preservar as invariantes dos validadores; ajustar apenas as asserções de bootstrap GTM que exigiam V2. **Bloqueado afirmar GTM/GA4/Clarity administrativamente reconciliados sem acesso efetivo; bloqueada publicação com falha conhecida de privacidade, CRM ou CI obrigatório.** Exigir comprovante live antes de declarar deploy, medir CWV antes de declarar metas alcançadas.
+
+---
+
 ## 24/11/2026 — Bloqueios vigentes (Rio e Órbita)
 
 Não restaurar `Product`/`Offer` no Órbita com preço histórico ou disponibilidade não comprovada; só após preço vigente confirmado e PR própria. Não relaxar validadores das demais páginas. Alterações em testes e em produção são entregas distintas. Rio: não inventar preço, metragem, endereço ou métrica; não afirmar que as perguntas dos H2 são idênticas às do Google; não trocar o H1 do hub sem decisão do Wagner. Merge/deploy somente com autorização explícita e específica de cada PR. Sem IndexNow ou gasto em mídia.
