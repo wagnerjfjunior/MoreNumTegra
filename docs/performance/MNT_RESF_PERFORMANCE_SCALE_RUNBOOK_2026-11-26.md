@@ -39,3 +39,7 @@ Wave 0: finish two home PSI runs, visual and functional acceptance; inventory pu
 ## 5. Current residuals
 
 Homepage V7 LCP 1.4 s in all 3 reported runs; performance 98/100/100; SI 4.0/0.8/2.3 s unresolved. 300–390 ms render-blocking estimate; forced reflow only flagged in one report; 16 KiB image and 6 KiB cache opportunities; ~3 KiB JS minification. No measured field INP or CrUX. Need two more same-method runs for RESF five-run gate. No new runtime code, assets, validators or campaigns authorized by this document. Provider repo/pin changes, provider publication and formal broader RESF module adoption are separate governance decisions.
+
+## Adendo de conversão — 2026-11-26
+
+Aplicar `docs/frameworks/resf/v1/RESF_FORM_VISUAL_INTERNATIONAL_PHONE_2026-11-26.md` como gate nas remediações autorizadas. Restrição do proprietário: nesta rodada não inserir novas imagens no GitHub; reutilizar assets existentes e origens autorizadas. Não sacrificar captação internacional para obter performance. Mudança de runtime compartilhado exige escopo e regressão próprios.
