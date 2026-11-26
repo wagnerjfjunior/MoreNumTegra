@@ -1,8 +1,6 @@
 <!doctype html>
 <html lang="pt-BR" data-moretegra-interest="DSG Itaim" data-mnt-page-identity="dsg_itaim" data-mnt-product-identity="dsg-itaim" data-mnt-route="/empreendimentos/dsg-itaim/">
 <head>
-<script src="/src-greenn/preview/consent-v3.js?v=20261125-final"></script>
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
@@ -57,6 +55,38 @@
     <p><strong>Sabrina da Tegra · Corretora Tegra Vendas · CRECI-SP 209.905-F.</strong><br><a href="tel:+5511960779328">(11) 96077-9328</a> · <a href="https://corretor.tegravendas.com.br/sabrina/sp" target="_blank" rel="noopener noreferrer">perfil oficial Tegra Vendas</a></p>
   </footer>
   <noscript><p style="padding:24px;background:#fff;color:#111">Para visualizar a experiência completa do DSG Itaim, habilite JavaScript. Você também pode voltar para <a href="/">More em um Tegra</a>.</p></noscript>
-  
+  <script>
+  (()=>{"use strict";
+    const canonical="https://www.moretegra.com.br/empreendimentos/dsg-itaim/";
+    const source="/experiments/dsg-itaim-editorial-v3/index.html";
+    const schemaText=document.getElementById("dsg-schema")?.textContent||"";
+    const priceSection=`<section class="mnt-price-section" id="valores" aria-labelledby="mnt-price-title"><div class="wrap mnt-price-grid"><div><p class="mnt-price-label">A partir de</p><h2 id="mnt-price-title" class="mnt-price-amount" data-commercial-value aria-live="polite">R$ 355.000</h2></div><div data-commercial-key="dsg-itaim"><p class="mnt-price-label">Referência comercial</p><p class="mnt-price-reference">Ref. 32 m² · unidade 208 · Office · Nov/26 · pagamento à vista</p><p class="mnt-price-note">Referência publicada pela Tegra em Nov/26 para Office (uso comercial), não para studios ou apartamentos. Confirme valor e disponibilidade antes da proposta.</p><a class="btn yellow" href="#formulario" data-form-intent="conditions">Receber condições <span>↓</span></a></div></div></section>`;
+    fetch(source,{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.text()}).then(html=>{
+      const doc=new DOMParser().parseFromString(html,"text/html");
+      // The effective commercial document is written by this adapter: initialize V3 there.
+      const consentScript=doc.createElement("script");
+      consentScript.src="/src-greenn/preview/consent-v3.js?v=20261125-final";
+      doc.head.insertBefore(consentScript,doc.head.firstChild);
+      doc.querySelectorAll('script[src^="/src-greenn/preview/"]').forEach(node=>{node.src=node.getAttribute("src").split("?")[0]+"?v=20261125-v3";});
+      doc.documentElement.dataset.mntRoute="/empreendimentos/dsg-itaim/";
+      const robots=doc.head.querySelector('meta[name="robots"]')||doc.head.appendChild(doc.createElement("meta"));robots.setAttribute("name","robots");robots.setAttribute("content","index,follow,max-image-preview:large");
+      let googlebot=doc.head.querySelector('meta[name="googlebot"]');if(!googlebot){googlebot=doc.createElement("meta");doc.head.appendChild(googlebot)}googlebot.setAttribute("name","googlebot");googlebot.setAttribute("content","index,follow,max-image-preview:large");
+      doc.head.querySelectorAll('link[rel="canonical"]').forEach(node=>node.remove());
+      const link=doc.createElement("link");link.rel="canonical";link.href=canonical;doc.head.appendChild(link);
+      let ogUrl=doc.head.querySelector('meta[property="og:url"]');if(!ogUrl){ogUrl=doc.createElement("meta");ogUrl.setAttribute("property","og:url");doc.head.appendChild(ogUrl)}ogUrl.setAttribute("content",canonical);
+      const social={"og:locale":"pt_BR","og:site_name":"More em um Tegra","og:image":"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/284/Imagem/395ce1a2-b602-4c40-aa3a-aad64e2de199.jpg","og:image:secure_url":"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/284/Imagem/395ce1a2-b602-4c40-aa3a-aad64e2de199.jpg","og:image:type":"image/jpeg","og:image:alt":"Fachada do DSG Itaim no Itaim Bibi"};
+      Object.entries(social).forEach(([property,content])=>{let node=doc.head.querySelector(`meta[property="${property}"]`);if(!node){node=doc.createElement("meta");node.setAttribute("property",property);doc.head.appendChild(node)}node.setAttribute("content",content)});
+      const twitter={"twitter:card":"summary_large_image","twitter:title":"DSG Itaim Tegra | Studios e salas comerciais no Itaim Bibi","twitter:description":"Empreendimento Tegra entregue no Itaim Bibi, com studios, salas comerciais e apartamentos. Consulte condições do DSG Itaim.","twitter:image":"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/284/Imagem/395ce1a2-b602-4c40-aa3a-aad64e2de199.jpg","twitter:image:alt":"Fachada do DSG Itaim"};
+      Object.entries(twitter).forEach(([name,content])=>{let node=doc.head.querySelector(`meta[name="${name}"]`);if(!node){node=doc.createElement("meta");node.setAttribute("name",name);doc.head.appendChild(node)}node.setAttribute("content",content)});
+      doc.head.querySelectorAll('#dsg-schema,#mnt-dsg-itaim-schema').forEach(node=>node.remove());
+      const schemaNode=doc.createElement("script");schemaNode.type="application/ld+json";schemaNode.id="dsg-schema";schemaNode.textContent=schemaText;doc.head.appendChild(schemaNode);
+      const badge=doc.querySelector(".pilot");if(badge)badge.textContent="DSG Itaim · MoreTegra";
+      const footer=doc.querySelector(".footer-in span");if(footer)footer.textContent="AGENDE SEU ATENDIMENTO no DSG Itaim · Rua Joaquim Floriano, 152 — Itaim Bibi · São Paulo/SP";
+      const media=doc.querySelector(".media-row");if(media&&!doc.querySelector(".mnt-price-section"))media.insertAdjacentHTML("beforebegin",priceSection);
+      const leadCopy=doc.querySelector(".lead-copy");if(leadCopy&&!doc.querySelector("[data-sabrina-attendance]")){leadCopy.insertAdjacentHTML("beforeend",'<p data-sabrina-attendance><strong>Sabrina da Tegra</strong><br>Corretora Tegra Vendas · CRECI-SP 209.905-F<br><a href="tel:+5511960779328">(11) 96077-9328</a> · Na recepção, solicite <strong>Sabrina da Tegra</strong> · <a href="https://corretor.tegravendas.com.br/sabrina/sp" target="_blank" rel="noopener noreferrer">perfil oficial Tegra Vendas</a></p>')}
+      document.open();document.write("<!doctype html>"+doc.documentElement.outerHTML);document.close();
+    }).catch(err=>{console.error("DSG Itaim bootstrap failed",err);const node=document.querySelector("#mnt-dsg-bootstrap p:last-child");if(node)node.textContent="Não foi possível carregar a experiência completa agora. Atualize a página para tentar novamente."});
+  })();
+  </script>
 </body>
 </html>

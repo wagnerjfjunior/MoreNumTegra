@@ -1,8 +1,6 @@
 <!doctype html>
 <html lang="pt-BR">
 <head about="https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#webpage" typeof="schema:WebPage" prefix="schema: https://schema.org/ og: https://ogp.me/ns#">
-<script src="/src-greenn/preview/consent-v3.js?v=20261125-final"></script>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
@@ -67,6 +65,43 @@
     <p><strong>Sabrina da Tegra · Corretora Tegra Vendas · CRECI-SP 209.905-F.</strong><br><a href="tel:+5511960779328">(11) 96077-9328</a> · <a href="https://corretor.tegravendas.com.br/sabrina/sp" target="_blank" rel="noopener noreferrer">perfil oficial Tegra Vendas</a></p>
   </footer>
   <noscript><p style="padding:24px;background:#fff;color:#111">Para visualizar a experiência completa do CAPIITOLO, habilite JavaScript. Você também pode voltar para <a href="/">More em um Tegra</a>.</p></noscript>
-  
+  <script>
+  (()=>{"use strict";
+    const canonical="https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/";
+    const source="/experiments/capiitolo-editorial-v3/index.html";
+    const schemaText=document.getElementById("mnt-capiitolo-schema")?.textContent||"";const productSchemaText="";
+    const priceSection=`<section class="mnt-price-section" id="valores" aria-labelledby="mnt-price-title"><div class="wrap mnt-price-grid"><div><p class="mnt-price-label">Condições comerciais · unidade 33</p><h2 class="mnt-conditions-heading">Escolha sua condição</h2><div class="mnt-condition-options" role="group" aria-label="Condição de pagamento"><button type="button" data-mnt-condition="promocional" aria-pressed="true">Promocional</button><button type="button" data-mnt-condition="avista" aria-pressed="false">À vista</button></div></div><div data-commercial-key="capiitolo" aria-live="polite" aria-atomic="true"><p class="mnt-price-label" id="mnt-condition-label">Preço a partir de</p><h2 id="mnt-price-title" class="mnt-price-amount" data-commercial-value>R$ 3.350.000</h2><p class="mnt-price-note" id="mnt-condition-note">Unidade 33 · condição promocional de referência R$ 3.350.000. Consulte a Tegra Vendas para confirmar a vigência, valores promocionais e disponibilidade.</p><a class="btn yellow" href="#formulario" data-form-intent="conditions">Receber condições <span>↓</span></a></div></div></section>`;
+    fetch(source,{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.text()}).then(html=>{
+      const doc=new DOMParser().parseFromString(html,"text/html");
+      // The effective commercial document is written by this adapter: initialize V3 there.
+      const consentScript=doc.createElement("script");
+      consentScript.src="/src-greenn/preview/consent-v3.js?v=20261125-final";
+      doc.head.insertBefore(consentScript,doc.head.firstChild);
+      doc.querySelectorAll('script[src^="/src-greenn/preview/"]').forEach(node=>{node.src=node.getAttribute("src").split("?")[0]+"?v=20261125-v3";});
+      doc.documentElement.dataset.mntRoute="/empreendimentos/capiitolo-piero-lissoni/";
+      const robots=doc.head.querySelector('meta[name="robots"]')||doc.head.appendChild(doc.createElement("meta"));robots.setAttribute("name","robots");robots.setAttribute("content","index,follow,max-image-preview:large");
+      let googlebot=doc.head.querySelector('meta[name="googlebot"]');if(!googlebot){googlebot=doc.createElement("meta");doc.head.appendChild(googlebot)}googlebot.setAttribute("name","googlebot");googlebot.setAttribute("content","index,follow,max-image-preview:large");
+      doc.head.querySelectorAll('link[rel="canonical"]').forEach(node=>node.remove());
+      const link=doc.createElement("link");link.rel="canonical";link.href=canonical;doc.head.appendChild(link);
+      let ogUrl=doc.head.querySelector('meta[property="og:url"]');if(!ogUrl){ogUrl=doc.createElement("meta");ogUrl.setAttribute("property","og:url");doc.head.appendChild(ogUrl)}ogUrl.setAttribute("content",canonical);
+      const social={"og:locale":"pt_BR","og:site_name":"More em um Tegra","og:image:secure_url":"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/349/ImagemPrincipal/Tegra-Incorporadora-Detalhe-Fachada-CAPITOLO-by-Piero-Lissoni-Apartamentos-210-Metros-Chacara-Klabin-Sao-Paulo-SP-714x640-1736369712708.jpg","og:image:type":"image/jpeg","og:image:width":"714","og:image:height":"640","og:image:alt":"Fachada do CAPIITOLO by Piero Lissoni na Chácara Klabin"};
+      Object.entries(social).forEach(([property,content])=>{let node=doc.head.querySelector(`meta[property="${property}"]`);if(!node){node=doc.createElement("meta");node.setAttribute("property",property);doc.head.appendChild(node)}node.setAttribute("content",content)});
+      const twitter={"twitter:card":"summary_large_image","twitter:title":"CAPIITOLO Tegra Chácara Klabin | Piero Lissoni","twitter:description":"CAPIITOLO na Chácara Klabin: 210 m² com 4 suítes e 3 vagas de garagem, Giardino (Garden) 281 m² e Duplex 363 m², com plantas, lazer e atendimento especializado.","twitter:image":"https://stracctegra.blob.core.windows.net/assets/EmpreendimentoVitrine/349/ImagemPrincipal/Tegra-Incorporadora-Detalhe-Fachada-CAPITOLO-by-Piero-Lissoni-Apartamentos-210-Metros-Chacara-Klabin-Sao-Paulo-SP-714x640-1736369712708.jpg","twitter:image:alt":"Fachada do CAPIITOLO by Piero Lissoni na Chácara Klabin"};
+      Object.entries(twitter).forEach(([name,content])=>{let node=doc.head.querySelector(`meta[name="${name}"]`);if(!node){node=doc.createElement("meta");node.setAttribute("name",name);doc.head.appendChild(node)}node.setAttribute("content",content)});
+      doc.head.querySelectorAll('#mnt-capiitolo-schema').forEach(node=>node.remove());doc.head.querySelectorAll('#mnt-capiitolo-product-schema').forEach(node=>node.remove());
+      const schemaNode=doc.createElement("script");schemaNode.type="application/ld+json";schemaNode.id="mnt-capiitolo-schema";schemaNode.textContent=schemaText;doc.head.appendChild(schemaNode);
+      const badge=doc.querySelector(".pilot");if(badge)badge.textContent="CAPIITOLO · MoreTegra";
+      const footer=doc.querySelector(".footer-in span");if(footer)footer.textContent="AGENDE SEU ATENDIMENTO no CAPIITOLO · Rua Ibaragui Nissui, 166 — Chácara Klabin · São Paulo/SP · CEP 04116-200";
+      const media=doc.querySelector(".media-row");if(media&&!doc.querySelector(".mnt-price-section"))media.insertAdjacentHTML("beforebegin",priceSection);
+      const leadCopy=doc.querySelector(".lead-copy");if(leadCopy&&!doc.querySelector("[data-sabrina-attendance]")){leadCopy.insertAdjacentHTML("beforeend",'<p data-sabrina-attendance><strong>Sabrina da Tegra</strong><br>Corretora Tegra Vendas · CRECI-SP 209.905-F<br><a href="tel:+5511960779328">(11) 96077-9328</a> · Na recepção, solicite <strong>Sabrina da Tegra</strong> · <a href="https://corretor.tegravendas.com.br/sabrina/sp" target="_blank" rel="noopener noreferrer">perfil oficial Tegra Vendas</a></p>')}
+      const commercialStyle=doc.createElement("style");commercialStyle.textContent='.mnt-conditions-heading{font:400 clamp(1.8rem,4vw,3.4rem)/1.12 Georgia,serif;margin:0 0 18px}.mnt-condition-options{display:flex;flex-wrap:wrap;gap:10px}.mnt-condition-options button{min-height:48px;padding:12px 18px;background:transparent;color:#fff;border:1px solid #aaa;border-radius:12px;font:700 .85rem/1.2 Arial,sans-serif;cursor:pointer}.mnt-condition-options button[aria-pressed="true"]{background:#ebb92e;color:#171813;border-color:#ebb92e}.mnt-condition-options button:focus-visible{outline:3px solid #ebb92e;outline-offset:3px}';doc.head.appendChild(commercialStyle);
+      document.open();document.write("<!doctype html>"+doc.documentElement.outerHTML);document.close();
+      const conditions={promocional:{label:"Preço a partir de",price:"R$ 3.350.000",note:"Unidade 33 · condição promocional de referência R$ 3.350.000. Consulte a Tegra Vendas para confirmar a vigência, valores promocionais e disponibilidade."},avista:{label:"À vista",price:"R$ 3.135.000 à vista*",note:"*Unidade 33 · condição à vista de R$ 3.135.000. Consulte a Tegra Vendas para confirmar a vigência, valores promocionais e disponibilidade."}};
+      function chooseCondition(id){const data=conditions[id];if(!data)return;document.querySelectorAll("[data-mnt-condition]").forEach(x=>x.setAttribute("aria-pressed",String(x.dataset.mntCondition===id)));const label=document.getElementById("mnt-condition-label"),price=document.getElementById("mnt-price-title"),note=document.getElementById("mnt-condition-note");if(label)label.textContent=data.label;if(price)price.textContent=data.price;if(note)note.textContent=data.note;const intent=document.getElementById("mt-lead-intent");if(intent){const option=intent.querySelector('option[value^="Condições e disponibilidade"]');if(option){option.value="Condições e disponibilidade — CAPIITOLO, unidade 33, "+(id==="avista"?"à vista":"promocional");if(intent.selectedIndex===0)intent.value=option.value;}}}
+      document.querySelectorAll("[data-mnt-condition]").forEach(x=>x.addEventListener("click",()=>{chooseCondition(x.dataset.mntCondition);const url=new URL(location.href);url.searchParams.set("condicao",x.dataset.mntCondition);history.replaceState(history.state,"",url.pathname+url.search+url.hash)}));
+      const selected=new URLSearchParams(location.search).get("condicao");chooseCondition(Object.hasOwn(conditions,selected)?selected:"promocional");
+    }).catch(err=>{console.error("CAPIITOLO bootstrap failed",err);const node=document.querySelector("#mnt-capiitolo-bootstrap p:last-child");if(node)node.textContent="Não foi possível carregar a experiência completa agora. Atualize a página para tentar novamente."});
+  })();
+  </script>
 </body>
 </html>
