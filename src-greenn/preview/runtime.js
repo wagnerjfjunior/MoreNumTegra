@@ -144,7 +144,12 @@
       ? "Orientação FGTS na compra de apartamento"
       : selectedProject;
     const intent = String(form.elements["texto-livre"]?.value || "").trim();
-    const context = intent ? `${project} | ${intent}` : project;
+    // The CAPIITOLO selector names the project for the visitor, but the CRM context
+    // already prefixes the full project name. Keep unit/payment detail without duplication.
+    const crmIntent = project === "CAPIITOLO by Piero Lissoni"
+      ? intent.replace(/^Condições e disponibilidade — CAPIITOLO, unidade 33, (promocional|à vista)$/, "Condições e disponibilidade — unidade 33, $1")
+      : intent;
+    const context = crmIntent ? `${project} | ${crmIntent}` : project;
     return isFgtsJourney(form) ? `${context} | Interesse: FGTS` : context;
   }
 
