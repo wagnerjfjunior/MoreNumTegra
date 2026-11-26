@@ -41,6 +41,17 @@ export function applyV3(s,path){
 export function verifiedPreV3(path){
  const before=execFileSync("git",["show",BASE+":"+path],{encoding:"utf8"});
  const current=readFileSync(path,"utf8");
- assert.equal(current,applyV3(before,path),path+": actual HTML differs from the only authorized V3 migration; other business/schema/media changes prohibited");
+ let expected=applyV3(before,path);
+ // Explicitly authorized post-V3 home edits (#639 and #640); retain exact equality for every other byte.
+ if(path==="src-greenn/preview/index.html"){
+  const image="https://helbor.com.br/storage/development/gallery/2026/03/13/Vista_aerea_Rua_Jardim_Vivas_a39ff60521.jpg";
+  assert.equal(expected.split(image).length,3);
+  expected=expected.split(image).join("https://s3-gdigital.s3.amazonaws.com/gdigital/313/Vista_aerea_Rua_Jardim.webp");
+  assert.equal(expected.split("O player é carregado apenas quando você iniciar o vídeo.").length,2);
+  expected=expected.replace("O player é carregado apenas quando você iniciar o vídeo.","O vídeo inicia automaticamente após o carregamento da página, com atraso de 3 segundos. Você também pode tocar para iniciar.");
+  assert.equal(expected.split("moretegra.js?v=20261124-fgts-contexto").length,2);
+  expected=expected.replace("moretegra.js?v=20261124-fgts-contexto","moretegra.js?v=20261126-video-delay3");
+ }
+ assert.equal(current,expected,path+": actual HTML differs from the only authorized V3 migration; other business/schema/media changes prohibited");
  return before;
 }

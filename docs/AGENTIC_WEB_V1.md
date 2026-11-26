@@ -1,3 +1,7 @@
+## 26/11/2026 — Compatibilidade robots.txt e Lighthouse
+
+O relatório mobile de 07:28 registrou SEO 92 pela diretiva experimental `Agentmap` desconhecida. A correção solicitada remove somente essa diretiva ativa; mantém `Link: <https://www.moretegra.com.br/.well-known/ard.json>; rel="ard"`, manifesto ARD, alias ai-catalog e WebMCP. Descoberta via robots deixa de ser anunciada como suportada. Validar novamente SEO e navegação agêntica em produção; não presumir 100/6 de resultado. O autoplay existente passa de 2000 para 3000 ms após window load, preservando acionamento manual e poster.
+
 # AGENTIC-WEB-V1-PILOT — MoreNumTegra
 
 ## 25/11/2026 — Lighthouse 6/6 e observabilidade piloto

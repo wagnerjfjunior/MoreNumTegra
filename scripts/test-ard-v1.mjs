@@ -15,7 +15,8 @@ const js=read('src-greenn/preview/agentic-web.js'),html=read('src-greenn/preview
 for(const cap of e.capabilities){assert.ok(skill.includes(cap));assert.ok(js.includes(cap)||html.includes('toolname="'+cap+'"'));}
 const v=JSON.parse(read('vercel.json'));
 assert.ok(v.rewrites.some(x=>x.source==='/.well-known/ai-catalog.json'&&x.destination==='/.well-known/ard.json'));
-assert.ok(read('robots.txt').includes('Agentmap: https://www.moretegra.com.br/.well-known/ard.json'));
+assert.ok(!/^\s*Agentmap\s*:/im.test(read('robots.txt')), 'robots.txt must not contain the nonstandard Agentmap directive');
+assert.ok(read('robots.txt').includes('Sitemap: https://www.moretegra.com.br/sitemap.xml'));
 assert.ok(v.headers.some(h=>h.headers.some(x=>x.key==='Link'&&x.value.includes('rel="ard"'))));
 assert.ok(v.headers.some(h=>h.headers.some(x=>x.key==='Origin-Trial')));
 assert.ok(!/toolautosubmit\s*(=|>)/i.test(html));
