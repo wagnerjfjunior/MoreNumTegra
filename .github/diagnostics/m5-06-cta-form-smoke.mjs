@@ -30,6 +30,7 @@ const cases=[
   {name:"garden-conditions",path:"/empreendimentos/garden-design/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"garden-floating-conditions",path:"/empreendimentos/garden-design/",cta:'.mt-quick-lead[data-form-intent="conditions"]',expected:"Condições e disponibilidade"},
   {name:"capiitolo-conditions",path:"/empreendimentos/capiitolo-piero-lissoni/",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade — CAPIITOLO, unidade 33, promocional"},
+  {name:"capiitolo-price-conditions",path:"/empreendimentos/capiitolo-piero-lissoni/",cta:'.mnt-price-section a[data-form-intent="conditions"]',expected:"Condições e disponibilidade — CAPIITOLO, unidade 33, promocional"},
   {name:"capiitolo-visit",path:"/empreendimentos/capiitolo-piero-lissoni/",cta:'.tour-card a[data-form-intent="schedule_visit"]',expected:"Agendar visita"}
 ];
 
@@ -90,6 +91,71 @@ for(const [browserName,type] of Object.entries({chromium,firefox,webkit})){
   if(selectedProject!=="Soma Perdizes") throw new Error(`${browserName}/home-soma: form selected project mismatch: ${selectedProject}`);
   console.log(JSON.stringify({browser:browserName,test:"home-soma-interest-gallery",searchLead,priceLabel,interestName,galleryCount,selectedProject,result:"PASS"}));
   await homeContext.close();
+
+
+  // Capture the actual Form46 multipart request from a live-host simulation.
+  // All network traffic is fulfilled locally or aborted; no test lead can reach Greenn.
+  const scenarios=[
+    {name:"promo-hero",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade — unidade 33, promocional"},
+    {name:"promo-price",cta:'.mnt-price-section a[data-form-intent="conditions"]',expected:"Condições e disponibilidade — unidade 33, promocional"},
+    {name:"avista-selected",selectCondition:"avista",cta:'.mnt-price-section a[data-form-intent="conditions"]',expected:"Condições e disponibilidade — unidade 33, à vista"},
+    {name:"avista-direct",query:"?condicao=avista",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade — unidade 33, à vista"},
+    {name:"back-to-promo",sequence:["avista","promocional"],cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade — unidade 33, promocional"},
+    {name:"manual-then-conditions",manual:"Agendar visita",cta:'.hero-cta[data-form-intent="conditions"]',expected:"Condições e disponibilidade — unidade 33, promocional"},
+    {name:"visit",cta:'.tour-card a[data-form-intent="schedule_visit"]',expected:"Agendar visita"},
+    {name:"manual-other-interest",manual:"Simular forma de pagamento",expected:"Simular forma de pagamento"}
+  ];
+  for(const device of ["mobile","desktop"]){
+    for(const scenario of scenarios){
+      // Full matrix on mobile, core payload regression on desktop.
+      if(device==="desktop"&&!["promo-price","avista-selected","visit"].includes(scenario.name))continue;
+      const context=await browser.newContext({
+        viewport:device==="mobile"?{width:393,height:852}:{width:1440,height:900},
+        hasTouch:device==="mobile",locale:"pt-BR",serviceWorkers:"block"
+      });
+      let posted="";
+      await context.route("**/*",async route=>{
+        const uri=new URL(route.request().url());
+        if(uri.hostname==="www.moretegra.com.br"){
+          const response=await route.fetch({url:ORIGIN+uri.pathname+uri.search});
+          await route.fulfill({response});
+        }else if(uri.hostname==="back.gdigital.com.br"&&uri.pathname==="/form/register"){
+          posted=route.request().postData()||"";
+          await route.fulfill({status:200,headers:{"access-control-allow-origin":"*","content-type":"application/json"},body:'{"query_params":"l_=1&p_id=0"}'});
+        }else{
+          await route.abort();
+        }
+      });
+      const page=await context.newPage();
+      const response=await page.goto("https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/"+(scenario.query||""),{waitUntil:"domcontentloaded",timeout:30000});
+      if(!response?.ok())throw new Error(browserName+"/"+scenario.name+": local-route HTTP "+response?.status());
+      const selector=page.locator('[data-moretegra-lead-form] select[name="texto-livre"]');
+      await selector.waitFor({state:"attached",timeout:20000});
+      await page.waitForSelector('[data-mnt-condition="promocional"]',{state:"attached",timeout:20000});
+      if(scenario.manual)await selector.selectOption(scenario.manual);
+      for(const id of scenario.sequence||[]){
+        await page.locator('[data-mnt-condition="'+id+'"]').click();
+      }
+      if(scenario.selectCondition)await page.locator('[data-mnt-condition="'+scenario.selectCondition+'"]').click();
+      if(scenario.cta)await page.locator(scenario.cta).first().click();
+      const selected=await selector.inputValue();
+      const selectedExpected=scenario.expected.startsWith("Condições")
+        ?scenario.expected.replace(" — unidade 33, "," — CAPIITOLO, unidade 33, ")
+        :scenario.expected;
+      if(selected!==selectedExpected)throw new Error(browserName+"/"+device+"/"+scenario.name+": select "+selected+" != "+selectedExpected);
+      await page.locator("#mt-lead-name").fill("Teste QA Form46");
+      await page.locator("#mt-lead-email").fill("qa-form46@example.invalid");
+      await page.locator("#mt-lead-phone").fill("11999999999");
+      await page.locator("[data-moretegra-form-submit]").click();
+      await page.waitForURL(url=>url.pathname==="/obrigado/"||url.pathname==="/obrigado",{timeout:15000});
+      const actual=/name="texto-livre"\r?\n\r?\n([^\r\n]+)/.exec(posted)?.[1];
+      const expected="CAPIITOLO by Piero Lissoni | "+scenario.expected;
+      if(actual!==expected)throw new Error(browserName+"/"+device+"/"+scenario.name+": CRM "+actual+" != "+expected);
+      if(actual.split("CAPIITOLO").length!==2)throw new Error(browserName+"/"+scenario.name+": duplicated project label");
+      console.log(JSON.stringify({browser:browserName,device,test:"capiitolo-payload-"+scenario.name,selected,crmContext:actual,result:"PASS"}));
+      await context.close();
+    }
+  }
 
   const context=await browser.newContext({viewport:{width:393,height:852},hasTouch:true,locale:"pt-BR"});
   const page=await context.newPage();
