@@ -1,3 +1,9 @@
+## 26/11/2026 — MNT-PERF-V7 / RESF performance reference
+
+Owner approved consolidation of homepage V7 and documentation for scale. Runtime PR #646 MERGED, SHA `14c5b2536eff26ed3a2aaa7d998ded7dd8326e58`, Vercel READY `dpl_AauxUVtEYxmzx8gS3VBNFuU8WHAd`, www alias verified, CI 13/13 applicable. Three USER_REPORTED mobile PSI runs 98/100/100, median LCP 1.4 s, CLS 0, SI 2.3 s (0.8–4.0), SEO/accessibility/best practices 100 and agentic 6/6 each. OWNER_APPROVED_REFERENCE / LAB_BATTERY_INCOMPLETE (3/5); no CrUX or functional QA certification. Evidence: `docs/sfjm/MNT_PERF_V7_RESPONSIVE_MEDIA_2026-11-26.md`. Consumer RESF procedure: `docs/performance/MNT_RESF_PERFORMANCE_SCALE_RUNBOOK_2026-11-26.md`; addendum to existing responsive-media standard and exact-project standard. Other fronts unchanged. No mass mutation, frozen-page/validator exception, consent/CRM changes, provider release, or new PR merge without explicit specific authorization. No claim of field validation or universal 100.
+
+---
+
 ## 25/11/2026 — Exceção específica de consentimento V3
 
 A missão executiva de 25/11 autoriza editar código transversal do consent manager, scripts compartilhados, HTML completos, testes estritamente relacionados ao contrato V3, documentação, PR e publicação. Não equivale a autorização para alterar preço, catálogo, identidade comercial, Form46/47, endpoint ou outras frentes SEO. Preservar as invariantes dos validadores; ajustar apenas as asserções de bootstrap GTM que exigiam V2. **Bloqueado afirmar GTM/GA4/Clarity administrativamente reconciliados sem acesso efetivo; bloqueada publicação com falha conhecida de privacidade, CRM ou CI obrigatório.** Exigir comprovante live antes de declarar deploy, medir CWV antes de declarar metas alcançadas.

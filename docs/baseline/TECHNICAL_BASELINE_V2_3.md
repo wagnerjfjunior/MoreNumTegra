@@ -275,3 +275,7 @@ Exact street/number/postal-code content must not appear visibly outside the cano
 - Favicon package is the approved Tegra yellow T; audit found 40 `src-greenn` HTML files referencing `/favicon-48x48.png`.
 - Search/AI thumbnail selection remains query-dependent external state.
 - Evidence: `handoffs/HANDOFF-2026-10-06-SEARCH-IMAGE-FAVICON-HOME-GSC.md`.
+
+## 2026-11-26 performance addendum
+
+Homepage V7 reference: `docs/sfjm/MNT_PERF_V7_RESPONSIVE_MEDIA_2026-11-26.md`; consumer RESF scale procedure: `docs/performance/MNT_RESF_PERFORMANCE_SCALE_RUNBOOK_2026-11-26.md`. Applies alongside §9 and the canonical responsive media standard. Current V7 runtime at evidence time: `14c5b2536eff26ed3a2aaa7d998ded7dd8326e58` / `dpl_AauxUVtEYxmzx8gS3VBNFuU8WHAd` READY. Three reported lab runs (5 required), no field certification. All prior architecture, consent and release constraints preserved.

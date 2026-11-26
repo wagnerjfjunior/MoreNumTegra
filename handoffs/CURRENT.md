@@ -1,3 +1,9 @@
+## 26/11/2026 — MNT-PERF-V7 / RESF performance reference
+
+Owner approved consolidation of homepage V7 and documentation for scale. Runtime PR #646 MERGED, SHA `14c5b2536eff26ed3a2aaa7d998ded7dd8326e58`, Vercel READY `dpl_AauxUVtEYxmzx8gS3VBNFuU8WHAd`, www alias verified, CI 13/13 applicable. Three USER_REPORTED mobile PSI runs 98/100/100, median LCP 1.4 s, CLS 0, SI 2.3 s (0.8–4.0), SEO/accessibility/best practices 100 and agentic 6/6 each. OWNER_APPROVED_REFERENCE / LAB_BATTERY_INCOMPLETE (3/5); no CrUX or functional QA certification. Evidence: `docs/sfjm/MNT_PERF_V7_RESPONSIVE_MEDIA_2026-11-26.md`. Consumer RESF procedure: `docs/performance/MNT_RESF_PERFORMANCE_SCALE_RUNBOOK_2026-11-26.md`; addendum to existing responsive-media standard and exact-project standard. Other fronts unchanged. Existing constraints and historic evidence preserved; scale requires individual gates and specific authorization.
+
+---
+
 ## 25/11/2026 — Consent Mode V3: implementação transversal e gates
 
 Autorização expressa do proprietário para executar a frente de consentimento granular, incluindo PR, CI, merge e produção. Implementação técnica em `feat/consent-granular-v3-20261125`: manager singleton, `mnt.consent.v3`, quatro sinais, persistência de 365 dias, banner e footer em 157 documentos HTML completos; cobertura de 137 rewrites e 92 URLs do sitemap; Form46/47 preservados. Testes remotos da nova matriz (27) e thank-you (9), e verificadores de rotas e RJ passaram na branch de trabalho. **Não confundir implementação local com PR mergeada ou deploy; registrar as provas live após completar.** Dossiê: `docs/sfjm/MNT_CONSENT_MODE_V3_FINAL_RESOLUTION.md`.
