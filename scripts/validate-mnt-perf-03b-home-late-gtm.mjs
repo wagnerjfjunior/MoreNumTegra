@@ -23,7 +23,7 @@ const consentV3=fs.readFileSync("src-greenn/preview/consent-v3.js","utf8");
 const headV3=html.slice(0,html.indexOf("</head>"));
 check(consentV3.includes("if(!live||gtmStarted)return;"),"GTM loader is idempotent");
 check((consentV3.match(/googletagmanager\.com\/gtm\.js/g)||[]).length===1&&!html.includes("googletagmanager.com/gtm.js"),"exactly one consent-gated GTM JavaScript network path exists");
-check(headV3.includes('<script src="/src-greenn/preview/consent-v3.js?v=20261125-final"></script>'),"V3 loads in head before any external tag");
+check(headV3.includes('<script src="/src-greenn/preview/consent-v3.js?v=20261125-final" defer></script>'),"V3 remains first deferred executable script in head");
 check(!headV3.includes("gtm.start")&&!html.includes("googletagmanager.com/gtm.js"),"no eager GTM bootstrap or network call before consent");
 check(!html.includes("googletagmanager.com/ns.html"),"Basic Consent Mode excludes unconsented GTM noscript iframe");
 check(consentV3.includes('GTM="GTM-PGCR4R47"')&&consentV3.includes("if(!live||gtmStarted)return;"),"same GTM container, singleton consent-gated loader");
@@ -33,3 +33,8 @@ check(consentV3.includes('analytics_storage:p&&p.analytics?"granted":"denied"'),
 
 if(failed) process.exit(1);
 console.log("MNT-PERF-03B Home late-GTM bootstrap static validation: PASS");
+
+// Ordered deferred scripts preserve the consent-first contract without blocking parsing.
+const executable = [...html.matchAll(/<script\\b([^>]*)>([\\s\\S]*?)<\\/script>/gi)].filter(m=>!m[1].includes("ld+json"));
+if(executable.length!==7 || executable[0][0]!=="<script src=\"/src-greenn/preview/consent-v3.js?v=20261125-final\" defer></script>" || executable.some(m=>! /\\bdefer\\b/.test(m[1]) || /\\basync\\b/.test(m[1]) || m[2].trim())) throw new Error("Home must execute consent before all deferred consumers; no inline or async executable scripts");
+console.log("PASS: ordered deferred consent-first bootstrap");

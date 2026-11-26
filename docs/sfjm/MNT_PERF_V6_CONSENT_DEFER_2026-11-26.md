@@ -1,0 +1,5 @@
+# MNT-PERF-V6 — Ordered deferred consent bootstrap
+
+Baseline #643 user report 08:32 mobile: performance 96, SI 4.2s, LCP 2.3s, TBT/CLS 0, all other categories 100 and agentic 6/6. Consent script 490ms in render-blocking audit; LCP render delay 1890ms. Live base 88705c32c7aee7c10e2bf94167a039d78b4c5e8f includes separate CAPIITOLO release receipt #644.
+
+Pilot limited to home: add defer to unchanged Consent V3 script, first of seven external executable scripts; all following scripts already defer, no executable inline or async scripts. Preserve default-denied logic, stored preferences, banner, measurement, Form46, player and all CSS/SEO. Static guard verifies exact ordering and V3 migration remains byte-exact with approved substitution. No claim of browser-level privacy validation or measured PSI improvement before tests. Defer may move banner initialization; validate first visit/reject/accept, returning preferences and mobile visual stability. Inline CSS, image recompression, and hero compositing are not changed, to isolate the effect.

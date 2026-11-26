@@ -56,6 +56,8 @@ export function verifiedPreV3(path){
    assert.equal(expected.split(oldValue).length,2,"critical rendering baseline");
    expected=expected.replace(oldValue,newValue);
   }
+  assert.equal(expected.split("<script src=\"/src-greenn/preview/consent-v3.js?v=20261125-final\"></script>").length,2,"V6 manager singleton");
+  expected=expected.replace("<script src=\"/src-greenn/preview/consent-v3.js?v=20261125-final\"></script>","<script src=\"/src-greenn/preview/consent-v3.js?v=20261125-final\" defer></script>");
  }
  assert.equal(current,expected,path+": actual HTML differs from the only authorized V3 migration; other business/schema/media changes prohibited");
  return before;
