@@ -1,0 +1,51 @@
+name: Kronos bounded media import
+on:
+  pull_request:
+    branches: [main]
+    types: [opened]
+permissions:
+  contents: write
+jobs:
+  import:
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'fix/resf-kronos-hero-20261127'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install Pillow==11.3.0
+      - run: |
+          python - <<'PY'
+          import urllib.request, hashlib, json, io, pathlib
+          from PIL import Image
+          root=pathlib.Path('assets/resf')
+          slug='kronos-by-tegra'
+          prefix='tegra-kronos-salao-de-festas-rio-de-janeiro-'
+          origin='https://s3-gdigital.s3.amazonaws.com/gdigital/313/'
+          variants=[]
+          for w,h in [(640,293),(828,380),(1200,550)]:
+            name=f'{prefix}{w}x{h}.webp'
+            with urllib.request.urlopen(origin+name,timeout=30) as res:
+              assert res.status==200
+              data=res.read(160000)
+            im=Image.open(io.BytesIO(data)); im.load()
+            assert im.format=='WEBP' and im.size==(w,h) and len(data)<102400
+            if w==1200:
+              source_bytes=len(data)
+              continue
+            dest=root/slug/name
+            dest.parent.mkdir(parents=True,exist_ok=True)
+            dest.write_bytes(data)
+            variants.append({'path':str(dest),'width':w,'height':h,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest(),'provenance':'owner-approved Greenn WebP byte-for-byte copy'})
+          manifest=json.loads((root/'manifest.json').read_text())
+          manifest[slug]={'source':origin+prefix+'1200x550.webp','source_width':1200,'source_height':550,'source_bytes':source_bytes,'variants':variants}
+          (root/'manifest.json').write_text(json.dumps(manifest,indent=2,ensure_ascii=False)+'\n')
+          PY
+          git add assets/resf
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "perf: import verified Kronos mobile WebP variants"
+          git push origin HEAD:fix/resf-kronos-hero-20261127
