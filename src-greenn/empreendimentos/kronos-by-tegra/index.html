@@ -38,10 +38,15 @@
       },
       "mentions": [
         {
-          "@id": "https://www.moretegra.com.br/empreendimentos/kronos-by-tegra/#servico"
+          "@id": "https://www.moretegra.com.br/empreendimentos/kronos-by-tegra/#project"
+        }
+      ],
+      "image": [
+        {
+          "@id": "https://www.moretegra.com.br/empreendimentos/kronos-by-tegra/#hero-image"
         },
         {
-          "@id": "https://www.moretegra.com.br/empreendimentos/kronos-by-tegra/#estande-tegra"
+          "@id": "https://www.moretegra.com.br/empreendimentos/kronos-by-tegra/#secondary-image"
         }
       ]
     },
@@ -94,6 +99,9 @@
       "image": [
         {
           "@id": "https://www.moretegra.com.br/empreendimentos/kronos-by-tegra/#hero-image"
+        },
+        {
+          "@id": "https://www.moretegra.com.br/empreendimentos/kronos-by-tegra/#secondary-image"
         }
       ]
     },
@@ -154,8 +162,10 @@
     {
       "@type": "ImageObject",
       "@id": "https://www.moretegra.com.br/empreendimentos/kronos-by-tegra/#hero-image",
-      "contentUrl": "https://stracctegra.blob.core.windows.net/assets/BannerHome/5/Imagem/aa4c48b3-c8d2-4ed4-94c5-01c073ec666f-1787840307052.jpg",
-      "caption": "Kronos by Tegra na Barra da Tijuca — perspectiva oficial na Barra da Tijuca"
+      "contentUrl": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/tegra-kronos-salao-de-festas-rio-de-janeiro-1200x550.webp",
+      "caption": "Salão de festas do Kronos by Tegra na Barra da Tijuca",
+      "width": 1200,
+      "height": 550
     },
     {
       "@type": "Organization",
@@ -164,7 +174,10 @@
       "contactPoint": {
         "@id": "https://www.moretegra.com.br/empreendimentos/kronos-by-tegra/#contato"
       },
-      "url": "https://www.moretegra.com.br/"
+      "url": "https://www.moretegra.com.br/",
+      "brand": {
+        "@id": "https://www.moretegra.com.br/#tegra-brand"
+      }
     },
     {
       "@type": "RealEstateAgent",
@@ -172,7 +185,7 @@
       "name": "Atendimento presencial Tegra — Kronos by Tegra",
       "description": "Visita presencial com agendamento no endereço do empreendimento, com a equipe Tegra no Rio de Janeiro.",
       "url": "https://www.moretegra.com.br/empreendimentos/kronos-by-tegra/",
-      "image": "https://stracctegra.blob.core.windows.net/assets/BannerHome/5/Imagem/aa4c48b3-c8d2-4ed4-94c5-01c073ec666f-1787840307052.jpg",
+      "image": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/tegra-kronos-salao-de-festas-rio-de-janeiro-1200x550.webp",
       "telephone": "+5511951667227",
       "priceRange": "A partir de R$ 1.471.000",
       "address": {
@@ -213,11 +226,22 @@
       "name": "Atendimento sobre o Kronos by Tegra pela central de atendimento RJ",
       "serviceType": "Solicitação de plantas e condições do empreendimento",
       "provider": {
-        "@id": "https://www.moretegra.com.br/empreendimentos/kronos-by-tegra/#estande-tegra"
+        "@id": "https://www.moretegra.com.br/#tegra-vendas"
       },
       "broker": {
         "@id": "https://www.moretegra.com.br/empreendimentos/kronos-by-tegra/#estande-tegra"
       }
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://www.moretegra.com.br/empreendimentos/kronos-by-tegra/#secondary-image",
+      "contentUrl": "https://kronosbytegra.com.br/images/espacos/piscina-geral.jpg",
+      "caption": "Piscina do Kronos by Tegra"
+    },
+    {
+      "@type": "Brand",
+      "@id": "https://www.moretegra.com.br/#tegra-brand",
+      "name": "Tegra"
     }
   ]
 }
