@@ -238,5 +238,101 @@
         "sha256": "9e05bcc5f972c96564ad4fe6bd8b2c9c40db05a0a43a02f169ad55ccec73ab38"
       }
     ]
+  },
+  "nova-vivere": {
+    "source": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/tegra-nova-vivere-caminhos-da-lapa-piscina-sao-paulo-640x574.webp",
+    "source_width": 640,
+    "source_height": 574,
+    "source_bytes": 56802,
+    "variants": [
+      {
+        "path": "assets/resf/nova-vivere/tegra-nova-vivere-caminhos-da-lapa-piscina-sao-paulo-640x574.webp",
+        "width": 640,
+        "height": 574,
+        "bytes": 56802,
+        "sha256": "a36f0a04c3e4dbd7964ff73c3f590c670be17b1228401b906027bf09aa882624",
+        "provenance": "owner-uploaded WebP; byte-for-byte copy"
+      }
+    ]
+  },
+  "garden-design": {
+    "source": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/tegra-garden-design-private-park-residence-piscina-lapa-sao-paulo-640x574.webp",
+    "source_width": 640,
+    "source_height": 574,
+    "source_bytes": 90008,
+    "variants": [
+      {
+        "path": "assets/resf/garden-design/tegra-garden-design-private-park-residence-piscina-lapa-sao-paulo-640x574.webp",
+        "width": 640,
+        "height": 574,
+        "bytes": 90008,
+        "sha256": "8388adf27560d35631e7ef4d0e65b1733eb2a7db8f0d05cf3b6e011397095dd8",
+        "provenance": "owner-uploaded WebP; byte-for-byte copy"
+      }
+    ]
+  },
+  "reserva-caminhos-da-lapa": {
+    "source": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/tegra-reserva-caminhos-da-lapa-fachada-sao-paulo-640x1067.webp",
+    "source_width": 640,
+    "source_height": 1067,
+    "source_bytes": 79478,
+    "variants": [
+      {
+        "path": "assets/resf/reserva-caminhos-da-lapa/tegra-reserva-caminhos-da-lapa-fachada-sao-paulo-640x1067.webp",
+        "width": 640,
+        "height": 1067,
+        "bytes": 79478,
+        "sha256": "022971fbd87f85f31fc8d6fa7088b84516230e4741ec25a331e19058ad5f160b",
+        "provenance": "owner-uploaded WebP; byte-for-byte copy"
+      }
+    ]
+  },
+  "ypy-alto-do-ipiranga": {
+    "source": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/tegra-ypy-alto-do-ipiranga-piscina-sao-paulo-640x574.webp",
+    "source_width": 640,
+    "source_height": 574,
+    "source_bytes": 77390,
+    "variants": [
+      {
+        "path": "assets/resf/ypy-alto-do-ipiranga/tegra-ypy-alto-do-ipiranga-piscina-sao-paulo-640x574.webp",
+        "width": 640,
+        "height": 574,
+        "bytes": 77390,
+        "sha256": "9ec17a7ea49159d30e391cbf3879ff3160d5d32fa10d2034476bb9e625a16c4b",
+        "provenance": "owner-uploaded WebP; byte-for-byte copy"
+      }
+    ]
+  },
+  "capiitolo-piero-lissoni": {
+    "source": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/tegra-capiitolo-piero-lissoni-fachada-chacara-klabin-sao-paulo-640x574.webp",
+    "source_width": 640,
+    "source_height": 574,
+    "source_bytes": 75758,
+    "variants": [
+      {
+        "path": "assets/resf/capiitolo-piero-lissoni/tegra-capiitolo-piero-lissoni-fachada-chacara-klabin-sao-paulo-640x574.webp",
+        "width": 640,
+        "height": 574,
+        "bytes": 75758,
+        "sha256": "c918a590906881622a82de0eb979a73a11281828575696909f2b72746663d389",
+        "provenance": "owner-uploaded WebP; byte-for-byte copy"
+      }
+    ]
+  },
+  "dsg-itaim": {
+    "source": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/tegra-dsg-itaim-fachada-itaim-bibi-sao-paulo-640x960.webp",
+    "source_width": 640,
+    "source_height": 960,
+    "source_bytes": 59888,
+    "variants": [
+      {
+        "path": "assets/resf/dsg-itaim/tegra-dsg-itaim-fachada-itaim-bibi-sao-paulo-640x960.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 59888,
+        "sha256": "fec67ce64a750eb5ebdcd8058a31dc2bb79a29bcaad0cda710785eabc7c5470a",
+        "provenance": "owner-uploaded WebP; byte-for-byte copy"
+      }
+    ]
   }
 }
