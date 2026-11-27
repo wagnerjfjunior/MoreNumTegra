@@ -66,9 +66,20 @@ for(const slug of slugs){
   assertStand(slug,nodes,project,html);
   assert.equal(project.address.addressLocality,'Rio de Janeiro');
   assert.equal(project.address.addressRegion,'RJ');
-  assert(agent&&!agent.employee&&!agent.identifier&&!agent.parentOrganization&&agent.name.startsWith('Central de atendimento RJ'),'RIIO intake is the RJ service center, without broker identity or Tegra Vendas link');
-  assert.equal(agent.telephone,CHANNELS.rj.tel);
-  assert(!agent.parentOrganization,'RIIO RJ service center is not attached to Tegra Vendas');
+  // G01 #660 approved an existing Organization relationship in the semantic
+  // graph. This does NOT identify the RJ phone as the incorporator's channel.
+  // Keep the remote intake, no personal credential, no office address and exact
+  // approved organization ID; preserve R7 visible-copy and channel checks below.
+  const verifyIntake=v=>{
+    assert(v&&!v.employee&&!v.identifier&&v.name.startsWith('Central de atendimento RJ'),'RIIO intake must remain the RJ service center');
+    assert.equal(v.telephone,CHANNELS.rj.tel,'RIIO must retain RJ channel');
+    assert.deepEqual(v.parentOrganization,{'@id':'https://www.moretegra.com.br/#tegra-vendas'},'RIIO approved G01 organization relation');
+    assert(!v.address&&!v.geo,'RIIO remote intake must not fabricate on-site office/address');
+  };
+  verifyIntake(agent);
+  assert(nodes.some(n=>n['@type']==='Organization'&&n['@id']===agent.parentOrganization['@id']),'RIIO organization reference must resolve');
+  assert.throws(()=>verifyIntake({...agent,telephone:CHANNELS.sp.tel}),/retain RJ channel/);
+  assert.throws(()=>verifyIntake({...agent,address:project.address}),/must not fabricate/);
   assert.equal(agent['@id'],'https://www.moretegra.com.br/empreendimentos/riio-by-piero-lissoni/#atendimento');
   assert.equal(service?.provider?.['@id'],agent['@id']);
   assert(!agent.address&&!agent.geo,'Remote RIIO intake must not fabricate on-site office/address');
