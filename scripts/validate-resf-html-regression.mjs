@@ -1,5 +1,5 @@
-import {verifiedPreV3} from "./lib/consent-v3-migration.mjs";
 #!/usr/bin/env node
+import {verifiedPreV3} from "./lib/consent-v3-migration.mjs";
 // RESF frozen-page regression guard, extracted from PostalAddress test.
 // This check is independent of postal address and schema modifications.
 import {readFileSync} from 'node:fs';
