@@ -55,7 +55,7 @@ export function verifiedPreV3(path){
  }
  // G02 Kronos: exact candidate from PR #664, not a blanket exception.
  if(path==="src-greenn/empreendimentos/kronos-by-tegra/index.html"){
-  const approved=execFileSync("git",["show","1a7e0d70b4e02f41dc0bb74fd9850f079f9673e3:"+path],{encoding:"utf8"});
+  const approved=execFileSync("git",["show","1d423af3ac5e73a3ac3ffefab6d101d53ae07b39:"+path],{encoding:"utf8"});
   const check=value=>assert.equal(value,approved,path+": differs from exact scoped G02 candidate");
   check(current);
   assert.equal(current.split(MANAGER).length,2,path+": V3 singleton");
