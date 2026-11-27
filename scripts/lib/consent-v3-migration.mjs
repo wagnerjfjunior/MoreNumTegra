@@ -47,7 +47,8 @@ export function verifiedPreV3(path){
  // Exact G02 scoped candidate: preserve full byte equality and original consent ordering.
  if(new Set(["src-greenn/empreendimentos/nova-vivere/index.html","src-greenn/empreendimentos/garden-design/index.html","src-greenn/empreendimentos/reserva-caminhos-da-lapa/index.html","src-greenn/empreendimentos/ypy-alto-do-ipiranga/index.html","src-greenn/empreendimentos/bem-moema-studios-offices/index.html","src-greenn/empreendimentos/teg-sacoma/index.html","src-greenn/empreendimentos/viso-moema/index.html","src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html","src-greenn/empreendimentos/dsg-itaim/index.html"]).has(path)){
   const schemaG02 = new Set(["src-greenn/empreendimentos/garden-design/index.html","src-greenn/empreendimentos/reserva-caminhos-da-lapa/index.html","src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html","src-greenn/empreendimentos/dsg-itaim/index.html","src-greenn/empreendimentos/ypy-alto-do-ipiranga/index.html","src-greenn/empreendimentos/teg-sacoma/index.html","src-greenn/empreendimentos/viso-moema/index.html"]);
-  const approved=execFileSync("git",["show",(schemaG02.has(path)?"368c4ce1943ab2b7344604ad254ebbec8395d6ac":"1a7e0d70b4e02f41dc0bb74fd9850f079f9673e3")+":"+path],{encoding:"utf8"});
+  const commercialG02 = new Set(["src-greenn/empreendimentos/garden-design/index.html","src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html","src-greenn/empreendimentos/teg-sacoma/index.html","src-greenn/empreendimentos/viso-moema/index.html"]);
+  const approved=execFileSync("git",["show",(commercialG02.has(path)?"3a7ff258470b86ea681430801b5fe40f4106e9aa":schemaG02.has(path)?"368c4ce1943ab2b7344604ad254ebbec8395d6ac":"1a7e0d70b4e02f41dc0bb74fd9850f079f9673e3")+":"+path],{encoding:"utf8"});
   const check=value=>assert.equal(value,approved,path+": differs from exact G02 scoped candidate");
   check(current);
   assert.equal(current.split(MANAGER).length,2,path+": V3 singleton");
