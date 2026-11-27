@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import {verifiedPreV3} from "./lib/consent-v3-migration.mjs";
 import {isG01ApprovedPath,assertG01ApprovedSnapshot} from "./lib/resf-g01-approved-snapshot.mjs";
 // Freeze original JSON-LD graph, allowing ONLY user-approved apartment complex PostalAddress.
 import { readFileSync } from 'node:fs';
@@ -512,7 +513,7 @@ for(const [slug,street,cep] of expected){
  const original=execFileSync('git',['show',BASE+':'+filename],{encoding:'utf8'});
  const g01=isG01ApprovedPath(filename);
  const live=readFileSync(filename,'utf8');
- const candidateRaw=g01?assertG01ApprovedSnapshot(filename,live):restoreA06Metadata(live,slug);
+ const candidateRaw=g01?assertG01ApprovedSnapshot(filename,live):restoreA06Metadata(verifiedPreV3(filename),slug);
  // SFJM 2026-11-15: approved internal-link module (HTML only, no JSON-LD) on four protected pages; Ampère handled in its own branch.
  const SFJM_STRIP=['aria-higienopolis','mozae-higienopolis','ledge-brooklin','ypy-alto-do-ipiranga'];
  const SFJM_CSS=[".mnb{margin:26px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}.mnb li{border-bottom:1px solid var(--line);padding:16px 0}.mnb a{color:var(--ink);font-weight:800;text-decoration:underline;text-decoration-color:var(--yellow);text-underline-offset:4px}.mnb span{display:block;max-width:820px;color:var(--muted);margin-top:4px}",".mnb{margin:26px 0 0;padding:0;list-style:none;border-top:1px solid rgba(128,128,128,.4)}.mnb li{border-bottom:1px solid rgba(128,128,128,.4);padding:16px 0}.mnb a{color:inherit;font-weight:800;text-decoration:underline;text-decoration-color:#EBB92E;text-underline-offset:4px}.mnb span{display:block;max-width:820px;opacity:.78;margin-top:4px}"];
