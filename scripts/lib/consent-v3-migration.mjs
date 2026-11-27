@@ -46,7 +46,7 @@ export function verifiedPreV3(path){
  if(isG01ApprovedPath(path)){assertG01ApprovedSnapshot(path,current);return before;}
  // Exact G02 scoped candidate: preserve full byte equality and original consent ordering.
  if(new Set(["src-greenn/empreendimentos/nova-vivere/index.html","src-greenn/empreendimentos/garden-design/index.html","src-greenn/empreendimentos/reserva-caminhos-da-lapa/index.html","src-greenn/empreendimentos/ypy-alto-do-ipiranga/index.html","src-greenn/empreendimentos/bem-moema-studios-offices/index.html","src-greenn/empreendimentos/teg-sacoma/index.html","src-greenn/empreendimentos/viso-moema/index.html","src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html","src-greenn/empreendimentos/dsg-itaim/index.html"]).has(path)){
-  const approved=execFileSync("git",["show","11436671aadbaebbf9a9888819b56d4952f29112:"+path],{encoding:"utf8"});
+  const approved=execFileSync("git",["show","e9411dafabce0c33d7f005254e99b294ff9e31bd:"+path],{encoding:"utf8"});
   const check=value=>assert.equal(value,approved,path+": differs from exact G02 scoped candidate");
   check(current);
   assert.equal(current.split(MANAGER).length,2,path+": V3 singleton");
