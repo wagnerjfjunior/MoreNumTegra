@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import {isG01ApprovedPath,assertG01ApprovedSnapshot} from "./lib/resf-g01-approved-snapshot.mjs";
 // Freeze original JSON-LD graph, allowing ONLY user-approved apartment complex PostalAddress.
 import { readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
@@ -509,7 +510,9 @@ let changed=0,completeUnchanged=0;
 for(const [slug,street,cep] of expected){
  const filename='src-greenn/empreendimentos/'+slug+'/index.html';
  const original=execFileSync('git',['show',BASE+':'+filename],{encoding:'utf8'});
- const candidateRaw=restoreA06Metadata(readFileSync(filename,'utf8'),slug);
+ const g01=isG01ApprovedPath(filename);
+ const live=readFileSync(filename,'utf8');
+ const candidateRaw=g01?assertG01ApprovedSnapshot(filename,live):restoreA06Metadata(live,slug);
  // SFJM 2026-11-15: approved internal-link module (HTML only, no JSON-LD) on four protected pages; Ampère handled in its own branch.
  const SFJM_STRIP=['aria-higienopolis','mozae-higienopolis','ledge-brooklin','ypy-alto-do-ipiranga'];
  const SFJM_CSS=[".mnb{margin:26px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}.mnb li{border-bottom:1px solid var(--line);padding:16px 0}.mnb a{color:var(--ink);font-weight:800;text-decoration:underline;text-decoration-color:var(--yellow);text-underline-offset:4px}.mnb span{display:block;max-width:820px;color:var(--muted);margin-top:4px}",".mnb{margin:26px 0 0;padding:0;list-style:none;border-top:1px solid rgba(128,128,128,.4)}.mnb li{border-bottom:1px solid rgba(128,128,128,.4);padding:16px 0}.mnb a{color:inherit;font-weight:800;text-decoration:underline;text-decoration-color:#EBB92E;text-underline-offset:4px}.mnb span{display:block;max-width:820px;opacity:.78;margin-top:4px}"];
@@ -520,8 +523,9 @@ for(const [slug,street,cep] of expected){
   const css=SFJM_CSS.filter(c=>html.includes(c)); assert.equal(css.length,1,slug+': module CSS must occur exactly once');
   return html.replace(mod[0][0],'').replace(css[0],'');
  };
- const candidate=SFJM_STRIP.includes(slug)?sfjmStrip(candidateRaw):candidateRaw;
+ const candidate=!g01&&SFJM_STRIP.includes(slug)?sfjmStrip(candidateRaw):candidateRaw;
  const before=documents(original),after=documents(candidate);
+ if(!g01){ // Historical schema deltas apply only outside exact approved G01 release.
  const approvedCommercialSlugs=['aria-higienopolis','bem-moema','bem-moema-studios-offices','garden-design','mozae-higienopolis','ypy-alto-do-ipiranga'];
  if(approvedCommercialSlugs.includes(slug)){
   // Owner-approved commercial candidate: strict full-file snapshot, not an unchecked exemption.
@@ -842,6 +846,7 @@ for(const [slug,street,cep] of expected){
      whereBefore.acceptedAnswer.text=APPROVED_SOMA_WHERE_ANSWER;
    }
    assert.deepEqual(scrub(normalizeBuenoEditorial(normalized,before,slug,candidate)),scrub(before),slug+': forbidden non-image/non-address schema change');
+ }
  }
  const prior=flat(before).filter(x=>x['@type']==='ApartmentComplex');
  const current=flat(after).filter(x=>x['@type']==='ApartmentComplex');
