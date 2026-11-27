@@ -12,3 +12,5 @@ Owner authorized implementation and release subject to full CI. Base 2534791f5fc
 - chez-vous-moema
 - key-moema
 - ayla-moema-studio-office
+
+CI remediation: exact immutable candidate pin 274d78ac664608d3c2b7684934fdd87c261a5d76 for ten paths, negative tests for unauthorized drift and missing consent/runtime, Jerivás runtime and class contract aligned, lastmod ten URLs updated. No changes to runtime HTML in this remediation. Consent visual/functional validation remains separate.

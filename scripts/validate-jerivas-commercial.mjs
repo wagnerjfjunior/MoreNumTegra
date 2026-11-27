@@ -43,8 +43,11 @@ for(const q of node("FAQPage").mainEntity){assert.ok(html.includes("<summary>"+q
 assert.ok(html.includes('data-moretegra-lead-form data-form-id="46"'));
 assert.ok(html.includes('name="tenant_id" value="313"')&&html.includes('name="form_id" value="46"'));
 assert.ok(html.includes('name="title" value="MoreEmUmTegra"'));
+assert.ok(html.includes('data-resf-region="SP"'));
+const country=html.match(/<select\b[^>]*id="mt-phone-country"[^>]*>([\s\S]*?)<\/select>/)?.[1];
+assert.deepEqual([...country.matchAll(/<option value="([^"]+)"/g)].map(x=>x[1]),["BR","OTHER","AR","UY","PY","CL","CO","PE","MX","US","CA","PT","ES","FR","IT","DE","GB","IE","CH","NL","BE","AE","IL","JP","KR","CN","AU","NZ","ZA"]);
 for(const id of ["mt-lead-intent","mt-lead-name","mt-lead-email","mt-phone-country","mt-lead-phone","mt-lead-error","mt-lead-status"])assert.ok(html.includes('id="'+id+'"'));
-for(const script of ["runtime.js","measurement-core.js","measurement-form.js"])assert.ok(html.includes("/src-greenn/preview/"+script));
+for(const script of ["runtime-resf-phone-v1.js","measurement-core.js","measurement-form.js"])assert.ok(html.includes("/src-greenn/preview/"+script));
 assert.ok(html.includes('data-mnt-page-identity="jerivas_caminhos_da_lapa_project"'));
 assert.ok(html.includes('href="https://www.caminhosdalapategra.com.br/jerivas/"'),"history owner linked");
 for(const page of [blog,urban])assert.ok(page.includes('href="'+route+'"'),"blog commercial link missing");
@@ -55,7 +58,7 @@ assert.ok(html.includes('<strong>Entregue</strong><span>Sob consulta</span>'),"f
 assert.ok(!html.includes('<strong>Entregue</strong><span>Venda original encerrada</span>'),"old fact label forbidden");
 assert.ok(html.includes('id="sabrina"')&&html.includes('id="jerivas-sabrina-title"'),"dedicated Sabrina section");
 assert.ok(html.includes('class="sabrina-photo"')&&html.includes('CRECI-SP 209.905-F'),"Sabrina portrait and professional identity");
-assert.ok(html.includes('class="section contact contact-light"'),"light RESF lead section");
+assert.ok(html.includes('class="section contact contact-light mt-conversion-form"'),"light RESF lead section");
 assert.ok(css.includes('.contact-light .form')&&css.includes('background:#fff'),"light form styling");
 assert.ok(html.includes('id="galeria"')&&html.includes('data-jerivas-gallery'),"functional scene gallery");
 assert.equal((html.match(/data-gallery-index="/g)||[]).length,6,"six gallery scene controls");

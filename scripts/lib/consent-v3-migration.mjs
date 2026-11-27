@@ -44,6 +44,20 @@ export function verifiedPreV3(path){
  const current=readFileSync(path,"utf8");
  // Later approved G01 release: exact immutable equality, not a consent bypass.
  if(isG01ApprovedPath(path)){assertG01ApprovedSnapshot(path,current);return before;}
+ // G03 form-only candidate: immutable exact snapshot, with explicit negative regression tests.
+ if(new Set(["src-greenn/empreendimentos/soma-perdizes/index.html","src-greenn/empreendimentos/bueno-brandao-257/index.html","src-greenn/empreendimentos/jerivas-caminhos-da-lapa/index.html","src-greenn/empreendimentos/ledge-brooklin/index.html","src-greenn/empreendimentos/studios-berrini/index.html","src-greenn/empreendimentos/zahle-jardins/index.html","src-greenn/empreendimentos/chateau-jardin/index.html","src-greenn/empreendimentos/chez-vous-moema/index.html","src-greenn/empreendimentos/key-moema/index.html","src-greenn/empreendimentos/ayla-moema-studio-office/index.html"]).has(path)){
+  const approved=execFileSync("git",["show","274d78ac664608d3c2b7684934fdd87c261a5d76:"+path],{encoding:"utf8"});
+  const check=value=>assert.equal(value,approved,path+": differs from exact G03 form candidate");
+  check(current);
+  assert.equal(current.split(MANAGER).length,2,path+": V3 singleton");
+  const runtime="/src-greenn/preview/runtime-resf-phone-v1.js?v=20261126-g01";
+  assert.equal(current.split(runtime).length,2,path+": RESF runtime singleton");
+  assert.ok(current.indexOf(MANAGER)<current.indexOf(runtime),path+": consent ordering");
+  assert.throws(()=>check(current.replace(MANAGER,"")),/differs from exact G03/);
+  assert.throws(()=>check(current.replace(runtime,"")),/differs from exact G03/);
+  assert.throws(()=>check(current+"<!-- unauthorized drift -->"),/differs from exact G03/);
+  return before;
+ }
  // Exact G02 scoped candidate: preserve full byte equality and original consent ordering.
  if(new Set(["src-greenn/empreendimentos/nova-vivere/index.html","src-greenn/empreendimentos/garden-design/index.html","src-greenn/empreendimentos/reserva-caminhos-da-lapa/index.html","src-greenn/empreendimentos/ypy-alto-do-ipiranga/index.html","src-greenn/empreendimentos/bem-moema-studios-offices/index.html","src-greenn/empreendimentos/teg-sacoma/index.html","src-greenn/empreendimentos/viso-moema/index.html","src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html","src-greenn/empreendimentos/dsg-itaim/index.html"]).has(path)){
   const schemaG02 = new Set(["src-greenn/empreendimentos/garden-design/index.html","src-greenn/empreendimentos/reserva-caminhos-da-lapa/index.html","src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html","src-greenn/empreendimentos/dsg-itaim/index.html","src-greenn/empreendimentos/ypy-alto-do-ipiranga/index.html","src-greenn/empreendimentos/teg-sacoma/index.html","src-greenn/empreendimentos/viso-moema/index.html"]);
