@@ -66,9 +66,20 @@ for(const slug of slugs){
   assertStand(slug,nodes,project,html);
   assert.equal(project.address.addressLocality,'Rio de Janeiro');
   assert.equal(project.address.addressRegion,'RJ');
-  assert(agent&&!agent.employee&&!agent.identifier&&!agent.parentOrganization&&agent.name.startsWith('Central de atendimento RJ'),'RIIO intake is the RJ service center, without broker identity or Tegra Vendas link');
-  assert.equal(agent.telephone,CHANNELS.rj.tel);
-  assert(!agent.parentOrganization,'RIIO RJ service center is not attached to Tegra Vendas');
+  // G01 #660 approved an existing Organization relationship in the semantic
+  // graph. This does NOT identify the RJ phone as the incorporator's channel.
+  // Keep the remote intake, no personal credential, no office address and exact
+  // approved organization ID; preserve R7 visible-copy and channel checks below.
+  const verifyIntake=v=>{
+    assert(v&&!v.employee&&!v.identifier&&v.name.startsWith('Central de atendimento RJ'),'RIIO intake must remain the RJ service center');
+    assert.equal(v.telephone,CHANNELS.rj.tel,'RIIO must retain RJ channel');
+    assert.deepEqual(v.parentOrganization,{'@id':'https://www.moretegra.com.br/#tegra-vendas'},'RIIO approved G01 organization relation');
+    assert(!v.address&&!v.geo,'RIIO remote intake must not fabricate on-site office/address');
+  };
+  verifyIntake(agent);
+  assert(nodes.some(n=>n['@type']==='Organization'&&n['@id']===agent.parentOrganization['@id']),'RIIO organization reference must resolve');
+  assert.throws(()=>verifyIntake({...agent,telephone:CHANNELS.sp.tel}),/retain RJ channel/);
+  assert.throws(()=>verifyIntake({...agent,address:project.address}),/must not fabricate/);
   assert.equal(agent['@id'],'https://www.moretegra.com.br/empreendimentos/riio-by-piero-lissoni/#atendimento');
   assert.equal(service?.provider?.['@id'],agent['@id']);
   assert(!agent.address&&!agent.geo,'Remote RIIO intake must not fabricate on-site office/address');
@@ -96,7 +107,16 @@ for(const slug of slugs){
  if(slug==='caminhos-da-lapa-elo-duo'){
   assert.equal(a['@id'],'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#sabrina-atendimento','Elo Duo must use route-scoped on-site identity');
   const service=nodes.find(n=>n['@type']==='Service');
-  assert.equal(service?.provider?.['@id'],a['@id'],'Elo Duo service provider must reference local agent');
+  // RESF G01 #661: provider is Tegra Vendas; broker remains the identified Person.
+  const provider=nodes.find(n=>n['@id']==='https://www.moretegra.com.br/#tegra-vendas');
+  const broker=nodes.find(n=>n['@id']==='https://www.moretegra.com.br/#sabrina-da-tegra');
+  const checkService=(v)=>{assert.equal(v?.provider?.['@id'],provider?.['@id'],'Elo Duo provider must reference Tegra Vendas');assert.equal(v?.broker?.['@id'],broker?.['@id'],'Elo Duo broker must reference the identified Person');};
+  assert.equal(provider?.['@type'],'Organization');
+  assert.equal(broker?.['@type'],'Person');
+  assert.equal(a.parentOrganization?.['@id'],provider['@id']);
+  checkService(service);
+  assert.throws(()=>checkService({...service,provider:{'@id':a['@id']}}),/provider must/);
+  assert.throws(()=>checkService({...service,broker:{'@id':provider['@id']}}),/broker must/);
  }
  if(slug==='jerivas-caminhos-da-lapa'){
   assert.equal(p.streetAddress,'Rua Fortunato Ferraz, 250','Jerivás official condominium street drift');
@@ -107,6 +127,6 @@ for(const slug of slugs){
  console.log('ONSITE_AGENT_PASS',slug,a.address.streetAddress,a.address.postalCode);
 }
 assert.equal(pages,34,'Expected 28 existing plus six Rio staged project pages');
-assert.equal(agents,20,'Expected 20 project-scoped RealEstateAgents including Jerivás');
-assert.equal(notApplicable,14,'Expected 8 existing remote/non-applicable plus six Rio remote staging pages');
-console.log('PASS: 20 on-site agents retain project addresses; 6 legacy non-agent projects, NR and RIIO plus six Rio remote staging pages checked separately');
+assert.equal(agents,21,'Expected 21 project-scoped RealEstateAgents including Jerivás');
+assert.equal(notApplicable,13,'Expected 7 existing remote/non-applicable plus six Rio remote staging pages');
+console.log('PASS: 21 on-site agents retain project addresses; 5 legacy non-agent projects, NR and RIIO plus six Rio remote staging pages checked separately');
