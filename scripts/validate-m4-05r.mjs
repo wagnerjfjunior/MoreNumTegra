@@ -262,7 +262,11 @@ for (const page of pages) {
 
   const service = nodes.find((node) => [].concat(node['@type'] ?? []).includes('Service') && node.broker?.['@id'] === SABRINA_ID);
   if (!service) fail(page.name, 'Sabrina broker Service relation missing');
-  else if (service.provider?.['@id'] !== expectedAgentId) fail(page.name, 'Service provider must reference the page-governed Sabrina RealEstateAgent');
+  else {
+    const providerId = page.name === 'elo-duo' ? TEGRA_VENDAS_ID : expectedAgentId;
+    if (service.provider?.['@id'] !== providerId) fail(page.name, 'Service provider must reference the governed provider');
+    if (page.name === 'elo-duo' && !typedNode(nodes, TEGRA_VENDAS_ID, 'Organization')) fail(page.name, 'G01 Service provider Organization missing');
+  }
 
   const workLocation = isCapiitolo ? typedNode(nodes, CAPIITOLO_PROJECT_ID, 'ApartmentComplex') : (page.name === 'elo-duo' ? typedNode(nodes, `${page.canonical}#project`, 'ApartmentComplex') : typedNode(nodes, ESTANDE_ID, 'Place'));
   if (!workLocation) fail(page.name, 'Sabrina work location entity missing');
@@ -312,7 +316,9 @@ if (portalLinks.includes('link.textContent =') && !portalLinks.includes('if (lin
 
 const eloPage = await readFile('src-greenn/empreendimentos/caminhos-da-lapa-elo-duo/index.html', 'utf8');
 const projectPageCss = await readFile('src-greenn/project-page.css', 'utf8');
-if (!eloPage.includes('data-mnt-consent') || !eloPage.includes('/src-greenn/preview/runtime.js')) fail('elo-duo', 'consent markup/runtime missing');
+const eloManager = '/src-greenn/preview/consent-v3.js?v=20261125-final';
+const eloRuntime = '/src-greenn/preview/runtime-resf-phone-v1.js?v=20261126-g01';
+if (eloPage.split(eloManager).length !== 2 || eloPage.split(eloRuntime).length !== 2 || eloPage.indexOf(eloManager) > eloPage.indexOf(eloRuntime) || eloPage.includes('/src-greenn/preview/runtime.js')) fail('elo-duo', 'G01 V3 manager/runtime singleton or ordering mismatch');
 if (!projectPageCss.includes('.mt-consent{position:fixed') || !projectPageCss.includes('.mt-consent[hidden]{display:none!important}')) fail('elo-duo', 'exact-project consent styles missing');
 
 const staticHome = await readFile('src-greenn/preview/index.html', 'utf8');
