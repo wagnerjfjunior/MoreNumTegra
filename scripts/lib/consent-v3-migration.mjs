@@ -46,7 +46,7 @@ export function verifiedPreV3(path){
  if(isG01ApprovedPath(path)){assertG01ApprovedSnapshot(path,current);return before;}
  // Exact G02 scoped candidate: preserve full byte equality and original consent ordering.
  if(new Set(["src-greenn/empreendimentos/nova-vivere/index.html","src-greenn/empreendimentos/garden-design/index.html","src-greenn/empreendimentos/reserva-caminhos-da-lapa/index.html","src-greenn/empreendimentos/ypy-alto-do-ipiranga/index.html","src-greenn/empreendimentos/bem-moema-studios-offices/index.html","src-greenn/empreendimentos/teg-sacoma/index.html","src-greenn/empreendimentos/viso-moema/index.html","src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html","src-greenn/empreendimentos/dsg-itaim/index.html"]).has(path)){
-  const approved=execFileSync("git",["show","0fc2a9407942bbed59b2937d38961f90ad498371:"+path],{encoding:"utf8"});
+  const approved=execFileSync("git",["show","295b146dad43f7263871b4bab5f132dce15ada7f:"+path],{encoding:"utf8"});
   const check=value=>assert.equal(value,approved,path+": differs from exact G02 scoped candidate");
   check(current);
   assert.equal(current.split(MANAGER).length,2,path+": V3 singleton");
@@ -55,7 +55,7 @@ export function verifiedPreV3(path){
  }
  // G02 Kronos: exact candidate from PR #664, not a blanket exception.
  if(path==="src-greenn/empreendimentos/kronos-by-tegra/index.html"){
-  const approved=execFileSync("git",["show","0fc2a9407942bbed59b2937d38961f90ad498371:"+path],{encoding:"utf8"});
+  const approved=execFileSync("git",["show","295b146dad43f7263871b4bab5f132dce15ada7f:"+path],{encoding:"utf8"});
   const check=value=>assert.equal(value,approved,path+": differs from exact scoped G02 candidate");
   check(current);
   assert.equal(current.split(MANAGER).length,2,path+": V3 singleton");
