@@ -58,8 +58,19 @@ for(const slug of slugs){
      assert.equal(newer.address?.postalCode,project.address?.postalCode,'Elo Duo on-site CEP mismatch');
      assert.deepEqual(newer.geo,project.geo,'Elo Duo on-site verified coordinates mismatch');
      assert.equal(newer.image,old.image,'Elo Duo Realtor image changed');
+     // Exact approved G01 entity, retaining historical address, geo and image checks above.
+     const approved=graph(execFileSync('git',['show','da69974eb1a959401cad92406eff458a1e2649fd:'+path],{encoding:'utf8'})).find(n=>n['@id']===id);
+     assert(approved,'Missing approved G01 Elo Duo entity');
+     const checkApproved=n=>assert.deepEqual(n,approved,'Elo Duo Realtor differs from exact approved G01 entity');
+     checkApproved(newer);
+     assert.throws(()=>checkApproved({...newer,telephone:'+5500000000000'}),/differs from exact approved/);
      const restored={...newer,'@id':old['@id'],address:old.address,geo:old.geo};
-     assert.deepEqual(restored,old,'Elo Duo Realtor has unintended changes besides scoped identity/location');
+     for(const [key,expected] of [['parentOrganization','https://www.moretegra.com.br/#tegra-vendas'],['contactPoint','https://www.moretegra.com.br/#sabrina-contato']]){
+       assert.deepEqual(restored[key],{'@id':expected});
+       assert(!Object.hasOwn(old,key),'Historical entity unexpectedly contains '+key);
+       delete restored[key];
+     }
+     assert.deepEqual(restored,old,'Elo Duo Realtor has unintended changes besides scoped identity/location and approved G01 relationships');
    }
    if(!newer&&paused(slug,old['@type']))continue;
    assert(newer,slug+': schema entity deleted: '+old['@type']+' '+old['@id']);
