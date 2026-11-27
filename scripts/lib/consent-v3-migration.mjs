@@ -44,6 +44,15 @@ export function verifiedPreV3(path){
  const current=readFileSync(path,"utf8");
  // Later approved G01 release: exact immutable equality, not a consent bypass.
  if(isG01ApprovedPath(path)){assertG01ApprovedSnapshot(path,current);return before;}
+ // G02 Kronos: exact candidate from PR #664, not a blanket exception.
+ if(path==="src-greenn/empreendimentos/kronos-by-tegra/index.html"){
+  const approved=execFileSync("git",["show","840e73d0581a1f5fd23fd3c5bd00761333babc76:"+path],{encoding:"utf8"});
+  const check=value=>assert.equal(value,approved,path+": differs from exact scoped G02 candidate");
+  check(current);
+  assert.equal(current.split(MANAGER).length,2,path+": V3 singleton");
+  assert.throws(()=>check(current.replace(MANAGER,"")),/differs from exact scoped G02/);
+  return before;
+ }
  let expected=applyV3(before,path);
  // Explicitly authorized post-V3 home edits (#639 and #640); retain exact equality for every other byte.
  if(path==="src-greenn/preview/index.html"){
