@@ -334,5 +334,29 @@
         "provenance": "owner-uploaded WebP; byte-for-byte copy"
       }
     ]
+  },
+  "kronos-by-tegra": {
+    "source": "https://s3-gdigital.s3.amazonaws.com/gdigital/313/tegra-kronos-salao-de-festas-rio-de-janeiro-1200x550.webp",
+    "source_width": 1200,
+    "source_height": 550,
+    "source_bytes": 39384,
+    "variants": [
+      {
+        "path": "assets/resf/kronos-by-tegra/tegra-kronos-salao-de-festas-rio-de-janeiro-640x293.webp",
+        "width": 640,
+        "height": 293,
+        "bytes": 15838,
+        "sha256": "e1e3c5c1bd633b7ce123152f96f1431acff24a8fb2c346682b2735fbe18e5192",
+        "provenance": "owner-approved Greenn WebP byte-for-byte copy"
+      },
+      {
+        "path": "assets/resf/kronos-by-tegra/tegra-kronos-salao-de-festas-rio-de-janeiro-828x380.webp",
+        "width": 828,
+        "height": 380,
+        "bytes": 23312,
+        "sha256": "4d0f93d64802551202bec5f5aae1f2b45aed29ffe306a4e301e9d3198b45e03d",
+        "provenance": "owner-approved Greenn WebP byte-for-byte copy"
+      }
+    ]
   }
 }
