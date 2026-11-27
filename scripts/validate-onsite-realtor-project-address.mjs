@@ -127,6 +127,6 @@ for(const slug of slugs){
  console.log('ONSITE_AGENT_PASS',slug,a.address.streetAddress,a.address.postalCode);
 }
 assert.equal(pages,34,'Expected 28 existing plus six Rio staged project pages');
-assert.equal(agents,20,'Expected 20 project-scoped RealEstateAgents including Jerivás');
-assert.equal(notApplicable,14,'Expected 8 existing remote/non-applicable plus six Rio remote staging pages');
-console.log('PASS: 20 on-site agents retain project addresses; 6 legacy non-agent projects, NR and RIIO plus six Rio remote staging pages checked separately');
+assert.equal(agents,21,'Expected 21 project-scoped RealEstateAgents including Jerivás');
+assert.equal(notApplicable,13,'Expected 7 existing remote/non-applicable plus six Rio remote staging pages');
+console.log('PASS: 21 on-site agents retain project addresses; 5 legacy non-agent projects, NR and RIIO plus six Rio remote staging pages checked separately');
