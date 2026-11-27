@@ -96,7 +96,16 @@ for(const slug of slugs){
  if(slug==='caminhos-da-lapa-elo-duo'){
   assert.equal(a['@id'],'https://www.moretegra.com.br/empreendimentos/caminhos-da-lapa-elo-duo/#sabrina-atendimento','Elo Duo must use route-scoped on-site identity');
   const service=nodes.find(n=>n['@type']==='Service');
-  assert.equal(service?.provider?.['@id'],a['@id'],'Elo Duo service provider must reference local agent');
+  // RESF G01 #661: provider is Tegra Vendas; broker remains the identified Person.
+  const provider=nodes.find(n=>n['@id']==='https://www.moretegra.com.br/#tegra-vendas');
+  const broker=nodes.find(n=>n['@id']==='https://www.moretegra.com.br/#sabrina-da-tegra');
+  const checkService=(v)=>{assert.equal(v?.provider?.['@id'],provider?.['@id'],'Elo Duo provider must reference Tegra Vendas');assert.equal(v?.broker?.['@id'],broker?.['@id'],'Elo Duo broker must reference the identified Person');};
+  assert.equal(provider?.['@type'],'Organization');
+  assert.equal(broker?.['@type'],'Person');
+  assert.equal(a.parentOrganization?.['@id'],provider['@id']);
+  checkService(service);
+  assert.throws(()=>checkService({...service,provider:{'@id':a['@id']}}),/provider must/);
+  assert.throws(()=>checkService({...service,broker:{'@id':provider['@id']}}),/broker must/);
  }
  if(slug==='jerivas-caminhos-da-lapa'){
   assert.equal(p.streetAddress,'Rua Fortunato Ferraz, 250','Jerivás official condominium street drift');
