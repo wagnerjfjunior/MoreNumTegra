@@ -263,9 +263,9 @@ for (const page of pages) {
   const service = nodes.find((node) => [].concat(node['@type'] ?? []).includes('Service') && node.broker?.['@id'] === SABRINA_ID);
   if (!service) fail(page.name, 'Sabrina broker Service relation missing');
   else {
-    const providerId = page.name === 'elo-duo' ? TEGRA_VENDAS_ID : expectedAgentId;
+    const providerId = ['elo-duo','capiitolo'].includes(page.name) ? TEGRA_VENDAS_ID : expectedAgentId;
     if (service.provider?.['@id'] !== providerId) fail(page.name, 'Service provider must reference the governed provider');
-    if (page.name === 'elo-duo' && !typedNode(nodes, TEGRA_VENDAS_ID, 'Organization')) fail(page.name, 'G01 Service provider Organization missing');
+    if (['elo-duo','capiitolo'].includes(page.name) && !typedNode(nodes, TEGRA_VENDAS_ID, 'Organization')) fail(page.name, 'G01 Service provider Organization missing');
   }
 
   const workLocation = isCapiitolo ? typedNode(nodes, CAPIITOLO_PROJECT_ID, 'ApartmentComplex') : (page.name === 'elo-duo' ? typedNode(nodes, `${page.canonical}#project`, 'ApartmentComplex') : typedNode(nodes, ESTANDE_ID, 'Place'));
