@@ -1,3 +1,4 @@
+import {isG01ApprovedPath,assertG01ApprovedSnapshot} from "./resf-g01-approved-snapshot.mjs";
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 import {execFileSync} from "node:child_process";
@@ -41,6 +42,8 @@ export function applyV3(s,path){
 export function verifiedPreV3(path){
  const before=execFileSync("git",["show",BASE+":"+path],{encoding:"utf8"});
  const current=readFileSync(path,"utf8");
+ // Later approved G01 release: exact immutable equality, not a consent bypass.
+ if(isG01ApprovedPath(path)){assertG01ApprovedSnapshot(path,current);return before;}
  let expected=applyV3(before,path);
  // Explicitly authorized post-V3 home edits (#639 and #640); retain exact equality for every other byte.
  if(path==="src-greenn/preview/index.html"){
