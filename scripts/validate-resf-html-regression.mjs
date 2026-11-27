@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import {isG01ApprovedPath,assertG01ApprovedSnapshot} from "./lib/resf-g01-approved-snapshot.mjs";
 import {verifiedPreV3} from "./lib/consent-v3-migration.mjs";
 // RESF frozen-page regression guard, extracted from PostalAddress test.
 // This check is independent of postal address and schema modifications.
@@ -244,6 +245,16 @@ let checked=0;
 for(const [slug,street,cep] of pages){
  const filename='src-greenn/empreendimentos/'+slug+'/index.html';
  const original=execFileSync('git',['show',BASE+':'+filename],{encoding:'utf8'});
+ if(isG01ApprovedPath(filename)){
+  const current=assertG01ApprovedSnapshot(filename,readFileSync(filename,'utf8'));
+  const a=address(current);
+  assert.equal(a?.streetAddress,street,slug+': G01 street drift');
+  assert.equal(a?.postalCode,cep,slug+': G01 CEP drift');
+  const prior=address(original);
+  if(prior?.streetAddress===street&&prior?.postalCode===cep)checked++;
+  console.log('RESF_G01_EXACT_SNAPSHOT_PASS',slug);
+  continue;
+ }
  const candidateRaw=restoreA06Metadata(verifiedPreV3(filename),slug);
  // SFJM 2026-11-15: approved internal-link module on five protected pages + one approved H1 (Ampère).
  // The module section, its CSS and the approved Ampère H1 are removed here; everything else must still equal the snapshot.
