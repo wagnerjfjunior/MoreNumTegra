@@ -44,7 +44,7 @@ const pages = [
     requiredTypes: ['WebSite', 'WebPage', 'BreadcrumbList', 'ApartmentComplex', 'FloorPlan', 'ImageObject', 'RealEstateAgent', 'Brand', 'Person', 'Service'],
     requiredIds: ['https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#webpage', CAPIITOLO_PROJECT_ID, TEGRA_BRAND_ID, SABRINA_ID, CAPIITOLO_AGENT_ID],
     visibleNeedles: ['Sabrina da Tegra', 'CRECI-SP 209.905-F', '(11) 96077-9328', 'R$ 3.350.000', 'Unidade 33'],
-    commercialProjectId: 'capiitolo-piero-lissoni'
+    product: { id: 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#product-33', offerId: 'https://www.moretegra.com.br/empreendimentos/capiitolo-piero-lissoni/#offer-33', projectId: 'capiitolo-piero-lissoni', price: 3350000 }
   },
   {
     name: 'elo-duo',
