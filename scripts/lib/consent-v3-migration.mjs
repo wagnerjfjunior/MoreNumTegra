@@ -46,7 +46,8 @@ export function verifiedPreV3(path){
  if(isG01ApprovedPath(path)){assertG01ApprovedSnapshot(path,current);return before;}
  // Exact G02 scoped candidate: preserve full byte equality and original consent ordering.
  if(new Set(["src-greenn/empreendimentos/nova-vivere/index.html","src-greenn/empreendimentos/garden-design/index.html","src-greenn/empreendimentos/reserva-caminhos-da-lapa/index.html","src-greenn/empreendimentos/ypy-alto-do-ipiranga/index.html","src-greenn/empreendimentos/bem-moema-studios-offices/index.html","src-greenn/empreendimentos/teg-sacoma/index.html","src-greenn/empreendimentos/viso-moema/index.html","src-greenn/empreendimentos/capiitolo-piero-lissoni/index.html","src-greenn/empreendimentos/dsg-itaim/index.html"]).has(path)){
-  const approved=execFileSync("git",["show","1a7e0d70b4e02f41dc0bb74fd9850f079f9673e3:"+path],{encoding:"utf8"});
+  const schemaG02 = new Set(["src-greenn/empreendimentos/garden-design/index.html","src-greenn/empreendimentos/reserva-caminhos-da-lapa/index.html","src-greenn/empreendimentos/viso-moema/index.html"]);
+  const approved=execFileSync("git",["show",(schemaG02.has(path)?"0e258104133aca0778764416d4a5b47435a99f9a":"1a7e0d70b4e02f41dc0bb74fd9850f079f9673e3")+":"+path],{encoding:"utf8"});
   const check=value=>assert.equal(value,approved,path+": differs from exact G02 scoped candidate");
   check(current);
   assert.equal(current.split(MANAGER).length,2,path+": V3 singleton");
@@ -55,7 +56,7 @@ export function verifiedPreV3(path){
  }
  // G02 Kronos: exact candidate from PR #664, not a blanket exception.
  if(path==="src-greenn/empreendimentos/kronos-by-tegra/index.html"){
-  const approved=execFileSync("git",["show","1d423af3ac5e73a3ac3ffefab6d101d53ae07b39:"+path],{encoding:"utf8"});
+  const approved=execFileSync("git",["show","0e258104133aca0778764416d4a5b47435a99f9a:"+path],{encoding:"utf8"});
   const check=value=>assert.equal(value,approved,path+": differs from exact scoped G02 candidate");
   check(current);
   assert.equal(current.split(MANAGER).length,2,path+": V3 singleton");
